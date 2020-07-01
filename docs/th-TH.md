@@ -1,0 +1,56 @@
+[![Discord](https://discordapp.com/assets/e4923594e694a21542a489471ecffa50.svg)](https://discordapp.com)
+
+[![Javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com/) [![Ragrets](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com/) [![Love](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com/) [![Water](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com/)
+
+[![Discord server](https://discordapp.com/api/guilds/618837514882514944/widget.png?style=shield)](https://discord.gg/7B52BTf)
+[![Stars](https://img.shields.io/github/stars/Shinosaki/yumeko.svg)](https://github.com/Shinosaki/yumeko/stargazers)
+[![License](https://img.shields.io/github/license/Shinosaki/yumeko.svg)](https://github.com/Shinosaki/yumeko/blob/master/LICENSE)
+
+#
+
+### เลือกภาษาของข้อมูล
+
+- [ไทย](https://github.com/Shinosaki/yumeko/blob/master/docs/th-TH.md)
+
+- [English](https://github.com/Shinosaki/yumeko/blob/master/README.md)
+
+#
+
+เป้าหมายของการสร้างบอทนี้คือ ทำให้เธอสามารถทำงานบนเซิร์ฟเวอร์อื่นๆ ได้ แต่ในขณะนี้ผมทำได้แค่ปล่อยให้เธอทำงานภายในเซิร์ฟเวอร์ของผมเท่านั้น และกำลังพัฒนาต่อเรื่อยๆ หากคุณคิดว่าควรเพิ่มหรือแก้ไขส่วนใดคุณสามารถแนะนำบอทของผมได้ ขอขอบคุณล่วงหน้า
+
+# เครดิต
+
+รูปโปรไฟล์ของเธอผมไม่ใช่ผู้สร้าง แต่ผมนำมาจาก [Hyanna-Natsu](https://www.deviantart.com/hyanna-natsu) หากคุณคิดว่างานของเขายอดเยี่ยมอย่าลังเลที่จะติดตามเขา
+- [cpu-stat](https://www.npmjs.com/package/cpu-stat)
+- [discord.js](https://discord.js.org/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [enmap](https://www.npmjs.com/package/enmap)
+- [firebase](https://www.npmjs.com/package/firebase)
+- [fs](https://www.npmjs.com/package/fs)
+- [kitsu](https://www.npmjs.com/package/kitsu)
+- [log-symbols](https://www.npmjs.com/package/log-symbols)
+- [nodemon](https://nodemon.io/)
+- [os](https://www.npmjs.com/package/os)
+- [weather-js](https://www.npmjs.com/package/weather-js)
+
+**Discord.js ตอนนี้ต้องการโหนดรุ่นที่มากกว่าหรือเท่ากับ 12.2.0**
+
+```Javascript 
+"dependencies": {
+    "cpu-stat": "^2.0.1",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "enmap": "^5.3.1",
+    "firebase": "^7.15.3",
+    "fs": "0.0.1-security",
+    "kitsu": "^9.1.11",
+    "log-symbols": "^4.0.0",
+    "nodemon": "^2.0.4",
+    "os": "^0.1.1",
+    "weather-js": "^2.0.0"
+  }
+```
+
+# พบปัญหา?
+
+กรุณารายงานข้อผิดพลาดหรือปัญหาใดๆ ภายใต้แท็บปัญหาของที่นี่ ขอขอบคุณอย่างมาก!
