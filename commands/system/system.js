@@ -81,7 +81,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "system",
     "description": "Get system operating status and more",
-    "usage": "Csystem",
+    "usage": "Ysystem",
     "category": "system",
     "aliases": ["sys", "ระบบ"]
 };

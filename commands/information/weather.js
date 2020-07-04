@@ -107,7 +107,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "weather",
     "description": "See today's weather",
-    "usage": "Cweather <area>",
+    "usage": "Yweather <area>",
     "category": "information",
     "aliases": ["สภาพอากาศ"]
 };

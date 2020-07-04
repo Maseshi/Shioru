@@ -46,7 +46,7 @@ module.exports.run = async function (client, message) {
 module.exports.help = {
     "name": "levelingBoard",
     "description": "See the ranking of people with the most EXP and Level on the server.",
-    "usage": "ClevelingBoard",
+    "usage": "YlevelingBoard",
     "category": "fun",
     "aliases": ["lBoard", "levelingB"]
 };

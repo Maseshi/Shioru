@@ -14,7 +14,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "say",
     "description": "Let the bot print instead",
-    "usage": "Csay <text>",
+    "usage": "Ysay <text>",
     "category": "owner",
     "aliases": ["s", "พูด"]
 };

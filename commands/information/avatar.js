@@ -38,7 +38,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "avatar",
     "description": "Get your link and profile.",
-    "usage": "Cavatar (name)",
+    "usage": "Yavatar (name)",
     "category": "information",
     "aliases": ["profile", "profiles", "at", "รูปของฉัน", "อวาตาร์"]
 };

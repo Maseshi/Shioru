@@ -21,7 +21,7 @@ module.exports.run = async function(client, message) {
 module.exports.help = {
     "name": "ping",
     "description": "Check the ping and api latency of the bot.",
-    "usage": "Cping",
+    "usage": "Yping",
     "category": "general",
     "aliases": ["ปิง"]
 };

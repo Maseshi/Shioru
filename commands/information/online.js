@@ -16,7 +16,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "online",
 	"description": "See members who are online.",
-	"usage": "Conline",
+	"usage": "Yonline",
 	"category": "information",
 	"aliases": ["memberOnline", "on", "mOn", "สมาชิกออนไลน์", "ออน", "ออนไลน์"]
 };

@@ -25,7 +25,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "numbers",
     "description": "Random number specified",
-    "usage": "Cnumbers <min> <max>",
+    "usage": "Ynumbers <min> <max>",
     "category": "general",
     "aliases": ["randomNumbers", "randomnumbers", "randomNumber", "randomnumber", "number", "สุ่มเลข"]
 };

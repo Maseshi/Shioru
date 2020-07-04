@@ -21,7 +21,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "leave",
 	"description": "Out of the current audio channel",
-	"usage": "Cleave",
+	"usage": "Yleave",
 	"category": "general",
 	"aliases": ["l", "ออกจาก"]
 };

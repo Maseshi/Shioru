@@ -30,7 +30,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "role",
     "description": "Give member roles",
-    "usage": "Crole",
+    "usage": "Yrole",
     "category": "members",
     "aliases": ["rank", "บทบาท"]
 };

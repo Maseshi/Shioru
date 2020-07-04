@@ -20,7 +20,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "invite",
 	"description": "Create and receive invitation links to join the server.",
-	"usage": "Cinvite",
+	"usage": "Yinvite",
 	"category": "general",
 	"aliases": ["เชิญ"]
 };

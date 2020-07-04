@@ -61,7 +61,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "symbol",
 	"description": "See information about symbols.",
-	"usage": "Csymbol",
+	"usage": "Ysymbol",
 	"category": "information",
 	"aliases": ["สัญลักษณ์"]
 };

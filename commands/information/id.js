@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "id",
     "description": "Get your id",
-    "usage": "Cid",
+    "usage": "Yid",
     "category": "information",
     "aliases": ["myid", "myId", "ID", "รหัส", "ไอดี"]
 };

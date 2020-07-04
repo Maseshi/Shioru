@@ -16,7 +16,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "reboot",
 	"description": "Reboot the bot system.",
-	"usage": "Creboot",
+	"usage": "Yreboot",
 	"category": "system",
 	"aliases": ["re", "เริ่มระบบใหม่"]
 };

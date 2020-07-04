@@ -29,7 +29,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "kick",
 	"description": "Kick a member",
-	"usage": "Ckick <member> <reason>",
+	"usage": "Ykick <member> <reason>",
 	"category": "manager",
 	"aliases": ["k", "เตะ"]
 };

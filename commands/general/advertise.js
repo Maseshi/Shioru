@@ -29,7 +29,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "advertise",
     "description": "Send promotional messages",
-    "usage": "Cadvertise",
+    "usage": "Yadvertise",
     "category": "general",
     "aliases": ["adv", "ประชาสัมพันธ์"]
 };

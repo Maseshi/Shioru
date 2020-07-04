@@ -9,7 +9,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "welcome",
     "description": "Send a welcome message for the homepage.",
-    "usage": "Cwelcome",
+    "usage": "Ywelcome",
     "category": "information",
     "aliases": [""]
     

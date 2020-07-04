@@ -52,7 +52,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "help",
 	"description": "Get help with the use of bots.",
-	"usage": "Chelp (command)",
+	"usage": "Yhelp (command)",
 	"category": "information",
 	"aliases": ["h", "ช่วยด้วย", "ช่วยเหลือ"]
 };
