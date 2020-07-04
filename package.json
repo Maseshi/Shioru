@@ -8,26 +8,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shinosaki/yumeko.git"
+    "url": "git+https://github.com/shinosaki/yumeko.git"
   },
   "keywords": [
     "yumeko",
     "discord",
     "lectiondev",
-    "Shinosaki"
+    "shinosaki"
   ],
-  "author": "Shinosaki",
+  "author": "shinosaki",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Shinosaki/yumeko/issues"
+    "url": "https://github.com/shinosaki/yumeko/issues"
   },
-  "homepage": "https://github.com/Shinosaki/yumeko#readme",
+  "homepage": "https://github.com/shinosaki/yumeko#readme",
   "dependencies": {
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
     "enmap": "^5.3.1",
-    "firebase": "^7.15.3",
+    "firebase": "^7.15.5",
     "fs": "0.0.1-security",
     "kitsu": "^9.1.11",
     "log-symbols": "^4.0.0",
