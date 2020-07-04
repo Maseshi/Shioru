@@ -29,7 +29,7 @@ module.exports.run = (client, message, args) => {
                         client.commands.delete(commandName);
                         const pull = require(file);
                         client.commands.set(commandName, pull);
-                        return message.channel.send(`✅ ${commandName} ได้รับการโหลดซ้ำแล้วคะ.!!`);
+                        return message.channel.send('✅ ' + commandName + ' ได้รับการโหลดซ้ำแล้วคะ.!!');
                     } catch (err) {
                         message.channel.send("❌ แย่ละ..ฉันพยายามโหลดคำสั่งซ้ำแล้ว แต่ฉันโหลดซ้ำไม่ได้: " + args[0].toUpperCase());
                         return console.log(err.stack || err);

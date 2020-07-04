@@ -11,31 +11,31 @@ module.exports = client => {
   memberCountChannel.setName("▌สมาชิก: " + memberCount);
 
   // Show on the channel how many members are online.
-  let onlineCount = guild.members.cache.filter(member => member.presence.status === "online").size;
-  let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
-
   function showOnlineCount() {
-    onlineCountChannel.setName("▌ออนไลน์: " + onlineCount);
-    setTimeout(showOnlineCount, 5000);
+    let onlineCount = guild.members.cache.filter(member => member.presence.status === "online").size;
+    let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
+
+    onlineCountChannel.setName("▌ออนไลน์: " + (onlineCount + 1));
+    setTimeout(showOnlineCount, 10000);
   }
   showOnlineCount();
 
   // Show on the channel how many members are offline.
-  let offlineCount = guild.members.cache.filter(member => member.presence.status === "offline").size;
-  let offlineCountChannel = guild.channels.cache.find(channels => channels.id === "723093393340891276");
-
   function showOfflineCount() {
+    let offlineCount = guild.members.cache.filter(member => member.presence.status === "offline").size;
+    let offlineCountChannel = guild.channels.cache.find(channels => channels.id === "723093393340891276");
+
     offlineCountChannel.setName("▌ออฟไลน์: " + offlineCount);
-    setTimeout(showOfflineCount, 5000);
+    setTimeout(showOfflineCount, 10000);
   }
   showOfflineCount();
 
   // Activity settings
   client.user.setPresence({
-    "status": "available", //"available", "idle", "dnd", or "invisible"
+    "status": "dnd", //"available", "idle", "dnd", or "invisible"
     "activity": {
       "name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
-      "type": 2,
+      "type": 'WATCHING',
       "url": "https://youtube.com/watch?v=OLd68rtX6mI"
     }
   });

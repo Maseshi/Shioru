@@ -4,7 +4,9 @@ module.exports = async (client, message) => {
     let prefix = client.config.prefix;
     let args = message.content.slice(prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
+    
     let command;
+
     if (message.author.bot) {
         return;
     } else {
