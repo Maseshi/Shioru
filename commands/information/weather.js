@@ -1,8 +1,9 @@
 const weather = module.require("weather-js");
 
 module.exports.run = async function (client, message, args) {
+    let arg = args.join(" ");
     weather.find({
-        "search": args.join(" "),
+        "search": arg,
         "degreeType": "C"
     },
     function (err, result) {
@@ -12,43 +13,32 @@ module.exports.run = async function (client, message, args) {
             if (result === undefined) {
                 message.channel.send("❎ เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ");
             } else {
-                let current = result[0].current;
-                let location = result[0].location;
+                let city = result[0];
+                let current = city.current;
+                let location = city.location;
 
-                if (current.skytext === "Rain Showers") {
-                    current.skytext = "อาบน้ำฝน";
-                }
-                if (current.skytext === "Mostly Cloudy") {
-                    current.skytext = "มีเมฆมากเป็นส่วนใหญ่";
-                }
-                if (current.skytext === "Partly Sunny") {
-                    current.skytext = "แดดออกเป็นบางส่วน";
-                }
-                if (current.skytext === "Partly Cloudy") {
-                    current.skytext = "มีเมฆบางส่วน";
-                }
-                if (current.skytext === "Sunny") {
-                    current.skytext = "แดดจัด";
-                }
-                if (current.skytext === "Rain") {
-                    current.skytext = "ฝนตก";
-                }
-                if (current.skytext === "Cloudy") {
-                    current.skytext = "มีเมฆมาก";
-                }
-                if (current.skytext === "Mostly Sunny") {
-                    current.skytext = "แดดจัดเป็นส่วนใหญ่";
-                }
+                skyTextTran(current);
 
-                const embed = {
-                    "description": "สภาพอากาศของ __**" + args.join(" ") + "**__ ในขณะนี้คือ \n```" + current.skytext + "```",
+                let skyText = current.skytext;
+                let imageURL = current.imageUrl;
+                let timezone = location.timezone;
+                let degreeType = location.degreetype;
+                let temperature = current.temperature;
+                let feelsLike = current.feelslike;
+                let wind = current.winddisplay;
+                let humidity = current.humidity;
+                let day = current.day;
+                let date = current.date;
+
+                let embed = {
+                    "description": "สภาพอากาศของ __**" + arg + "**__ ในขณะนี้คือ \n```" + skyText + "```",
                     "color": 0x00AE86,
                     "footer": {
                         "icon_url": "https://www.tonystam.com/en/img/Microsoft-portfolio.png",
                         "text": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft"
                     },
                     "thumbnail": {
-                        "url": current.imageUrl
+                        "url": imageURL
                     },
                     "author": {
                         "name": "Microsoft News",
@@ -58,42 +48,42 @@ module.exports.run = async function (client, message, args) {
                     "fields": [
                         {
                             "name": "🌐 เขตเวลา",
-                            "value": "UTC" + location.timezone,
+                            "value": "UTC" + timezone,
                             "inline": true
                         },
                         {
                             "name": "⚖️ หน่วยวัด",
-                            "value": location.degreetype,
+                            "value": degreeType,
                             "inline": true
                         },
                         {
                             "name": "🌡️ อุณหภูมิ",
-                            "value": current.temperature,
+                            "value": temperature,
                             "inline": true
                         },
                         {
                             "name": "🎐 รู้สึกเหมือน",
-                            "value": current.feelslike + " องศา",
+                            "value": feelsLike + " องศา",
                             "inline": true
                         },
                         {
                             "name": "🎏 ลม",
-                            "value": current.winddisplay,
+                            "value": wind,
                             "inline": true
                         },
                         {
                             "name": "💧 ความชื้น",
-                            "value": current.humidity + "%",
+                            "value": humidity + "%",
                             "inline": true
                         },
                         {
                             "name": "📅 วัน",
-                            "value": current.day,
+                            "value": day,
                             "inline": true
                         },
                         {
                             "name": "📆 วันที่",
-                            "value": current.date,
+                            "value": date,
                             "inline": true
                         }
                     ]
@@ -102,6 +92,36 @@ module.exports.run = async function (client, message, args) {
             }
         }
     });
+
+    function skyTextTran(current) {
+        if (current.skytext === "Rain Showers") {
+            current.skytext = "อาบน้ำฝน";
+        }
+        if (current.skytext === "Mostly Cloudy") {
+            current.skytext = "มีเมฆมากเป็นส่วนใหญ่";
+        }
+        if (current.skytext === "Partly Sunny") {
+            current.skytext = "แดดออกเป็นบางส่วน";
+        }
+        if (current.skytext === "Partly Cloudy") {
+            current.skytext = "มีเมฆบางส่วน";
+        }
+        if (current.skytext === "Sunny") {
+            current.skytext = "แดดจัด";
+        }
+        if (current.skytext === "Rain") {
+            current.skytext = "ฝนตก";
+        }
+        if (current.skytext === "Cloudy") {
+            current.skytext = "มีเมฆมาก";
+        }
+        if (current.skytext === "Mostly Sunny") {
+            current.skytext = "แดดจัดเป็นส่วนใหญ่";
+        }
+        if (current.skytext === "Mostly Clear") {
+            current.skytext = "ท้องฟ้าแจ่มใสเป็นส่วนใหญ่";
+        }
+    }
 };
 
 module.exports.help = {
