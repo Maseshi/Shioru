@@ -1,23 +1,25 @@
 module.exports.run = async function (client, message, args) {
-    if (args.length > 0) {
-        let id = args[0];
-        client.users.fetch(id)
-            .then(function (user) {
-                let avatar = user.avatarURL();
-                let username = user.username;
-                let embed = {
-                    "title": "นี่คือลิงค์รูปของ " + username,
-                    "description": avatar,
-                    "url": avatar,
-                    "color": 4886754,
-                    "thumbnail": {
-                        "url": avatar
-                    }
-                };
-                message.channel.send({
-                    embed
-                });
+    let arg = args.join(" ");
+    if (arg) {
+        let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
+        if (user === undefined) {
+            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+        } else {
+            let avatar = user.avatarURL();
+            let username = user.username;
+            let embed = {
+                "title": "นี่คือลิงค์รูปของ " + username,
+                "description": avatar,
+                "url": avatar,
+                "color": 4886754,
+                "thumbnail": {
+                    "url": avatar
+                }
+            };
+            message.channel.send({
+                embed
             });
+        }
     } else {
         let avatar = message.author.displayAvatarURL();
         let embed = {
