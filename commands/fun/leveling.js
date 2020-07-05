@@ -1,34 +1,58 @@
 const firebase = require("firebase");
 
 module.exports.run = async function (client, message, args) {
-    let database = firebase.database();
     let avatar = message.author.displayAvatarURL();
     let username = message.author.username;
     let id = message.author.id;
-    database.ref("Discord/Users/" + id + "/Leveling/").once("value")
-    .then(function (snapshot) {
-        let exp = (snapshot.val().EXP);
-        let level = (snapshot.val().Level);
+    let arg = args.join(" ");
+    if (arg) {
+        let userInfo = message.guild.members.cache.find(members => (members.id === arg) || (members.name === arg)).id;
+        client.users.fetch(userInfo)
+        .then(function (user) {
+            if (user === undefined) {
+                message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+            } else {
+                avatar = user.avatarURL();
+                username = user.username;
+                id = user.id;
+                console.log(user);
+                getLeveling(avatar, username, id);
+            }
+        });
+    } else {
+        getLeveling(avatar, username, id);
+    }
 
-        const embed = {
-            "description": username + " ตอนนี้คุณมี:",
-            "color": 4886754,
-            "thumbnail": {
-                "url": avatar
-            },
-            "fields": [
-                {
-                    "name": "EXP",
-                    "value": "```" + exp + "```"
+    function getLeveling(avatar, username, id) {
+        let database = firebase.database();
+        database.ref("Discord/Users/" + id + "/Leveling/").once("value")
+        .then(function (snapshot) {
+            let exp = (snapshot.val().EXP);
+            let level = (snapshot.val().Level);
+
+            let embed = {
+                "description": username + " ขณะนี้ Exp และ Level ทั้งหมดมีอยู่:",
+                "color": 4886754,
+                "thumbnail": {
+                    "url": avatar
                 },
-                {
-                    "name": "Level",
-                    "value": "```" + level + "```"
-                }
-            ]
-        };
-        message.channel.send({ embed });
-    });
+                "fields": [
+                    {
+                        "name": "EXP",
+                        "value": "```" + exp + "```"
+                    },
+                    {
+                        "name": "Level",
+                        "value": "```" + level + "```"
+                    }
+                ]
+            };
+            message.channel.send({ embed });
+        }).catch(function (error) {
+            console.error(error);
+            message.channel.send("❎ สมาชิกรายนี้ยังไม่มี Exp กับ Level เลยคะ");
+        });
+    }
 };
 
 module.exports.help ={
