@@ -6,19 +6,15 @@ module.exports.run = async function (client, message, args) {
     let id = message.author.id;
     let arg = args.join(" ");
     if (arg) {
-        let userInfo = message.guild.members.cache.find(members => (members.id === arg) || (members.name === arg)).id;
-        client.users.fetch(userInfo)
-        .then(function (user) {
-            if (user === undefined) {
-                message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
-            } else {
-                avatar = user.avatarURL();
-                username = user.username;
-                id = user.id;
-                console.log(user);
-                getLeveling(avatar, username, id);
-            }
-        });
+        let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
+        if (user === undefined) {
+            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+        } else {
+            avatar = user.avatarURL();
+            username = user.username;
+            id = user.id;
+            getLeveling(avatar, username, id);
+        }
     } else {
         getLeveling(avatar, username, id);
     }
