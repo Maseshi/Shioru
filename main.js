@@ -5,7 +5,7 @@ const config = require("./config");
 
 // Show when bots start working To check that bots do not have a problem
 console.log("\x1b[31m-------------------------------------------------------------");
-console.log("\x1b[33m(C)2020 LectionDev - bot general commands. rights reserved.");
+console.log("\x1b[33m(c)2020 LectionDev - The Discord General Bot. All rights reserved.");
 console.group("\x1b[31m-------------------------------------------------------------\x1b[0m");
 
 const client = new discord.Client({
