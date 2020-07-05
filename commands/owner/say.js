@@ -10,7 +10,7 @@ module.exports.run = async function (client, message, args) {
                 });
             });
         } else {
-            if (channel === "this" || "ที่นี่") {
+            if (channel === "this") {
                 if (text === "") {
                     message.reply("❓ ต้องการให้ฉันพิมพ์ว่าอะไรเหรอคะ")
                     .then(function (msg) {
