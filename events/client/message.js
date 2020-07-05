@@ -34,7 +34,6 @@ module.exports = async (client, message) => {
 
                 if (command) {
                     command.run(client, message, args);
-                    message.delete();
                 }
             }
         }
