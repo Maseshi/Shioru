@@ -5,10 +5,14 @@ module.exports.run = async function (client, message, args) {
     let arg = args.join(" ");
     if (arg) {
         let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
-        avatar = user.avatarURL();
-        username = user.username;
-        id = user.id;
-        userID(avatar, username, id);
+        if (user === undefined) {
+            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+        } else {
+            avatar = user.avatarURL();
+            username = user.username;
+            id = user.id;
+            userID(avatar, username, id);
+        }
     } else {
         userID(avatar, username, id);
     }
