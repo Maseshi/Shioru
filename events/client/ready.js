@@ -15,7 +15,7 @@ module.exports = client => {
     let onlineCount = guild.members.cache.filter(member => member.presence.status === "online").size;
     let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
 
-    onlineCountChannel.setName("▌ออนไลน์: " + (onlineCount + 1));
+    onlineCountChannel.setName("▌ออนไลน์: " + onlineCount);
     setTimeout(showOnlineCount, 10000);
   }
   showOnlineCount();
@@ -29,6 +29,26 @@ module.exports = client => {
     setTimeout(showOfflineCount, 10000);
   }
   showOfflineCount();
+
+  // Show on the channel how many members are idle.
+  function showIdleCount() {
+    let idleCount = guild.members.cache.filter(member => member.presence.status === "idle").size;
+    let idleCountChannel = guild.channels.cache.find(channels => channels.id === "729690734520827914");
+
+    idleCountChannel.setName("▌ไม่อยู่: " + idleCount);
+    setTimeout(showIdleCount, 10000);
+  }
+  showIdleCount();
+
+  // Show on the channel how many members are dnd.
+  function showDndCount() {
+    let dndCount = guild.members.cache.filter(member => member.presence.status === "dnd").size;
+    let dndCountChannel = guild.channels.cache.find(channels => channels.id === "729692580987797554");
+
+    dndCountChannel.setName("▌ห้ามรบกวน: " + dndCount);
+    setTimeout(showDndCount, 10000);
+  }
+  showDndCount();
 
   // Activity settings
   client.user.setPresence({

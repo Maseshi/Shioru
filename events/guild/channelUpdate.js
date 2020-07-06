@@ -1,5 +1,5 @@
 module.exports = async (client, oldChannel, newChannel) => {
-    let ignoreChannels = ["694243041472544869", "722105063182434314", "723093393340891276"];
+    let ignoreChannels = ["694243041472544869", "722105063182434314", "723093393340891276", "729690734520827914", "729692580987797554"];
     if (ignoreChannels.includes(oldChannel.id)) return;
     
     let guild = client.guilds.cache.find(servers => servers.id === "618837514882514944");
