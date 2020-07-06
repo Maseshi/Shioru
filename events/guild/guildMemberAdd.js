@@ -13,10 +13,4 @@ module.exports = async (client, member) => {
 		}
 	};
     notification.send({ embed });
-
-	// Update members count after user is sign this server
-    let guild = client.guilds.cache.find(servers => servers.id === "618837514882514944");
-	let memberCountChannel = guild.channels.cache.find(channels => channels.id === "694243041472544869");
-	let memberCount = guild.memberCount;
-	memberCountChannel.setName("▌สมาชิก: " + memberCount);
 };
