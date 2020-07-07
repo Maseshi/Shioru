@@ -22,6 +22,7 @@ module.exports = function (client) {
           }
         } else {
           console.error(error + " Error loading command in \u001b[4m" + (dir + dirs + "/" + file) + "\u001b[0m. you have a missing help.name or help.name is not a string. or you have a missing help.category or help.category is not a string");
+          continue;
         }
         if (pull.help.aliases && typeof (pull.help.aliases) === "object") {
           moduleAliases(pull);
