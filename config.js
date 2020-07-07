@@ -9,5 +9,6 @@ module.exports = {
         "databaseURL": process.env.databaseURL,
         "projectId": process.env.projectId
     },
-    "update": "2020-06-23T11:03:44.031Z"
+    "update": "2020-06-23T11:03:44.031Z",
+    "password": process.env.password
 };
