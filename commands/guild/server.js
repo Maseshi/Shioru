@@ -106,6 +106,6 @@ module.exports.help = {
     "name": "server",
     "description": "Get server information",
     "usage": "Yserver",
-    "category": "information",
+    "category": "guild",
     "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"]
 };

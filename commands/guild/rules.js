@@ -67,6 +67,6 @@ module.exports.help = {
 	"name": "rules",
 	"description": "See information about rules.",
 	"usage": "Yrules",
-	"category": "information",
+	"category": "guild",
 	"aliases": ["กฏ"]
 };

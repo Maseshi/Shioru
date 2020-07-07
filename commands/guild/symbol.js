@@ -62,6 +62,6 @@ module.exports.help = {
 	"name": "symbol",
 	"description": "See information about symbols.",
 	"usage": "Ysymbol",
-	"category": "information",
+	"category": "guild",
 	"aliases": ["สัญลักษณ์"]
 };
