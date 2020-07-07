@@ -2,11 +2,11 @@ const discord = require("discord.js");
 const fs = require("fs");
 
 module.exports.run = async function (client, message, args) {
-	const embed = new discord.MessageEmbed()
-		.setColor("#2C2F33")
-		.setAuthor(client.user.username + " ช่วยเหลือ", client.user.displayAvatarURL())
-		.setFooter("ร้องขอโดย " + message.author.tag, message.author.displayAvatarURL())
-		.setTimestamp();
+	let embed = new discord.MessageEmbed()
+	.setColor("#E01055")
+	.setAuthor(client.user.username + " ข้อมูลช่วยเหลือ", client.user.displayAvatarURL())
+	.setFooter("ร้องขอโดย " + message.author.username, message.author.displayAvatarURL())
+	.setTimestamp();
 	if (args[0]) {
 		let command = args[0];
 		let cmd;
@@ -15,38 +15,50 @@ module.exports.run = async function (client, message, args) {
 		} else if (client.aliases.has(command)) {
 			cmd = client.commands.get(client.aliases.get(command));
 		}
-		if (!cmd) return message.channel.send(embed.setTitle("คำสั่งไม่ถูกต้อง").setDescription("พิมพ์ `" + client.config.prefix + "help` สำหรับรายการคำสั่งทั้งหมด"));
-		command = cmd.help;
-		embed.setTitle(command.name.slice(0, 1).toUpperCase() + command.name.slice(1) + "คำสั่งช่วยเหลือ");
-		embed.setDescription([
-			"❯ **คำสั่ง:** " + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
-			"❯ **คำอธิบาย:** " + (command.description || "ไม่มีคำอธิบาย"),
-			"❯ **วิธีใช้:** " + (command.usage ? "`" + (client.config.prefix) + (command.name) + " " + (command.usage) + "`" : "ไม่มีวิธีการใช้งาน"),
-			"❯ **นามแฝง:** " + (command.aliases ? command.aliases.join(", ") : "ไม่มี"),
-			"❯ **ประเภท:** " + (command.category ? command.category : "General" || "Misc")
-		].join("\n"));
+		if (cmd === undefined) {
+			message.channel.send(embed.setTitle("❎ คำสั่งไม่ถูกต้อง").setDescription("เอ๋...ไม่มีคำสั่งนี้นะคะ ลองตรวจสอบใหม่โดยพิมพ์ `" + client.config.prefix + "help` เพื่อดูรายการคำสั่งทั้งหมดของฉันคะ"));
+		} else {
+			command = cmd.help;
+			embed.setTitle("📑 " + command.name.slice(0, 1).toUpperCase() + command.name.slice(1) + " รายละเอียดของคำสั่งนี้");
+			embed.setDescription([
+				"```คำสั่ง: " + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
+				"คำอธิบาย: " + (command.description || "ไม่มีคำอธิบาย"),
+				"วิธีใช้: " + (command.usage ? (command.usage) : "ไม่มีวิธีการใช้งาน"),
+				"ประเภท: " + (command.category ? command.category : "General" || "Misc"),
+				"นามแฝง: " + (command.aliases ? command.aliases.join(", ") + "```" : "ไม่มี" + "```")
+			].join("\n"));
 
-		return message.channel.send(embed);
-	}
-	const categories = fs.readdirSync("./commands/");
-	embed.setDescription([
-		"คำสั่งที่ใช้ได้สำหรับ " + client.user.username + ".",
-		"คำนำหน้าของบอทคือ **" + client.config.prefix + "**",
-		"`<>` หมายถึงจำเป็นและ `()` เป็นตัวเลือก แต่ไม่รวมสิ่งเหล่านั้น"
-	].join("\n"));
-	categories.forEach(function (category) {
-		let dir = client.commands.filter(c => c.help.category.toLowerCase() === category.toLowerCase());
-		let capitalise = category.slice(0, 1).toUpperCase() + category.slice(1);
-
-		try {
-			if (dir.size === 0) return;
-			if (client.config.owner.includes(message.author.id)) embed.addField("❯ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
-			else if (category !== "Developer") embed.addField("❯ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
-		} catch (e) {
-			console.log(e);
+			message.channel.send(embed);
 		}
-	});
-	return message.channel.send(embed);
+	} else {
+		let categories = fs.readdirSync("./commands/");
+		embed.setDescription([
+			"คำสั่งทั้งหมดที่ฉันได้ศึกษามา เข้าใจและใช้งานได้จริง",
+			"ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **" + client.config.prefix + "**",
+			"`<>` หมายถึงจำเป็นและ `()` เป็นตัวเลือก อาจจะตอบหรือไม่จำเป็นต้องตอบก็ได้",
+			"สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `Yhelp คำสั่ง` แล้วคำอธิฐานจะเป็นจริง!!"
+		].join("\n"));
+		categories.forEach(function (category) {
+			let dir = client.commands.filter(c => c.help.category.toLowerCase() === category.toLowerCase());
+			let capitalise = category.slice(0, 1).toUpperCase() + category.slice(1);
+
+			try {
+				if (dir.size === 0) {
+					return;
+				} else {
+					if (client.config.owner.includes(message.author.id)) {
+						embed.addField("❯ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+					} else if (category !== "Developer") {
+						embed.addField("❯ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+					}
+				}
+			} catch (error) {
+				console.error(error);
+			}
+		});
+		
+		message.channel.send(embed);
+	}
 };
 
 module.exports.help = {
