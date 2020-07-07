@@ -1,20 +1,37 @@
 module.exports.run = async function (client, message, args) {
-	if (message.member.voice.channel) {
-		let channelName = message.member.voice.channel.name;
-		let join = message.member.voice.channel.join();
-
-		if (join) {
-			message.channel.send(":arrow_right: ฉันอยู่ใน: `" + channelName + "` เรียบร้อยแล้วค่ะ");
+	let arg = args.join(" ");
+	if (arg === "") {
+		let voiceChannel = message.member.voice.channel;
+		if (voiceChannel === null) {
+			message.reply("❎ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3=")
+			.then(function (msg) {
+				msg.delete({
+					timeout: 10000
+				});
+			});
 		} else {
-			message.channel.send("❌ ฉันอยู่ในช่องปัจจุบันอยู่แล้วนะคะ");
+			voiceChannel.join()
+			.then(function (connection) {
+				message.channel.send("▶️ ตอนนี้ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วคะ");
+			}).catch(function (error) {
+				message.channel.send("❌ เกิดข้อผิดพลาดคะ เนื่องจาก: " + error);
+			});
 		}
 	} else {
-		message.reply("❌ เอ๋ะ...ดูเหมือนว่าคุณยังไม่ได้อยู่ในช่องเสียงนะค่ะ")
-		.then(function (msg) {
-			msg.delete({
-				timeout: 10000
+		let channel = client.channels.cache.find(channels => channels.id === arg || channels.name === arg);
+		if (channel === undefined) {
+			message.reply("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?")
+			.then(function (msg) {
+				msg.delete({
+					timeout: 10000
+				});
 			});
-		});
+		} else {
+			channel.join()
+			.then(function (connection) {
+				message.channel.send("✅ ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วค้าา...");
+			});
+		}
 	}
 };
 

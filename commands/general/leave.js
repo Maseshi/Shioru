@@ -1,20 +1,31 @@
 module.exports.run = async function (client, message, args) {
-	if (message.member.voice.channel) {
-		let channelName = message.member.voice.channel.name;
-		let leave = message.member.voice.channel.leave();
-
-		if (leave === undefined) {
-			message.channel.send(":arrow_left: ทะลุออกมาจากช่อง: `" + channelName + "` แล้วคะ");
+	let arg = args.join(" ");
+	if (arg === "") {
+		let voiceChannel = message.member.voice.channel;
+		if (voiceChannel === null) {
+			message.reply("❎ เอ๋...ฉันไม่ได้อยู่ในช่องนั้นนะ ผีหลอกหรือเปล่า")
+			.then(function (msg) {
+				msg.delete({
+					timeout: 10000
+				});
+			});
 		} else {
-			message.channel.send("❌ ฉันไม่ได้อยู่ในช่องอยู่แล้วนะคะ");
+			voiceChannel.leave();
+			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
 		}
 	} else {
-		message.reply("❌ เอ๋ะ...ดูเหมือนว่าคุณยังไม่ได้อยู่ในช่องเสียงนะค่ะ")
-		.then(function (msg) {
-			msg.delete({
-				timeout: 10000
-			});
-		});
+		let channel = client.channels.cache.find(channels => channels.id === arg || channels.name === arg);
+		if (channel === undefined) {
+			message.reply("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?")
+				.then(function (msg) {
+					msg.delete({
+						timeout: 10000
+					});
+				});
+		} else {
+			channel.leave();
+			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
+		}
 	}
 };
 
