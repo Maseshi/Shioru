@@ -70,7 +70,7 @@ module.exports = client => {
 
   // Activity settings
   client.user.setPresence({
-    "status": "dnd", //"available", "idle", "dnd", or "invisible"
+    "status": "available", //"available", "idle", "dnd", or "invisible"
     "activity": {
       "name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
       "type": 'WATCHING',
