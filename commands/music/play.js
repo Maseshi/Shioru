@@ -104,7 +104,7 @@ module.exports.run = async function (client, message, args) {
                                         message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ มันบอกว่า: " + error);
                                     });
                                 dispatcher.setVolumeLogarithmic(queue.volume / 5);
-                                queue.textChannel.send("🎶 เริ่มเล่นเพลง: **" + song.title + "** " + results[0].url);
+                                queue.textChannel.send("🎶 เริ่มเล่นเพลง: **" + song.title + "** " + song.url);
                                 client.user.setPresence({
                                     //"available", "idle", "dnd", or "invisible"
                                     "status": "available",
