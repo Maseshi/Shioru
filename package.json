@@ -1,40 +1,39 @@
 {
   "name": "yumeko",
-  "version": "1.2.4",
+  "version": "1.4.1beta",
   "description": "Manage members and servers easily with Yumeko.",
   "main": "main.js",
-  "scripts": {
-    "start": "nodemon main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shinosaki/yumeko.git"
-  },
+  "author": "shinosaki",
+  "private": true,
+  "license": "MIT",
+  "homepage": "https://github.com/shinosaki/yumeko#readme",
+  "repository": "github:shinosaki/yumeko",
+  "bugs": "https://github.com/shinosaki/yumeko/issues",
   "keywords": [
     "yumeko",
     "discord",
     "lectiondev",
     "shinosaki"
   ],
-  "author": "shinosaki",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shinosaki/yumeko/issues"
+  "engines": {
+    "node": ">=12.0.0"
   },
-  "homepage": "https://github.com/shinosaki/yumeko#readme",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
   "dependencies": {
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
-    "enmap": "^5.3.1",
-    "firebase": "^7.15.5",
+    "ffmpeg-static": "^4.2.5",
+    "firebase": "^7.16.0",
     "fs": "0.0.1-security",
     "kitsu": "^9.1.11",
     "log-symbols": "^4.0.0",
     "nodemon": "^2.0.4",
     "opusscript": "0.0.7",
     "os": "^0.1.1",
+    "simple-youtube-api": "^5.2.1",
     "weather-js": "^2.0.0",
     "ytdl-core": "^3.1.2"
   }

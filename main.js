@@ -9,11 +9,13 @@ console.log("\x1b[33m(c)2020 LectionDev - The Discord General Bot. All rights re
 console.group("\x1b[31m-------------------------------------------------------------\x1b[0m");
 
 const client = new discord.Client({
+    "autoReconnect": true,
     "disableEveryone": false,
     "partials": ["MESSAGE", "CHANNEL", "REACTION"]
 });
 
 client.config = config;
+client.queue = new Map();
 
 ["command", "event"].forEach(dirs => require("./handlers/" + dirs)(client));
 
