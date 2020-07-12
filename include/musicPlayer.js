@@ -1,4 +1,4 @@
-const ytdl = require("ytdl-core");
+const ytdl = require("ytdl-core-discord");
 
 module.exports = async function (client, message, song) {
     let queue = message.client.queue.get(message.guild.id);
@@ -7,10 +7,13 @@ module.exports = async function (client, message, song) {
     if (song === undefined) {
         message.client.queue.delete(message.guild.id);
     } else {
-        let dispatcher = queue.connection.play(ytdl(song.url, {
-            "filter": "audioonly",
-            "quality": "highestaudio"
-        }));
+        let stream = await ytdl(song.url, { "highWaterMark": 1 << 25 });
+        let type = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
+
+        let dispatcher = queue.connection.play(stream, {
+            "type": type,
+            "filter": "audioonly"
+        });
 
         dispatcher.on('finish', function () {
             queue.songs.shift();
