@@ -1,6 +1,8 @@
+const check = require("../../util/modifyQueue");
+
 module.exports.run = function (client, message, args) {
     let channel = message.member.voice.channel;
-    if (channel === undefined) {
+    if (!channel) {
         message.reply("❓ เข้าไปในช่องไหนก็ได้ก่อนสิ")
         .then(function (msg) {
             msg.delete({
@@ -9,7 +11,7 @@ module.exports.run = function (client, message, args) {
         });
     } else {
         let serverQueue = message.client.queue.get(message.guild.id);
-        if (serverQueue === undefined) {
+        if (!serverQueue) {
             message.reply("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ")
             .then(function (msg) {
                 msg.delete({
@@ -17,17 +19,16 @@ module.exports.run = function (client, message, args) {
                 });
             });
         } else {
-            serverQueue.connection.dispatcher.end();
-            message.channel.send("〰️ ข้ามไปแล้วคะ!!");
-            if (serverQueue) {
-                client.user.setPresence({
-                    //"available", "idle", "dnd", or "invisible"
-                    "status": "available",
-                    "activity": {
-                        "name": "🎶 ข้ามไปที่เพลง: " + serverQueue.songs[0].title,
-                        "type": 'PLAYING'
-                    }
-                });
+            if (!check(message.member)) {
+                message.reply("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้")
+                    .then(function (msg) {
+                        msg.delete({
+                            timeout: 10000
+                        });
+                    });
+            } else {
+                serverQueue.connection.dispatcher.end();
+                message.channel.send("〰️ ข้ามไปแล้วคะ!!");
             }
         }
     }

@@ -1,6 +1,6 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.queue.get(message.guild.id);
-    if (serverQueue === undefined) {
+    if (!serverQueue) {
         message.reply("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ")
         .then(function (msg) {
             msg.delete({

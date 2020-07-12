@@ -1,6 +1,6 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.queue.get(message.guild.id);
-    if (serverQueue === undefined) {
+    if (!serverQueue) {
         message.reply("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ")
         .then(function (msg) {
             msg.delete({
@@ -8,15 +8,15 @@ module.exports.run = function (client, message, args) {
             });
         });
     } else {
-        let songName = serverQueue.songs[0].title;
-        let queue = serverQueue.songs.map(song => "• " + song.title).join("\n");
+        let queue = serverQueue.songs.map((song, index) => (index + 1) + ". " + song.title).join("\n");
         let embed = {
-            "title": "รายการเพลงทั้งหมด",
-            "description": "**กำลังเล่น:** \n```" + songName + "```\n**เพลงในคิว:** \n`" + queue + "` \n",
+            "title": "เพลงในคิวทั้งหมด",
+            "description": queue,
             "color": 4886754,
+            "timestamp": serverQueue.require.timestamp,
             "footer": {
-                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/videocassette_1f4fc.png",
-                "text": "ตัวเล่นเพลง"
+                "icon_url": serverQueue.require.avatar,
+                "text": serverQueue.require.username + " คือเจ้าของคิวนี้"
             }
         };
         message.channel.send({ embed });
