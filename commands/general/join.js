@@ -13,15 +13,6 @@ module.exports.run = async function (client, message, args) {
 			voiceChannel.join()
 			.then(function (connection) {
 				message.channel.send("▶️ ตอนนี้ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วคะ");
-				client.user.setPresence({
-					//"available", "idle", "dnd", or "invisible"
-					"status": "available",
-					"activity": {
-						"name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
-						"type": 'WATCHING',
-						"url": "https://youtube.com/watch?v=OLd68rtX6mI"
-					}
-				});
 			}).catch(function (error) {
 				message.channel.send("❌ เกิดข้อผิดพลาดคะ เนื่องจาก: " + error);
 			});
@@ -39,15 +30,6 @@ module.exports.run = async function (client, message, args) {
 			channel.join()
 			.then(function (connection) {
 				message.channel.send("✅ ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วค้าา...");
-				client.user.setPresence({
-					//"available", "idle", "dnd", or "invisible"
-					"status": "available",
-					"activity": {
-						"name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
-						"type": 'WATCHING',
-						"url": "https://youtube.com/watch?v=OLd68rtX6mI"
-					}
-				});
 			});
 		}
 	}

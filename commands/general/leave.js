@@ -12,15 +12,6 @@ module.exports.run = async function (client, message, args) {
 		} else {
 			voiceChannel.leave();
 			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
-			client.user.setPresence({
-				//"available", "idle", "dnd", or "invisible"
-				"status": "available",
-				"activity": {
-					"name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
-					"type": 'WATCHING',
-					"url": "https://youtube.com/watch?v=OLd68rtX6mI"
-				}
-			});
 		}
 	} else {
 		let channel = client.channels.cache.find(channels => channels.id === arg || channels.name === arg);
@@ -34,15 +25,6 @@ module.exports.run = async function (client, message, args) {
 		} else {
 			channel.leave();
 			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
-			client.user.setPresence({
-				//"available", "idle", "dnd", or "invisible"
-				"status": "available",
-				"activity": {
-					"name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
-					"type": 'WATCHING',
-					"url": "https://youtube.com/watch?v=OLd68rtX6mI"
-				}
-			});
 		}
 	}
 };
