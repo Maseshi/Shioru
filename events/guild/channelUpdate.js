@@ -1,4 +1,4 @@
-module.exports = async (client, oldChannel, newChannel) => {
+module.exports = function (client, oldChannel, newChannel) {
     let ignoreChannels = ["694243041472544869", "722105063182434314", "723093393340891276", "729690734520827914", "729692580987797554", "729702455515938858"];
     if (ignoreChannels.includes(oldChannel.id)) return;
     

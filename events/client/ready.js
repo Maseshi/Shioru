@@ -1,4 +1,4 @@
-module.exports = client => {
+module.exports = function (client) {
   let guild = client.guilds.cache.find(guilds => guilds.id === "618837514882514944");
 
   // if ready

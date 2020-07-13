@@ -1,6 +1,6 @@
 const firebase = require("firebase");
 
-module.exports = async (client, message) => {
+module.exports = function (client, message) {
     let prefix = client.config.prefix;
     let args = message.content.slice(prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
