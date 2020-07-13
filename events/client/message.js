@@ -42,7 +42,7 @@ module.exports = function (client, message) {
 
             let expPlus = (exp += 5);
             ref.update({
-                EXP: expPlus
+                "EXP": expPlus
             }).catch(function (error) {
                 console.error(error);
             });
@@ -50,19 +50,19 @@ module.exports = function (client, message) {
             if (exp === 1000) {
                 let levelPlus = ++level;
                 ref.update({
-                    EXP: 0,
-                    Level: levelPlus
+                    "EXP": 0,
+                    "Level": levelPlus
                 }).then(function () {
                     let levelUp = message.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
 
-                    const embed = {
-                        "description": "ตอนนี้เลเวลของ *" + username + "* ได้อัพเลเวลเป็น ```" + level + "```",
+                    let embed = {
+                        "description": client.lang.event_client_message_embed_description.replace('%username', username).replace('%level', level),
                         "color": 16312092,
                         "thumbnail": {
                             "url": avatar
                         },
                         "author": {
-                            "name": "ยินดีด้วย!!",
+                            "name": client.lang.event_client_message_embed_author_name,
                             "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
                         }
                     };
@@ -73,8 +73,10 @@ module.exports = function (client, message) {
             }
         } else {
             ref.set({
-                EXP: 0,
-                Level: 0
+                "EXP": 0,
+                "Level": 0
+            }).catch(function (error) {
+                console.error(error);
             });
         }
     });

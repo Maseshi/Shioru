@@ -13,7 +13,7 @@ module.exports = function (client) {
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
     allMemberCount = memberCount - botCount;
 
-    memberCountChannel.setName("▌สมาชิก: " + allMemberCount);
+    memberCountChannel.setName(client.lang.event_client_ready_memberCountChanne + allMemberCount);
     setTimeout(showMembersCount, 10000);
   }
   showMembersCount();
@@ -23,7 +23,7 @@ module.exports = function (client) {
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
     let botCountChannel = guild.channels.cache.find(channels => channels.id === "729702455515938858");
 
-    botCountChannel.setName("▌บอท: " + botCount);
+    botCountChannel.setName(client.lang.event_client_ready_botCountChannel + botCount);
     setTimeout(showBotsCount, 10000);
   }
   showBotsCount();
@@ -33,7 +33,7 @@ module.exports = function (client) {
     let onlineCount = guild.members.cache.filter(members => members.presence.status === "online").size;
     let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
 
-    onlineCountChannel.setName("▌ออนไลน์: " + onlineCount);
+    onlineCountChannel.setName(client.lang.event_client_ready_onlineCountChannel + onlineCount);
     setTimeout(showOnlineCount, 10000);
   }
   showOnlineCount();
@@ -43,7 +43,7 @@ module.exports = function (client) {
     let offlineCount = guild.members.cache.filter(members => members.presence.status === "offline").size;
     let offlineCountChannel = guild.channels.cache.find(channels => channels.id === "723093393340891276");
 
-    offlineCountChannel.setName("▌ออฟไลน์: " + offlineCount);
+    offlineCountChannel.setName(client.lang.event_client_ready_offlineCountChannel + offlineCount);
     setTimeout(showOfflineCount, 10000);
   }
   showOfflineCount();
@@ -53,7 +53,7 @@ module.exports = function (client) {
     let idleCount = guild.members.cache.filter(members => members.presence.status === "idle").size;
     let idleCountChannel = guild.channels.cache.find(channels => channels.id === "729690734520827914");
 
-    idleCountChannel.setName("▌ไม่อยู่: " + idleCount);
+    idleCountChannel.setName(client.lang.event_client_ready_idleCountChannel + idleCount);
     setTimeout(showIdleCount, 10000);
   }
   showIdleCount();
@@ -63,18 +63,20 @@ module.exports = function (client) {
     let dndCount = guild.members.cache.filter(members => members.presence.status === "dnd").size;
     let dndCountChannel = guild.channels.cache.find(channels => channels.id === "729692580987797554");
 
-    dndCountChannel.setName("▌ห้ามรบกวน: " + dndCount);
+    dndCountChannel.setName(client.lang.event_client_ready_dndCountChannel + dndCount);
     setTimeout(showDndCount, 10000);
   }
   showDndCount();
 
   // Activity settings
+  let activityName = client.guilds.cache.size + " server" + (client.guilds.cache.size === 1 ? "" : "s") + " | " + client.commands.size + " commands";
+  
   client.user.setPresence({
     "status": "available", //"available", "idle", "dnd", or "invisible"
     "activity": {
-      "name": client.config.prefix + "help ดูคำสั่งทั้งหมด",
+      "name": activityName,
       "type": 'WATCHING',
       "url": "https://youtube.com/watch?v=OLd68rtX6mI"
     }
-  });
+  }, 15000);
 };
