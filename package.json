@@ -1,6 +1,6 @@
 {
   "name": "yumeko",
-  "version": "1.4.8beta",
+  "version": "1.4.16beta",
   "description": "Manage members and servers easily with Yumeko.",
   "main": "main.js",
   "author": "shinosaki",
@@ -34,6 +34,7 @@
     "opusscript": "0.0.7",
     "os": "^0.1.1",
     "simple-youtube-api": "^5.2.1",
+    "superagent": "^5.3.1",
     "weather-js": "^2.0.0",
     "yt-search": "^2.1.1",
     "ytdl-core": "^3.1.2",
