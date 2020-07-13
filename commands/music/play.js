@@ -1,4 +1,4 @@
-const musicPlayer = require("../../include/musicPlayer");
+const musicPlayer = require("../../structures/musicPlayer");
 const yts = require("yt-search");
 
 module.exports.run = async function (client, message, args) {

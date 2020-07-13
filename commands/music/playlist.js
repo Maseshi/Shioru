@@ -1,5 +1,5 @@
 const discord = require("discord.js");
-const musicPlayer = require("../../include/musicPlayer");
+const musicPlayer = require("../../structures/musicPlayer");
 const YouTubeAPI = require("simple-youtube-api");
 
 module.exports.run = async function (client, message, args) {

@@ -1,4 +1,4 @@
-const check = require("../../util/modifyQueue");
+const check = require("../../structures/modifyQueue");
 
 module.exports.run = function (client, message, args) {
     let channel = message.member.voice.channel;
