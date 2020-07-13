@@ -4,16 +4,8 @@ module.exports.run = async function(client, message) {
     let api = Math.round(client.ws.ping);
 
     let embed = {
-        "footer": {
-            "icon_url": "https://lectiondev.web.app/assets/static/favicon.ico",
-            "text": "โปรแกรมคำนวณ Ping แบบธรรมดาโดย LectionDev"
-        },
-        "fields": [
-            {
-                "name": "การเชื่อมต่อ",
-                "value": "Ping คือ " + ping + " วินาที \nAPI Latency คือ " + api + " วินาที"
-            }
-        ]
+        "title": "📡 การเชื่อมต่อ",
+        "description": "Ping คือ " + ping + " วินาที \nAPI Latency คือ " + api + " วินาที"
     };
     msg.edit(":ping_pong: Pong", { embed });
 };
