@@ -10,7 +10,7 @@ module.exports.run = async function (client, message, args) {
             });
         });
     } else {
-        message.channel.send(attachment);
+        message.channel.send(rip);
     }
 };
 

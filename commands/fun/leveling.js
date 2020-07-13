@@ -34,12 +34,12 @@ module.exports.run = async function (client, message, args) {
                 },
                 "fields": [
                     {
-                        "name": "EXP",
-                        "value": "```" + exp + "```"
-                    },
-                    {
                         "name": "Level",
                         "value": "```" + level + "```"
+                    },
+                    {
+                        "name": "EXP",
+                        "value": "```" + exp + "```"
                     }
                 ]
             };
