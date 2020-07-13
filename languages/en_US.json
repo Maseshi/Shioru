@@ -1,0 +1,11 @@
+{
+    "event_client_error": "⚠️ An error occurred within the client.: ",
+    "event_client_message_embed_description": "Now the level of *%username* has been leveled up. ```%level```",
+    "event_client_message_embed_author_name": "Congratulations!!",
+    "event_client_ready_memberCountChannel": "▌Members: ",
+    "event_client_ready_botCountChannel": "▌Bots: ",
+    "event_client_ready_onlineCountChannel": "▌Online: ",
+    "event_client_ready_offlineCountChannel": "▌Offline: ",
+    "event_client_ready_idleCountChannel": "▌Idle: ",
+    "event_client_ready_dndCountChannel": "▌DND: "
+}

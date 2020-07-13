@@ -1,0 +1,11 @@
+{
+    "event_client_error": "⚠️ เกิดข้อผิดพลาดภายใน Client: ",
+    "event_client_message_embed_description": "ตอนนี้เลเวลของ *%username* ได้อัพเลเวลเป็น ```%level```",
+    "event_client_message_embed_author_name": "ยินดีด้วย!!",
+    "event_client_ready_memberCountChannel": "▌สมาชิก: ",
+    "event_client_ready_botCountChannel": "▌บอท: ",
+    "event_client_ready_onlineCountChannel": "▌ออนไลน์: ",
+    "event_client_ready_offlineCountChannel": "▌ออฟไลน์: ",
+    "event_client_ready_idleCountChannel": "▌ไม่อยู่: ",
+    "event_client_ready_dndCountChannel": "▌ห้ามรบกวน: "
+}
