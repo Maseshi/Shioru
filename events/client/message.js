@@ -4,8 +4,11 @@ module.exports = async (client, message) => {
     let prefix = client.config.prefix;
     let args = message.content.slice(prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
-    
     let command;
+
+    let avatar = message.author.displayAvatarURL();
+    let username = message.author.username;
+    let id = message.author.id;
 
     if (message.author.bot) {
         return;
@@ -19,16 +22,6 @@ module.exports = async (client, message) => {
                 } else if (client.aliases.has(cmd)) {
                     command = client.commands.get(client.aliases.get(cmd));
                 } else {
-                    // Collect information when users send unknown commands or aliases
-                    let username = message.author.username;
-                    let database = firebase.database();
-
-                    database.ref("Discord/Bot/Logs/Commands/").push({
-                        command: cmd,
-                        date: new Date()
-                    }).catch(function () {
-                        console.error(error);
-                    });
                     return console.log("\u001b[4m" + username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
                 }
 
@@ -40,10 +33,6 @@ module.exports = async (client, message) => {
     }
 
     // Level system
-    let avatar = message.author.displayAvatarURL();
-    let username = message.author.username;
-    let id = message.author.id;
-
     let database = firebase.database();
     let ref = database.ref("Discord/Users/" + id + "/Leveling/");
     ref.once("value", function (snapshot) {
