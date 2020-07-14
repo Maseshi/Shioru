@@ -1,6 +1,6 @@
 {
   "name": "yumeko",
-  "version": "1.4.19beta",
+  "version": "1.4.22beta",
   "description": "Manage members and servers easily with Yumeko.",
   "main": "main.js",
   "author": "shinosaki",
@@ -30,6 +30,7 @@
     "fs": "0.0.1-security",
     "kitsu": "^9.1.11",
     "log-symbols": "^4.0.0",
+    "lyrics-finder": "^21.0.5",
     "nodemon": "^2.0.4",
     "opusscript": "0.0.7",
     "os": "^0.1.1",
