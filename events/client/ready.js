@@ -69,7 +69,7 @@ module.exports = function (client) {
   showDndCount();
 
   // Activity settings
-  let activityName = client.guilds.cache.size + " server" + (client.guilds.cache.size === 1 ? "" : "s") + " | " + client.commands.size + " commands";
+  let activityName = client.guilds.cache.size + " server" + (client.guilds.cache.size === 1 ? "" : "s");
   
   client.user.setPresence({
     "status": "available", //"available", "idle", "dnd", or "invisible"
