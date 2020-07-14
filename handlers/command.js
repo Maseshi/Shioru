@@ -21,7 +21,7 @@ module.exports = function (client) {
             console.log(success + " Loaded command \u001b[32m" + pull.help.name + "\u001b[0m in category \u001b[34m" + pull.help.category + "\u001b[0m.");
           }
         } else {
-          console.error(error + " Error loading command in \u001b[4m" + (dir + dirs + "/" + file) + "\u001b[0m. you have a missing help.name or help.name is not a string. or you have a missing help.category or help.category is not a string");
+          console.error(error + " Error loading command in \u001b[31m" + ("./" + dirs + "/" + file) + "\u001b[0m. you have a missing \u001b[4mhelp.name\u001b[0m or \u001b[4mhelp.name\u001b[0m is not a string. or you have a missing \u001b[4mhelp.category\u001b[0m or \u001b[4mhelp.category\u001b[0m is not a string");
           continue;
         }
         if (pull.help.aliases && typeof (pull.help.aliases) === "object") {
