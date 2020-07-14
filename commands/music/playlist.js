@@ -46,17 +46,11 @@ module.exports.run = async function (client, message, args) {
                             "playing": true
                         };
 
-                        let userConstruct = {
-                            "avatar": message.author.displayAvatarURL(),
-                            "username": message.author.username
-                        };
-
                         if (urlValid) {
                             try {
                                 playlist = await youtube.getPlaylist(url, {
                                     "part": "snippet"
                                 });
-
                                 videos = await playlist.getVideos(10, {
                                     "part": "snippet"
                                 });
@@ -79,12 +73,12 @@ module.exports.run = async function (client, message, args) {
                             }
                         }
 
-                        videos.forEach(function (video) {
+                        videos.forEach(function (videos) {
                             song = {
-                                "id": video.id,
-                                "title": video.title,
-                                "url": video.url,
-                                "duration": video.duration,
+                                "id": videos.id,
+                                "title": videos.title,
+                                "url": videos.url,
+                                "duration": videos.duration,
                             };
 
                             if (serverQueue) {
@@ -111,7 +105,7 @@ module.exports.run = async function (client, message, args) {
 
                             message.channel.send("📁 เพิ่มเพลงแล้วและกำลังจะเริ่มเล่นเพลงในเพลย์ลิส", playlistEmbed);
                             
-                            message.client.queue.set(message.guild.id, queueConstruct, userConstruct);
+                            message.client.queue.set(message.guild.id, queueConstruct);
 
                             channel.join()
                                 .then(function (connection) {

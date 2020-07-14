@@ -4,9 +4,13 @@ module.exports = async function (client, message, song) {
     let queue = message.client.queue.get(message.guild.id);
 
     // If there is a song ready to play 
-    if (song === undefined) {
+    if (!song) {
         message.client.queue.delete(message.guild.id);
     } else {
+        queue.connection.on("disconnect", function () {
+            message.client.queue.delete(message.guild.id);
+        });
+
         let stream = await ytdl(song.url, { "highWaterMark": 1 << 25 });
         let type = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
@@ -16,8 +20,14 @@ module.exports = async function (client, message, song) {
         });
 
         dispatcher.on('finish', function () {
-            queue.songs.shift();
-            module.exports(client, message, queue.songs[0]);
+            if (queue.loop) {
+                let lastSong = queue.songs.shift();
+                queue.songs.push(lastSong);
+                module.exports(client, message, queue.songs[0]);
+            } else {
+                queue.songs.shift();
+                module.exports(client, message, queue.songs[0]);
+            }
         });
         dispatcher.on('error', function (error) {
             console.error(error);
@@ -25,6 +35,6 @@ module.exports = async function (client, message, song) {
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 5);
 
-        queue.textChannel.send("🎶 เริ่มเล่นเพลง: `" + song.title + "`\n\n📄__ รายละเอียด__\n🕒 ระยะเวลา: **" + (song.duration || "ไม่ทราบ") + "**\n🔗 ลิงค์เพลง: **" + song.url + "**\n🆔 ไอดีเพลง: **" + song.id + "**");
+        queue.textChannel.send("🎶 เริ่มเล่นเพลง: `" + song.title + "`\n\n📄__ รายละเอียด__\n• ระยะเวลา: **" + (song.duration || "ไม่ทราบ") + "**\n• ลิงค์เพลง: **" + song.url + "**\n• ไอดีเพลง: **" + song.id + "**");
     }
 };
