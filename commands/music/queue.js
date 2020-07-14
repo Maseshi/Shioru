@@ -1,12 +1,7 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) {
-        message.reply("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ")
-        .then(function (msg) {
-            msg.delete({
-                timeout: 10000
-            });
-        });
+        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
     } else {
         let queue = serverQueue.songs.map((song, index) => (index + 1) + ". " + song.title).join("\n");
         let embed = {

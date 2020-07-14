@@ -1,14 +1,9 @@
 module.exports.run = async function (client, message, args) {
     let status = args.join(" ");
     if (status === "") {
-        message.reply("❓ ต้องการตรวจสอบสถานะอะไรดีคะ online, offline, idle, dnd")
-        .then(function (msg) {
-            msg.delete({
-                timeout: 10000
-            });
-        });
+        message.reply("❓ ต้องการตรวจสอบสถานะอะไรดีคะ online, offline, idle, dnd");
     } else {
-        if (status === "online", "offline", "idle", "dnd") {
+        if (status === "online" || status === "offline" || status === "idle" || status === "dnd") {
             let icon = message.guild.iconURL();
             if (status === "online") {
                 let onlineCount = message.guild.members.cache.filter(member => member.presence.status === "online").size;
@@ -21,7 +16,7 @@ module.exports.run = async function (client, message, args) {
                         "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
                     }
                 };
-                message.channel.send({ embed: online });
+                message.channel.send({ "embed": online });
             }
             if (status === "offline") {
                 let offlineCount = message.guild.members.cache.filter(member => member.presence.status === "offline").size;
@@ -34,7 +29,7 @@ module.exports.run = async function (client, message, args) {
                         "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
                     }
                 };
-                message.channel.send({ embed: offline });
+                message.channel.send({ "embed": offline });
             }
             if (status === "idle") {
                 let idleCount = message.guild.members.cache.filter(member => member.presence.status === "idle").size;
@@ -47,7 +42,7 @@ module.exports.run = async function (client, message, args) {
                         "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
                     }
                 };
-                message.channel.send({ embed: idle });
+                message.channel.send({ "embed": idle });
             }
             if (status === "dnd") {
                 let dndCount = message.guild.members.cache.filter(member => member.presence.status === "dnd").size;
@@ -60,10 +55,10 @@ module.exports.run = async function (client, message, args) {
                         "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
                     }
                 };
-                message.channel.send({ embed: dnd });
+                message.channel.send({ "embed": dnd });
             }
         } else {
-            message.reply("❎ ไม่มีสถานะนี้ใน Discord นะคะ สถานะที่มีคือ online, offline, idle, dnd");
+            message.reply("❎ ไม่มีสถานะนี้ใน Discord นะคะ...สถานะที่มีคือ online, offline, idle, dnd");
         }
     }
 };

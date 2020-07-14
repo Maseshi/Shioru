@@ -3,33 +3,18 @@ const check = require("../../structures/modifyQueue");
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) {
-        message.reply("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ไปต่อไม่ได้ด้วย")
-            .then(function (msg) {
-                msg.delete({
-                    timeout: 10000
-                });
-            });
+        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
     } else {
         if (!serverQueue.playing) {
             if (!check(message.member)) {
-                message.reply("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้")
-                    .then(function (msg) {
-                        msg.delete({
-                            timeout: 10000
-                        });
-                    });
+                message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
             } else {
                 serverQueue.playing = true;
                 serverQueue.connection.dispatcher.resume();
                 message.channel.send('▶️ กำลังเล่นเพลงต่อจากจุดเดิมแล้วคะ');
             }
         } else {
-            message.reply("📼 ตอนนี้ฉันก็กำลังเล่นอยู่นะ เหห...")
-                .then(function (msg) {
-                    msg.delete({
-                        timeout: 10000
-                    });
-                });
+            message.channel.send("📼 ตอนนี้ฉันก็กำลังเล่นอยู่นะ เหห...");
         }
     }
 };

@@ -5,7 +5,7 @@ module.exports = function (client, oldChannel, newChannel) {
     let guild = client.guilds.cache.find(servers => servers.id === "618837514882514944");
     let notification = guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
     let embed = {
-        "description": "สมาชิกได้เปลี่ยนแปลงที่ช่อง: `" + oldChannel.name + "` เป็น <#" + newChannel.id + ">",
+        "description": "สมาชิกได้เปลี่ยนแปลงข้อมูลบางอย่างที่ช่อง: `" + oldChannel.name + "` เป็น <#" + newChannel.id + ">",
         "color": 4886754,
         "author": {
             "name": "ระบบ",

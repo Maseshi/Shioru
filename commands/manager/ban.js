@@ -3,57 +3,42 @@
 module.exports.run = async function (client, message, args) {
 	if (message.member.hasPermission(["ADMINISTRATOR", "BAN_MEMBERS"])) {
 		let arg = args[0];
-		if (arg === undefined) {
-			message.reply("❓ จะให้ฉันจัดการกับสมาชิกคนไหนเหรอคะ")
-				.then(function (msg) {
-					msg.delete({
-						timeout: 10000
-					});
-				});
+		if (!arg) {
+			message.reply("❓ จะให้ฉันจัดการกับสมาชิกคนไหนเหรอคะ");
 		} else {
-			let member = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
-			if (member === undefined) {
-				message.reply("❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ")
-					.then(function (msg) {
-						msg.delete({
-							timeout: 10000
-						});
-					});
+			let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+			if (!user) {
+				message.channel.send("❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ");
 			} else {
-				let memberBan = message.guild.members.cache.get(member.id);
-				if (memberBan === undefined) {
-					message.reply("❎ เอ๋...สมาชิกนี้หายไปไหนแล้วอ่ะ เอ๋...หรือไม่ได้อยู่ที่นี่หรือเปล่า")
-						.then(function (msg) {
-							msg.delete({
-								timeout: 10000
-							});
-						});
+				let memberBan = message.guild.members.cache.get(user.id);
+				if (!memberBan) {
+					message.channel.send("❎ เอ๋...สมาชิกนี้หายไปไหนแล้วอ่ะ เอ๋...หรือไม่ได้อยู่ที่นี่หรือเปล่า");
 				} else {
 					if (memberBan.banable === false) {
-						message.reply("❌ ฉันไม่มีสิทธิ์ที่จะแบนเขานะคะ ถ้าหากมีเหตุผลใดๆ ที่เขาทำอะไรไม่ดีให้แจ้งเจ้าของที่นี่นะคะ ตอนนี้ฉันทำอะไรเขาไม่ด้ายยย...");
+						message.channel.send("❌ ฉันไม่มีสิทธิ์ที่จะแบนเขานะคะ ถ้าหากมีเหตุผลใดๆ ที่เขาทำอะไรไม่ดีให้แจ้งเจ้าของที่นี่นะคะ ตอนนี้ฉันทำอะไรเขาไม่ด้ายยย...");
 					} else {
 						let reason = args.slice(1).join(" ");
 						if (reason === "") {
 							reason = "**สมาชิกที่แบนไม่ได้ให้เหตุผลไว้คะ**";
-							ban(member, memberBan, reason);
+							ban(user, memberBan, reason);
 						} else {
-							ban(member, memberBan, reason);
+							ban(user, memberBan, reason);
 						}
 					}
 				}
 			}
 		}
 	} else {
-		return message.reply("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ <:shioru_heavy:694159309877018685>");
+		message.channel.send("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ");
 	}
 
-	function ban(member, memberBan, reason) {
+	function ban(user, memberBan, reason) {
 		let notification = message.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
 
 		let author = message.author.username;
 		let authorAvatar = message.author.displayAvatarURL();
-		let avatar = member.avatarURL();
-		let username = member.username;
+		let avatar = user.avatarURL();
+		let username = user.username;
 		let time = new Date();
 		memberBan.ban(reason)
 			.then(function () {
@@ -78,7 +63,8 @@ module.exports.run = async function (client, message, args) {
 					embed
 				});
 			}).catch(function (error) {
-				message.reply("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
+				message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
+				console.log(error);
 			});
 	}
 };

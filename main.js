@@ -5,9 +5,9 @@ const config = require("./config");
 const lang = require("./languages/th_TH.json");
 
 // Show when bots start working To check that bots do not have a problem
-console.log("\x1b[31m-------------------------------------------------------------");
-console.log("\x1b[33m(c)2020 LectionDev - The Discord General Bot. All rights reserved.");
-console.group("\x1b[31m-------------------------------------------------------------\x1b[0m");
+console.log("\x1b[31m==================================================================");
+console.log("\x1b[33m(c)2020 Shinozaki - The Discord General Bot. All rights reserved.");
+console.group("\x1b[31m==================================================================\x1b[0m");
 
 const client = new discord.Client({
     "autoReconnect": true,

@@ -14,6 +14,9 @@ module.exports.run = async function (client, message, args) {
 			}
 		};
 		message.channel.send({ embed });
+	}).catch(function (error) {
+		message.channel.send("⚠️ อ้าว...อยู่ๆ ฉันก็สร้างลิงค์เชิญไม่ได้คะ เหตุผลเพราะ: " + error);
+		console.error(error);
 	});
 };
 	

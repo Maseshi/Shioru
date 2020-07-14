@@ -3,13 +3,8 @@ module.exports.run = async function (client, message, args) {
     let avatar = message.author.displayAvatarURL();
     let username = message.author.username;
     let text = args.join(" ");
-    if (text === undefined) {
-        message.reply("❓ กรุณาเขียนข้อความที่จะประชาสัมพันธ์ด้วยค่ะ")
-        .then(function (msg) {
-            msg.delete({
-                timeout: 10000
-            });
-        });
+    if (text === "") {
+        message.reply("❓ กรุณาเขียนข้อความที่จะประชาสัมพันธ์ด้วยค่ะ");
     } else {
         let embed = {
             "description": text,

@@ -11,12 +11,7 @@ module.exports.run = async function (client, message, args) {
     let Result = Math.floor(Math.random() * (max - min + 1)) + min;
 
     if (isNaN(Result)) {
-        message.channel.send("❓ ขอทราบจำนวนที่กำหนดระหว่าง ต่ำสุด กับ สูงสุด ด้วยคะ")
-        .then(function (msg) {
-            msg.delete({
-                timeout: 10000
-            });
-        });
+        message.reply("❓ ขอทราบจำนวนที่กำหนดระหว่าง ต่ำสุด กับ สูงสุด ด้วยคะ");
     } else {
         message.channel.send("ผลลัพธ์คือ " + Result);
     }

@@ -2,13 +2,8 @@ module.exports.run = async function (client, message, args) {
 	let arg = args.join(" ");
 	if (arg === "") {
 		let voiceChannel = message.member.voice.channel;
-		if (voiceChannel === null) {
-			message.reply("❎ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3=")
-			.then(function (msg) {
-				msg.delete({
-					timeout: 10000
-				});
-			});
+		if (!voiceChannel) {
+			message.reply("❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3=");
 		} else {
 			voiceChannel.join()
 			.then(function (connection) {
@@ -18,14 +13,9 @@ module.exports.run = async function (client, message, args) {
 			});
 		}
 	} else {
-		let channel = client.channels.cache.find(channels => channels.id === arg || channels.name === arg);
-		if (channel === undefined) {
-			message.reply("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?")
-			.then(function (msg) {
-				msg.delete({
-					timeout: 10000
-				});
-			});
+		let channel = client.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
+		if (!channel) {
+			message.channel.send("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?");
 		} else {
 			channel.join()
 			.then(function (connection) {

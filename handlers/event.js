@@ -17,7 +17,7 @@ module.exports = function (client) {
                     let eventName = file.split(".")[0];
                     if (client.on(eventName, pull.bind(null, client))) {
                         delete require.cache[require.resolve("." + dir + dirs + "/" + file)];
-                        console.log(success + " Loaded event \u001b[32m" + eventName + "\u001b[0m.");
+                        console.log(success + " Loaded event \u001b[32m" + eventName + "\u001b[0m in category \u001b[34m" + dirs + "\u001b[0m.");
                     } else {
                         console.error(warning + " Error loading event in \u001b[4m" + (dir + dirs + "/" + file) + "\u001b[0m.");
                     }

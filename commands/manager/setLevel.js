@@ -6,75 +6,72 @@ module.exports.run = async function (client, message, args) {
 
         let arg = args[0];
         let amount = args.slice(1).join(" ");
-        if (arg === undefined) {
-            message.reply("❓ กรุณาระบุสมาชิกที่ต้องการจะเปลี่ยนแปลง Level ด้วยคะ!")
-            .then(function (msg) {
-                msg.delete({
-                    timeout: 10000
-                });
-            });
+        if (!arg) {
+            message.reply("❓ กรุณาระบุสมาชิกที่ต้องการจะเปลี่ยนแปลง Level ด้วยคะ!");
         } else {
             let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
-            if (user === undefined) {
+            if (!user) {
                 message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
             } else {
                 if (amount === "") {
-                    message.reply("❓ ต้องการจะตั้งค่าให้เท่าไหร่ดีคะ")
-                        .then(function (msg) {
-                            msg.delete({
-                                timeout: 10000
-                            });
-                        });
+                    message.reply("❓ ต้องการจะตั้งค่าให้สมาชิกนี้เท่าไหร่ดีคะ");
                 } else {
                     let database = firebase.database();
                     let avatar = user.avatarURL();
                     let username = user.username;
                     let id = user.id;
                     database.ref("Discord/Users/" + id + "/Leveling/").update({
-                        Level: amount
+                        "Level": amount
                     }).then(function () {
                         database.ref("Discord/Users/" + id + "/Leveling/").once("value")
                         .then(function (snapshot) {
-                            let exp = (snapshot.val().EXP);
-                            let level = (snapshot.val().Level);
+                            if (snapshot.exists()) {
+                                let exp = snapshot.val().EXP;
+                                let level = snapshot.val().Level;
 
-                            let embed = {
-                                "description": username + " ขณะนี้ Exp และ Level ทั้งหมดมีอยู่:",
-                                "color": 4886754,
-                                "thumbnail": {
-                                    "url": avatar
-                                },
-                                "footer": {
-                                    "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                    "text": "Level ของคุณถูกตั้งค่าโดยทีมงาน"
-                                },
-                                "fields": [
-                                    {
-                                        "name": "EXP",
-                                        "value": "```" + exp + "```"
+                                let embed = {
+                                    "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                                    "color": 4886754,
+                                    "thumbnail": {
+                                        "url": avatar
                                     },
-                                    {
-                                        "name": "Level",
-                                        "value": "```" + level + "```"
-                                    }
-                                ]
-                            };
-                            notification.send({ embed })
-                            .then(function () {
-                                message.channel.send("✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...");
-                            });
+                                    "footer": {
+                                        "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                                        "text": "Level ของคุณถูกตั้งค่าโดยทีม"
+                                    },
+                                    "fields": [
+                                        {
+                                            "name": "ชั้น (Level)",
+                                            "value": "```" + exp + "```"
+                                        },
+                                        {
+                                            "name": "ประสบการณ์ (Exp)",
+                                            "value": "```" + level + "```"
+                                        }
+                                    ]
+                                };
+                                notification.send({
+                                        embed
+                                    })
+                                    .then(function () {
+                                        message.channel.send("✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...");
+                                    });
+                            } else {
+                                message.channel.send("❎ ไม่พบสมชิกรายนี้ในฐานข้อมูลเลยคะ");
+                            }
                         }).catch(function (error) {
                             console.error(error);
+                            message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังตรวจสอบทรัพยากร: " + error);
                         });
                     }).catch(function (error) {
-                        message.channel.send("❎ ไม่พบผู้ใช้ในฐานข้อมูลคะ");
                         console.error(error);
+                        message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังอัพเดททรัพยากร: " + error);
                     });
                 }
             }
         }
     } else {
-        return message.reply("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ <:shioru_heavy:694159309877018685>");
+        message.channel.send("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ");
     }
 };
 

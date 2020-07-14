@@ -1,9 +1,13 @@
-const discord = require("discord.js");
 const superagent = require('superagent');
 
 module.exports.run = async function (client, message, args) {
-    let wallpaper = await superagent.get("https://nekos.life/api/v2/img/wallpaper");
-    message.channel.send(wallpaper.body.url);
+    superagent.get("https://nekos.life/api/v2/img/wallpaper")
+    .then(function (wallpaper) {
+        message.channel.send(wallpaper.body.url);
+    }).catch(function (error) {
+        message.channel.send("⚠️ รับข้อมูลจากเซิร์ฟเวอร์ไม่ได้ค่าา..: " + error);
+        console.error(error);
+    });
 };
 
 module.exports.help = {

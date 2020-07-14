@@ -1,5 +1,3 @@
-// This command is not yet available. //
-
 module.exports.run = async function (client, message) {
     message.channel.send("📖 อดใจรอในเร็วๆ นี้คะ >-<");
 };

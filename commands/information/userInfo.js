@@ -7,8 +7,8 @@ module.exports.run = async function (client, message, args) {
   let accountCreateAt = message.author.createdAt;
   let arg = args.join(" ");
   if (arg) {
-    let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
-    if (user === undefined) {
+    let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+    if (!user) {
       message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
     } else {
       avatar = user.avatarURL();

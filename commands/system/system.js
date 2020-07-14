@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
     let msg = await message.channel.send("⚙️ กำลังประมวลผล..รอสักครู่นะคะ...");
     cpuStat.usagePercent(function (error, percent) {
         if (error) {
-            msg.edit("❌ เกิดข้อผิดพลาด: " + error);
+            msg.edit("⚠️ เกิดข้อผิดพลาด: " + error);
             console.error(error);
         } else {
             let totalSeconds = (client.uptime / 1000);
@@ -32,7 +32,7 @@ module.exports.run = async function (client, message, args) {
                         "inline": true
                     },
                     {
-                        name: "• Uptime",
+                        "name": "• Uptime",
                         "value": hours + "h " + minutes + "m",
                         "inline": true
                     },

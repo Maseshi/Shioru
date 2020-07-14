@@ -13,32 +13,37 @@ module.exports = function (client, message) {
     if (message.author.bot) {
         return;
     } else {
-        if (message.content.startsWith(prefix)) {
-            if (cmd.length === 0) {
-                return;
-            } else {
-                if (client.commands.has(cmd)) {
-                    command = client.commands.get(cmd);
-                } else if (client.aliases.has(cmd)) {
-                    command = client.commands.get(client.aliases.get(cmd));
+        if (message.channel.type === "dm") {
+            return;
+        } else {
+            if (message.content.startsWith(prefix)) {
+                if (cmd.length === 0) {
+                    return;
                 } else {
-                    return console.log("\u001b[4m" + username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
-                }
+                    if (client.commands.has(cmd)) {
+                        command = client.commands.get(cmd);
+                    } else if (client.aliases.has(cmd)) {
+                        command = client.commands.get(client.aliases.get(cmd));
+                    } else {
+                        console.log("\u001b[4m" + username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+                    }
 
-                if (command) {
-                    command.run(client, message, args);
+                    if (command) {
+                        command.run(client, message, args);
+                    }
                 }
             }
         }
+        
     }
 
     // Level system
     let database = firebase.database();
     let ref = database.ref("Discord/Users/" + id + "/Leveling/");
-    ref.once("value", function (snapshot) {
+    ref.once("value").then(function (snapshot) {
         if (snapshot.exists()) {
-            let exp = (snapshot.val().EXP);
-            let level = (snapshot.val().Level);
+            let exp = snapshot.val().EXP;
+            let level = snapshot.val().Level;
 
             let expPlus = (exp += 5);
             ref.update({

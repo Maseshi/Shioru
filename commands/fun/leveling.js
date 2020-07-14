@@ -6,9 +6,9 @@ module.exports.run = async function (client, message, args) {
     let id = message.author.id;
     let arg = args.join(" ");
     if (arg) {
-        let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
-        if (user === undefined) {
-            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+        let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+        if (!user) {
+            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
         } else {
             avatar = user.avatarURL();
             username = user.username;
@@ -23,30 +23,36 @@ module.exports.run = async function (client, message, args) {
         let database = firebase.database();
         database.ref("Discord/Users/" + id + "/Leveling/").once("value")
         .then(function (snapshot) {
-            let exp = (snapshot.val().EXP);
-            let level = (snapshot.val().Level);
+            if (snapshot.exists()) {
+                let exp = snapshot.val().EXP;
+                let level = snapshot.val().Level;
 
-            let embed = {
-                "description": username + " ขณะนี้ Exp และ Level ทั้งหมดมีอยู่:",
-                "color": 4886754,
-                "thumbnail": {
-                    "url": avatar
-                },
-                "fields": [
-                    {
-                        "name": "Level",
-                        "value": "```" + level + "```"
+                let embed = {
+                    "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                    "color": 4886754,
+                    "thumbnail": {
+                        "url": avatar
                     },
-                    {
-                        "name": "EXP",
-                        "value": "```" + exp + "```"
-                    }
-                ]
-            };
-            message.channel.send({ embed });
+                    "fields": [
+                        {
+                            "name": "ชั้น (Level)",
+                            "value": "```" + level + "```"
+                        },
+                        {
+                            "name": "ประสบการณ์ (Exp)",
+                            "value": "```" + exp + "```"
+                        }
+                    ]
+                };
+                message.channel.send({
+                    embed
+                });
+            } else {
+                message.channel.send("💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับประสบการณ์เลยคะ");
+            }
         }).catch(function (error) {
             console.error(error);
-            message.channel.send("❎ สมาชิกรายนี้ยังไม่มี Exp กับ Level เลยคะ");
+            message.channel.send("⚠️ เกิดข้อผิดพลาดซ่ะแล้วคะ!! แจ้งมาว่า: " + error);
         });
     }
 };

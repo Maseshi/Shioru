@@ -1,20 +1,15 @@
 module.exports.run = async function (client, message, args) {
     let channel = message.guild.channels.cache.find(channel => channel.name === "│ประชาสัมพันธ์📢");
 
-    if (args.length > 0) {
-        let user = client.users.cache.find(user => user.username == args[0] || user.id == args[0]);
+    if (args[0]) {
+        let user = client.users.cache.find(user => (user.username === args[0]) || (user.id === args[0]) || (user.tag === args[0]));
         let reason = args[1];
 
-        if (user === undefined) {
+        if (!user) {
             message.channel.send("❎ อืมม...ดูเหมือนจะไม่มีสมาชิกนี้นะคะ ลองตรวจสอบดีๆ อีกครั้งนะคะ!!");
         } else {
-            if (reason === undefined) {
-                message.reply("❓ เหตุผลที่จะรายงานเขาคืออะไรเหรอคะ")
-                    .then(function (msg) {
-                        msg.delete({
-                            timeout: 10000
-                        });
-                    });
+            if (!reason) {
+                message.reply("❓ เหตุผลที่จะรายงานเขาคืออะไรเหรอคะ");
             } else {
                 let id = user.id;
                 client.users.fetch(id)
@@ -24,12 +19,7 @@ module.exports.run = async function (client, message, args) {
             }
         }
     } else {
-        message.reply("❓ โปรดระบุชื่อหรือรหัสของสมาชิกที่จะรายงานด้วยคะ")
-        .then(function (msg) {
-            msg.delete({
-                timeout: 10000
-            });
-        });
+        message.reply("❓ โปรดระบุชื่อหรือรหัสของสมาชิกที่จะรายงานด้วยคะ");
     }
 
     function reportMember(target, reason) {
@@ -62,12 +52,12 @@ module.exports.run = async function (client, message, args) {
         };
 
         message.awaitReactions(filter, {
-                max: 1,
-                time: 60000,
-                errors: ["time"]
+                "max": 1,
+                "time": 60000,
+                "errors": ["time"]
             })
             .then(collected => {
-                const reaction = collected.first();
+                let reaction = collected.first();
 
                 if (reaction.emoji.name === "👍") {
                     message.reply("you reacted with a thumbs up.");

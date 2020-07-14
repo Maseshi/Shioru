@@ -36,6 +36,7 @@ module.exports.run = async function (client, message, args) {
         "color": 4886754,
         "timestamp": guildCreatedAtFormat,
         "footer": {
+            "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/hammer_1f528.png",
             "text": "เซิร์ฟเวอร์ถูกสร้างเมื่อ"
         },
         "thumbnail": {
