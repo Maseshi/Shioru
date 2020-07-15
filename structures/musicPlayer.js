@@ -3,7 +3,6 @@ const ytdl = require("ytdl-core-discord");
 module.exports = async function (client, message, song) {
     let queue = message.client.queue.get(message.guild.id);
 
-    // If there is a song ready to play 
     if (!song) {
         message.client.queue.delete(message.guild.id);
     } else {

@@ -8,7 +8,6 @@ module.exports.run = async function (client, message, args) {
     if (!youtube) {
         message.reply("❌ โควต้าการใช้งานของเซิร์ฟเวอร์หมดแล้วอ๊าาา...โปรดรอในวันพรุ่งนี้แทนนะคะ ขอโทษจริงๆ คะ T~T");
     } else {
-        let search = args.join(" ");
         let channel = message.member.voice.channel;
         if (!channel) {
             message.reply("❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา...");
@@ -20,13 +19,14 @@ module.exports.run = async function (client, message, args) {
                 if (!permissions.has("SPEAK")) {
                     message.reply("🚫 ขอโทษนะคะ แต่ว่าา...คุณไม่มีสิทธิ์ในการพูดในช่องนี้คะ ลองขอให้เจ้าของที่นี่ให้สิทธิ์กับคุณดูนะคะ");
                 } else {
-                    if (search === "") {
+                    if (!args.length) {
                         message.reply("❓ อยากได้เพลงอะไรเหรอคะ ลิงค์เลยก็ได้นะ");
                     } else {
                         let serverQueue = message.client.queue.get(message.guild.id);
                         let pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-                        let url = args[0];
                         let urlValid = pattern.test(args[0]);
+                        let search = args.join(" ");
+                        let url = args[0];
                         let videos = [];
                         let playlist;
                         let song;
