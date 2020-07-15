@@ -7,5 +7,16 @@
     "event_client_ready_onlineCountChannel": "▌Online: ",
     "event_client_ready_offlineCountChannel": "▌Offline: ",
     "event_client_ready_idleCountChannel": "▌Idle: ",
-    "event_client_ready_dndCountChannel": "▌DND: "
+    "event_client_ready_dndCountChannel": "▌DND: ",
+    "event_guild_notification_way_system": "System",
+    "event_guild_channelCreate_embed_description": "Members have created a new channel.: <#%channel>",
+    "event_guild_channelDelete_embed_description": "Members have bombed the channel: `channel`",
+    "event_guild_channelPinsUpdate_embed_description": "Members have pinned the channel: <#%channel> when %time",
+    "event_guild_channelUpdate_embed_description": "Members have changed some information on the channel: `%oldChannel` to <#%newChannel>",
+    "event_guild_emojiCreate_embed_description": "Members have created new emojis.: \\:%emoji:",
+    "event_guild_emojiDelete_embed_description": "The member has deleted the emoji: \\:%emoji:",
+    "event_guild_emojiUpdate_embed_description": "Members have changed to new emojis from: %oldEmoji to %newEmoji",
+    "event_guild_guildMemberAdd_embed_description": "Hello new member **This is an automated message** \nThanks for joining our server. Please read the information about this server carefully before starting to talk to everyone. \n\n<#692297482062790706>\n<#692360422862618636>",
+    "event_guild_guildMemberAdd_embed_author_name": "Welcome to the server",
+    "event_guild_guildMemberRemove_embed_description": "Has escaped from this server... (Where to go? ..)"
 }
