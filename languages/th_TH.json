@@ -7,5 +7,16 @@
     "event_client_ready_onlineCountChannel": "▌ออนไลน์: ",
     "event_client_ready_offlineCountChannel": "▌ออฟไลน์: ",
     "event_client_ready_idleCountChannel": "▌ไม่อยู่: ",
-    "event_client_ready_dndCountChannel": "▌ห้ามรบกวน: "
+    "event_client_ready_dndCountChannel": "▌ห้ามรบกวน: ",
+    "event_guild_notification_way_system": "ระบบ",
+    "event_guild_channelCreate_embed_description": "สมาชิกได้สร้างช่อง: <#%channel>",
+    "event_guild_channelDelete_embed_description": "สมาชิกได้ระเบิดช่อง: `channel`",
+    "event_guild_channelPinsUpdate_embed_description": "สมาชิกได้ปักหมุนที่ช่อง: <#%channel> เมื่อ %time",
+    "event_guild_channelUpdate_embed_description": "สมาชิกได้เปลี่ยนแปลงข้อมูลบางอย่างที่ช่อง: `%oldChannel` เป็น <#%newChannel>",
+    "event_guild_emojiCreate_embed_description": "สมาชิกได้สร้างอีโมจิใหม่: \\:%emoji:",
+    "event_guild_emojiDelete_embed_description": "สมาชิกได้ลบอีโมจิ: \\:%emoji:",
+    "event_guild_emojiUpdate_embed_description": "สมาชิกได้เปลียนแปลงอีโมจิใหม่จาก: %oldEmoji เป็น %newEmoji",
+    "event_guild_guildMemberAdd_embed_description": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคนนะค่ะ \n\n<#692297482062790706>\n<#692360422862618636>",
+    "event_guild_guildMemberAdd_embed_author_name": "ยินดีต้อนรับสู่เซิร์ฟเวอร์",
+    "event_guild_guildMemberRemove_embed_description": "ได้หนีออกจากเซิร์ฟเวอร์นี้ไปแล้วว...(ไปไหนของเขากันน้าาา..)"
 }

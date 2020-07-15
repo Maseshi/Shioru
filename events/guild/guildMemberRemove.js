@@ -4,8 +4,8 @@ module.exports = function (client, member) {
 		return;
 	} else {
 		const embed = {
-			"title": member.user.tag,
-			"description": "ได้หนีออกจากเซิร์ฟเวอร์นี้ไปแล้วว...(ไปไหนของเขากันน้าาา..)",
+			"title": member.user.username,
+			"description": client.lang.event_guild_guildMemberRemove_embed_description,
 			"color": 16777215,
 			"thumbnail": {
 				"url": member.user.displayAvatarURL(),
