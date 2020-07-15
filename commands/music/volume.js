@@ -16,11 +16,11 @@ module.exports.run = function (client, message, args) {
                 if (!volume) {
                     message.channel.send("🔈 ปริมาณเสียงปัจจุบันคือ: **" + serverQueue.volume + "**");
                 } else {
-                    if (volume >= 6) {
+                    if (volume >= 101) {
                         message.channel.send("🔇 ดังเกินไปแล้ววว...เดี่ยวลำโพงก็แตกซ่ะหรอก");
                     } else {
                         serverQueue.volume = volume;
-                        serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 5);
+                        serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
                         message.channel.send("🔊 ปรับเสียงไปที่ระดับ: **" + volume + "**");
                     }
                 }

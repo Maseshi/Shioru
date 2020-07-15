@@ -33,7 +33,7 @@ module.exports.run = async function (client, message, args) {
                         },
                         "songs": [],
                         "loop": false,
-                        "volume": 3,
+                        "volume": 60,
                         "playing": true
                     };
 

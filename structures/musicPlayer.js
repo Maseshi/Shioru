@@ -33,7 +33,7 @@ module.exports = async function (client, message, song) {
             console.error(error);
             return message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ แจ้งมาว่า: " + error);
         });
-        dispatcher.setVolumeLogarithmic(queue.volume / 5);
+        dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
         queue.textChannel.send("🎶 เริ่มเล่นเพลง: `" + song.title + "`\n\n📄__ รายละเอียด__\n• ระยะเวลา: **" + (song.duration || "ไม่ทราบ") + "**\n• ลิงค์เพลง: **" + song.url + "**\n• ไอดีเพลง: **" + song.id + "**");
     }
