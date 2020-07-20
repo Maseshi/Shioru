@@ -3,10 +3,10 @@ module.exports.run = async function (client, message, args) {
     	let messageCount = parseInt(args[0]);
 
     	if (isNaN(messageCount)) {
-    		message.reply("❓ จะลบกี่ข้อความดีคะ");
+    		message.reply("❓ จะลบกี่ข้อความดีคะ ฉันสามารถลบได้ 1-100 ข้อความคะ");
     	} else {
     		if (messageCount > 100) {
-    			message.channel.send("❌ 100 กว่าข้อความเลยเหรอ!! เออ...คือ ฉันลบไม่ไหวข้อความเหล่านั้นไม่ไหวล่ะ");
+    			message.channel.send("❌ 100 กว่าข้อความเลยเหรอ!! เออ...คือ ฉันลบข้อความเหล่านั้นไม่ไหวล่ะ");
     		} else {
     			message.channel.messages.fetch({
     				"limit": messageCount

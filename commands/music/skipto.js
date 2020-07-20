@@ -8,10 +8,14 @@ module.exports.run = function (client, message, args) {
         if (!check(message.member)) {
             message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
         } else {
-            serverQueue.playing = true;
-            serverQueue.songs = serverQueue.songs.slice(args[0] - 2);
-            serverQueue.connection.dispatcher.end();
-            serverQueue.textChannel.send("⏭ ข้ามไป " + (args[0] - 1) + " เพลง...");
+            if (isNaN(args[0])) {
+                message.reply("❓ ต้องการข้ามไปที่เพลงเลขที่อะไรเหรอคะ");
+            } else {
+                serverQueue.playing = true;
+                serverQueue.songs = serverQueue.songs.slice(args[0] - 2);
+                serverQueue.connection.dispatcher.end();
+                serverQueue.textChannel.send("⏭ ข้ามไป " + (args[0] - 1) + " เพลง...");
+            }
         }
     }
 };

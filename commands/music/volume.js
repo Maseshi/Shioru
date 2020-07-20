@@ -1,7 +1,7 @@
 const check = require("../../structures/modifyQueue");
 
 module.exports.run = function (client, message, args) {
-    let volume = args[0];
+    let volume = parseInt(args[0]);
     let channel = message.member.voice.channel;
     if (!channel) {
         message.reply("❓ เข้าไปในช่องไหนก็ได้ก่อนสิ");
@@ -13,7 +13,7 @@ module.exports.run = function (client, message, args) {
             if (!check(message.member)) {
                 message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
             } else {
-                if (!volume) {
+                if (isNaN(volume)) {
                     message.channel.send("🔈 ปริมาณเสียงปัจจุบันคือ: **" + serverQueue.volume + "**");
                 } else {
                     if (volume >= 101) {
