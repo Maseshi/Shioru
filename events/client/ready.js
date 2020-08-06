@@ -11,9 +11,13 @@ module.exports = function (client) {
 
     // Delete the number of members of bots
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
-    allMemberCount = memberCount - botCount;
+    let allMemberCount = memberCount - botCount;
 
-    memberCountChannel.setName(client.lang.event_client_ready_memberCountChanne + allMemberCount);
+    if (!memberCountChannel) {
+      return;
+    } else {
+      memberCountChannel.setName(client.lang.event_client_ready_memberCountChannel + allMemberCount);
+    }
     setTimeout(showMembersCount, 10000);
   }
   showMembersCount();
@@ -23,7 +27,11 @@ module.exports = function (client) {
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
     let botCountChannel = guild.channels.cache.find(channels => channels.id === "729702455515938858");
 
-    botCountChannel.setName(client.lang.event_client_ready_botCountChannel + botCount);
+    if (!botCountChannel) {
+      return;
+    } else {
+      botCountChannel.setName(client.lang.event_client_ready_botCountChannel + botCount);
+    }
     setTimeout(showBotsCount, 10000);
   }
   showBotsCount();
@@ -33,7 +41,15 @@ module.exports = function (client) {
     let onlineCount = guild.members.cache.filter(members => members.presence.status === "online").size;
     let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
 
-    onlineCountChannel.setName(client.lang.event_client_ready_onlineCountChannel + onlineCount);
+    // Delete the number of members of bots
+    let botCount = guild.members.cache.filter(members => members.user.bot).size;
+    let allMemberCount = onlineCount - botCount;
+
+    if (!onlineCount) {
+      return;
+    } else {
+      onlineCountChannel.setName(client.lang.event_client_ready_onlineCountChannel + allMemberCount);
+    }
     setTimeout(showOnlineCount, 10000);
   }
   showOnlineCount();
@@ -43,7 +59,11 @@ module.exports = function (client) {
     let offlineCount = guild.members.cache.filter(members => members.presence.status === "offline").size;
     let offlineCountChannel = guild.channels.cache.find(channels => channels.id === "723093393340891276");
 
-    offlineCountChannel.setName(client.lang.event_client_ready_offlineCountChannel + offlineCount);
+    if (!offlineCountChannel) {
+      return;
+    } else {
+      offlineCountChannel.setName(client.lang.event_client_ready_offlineCountChannel + offlineCount);
+    }
     setTimeout(showOfflineCount, 10000);
   }
   showOfflineCount();
@@ -53,7 +73,11 @@ module.exports = function (client) {
     let idleCount = guild.members.cache.filter(members => members.presence.status === "idle").size;
     let idleCountChannel = guild.channels.cache.find(channels => channels.id === "729690734520827914");
 
-    idleCountChannel.setName(client.lang.event_client_ready_idleCountChannel + idleCount);
+    if (!idleCountChannel) {
+      return;
+    } else {
+      idleCountChannel.setName(client.lang.event_client_ready_idleCountChannel + idleCount);
+    }
     setTimeout(showIdleCount, 10000);
   }
   showIdleCount();
@@ -63,7 +87,11 @@ module.exports = function (client) {
     let dndCount = guild.members.cache.filter(members => members.presence.status === "dnd").size;
     let dndCountChannel = guild.channels.cache.find(channels => channels.id === "729692580987797554");
 
-    dndCountChannel.setName(client.lang.event_client_ready_dndCountChannel + dndCount);
+    if (!dndCountChannel) {
+      return;
+    } else {
+      dndCountChannel.setName(client.lang.event_client_ready_dndCountChannel + dndCount);
+    }
     setTimeout(showDndCount, 10000);
   }
   showDndCount();
