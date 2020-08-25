@@ -1,4 +1,4 @@
-module.exports = function (member) {
+module.exports = async function (member) {
     let channel = member.voice.channel;
     let clientChannel = member.guild.me.voice.channel;
 
