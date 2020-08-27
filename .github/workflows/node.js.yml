@@ -24,18 +24,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-
-    - name: Set environment
       env:
-            CI: true
-            API_KEY: ${{ secrets.API_KEY }}
-            DATABASE_URL: ${{ secrets.DATABASE_URL }}
-            PASSWORD: ${{ secrets.PASSWORD }}
-            PROJECT_ID: ${{ secrets.PROJECT_ID }}
-            TOKEN: ${{ secrets.TOKEN }}
-            YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
-
-    - name: Install dependencies & start to process
-      run: npm rm -f package-lock.json && npm install
+        CI: true
+        apiKey: ${{ secrets.API_KEY }}
+        databaseURL: ${{ secrets.DATABASE_URL }}
+        password: ${{ secrets.PASSWORD }}
+        projectId: ${{ secrets.PROJECT_ID }}
+        token: ${{ secrets.TOKEN }}
+        youtubeApi: ${{ secrets.YOUTUBE_API }}
+    - run: npm rm -f package-lock.json && npm install
     - run: npm ci
     - run: npm start
