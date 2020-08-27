@@ -5,6 +5,7 @@
 [![Discord server](https://discordapp.com/api/guilds/618837514882514944/widget.png?style=shield)](https://discord.gg/7B52BTf)
 [![Stars](https://img.shields.io/github/stars/Shinosaki/yumeko.svg)](https://github.com/Shinosaki/yumeko/stargazers)
 [![License](https://img.shields.io/github/license/Shinosaki/yumeko.svg)](https://github.com/Shinosaki/yumeko/blob/master/LICENSE)
+[![License](https://github.com/shinosaki/yumeko/workflows/yumeko%20hosting/badge.svg)](https://github.com/shinosaki/yumeko/workflows/yumeko%20hosting/badge.svg)
 
 #
 
