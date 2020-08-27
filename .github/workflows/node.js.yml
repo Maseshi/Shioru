@@ -24,5 +24,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        super_secret: ${{ secrets.SuperSecret }}
     - run: npm i
     - run: npm start
