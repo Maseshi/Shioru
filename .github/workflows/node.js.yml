@@ -33,5 +33,4 @@ jobs:
         YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
     - run: npm rm -f package-lock.json && npm install
     - run: npm ci
-    - run: npm install
     - run: npm start
