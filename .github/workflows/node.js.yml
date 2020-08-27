@@ -31,6 +31,7 @@ jobs:
         PROJECT_ID: ${{ secrets.PROJECT_ID }}
         TOKEN: ${{ secrets.TOKEN }}
         YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
-    - run: npm ci npm-shrinkwrap.json
-    - run: npm i
-    - run: npm run start
+    - run: npm ci
+    - run: npm rm -f package-lock.json && npm install
+    - run: npm install
+    - run: npm start
