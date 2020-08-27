@@ -24,6 +24,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm rm -f package-lock.json && npm install
+    - run: npm ci
       env:
         CI: true
         apiKey: ${{ secrets.API_KEY }}
@@ -32,6 +34,4 @@ jobs:
         projectId: ${{ secrets.PROJECT_ID }}
         token: ${{ secrets.TOKEN }}
         youtubeApi: ${{ secrets.YOUTUBE_API }}
-    - run: npm rm -f package-lock.json && npm install
-    - run: npm ci
     - run: npm start
