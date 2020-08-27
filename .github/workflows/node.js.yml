@@ -24,6 +24,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        super_secret: ${{ secrets.SuperSecret }}
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        TOKEN: ${{ secrets.TOKEN }}
+        YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
     - run: npm i
     - run: npm start
