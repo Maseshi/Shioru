@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,12 +19,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Clean temp directory
+      run: rm -rf *
+      working-directory: ./temp
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm rm -f package-lock.json && npm install
-    - run: npm ci
+
+    - name: Clean install dependencies
+      run: npm ci
       
     - name: Start to process
       run: npm start
