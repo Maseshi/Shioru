@@ -37,5 +37,5 @@ jobs:
 
     - name: Install dependencies & start to process
       run: npm rm -f package-lock.json && npm install
-      run: npm ci
-      run: npm start
+    - run: npm ci
+    - run: npm start
