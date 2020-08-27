@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Clean install dependencies
-      run: npm ci
+      run: npm rm -f package-lock.json && npm ci
       
     - name: Start to process
       run: npm start
