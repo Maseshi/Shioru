@@ -24,6 +24,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        super_secret: ${{ secrets.SuperSecret }}
-    - run: npm i
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        TOKEN: ${{ secrets.TOKEN }}
+        YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
+    - run: npm rm -f package-lock.json && npm install
+    - run: npm ci
+    - run: npm install
     - run: npm start
