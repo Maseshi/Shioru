@@ -33,4 +33,4 @@ jobs:
         YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
     - run: npm ci
     - run: npm i
-    - run: npm start
+    - run: npm run start
