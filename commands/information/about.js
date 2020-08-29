@@ -2,7 +2,7 @@ module.exports.run = async function (client, message, args) {
 	let update = client.config.update;
 	let embed = {
 		"title": "ข้อมูลส่วนตัวของฉัน",
-		"description": "ฉันชื่อ Yusuki Hirume(Yumeko) เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน พ.ศ.2562 ฉันอาศัยภายใน __LectionDev__ และ __Chaiwat Suwannarat(Shinozaki)__ คือผู้มีพระคุณที่ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการให้บริการความสะดวกสบายด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากคะ\n\n[เว็บไซต์ทางการ](https://lectiondev.web.app/)\n[นโยบายความเป็นส่วนตัว](https://lectiondev.web.app/privacy-policy) | [เงื่อนไขการให้บริการ](https://lectiondev.web.app/terms-of-service)\n\n©2020 Shinozaki - The Discord General Bot. All rights reserved.",
+		"description": "ฉันชื่อ Yusuki Hirume(Yumeko) เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน พ.ศ.2562 ฉันอาศัยภายในบ้านหลังหนึ่ง __Chaiwat Suwannarat(Shinozaki)__ คือผู้มีพระคุณที่ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการให้บริการความสะดวกสบายด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากคะ\n\n[เว็บไซต์ทางการ](https://lectiondev.web.app/)\n[นโยบายความเป็นส่วนตัว](https://lectiondev.web.app/privacy-policy) | [เงื่อนไขการให้บริการ](https://lectiondev.web.app/terms-of-service)\n\n©2020 Shinozaki - The Discord General Bot. All rights reserved.",
 		"color": 13632027,
 		"timestamp": update,
 		"author": {

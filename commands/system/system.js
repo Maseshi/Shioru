@@ -3,7 +3,7 @@ const os = require("os");
 const cpuStat = require("cpu-stat");
 
 module.exports.run = async function (client, message, args) {
-    let msg = await message.channel.send("⚙️ กำลังประมวลผล..รอสักครู่นะคะ...");
+    let msg = await message.channel.send("⚙️ กำลังประมวลผล รอสักครู่นะคะ...");
     cpuStat.usagePercent(function (error, percent) {
         if (error) {
             msg.edit("⚠️ เกิดข้อผิดพลาด: " + error);
@@ -21,10 +21,6 @@ module.exports.run = async function (client, message, args) {
                 "title": "ข้อมูลของระบบ",
                 "description": "ข้อมูลที่ฉันกำลังทำงานอยู่ในขณะนี้ ตามที่ทางระบบให้ข้อมูลมา ได้ดังนี้คะ",
                 "color": 4886754,
-                "footer": {
-                    "icon_url": "https://lectiondev.web.app/assets/static/favicon.ico",
-                    "text": "ข้อมูลระบบเซิร์ฟเวอร์ของ LectionDev"
-                },
                 "fields": [
                     {
                         "name": "• Memory Usage",
@@ -43,7 +39,7 @@ module.exports.run = async function (client, message, args) {
                     },
                     {
                         "name": "• Owner",
-                        "value": "LectionDev",
+                        "value": "Shinozaki",
                         "inline": true
                     },
                     {
