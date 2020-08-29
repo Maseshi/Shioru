@@ -11,11 +11,12 @@ on:
 
 jobs:
   build:
+    
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +32,6 @@ jobs:
     - name: Start to process
       run: npm start
       env:
-        CI: true
         apiKey: ${{ secrets.API_KEY }}
         databaseURL: ${{ secrets.DATABASE_URL }}
         password: ${{ secrets.PASSWORD }}
