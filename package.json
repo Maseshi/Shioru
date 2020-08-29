@@ -1,6 +1,6 @@
 {
   "name": "yumeko",
-  "version": "1.4.73beta",
+  "version": "1.4.88beta",
   "description": "Manage members and servers easily with Yumeko.",
   "main": "main.js",
   "author": "shinosaki",
@@ -17,25 +17,26 @@
     "node": ">=9.0.0"
   },
   "scripts": {
-    "start": "nodemon main.js"
+    "dev": "nodemon main.js",
+    "start": "node main.js"
   },
   "dependencies": {
     "cpu-stat": "^2.0.1",
-    "discord.js": "^12.2.0",
+    "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
-    "ffmpeg-static": "^4.2.5",
-    "firebase": "^7.16.0",
+    "ffmpeg-static": "^4.2.7",
+    "firebase": "^7.19.1",
     "fs": "0.0.1-security",
-    "kitsu": "^9.1.11",
+    "kitsu": "^9.1.15",
     "log-symbols": "^4.0.0",
-    "lyrics-finder": "^21.0.5",
+    "lyrics-finder": "^21.3.2",
     "nodemon": "^2.0.4",
     "opusscript": "0.0.7",
     "os": "^0.1.1",
     "simple-youtube-api": "^5.2.1",
     "superagent": "^5.3.1",
     "weather-js": "^2.0.0",
-    "yt-search": "^2.1.1",
+    "yt-search": "^2.2.4",
     "ytdl-core-discord": "^1.2.1"
   }
 }
