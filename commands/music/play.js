@@ -43,7 +43,7 @@ module.exports.run = async function (client, message, args) {
                     } else {
                         yts(search, function (error, result) {
                             if (error) {
-                                console.error(error);
+                                console.log(error);
                                 return message.channel.send("❎ อืมม...ดูเหมือนจะไม่เจอเพลงนี้เลยนะ");
                             } else {
                                 let videos = result.videos;
@@ -66,7 +66,7 @@ module.exports.run = async function (client, message, args) {
                                             queueConstruct.connection = connection;
                                             musicPlayer(client, message, queueConstruct.songs[0]);
                                         }).catch(function (error) {
-                                            console.error("I could not join the voice channel: " + error);
+                                            console.log("I could not join the voice channel: " + error);
                                             message.client.queue.delete(message.guild.id);
                                             channel.leave();
                                             message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องคะ: " + error);

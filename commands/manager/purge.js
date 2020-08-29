@@ -15,7 +15,7 @@ module.exports.run = async function (client, message, args) {
     				message.channel.send("ลบข้อความจำนวน `" + messages.size + " ข้อความ` ให้เรียบร้อยแล้วคะ 💨");
     			}).catch(function (error) {
 					message.channel.send("⚠️ ลบข้อความไม่ได้อ่ะ เพราะว่า: " + error);
-					console.error(error);
+					console.log(error);
 				});
     		}
     	}

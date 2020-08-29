@@ -18,7 +18,7 @@ module.exports.run = async function (client, message, args) {
                     msg.edit("✅ ลบระดับประสบการณ์ของสมาชิกนี้ ออกจากฐานข้อมูลเรียบร้อยแล้วคะ!");
                 }).catch(function (error) {
                     msg.edit("❎ ไม่พบผู้ใช้ในฐานข้อมูลคะ");
-                    console.error(error);
+                    console.log(error);
                 });
             }
         }

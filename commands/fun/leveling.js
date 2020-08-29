@@ -51,7 +51,7 @@ module.exports.run = async function (client, message, args) {
                 message.channel.send("💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับประสบการณ์เลยคะ");
             }
         }).catch(function (error) {
-            console.error(error);
+            console.log(error);
             message.channel.send("⚠️ เกิดข้อผิดพลาดซ่ะแล้วคะ!! แจ้งมาว่า: " + error);
         });
     }

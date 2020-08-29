@@ -55,7 +55,7 @@ module.exports.run = async function (client, message, args) {
 					}
 				}
 			} catch (error) {
-				console.error(error);
+				console.log(error);
 			}
 		});
 		

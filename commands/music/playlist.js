@@ -55,7 +55,7 @@ module.exports.run = async function (client, message, args) {
                                     "part": "snippet"
                                 });
                             } catch (error) {
-                                console.error(error);
+                                console.log(error);
                                 return message.channel.send("❎ หาเพลย์ลิสไม่เจออ่ะ จบละ");
                             }
                         } else {
@@ -68,7 +68,7 @@ module.exports.run = async function (client, message, args) {
                                     "part": "snippet"
                                 });
                             } catch (error) {
-                                console.error(error);
+                                console.log(error);
                                 return message.channel.send("❎ หาเพลย์ลิสไม่เจออ่ะ จบละ");
                             }
                         }
@@ -112,7 +112,7 @@ module.exports.run = async function (client, message, args) {
                                     queueConstruct.connection = connection;
                                     musicPlayer(client, message, queueConstruct.songs[0]);
                                 }).catch(function (error) {
-                                    console.error("I could not join the voice channel: " + error);
+                                    console.log("I could not join the voice channel: " + error);
                                     message.client.queue.delete(message.guild.id);
                                     channel.leave();
                                     message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องคะ: " + error);

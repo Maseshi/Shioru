@@ -49,7 +49,7 @@ module.exports = function (client, message) {
             ref.update({
                 "EXP": expPlus
             }).catch(function (error) {
-                console.error(error);
+                console.log(error);
             });
 
             if (exp === 1000) {
@@ -73,7 +73,7 @@ module.exports = function (client, message) {
                     };
                     levelUp.send({ embed });
                 }).catch(function (error) {
-                    console.error(error);
+                    console.log(error);
                 });
             }
         } else {
@@ -81,7 +81,7 @@ module.exports = function (client, message) {
                 "EXP": 0,
                 "Level": 0
             }).catch(function (error) {
-                console.error(error);
+                console.log(error);
             });
         }
     });

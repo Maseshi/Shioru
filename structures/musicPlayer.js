@@ -29,7 +29,7 @@ module.exports = async function (client, message, song) {
             }
         });
         dispatcher.on('error', function (error) {
-            console.error(error);
+            console.log(error);
             return message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ แจ้งมาว่า: " + error);
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 100);

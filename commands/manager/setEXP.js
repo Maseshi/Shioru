@@ -59,11 +59,11 @@ module.exports.run = async function (client, message, args) {
                                     message.channel.send("❎ ไม่พบสมชิกรายนี้ในฐานข้อมูลเลยคะ");
                                 }
                             }).catch(function (error) {
-                                console.error(error);
+                                console.log(error);
                                 message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังตรวจสอบทรัพยากร: " + error);
                             });
                     }).catch(function (error) {
-                        console.error(error);
+                        console.log(error);
                         message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังอัพเดททรัพยากร: " + error);
                     });
                 }
