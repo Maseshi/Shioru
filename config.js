@@ -9,7 +9,7 @@ module.exports = {
         "databaseURL": process.env.databaseURL || $databaseURL,
         "projectId": process.env.projectId || $projectId
     },
-    "update": "2020-06-23T11:03:44.031Z",
+    "update": "2020-09-18T18:44:10.435Z",
     "password": process.env.password || $password,
     "youtubeApi": process.env.youtubeApi || $youtubeApi
 };
