@@ -1,1 +1,1 @@
-worker: nodemon main.js
+worker: node main.js
