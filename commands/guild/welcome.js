@@ -53,11 +53,6 @@ module.exports.run = async function (client, message, args) {
 				});
 			});
 		});
-
-		let myGuild = client.guilds.cache.find(servers => servers.id === "618837514882514944");
-		let guildChannel = myGuild.channels.cache.find(channels => channels.id === "692297482062790706");
-		guildChannel.messages.fetch("712405302258958356")
-		.then(message => message.edit({ "embed": sectionA, sectionAa, sectionB, sectionBa, sectionC, sectionCa }));
 	} else {
 		message.channel.send("🚫 ขออภัยย...คำสั่งนี้ใช้งานได้เฉพาะเซิร์ฟเวอร์ผู้สร้างเท่านั้นนะคะ");
 	}
