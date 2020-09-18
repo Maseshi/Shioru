@@ -1,5 +1,5 @@
 module.exports = function (client) {
-  let guild = client.guilds.cache.find(guilds => guilds.id === "724675075504341085");
+  let guild = client.guilds.cache.find(guilds => guilds.id === "618837514882514944");
 
   // if ready
   console.log("\u001b[34m\u001b[7m" + client.user.username + " is ready to work on the server!\u001b[0m");
@@ -43,7 +43,7 @@ module.exports = function (client) {
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
 
     // Delete the number of members of bots
-    let allMemberCount = (onlineCount + dndCount) - botCount;
+    let allMemberCount = (onlineCount + dndCount) & - botCount;
 
     // Set count numbers in sound channel
     let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
