@@ -39,11 +39,11 @@ module.exports = function (client) {
   // Show on the channel how many members are online.
   function showOnlineCount() {
     let onlineCount = guild.members.cache.filter(members => members.presence.status === "online").size;
-    let idleCount = guild.members.cache.filter(members => members.presence.status === "idle").size;
+    let dndCount = guild.members.cache.filter(members => members.presence.status === "dnd").size;
     let botCount = guild.members.cache.filter(members => members.user.bot).size;
 
     // Delete the number of members of bots
-    let allMemberCount = (onlineCount - botCount) + idleCount;
+    let allMemberCount = (onlineCount + dndCount) - botCount;
 
     // Set count numbers in sound channel
     let onlineCountChannel = guild.channels.cache.find(channels => channels.id === "722105063182434314");
