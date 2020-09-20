@@ -6,8 +6,8 @@ module.exports.run = async function (client, message, args) {
     if (args.join(" ") === "") {
         message.reply("❓ นี่ๆ บอกบทบาทที่อยากได้ให้ฉันด้วยสิ");
     } else {
-        if (args.join(" ") === "Member") {
-            if (member.roles.cache.some(role => role.name === "Member" || "member")) {
+        if (args.join(" ") === "Member" || args.join(" ") === "member") {
+            if (member.roles.cache.some(role => role.name === "Member")) {
                 message.channel.send("🛑 " + username + " คุณมีบทบาทนี้อยู่แล้วนะ อย่าโลภสิ..ไม่ดีๆ");
             } else {
                 member.role.add(role);
