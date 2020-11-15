@@ -1,15 +1,15 @@
 {
-  "name": "yumeko",
-  "version": "1.5.04",
-  "description": "Manage members and servers easily with Yumeko.",
+  "name": "shioru",
+  "version": "1.8.0",
+  "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "shinosaki",
   "license": "MIT",
-  "homepage": "https://github.com/shinosaki/yumeko#readme",
+  "homepage": "https://github.com/shinosaki/shioru#readme",
   "repository": "github:shinosaki/yumeko",
-  "bugs": "https://github.com/shinosaki/yumeko/issues",
+  "bugs": "https://github.com/shinosaki/shioru/issues",
   "keywords": [
-    "yumeko",
+    "shioru",
     "discord",
     "shinosaki"
   ],
@@ -25,21 +25,21 @@
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
-    "firebase": "^7.21.0",
-    "fs": "0.0.1-security",
-    "jshint": "^2.12.0",
+    "firebase": "^7.24.0",
+    "fs": "^0.0.1-security",
     "kitsu": "^9.1.15",
     "log-symbols": "^4.0.0",
     "lyrics-finder": "^21.3.2",
-    "opusscript": "0.0.7",
+    "opusscript": "^0.0.7",
     "os": "^0.1.1",
+    "search": "^1.0.0",
     "simple-youtube-api": "^5.2.1",
     "superagent": "^5.3.1",
     "weather-js": "^2.0.0",
-    "yt-search": "^2.2.4",
-    "ytdl-core-discord": "^1.2.1"
+    "ytdl-core-discord": "^1.2.1",
+    "yt-search": "^2.2.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.6"
   }
 }
