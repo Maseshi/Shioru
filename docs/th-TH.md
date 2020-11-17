@@ -24,7 +24,6 @@
 - [cpu-stat](https://www.npmjs.com/package/cpu-stat)
 - [discord.js](https://discord.js.org/)
 - [dotenv](https://www.npmjs.com/package/dotenv)
-- [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)
 - [firebase](https://www.npmjs.com/package/firebase)
 - [fs](https://www.npmjs.com/package/fs)
 - [kitsu](https://www.npmjs.com/package/kitsu)

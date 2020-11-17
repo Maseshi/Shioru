@@ -24,7 +24,6 @@
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
-    "ffmpeg-static": "^4.2.7",
     "firebase": "^7.24.0",
     "fs": "^0.0.1-security",
     "kitsu": "^9.1.15",
