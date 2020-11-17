@@ -51,7 +51,7 @@ module.exports.run = async function (client, message, args) {
 					if (client.config.owner.includes(message.author.id)) {
 						embed.addField("🏷️ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
 					} else if (category !== "Developer") {
-						embed.addField("🏷️ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+						embed.addField("🔩 " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
 					}
 				}
 			} catch (error) {

@@ -25,7 +25,7 @@ module.exports.run = async function (client, message, args) {
         }
     } else {
         if (arg) {
-            let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
             } else {
