@@ -14,7 +14,7 @@
     "shinosaki"
   ],
   "engines": {
-    "node": ">=9.0.0"
+    "node": "12.x"
   },
   "scripts": {
     "dev": "nodemon main.js",
