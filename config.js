@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-    "prefix": "Y",
+    "prefix": "S",
     "owner": "618836889239158785",
     "token": process.env.token || $token,
     "firebase": {
