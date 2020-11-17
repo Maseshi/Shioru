@@ -17,13 +17,13 @@ module.exports.run = async function (client, message, args) {
         userID(avatar, username, id);
     }
 
-    function userID(avatar, username, id) {
+    function userID(Savatar, Susername, Sid) {
         let embed = {
-            "title": "รหัสบัญชีของ " + username,
-            "description": "```" + id + "```\nเคล็ดลับ: วิธีเปิด **โหมดผู้พัฒนา** เพื่อรับตัวเลือกเพิ่มเติม เช่น คัดลอก ID, คัดลอก ID ข้อความ และอื่นๆ โดยให้เข้าไปที่ __ตั้งค่าผู้ใช้ > หน้าตา > ขั้นสูง__ และทำการเปิดที่ __โหมดผู้พัฒนา__",
+            "title": "รหัสบัญชีของ " + Susername,
+            "description": "```" + Sid + "```\nเคล็ดลับ: วิธีเปิด **โหมดผู้พัฒนา** เพื่อรับตัวเลือกเพิ่มเติม เช่น คัดลอก ID, คัดลอก ID ข้อความ และอื่นๆ โดยให้เข้าไปที่ __ตั้งค่าผู้ใช้ > หน้าตา > ขั้นสูง__ และทำการเปิดที่ __โหมดผู้พัฒนา__",
             "color": 4886754,
             "thumbnail": {
-                "url": avatar
+                "url": Savatar
             }
         };
         message.channel.send({ embed });

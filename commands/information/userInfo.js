@@ -7,7 +7,7 @@ module.exports.run = async function (client, message, args) {
   let accountCreateAt = message.author.createdAt;
   let arg = args.join(" ");
   if (arg) {
-    let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+    let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
     if (!user) {
       message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
     } else {
@@ -22,8 +22,8 @@ module.exports.run = async function (client, message, args) {
     userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt);
   }
 
-  function userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt) {
-    let date = new Date(accountCreateAt);
+  function userInfo(SguildIcon, Savatar, Susername, SuserDiscriminator, Sid, SaccountCreateAt) {
+    let date = new Date(SaccountCreateAt);
     let days = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
     let months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
     let createdAt = "วัน" + days[date.getDay()] + "ที่ " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " เวลา " + date.getHours() + ":" + date.getMinutes() + " น.";
@@ -32,20 +32,20 @@ module.exports.run = async function (client, message, args) {
       "title": "ข้อมูลของคุณ!",
       "color": 4886754,
       "footer": {
-        "icon_url": guildIcon,
+        "icon_url": SguildIcon,
         "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
       },
       "thumbnail": {
-        "url": avatar
+        "url": Savatar
       },
       "fields": [
         {
           "name": "ชื่อเต็ม:",
-          "value": username + "#" + userDiscriminator
+          "value": Susername + "#" + SuserDiscriminator
         },
         {
           "name": "รหัสบัญชี:",
-          "value": id
+          "value": Sid
         },
         {
           "name": "สร้างบัญชีเมื่อ:",

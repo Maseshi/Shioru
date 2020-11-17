@@ -19,19 +19,19 @@ module.exports.run = async function (client, message, args) {
         getLeveling(avatar, username, id);
     }
 
-    function getLeveling(avatar, username, id) {
+    function getLeveling(Savatar, Susername, Sid) {
         let database = firebase.database();
-        database.ref("Discord/Users/" + id + "/Leveling/").once("value")
+        database.ref("Discord/Users/" + Sid + "/Leveling/").once("value")
         .then(function (snapshot) {
             if (snapshot.exists()) {
                 let exp = snapshot.val().EXP;
                 let level = snapshot.val().Level;
 
                 let embed = {
-                    "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                    "description": Susername + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
                     "color": 4886754,
                     "thumbnail": {
-                        "url": avatar
+                        "url": Savatar
                     },
                     "fields": [
                         {

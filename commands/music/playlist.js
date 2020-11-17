@@ -73,12 +73,12 @@ module.exports.run = async function (client, message, args) {
                             }
                         }
 
-                        videos.forEach(function (videos) {
+                        videos.forEach(function (vdo) {
                             song = {
-                                "id": videos.id,
-                                "title": videos.title,
-                                "url": videos.url,
-                                "duration": videos.duration,
+                                "id": vdo.id,
+                                "title": vdo.title,
+                                "url": vdo.url,
+                                "duration": vdo.duration,
                             };
 
                             if (serverQueue) {
@@ -98,7 +98,7 @@ module.exports.run = async function (client, message, args) {
                                 .setTimestamp()
                                 .setFooter(message.author.username, message.author.displayAvatarURL());
 
-                            playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => (index + 1) + ". " + song.title));
+                            playlistEmbed.setDescription(queueConstruct.songs.map((songs, index) => (index + 1) + ". " + songs.title));
                             if (playlistEmbed.description.length >= 2048) {
                                 playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "\nอุ้ย...เพลย์ลิสเยอะไป ขอเอาออกบางส่วนนะ";
                             }

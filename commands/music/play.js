@@ -65,11 +65,11 @@ module.exports.run = async function (client, message, args) {
                                         .then(function (connection) {
                                             queueConstruct.connection = connection;
                                             musicPlayer(client, message, queueConstruct.songs[0]);
-                                        }).catch(function (error) {
-                                            console.log("I could not join the voice channel: " + error);
+                                        }).catch(function (err) {
+                                            console.log("I could not join the voice channel: " + err);
                                             message.client.queue.delete(message.guild.id);
                                             channel.leave();
-                                            message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องคะ: " + error);
+                                            message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องคะ: " + err);
                                         });
                                 }
                             }

@@ -9,7 +9,7 @@ module.exports.run = async function (client, message, args) {
         if (!arg) {
             message.reply("❓ กรุณาระบุสมาชิกที่ต้องการจะเปลี่ยนแปลง Level ด้วยคะ!");
         } else {
-            let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg));
+            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
             } else {

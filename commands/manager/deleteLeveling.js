@@ -6,11 +6,11 @@ module.exports.run = async function (client, message, args) {
         if (arg === "") {
             message.reply("❓ สมาชิกที่ต้องการจะลบชื่อว่าอะไรเหรอคะ รหัสบัญชีก็ได้นะ >.<");
         } else {
-            let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
             } else {
-                id = user.id;
+                let id = user.id;
                 let msg = await message.channel.send("📁 กำลังลบข้อมูลระดับประสบการณ์ของสมาชิกนี้");
                 let database = firebase.database();
                 database.ref("Discord/Users/" + id + "/Leveling/").remove()

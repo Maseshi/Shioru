@@ -1,8 +1,8 @@
 module.exports.run = async function (client, message, args) {
-    let channel = message.guild.channels.cache.find(channel => channel.name === "│ประชาสัมพันธ์📢");
+    let channel = message.guild.channels.cache.find(channels => channels.name === "│ประชาสัมพันธ์📢");
 
     if (args[0]) {
-        let user = client.users.cache.find(user => (user.username === args[0]) || (user.id === args[0]) || (user.tag === args[0]));
+        let user = client.users.cache.find(users => (users.username === args[0]) || (users.id === args[0]) || (users.tag === args[0]));
         let reason = args[1];
 
         if (!user) {

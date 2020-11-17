@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
 		if (!arg) {
 			message.reply("❓ จะให้ฉันจัดการกับสมาชิกคนไหนเหรอคะ");
 		} else {
-			let user = client.users.cache.find(user => (user.username === arg) || (user.id === arg) || (user.tag === arg));
+			let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
 			if (!user) {
 				message.channel.send("❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ");
 			} else {

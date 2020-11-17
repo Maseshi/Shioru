@@ -45,8 +45,8 @@ module.exports.run = async function (client, message, args) {
                             message.channel.activeCollector = false;
                             message.client.commands.get("play").run(client, message, [choice]);
                             resultsMessage.delete();
-                        }).catch(function (error) {
-                            console.error(error);
+                        }).catch(function (err) {
+                            console.error(err);
                             message.channel.activeCollector = false;
                         });
                     }

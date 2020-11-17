@@ -10,11 +10,11 @@ module.exports.run = async function (client, message, args) {
             console.error(error);
         } else {
             let totalSeconds = (client.uptime / 1000);
-            let days = Math.floor(totalSeconds / 86400);
+            // let days = Math.floor(totalSeconds / 86400);
             let hours = Math.floor(totalSeconds / 3600);
             totalSeconds %= 3600;
             let minutes = Math.floor(totalSeconds / 60);
-            let seconds = Math.floor(totalSeconds % 60);
+            // let seconds = Math.floor(totalSeconds % 60);
 
             //let duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
             let embed = {

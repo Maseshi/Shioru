@@ -1,5 +1,5 @@
 module.exports.run = async function (client, message, args) {
-    let channel = message.guild.channels.cache.find(channel => channel.name === "│ประชาสัมพันธ์📢");
+    let channel = message.guild.channels.cache.find(channels => channels.name === "│ประชาสัมพันธ์📢");
     let avatar = message.author.displayAvatarURL();
     let username = message.author.username;
     let text = args.join(" ");
