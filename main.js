@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 const firebase = require("firebase");
-const package = require("./package.json");
+const packageInfo = require("./package.json");
 const config = require("./config");
 const lang = require("./languages/th_TH.json");
 
@@ -22,7 +22,7 @@ client.queue = new Map();
 ["command", "event"].forEach(dirs => require("./handlers/" + dirs)(client));
 
 // Check package version
-console.log("\u001b[1mpackage\u001b[0m version: " + package.version);
+console.log("\u001b[1mpackage\u001b[0m version: " + packageInfo.version);
 console.log("\u001b[1mdiscord.js\u001b[0m version: " + discord.version);
 console.log("\u001b[1mnode.js\u001b[0m version: " + process.version);
 
