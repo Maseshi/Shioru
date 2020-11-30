@@ -17,6 +17,7 @@
 #
 
 **Add Shioru to your server. In the trial version of this repository**
+
 [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://discord.com/oauth2/authorize?client_id=704706906505347183&scope=bot&permissions=805314622)
 
 # Information

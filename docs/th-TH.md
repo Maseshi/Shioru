@@ -17,6 +17,7 @@
 #
 
 **เพิ่ม Shioru ไปยังเซิร์ฟเวอร์ของคุณ ในรุ่นทดลองของที่เก็บนี้**
+
 [![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://discord.com/oauth2/authorize?client_id=704706906505347183&scope=bot&permissions=805314622)
 
 # ข้อมูล
