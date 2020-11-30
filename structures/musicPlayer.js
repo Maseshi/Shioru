@@ -34,6 +34,6 @@ module.exports = async function (client, message, song) {
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
-        queue.textChannel.send("🎶 เริ่มเล่นเพลง: `" + song.title + "`\n\n📄__ รายละเอียด__\n• ระยะเวลา: **" + (song.duration || "ไม่ทราบ") + "**\n• ลิงค์เพลง: **" + song.url + "**\n• ไอดีเพลง: **" + song.id + "**");
+        queue.textChannel.send("🎶 เริ่มเล่นเพลง: `" + song.title + "`");
     }
 };
