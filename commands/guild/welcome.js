@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
 			let sectionA = {
 				"title": "ยินดีต้อนรับสู่ " + guildName,
 				"image": {
-					"url": "https://imgur.com/a/rSIL5nW"
+					"url": "https://i.imgur.com/nK1ljjl.jpeg"
 				}
 			};
 			let sectionAa = {
