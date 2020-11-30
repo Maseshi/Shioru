@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "shinosaki",
@@ -21,22 +21,28 @@
     "start": "node main.js"
   },
   "dependencies": {
+    "bufferutil": "^4.0.2",
     "cpu-stat": "^2.0.1",
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.5.1",
+    "@discordjs/opus": "^0.3.3",
     "dotenv": "^8.2.0",
-    "firebase": "^7.24.0",
+    "erlpack": "github:discord/erlpack",
+    "firebase": "^8.1.1",
     "fs": "^0.0.1-security",
-    "kitsu": "^9.1.15",
+    "kitsu": "^9.1.16",
+    "libsodium-wrappers": "^0.7.8",
     "log-symbols": "^4.0.0",
-    "lyrics-finder": "^21.3.2",
+    "lyrics-finder": "^21.4.0",
     "opusscript": "^0.0.7",
     "os": "^0.1.1",
     "search": "^1.0.0",
     "simple-youtube-api": "^5.2.1",
-    "superagent": "^5.3.1",
+    "superagent": "^6.1.0",
+    "utf-8-validate": "^5.0.3",
     "weather-js": "^2.0.0",
-    "ytdl-core-discord": "^1.2.1",
-    "yt-search": "^2.2.4"
+    "ytdl-core-discord": "^1.2.4",
+    "yt-search": "^2.5.0",
+    "zlib-sync": "^0.1.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
