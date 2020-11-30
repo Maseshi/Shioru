@@ -16,9 +16,7 @@ module.exports.run = async function (client, message, args) {
             message.delete()
                 .then(function () {
                     channelInfo.send(text)
-                        .then(function () {
-                            message.channel.send("✅ ส่งข้อความไปที่ <#" + channelInfo.id + "> เรียบร้อยแล้วคะ");
-                        }).catch(function (error) {
+                        .catch(function (error) {
                             message.channel.send("⚠️ ไม่สามารถส่งข้อความได้ เนื่องจาก: " + error);
                         });
                 });
