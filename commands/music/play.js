@@ -86,5 +86,5 @@ module.exports.help = {
     "description": "Sing to listen",
     "usage": "Yplay <name>",
     "category": "music",
-    "aliases": ["เล่น", "p"]
+    "aliases": ["เล่น", "p", "เพลง"]
 };
