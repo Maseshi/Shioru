@@ -16,12 +16,14 @@
 
 #
 
+**Add Shioru to your server. In the trial version of this repository**
+[![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://discord.com/oauth2/authorize?client_id=704706906505347183&scope=bot&permissions=805314622)
+
+# Information
+
 The goal of creating this bot is to allow her to work on other servers, but at this time I can only let her work inside my server.If you think you should add or edit any parts, you can suggest my bot in advance.
 
 For a look at all of her commands, type Shelp.
-
-Add Shioru to your server. In the trial version of this repository
-[Add to your server](https://discord.com/oauth2/authorize?client_id=704706906505347183&scope=bot&permissions=805314622)
 
 # Credit
 
