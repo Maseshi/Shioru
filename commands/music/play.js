@@ -26,7 +26,6 @@ module.exports.run = async function (client, message, args) {
                         let videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
                         let playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
                         let videoPlaylistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-                        let urlValid = videoPlaylistPattern.test(args[0]);
                         let search = args.join(" ");
                         let url = args[0];
                         let videos = [];
@@ -47,13 +46,16 @@ module.exports.run = async function (client, message, args) {
                             "volume": 100,
                             "playing": true
                         };
+
+                        // This is a troubleshooting aid.
+                        console.log(!videoPattern.test(url) && playlistPattern.test(url));
                         
                         // Start the playlist if playlist url was provided
                         if (!videoPattern.test(url) && playlistPattern.test(url)) {
                             if (!youtube) {
                                 message.reply("❌ โควต้าการใช้งานของเซิร์ฟเวอร์หมดแล้วอ๊าาา...โปรดรอในวันพรุ่งนี้แทนนะคะ ขอโทษจริงๆ คะ T~T");
                             } else {
-                                if (urlValid) {
+                                if (videoPlaylistPattern.test(url)) {
                                     try {
                                         playlist = await youtube.getPlaylist(url, { "part": "snippet" });
                                         videos = await playlist.getVideos(10, { "part": "snippet" });
