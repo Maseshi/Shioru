@@ -1,6 +1,6 @@
 module.exports = function (client, channel) {
     let guild = client.guilds.cache.find(servers => servers.id === "618837514882514944");
-    let notification = guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
+    let notification = guild.channels.cache.find(ch => ch.name === "║การแจ้งเตือน🔔");
 	let embed = {
 	    "description": client.lang.event_guild_channelCreate_embed_description.replace('%channel', channel.id),
         "color": 4886754,

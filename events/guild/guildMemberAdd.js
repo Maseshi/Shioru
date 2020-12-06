@@ -1,5 +1,5 @@
 module.exports = function (client, member) {
-	let notification = member.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
+	let notification = member.guild.channels.cache.find(ch => ch.name === "║การแจ้งเตือน🔔");
 	if (member.user.bot) {
 		return;
 	} else {
