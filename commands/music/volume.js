@@ -11,7 +11,7 @@ module.exports.run = function (client, message, args) {
             message.channel.send("❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ จะไปปรับเสียงอะไรอ่ะ");
         } else {
             if (!check(message.member)) {
-                message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
+                message.channel.send("🚫 เฉพาะเจ้าของคิวนี้เท่านั้นที่จะปรับเสียงเพลงได้");
             } else {
                 if (isNaN(volume)) {
                     message.channel.send("🔈 ปริมาณเสียงปัจจุบันคือ: **" + serverQueue.volume + "**");
@@ -19,9 +19,13 @@ module.exports.run = function (client, message, args) {
                     if (volume >= 101) {
                         message.channel.send("🔇 ดังเกินไปแล้ววว...เดี่ยวลำโพงก็แตกซ่ะหรอก");
                     } else {
-                        serverQueue.volume = volume;
-                        serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
-                        message.channel.send("🔊 ปรับเสียงไปที่ระดับ: **" + volume + "**");
+                        if (volume <= 0) {
+                            message.channel.send("🔈 นั้นก็เบาไปคะ");
+                        } else {
+                            serverQueue.volume = volume;
+                            serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
+                            message.channel.send("🔊 ปรับเสียงไปที่ระดับ: **" + volume + "**");
+                        }
                     }
                 }
             }
