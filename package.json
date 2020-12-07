@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "shinosaki",
@@ -26,7 +26,6 @@
     "discord.js": "^12.5.1",
     "@discordjs/opus": "^0.3.3",
     "dotenv": "^8.2.0",
-    "erit-ytdl": "^0.1.2",
     "erlpack": "github:discord/erlpack",
     "firebase": "^8.1.1",
     "fs": "^0.0.1-security",
@@ -41,6 +40,8 @@
     "superagent": "^6.1.0",
     "utf-8-validate": "^5.0.3",
     "weather-js": "^2.0.0",
+    "ytdl-core": "^4.1.2",
+    "ytdl-core-discord": "^1.2.4",
     "yt-search": "^2.5.1",
     "zlib-sync": "^0.1.7"
   },
