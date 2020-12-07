@@ -1,4 +1,4 @@
-const ytdl = require("erit-ytdl");
+const ytdl = require("ytdl-core-discord");
 
 module.exports = async function (client, channel, message, song) {
     let queue = message.client.queue.get(message.guild.id);
