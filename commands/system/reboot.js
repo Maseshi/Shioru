@@ -2,7 +2,7 @@ module.exports.run = async function (client, message, args) {
     if (message.member.id === client.config.owner) {
 		let arg = args[0];
 		if (!arg) {
-			message.reply("❓ กรุณาระบุรหัสผ่านด้วยคะเพื่อยืนยันว่าเป็นคุณจริงๆ");
+			message.reply("❓ กรุณาระบุรหัสผ่านยืนยันอีกครั้งด้วยคะ");
 		} else {
 			message.delete();
 			if (arg === client.config.password) {
