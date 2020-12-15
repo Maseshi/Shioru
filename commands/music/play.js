@@ -46,9 +46,6 @@ module.exports.run = async function (client, message, args) {
                             "volume": 100,
                             "playing": true
                         };
-
-                        // This is a troubleshooting aid.
-                        console.log(!videoPattern.test(url) && playlistPattern.test(url));
                         
                         // Start the playlist if playlist url was provided
                         if (!videoPattern.test(url) && playlistPattern.test(url)) {
@@ -123,11 +120,12 @@ module.exports.run = async function (client, message, args) {
                                     message.client.queue.set(message.guild.id, queueConstruct);
         
                                     queueConstruct.connection = connection;
+                                    await queueConstruct.connection.voice.setSelfDeaf(true);
                                     musicPlayer(client, channel, message, queueConstruct.songs[0]);
                                 }
                             }
                         } else {
-                            yts(search, function (error, result) {
+                            yts(search, async function (error, result) {
                                 if (error) {
                                     console.log("I can't find the song: " + error);
                                     return message.channel.send("❎ อืมม...ดูเหมือนจะไม่เจอเพลงนี้เลยนะ");
@@ -164,6 +162,7 @@ module.exports.run = async function (client, message, args) {
                                         queueConstruct.songs.push(song);
     
                                         queueConstruct.connection = connection;
+                                        await queueConstruct.connection.voice.setSelfDeaf(true);
                                         musicPlayer(client, channel, message, queueConstruct.songs[0]);
                                     }
                                 }

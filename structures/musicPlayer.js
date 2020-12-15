@@ -19,26 +19,16 @@ module.exports = async function (client, channel, message, song) {
         let url = song.url;
         let stream = await ytdl(url, {
             "highWaterMark": 1 << 25,
-            "opusEncoded": true
+            "opusEncoded": true,
+            "quality": "highestaudio"
         });
         let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
         let dispatcher = queue.connection.play(stream, {
             "type": streamType,
-            "filter": "audioonly",
-            "quality": "highestaudio"
+            "filter": "audioonly"
         });
 
-        dispatcher.on("end", function () {
-            if (queue.loop) {
-                let lastSong = queue.songs.shift();
-                queue.songs.push(lastSong);
-                module.exports(client, channel, message, queue.songs[0]);
-            } else {
-                queue.songs.shift();
-                module.exports(client, channel, message, queue.songs[0]);
-            }
-        });
         dispatcher.on("finish", function () {
             if (queue.loop) {
                 let lastSong = queue.songs.shift();
