@@ -23,7 +23,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "stop",
     "description": "Stop playing current song",
-    "usage": "Ystop",
+    "usage": "stop",
     "category": "music",
     "aliases": ["st", "หยุด", "หยุดเล่น"]
 };

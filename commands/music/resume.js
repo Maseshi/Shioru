@@ -22,7 +22,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "resume",
     "description": "resume playing the current song",
-    "usage": "Yresume",
+    "usage": "resume",
     "category": "music",
     "aliases": ["rs", "เล่นต่อ", "ต่อ"]
 };

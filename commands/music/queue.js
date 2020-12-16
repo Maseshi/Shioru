@@ -21,7 +21,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "queue",
     "description": "Check songs in the queue",
-    "usage": "Yqueue",
+    "usage": "queue",
     "category": "music",
     "aliases": ["q", "คิว"]
 };

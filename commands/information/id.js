@@ -33,7 +33,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "id",
     "description": "Get your id",
-    "usage": "Yid",
+    "usage": "id (Member)",
     "category": "information",
     "aliases": ["myid", "myId", "ID", "รหัส", "ไอดี", "รหัสบัญชี"]
 };

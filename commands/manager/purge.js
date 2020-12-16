@@ -27,7 +27,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "purge",
 	"description": "Delete a lot of messages",
-	"usage": "Ypurge <amount>",
+	"usage": "purge <amount>",
 	"category": "owner",
 	"aliases": ["clear", "messageDelete", "ลบข้อความ"]
 };

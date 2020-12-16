@@ -33,7 +33,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "lyrics",
     "description": "Get lyrics for the currently playing song",
-    "usage": "Ylyrics",
+    "usage": "lyrics",
     "category": "music",
     "aliases": ["ly", "เนื้อร้อง"]
 };

@@ -125,7 +125,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "anime",
     "description": "Search for anime available on Kitsu.",
-    "usage": "Yanime <title>",
+    "usage": "anime <title>",
     "category": "fun",
     "aliases": ["an", "cartoon", "อนิเมะ", "การ์ดตูน"]
 };

@@ -106,7 +106,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "server",
     "description": "Get server information",
-    "usage": "Yserver",
+    "usage": "server",
     "category": "guild",
     "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"]
 };

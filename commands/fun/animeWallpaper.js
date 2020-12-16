@@ -13,7 +13,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "animeWallpaper",
     "description": "Anime wallpapers",
-    "usage": "YanimeWallpaper",
+    "usage": "animeWallpaper",
     "category": "personal",
     "aliases": ["animeWall", "animewallpaper", "awallpaper", "awall", "ภาพพื้นหลังอนิแมะ"]
 };

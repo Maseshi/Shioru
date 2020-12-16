@@ -10,7 +10,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "kill",
     "description": "Fake message that says you commit suicide",
-    "usage": "Ykill",
+    "usage": "kill",
     "category": "fun",
     "aliases": ["die", "dead", "ฆ่า", "ตาย"]
 };

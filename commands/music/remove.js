@@ -25,7 +25,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "remove",
     "description": "Remove song from the queue",
-    "usage": "Yremove <Queue Number>",
+    "usage": "remove <queue number>",
     "category": "music",
     "aliases": ["rm", "rq", "ลบ", "ลบคิว"]
 };

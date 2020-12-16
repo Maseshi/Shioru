@@ -23,7 +23,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "skipto",
     "description": "Skip to the selected queue number",
-    "usage": "Yskipto <queue number>",
+    "usage": "skipto <queue number>",
     "category": "music",
     "aliases": ["skt", "ข้ามไปที่"]
 };

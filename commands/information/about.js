@@ -23,7 +23,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "about",
 	"description": "See information about bots.",
-	"usage": "Yabout",
+	"usage": "about",
 	"category": "information",
 	"aliases": ["information", "botinfo", "botInfo", "เกี่ยวกับ", "เกี่ยวกับบอท", "เกี่ยวกับ bot"]
 };

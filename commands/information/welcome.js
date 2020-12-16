@@ -66,7 +66,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "welcome",
 	"description": "welcome",
-	"usage": "Ywelcome",
+	"usage": "welcome",
 	"category": "guild",
 	"aliases": [""]
 };

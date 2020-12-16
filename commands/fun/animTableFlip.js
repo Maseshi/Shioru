@@ -20,7 +20,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "animTableFlip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
-    "usage": "YanimTableFlip",
+    "usage": "animTableFlip",
     "category": "fun",
     "aliases": ["animtableflip", "animtf", "atf", "ฟิบโต๊ะ"]
 };

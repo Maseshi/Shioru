@@ -12,7 +12,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "uptime",
     "description": "Displays the bots current uptime!",
-    "usage": "Yuptime",
+    "usage": "uptime",
     "category": "system",
     "aliases": ["upTime", "upTimes", "uptimes", "เวลา"]
 };

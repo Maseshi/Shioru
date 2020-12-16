@@ -30,7 +30,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "deleteLeveling",
     "description": "Removing EXP and Level of members",
-    "usage": "YdeleteLeveling <member>",
+    "usage": "deleteLeveling <member>",
     "category": "manager",
     "aliases": ["dLeveling", "deleteleveling", "ลบระดับชั้น"]
 };

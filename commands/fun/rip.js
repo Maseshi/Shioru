@@ -12,7 +12,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "rip",
     "description": "Send RIP images",
-    "usage": "Yrip",
+    "usage": "rip",
     "category": "fun",
     "aliases": ["RIP", "rip", "อาร์ไอพี"]
 };

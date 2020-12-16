@@ -77,7 +77,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "setLevel",
     "description": "Set Level of Members",
-    "usage": "YsetLevel <name> <amount>",
+    "usage": "setLevel <name/id> <amount>",
     "category": "manager",
     "aliases": ["sLevel", "setlevel", "ตั้งค่าเลเวล"]
 };

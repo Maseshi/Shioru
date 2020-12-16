@@ -22,7 +22,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "role",
     "description": "Give member roles",
-    "usage": "Yrole",
+    "usage": "role <role>",
     "category": "members",
     "aliases": ["rank", "บทบาท"]
 };

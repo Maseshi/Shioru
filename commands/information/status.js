@@ -66,7 +66,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "status",
     "description": "Check the status of all members within the server",
-    "usage": "Ystatus <status>",
+    "usage": "status <status>",
     "category": "guild",
     "aliases": ["สถานะ"]
 };

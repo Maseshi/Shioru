@@ -28,7 +28,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "join",
 	"description": "Join audio channel",
-	"usage": "Yjoin",
+	"usage": "join (name/id)",
 	"category": "music",
 	"aliases": ["j", "เข้าร่วม"]
 };

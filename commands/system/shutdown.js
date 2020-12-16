@@ -27,7 +27,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "shutdown",
 	"description": "Shutdown the bot system.",
-	"usage": "Yshutdown",
+	"usage": "shutdown <password>",
 	"category": "system",
 	"aliases": ["sd", "ปิดระบบ"]
 };

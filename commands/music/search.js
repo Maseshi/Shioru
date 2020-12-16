@@ -64,7 +64,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "search",
     "description": "Search and select videos to play",
-    "usage": "Ysearch <music name>",
+    "usage": "search <name>",
     "category": "music",
     "aliases": ["ค้นหา", "sch"]
 };

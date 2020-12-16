@@ -139,7 +139,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "soundtest",
 	"description": "Test the sound system",
-	"usage": "Ssoundtest",
+	"usage": "soundtest",
 	"category": "system",
 	"aliases": ["stest", "soundt", "ทดสอบเสียง", "ทดสอบระบบเสียง"]
 };

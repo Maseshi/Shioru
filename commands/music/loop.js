@@ -17,7 +17,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "loop",
     "description": "Toggle music loop",
-    "usage": "Yloop",
+    "usage": "loop",
     "category": "music",
     "aliases": ["lp", "วน"]
 };

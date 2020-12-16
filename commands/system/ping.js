@@ -13,7 +13,7 @@ module.exports.run = async function(client, message) {
 module.exports.help = {
     "name": "ping",
     "description": "Check the ping and api latency of the bot.",
-    "usage": "Yping",
+    "usage": "ping",
     "category": "system",
     "aliases": ["ปิง", "การเชื่อมต่อ"]
 };

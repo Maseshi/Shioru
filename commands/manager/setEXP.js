@@ -77,7 +77,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "setEXP",
     "description": "Set EXP of member",
-    "usage": "YsetEXP <id> <amount>",
+    "usage": "setEXP <name/id> <amount>",
     "category": "manager",
     "aliases": ["setExp", "setexp", "sExp", "ตั้งค่าEXP", "ตั้งค่าExp"]
 };

@@ -23,7 +23,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "shuffle",
     "description": "Shuffle queue",
-    "usage": "Yshuffle <Queue Number>",
+    "usage": "shuffle",
     "category": "music",
     "aliases": ["shf", "สับเปลี่ยน", "สลับ", "เปลี่ยน"]
 };

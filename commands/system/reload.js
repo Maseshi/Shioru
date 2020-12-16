@@ -36,7 +36,7 @@ module.exports.run = (client, message, args) => {
 module.exports.help = {
     "name": "reload",
     "description": "Reload the command that doesn't work.",
-    "usage": "Yreload <command>",
+    "usage": "reload <command>",
     "category": "system",
     "aliases": ["recommand", "รีโหลด", "โหลดซ้ำ"]
 };

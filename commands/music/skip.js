@@ -22,7 +22,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "skip",
     "description": "Skip songs being played",
-    "usage": "Yskip",
+    "usage": "skip",
     "category": "music",
     "aliases": ["sk", "ข้าม"]
 };

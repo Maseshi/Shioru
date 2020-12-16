@@ -24,7 +24,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "advertise",
     "description": "Send promotional messages",
-    "usage": "Yadvertise",
+    "usage": "advertise <message>",
     "category": "messages",
     "aliases": ["adv", "ประชาสัมพันธ์"]
 };

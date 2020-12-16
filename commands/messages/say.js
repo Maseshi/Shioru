@@ -29,7 +29,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "say",
     "description": "Let the bot print instead",
-    "usage": "Ysay (channel) <text>",
+    "usage": "say (channel) <text>",
     "category": "messages",
     "aliases": ["s", "พูด", "ส่งข้อความ"]
 };

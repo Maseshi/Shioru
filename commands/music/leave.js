@@ -22,7 +22,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "leave",
 	"description": "Out of the current audio channel",
-	"usage": "Yleave",
+	"usage": "leave (name/id)",
 	"category": "music",
 	"aliases": ["l", "ออกจาก"]
 };

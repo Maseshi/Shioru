@@ -36,7 +36,7 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "volume",
     "description": "Adjust the music volume",
-    "usage": "Yvolume <number>",
+    "usage": "volume <number>",
     "category": "music",
     "aliases": ["vl", "ระดับเสียง", "ระดับเพลง", "ปรับเสียง"]
 };

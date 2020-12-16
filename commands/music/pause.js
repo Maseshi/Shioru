@@ -21,8 +21,8 @@ module.exports.run = function (client, message, args) {
 
 module.exports.help = {
     "name": "pause",
-    "description": "",
-    "usage": "Ypause",
+    "description": "Pause music",
+    "usage": "pause",
     "category": "music",
     "aliases": ["pu", "หยุดชั่วคราว"]
 };
