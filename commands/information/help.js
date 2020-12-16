@@ -24,7 +24,7 @@ module.exports.run = async function (client, message, args) {
 			embed.setDescription([
 				"```คำสั่ง: " + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
 				"คำอธิบาย: " + (command.description || "ไม่มีคำอธิบาย"),
-				"วิธีใช้: " + (command.usage ? (command.usage) : "ไม่มีวิธีการใช้งาน"),
+				"วิธีใช้: " + (client.config.prefix) + (command.usage ? (command.usage) : "ไม่มีวิธีการใช้งาน"),
 				"ประเภท: " + (command.category ? command.category : "General" || "Misc"),
 				"นามแฝง: " + (command.aliases ? command.aliases.join(", ") + "```" : "ไม่มี" + "```"),
 				"เคล็ดลับ: **นามแฝง** สามารถใช้แทนคำสั่งของแต่ละคำสั่งได้ เช่น `" + (client.config.prefix + command.name.slice(0, 1).toUpperCase() + command.name.slice(1)) + "` แทนด้วย `" + (client.config.prefix + command.aliases[0]) + "`"
@@ -38,7 +38,7 @@ module.exports.run = async function (client, message, args) {
 			"คำสั่งทั้งหมดที่ฉันได้เรียนหรือศึกษามา เข้าใจและใช้งานได้จริง",
 			"ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **" + client.config.prefix + "**",
 			"`<>` หมายถึงจำเป็นและ `()` เป็นตัวเลือก อาจจะตอบหรือไม่จำเป็นต้องตอบก็ได้",
-			"สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `Yhelp คำสั่ง` แล้วคำอธิฐานจะเป็นจริง!!"
+			"สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `" + (client.config.prefix) + "help คำสั่ง` แล้วคำอธิฐานจะเป็นจริง!!"
 		].join("\n"));
 		categories.forEach(function (category) {
 			let dir = client.commands.filter(c => c.help.category.toLowerCase() === category.toLowerCase());
@@ -66,7 +66,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "help",
 	"description": "Get help with the use of bots.",
-	"usage": "Yhelp (command)",
+	"usage": "help (command)",
 	"category": "information",
 	"aliases": ["h", "ช่วยด้วย", "ช่วยเหลือ"]
 };
