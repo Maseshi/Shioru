@@ -63,7 +63,7 @@ module.exports.run = async function (client, message, args) {
 
                         let stream = "./assets/sounds/Dolby - " + name + ".mp3";
                         let dispatcher = connection.play(stream, {
-                            "volume": 0.5
+                            "volume": 1
                         });
                         dispatcher.on("finish", async function () {
                             if (status === 1) {
