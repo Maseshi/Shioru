@@ -1,5 +1,4 @@
 const discord = require("discord.js");
-const fs = require("fs");
 
 module.exports.run = async function (client, message, args) {
     let voiceChannel = message.member.voice.channel;
@@ -62,7 +61,7 @@ module.exports.run = async function (client, message, args) {
                             reactionMessage.edit(soundTestPlayingEmbed);
                         });
 
-                        let stream = fs.createReadStream("./assets/sounds/Dolby - " + name + ".mp3");
+                        let stream = "./assets/sounds/Dolby - " + name + ".mp3";
                         let dispatcher = connection.play(stream, {
                             "volume": 0.5
                         });
