@@ -18,28 +18,28 @@ module.exports.run = async function (client, message, args) {
 
             //let duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
             let embed = {
-                "title": "ข้อมูลของระบบ",
+                "title": "🖥 ข้อมูลของระบบ",
                 "description": "ข้อมูลที่ฉันกำลังทำงานอยู่ในขณะนี้ ตามที่ทางระบบให้ข้อมูลมา ได้ดังนี้คะ",
                 "color": 4886754,
                 "fields": [
                     {
-                        "name": "• Memory Usage",
+                        "name": "• หน่วยความจำที่ใช้ไป",
                         "value": (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + "/" + (os.totalmem() / 1024 / 1024).toFixed(2) + "MB",
                         "inline": true
                     },
                     {
-                        "name": "• Uptime",
+                        "name": "• เวลาทำงาน",
                         "value": hours + "h " + minutes + "m",
                         "inline": true
                     },
                     {
-                        "name": "• Servers",
+                        "name": "• เซิร์ฟเวอร์",
                         "value": "Google.inc",
                         "inline": true
                     },
                     {
-                        "name": "• Owner",
-                        "value": "Shinozaki",
+                        "name": "• เจ้าของ",
+                        "value": "Maseshi",
                         "inline": true
                     },
                     {
@@ -54,17 +54,17 @@ module.exports.run = async function (client, message, args) {
                     },
                     {
                         "name": "• CPU",
-                        "value": `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``,
+                        "value": "```md\n" + os.cpus().map(i => i.model)[0] + "```",
                         "inline": true
                     },
                     {
-                        "name": "• CPU usage",
-                        "value": `\`${percent.toFixed(2)}%\``,
+                        "name": "• CPU ที่ใช้ไป",
+                        "value": "`" + percent.toFixed(2) + "%`",
                         "inline": true
                     },
                     {
-                        "name": "• Platform",
-                        "value": `\`\`${os.platform()}\`\``,
+                        "name": "• แพลตฟอร์ม",
+                        "value": "``" + os.platform() + "``",
                         "inline": true
                     }
                 ]
