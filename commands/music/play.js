@@ -1,7 +1,7 @@
 const discord = require("discord.js");
-const musicPlayer = require("../../structures/musicPlayer");
-const yts = require("yt-search");
 const YouTubeAPI = require("simple-youtube-api");
+const yts = require("yt-search");
+const musicPlayer = require("../../structures/musicPlayer");
 const check = require("../../structures/modifyQueue");
 
 module.exports.run = async function (client, message, args) {
@@ -30,7 +30,7 @@ module.exports.run = async function (client, message, args) {
                         let url = args[0];
                         let videos = [];
                         let playlist;
-                        let song;
+                        let metadata;
 
                         let queueConstruct = {
                             "textChannel": message.channel,
@@ -46,12 +46,16 @@ module.exports.run = async function (client, message, args) {
                             "volume": 100,
                             "playing": true
                         };
+
+                        // This is a troubleshooting aid.
+                        console.log(!videoPattern.test(url) && playlistPattern.test(url));
                         
                         // Start the playlist if playlist url was provided
                         if (!videoPattern.test(url) && playlistPattern.test(url)) {
                             if (!youtube) {
                                 message.reply("❌ โควต้าการใช้งานของเซิร์ฟเวอร์หมดแล้วอ๊าาา...โปรดรอในวันพรุ่งนี้แทนนะคะ ขอโทษจริงๆ คะ T~T");
                             } else {
+                                console.log("Search a playlist");
                                 if (videoPlaylistPattern.test(url)) {
                                     try {
                                         playlist = await youtube.getPlaylist(url, { "part": "snippet" });
@@ -72,7 +76,7 @@ module.exports.run = async function (client, message, args) {
                                 }
         
                                 videos.forEach(function (result) {
-                                    song = {
+                                    metadata = {
                                         "type": result.type,
                                         "id": result.id,
                                         "url": "https://www.youtube.com/watch?v=" + result.id,
@@ -89,10 +93,10 @@ module.exports.run = async function (client, message, args) {
                                     // Add a list of all songs.
                                     if (serverQueue) {
                                         if (check(message.member)) {
-                                            serverQueue.songs.push(song);
+                                            serverQueue.songs.push(metadata);
                                         }
                                     } else {
-                                        queueConstruct.songs.push(song);
+                                        queueConstruct.songs.push(metadata);
                                     }
                                 });
 
@@ -121,17 +125,19 @@ module.exports.run = async function (client, message, args) {
         
                                     queueConstruct.connection = connection;
                                     await queueConstruct.connection.voice.setSelfDeaf(true);
-                                    musicPlayer(client, channel, message, queueConstruct.songs[0]);
+                                    await queueConstruct.connection.voice.setSelfMute(false);
+                                    musicPlayer(client, message, queueConstruct.songs[0]);
                                 }
                             }
                         } else {
+                            console.log("Find a single song");
                             yts(search, async function (error, result) {
                                 if (error) {
                                     console.log("I can't find the song: " + error);
                                     return message.channel.send("❎ อืมม...ดูเหมือนจะไม่เจอเพลงนี้เลยนะ");
                                 } else {
                                     videos = result.videos;
-                                    song = {
+                                    metadata = {
                                         "type": videos[0].type,
                                         "id": videos[0].videoId,
                                         "url": videos[0].url,
@@ -154,16 +160,17 @@ module.exports.run = async function (client, message, args) {
                                         if (!check(message.member)) {
                                             message.channel.send("🚫 เฉพาะเจ้าของคิวนี้เท่านั้นที่จะเพิ่มเพลงได้");
                                         } else {
-                                            serverQueue.songs.push(song);
-                                            message.channel.send("✅ **" + song.title + "** ได้ถูกเพิ่มเข้าไปในคิวแล้วคะ!!");
+                                            serverQueue.songs.push(metadata);
+                                            message.channel.send("✅ **" + metadata.title + "** ได้ถูกเพิ่มเข้าไปในคิวแล้วคะ!!");
                                         }
                                     } else {
+                                        queueConstruct.songs.push(metadata);
                                         message.client.queue.set(message.guild.id, queueConstruct);
-                                        queueConstruct.songs.push(song);
-    
+
                                         queueConstruct.connection = connection;
                                         await queueConstruct.connection.voice.setSelfDeaf(true);
-                                        musicPlayer(client, channel, message, queueConstruct.songs[0]);
+                                        await queueConstruct.connection.voice.setSelfMute(false);
+                                        musicPlayer(client, message, queueConstruct.songs[0]);
                                     }
                                 }
                             });
