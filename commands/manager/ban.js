@@ -1,5 +1,3 @@
-// This command is not yet available. //
-
 module.exports.run = async function (client, message, args) {
 	if (message.member.hasPermission(["ADMINISTRATOR", "BAN_MEMBERS"])) {
 		let arg = args[0];
@@ -33,8 +31,6 @@ module.exports.run = async function (client, message, args) {
 	}
 
 	function ban(user, memberBan, reason) {
-		let notification = message.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
-
 		let author = message.author.username;
 		let authorAvatar = message.author.displayAvatarURL();
 		let avatar = user.avatarURL();
@@ -59,9 +55,7 @@ module.exports.run = async function (client, message, args) {
 						"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
 					}
 				};
-				notification.send({
-					embed
-				});
+				message.channel.send({ embed });
 			}).catch(function (error) {
 				message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
 				console.log(error);
