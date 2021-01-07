@@ -1,14 +1,14 @@
-const firebase = require("firebase");
+const answer = require("../../structures/answer");
+const levelSystem = require("../../structures/levelSystem");
 
 module.exports = function (client, message) {
     let prefix = client.config.prefix;
+    let methods = client.config.method;
+    let method = false;
     let args = message.content.slice(prefix.length).trim().split(/ +/g);
+    let mhs = message.content.slice(method.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
     let command;
-
-    let avatar = message.author.displayAvatarURL();
-    let username = message.author.username;
-    let id = message.author.id;
 
     if (message.author.bot) {
         return;
@@ -25,64 +25,30 @@ module.exports = function (client, message) {
                     } else if (client.aliases.has(cmd)) {
                         command = client.commands.get(client.aliases.get(cmd));
                     } else {
-                        console.log("\u001b[4m" + username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+                        console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
                     }
 
                     if (command) {
                         command.run(client, message, args);
                     }
                 }
+            } else {
+                for (const thisMethod of methods) {
+                    if (message.content.startsWith(thisMethod)) {
+                        method = thisMethod;
+                        if (method.length === 0) {
+                            return;
+                        } else {
+                            mhs.shift();
+                            answer(client, message, mhs);
+                        }
+                    }
+                }
+                if (!method) return;
             }
         }
         
     }
 
-    // Level system
-    let database = firebase.database();
-    let ref = database.ref("Discord/Users/" + id + "/Leveling/");
-    ref.once("value").then(function (snapshot) {
-        if (snapshot.exists()) {
-            let exp = snapshot.val().EXP;
-            let level = snapshot.val().Level;
-
-            let expPlus = (exp += 5);
-            ref.update({
-                "EXP": expPlus
-            }).catch(function (error) {
-                console.log(error);
-            });
-
-            if (exp === 1000) {
-                let levelPlus = ++level;
-                ref.update({
-                    "EXP": 0,
-                    "Level": levelPlus
-                }).then(function () {
-                    let levelUp = message.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
-
-                    let embed = {
-                        "description": client.lang.event_client_message_embed_description.replace('%username', username).replace('%level', level),
-                        "color": 16312092,
-                        "thumbnail": {
-                            "url": avatar
-                        },
-                        "author": {
-                            "name": client.lang.event_client_message_embed_author_name,
-                            "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
-                        }
-                    };
-                    levelUp.send({ embed });
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
-        } else {
-            ref.set({
-                "EXP": 0,
-                "Level": 0
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-    });
+    levelSystem(client, message);
 };
