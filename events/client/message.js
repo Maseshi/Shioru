@@ -16,6 +16,23 @@ module.exports = function (client, message) {
         if (message.channel.type === "dm") {
             return;
         } else {
+            // For talking
+            for (const thisMethod of methods) {
+                if (message.content.startsWith(thisMethod)) {
+                    method = thisMethod;
+                    if (method.length === 0) {
+                        return;
+                    } else {
+                        mhs.shift();
+
+                        if (method) {
+                            answer(client, message, args, mhs);
+                        }
+                    }
+                }
+            }
+
+            // For commands
             if (message.content.startsWith(prefix)) {
                 if (cmd.length === 0) {
                     return;
@@ -24,32 +41,18 @@ module.exports = function (client, message) {
                         command = client.commands.get(cmd);
                     } else if (client.aliases.has(cmd)) {
                         command = client.commands.get(client.aliases.get(cmd));
-                    } else {
-                        for (const thisMethod of methods) {
-                            if (message.content.startsWith(thisMethod)) {
-                                method = thisMethod;
-                                if (method.length === 0) {
-                                    return;
-                                } else {
-                                    mhs.shift();
-                                }
-                            }
-                        }
-
-                        if (method) {
-                            answer(client, message, args, mhs);
-                        }
                     }
 
                     if (command) {
                         command.run(client, message, args);
                     } else {
-                        console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+                        if (!method) {
+                            console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+                        }
                     }
                 }
             }
         }
-        
     }
 
     levelSystem(client, message);
