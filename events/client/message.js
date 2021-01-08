@@ -25,26 +25,28 @@ module.exports = function (client, message) {
                     } else if (client.aliases.has(cmd)) {
                         command = client.commands.get(client.aliases.get(cmd));
                     } else {
-                        console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+                        for (const thisMethod of methods) {
+                            if (message.content.startsWith(thisMethod)) {
+                                method = thisMethod;
+                                if (method.length === 0) {
+                                    return;
+                                } else {
+                                    mhs.shift();
+                                }
+                            }
+                        }
+
+                        if (method) {
+                            answer(client, message, args, mhs);
+                        }
                     }
 
                     if (command) {
                         command.run(client, message, args);
+                    } else {
+                        console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
                     }
                 }
-            } else {
-                for (const thisMethod of methods) {
-                    if (message.content.startsWith(thisMethod)) {
-                        method = thisMethod;
-                        if (method.length === 0) {
-                            return;
-                        } else {
-                            mhs.shift();
-                            answer(client, message, mhs);
-                        }
-                    }
-                }
-                if (!method) return;
             }
         }
         
