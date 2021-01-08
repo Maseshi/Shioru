@@ -18,7 +18,6 @@ module.exports = async function (client, message, args, mh) {
                         let cmdWords = dataSnapshot.val().CMD;
 
                         if (!answer && cmdWords) {
-                            console.log(args);
                             client.commands.get(cmdWords).run(client, message, args);
                             message.channel.stopTyping();
                         } else if (answer) {
