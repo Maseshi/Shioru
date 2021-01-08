@@ -4,23 +4,22 @@ module.exports = async function (client, message, args, mh) {
     let mhs = mh.join(" ").toLowerCase();
     let database = firebase.database();
     let ref = database.ref("Shioru/Words/");
-    let rootRef = database.ref("Shioru/Words/").child(mhs);
-
-    args = "";
 
     if (mhs !== "") {
-        ref.once("value").then(function(snapshot) {
+        args = "";
+        ref.child("List").once("value").then(function(snapshot) {
             if (snapshot.exists()) {
-                rootRef.once("value").then(function (dataSnapshot) {
+                ref.child("List").child(mhs).once("value").then(function (dataSnapshot) {
                     if (dataSnapshot.exists()) {
-                        message.channel.startTyping();
                         let answer = dataSnapshot.val().Answer;
                         let cmdWords = dataSnapshot.val().CMD;
 
                         if (!answer && cmdWords) {
+                            message.channel.startTyping();
                             client.commands.get(cmdWords).run(client, message, args);
                             message.channel.stopTyping();
                         } else if (answer) {
+                            message.channel.startTyping();
                             let randomWords = Math.floor(Math.random() * answer.length);
 
                             message.channel.send(answer[randomWords])
@@ -36,7 +35,7 @@ module.exports = async function (client, message, args, mh) {
                     }
                 });
             } else {
-                ref.set({
+                ref.child("List").set({
                     "hi": {
                         "Answer": [
                             "Hello",
@@ -64,13 +63,32 @@ module.exports = async function (client, message, args, mh) {
                 }, function (error) {
                     if (error) {
                       console.log("I encountered a problem while setting up my data: " + error);
-                    } else {
-                      return true;
                     }
                 });
             }
         }).catch(function (error) {
             console.log(error);
+        });
+    } else {
+        ref.child("Tag").once("value").then(function(snapshot) {
+            if (snapshot.exists()) {
+                message.channel.startTyping();
+                let tag = snapshot.val();
+
+                let randomWords = Math.floor(Math.random() * tag.length);
+                message.channel.send(tag[randomWords])
+                .then(function() {
+                    message.channel.stopTyping();
+                });
+            } else {
+                ref.child("Tag").set([
+                    "What's wrong?"
+                ], function (error) {
+                    if (error) {
+                      console.log("I encountered a problem while setting up my data: " + error);
+                    }
+                });
+            }
         });
     }
 };
