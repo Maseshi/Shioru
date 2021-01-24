@@ -1,20 +1,15 @@
 const check = require("../../structures/modifyQueue");
 
 module.exports.run = function (client, message, args) {
-    let channel = message.member.voice.channel;
-    if (!channel) {
-        message.reply("❓ เข้าไปในช่องไหนก็ได้ก่อนสิ");
+    let serverQueue = message.client.queue.get(message.guild.id);
+    if (!serverQueue) {
+        message.channel.send("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ");
     } else {
-        let serverQueue = message.client.queue.get(message.guild.id);
-        if (!serverQueue) {
-            message.channel.send("❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ");
+        if (!check(message.member)) {
+            message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
         } else {
-            if (!check(message.member)) {
-                message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
-            } else {
-                serverQueue.connection.dispatcher.end();
-                message.channel.send("⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว");
-            }
+            serverQueue.connection.dispatcher.end();
+            message.channel.send("⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว");
         }
     }
 };
