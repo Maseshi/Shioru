@@ -1,6 +1,6 @@
 const ytdl = require("ytdl-core-discord");
 
-module.exports = async function (client, message, metadata) {
+module.exports = async function (client, message, metadata, status) {
     let queue = message.client.queue.get(message.guild.id);
 
     if (!metadata) {
@@ -40,10 +40,10 @@ module.exports = async function (client, message, metadata) {
         dispatcher.on("error", function (error) {
             console.log(error);
             queue.songs.shift();
-            message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+            status.edit("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
-        queue.textChannel.send("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+        status.edit("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
     }
 };
