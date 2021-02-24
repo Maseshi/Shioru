@@ -58,7 +58,7 @@ module.exports = async function (client, message) {
                                     }
                                 }
                             }).then(function () {
-                                messages(client, message);
+                                module.exports(client, message);
                             }).catch(function (error) {
                                 console.log(error);
                             });
