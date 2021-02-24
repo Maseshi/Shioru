@@ -17,8 +17,8 @@ module.exports = function (client, message, dbPrefix) {
         if (message.channel.type === "dm") {
             return;
         } else {
-            levelSystem(client, message);
             settingsData(client, message);
+            levelSystem(client, message);
 
             // For talking
             for (const thisMethod of methods) {
