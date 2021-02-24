@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "1.9.5.beta",
+  "version": "1.0.0",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
