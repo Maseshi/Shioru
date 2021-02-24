@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
         message.channel.send(wallpaper.body.url);
     }).catch(function (error) {
         console.log(error);
-        message.channel.send("⚠️ รับข้อมูลจากเซิร์ฟเวอร์ไม่ได้ค่าา..: " + error);
+        message.channel.send(client.lang.command_fun_anime-wallpaper_function_error + error);
     });
 };
 

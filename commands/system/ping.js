@@ -4,8 +4,8 @@ module.exports.run = async function(client, message) {
     let api = Math.round(client.ws.ping);
 
     let embed = {
-        "title": "📡 การเชื่อมต่อ",
-        "description": "Ping คือ " + ping + " วินาที \nAPI Latency คือ " + api + " วินาที"
+        "title": client.lang.commands_system_ping_embed_title,
+        "description": client.lang.commands_system_ping_embed_description.replace("%ping", ping).replace("%api", api)
     };
     msg.edit(":ping_pong: Pong", { embed });
 };

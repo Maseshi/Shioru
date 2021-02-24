@@ -8,7 +8,7 @@ module.exports.run = async function (client, message, args) {
     if (arg) {
         let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
         if (!user) {
-            message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
+            message.channel.send(client.lang.command_fun_leveling_null_user);
         } else {
             avatar = user.avatarURL();
             username = user.username;
@@ -28,18 +28,18 @@ module.exports.run = async function (client, message, args) {
                 let level = snapshot.val().Level;
 
                 let embed = {
-                    "description": Susername + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                    "description": Susername + client.lang.command_fun_leveling_embed_description,
                     "color": 4886754,
                     "thumbnail": {
                         "url": Savatar
                     },
                     "fields": [
                         {
-                            "name": "ชั้น (Level)",
+                            "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_name,
                             "value": "```" + level + "```"
                         },
                         {
-                            "name": "ประสบการณ์ (Exp)",
+                            "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_1_name,
                             "value": "```" + exp + "```"
                         }
                     ]
@@ -48,11 +48,11 @@ module.exports.run = async function (client, message, args) {
                     embed
                 });
             } else {
-                message.channel.send("💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับประสบการณ์เลยคะ");
+                message.channel.send(client.lang.command_fun_leveling_function_getLeveling_else_not_level);
             }
         }).catch(function (error) {
             console.log(error);
-            message.channel.send("⚠️ เกิดข้อผิดพลาดซ่ะแล้วคะ!! แจ้งมาว่า: " + error);
+            message.channel.send(client.lang.database_error + error);
         });
     }
 };
