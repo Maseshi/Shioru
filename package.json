@@ -5,12 +5,9 @@
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
   "license": "MIT",
+  "repository": "github:Masashi/Shioru",
   "homepage": "https://github.com/Masashi/Shioru#readme",
   "bugs": "https://github.com/Masashi/Shioru/issues",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Masashi/Shioru.git"
-  },
   "keywords": [
     "shioru",
     "discord",
@@ -21,7 +18,7 @@
     "npm": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodemon main.js",
     "start": "node main.js"
   },
   "dependencies": {
