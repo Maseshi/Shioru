@@ -24,6 +24,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
+        super_secret: ${{ secrets.SuperSecret }}
         node-version: ${{ matrix.node-version }}
       env:
         super_secret: ${{ secrets.SuperSecret }}
