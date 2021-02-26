@@ -5,16 +5,20 @@
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/Masashi/shioru#readme",
-  "repository": "github:Masashi/shioru",
-  "bugs": "https://github.com/Masashi/shioru/issues",
+  "homepage": "https://github.com/Masashi/Shioru#readme",
+  "bugs": "https://github.com/Masashi/Shioru/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Masashi/Shioru.git"
+  },
   "keywords": [
     "shioru",
     "discord",
-    "Masashi"
+    "masashi"
   ],
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=10.0.0",
+    "npm": "*"
   },
   "scripts": {
     "test": "nodemon main.js",
