@@ -8,13 +8,13 @@ module.exports = {
         "ชิโอรุ"
     ],
     "owner": "618836889239158785",
-    "token": process.env.token || $token,
+    "token": process.env.token || $TOKEN,
     "firebase": {
-        "apiKey": process.env.apiKey || $apiKey,
-        "databaseURL": process.env.databaseURL || $databaseURL,
-        "projectId": process.env.projectId || $projectId
+        "apiKey": process.env.apiKey || $API_KEY,
+        "databaseURL": process.env.databaseURL || $DATABASE_URL,
+        "projectId": process.env.projectId || $PROJECT_ID
     },
     "update": "2021-01-01T18:57:20.432Z",
-    "password": process.env.password || $password,
-    "youtubeApi": process.env.youtubeApi || $youtubeApi
+    "password": process.env.password || $PASSWORD,
+    "youtubeApi": process.env.youtubeApi || $YOUTUBE_API
 };
