@@ -5,15 +5,12 @@ module.exports = function (client, message) {
     
     let database = firebase.database();
     let ref = database.ref("Shioru/Discord/Guilds/").child(guild);
-
     ref.on("value", function (snapshot) {
         const messages = require("../events/client/message");
 
         if (snapshot.exists()) {
             let prefix = snapshot.val().prefix;
             let lang = snapshot.val().language;
-            let notifyId = snapshot.val().channels.notification.id;
-            let notifyEnable = snapshot.val().channels.notification.enable;
             
             if (lang !== client.lang) {
                 const applyLang = require("../languages/" + lang + ".json");
