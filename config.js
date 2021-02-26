@@ -4,6 +4,7 @@ module.exports = {
     "prefix": "S",
     "method": [
         "<@!704706906505347183>",
+        "Shioru#9520",
         "Shioru",
         "ชิโอรุ"
     ],
@@ -14,7 +15,7 @@ module.exports = {
         "databaseURL": process.env.databaseURL || $databaseURL,
         "projectId": process.env.projectId || $projectId
     },
-    "update": "2021-01-01T18:57:20.432Z",
+    "update": "2021-02-26T20:08:27.467Z",
     "password": process.env.password || $password,
     "youtubeApi": process.env.youtubeApi || $youtubeApi
 };
