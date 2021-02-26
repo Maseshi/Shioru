@@ -14,10 +14,9 @@
     "Masashi"
   ],
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
-    "test": "nodemon main.js",
     "start": "node main.js"
   },
   "dependencies": {
