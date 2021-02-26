@@ -18,10 +18,10 @@ module.exports.run = async function (client, message, args) {
                     let avatar = user.avatarURL();
                     let username = user.username;
                     let id = user.id;
-                    database.ref("Discord/Users/" + id + "/Leveling/").update({
+                    database.ref("Shioru/Discord/Users/" + id + "/Leveling/").update({
                         "EXP": amount
                     }).then(function () {
-                        database.ref("Discord/Users/" + id + "/Leveling/").once("value")
+                        database.ref("Shioru/Discord/Users/" + id + "/Leveling/").once("value")
                             .then(function (snapshot) {
                                 if (snapshot.exists()) {
                                     let exp = snapshot.val().EXP;

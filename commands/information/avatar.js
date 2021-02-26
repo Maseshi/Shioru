@@ -25,7 +25,7 @@ module.exports.run = async function (client, message, args) {
         }
     } else {
         if (arg) {
-            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+            let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send(client.lang.command_information_avatar_if_dont_have_user);
             } else {

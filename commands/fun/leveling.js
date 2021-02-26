@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
     let id = message.author.id;
     let arg = args.join(" ");
     if (arg) {
-        let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+        let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
         if (!user) {
             message.channel.send(client.lang.command_fun_leveling_null_user);
         } else {
@@ -21,7 +21,7 @@ module.exports.run = async function (client, message, args) {
 
     function getLeveling(Savatar, Susername, Sid) {
         let database = firebase.database();
-        database.ref("Discord/Users/" + Sid + "/Leveling/").once("value")
+        database.ref("Shioru/Discord/Users/" + Sid + "/Leveling/").once("value")
         .then(function (snapshot) {
             if (snapshot.exists()) {
                 let exp = snapshot.val().EXP;
