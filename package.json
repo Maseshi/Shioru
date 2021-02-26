@@ -23,7 +23,6 @@
   "dependencies": {
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.5.1",
-    "@discordjs/opus": "^0.3.3",
     "dotenv": "^8.2.0",
     "download-github-repo": "^0.1.4",
     "firebase": "^8.2.9",
