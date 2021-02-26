@@ -26,6 +26,7 @@
     "discord.js": "^12.5.1",
     "@discordjs/opus": "^0.3.3",
     "dotenv": "^8.2.0",
+    "download-github-repo": "^0.1.4",
     "firebase": "^8.2.9",
     "fs": "^0.0.1-security",
     "kitsu": "^10.0.0-alpha.10",
@@ -37,9 +38,9 @@
     "superagent": "^6.1.0",
     "weather-js": "^2.0.0",
     "ytdl-core-discord": "^1.2.5",
-    "yt-search": "^2.5.2"
+    "yt-search": "^2.7.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.7"
   }
 }
