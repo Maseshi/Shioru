@@ -18,7 +18,7 @@
     "npm": "*"
   },
   "scripts": {
-    "test": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js"
   },
   "dependencies": {
