@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
 		} else {
 			message.delete();
 			if (arg === client.config.password) {
-				message.channel.send("🔄 กำลังปิดระบบ...")
+				message.channel.send("🔄 กำลังปิดระบบตัวเอง...")
 				.then(function (msg) {
 					msg.edit("💤 ปิดระบบแล้วคะ...แล้วพบกันใหม่นะคะ Sayonara~~")
 					.then(function () {

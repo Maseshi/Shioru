@@ -34,18 +34,19 @@ module.exports = async function (client, message) {
                             if (notifyEnable === true) {
                                 let levelUp = message.guild.channels.cache.find(ch => ch.id === notifyId);
         
-                                let embed = {
-                                    "description": client.lang.event_client_message_embed_description.replace('%username', username).replace('%level', level),
-                                    "color": 16312092,
-                                    "thumbnail": {
-                                        "url": avatar
-                                    },
-                                    "author": {
-                                        "name": client.lang.event_client_message_embed_author_name,
-                                        "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
+                                levelUp.send({
+                                    "embed": {
+                                        "description": client.lang.event_client_message_embed_description.replace('%username', username).replace('%level', level),
+                                        "color": 16312092,
+                                        "thumbnail": {
+                                            "url": avatar
+                                        },
+                                        "author": {
+                                            "name": client.lang.event_client_message_embed_author_name,
+                                            "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
+                                        }
                                     }
-                                };
-                                levelUp.send({ embed });
+                                });
                             }
                         } else {
                             ref.set({

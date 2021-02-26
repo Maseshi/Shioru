@@ -35,27 +35,28 @@ module.exports.run = async function (client, message, args) {
         if (info.data.length < 1) {
             msg.edit(client.lang.command_fun_anime_no_info_anime_title);
         } else {
-            let anime = {
-                "title": args.join(" "),
-                "description": client.lang.command_fun_anime_embed_anime_description,
-                "color": 12601856,
-                "footer": {
-                    "icon_url": client.user.avatarURL(),
-                    "text": client.lang.command_fun_anime_embed_anime_footer_text
-                },
-                "author": {
-                    "name": "Kitsu",
-                    "url": "https://kitsu.io",
-                    "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
-                },
-                "fields": [
-                    {
-                        "name": client.lang.command_fun_anime_embed_anime_fields_name,
-                        "value": titles(info.data)
-                    }
-                ]
-            };
-            msg = await msg.edit("", { "embed": anime });
+            msg = await msg.edit("", {
+                "embed": {
+                    "title": args.join(" "),
+                    "description": client.lang.command_fun_anime_embed_anime_description,
+                    "color": 12601856,
+                    "footer": {
+                        "icon_url": client.user.avatarURL(),
+                        "text": client.lang.command_fun_anime_embed_anime_footer_text
+                    },
+                    "author": {
+                        "name": "Kitsu",
+                        "url": "https://kitsu.io",
+                        "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
+                    },
+                    "fields": [
+                        {
+                            "name": client.lang.command_fun_anime_embed_anime_fields_name,
+                            "value": titles(info.data)
+                        }
+                    ]
+                }
+            });
 
             if (!msg.content) return;
             let collected = await message.channel.awaitMessages(filter, {
@@ -66,57 +67,56 @@ module.exports.run = async function (client, message, args) {
             });
             let returnMessage = collected.first();
             let index = Number(returnMessage.content);
-            let conclude = {
-                "color": 12601856,
-                "footer": {
-                    "icon_url": client.user.avatarURL(),
-                    "text": client.lang.command_fun_anime_embed_conclude_footer_text
-                },
-                "author": {
-                    "name": "Kitsu",
-                    "url": "https://kitsu.io",
-                    "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
-                },
-                "fields": [
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_0_name,
-                        "value": info.data[index].titles.en_jp || client.lang.command_fun_anime_embed_conclude_fields_0_value
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_1_name,
-                        "value": info.data[index].titles.en || client.lang.command_fun_anime_embed_conclude_fields_1_value
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_2_name,
-                        "value": info.data[index].subtype
-                    },
-                    {
-                        "name": command_fun_anime_embed_conclude_fields_3_name,
-                        "value": info.data[index].startDate,
-                        "inline": true
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_4_name,
-                        "value": info.data[index].endDate || client.lang.command_fun_anime_embed_conclude_fields_4_value,
-                        "inline": true
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_5_name,
-                        "value": info.data[index].popularityRank,
-                        "inline": true
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_6_name,
-                        "value": "<https://kitsu.io/anime/" + info.data[index].id + ">"
-                    },
-                    {
-                        "name": client.lang.command_fun_anime_embed_conclude_fields_7_name,
-                        "value": "```" + info.data[index].synopsis + "```"
-                    }
-                ]
-            };
             msg.edit({
-                "embed": conclude
+                "embed": {
+                    "color": 12601856,
+                    "footer": {
+                        "icon_url": client.user.avatarURL(),
+                        "text": client.lang.command_fun_anime_embed_conclude_footer_text
+                    },
+                    "author": {
+                        "name": "Kitsu",
+                        "url": "https://kitsu.io",
+                        "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
+                    },
+                    "fields": [
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_0_name,
+                            "value": info.data[index].titles.en_jp || client.lang.command_fun_anime_embed_conclude_fields_0_value
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_1_name,
+                            "value": info.data[index].titles.en || client.lang.command_fun_anime_embed_conclude_fields_1_value
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_2_name,
+                            "value": info.data[index].subtype
+                        },
+                        {
+                            "name": command_fun_anime_embed_conclude_fields_3_name,
+                            "value": info.data[index].startDate,
+                            "inline": true
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_4_name,
+                            "value": info.data[index].endDate || client.lang.command_fun_anime_embed_conclude_fields_4_value,
+                            "inline": true
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_5_name,
+                            "value": info.data[index].popularityRank,
+                            "inline": true
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_6_name,
+                            "value": "<https://kitsu.io/anime/" + info.data[index].id + ">"
+                        },
+                        {
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_7_name,
+                            "value": "```" + info.data[index].synopsis + "```"
+                        }
+                    ]
+                }
             });
         }
     }

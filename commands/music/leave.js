@@ -24,5 +24,5 @@ module.exports.help = {
 	"description": "Out of the current audio channel",
 	"usage": "leave (name/id)",
 	"category": "music",
-	"aliases": ["l", "ออกจาก"]
+	"aliases": ["l", "dis", "disconnect", "ออก", "ออกจาก"]
 };

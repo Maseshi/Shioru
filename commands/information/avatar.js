@@ -10,17 +10,16 @@ module.exports.run = async function (client, message, args) {
                 });
         } else {
             let avatar = client.user.avatarURL();
-            let embed = {
-                "title": client.lang.command_information_avatar_else_user-avatar_embed_title,
-                "description": avatar,
-                "url": avatar,
-                "color": 14684245,
-                "thumbnail": {
-                    "url": avatar
-                }
-            };
             message.channel.send({
-                embed
+                "embed": {
+                    "title": client.lang.command_information_avatar_else_user-avatar_embed_title,
+                    "description": avatar,
+                    "url": avatar,
+                    "color": 14684245,
+                    "thumbnail": {
+                        "url": avatar
+                    }
+                }
             });
         }
     } else {
@@ -31,32 +30,30 @@ module.exports.run = async function (client, message, args) {
             } else {
                 let avatar = user.avatarURL();
                 let username = user.username;
-                let embed = {
-                    "title": client.lang.command_information_avatar_else_have_user_embed_title + username,
+                message.channel.send({
+                    "embed": {
+                        "title": client.lang.command_information_avatar_else_have_user_embed_title + username,
+                        "description": avatar,
+                        "url": avatar,
+                        "color": 4886754,
+                        "thumbnail": {
+                            "url": avatar
+                        }
+                    }
+                });
+            }
+        } else {
+            let avatar = message.author.displayAvatarURL();
+            message.channel.send({
+                "embed": {
+                    "title": client.lang.command_information_avatar_else_this_user_embed_title,
                     "description": avatar,
                     "url": avatar,
                     "color": 4886754,
                     "thumbnail": {
                         "url": avatar
                     }
-                };
-                message.channel.send({
-                    embed
-                });
-            }
-        } else {
-            let avatar = message.author.displayAvatarURL();
-            let embed = {
-                "title": client.lang.command_information_avatar_else_this_user_embed_title,
-                "description": avatar,
-                "url": avatar,
-                "color": 4886754,
-                "thumbnail": {
-                    "url": avatar
                 }
-            };
-            message.channel.send({
-                embed
             });
         }
     }

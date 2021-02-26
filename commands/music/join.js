@@ -30,5 +30,5 @@ module.exports.help = {
 	"description": "Join audio channel",
 	"usage": "join (name/id)",
 	"category": "music",
-	"aliases": ["j", "เข้าร่วม"]
+	"aliases": ["j", "เข้า", "เข้าร่วม"]
 };

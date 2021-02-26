@@ -18,15 +18,16 @@ module.exports.run = async function (client, message, args) {
     }
 
     function userID(Savatar, Susername, Sid) {
-        let embed = {
-            "title": "รหัสบัญชีของ " + Susername,
-            "description": "```" + Sid + "```\nเคล็ดลับ: วิธีเปิด **โหมดผู้พัฒนา** เพื่อรับตัวเลือกเพิ่มเติม เช่น คัดลอก ID, คัดลอก ID ข้อความ และอื่นๆ โดยให้เข้าไปที่ __ตั้งค่าผู้ใช้ > หน้าตา > ขั้นสูง__ และทำการเปิดที่ __โหมดผู้พัฒนา__",
-            "color": 4886754,
-            "thumbnail": {
-                "url": Savatar
+        message.channel.send({
+            "embed": {
+                "title": "#️⃣ รหัสบัญชีของ " + Susername,
+                "description": "```" + Sid + "```\nเคล็ดลับ: วิธีเปิด **โหมดผู้พัฒนา** เพื่อรับตัวเลือกเพิ่มเติม เช่น คัดลอก ID, คัดลอก ID ข้อความ และอื่นๆ โดยให้เข้าไปที่ __ตั้งค่าผู้ใช้ > หน้าตา > ขั้นสูง__ และทำการเปิดที่ __โหมดผู้พัฒนา__",
+                "color": 4886754,
+                "thumbnail": {
+                    "url": Savatar
+                }
             }
-        };
-        message.channel.send({ embed });
+        });
     }
 };
 

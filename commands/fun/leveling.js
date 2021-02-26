@@ -27,25 +27,24 @@ module.exports.run = async function (client, message, args) {
                 let exp = snapshot.val().EXP;
                 let level = snapshot.val().Level;
 
-                let embed = {
-                    "description": Susername + client.lang.command_fun_leveling_embed_description,
-                    "color": 4886754,
-                    "thumbnail": {
-                        "url": Savatar
-                    },
-                    "fields": [
-                        {
-                            "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_name,
-                            "value": "```" + level + "```"
-                        },
-                        {
-                            "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_1_name,
-                            "value": "```" + exp + "```"
-                        }
-                    ]
-                };
                 message.channel.send({
-                    embed
+                    "embed": {
+                        "description": Susername + client.lang.command_fun_leveling_embed_description,
+                        "color": 4886754,
+                        "thumbnail": {
+                            "url": Savatar
+                        },
+                        "fields": [
+                            {
+                                "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_name,
+                                "value": "```" + level + "```"
+                            },
+                            {
+                                "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_1_name,
+                                "value": "```" + exp + "```"
+                            }
+                        ]
+                    }
                 });
             } else {
                 message.channel.send(client.lang.command_fun_leveling_function_getLeveling_else_not_level);

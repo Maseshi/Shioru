@@ -37,8 +37,9 @@ module.exports.run = async function (client, message, args) {
 		let username = user.username;
 		let time = new Date();
 		memberBan.ban(reason)
-			.then(function () {
-				let embed = {
+		.then(function () {
+			message.channel.send({
+				"embed": {
 					"title": username + " โดนแบน เนื่องจาก:",
 					"description": reason,
 					"color": 16098851,
@@ -54,12 +55,12 @@ module.exports.run = async function (client, message, args) {
 						"name": "สมาชิก",
 						"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
 					}
-				};
-				message.channel.send({ embed });
-			}).catch(function (error) {
-				message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
-				console.log(error);
+				}
 			});
+		}).catch(function (error) {
+			message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
+			console.log(error);
+		});
 	}
 };
 

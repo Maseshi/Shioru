@@ -2,7 +2,7 @@ const answer = require("../../structures/answer");
 const levelSystem = require("../../structures/levelSystem");
 const settingsData = require("../../structures/settingsData");
 
-module.exports = function (client, message, dbPrefix) {
+module.exports = function (client, message) {
     let prefix = client.config.prefix;
     let methods = client.config.method;
     let method = false;

@@ -38,24 +38,25 @@ module.exports.run = async function (client, message, args) {
 		let time = new Date();
 		memberKick.kick(reason)
 		.then(function () {
-			let embed = {
-				"title": username + " โดนเตะออก เนื่องจาก:",
-				"description": reason,
-				"color": 16098851,
-				"timestamp": time,
-				"footer": {
-					"icon_url": authorAvatar,
-					"text": "เตะโดย " + author
-				},
-				"thumbnail": {
-					"url": avatar
-				},
-				"author": {
-					"name": "สมาชิก",
-					"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
+			message.channel.send({
+				"embed": {
+					"title": username + " โดนเตะออก เนื่องจาก:",
+					"description": reason,
+					"color": 16098851,
+					"timestamp": time,
+					"footer": {
+						"icon_url": authorAvatar,
+						"text": "เตะโดย " + author
+					},
+					"thumbnail": {
+						"url": avatar
+					},
+					"author": {
+						"name": "สมาชิก",
+						"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
+					}
 				}
-			};
-			message.channel.send({ embed });
+			});
 		}).catch(function (error) {
 			message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
 			console.log(error);

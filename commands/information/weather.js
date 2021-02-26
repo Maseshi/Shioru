@@ -35,65 +35,64 @@ module.exports.run = async function (client, message, args) {
                     let day = current.day;
                     let date = current.date;
 
-                    let embed = {
-                        "description": "สภาพอากาศของ __**" + city.location.name + "**__ ในขณะนี้คือ \n```" + skyText + "```",
-                        "color": 0x00AE86,
-                        "footer": {
-                            "icon_url": "https://www.tonystam.com/en/img/Microsoft-portfolio.png",
-                            "text": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft"
-                        },
-                        "thumbnail": {
-                            "url": imageURL
-                        },
-                        "author": {
-                            "name": "Microsoft News",
-                            "url": "https://www.msn.com/th-th/Weather",
-                            "icon_url": "https://cdn.icon-icons.com/icons2/1488/PNG/512/5307-msn_102525.png"
-                        },
-                        "fields": [{
-                                "name": "🌐 เขตเวลา",
-                                "value": "UTC" + timezone,
-                                "inline": true
-                            },
-                            {
-                                "name": "⚖️ หน่วยวัด",
-                                "value": degreeType,
-                                "inline": true
-                            },
-                            {
-                                "name": "🌡️ อุณหภูมิ",
-                                "value": temperature,
-                                "inline": true
-                            },
-                            {
-                                "name": "🎐 รู้สึกเหมือน",
-                                "value": feelsLike + " องศา",
-                                "inline": true
-                            },
-                            {
-                                "name": "🎏 ลม",
-                                "value": wind,
-                                "inline": true
-                            },
-                            {
-                                "name": "💧 ความชื้น",
-                                "value": humidity + "%",
-                                "inline": true
-                            },
-                            {
-                                "name": "📅 วัน",
-                                "value": day,
-                                "inline": true
-                            },
-                            {
-                                "name": "📆 วันที่",
-                                "value": date,
-                                "inline": true
-                            }
-                        ]
-                    };
                     message.channel.send({
-                        embed
+                        "embed": {
+                            "description": "สภาพอากาศของ __**" + city.location.name + "**__ ในขณะนี้คือ \n```" + skyText + "```",
+                            "color": 0x00AE86,
+                            "footer": {
+                                "icon_url": "https://www.tonystam.com/en/img/Microsoft-portfolio.png",
+                                "text": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft"
+                            },
+                            "thumbnail": {
+                                "url": imageURL
+                            },
+                            "author": {
+                                "name": "Microsoft News",
+                                "url": "https://www.msn.com/th-th/Weather",
+                                "icon_url": "https://cdn.icon-icons.com/icons2/1488/PNG/512/5307-msn_102525.png"
+                            },
+                            "fields": [{
+                                    "name": "🌐 เขตเวลา",
+                                    "value": "UTC" + timezone,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "⚖️ หน่วยวัด",
+                                    "value": degreeType,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "🌡️ อุณหภูมิ",
+                                    "value": temperature,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "🎐 รู้สึกเหมือน",
+                                    "value": feelsLike + " องศา",
+                                    "inline": true
+                                },
+                                {
+                                    "name": "🎏 ลม",
+                                    "value": wind,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "💧 ความชื้น",
+                                    "value": humidity + "%",
+                                    "inline": true
+                                },
+                                {
+                                    "name": "📅 วัน",
+                                    "value": day,
+                                    "inline": true
+                                },
+                                {
+                                    "name": "📆 วันที่",
+                                    "value": date,
+                                    "inline": true
+                                }
+                            ]
+                        }
                     });
                 }
             }

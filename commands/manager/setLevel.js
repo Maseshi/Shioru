@@ -31,28 +31,29 @@ module.exports.run = async function (client, message, args) {
 
                                     if (notifyEnable === true) {
                                         let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
-                                        let embed = {
-                                            "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-                                            "color": 4886754,
-                                            "thumbnail": {
-                                                "url": avatar
-                                            },
-                                            "footer": {
-                                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                                "text": "Level ของคุณถูกตั้งค่าโดยทีม"
-                                            },
-                                            "fields": [
-                                                {
-                                                    "name": "ชั้น (Level)",
-                                                    "value": "```" + exp + "```"
+                                        notification.send({
+                                            "embed": {
+                                                "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                                                "color": 4886754,
+                                                "thumbnail": {
+                                                    "url": avatar
                                                 },
-                                                {
-                                                    "name": "ประสบการณ์ (Exp)",
-                                                    "value": "```" + level + "```"
-                                                }
-                                            ]
-                                        };
-                                        notification.send({embed}).then(function () {
+                                                "footer": {
+                                                    "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                                                    "text": "Level ของคุณถูกตั้งค่าโดยทีม"
+                                                },
+                                                "fields": [
+                                                    {
+                                                        "name": "ชั้น (Level)",
+                                                        "value": "```" + exp + "```"
+                                                    },
+                                                    {
+                                                        "name": "ประสบการณ์ (Exp)",
+                                                        "value": "```" + level + "```"
+                                                    }
+                                                ]
+                                            }
+                                        }).then(function () {
                                             message.channel.send("✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...");
                                         });
                                     }

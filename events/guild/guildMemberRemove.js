@@ -15,16 +15,17 @@ module.exports = function (client, member) {
 				if (member.user.bot) {
 					return;
 				} else {
-					const embed = {
-						"title": member.user.username,
-						"description": client.lang.event_guild_guildMemberRemove_embed_description,
-                        "timestamp": new Date(),
-						"color": 16777215,
-						"thumbnail": {
-							"url": member.user.displayAvatarURL(),
-						}
-					};
-					notification.send({ embed });
+					notification.send({
+                        "embed": {
+                            "title": member.user.username,
+                            "description": client.lang.event_guild_guildMemberRemove_embed_description,
+                            "timestamp": new Date(),
+                            "color": 16777215,
+                            "thumbnail": {
+                                "url": member.user.displayAvatarURL(),
+                            }
+                        }
+                    });
 				}
             }
         } else {

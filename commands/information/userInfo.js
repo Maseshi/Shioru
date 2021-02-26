@@ -28,32 +28,33 @@ module.exports.run = async function (client, message, args) {
     let months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
     let createdAt = "วัน" + days[date.getDay()] + "ที่ " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " เวลา " + date.getHours() + ":" + date.getMinutes() + " น.";
 
-    let embed = {
-      "title": "ข้อมูลของคุณ!",
-      "color": 4886754,
-      "footer": {
-        "icon_url": SguildIcon,
-        "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
-      },
-      "thumbnail": {
-        "url": Savatar
-      },
-      "fields": [
-        {
-          "name": "ชื่อเต็ม:",
-          "value": Susername + "#" + SuserDiscriminator
+    message.channel.send({
+      "embed": {
+        "title": "📖 รายละเอียดข้อมูลของคุณ",
+        "color": 4886754,
+        "footer": {
+          "icon_url": SguildIcon,
+          "text": "อ้างอิงข้อมูลจาก Discord"
         },
-        {
-          "name": "รหัสบัญชี:",
-          "value": Sid
+        "thumbnail": {
+          "url": Savatar
         },
-        {
-          "name": "สร้างบัญชีเมื่อ:",
-          "value": createdAt
-        }
-      ]
-    };
-    message.channel.send({ embed });
+        "fields": [
+          {
+            "name": "ชื่อเต็ม:",
+            "value": Susername + "#" + SuserDiscriminator
+          },
+          {
+            "name": "รหัสบัญชี:",
+            "value": Sid
+          },
+          {
+            "name": "สร้างบัญชีเมื่อ:",
+            "value": createdAt
+          }
+        ]
+      }
+    });
   }
 };
 

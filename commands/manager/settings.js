@@ -3,29 +3,29 @@ const firebase = require("firebase");
 const fs = require("fs");
 
 module.exports.run = async function(client, message, args) {
-    if (discord.TeamMember.hasPermission(["ADMINISTRATOR"])) {
-        let arg = args[0], set = args[1], valueSet = args[2];
-        let mePrefix = client.config.prefix;
-        let guildId = message.guild.id;
-    
-        let CFInfo = new discord.MessageEmbed()
-        .setColor("#E01055")
-        .setTitle("⚙ การตั้งค่า (เซิร์ฟเวอร์)")
-        .setFooter("ฟังก์ชันนี้กำลังอยู่ในช่วงทดสอบ", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png")
-        .setTimestamp();
-    
-        let database = firebase.database();
-        let ref = database.ref("Shioru/Discord/Guilds/").child(guildId);
-    
-        ref.once("value").then(function (snapshot) {
-            if (snapshot.exists()) {
-                let lang = snapshot.val().language;
-                let prefix = snapshot.val().prefix;
-                let notifyEnable = snapshot.val().channels.notification.enable;
-                let notifyId = snapshot.val().channels.notification.id;
-    
-                if (!arg) {
-                    const embed = {
+    let arg = args[0], set = args[1], valueSet = args[2];
+    let mePrefix = client.config.prefix;
+    let guildId = message.guild.id;
+
+    let CFInfo = new discord.MessageEmbed()
+    .setColor("#E01055")
+    .setTitle("⚙ การตั้งค่า (เซิร์ฟเวอร์)")
+    .setFooter("ฟังก์ชันนี้กำลังอยู่ในช่วงทดสอบ", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png")
+    .setTimestamp();
+
+    let database = firebase.database();
+    let ref = database.ref("Shioru/Discord/Guilds/").child(guildId);
+
+    ref.once("value").then(function (snapshot) {
+        if (snapshot.exists()) {
+            let lang = snapshot.val().language;
+            let prefix = snapshot.val().prefix;
+            let notifyEnable = snapshot.val().channels.notification.enable;
+            let notifyId = snapshot.val().channels.notification.id;
+
+            if (!arg) {
+                message.channel.send({
+                    "embed": {
                         "title": "⚙ การตั้งค่า (เซิร์ฟเวอร์)",
                         "description": "คำนำหน้า, ภาษา, ช่องแจ้งเตือน ฯลฯ ซึ่งการตั้งค่าเหล่านี้จะมีผลเฉพาะเซิร์ฟเวอร์นี้เท่านั้น คุณสามารถปรับแต่งเองได้ตามต้องการเลยย...",
                         "color": 14684245,
@@ -50,9 +50,10 @@ module.exports.run = async function(client, message, args) {
                                 "inline": true
                             }
                         ]
-                    };
-                    message.channel.send({ embed });
-                } else {
+                    }
+                });
+            } else {
+                if (message.member.hasPermission(["ADMINISTRATOR"])) {
                     if (arg === "prefix") {
                         if (!set) {
                             CFInfo.setDescription("prefix - เปลี่ยนวิธีในการเรียกฉันด้วยคำนำหน้าใหม่ ที่ไฉไลกว่าเดิม ヾ(•ω•`)o")
@@ -185,25 +186,25 @@ module.exports.run = async function(client, message, args) {
                             }
                         }
                     }
+                } else {
+                    message.channel.send("🔒 คำสั่งนี้ทำได้เฉพาะระดับผู้ดูแลเท่านั้นคะ");
                 }
-            } else {
-                ref.set({
-                    "prefix": "S",
-                    "language": "th_TH",
-                    "channels": {
-                        "notification": {
-                            "enable": false,
-                            "id": 0
-                        }
-                    }
-                }).then(function () {
-                    module.exports(client, message, args);
-                });
             }
-        });
-    } else {
-        message.channel.send("🔒 คำสั่งนี้ทำได้เฉพาะระดับผู้ดูแลเท่านั้นคะ");
-    }
+        } else {
+            ref.set({
+                "prefix": "S",
+                "language": "th_TH",
+                "channels": {
+                    "notification": {
+                        "enable": false,
+                        "id": 0
+                    }
+                }
+            }).then(function () {
+                module.exports(client, message, args);
+            });
+        }
+    });
 };
 
 module.exports.help = {
