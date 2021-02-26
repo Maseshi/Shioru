@@ -1,17 +1,17 @@
 {
   "name": "shioru",
-  "version": "1.10.0.beta",
+  "version": "1.10.1.beta",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/Masashi/shioru#readme",
-  "repository": "github:Masashi/shioru",
-  "bugs": "https://github.com/Masashi/shioru/issues",
+  "homepage": "https://github.com/Masashi/Shioru#readme",
+  "repository": "github:Masashi/Shioru",
+  "bugs": "https://github.com/Masashi/Shioru/issues",
   "keywords": [
     "shioru",
     "discord",
-    "Masashi"
+    "masashi"
   ],
   "engines": {
     "node": ">=12.0.0"
@@ -25,6 +25,7 @@
     "discord.js": "^12.5.1",
     "@discordjs/opus": "^0.3.3",
     "dotenv": "^8.2.0",
+    "download-github-repo": "^0.1.4",
     "firebase": "^8.2.9",
     "fs": "^0.0.1-security",
     "kitsu": "^10.0.0-alpha.10",
