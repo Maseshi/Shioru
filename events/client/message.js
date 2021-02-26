@@ -1,7 +1,8 @@
 const answer = require("../../structures/answer");
 const levelSystem = require("../../structures/levelSystem");
+const settingsData = require("../../structures/settingsData");
 
-module.exports = function (client, message) {
+module.exports = function (client, message, dbPrefix) {
     let prefix = client.config.prefix;
     let methods = client.config.method;
     let method = false;
@@ -16,6 +17,9 @@ module.exports = function (client, message) {
         if (message.channel.type === "dm") {
             return;
         } else {
+            settingsData(client, message);
+            levelSystem(client, message);
+
             // For talking
             for (const thisMethod of methods) {
                 if (message.content.startsWith(thisMethod)) {
@@ -54,6 +58,4 @@ module.exports = function (client, message) {
             }
         }
     }
-
-    levelSystem(client, message);
 };

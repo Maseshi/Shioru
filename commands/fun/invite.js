@@ -6,16 +6,16 @@ module.exports.run = async function (client, message, args) {
 			"color": 10197915,
 			"footer": {
 				"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/ticket_1f3ab.png",
-				"text": "สินค้านี้ฟรี ห้ามวางจำหนายต่อ"
+				"text": client.lang.command_fun_invite_embed_footer_text
 			},
 			"author": {
-				"name": "บัตรเชิญสมาชิก",
+				"name": client.lang.command_fun_invite_embed_author_name,
 				"icon_url": "https://discordapp.com/assets/5e5ab6737c6e2b6a9aa7a1e7295d1b41.svg"
 			}
 		};
 		message.channel.send({ embed });
 	}).catch(function (error) {
-		message.channel.send("⚠️ อ้าว...อยู่ๆ ฉันก็สร้างลิงค์เชิญไม่ได้คะ เหตุผลเพราะ: " + error);
+		message.channel.send(client.lang.command_fun_invite_embed_function_error + error);
 		console.log(error);
 	});
 };

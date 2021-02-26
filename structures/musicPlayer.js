@@ -40,10 +40,18 @@ module.exports = async function (client, message, metadata, status) {
         dispatcher.on("error", function (error) {
             console.log(error);
             queue.songs.shift();
-            status.edit("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+            if (!status) {
+                message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+            } else {
+                status.edit("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+            }
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
-        status.edit("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+        if (!status) {
+            message.channel.send("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+        } else {
+            status.edit("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+        }
     }
 };

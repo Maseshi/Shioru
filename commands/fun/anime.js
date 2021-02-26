@@ -23,9 +23,9 @@ module.exports.run = async function (client, message, args) {
     }
 
     if (args.length < 1) {
-        message.reply("❓ ต้องการอนิเมะเรื่องอะไรเหรอ");
+        message.reply(client.lang.command_fun_anime_no_args);
     } else {
-        let msg = await message.channel.send("🔎 กำลังค้าหาข้อมูลจาก Kitsu! โปรดรอสักครู่นะ.. >.<");
+        let msg = await message.channel.send(client.lang.command_fun_anime_finding_anime_title);
         let info = await Kitsu.fetch("anime" || "manga", {
             "filter": {
                 "text": args.join(" ")
@@ -33,15 +33,15 @@ module.exports.run = async function (client, message, args) {
         });
 
         if (info.data.length < 1) {
-            msg.edit("❎ ไม่เจอเรื่องนี้นะ ลองตรวจสอบดีๆ ดูสิหรืออาจจะไม่มีเรื่องนี้จริงๆ อะ");
+            msg.edit(client.lang.command_fun_anime_no_info_anime_title);
         } else {
             let anime = {
                 "title": args.join(" "),
-                "description": "ฉันเจอ 5 เรื่องที่ใกล้เคียงกัน อยากอ่านเรื่องไหนกันละ~",
+                "description": client.lang.command_fun_anime_embed_anime_description,
                 "color": 12601856,
                 "footer": {
                     "icon_url": client.user.avatarURL(),
-                    "text": "เพียงแค่พิมพ์หมายเลขที่คุณต้องการอ่าน! (ยกเลิกภายใน 1 นาที)"
+                    "text": client.lang.command_fun_anime_embed_anime_footer_text
                 },
                 "author": {
                     "name": "Kitsu",
@@ -50,7 +50,7 @@ module.exports.run = async function (client, message, args) {
                 },
                 "fields": [
                     {
-                        "name": "เลือกเลยย.!!",
+                        "name": client.lang.command_fun_anime_embed_anime_fields_name,
                         "value": titles(info.data)
                     }
                 ]
@@ -70,7 +70,7 @@ module.exports.run = async function (client, message, args) {
                 "color": 12601856,
                 "footer": {
                     "icon_url": client.user.avatarURL(),
-                    "text": "นี่เป็นเพียงข้อมูลที่สรุปมาแล้วเท่านั้น อยากอ่านเพิ่มเติมคลิกเข้าไปที่ลิงค์เลยย.!!"
+                    "text": client.lang.command_fun_anime_embed_conclude_footer_text
                 },
                 "author": {
                     "name": "Kitsu",
@@ -79,38 +79,38 @@ module.exports.run = async function (client, message, args) {
                 },
                 "fields": [
                     {
-                        "name": "**ชื่อญี่ปุ่น**",
-                        "value": info.data[index].titles.en_jp || "ไม่ได้กำหนด"
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_0_name,
+                        "value": info.data[index].titles.en_jp || client.lang.command_fun_anime_embed_conclude_fields_0_value
                     },
                     {
-                        "name": "**ชื่ออังกฤษ**",
-                        "value": info.data[index].titles.en || "ไม่ได้กำหนด"
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_1_name,
+                        "value": info.data[index].titles.en || client.lang.command_fun_anime_embed_conclude_fields_1_value
                     },
                     {
-                        "name": "**ประเภท:**",
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_2_name,
                         "value": info.data[index].subtype
                     },
                     {
-                        "name": "**วันที่เริ่มต้น**",
+                        "name": command_fun_anime_embed_conclude_fields_3_name,
                         "value": info.data[index].startDate,
                         "inline": true
                     },
                     {
-                        "name": "**วันที่สิ้นสุด**",
-                        "value": info.data[index].endDate || "กำลังดำเนินการ",
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_4_name,
+                        "value": info.data[index].endDate || client.lang.command_fun_anime_embed_conclude_fields_4_value,
                         "inline": true
                     },
                     {
-                        "name": "**อันดับความนิยม**",
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_5_name,
                         "value": info.data[index].popularityRank,
                         "inline": true
                     },
                     {
-                        "name": "**ลิงค์**",
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_6_name,
                         "value": "<https://kitsu.io/anime/" + info.data[index].id + ">"
                     },
                     {
-                        "name": "**สรุป:**",
+                        "name": client.lang.command_fun_anime_embed_conclude_fields_7_name,
                         "value": "```" + info.data[index].synopsis + "```"
                     }
                 ]

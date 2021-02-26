@@ -2,7 +2,7 @@ module.exports.run = async function (client, message, args) {
     let username = message.author.username;
     let embed = {
         "color": 1,
-        "description": username + " ตัดสินใจที่จะฆ่าตัวตาย 💔 หลับให้สบาย"
+        "description": username + client.lang.command_fun_kill_embed_description
     };
     message.channel.send({ embed });
 };

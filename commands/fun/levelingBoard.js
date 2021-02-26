@@ -1,5 +1,5 @@
 module.exports.run = async function (client, message) {
-    message.channel.send("📖 อดใจรอในเร็วๆ นี้คะ >-<");
+    message.channel.send(client.lang.command_coming_soon);
 };
 
 module.exports.help = {

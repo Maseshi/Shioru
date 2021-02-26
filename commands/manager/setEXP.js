@@ -2,8 +2,6 @@ const firebase = require("firebase");
 
 module.exports.run = async function (client, message, args) {
     if (message.member.hasPermission(["ADMINISTRATOR", "MANAGE_ROLES"])) {
-        let notification = message.guild.channels.cache.find(ch => ch.name === "│การแจ้งเตือน🔔");
-
         let arg = args[0];
         let amount = parseInt(args.slice(1).join(" "));
         if (!arg) {
@@ -20,41 +18,44 @@ module.exports.run = async function (client, message, args) {
                     let avatar = user.avatarURL();
                     let username = user.username;
                     let id = user.id;
-                    database.ref("Discord/Users/" + id + "/Leveling/").update({
+                    database.ref("Shioru/Discord/Users/" + id + "/Leveling/").update({
                         "EXP": amount
                     }).then(function () {
-                        database.ref("Discord/Users/" + id + "/Leveling/").once("value")
+                        database.ref("Shioru/Discord/Users/" + id + "/Leveling/").once("value")
                             .then(function (snapshot) {
                                 if (snapshot.exists()) {
                                     let exp = snapshot.val().EXP;
                                     let level = snapshot.val().Level;
+                                    let notifyEnable = snapshot.val().channels.notification.enable;
+                                    let notifyId = snapshot.val().channels.notification.id;
 
-                                    let embed = {
-                                        "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-                                        "color": 4886754,
-                                        "thumbnail": {
-                                            "url": avatar
-                                        },
-                                        "footer": {
-                                            "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                            "text": "EXP ของคุณถูกตั้งค่าโดยทีม"
-                                        },
-                                        "fields": [{
-                                                "name": "ชั้น (Level)",
-                                                "value": "```" + level + "```"
+                                    if (notifyEnable === true) {
+                                        let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
+                                        let embed = {
+                                            "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                                            "color": 4886754,
+                                            "thumbnail": {
+                                                "url": avatar
                                             },
-                                            {
-                                                "name": "ประสบการณ์ (Exp)",
-                                                "value": "```" + exp + "```"
-                                            }
-                                        ]
-                                    };
-                                    notification.send({
-                                            embed
-                                        })
-                                        .then(function () {
+                                            "footer": {
+                                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                                                "text": "EXP ของคุณถูกตั้งค่าโดยทีม"
+                                            },
+                                            "fields": [
+                                                {
+                                                    "name": "ชั้น (Level)",
+                                                    "value": "```" + level + "```"
+                                                },
+                                                {
+                                                    "name": "ประสบการณ์ (Exp)",
+                                                    "value": "```" + exp + "```"
+                                                }
+                                            ]
+                                        };
+                                        notification.send({embed}).then(function () {
                                             message.channel.send("✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...");
                                         });
+                                    }
                                 } else {
                                     message.channel.send("❎ ไม่พบสมชิกรายนี้ในฐานข้อมูลเลยคะ");
                                 }

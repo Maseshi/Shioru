@@ -4,9 +4,9 @@ const fs = require("fs");
 module.exports.run = async function (client, message, args) {
 	let embed = new discord.MessageEmbed()
 	.setColor("#E01055")
-	.setTitle("เอกสารข้อมูลช่วยเหลือ")
+	.setTitle(client.lang.command_information_help_embed_title)
 	.setAuthor(client.user.username, client.user.displayAvatarURL())
-	.setFooter("ร้องขอโดย " + message.author.username, message.author.displayAvatarURL())
+	.setFooter(client.lang.command_information_help_embed_footer_name + message.author.username, message.author.displayAvatarURL())
 	.setTimestamp();
 	if (args[0]) {
 		let command = args[0];
@@ -17,28 +17,28 @@ module.exports.run = async function (client, message, args) {
 			cmd = client.commands.get(client.aliases.get(command));
 		}
 		if (!cmd) {
-			message.channel.send(embed.setTitle("❎ คำสั่งไม่ถูกต้อง").setDescription("เอ๋...ไม่มีคำสั่งนี้นะคะ ลองตรวจสอบใหม่โดยพิมพ์ `" + client.config.prefix + "help` เพื่อดูรายการคำสั่งทั้งหมดของฉันคะ"));
+			message.channel.send(embed.setTitle(client.lang.command_information_help_if_dont_have_cmd_embed_edit_title).setDescription(client.lang.command_information_help_if_dont_have_cmd_embed_edit_description.replace("%prefix", client.config.prefix)));
 		} else {
 			command = cmd.help;
-			embed.setTitle("📑 รายละเอียดของคำสั่ง " + command.name.slice(0, 1).toUpperCase() + command.name.slice(1));
+			embed.setTitle(client.lang.command_information_help_else_have_cmd_embed_edit_title + command.name.slice(0, 1).toUpperCase() + command.name.slice(1));
 			embed.setDescription([
-				"```คำสั่ง: " + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
-				"คำอธิบาย: " + (command.description || "ไม่มีคำอธิบาย"),
-				"วิธีใช้: " + (client.config.prefix) + (command.usage ? (command.usage) : "ไม่มีวิธีการใช้งาน"),
-				"ประเภท: " + (command.category ? command.category : "General" || "Misc"),
-				"นามแฝง: " + (command.aliases ? command.aliases.join(", ") + "```" : "ไม่มี" + "```"),
-				"เคล็ดลับ: **นามแฝง** สามารถใช้แทนคำสั่งของแต่ละคำสั่งได้ เช่น `" + (client.config.prefix + command.name.slice(0, 1).toUpperCase() + command.name.slice(1)) + "` แทนด้วย `" + (client.config.prefix + command.aliases[0]) + "`"
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_0 + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_1 + (command.description || client.lang.command_information_help_else_have_cmd_embed_edit_description_or_line_1),
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_2 + (client.config.prefix) + (command.usage ? (command.usage) : client.lang.command_information_help_else_have_cmd_embed_edit_description_or_line_2),
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_3 + (command.category ? command.category : "General" || "Misc"),
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_4 + (command.aliases ? command.aliases.join(", ") + "```" : client.lang.command_information_help_else_have_cmd_embed_edit_description_or_line_4 + "```"),
+				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_5.replace("%cmd", (client.config.prefix + command.name.slice(0, 1).toUpperCase() + command.name.slice(1))).replace("%aliases", (client.config.prefix + command.aliases[0]))
 			].join("\n"));
 
 			message.channel.send(embed);
 		}
 	} else {
 		let categories = fs.readdirSync("./commands/");
-		embed.setDescription([
-			"คำสั่งทั้งหมดที่ฉันได้เรียนหรือศึกษามา เข้าใจและใช้งานได้จริง",
-			"ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **" + client.config.prefix + "**",
-			"`<>` หมายถึงจำเป็นและ `()` เป็นตัวเลือก อาจจะตอบหรือไม่จำเป็นต้องตอบก็ได้",
-			"สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `" + (client.config.prefix) + "help คำสั่ง` แล้วคำอธิฐานจะเป็นจริง!!"
+		await embed.setDescription([
+			client.lang.command_information_help_else_have_args_embed_edit_description[0],
+			client.lang.command_information_help_else_have_args_embed_edit_description[1].replace("%prefix", client.config.prefix),
+			client.lang.command_information_help_else_have_args_embed_edit_description[2],
+			client.lang.command_information_help_else_have_args_embed_edit_description[3].replace("%prefix", client.config.prefix)
 		].join("\n"));
 		categories.forEach(function (category) {
 			let dir = client.commands.filter(c => c.help.category.toLowerCase() === category.toLowerCase());

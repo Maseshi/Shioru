@@ -4,7 +4,7 @@ module.exports.run = async function (client, message, args) {
     let id = message.author.id;
     let arg = args.join(" ");
     if (arg) {
-        let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+        let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
         if (!user) {
             message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
         } else {

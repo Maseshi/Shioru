@@ -22,7 +22,7 @@ For a look at all of her commands, type Shelp.
 
 # Credit
 
-Her profile picture, I'm not the creator But I brought it from [夏月まりな🍓新刊通販](https://www.pixiv.net/en/artworks/76450826). If you think his/her work is great, don't hesitate to follow him/her.
+Her profile picture, I'm not the creator But I brought it from [夏月まりな🍓新刊通販](https://www.pixiv.net/en/users/482462). If you think his/her work is great, don't hesitate to follow him/her.
 
 # Issues?
 

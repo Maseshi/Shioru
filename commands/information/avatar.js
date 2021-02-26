@@ -2,16 +2,16 @@ module.exports.run = async function (client, message, args) {
     let arg = args.join(" ");
     if (arg === client.user.username || arg === client.user.tag || arg === client.user.id) {
         if (message.author.id !== client.config.owner) {
-            message.channel.send("ถ้าเป็นรูปของฉันละก็...อืมม...")
+            message.channel.send(client.lang.command_information_avatar_if_client-avatar)
                 .then(function () {
-                    message.channel.send("ไม่ให้ดีกว่า...ฉันให้เฉพาะเจ้าของฉันเท่านั้นแหล่ะ 😁", {
+                    message.channel.send(client.lang.command_information_avatar_if_client-avatar_after_timeout, {
                         "timeout": 8000
                     });
                 });
         } else {
             let avatar = client.user.avatarURL();
             let embed = {
-                "title": "นี่คือลิงค์รูปของฉันคะ",
+                "title": client.lang.command_information_avatar_else_user-avatar_embed_title,
                 "description": avatar,
                 "url": avatar,
                 "color": 14684245,
@@ -25,14 +25,14 @@ module.exports.run = async function (client, message, args) {
         }
     } else {
         if (arg) {
-            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+            let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
-                message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
+                message.channel.send(client.lang.command_information_avatar_if_dont_have_user);
             } else {
                 let avatar = user.avatarURL();
                 let username = user.username;
                 let embed = {
-                    "title": "นี่คือลิงค์รูปของ " + username,
+                    "title": client.lang.command_information_avatar_else_have_user_embed_title + username,
                     "description": avatar,
                     "url": avatar,
                     "color": 4886754,
@@ -47,7 +47,7 @@ module.exports.run = async function (client, message, args) {
         } else {
             let avatar = message.author.displayAvatarURL();
             let embed = {
-                "title": "นี่คือลิงค์รูปของคุณคะ",
+                "title": client.lang.command_information_avatar_else_this_user_embed_title,
                 "description": avatar,
                 "url": avatar,
                 "color": 4886754,
