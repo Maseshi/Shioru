@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
         if (arg === "") {
             message.reply("❓ สมาชิกที่ต้องการจะลบชื่อว่าอะไรเหรอคะ รหัสบัญชีก็ได้นะ >.<");
         } else {
-            let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
             } else {
