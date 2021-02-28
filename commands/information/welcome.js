@@ -1,12 +1,20 @@
+const discord = require("discord.js");
+
 module.exports.run = async function (client, message, args) {
+	let header = new discord.MessageAttachment("./assets/images/ic_welcome_banner.jpg", "ic_welcome_banner.jpg");
+	let rule = new discord.MessageAttachment("./assets/images/ic_welcome_rule.jpg", "ic_welcome_rule.jpg");
+
 	if (message.member.id === client.config.owner) {
-		if (message.guild.id === "618837514882514944") {
+		if (message.guild.id === "618837514882514944" || message.guild.id === "724675075504341085") {
 			let codeName = client.user.username;
 			let guildName = message.guild.name;
 			let sectionA = {
+				"files": [
+					header
+				],
 				"title": "ยินดีต้อนรับสู่ " + guildName,
 				"image": {
-					"url": "https://i.imgur.com/nK1ljjl.jpeg"
+					"url": "attachment://ic_welcome_banner.jpg"
 				}
 			};
 			let sectionAa = {
@@ -14,10 +22,13 @@ module.exports.run = async function (client, message, args) {
 				"description": "อืมๆ ฉันคิดไว้แล้วละว่าในเร็วๆ นี้จะมีคนมาเพิ่ม ถ้าเพิ่งเข้ามาใน " + guildName + " เป็นครั้งแรกละก็...คุณอาจจะงงนิดหนึ่ง (ไม่น่าจะนิดนะ) ว่าทำไหมมีแค่ไม่กี่ช่องเอง นั้นเป็นเพราะว่าฉันซ่อนช่องอื่นๆ ไว้เพื่อไม่ให้ผู้ที่ประสงค์ร้ายจะเข้ามาก่อกวนเซิร์ฟเวอร์และสมาชิกของฉันน่ะ แล้วก็เพื่อยืนยันว่าคุณเป็นมนุษย์จริงๆ วิธีแก้นะหรอ..? ให้อ่านต่อจากข้างล่างเลยย ที่พูดถึงบทบาทของคุณนั้นละนะ \n\nเฮ้...เกือบลืมแน่ะ งั้นขอทักทายก่อนละกันนะ ฉันชื่อ " + codeName + " ชื่อจริง Yusuki Hirume ฉันคือผู้ช่วยและผู้ดูแลของเซิร์ฟเวอร์นี้ละ อ่าๆ..คุณไม่จำเป็นต้องแนะนำตัวก็ได้ เพราะฉันมีข้อมูลของคุณอยู่ในเซิร์ฟเวอร์นี้แล้ว แล้วถ้าหากคุณต้องการจะให้ฉันช่วยอะไรละก็ ให้พิมพ์ **Shelp** นะ แล้วฉันจะบอกคุณเกี่ยวกับการสื่อสารระหว่างฉันกับคุณเอง"
 			};
 			let sectionB = {
+				"files": [
+					rule
+				],
 				"title": "กฎระเบียบของเซิร์ฟเวอร์!",
 				"color": 16711680,
 				"image": {
-					"url": "https://i.imgur.com/IZ1wKfu.jpeg"
+					"url": "attachment://ic_welcome_rule.jpg"
 				}
 			};
 			let sectionBa = {
