@@ -1,3 +1,5 @@
+// Since this is a private order, there is no translation.
+
 module.exports.run = async function (client, message, args) {
 	if (message.guild.id === "618837514882514944") {
 		let update = client.config.update;
