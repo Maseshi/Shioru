@@ -2,9 +2,9 @@ module.exports.run = async function (client, message, args) {
     let arg = args.join(" ");
     if (arg === client.user.username || arg === client.user.tag || arg === client.user.id) {
         if (message.author.id !== client.config.owner) {
-            message.channel.send(client.lang.command_information_avatar_if_client-avatar)
+            message.channel.send(client.lang.command_information_avatar_if_client_avatar)
                 .then(function () {
-                    message.channel.send(client.lang.command_information_avatar_if_client-avatar_after_timeout, {
+                    message.channel.send(client.lang.command_information_avatar_if_client_avatar_after_timeout, {
                         "timeout": 8000
                     });
                 });
@@ -12,7 +12,7 @@ module.exports.run = async function (client, message, args) {
             let avatar = client.user.avatarURL();
             message.channel.send({
                 "embed": {
-                    "title": client.lang.command_information_avatar_else_user-avatar_embed_title,
+                    "title": client.lang.command_information_avatar_else_user_avatar_embed_title,
                     "description": avatar,
                     "url": avatar,
                     "color": 14684245,
@@ -24,7 +24,7 @@ module.exports.run = async function (client, message, args) {
         }
     } else {
         if (arg) {
-            let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+            let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
                 message.channel.send(client.lang.command_information_avatar_if_dont_have_user);
             } else {

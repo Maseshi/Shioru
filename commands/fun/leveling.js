@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
     let id = message.author.id;
     let arg = args.join(" ");
     if (arg) {
-        let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+        let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
         if (!user) {
             message.channel.send(client.lang.command_fun_leveling_null_user);
         } else {
@@ -29,14 +29,14 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.send({
                     "embed": {
-                        "description": Susername + client.lang.command_fun_leveling_embed_description,
+                        "description": Susername + client.lang.command_fun_leveling_function_getLeveling_embed_description,
                         "color": 4886754,
                         "thumbnail": {
                             "url": Savatar
                         },
                         "fields": [
                             {
-                                "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_name,
+                                "name": client.lang.command_fun_leveling_function_getLeveling_embed_fields_0_name,
                                 "value": "```" + level + "```"
                             },
                             {
