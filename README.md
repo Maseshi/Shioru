@@ -5,6 +5,7 @@
 [![Discord server](https://discordapp.com/api/guilds/618837514882514944/widget.png?style=shield)](https://discord.gg/7B52BTf)
 [![Stars](https://img.shields.io/github/stars/Shinosaki/shioru.svg)](https://github.com/Shinosaki/shioru/stargazers)
 [![License](https://img.shields.io/github/license/Shinosaki/shioru.svg)](https://github.com/Shinosaki/shioru/blob/master/LICENSE)
+[![Node.js CI](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml/badge.svg?branch=stable)](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml)
 
 #
 
