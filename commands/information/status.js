@@ -1,7 +1,7 @@
 module.exports.run = async function (client, message, args) {
     let status = args.join(" ");
     if (status === "") {
-        message.reply("❓ ต้องการตรวจสอบสถานะอะไรดีคะ online, offline, idle, dnd");
+        message.reply(client.lang.command_information_status_no_args);
     } else {
         if (status === "online" || status === "offline" || status === "idle" || status === "dnd") {
             let icon = message.guild.iconURL();
@@ -10,11 +10,11 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.send({
                     "embed": {
-                        "description": "จำนวนสมาชิกที่ออนไลน์ในขณะนี้ คือ \n```" + onlineCount + "```",
+                        "description": client.lang.command_information_status_embed_online_descritpion + "```" + onlineCount + "```",
                         "color": 3055702,
                         "footer": {
                             "icon_url": icon,
-                            "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
+                            "text": client.lang.command_information_status_embed_online_footer_text
                         }
                     }
                 });
@@ -24,11 +24,11 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.send({
                     "embed": {
-                        "description": "จำนวนสมาชิกที่ออฟไลน์ในขณะนี้ คือ \n```" + offlineCount + "```",
+                        "description": client.lang.command_information_status_embed_offline_footer_text + "```" + offlineCount + "```",
                         "color": 10197915,
                         "footer": {
                             "icon_url": icon,
-                            "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
+                            "text": client.lang.command_information_status_embed_offline_footer_text
                         }
                     }
                 });
@@ -38,11 +38,11 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.send({
                     "embed": {
-                        "description": "จำนวนสมาชิกที่ไม่อยู่ในขณะนี้ คือ \n```" + idleCount + "```",
+                        "description": client.lang.command_information_status_embed_idle_descritpion + "```" + idleCount + "```",
                         "color": 16098851,
                         "footer": {
                             "icon_url": icon,
-                            "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
+                            "text": client.lang.command_information_status_embed_idle_footer_text
                         }
                     }
                 });
@@ -52,17 +52,17 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.send({
                     "embed": {
-                        "description": "จำนวนสมาชิกที่ห้ามรบกวนในขณะนี้ คือ \n```" + dndCount + "```",
+                        "description": client.lang.command_information_status_embed_dnd_descritpion + "```" + dndCount + "```",
                         "color": 13632027,
                         "footer": {
                             "icon_url": icon,
-                            "text": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์"
+                            "text": client.lang.command_information_status_embed_dnd_footer_text
                         }
                     }
                 });
             }
         } else {
-            message.reply("❎ ไม่มีสถานะนี้ใน Discord นะคะ...สถานะที่มีคือ online, offline, idle, dnd");
+            message.reply(client.lang.command_information_status_dont_have_this_status);
         }
     }
 };

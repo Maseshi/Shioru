@@ -12,19 +12,19 @@ module.exports.run = async function (client, message, args) {
     let guildVerificationLevel = message.guild.verificationLevel;
 
     if (guildVerificationLevel == "NONE") {
-        guildVerificationLevel = "ไม่มี";
+        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.NONE;
     }
     if (guildVerificationLevel == "LOW") {
-        guildVerificationLevel = "ต่ำ";
+        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.LOW;
     }
     if (guildVerificationLevel == "MEDIUM") {
-        guildVerificationLevel = "ปานกลาง";
+        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.MEDIUM;
     }
     if (guildVerificationLevel == "HIGH") {
-        guildVerificationLevel = "สูง";
+        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.HIGH;
     }
     if (guildVerificationLevel == "VERY_HIGH") {
-        guildVerificationLevel = "สูงที่สุด";
+        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.VERY_HIGH;
     }
 
     let guildMemberCount = message.guild.memberCount;
@@ -33,69 +33,69 @@ module.exports.run = async function (client, message, args) {
     let guildEmojiSize = message.guild.emojis.cache.size;
     message.channel.send({
         "embed": {
-            "title": "📖 รายละเอียดข้อมูลเซิร์ฟเวอร์",
+            "title": client.lang.command_information_server_embed_info_title,
             "color": 4886754,
             "timestamp": guildCreatedAtFormat,
             "footer": {
                 "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/hammer_1f528.png",
-                "text": "เซิร์ฟเวอร์ถูกสร้างเมื่อ"
+                "text": client.lang.command_information_server_embed_info_footer_text
             },
             "thumbnail": {
                 "url": guildIcon
             },
             "fields": [
                 {
-                    "name": "ชื่อ",
+                    "name": client.lang.command_information_server_embed_info_fields_0_name,
                     "value": guildName,
                     "inline": true
                 },
                 {
-                    "name": "ยืนยัน",
+                    "name": client.lang.command_information_server_embed_info_fields_1_name,
                     "value": guildVerified,
                     "inline": true
                 },
                 {
-                    "name": "รหัสเซิร์ฟเวอร์",
+                    "name": client.lang.command_information_server_embed_info_fields_2_name,
                     "value": guildID,
                     "inline": true
                 },
                 {
-                    "name": "เจ้าของ",
+                    "name": client.lang.command_information_server_embed_info_fields_3_name,
                     "value": guildOwner,
                     "inline": true
                 },
                 {
-                    "name": "ภูมิภาค",
+                    "name": client.lang.command_information_server_embed_info_fields_4_name,
                     "value": guildRegion,
                     "inline": true
                 },
                 {
-                    "name": "ระดับการยืนยัน",
+                    "name": client.lang.command_information_server_embed_info_fields_5_name,
                     "value": guildVerificationLevel,
                     "inline": true
                 },
                 {
-                    "name": "เงินกองทุนชั้นที่",
+                    "name": client.lang.command_information_server_embed_info_fields_6_name,
                     "value": guildTier,
                     "inline": true
                 },
                 {
-                    "name": "สมาชิก",
+                    "name": client.lang.command_information_server_embed_info_fields_7_name,
                     "value": guildMemberCount,
                     "inline": true
                 },
                 {
-                    "name": "บทบาท",
+                    "name": client.lang.command_information_server_embed_info_fields_8_name,
                     "value": guildRolesSize,
                     "inline": true
                 },
                 {
-                    "name": "ช่อง",
+                    "name": client.lang.command_information_server_embed_info_fields_9_name,
                     "value": guildChannelsSize,
                     "inline": true
                 },
                 {
-                    "name": "อีโมจิ",
+                    "name": client.lang.command_information_server_embed_info_fields_10_name,
                     "value": guildEmojiSize,
                     "inline": true
                 }

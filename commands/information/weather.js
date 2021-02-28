@@ -4,19 +4,18 @@ module.exports.run = async function (client, message, args) {
     let arg = args.join(" ");
     
     if (arg === "") {
-        message.reply("❓ ขอตำแหน่งที่คุณต้องการด้วยคะ เช่น กรุงเทพ");
+        message.reply(client.lang.command_information_weather_no_args);
     } else {
         weather.find({
             "search": arg,
             "degreeType": "C"
-        },
-        function (err, result) {
+        }, function (err, result) {
             if (err) {
                 console.log(err);
-                return message.reply("❌ ไม่สามารถหาพื้นที่ดังกล่าวได้ค่ะ");
+                return message.reply(client.lang.command_information_weather_error);
             } else {
                 if (!result) {
-                    message.channel.send("❎ เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ");
+                    message.channel.send(client.lang.command_information_weather_result_error);
                 } else {
                     let city = result[0];
                     let current = city.current;
@@ -37,11 +36,11 @@ module.exports.run = async function (client, message, args) {
 
                     message.channel.send({
                         "embed": {
-                            "description": "สภาพอากาศของ __**" + city.location.name + "**__ ในขณะนี้คือ \n```" + skyText + "```",
+                            "description": client.lang.command_information_weather_embed_result_description.replace("%location", city.location.name).replace("%skyText", skyText),
                             "color": 0x00AE86,
                             "footer": {
                                 "icon_url": "https://www.tonystam.com/en/img/Microsoft-portfolio.png",
-                                "text": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft"
+                                "text": client.lang.command_information_weather_embed_result_footer_text
                             },
                             "thumbnail": {
                                 "url": imageURL
@@ -51,43 +50,44 @@ module.exports.run = async function (client, message, args) {
                                 "url": "https://www.msn.com/th-th/Weather",
                                 "icon_url": "https://cdn.icon-icons.com/icons2/1488/PNG/512/5307-msn_102525.png"
                             },
-                            "fields": [{
-                                    "name": "🌐 เขตเวลา",
+                            "fields": [
+                                {
+                                    "name": client.lang.command_information_weather_embed_result_fields_0_name,
                                     "value": "UTC" + timezone,
                                     "inline": true
                                 },
                                 {
-                                    "name": "⚖️ หน่วยวัด",
+                                    "name": client.lang.command_information_weather_embed_result_fields_1_name,
                                     "value": degreeType,
                                     "inline": true
                                 },
                                 {
-                                    "name": "🌡️ อุณหภูมิ",
+                                    "name": client.lang.command_information_weather_embed_result_fields_2_name,
                                     "value": temperature,
                                     "inline": true
                                 },
                                 {
-                                    "name": "🎐 รู้สึกเหมือน",
-                                    "value": feelsLike + " องศา",
+                                    "name": client.lang.command_information_weather_embed_result_fields_3_name,
+                                    "value": feelsLike + client.lang.command_information_weather_embed_result_fields_3_value,
                                     "inline": true
                                 },
                                 {
-                                    "name": "🎏 ลม",
+                                    "name": client.lang.command_information_weather_embed_result_fields_4_name,
                                     "value": wind,
                                     "inline": true
                                 },
                                 {
-                                    "name": "💧 ความชื้น",
+                                    "name": client.lang.command_information_weather_embed_result_fields_5_name,
                                     "value": humidity + "%",
                                     "inline": true
                                 },
                                 {
-                                    "name": "📅 วัน",
+                                    "name": client.lang.command_information_weather_embed_result_fields_7_name,
                                     "value": day,
                                     "inline": true
                                 },
                                 {
-                                    "name": "📆 วันที่",
+                                    "name": client.lang.command_information_weather_embed_result_fields_8_name,
                                     "value": date,
                                     "inline": true
                                 }
@@ -101,37 +101,37 @@ module.exports.run = async function (client, message, args) {
 
     function skyTextTran(current) {
         if (current.skytext === "Clear") {
-            current.skytext = "อากาศแจ่มใส";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.clear;
         }
         if (current.skytext === "Light Rain") {
-            current.skytext = "ฝนตกปรอยๆ";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.light_rain;
         }
         if (current.skytext === "Rain Showers") {
-            current.skytext = "อาบน้ำฝน";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.rain_showers;
         }
         if (current.skytext === "Mostly Cloudy") {
-            current.skytext = "มีเมฆมากเป็นส่วนใหญ่";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.mostly_cloudy;
         }
         if (current.skytext === "Partly Sunny") {
-            current.skytext = "แดดออกเป็นบางส่วน";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.partly_sunny;
         }
         if (current.skytext === "Partly Cloudy") {
-            current.skytext = "มีเมฆบางส่วน";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.partly_cloudy;
         }
         if (current.skytext === "Sunny") {
-            current.skytext = "แดดจัด";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.sunny;
         }
         if (current.skytext === "Rain") {
-            current.skytext = "ฝนตก";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.rain;
         }
         if (current.skytext === "Cloudy") {
-            current.skytext = "มีเมฆมาก";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.cloudy;
         }
         if (current.skytext === "Mostly Sunny") {
-            current.skytext = "แดดจัดเป็นส่วนใหญ่";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.mostly_sunny;
         }
         if (current.skytext === "Mostly Clear") {
-            current.skytext = "ท้องฟ้าแจ่มใสเป็นส่วนใหญ่";
+            current.skytext = client.lang.command_information_weather_function_skyTextTran.mostly_clear;
         }
     }
 };

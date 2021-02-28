@@ -7,9 +7,9 @@ module.exports.run = async function (client, message, args) {
   let accountCreateAt = message.author.createdAt;
   let arg = args.join(" ");
   if (arg) {
-    let user = message.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
+    let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
     if (!user) {
-      message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า..?");
+      message.channel.send(client.lang.command_information_userInfo_no_user);
     } else {
       avatar = user.avatarURL();
       username = user.username;
@@ -24,32 +24,32 @@ module.exports.run = async function (client, message, args) {
 
   function userInfo(SguildIcon, Savatar, Susername, SuserDiscriminator, Sid, SaccountCreateAt) {
     let date = new Date(SaccountCreateAt);
-    let days = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"];
-    let months = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"];
-    let createdAt = "วัน" + days[date.getDay()] + "ที่ " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + " เวลา " + date.getHours() + ":" + date.getMinutes() + " น.";
+    let days = client.lang.command_information_userInfo_function_userInfo_days;
+    let months = client.lang.command_information_userInfo_function_userInfo_months;
+    let createdAt = client.lang.command_information_userInfo_function_userInfo_createdAt.replace("%day", days[date.getDay()]).replace("%date", date.getDate()).replace("%months", months[date.getMonth()]).replace("%year", date.getFullYear()).replace("%hours", date.getHours()).replace("%minutes", date.getMinutes());
 
     message.channel.send({
       "embed": {
-        "title": "📖 รายละเอียดข้อมูลของคุณ",
+        "title": client.lang.command_information_userInfo_function_userInfo_embed_info_title,
         "color": 4886754,
         "footer": {
           "icon_url": SguildIcon,
-          "text": "อ้างอิงข้อมูลจาก Discord"
+          "text": client.lang.command_information_userInfo_function_userInfo_embed_info_footer_text
         },
         "thumbnail": {
           "url": Savatar
         },
         "fields": [
           {
-            "name": "ชื่อเต็ม:",
+            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_0_name,
             "value": Susername + "#" + SuserDiscriminator
           },
           {
-            "name": "รหัสบัญชี:",
+            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_1_name,
             "value": Sid
           },
           {
-            "name": "สร้างบัญชีเมื่อ:",
+            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_2_name,
             "value": createdAt
           }
         ]
