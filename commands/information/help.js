@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const fs = require("fs");
 
 module.exports.run = async function (client, message, args) {
-	let embed = new discord.MessageEmbed()
+	let info = new discord.MessageEmbed()
 	.setColor("#E01055")
 	.setTitle(client.lang.command_information_help_embed_title)
 	.setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -17,11 +17,11 @@ module.exports.run = async function (client, message, args) {
 			cmd = client.commands.get(client.aliases.get(command));
 		}
 		if (!cmd) {
-			message.channel.send(embed.setTitle(client.lang.command_information_help_if_dont_have_cmd_embed_edit_title).setDescription(client.lang.command_information_help_if_dont_have_cmd_embed_edit_description.replace("%prefix", client.config.prefix)));
+			message.channel.send(info.setTitle(client.lang.command_information_help_if_dont_have_cmd_embed_edit_title).setDescription(client.lang.command_information_help_if_dont_have_cmd_embed_edit_description.replace("%prefix", client.config.prefix)));
 		} else {
 			command = cmd.help;
-			embed.setTitle(client.lang.command_information_help_else_have_cmd_embed_edit_title + command.name.slice(0, 1).toUpperCase() + command.name.slice(1));
-			embed.setDescription([
+			info.setTitle(client.lang.command_information_help_else_have_cmd_embed_edit_title + command.name.slice(0, 1).toUpperCase() + command.name.slice(1));
+			info.setDescription([
 				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_0 + (command.name.slice(0, 1).toUpperCase() + command.name.slice(1)),
 				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_1 + (command.description || client.lang.command_information_help_else_have_cmd_embed_edit_description_or_line_1),
 				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_2 + (client.config.prefix) + (command.usage ? (command.usage) : client.lang.command_information_help_else_have_cmd_embed_edit_description_or_line_2),
@@ -30,11 +30,11 @@ module.exports.run = async function (client, message, args) {
 				client.lang.command_information_help_else_have_cmd_embed_edit_description_line_5.replace("%cmd", (client.config.prefix + command.name.slice(0, 1).toUpperCase() + command.name.slice(1))).replace("%aliases", (client.config.prefix + command.aliases[0]))
 			].join("\n"));
 
-			message.channel.send(embed);
+			message.channel.send(info);
 		}
 	} else {
 		let categories = fs.readdirSync("./commands/");
-		await embed.setDescription([
+		await info.setDescription([
 			client.lang.command_information_help_else_have_args_embed_edit_description[0],
 			client.lang.command_information_help_else_have_args_embed_edit_description[1].replace("%prefix", client.config.prefix),
 			client.lang.command_information_help_else_have_args_embed_edit_description[2],
@@ -49,9 +49,9 @@ module.exports.run = async function (client, message, args) {
 					return;
 				} else {
 					if (client.config.owner.includes(message.author.id)) {
-						embed.addField("🏷️ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+						info.addField("🏷️ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
 					} else if (category !== "Developer") {
-						embed.addField("🔩 " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+						info.addField("🔩 " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
 					}
 				}
 			} catch (error) {
@@ -59,7 +59,7 @@ module.exports.run = async function (client, message, args) {
 			}
 		});
 		
-		message.channel.send(embed);
+		message.channel.send(info);
 	}
 };
 
