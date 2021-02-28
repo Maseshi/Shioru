@@ -1,4 +1,4 @@
-const superagent = require('superagent');
+const superagent = require("superagent");
 
 module.exports.run = async function (client, message, args) {
     superagent.get("https://nekos.life/api/v2/img/wallpaper")
