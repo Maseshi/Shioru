@@ -1,5 +1,5 @@
 module.exports.run = async function (client, message, args) {
-	message.guild.channels.cache.first().createInvite()
+	message.channel.createInvite()
 	.then(function (invite) {
 		message.channel.send({
 			"embed": {
