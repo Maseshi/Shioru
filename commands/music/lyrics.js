@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 
 module.exports.run = async function (client, message, args) {
-    let serverQueue = message.client.queue.get(message.guild.id);
+    let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
         message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
     } else {

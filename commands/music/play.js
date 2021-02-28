@@ -32,7 +32,7 @@ module.exports.run = async function (client, message, args) {
                         const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
                         const videoPlaylistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
 
-                        let serverQueue = message.client.queue.get(message.guild.id);
+                        let serverQueue = message.client.data.get(message.guild.id);
                         let search = args.join(" ");
                         let url = args[0];
                         let videos = [];
@@ -134,7 +134,7 @@ module.exports.run = async function (client, message, args) {
                                 } else {
                                     message.channel.send("📁 เพิ่มเพลงแล้วและกำลังจะเริ่มเล่นเพลงในเพลย์ลิส", playlistEmbed);
                                     
-                                    message.client.queue.set(message.guild.id, queueConstruct);
+                                    message.client.data.set(message.guild.id, queueConstruct);
         
                                     queueConstruct.connection = connection;
                                     status.edit("🎧 ขอปิดหูฟังก่อนนะคะ เดียวจะโดนว่าเอา😅...");
@@ -182,7 +182,7 @@ module.exports.run = async function (client, message, args) {
                                         }
                                     } else {
                                         queueConstruct.songs.push(metadata);
-                                        message.client.queue.set(message.guild.id, queueConstruct);
+                                        message.client.data.set(message.guild.id, queueConstruct);
 
                                         queueConstruct.connection = connection;
                                         status.edit("🎧 ขอปิดหูฟังก่อนนะคะ เดียวจะโดนว่าเอา😅...");
@@ -196,7 +196,7 @@ module.exports.run = async function (client, message, args) {
                         }
                     }).catch(async function (err) {
                         console.log("I could not join the voice channel: " + err);
-                        message.client.queue.delete(message.guild.id);
+                        message.client.data.delete(message.guild.id);
                         await channel.leave();
                         message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องเสียงคะ: " + err);
                     });

@@ -1,7 +1,7 @@
 const check = require("../../structures/modifyQueue");
 
 module.exports.run = function (client, message, args) {
-    let serverQueue = message.client.queue.get(message.guild.id);
+    let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
         message.channel.send("❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
     } else {
