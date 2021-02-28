@@ -1,12 +1,12 @@
 {
   "name": "shioru",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
   "license": "MIT",
   "repository": "github:Masashi/Shioru",
-  "homepage": "https://github.com/Masashi/Shioru#readme",
+  "homepage": "https://github.com/Maseshi/Shioru#README",
   "bugs": "https://github.com/Masashi/Shioru/issues",
   "keywords": [
     "shioru",
@@ -18,9 +18,10 @@
     "npm": "*"
   },
   "scripts": {
-    "start": "node main.js"
+    "start": "nodemon main.js"
   },
   "dependencies": {
+    "ansi-diff-stream": "^1.2.1",
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
@@ -32,6 +33,7 @@
     "lyrics-finder": "^21.7.0",
     "opusscript": "^0.0.7",
     "os": "^0.1.1",
+    "progress-string": "^1.2.2",
     "simple-youtube-api": "^5.2.1",
     "superagent": "^6.1.0",
     "weather-js": "^2.0.0",
@@ -40,5 +42,12 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.3",
+    "erlpack": "github:discord/erlpack",
+    "sodium": "^3.0.2",
+    "utf-8-validate": "^5.0.4",
+    "zlib-sync": "^0.1.7"
   }
 }
