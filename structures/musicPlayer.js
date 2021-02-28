@@ -1,7 +1,11 @@
 const ytdl = require("ytdl-core-discord");
+const firebase = require("firebase");
 
 module.exports = async function (client, message, metadata, status) {
-    let queue = message.client.queue.get(message.guild.id);
+    let database = firebase.database();
+    let ref = database.ref("Shioru/Discord/Guilds/").child(message.guild.id);
+
+    let queue = message.client.data.get(message.guild.id);
 
     if (!metadata) {
         setTimeout(function () {
@@ -9,11 +13,48 @@ module.exports = async function (client, message, metadata, status) {
                 queue.channel.leave();
             }
         }, 500000);
-        queue.textChannel.send("🎐 ตอนนี้คิวเพลงว่างแล้วค้าา...");
-        message.client.queue.delete(message.guild.id);
+        
+        ref.once("value").then(function (snapshot) {
+            if (snapshot.exists()) {
+                let notifyEnable = snapshot.val().channels.notification.enable;
+                let notifyId = snapshot.val().channels.notification.id;
+    
+                if (notifyEnable === true) {
+                    let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
+                    notification.send({
+                        "embed": {
+                            "description": "> 🎐 ตอนนี้คิวเพลงของฉันว่างแล้วค้าา...",
+                            "timestamp": new Date(),
+                            "color": 4886754,
+                            "footer": {
+                                "text": client.lang.event_guild_channelCreate_embed_footer_text
+                            },
+                            "author": {
+                                "name": "การแจ้งเตือนคิวเพลง",
+                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/multiple-musical-notes_1f3b6.png"
+                            }
+                        }
+                    });
+                }
+            } else {
+                ref.set({
+                    "prefix": "S",
+                    "language": "th_TH",
+                    "channels": {
+                        "notification": {
+                            "enable": false,
+                            "id": 0
+                        }
+                    }
+                }).then(function () {
+                    module.exports(client, message, metadata, status);
+                });
+            }
+        });
+        message.client.data.delete(message.guild.id);
     } else {
         queue.connection.on("disconnect", function () {
-            message.client.queue.delete(message.guild.id);
+            message.client.data.delete(message.guild.id);
         });
 
         let stream = await ytdl(metadata.url, {
