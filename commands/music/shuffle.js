@@ -1,6 +1,6 @@
 const check = require("../../structures/modifyQueue");
 
-module.exports.run = async function (client, message, args) {
+module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
         message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
@@ -15,7 +15,7 @@ module.exports.run = async function (client, message, args) {
             }
             serverQueue.songs = songs;
             message.client.queue.set(message.guild.id, serverQueue);
-            serverQueue.textChannel.send("🔀 สับเปลี่ยนคิว...");
+            message.channel.send("🔀 สับเปลี่ยนคิว...");
         }
     }
 };
