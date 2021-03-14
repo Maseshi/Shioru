@@ -14,7 +14,7 @@ module.exports.run = function (client, message, args) {
                 [songs[i], songs[j]] = [songs[j], songs[i]];
             }
             serverQueue.songs = songs;
-            message.client.queue.set(message.guild.id, serverQueue);
+            message.client.data.set(message.guild.id, serverQueue);
             message.channel.send("🔀 สับเปลี่ยนคิว...");
         }
     }
