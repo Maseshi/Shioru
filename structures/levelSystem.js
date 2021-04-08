@@ -28,8 +28,8 @@ module.exports = async function (client, message) {
                 }).then(function () {
                     dataRef.once("value").then(function (dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            let notifyEnable = snapshot.val().channels.notification.enable;
-                            let notifyId = snapshot.val().channels.notification.id;
+                            let notifyEnable = dataSnapshot.val().channels.notification.enable;
+                            let notifyId = dataSnapshot.val().channels.notification.id;
 
                             if (notifyEnable === true) {
                                 let levelUp = message.guild.channels.cache.find(ch => ch.id === notifyId);
