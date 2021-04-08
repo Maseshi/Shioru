@@ -8,12 +8,6 @@ module.exports = async function (client, message, metadata, status) {
     let queue = message.client.data.get(message.guild.id);
 
     if (!metadata) {
-        setTimeout(function () {
-            if (!queue.connection.dispatcher && !message.guild.me.voice.channel) {
-                queue.channel.leave();
-            }
-        }, 500000);
-        
         ref.once("value").then(function (snapshot) {
             if (snapshot.exists()) {
                 let notifyEnable = snapshot.val().channels.notification.enable;
@@ -51,6 +45,13 @@ module.exports = async function (client, message, metadata, status) {
                 });
             }
         });
+        
+        setTimeout(function () {
+            if (!queue.connection.dispatcher && !message.guild.me.voice.channel) {
+                queue.channel.leave();
+            }
+        }, 500000);
+
         message.client.data.delete(message.guild.id);
     } else {
         queue.connection.on("disconnect", function () {
