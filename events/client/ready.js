@@ -7,7 +7,7 @@ module.exports = function (client) {
     let activityName = client.guilds.cache.size + " server" + (client.guilds.cache.size === 1 ? "" : "s");
 
     client.user.setPresence({
-      "status": "available", //"available", "idle", "dnd", or "invisible"
+      "status": "available", // "available", "idle", "dnd", or "invisible"
       "activity": {
         "name": activityName,
         "type": "WATCHING",
