@@ -3,25 +3,6 @@ const kitsu = require("kitsu");
 module.exports.run = async function (client, message, args) {
     const Kitsu = new kitsu();
 
-    function titles(data) {
-        let numTitle = [];
-        for (let i = 0; i < 5; i++) {
-            numTitle.push("\n" + (i + 1) + "." + title(i, data));
-        }
-        return numTitle.join(" ");
-    }
-
-    function title(index, data) {
-        let line1 = data[index].titles.en_jp ? data[index].titles.en_jp : "";
-        let line2 = data[index].titles.en ? " / " + data[index].titles.en : "";
-        return line1 + line2;
-    }
-
-    function filter(msg) {
-        if (msg.author.id !== message.author.id) return;
-        return ["1", "2", "3", "4", "5"].includes(msg.content);
-    }
-
     if (args.length < 1) {
         message.reply(client.lang.command_fun_anime_no_args);
     } else {
@@ -119,6 +100,25 @@ module.exports.run = async function (client, message, args) {
                 }
             });
         }
+    }
+
+    function titles(data) {
+        let numTitle = [];
+        for (let i = 0; i < 5; i++) {
+            numTitle.push("\n" + (i + 1) + "." + title(i, data));
+        }
+        return numTitle.join(" ");
+    }
+
+    function title(index, data) {
+        let line1 = data[index].titles.en_jp ? data[index].titles.en_jp : "";
+        let line2 = data[index].titles.en ? " / " + data[index].titles.en : "";
+        return line1 + line2;
+    }
+
+    function filter(msg) {
+        if (msg.author.id !== message.author.id) return;
+        return ["1", "2", "3", "4", "5"].includes(msg.content);
     }
 };
 
