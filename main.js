@@ -5,9 +5,9 @@ const config = require("./config");
 const lang = require("./languages/th_TH.json");
 
 // Show when bots start working To check that bots do not have a problem
-console.log("\x1b[31m================================================================");
-console.log("\x1b[33mCopyright (c) 2020-2021 Chaiwat Suwannarat. All rights reserved.");
-console.group("\x1b[31m================================================================\x1b[0m");
+console.log("\x1b[31m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+console.log("\x1b[31m┃\x1b[33m Copyright (c) 2020-2021 Chaiwat Suwannarat. All rights reserved. \x1b[31m┃");
+console.group("\x1b[31m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\x1b[0m");
 
 const client = new discord.Client({
     "autoReconnect": true,
