@@ -3,18 +3,18 @@ module.exports.run = async function (client, message, args) {
 	if (arg === "") {
 		let voiceChannel = message.member.voice.channel;
 		if (!voiceChannel) {
-			message.reply("❓ เอ๋...ฉันไม่ได้อยู่ในช่องนั้นนะ ผีหลอกหรือเปล่า");
+			message.reply(client.lang.command_music_leave_arg_empty);
 		} else {
 			voiceChannel.leave();
-			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
+			message.channel.send(client.lang.command_music_leave_arg_empty_leave_success);
 		}
 	} else {
 		let channel = client.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
 		if (!channel) {
-			message.channel.send("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?");
+			message.channel.send(client.lang.command_music_leave_with_id_not_found_channel);
 		} else {
 			channel.leave();
-			message.channel.send("◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ");
+			message.channel.send(client.lang.command_music_leave_with_id_leave_success);
 		}
 	}
 };

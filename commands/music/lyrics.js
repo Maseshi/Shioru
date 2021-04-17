@@ -4,21 +4,21 @@ const lyricsFinder = require("lyrics-finder");
 module.exports.run = async function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_lyrics_no_queue);
     } else {
         let lyrics;
 
         try {
             lyrics = await lyricsFinder(serverQueue.songs[0].title, "");
             if (!lyrics) {
-                lyrics = "ไม่พบเนื้อเพลงของ " + serverQueue.songs[0].title + ".";
+                lyrics = client.lang.command_music_lyrics_not_found.replace("%title", (serverQueue.songs[0].title));
             }
         } catch (error) {
-            lyrics = "ไม่พบเนื้อเพลงของ " + serverQueue.songs[0].title + ".";
+            lyrics = client.lang.command_music_lyrics_try_catch_error.replace("%title", (serverQueue.songs[0].title));
         }
 
         let lyricsEmbed = new discord.MessageEmbed()
-            .setTitle("📋 เนื้อเพลงของเพลงที่กำลังเล่น")
+            .setTitle(client.lang.command_music_lyrics_found)
             .setDescription("```" + lyrics + "```")
             .setColor("#F8AA2A")
             .setFooter(message.author.username, message.author.displayAvatarURL())

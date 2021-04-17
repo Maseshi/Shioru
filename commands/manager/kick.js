@@ -2,22 +2,22 @@ module.exports.run = async function (client, message, args) {
     if (message.member.hasPermission(["ADMINISTRATOR", "KICK_MEMBERS"])) {
 		let arg = args[0];
 		if (!arg) {
-			message.reply("❓ จะให้ฉันจัดการกับสมาชิกคนไหนเหรอคะ");
+			message.reply(client.lang.command_manager_kick_arg_empty);
 		} else {
 			let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
 			if (!user) {
-				message.channel.send("❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ");
+				message.channel.send(client.lang.command_manager_kick_not_found_user);
 			} else {
 				let memberKick = message.guild.members.cache.get(user.id);
 				if (!memberKick) {
-					message.channel.send("❎ เอ๋...สมาชิกนี้หายไปไหนแล้วอ่ะ เอ๋...หรือไม่ได้อยู่ที่นี่หรือเปล่า");
+					message.channel.send(client.lang.command_manager_kick_cant_ban);
 				} else {
 					if (memberKick.kickable === false) {
-						message.channel.send("❌ ฉันไม่มีสิทธิ์ที่จะนำเขาออกจากที่นี่นะคะ ถ้าหากมีเหตุผลใดๆ ที่เขาทำอะไรไม่ดีให้แจ้งเจ้าของที่นี่นะคะ ตอนนี้ฉันทำอะไรเขาไม่ด้ายยย...");
+						message.channel.send(client.lang.command_manager_kick_kickable_false);
 					} else {
 						let reason = args.slice(1).join(" ");
 						if (reason === "") {
-							reason = "**สมาชิกที่แตะไม่ได้ให้เหตุผลไว้คะ**";
+							reason = client.lang.command_manager_kick_reason;
 							kick(user, memberKick, reason);
 						} else {
 							kick(user, memberKick, reason);
@@ -27,7 +27,7 @@ module.exports.run = async function (client, message, args) {
 			}
 		}
     } else {
-    	message.reply("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ");
+    	message.reply(client.lang.command_manager_kick_dont_have_permission);
 	}
 	
 	function kick(user, memberKick, reason) {
@@ -40,25 +40,25 @@ module.exports.run = async function (client, message, args) {
 		.then(function () {
 			message.channel.send({
 				"embed": {
-					"title": username + " โดนเตะออก เนื่องจาก:",
+					"title": username + client.lang.command_manager_kick_function_kick_embed_title,
 					"description": reason,
 					"color": 16098851,
 					"timestamp": time,
 					"footer": {
 						"icon_url": authorAvatar,
-						"text": "เตะโดย " + author
+						"text": client.lang.command_manager_kick_function_kick_embed_footer_text + author
 					},
 					"thumbnail": {
 						"url": avatar
 					},
 					"author": {
-						"name": "สมาชิก",
+						"name": client.lang.command_manager_kick_function_kick_embed_author_name,
 						"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
 					}
 				}
 			});
 		}).catch(function (error) {
-			message.channel.send("⚠️ ฉันทำไม่ได้คะ เพราะว่า: " + error);
+			message.channel.send(client.lang.command_manager_kick_function_kick_message_error + error);
 			console.log(error);
 		});
 	}

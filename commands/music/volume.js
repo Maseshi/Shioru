@@ -4,23 +4,23 @@ module.exports.run = function (client, message, args) {
     let volume = parseInt(args[0]);
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ จะไปปรับเสียงอะไรอ่ะ");
+        message.channel.send(client.lang.command_music_volume_no_queue);
     } else {
         if (!check(message.member)) {
-            message.channel.send("🚫 เฉพาะเจ้าของคิวนี้เท่านั้นที่จะปรับเสียงเพลงได้");
+            message.channel.send(client.lang.command_music_volume_check_not_owner);
         } else {
             if (isNaN(volume)) {
-                message.channel.send("🔈 ปริมาณเสียงปัจจุบันคือ: **" + serverQueue.volume + "**");
+                message.channel.send(client.lang.command_music_volume_current_level_sound.replace("%currentLevel", serverQueue.volume));
             } else {
                 if (volume >= 101) {
-                    message.channel.send("🔇 ดังเกินไปแล้ววว...เดี่ยวลำโพงก็แตกซ่ะหรอก");
+                    message.channel.send(client.lang.command_music_volume_too_loud);
                 } else {
                     if (volume <= 0) {
-                        message.channel.send("🔈 นั้นก็เบาไปคะ");
+                        message.channel.send(client.lang.command_music_volume_too_light);
                     } else {
                         serverQueue.volume = volume;
                         serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
-                        message.channel.send("🔊 ปรับเสียงไปที่ระดับ: **" + volume + "**");
+                        message.channel.send(client.lang.command_music_volume_info.replace("%level", volume));
                     }
                 }
             }

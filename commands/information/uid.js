@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
     if (arg) {
         let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
         if (!user) {
-            message.channel.send(client.lang.command_information_id_no_args);
+            message.channel.send(client.lang.command_information_uid_no_args);
         } else {
             avatar = user.avatarURL();
             username = user.username;
@@ -20,8 +20,8 @@ module.exports.run = async function (client, message, args) {
     function userID(Savatar, Susername, Sid) {
         message.channel.send({
             "embed": {
-                "title": client.lang.command_information_id_function_userID_embed_title + Susername,
-                "description": "```" + Sid + "```" + client.lang.command_information_id_function_userID_embed_description,
+                "title": client.lang.command_information_uid_function_userID_embed_title + Susername,
+                "description": "```" + Sid + "```" + client.lang.command_information_uid_function_userID_embed_description,
                 "color": 4886754,
                 "thumbnail": {
                     "url": Savatar

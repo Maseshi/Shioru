@@ -3,12 +3,12 @@ const check = require("../../structures/modifyQueue");
 module.exports.run = async function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_musicInfo_no_queue);
     } else {
         if (!check(message.member)) {
-            message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะดูข้อมูลเพลงนี้ได้");
+            message.channel.send(client.lang.command_music_musicInfo_check_not_owner);
         } else {
-            message.channel.send("📄__ รายละเอียด__\n• เพลง: **" + serverQueue.songs[0].title + "**\n• ระยะเวลา: **" + (serverQueue.songs[0].timestamp || "ไม่ทราบ") + "**\n• ลิงค์เพลง: **" + serverQueue.songs[0].url + "**\n• ไอดีเพลง: **" + serverQueue.songs[0].id + "**");
+            message.channel.send(client.lang.command_music_musicInfo_info.replace("%title", (serverQueue.songs[0].title)).replace("%timestamp", (serverQueue.songs[0].timestamp || client.lang.command_music_musicInfo_info_unknown)).replace("%url", (serverQueue.songs[0].url)).replace("%id", (serverQueue.songs[0].id)));
         }
     }
 };

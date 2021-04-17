@@ -4,7 +4,7 @@ module.exports.run = async function (client, message, args) {
     if (message.member.id === client.config.owner) {
         try {
             download("Maseshi/Shioru");
-            message.channel.send("🔩 อัปเดตระบบให้เป็นเวอร์ชันล่าสุดเรียบร้อยแล้วคะ");
+            message.channel.send(client.lang.command_system_update_success);
         } catch (err) {
             message.channel.send(client.errors.genericError + err.stack).catch();
         }

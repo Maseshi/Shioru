@@ -1,9 +1,9 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_nowPlaying_no_queue);
     } else {
-        message.channel.send("🎶 ตอนนี้ฉันกำลังเล่นเพลง: **" + serverQueue.songs[0].title + "**");
+        message.channel.send(client.lang.command_music_nowPlaying_info.replace("%title", (serverQueue.songs[0].title)));
     }
 };
 

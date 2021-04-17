@@ -8,26 +8,26 @@ module.exports.run = async function (client, message, args) {
     const youtube = new YouTubeAPI(client.config.youtubeApi);
 
     let channel = message.member.voice.channel;
-    let status = await message.channel.send("🧱 กำลังตรวจสอบความถูกต้อง...");
+    let status = await message.channel.send(client.lang.command_music_play_status_check);
     if (!channel) {
         status.delete();
-        message.reply("❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา...");
+        message.reply(client.lang.command_music_play_user_not_in_channel);
     } else {
         let permissions = channel.permissionsFor(message.client.user);
         if (!permissions.has("CONNECT")) {
             status.delete();
-            message.reply("🚫 ขอโทษนะคะ แต่ว่าา...คุณไม่มีสิทธิ์ในการเชื่อมต่อกับช่องนี้คะ ลองขอให้เจ้าของที่นี่ให้สิทธิ์กับคุณดูนะคะ");
+            message.reply(client.lang.command_music_play_dont_have_connect_permission);
         } else {
             if (!permissions.has("SPEAK")) {
                 status.delete();
-                message.reply("🚫 ขอโทษนะคะ แต่ว่าา...คุณไม่มีสิทธิ์ในการพูดในช่องนี้คะ ลองขอให้เจ้าของที่นี่ให้สิทธิ์กับคุณดูนะคะ");
+                message.reply(client.lang.command_music_play_dont_have_speak_permission);
             } else {
                 if (!args.length) {
                     status.delete();
-                    message.reply("❓ อยากได้เพลงอะไรเหรอคะ ลิงค์เลยก็ได้นะ");
+                    message.reply(client.lang.command_music_play_arg_empty);
                 } else {
                     channel.join().then(async function (connection) {
-                        status.edit("✏ กำลังสร้างข้อมูลของเพลง...");
+                        status.edit(client.lang.command_music_play_status_create_data);
                         const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
                         const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
                         const videoPlaylistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -61,9 +61,9 @@ module.exports.run = async function (client, message, args) {
                         if (!videoPattern.test(url) && playlistPattern.test(url)) {
                             if (!youtube) {
                                 status.delete();
-                                message.reply("❌ โควต้าการใช้งานของเซิร์ฟเวอร์หมดแล้วอ๊าาา...โปรดรอในวันพรุ่งนี้แทนนะคะ ขอโทษจริงๆ คะ T~T");
+                                message.reply(client.lang.command_music_play_youtube_api_expire);
                             } else {
-                                status.edit("🔎 กำลังหาเพลงที่คุณสั่งใน YouTube แบบเพลย์ลิสต์...");
+                                status.edit(client.lang.command_music_play_status_search_playlists);
                                 if (videoPlaylistPattern.test(url)) {
                                     try {
                                         playlist = await youtube.getPlaylist(url, { "part": "snippet" });
@@ -71,7 +71,7 @@ module.exports.run = async function (client, message, args) {
                                     } catch (error) {
                                         console.log(error);
                                         status.delete();
-                                        return message.channel.send("❎ หาเพลย์ลิสไม่เจออ่ะ จบละ");
+                                        return message.channel.send(client.lang.command_music_play_not_found_in_playlists);
                                     }
                                 } else {
                                     try {
@@ -81,7 +81,7 @@ module.exports.run = async function (client, message, args) {
                                     } catch (error) {
                                         console.log(error);
                                         status.delete();
-                                        return message.channel.send("❎ ดูเหมือนจะไม่มีเพลย์ลิสนี้นะ: " + error.message);
+                                        return message.channel.send(client.lang.command_music_play_try_catch_error + error.message);
                                     }
                                 }
         
@@ -103,11 +103,11 @@ module.exports.run = async function (client, message, args) {
                                     // Add a list of all songs.
                                     if (serverQueue) {
                                         if (check(message.member)) {
-                                            status.edit("📥 กำลังอัพเดทเพลงใหม่ทั้งหมด...");
+                                            status.edit(client.lang.command_music_play_status_update_all_music_in_playlists);
                                             serverQueue.songs.push(metadata);
                                         }
                                     } else {
-                                        status.edit("📥 กำลังเพิ่มเพลงในเพลย์ลิสต์ทั้งหมด...");
+                                        status.edit(client.lang.command_music_play_status_add_all_music_in_playlists);
                                         queueConstruct.songs.push(metadata);
                                     }
                                 });
@@ -121,35 +121,35 @@ module.exports.run = async function (client, message, args) {
             
                                 playlistEmbed.setDescription(queueConstruct.songs.map((songs, index) => (index + 1) + ". " + songs.title));
                                 if (playlistEmbed.description.length >= 2048) {
-                                    playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "\nอุ้ย...เพลย์ลิสเยอะไป ขอเอาออกบางส่วนนะ";
+                                    playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + client.lang.command_music_play_embed_playlistEmbed_description_over;
                                 }
     
                                 if (serverQueue) {
                                     if (!check(message.member)) {
-                                        status.edit("🚫 เฉพาะเจ้าของคิวนี้เท่านั้นที่จะเพิ่มเพลงได้");
+                                        status.edit(client.lang.command_music_play_check_not_owner_in_playlists);
                                     } else {
                                         status.delete();
-                                        message.channel.send("📂 เพิ่มรายการเพลงใหม่เข้าเพลย์ลิสนี้เรียบร้อยแล้ว", playlistEmbed);
+                                        message.channel.send(client.lang.command_music_play_status_add_new_music_in_playlists, playlistEmbed);
                                     }
                                 } else {
-                                    message.channel.send("📁 เพิ่มเพลงแล้วและกำลังจะเริ่มเล่นเพลงในเพลย์ลิส", playlistEmbed);
+                                    message.channel.send(client.lang.command_music_play_status_add_all_music_success_in_playlists, playlistEmbed);
                                     
                                     message.client.data.set(message.guild.id, queueConstruct);
         
                                     queueConstruct.connection = connection;
-                                    status.edit("🎧 ขอปิดหูฟังก่อนนะคะ เดียวจะโดนว่าเอา😅...");
+                                    status.edit(client.lang.command_music_play_status_disable_headphones_in_playlists);
                                     await queueConstruct.connection.voice.setSelfDeaf(true);
                                     await queueConstruct.connection.voice.setSelfMute(false);
-                                    status.edit("🎚 กำลังเปิดเครื่องเล่นเพลง...");
-                                    musicPlayer(client, message, queueConstruct.songs[0], status);
+                                    status.edit(client.lang.command_music_play_status_opening_music_player_in_playlists);
+                                    return musicPlayer(client, message, queueConstruct.songs[0], status);
                                 }
                             }
                         } else {
-                            status.edit("🔎 กำลังหาเพลงที่คุณสั่งใน YouTube");
+                            status.edit(client.lang.command_music_play_status_search_music_in_single);
                             yts(search, async function (error, result) {
                                 if (error) {
-                                    console.log("I can't find the song: " + error);
-                                    return status.edit("❎ อืมม...ดูเหมือนจะไม่เจอเพลงนี้เลยนะ ลองลิงค์ดูม่ะ?");
+                                    console.log(error);
+                                    return status.edit(client.lang.command_music_play_not_found_in_single);
                                 } else {
                                     videos = result.videos;
                                     metadata = {
@@ -174,31 +174,31 @@ module.exports.run = async function (client, message, args) {
                                     if (serverQueue) {
                                         if (!check(message.member)) {
                                             status.delete();
-                                            status.edit("🚫 เฉพาะเจ้าของคิวนี้เท่านั้นที่จะเพิ่มเพลงได้");
+                                            status.edit(client.lang.command_music_play_check_not_owner_in_single);
                                         } else {
                                             serverQueue.songs.push(metadata);
                                             status.delete();
-                                            message.channel.send("✅ **" + metadata.title + "** ได้ถูกเพิ่มเข้าไปในคิวแล้วคะ!!");
+                                            message.channel.send(client.lang.command_music_play_status_add_music_success_in_single.replace("%title", metadata.title));
                                         }
                                     } else {
                                         queueConstruct.songs.push(metadata);
                                         message.client.data.set(message.guild.id, queueConstruct);
 
                                         queueConstruct.connection = connection;
-                                        status.edit("🎧 ขอปิดหูฟังก่อนนะคะ เดียวจะโดนว่าเอา😅...");
+                                        status.edit(client.lang.command_music_play_status_disable_headphones_in_single);
                                         await queueConstruct.connection.voice.setSelfDeaf(true);
                                         await queueConstruct.connection.voice.setSelfMute(false);
-                                        status.edit("🎚 กำลังเปิดเครื่องเล่นเพลง...");
-                                        musicPlayer(client, message, queueConstruct.songs[0], status);
+                                        status.edit(client.lang.command_music_play_status_opening_music_player_in_single);
+                                        return musicPlayer(client, message, queueConstruct.songs[0], status);
                                     }
                                 }
                             });
                         }
                     }).catch(async function (err) {
-                        console.log("I could not join the voice channel: " + err);
+                        console.log(err);
                         message.client.data.delete(message.guild.id);
                         await channel.leave();
-                        message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังจะเข้าไปในช่องเสียงคะ: " + err);
+                        message.channel.send(client.lang.command_music_play_cant_join_channel + err);
                     });
                 }
             }

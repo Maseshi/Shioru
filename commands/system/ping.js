@@ -5,8 +5,8 @@ module.exports.run = async function(client, message) {
 
     msg.edit(":ping_pong: Pong", {
         "embed": {
-            "title": client.lang.commands_system_ping_embed_title,
-            "description": client.lang.commands_system_ping_embed_description.replace("%ping", ping).replace("%api", api)
+            "title": client.lang.command_system_ping_embed_title,
+            "description": client.lang.command_system_ping_embed_description.replace("%ping", ping).replace("%api", api)
         }
     });
 };

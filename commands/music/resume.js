@@ -3,18 +3,18 @@ const check = require("../../structures/modifyQueue");
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_resume_no_queue);
     } else {
         if (!serverQueue.playing) {
             if (!check(message.member)) {
-                message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
+                message.channel.send(client.lang.command_music_resume_check_not_owner);
             } else {
                 serverQueue.playing = true;
                 serverQueue.connection.dispatcher.resume();
-                message.channel.send('▶️ กำลังเล่นเพลงต่อจากจุดเดิมแล้วคะ');
+                message.channel.send(client.lang.command_music_resume_info);
             }
         } else {
-            message.channel.send("📼 ตอนนี้ฉันก็กำลังเล่นอยู่นะ เหห...");
+            message.channel.send(client.lang.command_music_resume_now_playing);
         }
     }
 };

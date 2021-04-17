@@ -4,10 +4,13 @@ module.exports.run = async function (client, message, args) {
         let min = Math.floor((ms / (1000 * 60)) % 60).toString();
         let hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString();
         let days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString();
-        return days.padStart(1, "0") + " วัน " + hrs.padStart(2, "0") + " ชั่วโมง " + min.padStart(2, "0") + " นาที " + sec.padStart(2, "0") + " วินาที";
+        return  days.padStart(1, "0") + client.lang.command_system_uptime_create_data_day +
+                hrs.padStart(2, "0") + client.lang.command_system_uptime_create_data_hour +
+                min.padStart(2, "0") + client.lang.command_system_uptime_create_data_minute +
+                sec.padStart(2, "0") + client.lang.command_system_uptime_create_data_second;
     }
     message.channel.send({ "embed": {
-            "title": "🕒 เริ่มทำงานมาแล้ว เป็นเวลา",
+            "title": client.lang.command_system_uptime_embed_title,
             "description": "```" + duration(client.uptime) + "```",
             "color": 14684245,
         }

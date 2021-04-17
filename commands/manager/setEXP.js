@@ -5,14 +5,14 @@ module.exports.run = async function (client, message, args) {
         let arg = args[0];
         let amount = parseInt(args.slice(1).join(" "));
         if (!arg) {
-            message.reply("❓ กรุณาระบุสมาชิกที่ต้องการจะเปลี่ยนแปลง EXP ด้วยคะ!");
+            message.reply(client.lang.command_manager_setEXP_arg_empty);
         } else {
             let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
             if (!user) {
-                message.channel.send("❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?");
+                message.channel.send(client.lang.command_manager_setEXP_not_found_user);
             } else {
                 if (isNaN(amount)) {
-                    message.reply("❓ ต้องการจะตั้งค่าให้สมาชิกนี้เท่าไหร่ดีคะ ต้องเป็นจำนวนนับนะ");
+                    message.reply(client.lang.command_manager_setEXP_set_exp_error);
                 } else {
                     let database = firebase.database();
                     let avatar = user.avatarURL();
@@ -33,46 +33,46 @@ module.exports.run = async function (client, message, args) {
                                         let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
                                         notification.send({
                                             "embed": {
-                                                "description": username + " ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
+                                                "description": username + client.lang.command_manager_setEXP_embed_title,
                                                 "color": 4886754,
                                                 "thumbnail": {
                                                     "url": avatar
                                                 },
                                                 "footer": {
                                                     "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                                    "text": "EXP ของคุณถูกตั้งค่าโดยทีม"
+                                                    "text": client.lang.command_manager_setEXP_embed_footer_text
                                                 },
                                                 "fields": [
                                                     {
-                                                        "name": "ชั้น (Level)",
+                                                        "name": client.lang.command_manager_setEXP_embed_field_0,
                                                         "value": "```" + level + "```"
                                                     },
                                                     {
-                                                        "name": "ประสบการณ์ (Exp)",
+                                                        "name": client.lang.command_manager_setEXP_embed_field_1,
                                                         "value": "```" + exp + "```"
                                                     }
                                                 ]
                                             }
                                         }).then(function () {
-                                            message.channel.send("✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...");
+                                            message.channel.send(client.lang.command_manager_setEXP_message_then_success);
                                         });
                                     }
                                 } else {
-                                    message.channel.send("❎ ไม่พบสมชิกรายนี้ในฐานข้อมูลเลยคะ");
+                                    message.channel.send(client.lang.command_manager_setEXP_message_catch_error);
                                 }
                             }).catch(function (error) {
                                 console.log(error);
-                                message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังตรวจสอบทรัพยากร: " + error);
+                                message.channel.send(client.lang.command_manager_setEXP_database_check_error + error);
                             });
                     }).catch(function (error) {
                         console.log(error);
-                        message.channel.send("⚠️ เกิดข้อผิดพลาดในขณะที่กำลังอัพเดททรัพยากร: " + error);
+                        message.channel.send(client.lang.command_manager_setEXP_database_update_error + error);
                     });
                 }
             }
         }
     } else {
-        message.channel.send("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ");
+        message.channel.send(client.lang.command_manager_setEXP_dont_have_permission);
     }
 };
 

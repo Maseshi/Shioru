@@ -5,7 +5,7 @@ module.exports.run = async function (client, message, args) {
         let channelInfo = message.guild.channels.cache.find(channels => (channels.id === channel) || (channels.name === channel));
         if (!channelInfo) {
             if (args.join(" ") === "") {
-                message.reply("❓ ต้องการให้ฉันพิมพ์ว่าอะไรเหรอคะ");
+                message.reply(client.lang.command_messages_say_arg_empty);
             } else {
                 message.delete()
                     .then(function () {
@@ -17,12 +17,12 @@ module.exports.run = async function (client, message, args) {
                 .then(function () {
                     channelInfo.send(text)
                         .catch(function (error) {
-                            message.channel.send("⚠️ ไม่สามารถส่งข้อความได้ เนื่องจาก: " + error);
+                            message.channel.send(client.lang.command_messages_say_send_message_error + error);
                         });
                 });
         }
     } else {
-        message.channel.send("🛑 ขอโทษนะคะ แต่ว่าาา...คุณไม่มีสิทธิ์ในการใช้งานฟังก์ชันนี้คะ");
+        message.channel.send(client.lang.command_messages_say_dont_have_permission);
     }
 };
 

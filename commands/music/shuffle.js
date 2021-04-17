@@ -3,10 +3,10 @@ const check = require("../../structures/modifyQueue");
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_shuffle_no_queue);
     } else {
         if (!check(message.member)) {
-            message.channel.send("🚫 อืมม...มีแต่เจ้าของคิวนี้เท่านั้นละนะ ที่จะทำได้");
+            message.channel.send(client.lang.command_music_shuffle_check_not_owner);
         } else {
             let songs = serverQueue.songs;
             for (let i = songs.length - 1; i > 1; i--) {
@@ -15,7 +15,7 @@ module.exports.run = function (client, message, args) {
             }
             serverQueue.songs = songs;
             message.client.data.set(message.guild.id, serverQueue);
-            message.channel.send("🔀 สับเปลี่ยนคิว...");
+            message.channel.send(client.lang.command_music_shuffle_info);
         }
     }
 };

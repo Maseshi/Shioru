@@ -24,7 +24,6 @@ module.exports.run = async function (client, message) {
                     "name": username,
                     "value": "ค่าประสบการณ์: " + exp + ", ระดับชั้น: " + level
                 };
-
                 map.push(jsonMap);
             });
             
@@ -32,8 +31,8 @@ module.exports.run = async function (client, message) {
                 return b.data.level - a.data.level || b.data.exp - a.data.exp;
             });
 
-            let user = client.users.cache.find(users => (users.username === map[0].name));
-            let avatar = user.displayAvatarURL();
+            let member = client.users.cache.find(users => (users.username === map[0].name));
+            let avatar = member.displayAvatarURL();
 
             for (let i = 0; i < map.length; i++) {
                 if (!map[i]) return;
@@ -53,7 +52,7 @@ module.exports.run = async function (client, message) {
             .addFields(map)
             .setTimestamp()
             .setFooter("เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png");
-            message.channel.send(embed);
+            return message.channel.send(embed);
         }
     });
 };

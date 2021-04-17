@@ -8,12 +8,12 @@ module.exports.run = async function (client, message, args) {
         min = temp;
     }
 
-    let Result = Math.floor(Math.random() * (max - min + 1)) + min;
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
 
     if (isNaN(Result)) {
-        message.reply("❓ ขอทราบจำนวนที่กำหนดระหว่าง ต่ำสุด กับ สูงสุด ด้วยคะ");
+        message.reply(client.lang.command_messages_numbers_arg_empty);
     } else {
-        message.channel.send("ผลลัพธ์คือ " + Result);
+        message.channel.send(client.lang.command_messages_numbers_result + result);
     }
 };
 

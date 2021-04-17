@@ -17,14 +17,14 @@ module.exports = async function (client, message, metadata, status) {
                     let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
                     notification.send({
                         "embed": {
-                            "description": "> 🎐 ตอนนี้คิวเพลงของฉันว่างแล้วค้าา...",
+                            "description": client.lang.structures_musicPlayer_notification_clear,
                             "timestamp": new Date(),
                             "color": 4886754,
                             "footer": {
                                 "text": client.lang.event_guild_channelCreate_embed_footer_text
                             },
                             "author": {
-                                "name": "การแจ้งเตือนคิวเพลง",
+                                "name": client.lang.structures_musicPlayer_notification_name,
                                 "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/multiple-musical-notes_1f3b6.png"
                             }
                         }
@@ -83,17 +83,17 @@ module.exports = async function (client, message, metadata, status) {
             console.log(error);
             queue.songs.shift();
             if (!status) {
-                message.channel.send("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+                message.channel.send(client.lang.structures_musicPlayer_dispatcher_error + error);
             } else {
-                status.edit("⚠️ เกิดข้อผิดพลาดขณะกำลังเล่นคะ: " + error);
+                status.edit(client.lang.structures_musicPlayer_dispatcher_status_error + error);
             }
         });
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
         if (!status) {
-            message.channel.send("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+            message.channel.send(client.lang.structures_musicPlayer_playing.replace("title", metadata.title));
         } else {
-            status.edit("🎶 กำลังเล่นเพลง: `" + metadata.title + "`");
+            status.edit(client.lang.structures_musicPlayer_status_playing.replace("title", metadata.title));
         }
     }
 };

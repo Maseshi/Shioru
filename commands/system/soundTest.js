@@ -3,20 +3,20 @@ const discord = require("discord.js");
 module.exports.run = async function (client, message, args) {
     let voiceChannel = message.member.voice.channel;
     let soundTestEmbed = new discord.MessageEmbed()
-        .setTitle("🔊 ทดสอบระบบเสียง")
-        .setDescription("เพิ่งฟังเพลงมาแล้วรู้สึกว่าเสียงมันแปลกๆ ใช่ไหมล่าา...งั้นเรามาลองมาทดสอบลำโพงของคุณกันหน่อย \n\n**ลองเลือกมาสักเสียงดูสิ... (60 วินาที)**")
+        .setTitle(client.lang.command_system_soundTest_embed_soundTestEmbed_title)
+        .setDescription(client.lang.command_system_soundTest_embed_soundTestEmbed_description)
         .setColor("#000000")
-        .setFooter("ขับเคลื่อนโดย Dolby Digital", "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo")
-        .addField("1. Leaf", "ความยาวของคลิปเสียง: 0:58\nขนาดของ Bit rate: 192kbps\nเสียงอันไพเราะของธรรมชาติ ที่กลมกลี่นไปกลับสายลม\nhttps://youtu.be/qJA2U-YMvkk")
-        .addField("2. Movies Matter", "ความยาวของคลิปเสียง: 1:50\nขนาดของ Bit rate: 192kbps\nโรงหนังที่กำลังจะเริ่มฉายในเร็วๆ นี้\nhttps://youtu.be/x7lMmQHKSQY")
-        .addField("3. Amaze", "ความยาวของคลิปเสียง: 1:03\nขนาดของ Bit rate: 192kbps\nเหมือนกำลังอยู่ในโรงหนัง 3D ที่กำลังฉายเรื่องสาระคดีอยู่\nhttps://youtu.be/kvAfmYNtugQ");
+        .setFooter(client.lang.command_system_soundTest_embed_soundTestEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo")
+        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_0, client.lang.command_system_soundTest_embed_soundTestEmbed_field_0_value)
+        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_1, client.lang.command_system_soundTest_embed_soundTestEmbed_field_1_value)
+        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_2, client.lang.command_system_soundTest_embed_soundTestEmbed_field_2_value);
     let soundTestPlayingEmbed = new discord.MessageEmbed()
-        .setTitle("🔊 ทดสอบระบบเสียง")
+        .setTitle(client.lang.command_system_soundTest_embed_soundTestPlayingEmbed_title)
         .setColor("#000000")
-        .setFooter("ขับเคลื่อนโดย Dolby Digital", "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo");
+        .setFooter(client.lang.command_system_soundTest_embed_soundTestPlayingEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo");
 
     if (!voiceChannel) {
-        message.reply("❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าต้องเข้าไปช่องไหน =3=");
+        message.reply(client.lang.command_system_soundTest_user_not_in_channel);
     } else {
         voiceChannel.join().then(function (connection) {
             message.channel.send(soundTestEmbed)
@@ -37,7 +37,7 @@ module.exports.run = async function (client, message, args) {
 
                     message.channel.activeCollector = false;
 
-                    soundTestPlayingEmbed.setDescription("กำลังทำการทดสอบระบบเสียง โปรดรอจนกว่าจะการทดสอบนี้จะเสร็จสมบูรณ์...\n```💡 หากพบว่าเสียงมีอาการกระตุก มันเป็นเรื่องปกติเพราะการเล่นเสียงจำเป็นต้องประมวลผลแบบสดหรืออาจจะลองตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณต้องอยู่ในระดับที่ดี```");
+                    soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing);
                     soundTestPlayingEmbed.addField(name, value);
                     soundTestMessage.edit(soundTestPlayingEmbed)
                     .then(async function (reactionMessage) {
@@ -57,7 +57,7 @@ module.exports.run = async function (client, message, args) {
                         });
 
                         connection.on("disconnect", function () {
-                            soundTestPlayingEmbed.setDescription("การทดสอบในครั้งนี้ ถูกยกเลิกไปแล้วคะ..หากต้องการเริ่มใหม่อีกครั้งสามารถใช้คำสั่งเดิมได้เลยคะ");
+                            soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing_cancel_disconnect);
                             reactionMessage.edit(soundTestPlayingEmbed);
                         });
 
@@ -67,11 +67,11 @@ module.exports.run = async function (client, message, args) {
                         });
                         dispatcher.on("finish", async function () {
                             if (status === 1) {
-                                soundTestPlayingEmbed.setDescription("การทดสอบในครั้งนี้ ถูกยกเลิกไปแล้วคะ..หากต้องการเริ่มใหม่อีกครั้งสามารถใช้คำสั่งเดิมได้เลยคะ");
+                                soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing_finish);
                                 reactionMessage.edit(soundTestPlayingEmbed);
                                 voiceChannel.leave();
                             } else {
-                                soundTestPlayingEmbed.setDescription("**การทดสอบในครั้งนี้ มีปัญหาหรือไม่?**\n```👍 หมายถึง ไม่มีปัญหาใดๆ\n👎 หมายถึง พบปัญหาบางอย่าง```\n__เสียงที่ใช้ในการทดสอบครั้งนี้__");
+                                soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_question_problem);
                                 reactionMessage.edit(soundTestPlayingEmbed);
 
                                 await reactionMessage.react("👍");
@@ -84,13 +84,13 @@ module.exports.run = async function (client, message, args) {
                                 }).then(function (collected) {
                                     switch (collected.first().emoji.name) {
                                         case "👍":
-                                            soundTestPlayingEmbed.setDescription("✅ ขอขอบคุณสำหรับการทดสอบนี้\n\n__ผลลัพธ์__\n```ไม่พบปัญหาใดๆ เกี่ยวกับเสียง```\n__เสียงที่ใช้ในการทดสอบครั้งนี้__");
+                                            soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_no_problem);
                                             reactionMessage.edit(soundTestPlayingEmbed);
                                             voiceChannel.leave();
                                         break
 
                                         case "👎":
-                                            soundTestPlayingEmbed.setDescription("❎ ขอขอบคุณสำหรับการทดสอบนี้\n\n__ผลลัพธ์__\n```พบเจอปัญหาเกี่ยวกับเสียง```\n__วิธีตรวจสอบและแก้ไขเบื้องต้น__\n**สำหรับหูฟัง**\n```1. ตรวจสอบให้มั่นใจว่า แหล่งจ่ายเสียงของคุณนั้นเปิดอยู่ และมีการเพิ่มระดับเสียงไว้แล้ว\n2. ถ้าหากหูฟังของคุณมีปุ่มระดับเสียง ตรวจสอบให้มั่นใจว่าได้ปรับเพิ่มไว้แล้ว\n3. ถ้าหากหูฟังของคุณเป็นแบบทำงานด้วยแบตเตอรี่ ตรวจสอบให้มั่นใจว่าแบตเตอรี่มีไฟอยู่อย่างเพียงพอ\n4. ตรวจเช็คดูการเชื่อมต่อหูฟังของคุณ\n5. ลองทำการเชื่อมต่อหูฟังของท่านเข้ากับ อุปกรณ์จ่ายสัญญาณเสียงอันอื่นดู```\n**สำหรับคอมพิวเตอร์และโน๊ตบุ๊ค Windows 10**\nhttps://support.microsoft.com/th-th/windows/แก้ไขปัญหาเกี่ยวกับเสียงใน-windows-10-73025246-b61c-40fb-671a-2535c7cd56c8\n**สำหรับโทรศัพท์**\nhttps://support.google.com/duo/answer/6385816?co=GENIE.Platform%3DAndroid&hl=th\n\n__เสียงที่ใช้ในการทดสอบครั้งนี้__");
+                                            soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_found_problem);
                                             reactionMessage.edit(soundTestPlayingEmbed);
                                             voiceChannel.leave();
                                         break
@@ -99,7 +99,7 @@ module.exports.run = async function (client, message, args) {
                             }
                         });
                         dispatcher.on("error", function (error) {
-                            soundTestPlayingEmbed.setDescription("เกิดข้อผิดพลาดขณะกำลังจะเริ่มเล่นเสียงคะ\n\n```" + error + "```");
+                            soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_error_playing.replace("%error", error));
                             message.channel.send(soundTestPlayingEmbed);
                             voiceChannel.leave();
                         });
@@ -108,14 +108,14 @@ module.exports.run = async function (client, message, args) {
                     console.log(error);
                     message.channel.activeCollector = false;
 
-                    soundTestPlayingEmbed.setDescription("การทดสอบนี้ถูกยกเลิกแล้วคะ เป็นเพราะเวลาหมดซ่ะก่อน...");
+                    soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_cancel_timeout);
                     soundTestMessage.edit(soundTestPlayingEmbed);
                     voiceChannel.leave();
                 });
             });
         }).catch(function (error) {
             console.log(error);
-            message.channel.send("❌ เกิดข้อผิดพลาดในขณะที่ฉันกำลังเข้าไปคะ: " + error);
+            message.channel.send(client.lang.command_system_soundTest_cant_join_channel + error);
         });
     }
     

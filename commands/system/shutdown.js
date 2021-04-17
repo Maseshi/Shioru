@@ -2,25 +2,25 @@ module.exports.run = async function (client, message, args) {
     if (message.member.id === client.config.owner) {
 		let arg = args[0];
     	if (!arg) {
-			message.reply("❓ กรุณาระบุรหัสผ่านด้วยคะเพื่อยืนยันว่าเป็นคุณจริงๆ");
+			message.reply(client.lang.command_system_shutdown_please_enter_password);
 		} else {
 			message.delete();
 			if (arg === client.config.password) {
-				message.channel.send("🔄 กำลังปิดระบบตัวเอง...")
+				message.channel.send(client.lang.command_system_shutdown_shuting_down)
 				.then(function (msg) {
-					msg.edit("💤 ปิดระบบแล้วคะ...แล้วพบกันใหม่นะคะ Sayonara~~")
+					msg.edit(client.lang.command_system_system_off)
 					.then(function () {
 						client.destroy();
 					}).catch(function (error) {
-						message.channel.send("❌ ไม่สามารถปิดระบบได้ เนื่องจาก: " + error);
+						message.channel.send(client.lang.command_system_shutdown_cant_shutdown + error);
 					});
 				});
 			} else {
-				message.channel.send("❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ");
+				message.channel.send(client.lang.command_system_shutdown_password_wrong);
 			}
 		}
     } else {
-    	message.channel.send("🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับผู้ดูแลเท่านั้นนะ");
+    	message.channel.send(client.lang.command_system_shutdown_dont_have_permission);
     }
 };
 	

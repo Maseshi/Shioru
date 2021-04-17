@@ -3,10 +3,10 @@ const os = require("os");
 const cpuStat = require("cpu-stat");
 
 module.exports.run = async function (client, message, args) {
-    let msg = await message.channel.send("⚙️ กำลังประมวลผล รอสักครู่นะคะ...");
+    let msg = await message.channel.send(client.lang.command_system_system_status_process);
     cpuStat.usagePercent(function (error, percent) {
         if (error) {
-            msg.edit("⚠️ เกิดข้อผิดพลาด: " + error);
+            msg.edit(client.lang.command_system_system_status_error + error);
             console.error(error);
         } else {
             let totalSeconds = (client.uptime / 1000);
@@ -16,55 +16,55 @@ module.exports.run = async function (client, message, args) {
             let minutes = Math.floor(totalSeconds / 60);
             // let seconds = Math.floor(totalSeconds % 60);
 
-            //let duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+            // let duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
             msg.edit("", {
                 "embed": {
-                    "title": "🖥 ข้อมูลของระบบ",
-                    "description": "ข้อมูลที่ฉันกำลังทำงานอยู่ในขณะนี้ ตามที่ทางระบบให้ข้อมูลมา ได้ดังนี้คะ",
+                    "title": client.lang.command_system_system_embed_title,
+                    "description": client.lang.command_system_system_embed_description,
                     "color": 4886754,
                     "fields": [
                         {
-                            "name": "• หน่วยความจำที่ใช้ไป",
+                            "name": client.lang.command_system_system_field_0,
                             "value": (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + "/" + (os.totalmem() / 1024 / 1024).toFixed(2) + "MB",
                             "inline": true
                         },
                         {
-                            "name": "• เวลาทำงาน",
+                            "name": client.lang.command_system_system_field_1,
                             "value": hours + "h " + minutes + "m",
                             "inline": true
                         },
                         {
-                            "name": "• เซิร์ฟเวอร์",
+                            "name": client.lang.command_system_system_field_2,
                             "value": "Google.inc",
                             "inline": true
                         },
                         {
-                            "name": "• เจ้าของ",
+                            "name": client.lang.command_system_system_field_3,
                             "value": "Maseshi",
                             "inline": true
                         },
                         {
-                            "name": "• Discord.js",
+                            "name": client.lang.command_system_system_field_4,
                             "value": "v" + discord.version,
                             "inline": true
                         },
                         {
-                            "name": "• Node.js",
+                            "name": client.lang.command_system_system_field_5,
                             "value": process.version,
                             "inline": true
                         },
                         {
-                            "name": "• CPU",
+                            "name": client.lang.command_system_system_field_6,
                             "value": "```md\n" + os.cpus().map(i => i.model)[0] + "```",
                             "inline": true
                         },
                         {
-                            "name": "• CPU ที่ใช้ไป",
+                            "name": client.lang.command_system_system_field_7,
                             "value": "`" + percent.toFixed(2) + "%`",
                             "inline": true
                         },
                         {
-                            "name": "• แพลตฟอร์ม",
+                            "name": client.lang.command_system_system_field_8,
                             "value": "``" + os.platform() + "``",
                             "inline": true
                         }

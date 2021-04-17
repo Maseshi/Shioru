@@ -3,23 +3,23 @@ module.exports.run = async function (client, message, args) {
 	if (arg === "") {
 		let voiceChannel = message.member.voice.channel;
 		if (!voiceChannel) {
-			message.reply("❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3=");
+			message.reply(client.lang.command_music_join_user_not_join_channel);
 		} else {
 			voiceChannel.join()
 			.then(function (connection) {
-				message.channel.send("▶️ ตอนนี้ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วคะ");
+				message.channel.send(client.lang.command_music_join_me_in_channel.replace("%channel", connection.channel.name));
 			}).catch(function (error) {
-				message.channel.send("❌ เกิดข้อผิดพลาดคะ เนื่องจาก: " + error);
+				message.channel.send(client.lang.command_music_join_channel_join_catch_error + error);
 			});
 		}
 	} else {
 		let channel = client.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
 		if (!channel) {
-			message.channel.send("❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?");
+			message.channel.send(client.lang.command_music_join_with_id_not_found_channel);
 		} else {
 			channel.join()
 			.then(function (connection) {
-				message.channel.send("✅ ฉันอยู่ในช่อง `" + connection.channel.name + "` เรียบร้อยแล้วค้าา...");
+				message.channel.send(client.lang.command_music_join_with_id_me_in_channel.replace("%channel", connection.channel.name));
 			});
 		}
 	}

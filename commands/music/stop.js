@@ -3,14 +3,14 @@ const check = require("../../structures/modifyQueue");
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
     if (!serverQueue) {
-        message.channel.send("❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ");
+        message.channel.send(client.lang.command_music_stop_no_queue);
     } else {
         if (!check(message.member)) {
-            message.channel.send("🚫 ใจเย็นๆ คนอื่นเขากำลังฟังอยู่น้าา...");
+            message.channel.send(client.lang.command_music_stop_check_not_owner);
         } else {
             serverQueue.songs = [];
             serverQueue.connection.dispatcher.end();
-            message.channel.send("⏹️ หยุดเล่นเพลงและลบคิวทั้งหมดออกแล้วคะ");
+            message.channel.send(client.lang.command_music_stop_info);
         }
     }
 };

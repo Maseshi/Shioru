@@ -36,13 +36,13 @@ module.exports = async function (client, message) {
         
                                 levelUp.send({
                                     "embed": {
-                                        "description": client.lang.event_client_message_embed_description.replace('%username', username).replace('%level', level),
+                                        "description": client.lang.structures_levelSystem_embed_description.replace('%username', username).replace('%level', level),
                                         "color": 16312092,
                                         "thumbnail": {
                                             "url": avatar
                                         },
                                         "author": {
-                                            "name": client.lang.event_client_message_embed_author_name,
+                                            "name": client.lang.structures_levelSystem_embed_author_name,
                                             "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
                                         }
                                     }
