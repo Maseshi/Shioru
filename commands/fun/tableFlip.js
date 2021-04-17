@@ -10,7 +10,7 @@ module.exports.run = async function (client, message, args) {
     message.channel.send('(\\\\°□°)\\\\  ┬─┬')
     .then(function (msg) {
         for (let frame of frames) {
-            setTimeout(() => {}, 4000);
+            setTimeout(() => {}, 1000);
             msg.edit(frame);
         }
         return;
@@ -18,9 +18,9 @@ module.exports.run = async function (client, message, args) {
 };
 
 module.exports.help = {
-    "name": "animTableFlip",
+    "name": "tableFlip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
-    "usage": "animTableFlip",
+    "usage": "tableFlip",
     "category": "fun",
-    "aliases": ["animtableflip", "animtf", "atf", "ฟิบโต๊ะ"]
+    "aliases": ["tableflip", "tf", "atf", "ฟิบโต๊ะ"]
 };
