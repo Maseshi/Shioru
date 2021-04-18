@@ -61,6 +61,6 @@ module.exports.help = {
 	"name": "welcome",
 	"description": "welcome",
 	"usage": "welcome",
-	"category": "guild",
-	"aliases": [""]
+	"category": "only",
+	"aliases": ["ยินดีต้อนรับ"]
 };

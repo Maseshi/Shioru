@@ -73,7 +73,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "report",
     "description": "Report wrongdoing Let members vote Check and ban or touch members.",
-    "usage": "report <name/id> <reason>",
-    "category": "members",
+    "usage": "report <member<id, username, username&tag>> <reason>",
+    "category": "manager",
     "aliases": ["rp", "รายงาน"]
 };

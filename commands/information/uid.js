@@ -34,7 +34,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "uid",
     "description": "Get your user id",
-    "usage": "uid (Member)",
+    "usage": "uid (member<id, username, username&tag>)",
     "category": "information",
     "aliases": ["myid", "myId", "UID", "รหัส", "ไอดี", "รหัสบัญชี"]
 };

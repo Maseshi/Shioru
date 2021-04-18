@@ -108,6 +108,6 @@ module.exports.help = {
     "name": "server",
     "description": "Get server information",
     "usage": "server",
-    "category": "guild",
+    "category": "information",
     "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"]
 };

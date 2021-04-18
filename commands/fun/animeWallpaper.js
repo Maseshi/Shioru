@@ -14,6 +14,6 @@ module.exports.help = {
     "name": "animeWallpaper",
     "description": "Anime wallpapers",
     "usage": "animeWallpaper",
-    "category": "personal",
+    "category": "fun",
     "aliases": ["animeWall", "animewall", "animewallpaper", "awallpaper", "awall", "ภาพพื้นหลังอนิแมะ"]
 };

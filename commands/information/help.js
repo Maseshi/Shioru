@@ -50,8 +50,8 @@ module.exports.run = async function (client, message, args) {
 				} else {
 					if (client.config.owner.includes(message.author.id)) {
 						info.addField("🏷️ " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
-					} else if (category !== "Developer") {
-						info.addField("🔩 " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
+					} else if (category !== "only") {
+						info.addField("🔒 " + (capitalise), dir.map(c => "`" + (c.help.name) + "`").join(", "));
 					}
 				}
 			} catch (error) {
@@ -66,7 +66,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "help",
 	"description": "Get help with the use of bots.",
-	"usage": "help (command)",
+	"usage": "help (command<name, aliases>)",
 	"category": "information",
 	"aliases": ["h", "ช่วยด้วย", "ช่วยเหลือ"]
 };

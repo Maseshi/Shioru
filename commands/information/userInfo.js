@@ -61,7 +61,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
   "name": "userInfo",
   "description": "Get information about you.",
-  "usage": "userInfo (Member)",
+  "usage": "userInfo (member<id, username, username&tag>)",
   "category": "information",
   "aliases": ["user", "ข้อมูลผู้ใช้", "ผู้ใช้", "userinfo"]
 };

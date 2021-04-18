@@ -59,7 +59,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help ={
     "name": "leveling",
     "description": "See your leveling amount",
-    "usage": "leveling (Member)",
+    "usage": "leveling (member<id, username, username&tag>)",
     "category": "fun",
     "aliases": ["Leveling", "EXP", "exp", "level", "เลเวล", "อีเอ็กพี", "เวล"]
 };

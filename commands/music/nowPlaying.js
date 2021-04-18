@@ -8,9 +8,9 @@ module.exports.run = function (client, message, args) {
 };
 
 module.exports.help = {
-    "name": "nowplaying",
+    "name": "nowPlaying",
     "description": "Check the music that is currently playing.",
-    "usage": "nowplaying",
+    "usage": "nowPlaying",
     "category": "music",
-    "aliases": ["np", "กำลังเล่น"]
+    "aliases": ["nowplaying", "np", "กำลังเล่น"]
 };

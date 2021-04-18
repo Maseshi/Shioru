@@ -67,7 +67,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "ban",
 	"description": "Ban a member",
-	"usage": "ban <member> (reason)",
+	"usage": "ban <member<id, username, username&tag>> (reason)",
 	"category": "manager",
 	"aliases": ["b", "แบน"]
 };

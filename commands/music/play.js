@@ -209,7 +209,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "play",
     "description": "Sing to listen",
-    "usage": "play <name/id/link>",
+    "usage": "play <name<name, id, link>>",
     "category": "music",
     "aliases": ["เล่น", "p", "เพลง"]
 };

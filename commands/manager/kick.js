@@ -67,7 +67,7 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "kick",
 	"description": "Kick a member",
-	"usage": "kick <member> (reason)",
+	"usage": "kick <member<id, username, username&tag>> (reason)",
 	"category": "manager",
 	"aliases": ["k", "เตะ"]
 };

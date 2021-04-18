@@ -25,6 +25,6 @@ module.exports.help = {
 	"name": "invite",
 	"description": "Create and receive invitation links to join the server.",
 	"usage": "invite",
-	"category": "members",
+	"category": "fun",
 	"aliases": ["เชิญ"]
 };

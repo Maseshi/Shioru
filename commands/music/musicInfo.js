@@ -14,9 +14,9 @@ module.exports.run = async function (client, message, args) {
 };
 
 module.exports.help = {
-    "name": "musicinfo",
+    "name": "musicInfo",
     "description": "See information for the currently playing song",
-    "usage": "musicinfo",
+    "usage": "musicInfo",
     "category": "music",
-    "aliases": ["msinfo", "musicif", "ข้อมูลเพลง", "ข้อมูลของเพลง"]
+    "aliases": ["musicinfo", "msinfo", "musicif", "ข้อมูลเพลง", "ข้อมูลของเพลง"]
 };

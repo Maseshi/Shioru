@@ -61,6 +61,6 @@ module.exports.help = {
 	"name": "rules",
 	"description": "See information about rules.",
 	"usage": "rules",
-	"category": "guild",
+	"category": "only",
 	"aliases": ["กฏ"]
 };
