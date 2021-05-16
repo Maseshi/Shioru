@@ -15,6 +15,7 @@ module.exports.help = {
     "name": "update",
     "description": "Updates the bot to the latest commit on the GitHub repository.",
     "usage": "update",
-    "category": "system",
-    "aliases": ["latest"]
+    "category": "only",
+    "aliases": ["latest"],
+    "permissions": "SEND_MESSAGES"
 };
