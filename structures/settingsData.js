@@ -4,10 +4,11 @@ module.exports = function (client, message) {
     let guild = message.guild.id;
     
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Guilds/").child(guild);
-    ref.on("value", function (snapshot) {
-        const messages = require("../events/client/message");
+    let ref = database.ref("Shioru/apps/discord/guilds").child(guild);
 
+    ref.child("config").once("value").then(function(snapshot) {
+        const msgEvent = require("../events/client/message");
+        
         if (snapshot.exists()) {
             let prefix = snapshot.val().prefix;
             let lang = snapshot.val().language;
@@ -18,20 +19,24 @@ module.exports = function (client, message) {
             }
             if (prefix !== client.config.prefix) {
                 client.config.prefix = prefix;
-                messages(client, message);
+                return msgEvent(client, message);
             }
         } else {
-            ref.set({
+            ref.child("config").set({
                 "prefix": "S",
                 "language": "th_TH",
-                "channels": {
-                    "notification": {
-                        "enable": false,
-                        "id": 0
-                    }
+                "notification": {
+                    "alert": 0,
+                    "channelCreate": 0,
+                    "channelDelete": 0,
+                    "channelPinsUpdate": 0,
+                    "channelUpdate": 0,
+                    "emojiCreate": 0,
+                    "guildMemberAdd": 0,
+                    "guildMemberRemove": 0
                 }
-            }).then(function () {
-                messages(client, message);
+            }).then(function() {
+                module.exports(client, message);
             });
         }
     });

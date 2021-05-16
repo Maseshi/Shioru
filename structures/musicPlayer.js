@@ -3,18 +3,17 @@ const firebase = require("firebase");
 
 module.exports = async function (client, message, metadata, status) {
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Guilds/").child(message.guild.id);
+    let ref = database.ref("Shioru/apps/discord/guild").child(message.guild.id);
 
     let queue = message.client.data.get(message.guild.id);
 
     if (!metadata) {
-        ref.once("value").then(function (snapshot) {
+        ref.child("config/notification").once("value").then(function (snapshot) {
             if (snapshot.exists()) {
-                let notifyEnable = snapshot.val().channels.notification.enable;
-                let notifyId = snapshot.val().channels.notification.id;
+                let notifyId = snapshot.val().alert;
     
-                if (notifyEnable === true) {
-                    let notification = message.guild.channels.cache.find(ch => ch.id === notifyId);
+                if (notifyId === true) {
+                    let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
                     notification.send({
                         "embed": {
                             "description": client.lang.structures_musicPlayer_notification_clear,
@@ -31,15 +30,8 @@ module.exports = async function (client, message, metadata, status) {
                     });
                 }
             } else {
-                ref.set({
-                    "prefix": "S",
-                    "language": "th_TH",
-                    "channels": {
-                        "notification": {
-                            "enable": false,
-                            "id": 0
-                        }
-                    }
+                ref.child("config/notification").set({
+                    "alert": 0
                 }).then(function () {
                     module.exports(client, message, metadata, status);
                 });
@@ -79,6 +71,7 @@ module.exports = async function (client, message, metadata, status) {
                 module.exports(client, message, queue.songs[0]);
             }
         });
+
         dispatcher.on("error", function (error) {
             console.log(error);
             queue.songs.shift();
@@ -88,12 +81,13 @@ module.exports = async function (client, message, metadata, status) {
                 status.edit(client.lang.structures_musicPlayer_dispatcher_status_error + error);
             }
         });
+        
         dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
         if (!status) {
-            message.channel.send(client.lang.structures_musicPlayer_playing.replace("title", metadata.title));
+            message.channel.send(client.lang.structures_musicPlayer_playing.replace("%title", metadata.title));
         } else {
-            status.edit(client.lang.structures_musicPlayer_status_playing.replace("title", metadata.title));
+            status.edit(client.lang.structures_musicPlayer_status_playing.replace("%title", metadata.title));
         }
     }
 };

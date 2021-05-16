@@ -1,38 +1,39 @@
 const firebase = require("firebase");
-const messages = require("../events/client/message");
+const msgEvent = require("../events/client/message");
 
 module.exports = async function (client, message) {
+    if (message.author.bot) return;
+    
     let guildId = message.guild.id;
     let avatar = message.author.displayAvatarURL();
     let username = message.author.username;
-    let id = message.author.id;
+    let uid = message.author.id;
 
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Users/" + id + "/Leveling/");
-    let dataRef = database.ref("Shioru/Discord/Guilds/").child(guildId);
-    ref.once("value").then(function (snapshot) {
+    let ref = database.ref("Shioru/apps/discord/guilds").child(guildId);
+    
+    ref.child("data/users").child(uid).once("value").then(function (snapshot) {
         if (snapshot.exists()) {
-            let exp = snapshot.val().EXP;
-            let level = snapshot.val().Level;
+            let exp = snapshot.val().leveling.exp;
+            let level = snapshot.val().leveling.level;
 
-            ref.update({
-                "EXP": (exp += 5)
+            ref.child("data/users").child(uid).child("leveling").update({
+                "exp": (exp += 5)
             }).catch(function (error) {
                 console.log(error);
             });
 
             if (exp === 1000) {
-                ref.update({
-                    "EXP": 0,
-                    "Level": ++level
+                ref.child("data/users").child(uid).child("leveling").update({
+                    "exp": 0,
+                    "level": ++level
                 }).then(function () {
-                    dataRef.once("value").then(function (dataSnapshot) {
+                    ref.child("config/notification").once("value").then(function (dataSnapshot) {
                         if (dataSnapshot.exists()) {
-                            let notifyEnable = dataSnapshot.val().channels.notification.enable;
-                            let notifyId = dataSnapshot.val().channels.notification.id;
+                            let notifyId = dataSnapshot.val().alert;
 
-                            if (notifyEnable === true) {
-                                let levelUp = message.guild.channels.cache.find(ch => ch.id === notifyId);
+                            if (notifyId) {
+                                let levelUp = message.guild.channels.cache.find(channels => channels.id === notifyId);
         
                                 levelUp.send({
                                     "embed": {
@@ -49,15 +50,8 @@ module.exports = async function (client, message) {
                                 });
                             }
                         } else {
-                            ref.set({
-                                "prefix": "S",
-                                "language": "th_TH",
-                                "channels": {
-                                    "notification": {
-                                        "enable": false,
-                                        "id": 0
-                                    }
-                                }
+                            ref.child("config/notification").update({
+                                "alert": 0
                             }).then(function () {
                                 module.exports(client, message);
                             }).catch(function (error) {
@@ -70,11 +64,18 @@ module.exports = async function (client, message) {
                 });
             }
         } else {
-            ref.set({
-                "EXP": 0,
-                "Level": 0
+            ref.child("data/users").child(uid).set({
+                "access": {
+                    "avatar": false,
+                    "info": false,
+                    "uid": false
+                },
+                "leveling": {
+                    "exp": 0,
+                    "level": 0
+                }
             }).then(function () {
-                messages(client, message);
+                return msgEvent(client, message);
             }).catch(function (error) {
                 console.log(error);
             });
