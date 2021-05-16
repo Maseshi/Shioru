@@ -21,6 +21,10 @@ The goal of creating this bot is to allow her to work on other servers, but at t
 
 For a look at all of her commands, type Shelp.
 
+# Document
+
+For now it is not yet supported in English, but you can visit us at https://maseshi.web.app/documents#ทำไมต้อง-shioru?
+
 # Issues?
 
 Please report any bugs or issues under the repo"s issues tab. It"d be greatly appreciated!
