@@ -1,4 +1,4 @@
-[![Discord](https://discord.com/assets/cb48d2a8d4991281d7a6a95d2f58195e.svg)](https://discord.com/)
+[![Discord](https://discord.com/assets/a69bd473fc9eb435cf791b8beaf29e93.png)](https://discord.com/)
 
 [![Javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com/) [![Ragrets](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com/) [![Love](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com/) [![Water](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com/)
 
