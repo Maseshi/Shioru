@@ -1,54 +1,53 @@
 const kitsu = require("kitsu");
+const api = new kitsu();
 
 module.exports.run = async function (client, message, args) {
-    const Kitsu = new kitsu();
+    let arg = args.join(" ");
+    if (!arg) return message.reply(client.lang.command_fun_anime_no_args);
 
-    if (args.length < 1) {
-        message.reply(client.lang.command_fun_anime_no_args);
-    } else {
-        let msg = await message.channel.send(client.lang.command_fun_anime_finding_anime_title);
-        let info = await Kitsu.fetch("anime" || "manga", {
+    let msg = await message.channel.send(client.lang.command_fun_anime_finding_anime_title.replace("%title", arg));
+
+    api.fetch("anime" || "manga", {
+        "params": {
             "filter": {
-                "text": args.join(" ")
+                "text": arg
+            }
+        }
+    }).then(async function (info) {
+        if (info.data.length < 1) return msg.edit(client.lang.command_fun_anime_no_info_anime_title);
+        
+        msg = await msg.edit("", {
+            "embed": {
+                "title": "```" + arg + "```",
+                "description": client.lang.command_fun_anime_embed_anime_description,
+                "color": 16083235,
+                "footer": {
+                    "icon_url": client.user.avatarURL(),
+                    "text": client.lang.command_fun_anime_embed_anime_footer_text
+                },
+                "author": {
+                    "name": "Kitsu",
+                    "url": "https://kitsu.io",
+                    "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
+                },
+                "fields": [
+                    {
+                        "name": client.lang.command_fun_anime_embed_anime_fields_name,
+                        "value": titles(info.data)
+                    }
+                ]
             }
         });
 
-        if (info.data.length < 1) {
-            msg.edit(client.lang.command_fun_anime_no_info_anime_title);
-        } else {
-            msg = await msg.edit("", {
-                "embed": {
-                    "title": args.join(" "),
-                    "description": client.lang.command_fun_anime_embed_anime_description,
-                    "color": 12601856,
-                    "footer": {
-                        "icon_url": client.user.avatarURL(),
-                        "text": client.lang.command_fun_anime_embed_anime_footer_text
-                    },
-                    "author": {
-                        "name": "Kitsu",
-                        "url": "https://kitsu.io",
-                        "icon_url": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png"
-                    },
-                    "fields": [
-                        {
-                            "name": client.lang.command_fun_anime_embed_anime_fields_name,
-                            "value": titles(info.data)
-                        }
-                    ]
-                }
-            });
-
-            if (!msg.content) return;
-            let collected = await message.channel.awaitMessages(filter, {
-                "max": 20,
-                "maxProcessed": 1,
-                "time": 60000,
-                "errors": ["time"]
-            });
+        message.channel.awaitMessages(filter, {
+            "max": 20,
+            "maxProcessed": 1,
+            "time": 60000,
+            "errors": ["time"]
+        }).then(async function (collected) {
             let returnMessage = collected.first();
             let index = Number(returnMessage.content);
-            msg.edit({
+            await msg.edit({
                 "embed": {
                     "color": 12601856,
                     "footer": {
@@ -74,7 +73,7 @@ module.exports.run = async function (client, message, args) {
                             "value": info.data[index].subtype
                         },
                         {
-                            "name": command_fun_anime_embed_conclude_fields_3_name,
+                            "name": client.lang.command_fun_anime_embed_conclude_fields_3_name,
                             "value": info.data[index].startDate,
                             "inline": true
                         },
@@ -99,13 +98,18 @@ module.exports.run = async function (client, message, args) {
                     ]
                 }
             });
-        }
-    }
+        }).catch(function(err) {
+            return console.log(err);
+        });
+    }).catch(function(err) {
+        msg.edit(client.lang.command_fun_anime_finding_anime_error + err);
+        return console.log(err);
+    });
 
     function titles(data) {
         let numTitle = [];
         for (let i = 0; i < 5; i++) {
-            numTitle.push("\n" + (i + 1) + "." + title(i, data));
+            numTitle.push("\n" + (i + 1) + ". " + title(i, data));
         }
         return numTitle.join(" ");
     }
@@ -127,5 +131,6 @@ module.exports.help = {
     "description": "Search for anime available on Kitsu.",
     "usage": "anime <title>",
     "category": "fun",
-    "aliases": ["an", "cartoon", "อนิเมะ", "การ์ดตูน"]
+    "aliases": ["an", "cartoon", "อนิเมะ", "การ์ดตูน"],
+    "permissions": ["SEND_MESSAGES"]
 };
