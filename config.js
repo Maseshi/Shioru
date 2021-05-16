@@ -1,11 +1,11 @@
-require('dotenv').config();
+require("dotenv").config();
 
 module.exports = {
     "prefix": "S",
-    "method": [
+    "mention": [
         "<@!704706906505347183>",
-        "Shioru#9520",
-        "Shioru",
+        "shioru#9520",
+        "shioru",
         "ชิโอรุ"
     ],
     "owner": "618836889239158785",
