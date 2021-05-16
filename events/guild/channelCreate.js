@@ -4,15 +4,15 @@ module.exports = function (client, channel) {
     let guildId = channel.guild.id;
 
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Guilds/").child(guildId);
-    ref.once("value").then(function (snapshot) {
-        if (snapshot.exists()) {
-            let notifyEnable = snapshot.val().channels.notification.enable;
-            let notifyId = snapshot.val().channels.notification.id;
+    let ref = database.ref("Shioru/apps/discord/guilds").child(guildId);
 
-            if (notifyEnable === true) {
+    ref.child("config/notification").once("value").then(function (snapshot) {
+        if (snapshot.exists()) {
+            let notifyId = snapshot.val().channelCreate;
+
+            if (notifyId) {
                 let guild = client.guilds.cache.find(servers => servers.id === guildId);
-                let notification = guild.channels.cache.find(ch => ch.id === notifyId);
+                let notification = guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({
                     "embed": {
                         "description": "> " + client.lang.event_guild_channelCreate_embed_description.replace('%channel', channel.id),
@@ -29,15 +29,8 @@ module.exports = function (client, channel) {
                 });
             }
         } else {
-            ref.set({
-                "prefix": "S",
-                "language": "th_TH",
-                "channels": {
-                    "notification": {
-                        "enable": false,
-                        "id": 0
-                    }
-                }
+            ref.child("config/notification").update({
+                "channelCreate": 0
             }).then(function () {
                 module.exports(client, message, args);
             });

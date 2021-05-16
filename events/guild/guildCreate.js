@@ -1,9 +1,11 @@
 module.exports = function (client, guild) {
     let defaultChannel = "";
-    guild.channels.cache.forEach((channel) => {
-    if (channel.type == "text" && defaultChannel == "") {
+
+    guild.channels.cache.forEach(function(channel) {
+        if (channel.type == "text" && defaultChannel == "") {
             if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
                 defaultChannel = channel;
+
                 let avatar = client.user.displayAvatarURL();
                 let username = client.user.username;
 

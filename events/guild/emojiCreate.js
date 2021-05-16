@@ -4,15 +4,15 @@ module.exports = function (client, emoji) {
 	let guildId = emoji.guild.id;
 
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Guilds/").child(guildId);
-    ref.once("value").then(function (snapshot) {
-        if (snapshot.exists()) {
-            let notifyEnable = snapshot.val().channels.notification.enable;
-            let notifyId = snapshot.val().channels.notification.id;
+    let ref = database.ref("Shioru/apps/discord/guilds").child(guildId);
 
-            if (notifyEnable === true) {
+    ref.child("config/notification").once("value").then(function (snapshot) {
+        if (snapshot.exists()) {
+            let notifyId = snapshot.val().emojiCreate;
+
+            if (notifyId) {
 				let guild = client.guilds.cache.find(servers => servers.id === guildId);
-				let notification = guild.channels.cache.find(ch => ch.id === notifyId);
+				let notification = guild.channels.cache.find(channels => channels.id === notifyId);
 				notification.send({
                     "embed": {
                         "description": ">" + client.lang.event_guild_emojiCreate_embed_description.replace("%emoji", emoji.name),
@@ -29,15 +29,8 @@ module.exports = function (client, emoji) {
                 });
             }
         } else {
-            ref.set({
-                "prefix": "S",
-                "language": "th_TH",
-                "channels": {
-                    "notification": {
-                        "enable": false,
-                        "id": 0
-                    }
-                }
+            ref.child("config/notification").update({
+                "emojiCreate": 0
             }).then(function () {
                 module.exports(client, message, args);
             });
