@@ -1,43 +1,29 @@
 module.exports.run = async function (client, message, args) {
-    if (message.member.hasPermission(["ADMINISTRATOR", "KICK_MEMBERS"])) {
-		let arg = args[0];
-		if (!arg) {
-			message.reply(client.lang.command_manager_kick_arg_empty);
-		} else {
-			let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
-			if (!user) {
-				message.channel.send(client.lang.command_manager_kick_not_found_user);
-			} else {
-				let memberKick = message.guild.members.cache.get(user.id);
-				if (!memberKick) {
-					message.channel.send(client.lang.command_manager_kick_cant_ban);
-				} else {
-					if (memberKick.kickable === false) {
-						message.channel.send(client.lang.command_manager_kick_kickable_false);
-					} else {
-						let reason = args.slice(1).join(" ");
-						if (reason === "") {
-							reason = client.lang.command_manager_kick_reason;
-							kick(user, memberKick, reason);
-						} else {
-							kick(user, memberKick, reason);
-						}
-					}
-				}
-			}
-		}
-    } else {
-    	message.reply(client.lang.command_manager_kick_dont_have_permission);
+	let arg = args[0];
+	if (!arg) return message.reply(client.lang.command_manager_kick_arg_empty);
+	
+	let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
+	if (!member) return message.reply(client.lang.command_manager_kick_not_found_user);
+
+	let memberKick = message.guild.members.cache.get(member.id);
+	if (!memberKick) return message.reply(client.lang.command_manager_kick_cant_ban);
+	if (!memberKick.kickable) return message.reply(client.lang.command_manager_kick_kickable_false);
+
+	let reason = args.slice(1).join(" ");
+	if (!reason) {
+		reason = client.lang.command_manager_kick_reason;
+		kick(member, memberKick, reason);
+	} else {
+		kick(member, memberKick, reason);
 	}
 	
-	function kick(user, memberKick, reason) {
+	function kick(member, memberKick, reason) {
 		let author = message.author.username;
 		let authorAvatar = message.author.displayAvatarURL();
-		let avatar = user.avatarURL();
-		let username = user.username;
+		let avatar = member.user.avatarURL();
+		let username = member.user.username;
 		let time = new Date();
-		memberKick.kick(reason)
-		.then(function () {
+		memberKick.kick(reason).then(function () {
 			message.channel.send({
 				"embed": {
 					"title": username + client.lang.command_manager_kick_function_kick_embed_title,
@@ -67,7 +53,8 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "kick",
 	"description": "Kick a member",
-	"usage": "kick <member<id, username, username&tag>> (reason)",
+	"usage": "kick <member: id, username, username&tag> (reason)",
 	"category": "manager",
-	"aliases": ["k", "เตะ"]
+	"aliases": ["k", "เตะ"],
+	"permissions": ["SEND_MESSAGES", "KICK_MEMBERS"]
 };

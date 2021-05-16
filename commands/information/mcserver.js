@@ -25,8 +25,7 @@ module.exports.run = async function (client, message, args) {
 
     if (!platform) return message.reply(client.lang.command_information_mcserver_platform_empty);
     if (!["pe", "be", "je", "pocket edition", "bedrock edition", "java edition"].includes(platform)) {
-        message.reply(client.lang.command_information_mcserver_dont_have_this_platform);
-        return;
+        return message.reply(client.lang.command_information_mcserver_dont_have_this_platform);
     }
     if (!ip) return message.reply(client.lang.command_information_mcserver_ip_empty);
 
@@ -40,9 +39,9 @@ module.exports.run = async function (client, message, args) {
             if (port) {
                 if ((port.toString().length) !== 5) return message.reply(client.lang.command_information_mcserver_be_port_empty);
 
-                beres = await util.statusBedrock(ip, { "port": port }).catch(message.channel.send({ "embed": serverError })).catch(() => { return; });
+                beres = await util.statusBedrock(ip, { "port": port }).catch(message.channel.send({ "embed": serverError }));
             } else {
-                beres = await util.statusBedrock(ip).catch(message.channel.send({ "embed": serverError })).catch(() => { return; });
+                beres = await util.statusBedrock(ip).catch(message.reply({ "embed": serverError }));
             }
             
             if (beres) {
@@ -58,7 +57,7 @@ module.exports.run = async function (client, message, args) {
                 let bemaxPlayers = beres.maxPlayers;
                 
                 let beonlinePlayers = beres.onlinePlayers;
-                if (beonlinePlayers === 0) beonlinePlayers = client.lang.command_information_mcserver_be_serverInfo_field_6_not;
+                if (!beonlinePlayers) beonlinePlayers = client.lang.command_information_mcserver_be_serverInfo_field_6_not;
 
                 let bemode = beres.gameMode;
                 
@@ -132,5 +131,6 @@ module.exports.help = {
 	"description": "Explore Minecraft server information",
 	"usage": "mcserver (platform) (ip) [port]",
 	"category": "information",
-	"aliases": ["mcs", "minecraftserver", "มายคราฟ", "เซิร์ฟมายคราฟ", "mc"]
+	"aliases": ["mcs", "minecraftserver", "มายคราฟ", "เซิร์ฟมายคราฟ", "mc"],
+    "permissions": ["SEND_MESSAGES"]
 };

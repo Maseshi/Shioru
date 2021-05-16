@@ -1,6 +1,5 @@
 module.exports.run = async function (client, message, args) {
-	message.channel.createInvite()
-	.then(function (invite) {
+	message.channel.createInvite().then(function (invite) {
 		message.channel.send({
 			"embed": {
 				"description": "||" + invite.url + "||",
@@ -26,5 +25,6 @@ module.exports.help = {
 	"description": "Create and receive invitation links to join the server.",
 	"usage": "invite",
 	"category": "fun",
-	"aliases": ["เชิญ"]
+	"aliases": ["เชิญ"],
+	"permissions": ["SEND_MESSAGES", "CREATE_INSTANT_INVITE"]
 };

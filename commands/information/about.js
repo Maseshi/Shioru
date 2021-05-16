@@ -22,5 +22,6 @@ module.exports.help = {
 	"description": "See information about bots.",
 	"usage": "about",
 	"category": "information",
-	"aliases": ["information", "botinfo", "botInfo", "เกี่ยวกับ", "เกี่ยวกับบอท", "เกี่ยวกับ bot"]
+	"aliases": ["information", "botinfo", "botInfo", "เกี่ยวกับ", "เกี่ยวกับบอท"],
+	"permissions": ["SEND_MESSAGES"]
 };

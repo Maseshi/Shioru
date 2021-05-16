@@ -1,19 +1,17 @@
 module.exports.run = function (client, message, args) {
     let arg = args.join(" ");
-
+    if (!arg) return message.reply(client.lang.command_fun_eat_no_args);
+    
     let username = message.author.username;
     let mename = client.user.username;
 
-    if (!arg) return message.reply(client.lang.command_fun_eat_no_args);
     if (arg === mename) {
-        message.channel.send(client.lang.command_fun_eat_me)
-        .then(function () {
+        message.reply(client.lang.command_fun_eat_me).then(function () {
             setTimeout(function () {
-                message.reply(client.lang.command_fun_eat_cannot_me);
+                return message.reply(client.lang.command_fun_eat_cannot_me);
             }, 10000);
         });
-        return;
-    } 
+    }
 
     message.channel.send({
         "embed": {
@@ -26,7 +24,8 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
     "name": "eat",
     "description": "Fake text saying who you are eating.",
-    "usage": "eat",
+    "usage": "eat <message>",
     "category": "fun",
-    "aliases": ["e", "กิน"]
+    "aliases": ["e", "กิน"],
+    "permissions": ["SEND_MESSAGES"]
 };

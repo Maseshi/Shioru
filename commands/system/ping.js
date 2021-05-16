@@ -16,5 +16,6 @@ module.exports.help = {
     "description": "Check the ping and api latency of the bot.",
     "usage": "ping",
     "category": "system",
-    "aliases": ["ปิง", "การเชื่อมต่อ"]
+    "aliases": ["ปิง", "การเชื่อมต่อ"],
+    "permissions": "SEND_MESSAGES"
 };

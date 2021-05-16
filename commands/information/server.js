@@ -11,20 +11,22 @@ module.exports.run = async function (client, message, args) {
     let guildRegion = message.guild.region;
     let guildVerificationLevel = message.guild.verificationLevel;
 
-    if (guildVerificationLevel == "NONE") {
-        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.NONE;
-    }
-    if (guildVerificationLevel == "LOW") {
-        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.LOW;
-    }
-    if (guildVerificationLevel == "MEDIUM") {
-        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.MEDIUM;
-    }
-    if (guildVerificationLevel == "HIGH") {
-        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.HIGH;
-    }
-    if (guildVerificationLevel == "VERY_HIGH") {
-        guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.VERY_HIGH;
+    switch (guildVerificationLevel) {
+        case "NONE":
+            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.NONE;
+        break;
+        case "LOW":
+            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.LOW;
+        break;
+        case "MEDIUM":
+            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.MEDIUM;
+        break;
+        case "HIGH":
+            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.HIGH;
+        break;
+        case "VERY_HIGH":
+            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.VERY_HIGH;
+        break;
     }
 
     let guildMemberCount = message.guild.memberCount;
@@ -109,5 +111,6 @@ module.exports.help = {
     "description": "Get server information",
     "usage": "server",
     "category": "information",
-    "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"]
+    "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"],
+    "permissions": ["SEND_MESSAGES"]
 };

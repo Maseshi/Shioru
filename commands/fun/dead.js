@@ -13,5 +13,6 @@ module.exports.help = {
     "description": "Fake message that says you commit suicide",
     "usage": "dead",
     "category": "fun",
-    "aliases": ["die", "dead", "ตาย"]
+    "aliases": ["die", "dead", "ตาย"],
+    "permissions": ["SEND_MESSAGES"]
 };

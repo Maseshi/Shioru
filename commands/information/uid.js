@@ -1,30 +1,51 @@
+const firebase = require("firebase");
+
 module.exports.run = async function (client, message, args) {
+    let arg = args.join(" ");
     let avatar = message.author.displayAvatarURL();
     let username = message.author.username;
     let id = message.author.id;
-    let arg = args.join(" ");
-    if (arg) {
-        let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
-        if (!user) {
-            message.channel.send(client.lang.command_information_uid_no_args);
-        } else {
-            avatar = user.avatarURL();
-            username = user.username;
-            id = user.id;
-            userID(avatar, username, id);
-        }
-    } else {
-        userID(avatar, username, id);
-    }
 
-    function userID(Savatar, Susername, Sid) {
+    let database = firebase.database();
+    let ref = database.ref("Shioru/apps/discord/guilds").child(message.guild.id);
+
+    if (arg) {
+        let members = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
+        if (!members) return message.reply(client.lang.command_information_uid_no_args);
+
+        avatar = members.user.avatarURL();
+        username = members.user.username;
+        id = members.user.id;
+
+        ref.child("data/users").child(id).child("access").once("value", function(snapshot) {
+            if (snapshot.exists()) {
+                let PMSuid = snapshot.val().uid;
+
+                if (!PMSuid) return message.reply(client.lang.command_information_uid_not_access);
+
+                return userID(avatar, username, id);
+            } else {
+                ref.child("data/users").child(id).child("access").update({
+                    "avatar": false,
+                    "info": false,
+                    "uid": false
+                }).then(function() {
+                    return module.exports.run(client, message, args);
+                });
+            }
+        });
+    }
+    
+    return userID(avatar, username, id);
+
+    function userID(avatar, username, id) {
         message.channel.send({
             "embed": {
-                "title": client.lang.command_information_uid_function_userID_embed_title + Susername,
-                "description": "```" + Sid + "```" + client.lang.command_information_uid_function_userID_embed_description,
+                "title": client.lang.command_information_uid_function_userID_embed_title + username,
+                "description": "```" + id + "```" + client.lang.command_information_uid_function_userID_embed_description,
                 "color": 4886754,
                 "thumbnail": {
-                    "url": Savatar
+                    "url": avatar
                 }
             }
         });
@@ -34,7 +55,8 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
     "name": "uid",
     "description": "Get your user id",
-    "usage": "uid (member<id, username, username&tag>)",
+    "usage": "uid (member: id, username, username&tag)",
     "category": "information",
-    "aliases": ["myid", "myId", "UID", "รหัส", "ไอดี", "รหัสบัญชี"]
+    "aliases": ["myid", "myId", "UID", "รหัส", "ไอดี", "รหัสบัญชี"],
+    "permissions": ["SEND_MESSAGES"]
 };

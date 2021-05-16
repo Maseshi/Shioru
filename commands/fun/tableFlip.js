@@ -1,14 +1,13 @@
 module.exports.run = async function (client, message, args) {
     let frames = [
-        '(-°□°)-  ┬─┬',
-        '(╯°□°)╯    ]',
-        '(╯°□°)╯  ︵  ┻━┻',
-        '(╯°□°)╯       [',
-        '(╯°□°)╯           ┬─┬'
+        "(-°□°)-  ┬─┬",
+        "(╯°□°)╯    ]",
+        "(╯°□°)╯  ︵  ┻━┻",
+        "(╯°□°)╯       [",
+        "(╯°□°)╯           ┬─┬"
     ];
 
-    message.channel.send('(\\\\°□°)\\\\  ┬─┬')
-    .then(function (msg) {
+    message.channel.send("(\\\\°□°)\\\\  ┬─┬").then(function (msg) {
         for (let frame of frames) {
             setTimeout(() => {}, 1000);
             msg.edit(frame);
@@ -22,5 +21,6 @@ module.exports.help = {
     "description": "(\\\\°□°)\\\\  ┬─┬",
     "usage": "tableFlip",
     "category": "fun",
-    "aliases": ["tableflip", "tf", "atf", "ฟิบโต๊ะ"]
+    "aliases": ["tableflip", "tf", "atf", "ฟิบโต๊ะ"],
+    "permissions": ["SEND_MESSAGES"]
 };

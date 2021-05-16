@@ -1,43 +1,30 @@
 module.exports.run = async function (client, message, args) {
-	if (message.member.hasPermission(["ADMINISTRATOR", "BAN_MEMBERS"])) {
-		let arg = args[0];
-		if (!arg) {
-			message.reply(client.lang.command_information_ban_arg_empty);
-		} else {
-			let user = client.users.cache.find(users => (users.username === arg) || (users.id === arg) || (users.tag === arg));
-			if (!user) {
-				message.channel.send(client.lang.command_infornation_ban_not_found_user);
-			} else {
-				let memberBan = message.guild.members.cache.get(user.id);
-				if (!memberBan) {
-					message.channel.send(client.lang.command_information_ban_cant_ban);
-				} else {
-					if (memberBan.banable === false) {
-						message.channel.send(client.lang.command_information_ban_banable_false);
-					} else {
-						let reason = args.slice(1).join(" ");
-						if (reason === "") {
-							reason = client.lang.command_information_ban_reason;
-							ban(user, memberBan, reason);
-						} else {
-							ban(user, memberBan, reason);
-						}
-					}
-				}
-			}
-		}
-	} else {
-		message.channel.send(client.lang.command_information_ban_dont_have_permission);
+	let arg = args[0];
+	if (!arg) return message.reply(client.lang.command_information_ban_arg_empty);
+	
+	let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
+	if (!member) return message.reply(client.lang.command_infornation_ban_not_found_user);
+	
+	let memberBan = message.guild.members.cache.get(member.user.id);
+	if (!memberBan) return message.reply(client.lang.command_information_ban_cant_ban);
+	if (!memberBan.banable) return message.reply(client.lang.command_information_ban_banable_false);
+	
+	let reason = args.slice(1).join(" ");
+	if (!reason) {
+		reason = client.lang.command_information_ban_reason;
+		return ban(member, memberBan, reason);
 	}
+	
+	return ban(member, memberBan, reason);
 
-	function ban(user, memberBan, reason) {
+	function ban(member, memberBan, reason) {
 		let author = message.author.username;
 		let authorAvatar = message.author.displayAvatarURL();
-		let avatar = user.avatarURL();
-		let username = user.username;
+		let avatar = member.user.avatarURL();
+		let username = member.user.username;
 		let time = new Date();
-		memberBan.ban(reason)
-		.then(function () {
+		
+		memberBan.ban(reason).then(function () {
 			message.channel.send({
 				"embed": {
 					"title": username + client.lang.command_information_ban_function_ban_embed_title,
@@ -67,7 +54,8 @@ module.exports.run = async function (client, message, args) {
 module.exports.help = {
 	"name": "ban",
 	"description": "Ban a member",
-	"usage": "ban <member<id, username, username&tag>> (reason)",
+	"usage": "ban <member: id, username, username&tag> (reason)",
 	"category": "manager",
-	"aliases": ["b", "แบน"]
+	"aliases": ["b", "แบน"],
+	"permissions": ["SEND_MESSAGES", "BAN_MEMBERS"]
 };

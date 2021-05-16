@@ -3,18 +3,18 @@ const firebase = require("firebase");
 
 module.exports.run = async function (client, message) {
     let database = firebase.database();
-    let ref = database.ref("Shioru/Discord/Users/");
+    let ref = database.ref("Shioru/apps/discord/guilds").child(message.guild.id);
 
-    ref.once("value").then(function (snapshot) {
+    ref.child("data/users").once("value").then(function (snapshot) {
         if (snapshot.exists()) {
             let map = [], max = 10;
             snapshot.forEach(function(data) {
-                let user = client.users.cache.find(users => (users.id === data.key));
-                if (!user) return;
+                let member = message.guild.members.cache.find(members => (members.id === data.key));
+                if (!member) return;
 
-                let username = user.username;
-                let exp = data.val().Leveling.EXP;
-                let level = data.val().Leveling.Level;
+                let username = member.user.username;
+                let exp = data.val().leveling.exp;
+                let level = data.val().leveling.level;
 
                 let jsonMap = {
                     "data": {
@@ -31,8 +31,8 @@ module.exports.run = async function (client, message) {
                 return b.data.level - a.data.level || b.data.exp - a.data.exp;
             });
 
-            let member = client.users.cache.find(users => (users.username === map[0].name));
-            let avatar = member.displayAvatarURL();
+            let member = message.guild.members.cache.find(members => (members.user.username === map[0].name));
+            let avatar = member.user.displayAvatarURL();
 
             for (let i = 0; i < map.length; i++) {
                 if (!map[i]) return;
@@ -62,5 +62,6 @@ module.exports.help = {
     "description": "See the ranking of people with the most EXP and Level on the server.",
     "usage": "leaderBoard",
     "category": "fun",
-    "aliases": ["คะแนน", "คณะผู้นำ", "leaderboard", "lBoard", "leaderB", "lb"]
+    "aliases": ["คะแนน", "คณะผู้นำ", "leaderboard", "lBoard", "leaderB", "lb"],
+    "permissions": ["SEND_MESSAGES"]
 };

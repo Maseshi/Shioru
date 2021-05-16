@@ -32,5 +32,6 @@ module.exports.help = {
     "description": "Credit of other creators",
     "usage": "credits",
     "category": "information",
-    "aliases": ["เครดิต", "creator"]
+    "aliases": ["เครดิต", "creator"],
+    "permissions": ["SEND_MESSAGES"]
 };
