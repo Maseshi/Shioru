@@ -3,17 +3,17 @@
 [![Javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com/) [![Ragrets](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com/) [![Love](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com/) [![Water](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com/)
 
 [![Discord server](https://discordapp.com/api/guilds/618837514882514944/widget.png?style=shield)](https://discord.gg/7B52BTf)
-[![Stars](https://img.shields.io/github/stars/Shinosaki/shioru.svg)](https://github.com/Shinosaki/shioru/stargazers)
-[![License](https://img.shields.io/github/license/Shinosaki/shioru.svg)](https://github.com/Shinosaki/shioru/blob/master/LICENSE)
+[![Stars](https://img.shields.io/github/stars/Maseshi/shioru.svg)](https://github.com/Maseshi/shioru/stargazers)
+[![License](https://img.shields.io/github/license/Maseshi/shioru.svg)](https://github.com/Maseshi/shioru/blob/master/LICENSE)
 [![Node.js CI](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml/badge.svg?branch=stable)](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml)
 
 #
 
 ### Choose data language
 
-- [ไทย](https://github.com/Shinosaki/shioru/blob/master/docs/th-TH.md)
+- [ไทย](https://github.com/Maseshi/shioru/blob/master/docs/th-TH.md)
 
-- [English](https://github.com/Shinosaki/shioru/blob/master/README.md)
+- [English](https://github.com/Maseshi/shioru/blob/master/README.md)
 
 #
 
