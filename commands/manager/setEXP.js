@@ -26,9 +26,9 @@ module.exports.run = async function (client, message, args) {
             let exp = snapshot.val().leveling.exp;
             let level = snapshot.val().leveling.level;
             
-            ref.child("config/notification").once("value").then(function (dataSnapshot) {
+            ref.child("config").once("value").then(function (dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    let notifyId = dataSnapshot.val().alert;
+                    let notifyId = dataSnapshot.val().notification.alert;
 
                     if (notifyId) {
                         let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
@@ -59,8 +59,19 @@ module.exports.run = async function (client, message, args) {
                         });
                     }
                 } else {
-                    ref.child("config/notification").update({
-                        "alert": 0
+                    ref.child("config").update({
+                        "prefix": "S",
+                        "language": "th_TH",
+                        "notification": {
+                            "alert": 0,
+                            "channelCreate": 0,
+                            "channelDelete": 0,
+                            "channelPinsUpdate": 0,
+                            "channelUpdate": 0,
+                            "emojiCreate": 0,
+                            "guildMemberAdd": 0,
+                            "guildMemberRemove": 0
+                        }
                     });
                 }
             });

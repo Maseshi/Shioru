@@ -1,9 +1,10 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
-    let queueOwner = serverQueue.require.username;
-    
     if (!serverQueue) return message.reply(client.lang.command_music_skipto_no_queue);
+    
+    let queueOwner = serverQueue.require.username;
     if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_skipto_check_not_owner);
+    
     if (!args[0]) return message.reply(client.lang.command_music_skipto_aeg_empty);
     
     serverQueue.playing = true;

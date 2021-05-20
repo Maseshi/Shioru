@@ -1,25 +1,19 @@
 const firebase = require("firebase");
 
-module.exports = function (client, message) {
-    let guild = message.guild.id;
-    
+module.exports = function (client, message, exports) {
     let database = firebase.database();
-    let ref = database.ref("Shioru/apps/discord/guilds").child(guild);
+    let ref = database.ref("Shioru/apps/discord/guilds").child(message.guild.id);
 
-    ref.child("config").once("value").then(function(snapshot) {
-        const msgEvent = require("../events/client/message");
-        
+    ref.child("config").once("value").then(function(snapshot) {   
         if (snapshot.exists()) {
             let prefix = snapshot.val().prefix;
             let lang = snapshot.val().language;
             
-            if (lang !== client.lang) {
-                const applyLang = require("../languages/" + lang + ".json");
-                client.lang = applyLang;
-            }
+            if (lang !== client.lang) client.lang = require("../languages/" + lang + ".json");
             if (prefix !== client.config.prefix) {
-                client.config.prefix = prefix;
-                return msgEvent(client, message);
+                client.config.prefix = prefix
+                client.data.working = 1;
+                return exports(client, message);
             }
         } else {
             ref.child("config").set({

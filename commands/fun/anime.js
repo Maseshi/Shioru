@@ -98,8 +98,6 @@ module.exports.run = async function (client, message, args) {
                     ]
                 }
             });
-        }).catch(function(err) {
-            return console.log(err);
         });
     }).catch(function(err) {
         msg.edit(client.lang.command_fun_anime_finding_anime_error + err);

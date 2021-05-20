@@ -1,10 +1,11 @@
 module.exports.run = function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
-    let queueOwner = serverQueue.require.username;
-    
     if (!serverQueue) return message.channel.send(client.lang.command_music_resume_no_queue);
+
+    let queueOwner = serverQueue.require.username;
+    if (queueOwner !== message.author.username) return message.channel.send(client.lang.command_music_resume_check_not_owner);
+    
     if (!serverQueue.playing) {
-        if (queueOwner !== message.author.username) return message.channel.send(client.lang.command_music_resume_check_not_owner);
         serverQueue.playing = true;
         serverQueue.connection.dispatcher.resume();
         return message.channel.send(client.lang.command_music_resume_info);

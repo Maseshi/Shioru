@@ -1,26 +1,46 @@
+const discord = require("discord.js");
+
 module.exports = function (client, guild) {
     let defaultChannel = "";
 
     guild.channels.cache.forEach(function(channel) {
-        if (channel.type == "text" && defaultChannel == "") {
+        if (channel.type === "text" && defaultChannel === "") {
             if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
                 defaultChannel = channel;
 
+                let attachment = new discord.MessageAttachment("./assets/images/ic_maseshi_banner.jpg", "ic_maseshi_banner.jpg");
+                let guildName = guild.name;
                 let avatar = client.user.displayAvatarURL();
                 let username = client.user.username;
 
                 channel.send({
                     "embed": {
-                        "title": "เอ๋...ฉันมาถูกหรือเปล่านะ?!",
-                        "description": "สะ...สวัสดี เอ่อ...ไม่ทราบว่าฉันมาถูกที่หรือเปล่าอ่ะ แต่น่าจะถูกแหล่ะเพราะฉันเดินทางตามที่อยู่ที่ที่เขาให้มา \n\nเอาล่ะ...ไหนๆ ฉันก็มาล่ะ ขอขอบคุณสำหรับคำเชิญนะ ขอแนะนำตัวก่อน...ฉันชื่อ " + username + " มาจากที่ใดที่หนึ่งในประเทศไทยนี่แหล่ะ ไม่บอกอายุละกัน -_- อายุไม่มากหรอก ไม่ต้องสนใจน่าา..ถ้ามีอะไรอยากให้ฉันช่วยก็เรียกฉันได้เลยย พิมพ์ **'S'** ก่อนล่ะ ฉันจะได้รู้ว่าคุณเรียกฉันจริงๆ ส่วนถ้าอยากรู้ว่าฉันสามารถทำอะไรได้บ้าง พิมพ์ **'Shelp'** ได้เลย แล้วฉันจะตอบทันทีเลย",
+                        "files": [ attachment ],
+                        "title": client.lang.event_guild_guildCreate_embed_title,
+                        "description": client.lang.event_guild_guildCreate_embed_description.replace("%guildName", guildName),
                         "color": 14684245,
-                        "thumbnail": {
-                            "url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/label_1f3f7.png"
+                        "timestamp": new Date(),
+                        "footer": {
+                            "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/spiral-calendar-pad_1f5d3.png",
+                            "text": client.lang.event_guild_guildCreate_embed_footer_text
+                        },
+                        "image": {
+                            "url": "attachment://ic_maseshi_banner.jpg"
                         },
                         "author": {
                             "name": username,
                             "icon_url": avatar
-                        }
+                        },
+                        "fields": [
+                            {
+                                "name": client.lang.event_guild_guildCreate_embed_field_name_0,
+                                "value": client.lang.event_guild_guildCreate_embed_field_value_0
+                            },
+                            {
+                                "name": client.lang.event_guild_guildCreate_embed_field_name_1,
+                                "value": client.lang.event_guild_guildCreate_embed_field_value_1
+                            }
+                        ]
                     }
                 });
             }

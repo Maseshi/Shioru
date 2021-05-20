@@ -10,9 +10,6 @@ module.exports.run = async function (client, message, args) {
 	}).then(function (messages) {
 		message.channel.bulkDelete(messages, true);
 		message.channel.send(client.lang.command_manager_purge_clear_success.replace("%size", messages.size));
-	}).catch(function (error) {
-		message.channel.send(client.lang.command_manager_purge_clear_error + error);
-		console.log(error);
 	});
 };
 	

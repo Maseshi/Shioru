@@ -14,21 +14,21 @@ module.exports.run = async function (client, message, args) {
                     "timeout": 8000
                 });
             });
-        }
+        } else {
+            avatar = client.user.avatarURL();
 
-        avatar = client.user.avatarURL();
-
-        return message.channel.send({
-            "embed": {
-                "title": client.lang.command_information_avatar_else_user_avatar_embed_title,
-                "description": avatar,
-                "url": avatar,
-                "color": 14684245,
-                "thumbnail": {
-                    "url": avatar
+            return message.channel.send({
+                "embed": {
+                    "title": client.lang.command_information_avatar_else_user_avatar_embed_title,
+                    "description": avatar,
+                    "url": avatar,
+                    "color": 14684245,
+                    "thumbnail": {
+                        "url": avatar
+                    }
                 }
-            }
-        });
+            });
+        }
     }
     
     if (arg) { 
@@ -56,30 +56,32 @@ module.exports.run = async function (client, message, args) {
                     }
                 });
             } else {
-                ref.child("data/users").child(members.user.id).child("access").update({
-                    "avatar": false,
-                    "info": false,
-                    "uid": false
+                ref.child("data/users").child(members.user.id).update({
+                    "access": {
+                        "avatar": false,
+                        "info": false,
+                        "uid": false
+                    }
                 }).then(function() {
                     return module.exports.run(client, message, args);
                 });
             }
         });
-    }
-    
-    avatar = message.author.displayAvatarURL();
+    } else {
+        avatar = message.author.displayAvatarURL();
 
-    message.channel.send({
-        "embed": {
-            "title": client.lang.command_information_avatar_else_this_user_embed_title,
-            "description": avatar,
-            "url": avatar,
-            "color": 4886754,
-            "thumbnail": {
-                "url": avatar
+        message.channel.send({
+            "embed": {
+                "title": client.lang.command_information_avatar_else_this_user_embed_title,
+                "description": avatar,
+                "url": avatar,
+                "color": 4886754,
+                "thumbnail": {
+                    "url": avatar
+                }
             }
-        }
-    });
+        });
+    }
 };
 
 module.exports.help = {

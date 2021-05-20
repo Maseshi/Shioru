@@ -26,35 +26,52 @@ module.exports.run = async function (client, message, args) {
             let exp = snapshot.val().exp;
             let level = snapshot.val().level;
             
-            ref.child("config/notification").once("value").then(function (dataSnapshot) {
-                let notifyId = dataSnapshot.val().alert;
+            ref.child("config").once("value").then(function (dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    let notifyId = dataSnapshot.val().notification.alert;
 
-                if (notifyId) {
-                    let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
-                    notification.send({
-                        "embed": {
-                            "description": username + client.lang.command_manager_setLevel_embed_title,
-                            "color": 4886754,
-                            "thumbnail": {
-                                "url": avatar
-                            },
-                            "footer": {
-                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                "text": client.lang.command_manager_setLevel_embed_footer_text
-                            },
-                            "fields": [
-                                {
-                                    "name": client.lang.command_manager_setLevel_embed_field_0,
-                                    "value": "```" + exp + "```"
+                    if (notifyId) {
+                        let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
+                        notification.send({
+                            "embed": {
+                                "description": username + client.lang.command_manager_setLevel_embed_title,
+                                "color": 4886754,
+                                "thumbnail": {
+                                    "url": avatar
                                 },
-                                {
-                                    "name": client.lang.command_manager_setLevel_embed_field_1,
-                                    "value": "```" + level + "```"
-                                }
-                            ]
+                                "footer": {
+                                    "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                                    "text": client.lang.command_manager_setLevel_embed_footer_text
+                                },
+                                "fields": [
+                                    {
+                                        "name": client.lang.command_manager_setLevel_embed_field_0,
+                                        "value": "```" + exp + "```"
+                                    },
+                                    {
+                                        "name": client.lang.command_manager_setLevel_embed_field_1,
+                                        "value": "```" + level + "```"
+                                    }
+                                ]
+                            }
+                        }).then(function () {
+                            message.channel.send(client.lang.command_manager_setLevel_message_then_success);
+                        });
+                    }
+                } else {
+                    ref.child("config").update({
+                        "prefix": "S",
+                        "language": "th_TH",
+                        "notification": {
+                            "alert": 0,
+                            "channelCreate": 0,
+                            "channelDelete": 0,
+                            "channelPinsUpdate": 0,
+                            "channelUpdate": 0,
+                            "emojiCreate": 0,
+                            "guildMemberAdd": 0,
+                            "guildMemberRemove": 0
                         }
-                    }).then(function () {
-                        message.channel.send(client.lang.command_manager_setLevel_message_then_success);
                     });
                 }
             });

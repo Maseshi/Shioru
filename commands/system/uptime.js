@@ -1,8 +1,9 @@
 module.exports.run = async function (client, message, args) {
-    message.channel.send({ "embed": {
+    message.channel.send({
+        "embed": {
             "title": client.lang.command_system_uptime_embed_title,
             "description": "```" + duration(client.uptime) + "```",
-            "color": 14684245,
+            "color": 14684245
         }
     });
 

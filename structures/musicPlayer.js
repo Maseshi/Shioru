@@ -1,49 +1,13 @@
 const ytdl = require("ytdl-core-discord");
-const firebase = require("firebase");
 
 module.exports = async function (client, message, metadata, status) {
-    let database = firebase.database();
-    let ref = database.ref("Shioru/apps/discord/guild").child(message.guild.id);
-
     let queue = message.client.data.get(message.guild.id);
 
     if (!metadata) {
-        ref.child("config/notification").once("value").then(function (snapshot) {
-            if (snapshot.exists()) {
-                let notifyId = snapshot.val().alert;
-    
-                if (notifyId === true) {
-                    let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
-                    notification.send({
-                        "embed": {
-                            "description": client.lang.structures_musicPlayer_notification_clear,
-                            "timestamp": new Date(),
-                            "color": 4886754,
-                            "footer": {
-                                "text": client.lang.event_guild_channelCreate_embed_footer_text
-                            },
-                            "author": {
-                                "name": client.lang.structures_musicPlayer_notification_name,
-                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/multiple-musical-notes_1f3b6.png"
-                            }
-                        }
-                    });
-                }
-            } else {
-                ref.child("config/notification").set({
-                    "alert": 0
-                }).then(function () {
-                    module.exports(client, message, metadata, status);
-                });
-            }
-        });
-        
         setTimeout(function () {
-            if (!queue.connection.dispatcher && !message.guild.me.voice.channel) {
-                queue.channel.leave();
-            }
-        }, 500000);
-
+            if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
+            queue.voiceChannel.leave();
+        }, 300000);
         message.client.data.delete(message.guild.id);
     } else {
         queue.connection.on("disconnect", function () {
@@ -55,7 +19,7 @@ module.exports = async function (client, message, metadata, status) {
             "highWaterMark": 1 << 25,
             "opusEncoded": true,
             "quality": "highestaudio"
-        });
+        }).then();
         let streamType = metadata.url.includes("youtube.com") ? "opus" : "ogg/opus";
         let dispatcher = queue.connection.play(stream, {
             "type": streamType

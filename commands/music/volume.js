@@ -1,9 +1,9 @@
 module.exports.run = function (client, message, args) {
     let volume = parseInt(args[0]);
     let serverQueue = message.client.data.get(message.guild.id);
-    let queueOwner = serverQueue.require.username;
-    
     if (!serverQueue) return message.reply(client.lang.command_music_volume_no_queue);
+
+    let queueOwner = serverQueue.require.username;
     if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_volume_check_not_owner);
     
     if (!volume) return message.reply(client.lang.command_music_volume_current_level_sound.replace("%currentLevel", serverQueue.volume));

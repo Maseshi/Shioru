@@ -30,18 +30,20 @@ module.exports.run = async function (client, message, args) {
 
         return userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt);
       } else {
-        ref.child("data/users").child(id).child("access").update({
-          "avatar": false,
-          "info": false,
-          "uid": false
+        ref.child("data/users").child(id).update({
+          "access": {
+            "avatar": false,
+            "info": false,
+            "uid": false
+          }
         }).then(function() {
           return module.exports.run(client, message, args);
         });
       }
     });
+  } else {
+    return userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt);
   }
-  
-  return userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt);
 
   function userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt) {
     let date = new Date(accountCreateAt);

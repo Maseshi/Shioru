@@ -25,18 +25,20 @@ module.exports.run = async function (client, message, args) {
 
                 return userID(avatar, username, id);
             } else {
-                ref.child("data/users").child(id).child("access").update({
-                    "avatar": false,
-                    "info": false,
-                    "uid": false
+                ref.child("data/users").child(id).update({
+                    "access": {
+                        "avatar": false,
+                        "info": false,
+                        "uid": false
+                    }
                 }).then(function() {
                     return module.exports.run(client, message, args);
                 });
             }
         });
+    } else {
+        return userID(avatar, username, id);
     }
-    
-    return userID(avatar, username, id);
 
     function userID(avatar, username, id) {
         message.channel.send({

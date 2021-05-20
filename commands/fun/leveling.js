@@ -14,10 +14,10 @@ module.exports.run = async function (client, message, args) {
         username = member.user.username;
         id = member.user.id;
         
-        return getLeveling(avatar, id);
+        getLeveling(avatar, id);
+    } else {
+        getLeveling(avatar, id);
     }
-    
-    getLeveling(avatar, id);
 
     function getLeveling(avatar, id) {
         let database = firebase.database();
@@ -26,8 +26,8 @@ module.exports.run = async function (client, message, args) {
         ref.child("data/users").child(id).once("value").then(function (snapshot) {
             if (!snapshot.exists()) return message.reply(client.lang.command_fun_leveling_function_getLeveling_else_not_level);
             
-            let exp = snapshot.val().exp;
-            let level = snapshot.val().level;
+            let exp = snapshot.val().leveling.exp;
+            let level = snapshot.val().leveling.level;
 
             message.channel.send({
                 "embed": {

@@ -9,13 +9,13 @@ module.exports.run = async function (client, message, args) {
         message.delete().then(function () {
             return message.channel.send(args.join(" "));
         });
-    }
-
-    message.delete().then(function () {
-        channelInfo.send(text).catch(function (error) {
-            message.channel.send(client.lang.command_messages_say_send_message_error + error);
+    } else {
+        message.delete().then(function () {
+            channelInfo.send(text).catch(function (error) {
+                message.channel.send(client.lang.command_messages_say_send_message_error + error);
+            });
         });
-    });
+    }
 };
 
 module.exports.help = {

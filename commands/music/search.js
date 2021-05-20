@@ -19,31 +19,31 @@ module.exports.run = async function (client, message, args) {
         if (error) {
             console.error(error);
             return message.channel.send(client.lang.command_music_search_not_found);
-        }
-
-        let videos = result.videos;
-        videos.map(function (video, index) {
-            if (index >= 10) return;
-            resultsEmbed.addField((index + 1) + ". " + video.title, video.url);
-        });
-
-        message.channel.send(resultsEmbed).then(async function (resultsMessage) {
-            message.channel.activeCollector = true;
-            let response = await message.channel.awaitMessages(filter, {
-                "max": 1,
-                "maxProcessed": 1,
-                "time": 60000,
-                "errors": ["time"]
+        } else {
+            let videos = result.videos;
+            videos.map(function (video, index) {
+                if (index >= 10) return;
+                resultsEmbed.addField((index + 1) + ". " + video.title, video.url);
             });
-            let choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
-
-            message.channel.activeCollector = false;
-            message.client.commands.get("play").run(client, message, [choice]);
-            resultsMessage.delete();
-        }).catch(function (err) {
-            console.error(err);
-            message.channel.activeCollector = false;
-        });
+    
+            message.channel.send(resultsEmbed).then(async function (resultsMessage) {
+                message.channel.activeCollector = true;
+                let response = await message.channel.awaitMessages(filter, {
+                    "max": 1,
+                    "maxProcessed": 1,
+                    "time": 60000,
+                    "errors": ["time"]
+                });
+                let choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
+    
+                message.channel.activeCollector = false;
+                message.client.commands.get("play").run(client, message, [choice]);
+                resultsMessage.delete();
+            }).catch(function (err) {
+                console.error(err);
+                message.channel.activeCollector = false;
+            });
+        }
     });
 
     function filter(msg) {

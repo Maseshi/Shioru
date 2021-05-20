@@ -22,7 +22,14 @@ module.exports.run = async function(client, message, args) {
                 "prefix": "S",
                 "language": "th_TH",
                 "notification": {
-                    "alert": 0
+                    "alert": 0,
+                    "channelCreate": 0,
+                    "channelDelete": 0,
+                    "channelPinsUpdate": 0,
+                    "channelUpdate": 0,
+                    "emojiCreate": 0,
+                    "guildMemberAdd": 0,
+                    "guildMemberRemove": 0
                 }
             }).then(function () {
                 return module.exports.run(client, message, args);

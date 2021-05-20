@@ -13,9 +13,9 @@ module.exports.run = async function (client, message, args) {
 	if (!reason) {
 		reason = client.lang.command_information_ban_reason;
 		return ban(member, memberBan, reason);
+	} else {
+		return ban(member, memberBan, reason);
 	}
-	
-	return ban(member, memberBan, reason);
 
 	function ban(member, memberBan, reason) {
 		let author = message.author.username;
@@ -44,9 +44,6 @@ module.exports.run = async function (client, message, args) {
 					}
 				}
 			});
-		}).catch(function (error) {
-			message.channel.send(client.lang.command_information_ban_function_ban_message_error + error);
-			console.log(error);
 		});
 	}
 };

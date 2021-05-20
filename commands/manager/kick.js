@@ -43,9 +43,6 @@ module.exports.run = async function (client, message, args) {
 					}
 				}
 			});
-		}).catch(function (error) {
-			message.channel.send(client.lang.command_manager_kick_function_kick_message_error + error);
-			console.log(error);
 		});
 	}
 };

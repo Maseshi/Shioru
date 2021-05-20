@@ -17,7 +17,6 @@ module.exports.run = async function (client, message, args) {
         msg.edit(client.lang.command_information_deleteLeveling_delete_success);
     }).catch(function (error) {
         msg.edit(client.lang.command_information_deleteLeveling_delete_error);
-        console.log(error);
     });
 };
 

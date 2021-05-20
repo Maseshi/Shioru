@@ -1,8 +1,8 @@
 module.exports.run = async function (client, message, args) {
     let serverQueue = message.client.data.get(message.guild.id);
-    let queueOwner = serverQueue.require.username;
-    
     if (!serverQueue) return message.reply(client.lang.command_music_remove_no_queue);
+
+    let queueOwner = serverQueue.require.username;
     if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_remove_check_not_owner);
 
     if (!args.length && !args[0]) return message.reply(client.lang.command_music_remove_arg_empty);
