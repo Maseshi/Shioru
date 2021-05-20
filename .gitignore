@@ -1,7 +1,6 @@
 .env
 note.txt
-assets/images/ic_avatar_shioru.jpg
-assets/images/ic_sleeping_shioru.png
+commands/self/send.js
 
 # Logs
 logs
