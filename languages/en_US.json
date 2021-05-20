@@ -1,11 +1,10 @@
 {
     "__comment": "This file has not been organized yet.",
     "details": {
-        "version": 1.4,
+        "version": 1.5,
         "name": "English",
         "id": "en_US"
     },
-    "event_client_error": "⚠️ An error occurred within the client.: ",
     "event_client_message_permissions": "🚫 It looks like you don't have permission to use this command.",
     "event_guild_notification_way_system": "System notification",
     "event_guild_channelCreate_embed_footer_text": "Began when",
@@ -16,6 +15,13 @@
     "event_guild_emojiCreate_embed_description": "Server members have created new emoji: \\:%emoji:",
     "event_guild_emojiDelete_embed_description": "The server member deleted the emoji: \\:%emoji:",
     "event_guild_emojiUpdate_embed_description": "Server members have changed new emoji from: %oldEmoji to %newEmoji",
+    "event_guild_guildCreate_embed_title": "It has arrived at the beginning !!",
+    "event_guild_guildCreate_embed_description": "Hello. I thank you for inviting me to this %guildName. \nOne seems to be wondering what I can do? Oh..washing dishes, washing clothes is it. So great, right? Hah~Ha, right where? I'm kidding",
+    "event_guild_guildCreate_embed_footer_text": "joined on",
+    "event_guild_guildCreate_embed_field_name_0": "**💡 instructions**",
+    "event_guild_guildCreate_embed_field_value_0": "If you own this guild..I want to set up this guild completely before I actually use it because you may not need it. So try using the command `Ssettings`.",
+    "event_guild_guildCreate_embed_field_name_1": "**📄 Help and Documentation**",
+    "event_guild_guildCreate_embed_field_value_1": "Want to know what I can do? Just type `Shelp` and someone will tell you, but if you want more details then Of course, just follow the link below and there will be documentation that the developer and others have. He wrote it for you. \n> https://maseshi.web.app/documents#ทำไมต้อง-shioru?",
     "event_guild_guildMemberAdd_embed_description": "Hello new member **This is an automated message** \nThanks for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
     "event_guild_guildMemberAdd_embed_author_name": "Welcome to the server",
     "event_guild_guildMemberRemove_embed_description": "Has escaped from this server... (Where to go? ..)",
@@ -33,7 +39,6 @@
 
     "command_fun_anime_no_args": "❓ What anime do you want?",
     "command_fun_anime_finding_anime_title": "🔎 Looking for from the title **%title**. Wait a moment...",
-    "command_fun_anime_finding_anime_error": "⚠️ Uh, it seems that I can't continue.: ",
     "command_fun_anime_no_info_anime_title": "❎ Didn't see this Let's check it out. Look, or maybe there's really no such thing.",
     "command_fun_anime_embed_anime_description": "I met 5 similar stories. What story do you want to read ~",
     "command_fun_anime_embed_anime_footer_text": "Just type in the number you want to read! (Cancel within 1 minute)",
@@ -50,7 +55,6 @@
     "command_fun_anime_embed_conclude_fields_5_name": "**Popularity Rank**",
     "command_fun_anime_embed_conclude_fields_6_name": "**Link**",
     "command_fun_anime_embed_conclude_fields_7_name": "**Conclude:**",
-    "command_fun_anime_wallpaper_function_error": "⚠️ Receiving data from the server is not read..: ",
     "command_fun_dead_embed_description": " Decided to kill yourself 💔 Sleep well.",
     "command_fun_eat_no_args": "❓ Who do you want to eat right now?",
     "command_fun_eat_me": "...",
