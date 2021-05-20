@@ -3,14 +3,16 @@ module.exports.run = function (client, message, args) {
     if (!serverQueue) return message.reply(client.lang.command_music_skipto_no_queue);
     
     let queueOwner = serverQueue.require.username;
-    if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_skipto_check_not_owner);
+    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_skipto_check_not_owner);
     
     if (!args[0]) return message.reply(client.lang.command_music_skipto_aeg_empty);
     
-    serverQueue.playing = true;
-    serverQueue.songs = serverQueue.songs.slice(args[0] - 2);
-    serverQueue.connection.dispatcher.end();
-    serverQueue.textChannel.send(client.lang.command_music_skipto_info.replace("%count", (args[0] - 1)));
+    if (serverQueue.connection.dispatcher) {
+        serverQueue.playing = true;
+        serverQueue.songs = serverQueue.songs.slice(args[0] - 2);
+        serverQueue.connection.dispatcher.end();
+        serverQueue.textChannel.send(client.lang.command_music_skipto_info.replace("%count", (args[0] - 1)));
+    }
 };
 
 module.exports.help = {

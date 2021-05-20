@@ -1,17 +1,19 @@
 const discord = require("discord.js");
-const YouTubeAPI = require("simple-youtube-api");
+const youtube = require("simple-youtube-api");
 const yts = require("yt-search");
 const musicPlayer = require("../../structures/musicPlayer");
 
 module.exports.run = async function (client, message, args) {
-    const youtube = new YouTubeAPI(client.config.youtubeApi);
+    const api = new youtube(client.config.youtubeApi);
     
     let playlist, metadata, connection;
     let channel = message.member.voice.channel;
     let search = args.join(" ");
 
     let videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    let playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
+    videoPattern.test(search);
+
+    let playlistPattern = /[^.*](list=)([^#\&\?]*).*/gi;
     let resumePattern = /[^.*](t=)([^#\&\?]*).*/gi;
     let videoPlaylistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
 
@@ -49,17 +51,15 @@ module.exports.run = async function (client, message, args) {
     };
 
     try {
-        if (resumePattern.test(search)) search = args.join(" ").replace(resumePattern, "");
-
         if (!videoPattern.test(search) && playlistPattern.test(search)) {
-            if (!youtube) {
+            if (!api) {
                 status.delete();
                 return message.reply(client.lang.command_music_play_youtube_api_expire);
             } else {
                 status.edit(client.lang.command_music_play_status_search_playlists);
                 if (videoPlaylistPattern.test(search)) {
                     try {
-                        playlist = await youtube.getPlaylist(search, { "part": "snippet" });
+                        playlist = await api.getPlaylist(search, { "part": "snippet" });
                         videos = await playlist.getVideos(10, { "part": "snippet" });
                     } catch (error) {
                         console.log(error);
@@ -68,7 +68,7 @@ module.exports.run = async function (client, message, args) {
                     }
                 } else {
                     try {
-                        playlist = await youtube.searchPlaylists(search, { "part": "snippet" })[0];
+                        playlist = await api.searchPlaylists(search, 1, { "part": "snippet" })[0];
                         videos = await playlist.getVideos(10, { "part": "snippet" });
                     } catch (error) {
                         console.log(error);
@@ -84,16 +84,18 @@ module.exports.run = async function (client, message, args) {
                         "url": "https://www.youtube.com/watch?v=" + result.id,
                         "title": result.title,
                         "description": result.description,
+                        "image": result.thumbnails.standard.url,
                         "thumbnail": result.thumbnails.default.url,
                         "duration": result.durationSeconds,
                         "publishedAt": result.publishedAt,
                         "channel": {
-                            "url": "https://www.youtube.com/channel/" + result.channel.id
+                            "name": result.channel.raw.snippet.videoOwnerChannelTitle,
+                            "url": "https://www.youtube.com/channel/" + result.channel.raw.snippet.videoOwnerChannelId
                         }
                     };
 
                     if (serverQueue) {
-                        if (queueConstruct.require.username === message.author.username) {
+                        if (message.author.username === queueConstruct.require.username) {
                             status.edit(client.lang.command_music_play_status_update_all_music_in_playlists);
                             return serverQueue.songs.push(metadata);
                         }
@@ -111,10 +113,12 @@ module.exports.run = async function (client, message, args) {
                 .setTimestamp()
                 .setFooter(message.author.username, message.author.displayAvatarURL());
 
-                if (playlistEmbed.description.length >= 2048) playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + client.lang.command_music_play_embed_playlistEmbed_description_over;
+                if (playlistEmbed.description.length >= 2048) {
+                    playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "...";
+                }
 
                 if (serverQueue) {
-                    if (queueConstruct.require.username !== message.author.username) {
+                    if (message.author.username !== queueConstruct.require.username) {
                         status.delete();
                         return message.channel.send(client.lang.command_music_play_check_not_owner_in_playlists);
                     } else {
@@ -122,7 +126,7 @@ module.exports.run = async function (client, message, args) {
                         return message.channel.send(client.lang.command_music_play_status_add_new_music_in_playlists, playlistEmbed);
                     }
                 } else {
-                    message.channel.send(client.lang.command_music_play_status_add_all_music_success_in_playlists, playlistEmbed);
+                    status.edit(client.lang.command_music_play_status_add_all_music_success_in_playlists, playlistEmbed);
                     message.client.data.set(message.guild.id, queueConstruct);
     
                     queueConstruct.connection = connection;
@@ -130,10 +134,9 @@ module.exports.run = async function (client, message, args) {
                     return musicPlayer(client, message, queueConstruct.songs[0], status);   
                 }
             }
-
-            
         } else {
             status.edit(client.lang.command_music_play_status_search_music_in_single);
+            if (resumePattern.test(search)) search = args.join(" ").replace(resumePattern, "");
             yts(search, async function (error, result) {
                 if (error) {
                     console.log(error);
@@ -160,12 +163,12 @@ module.exports.run = async function (client, message, args) {
                     };
 
                     if (serverQueue) {
-                        if (queueConstruct.require.username !== message.author.username) {
+                        if (message.author.username !== queueConstruct.require.username) {
                             status.delete();
                             return message.channel.send(client.lang.command_music_play_check_not_owner_in_single);
                         } else {
-                            serverQueue.songs.push(metadata);
                             status.delete();
+                            serverQueue.songs.push(metadata);
                             return message.channel.send(client.lang.command_music_play_status_add_music_success_in_single.replace("%title", metadata.title));
                         }
                     } else {
@@ -179,11 +182,11 @@ module.exports.run = async function (client, message, args) {
                 }
             });
         }
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
         message.client.data.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(client.lang.command_music_play_cant_join_channel + err);
+        return message.channel.send(client.lang.command_music_play_cant_join_channel + error);
     }
 };
 

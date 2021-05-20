@@ -3,10 +3,12 @@ module.exports.run = function (client, message, args) {
     if (!serverQueue) return message.reply(client.lang.command_music_loop_no_queue);
     
     let queueOwner = serverQueue.require.username;
-    if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_loop_check_not_owner);
+    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_loop_check_not_owner);
     
-    serverQueue.loop = !serverQueue.loop;
-    serverQueue.textChannel.send(client.lang.command_music_loop_queue_loop.replace("%boolean", (serverQueue.loop ? client.lang.command_music_loop_queue_loop_true : client.lang.command_music_loop_queue_loop_false)));
+    if (serverQueue.loop) {
+        serverQueue.loop = !serverQueue.loop;
+        serverQueue.textChannel.send(client.lang.command_music_loop_queue_loop.replace("%boolean", (serverQueue.loop ? client.lang.command_music_loop_queue_loop_true : client.lang.command_music_loop_queue_loop_false)));
+    }
 };
 
 module.exports.help = {

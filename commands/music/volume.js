@@ -4,15 +4,17 @@ module.exports.run = function (client, message, args) {
     if (!serverQueue) return message.reply(client.lang.command_music_volume_no_queue);
 
     let queueOwner = serverQueue.require.username;
-    if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_volume_check_not_owner);
+    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_volume_check_not_owner);
     
     if (!volume) return message.reply(client.lang.command_music_volume_current_level_sound.replace("%currentLevel", serverQueue.volume));
     if (volume >= 101) return message.reply(client.lang.command_music_volume_too_loud);
     if (volume <= 0) return message.reply(client.lang.command_music_volume_too_light);
 
-    serverQueue.volume = volume;
-    serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
-    message.channel.send(client.lang.command_music_volume_info.replace("%level", volume));
+    if (serverQueue.connection.dispatcher) {
+        serverQueue.volume = volume;
+        serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
+        serverQueue.textChannel.send(client.lang.command_music_volume_info.replace("%level", volume));
+    }
 };
 
 module.exports.help = {

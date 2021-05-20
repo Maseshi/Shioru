@@ -3,10 +3,12 @@ module.exports.run = function (client, message, args) {
     if (!serverQueue) return message.reply(client.lang.command_music_skip_no_queue);
 
     let queueOwner = serverQueue.require.username;
-    if (queueOwner !== message.author.username) return message.reply(client.lang.command_music_skip_check_not_owner);
+    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_skip_check_not_owner);
     
-    serverQueue.connection.dispatcher.end();
-    message.channel.send(client.lang.command_music_skip_info);
+    if (serverQueue.connection.dispatcher) {
+        serverQueue.connection.dispatcher.end();
+        serverQueue.textChannel.send(client.lang.command_music_skip_info);
+    }
 };
 
 module.exports.help = {

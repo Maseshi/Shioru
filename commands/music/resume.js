@@ -3,15 +3,15 @@ module.exports.run = function (client, message, args) {
     if (!serverQueue) return message.channel.send(client.lang.command_music_resume_no_queue);
 
     let queueOwner = serverQueue.require.username;
-    if (queueOwner !== message.author.username) return message.channel.send(client.lang.command_music_resume_check_not_owner);
+    if (message.author.username !== queueOwner) return message.channel.send(client.lang.command_music_resume_check_not_owner);
     
     if (!serverQueue.playing) {
         serverQueue.playing = true;
         serverQueue.connection.dispatcher.resume();
-        return message.channel.send(client.lang.command_music_resume_info);
+        message.channel.send(client.lang.command_music_resume_info);
+    } else {
+        serverQueue.textChannel.send(client.lang.command_music_resume_now_playing);
     }
-    
-    serverQueue.textChannel.send(client.lang.command_music_resume_now_playing);
 };
 
 module.exports.help = {
