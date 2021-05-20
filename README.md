@@ -23,7 +23,7 @@ For a look at all of her commands, type Shelp.
 
 # Document
 
-For now it is not yet supported in English, but you can visit us at https://maseshi.web.app/documents#ทำไมต้อง-shioru?
+For now it is not yet supported in English, But you can still visit our [documents](https://maseshi.web.app/documents#ทำไมต้อง-shioru?).
 
 # Issues?
 
