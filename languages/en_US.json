@@ -373,7 +373,6 @@
     "command_music_play_try_catch_error": "❎ doesn't seem like this playlist: ",
     "command_music_play_status_update_all_music_in_playlists": "📥 Updating all new songs...",
     "command_music_play_status_add_all_music_in_playlists": "📥 Adding songs to all playlists...",
-    "command_music_play_embed_playlistEmbed_description_over": "\nOops...too many playlist. Can I take out some",
     "command_music_play_check_not_owner_in_playlists": "🚫 Only the owner of this queue can add songs",
     "command_music_play_status_add_new_music_in_playlists": "📂 New playlist has been added to this playlist",
     "command_music_play_status_add_all_music_success_in_playlists": "📁 Song has been added and the playlist is about to start.",
