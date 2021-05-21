@@ -26,5 +26,17 @@ console.log("\u001b[1mPackage\u001b[0m version: " + packageInfo.version);
 console.log("\u001b[1mDiscord.js\u001b[0m version: " + discord.version);
 console.log("\u001b[1mNode.js\u001b[0m version: " + process.version);
 
+process.on("rejectionHandled", function (error) {
+    console.error("Rejection promise rejection:", error);
+});
+
+process.on("uncaughtException", function (error) {
+    console.error("Uncaught promise rejection:", error);
+});
+
+process.on("unhandledRejection", function (error) {
+    console.error("Unhandled promise rejection:", error);
+});
+
 firebase.initializeApp(client.config.firebase);
 client.login(client.config.token);
