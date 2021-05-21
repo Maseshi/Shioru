@@ -5,7 +5,7 @@ module.exports.run = function (client, message, args) {
     let queueOwner = serverQueue.require.username;
     if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_loop_check_not_owner);
     
-    if (serverQueue.loop) {
+    if (serverQueue.playing) {
         serverQueue.loop = !serverQueue.loop;
         serverQueue.textChannel.send(client.lang.command_music_loop_queue_loop.replace("%boolean", (serverQueue.loop ? client.lang.command_music_loop_queue_loop_true : client.lang.command_music_loop_queue_loop_false)));
     }
