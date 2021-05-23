@@ -14,7 +14,7 @@ module.exports.run = async function (client, message, args) {
 
   if (arg) {
     let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
-    if (!member) return message.reply(client.lang.command_information_userInfo_no_user);
+    if (!member) return message.reply(client.data.language.command_information_userInfo_no_user);
     
     avatar = member.user.avatarURL();
     username = member.user.username;
@@ -26,7 +26,7 @@ module.exports.run = async function (client, message, args) {
       if (snapshot.exists()) {
         let PMSInfo = snapshot.val().info;
 
-        if (!PMSInfo) return message.reply(client.lang.command_information_userInfo_not_access);
+        if (!PMSInfo) return message.reply(client.data.language.command_information_userInfo_not_access);
 
         return userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt);
       } else {
@@ -47,32 +47,32 @@ module.exports.run = async function (client, message, args) {
 
   function userInfo(guildIcon, avatar, username, userDiscriminator, id, accountCreateAt) {
     let date = new Date(accountCreateAt);
-    let days = client.lang.command_information_userInfo_function_userInfo_days;
-    let months = client.lang.command_information_userInfo_function_userInfo_months;
-    let createdAt = client.lang.command_information_userInfo_function_userInfo_createdAt.replace("%day", days[date.getDay()]).replace("%date", date.getDate()).replace("%months", months[date.getMonth()]).replace("%year", date.getFullYear()).replace("%hours", date.getHours()).replace("%minutes", date.getMinutes());
+    let days = client.data.language.command_information_userInfo_function_userInfo_days;
+    let months = client.data.language.command_information_userInfo_function_userInfo_months;
+    let createdAt = client.data.language.command_information_userInfo_function_userInfo_createdAt.replace("%day", days[date.getDay()]).replace("%date", date.getDate()).replace("%months", months[date.getMonth()]).replace("%year", date.getFullYear()).replace("%hours", date.getHours()).replace("%minutes", date.getMinutes());
 
     message.channel.send({
       "embed": {
-        "title": client.lang.command_information_userInfo_function_userInfo_embed_info_title,
+        "title": client.data.language.command_information_userInfo_function_userInfo_embed_info_title,
         "color": 4886754,
         "footer": {
           "icon_url": guildIcon,
-          "text": client.lang.command_information_userInfo_function_userInfo_embed_info_footer_text
+          "text": client.data.language.command_information_userInfo_function_userInfo_embed_info_footer_text
         },
         "thumbnail": {
           "url": avatar
         },
         "fields": [
           {
-            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_0_name,
+            "name": client.data.language.command_information_userInfo_function_userInfo_embed_info_fields_0_name,
             "value": username + "#" + userDiscriminator
           },
           {
-            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_1_name,
+            "name": client.data.language.command_information_userInfo_function_userInfo_embed_info_fields_1_name,
             "value": id
           },
           {
-            "name": client.lang.command_information_userInfo_function_userInfo_embed_info_fields_2_name,
+            "name": client.data.language.command_information_userInfo_function_userInfo_embed_info_fields_2_name,
             "value": createdAt
           }
         ]

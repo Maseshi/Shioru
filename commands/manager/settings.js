@@ -5,7 +5,7 @@ const fs = require("fs");
 module.exports.run = async function(client, message, args) {
     let option = args[0], config = args[1], set = args[2];
     let lang, prefix, notify, avatar, info, uid, level, exp;
-    let mePrefix = client.config.prefix;
+    let mePrefix = client.data.config.client.prefix;
     let guildId = message.guild.id;
 
     let database = firebase.database();
@@ -72,11 +72,11 @@ module.exports.run = async function(client, message, args) {
 
     let configInfoEmbed = new discord.MessageEmbed()
     .setColor("#E01055")
-    .setFooter(client.lang.command_manager_settings_arg_empty_embed_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png");
+    .setFooter(client.data.language.command_manager_settings_arg_empty_embed_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png");
 
     let setInfoEmbed = new discord.MessageEmbed()
     .setColor("#E01055")
-    .setFooter(client.lang.command_manager_settings_embed_CFInfo_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png")
+    .setFooter(client.data.language.command_manager_settings_embed_CFInfo_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/nazar-amulet_1f9ff.png")
     .setTimestamp();
 
     if (!option) {
@@ -136,16 +136,16 @@ module.exports.run = async function(client, message, args) {
             }
         break;
         case "guild":
-            configInfoEmbed.setTitle(client.lang.command_manager_settings_arg_empty_embed_title);
-            setInfoEmbed.setTitle(client.lang.command_manager_settings_embed_CFInfo_title)
-            if (!message.member.hasPermission(["MANAGE_GUILD"])) return message.reply(client.lang.command_manager_settings_dont_have_permission);
+            configInfoEmbed.setTitle(client.data.language.command_manager_settings_arg_empty_embed_title);
+            setInfoEmbed.setTitle(client.data.language.command_manager_settings_embed_CFInfo_title)
+            if (!message.member.hasPermission(["MANAGE_GUILD"])) return message.reply(client.data.language.command_manager_settings_dont_have_permission);
             
             if (!config) {
-                configInfoEmbed.setDescription(client.lang.command_manager_settings_arg_empty_embed_description)
+                configInfoEmbed.setDescription(client.data.language.command_manager_settings_arg_empty_embed_description)
                 .addFields(
-                    { "name": client.lang.command_manager_settings_arg_empty_embed_field_0, "value": "```" + mePrefix + module.exports.help.name + " guild prefix" + "```", "inline": true },
-                    { "name": client.lang.command_manager_settings_arg_empty_embed_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild lang" + "```", "inline": true },
-                    { "name": client.lang.command_manager_settings_arg_empty_embed_field_2, "value": "```" + mePrefix + module.exports.help.name + " guild notify" + "```", "inline": true }
+                    { "name": client.data.language.command_manager_settings_arg_empty_embed_field_0, "value": "```" + mePrefix + module.exports.help.name + " guild prefix" + "```", "inline": true },
+                    { "name": client.data.language.command_manager_settings_arg_empty_embed_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild lang" + "```", "inline": true },
+                    { "name": client.data.language.command_manager_settings_arg_empty_embed_field_2, "value": "```" + mePrefix + module.exports.help.name + " guild notify" + "```", "inline": true }
                 );
                 return message.reply(configInfoEmbed);
             }
@@ -153,22 +153,22 @@ module.exports.run = async function(client, message, args) {
             switch (config) {
                 case "prefix":
                     if (!set) {
-                        setInfoEmbed.setDescription(client.lang.command_manager_settings_prefix_arg_empty_embed_CFInfo_description)
+                        setInfoEmbed.setDescription(client.data.language.command_manager_settings_prefix_arg_empty_embed_CFInfo_description)
                         .addFields(
-                            { "name": client.lang.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_0, "value": "```" + prefix + "```", "inline": false },
-                            { "name": client.lang.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild prefix <prefix>```", "inline": false },
-                            { "name": client.lang.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_2, "value": client.lang.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_2_value, "inline": false }
+                            { "name": client.data.language.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_0, "value": "```" + prefix + "```", "inline": false },
+                            { "name": client.data.language.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild prefix <prefix>```", "inline": false },
+                            { "name": client.data.language.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_2, "value": client.data.language.command_manager_settings_prefix_arg_empty_embed_CFInfo_field_2_value, "inline": false }
                         );
                         return message.reply(setInfoEmbed);
                     }
 
-                    if (set === client.config.prefix) return message.reply(client.lang.command_manager_settings_prefix_has_already_prefix);
-                    if (set.length >= 6) return message.reply(client.lang.command_manager_settings_prefix_less);
+                    if (set === mePrefix) return message.reply(client.data.language.command_manager_settings_prefix_has_already_prefix);
+                    if (set.length >= 6) return message.reply(client.data.language.command_manager_settings_prefix_less);
                     
                     ref.child("config").update({
                         "prefix": set
                     }).then(function () {
-                        message.channel.send(client.lang.command_manager_settings_prefix_then_success.replace("%newPrefix", set));
+                        message.channel.send(client.data.language.command_manager_settings_prefix_then_success.replace("%newPrefix", set));
                     });
                 break;
                 case "lang":
@@ -183,17 +183,17 @@ module.exports.run = async function(client, message, args) {
                             if ((lang + ".json") === file) lang = langList.details.name;
                         }
 
-                        setInfoEmbed.setDescription(client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_description)
+                        setInfoEmbed.setDescription(client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_description)
                         .addFields(
-                            { "name": client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_field_0, "value": "```" + lang + "```", "ineline": false },
-                            { "name": client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild lang <language>```", "ineline": false },
-                            { "name": client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_field_2, "value": client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_field_2_value, "ineline": false },
-                            { "name": client.lang.command_manager_settings_lang_arg_empty_embed_CFInfo_field_3, "value": "```" + langName + "```", "ineline": false }
+                            { "name": client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_field_0, "value": "```" + lang + "```", "ineline": false },
+                            { "name": client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild lang <language>```", "ineline": false },
+                            { "name": client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_field_2, "value": client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_field_2_value, "ineline": false },
+                            { "name": client.data.language.command_manager_settings_lang_arg_empty_embed_CFInfo_field_3, "value": "```" + langName + "```", "ineline": false }
                         );
                         return message.reply(setInfoEmbed);
                     }
 
-                    if (set === client.lang.details.id) return message.reply(client.lang.command_manager_settings_lang_has_already_lang);
+                    if (set === client.data.language.details.id) return message.reply(client.data.language.command_manager_settings_lang_has_already_lang);
 
                     let langName;
                     
@@ -209,13 +209,13 @@ module.exports.run = async function(client, message, args) {
                     try {
                         langName = require("../../languages/" + set + ".json");
                     } catch (err) {
-                        return message.reply(client.lang.command_manager_settings_lang_catch_error);
+                        return message.reply(client.data.language.command_manager_settings_lang_catch_error);
                     }
                     
                     ref.child("config").update({
                         "language": langName.details.id
                     }).then(function () {
-                        message.channel.send(client.lang.command_manager_settings_lang_then_success.replace("%newLangName", langName.details.name));
+                        message.channel.send(client.data.language.command_manager_settings_lang_then_success.replace("%newLangName", langName.details.name));
                     });
                 break;
                 case "notify":
@@ -232,11 +232,11 @@ module.exports.run = async function(client, message, args) {
                             availableChannel += channelName + ", ";
                         }
 
-                        setInfoEmbed.setDescription(client.lang.command_manager_settings_notify_arg_empty_embed_CFInfo_description)
+                        setInfoEmbed.setDescription(client.data.language.command_manager_settings_notify_arg_empty_embed_CFInfo_description)
                         .addFields(
-                            { "name": client.lang.command_manager_settings_notify_arg_empty_embed_CFInfo_field_0, "value": embedField, "inline": false },
-                            { "name": client.lang.command_manager_settings_notify_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild notify <notification> <boolean> <channel>```", "inline": false },
-                            { "name": client.lang.command_manager_settings_notify_arg_empty_embed_CFInfo_field_2, "value": client.lang.command_manager_settings_notify_arg_empty_embed_CFInfo_field_2_value, "inline": false },
+                            { "name": client.data.language.command_manager_settings_notify_arg_empty_embed_CFInfo_field_0, "value": embedField, "inline": false },
+                            { "name": client.data.language.command_manager_settings_notify_arg_empty_embed_CFInfo_field_1, "value": "```" + mePrefix + module.exports.help.name + " guild notify <notification> <boolean> <channel>```", "inline": false },
+                            { "name": client.data.language.command_manager_settings_notify_arg_empty_embed_CFInfo_field_2, "value": client.data.language.command_manager_settings_notify_arg_empty_embed_CFInfo_field_2_value, "inline": false },
                             { "name": "✅ พร้อมใช้งาน", "value": "```" + availableChannel + "```", "inline": false }
                         );
                         message.reply(setInfoEmbed);
@@ -250,8 +250,8 @@ module.exports.run = async function(client, message, args) {
                         }
 
                         if (!channelType.includes(set)) return message.reply("❎ ดูเหมือนจะยังไม่มีประเภทของช่องดังกล่าวนะคะหรือลองตรวจสอบใหม่อีกครั้งดูคะ");
-                        if (!args[3]) return message.reply(client.lang.command_manager_settings_notify_arg_empty);
-                        if (!["true", "false"].includes(args[3])) return message.reply(client.lang.command_manager_settings_notify_arg_wrong);
+                        if (!args[3]) return message.reply(client.data.language.command_manager_settings_notify_arg_empty);
+                        if (!["true", "false"].includes(args[3])) return message.reply(client.data.language.command_manager_settings_notify_arg_wrong);
                             
                         let thisId;
                         for (let i = 0; i < Object.keys(notify).length; i++) {
@@ -263,23 +263,23 @@ module.exports.run = async function(client, message, args) {
 
                         switch (args[3]) {
                             case "true":
-                                if (thisId) return message.reply(client.lang.command_manager_settings_notify_true_has_already);
+                                if (thisId) return message.reply(client.data.language.command_manager_settings_notify_true_has_already);
                                 if (args[4]) {
                                     let channel = message.guild.channels.cache.find(channels => (channels.name === args[4]) || (channels.id === args[4]));
-                                    if (!channel) return message.reply(client.lang.command_manager_settings_notify_true_not_found_channel);
+                                    if (!channel) return message.reply(client.data.language.command_manager_settings_notify_true_not_found_channel);
                                     ref.child("config/notification").child(set).set(args[4]).then(function () {
-                                        message.channel.send(client.lang.command_manager_settings_notify_true_then_success.replace("%newChannel", args[4]));
+                                        message.channel.send(client.data.language.command_manager_settings_notify_true_then_success.replace("%newChannel", args[4]));
                                     });
                                 } else {
                                     let dfChannel = message.guild.channels.cache.filter(channels => channels.type === "text").find(x => x.position === 0);
                                     ref.child("config/notification").child(set).set(dfChannel.id);
-                                    message.channel.send(client.lang.command_manager_settings_notify_true_if_id_equal_zero.replace("%dfChannel", dfChannel.id));
+                                    message.channel.send(client.data.language.command_manager_settings_notify_true_if_id_equal_zero.replace("%dfChannel", dfChannel.id));
                                 }
                             break;
                             case "false":
-                                if (!thisId) return message.channel.send(client.lang.command_manager_settings_notify_false_has_already);
+                                if (!thisId) return message.channel.send(client.data.language.command_manager_settings_notify_false_has_already);
                                 ref.child("config/notification").child(set).set(0).then(function () {
-                                    message.channel.send(client.lang.command_manager_settings_notify_false_then_success);
+                                    message.channel.send(client.data.language.command_manager_settings_notify_false_then_success);
                                 });
                             break;
                         }

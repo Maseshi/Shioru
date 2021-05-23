@@ -4,8 +4,8 @@ const settingsData = require("../../structures/settingsData");
 
 module.exports = function (client, message) {
     let working = client.data.working;
-    let prefix = client.config.prefix;
-    let mentions = client.config.mention;
+    let prefix = client.data.config.client.prefix;
+    let mentions = client.data.config.client.mention;
     let args = message.content.slice(prefix.length).trim().split(/ +/g);
     let cmd = args.shift().toLowerCase();
     let command, mention;
@@ -37,7 +37,7 @@ module.exports = function (client, message) {
         if (command) {
             if (command.help.permissions) {
                 if (!message.member.hasPermission(command.help.permissions)) {
-                    return message.reply(client.lang.event_client_message_permissions);
+                    return message.reply(client.data.language.event_client_message_permissions);
                 }
             }
             return command.run(client, message, args);

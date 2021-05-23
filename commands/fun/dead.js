@@ -3,7 +3,7 @@ module.exports.run = async function (client, message, args) {
     message.channel.send({
         "embed": {
             "color": 1,
-            "description": username + client.lang.command_fun_dead_embed_description
+            "description": username + client.data.language.command_fun_dead_embed_description
         }
     });
 };

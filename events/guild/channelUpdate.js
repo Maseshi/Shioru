@@ -15,8 +15,8 @@ module.exports = function (client, oldChannel, newChannel) {
                 let notification = guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({
                     "embed": {
-                        "title": client.lang.event_guild_notification_way_system,
-                        "description": "> " + client.lang.event_guild_channelUpdate_embed_description.replace("%oldChannel", oldChannel.name).replace("%newChannel", newChannel.id),
+                        "title": client.data.language.event_guild_notification_way_system,
+                        "description": "> " + client.data.language.event_guild_channelUpdate_embed_description.replace("%oldChannel", oldChannel.name).replace("%newChannel", newChannel.id),
                         "timestamp": new Date(),
                         "color": 4886754,
                     }

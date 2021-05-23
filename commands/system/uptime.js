@@ -1,7 +1,7 @@
 module.exports.run = async function (client, message, args) {
     message.channel.send({
         "embed": {
-            "title": client.lang.command_system_uptime_embed_title,
+            "title": client.data.language.command_system_uptime_embed_title,
             "description": "```" + duration(client.uptime) + "```",
             "color": 14684245
         }
@@ -12,10 +12,10 @@ module.exports.run = async function (client, message, args) {
         let min = Math.floor((ms / (1000 * 60)) % 60).toString();
         let hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString();
         let days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString();
-        return  days.padStart(1, "0") + client.lang.command_system_uptime_create_data_day +
-                hrs.padStart(2, "0") + client.lang.command_system_uptime_create_data_hour +
-                min.padStart(2, "0") + client.lang.command_system_uptime_create_data_minute +
-                sec.padStart(2, "0") + client.lang.command_system_uptime_create_data_second;
+        return  days.padStart(1, "0") + client.data.language.command_system_uptime_create_data_day +
+                hrs.padStart(2, "0") + client.data.language.command_system_uptime_create_data_hour +
+                min.padStart(2, "0") + client.data.language.command_system_uptime_create_data_minute +
+                sec.padStart(2, "0") + client.data.language.command_system_uptime_create_data_second;
     }
 };
 

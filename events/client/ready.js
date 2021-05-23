@@ -1,7 +1,4 @@
 module.exports = function (client) {
-  // if ready
-  console.log("\u001b[34m\u001b[7m" + client.user.username + " is ready to work on the servers!\u001b[0m");
-
   // Activity settings
   function activity() {
     let guildSize = client.guilds.cache.size;
@@ -18,4 +15,7 @@ module.exports = function (client) {
     setTimeout(activity, 10000);
   }
   activity();
+
+  // If everything is ready to go
+  console.log("\u001b[34m\u001b[7m" + client.user.username + " is ready to work on the servers!\u001b[0m");
 };

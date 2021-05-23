@@ -4,11 +4,11 @@ module.exports.run = async function (client, message, args) {
     let arg = args[0];
     let amount = parseInt(args.slice(1).join(" "));
 
-    if (!arg) return  message.reply(client.lang.command_manager_setLevel_arg_empty);
-    if (!amount) return message.reply(client.lang.command_manager_setLevel_set_level_error);
+    if (!arg) return  message.reply(client.data.language.command_manager_setLevel_arg_empty);
+    if (!amount) return message.reply(client.data.language.command_manager_setLevel_set_level_error);
     
     let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
-    if (!member) return message.reply(client.lang.command_manager_setLevel_not_found_user);
+    if (!member) return message.reply(client.data.language.command_manager_setLevel_not_found_user);
 
     let avatar = member.user.avatarURL();
     let username = member.user.username;
@@ -21,7 +21,7 @@ module.exports.run = async function (client, message, args) {
         "level": amount
     }).then(function () {
         ref.child("data/users").child(id).child("leveling").once("value").then(function (snapshot) {
-            if (snapshot.exists()) return message.channel.send(client.lang.command_manager_setLevel_message_catch_error);
+            if (snapshot.exists()) return message.channel.send(client.data.language.command_manager_setLevel_message_catch_error);
             
             let exp = snapshot.val().exp;
             let level = snapshot.val().level;
@@ -34,28 +34,28 @@ module.exports.run = async function (client, message, args) {
                         let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
                         notification.send({
                             "embed": {
-                                "description": username + client.lang.command_manager_setLevel_embed_title,
+                                "description": username + client.data.language.command_manager_setLevel_embed_title,
                                 "color": 4886754,
                                 "thumbnail": {
                                     "url": avatar
                                 },
                                 "footer": {
                                     "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                    "text": client.lang.command_manager_setLevel_embed_footer_text
+                                    "text": client.data.language.command_manager_setLevel_embed_footer_text
                                 },
                                 "fields": [
                                     {
-                                        "name": client.lang.command_manager_setLevel_embed_field_0,
+                                        "name": client.data.language.command_manager_setLevel_embed_field_0,
                                         "value": "```" + exp + "```"
                                     },
                                     {
-                                        "name": client.lang.command_manager_setLevel_embed_field_1,
+                                        "name": client.data.language.command_manager_setLevel_embed_field_1,
                                         "value": "```" + level + "```"
                                     }
                                 ]
                             }
                         }).then(function () {
-                            message.channel.send(client.lang.command_manager_setLevel_message_then_success);
+                            message.channel.send(client.data.language.command_manager_setLevel_message_then_success);
                         });
                     }
                 } else {
@@ -77,11 +77,11 @@ module.exports.run = async function (client, message, args) {
             });
         }).catch(function (error) {
             console.log(error);
-            message.channel.send(client.lang.command_manager_setLevel_database_check_error + error);
+            message.channel.send(client.data.language.command_manager_setLevel_database_check_error + error);
         });
     }).catch(function (error) {
         console.log(error);
-        message.channel.send(client.lang.command_manager_setLevel_database_update_error + error);
+        message.channel.send(client.data.language.command_manager_setLevel_database_update_error + error);
     });
 };
 

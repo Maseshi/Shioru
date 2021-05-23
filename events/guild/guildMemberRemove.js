@@ -16,7 +16,7 @@ module.exports = function (client, member) {
 				notification.send({
                     "embed": {
                         "title": member.user.username,
-                        "description": client.lang.event_guild_guildMemberRemove_embed_description,
+                        "description": client.data.language.event_guild_guildMemberRemove_embed_description,
                         "timestamp": new Date(),
                         "color": 16777215,
                         "thumbnail": {

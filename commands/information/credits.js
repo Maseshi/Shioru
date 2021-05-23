@@ -1,17 +1,17 @@
 module.exports.run = async function (client, message, args) {
     let username = client.user.username;
     let avatar = client.user.displayAvatarURL();
-    let update = client.config.update;
+    let update = client.data.config.data.update;
     
     message.channel.send({
         "embed": {
-            "title": client.lang.command_information_credits_embed_title,
-            "description": client.lang.command_information_credits_embed_description,
+            "title": client.data.language.command_information_credits_embed_title,
+            "description": client.data.language.command_information_credits_embed_description,
             "color": 12390624,
             "timestamp": update,
             "footer": {
                 "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/lower-left-ballpoint-pen_1f58a.png",
-                "text": client.lang.command_information_credits_embed_footer_text
+                "text": client.data.language.command_information_credits_embed_footer_text
             },
             "author": {
                 "name": username,
@@ -19,8 +19,8 @@ module.exports.run = async function (client, message, args) {
             },
             "fields": [
                 {
-                    "name": client.lang.command_information_credits_embed_field_0,
-                    "value": client.lang.command_information_credits_embed_field_0_value
+                    "name": client.data.language.command_information_credits_embed_field_0,
+                    "value": client.data.language.command_information_credits_embed_field_0_value
                 }
             ]
         }

@@ -3,9 +3,9 @@ const api = new kitsu();
 
 module.exports.run = async function (client, message, args) {
     let arg = args.join(" ");
-    if (!arg) return message.reply(client.lang.command_fun_anime_no_args);
+    if (!arg) return message.reply(client.data.language.command_fun_anime_no_args);
 
-    let msg = await message.channel.send(client.lang.command_fun_anime_finding_anime_title.replace("%title", arg));
+    let msg = await message.channel.send(client.data.language.command_fun_anime_finding_anime_title.replace("%title", arg));
 
     api.fetch("anime" || "manga", {
         "params": {
@@ -14,16 +14,16 @@ module.exports.run = async function (client, message, args) {
             }
         }
     }).then(async function (info) {
-        if (info.data.length < 1) return msg.edit(client.lang.command_fun_anime_no_info_anime_title);
+        if (info.data.length < 1) return msg.edit(client.data.language.command_fun_anime_no_info_anime_title);
         
         msg = await msg.edit("", {
             "embed": {
                 "title": "```" + arg + "```",
-                "description": client.lang.command_fun_anime_embed_anime_description,
+                "description": client.data.language.command_fun_anime_embed_anime_description,
                 "color": 16083235,
                 "footer": {
                     "icon_url": client.user.avatarURL(),
-                    "text": client.lang.command_fun_anime_embed_anime_footer_text
+                    "text": client.data.language.command_fun_anime_embed_anime_footer_text
                 },
                 "author": {
                     "name": "Kitsu",
@@ -32,7 +32,7 @@ module.exports.run = async function (client, message, args) {
                 },
                 "fields": [
                     {
-                        "name": client.lang.command_fun_anime_embed_anime_fields_name,
+                        "name": client.data.language.command_fun_anime_embed_anime_fields_name,
                         "value": titles(info.data)
                     }
                 ]
@@ -52,7 +52,7 @@ module.exports.run = async function (client, message, args) {
                     "color": 12601856,
                     "footer": {
                         "icon_url": client.user.avatarURL(),
-                        "text": client.lang.command_fun_anime_embed_conclude_footer_text
+                        "text": client.data.language.command_fun_anime_embed_conclude_footer_text
                     },
                     "author": {
                         "name": "Kitsu",
@@ -61,38 +61,38 @@ module.exports.run = async function (client, message, args) {
                     },
                     "fields": [
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_0_name,
-                            "value": info.data[index].titles.en_jp || client.lang.command_fun_anime_embed_conclude_fields_0_value
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_0_name,
+                            "value": info.data[index].titles.en_jp || client.data.language.command_fun_anime_embed_conclude_fields_0_value
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_1_name,
-                            "value": info.data[index].titles.en || client.lang.command_fun_anime_embed_conclude_fields_1_value
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_1_name,
+                            "value": info.data[index].titles.en || client.data.language.command_fun_anime_embed_conclude_fields_1_value
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_2_name,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_2_name,
                             "value": info.data[index].subtype
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_3_name,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_3_name,
                             "value": info.data[index].startDate,
                             "inline": true
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_4_name,
-                            "value": info.data[index].endDate || client.lang.command_fun_anime_embed_conclude_fields_4_value,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_4_name,
+                            "value": info.data[index].endDate || client.data.language.command_fun_anime_embed_conclude_fields_4_value,
                             "inline": true
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_5_name,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_5_name,
                             "value": info.data[index].popularityRank,
                             "inline": true
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_6_name,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_6_name,
                             "value": "<https://kitsu.io/anime/" + info.data[index].id + ">"
                         },
                         {
-                            "name": client.lang.command_fun_anime_embed_conclude_fields_7_name,
+                            "name": client.data.language.command_fun_anime_embed_conclude_fields_7_name,
                             "value": "```" + info.data[index].synopsis + "```"
                         }
                     ]
@@ -100,7 +100,7 @@ module.exports.run = async function (client, message, args) {
             });
         });
     }).catch(function(err) {
-        msg.edit(client.lang.command_fun_anime_finding_anime_error + err);
+        msg.edit(client.data.language.command_fun_anime_finding_anime_error + err);
         return console.log(err);
     });
 

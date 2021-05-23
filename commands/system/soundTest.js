@@ -4,19 +4,19 @@ module.exports.run = async function (client, message, args) {
     let voiceChannel = message.member.voice.channel;
     
     let soundTestEmbed = new discord.MessageEmbed()
-        .setTitle(client.lang.command_system_soundTest_embed_soundTestEmbed_title)
-        .setDescription(client.lang.command_system_soundTest_embed_soundTestEmbed_description)
+        .setTitle(client.data.language.command_system_soundTest_embed_soundTestEmbed_title)
+        .setDescription(client.data.language.command_system_soundTest_embed_soundTestEmbed_description)
         .setColor("#000000")
-        .setFooter(client.lang.command_system_soundTest_embed_soundTestEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo")
-        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_0, client.lang.command_system_soundTest_embed_soundTestEmbed_field_0_value)
-        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_1, client.lang.command_system_soundTest_embed_soundTestEmbed_field_1_value)
-        .addField(client.lang.command_system_soundTest_embed_soundTestEmbed_field_2, client.lang.command_system_soundTest_embed_soundTestEmbed_field_2_value);
+        .setFooter(client.data.language.command_system_soundTest_embed_soundTestEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo")
+        .addField(client.data.language.command_system_soundTest_embed_soundTestEmbed_field_0, client.data.language.command_system_soundTest_embed_soundTestEmbed_field_0_value)
+        .addField(client.data.language.command_system_soundTest_embed_soundTestEmbed_field_1, client.data.language.command_system_soundTest_embed_soundTestEmbed_field_1_value)
+        .addField(client.data.language.command_system_soundTest_embed_soundTestEmbed_field_2, client.data.language.command_system_soundTest_embed_soundTestEmbed_field_2_value);
     let soundTestPlayingEmbed = new discord.MessageEmbed()
-        .setTitle(client.lang.command_system_soundTest_embed_soundTestPlayingEmbed_title)
+        .setTitle(client.data.language.command_system_soundTest_embed_soundTestPlayingEmbed_title)
         .setColor("#000000")
-        .setFooter(client.lang.command_system_soundTest_embed_soundTestPlayingEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo");
+        .setFooter(client.data.language.command_system_soundTest_embed_soundTestPlayingEmbed_footer_text, "https://yt3.ggpht.com/ytc/AAUvwnhGeyT9kVHP50xFQZYQZShQUJeJtEU0D63pfG_d4A=s48-c-k-c0xffffffff-no-rj-mo");
 
-    if (!voiceChannel) return message.reply(client.lang.command_system_soundTest_user_not_in_channel);
+    if (!voiceChannel) return message.reply(client.data.language.command_system_soundTest_user_not_in_channel);
     voiceChannel.join().then(function (connection) {
         message.channel.send(soundTestEmbed).then(async function (soundTestMessage) {
             message.channel.activeCollector = true;
@@ -35,7 +35,7 @@ module.exports.run = async function (client, message, args) {
 
                 message.channel.activeCollector = false;
 
-                soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing);
+                soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_testing);
                 soundTestPlayingEmbed.addField(name, value);
                 soundTestMessage.edit(soundTestPlayingEmbed).then(async function (reactionMessage) {
                     await reactionMessage.react("⏹");
@@ -54,7 +54,7 @@ module.exports.run = async function (client, message, args) {
                     });
 
                     connection.on("disconnect", function () {
-                        soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing_cancel_disconnect);
+                        soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_testing_cancel_disconnect);
                         reactionMessage.edit(soundTestPlayingEmbed);
                     });
 
@@ -64,12 +64,12 @@ module.exports.run = async function (client, message, args) {
                     });
                     dispatcher.on("finish", async function () {
                         if (status === 1) {
-                            soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_testing_finish);
+                            soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_testing_finish);
                             reactionMessage.edit(soundTestPlayingEmbed);
                             return voiceChannel.leave();
                         }
                         
-                        soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_question_problem);
+                        soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_question_problem);
                         reactionMessage.edit(soundTestPlayingEmbed);
 
                         await reactionMessage.react("👍");
@@ -82,13 +82,13 @@ module.exports.run = async function (client, message, args) {
                         }).then(function (collected) {
                             switch (collected.first().emoji.name) {
                                 case "👍":
-                                    soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_no_problem);
+                                    soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_no_problem);
                                     reactionMessage.edit(soundTestPlayingEmbed);
                                     voiceChannel.leave();
                                 break
 
                                 case "👎":
-                                    soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_found_problem);
+                                    soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_found_problem);
                                     reactionMessage.edit(soundTestPlayingEmbed);
                                     voiceChannel.leave();
                                 break
@@ -96,7 +96,7 @@ module.exports.run = async function (client, message, args) {
                         });
                     });
                     dispatcher.on("error", function (error) {
-                        soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_error_playing.replace("%error", error));
+                        soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_error_playing.replace("%error", error));
                         message.channel.send(soundTestPlayingEmbed);
                         voiceChannel.leave();
                     });
@@ -105,14 +105,14 @@ module.exports.run = async function (client, message, args) {
                 console.log(error);
                 message.channel.activeCollector = false;
 
-                soundTestPlayingEmbed.setDescription(client.lang.command_system_soundTest_cancel_timeout);
+                soundTestPlayingEmbed.setDescription(client.data.language.command_system_soundTest_cancel_timeout);
                 soundTestMessage.edit(soundTestPlayingEmbed);
                 voiceChannel.leave();
             });
         });
     }).catch(function (error) {
         console.log(error);
-        message.channel.send(client.lang.command_system_soundTest_cant_join_channel + error);
+        message.channel.send(client.data.language.command_system_soundTest_cant_join_channel + error);
     });
     
     function filter(msg) {

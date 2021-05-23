@@ -11,7 +11,7 @@ module.exports.run = async function (client, message, args) {
 
     if (arg) {
         let members = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
-        if (!members) return message.reply(client.lang.command_information_uid_no_args);
+        if (!members) return message.reply(client.data.language.command_information_uid_no_args);
 
         avatar = members.user.avatarURL();
         username = members.user.username;
@@ -21,7 +21,7 @@ module.exports.run = async function (client, message, args) {
             if (snapshot.exists()) {
                 let PMSuid = snapshot.val().uid;
 
-                if (!PMSuid) return message.reply(client.lang.command_information_uid_not_access);
+                if (!PMSuid) return message.reply(client.data.language.command_information_uid_not_access);
 
                 return userID(avatar, username, id);
             } else {
@@ -43,8 +43,8 @@ module.exports.run = async function (client, message, args) {
     function userID(avatar, username, id) {
         message.channel.send({
             "embed": {
-                "title": client.lang.command_information_uid_function_userID_embed_title + username,
-                "description": "```" + id + "```" + client.lang.command_information_uid_function_userID_embed_description,
+                "title": client.data.language.command_information_uid_function_userID_embed_title + username,
+                "description": "```" + id + "```" + client.data.language.command_information_uid_function_userID_embed_description,
                 "color": 4886754,
                 "thumbnail": {
                     "url": avatar

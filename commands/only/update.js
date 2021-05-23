@@ -1,10 +1,10 @@
 const download = require("download-github-repo");
 
 module.exports.run = async function (client, message, args) {
-    if (message.member.id === client.config.owner) {
+    if (message.member.id === client.data.config.data.owner) {
         try {
             download("Maseshi/Shioru");
-            message.channel.send(client.lang.command_system_update_success);
+            message.channel.send(client.data.language.command_system_update_success);
         } catch (err) {
             message.channel.send(client.errors.genericError + err.stack).catch();
         }

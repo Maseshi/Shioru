@@ -1,17 +1,17 @@
 module.exports.run = async function (client, message, args) {
 	let arg = args[0];
-	if (!arg) return message.reply(client.lang.command_information_ban_arg_empty);
+	if (!arg) return message.reply(client.data.language.command_manager_ban_arg_empty);
 	
 	let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
-	if (!member) return message.reply(client.lang.command_infornation_ban_not_found_user);
+	if (!member) return message.reply(client.data.language.command_manager_ban_not_found_user);
 	
 	let memberBan = message.guild.members.cache.get(member.user.id);
-	if (!memberBan) return message.reply(client.lang.command_information_ban_cant_ban);
-	if (!memberBan.banable) return message.reply(client.lang.command_information_ban_banable_false);
+	if (!memberBan) return message.reply(client.data.language.command_manager_ban_cant_ban);
+	if (!memberBan.banable) return message.reply(client.data.language.command_manager_ban_banable_false);
 	
 	let reason = args.slice(1).join(" ");
 	if (!reason) {
-		reason = client.lang.command_information_ban_reason;
+		reason = client.data.language.command_manager_ban_reason;
 		return ban(member, memberBan, reason);
 	} else {
 		return ban(member, memberBan, reason);
@@ -27,19 +27,19 @@ module.exports.run = async function (client, message, args) {
 		memberBan.ban(reason).then(function () {
 			message.channel.send({
 				"embed": {
-					"title": username + client.lang.command_information_ban_function_ban_embed_title,
+					"title": username + client.data.language.command_manager_ban_function_ban_embed_title,
 					"description": reason,
 					"color": 16098851,
 					"timestamp": time,
 					"footer": {
 						"icon_url": authorAvatar,
-						"text": client.lang.command_information_ban_function_ban_embed_footer_text + author
+						"text": client.data.language.command_manager_ban_function_ban_embed_footer_text + author
 					},
 					"thumbnail": {
 						"url": avatar
 					},
 					"author": {
-						"name": client.lang.command_information_ban_function_ban_embed_author_name,
+						"name": client.data.language.command_manager_ban_function_ban_embed_author_name,
 						"icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/bust-in-silhouette_1f464.png"
 					}
 				}

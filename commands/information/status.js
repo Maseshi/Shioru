@@ -2,8 +2,8 @@ module.exports.run = async function (client, message, args) {
     let status = args.join(" ");
     let icon = message.guild.iconURL();
 
-    if (!status) return message.reply(client.lang.command_information_status_no_args);
-    if (!["online", "offline", "idle", "dnd"].includes(status)) return message.reply(client.lang.command_information_status_dont_have_this_status);
+    if (!status) return message.reply(client.data.language.command_information_status_no_args);
+    if (!["online", "offline", "idle", "dnd"].includes(status)) return message.reply(client.data.language.command_information_status_dont_have_this_status);
 
     switch (status) {
         case "online":
@@ -11,11 +11,11 @@ module.exports.run = async function (client, message, args) {
 
             message.channel.send({
                 "embed": {
-                    "description": client.lang.command_information_status_embed_online_description + "```" + onlineCount + "```",
+                    "description": client.data.language.command_information_status_embed_online_description + "```" + onlineCount + "```",
                     "color": 3055702,
                     "footer": {
                         "icon_url": icon,
-                        "text": client.lang.command_information_status_embed_online_footer_text
+                        "text": client.data.language.command_information_status_embed_online_footer_text
                     }
                 }
             });
@@ -25,11 +25,11 @@ module.exports.run = async function (client, message, args) {
 
             message.channel.send({
                 "embed": {
-                    "description": client.lang.command_information_status_embed_offline_description + "```" + offlineCount + "```",
+                    "description": client.data.language.command_information_status_embed_offline_description + "```" + offlineCount + "```",
                     "color": 10197915,
                     "footer": {
                         "icon_url": icon,
-                        "text": client.lang.command_information_status_embed_offline_footer_text
+                        "text": client.data.language.command_information_status_embed_offline_footer_text
                     }
                 }
             });
@@ -39,11 +39,11 @@ module.exports.run = async function (client, message, args) {
 
             message.channel.send({
                 "embed": {
-                    "description": client.lang.command_information_status_embed_idle_description + "```" + idleCount + "```",
+                    "description": client.data.language.command_information_status_embed_idle_description + "```" + idleCount + "```",
                     "color": 16098851,
                     "footer": {
                         "icon_url": icon,
-                        "text": client.lang.command_information_status_embed_idle_footer_text
+                        "text": client.data.language.command_information_status_embed_idle_footer_text
                     }
                 }
             });
@@ -53,11 +53,11 @@ module.exports.run = async function (client, message, args) {
 
             message.channel.send({
                 "embed": {
-                    "description": client.lang.command_information_status_embed_dnd_description + "```" + dndCount + "```",
+                    "description": client.data.language.command_information_status_embed_dnd_description + "```" + dndCount + "```",
                     "color": 13632027,
                     "footer": {
                         "icon_url": icon,
-                        "text": client.lang.command_information_status_embed_dnd_footer_text
+                        "text": client.data.language.command_information_status_embed_dnd_footer_text
                     }
                 }
             });

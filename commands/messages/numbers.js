@@ -10,8 +10,8 @@ module.exports.run = async function (client, message, args) {
 
     let result = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    if (!result) return message.reply(client.lang.command_messages_numbers_arg_empty);
-    message.channel.send(client.lang.command_messages_numbers_result + result);
+    if (!result) return message.reply(client.data.language.command_messages_numbers_arg_empty);
+    message.channel.send(client.data.language.command_messages_numbers_result + result);
 };
 
 module.exports.help = {

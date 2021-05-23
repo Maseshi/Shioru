@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const util = require("minecraft-server-util");
 
 module.exports.run = async function (client, message, args) {
-    let platform = args[0].toLowerCase();
+    let platform = toLower(args[0]);
     let ip = args[1];
     let port = parseInt(args[2]);
     
@@ -12,22 +12,22 @@ module.exports.run = async function (client, message, args) {
     let serverInfo = new discord.MessageEmbed()
 	.setColor("#7ED321")
 	.setAuthor(username, avatar)
-    .setTitle(client.lang.command_information_mcserver_serverInfo_title)
-	.setDescription(client.lang.command_information_mcserver_serverInfo_description)
+    .setTitle(client.data.language.command_information_mcserver_serverInfo_title)
+	.setDescription(client.data.language.command_information_mcserver_serverInfo_description)
 	.setTimestamp()
-	.setFooter(client.lang.command_information_mcserver_serverInfo_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/clock-face-three-oclock_1f552.png");
+	.setFooter(client.data.language.command_information_mcserver_serverInfo_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/clock-face-three-oclock_1f552.png");
     let serverError = new discord.MessageEmbed()
 	.setColor("#D0021B")
     .setAuthor(username, avatar)
-	.setDescription(client.lang.command_information_mcserver_serverError_title)
+	.setDescription(client.data.language.command_information_mcserver_serverError_title)
     .setTimestamp()
-	.setFooter(client.lang.command_information_mcserver_serverError_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/clock-face-three-oclock_1f552.png");
+	.setFooter(client.data.language.command_information_mcserver_serverError_footer_text, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/clock-face-three-oclock_1f552.png");
 
-    if (!platform) return message.reply(client.lang.command_information_mcserver_platform_empty);
+    if (!platform) return message.reply(client.data.language.command_information_mcserver_platform_empty);
     if (!["pe", "be", "je", "pocket edition", "bedrock edition", "java edition"].includes(platform)) {
-        return message.reply(client.lang.command_information_mcserver_dont_have_this_platform);
+        return message.reply(client.data.language.command_information_mcserver_dont_have_this_platform);
     }
-    if (!ip) return message.reply(client.lang.command_information_mcserver_ip_empty);
+    if (!ip) return message.reply(client.data.language.command_information_mcserver_ip_empty);
 
     switch (platform) {
         case "pe":
@@ -37,7 +37,7 @@ module.exports.run = async function (client, message, args) {
             let beres;
 
             if (port) {
-                if ((port.toString().length) !== 5) return message.reply(client.lang.command_information_mcserver_be_port_empty);
+                if ((port.toString().length) !== 5) return message.reply(client.data.language.command_information_mcserver_be_port_empty);
 
                 beres = await util.statusBedrock(ip, { "port": port }).catch(message.channel.send({ "embed": serverError }));
             } else {
@@ -46,10 +46,10 @@ module.exports.run = async function (client, message, args) {
             
             if (beres) {
                 let brhost = beres.host;
-                serverInfo.addField(client.lang.command_information_mcserver_be_serverInfo_field_0่, brhost, true);
+                serverInfo.addField(client.data.language.command_information_mcserver_be_serverInfo_field_0่, brhost, true);
                 
                 let beport = beres.port;
-                if (port) serverInfo.addField(client.lang.command_information_mcserver_be_serverInfo_field_1, beport, true);
+                if (port) serverInfo.addField(client.data.language.command_information_mcserver_be_serverInfo_field_1, beport, true);
 
                 let bemotda = beres.motdLine1.descriptionText;
                 let bemotdb = beres.motdLine2.descriptionText;
@@ -57,25 +57,25 @@ module.exports.run = async function (client, message, args) {
                 let bemaxPlayers = beres.maxPlayers;
                 
                 let beonlinePlayers = beres.onlinePlayers;
-                if (!beonlinePlayers) beonlinePlayers = client.lang.command_information_mcserver_be_serverInfo_field_6_not;
+                if (!beonlinePlayers) beonlinePlayers = client.data.language.command_information_mcserver_be_serverInfo_field_6_not;
 
                 let bemode = beres.gameMode;
                 
                 let beipv4 = beres.portIPv4;
-                if (!beipv4) beipv4 = client.lang.command_information_mcserver_be_serverInfo_field_8_not;
+                if (!beipv4) beipv4 = client.data.language.command_information_mcserver_be_serverInfo_field_8_not;
 
                 let beipv6 = beres.portIpv6;
-                if (!beipv6) beipv6 = client.lang.command_information_mcserver_be_serverInfo_field_9_not;
+                if (!beipv6) beipv6 = client.data.language.command_information_mcserver_be_serverInfo_field_9_not;
 
                 serverInfo.addFields(
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_2, "value": bemotda, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_3, "value": bemotdb, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_4, "value": beversion, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_5, "value": bemaxPlayers, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_6, "value": beonlinePlayers, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_7, "value": bemode, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_8, "value": beipv4, "inline": true },
-                    { "name": client.lang.command_information_mcserver_be_serverInfo_field_9, "value": beipv6, "inline": true }
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_2, "value": bemotda, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_3, "value": bemotdb, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_4, "value": beversion, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_5, "value": bemaxPlayers, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_6, "value": beonlinePlayers, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_7, "value": bemode, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_8, "value": beipv4, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_be_serverInfo_field_9, "value": beipv6, "inline": true }
                 );
                 message.channel.send({ "embed": serverInfo });
             }
@@ -86,7 +86,7 @@ module.exports.run = async function (client, message, args) {
             let jeres;
 
             if (port) {
-                if ((port.toString().length) !== 5) return message.reply(client.lang.command_information_mcserver_je_port_empty);
+                if ((port.toString().length) !== 5) return message.reply(client.data.language.command_information_mcserver_je_port_empty);
 
                 jeres = await util.status(ip, { "port": port }).catch(message.channel.send({ "embed": serverError })).catch(() => { return; });
             } else {
@@ -95,15 +95,15 @@ module.exports.run = async function (client, message, args) {
 
             if (jeres) {
                 let jehost = jeres.host;
-                serverInfo.addField(client.lang.command_information_mcserver_je_serverInfo_field_0, jehost, true);
+                serverInfo.addField(client.data.language.command_information_mcserver_je_serverInfo_field_0, jehost, true);
 
                 let jeport = jeres.port;
-                if (port) serverInfo.addField(client.lang.command_information_mcserver_je_serverInfo_field_1, jeport, true);
+                if (port) serverInfo.addField(client.data.language.command_information_mcserver_je_serverInfo_field_1, jeport, true);
 
                 let jeversion = jeres.version;
 
                 let jeonlinePlayers = jeres.onlinePlayers;
-                if (jeonlinePlayers === 0) jeonlinePlayers = client.lang.command_information_mcserver_je_serverInfo_field_3_not;
+                if (jeonlinePlayers === 0) jeonlinePlayers = client.data.language.command_information_mcserver_je_serverInfo_field_3_not;
 
                 let jemaxPlayers = jeres.maxPlayers;
                 let jedescription = jeres.description.descriptionText;
@@ -115,10 +115,10 @@ module.exports.run = async function (client, message, args) {
                 .setThumbnail("attachment://favicon.png");
                 
                 serverInfo.addFields(
-                    { "name": client.lang.command_information_mcserver_je_serverInfo_field_2, "value": jeversion, "inline": true },
-                    { "name": client.lang.command_information_mcserver_je_serverInfo_field_3, "value": jeonlinePlayers, "inline": true },
-                    { "name": client.lang.command_information_mcserver_je_serverInfo_field_4, "value": jemaxPlayers, "inline": true },
-                    { "name": client.lang.command_information_mcserver_je_serverInfo_field_5, "value": jedescription, "inline": true }
+                    { "name": client.data.language.command_information_mcserver_je_serverInfo_field_2, "value": jeversion, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_je_serverInfo_field_3, "value": jeonlinePlayers, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_je_serverInfo_field_4, "value": jemaxPlayers, "inline": true },
+                    { "name": client.data.language.command_information_mcserver_je_serverInfo_field_5, "value": jedescription, "inline": true }
                 );
                 message.channel.send({ "embed": serverInfo });
             }

@@ -9,9 +9,9 @@ module.exports = function (client, message, exports) {
             let prefix = snapshot.val().prefix;
             let lang = snapshot.val().language;
             
-            if (lang !== client.lang) client.lang = require("../languages/" + lang + ".json");
-            if (prefix !== client.config.prefix) {
-                client.config.prefix = prefix
+            if (lang !== client.data.language) client.data.language = require("../languages/" + lang + ".json");
+            if (prefix !== client.data.config.client.prefix) {
+                client.data.config.client.prefix = prefix
                 client.data.working = 1;
                 return exports(client, message);
             }
