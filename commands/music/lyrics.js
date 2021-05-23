@@ -1,31 +1,32 @@
-const discord = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 
 module.exports.run = async function (client, message, args) {
-    let lyrics;
-    let serverQueue = message.client.data.get(message.guild.id);
-
-    if (!serverQueue) return message.channel.send(client.lang.command_music_lyrics_no_queue);
-
-    if (serverQueue.songs) {
+    if (client.music.isPlaying(message)) {
+        let lyrics;
+        let queue = client.music.getQueue(message);
+        let queueName = queue.songs.map((song, id) => song.name);
+    
         try {
-            lyrics = await lyricsFinder(serverQueue.songs[0].title, "");
-            if (!lyrics) lyrics = client.lang.command_music_lyrics_not_found.replace("%title", (serverQueue.songs[0].title));
+            lyrics = await lyricsFinder(queueName, "");
+            if (!lyrics) lyrics = client.data.language.command_music_lyrics_not_found.replace("%title", queueName);
         } catch (error) {
-            lyrics = client.lang.command_music_lyrics_try_catch_error.replace("%title", (serverQueue.songs[0].title));
+            lyrics = client.data.language.command_music_lyrics_try_catch_error.replace("%title", queueName);
         }
     
-        let lyricsEmbed = new discord.MessageEmbed()
-        .setTitle(client.lang.command_music_lyrics_found)
-        .setDescription("```" + lyrics + "```")
-        .setColor("#F8AA2A")
-        .setFooter(message.author.username, message.author.displayAvatarURL())
-        .setTimestamp();
-    
-        if (lyricsEmbed.description.length >= 2048) {
-            lyricsEmbed.description = lyricsEmbed.description.substr(0, 2045) + "...";
-        }
-        serverQueue.textChannel.send(lyricsEmbed);
+        message.channel.send({
+            "embed": {
+                "title": client.data.language.command_music_lyrics_found,
+                "description": "```" + lyrics + "```",
+                "color": 14684245,
+                "timestamp": new Date(),
+                "footer": {
+                    "icon_url": message.author.displayAvatarURL(),
+                    "text": message.author.username
+                }
+            }
+        });
+    } else {
+        message.reply(client.data.language.command_music_lyrics_no_queue);
     }
 };
 

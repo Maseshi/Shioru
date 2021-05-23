@@ -1,19 +1,18 @@
 module.exports.run = function (client, message, args) {
-    let volume = parseInt(args[0]);
-    let serverQueue = message.client.data.get(message.guild.id);
-    if (!serverQueue) return message.reply(client.lang.command_music_volume_no_queue);
-
-    let queueOwner = serverQueue.require.username;
-    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_volume_check_not_owner);
+    if (client.music.isPlaying(message)) {
+        let percent = parseInt(args[0]);
+        let queue = client.music.getQueue(message);
+        let queueVolume = queue.volume;
     
-    if (!volume) return message.reply(client.lang.command_music_volume_current_level_sound.replace("%currentLevel", serverQueue.volume));
-    if (volume >= 101) return message.reply(client.lang.command_music_volume_too_loud);
-    if (volume <= 0) return message.reply(client.lang.command_music_volume_too_light);
-
-    if (serverQueue.connection.dispatcher) {
-        serverQueue.volume = volume;
-        serverQueue.connection.dispatcher.setVolumeLogarithmic(volume / 100);
-        serverQueue.textChannel.send(client.lang.command_music_volume_info.replace("%level", volume));
+        if (message.author.id !== queue.initMessage.author.id) return message.reply("🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ");
+        if (!percent) return message.reply(client.data.language.command_music_volume_current_level_sound.replace("%currentLevel", queueVolume));
+        if (percent >= 101) return message.reply(client.data.language.command_music_volume_too_loud);
+        if (percent <= 0) return message.reply(client.data.language.command_music_volume_too_light);
+    
+        client.music.setVolume(message, percent);
+        message.channel.send(client.data.language.command_music_volume_info.replace("%level", percent));
+    } else {
+        message.reply(client.data.language.command_music_volume_no_queue);
     }
 };
 

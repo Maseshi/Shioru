@@ -1,16 +1,14 @@
 module.exports.run = function (client, message, args) {
-    let serverQueue = message.client.data.get(message.guild.id);
-    if (!serverQueue) return message.channel.send(client.lang.command_music_resume_no_queue);
+    if (!client.music.isPlaying(message)) {
+        let queue = client.music.getQueue(message);
 
-    let queueOwner = serverQueue.require.username;
-    if (message.author.username !== queueOwner) return message.channel.send(client.lang.command_music_resume_check_not_owner);
+        if (message.author.id !== queue.initMessage.author.id) return message.reply("🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ");
+        if (!client.music.isPaused(message)) return message.reply("❎ ตอนนี้ก็กำลังเล่นเพลงอยู่นะ");
     
-    if (!serverQueue.playing) {
-        serverQueue.playing = true;
-        serverQueue.connection.dispatcher.resume();
-        message.channel.send(client.lang.command_music_resume_info);
+        client.music.resume(message);
+        message.channel.send(client.data.language.command_music_resume_info);
     } else {
-        serverQueue.textChannel.send(client.lang.command_music_resume_now_playing);
+        message.reply(client.data.language.command_music_resume_now_playing);
     }
 };
 

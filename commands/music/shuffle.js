@@ -1,19 +1,13 @@
 module.exports.run = function (client, message, args) {
-    let serverQueue = message.client.data.get(message.guild.id);
-    if (!serverQueue) return message.reply(client.lang.command_music_shuffle_no_queue);
+    if (client.music.isPlaying(message)) {
+        let queue = client.music.getQueue(message);
 
-    let queueOwner = serverQueue.require.username;
-    if (message.author.username !== queueOwner) return message.reply(client.lang.command_music_shuffle_check_not_owner);
-
-    if (serverQueue.connection.dispatcher) {
-        let songs = serverQueue.songs;
-        for (let i = songs.length - 1; i > 1; i--) {
-            let j = 1 + Math.floor(Math.random() * i);
-            [songs[i], songs[j]] = [songs[j], songs[i]];
-        }
-        serverQueue.songs = songs;
-        message.client.data.set(message.guild.id, serverQueue);
-        serverQueue.textChannel.send(client.lang.command_music_shuffle_info);
+        if (message.author.id !== queue.initMessage.author.id) return message.reply("🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ");
+    
+        client.music.shuffle(message);
+        message.channel.send(client.data.language.command_music_shuffle_info);
+    } else {
+        message.reply(client.data.language.command_music_shuffle_no_queue);
     }
 };
 

@@ -1,22 +1,28 @@
 module.exports.run = function (client, message, args) {
-    let serverQueue = message.client.data.get(message.guild.id);
-    if (!serverQueue) return message.channel.send(client.lang.command_music_queue_no_queue);
+    if (client.music.isPaused(message) || client.music.isPlaying(message)) {
+        let queue = client.music.getQueue(message);
+        let queueList = queue.songs.map((song, id) => (id + 1) + ". " + song.name).slice(0, 10).join("\n");
+        let queueCreatedTimestamp = queue.initMessage.createdTimestamp;
+        let queueAuthorUid = queue.initMessage.author.id;
+        let queueAuthorUsername = queue.initMessage.author.username;
+        let queueAuthorAvatar = queue.initMessage.author.avatar;
+        let avatarURL = "https://cdn.discordapp.com/avatars/" + queueAuthorUid + "/" + queueAuthorAvatar + ".webp";
     
-    if (serverQueue.songs) {
-        let queue = serverQueue.songs.map((song, index) => (index + 1) + ". " + song.title).join("\n");
-        let embed = {
-            "title": client.lang.command_music_queue_music_in_all_queue,
-            "description": queue,
-            "color": 4886754,
-            "timestamp": serverQueue.require.timestamp,
-            "footer": {
-                "icon_url": serverQueue.require.avatar,
-                "text": serverQueue.require.username + client.lang.command_music_queue_this_is_owner
+        message.channel.send({
+            "embed": {
+                "title": client.data.language.command_music_queue_music_in_all_queue,
+                "description": queueList,
+                "color": 4886754,
+                "timestamp": queueCreatedTimestamp,
+                "footer": {
+                    "icon_url": avatarURL,
+                    "text": queueAuthorUsername + client.data.language.command_music_queue_this_is_owner
+                }
             }
-        };
-        message.channel.send({ embed });
+        });
+    } else {
+        message.reply(client.data.language.command_music_queue_no_queue);
     }
-    
 };
 
 module.exports.help = {

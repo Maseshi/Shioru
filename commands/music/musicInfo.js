@@ -1,9 +1,14 @@
 module.exports.run = async function (client, message, args) {
-    let serverQueue = message.client.data.get(message.guild.id);
-    if (!serverQueue) return message.reply(client.lang.command_music_musicInfo_no_queue);
-
-    if (serverQueue.songs) {
-        message.channel.send(client.lang.command_music_musicInfo_info.replace("%title", (serverQueue.songs[0].title)).replace("%timestamp", (serverQueue.songs[0].timestamp || client.lang.command_music_musicInfo_info_unknown)).replace("%url", (serverQueue.songs[0].url)).replace("%id", (serverQueue.songs[0].id)));
+    if (client.music.isPlaying(message)) {
+        let queue = client.music.getQueue(message);
+        let queueName = queue.songs.map((song, id) => song.name);
+        let queueURL = queue.songs.map((song, id) => song.url);
+        let queueTimestamp = queue.songs.map((song, id) => song.formattedDuration);
+        let queueId = queue.songs.map((song, id) => song.id);
+    
+        message.channel.send(client.data.language.command_music_musicInfo_info.replace("%title", queueName).replace("%timestamp", queueTimestamp).replace("%url", queueURL).replace("%id", queueId));
+    } else {
+        message.reply(client.data.language.command_music_musicInfo_no_queue);
     }
 };
 
