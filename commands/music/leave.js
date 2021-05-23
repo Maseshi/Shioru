@@ -3,16 +3,16 @@ module.exports.run = async function (client, message, args) {
 
 	if (!arg) {
 		let voiceChannel = message.member.voice.channel;
-		if (!voiceChannel) return message.reply(client.lang.command_music_leave_arg_empty);
+		if (!voiceChannel) return message.reply(client.data.language.command_music_leave_arg_empty);
 		
 		voiceChannel.leave();
-		message.channel.send(client.lang.command_music_leave_arg_empty_leave_success);
+		message.channel.send(client.data.language.command_music_leave_arg_empty_leave_success);
 	} else {
 		let channel = client.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
-		if (!channel) return message.reply(client.lang.command_music_leave_with_id_not_found_channel);
+		if (!channel) return message.reply(client.data.language.command_music_leave_with_id_not_found_channel);
 
 		channel.leave();
-		message.channel.send(client.lang.command_music_leave_with_id_leave_success);
+		message.channel.send(client.data.language.command_music_leave_with_id_leave_success);
 	}
 };
 
