@@ -1,7 +1,7 @@
 {
     "__comment": "This file has not been organized yet.",
     "details": {
-        "version": 1.5,
+        "version": 1.6,
         "name": "English",
         "id": "en_US"
     },
@@ -399,8 +399,8 @@
     "command_music_search_user_not_join_channel": "❓ Go into any channel first. Otherwise, please listen to me...",
     "command_music_search_collector_exist": "❌ Message Aggregator. It's already in use in this channel.",
     "command_music_search_arg_empty": "❓ What song do you want? You can link at all.",
-    "command_music_search_embed_title": "🔎 Search Music",
-    "command_music_search_embed_description": "Search results: **%search**\nChoose the song number you want to play!! **Hurry up to choose 1 minute first...or else I won't be able to choose** and after choosing, I will play immediately.",
+    "command_music_search_embed_title": "🔎 Find related songs",
+    "command_music_search_embed_description": "There is a time for selecting a song for 60 seconds. If you want to cancel, you can type an irrelevant number or wait until the time expires\nThe results of such song search: \n%search",
     "command_music_search_not_found": "❎ Mmm...I didn't seem to find this song",
     "command_music_shuffle_no_queue": "❎ There is no song I'm playing right now",
     "command_music_shuffle_check_not_owner": "🚫 Hmmm...Only the owner of this queue can do it",
