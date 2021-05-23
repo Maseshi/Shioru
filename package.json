@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "1.10.9",
+  "version": "1.10.10",
   "description": "Manage members and servers easily with Shioru.",
   "main": "main.js",
   "author": "Masashi <dermhioasw123@gmail.com>",
@@ -21,9 +21,11 @@
     "start": "nodemon main.js"
   },
   "dependencies": {
+    "@discordjs/opus": "^0.5.0",
     "ansi-diff-stream": "^1.2.1",
     "cpu-stat": "^2.0.1",
     "discord.js": "^12.5.3",
+    "distube": "^2.8.13",
     "dotenv": "^9.0.2",
     "download-github-repo": "^0.1.4",
     "firebase": "^8.6.1",
@@ -32,20 +34,17 @@
     "log-symbols": "^4.0.0",
     "lyrics-finder": "^21.7.0",
     "minecraft-server-util": "^3.5.1",
-    "opusscript": "^0.0.8",
     "os": "^0.1.1",
     "progress-string": "^1.2.2",
-    "simple-youtube-api": "^5.2.1",
     "superagent": "^6.1.0",
-    "weather-js": "^2.0.0",
-    "ytdl-core-discord": "^1.3.0",
-    "yt-search": "^2.8.0"
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.3",
+    "erlpack": "^0.1.3",
     "sodium": "^3.0.2",
     "utf-8-validate": "^5.0.4",
     "zlib-sync": "^0.1.7"
