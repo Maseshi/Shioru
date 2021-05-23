@@ -13,19 +13,19 @@ module.exports.run = async function (client, message, args) {
 
     switch (guildVerificationLevel) {
         case "NONE":
-            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.NONE;
+            guildVerificationLevel = client.data.language.command_information_server_guildVerificationLevel.NONE;
         break;
         case "LOW":
-            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.LOW;
+            guildVerificationLevel = client.data.language.command_information_server_guildVerificationLevel.LOW;
         break;
         case "MEDIUM":
-            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.MEDIUM;
+            guildVerificationLevel = client.data.language.command_information_server_guildVerificationLevel.MEDIUM;
         break;
         case "HIGH":
-            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.HIGH;
+            guildVerificationLevel = client.data.language.command_information_server_guildVerificationLevel.HIGH;
         break;
         case "VERY_HIGH":
-            guildVerificationLevel = client.lang.command_information_server_guildVerificationLevel.VERY_HIGH;
+            guildVerificationLevel = client.data.language.command_information_server_guildVerificationLevel.VERY_HIGH;
         break;
     }
 
@@ -35,69 +35,69 @@ module.exports.run = async function (client, message, args) {
     let guildEmojiSize = message.guild.emojis.cache.size;
     message.channel.send({
         "embed": {
-            "title": client.lang.command_information_server_embed_info_title,
+            "title": client.data.language.command_information_server_embed_info_title,
             "color": 4886754,
             "timestamp": guildCreatedAtFormat,
             "footer": {
                 "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/hammer_1f528.png",
-                "text": client.lang.command_information_server_embed_info_footer_text
+                "text": client.data.language.command_information_server_embed_info_footer_text
             },
             "thumbnail": {
                 "url": guildIcon
             },
             "fields": [
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_0_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_0_name,
                     "value": guildName,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_1_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_1_name,
                     "value": guildVerified,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_2_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_2_name,
                     "value": guildID,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_3_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_3_name,
                     "value": guildOwner,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_4_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_4_name,
                     "value": guildRegion,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_5_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_5_name,
                     "value": guildVerificationLevel,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_6_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_6_name,
                     "value": guildTier,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_7_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_7_name,
                     "value": guildMemberCount,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_8_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_8_name,
                     "value": guildRolesSize,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_9_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_9_name,
                     "value": guildChannelsSize,
                     "inline": true
                 },
                 {
-                    "name": client.lang.command_information_server_embed_info_fields_10_name,
+                    "name": client.data.language.command_information_server_embed_info_fields_10_name,
                     "value": guildEmojiSize,
                     "inline": true
                 }
@@ -107,10 +107,10 @@ module.exports.run = async function (client, message, args) {
 };
 
 module.exports.help = {
-    "name": "server",
-    "description": "Get server information",
-    "usage": "server",
+    "name": "guild",
+    "description": "Get guild information",
+    "usage": "guild",
     "category": "information",
-    "aliases": ["serverInfo", "si", "เกี่ยวกับเซิร์ฟเวอร์"],
+    "aliases": ["guildInfo", "gi", "เกี่ยวกับเซิร์ฟเวอร์"],
     "permissions": ["SEND_MESSAGES"]
 };
