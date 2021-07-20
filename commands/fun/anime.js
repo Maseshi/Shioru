@@ -46,7 +46,7 @@ module.exports.run = async function (client, message, args) {
             "errors": ["time"]
         }).then(async function (collected) {
             let returnMessage = collected.first();
-            let index = Number(returnMessage.content);
+            let index = parseInt(returnMessage.content) - 1;
             await msg.edit({
                 "embed": {
                     "color": 12601856,
@@ -119,6 +119,7 @@ module.exports.run = async function (client, message, args) {
     }
 
     function filter(msg) {
+        if (!msg.content) return;
         if (msg.author.id !== message.author.id) return;
         return ["1", "2", "3", "4", "5"].includes(msg.content);
     }
