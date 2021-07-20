@@ -81,5 +81,5 @@ module.exports.help = {
     "usage": "system",
     "category": "system",
     "aliases": ["sys", "ระบบ"],
-    "permissions": ["SEND_MESSAGES", "ADMINISTRATOR"]
+    "permissions": ["SEND_MESSAGES"]
 };
