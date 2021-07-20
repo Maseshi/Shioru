@@ -9,7 +9,7 @@ module.exports = function (client) {
       "activity": {
         "name": activityName,
         "type": "STREAMING",
-        "url": "https://www.youtube.com/watch?v=zEtkEQ1IHAo"
+        "url": "https://www.youtube.com/watch?v=BKblrXHumDk"
       }
     });
     setTimeout(activity, 10000);
