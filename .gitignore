@@ -1,10 +1,6 @@
 .env
-note.txt
-
-assets/images/ic_welcome_rule.jpg
-commands/self/send.js
-commands/only/welcome.js
-commands/only/rules.js
+NOTE.txt
+source/commands/developer/soundTest.js
 
 # Logs
 logs
