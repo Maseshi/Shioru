@@ -12,8 +12,8 @@ module.exports = function (client, message) {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
 
-    // settingsData(client, message, module.exports);
-    // if (client.config.worker !== 1) return;
+    settingsData(client, message, module.exports);
+    if (client.config.worker !== 1) return;
 
     levelSystem(client, message);
 
