@@ -1,34 +1,47 @@
-[![Discord](https://discord.com/assets/ff41b628a47ef3141164bfedb04fb220.png)](https://discord.com/)
+<div align="center">
+    <img src="https://maseshi.web.app/projects/shioru/assets/icons/favicon-circle.ico" width="100">
+    <h1>Shioru</h1>
+    <img src="https://img.shields.io/badge/discord.js-v13-7354F6?logo=discord&logoColor=white&style=flat-square">
+    <img src="https://img.shields.io/david/Maseshi/Shioru?logo=node.js&logoColor=white&style=flat-square">
+    <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square">
+    <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square">
+    <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CITest?label=test&logo=circleci&style=flat-square">
+</div>
 
-[![Javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com/) [![Ragrets](https://forthebadge.com/images/badges/no-ragrets.svg)](https://forthebadge.com/) [![Love](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com/) [![Water](https://forthebadge.com/images/badges/powered-by-water.svg)](https://forthebadge.com/)
+Your good server assistant will help make your server look more alive. She can do a number of things, where you can get a detailed breakdown of the commands by typing `Shelp` for the first time you get started.
 
-[![Discord server](https://discordapp.com/api/guilds/618837514882514944/widget.png?style=shield)](https://discord.gg/7B52BTf)
-[![Stars](https://img.shields.io/github/stars/Maseshi/shioru.svg)](https://github.com/Maseshi/shioru/stargazers)
-[![License](https://img.shields.io/github/license/Maseshi/shioru.svg)](https://github.com/Maseshi/shioru/blob/master/LICENSE)
-[![Node.js CI](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml/badge.svg?branch=stable)](https://github.com/Maseshi/Shioru/actions/workflows/node.js.yml)
+## Data language
+- [ไทย](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md)
+- [English](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md)
 
-#
+## Invite to join
+Shioru requires some permissions before joining the server. to make sure it can work properly. Please check if not necessary.
 
-### Choose data language
+### Permissions
+- **Administrator** - To provide comprehensive functionality This permission is very necessary to manage the server and manage members within the server.
+- **Commands** - for creating `Slash Command` within the server will make it easier to use.
 
-- [ไทย](https://github.com/Maseshi/shioru/blob/master/docs/th-TH.md)
+### Ready
+[Invite Server](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot)
 
-- [English](https://github.com/Maseshi/shioru/blob/master/README.md)
+## Outstanding features
+- Works on [Discord.js](https://discord.js.org/) v13
+- Can be customized in a variety of items
+- Support for multiple languages You can check the supported languages from the [language code file](https://github.com/Maseshi/Shioru/blob/main/source/config/languages.json) of this repository.
+- Tier system (level and experience)
+- Support customization of server notifications
+- You can chat by typing `@Shioru` followed by the message you wish to communicate.
 
-#
+## Documents
+If you want to learn more about Shioru such as commands, operations, etc., you can visit or study [Document](https://maseshi.web.app/projects/shioru/documents) of Shioru website.
 
-The goal of creating this bot is to allow her to work on other servers, but at this time I can only let her work inside my server.If you think you should add or edit any parts, you can suggest my bot in advance.
+## Credits
+Thank you to all the original creators for allowing us to use these wonderful works of yours.
 
-For a look at all of her commands, type Shelp.
+Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462).
 
-# Document
-
-For now it is not yet supported in English, But you can still visit our [documents](https://maseshi.web.app/documents#ทำไมต้อง-shioru?).
-
-# Issues?
-
-Please report any bugs or issues under the repo"s issues tab. It"d be greatly appreciated!
+## Found a problem
+If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
 
 ## Google Translate
-
-I use Google Translate to help translate. To make it easier for everyone to access. **Sorry if I translated incorrectly**
+The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.

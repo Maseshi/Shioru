@@ -1,42 +1,45 @@
 {
   "name": "shioru",
-  "version": "1.10.11",
+  "version": "2.0.0",
   "description": "Manage members and servers easily with Shioru.",
-  "main": "main.js",
-  "author": "Masashi <dermhioasw123@gmail.com>",
-  "license": "MIT",
-  "repository": "github:Masashi/Shioru",
-  "homepage": "https://github.com/Maseshi/Shioru#README",
-  "bugs": "https://github.com/Masashi/Shioru/issues",
   "keywords": [
     "shioru",
     "discord",
-    "masashi"
+    "maseshi"
   ],
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": "*"
+  "homepage": "https://github.com/Maseshi/Shioru#README",
+  "bugs": {
+    "url": "https://github.com/Maseshi/Shioru/issues",
+    "email": "dermhioasw123@gmail.com"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Maseshi",
+    "email": "dermhioasw123@gmail.com",
+    "url": "https://maseshi.web.app/"
+  },
+  "main": "./source/main.js",
+  "repository": "github:Maseshi/Shioru",
   "scripts": {
-    "start": "nodemon main.js"
+    "start": "node ./source/main.js",
+    "dev": "nodemon ./source/main.js",
+    "test": "npm install"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.6.0",
+    "@discordjs/voice": "^0.6.0",
     "ansi-diff-stream": "^1.2.1",
-    "cpu-stat": "^2.0.1",
-    "discord.js": "^12.5.3",
-    "distube": "^2.8.15",
-    "dotenv": "^9.0.2",
-    "download-github-repo": "^0.1.4",
-    "firebase": "^8.7.1",
+    "discord.js": "^13.1.0",
+    "distube": "^3.0.0-beta.37",
+    "dotenv": "^10.0.0",
+    "firebase": "^8.10.0",
     "fs": "^0.0.1-security",
-    "kitsu": "^10.0.0-alpha.10",
+    "kitsu": "^10.0.0-alpha.14",
     "log-symbols": "^4.1.0",
     "lyrics-finder": "^21.7.0",
-    "minecraft-server-util": "^3.5.2",
-    "os": "^0.1.2",
+    "minecraft-server-util": "^3.6.0",
     "progress-string": "^1.2.2",
-    "superagent": "^6.1.0",
+    "systeminformation": "^5.8.7",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
@@ -48,5 +51,10 @@
     "sodium": "^3.0.2",
     "utf-8-validate": "^5.0.5",
     "zlib-sync": "^0.1.7"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "private": false
 }
