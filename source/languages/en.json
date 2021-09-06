@@ -1,0 +1,673 @@
+{
+    "commands": {
+        "ping": {
+            "waiting": "🏓 ping...",
+            "result": "🏓 pong",
+            "connection": "📡 Connection",
+            "info": "Ping is %s1 seconds \nAPI Latency is %s2 seconds"
+        },
+        "reload": {
+            "command_required": "❓ Specify a command to let me reload",
+            "invalid_command": "❎ Hmmm...the command doesn't seem to exist...check it out. Again, did you type correctly?",
+            "reloaded": "✅ %s reloaded successfully!!",
+            "reload_error": "❌ Horrible.. I tried reloading the %s command but I can't."
+        },
+        "system": {
+            "loading": "⚙️ Sending request to retrieve system data from server...",
+            "unknown": "Unknown",
+            "main": "main",
+            "info_title": "🖥 System Basic Info",
+            "info_description": "The information of the system I am currently working on is as follows.",
+            "info_uptime": {
+                "title": "• working hours",
+                "info": "%s1 day %s2 hour "
+            },
+            "info_system": "• System",
+            "info_temperature": "• CPU temperature",
+            "info_memory_used": "• Memory used",
+            "info_battery": {
+                "title": "• Battery",
+                "charging": "Charging",
+                "not_charging": "Not charging",
+                "without": "no"
+            },
+            "info_gpu_control": "• GPU (control)",
+            "info_gpu_display": "• GPU (display)",
+            "info_platform": "• Platform"
+        },
+        "uptime": {
+            "info_title": "🕒 started working for a while",
+            "day": "Day",
+            "hours": "hours",
+            "minute": "minute",
+            "second": "second"
+        },
+        "dead": {
+            "suicide": "%s decided to kill himself 💔 rest in peace"
+        },
+        "eat": {
+            "empty": "❓ Who do you want to eat right now?",
+            "do_not_eat_me": "I..I'm a little small. It's not appetizing...",
+            "already_eaten": "%s1 has eaten you %s2 in your stomach."
+        },
+        "kill": {
+            "empty": "❓ Thinking of k..k..killing someone...?",
+            "do_not_kill_me": "❎ ก. You will do this..a It's not with me. Haha...",
+            "killed": "%s1 has successfully killed you %s2 🔪"
+        },
+        "numbers": {
+            "empty": "❓ Please tell me the amount set between the lowest and the highest.",
+            "result": "Result is %s"
+        },
+        "rip": {
+            "no_image": "❎ Hey...it looks like this picture. It may have been deleted or moved to another location."
+        },
+        "ban": {
+            "empty": "❓ Which member do you want me to deal with?",
+            "user_not_found": "❎ I can't find this member. Please check again.",
+            "missing_user": "❎ Eh...Where's this member gone? Eh... or not here?",
+            "can_not_ban": "❌ I have no right to ban him. if for any reason That he did something bad to inform the owner here. What do I do now that he doesn't know...",
+            "no_reason": "**Ban member didn't give a reason**",
+            "was_banned_because": "%s has been banned because:",
+            "banned_by": "Banned by %s",
+            "member": "member"
+        },
+        "guild": {
+            "unknown": "Unknown",
+            "do_not_have": "None",
+            "available": "Ready",
+            "unavailable": "unavailable",
+            "yes": "yes",
+            "no": "No",
+            "none": "No",
+            "on": "on",
+            "off": "off",
+            "server_info": "🗄 Server Information Details",
+            "server_info_description": "Detailed information about the server. which references the information from the information on Discord",
+            "info_date": "Information of when",
+            "afk_channel_id": "AFK Channel ID",
+            "afk_timeout": "AFK timeout",
+            "application_id": "App ID",
+            "approximate_member_count": "approximate member",
+            "approximate_presence_count": "approximate status",
+            "guild_available": "Available",
+            "banner": "Banner",
+            "create_at": "create on",
+            "create_timestamp": "Create date",
+            "default_message_notification": "Notification",
+            "deleted": "Deleted",
+            "description": "Description",
+            "discovery_splash": "Splash",
+            "explicit_content_filter": "filtering",
+            "features": "features",
+            "icon": "avatar",
+            "id": "ID",
+            "joined_at": "joined on",
+            "join_timestamp": "join date",
+            "large": "Large",
+            "maximum_members": "maximum members",
+            "maximum_presences": "maximum status",
+            "member_count": "member",
+            "mfa_level": "MFA level",
+            "name": "Name",
+            "name_acronym": "acronym",
+            "nsfw_level": "NSFW Level",
+            "owner_id": "Owner ID",
+            "partnered": "Partnered",
+            "preferred_locale": "scope",
+            "premium_subscription_count": "Special member",
+            "premium_tier": "Booster",
+            "public_updates_channel_id": "Update channel id",
+            "rules_channel_id": "rules channel id",
+            "splash": "Invitation Picture",
+            "system_channel_id": "System Channel ID",
+            "vanity_url_code": "Invitation Code",
+            "vanity_url_uses": "Invited",
+            "verification_level": "verification",
+            "verified": "verified",
+            "widget_channel_id": "Seven channel code",
+            "widget_enabled": "Witch Seven",
+            "specific_use": "💡 You can specify specific server user information as follows: **%s**",
+            "sunday": "Sunday",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December",
+            "format_at": "Day%s1 at %s2 %s3 %s4 time %s5:%s6."
+        },
+        "invite": {
+            "membership_invitation_card": "Membership Invitation Card",
+            "this_product_is_free": "This product is free. Don't place it again."
+        },
+        "kick": {
+            "empty": "❓ Which member do you want me to deal with?",
+            "can_not_find_user": "❎ I can't find this member. Please check again.",
+            "missing_user": "❎ Eh...Where's this member gone? Eh... or not here?",
+            "can_not_kick": "❌ I have no right to remove him from here. if for any reason That he did something bad to inform the owner here. What do I do now that he doesn't know...",
+            "no_reason": "**The member who touched it didn't give a reason**",
+            "was_kicked_because": "%s was kicked because:",
+            "kicked_by": "Kicked by %s",
+            "member": "member"
+        },
+        "purge": {
+            "purge_instructions": "❓ How many messages should I delete? I can delete 1-100 messages",
+            "too_much": "❌ 100+ messages!! Uh... well, I can't delete those messages.",
+            "too_little": "❎ Solo, right?",
+            "message_cleared": "The number of `%s messages` has been deleted 💨"
+        },
+        "say": {
+            "empty": "❓ What do you want me to type?"
+        },
+        "settings": {
+            "settings": "⚙ Settings",
+            "settings_description": "You can manage these settings. You can edit all settings as follows",
+            "private": "🙍‍ private",
+            "beta_function": "This function is currently in testing.",
+            "server": "🗄 server",
+            "settings_private": "⚙ Settings (private)",
+            "settings_private_description": "If you wish to manipulate any options You can set about you with all the commands as follows",
+            "allow": "🔑 permission",
+            "not_allowed": "Not Allowed",
+            "access_description": "access - Allows some information about you. can be disclosed",
+            "current": "🏷 current",
+            "how_to_change": "✏ How to change",
+            "advice": "💡 Advice",
+            "access_advice_detail": "```The permissions in each section also apply to some directives ```",
+            "do_not_have_access_name": "❎ It doesn't appear to have this permission. Please check again and again.",
+            "access_guide": "❎ You can set this section so if you want to disclose it type here \"true\" and if you don't want it disclose then type \" false\"",
+            "access_true_or_false": "❎ Umm...There are only \"true\" and \"false\". What do you want to do?",
+            "access_current_true": "❎ This information is currently allowed to be disclosed.",
+            "access_true_success": "🔧 already disclosed this information.",
+            "access_current_false": "❎ This information is currently not allowed.",
+            "access_false_success": "🔧 The disclosure has been cancelled.",
+            "settings_server": "⚙ Settings (server)",
+            "not_owner": "🔒 This command can only be performed by admin level.",
+            "settings_server_description": "Prefix, language, notification fields, etc., these settings only apply to this server. You can customize it as you like...",
+            "prefix": "❔ prefix",
+            "languages": "🌐 languages",
+            "notification": "🔔 Notification",
+            "prefix_description": "prefix - Change the way you call me with a new prefix. which is cooler than before",
+            "prefix_advice_detail": "```Using the prefix should not contain more than or equal to 6 characters ```",
+            "current_prefix": "❌ This prefix is ​​currently used by this server.",
+            "prefix_no_more_than_six_characters": "❎ The prefix to call me should not be greater than or equal to 6 characters...",
+            "new_prefix": "🔧 Set the new prefix to `%s`.",
+            "lang_description": "lang - I can talk to each other in multiple languages. If you can't read it..please try to change it",
+            "lang_advice_detail": "```Some languages ​​may not be translated and may not be translated completely.```",
+            "available": "✅ Available",
+            "current_lang": "❌ This server is currently in this language.",
+            "not_support_or_do_not_have": "❌ At the moment I don't understand this language or maybe it doesn't exist in the world...",
+            "lang_success": "🔧 I have now set to %s language.",
+            "not_set_up": "Not set yet",
+            "notify_description": "notify - notification of changes and events. included in this You can change it at any time",
+            "notify_advice": "```Notification channels should not be in general chat fields ```",
+            "no_channel_type": "❎ There doesn't seem to be a channel type, or try checking again.",
+            "notify_guide_true_or_false": "❓ Want to enable or disable notifications? To enable it, type \"true\". If not, type \"false\"",
+            "notify_true_or_false": "❎ um..in this section, only true and false",
+            "notify_current_true": "❌ This server currently has notifications turned on.",
+            "do_not_have_channel_in_server": "❎ Hmm..it doesn't seem like this channel is on the server.",
+            "notify_true_success": "🔧 Turn on notifications to channel <#%s> already.",
+            "notify_default_true_success": "🔧 The notification on the <#%s> field has been turned on.",
+            "notify_current_false": "❌ This server has currently disabled notifications.",
+            "notify_false_success": "🔧 The channel notifications have been turned off."
+        },
+        "status": {
+            "empty": "❓ What status do you want to check? online, offline, idle, dnd",
+            "no_status": "❎ This status is not available in Discord...available statuses are online, offline, idle, dnd",
+            "online_status": "The number of members currently online is \n```%s```",
+            "offline_status": "The number of members that are currently offline is \n```%s```",
+            "idle_status": "The number of currently absent members is \n```%s```",
+            "dnd_status": "The number of members currently do not disturb is \n```%s```",
+            "data_by_server": "Reference data from server"
+        },
+        "user": {
+            "unknown": "Unknown",
+            "yes": "yes",
+            "none": "No",
+            "user_info": "👥 User Information Details",
+            "user_info_description": "Detailed information about the user. which references the information from the information on Discord",
+            "info_date": "Information of when",
+            "avatar": "avatar",
+            "bot": "bot",
+            "created_at": "created on",
+            "created_timstamp": "Created date",
+            "default_avatar_url": "Original Avatar",
+            "discriminator": "End code",
+            "id": "ID",
+            "partial": "Partial",
+            "system": "System",
+            "tag": "tag",
+            "username": "Username",
+            "specific_use": "💡 You can specify specific server user information as follows: **%s**",
+            "can_not_find_user": "💡 I can't find that member..try using your full name or username, for example: <@%s>",
+            "sunday": "Sunday",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "january": "January",
+            "february": "February",
+            "march": "March",
+            "april": "April",
+            "may": "May",
+            "june": "June",
+            "july": "July",
+            "august": "August",
+            "september": "September",
+            "october": "October",
+            "november": "November",
+            "december": "December",
+            "format_at": "Day%s1 at %s2 %s3 %s4 time %s5:%s6."
+        },
+        "anime": {
+            "empty": "❓ What anime do you want?",
+            "data_not_found": "❎ I couldn't find this. check carefully Look, maybe there's really no such thing.",
+            "similar_stories": "I found 5 stories that are similar. Which story would you like to read~",
+            "auto_cancel": "Just type in the number you want to read! (cancel within 1 minute)",
+            "choose_now": "Choose now!!",
+            "short_information": "This is just a summary. If you want to read more, click on the link!!",
+            "japan_name": "**Japanese name**",
+            "english_name": "**english name**",
+            "start_date": "**start date**",
+            "end_date": "**end date**",
+            "in_progress": "Processing",
+            "popularity_rank": "**popularity rank**",
+            "link": "**Link**",
+            "synopsis": "**Summary:**",
+            "undefined": "undefined"
+        },
+        "mcserver": {
+            "platform_reqiured": "❓ What is Minecraft's platform? PE, JE?",
+            "no_platform": "❎ There doesn't seem to be any such platform.",
+            "ip_address_reqiured": "❓ the address of the server",
+            "server_available": "```🟢 This server is currently open ```",
+            "server_detail": "Details of this server",
+            "server_unavailable": "```🔴 This server has been temporarily disabled```",
+            "last_check": "Last checked",
+            "five_letter_port": "❓ The port is a 5 digit number of the server.. Please check again.",
+            "address": "Address",
+            "port": "port",
+            "do_not_have": "None",
+            "not_found": "Not found",
+            "description_one": "description 1",
+            "description_two": "description_two",
+            "version": "version",
+            "maximum_player_count": "Maximum number of players",
+            "player_in_server": "Player in server",
+            "mode": "mode",
+            "description": "Description"
+        },
+        "weather": {
+            "empty": "❓ ask for the position you want, eg Bangkok",
+            "no_result_found": "❎ Eh...I've found this area's information. but I can't find it",
+            "clear_weather": "Clear weather",
+            "light_rain": "Light rain",
+            "rain_showers": "Heavy rain",
+            "mostly_cloudy": "Mostly cloudy",
+            "partly_sunny": "Partly sunny",
+            "partly_cloudy": "Partly cloudy",
+            "sunny": "sunny",
+            "rain": "Rain",
+            "cloudy": "Cloudy",
+            "mostly_sunny": "Mostly sunny",
+            "mostly_clear": "Mostly clear sky",
+            "weather_at_the_moment": "The weather for __**%s1**__ is currently \n```%s2```",
+            "information_from_microsoft": "Accurate and accurate information provided by Microsoft.",
+            "timezone": "🌐 timezone",
+            "degree_type": "⚖️ unit of measure",
+            "temperature": "🌡️ temperature",
+            "feels_like": "🎐 feels like",
+            "wind": "🎏 wind",
+            "humidity": "💧 Humidity",
+            "day": "📅 day",
+            "date": ""
+        },
+        "deleteLevel": {
+            "empty": "❓ What is the name of the member you want to delete? account code",
+            "can_not_find_user": "❎ This member could not be found. Is it a typo..?",
+            "deleting": "📁 is deleting this member's experience level information.",
+            "success": "✅ This member's experience level has been deleted!",
+            "error": "❎ This user could not be found."
+        },
+        "leveling": {
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "user_no_data": "💨 Hmmm...this member doesn't have any rank and experience yet.",
+            "your_experience": "Your experience",
+            "level": "Level (Level)",
+            "experience": "Experience (Exp)"
+        },
+        "levelingBoard": {
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "leveling_detail": "Experience: %s1, Rank: %s2",
+            "server_rank": "This server's level rank",
+            "server_rank_description": "One of the top 10 members on this server. that can collect the most own levels, respectively, as follows",
+            "server_rank_tips": "Tips: Chatting with other members will make you gain more levels"
+        },
+        "setEXP": {
+            "empty": "❓ Please specify which member you want to change EXP!",
+            "amount_empty": "❓ How much do you want to set for this member? must be a number",
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "exp_was_changed": "%s has accumulated all experience levels. Contains:",
+            "set_by_staff": "Your experience is set by the team on this server.",
+            "level": "Level (Level)",
+            "experience": "Experience (Exp)",
+            "notification_complete": "✅ Setup is complete...",
+            "success": "✅ Setup is complete..."
+        },
+        "setLevel": {
+            "empty": "❓ Please specify the member who wants to change the level!",
+            "amount_empty": "❓ How much would you like to set for this member? must be a number",
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "level_was_changed": "%s has accumulated all experience levels. Contains:",
+            "set_by_staff": "Your tier is set by a team on this server.",
+            "level":"level (Level)",
+            "experience":"experience (Exp)",
+            "notification_complete": "✅ Setup is complete...",
+            "success": "✅ Setup is complete..."
+        },
+        "about": {
+            "my_profile": "My Profile",
+            "my_profile_detail": "My name is %s, born on Sunday June 21, 2019. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2021 Chaiwat Suwannarat. All rights reserved.",
+            "update_on": "update on"
+        },
+        "credits": {
+            "creator_credit": "💳 Credits to other creators",
+            "creator_credit_description": "Some creators are both contributors. Some of them come from outside.. Thank you for all your support",
+            "update_on": "update on",
+            "natsuki_marina_credit": "Info: some pictures and avatars \nFrom: https://www.pixiv.net/en/users/482462 \nWebsite: https://marina71712.wixsite.com/0-0v "
+        },
+        "help": {
+            "document_name": "Help Documentation",
+            "request_by": "requested by",
+            "command_incorrect": "❎ Invalid command",
+            "command_incorrect_guide": "Eh...no command. Try rechecking by typing `%s` to see a list of all my commands.",
+            "command_detail": "📑 Command details ",
+            "command": "Command: ",
+            "description": "Description: ",
+            "no_description": "No description",
+            "how_to_use": "How to use: ",
+            "unknown_how_to_use": "There is no way to use it.",
+            "type": "Type: ",
+            "aliases": "Aliases: ",
+            "do_not_have": "None",
+            "tip": "Tip: **Alias** can be used in place of each command, for example `%s1` is replaced with `%s2`",
+            "commands_description": [
+                "All the commands that I have learned or studied understandable and practical",
+                "which before calling me Must have a prefix **%s**",
+                "`<>` means required and `()` is optional, may or may not be answered.",
+                "For details of each command type `%s command` and the wish will come true!!"
+            ]
+        },
+        "autoplay": {
+            "no_queue": "❎ Ummm...but the song hasn't started yet?",
+            "not_queue_owner": "🚫 Only the owner of the queue can change it.",
+            "auto_playing": "📻 %s autoplay mode already",
+            "on": "on",
+            "off": "Off"
+        },
+        "filter": {
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_queue_owner":"🚫 Only the owner of the queue can change it.",
+            "sound_filtering": "❓ How would you like to modify your music?",
+            "available_filter": "Available filter formats",
+            "available_filter_description": "Modify the soundtrack to make it even more beautiful by using all of these %s1 formats ```%s2```",
+            "unavailable_filter": "❎ No such filtering format found. Please check again.",
+            "filter_changed": "🎼 Change the song's filtering method to: %s",
+            "off": "Off"
+        },
+        "join": {
+            "not_in_channel": "❓ You need to join the channel first. Otherwise I don't know which channel =3=",
+            "joined": "▶️ I'm already in the `%s` field.",
+            "this_is_text_channel": "Eh..that's a text field?",
+            "no_channel": "❎ I don't have this channel. Is it a typo?",
+            "channel_joined": "✅ I'm already in the `%s` channel..."
+        },
+        "jump": {
+            "no_queue": "❎ There's no song I'm playing. can't skip",
+            "not_queue_owner": "🚫 Only the owner of the queue can change it.",
+            "no_input": "❓ How much do you want to skip to the song?",
+            "too_low": "*️⃣ No queues lower than this",
+            "too_much": "🔢 There is no such queue. Please check again and again.",
+            "can_not_jump": "❎ There seems to be no such queue number at all. Please check again."
+        },
+        "leave": {
+            "do_not_have_channel": "❎ I don't have this channel. Is it a typo?",
+            "now_leave": "◀️ I left my current channel.",
+            "that_is_text_channel": "Uh..that's a text field?",
+            "no_channel": "❎ I don't have this channel. Is it a typo?",
+            "me_not_in_that_channel": "❎ Um..I'm not in there."
+        },
+        "lyrics": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "can_not_find_lyrics": "Could not find lyrics for %s.",
+            "playing_lyrics": "📋 Lyrics of the currently playing song"
+        },
+        "musicInfo": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "detail": "📄__ Details__\n• Song: **%s1**\n• Duration: **%s2**\n• Song Link: **%s3**\n• ID Song: **%s4**"
+        },
+        "noPlaying": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "autoplay": "📻 Autoplay",
+            "filter": "🎼 Audio filter style: %s",
+            "owner_this_queue": "%s isthe owner of this queue"
+        },
+        "pause": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "not_paused": "📼 I'm stopping now. Today looks weird. Haha..",
+            "paused": "⏸ Paused the music."
+        },
+        "play": {
+            "no_song_input": "❓ What song do you want? Here's a link.",
+            "not_in_channel": "❓ Enter any channel first. If not, listen to me..."
+        },
+        "previous": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "no_previous_song_queue": "📼 There is no song that was played recently.",
+            "previous": "⏮ Go back to the previous song."
+        },
+        "queue": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "autoplay":"📻 Autoplay",
+            "filter":"🎼 Audio filtering format: %s",
+            "owner_this_queue":"%s is the owner of this queue.",
+            "waiting_in_queue": "**Waiting for next queue**",
+            "previous_queue": "**Previous Queue**"
+        },
+        "queueStatus": {
+            "no_queue": "❎ Haven't played any songs yet.",
+            "paused": "Pause",
+            "playing": "Playing",
+            "repeat_this_queue": "This queue",
+            "repeat_this_song": "This song",
+            "repeat_off": "Not on",
+            "on": "on",
+            "off": "off",
+            "queue_status": "📑 Current song queue status",
+            "owner_this_queue": "%s is the owner of this queue.",
+            "now": "⌚ now",
+            "volume": "🔉 volume",
+            "filter": "🎼 sound filter style",
+            "repeat": "🔁 repeat",
+            "autoplay": "📻 Autoplay"
+        },
+        "remove": {
+            "no_queue": "❎ Haven't played any songs yet.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "remove_guide": "You can delete the queue you want by: %s <song queue>",
+            "too_little": "❎ No queue lower than that",
+            "too_much": "❎ There is no such queue. Please check again and again.",
+            "single_queue": "⏭ Let's skip ahead. Because after deleting it, I can't continue playing.",
+            "removed": "❌ Removed **%s** from the queue."
+        },
+        "repeat": {
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "repeat_guide": "❓ What number mode do you want to select? (0: loop within the queue), (1: loop current song), (2: loop off)",
+            "too_little": "❎ There is no lower mode.",
+            "too_much": "❎ There is no higher mode.",
+            "repeated": "🔁 %s now",
+            "repeat_queue": "Repeat Queue",
+            "repeat_song": "Repeat song",
+            "off": "Turn off duplication"
+        },
+        "resume": {
+            "no_queue":"❎ Haven't played any songs yet",
+            "not_owner":"🚫 Only the owner of the queue can change it" ,
+            "now_playing": "📼 Uh..I'm playing right now",
+            "resumed": "▶️ Resuming music from the beginning"
+        },
+        "search": {
+            "no_search_input": "❓ What song do you want? Here's a link.",
+            "user_not_in_channel": "❓ Enter any channel first. If not, listen to me..."
+        },
+        "seek": {
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "seek_guide": "❓ How many seconds do you want to change the time of the currently playing song? Now playing for a second at %s",
+            "too_little": "❎ nothing lower than this",
+            "too_much": "❎ The time of this song is at %s, nothing more than this.",
+            "sought": "🕘 Change the time of the currently playing song."
+        },
+        "shuffle": {
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "now_shuffle": "🔀 Shuffle queue started..."
+        },
+        "skip": {
+            "no_queue": "❎ There's no song I'm playing. can't skip",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "skipped": "⏭ skipped and about to start a new song in the queue."
+        },
+        "stop": {
+            "no_queue": "❎ Eh...there's no song I'm playing.",
+            "not_owner":"🚫 Only the owner of the queue can change it.",
+            "stopped": "⏹️ Stopped playing and deleted all queues."
+        },
+        "volume": {
+            "no_queue": "❎ Eh...there's no song I'm playing. What are you going to adjust the sound for?",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "this_volume": "🔈 Current volume is: **%s**",
+            "too_little": "🔈 is too light",
+            "too_much": "🔇 It's too loud...it's just the speaker alone",
+            "adjusted": "🔊 Adjust the volume to: **%s**"
+        },"reboot": {
+            "not_owner": "🛑 Don't..don't. This function requires top privileges only",
+            "password_is_required": "❓ Please enter a confirmation password.",
+            "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
+            "rebooting": "🔄 Rebooting...",
+            "now_reboot": "✅ System restarted!!"
+        },
+        "shutdown": {
+            "not_owner": "🛑 Don't..don't. This function requires top privileges only",
+            "password_is_required": "❓ Please enter your password to verify it's really you.",
+            "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
+            "shutting_down": "🔄 is shutting down itself...",
+            "now_shutdown": "💤 The system has been shut down on Discord.. see you later~"
+        }
+    },
+    "events": {
+        "channelCreate": {
+            "system_notification": "🔔 System notification",
+            "member_create_channel": "> A server member has created a channel: <#%s>"
+        },
+        "channelDelete": {
+            "system_notification": "🔔 System notification",
+            "member_delete_channel": "> A server member has exploded the channel: `%s`"
+        },
+        "channelPinsUpdate": {
+            "system_notification": "🔔 System notification",
+            "member_pins_in_channel": "> Server member pins channel: <#%s1> on %s2"
+        },
+        "channelUpdate": {
+            "system_notification": "🔔 System notification",
+            "member_update_channel": "> The server member has changed some information in the field: `%s1` to <#%s2>"
+        },
+        "emojiCreate": {
+            "system_notification": "🔔 System notification",
+            "member_create_emoji": "> A server member has created a new emoji: :%s:"
+        },
+        "emojiDelete": {
+            "system_notification": "🔔 System notification",
+            "member_delete_emoji": "> The server member deleted the emoji: :%s:"
+        },
+        "emojiUpdate": {
+            "system_notification": "🔔 System notification",
+            "member_update_emoji": "> The server member has changed the new emoji from: %s1 to %s2"
+        },
+        "guildCreate": {
+            "get_started": "The beginning has arrived!!",
+            "description": "Hello..I'd like to thank you for inviting me to this %s.\nSomeone seems to be wondering what I can do? Oh, wash the dishes, do the laundry. It's awesome, isn't it~ haha, where is it? I'm kidding",
+            "join_on": "Join on",
+            "advice": "**💡 Advice**",
+            "advice_detail": "If you're the owner of this guild.. I'd like to complete the guild setup before I actually use it, because something you might not need. So try the `Ssettings` command.",
+            "support_multiple_languages": "**🌐 Support multiple languages**",
+            "support_multiple_languages_detail": "I support multiple languages. To change the language You can set it by `Ssettings guild lang <language code>`",
+            "help_information_and_documentation": "**📄 Help and Documentation**",
+            "help_information_and_documentation_detail": "Want to know what I can do?..it's easy. Just type `Shelp` and someone will tell you. Of course, just go to the link below and there will be documentation that the developer and others. He wrote it for you\n> https://maseshi.web.app/documents#why-shioru?"
+        },
+        "guildMemberAdd": {
+            "greet": "Hello new member. **This is an automated message** \nThank you for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
+            "welcome": "Welcome to the server."
+        },
+        "guildMemberRemove": {
+            "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
+        },
+        "messageCreate": {
+            "not_allowed": "🚫 It seems that you are not authorized to use this command."
+        }
+    },
+    "extras": {
+        "catchError": {
+            "an_error_occurred": "🔴 An error occurred while processing.",
+            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n[Report a problem] (https://github.com/Maseshi/Shioru/issues/new) • [News](https://maseshi.web.app/projects/view?data=shioru&tab=news)"
+        },
+        "levelSystem": {
+            "level_up": "The *%s1* class is now promoted to ```%s2```",
+            "congratulations": "Congratulations!!"
+        }
+    },
+    "main": {
+        "distube": {
+            "playSong": {
+                "playing_song": "🎶 Playing song: **%s1** - `%s2`"
+            },
+            "addSong": {
+                "added_song": "✅ Added a song: **%s1** - `%s2` already."
+            },
+            "addList": {
+                "timer_choose": "You have 60 seconds to choose a song. To cancel, you can type an irrelevant number or wait until the timer expires.\nSearch results for that song:\n%s"
+            },
+            "searchResult": {
+                "searching": "🔎 Search for related songs",
+                "timer_choose": "You have 60 seconds to choose a song. To cancel, you can type an irrelevant number or wait until the timer expires.\nSearch results for that song:\n%s"
+            },
+            "searchCancel": {
+                "search_cancelled": "🕘 The search has been canceled..because no song selections were found."
+            },
+            "empty": {
+                "no_user_in_channel": "💨 Oh, where did they all go? So.. Let's get confused first~"
+            },
+            "finish": {
+                "queue_is_empty": "🍃 My queue is empty now. Ready to play the next song."
+            }
+        }
+    }
+}
