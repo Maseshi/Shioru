@@ -4,19 +4,17 @@ const catchError = require("./catchError");
 module.exports = function(client, message, exports) {
     let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
 
-    ref.child("config").once("value").then(function(snapshot) {   
+    ref.child("config").on("value", function(snapshot) {   
         if (snapshot.exists()) {
             let prefix = snapshot.val().prefix;
             let lang = snapshot.val().language;
             
-            if (client.config.lang.code !== lang) {
-                client.config.lang.code = lang;
-                client.translate = require("../languages/" + lang + ".json");
-            }
-            if (client.config.prefix !== prefix) client.config.prefix = prefix;
+            client.config.prefix = prefix;
+            client.config.lang.code = lang;
+            client.translate = require("../languages/" + lang + ".json");
             if (!client.config.worker) {
                 client.config.worker = 1;
-                return exports(client, message)
+                return exports(client, message);
             }
         } else {
             ref.child("config").set({
