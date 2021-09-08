@@ -6,6 +6,7 @@
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square">
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CITest?label=test&logo=circleci&style=flat-square">
+    <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=flat-square">
 </div>
 
 ผู้ช่วยเซิร์ฟเวอณ์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `Shelp` สำหรับการเริ่มต้นใช้งานครั้งแรก

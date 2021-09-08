@@ -6,6 +6,7 @@
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square">
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CITest?label=test&logo=circleci&style=flat-square">
+    <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=flat-square">
 </div>
 
 Your good server assistant will help make your server look more alive. She can do a number of things, where you can get a detailed breakdown of the commands by typing `Shelp` for the first time you get started.
