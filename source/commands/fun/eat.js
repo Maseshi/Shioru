@@ -9,7 +9,7 @@ module.exports.run = function (client, message, args) {
         return message.reply("...").then(function() {
             setTimeout(function() {
                 message.reply(client.translate.commands.eat.do_not_eat_me);
-            }, 10000);
+            }, 8000);
         });
     }
 
