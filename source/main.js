@@ -3,7 +3,11 @@ const { DisTube } = require("distube");
 const firebase = require("firebase");
 const packages = require("../package.json");
 const config = require("./config/data");
-const lang = require("./languages/en.json");
+const language = require("./languages/en.json");
+const fs = require("fs");
+const express = require("express");
+const app = express();
+const port = 8080;
 
 // Show when bots start working To check that bots do not have a problem
 console.log("\x1b[31m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -18,6 +22,7 @@ console.log("\u001b[1mNode.js\u001b[0m version: " + process.version);
 // Client setup
 const client = new Client({
     "shards": "auto",
+    // "allowedMentions" for using "message.reply"
     "allowedMentions": {
         "repliedUser": true
     },
@@ -38,6 +43,7 @@ const client = new Client({
             }
         ]
     },
+    // Required in Discord v13
     "intents": [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_BANS,
@@ -53,8 +59,9 @@ const client = new Client({
     ]
 });
 
+// Configure in client
 client.config = config;
-client.translate = lang;
+client.translate = language;
 client.music = new DisTube(client, {
     "leaveOnStop": false,
     "youtubeDL": true,
@@ -141,11 +148,11 @@ client.music = new DisTube(client, {
     queue.textChannel.send(client.translate.main.distube.empty.no_user_in_channel);
 }).on("finish", function (queue) {
     queue.textChannel.send(client.translate.main.distube.finish.queue_is_empty);
-}).on("error", function (channel, err) {
-    catchError(client, channel, "player", err);
+}).on("error", function (channel, error) {
+    console.error(error);
 });
 
-["command", "event"].forEach(dirs => require("./handlers/" + dirs)(client));
+fs.readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
 
 process.on("rejectionHandled", function (error) {
     console.error("Rejection promise rejection:", error);
@@ -153,6 +160,13 @@ process.on("rejectionHandled", function (error) {
     console.error("Uncaught promise rejection:", error);
 }).on("unhandledRejection", function (error) {
     console.error("Unhandled promise rejection:", error);
+});
+
+// For remote monitoring
+app.get("/", function(req, res) {
+    res.send("Copyright (c) 2020-2021 Chaiwat Suwannarat. All rights reserved.")
+}).listen(port, function() {
+    console.log("This app is listening a http://localhost:" + port)
 });
 
 firebase.initializeApp(client.config.server);
