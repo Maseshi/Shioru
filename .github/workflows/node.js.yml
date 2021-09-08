@@ -25,9 +25,15 @@ jobs:
     - name: Start testing the system
       run: npm test
       env:
-        token: ${{ secrets.TOKEN }}
-        apiKey: ${{ secrets.API_KEY }}
-        databaseURL: ${{ secrets.DATABASE_URL }}
-        projectId: ${{ secrets.PROJECT_ID }}
+        apiKey: ${{ secrets.APIKEY }}
+        appId: ${{ secrets.APPID }}
+        applicationId: ${{ secrets.APPLICATIONID }}
+        authDomain: ${{ secrets.AUTHDOMAIN }}
+        databaseURL: ${{ secrets.DATABASEURL }}
+        measurementId: ${{ secrets.MEASUREMENTID }}
+        messagingSenderId: ${{ secrets.MESSAGINGSENDERID }}
         password: ${{ secrets.PASSWORD }}
-        youtubeApi: ${{ secrets.YOUTUBE_API }}
+        projectId: ${{ secrets.PROJECTID }}
+        publicKey: ${{ secrets.PUBLICKEY }}
+        storageBucket: ${{ secrets.STORAGEBUCKET }}
+        token: ${{ secrets.TOKEN }}
