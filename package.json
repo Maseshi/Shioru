@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Manage members and servers easily with Shioru.",
   "keywords": [
     "shioru",
@@ -30,8 +30,9 @@
     "@discordjs/voice": "^0.6.0",
     "ansi-diff-stream": "^1.2.1",
     "discord.js": "^13.1.0",
-    "distube": "^3.0.0-beta.37",
+    "distube": "^3.0.0-beta.38",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "firebase": "^8.10.0",
     "fs": "^0.0.1-security",
     "kitsu": "^10.0.0-alpha.14",
@@ -53,7 +54,7 @@
     "zlib-sync": "^0.1.7"
   },
   "engines": {
-    "node": ">=16.0.0",
+    "node": ">=16.6.0",
     "npm": ">=7.0.0"
   },
   "private": false
