@@ -37,7 +37,7 @@
         },
         "uptime": {
             "info_title": "🕒 started working for a while",
-            "day": "Day",
+            "days": "day",
             "hours": "hours",
             "minute": "minute",
             "second": "second"
@@ -52,7 +52,7 @@
         },
         "kill": {
             "empty": "❓ Thinking of k..k..killing someone...?",
-            "do_not_kill_me": "❎ ก. You will do this..a It's not with me. Haha...",
+            "do_not_kill_me": "❎ Y..You can't do this to me... Huhh..",
             "killed": "%s1 has successfully killed you %s2 🔪"
         },
         "numbers": {
@@ -150,6 +150,7 @@
             "format_at": "Day%s1 at %s2 %s3 %s4 time %s5:%s6."
         },
         "invite": {
+            "me_do_not_have_permission": "🚫 I don't have permission to create an invite link in this channel.",
             "membership_invitation_card": "Membership Invitation Card",
             "this_product_is_free": "This product is free. Don't place it again."
         },
@@ -195,6 +196,8 @@
             "access_current_false": "❎ This information is currently not allowed.",
             "access_false_success": "🔧 The disclosure has been cancelled.",
             "settings_server": "⚙ Settings (server)",
+            "available_options_of_user": "❎ At this moment you only have one option: `user`.",
+            "available_options_of_stuff": "❎ There are currently two options, `user` and `guild`.",
             "not_owner": "🔒 This command can only be performed by admin level.",
             "settings_server_description": "Prefix, language, notification fields, etc., these settings only apply to this server. You can customize it as you like...",
             "prefix": "❔ prefix",
@@ -243,7 +246,7 @@
             "avatar": "avatar",
             "bot": "bot",
             "created_at": "created on",
-            "created_timstamp": "Created date",
+            "created_timestamp": "Created date",
             "default_avatar_url": "Original Avatar",
             "discriminator": "End code",
             "id": "ID",
@@ -272,7 +275,7 @@
             "october": "October",
             "november": "November",
             "december": "December",
-            "format_at": "Day%s1 at %s2 %s3 %s4 time %s5:%s6."
+            "format_at": "%s1 at %s2 %s3 %s4 time %s5:%s6."
         },
         "anime": {
             "empty": "❓ What anime do you want?",
@@ -335,11 +338,12 @@
             "wind": "🎏 wind",
             "humidity": "💧 Humidity",
             "day": "📅 day",
-            "date": ""
+            "date": "📆 date"
         },
         "deleteLevel": {
             "empty": "❓ What is the name of the member you want to delete? account code",
             "can_not_find_user": "❎ This member could not be found. Is it a typo..?",
+            "user_current_no_level": "❎ Such members do not have any level.",
             "deleting": "📁 is deleting this member's experience level information.",
             "success": "✅ This member's experience level has been deleted!",
             "error": "❎ This user could not be found."
@@ -353,7 +357,7 @@
         },
         "levelingBoard": {
             "can_not_find_user": "❎ This member could not be found. Is it a typo?",
-            "leveling_detail": "Experience: %s1, Rank: %s2",
+            "leveling_detail": "Experience: %s1, Level: %s2",
             "server_rank": "This server's level rank",
             "server_rank_description": "One of the top 10 members on this server. that can collect the most own levels, respectively, as follows",
             "server_rank_tips": "Tips: Chatting with other members will make you gain more levels"
