@@ -14,10 +14,10 @@ module.exports.run = function (client, message, args) {
         let min = Math.floor((ms / (1000 * 60)) % 60).toString();
         let hrs = Math.floor((ms / (1000 * 60 * 60)) % 60).toString();
         let days = Math.floor((ms / (1000 * 60 * 60 * 24)) % 60).toString();
-        return  days.padStart(1, "0") + " " + client.translate.commands.days + " " +
-                hrs.padStart(2, "0") + " " + client.translate.commands.hours + " " +
-                min.padStart(2, "0") + " " + client.translate.commands.minute + " " +
-                sec.padStart(2, "0") + " " + client.translate.commands.second + " ";
+        return  days.padStart(1, "0") + " " + client.translate.commands.uptime.days + " " +
+                hrs.padStart(2, "0") + " " + client.translate.commands.uptime.hours + " " +
+                min.padStart(2, "0") + " " + client.translate.commands.uptime.minute + " " +
+                sec.padStart(2, "0") + " " + client.translate.commands.uptime.second + " ";
     }
 };
 

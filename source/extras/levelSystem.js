@@ -24,7 +24,7 @@ module.exports = function (client, message) {
                         if (snap.exists()) {
                             let notifyId = snapshot.val().notification.alert;
         
-                            if (notifyId) {
+                            if (notifyId && notifyId !== 0) {
                                 let channel = message.guild.channels.cache.find(channels => channels.id === notifyId);
             
                                 channel.send({

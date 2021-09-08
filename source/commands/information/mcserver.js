@@ -43,43 +43,47 @@ module.exports.run = async function (client, message, args) {
 
                 beres = await statusBedrock(ip, {
                     "port": port
-                }).catch(message.channel.send({ "embeds": [ serverError ] }));
+                }).catch(function(error) {
+                    message.channel.send({ "embeds": [ serverError ] })
+                });
             } else {
-                beres = await statusBedrock(ip).catch(message.reply({ "embeds": [ serverError ] }));
+                beres = await statusBedrock(ip).catch(function(error) {
+                    return message.reply({ "embeds": [ serverError ] })
+                });
             }
             
             if (beres) {
                 let brhost = beres.host;
-                serverInfo.addField(client.translate.commands.mcserver.address, brhost, true);
                 
-                let beport = beres.port;
-                if (port) serverInfo.addField(client.translate.commands.mcserver.port, beport, true);
+                let beport = beres.port.toString();
 
                 let bemotda = beres.motdLine1.descriptionText;
                 let bemotdb = beres.motdLine2.descriptionText;
                 let beversion = beres.version;
-                let bemaxPlayers = beres.maxPlayers;
+                let bemaxPlayers = beres.maxPlayers.toString();
                 
-                let beonlinePlayers = beres.onlinePlayers;
+                let beonlinePlayers = beres.onlinePlayers.toString();
                 if (!beonlinePlayers) beonlinePlayers = client.translate.commands.mcserver.do_not_have;
 
                 let bemode = beres.gameMode;
                 
-                let beipv4 = beres.portIPv4;
+                let beipv4 = beres.portIPv4.toString();
                 if (!beipv4) beipv4 = client.translate.commands.mcserver.not_found;
 
-                let beipv6 = beres.portIpv6;
+                let beipv6 = beres.portIPv6.toString();
                 if (!beipv6) beipv6 = client.translate.commands.mcserver.not_found;
 
                 serverInfo.addFields(
+                    { "name": client.translate.commands.mcserver.address, "value": brhost, "inline": true },
+                    { "name": client.translate.commands.mcserver.port, "value": beport, "inline": true },
                     { "name": client.translate.commands.mcserver.description_one, "value": bemotda, "inline": true },
                     { "name": client.translate.commands.mcserver.description_two, "value": bemotdb, "inline": true },
                     { "name": client.translate.commands.mcserver.version, "value": beversion, "inline": true },
                     { "name": client.translate.commands.mcserver.maximum_player_count, "value": bemaxPlayers, "inline": true },
                     { "name": client.translate.commands.mcserver.player_in_server, "value": beonlinePlayers, "inline": true },
-                    { "name": client.translate.commands.mcserver.do_not_have, "value": bemode, "inline": true },
-                    { "name": client.translate.commands.mcserver.mode, "value": beipv4, "inline": true },
-                    { "name": "IPv4", "value": beipv6, "inline": true }
+                    { "name": client.translate.commands.mcserver.mode, "value": bemode, "inline": true },
+                    { "name": "IPv4", "value": beipv4, "inline": true },
+                    { "name": "IPv6", "value": beipv6, "inline": true }
                 );
                 message.channel.send({ "embeds": [ serverInfo ] });
             }
@@ -94,18 +98,12 @@ module.exports.run = async function (client, message, args) {
 
                 jeres = await status(ip, {
                     "port": port
-                }).catch(function() {
-                    message.channel.send({
-                        "embeds": [ serverError ]
-                    });
                 }).catch(function(error) {
-                    return catchError(client, message, module.exports.help.name, error);
+                    message.channel.send({ "embeds": [ serverError ] });
                 });
             } else {
                 jeres = await status(ip).catch(function(error) {
-                    message.channel.send({
-                        "embeds": [ serverError ]
-                    });
+                    message.channel.send({ "embeds": [ serverError ] });
                 }).catch(function(error) {
                     return catchError(client, message, module.exports.help.name, error);
                 });
@@ -113,31 +111,31 @@ module.exports.run = async function (client, message, args) {
 
             if (jeres) {
                 let jehost = jeres.host;
-                serverInfo.addField(client.translate.commands.mcserver.address, jehost, true);
 
-                let jeport = jeres.port;
-                if (port) serverInfo.addField(client.translate.commands.mcserver.port, jeport, true);
+                let jeport = jeres.port.toString();
 
                 let jeversion = jeres.version;
 
-                let jeonlinePlayers = jeres.onlinePlayers;
+                let jeonlinePlayers = jeres.onlinePlayers.toString();
                 if (jeonlinePlayers === 0) jeonlinePlayers = client.translate.commands.mcserver.do_not_have;
 
-                let jemaxPlayers = jeres.maxPlayers;
+                let jemaxPlayers = jeres.maxPlayers.toString();
                 let jedescription = jeres.description.descriptionText;
                 
                 let jefavicon = jeres.favicon.split(",").slice(1).join(",");
                 let imageStream = Buffer.from(jefavicon, "base64");
                 let attachment = new MessageAttachment(imageStream, "favicon.png");
-                serverInfo.attachFiles([attachment]).setThumbnail("attachment://favicon.png");
                 
                 serverInfo.addFields(
+                    { "name": client.translate.commands.mcserver.address, "value": jehost, "inline": true },
+                    { "name": client.translate.commands.mcserver.port, "value": jeport, "inline": true },
                     { "name": client.translate.commands.mcserver.version, "value": jeversion, "inline": true },
                     { "name": client.translate.commands.mcserver.player_in_server, "value": jeonlinePlayers, "inline": true },
                     { "name": client.translate.commands.mcserver.maximum_player_count, "value": jemaxPlayers, "inline": true },
                     { "name": client.translate.commands.mcserver.description, "value": jedescription, "inline": true }
-                );
-                message.channel.send({ "embeds": [ serverInfo ] });
+                )
+                .setThumbnail("attachment://favicon.png");
+                message.channel.send({ "embeds": [ serverInfo ], "files": [ attachment ] });
             }
         break;
     }

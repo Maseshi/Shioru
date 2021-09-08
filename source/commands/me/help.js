@@ -6,7 +6,7 @@ module.exports.run = async function (client, message, args) {
 	.setColor("#E01055")
 	.setTitle(client.translate.commands.help.document_name)
 	.setAuthor(client.user.username, client.user.displayAvatarURL())
-	.setFooter(client.translate.commands.help.request_by + message.author.username, message.author.displayAvatarURL())
+	.setFooter(client.translate.commands.help.request_by + " " + message.author.username, message.author.displayAvatarURL())
 	.setTimestamp();
 	
 	if (args[0]) {
@@ -44,7 +44,7 @@ module.exports.run = async function (client, message, args) {
 			client.translate.commands.help.commands_description[0],
 			client.translate.commands.help.commands_description[1].replace("%s", client.config.prefix),
 			client.translate.commands.help.commands_description[2],
-			client.translate.commands.help.commands_description[1].replace("%s", (client.config.prefix + module.exports.help.name))
+			client.translate.commands.help.commands_description[3].replace("%s", (client.config.prefix + module.exports.help.name))
 		].join("\n"));
 		
 		categories.forEach(function (category) {

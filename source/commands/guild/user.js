@@ -6,7 +6,7 @@ module.exports.run = function (client, message, args) {
 
     let avatar = message.author.avatarURL() || client.translate.commands.user.unknown;
     let bot = message.author.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
-    let createdAt = dateFormat(message.author.createdAt) || client.translate.commands.user.unknown;
+    let createdAt = message.author.createdAt.toString() || client.translate.commands.user.unknown;
     let createdTimestamp = dateFormat(message.author.createdTimestamp) || client.translate.commands.user.unknown;
     let defaultAvatarURL = message.author.defaultAvatarURL || client.translate.commands.user.unknown;
     let discriminator = message.author.discriminator || client.translate.commands.user.unknown;
@@ -36,8 +36,8 @@ module.exports.run = function (client, message, args) {
     if (member) {
         avatar = member.user.avatarURL() || client.translate.commands.user.unknown;
         bot = member.user.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
-        createdAt = member.user.createdAt || client.translate.commands.user.unknown;
-        createdTimestamp = member.user.createdTimestamp || client.translate.commands.user.unknown;
+        createdAt = member.user.createdAt.toString() || client.translate.commands.user.unknown;
+        createdTimestamp = dateFormat(member.user.createdTimestamp) || client.translate.commands.user.unknown;
         defaultAvatarURL = member.user.defaultAvatarURL || client.translate.commands.user.unknown;
         discriminator = member.user.discriminator || client.translate.commands.user.unknown;
         id = member.user.id || client.translate.commands.user.unknown;
@@ -96,6 +96,7 @@ module.exports.run = function (client, message, args) {
             if (member) {
                 embed.setFooter(client.translate.commands.user.info_date, avatar).setThumbnail(avatar);
 
+                console.log(Array.from(infoList));
                 embed.addFields(Array.from(infoList));
                 message.channel.send({ "embeds": [ embed ] });
             } else {

@@ -95,6 +95,11 @@ module.exports.run = async function(client, message, args) {
         });
     }
 
+    if (!["user", "guild"].includes(option)) {
+        if (message.member.permissions.has(["MANAGE_GUILD"])) return message.reply(client.translate.commands.settings.available_options_of_user);
+        return message.reply(client.translate.commands.settings.available_options_of_stuff);
+    }
+
     switch (option) {
         case "user":
             configInfoEmbed.setTitle(client.translate.commands.settings.settings_private);

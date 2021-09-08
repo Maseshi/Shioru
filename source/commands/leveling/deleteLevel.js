@@ -13,10 +13,13 @@ module.exports.run = async function (client, message, args) {
 
     let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
 
-    ref.child("data/users").child(id).child("leveling").remove().then(function () {
-        msg.edit(client.translate.commands.deleteLevel.success);
-    }).catch(function (error) {
-        msg.edit(client.translate.commands.deleteLevel.error);
+    ref.child("data/users").child(id).child("leveling").once("value").then(function(snapshot) {
+        if (!snapshot.exists()) return message.reply(client.translate.commands.deleteLevel.user_current_no_level);
+        ref.child("data/users").child(id).child("leveling").remove().then(function () {
+            msg.edit(client.translate.commands.deleteLevel.success);
+        }).catch(function (error) {
+            msg.edit(client.translate.commands.deleteLevel.error);
+        });
     });
 };
 

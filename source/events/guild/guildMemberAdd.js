@@ -12,7 +12,7 @@ module.exports = function (client, member) {
         if (snapshot.exists()) {
             let notifyId = snapshot.val().notification.guildMemberAdd;
 
-            if (notifyId) {
+            if (notifyId && notifyId !== 0) {
 				let notification = member.guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({
                     "embeds": [

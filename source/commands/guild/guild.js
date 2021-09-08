@@ -5,22 +5,22 @@ module.exports.run = function (client, message, args) {
 
     let afkChannelId = message.guild.afkChannelId || client.translate.commands.guild.unknown;
     let afkTimeout = message.guild.afkTimeout.toString() || client.translate.commands.guild.unknown;
-    let applicationId = message.guild.applicationId || client.translate.commands.guild.do_not_hav;
+    let applicationId = message.guild.applicationId || client.translate.commands.guild.do_not_have;
     let approximateMemberCount = message.guild.approximateMemberCount || client.translate.commands.guild.unknown;
     let approximatePresenceCount = message.guild.approximatePresenceCount || client.translate.commands.guild.unknown;
     let available = message.guild.available ? client.translate.commands.guild.available : client.translate.commands.guild.unavailable;
-    let banner = message.guild.bannerURL() || client.translate.commands.guild.do_not_hav;
-    let createdAt = dateFormat(message.guild.createAt) || client.translate.commands.guild.unknown;
+    let banner = message.guild.bannerURL() || client.translate.commands.guild.do_not_have;
+    let createdAt = message.guild.createAt.toString() || client.translate.commands.guild.unknown;
     let createdTimestamp = dateFormat(message.guild.createdTimestamp) || client.translate.commands.guild.unknown;
     let defaultMessageNotification = message.guild.defaultMessageNotification || client.translate.commands.guild.unknown;
     let deleted = message.guild.deleted ? client.translate.commands.guild.yes : client.translate.commands.guild.no;
-    let description = message.guild.description || client.translate.commands.guild.do_not_hav;
-    let discoverySplash = message.guild.discoverySplashURL() || client.translate.commands.guild.do_not_hav;
+    let description = message.guild.description || client.translate.commands.guild.do_not_have;
+    let discoverySplash = message.guild.discoverySplashURL() || client.translate.commands.guild.do_not_have;
     let explicitContentFilter = message.guild.explicitContentFilter || client.translate.commands.guild.unknown;
-    let features = message.guild.features.join() || client.translate.commands.guild.do_not_hav;
+    let features = message.guild.features.join() || client.translate.commands.guild.do_not_have;
     let icon = message.guild.iconURL() || client.translate.commands.guild.unknown;
     let id = message.guild.id || client.translate.commands.guild.unknown;
-    let joinedAt = dateFormat(message.guild.joinedAt) || client.translate.commands.guild.unknown;
+    let joinedAt = message.guild.joinedAt.toString() || client.translate.commands.guild.unknown;
     let joinTimestamp = dateFormat(message.guild.joinTimestamp) || client.translate.commands.guild.unknown;
     let large = message.guild.large ? client.translate.commands.guild.yes : client.translate.commands.guild.no;
     let maximumMembers  = message.guild.maximumMembers.toString() || client.translate.commands.guild.unknown;
@@ -28,7 +28,7 @@ module.exports.run = function (client, message, args) {
     let memberCount = message.guild.memberCount.toString() || client.translate.commands.guild.unknown;
     let mfaLevel = message.guild.mfaLevel || client.translate.commands.guild.unknown;
     let name = message.guild.name || client.translate.commands.guild.unknown;
-    let nameAcronym = message.guild.nameAcronym || client.translate.commands.guild.do_not_hav;
+    let nameAcronym = message.guild.nameAcronym || client.translate.commands.guild.do_not_have;
     let nsfwLevel = message.guild.nsfwLevel || client.translate.commands.guild.unknown;
     let ownerId = message.guild.ownerId || client.translate.commands.guild.unknown;
     let partnered = message.guild.partnered ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
@@ -37,9 +37,9 @@ module.exports.run = function (client, message, args) {
     let premiumTier = message.guild.premiumTier || client.translate.commands.guild.unknown;
     let publicUpdatesChannelId = message.guild.publicUpdatesChannelId || client.translate.commands.guild.unknown;
     let rulesChannelId = message.guild.rulesChannelId || client.translate.commands.guild.unknown;
-    let splash = message.guild.splashURL() || client.translate.commands.guild.do_not_hav;
+    let splash = message.guild.splashURL() || client.translate.commands.guild.do_not_have;
     let systemChannelId = message.guild.systemChannelId || client.translate.commands.guild.unknown;
-    let vanityURLCode = message.guild.vanityURLCode || client.translate.commands.guild.do_not_hav;
+    let vanityURLCode = message.guild.vanityURLCode || client.translate.commands.guild.do_not_have;
     let vanityURLUses = message.guild.vanityURLUses || client.translate.commands.guild.unknown;
     let verificationLevel = message.guild.verificationLevel || client.translate.commands.guild.unknown;
     let verified = message.guild.verified ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
@@ -54,7 +54,7 @@ module.exports.run = function (client, message, args) {
     .setDescription(client.translate.commands.guild.server_info_description)
     .setColor("BLUE")
     .setTimestamp()
-    .setFooter(client.translate.commands.guild.info_datex, icon)
+    .setFooter(client.translate.commands.guild.info_date, icon)
     .setThumbnail(icon)
     .setAuthor(cliUsername, cliAvatarURL, "https://maseshi.web.app/projects/shioru/")
 
@@ -127,7 +127,7 @@ module.exports.run = function (client, message, args) {
         { "name": client.translate.commands.guild.maximum_members, "value": maximumMembers, "inline": true },
         { "name": client.translate.commands.guild.maximum_presences, "value": maximumPresences, "inline": true },
         { "name": client.translate.commands.guild.member_count, "value": memberCount, "inline": true },
-        { "name": client.translate.commands.guild.mfs_level, "value": mfaLevel, "inline": true },
+        { "name": client.translate.commands.guild.mfa_level, "value": mfaLevel, "inline": true },
         { "name": client.translate.commands.guild.name, "value": name, "inline": true },
         { "name": client.translate.commands.guild.name_acronym, "value": nameAcronym, "inline": true },
         { "name": client.translate.commands.guild.nsfw_level, "value": nsfwLevel, "inline": true },

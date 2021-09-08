@@ -1,7 +1,8 @@
 const catchError = require("../../extras/catchError");
 
 module.exports.run = function (client, message, args) {
-	message.channel.createInvite().then(function (invite) {
+	if (!message.guild.me.permissions.has("CREATE_INSTANT_INVITE")) return message.reply(client.translate.commands.invite.me_do_not_have_permission);
+	message.channel.createInvite().then(function(invite) {
 		message.channel.send({
 			"embeds": [
 				{

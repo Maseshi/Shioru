@@ -10,7 +10,7 @@ module.exports = function (client, oldChannel, newChannel) {
         if (snapshot.exists()) {
             let notifyId = snapshot.val().notification.channelUpdate;
 
-            if (notifyId) {
+            if (notifyId && notifyId !== 0) {
                 let guild = client.guilds.cache.find(servers => servers.id === guildId);
                 let notification = guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({

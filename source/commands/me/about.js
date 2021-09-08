@@ -5,7 +5,7 @@ module.exports.run = function (client, message, args) {
 				"title": client.translate.commands.about.my_profile,
 				"description": client.translate.commands.about.my_profile_detail.replace("%s", client.user.username),
 				"color": 14684245,
-				"timestamp": client.config.data.update,
+				"timestamp": client.config.update,
 				"author": {
 					"icon_url": client.user.avatarURL(),
 					"name": client.user.username

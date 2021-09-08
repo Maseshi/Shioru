@@ -22,7 +22,7 @@ module.exports.run = function (client, message) {
                         "level": level
                     },
                     "name": username,
-                    "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", "level")
+                    "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
                 };
                 map.push(jsonMap);
             });

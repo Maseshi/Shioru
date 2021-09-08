@@ -4,7 +4,7 @@ module.exports.run = function (client, message, args) {
         "embeds": [
             {
                 "color": 1,
-                "description":client.translate.commands.suicide.replace("%s", username)
+                "description":client.translate.commands.dead.suicide.replace("%s", username)
             }
         ]
     });
