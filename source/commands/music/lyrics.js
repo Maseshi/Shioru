@@ -1,15 +1,16 @@
 const lyricsFinder = require("lyrics-finder");
 
-module.exports.run = async function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = async (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.lyrics.no_queue);
+    if (!queue) return message.reply(client.translate.commands.lyrics.no_queue);
 
     let lyrics;
-    let queueName = queue.songs.map((song, id) => song.name);
+    const queueName = queue.songs.map((song, id) => song.name);
 
     try {
         lyrics = await lyricsFinder(queueName, "");
+        
         if (!lyrics) lyrics = client.translate.commands.lyrics.can_not_find_lyrics.replace("%s", queueName);
     } catch (error) {
         lyrics = client.translate.commands.lyrics.can_not_find_lyrics.replace("%s", queueName);
@@ -23,7 +24,7 @@ module.exports.run = async function (client, message, args) {
                 "color": 14684245,
                 "timestamp": new Date(),
                 "footer": {
-                    "icon_url": message.author.displayAvatarURL(),
+                    "iconURL": message.author.displayAvatarURL(),
                     "text": message.author.username
                 }
             }
@@ -37,5 +38,5 @@ module.exports.help = {
     "usage": "lyrics",
     "category": "music",
     "aliases": ["ly", "เนื้อร้อง"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

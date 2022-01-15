@@ -1,16 +1,17 @@
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-    if (message.member.id !== client.config.owner) return message.channel.send(client.translate.commands.shutdown.not_owner);
+module.exports.run = (client, message, args) => {
+    if (message.member.id !== client.config.owner) return message.reply(client.translate.commands.shutdown.not_owner);
 	
-	let arg = args[0];
-	if (!arg) return message.reply(client.translate.commands.shutdown.password_is_required);
-	if (arg !== client.config.password) return message.channel.send(client.translate.commands.shutdown.password_is_incorrect);
+	const inputPassword = args[0];
+	
+	if (!inputPassword) return message.reply(client.translate.commands.shutdown.password_is_required);
+	if (inputPassword !== client.config.password) return message.reply(client.translate.commands.shutdown.password_is_incorrect);
 
-	message.channel.send(client.translate.commands.shutdown.shutting_down).then(function (msg) {
-		msg.edit(client.translate.commands.shutdown.now_shutdown).then(function () {
+	message.channel.send(client.translate.commands.shutdown.shutting_down).then((msg) => {
+		msg.edit(client.translate.commands.shutdown.now_shutdown).then(() => {
 			client.destroy();
-		}).catch(function (error) {
+		}).catch((error) => {
 			catchError(client, message, module.exports.help.name, error);
 		});
 	});
@@ -22,5 +23,6 @@ module.exports.help = {
 	"usage": "shutdown <password>",
 	"category": "only",
 	"aliases": ["sd", "ปิดระบบ"],
-	"permissions": "ADMINISTRATOR"
+	"userPermission": ["ADMINISTRATOR"],
+	"clientPermissions": ["SEND_MESSAGES"]
 };

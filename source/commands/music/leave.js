@@ -1,22 +1,28 @@
 const { getVoiceConnection } = require("@discordjs/voice");
 
-module.exports.run = function (client, message, args) {
-	let arg = args.join(" ");
+module.exports.run = (client, message, args) => {
+	const inputChannel = args.join(" ");
+	const queue = client.music.getQueue(message);
 
-	if (!arg) {
-		let voiceChannel = message.member.voice.channel;
-		if (!voiceChannel) return message.reply(client.translate.commands.leave.do_not_have_channel);
+	if (queue && message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.leave.another_player_is_playing);
+	if (!inputChannel) {
+		const meChannel = message.guild.me.voice.channel;
 		
-		let connection = getVoiceConnection(voiceChannel.guild.id);
+		if (!meChannel) return message.reply(client.translate.commands.leave.not_in_any_channel);
+		
+		const connection = getVoiceConnection(meChannel.guild.id);
+		
 		connection.destroy();
 		message.channel.send(client.translate.commands.leave.now_leave);
 	} else {
-		let channel = client.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
+		const channel = client.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
+		
 		if (channel.type === "GUILD_TEXT") return message.reply(client.translate.commands.leave.that_is_text_channel);
 		if (!channel) return message.reply(client.translate.commands.leave.no_channel);
 		if (message.guild.me.voice.id !== channel.id) return message.reply(client.translate.commands.leave.me_not_in_that_channel);
 
-		let connection = getVoiceConnection(channel.guild.id);
+		const connection = getVoiceConnection(channel.guild.id);
+		
 		connection.destroy();
 		message.channel.send(client.translate.commands.leave.now_leave);
 	}
@@ -28,5 +34,5 @@ module.exports.help = {
 	"usage": "leave (channel: name, id)",
 	"category": "music",
 	"aliases": ["l", "dc", "dis", "disconnect", "ออก", "ออกจาก"],
-	"permissions": ["SEND_MESSAGES", "CONNECT"]
+	"clientPermissions": ["SEND_MESSAGES"]
 };

@@ -1,61 +1,59 @@
-const { version, Client, Intents } = require("discord.js");
+const { Client } = require("discord.js");
 const { DisTube } = require("distube");
-const firebase = require("firebase");
-const packages = require("../package.json");
+const { initializeApp } = require("firebase/app");
+const { readdirSync } = require("fs");
 const config = require("./config/data");
 const language = require("./languages/en.json");
-const fs = require("fs");
-const express = require("express");
-const app = express();
-const port = 8080;
+
+// Start detecting working time
+console.time("\u001b[34m\u001b[7m Bot is ready to work on the servers! \u001b[0m");
 
 // Show when bots start working To check that bots do not have a problem
-console.log("\x1b[31m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-console.log("\x1b[31m┃\x1b[33m Copyright (c) 2020-2021 Chaiwat Suwannarat. All rights reserved. \x1b[31m┃");
-console.group("\x1b[31m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\x1b[0m");
-
-// Check package version
-console.log("\u001b[1mPackage\u001b[0m version: " + packages.version);
-console.log("\u001b[1mDiscord.js\u001b[0m version: " + version);
-console.log("\u001b[1mNode.js\u001b[0m version: " + process.version);
+if (config.mode === "production") {
+    console.log("\u001b[31;1m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+    console.log("\u001b[31;1m┃\u001b[33;1m Copyright (c) 2020-2022 Maseshi. All rights reserved. \u001b[31;1m┃");
+    console.group("\u001b[31;1m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\u001b[0m");
+}
+if (config.mode === "development") {
+    console.log("\u001b[31;1m┏━━━━━━━━━━━━━━━━━━━ DEVELOPMENT MODE ━━━━━━━━━━━━━━━━━━┓");
+    console.log("\u001b[31;1m┃\u001b[33;1m Copyright (c) 2020-2022 Maseshi. All rights reserved. \u001b[31;1m┃");
+    console.group("\x1b[31m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\u001b[0m");
+}
 
 // Client setup
 const client = new Client({
-    "shards": "auto",
     // "allowedMentions" for using "message.reply"
     "allowedMentions": {
         "repliedUser": true
     },
-    "partials": [
-        "USER",
-        "GUILD_MEMBER",
-        "MESSAGE",
-        "REACTION"
-    ],
+    // Preset status
     "presence": {
         "status": "dnd",
         "afk": true,
         "activities": [
             {
                 "name": "information of each server",
-                "type": "WATCHING",
-                "url": null
+                "type": "WATCHING"
             }
         ]
     },
-    // Required in Discord v13
+    // Required in Discord.js v13
     "intents": [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_BANS,
-        Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-        Intents.FLAGS.GUILD_INTEGRATIONS,
-        Intents.FLAGS.GUILD_INVITES,
-        Intents.FLAGS.GUILD_MEMBERS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-        Intents.FLAGS.GUILD_MESSAGE_TYPING,
-        Intents.FLAGS.GUILD_PRESENCES,
-        Intents.FLAGS.GUILD_VOICE_STATES
+        "GUILDS",
+        "GUILD_MEMBERS",
+        "GUILD_BANS",
+        "GUILD_EMOJIS_AND_STICKERS",
+        "GUILD_INTEGRATIONS",
+        "GUILD_WEBHOOKS",
+        "GUILD_INVITES",
+        "GUILD_VOICE_STATES",
+        "GUILD_PRESENCES",
+        "GUILD_MESSAGES",
+        "GUILD_MESSAGE_REACTIONS",
+        "GUILD_MESSAGE_TYPING",
+        "DIRECT_MESSAGES",
+        "DIRECT_MESSAGE_REACTIONS",
+        "DIRECT_MESSAGE_TYPING"
     ]
 });
 
@@ -64,7 +62,7 @@ client.config = config;
 client.translate = language;
 client.music = new DisTube(client, {
     "leaveOnStop": false,
-    "youtubeDL": true,
+    "youtubeIdentityToken": client.config.server.apiKey,
     "updateYouTubeDL": false,
     "customFilters": {
         "3d": "apulsator=hz=0.125",
@@ -96,78 +94,9 @@ client.music = new DisTube(client, {
     "ytdlOptions": {
         "highWaterMark": 1 << 24
     }
-}).on("playSong", function (queue, song) {
-    queue.textChannel.send(client.translate.main.distube.playSong.playing_song.replace("%s1", song.name).replace("%s2", song.formattedDuration));
-}).on("addSong", function (queue, song) {
-    queue.textChannel.send(client.translate.main.distube.addSong.added_song.replace("%s1", song.name).replace("%s2", song.formattedDuration));
-}).on("addList", function (queue, playlist) {
-    let list = playlist.map((songs, index) => "**" + index + "**. " + songs.name);
-
-    queue.textChannel.send({
-        "embeds": [
-            {
-                "title": playlist.name,
-                "description": client.translate.main.distube.addList.timer_choose.replace("%s", list),
-                "color": 16296490,
-                "timestamp": new Date(),
-                "footer": {
-                    "icon_url": queue.member.user.displayAvatarURL(),
-                    "text": queue.member.user.username
-                }
-            }
-        ]
-    });
-}).on("searchResult", function (message, result) {
-    let index = 0;
-    let search = result.map(song => "**" + (++index) + "**. " + song.name + " - `" + song.formattedDuration + "`").join("\n");
-
-    message.channel.send({
-        "embeds": [
-            {
-                "title": client.translate.main.distube.searchResult.searching.replace("%s", search),
-                "description": client.translate.main.distube.addList.timer_choose.replace("%s", search),
-                "color": 16296490,
-                "timestamp": new Date(),
-                "footer": {
-                    "icon_url": message.author.displayAvatarURL(),
-                    "text": message.author.username
-                }
-            }
-        ]
-    });
-    client.music.options.searchSongs = false;
-}).on("searchCancel", function (message, query) {
-    message.reply(client.translate.main.distube.searchCancel.search_cancelled);
-    client.music.options.searchSongs = false;
-}).on("initQueue", function (queue) {
-    queue.autoplay = false;
-    queue.volume = 100;
-    queue.filter = "clear";
-    queue.createdTimestamp = new Date();
-}).on("empty", function (queue) {
-    queue.textChannel.send(client.translate.main.distube.empty.no_user_in_channel);
-}).on("finish", function (queue) {
-    queue.textChannel.send(client.translate.main.distube.finish.queue_is_empty);
-}).on("error", function (channel, error) {
-    console.error(error);
 });
 
-fs.readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
-
-process.on("rejectionHandled", function (error) {
-    console.error("Rejection promise rejection:", error);
-}).on("uncaughtException", function (error) {
-    console.error("Uncaught promise rejection:", error);
-}).on("unhandledRejection", function (error) {
-    console.error("Unhandled promise rejection:", error);
-});
-
-// For remote monitoring
-app.get("/", function(req, res) {
-    res.send("Copyright (c) 2020-2021 Chaiwat Suwannarat. All rights reserved.")
-}).listen(port, function() {
-    console.log("This app is listening a http://localhost:" + port)
-});
-
-firebase.initializeApp(client.config.server);
+// Read the code in the handlers.
+readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
+initializeApp(client.config.server);
 client.login(client.config.token);

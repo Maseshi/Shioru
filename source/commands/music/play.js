@@ -1,25 +1,25 @@
 const { joinVoiceChannel, getVoiceConnection } = require("@discordjs/voice");
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-    let search = args.join(" ");
-    let channel = message.member.voice.channel;
+module.exports.run = (client, message, args) => {
+    const inputName = args.join(" ");
+    const voiceChannel = message.member.voice.channel;
     
-    if (!search) return message.reply(client.translate.commands.play.no_song_input);
-    if (!channel) return message.reply(client.translate.commands.play.not_in_channel);
+    if (!inputName) return message.reply(client.translate.commands.play.no_song_input);
+    if (!voiceChannel) return message.reply(client.translate.commands.play.not_in_channel);
     
     try {
         joinVoiceChannel({
-            "channelId": channel.id,
+            "channelId": voiceChannel.id,
             "guildId": message.guild.id,
             "adapterCreator": message.guild.voiceAdapterCreator
         });
-        client.music.play(message, search);
-    } catch (err) {
-        let connection = getVoiceConnection(channel.guild.id);
+        client.music.play(message, inputName);
+    } catch (error) {
+        const connection = getVoiceConnection(voiceChannel.guild.id);
 		
         connection.destroy();
-        catchError(client, message, module.exports.help.name, err);
+        catchError(client, message, module.exports.help.name, error);
     }
 };
 
@@ -29,5 +29,5 @@ module.exports.help = {
     "usage": "play <title: name, id, link>",
     "category": "music",
     "aliases": ["เล่น", "p", "เพลง"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES", "SPEAK", "CONNECT"]
 };

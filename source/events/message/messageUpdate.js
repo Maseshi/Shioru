@@ -1,1 +1,3 @@
-module.exports = function(oldMessage, newMessage) {};
+module.exports = (oldMessage, newMessage) => {
+    
+};

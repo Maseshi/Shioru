@@ -1,10 +1,11 @@
-module.exports.run = function (client, message, args) {
-    let username = message.author.username;
+module.exports.run = (client, message, args) => {
+    const authorUsername = message.author.username;
+    
     message.channel.send({
         "embeds": [
             {
                 "color": 1,
-                "description":client.translate.commands.dead.suicide.replace("%s", username)
+                "description":client.translate.commands.dead.suicide.replace("%s", authorUsername)
             }
         ]
     });
@@ -16,5 +17,5 @@ module.exports.help = {
     "usage": "dead",
     "category": "fun",
     "aliases": ["die", "dead", "ตาย"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

@@ -1,11 +1,11 @@
-module.exports.run = function (client, message, args) {
-    let filter = args[0];
-    let queue = client.music.getQueue(message);
-    let filterList = Object.keys(client.music.filters);
+module.exports.run = (client, message, args) => {
+    const inputType = args[0];
+    const queue = client.music.getQueue(message);
+    const filterList = Object.keys(client.music.filters);
 
-    if (!queue) return message.channel.send(client.translate.commands.filter.no_queue);
+    if (!queue) return message.reply(client.translate.commands.filter.no_queue);
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.filter.not_queue_owner);
-    if (!filter) return message.reply({
+    if (!inputType) return message.reply({
         "content": client.translate.commands.filter.sound_filtering,
         "embeds": [
             {
@@ -15,10 +15,10 @@ module.exports.run = function (client, message, args) {
             }
         ]
     });
-    if (!filterList.includes(filter.toLowerCase())) return message.reply(client.translate.commands.filter.unavailable_filter);
+    if (!filterList.includes(inputType.toLowerCase())) return message.reply(client.translate.commands.filter.unavailable_filter);
 
-    client.music.setFilter(message, filter.toLowerCase());
-    message.channel.send(client.translate.commands.filter_changed.replace("%s", (filter || client.translate.commands.off)));
+    client.music.setFilter(message, inputType.toLowerCase());
+    message.channel.send(client.translate.commands.filter.filter_changed.replace("%s", (inputType || client.translate.commands.filter.off)));
 };
 
 module.exports.help = {
@@ -27,5 +27,5 @@ module.exports.help = {
     "usage": "filter <option>",
     "category": "music",
 	"aliases": ["กรอง", "bass"],
-	"permissions": ["SEND_MESSAGES", "CONNECT"]
+	"clientPermissions": ["SEND_MESSAGES"]
 };

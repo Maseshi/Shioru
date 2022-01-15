@@ -1,38 +1,42 @@
 const { MessageEmbed } = require("discord.js");
-const { database } = require("firebase");
+const { getDatabase, ref, child, get } = require("firebase/database");
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message) {
-    let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
-
-    ref.child("data/users").once("value").then(function (snapshot) {
+module.exports.run = (client, message) => {
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id);
+    get(child(childRef, "data/users")).then((snapshot) => {
         if (snapshot.exists()) {
-            let map = [], max = 10;
-            snapshot.forEach(function(data) {
-                let member = message.guild.members.cache.find(members => (members.id === data.key));
+            const map = [];
+            const max = 10;
+            
+            snapshot.forEach((data) => {
+                const member = message.guild.members.cache.find(members => (members.id === data.key));
+                
                 if (!member) return message.reply(client.translate.commands.levelingBoard.can_not_find_user);
 
-                let username = member.user.username;
-                let exp = data.val().leveling.exp;
-                let level = data.val().leveling.level;
+                const memberUsername = member.user.username;
+                const exp = data.val().leveling.exp;
+                const level = data.val().leveling.level;
 
-                let jsonMap = {
+                const jsonMap = {
                     "data": {
                         "exp": exp,
                         "level": level
                     },
-                    "name": username,
+                    "name": memberUsername,
                     "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
                 };
                 map.push(jsonMap);
             });
             
-            map.sort(function(a, b) {
+            map.sort((a, b) => {
                 return b.data.level - a.data.level || b.data.exp - a.data.exp;
             });
 
-            let user = message.guild.members.cache.find(members => (members.user.username === map[0].name));
-            let avatar = user.user.displayAvatarURL();
+            const user = message.guild.members.cache.find(members => (members.user.username === map[0].name));
+            const clientAvatar = client.user.avatarURL();
+            const userAvatar = user.user.displayAvatarURL();
 
             for (let i = 0; i < map.length; i++) {
                 if (!map[i]) return;
@@ -46,15 +50,16 @@ module.exports.run = function (client, message) {
             const embed = new MessageEmbed()
             .setColor("#E01055")
             .setTitle(client.translate.commands.levelingBoard.server_rank)
-            .setAuthor(client.user.username, client.user.avatarURL())
-            .setThumbnail(avatar)
+            .setAuthor({ "name": client.user.username, "iconURL": clientAvatar })
+            .setThumbnail(userAvatar)
             .setDescription(client.translate.commands.levelingBoard.server_rank_description)
             .addFields(map)
             .setTimestamp()
-            .setFooter(client.translate.commands.levelingBoard.server_rank_tips, "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png");
+            .setFooter({ "text": client.translate.commands.levelingBoard.server_rank_tips, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png" });
+            
             return message.channel.send({ "embeds": [ embed ] });
         }
-    }).catch(function(error) {
+    }).catch((error) => {
         catchError(client, message, module.exports.help.name, error);
     });
 };
@@ -65,5 +70,5 @@ module.exports.help = {
     "usage": "levelingBoard",
     "category": "leveling",
     "aliases": ["คะแนนเลเวล", "เลเวลผู้นำ", "levelingboard", "lBoard", "levelingB", "lb"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

@@ -1,50 +1,50 @@
 const { version } = require("discord.js");
-const si = require("systeminformation");
+const { get } = require("systeminformation");
 const catchError = require("../../extras/catchError");
 
-module.exports.run = async function(client, message, args) {
-    let msg = await message.channel.send(client.translate.commands.system.loading);
+module.exports.run = async (client, message, args) => {
+    const msg = await message.channel.send(client.translate.commands.system.loading);
 
-    si.get({
+    get({
         "time": "uptime",
         "system": "manufacturer, model",
         "bios": "vendor, version, releaseDate",
         "cpu": "manufacturer, brand, speed, cores, physicalCores",
         "cpuTemperature": "main",
-        "mem": "used, total",
+        "mem": "total, used",
         "battery": "hasBattery, isCharging, percent, type",
         "graphics": "controllers, displays",
         "osInfo": "platform, arch"
-    }).then(function(data) {
-        let serverSeconds = (data.time.uptime / 1000);
-        let serverDays = Math.floor(serverSeconds / (3600 * 24));
-        let serverHours = Math.floor(serverSeconds % (3600 * 24) / 3600);
+    }).then((data) => {
+        const serverSeconds = (data.time.uptime / 1000);
+        const serverDays = Math.floor(serverSeconds / (3600 * 24));
+        const serverHours = Math.floor(serverSeconds % (3600 * 24) / 3600);
         
-        let systemManufacturer = data.system.manufacturer;
-        let systemModel = data.system.model;
+        const systemManufacturer = data.system.manufacturer;
+        const systemModel = data.system.model;
 
-        let biosVendor = data.bios.vendor;
-        let biosVersion = data.bios.version;
-        let biosReleaseDate = data.bios.releaseDate;
+        const biosVendor = data.bios.vendor;
+        const biosVersion = data.bios.version;
+        const biosReleaseDate = data.bios.releaseDate;
         
-        let cpuManufacturer = data.cpu.manufacturer;
-        let cpuBrand = data.cpu.brand;
-        let cpuSpeed = data.cpu.speed;
-        let cpuCores = data.cpu.cores;
-        let cpuPhysicalCores = data.cpu.physicalCores;
+        const cpuManufacturer = data.cpu.manufacturer;
+        const cpuBrand = data.cpu.brand;
+        const cpuSpeed = data.cpu.speed;
+        const cpuCores = data.cpu.cores;
+        const cpuPhysicalCores = data.cpu.physicalCores;
 
-        let cpuTempMain = data.cpuTemperature.cpuTempMain;
+        const cpuTempMain = data.cpuTemperature.cpuTempMain;
 
-        let memUsed = (data.mem.used / 1024 / 1024).toFixed(2);
-        let memTotal = (data.mem.total / 1024 / 1024).toFixed(2);
+        const memUsed = (data.mem.used / 1024 / 1024).toFixed(2);
+        const memTotal = (data.mem.total / 1024 / 1024).toFixed(2);
 
-        let batteryHasBattery = data.battery.hasBattery;
-        let batteryIsCharging = data.battery.isCharging;
-        let batteryPercent = data.battery.percent;
-        let batteryType = data.battery.type;
+        const batteryHasBattery = data.battery.hasBattery;
+        const batteryIsCharging = data.battery.isCharging;
+        const batteryPercent = data.battery.percent;
+        const batteryType = data.battery.type;
 
-        let gpuControllers = data.graphics.controllers;
-        let gpuControllersLength = gpuControllers.length;
+        const gpuControllers = data.graphics.controllers;
+        const gpuControllersLength = gpuControllers.length;
         let gpuMain = "",
         gpuMainModel = "",
         gpuMainFanSpeed = "",
@@ -58,10 +58,11 @@ module.exports.run = async function(client, message, args) {
             gpuMainMemoryUsed = gpuControllers[i].memoryUsed;
             gpuMainTemperatureGpu = gpuControllers[i].temperatureGpu;
 
-            gpuMain =+ "" + "```" + gpuMainModel + ", " + (gpuMainMemoryUsed ? (gpuMainMemoryTotal ? gpuMainMemoryUsed + "/" + gpuMainMemoryTotal + "MB" : "") : client.translate.commands.system.unknown) + (gpuMainFanSpeed ? gpuMainFanSpeed + " " : "") + (gpuMainTemperatureGpu ? gpuMainTemperatureGpu : "") + "```";
+            gpuMain += ("```" + gpuMainModel + ", " + (gpuMainMemoryUsed ? (gpuMainMemoryTotal ? gpuMainMemoryUsed + "/" + gpuMainMemoryTotal + "MB" : "") : "") + (gpuMainFanSpeed ? gpuMainFanSpeed + " " : "") + (gpuMainTemperatureGpu ? gpuMainTemperatureGpu : "") + "```");
         }
-        let gpuDisplays = data.graphics.displays;
-        let gpuDisplaysLength = gpuDisplays.length;
+        
+        const gpuDisplays = data.graphics.displays;
+        const gpuDisplaysLength = gpuDisplays.length;
         let gpuSecond = "",
         gpuSecondModel = "",
         gpuSecondMain = "";
@@ -69,11 +70,11 @@ module.exports.run = async function(client, message, args) {
             gpuSecondModel = gpuDisplays[i].model;
             gpuSecondMain = gpuDisplays[i].main;
 
-            gpuSecond =+ "" + "```" + gpuSecondModel + ", " + (gpuSecondMain ? client.translate.commands.system.main : "") + "```";
+            gpuSecond += ("```" + gpuSecondModel + ", " + (gpuSecondMain ? client.translate.commands.system.main : "") + "```");
         }
 
-        let osPlatform = data.osInfo.platform;
-        let osArch = data.osInfo.arch;
+        const osPlatform = data.osInfo.platform;
+        const osArch = data.osInfo.arch;
 
         msg.edit({
             "content": null,
@@ -147,7 +148,7 @@ module.exports.run = async function(client, message, args) {
                 }
             ]
         });
-    }).catch(function(error) {
+    }).catch((error) => {
         catchError(client, msg, module.exports.help.name, error);
     });
 };
@@ -158,5 +159,5 @@ module.exports.help = {
     "usage": "system",
     "category": "developer",
     "aliases": ["sys", "ระบบ"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

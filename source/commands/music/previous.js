@@ -1,7 +1,7 @@
-module.exports.run = function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.previous.no_queue);
+    if (!queue) return message.reply(client.translate.commands.previous.no_queue);
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.previous.not_owner);
     if (!queue.previousSongs) return message.reply(client.translate.commands.previous.no_previous_song_queue);
 
@@ -15,5 +15,5 @@ module.exports.help = {
     "usage": "previous",
     "category": "music",
     "aliases": ["pv", "เพลงก่อนหน้า"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES", "CONNECT"]
 };

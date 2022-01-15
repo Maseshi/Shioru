@@ -1,19 +1,18 @@
-const { database } = require("firebase");
+const { getDatabase, ref, child, get, set } = require("firebase/database");
 const catchError = require("../../extras/catchError");
 
-module.exports = function (client, member) {
+module.exports = (client, member) => {
     if (member.user.bot) return;
 
-	let guildId = member.guild.id;
+	const db = getDatabase();
+	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
 
-    let ref = database().ref("Shioru/apps/discord/guilds").child(guildId);
-
-    ref.child("config").once("value").then(function (snapshot) {
+	get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {
-            let notifyId = snapshot.val().notification.guildMemberAdd;
+            const notifyId = snapshot.val().notification.guildMemberAdd;
 
             if (notifyId && notifyId !== 0) {
-				let notification = member.guild.channels.cache.find(channels => channels.id === notifyId);
+				const notification = member.guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({
                     "embeds": [
                         {
@@ -33,7 +32,7 @@ module.exports = function (client, member) {
                 });
             }
         } else {
-            ref.child("config").set({
+            set(child(childRef, "config"), {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
@@ -46,13 +45,11 @@ module.exports = function (client, member) {
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
-            }).then(function () {
+            }).then(() => {
                 module.exports(client, member);
-            }).catch(function (error) {
-                catchError(client, message, module.exports.help.name, error);
             });
         }
-    }).catch(function (error) {
-        catchError(client, message, module.exports.help.name, error);
+    }).catch((error) => {
+        catchError(client, message, "guildMemberAdd", error);
     });
 };

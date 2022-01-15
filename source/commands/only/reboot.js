@@ -1,17 +1,18 @@
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-    if (message.member.id !== client.config.owner) return message.channel.send(client.translate.commands.reboot.not_owner);
+module.exports.run = (client, message, args) => {
+    if (message.member.id !== client.config.owner) return message.reply(client.translate.commands.reboot.not_owner);
 	
-	let arg = args[0];
-	if (!arg) return message.reply(client.translate.commands.reboot.password_is_required);
-	if (arg === client.config.password) return message.reply(client.translate.commands.reboot.password_is_incorrect);
+	const inputPassword = args[0];
 	
-	message.channel.send(client.translate.commands.reboot.rebooting).then(function (msg) {
+	if (!inputPassword) return message.reply(client.translate.commands.reboot.password_is_required);
+	if (inputPassword === client.config.password) return message.reply(client.translate.commands.reboot.password_is_incorrect);
+	
+	message.channel.send(client.translate.commands.reboot.rebooting).then((msg) => {
 		client.destroy();
 		client.login(client.config.token);
 		msg.edit(client.translate.commands.reboot.now_reboot);
-	}).catch(function (error) {
+	}).catch((error) => {
 		catchError(client, message, module.exports.help.name, error);
 	});
 };
@@ -22,5 +23,6 @@ module.exports.help = {
 	"usage": "reboot <password>",
 	"category": "only",
 	"aliases": ["re", "เริ่มระบบใหม่"],
-	"permissions": "ADMINISTRATOR"
+	"userPermission": ["ADMINISTRATOR"],
+	"clientPermissions": ["SEND_MESSAGES"]
 };

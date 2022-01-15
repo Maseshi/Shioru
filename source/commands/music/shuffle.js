@@ -1,7 +1,7 @@
-module.exports.run = function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.shuffle.no_queue);
+    if (!queue) return message.reply(client.translate.commands.shuffle.no_queue);
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.shuffle.not_owner);
     
     client.music.shuffle(message);
@@ -14,5 +14,5 @@ module.exports.help = {
     "usage": "shuffle",
     "category": "music",
     "aliases": ["shf", "สับเปลี่ยน", "สลับ", "เปลี่ยน"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

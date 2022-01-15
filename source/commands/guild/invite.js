@@ -1,8 +1,9 @@
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-	if (!message.guild.me.permissions.has("CREATE_INSTANT_INVITE")) return message.reply(client.translate.commands.invite.me_do_not_have_permission);
-	message.channel.createInvite().then(function(invite) {
+module.exports.run = (client, message, args) => {
+	message.channel.createInvite().then((invite) => {
+		const guildIcon = message.guild.iconURL();
+
 		message.channel.send({
 			"embeds": [
 				{
@@ -10,13 +11,13 @@ module.exports.run = function (client, message, args) {
 					"description": "||" + invite.url + "||",
 					"color": 10197915,
 					"footer": {
-						"icon_url": message.guild.iconURL(),
-						"text": client.translate.commands.invite.this_product_is_free
+						"text": client.translate.commands.invite.this_product_is_free,
+						"iconURL": guildIcon
 					}
 				}
 			]
 		});
-	}).catch(function (error) {
+	}).catch((error) => {
 		catchError(client, message, module.exports.help.name, error);
 	});
 };
@@ -27,5 +28,6 @@ module.exports.help = {
 	"usage": "invite",
 	"category": "guild",
 	"aliases": ["เชิญ"],
-	"permissions": ["SEND_MESSAGES", "CREATE_INSTANT_INVITE"]
+	"userPermission": ["CREATE_INSTANT_INVITE"],
+	"clientPermissions": ["SEND_MESSAGES", "CREATE_INSTANT_INVITE"]
 };

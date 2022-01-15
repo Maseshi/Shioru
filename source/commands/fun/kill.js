@@ -1,17 +1,18 @@
-module.exports.run = function (client, message, args) {
-    let arg = args.join(" ");
-    if (!arg) return message.reply(client.translate.commands.kill.empty);
+module.exports.run = (client, message, args) => {
+    const inputUsername = args.join(" ");
+    
+    if (!inputUsername) return message.reply(client.translate.commands.kill.empty);
 
-    let username = message.author.username;
-    let mename = client.user.username;
+    const authorUsername = message.author.username;
+    const clientUsername = client.user.username;
 
-    if (arg === mename) return message.reply(client.translate.commands.kill.do_not_kill_me);
+    if (inputUsername === clientUsername) return message.reply(client.translate.commands.kill.do_not_kill_me);
 
     message.channel.send({
         "embeds": [
             {
                 "color": 1,
-                "description": client.translate.commands.kill.killed.replace("%s1", username).replace("%s2", arg)
+                "description": client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputUsername)
             }
         ]
     });
@@ -23,5 +24,5 @@ module.exports.help = {
     "usage": "kill <message>",
     "category": "fun",
     "aliases": ["KDA", "kda", "ฆ่า"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

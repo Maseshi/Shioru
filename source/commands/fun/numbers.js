@@ -1,16 +1,17 @@
-module.exports.run = function (client, message, args) {
-    let min = parseInt(args[0]);
-    let max = parseInt(args[1]);
+module.exports.run = (client, message, args) => {
+    let inputMin = parseInt(args[0]);
+    let inputMax = parseInt(args[1]);
 
-    if (min > max) {
-        let temp = max;
-        max = min;
-        min = temp;
+    if (inputMin > inputMax) {
+        const temp = inputMax;
+        inputMax = inputMin;
+        inputMin = temp;
     }
 
-    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
 
     if (!result) return message.reply(client.translate.commands.numbers.empty);
+    
     message.channel.send(client.translate.commands.numbers.result.replace("%s", result));
 };
 
@@ -20,5 +21,5 @@ module.exports.help = {
     "usage": "numbers <min> <max>",
     "category": "fun",
     "aliases": ["randomNumbers", "randomnumbers", "randomNumber", "randomnumber", "number", "สุ่มเลข"],
-    "permissions": "SEND_MESSAGES"
+    "clientPermissions": ["SEND_MESSAGES"]
 };

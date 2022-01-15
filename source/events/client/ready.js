@@ -1,24 +1,30 @@
-module.exports = function (client) {
-  // Activity settings
-  function activity() {
-    let guildSize = client.guilds.cache.size;
-    let activityName = guildSize + " server" + (guildSize === 1 ? "" : "s");
+const { info } = require("log-symbols");
 
-    client.user.setPresence({
-      "status": "available", // "available", "idle", "dnd", or "invisible"
-      "afk": false,
-      "activities": [
-        {
-          "name": activityName,
-          "type": "STREAMING",
-          "url": "https://www.youtube.com/watch?v=fzQ6gRAEoy0"
-        }
-      ]
-    });
-    setTimeout(activity, 10000);
-  }
-  activity();
+module.exports = (client) => {
+  // Presence settings
+  const guildSize = client.guilds.cache.size;
+  let activities = {
+    "name": "Minecraft",
+    "type": "PLAYING"
+  };
+
+  if (client.config.mode === "production") activities = {
+    "name": guildSize + " Server" + (guildSize === 1 ? "" : "s"),
+    "type": "STREAMING",
+    "url": "https://www.youtube.com/watch?v=fzQ6gRAEoy0"
+  };
+
+  client.user.setPresence({
+    "status": "available",
+    "afk": false,
+    "activities": [
+      activities
+    ]
+  });
+
+  // Client username
+  console.log(info + " Sign in with the name " + client.user.username + ".");
 
   // If everything is ready to go
-  console.log("\u001b[34m\u001b[7m" + client.user.username + " is ready to work on the servers!\u001b[0m");
+  console.timeEnd("\u001b[34m\u001b[7m Bot is ready to work on the servers! \u001b[0m");
 };

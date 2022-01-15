@@ -1,15 +1,15 @@
-module.exports.run = function (client, message, args) {
-    let input1 = args.join(" ");
-    let icon = message.guild.iconURL();
+module.exports.run = (client, message, args) => {
+    const inputStatus = args.join(" ");
+    const guildIcon = message.guild.iconURL();
 
-    if (!input1) return message.reply(client.translate.commands.status.empty);
-    if (!["online", "offline", "idle", "dnd"].includes(input1)) {
+    if (!inputStatus) return message.reply(client.translate.commands.status.empty);
+    if (!["online", "offline", "idle", "dnd"].includes(inputStatus)) {
         return message.reply(client.translate.commands.status.no_status);
     }
 
-    switch (input1) {
+    switch (inputStatus) {
         case "online":
-            let onlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
+            const onlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
 
             message.channel.send({
                 "embeds": [
@@ -17,7 +17,7 @@ module.exports.run = function (client, message, args) {
                         "description": client.translate.commands.status.online_status.replace("%s", onlineCount),
                         "color": 3055702,
                         "footer": {
-                            "icon_url": icon,
+                            "icon_url": guildIcon,
                             "text": client.translate.commands.status.data_by_server
                         }
                     }
@@ -25,7 +25,7 @@ module.exports.run = function (client, message, args) {
             });
         break;
         case "offline":
-            let offlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
+            const offlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
 
             message.channel.send({
                 "embeds": [
@@ -33,7 +33,7 @@ module.exports.run = function (client, message, args) {
                         "description": client.translate.commands.status.offline_status.replace("%s", offlineCount),
                         "color": 10197915,
                         "footer": {
-                            "icon_url": icon,
+                            "icon_url": guildIcon,
                             "text": client.translate.commands.status.data_by_server
                         }
                     }
@@ -41,7 +41,7 @@ module.exports.run = function (client, message, args) {
             });
         break;
         case "idle":
-            let idleCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
+            const idleCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
 
             message.channel.send({
                 "embeds": [
@@ -49,7 +49,7 @@ module.exports.run = function (client, message, args) {
                         "description": client.translate.commands.status.idle_status.replace("%s", idleCount),
                         "color": 16098851,
                         "footer": {
-                            "icon_url": icon,
+                            "icon_url": guildIcon,
                             "text": client.translate.commands.status.data_by_server
                         }
                     }
@@ -57,7 +57,7 @@ module.exports.run = function (client, message, args) {
             });
         break;
         case "dnd":
-            let dndCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
+            const dndCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
 
             message.channel.send({
                 "embeds": [
@@ -65,7 +65,7 @@ module.exports.run = function (client, message, args) {
                         "description": client.translate.commands.status.dnd_status.replace("%s", dndCount),
                         "color": 13632027,
                         "footer": {
-                            "icon_url": icon,
+                            "icon_url": guildIcon,
                             "text": client.translate.commands.status.data_by_server
                         }
                     }
@@ -81,5 +81,5 @@ module.exports.help = {
     "usage": "status <status: online, offline, idle, dnd>",
     "category": "guild",
     "aliases": ["สถานะ"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

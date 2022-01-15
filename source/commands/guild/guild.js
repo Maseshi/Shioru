@@ -1,64 +1,99 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = function (client, message, args) {
-    let input1 = args[0];
+module.exports.run = (client, message, args) => {
+    const inputData = args[0];
 
-    let afkChannelId = message.guild.afkChannelId || client.translate.commands.guild.unknown;
-    let afkTimeout = message.guild.afkTimeout.toString() || client.translate.commands.guild.unknown;
-    let applicationId = message.guild.applicationId || client.translate.commands.guild.do_not_have;
-    let approximateMemberCount = message.guild.approximateMemberCount || client.translate.commands.guild.unknown;
-    let approximatePresenceCount = message.guild.approximatePresenceCount || client.translate.commands.guild.unknown;
-    let available = message.guild.available ? client.translate.commands.guild.available : client.translate.commands.guild.unavailable;
-    let banner = message.guild.bannerURL() || client.translate.commands.guild.do_not_have;
-    let createdAt = message.guild.createAt.toString() || client.translate.commands.guild.unknown;
-    let createdTimestamp = dateFormat(message.guild.createdTimestamp) || client.translate.commands.guild.unknown;
-    let defaultMessageNotification = message.guild.defaultMessageNotification || client.translate.commands.guild.unknown;
-    let deleted = message.guild.deleted ? client.translate.commands.guild.yes : client.translate.commands.guild.no;
-    let description = message.guild.description || client.translate.commands.guild.do_not_have;
-    let discoverySplash = message.guild.discoverySplashURL() || client.translate.commands.guild.do_not_have;
-    let explicitContentFilter = message.guild.explicitContentFilter || client.translate.commands.guild.unknown;
-    let features = message.guild.features.join() || client.translate.commands.guild.do_not_have;
-    let icon = message.guild.iconURL() || client.translate.commands.guild.unknown;
-    let id = message.guild.id || client.translate.commands.guild.unknown;
-    let joinedAt = message.guild.joinedAt.toString() || client.translate.commands.guild.unknown;
-    let joinTimestamp = dateFormat(message.guild.joinTimestamp) || client.translate.commands.guild.unknown;
-    let large = message.guild.large ? client.translate.commands.guild.yes : client.translate.commands.guild.no;
-    let maximumMembers  = message.guild.maximumMembers.toString() || client.translate.commands.guild.unknown;
-    let maximumPresences = message.guild.maximumPresences || client.translate.commands.guild.unknown;
-    let memberCount = message.guild.memberCount.toString() || client.translate.commands.guild.unknown;
-    let mfaLevel = message.guild.mfaLevel || client.translate.commands.guild.unknown;
-    let name = message.guild.name || client.translate.commands.guild.unknown;
-    let nameAcronym = message.guild.nameAcronym || client.translate.commands.guild.do_not_have;
-    let nsfwLevel = message.guild.nsfwLevel || client.translate.commands.guild.unknown;
-    let ownerId = message.guild.ownerId || client.translate.commands.guild.unknown;
-    let partnered = message.guild.partnered ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
-    let preferredLocale = message.guild.preferredLocale || client.translate.commands.guild.unknown;
-    let premiumSubscriptionCount = message.guild.premiumSubscriptionCount.toString() || client.translate.commands.guild.unknown;
-    let premiumTier = message.guild.premiumTier || client.translate.commands.guild.unknown;
-    let publicUpdatesChannelId = message.guild.publicUpdatesChannelId || client.translate.commands.guild.unknown;
-    let rulesChannelId = message.guild.rulesChannelId || client.translate.commands.guild.unknown;
-    let splash = message.guild.splashURL() || client.translate.commands.guild.do_not_have;
-    let systemChannelId = message.guild.systemChannelId || client.translate.commands.guild.unknown;
-    let vanityURLCode = message.guild.vanityURLCode || client.translate.commands.guild.do_not_have;
-    let vanityURLUses = message.guild.vanityURLUses || client.translate.commands.guild.unknown;
-    let verificationLevel = message.guild.verificationLevel || client.translate.commands.guild.unknown;
-    let verified = message.guild.verified ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
-    let widgetChannelId = message.guild.widgetChannelId || client.translate.commands.guild.unknown;
-    let widgetEnabled = message.guild.widgetEnabled ? client.translate.commands.guild.on : client.translate.commands.guild.off;
+    const dateFormat = (data) => {
+        if (!data) return;
 
-    let cliAvatarURL = client.user.avatarURL();
-    let cliUsername = client.user.username;
+        const date = new Date(data);
+        const days = [
+            client.translate.commands.guild.sunday,
+            client.translate.commands.guild.monday,
+            client.translate.commands.guild.tuesday,
+            client.translate.commands.guild.wednesday,
+            client.translate.commands.guild.thursday,
+            client.translate.commands.guild.friday,
+            client.translate.commands.guild.saturday
+        ];
+        const months = [
+            client.translate.commands.guild.january,
+            client.translate.commands.guild.february,
+            client.translate.commands.guild.march,
+            client.translate.commands.guild.april,
+            client.translate.commands.guild.may,
+            client.translate.commands.guild.june,
+            client.translate.commands.guild.july,
+            client.translate.commands.guild.august,
+            client.translate.commands.guild.september,
+            client.translate.commands.guild.october,
+            client.translate.commands.guild.november,
+            client.translate.commands.guild.december
+        ];
+        
+        return client.translate.commands.guild.format_at
+            .replace("%s1", days[date.getDay()])
+            .replace("%s2", date.getDate())
+            .replace("%s3", months[date.getMonth()])
+            .replace("%s4", date.getFullYear())
+            .replace("%s5", date.getHours())
+            .replace("%s6", date.getMinutes());
+    }
 
-    let embed = new MessageEmbed()
+    const afkChannelId = message.guild.afkChannelId || client.translate.commands.guild.unknown;
+    const afkTimeout = message.guild.afkTimeout.toString() || client.translate.commands.guild.unknown;
+    const applicationId = message.guild.applicationId || client.translate.commands.guild.do_not_have;
+    const approximateMemberCount = message.guild.approximateMemberCount || client.translate.commands.guild.unknown;
+    const approximatePresenceCount = message.guild.approximatePresenceCount || client.translate.commands.guild.unknown;
+    const available = message.guild.available ? client.translate.commands.guild.available : client.translate.commands.guild.unavailable;
+    const banner = message.guild.bannerURL() || client.translate.commands.guild.do_not_have;
+    const createdAt = dateFormat(message.guild.createAt) || client.translate.commands.guild.unknown;
+    const createdTimestamp = dateFormat(message.guild.createdTimestamp) || client.translate.commands.guild.unknown;
+    const defaultMessageNotification = message.guild.defaultMessageNotification || client.translate.commands.guild.unknown;
+    const description = message.guild.description || client.translate.commands.guild.do_not_have;
+    const discoverySplash = message.guild.discoverySplashURL() || client.translate.commands.guild.do_not_have;
+    const explicitContentFilter = message.guild.explicitContentFilter || client.translate.commands.guild.unknown;
+    const features = message.guild.features.join() || client.translate.commands.guild.do_not_have;
+    const icon = message.guild.iconURL() || client.translate.commands.guild.unknown;
+    const id = message.guild.id || client.translate.commands.guild.unknown;
+    const joinedAt = dateFormat(message.guild.joinedAt) || client.translate.commands.guild.unknown;
+    const joinTimestamp = dateFormat(message.guild.joinTimestamp) || client.translate.commands.guild.unknown;
+    const large = message.guild.large ? client.translate.commands.guild.yes : client.translate.commands.guild.no;
+    const maximumMembers  = message.guild.maximumMembers.toString() || client.translate.commands.guild.unknown;
+    const maximumPresences = message.guild.maximumPresences || client.translate.commands.guild.unknown;
+    const memberCount = message.guild.memberCount.toString() || client.translate.commands.guild.unknown;
+    const mfaLevel = message.guild.mfaLevel || client.translate.commands.guild.unknown;
+    const name = message.guild.name || client.translate.commands.guild.unknown;
+    const nameAcronym = message.guild.nameAcronym || client.translate.commands.guild.do_not_have;
+    const nsfwLevel = message.guild.nsfwLevel || client.translate.commands.guild.unknown;
+    const ownerId = message.guild.ownerId || client.translate.commands.guild.unknown;
+    const partnered = message.guild.partnered ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
+    const preferredLocale = message.guild.preferredLocale || client.translate.commands.guild.unknown;
+    const premiumSubscriptionCount = message.guild.premiumSubscriptionCount.toString() || client.translate.commands.guild.unknown;
+    const premiumTier = message.guild.premiumTier || client.translate.commands.guild.unknown;
+    const publicUpdatesChannelId = message.guild.publicUpdatesChannelId || client.translate.commands.guild.unknown;
+    const rulesChannelId = message.guild.rulesChannelId || client.translate.commands.guild.unknown;
+    const splash = message.guild.splashURL() || client.translate.commands.guild.do_not_have;
+    const systemChannelId = message.guild.systemChannelId || client.translate.commands.guild.unknown;
+    const vanityURLCode = message.guild.vanityURLCode || client.translate.commands.guild.do_not_have;
+    const vanityURLUses = message.guild.vanityURLUses || client.translate.commands.guild.unknown;
+    const verificationLevel = message.guild.verificationLevel || client.translate.commands.guild.unknown;
+    const verified = message.guild.verified ? client.translate.commands.guild.yes : client.translate.commands.guild.none;
+    const widgetChannelId = message.guild.widgetChannelId || client.translate.commands.guild.unknown;
+    const widgetEnabled = message.guild.widgetEnabled ? client.translate.commands.guild.on : client.translate.commands.guild.off;
+
+    const clientUsername = client.user.username;
+    const clientAvatarURL = client.user.avatarURL();
+    const embed = new MessageEmbed()
     .setTitle(client.translate.commands.guild.server_info)
     .setDescription(client.translate.commands.guild.server_info_description)
     .setColor("BLUE")
     .setTimestamp()
-    .setFooter(client.translate.commands.guild.info_date, icon)
+    .setFooter({ "text": client.translate.commands.guild.info_date, "iconURL": icon })
     .setThumbnail(icon)
-    .setAuthor(cliUsername, cliAvatarURL, "https://maseshi.web.app/projects/shioru/")
+    .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
 
-    let info = [
+    const info = [
         "afkChannelId",
         "afkTimeout",
         "applicationId",
@@ -69,7 +104,6 @@ module.exports.run = function (client, message, args) {
         "createdAt",
         "createdTimestamp",
         "defaultMessageNotification",
-        "deleted",
         "description",
         "discoverySplash",
         "explicitContentFilter",
@@ -103,7 +137,7 @@ module.exports.run = function (client, message, args) {
         "widgetEnabled"
     ];
 
-    let infoList = [
+    const infoList = [
         { "name": client.translate.commands.guild.afk_channel_id, "value": afkChannelId, "inline": true },
         { "name": client.translate.commands.guild.afk_timeout, "value": afkTimeout, "inline": true },
         { "name": client.translate.commands.guild.application_id, "value": applicationId, "inline": true },
@@ -114,7 +148,6 @@ module.exports.run = function (client, message, args) {
         { "name": client.translate.commands.guild.create_at, "value": createdAt, "inline": true },
         { "name": client.translate.commands.guild.create_timestamp, "value": createdTimestamp, "inline": true },
         { "name": client.translate.commands.guild.default_message_notification, "value": defaultMessageNotification, "inline": true },
-        { "name": client.translate.commands.guild.deleted, "value": deleted, "inline": true },
         { "name": client.translate.commands.guild.description, "value": description, "inline": true },
         { "name": client.translate.commands.guild.discovery_splash, "value": discoverySplash, "inline": true },
         { "name": client.translate.commands.guild.explicit_content_filter, "value": explicitContentFilter, "inline": true },
@@ -148,10 +181,10 @@ module.exports.run = function (client, message, args) {
         { "name": client.translate.commands.guild.widget_enabled, "value": widgetEnabled, "inline": true }
     ];
 
-    if (input1) {
-        if (info.includes(input1)) {
+    if (inputData) {
+        if (info.includes(inputData)) {
             for (let i = 0; i < info.length; i++) {
-                if (input1 === info[i]) {
+                if (inputData === info[i]) {
                     embed.addFields(infoList[i]);
                     message.channel.send({ "embeds": [ embed ] });
                 }
@@ -163,49 +196,13 @@ module.exports.run = function (client, message, args) {
         embed.addFields(Array.from(infoList));
         message.channel.send({ "embeds": [ embed ] });
     }
-
-    function dateFormat(data) {
-        if (!data) return;
-        let date = new Date(data);
-        let days = [
-            client.translate.commands.guild.sunday,
-            client.translate.commands.guild.monday,
-            client.translate.commands.guild.tuesday,
-            client.translate.commands.guild.wednesday,
-            client.translate.commands.guild.thursday,
-            client.translate.commands.guild.friday,
-            client.translate.commands.guild.saturday
-        ];
-        let months = [
-            client.translate.commands.guild.january,
-            client.translate.commands.guild.february,
-            client.translate.commands.guild.march,
-            client.translate.commands.guild.april,
-            client.translate.commands.guild.may,
-            client.translate.commands.guild.june,
-            client.translate.commands.guild.july,
-            client.translate.commands.guild.august,
-            client.translate.commands.guild.september,
-            client.translate.commands.guild.october,
-            client.translate.commands.guild.november,
-            client.translate.commands.guild.december
-        ];
-        let formatAt = client.translate.commands.guild.format_at
-        .replace("%s1", days[date.getDay()])
-        .replace("%s2", date.getDate())
-        .replace("%s3", months[date.getMonth()])
-        .replace("%s4", date.getFullYear())
-        .replace("%s5", date.getHours())
-        .replace("%s6", date.getMinutes());
-        return formatAt;
-    };
 };
 
 module.exports.help = {
     "name": "guild",
     "description": "Get guild information",
-    "usage": "guild",
+    "usage": "guild (info)",
     "category": "information",
     "aliases": ["guildInfo", "gi", "เกี่ยวกับเซิร์ฟเวอร์"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

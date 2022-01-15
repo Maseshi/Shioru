@@ -1,7 +1,7 @@
-module.exports.run = function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.stop.no_queue);
+    if (!queue) return message.reply(client.translate.commands.stop.no_queue);
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.stop.not_owner);
     
     client.music.stop(message);
@@ -14,5 +14,5 @@ module.exports.help = {
     "usage": "stop",
     "category": "music",
     "aliases": ["st", "หยุด", "หยุดเล่น"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

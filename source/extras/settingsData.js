@@ -1,13 +1,14 @@
-const { database } = require("firebase");
+const { getDatabase, ref, child, onValue, set } = require("firebase/database");
 const catchError = require("./catchError");
 
-module.exports = function(client, message, exports) {
-    let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
+module.exports = (client, message, exports) => {
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id);
 
-    ref.child("config").on("value", function(snapshot) {   
+    onValue(child(childRef, "config"), (snapshot) => {
         if (snapshot.exists()) {
-            let prefix = snapshot.val().prefix;
-            let lang = snapshot.val().language;
+            const prefix = snapshot.val().prefix;
+            const lang = snapshot.val().language;
             
             client.config.prefix = prefix;
             client.config.lang.code = lang;
@@ -17,7 +18,7 @@ module.exports = function(client, message, exports) {
                 return exports(client, message);
             }
         } else {
-            ref.child("config").set({
+            set(child(childRef, "config"), {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
@@ -30,9 +31,10 @@ module.exports = function(client, message, exports) {
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
-            }, function(error) {
-                if (error) return catchError(client, message, "settingsData", error);
+            }).then(() => {
                 module.exports(client, message);
+            }).catch((error) => {
+                catchError(client, message, "settingsData", error);
             });
         }
     });

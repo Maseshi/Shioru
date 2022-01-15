@@ -1,18 +1,18 @@
-const { database } = require("firebase");
+const { getDatabase, ref, child, get, set } = require("firebase/database");
 const catchError = require("../../extras/catchError");
 
-module.exports = function (client, oldChannel, newChannel) {
-    let guildId = newChannel.guild.id;
+module.exports = (client, oldChannel, newChannel) => {
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
 
-    let ref = database().ref("Shioru/apps/discord/guilds").child(guildId);
-
-    ref.child("config").once("value").then(function (snapshot) {
+    get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {
-            let notifyId = snapshot.val().notification.channelUpdate;
+            const notifyId = snapshot.val().notification.channelUpdate;
 
             if (notifyId && notifyId !== 0) {
-                let guild = client.guilds.cache.find(servers => servers.id === guildId);
-                let notification = guild.channels.cache.find(channels => channels.id === notifyId);
+                const guild = client.guilds.cache.find(servers => servers.id === guildId);
+                const notification = guild.channels.cache.find(channels => channels.id === notifyId);
+
                 notification.send({
                     "embeds": [
                         {
@@ -25,7 +25,7 @@ module.exports = function (client, oldChannel, newChannel) {
                 });
             }
         } else {
-            ref.child("config").set({
+            set(child(childRef, "config"), {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
@@ -38,13 +38,11 @@ module.exports = function (client, oldChannel, newChannel) {
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
-            }).then(function () {
+            }).then(() => {
                 module.exports(client, oldChannel, newChannel);
-            }).catch(function (error) {
-                catchError(client, message, module.exports.help.name, error);
             });
         }
-    }).catch(function (error) {
-        catchError(client, message, module.exports.help.name, error);
+    }).catch((error) => {
+        catchError(client, message, "channelUpdate", error);
     });
 };

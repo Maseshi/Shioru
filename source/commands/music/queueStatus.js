@@ -1,18 +1,18 @@
-module.exports.run = function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.queueStatus.no_queue);
+    if (!queue) return message.reply(client.translate.commands.queueStatus.no_queue);
 
-    let musicPaused = client.music.paused ? client.translate.commands.queueStatus.paused : client.translate.commands.queueStatus.playing;
-    let queueVolume = queue.volume;
-    let queueFilter = queue.filter;
-    let queueRepeat = queue.repeatMode ? queue.repeatMode === 2 ? client.translate.commands.queueStatus.repeat_this_queue : client.translate.commands.queueStatus.repeat_this_song : client.translate.commands.queueStatus.repeat_off;
-    let queueAutoplay = queue.autoplay ? client.translate.commands.queueStatus.on : client.translate.commands.queueStatus.off;
-    let queueCreatedTimestamp = queue.createdTimestamp;
-    let queueAuthorUid = queue.songs[0].user.id;
-    let queueAuthorUsername = queue.songs[0].user.username;
-    let queueAuthorAvatar = queue.songs[0].user.avatar;
-    let avatarURL = "https://cdn.discordapp.com/avatars/" + queueAuthorUid + "/" + queueAuthorAvatar + ".webp";
+    const musicPaused = client.music.paused ? client.translate.commands.queueStatus.paused : client.translate.commands.queueStatus.playing;
+    const queueVolume = queue.volume;
+    const queueFilter = queue.filter;
+    const queueRepeat = queue.repeatMode ? queue.repeatMode === 2 ? client.translate.commands.queueStatus.repeat_this_queue : client.translate.commands.queueStatus.repeat_this_song : client.translate.commands.queueStatus.repeat_off;
+    const queueAutoplay = queue.autoplay ? client.translate.commands.queueStatus.on : client.translate.commands.queueStatus.off;
+    const queueCreatedTimestamp = queue.createdTimestamp;
+    const queueAuthorUid = queue.songs[0].user.id;
+    const queueAuthorUsername = queue.songs[0].user.username;
+    const queueAuthorAvatar = queue.songs[0].user.avatar;
+    const avatarURL = "https://cdn.discordapp.com/avatars/" + queueAuthorUid + "/" + queueAuthorAvatar + ".webp";
 
     message.channel.send({
         "embeds": [
@@ -21,7 +21,7 @@ module.exports.run = function (client, message, args) {
                 "color": 4886754,
                 "timestamp": queueCreatedTimestamp,
                 "footer": {
-                    "icon_url": avatarURL,
+                    "iconURL": avatarURL,
                     "text": client.translate.commands.queueStatus.owner_this_queue.replace("%s", queueAuthorUsername)
                 },
                 "fields": [
@@ -62,5 +62,5 @@ module.exports.help = {
     "usage": "queueStatus",
     "category": "music",
 	"aliases": ["qstatus", "qs", "สถานะคิว"],
-	"permissions": ["SEND_MESSAGES", "CONNECT"]
+	"clientPermissions": ["SEND_MESSAGES"]
 };

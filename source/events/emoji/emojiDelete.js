@@ -1,18 +1,16 @@
-const { database } = require("firebase");
-const catchError = require("../../extras/catchError");
+const { getDatabase, ref, child, get, set } = require("firebase/database");const catchError = require("../../extras/catchError");
 
-module.exports = function (client, emoji) {
-    let guildId = emoji.guild.id;
+module.exports = (client, emoji) => {
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
 
-    let ref = database().ref("Shioru/apps/discord/guilds").child(guildId);
-
-    ref.child("config").once("value").then(function (snapshot) {
+    get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {
-            let notifyId = snapshot.val().notification.emojiDelete;
+            const notifyId = snapshot.val().notification.emojiDelete;
 
             if (notifyId && notifyId !== 0) {
-                let guild = client.guilds.cache.find(servers => servers.id === guildId);
-                let notification = guild.channels.cache.find(channels => channels.id === notifyId);
+                const guild = client.guilds.cache.find(servers => servers.id === guildId);
+                const notification = guild.channels.cache.find(channels => channels.id === notifyId);
                 notification.send({
                     "embeds": [
                         {
@@ -25,7 +23,7 @@ module.exports = function (client, emoji) {
                 });
             }
         } else {
-            ref.child("config").set({
+            set(child(childRef, "config"), {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
@@ -38,13 +36,11 @@ module.exports = function (client, emoji) {
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
-            }).then(function () {
+            }).then(() => {
                 module.exports(client, emoji);
-            }).catch(function (error) {
-                catchError(client, message, module.exports.help.name, error);
             });
         }
-    }).catch(function (error) {
-        catchError(client, message, module.exports.help.name, error);
+    }).catch((error) => {
+        catchError(client, message, "emojiDelete", error);
     });
 };

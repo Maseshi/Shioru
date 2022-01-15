@@ -1,14 +1,14 @@
-module.exports.run = function (client, message, args) {
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.nowPlaying.no_queue);
+    if (!queue) return message.reply(client.translate.commands.nowPlaying.no_queue);
 
-    let queueName = queue.songs[0].name;
+    const queueName = queue.songs[0].name;
     
-    let duration = queue.songs[0].duration;
-    let durationCurrent = Math.floor(queue.currentTime / 1000);
-    let durationPercentage = Math.round((durationCurrent / duration) * 100);
     let durationLine;
+    const duration = queue.songs[0].duration;
+    const durationCurrent = Math.floor(queue.currentTime / 1000);
+    const durationPercentage = Math.round((durationCurrent / duration) * 100);
     if (durationPercentage >= 0 && durationPercentage <= 5) durationLine = "⚪▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬";
     if (durationPercentage >= 5 && durationPercentage <= 10) durationLine = "▬⚪▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬";
     if (durationPercentage >= 10 && durationPercentage <= 15) durationLine = "▬▬⚪▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬";
@@ -30,27 +30,27 @@ module.exports.run = function (client, message, args) {
     if (durationPercentage >= 90 && durationPercentage <= 95) durationLine = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬⚪▬";
     if (durationPercentage >= 95 && durationPercentage <= 100) durationLine = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬⚪";
     
-    let durationFormat = queue.songs[0].formattedDuration;
-    let durationCurrentFormat = queue.formattedCurrentTime;
-    let durationCount = durationCurrentFormat + " / " + durationFormat;
+    const durationFormat = queue.songs[0].formattedDuration;
+    const durationCurrentFormat = queue.formattedCurrentTime;
+    const durationCount = durationCurrentFormat + " / " + durationFormat;
 
-    let musicPaused = client.music.paused ? "▶" : "▐▐";
-    let musicAction = "◄◄⠀" + musicPaused + "⠀►►";
+    const musicPaused = client.music.paused ? "▶" : "▐▐";
+    const musicAction = "◄◄⠀" + musicPaused + "⠀►►";
 
     let musicControl;
-    let musicVolume = queue.volume;
+    const musicVolume = queue.volume;
     if (musicVolume === 0) musicControl = "○─── 🔇";
     if (musicVolume >= 0 && musicVolume <= 30) musicControl = "─○── 🔈";
     if (musicVolume >= 30 && musicVolume <= 70) musicControl = "──○─ 🔉";
     if (musicVolume >= 70 && musicVolume <= 100) musicControl = "───○ 🔊";
 
-    let musicRepeat = queue.repeatMode ? queue.repeatMode === 2 ? "🔂" : "🔁" : "";
+    const musicRepeat = queue.repeatMode ? queue.repeatMode === 2 ? "🔂" : "🔁" : "";
 
-    let musicAutoplay = queue.autoplay ? "\n" + client.translate.commands.nowPlaying.autoplay : "";
+    const musicAutoplay = queue.autoplay ? "\n" + client.translate.commands.nowPlaying.autoplay : "";
 
-    let musicFilter = queue.filter !== "clear" ? "\n" + client.translate.commands.nowPlaying.filter.replace("%s", queue.filter) : "";
+    const musicFilter = queue.filter !== "clear" ? "\n" + client.translate.commands.nowPlaying.filter.replace("%s", queue.filter) : "";
 
-    let musicDisplay = durationLine + "\n" + durationCount + " " + musicAction + " " + musicControl + " " + musicRepeat + musicAutoplay + musicFilter;
+    const musicDisplay = durationLine + "\n" + durationCount + " " + musicAction + " " + musicControl + " " + musicRepeat + musicAutoplay + musicFilter;
 
     message.channel.send({
         "embeds": [
@@ -60,7 +60,7 @@ module.exports.run = function (client, message, args) {
                 "color": 4886754,
                 "timestamp": queue.CreatedTimestamp,
                 "footer": {
-                    "icon_url": avatarURL,
+                    "iconURL": avatarURL,
                     "text": client.translate.commands.nowPlaying.owner_this_queue.replace("%s", queueAuthorUsername)
                 }
             }
@@ -74,5 +74,5 @@ module.exports.help = {
     "usage": "nowPlaying",
     "category": "music",
     "aliases": ["nowplaying", "np", "กำลังเล่น"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

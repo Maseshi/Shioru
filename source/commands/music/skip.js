@@ -1,7 +1,7 @@
-module.exports.run = function (client, message, args) {
+module.exports.run = (client, message, args) => {
     let queue = client.music.getQueue(message);
 
-    if (!queue) return message.channel.send(client.translate.commands.skip.no_queue);
+    if (!queue) return message.reply(client.translate.commands.skip.no_queue);
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.skip.not_owner);
     
     client.music.skip(message);
@@ -14,5 +14,5 @@ module.exports.help = {
     "usage": "skip",
     "category": "music",
     "aliases": ["sk", "ข้าม"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

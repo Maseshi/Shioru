@@ -1,45 +1,47 @@
-const { database } = require("firebase");
+const { getDatabase, ref, child, get, update } = require("firebase/database");
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-    let arg = args[0];
-    let amount = parseInt(args.slice(1).join(" "));
+module.exports.run = (client, message, args) => {
+    const inputMember = args[0];
+    const inputAmount = parseInt(args.slice(1).join(" "));
 
-    if (!arg) return message.reply(client.translate.commands.setLevel.empty);
-    if (!amount) return message.reply(client.translate.commands.setLevel.amount_empty);
+    if (!inputMember) return message.reply(client.translate.commands.setLevel.empty);
+    if (!inputAmount) return message.reply(client.translate.commands.setLevel.amount_empty);
     
-    let member = message.guild.members.cache.find(members => (members.user.username === arg) || (members.user.id === arg) || (members.user.tag === arg));
+    const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+    
     if (!member) return message.reply(client.translate.commands.setLevel.can_not_find_user);
 
-    let avatar = member.user.avatarURL();
-    let username = member.user.username;
-    let id = member.user.id;
+    const memberAvatar = member.user.avatarURL();
+    const memberUsername = member.user.username;
+    const memberID = member.user.id;
 
-    let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
-
-    ref.child("data/users").child(id).child("leveling").update({
-        "level": amount
-    }).then(function () {
-        ref.child("data/users").child(id).child("leveling").once("value").then(function (snapshot) {
-            let exp = snapshot.val().exp;
-            let level = snapshot.val().level;
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id)
+    update(child(child(child(childRef, "data/users"), memberID), "leveling"), {
+        "level": inputAmount
+    }).then(() => {
+        update(child(child(child(childRef, "data/users"), memberID), "leveling")).then((snapshot) => {
+            const exp = snapshot.val().exp;
+            const level = snapshot.val().level;
             
-            ref.child("config").once("value").then(function (dataSnapshot) {
+            get(child(childRef, "config")).then((dataSnapshot) => {
                 if (dataSnapshot.exists()) {
                     let notifyId = dataSnapshot.val().notification.alert;
 
                     if (notifyId) {
-                        let notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
+                        const notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
+                        
                         notification.send({
                             "embeds": [
                                 {
-                                    "description": client.translate.commands.setLevel.level_was_changed.replace("%s", username),
+                                    "description": client.translate.commands.setLevel.level_was_changed.replace("%s", memberUsername),
                                     "color": 4886754,
                                     "thumbnail": {
-                                        "url": avatar
+                                        "url": memberAvatar
                                     },
                                     "footer": {
-                                        "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                                        "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
                                         "text": client.translate.commands.setLevel.set_by_staff
                                     },
                                     "fields": [
@@ -54,16 +56,14 @@ module.exports.run = function (client, message, args) {
                                     ]
                                 }
                             ]
-                        }).then(function () {
+                        }).then(() => {
                             message.channel.send(client.translate.commands.setLevel.notification_complete);
-                        }).catch(function (error) {
-                            catchError(client, message, module.exports.help.name, error);
                         });
                     } else {
                         message.channel.send(client.translate.commands.setLevel.success);
                     }
                 } else {
-                    ref.child("config").update({
+                    update(child(childRef, "config"), {
                         "prefix": "S",
                         "language": "en",
                         "notification": {
@@ -76,19 +76,13 @@ module.exports.run = function (client, message, args) {
                             "guildMemberAdd": 0,
                             "guildMemberRemove": 0
                         }
-                    }).then(function() {
+                    }).then(() => {
                         module.exports.run(client, message, args);
-                    }).catch(function (error) {
-                        catchError(client, message, module.exports.help.name, error);
                     });
                 }
-            }).catch(function (error) {
-                catchError(client, message, module.exports.help.name, error);
             });
-        }).catch(function (error) {
-            catchError(client, message, module.exports.help.name, error);
         });
-    }).catch(function (error) {
+    }).catch((error) => {
 		catchError(client, message, module.exports.help.name, error);
 	});
 };
@@ -99,5 +93,6 @@ module.exports.help = {
     "usage": "setLevel <member<id, username, username&tag>> <amount>",
     "category": "leveling",
     "aliases": ["sLevel", "setlevel", "ตั้งค่าเลเวล"],
-    "permissions": ["SEND_MESSAGES", "MANAGE_GUILD"]
+    "userPermission": ["MANAGE_GUILD"],
+    "clientPermissions": ["SEND_MESSAGES", "MANAGE_GUILD"]
 };

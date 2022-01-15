@@ -1,30 +1,35 @@
-const fs = require("fs");
+const { readdirSync } = require("fs");
 const path = require("path");
 
-module.exports.run = function(client, message, args) {
-    let arg = args[0];
-    if (!arg) return message.reply(client.translate.commands.reload.command_required);
+module.exports.run = (client, message, args) => {
+    const inputCommand = args[0];
     
-    let commandName = arg.toLowerCase();
-    let commands = message.client.commands.get(commandName);
-    let aliases = message.client.commands.get(client.aliases.get(commandName));
-    let command = commands || aliases;
+    if (!inputCommand) return message.reply(client.translate.commands.reload.command_required);
+    
+    const commandName = inputCommand.toLowerCase();
+    const commands = message.client.commands.get(commandName);
+    const aliases = message.client.commands.get(client.aliases.get(commandName));
+    const command = commands || aliases;
     
     if (!command) return message.reply(client.translate.commands.reload.invalid_command);
     
-    fs.readdirSync(path.join(__dirname, "..")).forEach(async function (dirs) {
-        let files = fs.readdirSync(path.join(__dirname, "..", dirs));
+    readdirSync(path.join(__dirname, "..")).forEach(async (dirs) => {
+        const files = readdirSync(path.join(__dirname, "..", dirs));
+        
         if (files.includes(commandName + ".js")) {
-            let file = "../" + dirs + "/" + commandName + ".js";
+            const file = "../" + dirs + "/" + commandName + ".js";
+            
             try {
                 delete require.cache[require.resolve(file)];
                 client.commands.delete(commandName);
+                
                 const pull = require(file);
+                
                 client.commands.set(commandName, pull);
-                return message.channel.send(client.translate.commands.reload.reloaded.replace("%s", commandName));
-            } catch (err) {
-                message.channel.send(client.translate.commands.reload.reload_error.replace("%s", arg.toUpperCase()));
-                return console.log(err.stack || err);
+                message.channel.send(client.translate.commands.reload.reloaded.replace("%s", commandName));
+            } catch (error) {
+                message.channel.send(client.translate.commands.reload.reload_error.replace("%s", inputCommand.toUpperCase()));
+                console.log(error.stack || error);
             }
         }
     });
@@ -33,8 +38,8 @@ module.exports.run = function(client, message, args) {
 module.exports.help = {
     "name": "reload",
     "description": "Reload the command that doesn't work.",
-    "usage": "reload <command>",
+    "usage": "reload <command: name, aliases>",
     "category": "developer",
     "aliases": ["recommand", "รีโหลด", "โหลดซ้ำ"],
-    "permissions": "SEND_MESSAGES"
+    "clientPermissions": ["SEND_MESSAGES"]
 };

@@ -1,12 +1,17 @@
 const { joinVoiceChannel } = require("@discordjs/voice");
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
-	let arg = args.join(" ");
-	
-	if (!arg) {
-		let voiceChannel = message.member.voice.channel;
+module.exports.run = (client, message, args) => {
+	const inputChannel = args.join(" ");
+	const queue = client.music.getQueue(message);
+
+	if (queue && message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.join.another_player_is_playing);
+	if (!inputChannel) {
+		const voiceChannel = message.member.voice.channel;
+		const meChannel = message.guild.me.voice.channel;
+		
 		if (!voiceChannel) return message.reply(client.translate.commands.join.not_in_channel);
+		if (meChannel && meChannel.id === voiceChannel.id) return message.reply(client.translate.commands.join.already_joined);
 		
 		try {
 			joinVoiceChannel({
@@ -14,12 +19,14 @@ module.exports.run = function (client, message, args) {
 				"guildId": message.guild.id,
 				"adapterCreator": message.guild.voiceAdapterCreator
 			});
+
 			message.channel.send(client.translate.commands.join.joined.replace("%s", voiceChannel.name));
-		} catch (err) {
-			catchError(client, message, module.exports.help.name, err);
+		} catch (error) {
+			catchError(client, message, module.exports.help.name, error);
 		}
 	} else {
-		let channel = message.guild.channels.cache.find(channels => (channels.id === arg) || (channels.name === arg));
+		const channel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
+		
 		if (channel.type === "GUILD_TEXT") return message.reply(client.translate.commands.join.this_is_text_channel);
 		if (!channel) return message.reply(client.translate.commands.join.no_channel);
 
@@ -29,9 +36,10 @@ module.exports.run = function (client, message, args) {
 				"guildId": message.guild.id,
 				"adapterCreator": message.guild.voiceAdapterCreator
 			});
+
 			message.channel.send(client.translate.commands.join.channel_joined.replace("%s", channel.name));
-		} catch (err) {
-			catchError(client, message, module.exports.help.name, err);
+		} catch (error) {
+			catchError(client, message, module.exports.help.name, error);
 		}
 	}
 };
@@ -42,5 +50,5 @@ module.exports.help = {
 	"usage": "join (channel: name, id)",
 	"category": "music",
 	"aliases": ["j", "เข้า", "เข้าร่วม"],
-	"permissions": ["SEND_MESSAGES", "CONNECT"]
+	"clientPermissions": ["SEND_MESSAGES", "SPEAK", "CONNECT"]
 };

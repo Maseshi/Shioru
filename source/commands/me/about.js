@@ -1,4 +1,4 @@
-module.exports.run = function (client, message, args) {
+module.exports.run = (client, message, args) => {
 	message.channel.send({
 		"embeds": [
 			{
@@ -7,11 +7,11 @@ module.exports.run = function (client, message, args) {
 				"color": 14684245,
 				"timestamp": client.config.update,
 				"author": {
-					"icon_url": client.user.avatarURL(),
+					"iconURL": client.user.avatarURL(),
 					"name": client.user.username
 				},
 				"footer": {
-					"icon_url": "https://hotemoji.com/images/emoji/t/1utnwrapq218t.png",
+					"iconURL": "https://hotemoji.com/images/emoji/t/1utnwrapq218t.png",
 					"text": client.translate.commands.about.update_on
 				}
 			}
@@ -25,5 +25,5 @@ module.exports.help = {
 	"usage": "about",
 	"category": "me",
 	"aliases": ["information", "botinfo", "botInfo", "เกี่ยวกับ", "เกี่ยวกับบอท"],
-	"permissions": ["SEND_MESSAGES"]
+	"clientPermissions": ["SEND_MESSAGES"]
 };

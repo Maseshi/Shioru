@@ -1,13 +1,14 @@
-module.exports.run = function (client, message, args) {
-    let arg = args.join(" ");
-    if (!arg) return message.reply(client.translate.commands.eat.empty);
+module.exports.run = (client, message, args) => {
+    const inputUsername = args.join(" ");
     
-    let username = message.author.username;
-    let mename = client.user.username;
+    if (!inputUsername) return message.reply(client.translate.commands.eat.empty);
+    
+    const authorUsername = message.author.username;
+    const clientUsername = client.user.username;
 
-    if (arg === mename) {
-        return message.reply("...").then(function() {
-            setTimeout(function() {
+    if (inputUsername === clientUsername) {
+        return message.reply("...").then(() => {
+            setTimeout(() => {
                 message.reply(client.translate.commands.eat.do_not_eat_me);
             }, 8000);
         });
@@ -17,7 +18,7 @@ module.exports.run = function (client, message, args) {
         "embeds": [
             {
                 "color": 1,
-                "description": client.translate.commands.eat.already_eaten.replace("%s1", username).replace("%s2", arg)
+                "description": client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputUsername)
             }
         ]
     });
@@ -29,5 +30,5 @@ module.exports.help = {
     "usage": "eat <message>",
     "category": "fun",
     "aliases": ["e", "กิน"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

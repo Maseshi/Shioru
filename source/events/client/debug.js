@@ -1,3 +1,3 @@
-module.exports = function (info) {
+module.exports = (info) => {
     // console.debug(info);
 };

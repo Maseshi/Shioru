@@ -1,18 +1,18 @@
-module.exports.run = function (client, message, args) {
-    let percent = parseInt(args[0]);
-    let queue = client.music.getQueue(message);
+module.exports.run = (client, message, args) => {
+    const inputPercent = parseInt(args[0]);
+    const queue = client.music.getQueue(message);
     
-    if (!queue) return message.channel.send(client.translate.commands.volume.no_queue);
+    if (!queue) return message.reply(client.translate.commands.volume.no_queue);
 
-    let queueVolume = queue.volume;
+    const queueVolume = queue.volume;
     
     if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.volume.not_owner);
-    if (!percent) return message.reply(client.translate.commands.volume.this_volume.replace("%s", queueVolume));
-    if (percent <= 0) return message.reply(client.translate.commands.volume.too_little);
-    if (percent >= 101) return message.reply(client.translate.commands.volume.too_much);
+    if (!inputPercent) return message.reply(client.translate.commands.volume.this_volume.replace("%s", queueVolume));
+    if (inputPercent <= 0) return message.reply(client.translate.commands.volume.too_little);
+    if (inputPercent >= 101) return message.reply(client.translate.commands.volume.too_much);
 
-    client.music.setVolume(message, percent);
-    message.channel.send(client.translate.commands.volume.adjusted.replace("%s", percent));
+    client.music.setVolume(message, inputPercent);
+    message.channel.send(client.translate.commands.volume.adjusted.replace("%s", inputPercent));
 };
 
 module.exports.help = {
@@ -21,5 +21,5 @@ module.exports.help = {
     "usage": "volume <number>",
     "category": "music",
     "aliases": ["vl", "ระดับเสียง", "ระดับเพลง", "ปรับเสียง"],
-    "permissions": ["SEND_MESSAGES", "CONNECT"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

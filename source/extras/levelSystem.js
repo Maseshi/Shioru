@@ -1,50 +1,43 @@
-const { database } = require("firebase");
+const { getDatabase, ref, child, get, set, update } = require("firebase/database");
 const catchError = require("./catchError");
 
-module.exports = function (client, message) {
-    let avatar = message.author.displayAvatarURL();
-    let username = message.author.username;
+module.exports = (client, message) => {
+    const username = message.author.username;
+    const avatar = message.author.displayAvatarURL();
 
-    let ref = database().ref("Shioru/apps/discord/guilds").child(message.guild.id);
-    
-    ref.child("data/users").child(message.author.id).once("value").then(function(snapshot) {
+    const db = getDatabase();
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds/"), message.guild.id);
+    get(child(child(childRef, "data/users"), message.author.id)).then((snapshot) => {
         if (snapshot.exists()) {
             let exp = snapshot.val().leveling.exp;
             let level = snapshot.val().leveling.level;
-    
+
             if (exp >= 1000) {
-                ref.child("data/users").child(message.author.id).update({
+                update(child(child(childRef, "data/users"), message.author.id), {
                     "leveling": {
                         "exp": 0,
                         "level": ++level
                     }
-                }, function(error) {
-                    if (error) return catchError(client, message, "levelSystem", error);
-                    ref.child("config").once("value").then(function(snap) {
-                        if (snap.exists()) {
-                            let notifyId = snapshot.val().notification.alert;
-        
+                }).then(() => {
+                    get(child(childRef, "config")).then((snapshotData) => {
+                        const notifyId = snapshotData.val().notification.alert;
+
+                        if (snapshotData.exists()) {
                             if (notifyId && notifyId !== 0) {
-                                let channel = message.guild.channels.cache.find(channels => channels.id === notifyId);
-            
+                                const channel = message.guild.channels.cache.find(channels => channels.id === notifyId);
+
                                 channel.send({
-                                    "embeds": [
-                                        {
-                                            "description": client.translate.events.levelSystem.level_up.replace("%s1", username).replace("%s2", level),
-                                            "color": 16312092,
-                                            "thumbnail": {
-                                                "url": avatar
-                                            },
-                                            "author": {
-                                                "name": client.translate.events.levelSystem.congratulations,
-                                                "icon_url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/confetti-ball_1f38a.png"
-                                            }
+                                    "embeds": [{
+                                        "description": client.translate.events.levelSystem.level_up.replace("%s1", username).replace("%s2", level),
+                                        "color": 16312092,
+                                        "thumbnail": {
+                                            "url": avatar
                                         }
-                                    ]
+                                    }]
                                 });
                             }
                         } else {
-                            ref.child("config/notification").update({
+                            update(child(childRef, "config/notification"), {
                                 "alert": 0,
                                 "channelCreate": 0,
                                 "channelDelete": 0,
@@ -53,24 +46,19 @@ module.exports = function (client, message) {
                                 "emojiCreate": 0,
                                 "guildMemberAdd": 0,
                                 "guildMemberRemove": 0
-                            }, function(error) {
+                            }).then(() => {
                                 module.exports(client, message);
-                                catchError(client, message, "levelSystem", error);
                             });
                         }
-                    }).catch(function (error) {
-                        catchError(client, message, "levelSystem", error);
                     });
-                });               
+                });
             } else {
-                ref.child("data/users").child(message.author.id).child("leveling").update({
+                update(child(child(child(childRef, "data/users"), message.author.id), "leveling"), {
                     "exp": (exp += 5)
-                }, function(error) {
-                    if (error) return catchError(client, message, "settingsData", error);
                 });
             }
         } else {
-            ref.child("data/users").child(message.author.id).set({
+            set(child(child(childRef, "data/users"), message.author.id), {
                 "access": {
                     "avatar": false,
                     "info": false,
@@ -80,12 +68,11 @@ module.exports = function (client, message) {
                     "exp": 0,
                     "level": 0
                 }
-            }, function(error) {
-                if (error) return catchError(client, message, "levelSystem", error);
+            }).then(() => {
                 module.exports(client, message);
             });
         }
-    }).catch(function (error) {
+    }).catch((error) => {
         catchError(client, message, "levelSystem", error);
     });
 };

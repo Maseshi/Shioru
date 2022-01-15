@@ -1,8 +1,45 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = function (client, message, args) {
-    let input1 = args[0];
-    let input2 = args[1];
+module.exports.run = (client, message, args) => {
+    const inputInfo = args[0];
+    const inputMember = args[1];
+
+    const dateFormat = (data) => {
+        if (!data) return;
+
+        const date = new Date(data);
+        const days = [
+            client.translate.commands.guild.sunday,
+            client.translate.commands.guild.monday,
+            client.translate.commands.guild.tuesday,
+            client.translate.commands.guild.wednesday,
+            client.translate.commands.guild.thursday,
+            client.translate.commands.guild.friday,
+            client.translate.commands.guild.saturday
+        ];
+        const months = [
+            client.translate.commands.guild.january,
+            client.translate.commands.guild.february,
+            client.translate.commands.guild.march,
+            client.translate.commands.guild.april,
+            client.translate.commands.guild.may,
+            client.translate.commands.guild.june,
+            client.translate.commands.guild.july,
+            client.translate.commands.guild.august,
+            client.translate.commands.guild.september,
+            client.translate.commands.guild.october,
+            client.translate.commands.guild.november,
+            client.translate.commands.guild.december
+        ];
+
+        return client.translate.commands.guild.format_at
+            .replace("%s1", days[date.getDay()])
+            .replace("%s2", date.getDate())
+            .replace("%s3", months[date.getMonth()])
+            .replace("%s4", date.getFullYear())
+            .replace("%s5", date.getHours())
+            .replace("%s6", date.getMinutes());
+    };
 
     let avatar = message.author.avatarURL() || client.translate.commands.user.unknown;
     let bot = message.author.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
@@ -16,23 +53,22 @@ module.exports.run = function (client, message, args) {
     let tag = message.author.tag || client.translate.commands.user.unknown;
     let username = message.author.username || client.translate.commands.user.unknown;
 
-    let cliAvatarURL = client.user.avatarURL();
-    let cliUsername = client.user.username;
-
-    let embed = new MessageEmbed()
+    const clientUsername = client.user.username;
+    const clientAvatarURL = client.user.avatarURL();
+    const embed = new MessageEmbed()
     .setTitle(client.translate.commands.user.user_info)
     .setDescription("")
     .setColor("BLUE")
     .setTimestamp()
-    .setFooter(client.translate.commands.user.info_date, avatar)
+    .setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar})
     .setThumbnail(avatar)
-    .setAuthor(cliUsername, cliAvatarURL, "https://maseshi.web.app/projects/shioru/")
-
-    let member = message.guild.members.cache.find(members => 
-        ((members.user.username === input1) || (members.user.username === input2)) ||
-        ((members.user.id === input1) || (members.user.id === input2)) ||
-        ((members.user.tag === input1) || (members.user.tag === input2))
+    .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL })
+    const member = message.guild.members.cache.find(members => 
+        ((members.user.username === inputInfo) || (members.user.username === inputMember)) ||
+        ((members.user.id === inputInfo) || (members.user.id === inputMember)) ||
+        ((members.user.tag === inputInfo) || (members.user.tag === inputMember))
     );
+    
     if (member) {
         avatar = member.user.avatarURL() || client.translate.commands.user.unknown;
         bot = member.user.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
@@ -47,7 +83,7 @@ module.exports.run = function (client, message, args) {
         username = member.user.username || client.translate.commands.user.unknown;
     }
 
-    let info = [
+    const info = [
         "avatarURL",
         "bot",
         "createAt",
@@ -60,7 +96,7 @@ module.exports.run = function (client, message, args) {
         "tag",
         "username"
     ];
-    let infoList = [
+    const infoList = [
         { "name": client.translate.commands.user.avatar, "value": avatar, "inline": true },
         { "name": client.translate.commands.user.bot, "value": bot, "inline": true },
         { "name": client.translate.commands.user.created_at, "value": createdAt, "inline": true },
@@ -74,14 +110,16 @@ module.exports.run = function (client, message, args) {
         { "name": client.translate.commands.user.username, "value": username, "inline": true }
     ];
 
-    if (input1) {
-        if (input2) {
+    if (inputInfo) {
+        if (inputMember) {
             if (member) {
-                embed.setFooter("ข้อมูลของเมื่อ", avatar).setThumbnail(avatar);
+                embed
+                .setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar})
+                .setThumbnail(avatar);
                 
-                if (info.includes(input1)) {
+                if (info.includes(inputInfo)) {
                     for (let i = 0; i < info.length; i++) {
-                        if (input1 === info[i]) {
+                        if (inputInfo === info[i]) {
                             embed.addFields(infoList[i]);
                             message.channel.send({ "embeds": [ embed ] });
                         }
@@ -94,15 +132,16 @@ module.exports.run = function (client, message, args) {
             }
         } else {
             if (member) {
-                embed.setFooter(client.translate.commands.user.info_date, avatar).setThumbnail(avatar);
+                embed
+                .setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
+                .setThumbnail(avatar);
 
-                console.log(Array.from(infoList));
                 embed.addFields(Array.from(infoList));
                 message.channel.send({ "embeds": [ embed ] });
             } else {
-                if (info.includes(input1)) {
+                if (info.includes(inputInfo)) {
                     for (let i = 0; i < info.length; i++) {
-                        if (input1 === info[i]) {
+                        if (inputInfo === info[i]) {
                             embed.addFields(infoList[i]);
                             message.channel.send({ "embeds": [ embed ] });
                         }
@@ -116,42 +155,6 @@ module.exports.run = function (client, message, args) {
         embed.addFields(Array.from(infoList));
         message.channel.send({ "embeds": [ embed ] });
     }
-
-    function dateFormat(data) {
-        if (!data) return;
-        let date = new Date(data);
-        let days = [
-            client.translate.commands.guild.sunday,
-            client.translate.commands.guild.monday,
-            client.translate.commands.guild.tuesday,
-            client.translate.commands.guild.wednesday,
-            client.translate.commands.guild.thursday,
-            client.translate.commands.guild.friday,
-            client.translate.commands.guild.saturday
-        ];
-        let months = [
-            client.translate.commands.guild.january,
-            client.translate.commands.guild.february,
-            client.translate.commands.guild.march,
-            client.translate.commands.guild.april,
-            client.translate.commands.guild.may,
-            client.translate.commands.guild.june,
-            client.translate.commands.guild.july,
-            client.translate.commands.guild.august,
-            client.translate.commands.guild.september,
-            client.translate.commands.guild.october,
-            client.translate.commands.guild.november,
-            client.translate.commands.guild.december
-        ];
-        let formatAt = client.translate.commands.guild.format_at
-        .replace("%s1", days[date.getDay()])
-        .replace("%s2", date.getDate())
-        .replace("%s3", months[date.getMonth()])
-        .replace("%s4", date.getFullYear())
-        .replace("%s5", date.getHours())
-        .replace("%s6", date.getMinutes());
-        return formatAt;
-    };
 };
 
 module.exports.help = {
@@ -160,5 +163,5 @@ module.exports.help = {
     "usage": "user (info) (user)",
     "category": "guild",
     "aliases": [],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };

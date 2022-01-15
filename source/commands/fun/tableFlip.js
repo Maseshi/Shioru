@@ -1,5 +1,5 @@
-module.exports.run = function (client, message, args) {
-    let frames = [
+module.exports.run = (client, message, args) => {
+    const frames = [
         "(-°□°)-  ┬─┬",
         "(╯°□°)╯    ]",
         "(╯°□°)╯  ︵  ┻━┻",
@@ -7,9 +7,9 @@ module.exports.run = function (client, message, args) {
         "(╯°□°)╯           ┬─┬"
     ];
 
-    message.channel.send("(\\\\°□°)\\\\  ┬─┬").then(function (msg) {
-        for (let frame of frames) {
-            setTimeout(function () {
+    message.channel.send("(\\\\°□°)\\\\  ┬─┬").then((msg) => {
+        for (const frame of frames) {
+            setTimeout(() => {
                 msg.edit(frame);
             }, 1000);
         }
@@ -22,5 +22,5 @@ module.exports.help = {
     "usage": "tableFlip",
     "category": "fun",
     "aliases": ["tableflip", "tf", "atf", "ฟิบโต๊ะ"],
-    "permissions": ["SEND_MESSAGES"]
+    "clientPermissions": ["SEND_MESSAGES"]
 };
