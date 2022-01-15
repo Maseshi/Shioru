@@ -62,15 +62,26 @@
         "rip": {
             "no_image": "❎ Hey...it looks like this picture. It may have been deleted or moved to another location."
         },
+        "together": {
+            "empty": "❎ Try retyping it with one space followed by the name you want to use..Now there's ```%s```",
+            "do_not_have": "❎ ah..it doesn't have %s1 right now, or maybe not. That's it\nBut the available Together now has all %s2 entries,\n```%s3```",
+            "user_not_in_channel": "❎ Either enter one of the audio channels or just tell me the name or the channel's ID. He will be able to create the right link",
+            "not_in_text_channel": "❎ No.. you mean the audio channel. It's not a text field m...",
+            "voice_channel_not_found": "❎ Eh..but there's no voice channel on this server. Try going into the sound field and try again.",
+            "can_not_open": "❌ Umm..I can't open %s",
+            "join_via_this_link": "Join via this link. https://discord.com/invite/"
+        },
         "ban": {
+            "bot_do_not_have_permission": "❎ Um..I'm sorry. But I'm not allowed to ban members within this server.",
             "empty": "❓ Which member do you want me to deal with?",
             "user_not_found": "❎ I can't find this member. Please check again.",
-            "missing_user": "❎ Eh...Where's this member gone? Eh... or not here?",
-            "can_not_ban": "❌ I have no right to ban him. if for any reason That he did something bad to inform the owner here. What do I do now that he doesn't know...",
-            "no_reason": "**Ban member didn't give a reason**",
-            "was_banned_because": "%s has been banned because:",
-            "banned_by": "Banned by %s",
-            "member": "member"
+            "member_has_banned": "❎ This member has already been banned, so feel free.",
+            "members_have_a_higher_role": "❎ You can't ban someone above you.",
+            "members_have_a_higher_role_than_me": "❎ I can't ban that member. because he has a higher role than me",
+            "no_reason": "The ban member didn't give a reason.",
+            "banned_for_time": "%s1 has been banned for **%s2** days",
+            "permanently_banned": "%s has been permanently banned",
+            "reason_for_ban": "Ban by: %s1\nreason: %s2"
         },
         "guild": {
             "unknown": "Unknown",
@@ -95,7 +106,6 @@
             "create_at": "create on",
             "create_timestamp": "Create date",
             "default_message_notification": "Notification",
-            "deleted": "Deleted",
             "description": "Description",
             "discovery_splash": "Splash",
             "explicit_content_filter": "filtering",
@@ -155,14 +165,14 @@
             "this_product_is_free": "This product is free. Don't place it again."
         },
         "kick": {
+            "bot_do_not_have_permission": "❌ Um..I'm sorry. But I'm not allowed to kick members in this server.",
             "empty": "❓ Which member do you want me to deal with?",
             "can_not_find_user": "❎ I can't find this member. Please check again.",
-            "missing_user": "❎ Eh...Where's this member gone? Eh... or not here?",
-            "can_not_kick": "❌ I have no right to remove him from here. if for any reason That he did something bad to inform the owner here. What do I do now that he doesn't know...",
-            "no_reason": "**The member who touched it didn't give a reason**",
-            "was_kicked_because": "%s was kicked because:",
-            "kicked_by": "Kicked by %s",
-            "member": "member"
+            "members_have_a_higher_role": "❎ You can't kick someone above you.",
+            "members_have_a_higher_role_than_me": "❎ I can't kick that member. because he has a higher role than me",
+            "no_reason": "The member who kicked didn't give a reason",
+            "kicked_out": "%s kicked out",
+            "reason_for_kick": "Kicked by: %s1\nreason: %s2"
         },
         "purge": {
             "purge_instructions": "❓ How many messages should I delete? I can delete 1-100 messages",
@@ -236,6 +246,14 @@
             "dnd_status": "The number of members currently do not disturb is \n```%s```",
             "data_by_server": "Reference data from server"
         },
+        "unban": {
+            "input_member_empty": "❎ Name the person you want to unban.",
+            "no_one_gets_banned": "❎ No one on the server has been banned yet.",
+            "this_user_not_banned": "❎ Eh..that member wasn't banned. Check out some great new keywords. One more time...",
+            "no_reason": "The member who unbanned didn't give a reason.",
+            "user_has_been_unbanned": "%s has been unbanned",
+            "reason_for_unban": "Unban by: %s1\nReason: %s2\nAfter the member has been unbanned. Such members will be able to join this server normally"
+        },
         "user": {
             "unknown": "Unknown",
             "yes": "yes",
@@ -303,17 +321,16 @@
             "server_unavailable": "```🔴 This server has been temporarily disabled```",
             "last_check": "Last checked",
             "five_letter_port": "❓ The port is a 5 digit number of the server.. Please check again.",
+            "edition": "Edition",
             "address": "Address",
-            "port": "port",
+            "port": "Port",
             "do_not_have": "None",
             "not_found": "Not found",
-            "description_one": "description 1",
-            "description_two": "description_two",
-            "version": "version",
+            "motd": "Description",
+            "version": "Version",
             "maximum_player_count": "Maximum number of players",
             "player_in_server": "Player in server",
-            "mode": "mode",
-            "description": "Description"
+            "mode": "mode"
         },
         "weather": {
             "empty": "❓ ask for the position you want, eg Bangkok",
@@ -435,6 +452,8 @@
             "off": "Off"
         },
         "join": {
+            "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
+            "already_joined": "❎ Eh..but I'm here too?",
             "not_in_channel": "❓ You need to join the channel first. Otherwise I don't know which channel =3=",
             "joined": "▶️ I'm already in the `%s` field.",
             "this_is_text_channel": "Eh..that's a text field?",
@@ -450,6 +469,8 @@
             "can_not_jump": "❎ There seems to be no such queue number at all. Please check again."
         },
         "leave": {
+            "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
+            "not_in_any_channel": "❎ I'm not on any channel right now...",
             "do_not_have_channel": "❎ I don't have this channel. Is it a typo?",
             "now_leave": "◀️ I left my current channel.",
             "that_is_text_channel": "Uh..that's a text field?",
@@ -465,7 +486,7 @@
             "no_queue": "❎ There's no song I'm playing right now.",
             "detail": "📄__ Details__\n• Song: **%s1**\n• Duration: **%s2**\n• Song Link: **%s3**\n• ID Song: **%s4**"
         },
-        "noPlaying": {
+        "nowPlaying": {
             "no_queue": "❎ There's no song I'm playing right now.",
             "autoplay": "📻 Autoplay",
             "filter": "🎼 Audio filter style: %s",
@@ -572,7 +593,8 @@
             "too_little": "🔈 is too light",
             "too_much": "🔇 It's too loud...it's just the speaker alone",
             "adjusted": "🔊 Adjust the volume to: **%s**"
-        },"reboot": {
+        },
+        "reboot": {
             "not_owner": "🛑 Don't..don't. This function requires top privileges only",
             "password_is_required": "❓ Please enter a confirmation password.",
             "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
@@ -635,13 +657,16 @@
             "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
         },
         "messageCreate": {
-            "not_allowed": "🚫 It seems that you are not authorized to use this command."
+            "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**",
+            "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**"
         }
     },
     "extras": {
         "catchError": {
             "an_error_occurred": "🔴 An error occurred while processing.",
-            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n[Report a problem] (https://github.com/Maseshi/Shioru/issues/new) • [News](https://maseshi.web.app/projects/view?data=shioru&tab=news)"
+            "server_normal": "Normal",
+            "server_abnormal": "Abnormal",
+            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new) • [News](https://maseshi.web.app/projects/view?data=shioru&tab=news)"
         },
         "levelSystem": {
             "level_up": "The *%s1* class is now promoted to ```%s2```",
