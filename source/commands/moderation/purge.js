@@ -1,6 +1,6 @@
 const catchError = require("../../extras/catchError");
 
-module.exports.run = function (client, message, args) {
+module.exports.run = (client, message, args) => {
 	let messageCount = parseInt(args[0]) + 1;
 
 	if (!messageCount) return message.reply(client.translate.commands.purge.purge_instructions);
@@ -9,10 +9,10 @@ module.exports.run = function (client, message, args) {
 	
 	message.channel.messages.fetch({
 		"limit": messageCount
-	}).then(function (messages) {
+	}).then((messages) => {
 		message.channel.bulkDelete(messages, true);
 		message.channel.send(client.translate.commands.purge.message_cleared.replace("%s", messages.size));
-	}).catch(function (error) {
+	}).catch((error) => {
 		catchError(client, message, module.exports.help.name, error);
 	});
 };
@@ -20,8 +20,9 @@ module.exports.run = function (client, message, args) {
 module.exports.help = {
 	"name": "purge",
 	"description": "Delete a lot of messages",
-	"usage": "purge <amount: 1 - 100>",
+	"usage": "purge <amount>",
 	"category": "guild",
 	"aliases": ["clear", "messageDelete", "ลบข้อความ"],
-	"permissions": ["SEND_MESSAGES", "MANAGE_MESSAGES"]
+	"userPermission": ["READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"],
+	"clientPermissions": ["SEND_MESSAGES", "READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"]
 };
