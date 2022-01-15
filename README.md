@@ -1,11 +1,10 @@
 <div align="center">
-    <img src="https://maseshi.web.app/projects/shioru/assets/icons/favicon-circle.ico" width="100">
+    <img src="https://maseshi-old.web.app/projects/shioru/assets/icons/favicon-circle.ico" width="100">
     <h1>Shioru</h1>
     <img src="https://img.shields.io/badge/discord.js-v13-7354F6?logo=discord&logoColor=white&style=flat-square">
-    <img src="https://img.shields.io/david/Maseshi/Shioru?logo=node.js&logoColor=white&style=flat-square">
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square">
-    <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CITest?label=test&logo=circleci&style=flat-square">
+    <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=flat-square">
     <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=flat-square">
 </div>
 
