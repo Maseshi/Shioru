@@ -1,6 +1,9 @@
 .env
 NOTE.txt
-source/commands/developer/soundTest.js
+source/commands/guild/rank.js
+source/slash
+source/events/interaction
+source/handlers/slash.js
 
 # Logs
 logs
