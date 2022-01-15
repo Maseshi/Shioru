@@ -1,7 +1,8 @@
 {
   "name": "shioru",
-  "version": "2.0.1",
+  "version": "2.0.4",
   "description": "Manage members and servers easily with Shioru.",
+  "private": true,
   "keywords": [
     "shioru",
     "discord",
@@ -22,40 +23,40 @@
   "repository": "github:Maseshi/Shioru",
   "scripts": {
     "start": "node ./source/main.js",
-    "dev": "nodemon ./source/main.js",
-    "test": "npm install"
+    "dev": "nodemon ./source/main.js"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.6.0",
-    "@discordjs/voice": "^0.6.0",
-    "ansi-diff-stream": "^1.2.1",
-    "discord.js": "^13.1.0",
-    "distube": "^3.0.0-beta.38",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "firebase": "^8.10.0",
+    "@discordjs/opus": "^0.7.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "@discordjs/voice": "^0.7.5",
+    "discord-api-types": "^0.26.1",
+    "discord.js": "^13.6.0",
+    "distube": "^3.1.0",
+    "dotenv": "^12.0.3",
+    "express": "^4.17.2",
+    "firebase": "^9.6.3",
     "fs": "^0.0.1-security",
-    "kitsu": "^10.0.0-alpha.14",
+    "kitsu": "^10.0.0-alpha.19",
     "log-symbols": "^4.1.0",
     "lyrics-finder": "^21.7.0",
-    "minecraft-server-util": "^3.6.0",
-    "progress-string": "^1.2.2",
-    "systeminformation": "^5.8.7",
+    "minecraft-server-util": "^5.2.8",
+    "node-fetch": "^2.6.6",
+    "spinnies": "^0.3.2",
+    "systeminformation": "^5.10.0",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.15"
   },
   "optionalDependencies": {
-    "bufferutil": "^4.0.3",
-    "erlpack": "^0.1.3",
+    "bufferutil": "^4.0.6",
+    "erlpack": "^0.1.4",
     "sodium": "^3.0.2",
-    "utf-8-validate": "^5.0.5",
+    "utf-8-validate": "^5.0.8",
     "zlib-sync": "^0.1.7"
   },
   "engines": {
     "node": ">=16.6.0",
     "npm": ">=7.0.0"
-  },
-  "private": false
+  }
 }
