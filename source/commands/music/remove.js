@@ -3,7 +3,7 @@ module.exports.run = (client, message, args) => {
     const queue = client.music.getQueue(message);
 
     if (!queue) return message.reply(client.translate.commands.remove.no_queue);
-    if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.remove.not_owner);
+    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.remove.not_owner);
     if (!inputAmount) return message.reply(client.translate.commands.remove.remove_guide.replace("%s", (client.config.prefix + module.exports.help.name)));
     if (inputAmount <= 0) return message.reply(client.translate.commands.remove.too_little);
     if (inputAmount >= queue.songs.length) return message.reply(client.translate.commands.remove.too_much);

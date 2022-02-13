@@ -2,7 +2,7 @@ module.exports.run = (client, message, args) => {
     const queue = client.music.getQueue(message);
 
     if (!queue) return message.reply(client.translate.commands.resume.no_queue);
-    if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.resume.not_owner);
+    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.resume.not_owner);
     if (queue.paused) return message.reply(client.translate.commands.resume.now_playing);
 
     client.music.resume(message);

@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
     const filterList = Object.keys(client.music.filters);
 
     if (!queue) return message.reply(client.translate.commands.filter.no_queue);
-    if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.filter.not_queue_owner);
+    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.filter.not_queue_owner);
     if (!inputType) return message.reply({
         "content": client.translate.commands.filter.sound_filtering,
         "embeds": [

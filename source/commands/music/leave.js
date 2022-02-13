@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
 	const inputChannel = args.join(" ");
 	const queue = client.music.getQueue(message);
 
-	if (queue && message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.leave.another_player_is_playing);
+	if (queue && message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.leave.another_player_is_playing);
 	if (!inputChannel) {
 		const meChannel = message.guild.me.voice.channel;
 		

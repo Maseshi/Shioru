@@ -2,7 +2,7 @@ module.exports.run = (client, message, args) => {
     const queue = client.music.getQueue(message);
 
     if (!queue) return message.reply(client.translate.commands.shuffle.no_queue);
-    if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.shuffle.not_owner);
+    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.shuffle.not_owner);
     
     client.music.shuffle(message);
     message.channel.send(client.translate.commands.shuffle.now_shuffle);

@@ -19,7 +19,11 @@ module.exports.run = (client, message, args) => {
             "guildId": message.guild.id,
             "adapterCreator": message.guild.voiceAdapterCreator
         });
-        client.music.play(message, inputSearch);
+        client.music.play(voiceChannel, inputSearch, {
+            "member": message.member,
+            "textChannel": message.channel,
+            message
+        });
     } catch (error) {
         const connection = getVoiceConnection(voiceChannel.guild.id);
 		

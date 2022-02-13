@@ -6,7 +6,7 @@ module.exports.run = (client, message, args) => {
 
     const queueVolume = queue.volume;
     
-    if (message.author.id !== queue.songs[0].user.id) return message.reply(client.translate.commands.volume.not_owner);
+    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.volume.not_owner);
     if (!inputPercent) return message.reply(client.translate.commands.volume.this_volume.replace("%s", queueVolume));
     if (inputPercent <= 0) return message.reply(client.translate.commands.volume.too_little);
     if (inputPercent >= 101) return message.reply(client.translate.commands.volume.too_much);
