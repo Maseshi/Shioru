@@ -63,6 +63,7 @@ client.translate = language;
 client.music = new DisTube(client, {
     "leaveOnStop": false,
     "youtubeIdentityToken": client.config.server.apiKey,
+    "youtubeDL": false,
     "updateYouTubeDL": false,
     "customFilters": {
         "3d": "apulsator=hz=0.125",
