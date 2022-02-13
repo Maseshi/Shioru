@@ -3,7 +3,7 @@ const catchError = require("../../extras/catchError");
 
 module.exports = (client, oldEmoji, newEmoji) => {
     const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), emoji.guild.id);
 
     get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {

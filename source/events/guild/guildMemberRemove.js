@@ -5,7 +5,7 @@ module.exports = (client, member) => {
     if (member.user.bot) return;
 
 	const db = getDatabase();
-	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
+	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), member.guild.id);
 
 	get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {

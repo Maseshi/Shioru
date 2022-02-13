@@ -3,7 +3,7 @@ const catchError = require("../../extras/catchError");
 
 module.exports = (client, oldChannel, newChannel) => {
     const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), newChannel.guild.id);
 
     get(child(childRef, "config")).then((snapshot) => {
         if (snapshot.exists()) {
