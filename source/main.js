@@ -1,5 +1,8 @@
 const { Client } = require("discord.js");
 const { DisTube } = require("distube");
+const { SpotifyPlugin } = require("@distube/spotify");
+const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { YtDlpPlugin } = require("@distube/yt-dlp")
 const { initializeApp } = require("firebase/app");
 const { readdirSync } = require("fs");
 const config = require("./config/data");
@@ -58,9 +61,15 @@ const client = new Client({
 });
 
 // Configure in client
+client.temp = {};
 client.config = config;
 client.translate = language;
 client.music = new DisTube(client, {
+    "plugins": [
+        new SpotifyPlugin(),
+        new SoundCloudPlugin(),
+        new YtDlpPlugin()
+    ],
     "leaveOnStop": false,
     "youtubeIdentityToken": client.config.server.apiKey,
     "youtubeDL": false,
@@ -99,5 +108,9 @@ client.music = new DisTube(client, {
 
 // Read the code in the handlers.
 readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
+
+// Start connecting to the server.
 initializeApp(client.config.server);
+
+// Start logging in and working
 client.login(client.config.token);
