@@ -1,7 +1,13 @@
 const { getDatabase, ref, child, get, set } = require("firebase/database");
+const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
 module.exports = (client, oldEmoji, newEmoji) => {
+    if (client.config.mode === "production") {
+        settingsData(client, newEmoji, module.exports);
+        if (client.config.worker !== 1) return;
+    }
+
     const db = getDatabase();
     const childRef = child(ref(db, "Shioru/apps/discord/guilds"), emoji.guild.id);
 
@@ -10,8 +16,10 @@ module.exports = (client, oldEmoji, newEmoji) => {
             const notifyId = snapshot.val().notification.emojiUpdate;
 
             if (notifyId && notifyId !== 0) {
-                const guild = client.guilds.cache.find(servers => servers.id === guildId);
-                const notification = guild.channels.cache.find(channels => channels.id === notifyId);
+                const notification = newEmoji.guild.channels.cache.find(channels => channels.id === notifyId);
+
+                if (!notification) return;
+
                 notification.send({
                     "embeds": [
                         {
@@ -34,6 +42,8 @@ module.exports = (client, oldEmoji, newEmoji) => {
                     "channelPinsUpdate": 0,
                     "channelUpdate": 0,
                     "emojiCreate": 0,
+                    "emojiDelete": 0,
+                    "emojiUpdate": 0,
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
@@ -42,6 +52,6 @@ module.exports = (client, oldEmoji, newEmoji) => {
             });
         }
     }).catch((error) => {
-        catchError(client, message, "emojiUpdate", error);
+        catchError(client, newEmoji.guild.systemChannel, "emojiUpdate", error);
     });
 };

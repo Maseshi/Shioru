@@ -1,7 +1,13 @@
 const { getDatabase, ref, child, get, set } = require("firebase/database");
+const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
 module.exports = (client, channel) => {
+    if (client.config.mode === "production") {
+        settingsData(client, channel, module.exports);
+        if (client.config.worker !== 1) return;
+    }
+
     const db = getDatabase();
     const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
 
@@ -10,9 +16,10 @@ module.exports = (client, channel) => {
             const notifyId = snapshot.val().notification.channelCreate;
 
             if (notifyId && notifyId !== 0) {
-                const guild = client.guilds.cache.find(servers => servers.id === guildId);
-                const notification = guild.channels.cache.find(channels => channels.id === notifyId);
+                const notification = channel.guild.channels.cache.find(channels => channels.id === notifyId);
                 
+                if (!notification) return;
+
                 notification.send({
                     "embeds": [{
                         "title": client.translate.events.channelCreate.system_notification,
@@ -33,6 +40,8 @@ module.exports = (client, channel) => {
                     "channelPinsUpdate": 0,
                     "channelUpdate": 0,
                     "emojiCreate": 0,
+                    "emojiDelete": 0,
+                    "emojiUpdate": 0,
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
@@ -41,6 +50,6 @@ module.exports = (client, channel) => {
             });
         }
     }).catch((error) => {
-		catchError(client, message, "channelCreate", error);
+		catchError(client, channel, "channelCreate", error);
 	});
 };
