@@ -1,19 +1,33 @@
 const discord = require("discord.js");
 const packages = require("../../package.json");
+const { createWriteStream } = require("fs");
+const { format } = require("util");
 
 module.exports = (client) => {
-    const dateTime = (date) => {
+    const logDateTime = (date) => {
+        const minutes = date.getMinutes();
+        const hours = date.getHours();
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const day = date.getDay();
+
+        return "_" + year + "-" + month + "-" + day + "_" + hours + "-" + minutes
+    };
+    const consoleDateTime = (date) => {
         const day = date.getDay();
         const month = date.getMonth();
         const year = date.getFullYear();
         const hours = date.getHours();
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
+
         return "\u001b[1m[" + day + "-" + month + "-" + year + "." + hours + ":" + minutes + ":" + seconds + "]\u001b[0m"
-    }
+    };
 
     process.on("unhandledRejection", (reason, promise) => {
-        console.group(dateTime(new Date()) + " :: \u001b[41;1mUnhandled Rejection/Catch\u001b[0m");
+        const file = createWriteStream(__dirname + "../../logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
+
+        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUnhandled Rejection/Catch\u001b[0m");
             console.group("\u001b[1mFull Error:\u001b[0m ");
                 console.error(reason);
                 console.error(promise);
@@ -24,10 +38,14 @@ module.exports = (client) => {
             console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
             console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
         console.groupEnd();
+
+        file.write(format(reason, promise) + "\n");
     });
 
     process.on("uncaughtException", (err, origin) => {
-        console.group(dateTime(new Date()) + " :: \u001b[41;1mUncaught Exception/Catch\u001b[0m");
+        const file = createWriteStream(__dirname + "../../logs/" + year + "-" + month + "-" + day + "-process.log", { "flags" : "w" });
+
+        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUncaught Exception/Catch\u001b[0m");
             console.group("\u001b[1mFull Error:\u001b[0m ");
                 console.error(err);
                 console.error(origin);
@@ -38,10 +56,20 @@ module.exports = (client) => {
             console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
             console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
         console.groupEnd();
+
+        file.write(format(err, origin) + "\n");
     });
 
     process.on("multipleResolves", (type, promise, reason) => {
-        console.group(dateTime(new Date()) + " :: \u001b[41;1mMultiple Resolves\u001b[0m");
+        const file = createWriteStream(__dirname + "../../logs/" + year + "-" + month + "-" + day + "-process.log", { "flags" : "w" });
+
+        switch (reason.toLocaleString()) {
+            case "":
+            case "Error: Cannot perform IP discovery - socket closed":
+            return;
+        }
+
+        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mMultiple Resolves\u001b[0m");
             console.group("\u001b[1mFull Error:\u001b[0m ");
                 console.error(type);
                 console.error(promise);
@@ -54,5 +82,7 @@ module.exports = (client) => {
             console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
             console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
         console.groupEnd();
+
+        file.write(format(type, promise, reason) + "\n");
     });
 };
