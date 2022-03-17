@@ -3,8 +3,8 @@ const catchError = require("../../extras/catchError");
 const levelSystem = require("../../extras/levelSystem");
 const settingsData = require("../../extras/settingsData");
 
-module.exports = (client, message) => {
-    let command;
+module.exports = async (client, message) => {
+    let command = "";
     const mentions = [
         client.user.id,
         client.user.username,
@@ -13,6 +13,8 @@ module.exports = (client, message) => {
         client.user.tag.toLowerCase(),
         "<@!" + client.user.id + ">"
     ];
+    const round = 3;
+    const defaultPrefix = "S";
     const prefix = client.config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
@@ -23,9 +25,25 @@ module.exports = (client, message) => {
         settingsData(client, message, module.exports);
         if (client.config.worker !== 1) return;
 
-        levelSystem(client, message);
+        levelSystem(client, message, "POST", 123);
     }
+    if (message.content.startsWith(defaultPrefix)) {
+        if (cmd.length) {
+            if (client.commands.has(cmd)) command = client.commands.get(cmd);
+            if (client.aliases.has(cmd)) command = client.commands.get(client.aliases.get(cmd));
+            if (command) {
+                if (!client.temp.round) client.temp.round = 0;
+                if (defaultPrefix !== prefix) {
+                    client.temp.round += 1;
 
+                    if (client.temp.round >= round) {
+                        client.temp.round = 0;
+                        message.reply(client.translate.events.messageCreate.forgot_the_prefix.replace("%s1", prefix).replace("%s2", prefix));
+                    }
+                }
+            }
+        }
+    }
     if (message.content.startsWith(prefix)) {
         if (!cmd.length) return;
         if (client.commands.has(cmd)) command = client.commands.get(cmd);
@@ -41,7 +59,7 @@ module.exports = (client, message) => {
             }
         }
 
-        // Check the permissions of the command for the bots.
+        // Check the permissions of the command for the bot.
         if (command.help.clientPermissions) {
             if (!message.guild.me.permissions.has(command.help.clientPermissions)) {
                 return message.reply(client.translate.events.messageCreate.client_is_not_allowed).replace("%s", command.help.clientPermissions.join());
