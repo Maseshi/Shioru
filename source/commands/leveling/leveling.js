@@ -1,7 +1,6 @@
-const { getDatabase, ref, child, get } = require("firebase/database");
-const catchError = require("../../extras/catchError");
+const levelSystem = require("../../extras/levelSystem");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const inputMember = args.join(" ");
     let authorAvatar = message.author.displayAvatarURL();
     let authorID = message.author.id;
@@ -15,34 +14,34 @@ module.exports.run = (client, message, args) => {
         authorID = member.user.id;
     }
 
-    const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id);
-    get(child(child(childRef, "data/users"), authorID)).then((snapshot) => {
-        if (!snapshot.exists()) return message.reply(client.translate.commands.leveling.user_no_data);
+    const data = await levelSystem(client, message, "GET", authorID);
 
-        const exp = snapshot.val().leveling.exp;
-        const level = snapshot.val().leveling.level;
+    if (!data) return message.reply(client.translate.commands.leveling.user_no_data);
 
-        message.channel.send({
-            "embeds": [{
+    const exp = data.exp;
+    const level = data.level;
+    const nextEXP = data.nextEXP;
+
+    message.channel.send({
+        "embeds": [
+            {
                 "title": client.translate.commands.leveling.your_experience,
                 "color": 4886754,
                 "thumbnail": {
                     "url": authorAvatar
                 },
-                "fields": [{
+                "fields": [
+                    {
                         "name": client.translate.commands.leveling.level,
                         "value": "```" + level + "```"
                     },
                     {
                         "name": client.translate.commands.leveling.experience,
-                        "value": "```" + exp + "```"
+                        "value": "```" + exp + "/" + nextEXP + "```"
                     }
                 ]
-            }]
-        });
-    }).catch((error) => {
-        catchError(client, message, module.exports.help.name, error);
+            }
+        ]
     });
 };
 

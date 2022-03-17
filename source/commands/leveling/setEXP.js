@@ -1,7 +1,6 @@
-const { getDatabase, ref, child, get, update } = require("firebase/database");
-const catchError = require("../../extras/catchError");
+const levelSystem = require("../../extras/levelSystem");
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const inputMember = args[0];
     const inputAmount = parseInt(args.slice(1).join(" "));
 
@@ -16,75 +15,45 @@ module.exports.run = (client, message, args) => {
     const memberUsername = member.user.username;
     const memberID = member.user.id;
 
-    const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id)
-    update(child(child(child(childRef, "data/users"), memberID), "leveling"), {
-        "exp": inputAmount
-    }).then(() => {
-        get(child(child(child(childRef, "data/users"), memberID), "leveling")).then((snapshot) => {
-            const exp = snapshot.val().exp;
-            const level = snapshot.val().level;
-            
-            get(child(childRef, "config")).then((dataSnapshot) => {
-                if (dataSnapshot.exists()) {
-                    const notifyId = dataSnapshot.val().notification.alert;
+    const data = await levelSystem(client, message, "PUT", memberID, inputAmount);
+    
+    const exp = data.exp;
+    const level = data.level;
+    const notify = data.notify;
+    const status = data.status;
 
-                    if (notifyId) {
-                        const notification = message.guild.channels.cache.find(channels => channels.id === notifyId);
-                        
-                        notification.send({
-                            "embeds": [
-                                {
-                                    "description": client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername),
-                                    "color": 4886754,
-                                    "thumbnail": {
-                                        "url": memberAvatar
-                                    },
-                                    "footer": {
-                                        "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                                        "text": client.translate.commands.setEXP.set_by_staff
-                                    },
-                                    "fields": [
-                                        {
-                                            "name": client.translate.commands.setEXP.level,
-                                            "value": "```" + level + "```"
-                                        },
-                                        {
-                                            "name": client.translate.commands.setEXP.experience,
-                                            "value": "```" + exp + "```"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }).then(() => {
-                            message.channel.send(client.translate.commands.setEXP.notification_complete);
-                        });
-                    } else {
-                        message.channel.send(client.translate.commands.setEXP.success);
-                    }
-                } else {
-                    update(child(childRef, "config"), {
-                        "prefix": "S",
-                        "language": "en",
-                        "notification": {
-                            "alert": 0,
-                            "channelCreate": 0,
-                            "channelDelete": 0,
-                            "channelPinsUpdate": 0,
-                            "channelUpdate": 0,
-                            "emojiCreate": 0,
-                            "guildMemberAdd": 0,
-                            "guildMemberRemove": 0
+    if (status === "error") return message.reply(client.translate.commands.setEXP.error);
+    if (notify) {
+        await notify.send({
+            "embeds": [
+                {
+                    "description": client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername),
+                    "color": 4886754,
+                    "thumbnail": {
+                        "url": memberAvatar
+                    },
+                    "footer": {
+                        "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
+                        "text": client.translate.commands.setEXP.set_by_staff
+                    },
+                    "fields": [
+                        {
+                            "name": client.translate.commands.setEXP.level,
+                            "value": "```" + level + "```"
+                        },
+                        {
+                            "name": client.translate.commands.setEXP.experience,
+                            "value": "```" + exp + "```"
                         }
-                    }).then(() => {
-                        module.exports.run(client, message, args);
-                    });
+                    ]
                 }
-            });
+            ]
         });
-    }).catch((error) => {
-		catchError(client, message, module.exports.help.name, error);
-	});
+
+        message.channel.send(client.translate.commands.setEXP.notification_complete);
+    } else {
+        message.channel.send(client.translate.commands.setEXP.success);
+    }
 };
 
 module.exports.help = {

@@ -1,67 +1,56 @@
 const { MessageEmbed } = require("discord.js");
-const { getDatabase, ref, child, get } = require("firebase/database");
-const catchError = require("../../extras/catchError");
+const levelSystem = require("../../extras/levelSystem");
 
-module.exports.run = (client, message) => {
-    const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id);
-    get(child(childRef, "data/users")).then((snapshot) => {
-        if (snapshot.exists()) {
-            const map = [];
-            const max = 10;
-            
-            snapshot.forEach((data) => {
-                const member = message.guild.members.cache.find(members => (members.id === data.key));
-                
-                if (!member) return message.reply(client.translate.commands.levelingBoard.can_not_find_user);
+module.exports.run = async (client, message) => {
+    const map = [];
+    const max = 10;
+    const clientAvatar = client.user.avatarURL();
+    const data = await levelSystem(client, message, "GET/ALL");
 
-                const memberUsername = member.user.username;
-                const exp = data.val().leveling.exp;
-                const level = data.val().leveling.level;
+    if (!data) return message.channel.send(client.translate.commands.levelingBoard.no_info);
+    
+    data.forEach((snapshot) => {
+        const member = message.guild.members.cache.find(members => (members.id === snapshot.key));
+        
+        if (!member) return message.reply(client.translate.commands.levelingBoard.can_not_find_user);
 
-                const jsonMap = {
-                    "data": {
-                        "exp": exp,
-                        "level": level
-                    },
-                    "name": memberUsername,
-                    "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
-                };
-                map.push(jsonMap);
-            });
-            
-            map.sort((a, b) => {
-                return b.data.level - a.data.level || b.data.exp - a.data.exp;
-            });
-
-            const user = message.guild.members.cache.find(members => (members.user.username === map[0].name));
-            const clientAvatar = client.user.avatarURL();
-            const userAvatar = user.user.displayAvatarURL();
-
-            for (let i = 0; i < map.length; i++) {
-                if (!map[i]) return;
-                delete map[i].data;
-
-                map[i].name = (i + 1) + ". " + map[i].name;
-            }
-            
-            if (map.length >= max) map.length = max;
-
-            const embed = new MessageEmbed()
-            .setColor("#E01055")
-            .setTitle(client.translate.commands.levelingBoard.server_rank)
-            .setAuthor({ "name": client.user.username, "iconURL": clientAvatar })
-            .setThumbnail(userAvatar)
-            .setDescription(client.translate.commands.levelingBoard.server_rank_description)
-            .addFields(map)
-            .setTimestamp()
-            .setFooter({ "text": client.translate.commands.levelingBoard.server_rank_tips, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png" });
-            
-            return message.channel.send({ "embeds": [ embed ] });
-        }
-    }).catch((error) => {
-        catchError(client, message, module.exports.help.name, error);
+        const exp = snapshot.val().leveling.exp;
+        const level = snapshot.val().leveling.level;
+        
+        map.push({
+            "data": {
+                "exp": exp,
+                "level": level,
+                "avatar": member.user.displayAvatarURL()
+            },
+            "name": member.user.username,
+            "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
+        });
     });
+    
+    map.sort((userA, userB) =>  userB.data.level - userA.data.level || userB.data.exp - userA.data.exp);
+
+    const userAvatar = map[0].data.avatar;
+
+    for (let i = 0; i < map.length; i++) {
+        if (!map[i]) return;
+        if (i === max) return;
+        
+        delete map[i].data;
+        map[i].name = (i + 1) + ". " + map[i].name;
+    }
+
+    const embed = new MessageEmbed()
+    .setColor("#E01055")
+    .setTitle(client.translate.commands.levelingBoard.server_rank)
+    .setAuthor({ "name": client.user.username, "iconURL": clientAvatar })
+    .setThumbnail(userAvatar)
+    .setDescription(client.translate.commands.levelingBoard.server_rank_description)
+    .addFields(map)
+    .setTimestamp()
+    .setFooter({ "text": client.translate.commands.levelingBoard.server_rank_tips, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png" });
+    
+    message.channel.send({ "embeds": [ embed ] });
 };
 
 module.exports.help = {
