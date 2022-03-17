@@ -1,14 +1,12 @@
 const { info } = require("log-symbols");
-const express = require("express");
-const app = express();
+const http = require("http");
 const port = 8080;
 
 module.exports = (client) => {
-    app.get("/", (req, res) => {
-        res.send("Copyright (c) 2020-2022 Maseshi(Chaiwat Suwannarat). All rights reserved.")
-    });
-    
-    app.listen(port, () => {
+    http.createServer((req, res) => {
+        res.write("Copyright (c) 2020-2022 Maseshi(Chaiwat Suwannarat). All rights reserved.");
+        res.end();
+    }).listen(port, () => {
         console.log(info + " Remote monitoring is now available at http://localhost:" + port);
     });
 };
