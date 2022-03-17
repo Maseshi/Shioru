@@ -1,9 +1,9 @@
 const { getDatabase, ref, child, onValue, set } = require("firebase/database");
 const catchError = require("./catchError");
 
-module.exports = (client, message, exports) => {
+module.exports = (client, data, exports) => {
     const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), message.guild.id);
+    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), (data.guild.id || data.id));
 
     onValue(child(childRef, "config"), (snapshot) => {
         if (snapshot.exists()) {
@@ -15,7 +15,7 @@ module.exports = (client, message, exports) => {
             client.translate = require("../languages/" + lang + ".json");
             if (!client.config.worker) {
                 client.config.worker = 1;
-                return exports(client, message);
+                return exports(client, data);
             }
         } else {
             set(child(childRef, "config"), {
@@ -28,13 +28,15 @@ module.exports = (client, message, exports) => {
                     "channelPinsUpdate": 0,
                     "channelUpdate": 0,
                     "emojiCreate": 0,
+                    "emojiDelete": 0,
+                    "emojiUpdate": 0,
                     "guildMemberAdd": 0,
                     "guildMemberRemove": 0
                 }
             }).then(() => {
-                module.exports(client, message);
+                module.exports(client, data);
             }).catch((error) => {
-                catchError(client, message, "settingsData", error);
+                catchError(client, data, "settingsData", error);
             });
         }
     });
