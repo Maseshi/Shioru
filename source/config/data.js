@@ -2,14 +2,16 @@ const support = require("./languages.json");
 require("dotenv").config();
 
 module.exports = {
-    // Available: production, development
-    "mode": "production",
-    "prefix": "S",
-    "token": process.env.TOKEN || $TOKEN,
     "guild": process.env.GUILD || $GUILD,
+    "lang": {
+        "code": "en",
+        "support": support
+    },
+    // Available: [production, development]
+    // If in development mode Some features will not work.
+    "mode": "development",
     "owner": "618836889239158785",
-    "update": "2021-02-26T20:08:27.467Z",
-    "password": process.env.PASSWORD || $PASSWORD,
+    "prefix": "S",
     "server": {
         "apiKey": process.env.API_KEY || $API_KEY,
         "authDomain": process.env.AUTH_DOMAIN || $AUTH_DOMAIN,
@@ -20,8 +22,6 @@ module.exports = {
         "appId": process.env.APP_ID || $APP_ID,
         "measurementId": process.env.MEASUREMENT_ID || $MEASUREMENT_ID
     },
-    "lang": {
-        "code": "en",
-        "support": support
-    }
+    "token": process.env.TOKEN || $TOKEN,
+    "update": "2021-02-26T20:08:27.467Z"
 };
