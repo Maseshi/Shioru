@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 const packages = require("../../package.json");
-const { createWriteStream } = require("fs");
+const { createWriteStream, existsSync, mkdirSync } = require("fs");
 const { format } = require("util");
 
 module.exports = (client) => {
@@ -25,7 +25,11 @@ module.exports = (client) => {
     };
 
     process.on("unhandledRejection", (reason, promise) => {
-        const file = createWriteStream(__dirname + "../../logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
+        const dir = "./source/logs/";
+
+        if (!existsSync(dir)) mkdirSync(dir);
+
+        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
 
         console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUnhandled Rejection/Catch\u001b[0m");
             console.group("\u001b[1mFull Error:\u001b[0m ");
@@ -38,12 +42,16 @@ module.exports = (client) => {
             console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
             console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
         console.groupEnd();
-
+        
         file.write(format(reason, promise) + "\n");
     });
 
     process.on("uncaughtException", (err, origin) => {
-        const file = createWriteStream(__dirname + "../../logs/" + year + "-" + month + "-" + day + "-process.log", { "flags" : "w" });
+        const dir = "./source/logs/";
+
+        if (!existsSync(dir)) mkdirSync(dir);
+
+        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
 
         console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUncaught Exception/Catch\u001b[0m");
             console.group("\u001b[1mFull Error:\u001b[0m ");
@@ -61,7 +69,11 @@ module.exports = (client) => {
     });
 
     process.on("multipleResolves", (type, promise, reason) => {
-        const file = createWriteStream(__dirname + "../../logs/" + year + "-" + month + "-" + day + "-process.log", { "flags" : "w" });
+        const dir = "./source/logs/";
+
+        if (!existsSync(dir)) mkdirSync(dir);
+
+        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
 
         switch (reason.toLocaleString()) {
             case "":
