@@ -1,32 +1,37 @@
-const { getDatabase, ref, child, get, set } = require("firebase/database");
-const catchError = require("../../extras/catchError");
+const { getDatabase, ref, update, onValue } = require("firebase/database");
+const chatSystem = require("../../extras/chatSystem");
 const levelSystem = require("../../extras/levelSystem");
 const settingsData = require("../../extras/settingsData");
+const catchError = require("../../extras/catchError");
+const ansiColor = require("../../extras/ansiColor")
 
-module.exports = async (client, message) => {
-    let command = "";
-    const mentions = [
-        client.user.id,
-        client.user.username,
-        client.user.username.toLowerCase(),
-        client.user.tag,
-        client.user.tag.toLowerCase(),
-        "<@!" + client.user.id + ">"
-    ];
+module.exports = async (message) => {
+    const client = message.client;
+    
     const round = 3;
     const defaultPrefix = "S";
+    
+    let command = "";
+    const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const prefix = client.config.prefix;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
+    const clearStyle = ansiColor(0, "sgr");
+    const underlineStyle = ansiColor(4, "sgr");
+    const blueBrightColor = ansiColor(33, "foreground");
+
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
-    if (client.config.mode === "production") {
-        settingsData(client, message, module.exports);
-        if (client.config.worker !== 1) return;
+    if (client.mode === "start") {
+        settingsData(client, message.guild, module.exports);
+        if (client.temp.set !== 1) return;
 
         levelSystem(client, message, "POST", 123);
     }
+    if (mentioned) chatSystem(client, message, mentioned, args);
+
+    // When the members forget the prefix, inform the prefix.
     if (message.content.startsWith(defaultPrefix)) {
         if (cmd.length) {
             if (client.commands.has(cmd)) command = client.commands.get(cmd);
@@ -36,6 +41,7 @@ module.exports = async (client, message) => {
                 if (defaultPrefix !== prefix) {
                     client.temp.round += 1;
 
+                    // If the correct order is printed, each prefix is incorrect, 3 times, immediately alert.
                     if (client.temp.round >= round) {
                         client.temp.round = 0;
                         message.reply(client.translate.events.messageCreate.forgot_the_prefix.replace("%s1", prefix).replace("%s2", prefix));
@@ -44,14 +50,19 @@ module.exports = async (client, message) => {
             }
         }
     }
+
     if (message.content.startsWith(prefix)) {
         if (!cmd.length) return;
         if (client.commands.has(cmd)) command = client.commands.get(cmd);
         if (client.aliases.has(cmd)) command = client.commands.get(client.aliases.get(cmd));
-        if (!command) return console.log("\u001b[4m" + message.author.username + "\u001b[0m Type an unknown command: \u001b[34m" + cmd + "\u001b[0m");
+        if (!command) return console.log(underlineStyle + message.author.username + clearStyle + " Type an unknown command: " + blueBrightColor + cmd + clearStyle);
+        if (!client.temp.round) client.temp.round = 0;
+
+        // If the members remember the prefix, then start counting again.
+        client.temp.round = 0;
         
         message.channel.sendTyping();
-        
+
         // Check the permissions of the command for the user.
         if (command.help.userPermissions) {
             if (!message.member.permissions.has(command.help.userPermissions)) {
@@ -66,68 +77,27 @@ module.exports = async (client, message) => {
             }
         }
 
-        command.run(client, message, args);
-    } else if (mentions.includes(message.content)) {
-        const db = getDatabase();
-        const childRef = ref(db, "Shioru/data")
-        const mention = mentions.filter(string => string.includes(message.content)).join();
-        const arg = message.content.slice(mention.length).trim();
-        
-        // When a bot is tagged and asked a question
-        if (arg) {
-            get(child(child(childRef, "words/messages"), arg)).then((snapshot) => {
+        // Stores information when the bot is working properly.
+        if (client.mode === "start") {
+            onValue(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
                 if (snapshot.exists()) {
-                    const answer = snapshot.val().answer;
-                    const commands = snapshot.val().cmd;
+                    let working = snapshot.val();
 
-                    if (!answer && commands) {
-                        message.channel.sendTyping();
-                        return client.commands.get(commands).run(client, message, args);
-                    } else if (answer) {
-                        message.channel.sendTyping();
-                        const randomWords = Math.floor(Math.random() * answer.length);
-
-                        return message.channel.send(answer[randomWords]);
-                    }
+                    update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        "working": (working + 1)
+                    });
                 } else {
-                    set(child(childRef, "words/messages"), {
-                        "hi": {
-                            "status": 1,
-                            "answer": "Hello"
-                        },
-                        "How to use commands": {
-                            "status": 0,
-                            "cmd": "help"
-                        }
-                    }).then(() => {
-                        module.exports(client, message);
+                    update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        "working": 1
                     });
                 }
-            }).catch((error) => {
-                catchError(client, message, "messageCreate", error);
-            })
+            });
         }
 
-        // When the bot is tagged
-        if (mention === message.content) {
-            get(child(childRef, "words/tags")).then((snapshot) => {
-                if (snapshot.exists()) {
-                    const tags = snapshot.val();
-
-                    message.channel.sendTyping();
-                    const randomWords = Math.floor(Math.random() * tags.length);
-                    
-                    return message.channel.send(tags[randomWords]);
-                } else {
-                    set(child(childRef, "words/tags"), [
-                        "What's wrong?"
-                    ]).then(() => {
-                        module.exports(client, message);
-                    });
-                }
-            }).catch((error) => {
-                catchError(client, message, "messageCreate", error);
-            });
+        try {
+            command.run(client, message, args);
+        } catch(error) {
+            catchError(client, message, command.help.name, error);
         }
     }
 };
