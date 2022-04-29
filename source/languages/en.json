@@ -2,7 +2,7 @@
     "commands": {
         "about": {
             "my_profile": "My Profile",
-            "my_profile_detail": "My name is %s, born on Sunday June 21, 2019. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2021 Chaiwat Suwannarat. All rights reserved.",
+            "my_profile_detail": "My name is %s, born on Sunday June 21. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
             "update_on": "update on"
         },
         "anime": {
@@ -32,6 +32,7 @@
         "ban": {
             "banned_for_time": "%s1 has been banned for **%s2** days",
             "bot_do_not_have_permission": "❎ Um..I'm sorry. But I'm not allowed to ban members within this server.",
+            "days_range": "❎ The ban period must not be less than 0 and not more than 7 days.",
             "empty": "❓ Which member do you want me to deal with?",
             "member_has_banned": "❎ This member has already been banned, so feel free.",
             "members_have_a_higher_role": "❎ You can't ban someone above you.",
@@ -40,6 +41,12 @@
             "permanently_banned": "%s has been permanently banned",
             "reason_for_ban": "Ban by: %s1\nreason: %s2",
             "user_not_found": "❎ I can't find this member. Please check again."
+        },
+        "bug": {
+            "message_required": "❎ Eh..but you must specify the message you want to send.",
+            "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
+            "success": "✅ ok thank you...if you find anything else please tell me (●'◡'●)",
+            "too_short_message": "❎ I'm shaking..Please specify it a bit more clearly. I don't want his developer to become a panda again."
         },
         "credits": {
             "creator_credit": "💳 Credits to other creators",
@@ -57,6 +64,9 @@
             "error": "❎ This user could not be found.",
             "success": "✅ This member's experience level has been deleted!",
             "user_current_no_level": "❎ Such members do not have any level."
+        },
+        "donate": {
+            "thank_you_in_advance_message": "❤️ Thank you for supporting my developers in advance. I have the following channels for support."
         },
         "eat": {
             "already_eaten": "%s1 has eaten you %s2 in your stomach.",
@@ -159,7 +169,7 @@
                 "All the commands that I have learned or studied understandable and practical",
                 "which before calling me Must have a prefix **%s**",
                 "`<>` means required and `()` is optional, may or may not be answered.",
-                "For details of each command type `%s command` and the wish will come true!!"
+                "For details of each command type `%s1 (command)` or `%s2 (command)` and the wish will come true!!"
             ],
             "description": "Description: ",
             "document_name": "Help Documentation",
@@ -167,7 +177,7 @@
             "how_to_use": "How to use: ",
             "no_description": "No description",
             "request_by": "requested by",
-            "tip": "Tip: **Alias** can be used in place of each command, for example `%s1` is replaced with `%s2`",
+            "tip": "TIP: **Alias** can be used in place of each command, for example `%s1` is replaced with `%s2`",
             "type": "Type: ",
             "unknown_how_to_use": "There is no way to use it."
         },
@@ -176,17 +186,21 @@
             "membership_invitation_card": "Membership Invitation Card",
             "this_product_is_free": "This product is free. Don't place it again."
         },
+        "inviteMe": {
+            "can_not_create_invite_link": "❎ The invite link could not be created. Please try again."
+        },
         "join": {
             "already_joined": "❎ Eh..but I'm here too?",
             "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
-            "channel_joined": "✅ I'm already in the `%s` channel...",
-            "joined": "▶️ I'm already in the `%s` field.",
+            "channel_joined": "✅ I'm already in the <#%s> channel...",
+            "joined": "▶️ I'm already in the <#%s> field.",
             "no_channel": "❎ I don't have this channel. Is it a typo?",
-            "not_in_channel": "❓ You need to join the channel first. Otherwise I don't know which channel =3=",
-            "this_is_text_channel": "Eh..that's a text field?"
+            "not_a_voice_channel": "❎ It has to be a channel where it can talk. No.. What is it called? Well.. let's do it. Let's just say that channel. (￣_￣|||)",
+            "not_in_channel": "❓ You need to join the channel first. Otherwise I don't know which channel =3="
         },
         "jump": {
             "can_not_jump": "❎ There seems to be no such queue number at all. Please check again.",
+            "jumped": "➿ jumped to a new song in queue number %s already.",
             "no_input": "❓ How much do you want to skip to the song?",
             "no_queue": "❎ There's no song I'm playing. can't skip",
             "not_queue_owner": "🚫 Only the owner of the queue can change it.",
@@ -208,16 +222,24 @@
             "empty": "❓ Thinking of k..k..killing someone...?",
             "killed": "%s1 has successfully killed you %s2 🔪"
         },
+        "language": {
+            "already_set": "❎ eh..but this server is already using %s",
+            "description": "**lang** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```\n> ```%s3```",
+            "empty_value": "❓ eh..but you need to specify the language code you want to set this value",
+            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only a set.",
+            "language_not_support": "❎ %s1 doesn't seem familiar at all. Now it may not be supported or it may not be there yet. But the language I understand now has %s2",
+            "set_success": "✅ The language has been changed to **%s** already.",
+            "title": "🌐 Language"
+        },
         "leave": {
             "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
             "do_not_have_channel": "❎ I don't have this channel. Is it a typo?",
-            "me_not_in_that_channel": "❎ Um..I'm not in there.",
-            "no_channel": "❎ I don't have this channel. Is it a typo?",
+            "not_a_voice_channel": "❎ It has to be a channel where it can talk. No.. What is it called? Well.. let's do it. Let's just say that channel. (￣_￣|||)",
             "not_in_any_channel": "❎ I'm not on any channel right now...",
-            "now_leave": "◀️ I left my current channel.",
-            "that_is_text_channel": "Uh..that's a text field?"
+            "now_leave": "◀️ I left my current channel."
         },
         "leveling": {
+            "bot_do_not_have_level": "❎ Bots don't have levels, including me.",
             "can_not_find_user": "❎ This member could not be found. Is it a typo?",
             "experience": "Experience (Exp)",
             "level": "Level (Level)",
@@ -225,7 +247,6 @@
             "your_experience": "Your experience"
         },
         "levelingBoard": {
-            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
             "leveling_detail": "Experience: %s1, Level: %s2",
             "no_info": "❎ There are no members on this server yet. that is worth the experience",
             "server_rank": "This server's level rank",
@@ -237,21 +258,22 @@
             "no_queue": "❎ There's no song I'm playing right now.",
             "playing_lyrics": "📋 Lyrics of the currently playing song"
         },
-        "mcserver": {
+        "mcServer": {
             "address": "Address",
             "do_not_have": "None",
             "edition": "Edition",
             "five_letter_port": "❓ The port is a 5 digit number of the server.. Please check again.",
-            "ip_address_reqiured": "❓ the address of the server",
+            "ip_address_required": "❓ the address of the server",
             "last_check": "Last checked",
             "maximum_player_count": "Maximum number of players",
             "mode": "mode",
             "motd": "Description",
-            "no_platform": "❎ There doesn't seem to be any such platform.",
+            "no_platform": "❎ There doesn't seem to be such a platform. Available now are: %s",
             "not_found": "Not found",
-            "platform_reqiured": "❓ What is Minecraft's platform? PE, JE?",
+            "platform_required": "❓ What is Minecraft's platform? PE, JE?",
             "player_in_server": "Player in server",
             "port": "Port",
+            "port_is_not_numeric": "❎ Ports should be numeric. Please check again.",
             "server_available": "```🟢 This server is currently open ```",
             "server_detail": "Details of this server",
             "server_unavailable": "```🔴 This server has been temporarily disabled```",
@@ -260,6 +282,19 @@
         "musicInfo": {
             "detail": "📄__ Details__\n• Song: **%s1**\n• Duration: **%s2**\n• Song Link: **%s3**\n• ID Song: **%s4**",
             "no_queue": "❎ There's no song I'm playing right now."
+        },
+        "notify": {
+            "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
+            "data_at": "data of when",
+            "description": "**notify** - Set a notification for each type to receive the latest information from the server.\n\nGeneral notification: %s1\nNew channel: %s2\nChannel deleted: %s3\nchannel. Pinned: %s4\nChannel updated: %s5\nNew emoji: %s6\nEmoji deleted: %s7\nEmoji updated: %s8\nMember joined server: %s9\nMember left server: %s10\n\n> You can change this by typing:\n> ```%s11```\n> ```%s12```",
+            "empty_config_channel": "❓ Please specify the channel you want to configure.",
+            "empty_value": "❎ Please specify the type of notification.\n%s",
+            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only set, remove.",
+            "not_set": "`not set`",
+            "remove_success": "✅ The notification type `%s` has been removed successfully.",
+            "set_success": "✅ The notification type `%s1` has been set to the field `<#%s2>` already.",
+            "title": "🔔 Notification",
+            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s"
         },
         "nowPlaying": {
             "autoplay": "📻 Autoplay",
@@ -277,15 +312,39 @@
             "not_paused": "📼 I'm stopping now. Today looks weird. Haha..",
             "paused": "⏸ Paused the music."
         },
+        "personal": {
+            "data_at": "data of when",
+            "description": "**personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```\n> ```%s5```",
+            "empty_type": "❎ Please specify the type of data you want to set.\n%s",
+            "empty_value": "❓ Would you like to set your data to **true** or **false**?\n> **true** means to allow viewing of your data\n> * *false** means your viewing of such information is not allowed",
+            "false_success": "✅ Your %s has been deauthorized.",
+            "invalid_value": "❎ Umm.. in this section, there are really **true** and **false**.",
+            "no": "No",
+            "title": "📄 Personal Information",
+            "true_success": "✅ Your %s has been authorized.",
+            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s",
+            "yes": "yes"
+        },
         "ping": {
             "connection": "📡 Connection",
             "info": "Ping is %s1 seconds \nAPI Latency is %s2 seconds",
-            "result": "🏓 pong",
-            "waiting": "🏓 ping..."
+            "result": "🏓 Pong",
+            "waiting": "🏓 Pinging..."
         },
         "play": {
             "no_song_input": "❓ What song do you want? Here's a link.",
             "not_in_channel": "❓ Enter any channel first. If not, listen to me..."
+        },
+        "prefix": {
+            "already_value": "❎ eh..but this server is already using the %s prefix.",
+            "data_at": "data of when",
+            "default_success": "✅ This server has now reverted to using S as the prefix of all commands.",
+            "description": "**prefix** - Set a prefix for the server to launch commands.\n\nThis server's prefix is: `%s1`\n\n> You can change this by typing:\n> ```%s2```\n> ```%s3```",
+            "empty_value": "❓ eh..but you need to set a value to change this prefix",
+            "set_success": "✅ This server now uses %s as the prefix of all commands.",
+            "this_options_not_found": "❎ Uh..but the %s option doesn't exist in this command. You can use set and remove within this command.",
+            "title": "❕ prefix (server)",
+            "too_long": "❎ The prefix should not be more than 5 characters."
         },
         "previous": {
             "no_previous_song_queue": "📼 There is no song that was played recently.",
@@ -342,7 +401,6 @@
             "not_owner": "🚫 Only the owner of the queue can change it.",
             "removed": "❌ Removed **%s** from the queue.",
             "remove_guide": "You can delete the queue you want by: %s <song queue>",
-            "single_queue": "⏭ Let's skip ahead. Because after deleting it, I can't continue playing.",
             "too_little": "❎ No queue lower than that",
             "too_much": "❎ There is no such queue. Please check again and again."
         },
@@ -367,10 +425,13 @@
             "no_image": "❎ Hey...it looks like this picture. It may have been deleted or moved to another location."
         },
         "say": {
-            "empty": "❓ What do you want me to type?"
+            "empty": "❓ What do you want me to type?",
+            "invalid_type": "❎ Invalid field type. Please check again.",
+            "success": "✅ Your message has been sent."
         },
         "search": {
             "get_list_of_songs": "📋 You have received the list of songs you want. and will start playing music in a moment...",
+            "invalid_number": "🔴 The last search has been canceled. You can search again by typing the same command.",
             "no_results": "❎ I tried searching for the song but I didn't find any results...",
             "no_search_input": "❓ What song or playlist do you want?",
             "platform_not_supported": "❎ Currently supported platforms include YouTube and SoundCloud. Spotify can only use **play** commands.",
@@ -416,58 +477,13 @@
             "success": "✅ Setup is complete..."
         },
         "settings": {
-            "access_advice_detail": "```The permissions in each section also apply to some directives ```",
-            "access_current_false": "❎ This information is currently not allowed.",
-            "access_current_true": "❎ This information is currently allowed to be disclosed.",
-            "access_description": "access - Allows some information about you. can be disclosed",
-            "access_false_success": "🔧 The disclosure has been cancelled.",
-            "access_guide": "❎ You can set this section so if you want to disclose it type here \"true\" and if you don't want it disclose then type \" false\"",
-            "access_true_or_false": "❎ Umm...There are only \"true\" and \"false\". What do you want to do?",
-            "access_true_success": "🔧 already disclosed this information.",
-            "advice": "💡 Advice",
-            "allow": "🔑 permission",
-            "available": "✅ Available",
-            "available_options_of_stuff": "❎ There are currently two options, `user` and `guild`.",
-            "available_options_of_user": "❎ At this moment you only have one option: `user`.",
-            "beta_function": "This function is currently in testing.",
-            "current": "🏷 current",
-            "current_lang": "❌ This server is currently in this language.",
-            "current_prefix": "❌ This prefix is ​​currently used by this server.",
-            "do_not_have_access_name": "❎ It doesn't appear to have this permission. Please check again and again.",
-            "do_not_have_channel_in_server": "❎ Hmm..it doesn't seem like this channel is on the server.",
-            "how_to_change": "✏ How to change",
-            "lang_advice_detail": "```Some languages ​​may not be translated and may not be translated completely.```",
-            "lang_description": "lang - I can talk to each other in multiple languages. If you can't read it..please try to change it",
-            "lang_success": "🔧 I have now set to %s language.",
-            "languages": "🌐 languages",
-            "new_prefix": "🔧 Set the new prefix to `%s`.",
-            "no_channel_type": "❎ There doesn't seem to be a channel type, or try checking again.",
-            "not_allowed": "Not Allowed",
-            "notification": "🔔 Notification",
-            "notify_advice": "```Notification channels should not be in general chat fields ```",
-            "notify_current_false": "❌ This server has currently disabled notifications.",
-            "notify_current_true": "❌ This server currently has notifications turned on.",
-            "notify_default_true_success": "🔧 The notification on the <#%s> field has been turned on.",
-            "notify_description": "notify - notification of changes and events. included in this You can change it at any time",
-            "notify_false_success": "🔧 The channel notifications have been turned off.",
-            "notify_guide_true_or_false": "❓ Want to enable or disable notifications? To enable it, type \"true\". If not, type \"false\"",
-            "notify_true_or_false": "❎ um..in this section, only true and false",
-            "notify_true_success": "🔧 Turn on notifications to channel <#%s> already.",
-            "not_owner": "🔒 This command can only be performed by admin level.",
-            "not_set_up": "Not set yet",
-            "not_support_or_do_not_have": "❌ At the moment I don't understand this language or maybe it doesn't exist in the world...",
-            "prefix": "❔ prefix",
-            "prefix_advice_detail": "```Using the prefix should not contain more than or equal to 6 characters ```",
-            "prefix_description": "prefix - Change the way you call me with a new prefix. which is cooler than before",
-            "prefix_no_more_than_six_characters": "❎ The prefix to call me should not be greater than or equal to 6 characters...",
-            "private": "🙍‍ private",
-            "server": "🗄 server",
-            "settings": "⚙ Settings",
-            "settings_description": "You can manage these settings. You can edit all settings as follows",
-            "settings_private": "⚙ Settings (private)",
-            "settings_private_description": "If you wish to manipulate any options You can set about you with all the commands as follows",
-            "settings_server": "⚙ Settings (server)",
-            "settings_server_description": "Prefix, language, notification fields, etc., these settings only apply to this server. You can customize it as you like..."
+            "description": "You can configure it according to your needs using these commands.",
+            "languages": "🌐 languages (server)",
+            "note": "Note: Some commands may require certain permissions to run.",
+            "notification": "🔔 Notification (server)",
+            "personal": "📄 Personal information (personal)",
+            "prefix": "❕ prefix (server)",
+            "title": "⚙️ Settings"
         },
         "shuffle": {
             "no_queue": "❎ There are no songs currently playing.",
@@ -570,6 +586,7 @@
             "may": "May",
             "monday": "Monday",
             "none": "No",
+            "not_allowed": "❎ Sorry, but this member doesn't allow anyone to view their information.",
             "november": "November",
             "october": "October",
             "partial": "Partial",
@@ -587,6 +604,9 @@
             "username": "Username",
             "wednesday": "Wednesday",
             "yes": "yes"
+        },
+        "version": {
+            "working_in_version": "I'm working on version: **%s**"
         },
         "volume": {
             "adjusted": "🔊 Adjust the volume to: **%s**",
@@ -618,6 +638,7 @@
             "sunny": "sunny",
             "temperature": "🌡️ temperature",
             "timezone": "🌐 timezone",
+            "weather": "⛅ Weather",
             "weather_at_the_moment": "The weather for __**%s1**__ is currently \n```%s2```",
             "wind": "🎏 wind"
         }
@@ -657,10 +678,10 @@
             "description": "Hello..I'd like to thank you for inviting me to this %s.\nSomeone seems to be wondering what I can do? Oh, wash the dishes, do the laundry. It's awesome, isn't it~ haha, where is it? I'm kidding",
             "get_started": "The beginning has arrived!!",
             "help_information_and_documentation": "**📄 Help and Documentation**",
-            "help_information_and_documentation_detail": "Want to know what I can do?..it's easy. Just type `Shelp` and someone will tell you. Of course, just go to the link below and there will be documentation that the developer and others. He wrote it for you\n> https://maseshi.web.app/documents#why-shioru?",
+            "help_information_and_documentation_detail": "Want to know what I can do?..it's easy. Just type `Shelp` or `/help` and someone will tell you. Of course, just go to the link below and there will be documentation that the developer and others. He wrote it for you\n> https://shiorus.web.app/",
             "join_on": "Join on",
             "support_multiple_languages": "**🌐 Support multiple languages**",
-            "support_multiple_languages_detail": "I support multiple languages. To change the language You can set it by `Ssettings guild lang <language code>`"
+            "support_multiple_languages_detail": "I support multiple languages. To change the language You can set it by `Slanguage <language code>` or `/language <language code>`"
         },
         "guildMemberAdd": {
             "greet": "Hello new member. **This is an automated message** \nThank you for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
@@ -669,18 +690,28 @@
         "guildMemberRemove": {
             "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
         },
+        "interactionCreate": {
+            "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
+            "no_permission": "🚫 Ummm...it looks like you don't have permission to use the application commands (/), try asking the moderator (≧∇≦)",
+            "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
+        },
         "messageCreate": {
             "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
-            "forgot_the_prefix": "ℹ️ Looks like you're using the wrong prefix for this server. The prefix for this server is `%s1` separately.\n> **Tip**: The prefix can be set on each server using the __settings__ command. For more information type `%s2help settings`",
+            "forgot_the_prefix": "ℹ️ Looks like you're using the wrong prefix for this server. The prefix for this server is `%s1` separately.\n> **Tip**: The prefix can be set on each server using the __settings__ command. For more information type `%s2help settings` or `/help settings`",
             "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
         }
     },
     "extras": {
         "catchError": {
             "an_error_occurred": "🔴 An error occurred while processing.",
-            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [News](https://maseshi.web.app/projects/view?data=shioru&tab=news)",
+            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n> **Tip**: You can report the error immediately by using commands: \n> ```Sbug <message>```\n> ```/bug <message> ```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [News](https://maseshi.web.app/projects?project=shioru&tab=news)",
             "server_abnormal": "Abnormal",
             "server_normal": "Normal"
+        },
+        "chatSystem": {
+            "do_not_understand": "🗨️ M. I don't understand. No ... is that I'm not good at human language (^^ ゞ)",
+            "empty_answer": "Eh ... I have to answer what you can forget",
+            "was_mentioned": "What's wrong?"
         },
         "levelSystem": {
             "congratulations": "Congratulations!!",
