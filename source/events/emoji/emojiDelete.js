@@ -2,9 +2,11 @@ const { getDatabase, ref, child, get, set } = require("firebase/database");
 const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
-module.exports = (client, emoji) => {
-    if (client.config.mode === "production") {
-        settingsData(client, emoji, module.exports);
+module.exports = (emoji) => {
+    const client = emoji.client;
+
+    if (client.mode === "start") {
+        settingsData(client, emoji.guild, module.exports);
         if (client.config.worker !== 1) return;
     }
 
@@ -15,7 +17,7 @@ module.exports = (client, emoji) => {
         if (snapshot.exists()) {
             const notifyId = snapshot.val().notification.emojiDelete;
 
-            if (notifyId && notifyId !== 0) {
+            if (notifyId) {
                 const notification = emoji.guild.channels.cache.find(channels => channels.id === notifyId);
 
                 if (!notification) return;
@@ -36,16 +38,16 @@ module.exports = (client, emoji) => {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
-                    "alert": 0,
-                    "channelCreate": 0,
-                    "channelDelete": 0,
-                    "channelPinsUpdate": 0,
-                    "channelUpdate": 0,
-                    "emojiCreate": 0,
-                    "emojiDelete": 0,
-                    "emojiUpdate": 0,
-                    "guildMemberAdd": 0,
-                    "guildMemberRemove": 0
+                    "alert": false,
+                    "channelCreate": false,
+                    "channelDelete": false,
+                    "channelPinsUpdate": false,
+                    "channelUpdate": false,
+                    "emojiCreate": false,
+                    "emojiDelete": false,
+                    "emojiUpdate": false,
+                    "guildMemberAdd": false,
+                    "guildMemberRemove": false
                 }
             }).then(() => {
                 module.exports(client, emoji);
