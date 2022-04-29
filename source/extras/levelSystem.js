@@ -1,16 +1,17 @@
 const { getDatabase, ref, child, get, set, remove, update } = require("firebase/database");
 
 module.exports = async (client, message, method, arg, amount) => {
-    if (!client) return console.log("levelSystem: Please configure CLIENT for localization (required).");
-    if (!message) return console.log("levelSystem: Please configure MESSAGE to make notifications and receive important basic information (required).");
-    if (!method) return console.log("levelSystem: Please specify a method to continue. (required).");
+    if (!client) return console.log("[levelSystem] Please configure CLIENT for localization (required).");
+    if (!message) return console.log("[levelSystem] Please configure MESSAGE to make notifications and receive important basic information (required).");
+    if (!method) return console.log("[levelSystem] Please specify a method to continue. (required).");
 
     const db = getDatabase();
     const childRef = child(ref(db, "Shioru/apps/discord/guilds/"), message.guild.id);
-    const userID = (method === "GET") || (method === "DELETE") ? (arg || message.author.id) : message.author.id;
+    const authorID = message.author ? message.author.id : message.user.id;
+    const userID = method === "GET" || method === "DELETE" ? arg || authorID : authorID;
     const snapshot = await get(child(child(childRef, "data/users"), userID));
 
-    const notification = async (message) => {
+    const notification = async (msg) => {
         const config = await get(child(childRef, "config"));
 
         if (!config.exists()) {
@@ -18,28 +19,28 @@ module.exports = async (client, message, method, arg, amount) => {
                 "prefix": "S",
                 "language": "en",
                 "notification": {
-                    "alert": 0,
-                    "channelCreate": 0,
-                    "channelDelete": 0,
-                    "channelPinsUpdate": 0,
-                    "channelUpdate": 0,
-                    "emojiCreate": 0,
-                    "emojiDelete": 0,
-                    "emojiUpdate": 0,
-                    "guildMemberAdd": 0,
-                    "guildMemberRemove": 0
+                    "alert": false,
+                    "channelCreate": false,
+                    "channelDelete": false,
+                    "channelPinsUpdate": false,
+                    "channelUpdate": false,
+                    "emojiCreate": false,
+                    "emojiDelete": false,
+                    "emojiUpdate": false,
+                    "guildMemberAdd": false,
+                    "guildMemberRemove": false
                 }
             });
 
-            notify(message);
+            notification(msg);
         } else {
             const notifyID = config.val().notification.alert;
 
             if (notifyID && notifyID !== 0) {
-                const channel = message.guild.channels.cache.find(channels => channels.id === notifyID);
+                const channel = msg.guild.channels.cache.find(channels => channels.id === notifyID);
 
                 if (!channel) {
-                    console.log("notify: The specified notification channel could not be found.");
+                    console.log("[levelSystem/notify] The specified notification channel could not be found.");
                     return 0;
                 } else {
                     return channel;
@@ -71,8 +72,8 @@ module.exports = async (client, message, method, arg, amount) => {
 
         if (exp >= nextEXP) {
             const alert = await notification(message);
-            const authorUsername = message.author.username;
-            const authorAvatar = message.author.displayAvatarURL();
+            const authorUsername = message.author ? message.author.username : message.user.username;
+            const authorAvatar = message.author ? message.author.displayAvatarURL() : message.user.displayAvatarURL();
 
             await update(child(child(childRef, "data/users"), userID), {
                 "leveling": {
@@ -109,7 +110,7 @@ module.exports = async (client, message, method, arg, amount) => {
                 }
             return GETData;
             case "POST":
-                if (!arg) return console.log("levelSystem/POST: Please specify the amount of experience.");
+                if (!arg) return console.log("[levelSystem/POST] Please specify the amount of experience.");
                 
                 update(child(child(child(childRef, "data/users"), userID), "leveling"), {
                     "exp": (exp += arg)
@@ -139,7 +140,7 @@ module.exports = async (client, message, method, arg, amount) => {
             case "DELETE":
                 let DELETEStatus = "";
 
-                if (!arg) return console.log("levelSystem/DELETE: Please enter the user ID you wish to delete experience data for.");
+                if (!arg) return console.log("[levelSystem/DELETE] Please enter the user ID you wish to delete experience data for.");
                 if (!snapshot.val().leveling) return DELETEStatus = "missing";
 
                 try {
@@ -149,7 +150,7 @@ module.exports = async (client, message, method, arg, amount) => {
                     DELETEStatus = "error";
                 }
             return DELETEStatus;
-            default: console.log("levelSystem/METHOD: " + method + " is not a valid method.");
+            default: console.log("[levelSystem/METHOD] " + method + " is not a valid method.");
         }
     }
 };
