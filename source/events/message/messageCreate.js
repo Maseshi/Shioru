@@ -1,4 +1,4 @@
-const { getDatabase, ref, update, onValue } = require("firebase/database");
+const { getDatabase, ref, update, get } = require("firebase/database");
 const chatSystem = require("../../extras/chatSystem");
 const levelSystem = require("../../extras/levelSystem");
 const settingsData = require("../../extras/settingsData");
@@ -12,8 +12,8 @@ module.exports = async (message) => {
     const defaultPrefix = "S";
     
     let command = "";
-    const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const prefix = client.config.prefix;
+    const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
@@ -24,7 +24,7 @@ module.exports = async (message) => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (client.mode === "start") {
-        settingsData(client, message.guild, module.exports);
+        settingsData(client, message.guild, module.exports, message);
         if (client.temp.set !== 1) return;
 
         levelSystem(client, message, "POST", 123);
@@ -79,7 +79,7 @@ module.exports = async (message) => {
 
         // Stores information when the bot is working properly.
         if (client.mode === "start") {
-            onValue(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
+            get(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
                 if (snapshot.exists()) {
                     let working = snapshot.val();
 
