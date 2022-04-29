@@ -7,9 +7,6 @@ module.exports = {
         "code": "en",
         "support": support
     },
-    // Available: [production, development]
-    // If in development mode Some features will not work.
-    "mode": "production",
     "owner": "618836889239158785",
     "prefix": "S",
     "server": {
