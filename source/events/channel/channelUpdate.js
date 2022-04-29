@@ -6,7 +6,7 @@ module.exports = (oldChannel, newChannel) => {
     const client = newChannel.client;
 
     if (client.mode === "start") {
-        settingsData(client, newChannel.guild, module.exports);
+        settingsData(client, newChannel.guild, module.exports, (oldChannel, newChannel));
         if (client.config.worker !== 1) return;
     }
 

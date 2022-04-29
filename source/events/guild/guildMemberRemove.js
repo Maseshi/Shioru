@@ -7,7 +7,7 @@ module.exports = (member) => {
 
     if (member.user.bot) return;
     if (client.mode === "start") {
-        settingsData(client, member.guild, module.exports);
+        settingsData(client, member.guild, module.exports, member);
         if (client.config.worker !== 1) return;
     }
 

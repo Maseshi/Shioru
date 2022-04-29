@@ -6,7 +6,7 @@ module.exports = async (guild) => {
     const client = guild.client;
 
     if (client.mode === "start") {
-        settingsData(client, guild, module.exports);
+        settingsData(client, guild, module.exports, guild);
         if (client.config.worker !== 1) return;
     }
 

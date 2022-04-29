@@ -6,7 +6,7 @@ module.exports = (emoji) => {
     const client = emoji.client;
 
     if (client.mode === "start") {
-        settingsData(client, emoji.guild, module.exports);
+        settingsData(client, emoji.guild, module.exports, emoji);
         if (client.config.worker !== 1) return;
     }
 

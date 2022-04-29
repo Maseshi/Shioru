@@ -1,7 +1,7 @@
 const { getDatabase, ref, child, onValue, set } = require("firebase/database");
 const catchError = require("./catchError");
 
-module.exports = (client, guild, exports) => {
+module.exports = (client, guild, exports, callback) => {
     const childRef = child(ref(getDatabase(), "Shioru/apps/discord/guilds"), guild.id);
 
     onValue(child(childRef, "config"), (snapshot) => {
@@ -14,7 +14,7 @@ module.exports = (client, guild, exports) => {
             client.translate = require("../languages/" + lang + ".json");
             if (!client.temp.set) {
                 client.temp.set = 1;
-                return exports(client, guild);
+                return exports(callback);
             }
         } else {
             set(child(childRef, "config"), {
