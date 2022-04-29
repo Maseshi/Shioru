@@ -1,12 +1,16 @@
 const { Collection } = require("discord.js");
-const { readdirSync } = require("fs");
+const { readdirSync } = require("node:fs");
 const Spinnies = require("spinnies");
 
 module.exports = (client) => {
-  const spinnies = new Spinnies();
+  const spinnies = new Spinnies({
+    "spinnerColor": "blueBright",
+    "succeedPrefix": "✅",
+    "failPrefix": "⚠️"
+  });
 
   spinnies.add("commands-loading", {
-    "text": "Loading Commands"
+    "text": "All commands are starting to load."
   });
 
   ["commands", "aliases"].forEach(dirs => client[dirs] = new Collection());
@@ -17,12 +21,11 @@ module.exports = (client) => {
     for (const file of commands) {
       const pull = require("../commands/" + dirs + "/" + file);
      
-      if (pull.help && typeof (pull.help.name) === "string" && typeof (pull.help.category) === "string") {
+      if (pull.help && typeof pull.help.name === "string" && typeof pull.help.category === "string") {
         if (client.commands.get(pull.help.name)) {
           spinnies.fail("commands-loading", {
             "text": "Two or more commands have the same name " + pull.help.name,
-            "failColor": "yellowBright",
-            "failPrefix": "⚠️"
+            "failColor": "yellowBright"
           });
           process.exit(0);
         } else {
@@ -44,8 +47,7 @@ module.exports = (client) => {
           if (client.aliases.get(alias)) {
             spinnies.fail("commands-loading", {
               "text": "Two commands or more commands have the same aliases " + alias,
-              "failColor": "yellowBright",
-              "failPrefix": "⚠️"
+              "failColor": "yellowBright"
             });
             process.exit(0);
           } else {
