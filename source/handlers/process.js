@@ -1,100 +1,107 @@
 const discord = require("discord.js");
 const packages = require("../../package.json");
-const { createWriteStream, existsSync, mkdirSync } = require("fs");
-const { format } = require("util");
+const logGenerator = require("../extras/logGenerator");
+const ansiColor = require("../extras/ansiColor");
 
 module.exports = (client) => {
-    const logDateTime = (date) => {
-        const minutes = date.getMinutes();
-        const hours = date.getHours();
-        const year = date.getFullYear();
-        const month = date.getMonth();
-        const day = date.getDay();
-
-        return "_" + year + "-" + month + "-" + day + "_" + hours + "-" + minutes
-    };
     const consoleDateTime = (date) => {
-        const day = date.getDay();
+        const day = date.getDate();
         const month = date.getMonth();
         const year = date.getFullYear();
         const hours = date.getHours();
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
 
-        return "\u001b[1m[" + day + "-" + month + "-" + year + "." + hours + ":" + minutes + ":" + seconds + "]\u001b[0m"
+        return "\u001b[1m[" + year + "-" + month + "-" + day + "." + hours + ":" + minutes + ":" + seconds + "]\u001b[0m"
     };
 
-    process.on("unhandledRejection", (reason, promise) => {
-        const dir = "./source/logs/";
+    const clearStyle = ansiColor(0, "sgr")
+    const boldStyle = ansiColor(1, "sgr")
+    const whiteColor = ansiColor(15, "foreground")
+    const blackColor = ansiColor(0, "foreground")
+    const grayBackground = ansiColor(7, "background");
+    const orangeBackground = ansiColor(208, "background");
+    const yellowBackground = ansiColor(11, "background");
+    const redBackground = ansiColor(9, "background");
 
-        if (!existsSync(dir)) mkdirSync(dir);
+    // Limit the creation of events in the process.
+    process.setMaxListeners(0);
 
-        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
+    process.on("SIGINT", () => {
+        console.log(orangeBackground + whiteColor + " Bot is about to shut down. " + clearStyle);
+    });
 
-        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUnhandled Rejection/Catch\u001b[0m");
-            console.group("\u001b[1mFull Error:\u001b[0m ");
-                console.error(reason);
+    process.on('SIGUSR1', () => {
+        console.log(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
+    });
+    
+    process.on('SIGUSR2', () => {
+        console.log(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
+    });
+
+    process.on("rejectionHandled", (promise) => {
+        logGenerator("process", promise);
+
+        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Rejection Handled" + clearStyle);
+            console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(promise);
             console.groupEnd();
-            console.log("\u001b[1mReason:\u001b[0m " + reason);
-            console.log("\u001b[1mPromise:\u001b[0m " + promise);
-            console.info("\u001b[1mPackage:\u001b[0m v" + packages.version);
-            console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
-            console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
+            console.log(boldStyle + "Promise: " + clearStyle + promise);
+            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
         console.groupEnd();
-        
-        file.write(format(reason, promise) + "\n");
     });
 
     process.on("uncaughtException", (err, origin) => {
-        const dir = "./source/logs/";
+        logGenerator("process", (err + "\n" + origin));
 
-        if (!existsSync(dir)) mkdirSync(dir);
-
-        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
-
-        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mUncaught Exception/Catch\u001b[0m");
-            console.group("\u001b[1mFull Error:\u001b[0m ");
+        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception" + clearStyle);
+            console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(err);
                 console.error(origin);
             console.groupEnd();
-            console.log("\u001b[1mError:\u001b[0m " + err)
-            console.log("\u001b[1mOrigin:\u001b[0m " + origin);
-            console.info("\u001b[1mPackage:\u001b[0m v" + packages.version);
-            console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
-            console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
+            console.log(boldStyle + "Error: " + clearStyle + err)
+            console.log(boldStyle + "Origin: " + clearStyle + origin);
+            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
         console.groupEnd();
-
-        file.write(format(err, origin) + "\n");
     });
 
-    process.on("multipleResolves", (type, promise, reason) => {
-        const dir = "./source/logs/";
+    process.on("uncaughtExceptionMonitor", (err, origin) => {
+        logGenerator("process", (err + "\n" + origin));
 
-        if (!existsSync(dir)) mkdirSync(dir);
-
-        const file = createWriteStream("./source/logs/process" + logDateTime(new Date()) + ".log", { "flags" : "w" });
-
-        switch (reason.toLocaleString()) {
-            case "":
-            case "Error: Cannot perform IP discovery - socket closed":
-            return;
-        }
-
-        console.group(consoleDateTime(new Date()) + " :: \u001b[41;1mMultiple Resolves\u001b[0m");
-            console.group("\u001b[1mFull Error:\u001b[0m ");
-                console.error(type);
-                console.error(promise);
-                console.error(reason);
+        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception Monitor" + clearStyle);
+            console.group(boldStyle + "Full Error:" + clearStyle);
+                console.error(err);
+                console.error(origin);
             console.groupEnd();
-            console.log("\u001b[1mType:\u001b[0m " + type);
-            console.log("\u001b[1mPromise:\u001b[0m " + promise);
-            console.log("\u001b[1mReason:\u001b[0m " + reason);
-            console.info("\u001b[1mPackage:\u001b[0m v" + packages.version);
-            console.info("\u001b[1mDiscord.js:\u001b[0m v" + discord.version);
-            console.info("\u001b[1mNode.js:\u001b[0m " + process.version);
+            console.log(boldStyle + "Error: " + clearStyle + err)
+            console.log(boldStyle + "Origin: " + clearStyle + origin);
+            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
         console.groupEnd();
+    });
 
-        file.write(format(type, promise, reason) + "\n");
+    process.on("unhandledRejection", (reason, promise) => {
+        logGenerator("process", (reason + "\n" + promise));
+
+        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Unhandled Rejection" + clearStyle);
+            console.group(boldStyle + "Full Error:" + clearStyle);
+                console.error(reason);
+                console.error(promise);
+            console.groupEnd();
+            console.log(boldStyle + "Reason: " + clearStyle + reason);
+            console.log(boldStyle + "Promise: " + clearStyle + promise);
+            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+        console.groupEnd();
+    });
+
+    process.on("exit", (code) => {
+        console.log(grayBackground + blackColor + " Bot is about to shut down with the code: " + code + " " + clearStyle);
     });
 };
