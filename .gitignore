@@ -1,9 +1,7 @@
 .env
 NOTE.txt
-source/commands/guild/rank.js
-source/slash
-source/events/interaction
-source/handlers/slash.js
+source/languages/ja.json
+source/commands/settings/rank.js
 
 # Logs
 logs
