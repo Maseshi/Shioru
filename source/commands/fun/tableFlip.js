@@ -21,6 +21,34 @@ module.exports.help = {
     "description": "(\\\\°□°)\\\\  ┬─┬",
     "usage": "tableFlip",
     "category": "fun",
-    "aliases": ["tableflip", "tf", "atf", "ฟิบโต๊ะ"],
+    "aliases": ["tableflip", "tf", "ฟิบโต๊ะ"],
     "clientPermissions": ["SEND_MESSAGES"]
+};
+
+module.exports.interaction = {
+    "data": {
+        "name": module.exports.help.name.toLowerCase(),
+        "name_localizations": {
+            "en-US": "tableflip",
+            "th": "พลิกโต๊ะ"
+        },
+        "description": module.exports.help.description
+    },
+    async execute(interaction) {
+        const frames = [
+            "(-°□°)-  ┬─┬",
+            "(╯°□°)╯    ]",
+            "(╯°□°)╯  ︵  ┻━┻",
+            "(╯°□°)╯       [",
+            "(╯°□°)╯           ┬─┬"
+        ];
+    
+        await interaction.editReply("(\\\\°□°)\\\\  ┬─┬").then(() => {
+            for (const frame of frames) {
+                setTimeout(async () => {
+                    await interaction.editReply(frame);
+                }, 1000);
+            }
+        });
+    }
 };
