@@ -1,41 +1,45 @@
-const { readdirSync } = require("fs");
+const { readdirSync } = require("node:fs");
 const Spinnies = require("spinnies");
 
 module.exports = (client) => {
-    const spinnies = new Spinnies();
+    const spinnies = new Spinnies({
+        "spinnerColor": "blueBright",
+        "succeedPrefix": "✅",
+        "failPrefix": "⚠️"
+    });
 
     spinnies.add("events-loading", {
-        "text": "Loading Events"
+        "text": "All events are starting to load."
     });
 
     readdirSync("./source/events/").forEach((dirs) => {
         const events = readdirSync("./source/events/" + dirs + "/").filter(files => files.endsWith(".js"));
         
         for (const file of events) {
+            const eventName = file.split(".")[0];
             const pull = require("../events/" + dirs + "/" + file);
             
             if (pull.disabled) {
                 spinnies.fail("events-loading", {
-                    "text": "The " + pull.disabled + " event is deprecated.",
-                    "failColor": "yellowBright",
-                    "failPrefix": "⚠️"
+                    "text": "The " + eventName + " event is deprecated.",
+                    "failColor": "yellowBright"
                 });
                 process.exit(0);
             } else {
                 try {
-                    const eventName = file.split(".")[0];
-
                     spinnies.update("events-loading", {
                         "text": "Loading event " + eventName + " in category " + dirs
                     });
 
-                    client.on(eventName, pull.bind(null, client))
+                    client.on(eventName, pull.bind())
                     delete require.cache[require.resolve("../events/" + dirs + "/" + file)];
                 } catch (error) {
                     spinnies.fail("events-loading", {
                         "text": "Error loading event in " + ("./events/" + dirs + "/" + file)
                     });
-                    console.log("Error: " + error);
+                    console.group();
+                        console.error(error);
+                    console.groupEnd();
                     process.exit(1);
                 }
             }
