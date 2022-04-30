@@ -77,7 +77,10 @@ module.exports = async (message) => {
             }
         }
 
-        // Stores information when the bot is working properly.
+        try {
+            command.run(client, message, args);
+
+            // Stores information when the bot is working properly.
         if (client.mode === "start") {
             get(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
                 if (snapshot.exists()) {
@@ -93,9 +96,6 @@ module.exports = async (message) => {
                 }
             });
         }
-
-        try {
-            command.run(client, message, args);
         } catch(error) {
             catchError(client, message, command.help.name, error);
         }

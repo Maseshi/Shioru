@@ -30,6 +30,23 @@ module.exports = async (interaction) => {
 
 	try {
 		await command.interaction.execute(interaction);
+
+		// Stores information when the bot is working properly.
+        if (client.mode === "start") {
+            get(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
+                if (snapshot.exists()) {
+                    let working = snapshot.val();
+
+                    update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        "working": (working + 1)
+                    });
+                } else {
+                    update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        "working": 1
+                    });
+                }
+            });
+        }
 	} catch (error) {
 		catchError(interaction.client, interaction, interaction.commandName, error);
 	}
