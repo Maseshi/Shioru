@@ -14,7 +14,7 @@ module.exports = (client, guild, exports, callback) => {
             client.translate = require("../languages/" + lang + ".json");
             if (!client.temp.set) {
                 client.temp.set = 1;
-                return exports(callback);
+                return exports(client, callback);
             }
         } else {
             set(child(childRef, "config"), {

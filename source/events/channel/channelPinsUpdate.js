@@ -2,9 +2,7 @@ const { getDatabase, ref, child, get, set } = require("firebase/database");
 const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
-module.exports = (channel, time) => {
-    const client = channel.client;
-
+module.exports = (client, channel, time) => {
     if (client.mode === "start") {
         settingsData(client, channel.guild, module.exports, (channel, time));
         if (client.config.worker !== 1) return;

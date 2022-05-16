@@ -2,9 +2,7 @@ const { getDatabase, ref, child, get, set } = require("firebase/database");
 const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
-module.exports = (emoji) => {
-    const client = emoji.client;
-
+module.exports = (client, emoji) => {
     if (client.mode === "start") {
         settingsData(client, emoji.guild, module.exports, emoji);
         if (client.config.worker !== 1) return;

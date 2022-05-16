@@ -1,5 +1,5 @@
 const logGenerator = require("../../extras/logGenerator");
 
-module.exports = (error) => {
+module.exports = (client, error) => {
     logGenerator("error", error);
 };

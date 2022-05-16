@@ -2,9 +2,7 @@ const { MessageAttachment } = require("discord.js");
 const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
-module.exports = async (guild) => {
-    const client = guild.client;
-
+module.exports = (client, guild) => {
     if (client.mode === "start") {
         settingsData(client, guild, module.exports, guild);
         if (client.config.worker !== 1) return;

@@ -5,13 +5,10 @@ const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 const ansiColor = require("../../extras/ansiColor")
 
-module.exports = async (message) => {
-    const client = message.client;
-    
+module.exports = (client, message) => {
+    let command = "";
     const round = 3;
     const defaultPrefix = "S";
-    
-    let command = "";
     const prefix = client.config.prefix;
     const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -60,7 +57,7 @@ module.exports = async (message) => {
 
         // If the members remember the prefix, then start counting again.
         client.temp.round = 0;
-        
+
         message.channel.sendTyping();
 
         // Check the permissions of the command for the user.
@@ -81,22 +78,22 @@ module.exports = async (message) => {
             command.run(client, message, args);
 
             // Stores information when the bot is working properly.
-        if (client.mode === "start") {
-            get(ref(getDatabase(), 'Shioru/data/survey/working'), (snapshot) => {
-                if (snapshot.exists()) {
-                    let working = snapshot.val();
+            if (client.mode === "start") {
+                get(ref(getDatabase(), 'Shioru/data/survey')).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        let working = snapshot.val().working;
 
-                    update(ref(getDatabase(), 'Shioru/data/survey'), {
-                        "working": (working + 1)
-                    });
-                } else {
-                    update(ref(getDatabase(), 'Shioru/data/survey'), {
-                        "working": 1
-                    });
-                }
-            });
-        }
-        } catch(error) {
+                        update(ref(getDatabase(), 'Shioru/data/survey'), {
+                            "working": (working + 1)
+                        });
+                    } else {
+                        update(ref(getDatabase(), 'Shioru/data/survey'), {
+                            "working": 1
+                        });
+                    }
+                });
+            }
+        } catch (error) {
             catchError(client, message, command.help.name, error);
         }
     }

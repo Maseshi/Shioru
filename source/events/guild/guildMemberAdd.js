@@ -2,9 +2,7 @@ const { getDatabase, ref, child, get, set } = require("firebase/database");
 const settingsData = require("../../extras/settingsData");
 const catchError = require("../../extras/catchError");
 
-module.exports = (member) => {
-    const client = member.client;
-
+module.exports = (client, member) => {
     if (member.user.bot) return;
     if (client.mode === "start") {
         settingsData(client, member.guild, module.exports, member);

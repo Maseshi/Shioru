@@ -31,7 +31,7 @@ module.exports = (client) => {
                         "text": "Loading event " + eventName + " in category " + dirs
                     });
 
-                    client.on(eventName, pull.bind())
+                    client.on(eventName, pull.bind(null, client))
                     delete require.cache[require.resolve("../events/" + dirs + "/" + file)];
                 } catch (error) {
                     spinnies.fail("events-loading", {
