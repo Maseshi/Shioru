@@ -93,11 +93,19 @@ module.exports = async (client) => {
     const data = client.interaction.map(commands => commands.interaction.data);
 
     if (client.mode === "start") {
+      // Remove all old commands.
+      await client.application.commands.set([]);
+
+      // Set all new commands.
       await client.application.commands.set(data);
 
       spinnies.remove("app-commands-loading");
       console.log("Application (/) commands is ready to use.            ");
     } else {
+      // Remove all old commands.
+      await client.application.commands.set([]);
+
+      // Set all new commands.
       await client.application.commands.set(data, guildID);
 
       spinnies.remove("app-commands-loading");
