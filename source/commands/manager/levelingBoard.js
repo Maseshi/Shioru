@@ -70,7 +70,7 @@ module.exports.interaction = {
     "data": {
         "name": module.exports.help.name.toLowerCase(),
         "name_localizations": {
-            "en-US": "levelingBoard",
+            "en-US": "levelingboard",
             "th": "กระดานเลเวล"
         },
         "description": module.exports.help.description,

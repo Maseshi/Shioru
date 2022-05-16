@@ -32,7 +32,7 @@ module.exports.interaction = {
         },
         "description": module.exports.help.description,
         "description_localizations": {
-            "en-US": "",
+            "en-US": "Check the ping and api latency of the bot.",
             "th": "ตรวจสอบความหน่วงและ API Latency ของบอท"
         }
     },

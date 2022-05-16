@@ -70,7 +70,7 @@ module.exports.interaction = {
     "data": {
         "name": module.exports.help.name.toLowerCase(),
         "name_localizations": {
-            "en-US": "setEXP",
+            "en-US": "setexp",
             "th": "ตั้งค่าค่าประสบการณ์"
         },
         "description": module.exports.help.description,

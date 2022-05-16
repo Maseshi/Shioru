@@ -112,7 +112,7 @@ module.exports.interaction = {
     "data": {
         "name": module.exports.help.name.toLowerCase(),
         "name_localizations": {
-            "en-US": "mcServer",
+            "en-US": "mcserver",
             "th": "เซิร์ฟเวอร์มายคราฟ"
         },
         "description": module.exports.help.description,
