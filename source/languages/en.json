@@ -69,7 +69,7 @@
             "thank_you_in_advance_message": "❤️ Thank you for supporting my developers in advance. I have the following channels for support."
         },
         "eat": {
-            "already_eaten": "%s1 has eaten you %s2 in your stomach.",
+            "already_eaten": "%s1 has eaten %s2 in the stomach.",
             "do_not_eat_me": "I..I'm a little small. It's not appetizing...",
             "empty": "❓ Who do you want to eat right now?"
         },
