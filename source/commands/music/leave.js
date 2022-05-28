@@ -1,5 +1,3 @@
-const { getVoiceConnection } = require("@discordjs/voice");
-
 module.exports.run = (client, message, args) => {
 	const queue = client.music.getQueue(message);
 	const meChannel = message.guild.me.voice.channel;
@@ -7,9 +5,9 @@ module.exports.run = (client, message, args) => {
 	if (queue && message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.leave.another_player_is_playing);
 	if (!meChannel) return message.reply(client.translate.commands.leave.not_in_any_channel);
 
-	const connection = getVoiceConnection(meChannel.guild.id);
+	const connection = client.music.voices.get(meChannel.guild);
 
-	connection.destroy();
+	connection.leave(meChannel.guild);
 	message.channel.send(client.translate.commands.leave.now_leave);
 };
 
@@ -42,9 +40,9 @@ module.exports.interaction = {
 		if (queue && interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.leave.another_player_is_playing);
 		if (!meChannel) return await interaction.editReply(interaction.client.translate.commands.leave.not_in_any_channel);
 
-		const connection = getVoiceConnection(meChannel.guild.id);
+		const connection = interaction.client.music.voices.get(meChannel.guild);
 
-		connection.destroy();
+		connection.leave(meChannel.guild);
 		await interaction.editReply(interaction.client.translate.commands.leave.now_leave);
 	}
 }

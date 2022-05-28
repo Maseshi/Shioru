@@ -1,5 +1,3 @@
-const { joinVoiceChannel } = require("@discordjs/voice");
-
 module.exports.run = (client, message, args) => {
 	const inputChannel = args.join(" ");
 	const queue = client.music.getQueue(message);
@@ -12,12 +10,7 @@ module.exports.run = (client, message, args) => {
 		if (!voiceChannel) return message.reply(client.translate.commands.join.not_in_channel);
 		if (meChannel && meChannel.id === voiceChannel.id) return message.reply(client.translate.commands.join.already_joined);
 
-		joinVoiceChannel({
-			"channelId": voiceChannel.id,
-			"guildId": message.guild.id,
-			"adapterCreator": message.guild.voiceAdapterCreator
-		});
-
+		client.music.voices.join(voiceChannel);
 		message.channel.send(client.translate.commands.join.joined.replace("%s", voiceChannel.name));
 	} else {
 		const channel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
@@ -25,12 +18,7 @@ module.exports.run = (client, message, args) => {
 		if (channel.isVoice()) {
 			if (!channel) return message.reply(client.translate.commands.join.no_channel);
 
-			joinVoiceChannel({
-				"channelId": channel.id,
-				"guildId": message.guild.id,
-				"adapterCreator": message.guild.voiceAdapterCreator
-			});
-
+			client.music.voices.join(channel);
 			message.channel.send(client.translate.commands.join.channel_joined.replace("%s", channel.name));
 		} else {
 			message.reply(client.translate.commands.join.not_a_voice_channel);
@@ -91,24 +79,14 @@ module.exports.interaction = {
 			if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.join.not_in_channel);
 			if (meChannel && meChannel.id === voiceChannel.id) return await interaction.editReply(interaction.client.translate.commands.join.already_joined);
 
-			joinVoiceChannel({
-				"channelId": voiceChannel.id,
-				"guildId": interaction.guild.id,
-				"adapterCreator": interaction.guild.voiceAdapterCreator
-			});
-
+			interaction.client.music.voices.join(voiceChannel);
 			await interaction.editReply(interaction.client.translate.commands.join.joined.replace("%s", voiceChannel.id));
 		} else {
 			const channel = interaction.guild.channels.cache.find(channels => (channels.id === inputChannel.value) || (channels.name === inputChannel.value));
 
 			if (!channel) return await interaction.editReply(interaction.client.translate.commands.join.no_channel);
 
-			joinVoiceChannel({
-				"channelId": channel.id,
-				"guildId": interaction.guild.id,
-				"adapterCreator": interaction.guild.voiceAdapterCreator
-			});
-
+			interaction.client.music.voices.join(channel);
 			await interaction.editReply(interaction.client.translate.commands.join.channel_joined.replace("%s", channel.id));
 		}
 	}
