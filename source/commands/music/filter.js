@@ -17,6 +17,7 @@ module.exports.run = (client, message, args) => {
     });
     if (!filterList.includes(inputOption.toLowerCase())) return message.reply(client.translate.commands.filter.unavailable_filter);
 
+    queue.filter = inputOption.toLowerCase();
     client.music.setFilter(message, inputOption.toLowerCase());
     message.channel.send(client.translate.commands.filter.filter_changed.replace("%s", (inputOption || client.translate.commands.filter.off)));
 };
@@ -166,6 +167,7 @@ module.exports.interaction = {
         if (!queue) return await interaction.editReply(interaction.client.translate.commands.filter.no_queue);
         if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.filter.not_queue_owner);
 
+        queue.filter = inputOption.toLowerCase();
         interaction.client.music.setFilter(interaction, inputOption);
         await interaction.editReply(interaction.client.translate.commands.filter.filter_changed.replace("%s", (inputOption || interaction.client.translate.commands.filter.off)));
     }
