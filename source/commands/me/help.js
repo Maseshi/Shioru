@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
 			.setDescription([
 				"```" + client.translate.commands.help.command + (inputCommand.name.slice(0, 1).toUpperCase() + inputCommand.name.slice(1)),
 				client.translate.commands.help.description + (inputCommand.description || client.translate.commands.help.no_description),
-				client.translate.commands.help.how_to_use + (client.config.prefix) + (inputCommand.usage ? (inputCommand.usage) : client.translate.commands.help.unknown_how_to_use),
+				client.translate.commands.help.how_to_use + client.config.prefix + (inputCommand.usage ? inputCommand.usage : client.translate.commands.help.unknown_how_to_use),
 				client.translate.commands.help.type + (inputCommand.category ? inputCommand.category : "General" || "Misc"),
 				client.translate.commands.help.aliases + (inputCommand.aliases ? inputCommand.aliases.join(", ") + "```" : client.translate.commands.help.do_not_have + "```"),
 				client.translate.commands.help.tip.replace("%s1", (client.config.prefix + inputCommand.name.slice(0, 1).toUpperCase() + inputCommand.name.slice(1))).replace("%s2", (client.config.prefix + inputCommand.aliases[0]))
@@ -54,7 +54,7 @@ module.exports.run = async (client, message, args) => {
 
 			if (!dir.size) return;
 			if (category === "owner" && message.author.id !== client.config.owner) return;
-			if (category === "owner" && message.author.id === client.config.owner) return info.addField("🔒 " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
+			if (category === "owner") return info.addField("🔒 " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 			if (category === "developer") return info.addField("⌨ " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 			if (category === "settings") return info.addField("⚙️ " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 
@@ -131,7 +131,7 @@ module.exports.interaction = {
 				.setDescription([
 					"```" + interaction.client.translate.commands.help.command + (inputCommand.name.slice(0, 1).toUpperCase() + inputCommand.name.slice(1)),
 					interaction.client.translate.commands.help.description + (inputCommand.description || interaction.client.translate.commands.help.no_description),
-					interaction.client.translate.commands.help.how_to_use + (interaction.client.config.prefix) + (inputCommand.usage ? (inputCommand.usage) : interaction.client.translate.commands.help.unknown_how_to_use),
+					interaction.client.translate.commands.help.how_to_use + interaction.client.config.prefix + (inputCommand.usage ? inputCommand.usage : interaction.client.translate.commands.help.unknown_how_to_use),
 					interaction.client.translate.commands.help.type + (inputCommand.category ? inputCommand.category : "General" || "Misc"),
 					interaction.client.translate.commands.help.aliases + (inputCommand.aliases ? inputCommand.aliases.join(", ") + "```" : interaction.client.translate.commands.help.do_not_have + "```"),
 					interaction.client.translate.commands.help.tip.replace("%s1", (interaction.client.config.prefix + inputCommand.name.slice(0, 1).toUpperCase() + inputCommand.name.slice(1))).replace("%s2", (interaction.client.config.prefix + inputCommand.aliases[0]))
@@ -154,7 +154,7 @@ module.exports.interaction = {
 
 				if (!dir.size) return;
 				if (category === "owner" && interaction.user.id !== interaction.client.config.owner) return;
-				if (category === "owner" && interaction.user.id === interaction.client.config.owner) return info.addField("🔒 " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
+				if (category === "owner") return info.addField("🔒 " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 				if (category === "developer") return info.addField("⌨ " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 				if (category === "settings") return info.addField("⚙️ " + categorize + " - (" + dir.size + ")", dir.map(dirs => "`" + dirs.help.name + "`").join(", "));
 
