@@ -1,4 +1,3 @@
-const { joinVoiceChannel, getVoiceConnection } = require("@discordjs/voice");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const catchError = require("../../extras/catchError");
 
@@ -74,20 +73,15 @@ module.exports.run = async (client, message, args) => {
 
         message.channel.send(client.translate.commands.search.get_list_of_songs);
         try {
-            joinVoiceChannel({
-                "channelId": voiceChannel.id,
-                "guildId": message.guild.id,
-                "adapterCreator": message.guild.voiceAdapterCreator
-            });
             client.music.play(voiceChannel, results[contentIndex], {
                 "member": message.member,
                 "textChannel": message.channel,
                 message
             });
         } catch (error) {
-            const connection = getVoiceConnection(voiceChannel.guild.id);
+            const connection = client.music.voices.get(voiceChannel.guild);
 
-            connection.destroy();
+            connection.leave(voiceChannel.guild);
             catchError(client, message, module.exports.help.name, error);
         }
     }
@@ -348,20 +342,16 @@ module.exports.interaction = {
                 "embeds": []
             });
             try {
-                joinVoiceChannel({
-                    "channelId": voiceChannel.id,
-                    "guildId": interaction.guild.id,
-                    "adapterCreator": interaction.guild.voiceAdapterCreator
-                });
-                interaction.client.music.play(voiceChannel, results[contentIndex], {
+                await interaction.client.music.play(voiceChannel, results[contentIndex], {
                     "member": interaction.member,
                     "textChannel": interaction.channel,
                     interaction
                 });
+                await interaction.deleteReply();
             } catch (error) {
-                const connection = getVoiceConnection(voiceChannel.guild.id);
+                const connection = interaction.client.music.voices.get(voiceChannel.guild);
 
-                connection.destroy();
+                connection.leave(voiceChannel.guild);
                 catchError(interaction.client, interaction, module.exports.help.name, error);
             }
         }

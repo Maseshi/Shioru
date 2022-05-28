@@ -1,4 +1,3 @@
-const { joinVoiceChannel, getVoiceConnection } = require("@discordjs/voice");
 const catchError = require("../../extras/catchError");
 
 module.exports.run = (client, message, args) => {
@@ -9,20 +8,15 @@ module.exports.run = (client, message, args) => {
     if (!voiceChannel) return message.reply(client.translate.commands.play.not_in_channel);
 
     try {
-        joinVoiceChannel({
-            "channelId": voiceChannel.id,
-            "guildId": message.guild.id,
-            "adapterCreator": message.guild.voiceAdapterCreator
-        });
         client.music.play(voiceChannel, inputSource, {
             "member": message.member,
             "textChannel": message.channel,
             message
         });
     } catch (error) {
-        const connection = getVoiceConnection(voiceChannel.guild.id);
+        const connection = client.music.voices.get(voiceChannel.guild);
 
-        connection.destroy();
+        connection.leave(voiceChannel.guild);
         catchError(client, message, module.exports.help.name, error);
     }
 };
@@ -71,21 +65,16 @@ module.exports.interaction = {
         if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.play.not_in_channel);
 
         try {
-            joinVoiceChannel({
-                "channelId": voiceChannel.id,
-                "guildId": interaction.guild.id,
-                "adapterCreator": interaction.guild.voiceAdapterCreator
-            });
-            interaction.client.music.play(voiceChannel, inputSource, {
+            await interaction.client.music.play(voiceChannel, inputSource, {
                 "member": interaction.member,
                 "textChannel": interaction.channel,
                 interaction
             });
             await interaction.deleteReply();
         } catch (error) {
-            const connection = getVoiceConnection(voiceChannel.guild.id);
+            const connection = interaction.client.music.voices.get(voiceChannel.guild);
 
-            connection.destroy();
+            connection.leave(voiceChannel.guild);
             catchError(interaction.client, interaction, module.exports.help.name, error);
         }
     }
