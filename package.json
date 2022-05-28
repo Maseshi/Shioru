@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "private": true,
   "keywords": [
@@ -31,6 +31,7 @@
     "@distube/soundcloud": "^1.1.0",
     "@distube/spotify": "^1.2.1",
     "@distube/yt-dlp": "^1.0.2",
+    "@distube/ytdl-core": "^4.11.3",
     "discord.js": "^13.7.0",
     "distube": "^3.3.4",
     "dotenv": "^16.0.1",
@@ -40,6 +41,7 @@
     "lyrics-finder": "^21.7.0",
     "minecraft-server-util": "^5.2.9",
     "node-fetch": "^2.6.7",
+    "sodium": "^3.0.2",
     "spinnies": "^0.5.1",
     "systeminformation": "^5.11.15",
     "weather-js": "^2.0.0"
@@ -50,12 +52,10 @@
   "optionalDependencies": {
     "bufferutil": "^4.0.6",
     "erlpack": "^0.1.4",
-    "sodium": "^3.0.2",
     "utf-8-validate": "^5.0.9",
     "zlib-sync": "^0.1.7"
   },
   "engines": {
-    "node": ">=16.9.0",
-    "npm": ">=8.0.0"
+    "node": ">=16.9.0"
   }
 }
