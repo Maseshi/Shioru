@@ -21,7 +21,7 @@ module.exports = (client) => {
     for (const file of commands) {
       const pull = require("../commands/" + dirs + "/" + file);
      
-      if (pull.help && typeof pull.help.name === "string" && typeof pull.help.category === "string") {
+      if (pull.help && typeof pull.help.name === "string" && typeof pull.help.description === "string" && typeof pull.help.category === "string") {
         if (client.commands.get(pull.help.name)) {
           spinnies.fail("commands-loading", {
             "text": "Two or more commands have the same name " + pull.help.name,
@@ -37,7 +37,7 @@ module.exports = (client) => {
         } 
       } else {
         spinnies.fail("commands-loading", {
-          "text": "Error loading command in " + ("./source/commands/" + dirs + "/" + file) + ". you have a missing help.name or help.name is not a string. or you have a missing help.category or help.category is not a string"
+          "text": "Error loading command in " + ("./source/commands/" + dirs + "/" + file) + ". you have a missing help.name or help.name is not a string. or you have a missing help.description or help.description is not a string. or you have a missing help.category or help.category is not a string.",
         });
         process.exit(1);
       }
