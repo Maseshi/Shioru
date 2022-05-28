@@ -1,4 +1,3 @@
-const { getVoiceConnection } = require("@discordjs/voice");
 const catchError = require("../extras/catchError");
 
 module.exports = (client) => {
@@ -20,11 +19,11 @@ module.exports = (client) => {
 
     client.music.on("error", (channel, error) => {
         const meChannel = channel.guild.me.voice.channel;
-        const connection = getVoiceConnection(meChannel.guild.id);
+        const connection = client.music.voices.get(meChannel.guild);
 
         if ((error.toString()).includes("Unknown Playlist")) return channel.send(client.translate.handlers.music.error.playlist_not_found);
 		
-        connection.destroy();
+        connection.leave(meChannel.guild);
         catchError(client, channel, "music", error);
     });
 
