@@ -27,8 +27,12 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
+<<<<<<< HEAD
     "@discordjs/rest": "^0.5.0",
     "@discordjs/voice": "^0.10.0",
+=======
+    "@discordjs/voice": "^0.9.0",
+>>>>>>> ec0ebb06b7bbd2c4f82f88dee2351e7e66c02345
     "@distube/soundcloud": "^1.1.0",
     "@distube/spotify": "^1.2.1",
     "@distube/yt-dlp": "^1.0.2",
