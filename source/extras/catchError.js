@@ -8,6 +8,11 @@ module.exports = async (client, message, name, error) => {
     if (!name) return console.log("[catchError] Please specify the name of the command or function.");
     if (!error) return console.log("[catchError] Please forward any errors that have occurred.");
 
+    const clearStyle = ansiColor(0, "sgr");
+    const boldStyle = ansiColor(1, "sgr");
+    const whiteColor = ansiColor(15, "foreground");
+    const redBackground = ansiColor(9, "background");
+
     const dateTime = (date) => {
         const day = date.getDay();
         const month = date.getMonth();
@@ -82,33 +87,41 @@ module.exports = async (client, message, name, error) => {
                         ]
                     });
                 } catch {
-                    await message.editReply({
-                        "content": null,
-                        "embeds": [
-                            {
-                                "title": client.translate.extras.catchError.an_error_occurred,
-                                "description": client.translate.extras.catchError.error_detail
-                                    .replace("%s1", name)
-                                    .replace("%s2", packages.version)
-                                    .replace("%s3", new Date())
-                                    .replace("%s4", ((getApps().length === 0) ? client.translate.extras.catchError.server_abnormal : client.translate.extras.catchError.server_normal))
-                                    .replace("%s5", ping)
-                                    .replace("%s6", api)
-                                    .replace("%s7", error),
-                                "color": 13632027,
-                                "timestamp": new Date()
-                            }
-                        ]
-                    });
+                    try {
+                        await message.editReply({
+                            "content": null,
+                            "embeds": [
+                                {
+                                    "title": client.translate.extras.catchError.an_error_occurred,
+                                    "description": client.translate.extras.catchError.error_detail
+                                        .replace("%s1", name)
+                                        .replace("%s2", packages.version)
+                                        .replace("%s3", new Date())
+                                        .replace("%s4", ((getApps().length === 0) ? client.translate.extras.catchError.server_abnormal : client.translate.extras.catchError.server_normal))
+                                        .replace("%s5", ping)
+                                        .replace("%s6", api)
+                                        .replace("%s7", error),
+                                    "color": 13632027,
+                                    "timestamp": new Date()
+                                }
+                            ]
+                        });
+                    } catch (err) {
+                        logGenerator("catch", err)
+
+                        console.group(dateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
+                            console.group(boldStyle + "Full Error:" + clearStyle);
+                                console.error(err);
+                            console.groupEnd();
+                            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+                            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+                            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+                        console.groupEnd();
+                    }
                 }
             }
         }
     }
-
-    const clearStyle = ansiColor(0, "sgr");
-    const boldStyle = ansiColor(1, "sgr");
-    const whiteColor = ansiColor(15, "foreground");
-    const redBackground = ansiColor(9, "background");
 
     logGenerator("catch", error)
 
