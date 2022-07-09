@@ -6,7 +6,7 @@ module.exports = (client, member) => {
     if (member.user.bot) return;
     if (client.mode === "start") {
         settingsData(client, member.guild, module.exports, member);
-        if (client.config.worker !== 1) return;
+        if (client.temp.set !== 1) return;
     }
 
 	const db = getDatabase();

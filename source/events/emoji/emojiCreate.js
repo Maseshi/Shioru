@@ -5,7 +5,7 @@ const catchError = require("../../extras/catchError");
 module.exports = (client, emoji) => {
     if (client.mode === "start") {
         settingsData(client, emoji.guild, module.exports, emoji);
-        if (client.config.worker !== 1) return;
+        if (client.temp.set !== 1) return;
     }
 
 	const db = getDatabase();

@@ -5,7 +5,7 @@ const catchError = require("../../extras/catchError");
 module.exports = (client, oldChannel, newChannel) => {
     if (client.mode === "start") {
         settingsData(client, newChannel.guild, module.exports, (oldChannel, newChannel));
-        if (client.config.worker !== 1) return;
+        if (client.temp.set !== 1) return;
     }
 
     const db = getDatabase();

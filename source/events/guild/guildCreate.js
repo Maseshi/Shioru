@@ -5,7 +5,7 @@ const catchError = require("../../extras/catchError");
 module.exports = (client, guild) => {
     if (client.mode === "start") {
         settingsData(client, guild, module.exports, guild);
-        if (client.config.worker !== 1) return;
+        if (client.temp.set !== 1) return;
     }
 
     const guildName = guild.name;
