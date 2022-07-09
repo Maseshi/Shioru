@@ -1,4 +1,6 @@
 const { getDatabase, ref, update } = require("firebase/database");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
 const Spinnies = require("spinnies");
 
 module.exports = async (client) => {
@@ -20,7 +22,7 @@ module.exports = async (client) => {
   const userSize = client.users.cache.size;
 
   if (client.mode === "start") {
-    update(ref(db, 'Shioru/data/survey'), {
+    update(ref(db, "Shioru/data/survey"), {
       "commands": commandSize,
       "servers": guildSize,
       "members": userSize
@@ -80,6 +82,8 @@ module.exports = async (client) => {
 
   // Refreshing application (/) commands.
   const guildID = client.config.guild;
+  const token = client.config.token;
+  const rest = new REST({ version: "9" }).setToken(token);
   const spinnies = new Spinnies({
     "failColor": "yellowBright",
     "failPrefix": "⚠️"
@@ -90,23 +94,22 @@ module.exports = async (client) => {
   });
 
   try {
-    const data = client.interaction.map(commands => commands.interaction.data);
+    const clientID = client.user.id;
+    const data = client.interaction.map(
+      (commands) => commands.interaction.data
+    );
 
     if (client.mode === "start") {
-      // Remove all old commands.
-      await client.application.commands.set([]);
-
-      // Set all new commands.
-      await client.application.commands.set(data);
+      // Put all new commands.
+      await rest.put(Routes.applicationCommands(clientID), { body: data });
 
       spinnies.remove("app-commands-loading");
       console.log("Application (/) commands is ready to use.            ");
     } else {
-      // Remove all old commands.
-      await client.application.commands.set([]);
-
-      // Set all new commands.
-      await client.application.commands.set(data, guildID);
+      // Put all new commands.
+      await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
+        body: data,
+      });
 
       spinnies.remove("app-commands-loading");
       console.log("Application (/) commands is ready to use.           ");
@@ -116,7 +119,7 @@ module.exports = async (client) => {
       "text": "The application (/) commands could not be completely reloaded."
     });
     console.group();
-    console.error(err)
+    console.error(err);
     console.groupEnd();
   }
 
