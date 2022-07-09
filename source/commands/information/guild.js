@@ -84,13 +84,14 @@ module.exports.run = (client, message, args) => {
 
     const clientUsername = client.user.username;
     const clientAvatarURL = client.user.avatarURL();
+    const guildIcon = message.guild.iconURL();
     const embed = new MessageEmbed()
         .setTitle(client.translate.commands.guild.server_info)
         .setDescription(client.translate.commands.guild.server_info_description)
         .setColor("BLUE")
         .setTimestamp()
-        .setFooter({ "text": client.translate.commands.guild.info_date, "iconURL": icon })
-        .setThumbnail(icon)
+        .setFooter({ "text": client.translate.commands.guild.info_date, "iconURL": guildIcon || "" })
+        .setThumbnail(guildIcon || "")
         .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
 
     const info = [
@@ -318,13 +319,14 @@ module.exports.interaction = {
 
         const clientUsername = interaction.client.user.username;
         const clientAvatarURL = interaction.client.user.avatarURL();
+        const guildIcon = interaction.guild.iconURL();
         const embed = new MessageEmbed()
             .setTitle(interaction.client.translate.commands.guild.server_info)
             .setDescription(interaction.client.translate.commands.guild.server_info_description)
             .setColor("BLUE")
             .setTimestamp()
-            .setFooter({ "text": interaction.client.translate.commands.guild.info_date, "iconURL": icon })
-            .setThumbnail(icon)
+            .setFooter({ "text": interaction.client.translate.commands.guild.info_date, "iconURL": guildIcon || "" })
+            .setThumbnail(guildIcon || "")
             .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
 
         const info = [
