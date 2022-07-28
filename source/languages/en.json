@@ -327,7 +327,7 @@
         },
         "ping": {
             "connection": "📡 Connection",
-            "info": "Ping is %s1 seconds \nAPI Latency is %s2 seconds",
+            "info": "Ping is %s1ms \nAPI Latency is %s2ms",
             "result": "🏓 Pong",
             "waiting": "🏓 Pinging..."
         },
