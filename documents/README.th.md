@@ -3,7 +3,7 @@
     <h1>
         <strong>Shioru</strong>
     </h1>
-    <img src="https://img.shields.io/badge/discord.js-v13-7354F6?logo=discord&logoColor=white&style=flat-square" />
+    <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white&style=flat-square" />
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square" />
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=flat-square" />
@@ -14,7 +14,7 @@
 
 ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `Shelp` หรือ `/help`
 
-คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot)
+> คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## ภาษาของข้อมูล
 
@@ -38,34 +38,22 @@ npm install
 ```
 
 - ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config/data.js` 
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js` 
 - ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง
     > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## คุณสมบัติเด่น
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v13
+- ทำงานบน [Discord.js](https://discord.js.org/) v14
 - สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
 - สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์รหัสภาษา](https://github.com/Maseshi/shioru/blob/main/source/config/languages.json)ของที่เก็บนี้
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์รหัสภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
 - ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
 - รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
 - สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
 - สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
-
-## เอกสาร
-
-ขณะนี้ยังไม่มีเอกสารบนเว็บไซต์ที่พร้อมใช้งานในขณะนี้ แต่จะกลับมาอีกครั้งเมื่อพร้อมแล้ว
-
-## ชอบผลงาน
-
-ชอบผลงานของเราใช่ไหม ซื้อกาแฟของเราสิ!
-
-<a href="https://www.buymeacoffee.com/maseshi" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="150px" />
-</a>
 
 ## เครดิต
 

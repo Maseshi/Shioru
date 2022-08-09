@@ -3,7 +3,7 @@
     <h1>
         <strong>Shioru</strong>
     </h1>
-    <img src="https://img.shields.io/badge/discord.js-v13-7354F6?logo=discord&logoColor=white&style=flat-square" />
+    <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white&style=flat-square" />
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=flat-square" />
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=flat-square" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=flat-square" />
@@ -14,7 +14,7 @@
 
 Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `Shelp` or `/help`.
 
-You can invite Shioru to your server from [here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot).
+> You can invite Shioru to your server from [here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
 
 ## Data language
 
@@ -38,34 +38,22 @@ npm install
 ```
 
 - rename the file Set `.env.example` to `.env` and include all required values.
-- You can edit some data in **config** at `./source/config/data.js`.
+- You can edit some data in **config** at `./source/config.js`.
 - Go to terminal and run `npm run dev` for development and `npm start` for production.
     > **NOTE**: When in development mode Some features may not work.
 
 ## Outstanding features
 
-- Works on [Discord.js](https://discord.js.org/) v13
+- Works on [Discord.js](https://discord.js.org/) v14
 - A wide variety of customizations can be made.
 - It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages You can check the supported languages from the [language code file](https://github.com/Maseshi/Shioru/blob/main/source/config/languages.json) of this repository.
+- Support for multiple languages You can check the supported languages from the [language code file](https://github.com/Maseshi/Shioru/blob/main/source/languages) of this repository.
 - Tier system (level and experience)
 - Support customization of server notifications
 - You can chat by typing `@Shioru` followed by the message you wish to communicate.
 - Able to use application commands (/)
 
 And many other interesting features...
-
-## Documents
-
-There is currently no documentation available on the website. But will come back again when it's ready.
-
-## Like the work
-
-Like our work? Buy our coffee!
-
-<a href="https://www.buymeacoffee.com/maseshi" target="_blank">
-     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="150px" />
-</a>
 
 ## Credits
 
