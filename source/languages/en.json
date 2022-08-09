@@ -42,11 +42,41 @@
             "reason_for_ban": "Ban by: %s1\nreason: %s2",
             "user_not_found": "❎ I can't find this member. Please check again."
         },
+        "bigemoji": {
+            "emoji_not_found": "❎ It doesn't look like that emoji, or it might not be.",
+            "empty_value": "❓ Please enter an emoji to convert it into bigger emoji.",
+            "large_emoji": "big emoji",
+            "requested_by": "Requested by %s"
+        },
         "bug": {
             "message_required": "❎ Eh..but you must specify the message you want to send.",
             "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
             "success": "✅ ok thank you...if you find anything else please tell me (●'◡'●)",
             "too_short_message": "❎ I'm shaking..Please specify it a bit more clearly. I don't want his developer to become a panda again."
+        },
+        "covid": {
+            "active": "Active",
+            "active_per_one_million": "Active per 1 million",
+            "backend_issue": "❎ There seems to be a problem on the contributor's side. Please try again next time",
+            "cases_per_one_million": "Cases per 1 million",
+            "cases_today": "Cases today",
+            "cases_total": "Cases total",
+            "country_not_found": "❎ Umm..I couldn't find the information for the country you specified.",
+            "critical_per_one_million": "Critical per 1 million",
+            "critical_stage": "Critical stage",
+            "deaths_today": "Deaths today",
+            "deaths_total": "Deaths total",
+            "one_case_per_people": "1 cases per people",
+            "one_death_per_people": "1 death per people",
+            "one_test_per_people": "1 test per people",
+            "population": "Population",
+            "recovered": "Recovered",
+            "recovered_per_one_million": "Recovered per 1 million",
+            "tests": "Tests",
+            "tests_per_one_million": "Tests per 1 million",
+            "updated_on": "Last updated %s",
+            "what_country": "❓ You need to tell us the name of the country to see information about COVID-19.",
+            "when": "when"
         },
         "credits": {
             "creator_credit": "💳 Credits to other creators",
@@ -74,14 +104,21 @@
             "empty": "❓ Who do you want to eat right now?"
         },
         "filter": {
+            "add_filter": "🎼 Added the desired sound format to **%s** already.",
             "available_filter": "Available filter formats",
             "available_filter_description": "Modify the soundtrack to make it even more beautiful by using all of these %s1 formats ```%s2```",
-            "filter_changed": "🎼 Change the song's filtering method to: %s",
+            "clear_filter": "💨 All audio formats have been cleared. Now it will be a normal sound format",
+            "list_filter_description": "There are currently formats in use in this queue %s1 formats\n```%s2```",
+            "list_filter_description_empty": "```There are currently no audio formats being used.```",
+            "list_filter_title": "The audio format currently in use",
             "no_queue": "❎ There are no songs currently playing.",
             "not_queue_owner": "🚫 Only the owner of the queue can change it.",
-            "off": "Off",
+            "remove_filter": "🗑️ The sound format **%s** has been removed successfully.",
+            "set_filter": "🎼 Set the desired audio format to **%s**",
             "sound_filtering": "❓ How would you like to modify your music?",
-            "unavailable_filter": "❎ No such filtering format found. Please check again."
+            "unavailable_filter": "❎ No such filtering format found. Please check again.",
+            "unknown_filter": "❎ Umm..I don't know the sound format `%s`, you can check it using **available** or **ava**.",
+            "unknown_input_option": "❓ You can specify the following parameters: add, remove, set, available, list, clear"
         },
         "guild": {
             "afk_channel_id": "AFK Channel ID",
@@ -220,7 +257,7 @@
         "kill": {
             "do_not_kill_me": "❎ Y..You can't do this to me... Huhh..",
             "empty": "❓ Thinking of k..k..killing someone...?",
-            "killed": "%s1 has successfully killed you %s2 🔪"
+            "killed": "%s1 has successfully killed %s2 🔪"
         },
         "language": {
             "already_set": "❎ eh..but this server is already using %s",
@@ -279,14 +316,29 @@
             "server_unavailable": "```🔴 This server has been temporarily disabled```",
             "version": "Version"
         },
+        "meme": {
+            "can_not_fetch": "Failed to fetch the meme. Please try again",
+            "meme_not_found": "Couldn't find a meme of type that matches %s."
+        },
         "musicInfo": {
-            "detail": "📄__ Details__\n• Song: **%s1**\n• Duration: **%s2**\n• Song Link: **%s3**\n• ID Song: **%s4**",
-            "no_queue": "❎ There's no song I'm playing right now."
+            "detail": "📄 Details of the currently playing song",
+            "download_link": "📥 Download Link",
+            "duration": "🕒 Duration",
+            "id": "🆔 ID",
+            "link": "🔗 Link",
+            "music_name": "🎵 Song name",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "uploader": "🎬 Uploader"
+        },
+        "nekos": {
+            "request_by": "Requested by %s",
+            "type_not_exists": "❎ That one doesn't exist. Take a look below.\n```%s```",
+            "type_you_want": "❓ What kind do you want?\n```%s```"
         },
         "notify": {
             "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
             "data_at": "data of when",
-            "description": "**notify** - Set a notification for each type to receive the latest information from the server.\n\nGeneral notification: %s1\nNew channel: %s2\nChannel deleted: %s3\nchannel. Pinned: %s4\nChannel updated: %s5\nNew emoji: %s6\nEmoji deleted: %s7\nEmoji updated: %s8\nMember joined server: %s9\nMember left server: %s10\n\n> You can change this by typing:\n> ```%s11```\n> ```%s12```",
+            "description": "**notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General notifications: %s1\n**channelCreate** - New channels: %s2 \n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New emoji: %s6\n**emojiDelete** - Emoji deleted: %s7\n**emojiUpdate** - Emoji updated: %s8\n** guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Banned: %s10\n**guildMemberAdd** - Member Joined Server: %s11\n**guildMemberRemove** - Member Leave From the server: %s12\n\n> You can change this by typing:\n> ```%s13```\n> ```%s14```",
             "empty_config_channel": "❓ Please specify the channel you want to configure.",
             "empty_value": "❎ Please specify the type of notification.\n%s",
             "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only set, remove.",
@@ -298,13 +350,20 @@
         },
         "nowPlaying": {
             "autoplay": "📻 Autoplay",
-            "filter": "🎼 Audio filter style: %s",
+            "filter": "🎼 Audio filter style: `%s`",
             "no_queue": "❎ There's no song I'm playing right now.",
             "owner_this_queue": "%s isthe owner of this queue"
         },
         "numbers": {
             "empty": "❓ Please tell me the amount set between the lowest and the highest.",
             "result": "Result is %s"
+        },
+        "paste": {
+            "backend_not_response": "❎ No response from server found. You can try again later.",
+            "content_empty": "❎ Please specify the content of the message.",
+            "file": "File",
+            "raw": "Raw",
+            "title_empty": "❎ Please specify the title of the text."
         },
         "pause": {
             "no_queue": "❎ There's no song I'm playing right now.",
@@ -327,7 +386,7 @@
         },
         "ping": {
             "connection": "📡 Connection",
-            "info": "Ping is %s1 seconds \nAPI Latency is %s2 seconds",
+            "info": "Ping is %s1 seconds \nRoundtrip Latency is %s2 seconds",
             "result": "🏓 Pong",
             "waiting": "🏓 Pinging..."
         },
@@ -358,6 +417,15 @@
             "too_little": "❎ Solo, right?",
             "too_much": "❌ 100+ messages!! Uh... well, I can't delete those messages."
         },
+        "quality": {
+            "advice_embed_description": "```Current Quality: %s```\nSometimes the problem can be caused by a server with so much traffic that it causes performance issues. However, I recommend you to check your internet connection before setting this.\n`0` - Use **OPUS** to compress audio files. This will result in better sound quality but also consume more resources. **(recommended)**\n`1` - Uses audio directly from the source. This will result in better efficiency but less resource usage.",
+            "advice_embed_footer_text": "You can set additional audio quality from Discord settings: Settings > Audio & Video > Advanced.",
+            "advice_embed_title": "Adjust audio quality",
+            "focus_on_high_quality": "focus on high quality",
+            "low_efficiency": "Emphasis on low efficiency",
+            "opus_mode_selected": "🎛️ I have now used **OPUS** to help compress audio files. The sound quality will improve",
+            "raw_mode_selected": "🎛️ Switched to the original audio. may cause the sound quality to deteriorate."
+        },
         "queue": {
             "autoplay": "📻 Autoplay",
             "filter": "🎼 Audio filtering format: %s",
@@ -368,20 +436,21 @@
         },
         "queueStatus": {
             "autoplay": "📻 Autoplay",
-            "filter": "🎼 sound filter style",
+            "duration": "🕒 Duration",
+            "filter": "🎼 Sound filter style",
             "no_queue": "❎ Haven't played any songs yet.",
-            "now": "⌚ now",
-            "off": "off",
-            "on": "on",
+            "now": "⌚ Now",
+            "off": "Off",
+            "on": "On",
             "owner_this_queue": "%s is the owner of this queue.",
             "paused": "Pause",
             "playing": "Playing",
             "queue_status": "📑 Current song queue status",
-            "repeat": "🔁 repeat",
+            "repeat": "🔁 Repeat",
             "repeat_off": "Not on",
             "repeat_this_queue": "This queue",
             "repeat_this_song": "This song",
-            "volume": "🔉 volume"
+            "volume": "🔉 Volume"
         },
         "reboot": {
             "not_owner": "🛑 Don't..don't. This function requires top privileges only",
@@ -502,6 +571,13 @@
             "not_owner": "🚫 Only the owner of the queue can change it.",
             "skipped": "⏭ skipped and about to start a new song in the queue."
         },
+        "snakecord": {
+            "building_board_game": "🐍 Arranging elements. please wait a moment...",
+            "game_name": "Snake: Game",
+            "game_over": "Game over",
+            "game_score": "Score: **%s1**\nTime: **%s2** seconds",
+            "played_on": "Play started by %s"
+        },
         "status": {
             "data_by_server": "Reference data from server",
             "dnd_status": "The number of members currently do not disturb is \n```%s```",
@@ -547,6 +623,14 @@
             "not_in_text_channel": "❎ No.. you mean the audio channel. It's not a text field m...",
             "user_not_in_channel": "❎ Either enter one of the audio channels or just tell me the name or the channel's ID. He will be able to create the right link",
             "voice_channel_not_found": "❎ Eh..but there's no voice channel on this server. Try going into the sound field and try again."
+        },
+        "translate": {
+            "can_not_translate": "❎ The text cannot be translated. Please try again later",
+            "code_empty": "❓ What is the country code you want to translate?\n**Supported languages:** %s",
+            "message_empty": "❓ The message you want to translate.",
+            "says": "says",
+            "should_not_less_than_two": "❎ Country code must contain more than 2 characters. Please check again.",
+            "translate_support": "❎ The translation code is invalid. Please check again.\n**Supported languages:** %s"
         },
         "unban": {
             "input_member_empty": "❎ Name the person you want to unban.",
@@ -672,6 +756,14 @@
             "member_update_emoji": "> The server member has changed the new emoji from: %s1 to %s2",
             "system_notification": "🔔 System notification"
         },
+        "guildbanAdd": {
+            "member_ban_add": "> <@%s1> has been banned within this server.\n**Reason:**\n```%s2```",
+            "system_notification": "🔔 System notifications"
+        },
+        "guildBanRemove": {
+            "member_ban_remove": "> <@%s1> has been unbanned within this server.\n**Reason:**\n```%s2```",
+            "system_notification": "🔔 System notifications"
+        },
         "guildCreate": {
             "advice": "**💡 Advice**",
             "advice_detail": "If you're the owner of this guild.. I'd like to complete the guild setup before I actually use it, because something you might not need. So try the `Ssettings` command.",
@@ -692,11 +784,13 @@
         },
         "interactionCreate": {
             "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
+            "command_is_disabled": "⚫ This command has been disabled on the server. Please contact your server administrator.",
             "no_permission": "🚫 Ummm...it looks like you don't have permission to use the application commands (/), try asking the moderator (≧∇≦)",
             "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
         },
         "messageCreate": {
             "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
+            "command_is_disabled": "⚫ This command has been disabled on the server. Please contact your server administrator.",
             "forgot_the_prefix": "ℹ️ Looks like you're using the wrong prefix for this server. The prefix for this server is `%s1` separately.\n> **Tip**: The prefix can be set on each server using the __settings__ command. For more information type `%s2help settings` or `/help settings`",
             "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
         }
@@ -756,7 +850,8 @@
             "searchResult": {
                 "searching": "🔎 Search for related songs",
                 "timer_choose": "You have 60 seconds to choose a song. If you want to cancel, you can type an unrelated number or wait until the timer expires.",
-                "title_results": "Search results for that song:"
+                "title_results": "Search results for that song:",
+                "tool_name": "Music Searcher"
             }
         }
     }
