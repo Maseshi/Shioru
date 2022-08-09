@@ -1,7 +1,38 @@
 .env
 NOTE.txt
+
+# In Comming Soon
 source/languages/ja.json
 source/commands/settings/rank.js
+source/events/guild/guildIntegrationsUpdate.js
+source/events/guild/guildMemberAvailable.js
+source/events/guild/guildMembersChunk.js
+source/events/guild/guildMemberUpdate.js
+source/events/guild/guildScheduledEventCreate.js
+source/events/guild/guildScheduledEventDelete.js
+source/events/guild/guildScheduledEventUpdate.js
+source/events/guild/guildScheduledEventUserAdd.js
+source/events/guild/guildScheduledEventUserRemove.js
+source/events/guild/guildUnavailable.js
+source/events/guild/guildUpdate.js
+source/events/invite/
+source/events/message/messageDeleteBulk.js
+source/events/message/messageDelete.js
+source/events/message/messageReactionAdd.js
+source/events/message/messageReactionRemoveAll.js
+source/events/message/messageReactionRemoveEmoji.js
+source/events/message/messageReactionRemove.js
+source/events/message/messageUpdate.js
+source/events/presence/
+source/events/role/
+source/events/shard/
+source/events/stage/
+source/events/sticker/
+source/events/thread/
+source/events/typing/
+source/events/user/
+source/events/voice/
+source/events/webhook/
 
 # Logs
 logs
