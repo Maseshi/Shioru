@@ -1,13 +1,13 @@
-const { Client } = require("discord.js");
-const { DisTube } = require("distube");
+const { Client, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
+const { DisTube, StreamType } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
-const { YtDlpPlugin } = require("@distube/yt-dlp")
+const { YtDlpPlugin } = require("@distube/yt-dlp");
 const { initializeApp } = require("firebase/app");
-const { readdirSync, readFileSync } = require("node:fs");
-const { version } = require("../package.json")
-const ansiColor = require("./extras/ansiColor");
-const config = require("./config/data");
+const { readdirSync } = require("node:fs");
+const { version } = require("../package.json");
+const { asciiArt, ansiColor } = require("./utils/consoleUtils");
+const config = require("./config");
 const language = require("./languages/en.json");
 
 // Start detecting working time
@@ -20,21 +20,18 @@ const whiteColor = ansiColor(15, "foreground");
 const yellowColor = ansiColor(11, "foreground");
 const blueBrightColor = ansiColor(33, "foreground");
 
-const file = readFileSync("./source/assets/ascii-art.txt", "utf-8");
-const text = file.split('\n').join("\n");
-const textFormat =  text.replace("%s1", "v")
+const textFormat =  asciiArt.replace("%s1", "v")
                         .replace("%s2", version.charAt(0))
                         .replace("%s3", version.charAt(1))
                         .replace("%s4", version.charAt(2))
                         .replace("%s5", version.charAt(3))
                         .replace("%s6", version.charAt(4));
 
-console.clear();
 console.info(blueBrightColor + textFormat + clearStyle);
 console.info(whiteColor + "Copyright (C) 2020-2022 Chaiwat Suwannarat. All rights reserved." + clearStyle);
 console.info(whiteColor + "Website: https://shiorus.web.app/\n" + clearStyle);
 
-// Check the work system from the script in packages.json.
+// ? Check the work system from the script in packages.json.
 // Example of use in development mode: npm run dev
 // Production mode is "start"
 // Development mode is "dev"
@@ -52,35 +49,48 @@ if (process.env.npm_lifecycle_event && process.env.npm_lifecycle_event === "dev"
 const client = new Client({
     // Fetch the recommended amount of shards from Discord and spawn that amount
     "shards": "auto",
-    // Preset status
+    // Status when starting
     "presence": {
         "status": "dnd",
         "afk": true,
         "activities": [
             {
                 "name": "information of each server",
-                "type": "WATCHING"
+                "type": ActivityType.Watching
             }
         ]
     },
-    // Required in Discord.js v13
+    // ? The enumeration for partials.
+    // https://discord.js.org/#/docs/discord.js/14.0.3/typedef/Partials
+    "partials": [
+        Partials.User,
+        Partials.Channel,
+        Partials.GuildMember,
+        Partials.Message,
+        Partials.Reaction,
+        Partials.GuildScheduledEvent,
+        Partials.ThreadMember
+    ],
+    // ! Required in Discord.js v14
+    // https://discord-api-types.dev/api/discord-api-types-v10/enum/GatewayIntentBits
     "intents": [
-        "GUILDS",
-        "GUILD_MEMBERS",
-        "GUILD_BANS",
-        "GUILD_EMOJIS_AND_STICKERS",
-        "GUILD_INTEGRATIONS",
-        "GUILD_WEBHOOKS",
-        "GUILD_INVITES",
-        "GUILD_VOICE_STATES",
-        "GUILD_PRESENCES",
-        "GUILD_MESSAGES",
-        "GUILD_MESSAGE_REACTIONS",
-        "GUILD_MESSAGE_TYPING",
-        "DIRECT_MESSAGES",
-        "DIRECT_MESSAGE_REACTIONS",
-        "DIRECT_MESSAGE_TYPING",
-        "GUILD_SCHEDULED_EVENTS"
+        GatewayIntentBits.DirectMessageReactions,
+        GatewayIntentBits.DirectMessageTyping,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.GuildBans,
+        GatewayIntentBits.GuildEmojisAndStickers,
+        GatewayIntentBits.GuildIntegrations,
+        GatewayIntentBits.GuildInvites,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.GuildMessageTyping,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildScheduledEvents,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildWebhooks,
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.MessageContent
     ]
 });
 
@@ -93,12 +103,10 @@ client.music = new DisTube(client, {
     "plugins": [
         new SpotifyPlugin(),
         new SoundCloudPlugin(),
-        new YtDlpPlugin()
+        new YtDlpPlugin({ "update": false })
     ],
     "leaveOnStop": false,
     "youtubeIdentityToken": client.config.server.apiKey,
-    "youtubeDL": false,
-    "updateYouTubeDL": false,
     "customFilters": {
         "3d": "apulsator=hz=0.125",
         "8d": "apulsator=hz=0.08",
@@ -128,7 +136,8 @@ client.music = new DisTube(client, {
     },
     "ytdlOptions": {
         "highWaterMark": 1 << 24
-    }
+    },
+    "streamType": StreamType.OPUS
 });
 
 // Read the code in the handlers.
