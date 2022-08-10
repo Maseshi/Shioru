@@ -386,11 +386,7 @@
         },
         "ping": {
             "connection": "📡 Connection",
-<<<<<<< HEAD
             "info": "Ping is %s1 seconds \nRoundtrip Latency is %s2 seconds",
-=======
-            "info": "Ping is %s1ms \nAPI Latency is %s2ms",
->>>>>>> 61f03dcae89b21c1291a9d2c2fdc032117be3828
             "result": "🏓 Pong",
             "waiting": "🏓 Pinging..."
         },
