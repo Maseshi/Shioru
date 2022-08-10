@@ -1,7 +1,6 @@
 const discord = require("discord.js");
 const packages = require("../../package.json");
-const logGenerator = require("../extras/logGenerator");
-const ansiColor = require("../extras/ansiColor");
+const { ansiColor, logGenerator } = require("../utils/consoleUtils");
 
 module.exports = (client) => {
     const consoleDateTime = (date) => {

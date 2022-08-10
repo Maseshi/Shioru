@@ -1,4 +1,5 @@
-const catchError = require("../extras/catchError");
+const { EmbedBuilder } = require("discord.js");
+const { catchError } = require("../utils/consoleUtils");
 
 module.exports = (client) => {
     client.music.on("addList", (queue, playlist) => {
@@ -18,7 +19,7 @@ module.exports = (client) => {
     });
 
     client.music.on("error", (channel, error) => {
-        const meChannel = channel.guild.me.voice.channel;
+        const meChannel = channel.guild.members.me.voice.channel;
         const connection = client.music.voices.get(meChannel.guild);
 
         if ((error.toString()).includes("Unknown Playlist")) return channel.send(client.translate.handlers.music.error.playlist_not_found);
@@ -61,31 +62,25 @@ module.exports = (client) => {
     client.music.on("searchResult", (message, result) => {
         let index = 0;
         const data = result.map(song => "**" + (++index) + "**. " + song.name + " `" + song.formattedDuration + "` : **" + song.uploader.name + "**").join("\n");
+        
+        const authorAvatar = message.author.displayAvatarURL();
+        const authorUsername = message.author.username;
+        const searchResultEmbed = new EmbedBuilder()
+            .setTitle(client.translate.handlers.music.searchResult.searching)
+            .setDescription(client.translate.handlers.music.addList.timer_choose)
+            .setColor("Blue")
+            .setTimestamp()
+            .setAuthor({ "name": client.translate.handlers.music.tool_name, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/magnifying-glass-tilted-left_1f50d.png" })
+            .setFooter({ "iconURL": authorAvatar, "text": authorUsername })
+            .setFields(
+                [
+                    {
+                        "name": client.translate.handlers.music.searchResult.title_results,
+                        "value": data
+                    }
+                ]
+            );
     
-        message.channel.send({
-            "embeds": [
-                {
-                    "title": client.translate.handlers.music.searchResult.searching,
-                    "description": client.translate.handlers.music.addList.timer_choose,
-                    "color": 13632027,
-                    "timestamp": new Date(),
-                    "author": {
-                        "name": "YouTube",
-                        "url": "https://www.youtube.com/",
-                        "iconURL": "https://www.youtube.com/s/desktop/6007d895/img/favicon_144x144.png"
-                    },
-                    "footer": {
-                        "icon_url": message.author.displayAvatarURL(),
-                        "text": message.author.username
-                    },
-                    "fields": [
-                        {
-                            "name": client.translate.handlers.music.searchResult.title_results,
-                            "value": data
-                        }
-                    ]
-                }
-            ]
-        });
+        message.channel.send({ "embeds": [searchResultEmbed] });
     });
 };
