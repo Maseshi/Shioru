@@ -1,6 +1,7 @@
+const { EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, get, set } = require("firebase/database");
-const settingsData = require("../../extras/settingsData");
-const catchError = require("../../extras/catchError");
+const { settingsData } = require("../../utils/databaseUtils");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, member) => {
     if (member.user.bot) return;
@@ -11,47 +12,31 @@ module.exports = (client, member) => {
 
 	const db = getDatabase();
 	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), member.guild.id);
+    const channelRef = child(childRef, "config/notification/guildMemberRemove");
 
-	get(child(childRef, "config")).then((snapshot) => {
+	get(channelRef).then((snapshot) => {
         if (snapshot.exists()) {
-            const notifyId = snapshot.val().notification.guildMemberRemove;
+            const notifyId = snapshot.val();
 
             if (notifyId) {
 				const notification = member.guild.channels.cache.find(channels => channels.id === notifyId);
+                const memberFetch = member.user.fetch();
+                const memberColor = memberFetch.accentColor;
+                const memberTag = member.user.tag;
+                const memberAvatar = member.user.displayAvatarURL();
+                const guildMemberRemoveEmbed = new EmbedBuilder()
+                    .setTitle(memberTag)
+                    .setDescription(client.translate.events.guildMemberRemove.user_has_exited)
+                    .setTimestamp()
+                    .setColor(memberColor)
+                    .setThumbnail(memberAvatar);
 
                 if (!notification) return;
 
-				notification.send({
-                    "embeds": [
-                        {
-                            "title": member.user.username,
-                            "description": client.translate.events.guildMemberRemove.user_has_exited,
-                            "timestamp": new Date(),
-                            "color": 16777215,
-                            "thumbnail": {
-                                "url": member.user.displayAvatarURL(),
-                            }
-                        }
-                    ]
-                });
+				notification.send({ "embeds": [guildMemberRemoveEmbed] });
             }
         } else {
-            set(child(childRef, "config"), {
-                "prefix": "S",
-                "language": "en",
-                "notification": {
-                    "alert": false,
-                    "channelCreate": false,
-                    "channelDelete": false,
-                    "channelPinsUpdate": false,
-                    "channelUpdate": false,
-                    "emojiCreate": false,
-                    "emojiDelete": false,
-                    "emojiUpdate": false,
-                    "guildMemberAdd": false,
-                    "guildMemberRemove": false
-                }
-            }).then(() => {
+            set(channelRef, false).then(() => {
                 module.exports(client, member);
             });
         }

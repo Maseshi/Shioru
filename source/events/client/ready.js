@@ -1,7 +1,7 @@
+const { ActivityType } = require("discord.js");
+const { getApps } = require("firebase/app");
 const { getDatabase, ref, update } = require("firebase/database");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const Spinnies = require("spinnies");
+const { checkForUpdates, updateApplicationCommands } = require("../../utils/clientUtils");
 
 module.exports = async (client) => {
   // Notify when the bot is online.
@@ -13,7 +13,13 @@ module.exports = async (client) => {
   const minute = date.getMinutes();
   const at = year + "-" + month + "-" + day + "." + hour + ":" + minute;
 
-  console.log(at + " Bot is working and is now online.");
+  console.log("Bot is working and is now online at " + at + ".");
+
+  // Check for update
+  await checkForUpdates();
+
+  // Check server is set up.
+  console.log(getApps.length === 0 ? "Connected to the server successfully." : "Unable to connect to the provider server.");
 
   // Send bot statistics.
   const db = getDatabase();
@@ -35,33 +41,33 @@ module.exports = async (client) => {
       {
         "name": guildSize + " Server" + (guildSize === 1 ? "" : "s"),
         "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "type": "STREAMING"
+        "type": ActivityType.Streaming
       },
       {
         "name": "Shelp | /help",
-        "type": "WATCHING"
+        "type": ActivityType.Watching
       },
       {
         "name": userSize + " Member" + (userSize === 1 ? "" : "s"),
-        "type": "WATCHING"
+        "type": ActivityType.Watching
       },
       {
         "name": commandSize + " Command" + (commandSize === 1 ? "" : "s"),
-        "type": "LISTENING"
+        "type": ActivityType.Listening
       }
     ],
     "development": [
       {
         "name": "🧶",
-        "type": "PLAYING"
+        "type": ActivityType.Playing
       },
       {
         "name": "/",
-        "type": "LISTENING"
+        "type": ActivityType.Listening
       },
       {
         "name": "📦",
-        "type": "PLAYING"
+        "type": ActivityType.Playing
       }
     ]
   };
@@ -81,47 +87,7 @@ module.exports = async (client) => {
   }, 10000);
 
   // Refreshing application (/) commands.
-  const guildID = client.config.guild;
-  const token = client.config.token;
-  const rest = new REST({ version: "9" }).setToken(token);
-  const spinnies = new Spinnies({
-    "failColor": "yellowBright",
-    "failPrefix": "⚠️"
-  });
-
-  spinnies.add("app-commands-loading", {
-    "text": "Starting to refresh all application (/) commands."
-  });
-
-  try {
-    const clientID = client.user.id;
-    const data = client.interaction.map(
-      (commands) => commands.interaction.data
-    );
-
-    if (client.mode === "start") {
-      // Put all new commands.
-      await rest.put(Routes.applicationCommands(clientID), { body: data });
-
-      spinnies.remove("app-commands-loading");
-      console.log("Application (/) commands is ready to use.            ");
-    } else {
-      // Put all new commands.
-      await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
-        body: data,
-      });
-
-      spinnies.remove("app-commands-loading");
-      console.log("Application (/) commands is ready to use.           ");
-    }
-  } catch (err) {
-    spinnies.fail("app-commands-loading", {
-      "text": "The application (/) commands could not be completely reloaded."
-    });
-    console.group();
-    console.error(err);
-    console.groupEnd();
-  }
+  await updateApplicationCommands(client);
 
   // Client username
   console.log("Sign in with the username " + client.user.username + ".");

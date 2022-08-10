@@ -1,14 +1,13 @@
+const { ChannelType } = require("discord.js");
 const { getDatabase, ref, update, get } = require("firebase/database");
-const chatSystem = require("../../extras/chatSystem");
-const levelSystem = require("../../extras/levelSystem");
-const settingsData = require("../../extras/settingsData");
-const catchError = require("../../extras/catchError");
-const ansiColor = require("../../extras/ansiColor")
+const { permissions } = require("../../utils/clientUtils");
+const { chatSystem, levelSystem, settingsData } = require("../../utils/databaseUtils");
+const { catchError, ansiColor } = require("../../utils/consoleUtils");
 
 module.exports = (client, message) => {
     let command = "";
-    const round = 3;
     const defaultPrefix = "S";
+    const round = client.config.recursive;
     const prefix = client.config.prefix;
     const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -19,7 +18,7 @@ module.exports = (client, message) => {
     const blueBrightColor = ansiColor(33, "foreground");
 
     if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
+    if (message.channel.type === ChannelType.DM) return;
     if (client.mode === "start") {
         settingsData(client, message.guild, module.exports, message);
         if (client.temp.set !== 1) return;
@@ -60,41 +59,44 @@ module.exports = (client, message) => {
 
         message.channel.sendTyping();
 
-        // Check the permissions of the command for the user.
-        if (command.help.userPermissions) {
-            if (!message.member.permissions.has(command.help.userPermissions)) {
-                return message.reply(client.translate.events.messageCreate.user_is_not_allowed).replace("%s", command.help.userPermissions.join());
+        if (command.permissions) {
+            // Check the permissions of the command for the user.
+            if (command.permissions.user) {
+                if (!message.member.permissions.has(command.permissions.user)) {
+                    return message.reply(client.translate.events.messageCreate.user_is_not_allowed).replace("%s", command.permissions.user.map(permission => permissions[permission]).join(", "));
+                }
             }
-        }
 
-        // Check the permissions of the command for the bot.
-        if (command.help.clientPermissions) {
-            if (!message.guild.me.permissions.has(command.help.clientPermissions)) {
-                return message.reply(client.translate.events.messageCreate.client_is_not_allowed).replace("%s", command.help.clientPermissions.join());
+            // Check the permissions of the command for the bot.
+            if (command.permissions.client) {
+                if (!message.guild.members.me.permissions.has(command.permissions.client)) {
+                    return message.reply(client.translate.events.messageCreate.client_is_not_allowed).replace("%s", command.permissions.client.map(permission => permissions[permission]).join(", "));
+                }
             }
         }
+        if (!command.command.enable) return message.reply(client.translate.events.messageCreate.command_is_disabled);
 
         try {
-            command.run(client, message, args);
+            command.command.execute(client, message, args);
 
             // Stores information when the bot is working properly.
             if (client.mode === "start") {
-                get(ref(getDatabase(), 'Shioru/data/survey')).then((snapshot) => {
+                get(ref(getDatabase(), "Shioru/data/survey")).then((snapshot) => {
                     if (snapshot.exists()) {
                         let working = snapshot.val().working;
 
-                        update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        update(ref(getDatabase(), "Shioru/data/survey"), {
                             "working": (working + 1)
                         });
                     } else {
-                        update(ref(getDatabase(), 'Shioru/data/survey'), {
+                        update(ref(getDatabase(), "Shioru/data/survey"), {
                             "working": 1
                         });
                     }
                 });
             }
         } catch (error) {
-            catchError(client, message, command.help.name, error);
+            catchError(client, message, command.name, error);
         }
     }
 };

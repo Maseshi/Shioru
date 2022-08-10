@@ -1,6 +1,7 @@
+const { EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, get, set } = require("firebase/database");
-const settingsData = require("../../extras/settingsData");
-const catchError = require("../../extras/catchError");
+const { settingsData } = require("../../utils/databaseUtils");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, emoji) => {
     if (client.mode === "start") {
@@ -10,44 +11,26 @@ module.exports = (client, emoji) => {
 
     const db = getDatabase();
     const childRef = child(ref(db, "Shioru/apps/discord/guilds"), emoji.guild.id);
+    const channelRef = child(childRef, "config/notification/emojiDelete");
 
-    get(child(childRef, "config")).then((snapshot) => {
+    get(channelRef).then((snapshot) => {
         if (snapshot.exists()) {
-            const notifyId = snapshot.val().notification.emojiDelete;
+            const notifyId = snapshot.val();
 
             if (notifyId) {
                 const notification = emoji.guild.channels.cache.find(channels => channels.id === notifyId);
+                const emojiDeleteEmbed = new EmbedBuilder()
+                    .setTitle(client.translate.events.emojiDelete.system_notification)
+                    .setDescription(client.translate.events.emojiDelete.member_delete_emoji.replace("%s", emoji.name))
+                    .setTimestamp()
+                    .setColor("Yellow");
 
                 if (!notification) return;
                 
-                notification.send({
-                    "embeds": [
-                        {
-                            "title": client.translate.events.emojiDelete.system_notification,
-                            "description": client.translate.events.emojiDelete.member_delete_emoji.replace("%s", emoji.name),
-                            "timestamp": new Date(),
-                            "color": 4886754
-                        }
-                    ]
-                });
+                notification.send({ "embeds": [emojiDeleteEmbed] });
             }
         } else {
-            set(child(childRef, "config"), {
-                "prefix": "S",
-                "language": "en",
-                "notification": {
-                    "alert": false,
-                    "channelCreate": false,
-                    "channelDelete": false,
-                    "channelPinsUpdate": false,
-                    "channelUpdate": false,
-                    "emojiCreate": false,
-                    "emojiDelete": false,
-                    "emojiUpdate": false,
-                    "guildMemberAdd": false,
-                    "guildMemberRemove": false
-                }
-            }).then(() => {
+            set(channelRef, false).then(() => {
                 module.exports(client, emoji);
             });
         }

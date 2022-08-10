@@ -1,6 +1,7 @@
+const { EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, get, set } = require("firebase/database");
-const settingsData = require("../../extras/settingsData");
-const catchError = require("../../extras/catchError");
+const { settingsData } = require("../../utils/databaseUtils");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, oldChannel, newChannel) => {
     if (client.mode === "start") {
@@ -10,44 +11,26 @@ module.exports = (client, oldChannel, newChannel) => {
 
     const db = getDatabase();
     const childRef = child(ref(db, "Shioru/apps/discord/guilds"), newChannel.guild.id);
+    const channelRef = child(childRef, "config/notification/channelUpdate");
 
-    get(child(childRef, "config")).then((snapshot) => {
+    get(channelRef).then((snapshot) => {
         if (snapshot.exists()) {
-            const notifyId = snapshot.val().notification.channelUpdate;
+            const notifyId = snapshot.val();
 
             if (notifyId) {
                 const notification = newChannel.guild.channels.cache.find(channels => channels.id === notifyId);
+                const channelUpdate = new EmbedBuilder()
+                    .setTitle(client.translate.events.channelUpdate.system_notification)
+                    .setDescription(client.translate.events.channelUpdate.member_update_channel.replace("%s1", oldChannel.name).replace("%s2", newChannel.id))
+                    .setTimestamp()
+                    .setColor("Yellow");
 
                 if (!notification) return;
 
-                notification.send({
-                    "embeds": [
-                        {
-                            "title": client.translate.events.channelUpdate.system_notification,
-                            "description": client.translate.events.channelUpdate.member_update_channel.replace("%s1", oldChannel.name).replace("%s2", newChannel.id),
-                            "timestamp": new Date(),
-                            "color": 4886754,
-                        }
-                    ]
-                });
+                notification.send({ "embeds": [channelUpdate] });
             }
         } else {
-            set(child(childRef, "config"), {
-                "prefix": "S",
-                "language": "en",
-                "notification": {
-                    "alert": false,
-                    "channelCreate": false,
-                    "channelDelete": false,
-                    "channelPinsUpdate": false,
-                    "channelUpdate": false,
-                    "emojiCreate": false,
-                    "emojiDelete": false,
-                    "emojiUpdate": false,
-                    "guildMemberAdd": false,
-                    "guildMemberRemove": false
-                }
-            }).then(() => {
+            set(channelRef, false).then(() => {
                 module.exports(client, oldChannel, newChannel);
             });
         }
