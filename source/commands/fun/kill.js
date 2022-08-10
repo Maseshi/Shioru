@@ -1,40 +1,46 @@
-module.exports.run = (client, message, args) => {
-    const inputName = args.join(" ");
+const { EmbedBuilder } = require("discord.js");
 
-    if (!inputName) return message.reply(client.translate.commands.kill.empty);
-
-    const authorUsername = message.author.username;
-    const clientUsername = client.user.username;
-
-    if (inputName === clientUsername) return message.reply(client.translate.commands.kill.do_not_kill_me);
-
-    message.channel.send({
-        "embeds": [
-            {
-                "color": 1,
-                "description": client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName)
-            }
-        ]
-    });
-};
-
-module.exports.help = {
+module.exports = {
     "name": "kill",
     "description": "Fake messages that say you will kill something.",
-    "usage": "kill <name>",
     "category": "fun",
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
+}
+
+module.exports.command = {
+    "enable": true,
+    "usage": "kill <name>",
     "aliases": ["kia", "ฆ่า"],
-    "clientPermissions": ["SEND_MESSAGES"]
-};
+    async execute(client, message, args) {
+        const inputName = args.join(" ");
+
+        if (!inputName) return message.reply(client.translate.commands.kill.empty);
+
+        const authorUsername = message.author.username;
+        const clientUsername = client.user.username;
+        const killEmbed = new EmbedBuilder()
+            .setDescription(client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName))
+            .setColor("Default");
+
+        if (inputName === clientUsername) return message.reply(client.translate.commands.kill.do_not_kill_me);
+
+        message.channel.send({
+            "embeds": [killEmbed]
+        });
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "kill",
             "th": "ฆ่า"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Fake messages that say you will kill something.",
             "th": "ข้อความปลอมที่บอกว่าคุณจะฆ่าอะไรบางอย่าง"
@@ -59,16 +65,14 @@ module.exports.interaction = {
 
         const authorUsername = interaction.user.username;
         const clientUsername = interaction.client.user.username;
+        const killEmbed = new EmbedBuilder()
+            .setDescription(interaction.client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName))
+            .setColor("Default");
 
         if (inputName === clientUsername) return await interaction.editReply(interaction.client.translate.commands.kill.do_not_kill_me);
 
         await interaction.editReply({
-            "embeds": [
-                {
-                    "color": 1,
-                    "description": interaction.client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName)
-                }
-            ]
+            "embeds": [killEmbed]
         });
     }
 }

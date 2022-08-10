@@ -1,46 +1,52 @@
-module.exports.run = (client, message, args) => {
-    const inputName = args.join(" ");
+const { EmbedBuilder } = require("discord.js");
 
-    if (!inputName) return message.reply(client.translate.commands.eat.empty);
-
-    const authorUsername = message.author.username;
-    const clientUsername = client.user.username;
-
-    if (inputName === clientUsername) {
-        return message.reply("...").then(() => {
-            setTimeout(() => {
-                message.reply(client.translate.commands.eat.do_not_eat_me);
-            }, 8000);
-        });
-    }
-
-    message.channel.send({
-        "embeds": [
-            {
-                "color": 1,
-                "description": client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputName)
-            }
-        ]
-    });
-};
-
-module.exports.help = {
+module.exports = {
     "name": "eat",
     "description": "Fake text saying who you are eating.",
-    "usage": "eat <name>",
     "category": "fun",
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
+}
+
+module.exports.command = {
+    "enable": true,
+    "usage": "eat <name>",
     "aliases": ["e", "กิน"],
-    "clientPermissions": ["SEND_MESSAGES"]
-};
+    async execute(client, message, args) {
+        const inputName = args.join(" ");
+
+        if (!inputName) return message.reply(client.translate.commands.eat.empty);
+
+        const authorUsername = message.author.username;
+        const clientUsername = client.user.username;
+        const eatEmbed = new EmbedBuilder()
+            .setDescription(client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputName))
+            .setColor("Default");
+
+        if (inputName === clientUsername) {
+            return message.reply("...").then(() => {
+                setTimeout(() => {
+                    message.reply(client.translate.commands.eat.do_not_eat_me);
+                }, 8000);
+            });
+        }
+
+        message.channel.send({
+            "embeds": [eatEmbed]
+        });
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "eat",
             "th": "กิน"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Fake text saying who you are eating.",
             "th": "ข้อความปลอมที่บอกว่าคุณกำลังจะกินใคร!"
@@ -65,22 +71,20 @@ module.exports.interaction = {
 
         const authorUsername = interaction.user.username;
         const clientUsername = interaction.client.user.username;
+        const eatEmbed = new EmbedBuilder()
+            .setDescription(interaction.client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputName))
+            .setColor("Default");
 
         if (inputName === clientUsername) {
             return await interaction.editReply("...").then(() => {
                 setTimeout(async () => {
-                    await interaction.editReply(interaction.client.translate.commands.eat.do_not_eat_me);
+                    await interaction.followUp(interaction.client.translate.commands.eat.do_not_eat_me);
                 }, 8000);
             });
         }
 
         await interaction.editReply({
-            "embeds": [
-                {
-                    "color": 1,
-                    "description": interaction.client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputName)
-                }
-            ]
+            "embeds": [eatEmbed]
         });
     }
 };

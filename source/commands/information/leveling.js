@@ -1,38 +1,54 @@
-const levelSystem = require("../../extras/levelSystem");
+const { EmbedBuilder } = require("discord.js");
+const { levelSystem } = require("../../utils/databaseUtils");
 
-module.exports.run = async (client, message, args) => {
-    const inputMember = args.join(" ");
-    let authorAvatar = message.author.displayAvatarURL();
-    let authorID = message.author.id;
-    let memberBot = false;
-
-    if (inputMember) {
-        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-
-        if (!member) return message.reply(client.translate.commands.leveling.can_not_find_user);
-
-        authorAvatar = member.user.avatarURL();
-        authorID = member.user.id;
+module.exports = {
+    "name": "leveling",
+    "description": "See information about your level.",
+    "category": "information",
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
     }
-    if (memberBot) return message.reply(client.translate.commands.leveling.bot_do_not_have_level);
+};
 
-    const data = await levelSystem(client, message, "GET", authorID);
+module.exports.command = {
+    "enable": true,
+    "usage": "leveling (member: id, username, tag)",
+    "aliases": ["level", "lv", "เลเวล", "เวล"],
+    async execute(client, message, args) {
+        const inputMember = args.join(" ");
 
-    if (!data) return message.reply(client.translate.commands.leveling.user_no_data);
+        let authorAvatar = message.author.displayAvatarURL();
+        let authorFetch = await message.author.fetch();
+        let authorID = message.author.id;
+        let memberBot = false;
 
-    const exp = data.exp;
-    const level = data.level;
-    const nextEXP = data.nextEXP;
+        if (inputMember) {
+            const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
 
-    message.channel.send({
-        "embeds": [
-            {
-                "title": client.translate.commands.leveling.your_experience,
-                "color": 4886754,
-                "thumbnail": {
-                    "url": authorAvatar
-                },
-                "fields": [
+            if (!member) return message.reply(client.translate.commands.leveling.can_not_find_user);
+
+            authorAvatar = member.user.avatarURL();
+            authorFetch = await member.user.fetch();
+            authorID = member.user.id;
+            memberBot = member.user.bot;
+        }
+        if (memberBot) return message.reply(client.translate.commands.leveling.bot_do_not_have_level);
+
+        const data = await levelSystem(client, message, "GET", authorID);
+
+        if (!data) return message.reply(client.translate.commands.leveling.user_no_data);
+
+        const exp = data.exp;
+        const level = data.level;
+        const nextEXP = data.nextEXP;
+
+        const levelingEmbed = new EmbedBuilder()
+            .setTitle(client.translate.commands.leveling.your_experience)
+            .setColor(authorFetch.accentColor)
+            .setThumbnail(authorAvatar)
+            .setTimestamp()
+            .addFields(
+                [
                     {
                         "name": client.translate.commands.leveling.level,
                         "value": "```" + level + "```"
@@ -42,28 +58,23 @@ module.exports.run = async (client, message, args) => {
                         "value": "```" + exp + "/" + nextEXP + "```"
                     }
                 ]
-            }
-        ]
-    });
-};
+            );
 
-module.exports.help = {
-    "name": "leveling",
-    "description": "See information about your level.",
-    "usage": "leveling (member: id, username, tag)",
-    "category": "information",
-    "aliases": ["level", "lv", "เลเวล", "เวล"],
-    "clientPermissions": ["SEND_MESSAGES"]
-};
+        message.channel.send({
+            "embeds": [levelingEmbed]
+        });
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "leveling",
             "th": "เลเวล"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "See information about your level.",
             "th": "ดูข้อมูลเกี่ยวกับเลเวลของคุณ"
@@ -85,7 +96,9 @@ module.exports.interaction = {
     },
     async execute(interaction) {
         const inputMember = interaction.options.get("member");
+
         let authorAvatar = interaction.user.displayAvatarURL();
+        let authorFetch = await interaction.user.fetch();
         let authorID = interaction.user.id;
         let memberBot = false;
 
@@ -95,6 +108,7 @@ module.exports.interaction = {
             if (!member) return await interaction.editReply(interaction.client.translate.commands.leveling.can_not_find_user);
 
             authorAvatar = member.user.avatarURL();
+            authorFetch = await member.user.fetch();
             authorID = member.user.id;
             memberBot = member.user.bot;
         }
@@ -108,26 +122,26 @@ module.exports.interaction = {
         const level = data.level;
         const nextEXP = data.nextEXP;
 
-        await interaction.editReply({
-            "embeds": [
-                {
-                    "title": interaction.client.translate.commands.leveling.your_experience,
-                    "color": 4886754,
-                    "thumbnail": {
-                        "url": authorAvatar
+        const levelingEmbed = new EmbedBuilder()
+            .setTitle(interaction.client.translate.commands.leveling.your_experience)
+            .setColor(authorFetch.accentColor)
+            .setThumbnail(authorAvatar)
+            .setTimestamp()
+            .addFields(
+                [
+                    {
+                        "name": interaction.client.translate.commands.leveling.level,
+                        "value": "```" + level + "```"
                     },
-                    "fields": [
-                        {
-                            "name": interaction.client.translate.commands.leveling.level,
-                            "value": "```" + level + "```"
-                        },
-                        {
-                            "name": interaction.client.translate.commands.leveling.experience,
-                            "value": "```" + exp + "/" + nextEXP + "```"
-                        }
-                    ]
-                }
-            ]
+                    {
+                        "name": interaction.client.translate.commands.leveling.experience,
+                        "value": "```" + exp + "/" + nextEXP + "```"
+                    }
+                ]
+            );
+
+        await interaction.editReply({
+            "embeds": [levelingEmbed]
         });
     }
 }

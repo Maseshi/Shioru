@@ -1,46 +1,51 @@
+const { EmbedBuilder } = require("discord.js");
 const { version } = require('../../../package.json');
 
-module.exports.run = (client, message, args) => {
-    message.channel.send({
-        "embeds": [
-            {
-                "description": client.translate.commands.version.working_in_version.replace("%s", version),
-                "color": "#8FCE00"
-            }
-        ]
-    });
-}
-
-module.exports.help = {
+module.exports = {
     "name": "version",
     "description": "Check the current bot version.",
-    "usage": "version",
     "category": "developer",
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
+}
+
+module.exports.command = {
+    "enable": true,
+    "usage": "version",
     "aliases": ["v", "เวอร์ชั่น"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    async execute(client, message, args) {
+        const versionEmbed = new EmbedBuilder()
+            .setDescription(client.translate.commands.version.working_in_version.replace("%s", version))
+            .setColor("Green");
+
+        message.channel.send({
+            "embeds": [versionEmbed]
+        });
+    }
 }
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "version",
             "th": "รุ่น"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Check the current bot version.",
             "th": "ตรวจสอบเวอร์ชันของบอทในปัจจุบัน!"
         }
     },
     async execute(interaction) {
+        const versionEmbed = new EmbedBuilder()
+            .setDescription(interaction.client.translate.commands.version.working_in_version.replace("%s", version))
+            .setColor("Green");
+
         await interaction.editReply({
-            "embeds": [
-                {
-                    "description": interaction.client.translate.commands.version.working_in_version.replace("%s", version),
-                    "color": "#8FCE00"
-                }
-            ]
+            "embeds": [versionEmbed]
         });
     }
 };

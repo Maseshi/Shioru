@@ -1,31 +1,37 @@
-module.exports.run = (client, message, args) => {
-    const queue = client.music.getQueue(message);
-
-    if (!queue) return message.reply(client.translate.commands.pause.no_queue);
-    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.pause.not_owner);
-    if (queue.paused) return message.reply(client.translate.commands.pause.not_paused);
-
-    client.music.pause(message);
-    message.channel.send(client.translate.commands.pause.paused);
-};
-
-module.exports.help = {
+module.exports = {
     "name": "pause",
     "description": "Temporarily stop playing songs in the queue.",
-    "usage": "pause",
     "category": "music",
-    "aliases": ["pu", "หยุดชั่วคราว"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "pause",
+    "aliases": ["pu", "หยุดชั่วคราว"],
+    async execute(client, message, args) {
+        const queue = client.music.getQueue(message);
+
+        if (!queue) return message.reply(client.translate.commands.pause.no_queue);
+        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.pause.not_owner);
+        if (queue.paused) return message.reply(client.translate.commands.pause.not_paused);
+
+        client.music.pause(message);
+        message.channel.send(client.translate.commands.pause.paused);
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "pause",
             "th": "หยุดชั่วคราว"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Temporarily stop playing songs in the queue.",
             "th": "หยุดเล่นเพลงในคิวชั่วคราว"

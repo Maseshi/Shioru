@@ -1,64 +1,64 @@
-module.exports.run = (client, message, args) => {
-	message.channel.send({
-		"embeds": [
-			{
-				"title": client.translate.commands.about.my_profile,
-				"description": client.translate.commands.about.my_profile_detail.replace("%s", client.user.username),
-				"color": 14684245,
-				"timestamp": client.config.update,
-				"author": {
-					"iconURL": client.user.avatarURL(),
-					"name": client.user.username
-				},
-				"footer": {
-					"iconURL": "https://hotemoji.com/images/emoji/t/1utnwrapq218t.png",
-					"text": client.translate.commands.about.update_on
-				}
-			}
-		]
-	});
-};
+const { EmbedBuilder } = require("discord.js");
 
-module.exports.help = {
+module.exports = {
 	"name": "about",
 	"description": "See information about bots.",
-	"usage": "about",
 	"category": "me",
-	"aliases": ["information", "botinfo", "เกี่ยวกับ", "เกี่ยวกับบอท"],
-	"clientPermissions": ["SEND_MESSAGES"]
+	"permissions": {
+		"client": ["SEND_MESSAGES"]
+	}
 };
 
+module.exports.command = {
+	"enable": true,
+	"usage": "about",
+	"aliases": ["information", "botinfo", "เกี่ยวกับ", "เกี่ยวกับบอท"],
+	async execute(client, message, args) {
+		const clientFetch = await client.user.fetch();
+		const clientAvatar = client.user.avatarURL();
+		const clientUsername = client.user.username;
+		const clientColor = clientFetch.accentColor;
+		const contentUpdate = client.config.update;
+		const aboutEmbed = new EmbedBuilder()
+			.setTitle(client.translate.commands.about.my_profile)
+			.setDescription(client.translate.commands.about.my_profile_detail.replace("%s", clientUsername))
+			.setColor(clientColor)
+			.setTimestamp(new Date(contentUpdate))
+			.setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
+			.setFooter({ "text": client.translate.commands.about.update_on, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/fountain-pen_1f58b-fe0f.png" });
+
+		message.channel.send({ "embeds": [aboutEmbed] });
+	}
+}
+
 module.exports.interaction = {
+	"enable": true,
 	"data": {
-		"name": module.exports.help.name,
+		"name": module.exports.name,
 		"name_localizations": {
-            "en-US": "about",
-            "th": "เกี่ยวกับ"
-        },
-		"description": module.exports.help.description,
+			"en-US": "about",
+			"th": "เกี่ยวกับ"
+		},
+		"description": module.exports.description,
 		"description_localizations": {
-            "en-US": "See information about bots.",
-            "th": "ดูข้อมูลเกี่ยวกับบอท"
-        },
+			"en-US": "See information about bots.",
+			"th": "ดูข้อมูลเกี่ยวกับบอท"
+		},
 	},
 	async execute(interaction) {
-		await interaction.editReply({
-			"embeds": [
-				{
-					"title": interaction.client.translate.commands.about.my_profile,
-					"description": interaction.client.translate.commands.about.my_profile_detail.replace("%s", interaction.client.user.username),
-					"color": 14684245,
-					"timestamp": interaction.client.config.update,
-					"author": {
-						"iconURL": interaction.client.user.avatarURL(),
-						"name": interaction.client.user.username
-					},
-					"footer": {
-						"iconURL": "https://hotemoji.com/images/emoji/t/1utnwrapq218t.png",
-						"text": interaction.client.translate.commands.about.update_on
-					}
-				}
-			]
-		});
+		const clientFetch = await interaction.client.user.fetch();
+		const clientAvatar = interaction.client.user.avatarURL();
+		const clientUsername = interaction.client.user.username;
+		const clientColor = clientFetch.accentColor;
+		const contentUpdate = interaction.client.config.update;
+		const aboutEmbed = new EmbedBuilder()
+			.setTitle(interaction.client.translate.commands.about.my_profile)
+			.setDescription(interaction.client.translate.commands.about.my_profile_detail.replace("%s", clientUsername))
+			.setColor(clientColor)
+			.setTimestamp(new Date(contentUpdate))
+			.setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
+			.setFooter({ "text": interaction.client.translate.commands.about.update_on, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/fountain-pen_1f58b-fe0f.png" });
+
+		await interaction.editReply({ "embeds": [aboutEmbed] });
 	}
 };

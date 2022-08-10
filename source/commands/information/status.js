@@ -1,97 +1,81 @@
-module.exports.run = (client, message, args) => {
-    const inputType = args.join(" ");
-    const guildIcon = message.guild.iconURL();
+const { EmbedBuilder } = require("discord.js");
 
-    if (!inputType) return message.reply(client.translate.commands.status.empty);
-    if (!["online", "offline", "idle", "dnd"].includes(inputType)) {
-        return message.reply(client.translate.commands.status.no_status);
-    }
-
-    switch (inputType) {
-        case "online":
-            const onlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
-
-            message.channel.send({
-                "embeds": [
-                    {
-                        "description": client.translate.commands.status.online_status.replace("%s", onlineCount),
-                        "color": 3055702,
-                        "footer": {
-                            "icon_url": guildIcon,
-                            "text": client.translate.commands.status.data_by_server
-                        }
-                    }
-                ]
-            });
-            break;
-        case "offline":
-            const offlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
-
-            message.channel.send({
-                "embeds": [
-                    {
-                        "description": client.translate.commands.status.offline_status.replace("%s", offlineCount),
-                        "color": 10197915,
-                        "footer": {
-                            "icon_url": guildIcon,
-                            "text": client.translate.commands.status.data_by_server
-                        }
-                    }
-                ]
-            });
-            break;
-        case "idle":
-            const idleCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
-
-            message.channel.send({
-                "embeds": [
-                    {
-                        "description": client.translate.commands.status.idle_status.replace("%s", idleCount),
-                        "color": 16098851,
-                        "footer": {
-                            "icon_url": guildIcon,
-                            "text": client.translate.commands.status.data_by_server
-                        }
-                    }
-                ]
-            });
-            break;
-        case "dnd":
-            const dndCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
-
-            message.channel.send({
-                "embeds": [
-                    {
-                        "description": client.translate.commands.status.dnd_status.replace("%s", dndCount),
-                        "color": 13632027,
-                        "footer": {
-                            "icon_url": guildIcon,
-                            "text": client.translate.commands.status.data_by_server
-                        }
-                    }
-                ]
-            });
-            break;
-    }
-};
-
-module.exports.help = {
+module.exports = {
     "name": "status",
     "description": "Check the status of all members within the server",
-    "usage": "status <type: online, offline, idle, dnd>",
     "category": "information",
-    "aliases": ["สถานะ"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "status <type: online, offline, idle, dnd>",
+    "aliases": ["สถานะ"],
+    async execute(client, message, args) {
+        const inputType = args.join(" ");
+    
+        const guildIcon = message.guild.iconURL();
+        const statusEmbed = new EmbedBuilder()
+            .setTimestamp()
+            .setFooter({ "text": client.translate.commands.status.data_by_server, "iconURL": guildIcon });
+    
+        if (!inputType) return message.reply(client.translate.commands.status.empty);
+        if (!["online", "offline", "idle", "dnd"].includes(inputType)) {
+            return message.reply(client.translate.commands.status.no_status);
+        }
+    
+        switch (inputType) {
+            case "online":
+                const onlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
+    
+                statusEmbed.setDescription(client.translate.commands.status.online_status.replace("%s", onlineCount))
+                    .setColor("Green");
+                message.channel.send({
+                    "embeds": [statusEmbed]
+                });
+                break;
+            case "offline":
+                const offlineCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
+    
+                statusEmbed.setDescription(client.translate.commands.status.offline_status.replace("%s", offlineCount))
+                    .setColor("Grey");
+                message.channel.send({
+                    "embeds": [statusEmbed]
+                });
+                break;
+            case "idle":
+                const idleCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
+    
+                statusEmbed.setDescription(client.translate.commands.status.idle_status.replace("%s", idleCount))
+                    .setColor("Yellow");
+                message.channel.send({
+                    "embeds": [statusEmbed]
+                });
+                break;
+            case "dnd":
+                const dndCount = message.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
+    
+                statusEmbed.setDescription(client.translate.commands.status.dnd_status.replace("%s", dndCount))
+                    .setColor("Red");
+                message.channel.send({
+                    "embeds": [statusEmbed]
+                });
+                break;
+        }
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "status",
             "th": "สถานะ"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Check the status of all members within the server",
             "th": "ตรวจสอบสถานะของสมาชิกทั้งหมดภายในเซิร์ฟเวอร์"
@@ -143,71 +127,47 @@ module.exports.interaction = {
     },
     async execute(interaction) {
         const inputType = interaction.options.get("type").value;
+
         const guildIcon = interaction.guild.iconURL();
+        const statusEmbed = new EmbedBuilder()
+            .setTimestamp()
+            .setFooter({ "text": interaction.client.translate.commands.status.data_by_server, "iconURL": guildIcon });
 
         switch (inputType) {
             case "online":
                 const onlineCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
 
+                statusEmbed.setDescription(interaction.client.translate.commands.status.online_status.replace("%s", onlineCount))
+                    .setColor("Green");
                 await interaction.editReply({
-                    "embeds": [
-                        {
-                            "description": interaction.client.translate.commands.status.online_status.replace("%s", onlineCount),
-                            "color": 3055702,
-                            "footer": {
-                                "icon_url": guildIcon,
-                                "text": interaction.client.translate.commands.status.data_by_server
-                            }
-                        }
-                    ]
+                    "embeds": [statusEmbed]
                 });
                 break;
             case "offline":
                 const offlineCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
 
+                statusEmbed.setDescription(interaction.client.translate.commands.status.offline_status.replace("%s", offlineCount))
+                    .setColor("Grey");
                 await interaction.editReply({
-                    "embeds": [
-                        {
-                            "description": interaction.client.translate.commands.status.offline_status.replace("%s", offlineCount),
-                            "color": 10197915,
-                            "footer": {
-                                "icon_url": guildIcon,
-                                "text": interaction.client.translate.commands.status.data_by_server
-                            }
-                        }
-                    ]
+                    "embeds": [statusEmbed]
                 });
                 break;
             case "idle":
                 const idleCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
 
+                statusEmbed.setDescription(interaction.client.translate.commands.status.idle_status.replace("%s", idleCount))
+                    .setColor("Yellow");
                 await interaction.editReply({
-                    "embeds": [
-                        {
-                            "description": interaction.client.translate.commands.status.idle_status.replace("%s", idleCount),
-                            "color": 16098851,
-                            "footer": {
-                                "icon_url": guildIcon,
-                                "text": interaction.client.translate.commands.status.data_by_server
-                            }
-                        }
-                    ]
+                    "embeds": [statusEmbed]
                 });
                 break;
             case "dnd":
                 const dndCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
 
+                statusEmbed.setDescription(interaction.client.translate.commands.status.dnd_status.replace("%s", dndCount))
+                    .setColor("Red");
                 await interaction.editReply({
-                    "embeds": [
-                        {
-                            "description": interaction.client.translate.commands.status.dnd_status.replace("%s", dndCount),
-                            "color": 13632027,
-                            "footer": {
-                                "icon_url": guildIcon,
-                                "text": interaction.client.translate.commands.status.data_by_server
-                            }
-                        }
-                    ]
+                    "embeds": [statusEmbed]
                 });
                 break;
         }

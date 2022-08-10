@@ -1,34 +1,40 @@
-module.exports.run = (client, message, args) => {
-    const inputMode = parseInt(args[0]);
-    const queue = client.music.getQueue(message);
-
-    if (!queue) return message.reply(client.translate.commands.repeat.no_queue);
-    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.repeat.not_owner);
-    if (!inputMode) return message.reply(client.translate.commands.repeat.repeat_guide);
-    if (inputMode <= 0) return message.reply(client.translate.commands.repeat.too_little);
-    if (inputMode >= 2) return message.reply(client.translate.commands.repeat.too_much);
-
-    const mode = client.music.setRepeatMode(message, inputMode);
-    message.channel.send(client.translate.commands.repeat.repeated.replace("%s", (mode ? mode == 2 ? client.translate.commands.repeat.repeat_queue : client.translate.commands.repeat.repeat_song : client.translate.commands.repeat.off)));
-};
-
-module.exports.help = {
+module.exports = {
     "name": "repeat",
     "description": "Toggle repeating playback mode.",
-    "usage": "repeat <mode: 0, 1, 2>",
     "category": "music",
-    "aliases": ["loop", "วน", "ทำซ้ำ"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "repeat <mode: 0, 1, 2>",
+    "aliases": ["loop", "วน", "ทำซ้ำ"],
+    async execute(client, message, args) {
+        const inputMode = parseInt(args[0]);
+        const queue = client.music.getQueue(message);
+
+        if (!queue) return message.reply(client.translate.commands.repeat.no_queue);
+        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.repeat.not_owner);
+        if (!inputMode) return message.reply(client.translate.commands.repeat.repeat_guide);
+        if (inputMode <= 0) return message.reply(client.translate.commands.repeat.too_little);
+        if (inputMode >= 2) return message.reply(client.translate.commands.repeat.too_much);
+
+        const mode = client.music.setRepeatMode(message, inputMode);
+        message.channel.send(client.translate.commands.repeat.repeated.replace("%s", (mode ? mode == 2 ? client.translate.commands.repeat.repeat_queue : client.translate.commands.repeat.repeat_song : client.translate.commands.repeat.off)));
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "repeat",
             "th": "ทำซ้ำ"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Toggle repeating playback mode.",
             "th": "สลับโหมดของการเล่นเพลงซ้ำ"

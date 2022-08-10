@@ -1,44 +1,50 @@
-const catchError = require("../../extras/catchError");
+const { catchError } = require("../../utils/consoleUtils");
 
-module.exports.run = (client, message, args) => {
-    const inputSource = args.join(" ");
-    const voiceChannel = message.member.voice.channel;
-
-    if (!inputSource) return message.reply(client.translate.commands.play.no_song_input);
-    if (!voiceChannel) return message.reply(client.translate.commands.play.not_in_channel);
-
-    try {
-        client.music.play(voiceChannel, inputSource, {
-            "member": message.member,
-            "textChannel": message.channel,
-            message
-        });
-    } catch (error) {
-        const connection = client.music.voices.get(voiceChannel.guild);
-
-        connection.leave(voiceChannel.guild);
-        catchError(client, message, module.exports.help.name, error);
+module.exports = {
+    "name": "play",
+    "description": "Sing to listen",
+    "category": "music",
+    "permissions": {
+        "user": ["CONNECT"],
+        "client": ["SEND_MESSAGES", "SPEAK", "CONNECT"]
     }
 };
 
-module.exports.help = {
-    "name": "play",
-    "description": "Sing to listen",
+module.exports.command = {
+    "enable": true,
     "usage": "play <source: name, id, link>",
-    "category": "music",
     "aliases": ["เล่น", "p", "เพลง"],
-    "userPermissions": ["CONNECT"],
-    "clientPermissions": ["SEND_MESSAGES", "SPEAK", "CONNECT"]
-};
+    async execute(client, message, args) {
+        const inputSource = args.join(" ");
+        const voiceChannel = message.member.voice.channel;
+
+        if (!inputSource) return message.reply(client.translate.commands.play.no_song_input);
+        if (!voiceChannel) return message.reply(client.translate.commands.play.not_in_channel);
+
+        try {
+            client.music.play(voiceChannel, inputSource, {
+                "member": message.member,
+                "textChannel": message.channel,
+                message
+            });
+        } catch (error) {
+            const connection = client.music.voices.get(voiceChannel.guild);
+
+            connection.leave(voiceChannel.guild);
+            catchError(client, message, module.exports.name, error);
+        }
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "play",
             "th": "เล่น"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Sing to listen",
             "th": "ร้องเพลงให้ฟัง"
@@ -75,7 +81,7 @@ module.exports.interaction = {
             const connection = interaction.client.music.voices.get(voiceChannel.guild);
 
             connection.leave(voiceChannel.guild);
-            catchError(interaction.client, interaction, module.exports.help.name, error);
+            catchError(interaction.client, interaction, module.exports.name, error);
         }
     }
 };

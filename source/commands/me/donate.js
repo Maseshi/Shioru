@@ -1,44 +1,49 @@
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
-module.exports.run = (client, message, args) => {
-    const patreon = "https://www.patreon.com/maseshi";
-    const bmc = "https://www.buymeacoffee.com/maseshi";
-
-    const row = new MessageActionRow()
-        .addComponents(
-            new MessageButton()
-                .setURL(patreon)
-                .setLabel('Patreon')
-                .setStyle('LINK'),
-            new MessageButton()
-                .setURL(bmc)
-                .setLabel('Buy me a coffee')
-                .setStyle('LINK')
-        );
-
-    message.channel.send({
-        "content": client.translate.commands.donate.thank_you_in_advance_message,
-        "components": [row]
-    });
-}
-
-module.exports.help = {
+module.exports = {
     "name": "donate",
     "description": "Donate to support bots and bot developers.",
-    "usage": "donate",
     "category": "me",
+    "permissions": {
+        "client": ["SEND_MESSAGES", "EMBED_LINKS"]
+    }
+}
+
+module.exports.command = {
+    "enable": true,
+    "usage": "donate",
     "aliases": ["support"],
-    "clientPermissions": ["SEND_MESSAGES", "EMBED_LINKS"]
+    async execute(client, message, args) {
+        const patreon = "https://www.patreon.com/maseshi";
+        const bmc = "https://www.buymeacoffee.com/maseshi";
+        const row = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setURL(patreon)
+                    .setLabel('Patreon')
+                    .setStyle(ButtonStyle.Link),
+                new ButtonBuilder()
+                    .setURL(bmc)
+                    .setLabel('Buy me a coffee')
+                    .setStyle(ButtonStyle.Link)
+            );
+
+        message.channel.send({
+            "content": client.translate.commands.donate.thank_you_in_advance_message,
+            "components": [row]
+        });
+    }
 }
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "donate",
             "th": "บริจาค"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Donate to support bots and bot developers.",
             "th": "บริจาคเพื่อสนับสนุนบอทและนักพัฒนาบอท"
@@ -47,17 +52,16 @@ module.exports.interaction = {
     async execute(interaction) {
         const patreon = "https://www.patreon.com/maseshi";
         const bmc = "https://www.buymeacoffee.com/maseshi";
-
-        const row = new MessageActionRow()
+        const row = new ActionRowBuilder()
             .addComponents(
-                new MessageButton()
+                new ButtonBuilder()
                     .setURL(patreon)
                     .setLabel('Patreon')
-                    .setStyle('LINK'),
-                new MessageButton()
+                    .setStyle(ButtonStyle.Link),
+                new ButtonBuilder()
                     .setURL(bmc)
                     .setLabel('Buy me a coffee')
-                    .setStyle('LINK')
+                    .setStyle(ButtonStyle.Link)
             );
 
         await interaction.editReply({

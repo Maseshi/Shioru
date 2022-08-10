@@ -1,49 +1,57 @@
-module.exports.run = async (client, message, args) => {
-    const inputChannel = args[0];
-    const inputText = args.slice(1).join(" ");
-    const textChannel = ["GUILD_TEXT", "GUILD_CATEGORY", "GUILD_NEWS", "GUILD_NEWS_THREAD", "GUILD_PUBLIC_THREAD", "GUILD_PUBLIC_THREAD", "GUILD_PRIVATE_THREAD", "GUILD_FORUM"];
-    const channel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
+const { ChannelType } = require("discord.js")
 
-    if (!channel) {
-        if (!args.join(" ")) return message.reply(client.translate.commands.say.empty);
-
-        await message.delete();
-        await message.channel.send(args.join(" "));
-        message.reply({
-            "content": client.translate.commands.say.success,
-            "ephemeral": true
-        });
-    } else {
-        if (!inputText) return message.reply(client.translate.commands.say.empty);
-        if (channel.type === textChannel) return message.reply(client.translate.commands.say.invalid_type);
-
-        await message.delete();
-        await channel.send(inputText);
-        message.reply({
-            "content": client.translate.commands.say.success,
-            "ephemeral": true
-        });
+module.exports = {
+    "name": "say",
+    "description": "Let the bot print instead",
+    "category": "me",
+    "permissions": {
+        "user": ["MANAGE_MESSAGES"],
+        "client": ["SEND_MESSAGES"]
     }
 };
 
-module.exports.help = {
-    "name": "say",
-    "description": "Let the bot print instead",
+module.exports.command = {
+    "enable": true,
     "usage": "say (channel: name, id) <text>",
-    "category": "me",
     "aliases": ["s", "พูด", "ส่งข้อความ"],
-    "userPermissions": ["MANAGE_MESSAGES"],
-    "clientPermissions": ["SEND_MESSAGES"]
-};
+    async execute(client, message, args) {
+        const inputChannel = args[0];
+        const inputText = args.slice(1).join(" ");
+        const textChannel = [ChannelType.GuildText, ChannelType.GuildCategory, ChannelType.GuildNews, ChannelType.GuildNewsThread, ChannelType.GuildPublicThread, ChannelType.GuildPrivateThread, ChannelType.GuildForum];
+        const channel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
+    
+        if (!channel) {
+            if (!args.join(" ")) return message.reply(client.translate.commands.say.empty);
+    
+            await message.delete();
+            await message.channel.send(args.join(" "));
+            message.reply({
+                "content": client.translate.commands.say.success,
+                "ephemeral": true
+            });
+        } else {
+            if (!inputText) return message.reply(client.translate.commands.say.empty);
+            if (channel.type === textChannel) return message.reply(client.translate.commands.say.invalid_type);
+    
+            await message.delete();
+            await channel.send(inputText);
+            message.reply({
+                "content": client.translate.commands.say.success,
+                "ephemeral": true
+            });
+        }
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "say",
             "th": "พูด"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Let the bot print instead",
             "th": "ปล่อยให้บอทพิมพ์แทน"

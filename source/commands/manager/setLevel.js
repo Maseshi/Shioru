@@ -1,42 +1,51 @@
-const levelSystem = require("../../extras/levelSystem");
+const { EmbedBuilder } = require("discord.js");
+const { levelSystem } = require("../../utils/databaseUtils");
 
-module.exports.run = async (client, message, args) => {
-    const inputMember = args[0];
-    const inputAmount = parseInt(args.slice(1).join(" "));
+module.exports = {
+    "name": "setLevel",
+    "description": "Set Level of Members",
+    "category": "manager",
+    "permissions": {
+        "user": ["MANAGE_GUILD"],
+        "client": ["SEND_MESSAGES", "MANAGE_GUILD"]
+    }
+};
 
-    if (!inputMember) return message.reply(client.translate.commands.setLevel.empty);
-    if (!inputAmount) return message.reply(client.translate.commands.setLevel.amount_empty);
+module.exports.command = {
+    "enable": true,
+    "usage": "setLevel <member; id, username, tag> <amount>",
+    "aliases": ["sLevel", "setlevel", "ตั้งค่าเลเวล"],
+    async execute(client, message, args) {
+        const inputMember = args[0];
+        const inputAmount = parseInt(args.slice(1).join(" "));
 
-    const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+        if (!inputMember) return message.reply(client.translate.commands.setLevel.empty);
+        if (!inputAmount) return message.reply(client.translate.commands.setLevel.amount_empty);
 
-    if (!member) return message.reply(client.translate.commands.setLevel.can_not_find_user);
+        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
 
-    const memberAvatar = member.user.avatarURL();
-    const memberUsername = member.user.username;
-    const memberID = member.user.id;
+        if (!member) return message.reply(client.translate.commands.setLevel.can_not_find_user);
 
-    const data = levelSystem(client, message, "PUT", memberID, inputAmount);
+        const memberAvatar = member.user.avatarURL();
+        const memberUsername = member.user.username;
+        const memberID = member.user.id;
 
-    const exp = data.exp;
-    const level = data.level;
-    const notify = data.notify;
-    const status = data.status;
+        const data = levelSystem(client, message, "PUT", memberID, inputAmount);
 
-    if (status === "error") return message.reply(client.translate.commands.setLevel.error);
-    if (notify) {
-        await notify.send({
-            "embeds": [
-                {
-                    "description": client.translate.commands.setLevel.level_was_changed.replace("%s", memberUsername),
-                    "color": 4886754,
-                    "thumbnail": {
-                        "url": memberAvatar
-                    },
-                    "footer": {
-                        "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                        "text": client.translate.commands.setLevel.set_by_staff
-                    },
-                    "fields": [
+        const exp = data.exp;
+        const level = data.level;
+        const notify = data.notify;
+        const status = data.status;
+
+        if (status === "error") return message.reply(client.translate.commands.setLevel.error);
+        if (notify) {
+            const setLevelEmbed = new EmbedBuilder()
+                .setDescription(client.translate.commands.setLevel.level_was_changed.replace("%s", memberUsername))
+                .setColor("Blue")
+                .setThumbnail(memberAvatar)
+                .setFooter({ "text": client.translate.commands.setLevel.set_by_staff, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png" })
+                .addFields(
+                    [
                         {
                             "name": client.translate.commands.setLevel.level,
                             "value": "```" + exp + "```"
@@ -46,34 +55,25 @@ module.exports.run = async (client, message, args) => {
                             "value": "```" + level + "```"
                         }
                     ]
-                }
-            ]
-        });
+                );
 
-        message.channel.send(client.translate.commands.setLevel.notification_complete);
-    } else {
-        message.channel.send(client.translate.commands.setLevel.success);
+            await notify.send({ "embeds": [setLevelEmbed] });
+            message.channel.send(client.translate.commands.setLevel.notification_complete);
+        } else {
+            message.channel.send(client.translate.commands.setLevel.success);
+        }
     }
-};
-
-module.exports.help = {
-    "name": "setLevel",
-    "description": "Set Level of Members",
-    "usage": "setLevel <member; id, username, tag> <amount>",
-    "category": "manager",
-    "aliases": ["sLevel", "setlevel", "ตั้งค่าเลเวล"],
-    "userPermissions": ["MANAGE_GUILD"],
-    "clientPermissions": ["SEND_MESSAGES", "MANAGE_GUILD"]
-};
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name.toLowerCase(),
+        "name": module.exports.name.toLowerCase(),
         "name_localizations": {
             "en-US": "setlevel",
             "th": "ตั้งค่าเลเวล"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Set the members' level.",
             "th": "ตั้งค่าค่าประสบการณ์ของสมาชิก"
@@ -127,32 +127,25 @@ module.exports.interaction = {
 
         if (status === "error") return await interaction.editReply(interaction.client.translate.commands.setLevel.error);
         if (notify) {
-            await notify.send({
-                "embeds": [
-                    {
-                        "description": interaction.client.translate.commands.setLevel.level_was_changed.replace("%s", memberUsername),
-                        "color": 4886754,
-                        "thumbnail": {
-                            "url": memberAvatar
+            const setLevelEmbed = new EmbedBuilder()
+                .setDescription(interaction.client.translate.commands.setLevel.level_was_changed.replace("%s", memberUsername))
+                .setColor("Blue")
+                .setThumbnail(memberAvatar)
+                .setFooter({ "text": interaction.client.translate.commands.setLevel.set_by_staff, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png" })
+                .addFields(
+                    [
+                        {
+                            "name": interaction.client.translate.commands.setLevel.level,
+                            "value": "```" + exp + "```"
                         },
-                        "footer": {
-                            "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                            "text": interaction.client.translate.commands.setLevel.set_by_staff
-                        },
-                        "fields": [
-                            {
-                                "name": interaction.client.translate.commands.setLevel.level,
-                                "value": "```" + exp + "```"
-                            },
-                            {
-                                "name": interaction.client.translate.commands.setLevel.experience,
-                                "value": "```" + level + "```"
-                            }
-                        ]
-                    }
-                ]
-            });
+                        {
+                            "name": interaction.client.translate.commands.setLevel.experience,
+                            "value": "```" + level + "```"
+                        }
+                    ]
+                );
 
+            await notify.send({ "embeds": [setLevelEmbed] });
             await interaction.editReply(interaction.client.translate.commands.setLevel.notification_complete);
         } else {
             await interaction.editReply(interaction.client.translate.commands.setLevel.success);

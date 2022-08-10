@@ -1,38 +1,44 @@
-module.exports.run = (client, message, args) => {
-    const frames = [
-        "(-°□°)-  ┬─┬",
-        "(╯°□°)╯    ]",
-        "(╯°□°)╯  ︵  ┻━┻",
-        "(╯°□°)╯       [",
-        "(╯°□°)╯           ┬─┬"
-    ];
-
-    message.channel.send("(\\\\°□°)\\\\  ┬─┬").then((msg) => {
-        for (const frame of frames) {
-            setTimeout(() => {
-                msg.edit(frame);
-            }, 1000);
-        }
-    });
-};
-
-module.exports.help = {
+module.exports = {
     "name": "tableFlip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
-    "usage": "tableFlip",
     "category": "fun",
-    "aliases": ["tableflip", "tf", "ฟิบโต๊ะ"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "tableFlip",
+    "aliases": ["tableflip", "tf", "ฟิบโต๊ะ"],
+    async execute(client, message, args) {
+        const frames = [
+            "(-°□°)-  ┬─┬",
+            "(╯°□°)╯    ]",
+            "(╯°□°)╯  ︵  ┻━┻",
+            "(╯°□°)╯       [",
+            "(╯°□°)╯           ┬─┬"
+        ];
+    
+        message.channel.send("(\\\\°□°)\\\\  ┬─┬").then((msg) => {
+            for (const frame of frames) {
+                setTimeout(() => {
+                    msg.edit(frame);
+                }, 1000);
+            }
+        });
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name.toLowerCase(),
+        "name": module.exports.name.toLowerCase(),
         "name_localizations": {
             "en-US": "tableflip",
             "th": "พลิกโต๊ะ"
         },
-        "description": module.exports.help.description
+        "description": module.exports.description
     },
     async execute(interaction) {
         const frames = [

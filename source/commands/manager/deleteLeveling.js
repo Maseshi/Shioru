@@ -1,41 +1,47 @@
-const levelSystem = require("../../extras/levelSystem");
+const { levelSystem } = require("../../utils/databaseUtils");
 
-module.exports.run = async (client, message, args) => {
-    const inputMember = args.join(" ");
-
-    if (!inputMember) return message.reply(client.translate.commands.deleteLevel.empty);
-
-    const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-
-    if (!member) return message.reply(client.translate.commands.deleteLevel.can_not_find_user);
-
-    const memberID = member.user.id;
-    const msg = await message.reply(client.translate.commands.deleteLevel.deleting);
-    const data = await levelSystem(client, message, "DELETE", memberID);
-
-    if (data === "missing") return message.reply(client.translate.commands.deleteLevel.user_current_no_level);
-    if (data === "success") return msg.edit(client.translate.commands.deleteLevel.success);
-    if (data === "error") return msg.edit(client.translate.commands.deleteLevel.error);
-};
-
-module.exports.help = {
+module.exports = {
     "name": "deleteLevel",
     "description": "Removing EXP and Level of members",
-    "usage": "deleteLevel <member: id, username, tag>",
     "category": "manager",
-    "aliases": ["dleveling", "dlevel", "delleveling", "dellevel", "deletelevel", "deleteleveling", "ลบระดับชั้น"],
-    "userPermissions": ["MANAGE_GUILD"],
-    "clientPermissions": ["SEND_MESSAGES", "MANAGE_GUILD"]
+    "permissions": {
+        "user": ["MANAGE_GUILD"],
+        "client": ["SEND_MESSAGES", "MANAGE_GUILD"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "deleteLevel <member: id, username, tag>",
+    "aliases": ["dleveling", "dlevel", "delleveling", "dellevel", "deletelevel", "deleteleveling", "ลบระดับชั้น"],
+    async execute(client, message, args) {
+        const inputMember = args.join(" ");
+    
+        if (!inputMember) return message.reply(client.translate.commands.deleteLevel.empty);
+    
+        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+    
+        if (!member) return message.reply(client.translate.commands.deleteLevel.can_not_find_user);
+    
+        const memberID = member.user.id;
+        const msg = await message.reply(client.translate.commands.deleteLevel.deleting);
+        const data = await levelSystem(client, message, "DELETE", memberID);
+    
+        if (data === "missing") return message.reply(client.translate.commands.deleteLevel.user_current_no_level);
+        if (data === "success") return msg.edit(client.translate.commands.deleteLevel.success);
+        if (data === "error") return msg.edit(client.translate.commands.deleteLevel.error);
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name.toLowerCase(),
+        "name": module.exports.name.toLowerCase(),
         "name_localizations": {
             "en-US": "deletelevel",
             "th": "ลบเลเวล"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Removing EXP and Level of members",
             "th": "ลบ exp และเลเวลของสมาชิก"

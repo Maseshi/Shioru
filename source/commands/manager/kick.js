@@ -1,67 +1,71 @@
-module.exports.run = async (client, message, args) => {
-	const inputMember = args[0];
-	let inputReason = args.slice(1).join(" ");
+const { EmbedBuilder } = require("discord.js");
 
-	if (!inputMember) return message.reply(client.translate.commands.kick.empty);
-
-	const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-
-	if (!member) return message.reply(client.translate.commands.kick.can_not_find_user);
-
-	const memberPosition = member.roles.highest.position;
-	const authorPosition = message.member.roles.highest.position;
-
-	if (authorPosition < memberPosition) return message.reply(client.translate.commands.kick.members_have_a_higher_role);
-	if (!member.kickable) return message.reply(client.translate.commands.kick.members_have_a_higher_role_than_me);
-	if (!inputReason) inputReason = "";
-
-	const kicked = await member.kick({
-		"reason": inputReason
-	});
-	const authorUsername = message.author.username;
-	const memberAvatar = kicked.user.avatarURL();
-	const memberUsername = kicked.user.username;
-	const time = new Date();
-
-	if (!inputReason) inputReason = client.translate.commands.kick.no_reason;
-
-	message.channel.send({
-		"embeds": [
-			{
-				"title": client.translate.commands.kick.kicked_out.replace("%s", memberUsername),
-				"description": client.translate.commands.kick.reason_for_kick.replace("%s1", authorUsername).replace("%s2", inputReason),
-				"color": 16098851,
-				"timestamp": time,
-				"thumbnail": {
-					"url": memberAvatar
-				}
-			}
-		]
-	});
-};
-
-module.exports.help = {
+module.exports = {
 	"name": "kick",
 	"description": "Kick members from the server.",
-	"usage": "kick <member: id, username, tag> (reason)",
 	"category": "manager",
-	"aliases": ["k", "เตะ"],
-	"userPermissions": ["KICK_MEMBERS"],
-	"clientPermissions": ["SEND_MESSAGES", "KICK_MEMBERS"]
+	"permissions": {
+		"user": ["KICK_MEMBERS"],
+		"client": ["SEND_MESSAGES", "KICK_MEMBERS"]
+	}
 };
 
+module.exports.command = {
+	"enable": true,
+	"usage": "kick <member: id, username, tag> (reason)",
+	"aliases": ["k", "เตะ"],
+	async execute(client, message, args) {
+		const inputMember = args[0];
+		let inputReason = args.slice(1).join(" ");
+
+		if (!inputMember) return message.reply(client.translate.commands.kick.empty);
+
+		const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+
+		if (!member) return message.reply(client.translate.commands.kick.can_not_find_user);
+
+		const memberPosition = member.roles.highest.position;
+		const authorPosition = message.member.roles.highest.position;
+
+		if (authorPosition < memberPosition) return message.reply(client.translate.commands.kick.members_have_a_higher_role);
+		if (!member.kickable) return message.reply(client.translate.commands.kick.members_have_a_higher_role_than_me);
+		if (!inputReason) inputReason = "";
+
+		const kicked = await member.kick({
+			"reason": inputReason
+		});
+		const authorUsername = message.author.username;
+		const memberAvatar = kicked.user.avatarURL();
+		const memberUsername = kicked.user.username;
+
+		if (!inputReason) inputReason = client.translate.commands.kick.no_reason;
+
+		const kickEmbed = new EmbedBuilder()
+			.setTitle(client.translate.commands.kick.kicked_out.replace("%s", memberUsername))
+			.setDescription(client.translate.commands.kick.reason_for_kick.replace("%s1", authorUsername).replace("%s2", inputReason))
+			.setColor("Orange")
+			.setTimestamp()
+			.setThumbnail(memberAvatar);
+
+		message.channel.send({
+			"embeds": [kickEmbed]
+		});
+	}
+}
+
 module.exports.interaction = {
+	"enable": true,
 	"data": {
-		"name": module.exports.help.name,
+		"name": module.exports.name,
 		"name_localizations": {
-            "en-US": "kick",
-            "th": "เตะ"
-        },
-		"description": module.exports.help.description,
+			"en-US": "kick",
+			"th": "เตะ"
+		},
+		"description": module.exports.description,
 		"description_localizations": {
-            "en-US": "Kick members from the server.",
-            "th": "เตะสมาชิกจากออกเซิร์ฟเวอร์"
-        },
+			"en-US": "Kick members from the server.",
+			"th": "เตะสมาชิกจากออกเซิร์ฟเวอร์"
+		},
 		"options": [
 			{
 				"type": 6,
@@ -110,22 +114,18 @@ module.exports.interaction = {
 		const authorUsername = interaction.user.username;
 		const memberAvatar = kicked.user.avatarURL();
 		const memberUsername = kicked.user.username;
-		const time = new Date();
 
 		if (!inputReason) inputReason = interaction.client.translate.commands.kick.no_reason;
 
+		const kickEmbed = new EmbedBuilder()
+			.setTitle(interaction.client.translate.commands.kick.kicked_out.replace("%s", memberUsername))
+			.setDescription(interaction.client.translate.commands.kick.reason_for_kick.replace("%s1", authorUsername).replace("%s2", inputReason))
+			.setColor("Orange")
+			.setTimestamp()
+			.setThumbnail(memberAvatar);
+
 		await interaction.editReply({
-			"embeds": [
-				{
-					"title": interaction.client.translate.commands.kick.kicked_out.replace("%s", memberUsername),
-					"description": interaction.client.translate.commands.kick.reason_for_kick.replace("%s1", authorUsername).replace("%s2", inputReason),
-					"color": 16098851,
-					"timestamp": time,
-					"thumbnail": {
-						"url": memberAvatar
-					}
-				}
-			]
+			"embeds": [kickEmbed]
 		});
 	}
 };

@@ -1,37 +1,43 @@
-module.exports.run = (client, message, args) => {
-    let inputMin = parseInt(args[0]);
-    let inputMax = parseInt(args[1]);
-
-    if (inputMin > inputMax) {
-        const temp = inputMax;
-        inputMax = inputMin;
-        inputMin = temp;
-    }
-
-    const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
-
-    if (!result) return message.reply(client.translate.commands.numbers.empty);
-
-    message.channel.send(client.translate.commands.numbers.result.replace("%s", result));
-};
-
-module.exports.help = {
+module.exports = {
     "name": "numbers",
     "description": "Random number.",
-    "usage": "numbers <min> <max>",
     "category": "fun",
-    "aliases": ["randomnumbers", "randomnumber", "number", "สุ่มเลข"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "numbers <min> <max>",
+    "aliases": ["randomnumbers", "randomnumber", "number", "สุ่มเลข"],
+    async execute(client, message, args) {
+        let inputMin = parseInt(args[0]);
+        let inputMax = parseInt(args[1]);
+    
+        if (inputMin > inputMax) {
+            const temp = inputMax;
+            inputMax = inputMin;
+            inputMin = temp;
+        }
+    
+        const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
+    
+        if (!result) return message.reply(client.translate.commands.numbers.empty);
+    
+        message.channel.send(client.translate.commands.numbers.result.replace("%s", result));
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "numbers",
             "th": "ตัวเลข"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Random number.",
             "th": "สุ่มตัวเลข"

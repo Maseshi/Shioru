@@ -1,38 +1,44 @@
-module.exports.run = (client, message, args) => {
-    const inputSecond = parseInt(args[0]);
-    const queue = client.music.getQueue(message);
-
-    if (!queue) return message.reply(client.translate.commands.seek.no_queue);
-
-    const queueDuration = queue.songs.map((song, id) => song.duration);
-    const queueFormatDuration = queue.songs.map((song, id) => song.formatDuration);
-
-    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.seek.not_owner);
-    if (!inputSecond) return message.reply(client.translate.commands.seek.seek_guide.replace("%s", queueDuration));
-    if (inputSecond <= 0) return message.reply(client.translate.commands.seek.too_little);
-    if (inputSecond >= queueDuration.join()) return message.reply(client.translate.commands.seek.too_much.replace("%s", queueFormatDuration));
-
-    client.music.seek(message, (inputSecond * 100));
-    message.channel.send(client.translate.commands.seek.sought);
-};
-
-module.exports.help = {
+module.exports = {
     "name": "seek",
     "description": "Change the duration of the currently playing song",
-    "usage": "seek <second>",
     "category": "music",
-    "aliases": ["ช่วง", "duration"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "seek <second>",
+    "aliases": ["ช่วง", "duration"],
+    async execute(client, message, args) {
+        const inputSecond = parseInt(args[0]);
+        const queue = client.music.getQueue(message);
+
+        if (!queue) return message.reply(client.translate.commands.seek.no_queue);
+
+        const queueDuration = queue.songs.map((song, id) => song.duration);
+        const queueFormatDuration = queue.songs.map((song, id) => song.formatDuration);
+
+        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.seek.not_owner);
+        if (!inputSecond) return message.reply(client.translate.commands.seek.seek_guide.replace("%s", queueDuration));
+        if (inputSecond <= 0) return message.reply(client.translate.commands.seek.too_little);
+        if (inputSecond >= queueDuration.join()) return message.reply(client.translate.commands.seek.too_much.replace("%s", queueFormatDuration));
+
+        client.music.seek(message, (inputSecond * 100));
+        message.channel.send(client.translate.commands.seek.sought);
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "seek",
             "th": "ไปยังช่วง"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Change the duration of the currently playing song",
             "th": "เปลี่ยนระยะเวลาของเพลงที่กำลังเล่นอยู่"

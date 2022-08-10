@@ -1,41 +1,49 @@
-module.exports.run = (client, message, args) => {
-    try {
-        const link = client.generateInvite({
-            "scope": [
-                "applications.commands",
-                "bot"
-            ],
-            "permissions": [
-                "ADMINISTRATOR"
-            ]
-        });
+const { OAuth2Scopes, PermissionFlagsBits } = require("discord.js");
 
-        message.channel.send(link);
-    } catch(error) {
-        message.reply(client.translate.commands.inviteMe.can_not_create_invite_link);
-        console.group();
-            console.error(error);
-        console.groupEnd();
+module.exports = {
+    "name": "inviteMe",
+    "description": "Invite the bot to your server.",
+    "category": "me",
+	"permissions": {
+        "client": ["SEND_MESSAGES"]
     }
 };
 
-module.exports.help = {
-    "name": "inviteMe",
-    "description": "Invite the bot to your server.",
+module.exports.command = {
+    "enable": true,
     "usage": "inviteMe",
-    "category": "me",
 	"aliases": ["inviteme", "ime"],
-	"clientPermissions": ["SEND_MESSAGES"]
-};
+    async execute(client, message, args) {
+        try {
+            const link = client.generateInvite({
+                "scopes": [
+                    OAuth2Scopes.ApplicationsCommands,
+                    OAuth2Scopes.Bot
+                ],
+                "permissions": [
+                    PermissionFlagsBits.Administrator
+                ]
+            });
+    
+            message.channel.send(link);
+        } catch(error) {
+            message.reply(client.translate.commands.inviteMe.can_not_create_invite_link);
+            console.group();
+                console.error(error);
+            console.groupEnd();
+        }
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name.toLowerCase(),
+        "name": module.exports.name.toLowerCase(),
         "name_localizations": {
             "en-US": "inviteme",
             "th": "เชิญฉัน"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Invite the bot to your server.",
             "th": "เชิญบอทไปที่เซิร์ฟเวอร์ของคุณ"
@@ -44,12 +52,12 @@ module.exports.interaction = {
     async execute(interaction) {
         try {
             const link = interaction.client.generateInvite({
-                "scope": [
-                    "applications.commands",
-                    "bot"
+                "scopes": [
+                    OAuth2Scopes.ApplicationsCommands,
+                    OAuth2Scopes.Bot
                 ],
                 "permissions": [
-                    "ADMINISTRATOR"
+                    PermissionFlagsBits.Administrator
                 ]
             });
     

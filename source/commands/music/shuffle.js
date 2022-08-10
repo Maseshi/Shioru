@@ -1,30 +1,36 @@
-module.exports.run = (client, message, args) => {
-    const queue = client.music.getQueue(message);
-
-    if (!queue) return message.reply(client.translate.commands.shuffle.no_queue);
-    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.shuffle.not_owner);
-
-    client.music.shuffle(message);
-    message.channel.send(client.translate.commands.shuffle.now_shuffle);
-};
-
-module.exports.help = {
+module.exports = {
     "name": "shuffle",
     "description": "Shuffle queue",
-    "usage": "shuffle",
     "category": "music",
-    "aliases": ["shf", "สับเปลี่ยน", "สลับ", "เปลี่ยน"],
-    "clientPermissions": ["SEND_MESSAGES"]
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
+    }
 };
 
+module.exports.command = {
+    "enable": true,
+    "usage": "shuffle",
+    "aliases": ["shf", "สับเปลี่ยน", "สลับ", "เปลี่ยน"],
+    async execute(client, message, args) {
+        const queue = client.music.getQueue(message);
+
+        if (!queue) return message.reply(client.translate.commands.shuffle.no_queue);
+        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.shuffle.not_owner);
+
+        client.music.shuffle(message);
+        message.channel.send(client.translate.commands.shuffle.now_shuffle);
+    }
+}
+
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "shuffle",
             "th": "สับเปลี่ยน"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Shuffle queue",
             "th": "สับเปลี่ยนในคิว"

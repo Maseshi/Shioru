@@ -1,42 +1,51 @@
-const levelSystem = require("../../extras/levelSystem");
+const { EmbedBuilder } = require("discord.js");
+const { levelSystem } = require("../../utils/databaseUtils");
 
-module.exports.run = async (client, message, args) => {
-    const inputMember = args[0];
-    const inputAmount = parseInt(args.slice(1).join(" "));
+module.exports = {
+    "name": "setEXP",
+    "description": "Set the members' experience.",
+    "category": "manager",
+    "permissions": {
+        "user": ["MANAGE_GUILD"],
+        "client": ["SEND_MESSAGES", "MANAGE_GUILD"]
+    }
+};
 
-    if (!inputMember) return message.reply(client.translate.commands.setEXP.empty);
-    if (!inputAmount) return message.reply(client.translate.commands.setEXP.amount_empty);
+module.exports.command = {
+    "enable": true,
+    "usage": "setEXP <member: id, username, tag> <amount>",
+    "aliases": ["setExp", "setexp", "sExp", "ตั้งค่าEXP", "ตั้งค่าExp"],
+    async execute(client, message, args) {
+        const inputMember = args[0];
+        const inputAmount = parseInt(args.slice(1).join(" "));
 
-    const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+        if (!inputMember) return message.reply(client.translate.commands.setEXP.empty);
+        if (!inputAmount) return message.reply(client.translate.commands.setEXP.amount_empty);
 
-    if (!member) return message.reply(client.translate.commands.setEXP.can_not_find_user);
+        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
 
-    const memberAvatar = member.user.avatarURL();
-    const memberUsername = member.user.username;
-    const memberID = member.user.id;
+        if (!member) return message.reply(client.translate.commands.setEXP.can_not_find_user);
 
-    const data = await levelSystem(client, message, "PUT", memberID, inputAmount);
+        const memberAvatar = member.user.avatarURL();
+        const memberUsername = member.user.username;
+        const memberID = member.user.id;
 
-    const exp = data.exp;
-    const level = data.level;
-    const notify = data.notify;
-    const status = data.status;
+        const data = await levelSystem(client, message, "PUT", memberID, inputAmount);
 
-    if (status === "error") return message.reply(client.translate.commands.setEXP.error);
-    if (notify) {
-        await notify.send({
-            "embeds": [
-                {
-                    "description": client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername),
-                    "color": 4886754,
-                    "thumbnail": {
-                        "url": memberAvatar
-                    },
-                    "footer": {
-                        "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                        "text": client.translate.commands.setEXP.set_by_staff
-                    },
-                    "fields": [
+        const exp = data.exp;
+        const level = data.level;
+        const notify = data.notify;
+        const status = data.status;
+
+        if (status === "error") return message.reply(client.translate.commands.setEXP.error);
+        if (notify) {
+            const setEXPEmbed = new EmbedBuilder()
+                .setDescription(client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername))
+                .setColor("Blue")
+                .setThumbnail(memberAvatar)
+                .setFooter({ "text": client.translate.commands.setEXP.set_by_staff, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png" })
+                .addFields(
+                    [
                         {
                             "name": client.translate.commands.setEXP.level,
                             "value": "```" + level + "```"
@@ -46,34 +55,25 @@ module.exports.run = async (client, message, args) => {
                             "value": "```" + exp + "```"
                         }
                     ]
-                }
-            ]
-        });
+                );
 
-        message.channel.send(client.translate.commands.setEXP.notification_complete);
-    } else {
-        message.channel.send(client.translate.commands.setEXP.success);
+            await notify.send({ "embeds": [setEXPEmbed] });
+            message.channel.send(client.translate.commands.setEXP.notification_complete);
+        } else {
+            message.channel.send(client.translate.commands.setEXP.success);
+        }
     }
-};
-
-module.exports.help = {
-    "name": "setEXP",
-    "description": "Set the members' experience.",
-    "usage": "setEXP <member: id, username, tag> <amount>",
-    "category": "manager",
-    "aliases": ["setExp", "setexp", "sExp", "ตั้งค่าEXP", "ตั้งค่าExp"],
-    "userPermissions": ["MANAGE_GUILD"],
-    "clientPermissions": ["SEND_MESSAGES", "MANAGE_GUILD"]
-};
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name.toLowerCase(),
+        "name": module.exports.name.toLowerCase(),
         "name_localizations": {
             "en-US": "setexp",
             "th": "ตั้งค่าค่าประสบการณ์"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Set the members' experience.",
             "th": "ตั้งค่าค่าประสบการณ์ของสมาชิก"
@@ -127,32 +127,25 @@ module.exports.interaction = {
 
         if (status === "error") return await interaction.editReply(interaction.client.translate.commands.setEXP.error);
         if (notify) {
-            await notify.send({
-                "embeds": [
-                    {
-                        "description": interaction.client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername),
-                        "color": 4886754,
-                        "thumbnail": {
-                            "url": memberAvatar
+            const setEXPEmbed = new EmbedBuilder()
+                .setDescription(interaction.client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername))
+                .setColor("Blue")
+                .setThumbnail(memberAvatar)
+                .setFooter({ "text": interaction.client.translate.commands.setEXP.set_by_staff, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png" })
+                .addFields(
+                    [
+                        {
+                            "name": interaction.client.translate.commands.setEXP.level,
+                            "value": "```" + level + "```"
                         },
-                        "footer": {
-                            "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png",
-                            "text": interaction.client.translate.commands.setEXP.set_by_staff
-                        },
-                        "fields": [
-                            {
-                                "name": interaction.client.translate.commands.setEXP.level,
-                                "value": "```" + level + "```"
-                            },
-                            {
-                                "name": interaction.client.translate.commands.setEXP.experience,
-                                "value": "```" + exp + "```"
-                            }
-                        ]
-                    }
-                ]
-            });
+                        {
+                            "name": interaction.client.translate.commands.setEXP.experience,
+                            "value": "```" + exp + "```"
+                        }
+                    ]
+                );
 
+            await notify.send({ "embeds": [setEXPEmbed] });
             await interaction.editReply(interaction.client.translate.commands.setEXP.notification_complete);
         } else {
             await interaction.editReply(interaction.client.translate.commands.setEXP.success);

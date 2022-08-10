@@ -1,37 +1,44 @@
-module.exports.run = (client, message, args) => {
-    const inputAmount = parseInt(args[0]);
-    const queue = client.music.getQueue(message);
-
-    if (!queue) return message.reply(client.translate.commands.jump.no_queue);
-    if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.jump.not_queue_owner);
-    if (!inputAmount) return message.reply(client.translate.commands.jump.no_input);
-    if (inputAmount <= 0) return message.reply(client.translate.commands.jump.too_low);
-    if (inputAmount > queue.songs.length) return message.reply(client.translate.commands.jump.too_much);
-
-    try {
-        client.music.jump(message, inputAmount);
-    } catch (error) {
-        message.reply(client.translate.commands.jump.can_not_jump);
+module.exports = {
+    "name": "jump",
+    "description": "Skip to the selected queue number",
+    "category": "music",
+    "permissions": {
+        "client": ["SEND_MESSAGES"]
     }
 };
 
-module.exports.help = {
-    "name": "jump",
-    "description": "Skip to the selected queue number",
+module.exports.command = {
+    "enable": true,
     "usage": "jump <number>",
-    "category": "music",
     "aliases": ["skipto", "ข้ามไปที่"],
-    "clientPermissions": ["SEND_MESSAGES"]
-};
+    async execute(client, message, args) {
+        const inputAmount = parseInt(args[0]);
+
+        const queue = client.music.getQueue(message);
+
+        if (!queue) return message.reply(client.translate.commands.jump.no_queue);
+        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.jump.not_queue_owner);
+        if (!inputAmount) return message.reply(client.translate.commands.jump.no_input);
+        if (inputAmount <= 0) return message.reply(client.translate.commands.jump.too_low);
+        if (inputAmount > queue.songs.length) return message.reply(client.translate.commands.jump.too_much);
+
+        try {
+            client.music.jump(message, inputAmount);
+        } catch (error) {
+            message.reply(client.translate.commands.jump.can_not_jump);
+        }
+    }
+}
 
 module.exports.interaction = {
+    "enable": true,
     "data": {
-        "name": module.exports.help.name,
+        "name": module.exports.name,
         "name_localizations": {
             "en-US": "jump",
             "th": "กระโดด"
         },
-        "description": module.exports.help.description,
+        "description": module.exports.description,
         "description_localizations": {
             "en-US": "Skip to the selected queue number",
             "th": "ข้ามไปยังหมายเลขคิวที่เลือก"
@@ -54,6 +61,7 @@ module.exports.interaction = {
     },
     async execute(interaction) {
         const inputAmount = interaction.options.get("number").value;
+
         const queue = interaction.client.music.getQueue(interaction);
 
         if (!queue) return await interaction.editReply(interaction.client.translate.commands.jump.no_queue);
