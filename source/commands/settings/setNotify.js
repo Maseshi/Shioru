@@ -60,8 +60,8 @@ module.exports.command = {
                                 .replace("%s10", (guildBanRemove ? ("<#" + guildBanRemove + ">") : client.translate.commands.notify.not_set))
                                 .replace("%s11", (guildMemberAdd ? ("<#" + guildMemberAdd + ">") : client.translate.commands.notify.not_set))
                                 .replace("%s12", (guildMemberRemove ? ("<#" + guildMemberRemove + ">") : client.translate.commands.notify.not_set))
-                                .replace("%s13", (prefix + module.exports.help.usage))
-                                .replace("%s14", ("/" + module.exports.help.usage))
+                                .replace("%s13", (prefix + module.exports.command.usage))
+                                .replace("%s14", ("/" + module.exports.command.usage))
                         )
                         .setColor(clientColor)
                         .setTimestamp()
@@ -83,7 +83,7 @@ module.exports.command = {
                         if (!channel) return message.reply(client.translate.commands.notify.channel_not_found);
     
                         set(child(dbRef, inputType), channel.id.toString()).then(() => {
-                            message.channel.send(client.translate.commands.notify.set_success.replace("%s1", inputType).replace("%s2", channel.name));
+                            message.channel.send(client.translate.commands.notify.set_success.replace("%s1", inputType).replace("%s2", channel.id));
                         });
                         break;
                     case "remove":
@@ -420,8 +420,8 @@ module.exports.interaction = {
                                 .replace("%s10", (guildBanRemove ? ("<#" + guildBanRemove + ">") : interaction.client.translate.commands.notify.not_set))
                                 .replace("%s11", (guildMemberAdd ? ("<#" + guildMemberAdd + ">") : interaction.client.translate.commands.notify.not_set))
                                 .replace("%s12", (guildMemberRemove ? ("<#" + guildMemberRemove + ">") : interaction.client.translate.commands.notify.not_set))
-                                .replace("%s13", (prefix + module.exports.help.usage))
-                                .replace("%s14", ("/" + module.exports.help.usage))
+                                .replace("%s13", (prefix + module.exports.command.usage))
+                                .replace("%s14", ("/" + module.exports.command.usage))
                         )
                         .setColor(clientColor)
                         .setTimestamp()
@@ -436,7 +436,7 @@ module.exports.interaction = {
                     if (!channel) return await interaction.editReply(interaction.client.translate.commands.notify.channel_not_found);
 
                     await set(child(dbRef, inputType.value), channel.id.toString());
-                    await interaction.editReply(interaction.client.translate.commands.notify.set_success.replace("%s1", inputType.value).replace("%s2", channel.name));
+                    await interaction.editReply(interaction.client.translate.commands.notify.set_success.replace("%s1", inputType.value).replace("%s2", channel.id));
                 }
 
                 if (subCommand === "remove") {

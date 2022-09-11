@@ -34,8 +34,8 @@ module.exports.command = {
                 .setDescription(
                     client.translate.commands.language.description
                         .replace("%s1", support[lang])
-                        .replace("%s2", (prefix + module.exports.help.usage))
-                        .replace("%s3", ("/" + module.exports.help.usage))
+                        .replace("%s2", (prefix + module.exports.command.usage))
+                        .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
@@ -145,8 +145,8 @@ module.exports.interaction = {
                 .setDescription(
                     interaction.client.translate.commands.language.description
                         .replace("%s1", support[lang])
-                        .replace("%s2", (prefix + module.exports.help.usage))
-                        .replace("%s3", ("/" + module.exports.help.usage))
+                        .replace("%s2", (prefix + module.exports.command.usage))
+                        .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
