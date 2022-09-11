@@ -11,7 +11,7 @@ const chatSystem = (client, message, mentioned, args) => {
     if (argument) {
         message.channel.sendTyping();
 
-        onValue(child(child(child(childRef, "words/messages"), client.config.language.default), argument)).then(async (snapshot) => {
+        onValue(child(child(child(childRef, "words/messages"), client.config.language.default)), async (snapshot) => {
             if (snapshot.exists()) {
                 const answer = snapshot.val().answer;
                 const command = snapshot.val().command;
@@ -46,14 +46,14 @@ const chatSystem = (client, message, mentioned, args) => {
             }
         }).catch((error) => {
             catchError(client, message, "chatSystem", error);
-        })
+        });
     }
 
     // When the bot is called by tagging.
     if (!argument && mentioned) {
         message.channel.sendTyping();
 
-        onValue(child(child(childRef, "words/tags"), client.config.language.default)).then((snapshot) => {
+        onValue(child(child(childRef, "words/tags"), client.config.language.default), (snapshot) => {
             if (snapshot.exists()) {
                 const tags = snapshot.val();
 
@@ -205,7 +205,7 @@ const levelSystem = (client, message, method, arg, amount) => {
                 }
             });
 
-            module.exports(client, message, method, arg, amount);
+            levelSystem(client, message, method, arg, amount);
         }
     });
 }
@@ -247,7 +247,7 @@ const settingsData = (client, guild, exports, callback) => {
                     "guildMemberRemove": false
                 }
             }).then(() => {
-                module.exports(client, guild, exports, callback);
+                settingsData(client, guild, exports, callback);
             }).catch((error) => {
                 catchError(client, guild, "settingsData", error);
             });
