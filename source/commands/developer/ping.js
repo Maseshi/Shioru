@@ -39,7 +39,7 @@ module.exports.interaction = {
         "description": module.exports.description,
         "description_localizations": {
             "en-US": "Check the ping and api latency of the bot.",
-            "th": "ตรวจสอบความหน่วงและ API Latency ของบอท"
+            "th": "ตรวจสอบความหน่วงและ API Latency ของเซิร์ฟเวอร์"
         }
     },
     async execute(interaction) {
