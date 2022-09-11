@@ -20,7 +20,7 @@ module.exports = async (client, guild) => {
 
     if (guildChannel) {
         const guildName = guild.name;
-        const clientFetch = client.user.fetch();
+        const clientFetch = await client.user.fetch();
         const clientColor = clientFetch.accentColor;
         const clientAvatar = client.user.displayAvatarURL();
         const clientUsername = client.user.username;

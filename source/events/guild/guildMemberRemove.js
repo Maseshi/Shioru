@@ -14,13 +14,13 @@ module.exports = (client, member) => {
 	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), member.guild.id);
     const channelRef = child(childRef, "config/notification/guildMemberRemove");
 
-	get(channelRef).then((snapshot) => {
+	get(channelRef).then(async snapshot => {
         if (snapshot.exists()) {
             const notifyId = snapshot.val();
 
             if (notifyId) {
 				const notification = member.guild.channels.cache.find(channels => channels.id === notifyId);
-                const memberFetch = member.user.fetch();
+                const memberFetch = await member.user.fetch();
                 const memberColor = memberFetch.accentColor;
                 const memberTag = member.user.tag;
                 const memberAvatar = member.user.displayAvatarURL();
