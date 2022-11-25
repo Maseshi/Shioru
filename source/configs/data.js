@@ -1,12 +1,15 @@
 require("dotenv").config();
 
+const constants = require("./constants.json");
+const filters = require("./filters.json");
+const languages = require("./languages.json");
+
 module.exports = {
+    "constants": constants,
+    "filters": filters,
     "language": {
-        "default": "en",
-        "support": {
-            "en": "English",
-            "th": "ไทย"
-        }
+        "code": "en",
+        "support": languages
     },
     "owner": "618836889239158785",
     "prefix": "S",
