@@ -1,12 +1,12 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
     "name": "levelingBoard",
     "description": "See the ranking of people with the most EXP and Level on the server.",
-    "category": "manager",
+    "category": "fun",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -17,45 +17,47 @@ module.exports.command = {
     async execute(client, message, args) {
         const map = [];
         const max = 10;
-        const data = await levelSystem(client, message, "GET/ALL");
-    
-        if (!data) return message.channel.send(client.translate.commands.levelingBoard.no_info);
-    
-        data.forEach((snapshot) => {
-            const member = message.guild.members.cache.find(members => (members.id === snapshot.key));
-    
-            if (!member) return;
-    
-            const leveling = snapshot.val().leveling;
-    
-            if (!leveling) return;
-    
-            const exp = snapshot.val().leveling.exp;
-            const level = snapshot.val().leveling.level;
-    
-            map.push({
-                "data": {
-                    "exp": exp,
-                    "level": level,
-                    "avatar": member.user.displayAvatarURL()
-                },
-                "name": member.user.username,
-                "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
-            });
-        });
-    
+        const snapshot = await levelSystem(client, message, "GET/ALL");
+
+        if (!snapshot) return message.channel.send(client.translate.commands.levelingBoard.no_info);
+
+        for (const users in snapshot) {
+            const member = message.guild.members.cache.find(members => (members.id === users));
+
+            if (member) {
+                if (!member.user.bot) {
+                    const leveling = snapshot[member.user.id].leveling;
+
+                    if (leveling) {
+                        const exp = leveling.exp;
+                        const level = leveling.level;
+
+                        map.push({
+                            "data": {
+                                "exp": exp,
+                                "level": level,
+                                "avatar": member.user.displayAvatarURL()
+                            },
+                            "name": member.user.username,
+                            "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
+                        });
+                    }
+                }
+            }
+        }
+
         map.sort((userA, userB) => userB.data.level - userA.data.level || userB.data.exp - userA.data.exp);
-    
+
         const userAvatar = map[0].data.avatar;
-    
+
         for (let i = 0; i < map.length; i++) {
             if (!map[i]) return;
             if (i === max) return;
-    
+
             delete map[i].data;
             map[i].name = (i + 1) + ". " + map[i].name;
         }
-    
+
         const clientColor = message.guild.members.me.displayHexColor;
         const clientAvatar = client.user.avatarURL();
         const clientUsername = client.user.username;
@@ -68,13 +70,16 @@ module.exports.command = {
             .addFields(map)
             .setTimestamp()
             .setFooter({ "text": client.translate.commands.levelingBoard.server_rank_tips, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png" });
-    
+
         message.channel.send({ "embeds": [embed] });
     }
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -90,32 +95,34 @@ module.exports.interaction = {
     async execute(interaction) {
         const map = [];
         const max = 10;
-        const data = await levelSystem(interaction.client, interaction, "GET/ALL");
+        const snapshot = await levelSystem(interaction.client, interaction, "GET/ALL");
 
-        if (!data) return await interaction.editReply(interaction.client.translate.commands.levelingBoard.no_info);
+        if (!snapshot) return await interaction.editReply(interaction.client.translate.commands.levelingBoard.no_info);
 
-        data.forEach((snapshot) => {
-            const member = interaction.guild.members.cache.find(members => (members.id === snapshot.key));
+        for (const users in snapshot) {
+            const member = interaction.guild.members.cache.find(members => (members.id === users));
 
-            if (!member) return;
+            if (member) {
+                if (!member.user.bot) {
+                    const leveling = snapshot[member.user.id].leveling;
 
-            const leveling = snapshot.val().leveling;
+                    if (leveling) {
+                        const exp = leveling.exp;
+                        const level = leveling.level;
 
-            if (!leveling) return;
-
-            const exp = snapshot.val().leveling.exp;
-            const level = snapshot.val().leveling.level;
-
-            map.push({
-                "data": {
-                    "exp": exp,
-                    "level": level,
-                    "avatar": member.user.displayAvatarURL()
-                },
-                "name": member.user.username,
-                "value": interaction.client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
-            });
-        });
+                        map.push({
+                            "data": {
+                                "exp": exp,
+                                "level": level,
+                                "avatar": member.user.displayAvatarURL()
+                            },
+                            "name": member.user.username,
+                            "value": interaction.client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
+                        });
+                    }
+                }
+            }
+        }
 
         map.sort((userA, userB) => userB.data.level - userA.data.level || userB.data.exp - userA.data.exp);
 

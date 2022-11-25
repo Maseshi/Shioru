@@ -1,12 +1,15 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
     "name": "covid",
     "description": "Get covid statistics for a country",
-    "category": "utility",
+    "category": "information",
     "permissions": {
-        "client": ["SEND_MESSAGES", "EMBED_LINKS"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.EmbedLinks
+        ]
     }
 };
 
@@ -68,7 +71,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

@@ -1,12 +1,13 @@
+const { PermissionsBitField } = require("discord.js");
 const { create } = require("sourcebin");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
     "name": "paste",
     "description": "Paste the text in sourceb.in.",
-    "category": "utility",
+    "category": "information",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 }
 
@@ -51,7 +52,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

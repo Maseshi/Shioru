@@ -1,11 +1,17 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     "name": "snakecord",
     "description": "Play a snake board game.",
-    "category": "fun",
+    "category": "games",
     "permissions": {
-        "client": ["SEND_MESSAGES", "EMBED_LINKS", "ADD_REACTIONS", "READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.EmbedLinks,
+            PermissionsBitField.Flags.AddReactions,
+            PermissionsBitField.Flags.ReadMessageHistory,
+            PermissionsBitField.Flags.ManageMessages
+        ]
     }
 };
 
@@ -192,7 +198,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": "true",
+	"enable": true
+};
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

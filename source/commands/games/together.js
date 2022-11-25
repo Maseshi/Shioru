@@ -1,13 +1,16 @@
-const { ChannelType } = require("discord.js");
+const { ChannelType, PermissionsBitField } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
     "name": "together",
     "description": "Run a specific emulator through the audio channel.",
-    "category": "fun",
+    "category": "games",
     "permissions": {
-        "user": ["START_EMBEDDED_ACTIVITIES"],
-        "client": ["SEND_MESSAGES", "START_EMBEDDED_ACTIVITIES"]
+        "user": [PermissionsBitField.Flags.UseEmbeddedActivities],
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.UseEmbeddedActivities
+        ]
     }
 };
 
@@ -78,7 +81,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "description": module.exports.description,

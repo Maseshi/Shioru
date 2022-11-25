@@ -1,12 +1,15 @@
-const { parseEmoji } = require('discord.js');
+const { parseEmoji, PermissionsBitField } = require('discord.js');
 const { parse } = require("twemoji-parser");
 
 module.exports = {
     "name": "bigEmoji",
     "description": "Enlarge the emoji.",
-    "category": "utility",
+    "category": "fun",
     "permissions": {
-        "client": ["SEND_MESSAGES", "EMBED_LINKS"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.EmbedLinks
+        ]
     }
 };
 
@@ -38,7 +41,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
