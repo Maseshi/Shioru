@@ -23,11 +23,10 @@
             "undefined": "undefined"
         },
         "autoplay": {
-            "auto_playing": "📻 %s autoplay mode already",
             "no_queue": "❎ Ummm...but the song hasn't started yet?",
             "not_queue_owner": "🚫 Only the owner of the queue can change it.",
-            "off": "Off",
-            "on": "on"
+            "off": "📻 Autoplay mode turned off",
+            "on": "📻 Autoplay mode turned on"
         },
         "ban": {
             "banned_for_time": "%s1 has been banned for **%s2** days",
@@ -259,15 +258,6 @@
             "empty": "❓ Thinking of k..k..killing someone...?",
             "killed": "%s1 has successfully killed %s2 🔪"
         },
-        "language": {
-            "already_set": "❎ eh..but this server is already using %s",
-            "description": "**lang** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```\n> ```%s3```",
-            "empty_value": "❓ eh..but you need to specify the language code you want to set this value",
-            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only a set.",
-            "language_not_support": "❎ %s1 doesn't seem familiar at all. Now it may not be supported or it may not be there yet. But the language I understand now has %s2",
-            "set_success": "✅ The language has been changed to **%s** already.",
-            "title": "🌐 Language"
-        },
         "leave": {
             "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
             "do_not_have_channel": "❎ I don't have this channel. Is it a typo?",
@@ -335,19 +325,6 @@
             "type_not_exists": "❎ That one doesn't exist. Take a look below.\n```%s```",
             "type_you_want": "❓ What kind do you want?\n```%s```"
         },
-        "notify": {
-            "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
-            "data_at": "data of when",
-            "description": "**notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General notifications: %s1\n**channelCreate** - New channels: %s2 \n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New emoji: %s6\n**emojiDelete** - Emoji deleted: %s7\n**emojiUpdate** - Emoji updated: %s8\n** guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Banned: %s10\n**guildMemberAdd** - Member Joined Server: %s11\n**guildMemberRemove** - Member Leave From the server: %s12\n\n> You can change this by typing:\n> ```%s13```\n> ```%s14```",
-            "empty_config_channel": "❓ Please specify the channel you want to configure.",
-            "empty_value": "❎ Please specify the type of notification.\n%s",
-            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only set, remove.",
-            "not_set": "`not set`",
-            "remove_success": "✅ The notification type `%s` has been removed successfully.",
-            "set_success": "✅ The notification type `%s1` has been set to the field `<#%s2>` already.",
-            "title": "🔔 Notification",
-            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s"
-        },
         "nowPlaying": {
             "autoplay": "📻 Autoplay",
             "filter": "🎼 Audio filter style: `%s`",
@@ -371,39 +348,15 @@
             "not_paused": "📼 I'm stopping now. Today looks weird. Haha..",
             "paused": "⏸ Paused the music."
         },
-        "personal": {
-            "data_at": "data of when",
-            "description": "**personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```\n> ```%s5```",
-            "empty_type": "❎ Please specify the type of data you want to set.\n%s",
-            "empty_value": "❓ Would you like to set your data to **true** or **false**?\n> **true** means to allow viewing of your data\n> * *false** means your viewing of such information is not allowed",
-            "false_success": "✅ Your %s has been deauthorized.",
-            "invalid_value": "❎ Umm.. in this section, there are really **true** and **false**.",
-            "no": "No",
-            "title": "📄 Personal Information",
-            "true_success": "✅ Your %s has been authorized.",
-            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s",
-            "yes": "yes"
-        },
         "ping": {
             "connection": "📡 Connection",
-            "info": "Ping is %s1 seconds \nRoundtrip Latency is %s2 seconds",
+            "info": "Ping is %s1 ms \nRoundtrip Latency is %s2 ms",
             "result": "🏓 Pong",
             "waiting": "🏓 Pinging..."
         },
         "play": {
             "no_song_input": "❓ What song do you want? Here's a link.",
             "not_in_channel": "❓ Enter any channel first. If not, listen to me..."
-        },
-        "prefix": {
-            "already_value": "❎ eh..but this server is already using the %s prefix.",
-            "data_at": "data of when",
-            "default_success": "✅ This server has now reverted to using S as the prefix of all commands.",
-            "description": "**prefix** - Set a prefix for the server to launch commands.\n\nThis server's prefix is: `%s1`\n\n> You can change this by typing:\n> ```%s2```\n> ```%s3```",
-            "empty_value": "❓ eh..but you need to set a value to change this prefix",
-            "set_success": "✅ This server now uses %s as the prefix of all commands.",
-            "this_options_not_found": "❎ Uh..but the %s option doesn't exist in this command. You can use set and remove within this command.",
-            "title": "❕ prefix (server)",
-            "too_long": "❎ The prefix should not be more than 5 characters."
         },
         "previous": {
             "no_previous_song_queue": "📼 There is no song that was played recently.",
@@ -521,6 +474,16 @@
             "too_little": "❎ nothing lower than this",
             "too_much": "❎ The time of this song is at %s, nothing more than this."
         },
+        "setCommand": {
+            "can_not_manage_this_command": "❎ You cannot manage this command.",
+            "command_input_empty": "❎ Please enter the command you want to handle.",
+            "command_not_found": "❎ The command was not found. Try checking the characters or characters again.",
+            "data_at": "data of when",
+            "description": "**setCommand** - Manage all my commands, e.g. `open`-||close|| Execute individual commands. etc.\n\n**command** - (%s1):\n%s2\n\n> You can change it by typing:\n> ```%s3```\n> ``` %s4```",
+            "disabled": "☑️ The command **%s** has been disabled.",
+            "enabled": "✅ The command **%s** has been enabled",
+            "invalid_option": "❎ Eh..but the %s option doesn't exist in this order. Within this command there is enable, disable only"
+        },
         "setEXP": {
             "amount_empty": "❓ How much do you want to set for this member? must be a number",
             "can_not_find_user": "❎ This member could not be found. Is it a typo?",
@@ -533,6 +496,15 @@
             "set_by_staff": "Your experience is set by the team on this server.",
             "success": "✅ Setup is complete..."
         },
+        "setLanguage": {
+            "already_set": "❎ eh..but this server is already using %s",
+            "description": "**lang** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```\n> ```%s3```",
+            "empty_value": "❓ eh..but you need to specify the language code you want to set this value",
+            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only a set.",
+            "language_not_support": "❎ %s1 doesn't seem familiar at all. Now it may not be supported or it may not be there yet. But the language I understand now has %s2",
+            "set_success": "✅ The language has been changed to **%s** already.",
+            "title": "🌐 Language"
+        },
         "setLevel": {
             "amount_empty": "❓ How much would you like to set for this member? must be a number",
             "can_not_find_user": "❎ This member could not be found. Is it a typo?",
@@ -544,6 +516,43 @@
             "notification_complete": "✅ Setup is complete...",
             "set_by_staff": "Your tier is set by a team on this server.",
             "success": "✅ Setup is complete..."
+        },
+        "setNotify": {
+            "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
+            "data_at": "data of when",
+            "description": "**notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General Notification: %s1\n**channelCreate** - New Channel: %s2\n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pins Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New Emoji: %s6\n**emojiDelete** - Emoji Correct Delete: %s7\n**emojiUpdate** - Emoji Updated: %s8\n**guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Unbanned: %s10\n**guildIntegrationsUpdate** - Guild Integration Update: %s11\n**guildMemberAdd** - Member Join Server: %s12\n**guildMemberRemove** - Member Leave Server: %s13 \n**guildMembersChunk** - Gained many guild members: %s14\n**guildUnavailable** - Server unavailable: %s15\n**inviteCreate** - Invite link generated: %s16 \n**inviteDelete** - Invite Link Removed: %s17\n**roleCreate** - Role Created: %s18\n**roleDelete** - Role Removed: %s19\n**roleUpdate** - Roles updated: %s20\n**stageInstanceCreate** - Stages created: %s21\n**stageInstanceDelete** - Stages deleted: %s22\n**stageInstanceUpdate** - Stages Updated: %s23\n**stickerCreate** - Sticker Created: %24\n**stickerDelete** - Sticker Removed: %s25\n**stickerUpdate** - Sticker Thread updated: %s26\n**threadCreate** - Thread created: %s27\n**threadDelete** - Thread deleted: %s28\n**threadUpdate** - Thread updated: %s29\n**webhookUpdate** - The webhook has been updated: %s30\n\n> You can change it by typing:\n> ```%s31```\n> ```%s32```",
+            "empty_config_channel": "❓ Please specify the channel you want to configure.",
+            "empty_value": "❎ Please specify the type of notification.\n%s",
+            "invalid_options": "❎ Eh..but the %s option doesn't exist in this command. Within this command, there is only set, remove.",
+            "not_set": "`not set`",
+            "remove_success": "✅ The notification type `%s` has been removed successfully.",
+            "set_success": "✅ The notification type `%s1` has been set to the field `<#%s2>` already.",
+            "title": "🔔 Notification",
+            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s"
+        },
+        "setPersonal": {
+            "data_at": "data of when",
+            "description": "**personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```\n> ```%s5```",
+            "empty_type": "❎ Please specify the type of data you want to set.\n%s",
+            "empty_value": "❓ Would you like to set your data to **true** or **false**?\n> **true** means to allow viewing of your data\n> * *false** means your viewing of such information is not allowed",
+            "false_success": "✅ Your %s has been deauthorized.",
+            "invalid_value": "❎ Umm.. in this section, there are really **true** and **false**.",
+            "no": "No",
+            "title": "📄 Personal Information",
+            "true_success": "✅ Your %s has been authorized.",
+            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s",
+            "yes": "yes"
+        },
+        "setPrefix": {
+            "already_value": "❎ eh..but this server is already using the %s prefix.",
+            "data_at": "data of when",
+            "default_success": "✅ This server has now reverted to using S as the prefix of all commands.",
+            "description": "**prefix** - Set a prefix for the server to launch commands.\n\nThis server's prefix is: `%s1`\n\n> You can change this by typing:\n> ```%s2```\n> ```%s3```",
+            "empty_value": "❓ eh..but you need to set a value to change this prefix",
+            "set_success": "✅ This server now uses %s as the prefix of all commands.",
+            "this_options_not_found": "❎ Uh..but the %s option doesn't exist in this command. You can use set and remove within this command.",
+            "title": "❕ prefix (server)",
+            "too_long": "❎ The prefix should not be more than 5 characters."
         },
         "settings": {
             "description": "You can configure it according to your needs using these commands.",
@@ -729,40 +738,40 @@
     },
     "events": {
         "channelCreate": {
-            "member_create_channel": "> A server member has created a channel: <#%s>",
-            "system_notification": "🔔 System notification"
+            "channel_notification": "🪧 Channel",
+            "member_create_channel": "> A server member has created a channel: <#%s>"
         },
         "channelDelete": {
-            "member_delete_channel": "> A server member has exploded the channel: `%s`",
-            "system_notification": "🔔 System notification"
+            "channel_notification": "🪧 Channel",
+            "member_delete_channel": "> A server member has exploded the channel: `%s`"
         },
         "channelPinsUpdate": {
-            "member_pins_in_channel": "> Server member pins channel: <#%s1> on %s2",
-            "system_notification": "🔔 System notification"
+            "channel_notification": "🪧 Channel",
+            "member_pins_in_channel": "> Server member pins channel: <#%s1> on %s2"
         },
         "channelUpdate": {
-            "member_update_channel": "> The server member has changed some information in the field: `%s1` to <#%s2>",
-            "system_notification": "🔔 System notification"
+            "channel_notification": "🪧 Channel",
+            "member_update_channel": "> The server member has changed some information in the field: `%s1` to <#%s2>"
         },
         "emojiCreate": {
-            "member_create_emoji": "> A server member has created a new emoji: :%s:",
-            "system_notification": "🔔 System notification"
+            "emoji_notification": "😊 Emoji",
+            "member_create_emoji": "> A server member has created a new emoji: :%s:"
         },
         "emojiDelete": {
-            "member_delete_emoji": "> The server member deleted the emoji: :%s:",
-            "system_notification": "🔔 System notification"
+            "emoji_notification": "😊 Emoji",
+            "member_delete_emoji": "> The server member deleted the emoji: :%s:"
         },
         "emojiUpdate": {
-            "member_update_emoji": "> The server member has changed the new emoji from: %s1 to %s2",
-            "system_notification": "🔔 System notification"
+            "emoji_notification": "😊 Emoji",
+            "member_update_emoji": "> The server member has changed the new emoji from: %s1 to %s2"
         },
-        "guildbanAdd": {
-            "member_ban_add": "> <@%s1> has been banned within this server.\n**Reason:**\n```%s2```",
-            "system_notification": "🔔 System notifications"
+        "guildBanAdd": {
+            "guild_notification": "🗄️ Server",
+            "member_ban_add": "> <@%s1> has been banned within this server.\n**Reason:**\n```%s2```"
         },
         "guildBanRemove": {
-            "member_ban_remove": "> <@%s1> has been unbanned within this server.\n**Reason:**\n```%s2```",
-            "system_notification": "🔔 System notifications"
+            "guild_notification": "🗄️ Server",
+            "member_ban_remove": "> <@%s1> has been unbanned within this server.\n**Reason:**\n```%s2```"
         },
         "guildCreate": {
             "advice": "**💡 Advice**",
@@ -775,6 +784,10 @@
             "support_multiple_languages": "**🌐 Support multiple languages**",
             "support_multiple_languages_detail": "I support multiple languages. To change the language You can set it by `Slanguage <language code>` or `/language <language code>`"
         },
+        "guildIntegrationsUpdate": {
+            "guild_integrations_update": "This server has successfully integrated %s. You will receive new articles as soon as there are future updates.",
+            "guild_notification": "🗄️ Server"
+        },
         "guildMemberAdd": {
             "greet": "Hello new member. **This is an automated message** \nThank you for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
             "welcome": "Welcome to the server."
@@ -782,34 +795,86 @@
         "guildMemberRemove": {
             "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
         },
+        "guildMembersChunk": {
+            "guild_members_chunk": "Welcome members from the %s server, we're waiting for you here.",
+            "guild_notification": "🗄️ Server"
+        },
+        "guildUnavailable": {
+            "guild_notification": "🗄️ Server",
+            "guild_unavailable": "This server is temporarily unavailable. Please contact the administrator of this server."
+        },
         "interactionCreate": {
             "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
             "command_is_disabled": "⚫ This command has been disabled on the server. Please contact your server administrator.",
             "no_permission": "🚫 Ummm...it looks like you don't have permission to use the application commands (/), try asking the moderator (≧∇≦)",
             "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
         },
+        "inviteCreate": {
+            "invite_create": "Invite link created successfully.\n**Link:** %s1\n**Expires:** %s2\n**Maximum:** %s3\n```%s4` ``",
+            "invite_notification": "🏷️ Invitation"
+        },
+        "inviteDelete": {
+            "invite_code_deleted": "`%s` This invite code has been deleted.",
+            "invite_code_expires": "`%s` This invitation code has expired.",
+            "invite_notification": "🏷️ Invitation"
+        },
         "messageCreate": {
             "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
             "command_is_disabled": "⚫ This command has been disabled on the server. Please contact your server administrator.",
             "forgot_the_prefix": "ℹ️ Looks like you're using the wrong prefix for this server. The prefix for this server is `%s1` separately.\n> **Tip**: The prefix can be set on each server using the __settings__ command. For more information type `%s2help settings` or `/help settings`",
             "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
-        }
-    },
-    "extras": {
-        "catchError": {
-            "an_error_occurred": "🔴 An error occurred while processing.",
-            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n> **Tip**: You can report the error immediately by using commands: \n> ```Sbug <message>```\n> ```/bug <message> ```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [News](https://maseshi.web.app/projects?project=shioru&tab=news)",
-            "server_abnormal": "Abnormal",
-            "server_normal": "Normal"
         },
-        "chatSystem": {
-            "do_not_understand": "🗨️ M. I don't understand. No ... is that I'm not good at human language (^^ ゞ)",
-            "empty_answer": "Eh ... I have to answer what you can forget",
-            "was_mentioned": "What's wrong?"
+        "roleCreate": {
+            "role_create": "<@&%s> has been created",
+            "role_notification": "🔖 Role"
         },
-        "levelSystem": {
-            "congratulations": "Congratulations!!",
-            "level_up": "The *%s1* class is now promoted to ```%s2```"
+        "roleDelete": {
+            "role_delete": "`%s` has been deleted.",
+            "role_notification": "🔖 Role"
+        },
+        "roleUpdate": {
+            "role_notification": "🔖 Role",
+            "role_update": "`%s1` has been updated to <@&%s2>"
+        },
+        "stageInstanceCreate": {
+            "stage_instance_create": "<#%s> has been created",
+            "stage_notification": "🎤 Stage"
+        },
+        "stageInstanceDelete": {
+            "stage_instance_delete": "`%s` has been deleted.",
+            "stage_notification": "🎤 Stage"
+        },
+        "stageInstanceUpdate": {
+            "stage_instance_update": "`%s1` has been updated to <#%s2>",
+            "stage_notification": "🎤 Stage"
+        },
+        "stickerCreate": {
+            "sticker_create": "**%s** ready to use",
+            "sticker_notification": "👻 Sticker"
+        },
+        "stickerDelete": {
+            "sticker_delete": "**%s** has been deleted",
+            "sticker_notification": "👻 Sticker"
+        },
+        "stickerUpdate": {
+            "sticker_notification": "👻 Sticker",
+            "sticker_update": "`%s1` has been updated to **%s2**"
+        },
+        "threadCreate": {
+            "thread_create": "<#%s> has been created",
+            "thread_notification": "#️⃣ Thread"
+        },
+        "threadDelete": {
+            "thread_delete": "**%s** has been deleted",
+            "thread_notification": "#️⃣ Thread"
+        },
+        "threadUpdate": {
+            "thread_notification": "#️⃣ Thread",
+            "thread_update": "`%s1` has been updated to **%s2**"
+        },
+        "webhookUpdate": {
+            "webhook_notification": "🎣 Webhook",
+            "webhook_update": "**%s1** of **%s2** has been updated in field <#%s3>"
         }
     },
     "handlers": {
@@ -853,6 +918,19 @@
                 "title_results": "Search results for that song:",
                 "tool_name": "Music Searcher"
             }
+        }
+    },
+    "utils": {
+        "clientUtils": {
+            "an_error_occurred": "🔴 An error occurred while processing.",
+            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n> **Tip**: You can report the error immediately by using commands: \n> ```Sbug <message>```\n> ```/bug <message> ```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [News](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "Abnormal",
+            "server_normal": "Normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Congratulations!!",
+            "level_up": "The *%s1* class is now promoted to ```%s2```",
+            "was_mentioned": "What's wrong?"
         }
     }
 }
