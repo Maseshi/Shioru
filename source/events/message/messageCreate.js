@@ -1,6 +1,6 @@
 const { ChannelType } = require("discord.js");
-const { getDatabase, ref, update, get } = require("firebase/database");
-const { permissions } = require("../../utils/clientUtils");
+const { getDatabase, ref, child, set, increment } = require("firebase/database");
+const { BitwisePermissionFlags } = require("../../utils/clientUtils");
 const { chatSystem, levelSystem, settingsData } = require("../../utils/databaseUtils");
 const { catchError, ansiColor } = require("../../utils/consoleUtils");
 
@@ -9,29 +9,30 @@ module.exports = (client, message) => {
     const defaultPrefix = "S";
     const round = client.config.recursive;
     const prefix = client.config.prefix;
+    const commandsSnapshot = client.api.guilds.commands;
     const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const cmd = args.shift().toLowerCase();
+    const arguments = message.content.slice(prefix.length).trim().split(/ +/g);
+    const commandName = arguments.shift().toLowerCase();
 
     const clearStyle = ansiColor(0, "sgr");
     const underlineStyle = ansiColor(4, "sgr");
     const blueBrightColor = ansiColor(33, "foreground");
 
     if (message.author.bot) return;
-    if (message.channel.type === ChannelType.DM) return;
     if (client.mode === "start") {
         settingsData(client, message.guild, module.exports, message);
         if (client.temp.set !== 1) return;
 
         levelSystem(client, message, "POST", 123);
     }
-    if (mentioned) chatSystem(client, message, mentioned, args);
+    if (message.channel.type === ChannelType.DM) return chatSystem(client, message, mentioned, arguments);
+    if (mentioned) return chatSystem(client, message, mentioned, arguments);
 
     // When the members forget the prefix, inform the prefix.
     if (message.content.startsWith(defaultPrefix)) {
-        if (cmd.length) {
-            if (client.commands.has(cmd)) command = client.commands.get(cmd);
-            if (client.aliases.has(cmd)) command = client.commands.get(client.aliases.get(cmd));
+        if (commandName.length) {
+            if (client.commands.has(commandName)) command = client.commands.get(commandName);
+            if (client.aliases.has(commandName)) command = client.commands.get(client.aliases.get(commandName));
             if (command) {
                 if (!client.temp.round) client.temp.round = 0;
                 if (defaultPrefix !== prefix) {
@@ -48,10 +49,11 @@ module.exports = (client, message) => {
     }
 
     if (message.content.startsWith(prefix)) {
-        if (!cmd.length) return;
-        if (client.commands.has(cmd)) command = client.commands.get(cmd);
-        if (client.aliases.has(cmd)) command = client.commands.get(client.aliases.get(cmd));
-        if (!command) return console.log(underlineStyle + message.author.username + clearStyle + " Type an unknown command: " + blueBrightColor + cmd + clearStyle);
+        if (!commandName.length) return;
+        if (client.commands.has(commandName)) command = client.commands.get(commandName);
+        if (client.aliases.has(commandName)) command = client.commands.get(client.aliases.get(commandName));
+        if (commandsSnapshot && !commandsSnapshot[commandName]) command.command.enable = false;
+        if (!command) return console.log(underlineStyle + message.author.username + clearStyle + " Type an unknown command: " + blueBrightColor + commandName + clearStyle);
         if (!client.temp.round) client.temp.round = 0;
 
         // If the members remember the prefix, then start counting again.
@@ -63,37 +65,36 @@ module.exports = (client, message) => {
             // Check the permissions of the command for the user.
             if (command.permissions.user) {
                 if (!message.member.permissions.has(command.permissions.user)) {
-                    return message.reply(client.translate.events.messageCreate.user_is_not_allowed).replace("%s", command.permissions.user.map(permission => permissions[permission]).join(", "));
+                    try {
+                        return message.reply(client.translate.events.messageCreate.user_is_not_allowed).replace("%s", command.permissions.user.map(permission => BitwisePermissionFlags[permission]).join(", "));
+                    } catch {
+                        return;
+                    }
                 }
             }
 
             // Check the permissions of the command for the bot.
             if (command.permissions.client) {
                 if (!message.guild.members.me.permissions.has(command.permissions.client)) {
-                    return message.reply(client.translate.events.messageCreate.client_is_not_allowed).replace("%s", command.permissions.client.map(permission => permissions[permission]).join(", "));
+                    try {
+                        return message.author.send(client.translate.events.messageCreate.client_is_not_allowed).replace("%s", command.permissions.client.map(permission => BitwisePermissionFlags[permission]).join(", "));
+                    } catch {
+                        return;
+                    }
                 }
             }
         }
-        if (!command.command.enable) return message.reply(client.translate.events.messageCreate.command_is_disabled);
+        if (!command.command.enable) {
+            return message.reply(client.translate.events.messageCreate.command_is_disabled);
+        }
 
         try {
-            command.command.execute(client, message, args);
+            command.command.execute(client, message, arguments);
 
             // Stores information when the bot is working properly.
             if (client.mode === "start") {
-                get(ref(getDatabase(), "Shioru/data/survey")).then((snapshot) => {
-                    if (snapshot.exists()) {
-                        let working = snapshot.val().working;
-
-                        update(ref(getDatabase(), "Shioru/data/survey"), {
-                            "working": (working + 1)
-                        });
-                    } else {
-                        update(ref(getDatabase(), "Shioru/data/survey"), {
-                            "working": 1
-                        });
-                    }
-                });
+                set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1));
+                set(child(ref(getDatabase(), "statistics/shioru/commands"), command.name), increment(1));
             }
         } catch (error) {
             catchError(client, message, command.name, error);
