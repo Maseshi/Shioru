@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.0.9",
+  "version": "3.1.0",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "private": true,
   "main": "./source/main.js",
@@ -15,35 +15,34 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.8.0",
-    "@discordjs/voice": "^0.11.0",
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.13.0",
     "@distube/soundcloud": "^1.2.2",
     "@distube/spotify": "^1.4.2",
     "@distube/yt-dlp": "^1.1.3",
-    "@vitalets/google-translate-api": "^8.0.0",
-    "discord.js": "^14.3.0",
-    "distube": "^4.0.3",
-    "dotenv": "^16.0.2",
+    "@vitalets/google-translate-api": "^9.0.0",
+    "discord.js": "^14.6.0",
+    "distube": "^4.0.4",
+    "dotenv": "^16.0.3",
     "ffmpeg-static": "^5.1.0",
-    "firebase": "^9.9.4",
-    "iso-639-1": "^2.1.15",
+    "firebase": "^9.14.0",
     "lyrics-finder": "^21.7.0",
     "minecraft-server-util": "^5.3.1",
     "node-fetch": "^2.6.7",
     "sodium": "^3.0.2",
-    "sourcebin": "^4.3.6",
+    "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
-    "systeminformation": "^5.12.6",
+    "systeminformation": "^5.14.4",
     "twemoji-parser": "^14.0.0",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   },
   "optionalDependencies": {
-    "bufferutil": "^4.0.6",
+    "bufferutil": "^4.0.7",
     "erlpack": "^0.1.4",
-    "utf-8-validate": "^5.0.9",
+    "utf-8-validate": "^5.0.10",
     "zlib-sync": "^0.1.7"
   },
   "engines": {
