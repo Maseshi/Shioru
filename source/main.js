@@ -7,7 +7,7 @@ const { initializeApp } = require("firebase/app");
 const { readdirSync } = require("node:fs");
 const { version } = require("../package.json");
 const { asciiArt, ansiColor } = require("./utils/consoleUtils");
-const config = require("./config");
+const config = require("./configs/data");
 const language = require("./languages/en.json");
 
 // Start detecting working time
@@ -20,12 +20,12 @@ const whiteColor = ansiColor(15, "foreground");
 const yellowColor = ansiColor(11, "foreground");
 const blueBrightColor = ansiColor(33, "foreground");
 
-const textFormat =  asciiArt.replace("%s1", "v")
-                        .replace("%s2", version.charAt(0))
-                        .replace("%s3", version.charAt(1))
-                        .replace("%s4", version.charAt(2))
-                        .replace("%s5", version.charAt(3))
-                        .replace("%s6", version.charAt(4));
+const textFormat = asciiArt.replace("%s1", "v")
+    .replace("%s2", version.charAt(0))
+    .replace("%s3", version.charAt(1))
+    .replace("%s4", version.charAt(2))
+    .replace("%s5", version.charAt(3))
+    .replace("%s6", version.charAt(4));
 
 console.info(blueBrightColor + textFormat + clearStyle);
 console.info(whiteColor + "Copyright (C) 2020-2022 Chaiwat Suwannarat. All rights reserved." + clearStyle);
@@ -95,6 +95,7 @@ const client = new Client({
 });
 
 // Configure in client
+client.api = {};
 client.temp = {};
 client.mode = process.env.npm_lifecycle_event || "start";
 client.config = config;
@@ -107,44 +108,18 @@ client.music = new DisTube(client, {
     ],
     "leaveOnStop": false,
     "youtubeIdentityToken": client.config.server.apiKey,
-    "customFilters": {
-        "3d": "apulsator=hz=0.125",
-        "8d": "apulsator=hz=0.08",
-        "bassboost": "bass=g=20,dynaudnorm=f=200",
-        "clear": "dynaudnorm=f=200",
-        "earwax": "earwax",
-        "echo": "aecho=0.8:0.9:1000:0.3",
-        "flanger": "flanger",
-        "gate": "agate",
-        "haas": "haas",
-        "karaoke": "stereotools=mlev=0.03",
-        "lowbass": "bass=g=6,dynaudnorm=f=200",
-        "mcompand": "mcompand",
-        "nightcore": "aresample=48000,asetrate=48000*1.25",
-        "normalizer": "dynaudnorm=f=200",
-        "phaser": "aphaser=in_gain=0.4",
-        "pulsator": "apulsator=hz=1",
-        "purebass": "bass=g=20,dynaudnorm=f=200,asubboost,apulsator=hz=0.08",
-        "reverse": "areverse",
-        "subboost": "asubboost",
-        "surround": "surround",
-        "surrounding": "surround",
-        "treble": "treble=g=5",
-        "tremolo": "tremolo",
-        "vaporwave": "aresample=48000,asetrate=48000*0.8",
-        "vibrato": "vibrato=f=6.5"
-    },
+    "customFilters": client.config.filters,
     "ytdlOptions": {
         "highWaterMark": 1 << 24
     },
     "streamType": StreamType.OPUS
 });
 
-// Read the code in the handlers.
-readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
-
 // Start connecting to the server.
 initializeApp(client.config.server);
+
+// Read the code in the handlers.
+readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
 
 // Start logging in and working
 client.login(client.config.token);
