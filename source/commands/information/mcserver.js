@@ -1,4 +1,4 @@
-const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder, PermissionsBitField } = require("discord.js");
 const { statusBedrock, status } = require("minecraft-server-util");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
     "description": "Explore Minecraft server information",
     "category": "information",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -114,7 +114,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

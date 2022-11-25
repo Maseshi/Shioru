@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, get, set } = require("firebase/database");
+const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../../utils/databaseUtils");
-const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, ban) => {
     if (client.mode === "start") {
@@ -9,32 +8,22 @@ module.exports = (client, ban) => {
         if (client.temp.set !== 1) return;
     }
 
-	const db = getDatabase();
-	const childRef = child(ref(db, "Shioru/apps/discord/guilds"), ban.guild.id);
-    const channelRef = child(childRef, "config/notification/guildBanRemove");
+    const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), ban.guild.id);
+    const channelRef = child(guildRef, "notification/guildBanRemove");
+    const channelSnapshot = client.api.guilds[ban.guild.id].notification.guildBanRemove;
 
-	get(channelRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const notifyId = snapshot.val();
+    if (typeof channelSnapshot === "boolean") {
+        const notification = ban.guild.channels.cache.find(channels => channels.id === channelSnapshot);
+        const guildBanRemoveEmbed = new EmbedBuilder()
+            .setTitle(client.translate.events.guildBanRemove.guild_notification)
+            .setDescription(client.translate.events.guildBanRemove.member_ban_remove.replace("%s1", ban.user.id).replace("%s2", ban.reason))
+            .setTimestamp()
+            .setColor("Yellow");
 
-            if (notifyId) {
-				const notification = ban.guild.channels.cache.find(channels => channels.id === notifyId);
-                const guildBanRemoveEmbed = new EmbedBuilder()
-                    .setTitle(client.translate.events.guildBanRemove.system_notification)
-                    .setDescription(client.translate.events.guildBanRemove.member_ban_remove.replace("%s1", ban.user.id).replace("%s2", ban.reason))
-                    .setTimestamp()
-                    .setColor("Yellow");
+        if (!notification) return;
 
-                if (!notification) return;
-
-				notification.send({ "embeds": [guildBanRemoveEmbed] });
-            }
-        } else {
-            set(channelRef, false).then(() => {
-                module.exports(client, ban);
-            });
-        }
-    }).catch((error) => {
-        catchError(client, ban.guild.systemChannel, "guildBanRemove", error);
-    });
+        notification.send({ "embeds": [guildBanRemoveEmbed] });
+    } else {
+        set(channelRef, channelSnapshot ? true : false).then(() => module.exports(client, ban));
+    }
 };

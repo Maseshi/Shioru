@@ -1,12 +1,15 @@
-const { AttachmentBuilder } = require("discord.js");
+const { AttachmentBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     "name": "rip",
     "description": "Send RIP images",
     "category": "fun",
     "permissions": {
-        "user": ["ATTACH_FILES"],
-        "client": ["SEND_MESSAGES", "ATTACH_FILES"]
+        "user": [PermissionsBitField.Flags.AttachFiles],
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.AttachFiles
+        ]
     }
 };
 
@@ -24,7 +27,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

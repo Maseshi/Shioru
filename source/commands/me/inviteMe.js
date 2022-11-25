@@ -1,11 +1,11 @@
-const { OAuth2Scopes, PermissionFlagsBits } = require("discord.js");
+const { OAuth2Scopes, PermissionsBitField, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
     "name": "inviteMe",
     "description": "Invite the bot to your server.",
     "category": "me",
 	"permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -36,7 +36,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

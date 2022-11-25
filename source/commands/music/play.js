@@ -1,3 +1,4 @@
+const { PermissionsBitField } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
@@ -5,8 +6,12 @@ module.exports = {
     "description": "Sing to listen",
     "category": "music",
     "permissions": {
-        "user": ["CONNECT"],
-        "client": ["SEND_MESSAGES", "SPEAK", "CONNECT"]
+        "user": [PermissionsBitField.Flags.Connect],
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.Speak,
+            PermissionsBitField.Flags.Connect
+        ]
     }
 };
 
@@ -37,7 +42,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

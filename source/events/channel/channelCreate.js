@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, get, set } = require("firebase/database");
+const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../../utils/databaseUtils");
-const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, channel) => {
     if (client.mode === "start") {
@@ -9,32 +8,22 @@ module.exports = (client, channel) => {
         if (client.temp.set !== 1) return;
     }
 
-    const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), channel.guild.id);
-    const channelRef = child(childRef, "config/notification/channelCreate");
+    const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), channel.guild.id);
+    const channelRef = child(guildRef, "notification/channelCreate");
+    const channelSnapshot = client.api.guilds[channel.guild.id].notification.channelCreate;
 
-    get(channelRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const notifyId = snapshot.val();
+    if (typeof channelSnapshot === "boolean") {
+        const notification = channel.guild.channels.cache.find(channels => channels.id === channelSnapshot);
+        const channelCreateEmbed = new EmbedBuilder()
+            .setTitle(client.translate.events.channelCreate.channel_notification)
+            .setDescription(client.translate.events.channelCreate.member_create_channel.replace("%s", channel.id))
+            .setTimestamp()
+            .setColor("Yellow");
 
-            if (notifyId) {
-                const notification = channel.guild.channels.cache.find(channels => channels.id === notifyId);
-                const channelCreateEmbed = new EmbedBuilder()
-                    .setTitle(client.translate.events.channelCreate.system_notification)
-                    .setDescription(client.translate.events.channelCreate.member_create_channel.replace("%s", channel.id))
-                    .setTimestamp()
-                    .setColor("Yellow");
+        if (!notification) return;
 
-                if (!notification) return;
-
-                notification.send({ "embeds": [channelCreateEmbed] });
-            }
-        } else {
-            set(channelRef, false).then(() => {
-                module.exports(client, channel);
-            });
-        }
-    }).catch((error) => {
-        catchError(client, channel, "channelCreate", error);
-    });
+        notification.send({ "embeds": [channelCreateEmbed] });
+    } else {
+        set(channelRef, channelSnapshot ? true : false).then(() => module.exports(client, channel));
+    }
 };

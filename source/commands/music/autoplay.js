@@ -1,9 +1,11 @@
+const { PermissionsBitField } = require("discord.js");
+
 module.exports = {
     "name": "autoplay",
     "description": "Turn on / off automatic music playing",
     "category": "music",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -24,7 +26,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

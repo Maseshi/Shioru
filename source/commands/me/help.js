@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { readdirSync } = require("node:fs");
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
 	"description": "Get help with the use of bots.",
 	"category": "me",
 	"permissions": {
-		"client": ["SEND_MESSAGES"]
+		"client": [PermissionsBitField.Flags.SendMessages]
 	}
 };
 
@@ -72,7 +72,7 @@ module.exports.command = {
 				info.addFields(
 					{
 						"name": "🏷️ " + categorize + " - (" + dir.size + ")",
-						"value": dir.map(dirs => "`" + dirs.name + "`").join(", ")
+						"value": dir.map(dirs => dirs.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
 					}
 				);
 			});
@@ -83,7 +83,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-	"enable": true,
+	"enable": true
+};
+
+module.exports.interaction.slash = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
@@ -168,7 +171,7 @@ module.exports.interaction = {
 				info.addFields(
 					{
 						"name": "🏷️ " + categorize + " - (" + dir.size + ")",
-						"value": dir.map(dirs => "`" + dirs.name + "`").join(", ")
+						"value": dir.map(dirs => dirs.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
 					}
 				);
 			});

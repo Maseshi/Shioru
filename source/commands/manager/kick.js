@@ -1,12 +1,15 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
 	"name": "kick",
 	"description": "Kick members from the server.",
 	"category": "manager",
 	"permissions": {
-		"user": ["KICK_MEMBERS"],
-		"client": ["SEND_MESSAGES", "KICK_MEMBERS"]
+		"user": [PermissionsBitField.Flags.KickMembers],
+		"client": [
+			PermissionsBitField.Flags.SendMessages,
+			PermissionsBitField.Flags.KickMembers
+		]
 	}
 };
 
@@ -54,7 +57,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-	"enable": true,
+	"enable": true
+};
+
+module.exports.interaction.slash = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

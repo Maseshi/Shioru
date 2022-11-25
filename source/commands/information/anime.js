@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
@@ -6,7 +6,10 @@ module.exports = {
     "description": "Search for anime or manga available on Kitsu.",
     "category": "information",
     "permissions": {
-        "client": ["SEND_MESSAGES", "EMBED_LINKS"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.EmbedLinks
+        ]
     }
 };
 
@@ -123,7 +126,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

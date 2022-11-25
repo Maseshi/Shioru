@@ -1,12 +1,12 @@
-const { ChannelType } = require("discord.js")
+const { ChannelType, PermissionsBitField } = require("discord.js")
 
 module.exports = {
     "name": "say",
     "description": "Let the bot print instead",
     "category": "me",
     "permissions": {
-        "user": ["MANAGE_MESSAGES"],
-        "client": ["SEND_MESSAGES"]
+        "user": [PermissionsBitField.Flags.ManageMessages],
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -44,7 +44,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

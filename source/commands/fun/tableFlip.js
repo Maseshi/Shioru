@@ -1,9 +1,11 @@
+const { PermissionsBitField } = require("discord.js");
+
 module.exports = {
     "name": "tableFlip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
     "category": "fun",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -31,7 +33,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

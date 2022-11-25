@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 const { randomInt } = require("../../utils/miscUtils");
 const fetch = require("node-fetch");
 
@@ -7,7 +7,7 @@ module.exports = {
     "description": "Randomly select the meme you want.",
     "category": "fun",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 }
 
@@ -101,7 +101,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

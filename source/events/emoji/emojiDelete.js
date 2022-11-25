@@ -1,7 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, get, set } = require("firebase/database");
+const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../../utils/databaseUtils");
-const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = (client, emoji) => {
     if (client.mode === "start") {
@@ -9,32 +8,22 @@ module.exports = (client, emoji) => {
         if (client.temp.set !== 1) return;
     }
 
-    const db = getDatabase();
-    const childRef = child(ref(db, "Shioru/apps/discord/guilds"), emoji.guild.id);
-    const channelRef = child(childRef, "config/notification/emojiDelete");
+    const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), emoji.guild.id);
+    const channelRef = child(guildRef, "notification/emojiDelete");
+    const channelSnapshot = client.api.guilds[emoji.guild.id].notification.emojiDelete;
 
-    get(channelRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const notifyId = snapshot.val();
+    if (typeof channelSnapshot === "boolean") {
+        const notification = emoji.guild.channels.cache.find(channels => channels.id === channelSnapshot);
+        const emojiDeleteEmbed = new EmbedBuilder()
+            .setTitle(client.translate.events.emojiDelete.emoji_notification)
+            .setDescription(client.translate.events.emojiDelete.member_delete_emoji.replace("%s", emoji.name))
+            .setTimestamp()
+            .setColor("Yellow");
 
-            if (notifyId) {
-                const notification = emoji.guild.channels.cache.find(channels => channels.id === notifyId);
-                const emojiDeleteEmbed = new EmbedBuilder()
-                    .setTitle(client.translate.events.emojiDelete.system_notification)
-                    .setDescription(client.translate.events.emojiDelete.member_delete_emoji.replace("%s", emoji.name))
-                    .setTimestamp()
-                    .setColor("Yellow");
+        if (!notification) return;
 
-                if (!notification) return;
-                
-                notification.send({ "embeds": [emojiDeleteEmbed] });
-            }
-        } else {
-            set(channelRef, false).then(() => {
-                module.exports(client, emoji);
-            });
-        }
-    }).catch((error) => {
-        catchError(client, emoji.guild.systemChannel, "emojiDelete", error);
-    });
+        notification.send({ "embeds": [emojiDeleteEmbed] });
+    } else {
+        set(channelRef, channelSnapshot ? true : false).then(() => module.exports(client, emoji));
+    }
 };

@@ -1,19 +1,25 @@
 const { EmbedBuilder, AttachmentBuilder, ChannelType } = require("discord.js");
+const { getDatabase, ref, update } = require("firebase/database");
+const { updateApplicationCommands } = require("../../utils/clientUtils")
 const { settingsData } = require("../../utils/databaseUtils");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = async (client, guild) => {
-    const guildID = client.config.testGuild;
-    const data = client.interaction.map((commands) => commands.interaction.data);
-
     if (client.mode === "start") {
+        const guildSize = client.guilds.cache.size;
+        const userSize = client.users.cache.size;
+
+        update(ref(getDatabase(), "statistics/shioru/size"), {
+            "guilds": guildSize,
+            "users": userSize
+        });
+
         settingsData(client, guild, module.exports, guild);
-        if (client.temp.set !== 1) return;
         
-        await client.application.commands.set(data);
-    } else {
-        await client.application.commands.set(data, guildID);
+        if (client.temp.set !== 1) return;
     }
+
+    await updateApplicationCommands(client, true)
 
     const channels = guild.channels.cache.find(channel => channel.type === ChannelType.GuildText && channel.permissionsFor(guild.members.me).has("SEND_MESSAGES"));
     const guildChannel = guild.channels.cache.get(channels ? channels.id : guild.systemChannelId);
@@ -24,7 +30,7 @@ module.exports = async (client, guild) => {
         const clientColor = clientFetch.accentColor;
         const clientAvatar = client.user.displayAvatarURL();
         const clientUsername = client.user.username;
-        const languageCode = client.config.language.default;
+        const languageCode = client.config.language.code;
         const attachment = new AttachmentBuilder("./source/assets/images/shioru-discord-cover-" + languageCode + ".png", { "name": "shioru-discord-cover.png" });
         const guildCreateEmbed = new EmbedBuilder()
             .setTitle(client.translate.events.guildCreate.get_started)

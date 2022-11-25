@@ -1,9 +1,14 @@
+const { PermissionsBitField } = require("discord.js");
+
 module.exports = {
     "name": "previous",
     "description": "Return to the previous song.",
     "category": "music",
     "permissions": {
-        "client": ["SEND_MESSAGES", "CONNECT"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.Connect
+        ]
     }
 };
 
@@ -24,7 +29,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

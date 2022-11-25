@@ -1,12 +1,15 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
 	"name": "invite",
 	"description": "Create and receive invitation links to join the server.",
 	"category": "fun",
 	"permissions": {
-		"user": ["CREATE_INSTANT_INVITE"],
-		"client": ["SEND_MESSAGES", "CREATE_INSTANT_INVITE"]
+		"user": [PermissionsBitField.Flags.CreateInstantInvite],
+		"client": [
+			PermissionsBitField.Flags.SendMessages,
+			PermissionsBitField.Flags.CreateInstantInvite
+		]
 	}
 }
 
@@ -31,7 +34,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-	"enable": true,
+	"enable": true
+};
+
+module.exports.interaction.slash = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

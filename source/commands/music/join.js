@@ -1,12 +1,15 @@
-const { ChannelType } = require("discord.js");
+const { ChannelType, PermissionsBitField } = require("discord.js");
 
 module.exports = {
 	"name": "join",
 	"description": "Join the audio channel.",
 	"category": "music",
 	"permissions": {
-		"user": ["CONNECT"],
-		"client": ["SEND_MESSAGES", "CONNECT"]
+		"user": [PermissionsBitField.Flags.Connect],
+		"client": [
+			PermissionsBitField.Flags.SendMessages,
+			PermissionsBitField.Flags.Connect
+		]
 	}
 };
 
@@ -45,7 +48,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-	"enable": true,
+	"enable": true
+};
+
+module.exports.interaction.slash = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

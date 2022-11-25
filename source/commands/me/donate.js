@@ -1,11 +1,14 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
 
 module.exports = {
     "name": "donate",
     "description": "Donate to support bots and bot developers.",
     "category": "me",
     "permissions": {
-        "client": ["SEND_MESSAGES", "EMBED_LINKS"]
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.EmbedLinks
+        ]
     }
 }
 
@@ -36,7 +39,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

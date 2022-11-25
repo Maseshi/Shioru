@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
@@ -6,8 +6,11 @@ module.exports = {
     "description": "Set Level of Members",
     "category": "manager",
     "permissions": {
-        "user": ["MANAGE_GUILD"],
-        "client": ["SEND_MESSAGES", "MANAGE_GUILD"]
+        "user": [PermissionsBitField.Flags.ManageGuild],
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.ManageGuild
+        ]
     }
 };
 
@@ -66,7 +69,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

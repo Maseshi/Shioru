@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, update } = require("firebase/database");
 
 module.exports = {
@@ -6,15 +6,15 @@ module.exports = {
     "description": "Sets language for the bot.",
     "category": "settings",
     "permissions": {
-        "user": ["MANAGE_GUILD"],
-        "client": ["SEND_MESSAGES"]
+        "user": [PermissionsBitField.Flags.ManageGuild],
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 }
 
 module.exports.command = {
     "enable": true,
     "usage": "setLanguage [option: set] <value>",
-    "aliases": ["lang", "ภาษา"],
+    "aliases": ["setlanguage", "lang", "ภาษา"],
     async execute(client, message, args) {
         const input = args.join(" ");
         const inputOption = args[0] ? args[0].toLowerCase() : "";
@@ -22,49 +22,52 @@ module.exports.command = {
     
         const guildID = message.guild.id;
         const prefix = client.config.prefix;
-        const lang = client.config.language.default;
+        const lang = client.config.language.code;
         const support = client.config.language.support;
-        const dbRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), guildID), "config/language");
+        const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
     
         if (!input) {
             const clientFetch = await client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const noInputEmbed = new EmbedBuilder()
-                .setTitle(client.translate.commands.language.title)
+                .setTitle(client.translate.commands.setLanguage.title)
                 .setDescription(
-                    client.translate.commands.language.description
+                    client.translate.commands.setLanguage.description
                         .replace("%s1", support[lang])
                         .replace("%s2", (prefix + module.exports.command.usage))
                         .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
-                .setFooter({ "text": client.translate.commands.language.data_at })
+                .setFooter({ "text": client.translate.commands.setLanguage.data_at })
     
             return message.channel.send({ "embeds": [noInputEmbed] });
         }
     
         switch (inputOption) {
             case "set":
-                if (!inputValue) return message.reply(client.translate.commands.language.empty_value);
-                if (inputValue === lang) return message.reply(client.translate.commands.language.already_set.replace("%s", support[inputValue]));
-                if (!Array.from(Object.keys(support)).includes(inputValue)) return message.reply(client.translate.commands.language.language_not_support.replace("%s1", inputValue).replace("%s2", Object.keys(support)));
+                if (!inputValue) return message.reply(client.translate.commands.setLanguage.empty_value);
+                if (inputValue === lang) return message.reply(client.translate.commands.setLanguage.already_set.replace("%s", support[inputValue]));
+                if (!Array.from(Object.keys(support)).includes(inputValue)) return message.reply(client.translate.commands.setLanguage.language_not_support.replace("%s1", inputValue).replace("%s2", Object.keys(support)));
     
-                client.config.language.default = inputValue;
+                client.config.language.code = inputValue;
                 client.translate = require("../../languages/" + inputValue + ".json");
     
-                set(dbRef, inputValue).then(() => {
-                    message.channel.send(client.translate.commands.language.set_success.replace("%s", support[inputValue]));
+                set(languageRef, inputValue).then(() => {
+                    message.channel.send(client.translate.commands.setLanguage.set_success.replace("%s", support[inputValue]));
                 });
                 break;
             default:
-                return message.reply(client.translate.commands.language.invalid_options.replace("%s", inputOption));
+                return message.reply(client.translate.commands.setLanguage.invalid_options.replace("%s", inputOption));
         }
     }
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -118,6 +121,10 @@ module.exports.interaction = {
                                 "value": "en"
                             },
                             {
+                                "name": "日本",
+                                "value": "ja"
+                            },
+                            {
                                 "name": "ไทย",
                                 "value": "th"
                             }
@@ -133,24 +140,24 @@ module.exports.interaction = {
 
         const guildID = interaction.guild.id;
         const prefix = interaction.client.config.prefix;
-        const lang = interaction.client.config.language.default;
+        const lang = interaction.client.config.language.code;
         const support = interaction.client.config.language.support;
-        const dbRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), guildID), "config/language");
+        const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
 
         if (subCommand === "current") {
             const clientFetch = await interaction.client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const noInputEmbed = new EmbedBuilder()
-                .setTitle(interaction.client.translate.commands.language.title)
+                .setTitle(interaction.client.translate.commands.setLanguage.title)
                 .setDescription(
-                    interaction.client.translate.commands.language.description
+                    interaction.client.translate.commands.setLanguage.description
                         .replace("%s1", support[lang])
                         .replace("%s2", (prefix + module.exports.command.usage))
                         .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
-                .setFooter({ "text": interaction.client.translate.commands.language.data_at })
+                .setFooter({ "text": interaction.client.translate.commands.setLanguage.data_at })
 
             await interaction.editReply({
                 "embeds": [noInputEmbed]
@@ -158,13 +165,13 @@ module.exports.interaction = {
         }
 
         if (subCommand === "set") {
-            if (inputValue.value === lang) return await interaction.editReply(interaction.client.translate.commands.language.already_set.replace("%s", support[inputValue]));
+            if (inputValue.value === lang) return await interaction.editReply(interaction.client.translate.commands.setLanguage.already_set.replace("%s", support[inputValue]));
 
-            interaction.client.config.language.default = inputValue.value;
+            interaction.client.config.language.code = inputValue.value;
             interaction.client.translate = require("../../languages/" + inputValue.value + ".json");
 
-            update(dbRef, inputValue.value).then(async () => {
-                await interaction.editReply(interaction.client.translate.commands.language.set_success.replace("%s", support[inputValue.value]));
+            update(languageRef, inputValue.value).then(async () => {
+                await interaction.editReply(interaction.client.translate.commands.setLanguage.set_success.replace("%s", support[inputValue.value]));
             });
         }
     }

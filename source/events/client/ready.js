@@ -1,6 +1,6 @@
 const { ActivityType } = require("discord.js");
 const { getApps } = require("firebase/app");
-const { getDatabase, ref, update } = require("firebase/database");
+const { getDatabase, onValue, ref, update } = require("firebase/database");
 const { checkForUpdates, updateApplicationCommands } = require("../../utils/clientUtils");
 
 module.exports = async (client) => {
@@ -15,25 +15,29 @@ module.exports = async (client) => {
 
   console.log("Bot is working and is now online at " + at + ".");
 
-  // Check for update
-  await checkForUpdates();
-
   // Check server is set up.
   console.log(getApps.length === 0 ? "Connected to the server successfully." : "Unable to connect to the provider server.");
 
   // Send bot statistics.
-  const db = getDatabase();
   const commandSize = client.commands.size;
   const guildSize = client.guilds.cache.size;
   const userSize = client.users.cache.size;
 
   if (client.mode === "start") {
-    update(ref(db, "Shioru/data/survey"), {
+    update(ref(getDatabase(), "statistics/shioru/size"), {
       "commands": commandSize,
-      "servers": guildSize,
-      "members": userSize
+      "guilds": guildSize,
+      "users": userSize
     });
   }
+
+  // Setup API
+  onValue(ref(getDatabase(), "projects/shioru"), (snapshot) => {
+    if (snapshot.exists()) client.api = snapshot.val();
+  });
+  onValue(ref(getDatabase(), "statistics/shioru"), (snapshot) => {
+    if (snapshot.exists()) client.api.statistics = snapshot.val();
+  });
 
   // Set up bot activity.
   const activities = {
@@ -85,6 +89,9 @@ module.exports = async (client) => {
 
     client.user.setActivity(newActivity);
   }, 10000);
+
+  // Check for update
+  await checkForUpdates();
 
   // Refreshing application (/) commands.
   await updateApplicationCommands(client);

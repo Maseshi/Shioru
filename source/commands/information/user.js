@@ -1,12 +1,12 @@
-const { EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, get, set } = require("firebase/database");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+const { getDatabase, ref, child, set } = require("firebase/database");
 
 module.exports = {
     "name": "user",
     "description": "Get your user information",
     "category": "information",
     "permissions": {
-        "client": ["SEND_MESSAGES"]
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 };
 
@@ -17,10 +17,10 @@ module.exports.command = {
     async execute(client, message, args) {
         const inputInfo = args[0];
         const inputMember = args[1];
-    
+
         const dateFormat = (data) => {
             if (!data) return;
-    
+
             const date = new Date(data);
             const days = [
                 client.translate.commands.guild.sunday,
@@ -45,7 +45,7 @@ module.exports.command = {
                 client.translate.commands.guild.november,
                 client.translate.commands.guild.december
             ];
-    
+
             return client.translate.commands.guild.format_at
                 .replace("%s1", days[date.getDay()])
                 .replace("%s2", date.getDate())
@@ -54,7 +54,7 @@ module.exports.command = {
                 .replace("%s5", date.getHours())
                 .replace("%s6", date.getMinutes());
         };
-    
+
         let avatar = message.author.avatarURL() || client.translate.commands.user.unknown;
         let bot = message.author.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
         let createdAt = message.author.createdAt.toString() || client.translate.commands.user.unknown;
@@ -66,8 +66,9 @@ module.exports.command = {
         let system = message.author.system ? client.translate.commands.user.yes : client.translate.commands.user.none;
         let tag = message.author.tag || client.translate.commands.user.unknown;
         let username = message.author.username || client.translate.commands.user.unknown;
-    
-        const childRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), message.guild.id), "data/users");
+
+        const usersSnapshot = client.api.apps.discord.guilds[message.guild.id].data.users
+        const usersRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), message.guild.id), "data/users");
         const clientUsername = client.user.username;
         const clientAvatarURL = client.user.avatarURL();
         const embed = new EmbedBuilder()
@@ -79,7 +80,7 @@ module.exports.command = {
             .setThumbnail(avatar)
             .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
         const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-    
+
         if (member) {
             avatar = member.user.avatarURL() || client.translate.commands.user.unknown;
             bot = member.user.bot ? client.translate.commands.user.yes : client.translate.commands.user.none;
@@ -93,7 +94,7 @@ module.exports.command = {
             tag = member.user.tag || client.translate.commands.user.unknown;
             username = member.user.username || client.translate.commands.user.unknown;
         }
-    
+
         const info = [
             "avatarURL",
             "bot",
@@ -120,14 +121,14 @@ module.exports.command = {
             { "name": client.translate.commands.user.tag, "value": tag, "inline": true },
             { "name": client.translate.commands.user.username, "value": username, "inline": true }
         ];
-    
+
         if (inputInfo) {
             if (inputMember) {
                 if (member) {
                     if (bot) {
                         embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
                             .setThumbnail(avatar);
-    
+
                         if (info.includes(inputInfo)) {
                             for (let i = 0; i < info.length; i++) {
                                 if (inputInfo === info[i]) {
@@ -139,37 +140,35 @@ module.exports.command = {
                             message.reply(client.translate.commands.user.specific_use.replace("%s", info.join(", ")));
                         }
                     } else {
-                        get(child(child(childRef, id), "access"), (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
-    
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar);
-    
-                                    if (info.includes(inputInfo)) {
-                                        for (let i = 0; i < info.length; i++) {
-                                            if (inputInfo === info[i]) {
-                                                embed.addFields(infoList[i]);
-                                                message.channel.send({ "embeds": [embed] });
-                                            }
+                        const snapshot = usersSnapshot[id].access;
+
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar);
+
+                                if (info.includes(inputInfo)) {
+                                    for (let i = 0; i < info.length; i++) {
+                                        if (inputInfo === info[i]) {
+                                            embed.addFields(infoList[i]);
+                                            message.channel.send({ "embeds": [embed] });
                                         }
-                                    } else {
-                                        message.reply(client.translate.commands.user.specific_use.replace("%s", info.join(", ")));
                                     }
                                 } else {
-                                    message.reply(client.translate.commands.user.info.not_allowed);
+                                    message.reply(client.translate.commands.user.specific_use.replace("%s", info.join(", ")));
                                 }
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.run(client, message, args);
-                                });
+                                message.reply(client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.run(client, message, args);
+                            });
+                        }
                     }
                 } else {
                     message.reply(client.translate.commands.user.can_not_find_user.replace("%s", client.config.owner));
@@ -180,32 +179,30 @@ module.exports.command = {
                         embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
                             .setThumbnail(avatar)
                             .addFields(Array.from(infoList));
-    
+
                         message.channel.send({ "embeds": [embed] });
                     } else {
-                        get(child(child(childRef, id), "access"), (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
-    
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar)
-                                        .addFields(Array.from(infoList));
-    
-                                    message.channel.send({ "embeds": [embed] });
-                                } else {
-                                    message.reply(client.translate.commands.user.info.not_allowed);
-                                }
+                        const snapshot = usersSnapshot[id].access;
+
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar)
+                                    .addFields(Array.from(infoList));
+
+                                message.channel.send({ "embeds": [embed] });
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.run(client, message, args);
-                                });
+                                message.reply(client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.run(client, message, args);
+                            });
+                        }
                     }
                 } else {
                     if (info.includes(inputInfo)) {
@@ -227,32 +224,30 @@ module.exports.command = {
                         embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
                             .setThumbnail(avatar)
                             .addFields(Array.from(infoList));
-    
+
                         message.channel.send({ "embeds": [embed] });
                     } else {
-                        get(child(child(childRef, id), "access"), (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
-    
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar)
-                                        .addFields(Array.from(infoList));
-    
-                                    message.channel.send({ "embeds": [embed] });
-                                } else {
-                                    message.reply(client.translate.commands.user.info.not_allowed);
-                                }
+                        const snapshot = usersSnapshot[id].access;
+
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar)
+                                    .addFields(Array.from(infoList));
+
+                                message.channel.send({ "embeds": [embed] });
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.run(client, message, args);
-                                });
+                                message.reply(client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.run(client, message, args);
+                            });
+                        }
                     }
                 } else {
                     message.reply(client.translate.commands.user.can_not_find_user.replace("%s", client.config.owner));
@@ -266,7 +261,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -437,7 +435,8 @@ module.exports.interaction = {
         let tag = interaction.user.tag || interaction.client.translate.commands.user.unknown;
         let username = interaction.user.username || interaction.client.translate.commands.user.unknown;
 
-        const childRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), interaction.guild.id), "data/users");
+        const usersSnapshot = interaction.client.api.apps.discord.guilds[interaction.guild.id].data.users
+        const usersRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), interaction.guild.id), "data/users");
         const clientUsername = interaction.client.user.username;
         const clientAvatarURL = interaction.client.user.avatarURL();
         const embed = new EmbedBuilder()
@@ -505,33 +504,31 @@ module.exports.interaction = {
                             }
                         }
                     } else {
-                        get(child(child(childRef, id), "access"), async (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
+                        const snapshot = usersSnapshot[id].access
 
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar);
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar);
 
-                                    for (let i = 0; i < info.length; i++) {
-                                        if (inputInfo.value === info[i]) {
-                                            embed.addFields(infoList[i]);
-                                            await interaction.editReply({ "embeds": [embed] });
-                                        }
+                                for (let i = 0; i < info.length; i++) {
+                                    if (inputInfo.value === info[i]) {
+                                        embed.addFields(infoList[i]);
+                                        await interaction.editReply({ "embeds": [embed] });
                                     }
-                                } else {
-                                    await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
                                 }
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.interaction.execute(interaction);
-                                });
+                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.interaction.execute(interaction);
+                            });
+                        }
                     }
                 } else {
                     await interaction.editReply(interaction.client.translate.commands.user.can_not_find_user.replace("%s", interaction.client.config.owner));
@@ -545,29 +542,27 @@ module.exports.interaction = {
 
                         await interaction.editReply({ "embeds": [embed] });
                     } else {
-                        get(child(child(childRef, id), "access"), async (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
+                        const snapshot = usersSnapshot[id].access
 
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar)
-                                        .addFields(Array.from(infoList));
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar)
+                                    .addFields(Array.from(infoList));
 
-                                    await interaction.editReply({ "embeds": [embed] });
-                                } else {
-                                    await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
-                                }
+                                await interaction.editReply({ "embeds": [embed] });
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.interaction.execute(interaction);
-                                });
+                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.interaction.execute(interaction);
+                            });
+                        }
                     }
                 } else {
                     for (let i = 0; i < info.length; i++) {
@@ -588,29 +583,27 @@ module.exports.interaction = {
 
                         await interaction.editReply({ "embeds": [embed] });
                     } else {
-                        get(child(child(childRef, id), "access"), async (snapshot) => {
-                            if (snapshot.exists()) {
-                                const infoPermission = snapshot.val().info;
+                        const snapshot = usersSnapshot[id].access
 
-                                if (infoPermission) {
-                                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                        .setThumbnail(avatar)
-                                        .addFields(Array.from(infoList));
+                        if (snapshot) {
+                            if (snapshot.info) {
+                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                                    .setThumbnail(avatar)
+                                    .addFields(Array.from(infoList));
 
-                                    await interaction.editReply({ "embeds": [embed] });
-                                } else {
-                                    await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
-                                }
+                                await interaction.editReply({ "embeds": [embed] });
                             } else {
-                                set(child(child(childRef, id), "access"), {
-                                    "avatar": false,
-                                    "info": false,
-                                    "uid": false
-                                }).then(() => {
-                                    module.exports.interaction.execute(interaction);
-                                });
+                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
                             }
-                        });
+                        } else {
+                            set(child(child(usersRef, id), "access"), {
+                                "avatar": false,
+                                "info": false,
+                                "uid": false
+                            }).then(() => {
+                                module.exports.interaction.execute(interaction);
+                            });
+                        }
                     }
                 } else {
                     await interaction.editReply(interaction.client.translate.commands.user.can_not_find_user.replace("%s", interaction.client.config.owner));

@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 
 module.exports = {
@@ -6,15 +6,15 @@ module.exports = {
     "description": "Set the bot prefix for the server.",
     "category": "settings",
     "permissions": {
-        "user": ["MANAGE_GUILD"],
-        "client": ["SEND_MESSAGES"]
+        "user": [PermissionsBitField.Flags.ManageGuild],
+        "client": [PermissionsBitField.Flags.SendMessages]
     }
 }
 
 module.exports.command = {
     "enable": true,
     "usage": "setPrefix [option: set, default] <value>",
-    "aliases": ["pf", "คำนำหน้า"],
+    "aliases": ["setprefix", "pf", "คำนำหน้า"],
     async execute(client, message, args) {
         const input = args.join(" ");
         const inputOption = args[0] ? args[0].toLowerCase() : "";
@@ -22,22 +22,22 @@ module.exports.command = {
     
         const guildID = message.guild.id;
         const prefix = client.config.prefix;
-        const dbRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), guildID), "config");
+        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), guildID);
     
         if (!input) {
             const clientFetch = await client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const noInputEmbed = new EmbedBuilder()
-                .setTitle(client.translate.commands.prefix.title)
+                .setTitle(client.translate.commands.setPrefix.title)
                 .setDescription(
-                    client.translate.commands.prefix.description
+                    client.translate.commands.setPrefix.description
                         .replace("%s1", prefix)
                         .replace("%s2", (prefix + module.exports.command.usage))
                         .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
-                .setFooter({ "text": client.translate.commands.prefix.data_at });
+                .setFooter({ "text": client.translate.commands.setPrefix.data_at });
     
             return message.channel.send({
                 "embeds": [noInputEmbed]
@@ -46,31 +46,34 @@ module.exports.command = {
     
         switch (inputOption) {
             case "set":
-                if (!inputValue) return message.reply(client.translate.commands.prefix.empty_value);
-                if (inputValue === prefix) return message.reply(client.translate.commands.prefix.already_set.replace("%s", inputValue));
-                if (inputValue.length > 5) return message.reply(client.translate.commands.prefix.too_long);
+                if (!inputValue) return message.reply(client.translate.commands.setPrefix.empty_value);
+                if (inputValue === prefix) return message.reply(client.translate.commands.setPrefix.already_set.replace("%s", inputValue));
+                if (inputValue.length > 5) return message.reply(client.translate.commands.setPrefix.too_long);
     
                 client.config.prefix = inputValue;
     
-                set(child(dbRef, "prefix"), inputValue).then(() => {
-                    message.channel.send(client.translate.commands.prefix.set_success.replace("%s", inputValue));
+                set(child(guildRef, "prefix"), inputValue).then(() => {
+                    message.channel.send(client.translate.commands.setPrefix.set_success.replace("%s", inputValue));
                 });
                 break;
             case "default":
                 client.config.prefix = "S";
     
-                set(child(dbRef, "prefix"), "S").then(() => {
-                    message.channel.send(client.translate.commands.prefix.default_success);
+                set(child(guildRef, "prefix"), "S").then(() => {
+                    message.channel.send(client.translate.commands.setPrefix.default_success);
                 });
                 break;
             default:
-                return message.reply(client.translate.commands.prefix.this_options_not_found.replace("%s", inputOption));
+                return message.reply(client.translate.commands.setPrefix.this_options_not_found.replace("%s", inputOption));
         }
     }
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -142,22 +145,22 @@ module.exports.interaction = {
 
         const guildID = interaction.guild.id;
         const prefix = interaction.client.config.prefix;
-        const dbRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), guildID), "config");
+        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), guildID);
 
         if (subCommand === "current") {
             const clientFetch = await interaction.client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const noInputEmbed = new EmbedBuilder()
-                .setTitle(interaction.client.translate.commands.prefix.title)
+                .setTitle(interaction.client.translate.commands.setPrefix.title)
                 .setDescription(
-                    interaction.client.translate.commands.prefix.description
+                    interaction.client.translate.commands.setPrefix.description
                         .replace("%s1", prefix)
                         .replace("%s2", (prefix + module.exports.command.usage))
                         .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
-                .setFooter({ "text": interaction.client.translate.commands.prefix.data_at });
+                .setFooter({ "text": interaction.client.translate.commands.setPrefix.data_at });
 
             return await interaction.editReply({
                 "embeds": [noInputEmbed]
@@ -165,19 +168,19 @@ module.exports.interaction = {
         }
 
         if (subCommand === "set") {
-            if (inputValue.value === prefix) return await interaction.editReply(interaction.client.translate.commands.prefix.already_set.replace("%s", inputValue.value));
+            if (inputValue.value === prefix) return await interaction.editReply(interaction.client.translate.commands.setPrefix.already_set.replace("%s", inputValue.value));
 
             interaction.client.config.prefix = inputValue.value;
 
-            await set(child(dbRef, "prefix"), inputValue.value);
-            await interaction.editReply(interaction.client.translate.commands.prefix.set_success.replace("%s", inputValue.value));
+            await set(child(guildRef, "prefix"), inputValue.value);
+            await interaction.editReply(interaction.client.translate.commands.setPrefix.set_success.replace("%s", inputValue.value));
         }
 
         if (subCommand === "default") {
             interaction.client.config.prefix = "S";
 
-            await set(child(dbRef, "prefix"), "S");
-            await interaction.editReply(interaction.client.translate.commands.prefix.default_success);
+            await set(child(guildRef, "prefix"), "S");
+            await interaction.editReply(interaction.client.translate.commands.setPrefix.default_success);
         }
     }
 }

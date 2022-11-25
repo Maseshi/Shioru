@@ -1,3 +1,4 @@
+const { PermissionsBitField } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
@@ -5,8 +6,15 @@ module.exports = {
 	"description": "Delete a lot of messages",
 	"category": "manager",
 	"permissions": {
-		"user": ["READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"],
-		"client": ["SEND_MESSAGES", "READ_MESSAGE_HISTORY", "MANAGE_MESSAGES"]
+		"user": [
+			PermissionsBitField.Flags.ReadMessageHistory,
+			PermissionsBitField.Flags.ManageMessages
+		],
+		"client": [
+			PermissionsBitField.Flags.SendMessages,
+			PermissionsBitField.Flags.ReadMessageHistory,
+			PermissionsBitField.Flags.ManageMessages
+		]
 	}
 };
 
@@ -38,7 +46,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-	"enable": true,
+	"enable": true
+};
+
+module.exports.interaction.slash = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

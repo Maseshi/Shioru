@@ -1,12 +1,15 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     "name": "unban",
     "description": "Stop banning members who are banned in the server.",
     "category": "manager",
     "permissions": {
-        "user": ["BAN_MEMBERS"],
-        "client": ["SEND_MESSAGES", "BAN_MEMBERS"]
+        "user": [PermissionsBitField.Flags.BanMembers],
+        "client": [
+            PermissionsBitField.Flags.SendMessages,
+            PermissionsBitField.Flags.BanMembers
+        ]
     }
 }
 
@@ -55,7 +58,10 @@ module.exports.command = {
 }
 
 module.exports.interaction = {
-    "enable": true,
+    "enable": true
+}
+
+module.exports.interaction.slash = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
