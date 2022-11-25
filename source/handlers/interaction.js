@@ -28,24 +28,26 @@ module.exports = (client) => {
 
             if (pull.interaction) {
                 if (pull.interaction.enable) {
-                    if (pull.interaction.data && typeof pull.interaction.data.name === "string" && typeof pull.interaction.data.description === "string") {
-                        if (client.interaction.get(pull.interaction.data.name)) {
-                            spinnies.fail("interaction-loading", {
-                                "text": "Two or more application (/) command have the same name " + pull.interaction.data.name,
-                                "failColor": "yellowBright"
-                            });
-                            process.exit(0);
+                    if (pull.interaction.slash && pull.interaction.slash.data) {
+                        if (typeof pull.interaction.slash.data.name === "string" && typeof pull.interaction.slash.data.description === "string") {
+                            if (client.interaction.get(pull.name)) {
+                                spinnies.fail("interaction-loading", {
+                                    "text": "Two or more application (/) command have the same name " + pull.name,
+                                    "failColor": "yellowBright"
+                                });
+                                process.exit(0);
+                            } else {
+                                client.interaction.set(pull.name, pull);
+                                spinnies.update("interaction-loading", {
+                                    "text": "Loaded application (/) commands: " + pull.name
+                                });
+                            }
                         } else {
-                            client.interaction.set(pull.interaction.data.name, pull);
-                            spinnies.update("interaction-loading", {
-                                "text": "Loaded application (/) commands: " + pull.interaction.data.name
+                            spinnies.fail("interaction-loading", {
+                                "text": "Error loading application (/) command in " + ("./source/commands/" + dirs + "/" + file) + ". you have a missing interaction.slash.data.name or interaction.slash.data.name is not a string. or you have a missing interaction.slash.data.description or interaction.slash.data.description is not a string"
                             });
+                            process.exit(1);
                         }
-                    } else {
-                        spinnies.fail("interaction-loading", {
-                            "text": "Error loading application (/) command in " + ("./source/commands/" + dirs + "/" + file) + ". you have a missing interaction.data.name or interaction.data.name is not a string. or you have a missing interaction.data.description or interaction.data.description is not a string"
-                        });
-                        process.exit(1);
                     }
                 } else {
                     console.group();

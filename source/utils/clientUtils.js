@@ -1,3 +1,4 @@
+const { REST, Routes } = require("discord.js");
 const { ansiColor } = require("./consoleUtils");
 const fetch = require("node-fetch");
 const packages = require("../../package.json");
@@ -21,7 +22,7 @@ const checkForUpdates = async () => {
         const data = await response.json();
 
         if (response.status !== 200) return spinnies.fail("check-update-loading", {
-            "text": "Could not contact the server."
+            "text": "Unable to detect latest version at this time."
         });
         if (data) {
             if (packages.version.replace(/[^0-9]/g, "") >= data.tag_name.replace(/[^0-9]/g, "")) {
@@ -46,74 +47,104 @@ const checkForUpdates = async () => {
     }
 }
 
-const updateApplicationCommands = async (client) => {
+const updateApplicationCommands = async (client, reload = false) => {
+    const interaction = client.interaction;
     const guildID = client.config.testGuild;
+    const clientID = client.user.id;
+    const token = client.config.token;
+    const rest = new REST({ "version": "10" }).setToken(token);
     const spinnies = new Spinnies({
         "failColor": "yellowBright",
         "failPrefix": "⚠️"
     });
 
-    spinnies.add("app-commands-loading", {
-        "text": "Starting to refresh all application (/) commands."
-    });
+    if (!reload) {
+        spinnies.add("app-commands-loading", {
+            "text": "Starting to refresh all application (/) commands."
+        });
+    }
 
     try {
-        const data = client.interaction.map((commands) => commands.interaction.data);
+        const slash = await interaction.map((commands) => commands.interaction.slash.data);
+        const context = await interaction.map((commands) => {
+            if (commands.interaction.context) return commands.interaction.context.data;
+        }).filter((element) => element !== undefined)
+        const data = slash.concat(context);
 
         if (client.mode === "start") {
-            await client.application.commands.set(data);
+            await rest.put(
+                Routes.applicationCommands(clientID),
+                { "body": data }
+            );
         } else {
-            await client.application.commands.set(data, guildID);
+            await rest.put(
+                Routes.applicationGuildCommands(clientID, guildID),
+                { "body": data }
+            );
+        }
+        if (!reload) {
+            spinnies.remove("app-commands-loading");
+            console.log("Application (/) commands is ready to use.            ");
+        }
+    } catch (error) {
+        if (!reload) {
+            spinnies.fail("app-commands-loading", {
+                "text": "The application (/) commands could not be completely reloaded."
+            });
         }
 
-        spinnies.remove("app-commands-loading");
-        console.log("Application (/) commands is ready to use.            ");
-    } catch (err) {
-        spinnies.fail("app-commands-loading", {
-            "text": "The application (/) commands could not be completely reloaded."
-        });
         console.group();
-        console.error(err);
+        console.error(error);
         console.groupEnd();
     }
 }
 
-const permissions = {
-    "ADMINISTRATOR": "Administrator",
-    "VIEW_AUDIT_LOG": "View Audit Log",
-    "VIEW_GUILD_INSIGHTS": "View Server Insights",
-    "MANAGE_GUILD": "Manage Server",
-    "MANAGE_ROLES": "Manage Roles",
-    "MANAGE_CHANNELS": "Manage Channels",
-    "KICK_MEMBERS": "Kick Members",
-    "BAN_MEMBERS": "Ban Members",
-    "CREATE_INSTANT_INVITE": "Create Invite",
-    "CHANGE_NICKNAME": "Change Nickname",
-    "MANAGE_NICKNAMES": "Manage Nicknames",
-    "MANAGE_EMOJIS": "Manage Emojis",
-    "MANAGE_WEBHOOKS": "Manage Webhooks",
-    "VIEW_CHANNEL": "Read Text Channels & See Voice Channels",
-    "SEND_MESSAGES": "Send Messages",
-    "SEND_TTS_MESSAGES": "Send TTS Messages",
-    "MANAGE_MESSAGES": "Manage Messages",
-    "EMBED_LINKS": "Embed Links",
-    "ATTACH_FILES": "Attach Files",
-    "READ_MESSAGE_HISTORY": "Read Message History",
-    "MENTION_EVERYONE": "Mention @everyone, @here, and All Roles",
-    "USE_EXTERNAL_EMOJIS": "Use External Emojis",
-    "ADD_REACTIONS": "Add Reactions",
-    "CONNECT": "Connect",
-    "SPEAK": "Speak",
-    "STREAM": "Video",
-    "MUTE_MEMBERS": "Mute Members",
-    "DEAFEN_MEMBERS": "Deafen Members",
-    "MOVE_MEMBERS": "Move Members",
-    "USE_VAD": "Use Voice Activity",
-    "PRIORITY_SPEAKER": "Priority Speaker"
+const BitwisePermissionFlags = {
+    0x1: "Create Invite",
+    0x2: "Kick Members",
+    0x4: "Ban Members",
+    0x8: "Administrator",
+    0x10: "Manage Channels",
+    0x20: "Manage Server",
+    0x40: "Add Reactions",
+    0x80: "View Audit Log",
+    0x100: "Priority Speaker",
+    0x200: "Video",
+    0x400: "Read Text Channels & See Voice Channels",
+    0x800: "Send Messages",
+    0x1000: "Send TTS Messages",
+    0x2000: "Manage Messages",
+    0x4000: "Embed Links",
+    0x8000: "Attach Files",
+    0x10000: "Read Message History",
+    0x20000: "Mention @everyone, @here, and All Roles",
+    0x40000: "Use External Emojis",
+    0x80000: "View Server Insights",
+    0x100000: "Connect",
+    0x200000: "Speak",
+    0x400000: "Mute Members",
+    0x800000: "Deafen Members",
+    0x1000000: "Move Members",
+    0x2000000: "Use Voice Activity",
+    0x4000000: "Change Nickname",
+    0x8000000: "Manage Nicknames",
+    0x10000000: "Manage Roles",
+    0x20000000: "Manage Webhooks",
+    0x40000000: "Manage Emojis & Stickers",
+    0x80000000: "Use Application Commands",
+    0x100000000: "Request to Speak",
+    0x200000000: "Manage Events",
+    0x400000000: "Manage Threads",
+    0x800000000: "Create Public Threads",
+    0x1000000000: "Create Private Threads",
+    0x2000000000: "Use External Stickers",
+    0x4000000000: "Send Messages in Threads",
+    0x8000000000: "Use Embedded Activities",
+    0x10000000000: "Moderate Members"
 }
 
 module.exports = {
     checkForUpdates,
     updateApplicationCommands,
-    permissions
+    BitwisePermissionFlags
 }

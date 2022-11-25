@@ -49,12 +49,12 @@ const catchError = async (client, message, name, error) => {
         const api = Math.round(client.ws.ping);
 
         const catchErrorEmbed = new discord.EmbedBuilder()
-            .setTitle(client.translate.extras.catchError.an_error_occurred)
+            .setTitle(client.translate.utils.clientUtils.an_error_occurred)
             .setDescription(
-                client.translate.extras.catchError.error_detail.replace("%s1", name)
+                client.translate.utils.clientUtils.error_detail.replace("%s1", name)
                     .replace("%s2", packages.version)
                     .replace("%s3", new Date())
-                    .replace("%s4", ((getApps().length === 0) ? client.translate.extras.catchError.server_abnormal : client.translate.extras.catchError.server_normal))
+                    .replace("%s4", ((getApps().length === 0) ? client.translate.utils.clientUtils.server_abnormal : client.translate.utils.clientUtils.server_normal))
                     .replace("%s5", ping)
                     .replace("%s6", api)
                     .replace("%s7", error)
