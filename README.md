@@ -1,11 +1,11 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.ico" width="100" />
+    <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
     <h1>
         <strong>Shioru</strong>
     </h1>
     <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white&style=for-the-badge" />
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
-    <img src="https://img.shields.io/github/v/release/Maseshi/Shioru?logo=java&style=for-the-badge">
+    <img src="https://img.shields.io/github/v/release/Maseshi/Shioru?&style=for-the-badge">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
@@ -14,7 +14,7 @@
     </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | JA
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `Shelp` or `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
 
@@ -23,7 +23,7 @@ Your good server assistant will help make your server look more lively. She can 
 - Works on [Discord.js](https://discord.js.org/) v14
 - A wide variety of customizations can be made.
 - It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages You can check the supported languages from the [language code file](https://github.com/Maseshi/Shioru/blob/main/source/languages) of this repository.
+- Support for multiple languages You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/languages) of this repository.
 - Tier system (level and experience)
 - Support customization of server notifications
 - You can chat by typing `@Shioru` followed by the message you wish to communicate.
@@ -56,7 +56,7 @@ npm install
 - Go to https://firebase.google.com/ and start setting up the project.
 - Add a new project and go through the steps.
 - Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
-![](./assets/images/firebase-setup-web-application.png)
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
@@ -74,7 +74,7 @@ npm install
 
 Thank you to all the original creators for allowing us to use these wonderful works of yours.
 
-Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[三つ編みあかねちゃん](https://www.pixiv.net/en/artworks/78387684)
+Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
 ## Found a problem
 
