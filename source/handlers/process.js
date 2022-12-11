@@ -103,5 +103,6 @@ module.exports = (client) => {
 
     process.on("exit", (code) => {
         console.log(grayBackground + blackColor + " Bot is about to shut down with the code: " + code + " " + clearStyle);
+        if (client.mode === "start") process.exit(1);
     });
 };
