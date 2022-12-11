@@ -13,21 +13,21 @@ module.exports = async (client) => {
   const minute = date.getMinutes();
   const at = year + "-" + month + "-" + day + "." + hour + ":" + minute;
 
-  console.log("Bot is working and is now online at " + at + ".");
+  client.console.add("online-loading", {
+    "text": "Bot is working and is now online at " + at + ".",
+    "status": "non-spinnable"
+  });
 
   // Check server is set up.
-  console.log(getApps.length === 0 ? "Connected to the server successfully." : "Unable to connect to the provider server.");
-
-  // Send bot statistics.
-  const commandSize = client.commands.size;
-  const guildSize = client.guilds.cache.size;
-  const userSize = client.users.cache.size;
-
-  if (client.mode === "start") {
-    update(ref(getDatabase(), "statistics/shioru/size"), {
-      "commands": commandSize,
-      "guilds": guildSize,
-      "users": userSize
+  if (getApps.length === 0) {
+    client.console.add("server-check-loading", {
+      "text": "Connected to the server successfully.",
+      "status": "non-spinnable"
+    });
+  } else {
+    client.console.add("server-check-loading", {
+      "text": "Unable to connect to the provider server.",
+      "status": "non-spinnable"
     });
   }
 
@@ -38,6 +38,28 @@ module.exports = async (client) => {
   onValue(ref(getDatabase(), "statistics/shioru"), (snapshot) => {
     if (snapshot.exists()) client.api.statistics = snapshot.val();
   });
+
+  // Send bot statistics.
+  let commandSize = 0, guildSize = 0, userSize = 0;
+
+  setInterval(() => {
+    commandSize = client.commands.size;
+    guildSize = client.guilds.cache.size;
+    userSize = client.users.cache.size;
+
+    const prevGuildSize = client.api.statistics.size.guilds;
+    const prevUserSize = client.api.statistics.size.users;
+
+    if (client.mode === "start") {
+      if (guildSize !== prevGuildSize || userSize !== prevUserSize) {
+        update(ref(getDatabase(), "statistics/shioru/size"), {
+          "commands": commandSize,
+          "guilds": guildSize,
+          "users": userSize
+        });
+      }
+    }
+  }, 5000);
 
   // Set up bot activity.
   const activities = {
@@ -91,14 +113,24 @@ module.exports = async (client) => {
   }, 10000);
 
   // Check for update
-  await checkForUpdates();
+  await checkForUpdates(client);
 
   // Refreshing application (/) commands.
   await updateApplicationCommands(client);
 
   // Client username
-  console.log("Sign in with the username " + client.user.username + ".");
+  client.console.add("username-check-loading", {
+    "text": "Sign in with the username " + client.user.username + ".",
+    "status": "non-spinnable"
+  });
 
   // If everything is ready to go
-  console.timeEnd("\u001b[34m\u001b[7m Bot is ready to work on the servers! \u001b[0m");
+  const endTime = new Date().getTime();
+
+  client.startup.end = endTime;
+  client.console.add("startup-loading", {
+    "color": "blueBright",
+    "text": "Bot is ready to work on the servers!: " + ((client.startup.end - client.startup.start) / 1000) + "s",
+    "status": "non-spinnable"
+  });
 };

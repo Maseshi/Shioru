@@ -2,18 +2,13 @@ const { REST, Routes } = require("discord.js");
 const { ansiColor } = require("./consoleUtils");
 const fetch = require("node-fetch");
 const packages = require("../../package.json");
-const Spinnies = require("spinnies");
 
-const checkForUpdates = async () => {
+const checkForUpdates = async (client) => {
     const clearStyle = ansiColor(0, "sgr");
     const greenColor = ansiColor(10, "foreground");
     const blueBrightColor = ansiColor(33, "foreground");
-    const spinnies = new Spinnies({
-        "failColor": "yellowBright",
-        "failPrefix": "⚠️"
-    });
 
-    spinnies.add("check-update-loading", {
+    client.console.add("check-update-loading", {
         "text": "Checking for new version"
     });
 
@@ -21,23 +16,30 @@ const checkForUpdates = async () => {
         const response = await fetch("https://api.github.com/repos/Maseshi/Shioru/releases/latest");
         const data = await response.json();
 
-        if (response.status !== 200) return spinnies.fail("check-update-loading", {
-            "text": "Unable to detect latest version at this time."
-        });
+        if (response.status !== 200) {
+            return client.console.update("check-update-loading", {
+                "text": "Unable to detect latest version at this time.",
+                "status": "non-spinnable"
+            });
+        }
         if (data) {
             if (packages.version.replace(/[^0-9]/g, "") >= data.tag_name.replace(/[^0-9]/g, "")) {
-                spinnies.remove("check-update-loading");
-                console.log("Currently using the latest version.");
+                client.console.update("check-update-loading", {
+                    "text": "Currently using the latest version.",
+                    "status": "non-spinnable"
+                });
             } else {
-                spinnies.remove("check-update-loading");
-                console.log(".");
-                console.log(". Update is available " + packages.version + " -> " + greenColor + data.tag_name + clearStyle);
-                console.log(". Run " + blueBrightColor + "npm pull" + clearStyle + " to update");
-                console.log(".");
+                client.console.update("check-update-loading", {
+                    "text": ".\n" +
+                        ". Update is available " + packages.version + " -> " + greenColor + data.tag_name + clearStyle + "\n" +
+                        ". Run " + blueBrightColor + "npm pull" + clearStyle + " to update\n" +
+                        ".",
+                    "status": "non-spinnable"
+                });
             }
         }
     } catch (error) {
-        spinnies.fail("check-update-loading", {
+        client.console.fail("check-update-loading", {
             "failColor": "redBright",
             "text": "Failed to check for new updates"
         });
@@ -53,13 +55,9 @@ const updateApplicationCommands = async (client, reload = false) => {
     const clientID = client.user.id;
     const token = client.config.token;
     const rest = new REST({ "version": "10" }).setToken(token);
-    const spinnies = new Spinnies({
-        "failColor": "yellowBright",
-        "failPrefix": "⚠️"
-    });
 
     if (!reload) {
-        spinnies.add("app-commands-loading", {
+        client.console.add("app-commands-loading", {
             "text": "Starting to refresh all application (/) commands."
         });
     }
@@ -83,13 +81,16 @@ const updateApplicationCommands = async (client, reload = false) => {
             );
         }
         if (!reload) {
-            spinnies.remove("app-commands-loading");
-            console.log("Application (/) commands is ready to use.            ");
+            client.console.update("app-commands-loading", {
+                "text": "Application (/) commands is ready to use.",
+                "status": "non-spinnable"
+            });
         }
     } catch (error) {
         if (!reload) {
-            spinnies.fail("app-commands-loading", {
-                "text": "The application (/) commands could not be completely reloaded."
+            client.console.update("app-commands-loading", {
+                "text": "The application (/) commands could not be completely reloaded.",
+                "status": "non-spinnable"
             });
         }
 

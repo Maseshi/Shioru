@@ -1,14 +1,7 @@
 const { readdirSync } = require("node:fs");
-const Spinnies = require("spinnies");
 
 module.exports = (client) => {
-    const spinnies = new Spinnies({
-        "spinnerColor": "blueBright",
-        "succeedPrefix": "✅",
-        "failPrefix": "⚠️"
-    });
-
-    spinnies.add("events-loading", {
+    client.console.add("events-loading", {
         "text": "All events are starting to load."
     });
 
@@ -20,21 +13,21 @@ module.exports = (client) => {
             const pull = require("../events/" + dirs + "/" + file);
             
             if (pull.disabled) {
-                spinnies.fail("events-loading", {
+                client.console.fail("events-loading", {
                     "text": "The " + eventName + " event is deprecated.",
                     "failColor": "yellowBright"
                 });
                 process.exit(0);
             } else {
                 try {
-                    spinnies.update("events-loading", {
+                    client.console.update("events-loading", {
                         "text": "Loading event " + eventName + " in category " + dirs
                     });
 
                     client.on(eventName, pull.bind(null, client))
                     delete require.cache[require.resolve("../events/" + dirs + "/" + file)];
                 } catch (error) {
-                    spinnies.fail("events-loading", {
+                    client.console.fail("events-loading", {
                         "text": "Error loading event in " + ("./events/" + dirs + "/" + file)
                     });
                     console.group();
@@ -46,7 +39,7 @@ module.exports = (client) => {
         }
     });
 
-    spinnies.succeed("events-loading", {
+    client.console.succeed("events-loading", {
         "text": "All events are verified. Did not find any problems."
     });
 };
