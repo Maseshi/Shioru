@@ -9,8 +9,8 @@
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
-    <a href="https://stats.uptimerobot.com/gXGx1iqxop">
-        <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=for-the-badge" />
+    <a href="https://shioru.statuspage.io/">
+        <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
 </div>
 
@@ -33,20 +33,30 @@ And many other interesting features...
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) v16.9.0 or higher
+- [Node.js](https://nodejs.org/) v18.0.0 or higher
 - [Firebase](https://firebase.google.com/) v9.0.0 or higher
+- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Quick setup guide
 
 ### Get started
 
+- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
+- Click **"New Application"** and give your bot a name and accept the Discord policy rules.
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+
+### Setup a bot
+
 - Launch a terminal and run the following commands.
 
-```bash
+```bat
 git clone https://github.com/Maseshi/Shioru.git
-cd shioru
-npm install
+cd Shioru
+npm install --save
 ```
 
 - You can edit some data in **config** at `./source/config.js`.
@@ -69,6 +79,14 @@ npm install
 ## Quick Troubleshooting
 
 - If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+```bat
+npm uninstall sodium
+npm install libsodium-wrappers@latest --save
+```
+- If you can't play music or music playback commands are not working, install [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
+```bat
+npm install ffmpeg-static@latest --save
+```
 
 ## Credits
 

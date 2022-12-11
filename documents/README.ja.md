@@ -9,8 +9,8 @@
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
-    <a href="https://stats.uptimerobot.com/gXGx1iqxop">
-        <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=for-the-badge" />
+    <a href="https://shioru.statuspage.io/">
+        <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
 </div>
 
@@ -33,7 +33,7 @@
 
 ## 前提条件
 
-- [Node.js](https://nodejs.org/) v16.9.0 以降
+- [Node.js](https://nodejs.org/) v18.0.0 以降
 - [Firebase](https://firebase.google.com/) v9.0.0 以降
 - [Git](https://git-scm.com/downloads)
 
@@ -41,12 +41,21 @@
 
 ### 始めましょう
 
+- [Discord Developer Portal](https://discord.com/developers/applications) に移動します。
+- **"New Application"**をクリックしてボットに名前を付け、Discord ポリシー ルールに同意します。
+- **"Bot"** ページに移動し、**Privileged Gateway Intent** セクションのすべてのオプションを有効にします。
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- **OAuth2 > URL Generator** ページに移動し、`bot` と `applications.commands` を選択し、`Administrator` を選択してから、リンクをコピーしてブラウザのアドレスに貼り付けて、ボットをサーバーに招待します。
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+
+### ボットを設定する
+
 - ターミナルを起動し、次のコマンドを実行します。
 
-```bash
+```bat
 git clone https://github.com/Maseshi/Shioru.git
-cd shioru
-npm install
+cd Shioru
+npm install --save
 ```
 
 - `./source/config.js` の **config** で一部の情報を編集できます。
@@ -69,6 +78,14 @@ npm install
 ## クイックトラブルシューティング
 
 - **sodium** パッケージをインストールできない場合は、代わりに **libsodium-wrappers** をインストールしてください。
+```bat
+npm uninstall sodium
+npm install libsodium-wrappers@latest --save
+```
+- 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
+```bat
+npm install ffmpeg-static@latest --save
+```
 
 ## クレジット
 

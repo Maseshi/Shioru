@@ -9,8 +9,8 @@
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
-    <a href="https://stats.uptimerobot.com/gXGx1iqxop">
-        <img src="https://img.shields.io/uptimerobot/ratio/7/m789124615-03e67c33f3ffeade6f2b8d05?logo=google-cloud&logoColor=white&style=for-the-badge" />
+    <a href="https://shioru.statuspage.io/">
+        <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
 </div>
 
@@ -33,7 +33,7 @@
 
 ## ข้อกำหนดเบื้องต้น
 
-- [Node.js](https://nodejs.org/) v16.9.0 หรือมากกว่า
+- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
 - [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
 - [Git](https://git-scm.com/downloads)
 
@@ -41,12 +41,21 @@
 
 ### เริ่มต้นใช้งาน
 
+- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
+- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent**
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ
+![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+
+### ตั้งค่าบอท
+
 - เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
 
 ```bash
 git clone https://github.com/Maseshi/Shioru.git
-cd shioru
-npm install
+cd Shioru
+npm install --save
 ```
 
 - คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js` 
@@ -68,7 +77,15 @@ npm install
 
 ## การแก้ไขปัญหาอย่างรวดเร็ว
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **โซเดียม** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+```bat
+npm uninstall sodium
+npm install libsodium-wrappers@latest --save
+```
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+```bat
+npm install ffmpeg-static@latest --save
+```
 
 ## เครดิต
 
