@@ -1,17 +1,20 @@
+// Start detecting working time
+const startTime = new Date().getTime();
+
 const { Client, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
+const { initializeApp } = require("firebase/app");
+const { getAnalytics } = require("firebase/analytics");
+const { getPerformance } = require("firebase/performance");
 const { DisTube, StreamType } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
-const { initializeApp } = require("firebase/app");
 const { readdirSync } = require("node:fs");
 const { version } = require("../package.json");
 const { asciiArt, ansiColor } = require("./utils/consoleUtils");
+const Spinnies = require("spinnies");
 const config = require("./configs/data");
 const language = require("./languages/en.json");
-
-// Start detecting working time
-console.time("\u001b[34m\u001b[7m Bot is ready to work on the servers! \u001b[0m");
 
 // Show when bots start working To check that bots do not have a problem
 const clearStyle = ansiColor(0, "sgr");
@@ -47,7 +50,8 @@ if (process.env.npm_lifecycle_event && process.env.npm_lifecycle_event === "dev"
 
 // Client setup
 const client = new Client({
-    // Fetch the recommended amount of shards from Discord and spawn that amount
+    // ? This is necessary to get the most out of the cluster.
+    // Fetch the recommended amount of shards from Server and spawn that amount
     "shards": "auto",
     // Status when starting
     "presence": {
@@ -99,6 +103,16 @@ client.api = {};
 client.temp = {};
 client.mode = process.env.npm_lifecycle_event || "start";
 client.config = config;
+client.startup = {
+    "start": startTime,
+    "end": 0
+};
+client.console = new Spinnies({
+    "spinnerColor": "blueBright",
+    "succeedPrefix": "✅",
+    "failColor": "yellowBright",
+    "failPrefix": "⚠️"
+});
 client.translate = language;
 client.music = new DisTube(client, {
     "plugins": [
@@ -116,7 +130,12 @@ client.music = new DisTube(client, {
 });
 
 // Start connecting to the server.
-initializeApp(client.config.server);
+const app = initializeApp(client.config.server);
+
+if (client.mode === "start") {
+    getAnalytics(app);
+    getPerformance(app);
+}
 
 // Read the code in the handlers.
 readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
