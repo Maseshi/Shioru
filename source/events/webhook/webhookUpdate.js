@@ -17,7 +17,7 @@ module.exports = async (client, channel) => {
         const hooks = await channel.fetchWebhooks();
         const webhookUpdate = new EmbedBuilder()
             .setTitle(client.translate.events.webhookUpdate.webhook_notification)
-            .setDescription(client.translate.events.webhookUpdate.webhook_update.replace("%s1", hooks.name).replace("%s2", hooks.sourceGuild.name).replace("%s3", channel.id))
+            .setDescription(client.translate.events.webhookUpdate.webhook_update.replace("%s1", hooks.name ? hooks.name : "Webhook").replace("%s2", hooks.sourceGuild.name).replace("%s3", channel.id))
             .setThumbnail(hooks.avatarURL())
             .setTimestamp()
             .setColor("Yellow");
