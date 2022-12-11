@@ -17,7 +17,7 @@ module.exports = {
 module.exports.command = {
     "enable": true,
     "usage": "setEXP <member: id, username, tag> <amount>",
-    "aliases": ["setExp", "setexp", "sExp", "ตั้งค่าEXP", "ตั้งค่าExp"],
+    "aliases": ["setexp", "sexp", "ตั้งค่าEXP", "ตั้งค่าExp"],
     async execute(client, message, args) {
         const inputMember = args[0];
         const inputAmount = parseInt(args.slice(1).join(" "));

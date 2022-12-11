@@ -16,7 +16,7 @@ module.exports = {
 module.exports.command = {
     "enable": true,
     "usage": "bigEmoji <emoji>",
-    "aliases": ["enlarge", "ขยาย"],
+    "aliases": ["bigemoji", "enlarge", "ขยาย"],
     async execute(client, message, args) {
         const inputEmoji = args[0];
     

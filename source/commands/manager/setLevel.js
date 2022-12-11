@@ -17,7 +17,7 @@ module.exports = {
 module.exports.command = {
     "enable": true,
     "usage": "setLevel <member; id, username, tag> <amount>",
-    "aliases": ["sLevel", "setlevel", "ตั้งค่าเลเวล"],
+    "aliases": ["slevel", "setlevel", "ตั้งค่าเลเวล"],
     async execute(client, message, args) {
         const inputMember = args[0];
         const inputAmount = parseInt(args.slice(1).join(" "));
