@@ -138,10 +138,11 @@ const levelSystem = async (client, message, method, arg, amount) => {
     const guildUserSnapshot = client.api.users[userID];
 
     const notification = async (msg) => {
-        const channelID = notificationSnapshot.notification.alert;
+        const guildSnapshot = client.api.guilds[message.guild.id];
+        const channelID = guildSnapshot.notification.alert;
 
-        if (typeof channelID === "boolean") {
-            if (channelID && channelID !== 0 && channelID !== false) {
+        if (channelID) {
+            if (typeof channelID === "boolean") {
                 const channel = msg.guild.channels.cache.find(channels => channels.id === channelID);
 
                 if (!channel) {
@@ -151,12 +152,12 @@ const levelSystem = async (client, message, method, arg, amount) => {
                     return channel;
                 }
             } else {
-                return false;
+                await set(child(guildRef, "notification/alert"), true);
+
+                notification(msg);
             }
         } else {
-            await set(child(guildRef, "notification/alert"), false);
-
-            notification(msg);
+            return false;
         }
     };
 
@@ -264,78 +265,121 @@ const levelSystem = async (client, message, method, arg, amount) => {
 
 const settingsData = (client, guild, exports, callback) => {
     const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), guild.id);
-    const guildSnapshot = client.api.guilds[guild.id];
-    const prefixSnapshot = guildSnapshot.prefix;
-    const languageSnapshot = guildSnapshot.language;
-    const notificationSnapshot = guildSnapshot.notification;
-    const notificationList = [
-        "alert",
-        "channelCreate",
-        "channelDelete",
-        "channelPinsUpdate",
-        "channelUpdate",
-        "emojiCreate",
-        "emojiDelete",
-        "emojiUpdate",
-        "guildBanAdd",
-        "guildBanRemove",
-        "guildIntegrationsUpdate",
-        "guildMemberAdd",
-        "guildMemberRemove",
-        "guildMembersChunk",
-        "guildUnavailable",
-        "inviteCreate",
-        "inviteDelete",
-        "roleCreate",
-        "roleDelete",
-        "roleUpdate",
-        "stageInstanceCreate",
-        "stageInstanceDelete",
-        "stageInstanceUpdate",
-        "stickerCreate",
-        "stickerDelete",
-        "stickerUpdate",
-        "threadCreate",
-        "threadDelete",
-        "threadUpdate",
-        "webhookUpdate"
-    ];
 
-    if (!guildSnapshot) {
-        return set(guildRef, {
+    const notificationVerify = (guildRef, guildSnapshot) => {
+        const notificationList = [
+            "alert",
+            "channelCreate",
+            "channelDelete",
+            "channelPinsUpdate",
+            "channelUpdate",
+            "emojiCreate",
+            "emojiDelete",
+            "emojiUpdate",
+            "guildBanAdd",
+            "guildBanRemove",
+            "guildIntegrationsUpdate",
+            "guildMemberAdd",
+            "guildMemberRemove",
+            "guildMembersChunk",
+            "guildUnavailable",
+            "inviteCreate",
+            "inviteDelete",
+            "roleCreate",
+            "roleDelete",
+            "roleUpdate",
+            "stageInstanceCreate",
+            "stageInstanceDelete",
+            "stageInstanceUpdate",
+            "stickerCreate",
+            "stickerDelete",
+            "stickerUpdate",
+            "threadCreate",
+            "threadDelete",
+            "threadUpdate",
+            "webhookUpdate"
+        ];
+
+        for (const notificationName in notificationList) {
+            const position = notificationList.at(-1);
+
+            if (guildSnapshot.notification) {
+                const snapshot = guildSnapshot.notification[notificationName];
+
+                if (typeof snapshot === "undefined") {
+                    set(child(child(guildRef, "notification"), notificationName), false);
+                }
+                if (typeof snapshot !== "boolean") {
+                    set(child(child(guildRef, "notification"), notificationName), snapshot ? true : false);
+                }
+                if (notificationName === position) {
+                    return settingsData(client, guild, exports, callback);
+                }
+            } else {
+                set(child(guildRef, "notification"), {
+                    "alert": false,
+                    "channelCreate": false,
+                    "channelDelete": false,
+                    "channelPinsUpdate": false,
+                    "channelUpdate": false,
+                    "emojiCreate": false,
+                    "emojiDelete": false,
+                    "emojiUpdate": false,
+                    "guildBanAdd": false,
+                    "guildBanRemove": false,
+                    "guildIntegrationsUpdate": false,
+                    "guildMemberAdd": false,
+                    "guildMemberRemove": false,
+                    "guildMembersChunk": false,
+                    "guildUnavailable": false,
+                    "inviteCreate": false,
+                    "inviteDelete": false,
+                    "roleCreate": false,
+                    "roleDelete": false,
+                    "roleUpdate": false,
+                    "stageInstanceCreate": false,
+                    "stageInstanceDelete": false,
+                    "stageInstanceUpdate": false,
+                    "stickerCreate": false,
+                    "stickerDelete": false,
+                    "stickerUpdate": false,
+                    "threadCreate": false,
+                    "threadDelete": false,
+                    "threadUpdate": false,
+                    "webhookUpdate": false
+                }).then(() => {
+                    return settingsData(client, guild, exports, callback);
+                });
+            }
+        }
+    };
+
+    if (!client.api.guilds[guild.id]) {
+        set(guildRef, {
             "prefix": client.config.prefix,
-            "language": client.config.language.code,
-            "notification": notification
-        }).then(() => settingsData(client, guild, exports, callback));
+            "language": client.config.language.code
+        });
+
+        return notificationVerify(guildRef, client.api.guilds[guild.id]);
     }
-    if (!prefixSnapshot) {
+
+    const guildSnapshot = client.api.guilds[guild.id];
+
+    if (!guildSnapshot.prefix) {
         return set(child(guildRef, "prefix"), client.config.prefix).then(() => settingsData(client, guild, exports, callback));
     }
-    if (!languageSnapshot) {
+    if (!guildSnapshot.language) {
         return set(child(guildRef, "language"), client.config.language.code).then(() => settingsData(client, guild, exports, callback));
     }
-    if (!notificationSnapshot) {
-        return set(child(guildRef, "notification"), notification).then(() => settingsData(client, guild, exports, callback));
+    if (!guildSnapshot.notification) {
+        return notificationVerify(guildRef, guildSnapshot);
     }
 
-    for (const notificationName in notificationList) {
-        const snapshot = notificationSnapshot[notificationName];
+    notificationVerify(guildRef, guildSnapshot);
 
-        if (typeof snapshot === "undefined") {
-            set(child(child(guildRef, "notification"), notificationName), false).then(() => {
-                return settingsData(client, guild, exports, callback);
-            });
-        }
-        if (typeof snapshot !== "boolean") {
-            set(child(child(guildRef, "notification"), notificationName), snapshot ? true : false).then(() => {
-                return settingsData(client, guild, exports, callback);
-            });
-        }
-    }
-
-    client.config.prefix = prefixSnapshot;
-    client.config.language.code = languageSnapshot;
-    client.translate = require("../languages/" + languageSnapshot + ".json");
+    client.config.prefix = guildSnapshot.prefix;
+    client.config.language.code = guildSnapshot.language;
+    client.translate = require("../languages/" + guildSnapshot.language + ".json");
 
     if (!client.temp.set) {
         client.temp.set = 1;
