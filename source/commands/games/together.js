@@ -39,9 +39,14 @@ module.exports.command = {
             "spellcast": "852509694341283871",
             "checkers": "832013003968348200",
             "puttparty": "763133495793942528",
-            "sketchyartist": "879864070101172255",
             "sketchheads": "902271654783242291",
-            "ocho": "832025144389533716",
+            "blazing8s": "832025144389533716",
+            "puttpartyqa": "945748195256979606",
+            "sketchyartist": "879864070101172255",
+            "land": "903769130790969345",
+            "meme": "950505761862189096",
+            "askaway": "976052223358406656",
+            "bobble": "947957217959759964"
         };
         const list = Object.keys(apps);
 
@@ -106,15 +111,15 @@ module.exports.interaction.slash = {
                 "required": true,
                 "choices": [
                     {
-                        "name": "YouTube",
+                        "name": "Watch Together",
                         "value": "youtube"
                     },
                     {
-                        "name": "YouTubeDev",
+                        "name": "Watch Together Dev",
                         "value": "youtubedev"
                     },
                     {
-                        "name": "Poker",
+                        "name": "Poker Night",
                         "value": "poker"
                     },
                     {
@@ -126,15 +131,15 @@ module.exports.interaction.slash = {
                         "value": "fishing"
                     },
                     {
-                        "name": "Chess",
+                        "name": "Chess In The Park",
                         "value": "chess"
                     },
                     {
-                        "name": "ChessDev",
+                        "name": "Chess In The Park Dev",
                         "value": "chessdev"
                     },
                     {
-                        "name": "LetterTile",
+                        "name": "Letter League",
                         "value": "Lettertile"
                     },
                     {
@@ -154,24 +159,44 @@ module.exports.interaction.slash = {
                         "value": "spellcast"
                     },
                     {
-                        "name": "Checkers",
+                        "name": "Checkers In The Park",
                         "value": "checkers"
                     },
                     {
-                        "name": "PuttParty",
+                        "name": "Putt Party",
                         "value": "puttparty"
+                    },
+                    {
+                        "name": "Sketch Heads",
+                        "value": "sketchheads"
+                    },
+                    {
+                        "name": "Blazing 8s",
+                        "value": "blazing8s"
+                    },
+                    {
+                        "name": "Putt Party QA",
+                        "value": "puttpartyqa"
                     },
                     {
                         "name": "SketchyArtist",
                         "value": "sketchyartist"
                     },
                     {
-                        "name": "SketchHeads",
-                        "value": "sketchheads"
+                        "name": "Land-io",
+                        "value": "land"
                     },
                     {
-                        "name": "Ocho",
-                        "value": "ocho"
+                        "name": "Meme",
+                        "value": "meme"
+                    },
+                    {
+                        "name": "Askaway",
+                        "value": "askaway"
+                    },
+                    {
+                        "name": "Bobble League",
+                        "value": "bobble"
                     }
                 ]
             },
@@ -213,9 +238,14 @@ module.exports.interaction.slash = {
             "spellcast": "852509694341283871",
             "checkers": "832013003968348200",
             "puttparty": "763133495793942528",
-            "sketchyartist": "879864070101172255",
             "sketchheads": "902271654783242291",
-            "ocho": "832025144389533716",
+            "blazing8s": "832025144389533716",
+            "puttpartyqa": "945748195256979606",
+            "sketchyartist": "879864070101172255",
+            "land": "903769130790969345",
+            "meme": "950505761862189096",
+            "askaway": "976052223358406656",
+            "bobble": "947957217959759964"
         };
 
         if (!inputChannel) {
@@ -226,7 +256,7 @@ module.exports.interaction.slash = {
             if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.together.voice_channel_not_found);
         }
 
-        fetch("https://discord.com/api/v8/channels/" + voiceChannel.id + "/invites", {
+        fetch("https://discord.com/api/v10/channels/" + voiceChannel.id + "/invites", {
             "method": "POST",
             "body": JSON.stringify({
                 "max_age": 86400,
