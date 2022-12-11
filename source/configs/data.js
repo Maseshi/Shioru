@@ -11,6 +11,14 @@ module.exports = {
         "code": "en",
         "support": languages
     },
+    "monitoring": {
+        "config": {
+            "apiKey": process.env.MONITOR_API_KEY || $MONITOR_API_KEY,
+            "metricId": process.env.MONITOR_METRIC_ID || $MONITOR_METRIC_ID,
+            "pageId": process.env.MONITOR_PAGE_ID || $MONITOR_PAGE_ID
+        },
+        "enable": true
+    },
     "owner": "618836889239158785",
     "prefix": "S",
     "recursive": 3,
