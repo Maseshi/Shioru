@@ -72,7 +72,7 @@ module.exports.command = {
 				info.addFields(
 					{
 						"name": "🏷️ " + categorize + " - (" + dir.size + ")",
-						"value": dir.map(dirs => dirs.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
+						"value": dir.map(dirs => dirs.command.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
 					}
 				);
 			});
@@ -171,7 +171,7 @@ module.exports.interaction.slash = {
 				info.addFields(
 					{
 						"name": "🏷️ " + categorize + " - (" + dir.size + ")",
-						"value": dir.map(dirs => dirs.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
+						"value": dir.map(dirs => dirs.interaction.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
 					}
 				);
 			});

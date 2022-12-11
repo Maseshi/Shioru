@@ -43,7 +43,7 @@ module.exports.command = {
             "avatar": "/img/avatar",
             "waifu": "/img/waifu"
         };
-        const type = Object.keys(endpoints);
+        const type = Object.keys(endpoints).toLowerCase();
 
         if (!inputType) return message.reply(client.translate.commands.nekos.type_you_want.replace("%s", type.join(", ")));
         if (!type.includes(inputType)) return message.reply(client.translate.commands.nekos.type_not_exists.replace("%s", type.join(", ")));
@@ -220,7 +220,7 @@ module.exports.interaction.slash = {
             "avatar": "/img/avatar",
             "waifu": "/img/waifu"
         };
-        const type = Object.keys(endpoints);
+        const type = Object.keys(endpoints).toLowerCase();
 
         if (!inputType) return await interaction.editReply(interaction.client.translate.commands.nekos.type_you_want.replace("%s", type.join(", ")));
         if (!type.includes(inputType)) return await interaction.editReply(interaction.client.translate.commands.nekos.type_not_exists.replace("%s", type.join(", ")));

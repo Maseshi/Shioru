@@ -57,7 +57,7 @@ module.exports.command = {
 
         switch (inputOption) {
             case "add":
-                if (!inputFilters) return message.reply(filterEmbed);
+                if (!inputFilters.length) return message.reply(filterEmbed);
 
                 const addCheck = checkFilters(inputFilters);
                 if (addCheck.invalid.length > 0) return message.reply(client.translate.commands.filter.unknown_filter.replace("%s", addCheck.invalid.join(", ")));
@@ -67,7 +67,7 @@ module.exports.command = {
                 break;
             case "rm":
             case "remove":
-                if (!inputFilters) return message.reply(filterEmbed);
+                if (!inputFilters.length) return message.reply(filterEmbed);
 
                 const removeCheck = checkFilters(inputFilters);
                 if (removeCheck.invalid.length > 0) return message.reply(client.translate.commands.filter.unknown_filter.replace("%s", removeCheck.invalid.join(", ")));
@@ -76,7 +76,7 @@ module.exports.command = {
                 message.channel.send(client.translate.commands.filter.remove_filter.replace("%s", inputFilters.join(", ")));
                 break;
             case "set":
-                if (!inputFilters) return message.reply(filterEmbed);
+                if (!inputFilters.length) return message.reply(filterEmbed);
 
                 const setCheck = checkFilters(inputFilters);
                 if (setCheck.invalid.length > 0) return message.reply(client.translate.commands.filter.unknown_filter.replace("%s", setCheck.invalid.join(", ")));
@@ -233,7 +233,7 @@ module.exports.interaction.slash = {
 
         switch (inputOption) {
             case "add":
-                if (!inputFilters) return interaction.editReply(filterEmbed);
+                if (!inputFilters.length) return interaction.editReply(filterEmbed);
 
                 const addCheck = checkFilters(inputFilters);
                 if (addCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", addCheck.invalid.join(", ")));
@@ -242,7 +242,7 @@ module.exports.interaction.slash = {
                 interaction.editReply(interaction.client.translate.commands.filter.add_filter.replace("%s", inputFilters.join(", ")));
                 break;
             case "remove":
-                if (!inputFilters) return interaction.editReply(filterEmbed);
+                if (!inputFilters.length) return interaction.editReply(filterEmbed);
 
                 const removeCheck = checkFilters(inputFilters);
                 if (removeCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", removeCheck.invalid.join(", ")));
@@ -251,7 +251,7 @@ module.exports.interaction.slash = {
                 interaction.editReply(interaction.client.translate.commands.filter.remove_filter.replace("%s", inputFilters.join(", ")));
                 break;
             case "set":
-                if (!inputFilters) return interaction.editReply(filterEmbed);
+                if (!inputFilters.length) return interaction.editReply(filterEmbed);
 
                 const setCheck = checkFilters(inputFilters);
                 if (setCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", setCheck.invalid.join(", ")));
