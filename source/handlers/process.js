@@ -28,6 +28,7 @@ module.exports = (client) => {
 
     process.on("SIGINT", () => {
         console.log(orangeBackground + whiteColor + " Bot is about to shut down. " + clearStyle);
+        if (client.mode === "start") process.exit(1);
     });
 
     process.on('SIGUSR1', () => {
