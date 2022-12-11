@@ -9,7 +9,7 @@ module.exports = (client, message) => {
     const defaultPrefix = "S";
     const round = client.config.recursive;
     const prefix = client.config.prefix;
-    const commandsSnapshot = client.api.guilds.commands;
+    const commandsSnapshot = client.api.guilds.commands || "";
     const mentioned = message.content.startsWith("<@!" + client.user.id + ">") || message.content.startsWith("<@" + client.user.id + ">");
     const arguments = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = arguments.shift().toLowerCase();
@@ -19,13 +19,13 @@ module.exports = (client, message) => {
     const blueBrightColor = ansiColor(33, "foreground");
 
     if (message.author.bot) return;
+    if (message.channel.type === ChannelType.DM) return;
     if (client.mode === "start") {
         settingsData(client, message.guild, module.exports, message);
         if (client.temp.set !== 1) return;
 
         levelSystem(client, message, "POST", 123);
     }
-    if (message.channel.type === ChannelType.DM) return chatSystem(client, message, mentioned, arguments);
     if (mentioned) return chatSystem(client, message, mentioned, arguments);
 
     // When the members forget the prefix, inform the prefix.
