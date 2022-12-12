@@ -28,7 +28,6 @@ module.exports = (client) => {
 
     process.on("SIGINT", () => {
         console.log(orangeBackground + whiteColor + " Bot is about to shut down. " + clearStyle);
-        if (client.mode === "start") process.exit(1);
     });
 
     process.on('SIGUSR1', () => {
@@ -67,6 +66,7 @@ module.exports = (client) => {
             console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
             console.info(boldStyle + "Node.js: " + clearStyle + process.version);
         console.groupEnd();
+        if (client.mode === "start") process.exit(1);
     });
 
     process.on("uncaughtExceptionMonitor", (err, origin) => {
@@ -99,10 +99,10 @@ module.exports = (client) => {
             console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
             console.info(boldStyle + "Node.js: " + clearStyle + process.version);
         console.groupEnd();
+        if (client.mode === "start") process.exit(1);
     });
 
     process.on("exit", (code) => {
         console.log(grayBackground + blackColor + " Bot is about to shut down with the code: " + code + " " + clearStyle);
-        if (client.mode === "start") process.exit(1);
     });
 };
