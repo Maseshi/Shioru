@@ -3,8 +3,6 @@ const startTime = new Date().getTime();
 
 const { Client, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
 const { initializeApp } = require("firebase/app");
-const { getAnalytics } = require("firebase/analytics");
-const { getPerformance } = require("firebase/performance");
 const { DisTube, StreamType } = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
@@ -130,12 +128,7 @@ client.music = new DisTube(client, {
 });
 
 // Start connecting to the server.
-const app = initializeApp(client.config.server);
-
-if (client.mode === "start") {
-    getAnalytics(app);
-    getPerformance(app);
-}
+initializeApp(client.config.server);
 
 // Read the code in the handlers.
 readdirSync("./source/handlers/").forEach(dirs => require("./handlers/" + dirs)(client));
