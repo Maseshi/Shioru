@@ -1,6 +1,6 @@
 const { ActivityType } = require("discord.js");
 const { getApps } = require("firebase/app");
-const { getDatabase, onValue, ref, update } = require("firebase/database");
+const { getDatabase, get, onValue, ref, update } = require("firebase/database");
 const { checkForUpdates, updateApplicationCommands } = require("../../utils/clientUtils");
 
 module.exports = async (client) => {
@@ -31,7 +31,13 @@ module.exports = async (client) => {
     });
   }
 
-  // Setup API
+  // Organize data from a database.
+  const data = await get(ref(getDatabase(), "projects/shioru"));
+  const statistics = await get(ref(getDatabase(), "statistics/shioru"));
+
+  if (data.exists()) client.api = data.val();
+  if (statistics.exists()) client.api.statistics = statistics.val();
+
   onValue(ref(getDatabase(), "projects/shioru"), (snapshot) => {
     if (snapshot.exists()) client.api = snapshot.val();
   });
@@ -40,12 +46,10 @@ module.exports = async (client) => {
   });
 
   // Send bot statistics.
-  let commandSize = 0, guildSize = 0, userSize = 0;
-
   setInterval(() => {
-    commandSize = client.commands.size;
-    guildSize = client.guilds.cache.size;
-    userSize = client.users.cache.size;
+    const commandSize = client.commands.size;
+    const guildSize = client.guilds.cache.size;
+    const userSize = client.users.cache.size;
 
     const prevGuildSize = client.api.statistics.size.guilds;
     const prevUserSize = client.api.statistics.size.users;
@@ -61,7 +65,10 @@ module.exports = async (client) => {
     }
   }, 5000);
 
-  // Set up bot activity.
+  // Setup bot activity.
+  const commandSize = client.commands.size;
+  const guildSize = client.guilds.cache.size;
+  const userSize = client.users.cache.size;
   const activities = {
     "production": [
       {
@@ -106,9 +113,13 @@ module.exports = async (client) => {
   });
 
   setInterval(() => {
+    const guildSize = client.guilds.cache.size;
+    const userSize = client.users.cache.size;
     const randomIndex = Math.floor(Math.random() * activityType.length);
     const newActivity = activityType[randomIndex];
 
+    activities.production[0].name = guildSize + " Server" + (guildSize === 1 ? "" : "s");
+    activities.production[2].name = userSize + " Member" + (userSize === 1 ? "" : "s");
     client.user.setActivity(newActivity);
   }, 10000);
 
