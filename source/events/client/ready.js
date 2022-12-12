@@ -51,8 +51,8 @@ module.exports = async (client) => {
     const guildSize = client.guilds.cache.size;
     const userSize = client.users.cache.size;
 
-    const prevGuildSize = client.api.statistics.size.guilds;
-    const prevUserSize = client.api.statistics.size.users;
+    const prevGuildSize = client.api.statistics ? client.api.statistics.size.guilds : guildSize;
+    const prevUserSize = client.api.statistics ? client.api.statistics.size.users : userSize;
 
     if (client.mode === "start") {
       if (guildSize !== prevGuildSize || userSize !== prevUserSize) {
