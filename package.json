@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "private": true,
   "main": "./source/main.js",
