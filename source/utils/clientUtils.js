@@ -50,10 +50,10 @@ const checkForUpdates = async (client) => {
 }
 
 const updateApplicationCommands = async (client, reload = false) => {
-    const interaction = client.interaction;
+    const commands = client.commands;
+    const token = client.config.token;
     const guildID = client.config.testGuild;
     const clientID = client.user.id;
-    const token = client.config.token;
     const rest = new REST({ "version": "10" }).setToken(token);
 
     if (!reload) {
@@ -63,11 +63,11 @@ const updateApplicationCommands = async (client, reload = false) => {
     }
 
     try {
-        const slash = await interaction.map((commands) => commands.interaction.slash.data);
-        const context = await interaction.map((commands) => {
-            if (commands.interaction.context) return commands.interaction.context.data;
+        const command = await commands.map((commands) => commands.function.command.data);
+        const context = await commands.map((commands) => {
+            if (commands.function.context) return commands.function.context.data;
         }).filter((element) => element !== undefined)
-        const data = slash.concat(context);
+        const data = command.concat(context);
 
         if (client.mode === "start") {
             await rest.put(
@@ -82,14 +82,14 @@ const updateApplicationCommands = async (client, reload = false) => {
         }
         if (!reload) {
             client.console.update("app-commands-loading", {
-                "text": "Application (/) commands is ready to use.",
+                "text": "Application commands is ready to use.",
                 "status": "non-spinnable"
             });
         }
     } catch (error) {
         if (!reload) {
             client.console.update("app-commands-loading", {
-                "text": "The application (/) commands could not be completely reloaded.",
+                "text": "Application commands could not be completely reloaded.",
                 "status": "non-spinnable"
             });
         }
