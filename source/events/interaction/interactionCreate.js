@@ -52,8 +52,10 @@ module.exports = async (client, interaction) => {
 			}
 		}
 	}
-	if (guildSnapshot.commands[command.name] === undefined) {
-		return set(child(child(guildRef, "commands"), command.name), true).then(() => module.exports(client, interaction));
+	if (!guildSnapshot.commands || !Object.keys(guildSnapshot.commands).includes(command.name)) {
+		await set(child(child(guildRef, "commands"), command.name), true);
+
+		return module.exports(client, interaction);
 	}
 	if (!guildSnapshot.commands[command.name]) {
 		command.enable = false;
