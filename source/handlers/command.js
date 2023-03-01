@@ -5,8 +5,7 @@ module.exports = (client) => {
   client.console.add("commands-loading", {
     "text": "All commands are starting to load."
   });
-
-  ["commands"].forEach(dirs => client[dirs] = new Collection());
+  client.commands = new Collection();
 
   readdirSync("./source/commands/").forEach((dirs) => {
     const commands = readdirSync("./source/commands/" + dirs + "/").filter(files => files.endsWith(".js"));
