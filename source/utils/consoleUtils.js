@@ -65,25 +65,29 @@ const catchError = async (client, message, name, error) => {
         if ((message.author && message.author.id) === client.user.id) {
             message.edit({
                 "content": null,
-                "embeds": [catchErrorEmbed]
+                "embeds": [catchErrorEmbed],
+                "ephemeral": true
             });
         } else {
             try {
                 message.channel.send({
                     "content": null,
-                    "embeds": [catchErrorEmbed]
+                    "embeds": [catchErrorEmbed],
+                    "ephemeral": true
                 });
             } catch {
                 try {
                     message.send({
                         "content": null,
-                        "embeds": [catchErrorEmbed]
+                        "embeds": [catchErrorEmbed],
+                        "ephemeral": true
                     });
                 } catch {
                     try {
                         await message.editReply({
                             "content": null,
-                            "embeds": [catchErrorEmbed]
+                            "embeds": [catchErrorEmbed],
+                            "ephemeral": true
                         });
                     } catch (err) {
                         logGenerator("catch", err)
@@ -102,7 +106,7 @@ const catchError = async (client, message, name, error) => {
         }
     }
 
-    logGenerator("catch", error)
+    logGenerator("catch", error);
 
     console.group(dateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
     console.group(boldStyle + "Full Error:" + clearStyle);
