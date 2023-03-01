@@ -47,7 +47,7 @@ module.exports = (client) => {
             });
             response.on("end", function () {
                 setTimeout(function () {
-                    submit(count);
+                    submitPoint(count);
                 }, 1000);
             });
             response.on("error", function (error) {
