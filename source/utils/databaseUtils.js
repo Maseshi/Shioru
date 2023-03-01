@@ -131,8 +131,7 @@ const levelSystem = async (client, message, method, arg, amount) => {
     if (!message) return console.log("[levelSystem] Please configure MESSAGE to make notifications and receive important basic information (required).");
     if (!method) return console.log("[levelSystem] Please specify a method to continue. (required).");
 
-    const authorID = message.author ? message.author.id : message.user.id;
-    const userID = method.includes(["GET", "DELETE"]) ? arg : authorID;
+    const userID = method.includes(["GET", "DELETE"]) ? arg : message.user.id;
     const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), message.guild.id);
     const guildUserRef = child(ref(getDatabase(), "projects/shioru/users"), userID);
     const guildUserSnapshot = client.api.users[userID];
@@ -168,8 +167,8 @@ const levelSystem = async (client, message, method, arg, amount) => {
 
         if (exp >= nextEXP) {
             const alert = await notification(message);
-            const authorUsername = message.author ? message.author.username : message.user.username;
-            const authorAvatar = message.author ? message.author.displayAvatarURL() : message.user.displayAvatarURL();
+            const authorUsername = message.user.username;
+            const authorAvatar = message.user.displayAvatarURL();
             const levelSystemEmbed = new EmbedBuilder()
                 .setTitle(client.translate.utils.databaseUtils.level_up.replace("%s1", authorUsername).replace("%s2", level))
                 .setColor("Yellow")
@@ -356,7 +355,6 @@ const settingsData = (client, guild, exports, callback) => {
 
     if (!client.api.guilds[guild.id]) {
         set(guildRef, {
-            "prefix": client.config.prefix,
             "language": client.config.language.code
         });
 
@@ -365,9 +363,6 @@ const settingsData = (client, guild, exports, callback) => {
 
     const guildSnapshot = client.api.guilds[guild.id];
 
-    if (!guildSnapshot.prefix) {
-        return set(child(guildRef, "prefix"), client.config.prefix).then(() => settingsData(client, guild, exports, callback));
-    }
     if (!guildSnapshot.language) {
         return set(child(guildRef, "language"), client.config.language.code).then(() => settingsData(client, guild, exports, callback));
     }
@@ -377,7 +372,6 @@ const settingsData = (client, guild, exports, callback) => {
 
     notificationVerify(guildRef, guildSnapshot);
 
-    client.config.prefix = guildSnapshot.prefix;
     client.config.language.code = guildSnapshot.language;
     client.translate = require("../languages/" + guildSnapshot.language + ".json");
 
