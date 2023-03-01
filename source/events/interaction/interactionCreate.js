@@ -1,15 +1,28 @@
 const { ChannelType, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set, increment } = require("firebase/database");
 const { BitwisePermissionFlags } = require("../../utils/clientUtils");
-const { catchError } = require("../../utils/consoleUtils");
+const { catchError, ansiColor } = require("../../utils/consoleUtils");
+const { levelSystem, settingsData } = require("../../utils/databaseUtils");
 
 module.exports = async (client, interaction) => {
+	const guildSnapshot = client.api.guilds[interaction.guild.id];
+	const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), interaction.guild.id);
+	const command = client.commands.get(interaction.commandName);
+
+	const clearStyle = ansiColor(0, "sgr");
+	const underlineStyle = ansiColor(4, "sgr");
+	const blueBrightColor = ansiColor(33, "foreground");
+
 	if (interaction.user.bot) return;
 	if (interaction.channel.type === ChannelType.DM) return;
+	if (client.mode === "start") {
+		settingsData(client, interaction.guild, module.exports, interaction);
+		if (client.temp.set !== 1) return;
 
-	const command = client.interaction.get(interaction.commandName);
+		levelSystem(client, interaction, "POST", 123);
+	}
 
-	if (!command) return;
+	if (!command) return console.log(underlineStyle + interaction.user.username + clearStyle + " Type an unknown command: " + blueBrightColor + commandName + clearStyle);
 
 	// Check that members have the permissions to use the application or not.
 	if (!interaction.member.permissions.has(PermissionsBitField.Flags.UseApplicationCommands)) {
@@ -39,27 +52,42 @@ module.exports = async (client, interaction) => {
 			}
 		}
 	}
+	if (guildSnapshot.commands[command.name] === undefined) {
+		return set(child(child(guildRef, "commands"), command.name), true).then(() => module.exports(client, interaction));
+	}
+	if (!guildSnapshot.commands[command.name]) {
+		command.enable = false;
+	}
+	if (!command.enable) {
+		return await interaction.reply(client.translate.events.interactionCreate.command_is_disabled);
+	}
 
 	if (interaction.isChatInputCommand()) {
 		await interaction.deferReply();
 
 		try {
-			await command.interaction.slash.execute(interaction);
+			await command.function.command.execute(interaction);
 
 			// Stores information when the bot is working properly.
 			if (client.mode === "start") {
 				set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1) || 1);
-				set(child(ref(getDatabase(), "statistics/shioru/slash"), command.name), increment(1) || 1);
+				set(child(ref(getDatabase(), "statistics/shioru/commands"), command.name), increment(1) || 1);
 			}
 		} catch (error) {
+			if (interaction.replied || interaction.deferred) {
+				await interaction.followUp({ "content": client.translate.events.interactionCreate.command_error, "ephemeral": true });
+			} else {
+				await interaction.reply({ "content": client.translate.events.interactionCreate.command_error, "ephemeral": true });
+			}
+
 			catchError(client, interaction, interaction.commandName, error);
 		}
 	}
 	if (interaction.isMessageContextMenuCommand()) {
 		await interaction.deferReply({ "ephemeral": true });
-		
+
 		try {
-			await command.interaction.context.execute(interaction);
+			await command.function.context.execute(interaction);
 
 			// Stores information when the bot is working properly.
 			if (client.mode === "start") {
@@ -67,6 +95,12 @@ module.exports = async (client, interaction) => {
 				set(child(ref(getDatabase(), "statistics/shioru/context"), command.name), increment(1) || 1);
 			}
 		} catch (error) {
+			if (interaction.replied || interaction.deferred) {
+				await interaction.followUp({ "content": client.translate.events.interactionCreate.command_error, "ephemeral": true });
+			} else {
+				await interaction.reply({ "content": client.translate.events.interactionCreate.command_error, "ephemeral": true });
+			}
+
 			catchError(client, interaction, interaction.commandName, error);
 		}
 	}
