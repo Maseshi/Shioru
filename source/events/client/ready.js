@@ -1,5 +1,7 @@
 const { ActivityType } = require("discord.js");
+const { readdirSync } = require("node:fs");
 const { getApps } = require("firebase/app");
+const { getFirestore, doc, setDoc } = require("firebase/firestore");
 const { getDatabase, get, onValue, ref, update } = require("firebase/database");
 const { checkForUpdates, updateApplicationCommands } = require("../../utils/clientUtils");
 
@@ -19,7 +21,7 @@ module.exports = async (client) => {
   });
 
   // Check server is set up.
-  if (getApps.length === 0) {
+  if (!getApps.length) {
     client.console.add("server-check-loading", {
       "text": "Connected to the server successfully.",
       "status": "non-spinnable"
@@ -65,6 +67,45 @@ module.exports = async (client) => {
     }
   }, 5000);
 
+  // Send commands information
+  try {
+    const categories = readdirSync("./source/commands/");
+
+    categories.forEach((category) => {
+      const directory = client.commands.filter(dirs => dirs.category.toLowerCase() === category.toLowerCase());
+      const categorize = category.slice(0, 1).toUpperCase() + category.slice(1);
+
+      if (!directory.size) return;
+
+      directory.map(pull => {
+        setDoc(doc(getFirestore(), "Information", "shioru"), {
+          "commands": {
+            [categorize]: {
+              [pull.name]: {
+                "name": pull.name || "",
+                "description": {
+                  "en-US": pull.function.command.data.description_localizations ? pull.function.command.data.description_localizations["en-US"] : "",
+                  "th": pull.function.command.data.description_localizations ? pull.function.command.data.description_localizations["th"] : ""
+                },
+                "category": pull.category || "",
+                "permissions": {
+                  "client": pull.permissions.client ? pull.permissions.client.map(String) : [],
+                  "user": pull.permissions.user ? pull.permissions.user.map(String) : []
+                },
+                "usage": pull.usage || "",
+                "aliases": pull.aliases || []
+              }
+            }
+          }
+        }, {
+          "merge": true
+        });
+      })
+    });
+  } catch (error) {
+    console.log(error)
+  }
+
   // Setup bot activity.
   const commandSize = client.commands.size;
   const guildSize = client.guilds.cache.size;
@@ -77,7 +118,7 @@ module.exports = async (client) => {
         "type": ActivityType.Streaming
       },
       {
-        "name": "Shelp | /help",
+        "name": "/help",
         "type": ActivityType.Watching
       },
       {
