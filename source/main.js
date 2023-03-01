@@ -29,8 +29,8 @@ const textFormat = asciiArt.replace("%s1", "v")
     .replace("%s6", version.charAt(4));
 
 console.info(blueBrightColor + textFormat + clearStyle);
-console.info(whiteColor + "Copyright (C) 2020-2022 Chaiwat Suwannarat. All rights reserved." + clearStyle);
-console.info(whiteColor + "Website: https://shiorus.web.app/\n" + clearStyle);
+console.info(whiteColor + "Copyright (C) 2020-2023 Chaiwat Suwannarat. All rights reserved." + clearStyle);
+console.info(whiteColor + "Website: https://shiorus.web.app/ License: MIT\n" + clearStyle);
 
 // ? Check the work system from the script in packages.json.
 // Example of use in development mode: npm run dev
