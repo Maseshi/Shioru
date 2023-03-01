@@ -20,8 +20,6 @@ module.exports = {
         "enable": true
     },
     "owner": "618836889239158785",
-    "prefix": "S",
-    "recursive": 3,
     "server": {
         "apiKey": process.env.API_KEY || $API_KEY,
         "authDomain": process.env.AUTH_DOMAIN || $AUTH_DOMAIN,
