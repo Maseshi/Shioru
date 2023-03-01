@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "private": true,
   "main": "./source/main.js",
@@ -18,21 +18,21 @@
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.13.0",
     "@distube/soundcloud": "^1.3.0",
-    "@distube/spotify": "^1.4.2",
+    "@distube/spotify": "^1.5.1",
     "@distube/yt-dlp": "^1.1.3",
     "@distube/ytdl-core": "^4.11.7",
-    "@vitalets/google-translate-api": "^9.0.0",
+    "@vitalets/google-translate-api": "^9.1.0",
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
-    "firebase": "^9.15.0",
+    "firebase": "^9.17.1",
     "lyrics-finder": "^21.7.0",
-    "minecraft-server-util": "^5.3.1",
-    "node-fetch": "^2.6.7",
+    "minecraft-server-util": "^5.4.0",
+    "node-fetch": "^2.6.9",
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
-    "systeminformation": "^5.16.5",
+    "systeminformation": "^5.17.12",
     "twemoji-parser": "^14.0.0",
     "weather-js": "^2.0.0"
   },
@@ -43,7 +43,7 @@
     "bufferutil": "^4.0.7",
     "erlpack": "^0.1.4",
     "utf-8-validate": "^5.0.10",
-    "zlib-sync": "^0.1.7"
+    "zlib-sync": "^0.1.8"
   },
   "engines": {
     "node": ">=18.0.0"
