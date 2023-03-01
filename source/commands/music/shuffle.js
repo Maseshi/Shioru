@@ -1,34 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "shuffle",
     "description": "Shuffle queue",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "shuffle",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "shuffle",
-    "aliases": ["shf", "สับเปลี่ยน", "สลับ", "เปลี่ยน"],
-    async execute(client, message, args) {
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.shuffle.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.shuffle.not_owner);
-
-        client.music.shuffle(message);
-        message.channel.send(client.translate.commands.shuffle.now_shuffle);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

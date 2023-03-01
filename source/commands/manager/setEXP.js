@@ -2,6 +2,7 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
+    "enable": true,
     "name": "setEXP",
     "description": "Set the members' experience.",
     "category": "manager",
@@ -11,68 +12,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.ManageGuild
         ]
+    },
+    "usage": "setEXP <member: id, username, tag> <amount>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "setEXP <member: id, username, tag> <amount>",
-    "aliases": ["setexp", "sexp", "ตั้งค่าEXP", "ตั้งค่าExp"],
-    async execute(client, message, args) {
-        const inputMember = args[0];
-        const inputAmount = parseInt(args.slice(1).join(" "));
-
-        if (!inputMember) return message.reply(client.translate.commands.setEXP.empty);
-        if (!inputAmount) return message.reply(client.translate.commands.setEXP.amount_empty);
-
-        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-
-        if (!member) return message.reply(client.translate.commands.setEXP.can_not_find_user);
-
-        const memberAvatar = member.user.avatarURL();
-        const memberUsername = member.user.username;
-        const memberID = member.user.id;
-
-        const data = await levelSystem(client, message, "PUT", memberID, inputAmount);
-
-        const exp = data.exp;
-        const level = data.level;
-        const notify = data.notify;
-        const status = data.status;
-
-        if (status === "error") return message.reply(client.translate.commands.setEXP.error);
-        if (notify) {
-            const setEXPEmbed = new EmbedBuilder()
-                .setDescription(client.translate.commands.setEXP.exp_was_changed.replace("%s", memberUsername))
-                .setColor("Blue")
-                .setThumbnail(memberAvatar)
-                .setFooter({ "text": client.translate.commands.setEXP.set_by_staff, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/pencil_270f.png" })
-                .addFields(
-                    [
-                        {
-                            "name": client.translate.commands.setEXP.level,
-                            "value": "```" + level + "```"
-                        },
-                        {
-                            "name": client.translate.commands.setEXP.experience,
-                            "value": "```" + exp + "```"
-                        }
-                    ]
-                );
-
-            await notify.send({ "embeds": [setEXPEmbed] });
-            message.channel.send(client.translate.commands.setEXP.notification_complete);
-        } else {
-            message.channel.send(client.translate.commands.setEXP.success);
-        }
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

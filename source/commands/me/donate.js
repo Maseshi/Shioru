@@ -1,6 +1,7 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
 
 module.exports = {
+    "enable": true,
     "name": "donate",
     "description": "Donate to support bots and bot developers.",
     "category": "me",
@@ -9,40 +10,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.EmbedLinks
         ]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "donate",
-    "aliases": ["support"],
-    async execute(client, message, args) {
-        const patreon = "https://www.patreon.com/maseshi";
-        const bmc = "https://www.buymeacoffee.com/maseshi";
-        const row = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setURL(patreon)
-                    .setLabel('Patreon')
-                    .setStyle(ButtonStyle.Link),
-                new ButtonBuilder()
-                    .setURL(bmc)
-                    .setLabel('Buy me a coffee')
-                    .setStyle(ButtonStyle.Link)
-            );
-
-        message.channel.send({
-            "content": client.translate.commands.donate.thank_you_in_advance_message,
-            "components": [row]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

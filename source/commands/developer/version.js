@@ -2,34 +2,20 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { version } = require('../../../package.json');
 
 module.exports = {
+    "enable": true,
     "name": "version",
     "description": "Check the current bot version.",
     "category": "developer",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "version",
-    "aliases": ["v", "เวอร์ชั่น"],
-    async execute(client, message, args) {
-        const versionEmbed = new EmbedBuilder()
-            .setDescription(client.translate.commands.version.working_in_version.replace("%s", version))
-            .setColor("Green");
-
-        message.channel.send({
-            "embeds": [versionEmbed]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -51,4 +37,4 @@ module.exports.interaction.slash = {
             "embeds": [versionEmbed]
         });
     }
-};
+}

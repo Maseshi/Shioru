@@ -2,51 +2,20 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { StreamType } = require("distube");
 
 module.exports = {
+    "enable": true,
     "name": "quality",
     "description": "Try this command if you have sound problems or people with poor internet connection.",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "quality <options: 0, 1>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "quality <options: 0, 1>",
-    "aliases": ["คุณภาพ", "ql"],
-    async execute(client, message, args) {
-        const inputOption = args[0];
-
-        const quality = client.music.options.streamType === 0 ? client.translate.commands.quality.focus_on_high_quality : client.translate.commands.quality.low_efficiency;
-        const adviceEmbed = new EmbedBuilder()
-            .setTitle(client.translate.commands.quality.advice_embed_title)
-            .setDescription(client.translate.commands.quality.advice_embed_description.replace("%s", quality))
-            .setFooter({ "text": client.translate.commands.quality.advice_embed_footer_text, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/light-bulb_1f4a1.png" })
-            .setColor("Blue")
-            .setTimestamp();
-
-        if (!inputOption) return message.reply({ "embeds": [adviceEmbed] });
-
-        switch (inputOption) {
-            case "0":
-                client.music.options.streamType = StreamType.OPUS;
-                message.channel.send(client.translate.commands.quality.opus_mode_selected);
-                break;
-            case "1":
-                client.music.options.streamType = StreamType.RAW;
-                message.channel.send(client.translate.commands.quality.raw_mode_selected);
-                break;
-            default:
-                message.reply({ "embeds": [adviceEmbed] });
-        }
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

@@ -2,72 +2,21 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, update } = require("firebase/database");
 
 module.exports = {
+    "enable": true,
     "name": "setLanguage",
     "description": "Sets language for the bot.",
     "category": "settings",
     "permissions": {
         "user": [PermissionsBitField.Flags.ManageGuild],
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "setLanguage [option: set] <value>",
-    "aliases": ["setlanguage", "lang", "ภาษา"],
-    async execute(client, message, args) {
-        const input = args.join(" ");
-        const inputOption = args[0] ? args[0].toLowerCase() : "";
-        const inputValue = args[1] ? args[1].toLowerCase() : "";
-    
-        const guildID = message.guild.id;
-        const prefix = client.config.prefix;
-        const lang = client.config.language.code;
-        const support = client.config.language.support;
-        const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
-    
-        if (!input) {
-            const clientFetch = await client.user.fetch();
-            const clientColor = clientFetch.accentColor;
-            const noInputEmbed = new EmbedBuilder()
-                .setTitle(client.translate.commands.setLanguage.title)
-                .setDescription(
-                    client.translate.commands.setLanguage.description
-                        .replace("%s1", support[lang])
-                        .replace("%s2", (prefix + module.exports.command.usage))
-                        .replace("%s3", ("/" + module.exports.command.usage))
-                )
-                .setColor(clientColor)
-                .setTimestamp()
-                .setFooter({ "text": client.translate.commands.setLanguage.data_at })
-    
-            return message.channel.send({ "embeds": [noInputEmbed] });
-        }
-    
-        switch (inputOption) {
-            case "set":
-                if (!inputValue) return message.reply(client.translate.commands.setLanguage.empty_value);
-                if (inputValue === lang) return message.reply(client.translate.commands.setLanguage.already_set.replace("%s", support[inputValue]));
-                if (!Array.from(Object.keys(support)).includes(inputValue)) return message.reply(client.translate.commands.setLanguage.language_not_support.replace("%s1", inputValue).replace("%s2", Object.keys(support)));
-    
-                client.config.language.code = inputValue;
-                client.translate = require("../../languages/" + inputValue + ".json");
-    
-                set(languageRef, inputValue).then(() => {
-                    message.channel.send(client.translate.commands.setLanguage.set_success.replace("%s", support[inputValue]));
-                });
-                break;
-            default:
-                return message.reply(client.translate.commands.setLanguage.invalid_options.replace("%s", inputOption));
-        }
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -139,7 +88,6 @@ module.exports.interaction.slash = {
         const inputValue = interaction.options.get("value");
 
         const guildID = interaction.guild.id;
-        const prefix = interaction.client.config.prefix;
         const lang = interaction.client.config.language.code;
         const support = interaction.client.config.language.support;
         const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
@@ -152,8 +100,7 @@ module.exports.interaction.slash = {
                 .setDescription(
                     interaction.client.translate.commands.setLanguage.description
                         .replace("%s1", support[lang])
-                        .replace("%s2", (prefix + module.exports.command.usage))
-                        .replace("%s3", ("/" + module.exports.command.usage))
+                        .replace("%s2", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()

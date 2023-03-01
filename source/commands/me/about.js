@@ -1,41 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+	"enable": true,
 	"name": "about",
 	"description": "See information about bots.",
 	"category": "me",
 	"permissions": {
 		"client": [PermissionsBitField.Flags.SendMessages]
-	}
-};
-
-module.exports.command = {
-	"enable": true,
+	},
 	"usage": "about",
-	"aliases": ["information", "botinfo", "เกี่ยวกับ", "เกี่ยวกับบอท"],
-	async execute(client, message, args) {
-		const clientFetch = await client.user.fetch();
-		const clientAvatar = client.user.avatarURL();
-		const clientUsername = client.user.username;
-		const clientColor = clientFetch.accentColor;
-		const contentUpdate = client.config.update;
-		const aboutEmbed = new EmbedBuilder()
-			.setTitle(client.translate.commands.about.my_profile)
-			.setDescription(client.translate.commands.about.my_profile_detail.replace("%s", clientUsername))
-			.setColor(clientColor)
-			.setTimestamp(new Date(contentUpdate))
-			.setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
-			.setFooter({ "text": client.translate.commands.about.update_on, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/fountain-pen_1f58b-fe0f.png" });
-
-		message.channel.send({ "embeds": [aboutEmbed] });
-	}
-}
-
-module.exports.interaction = {
-	"enable": true
+    "function": {
+        "command": {}
+    }
 };
 
-module.exports.interaction.slash = {
+module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

@@ -1,7 +1,8 @@
-const { ChannelType, PermissionsBitField } = require("discord.js");
+const { PermissionsBitField } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
+    "enable": true,
     "name": "together",
     "description": "Run a specific emulator through the audio channel.",
     "category": "games",
@@ -11,85 +12,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.UseEmbeddedActivities
         ]
+    },
+    "usage": "together <name> (channel: name, id)",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "together <name> (channel: name, id)",
-    "aliases": ["tg"],
-    async execute(client, message, args) {
-        const inputName = args[0];
-        const inputChannel = args.slice(1).join(" ");
-
-        const token = client.config.token;
-        let voiceChannel = message.member.voice.channel;
-        const apps = {
-            "youtube": "880218394199220334",
-            "youtubedev": "880218832743055411",
-            "poker": "755827207812677713",
-            "betrayal": "773336526917861400",
-            "fishing": "814288819477020702",
-            "chess": "832012774040141894",
-            "chessdev": "832012586023256104",
-            "lettertile": "879863686565621790",
-            "wordsnack": "879863976006127627",
-            "doodlecrew": "878067389634314250",
-            "awkword": "879863881349087252",
-            "spellcast": "852509694341283871",
-            "checkers": "832013003968348200",
-            "puttparty": "763133495793942528",
-            "sketchheads": "902271654783242291",
-            "blazing8s": "832025144389533716",
-            "puttpartyqa": "945748195256979606",
-            "sketchyartist": "879864070101172255",
-            "land": "903769130790969345",
-            "meme": "950505761862189096",
-            "askaway": "976052223358406656",
-            "bobble": "947957217959759964"
-        };
-        const list = Object.keys(apps);
-
-        if (!inputName) return message.reply(client.translate.commands.together.empty.replace("%s", list));
-        if (!list.includes(inputName.toLowerCase())) return message.reply(client.translate.commands.together.do_not_have.replace("%s1", inputName).replace("%s2", list.length).replace("%s3", list));
-        if (!inputChannel) {
-            if (!voiceChannel) return message.reply(client.translate.commands.together.user_not_in_channel);
-        } else {
-            voiceChannel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
-
-            if (voiceChannel.type === ChannelType.GuildText) return message.reply(client.translate.commands.together.not_in_text_channel);
-            if (!voiceChannel) return message.reply(client.translate.commands.together.voice_channel_not_found);
-        }
-
-        fetch("https://discord.com/api/v10/channels/" + voiceChannel.id + "/invites", {
-            "method": "POST",
-            "body": JSON.stringify({
-                "max_age": 86400,
-                "max_uses": 0,
-                "target_application_id": apps[inputName],
-                "target_type": 2,
-                "temporary": false,
-                "validate": null,
-            }),
-            "headers": {
-                "Authorization": "Bot " + token,
-                "Content-Type": "application/json",
-            }
-        })
-            .then((res) => res.json())
-            .then((invite) => {
-                if (!invite.code) return message.reply(client.translate.commands.together.can_not_open.replace("%s", inputName));
-
-                message.channel.send(client.translate.commands.together.join_via_this_link + invite.code);
-            });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "description": module.exports.description,
@@ -273,9 +203,10 @@ module.exports.interaction.slash = {
         })
             .then((res) => res.json())
             .then(async (invite) => {
-                if (!invite.code) return await interaction.editReply(interaction.client.translate.commands.together.can_not_open.replace("%s", inputName));
+                if (invite.error || !invite.code) return await interaction.editReply(interaction.client.translate.commands.together.can_not_open.replace("%s", inputName));
+                if (Number(invite.code) === 50013) return await interaction.editReply(interaction.client.translate.commands.together.do_not_have_permission);
 
                 await interaction.editReply(interaction.client.translate.commands.together.join_via_this_link + invite.code);
             });
     }
-};
+}

@@ -1,41 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "numbers",
     "description": "Random number.",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "numbers <min> <max>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "numbers <min> <max>",
-    "aliases": ["randomnumbers", "randomnumber", "number", "สุ่มเลข"],
-    async execute(client, message, args) {
-        let inputMin = parseInt(args[0]);
-        let inputMax = parseInt(args[1]);
-    
-        if (inputMin > inputMax) {
-            const temp = inputMax;
-            inputMax = inputMin;
-            inputMin = temp;
-        }
-    
-        const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
-    
-        if (!result) return message.reply(client.translate.commands.numbers.empty);
-    
-        message.channel.send(client.translate.commands.numbers.result.replace("%s", result));
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -85,8 +64,6 @@ module.exports.interaction.slash = {
         }
 
         const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
-
-        if (!result) return await interaction.editReply(interaction.client.translate.commands.numbers.empty);
 
         await interaction.editReply(interaction.client.translate.commands.numbers.result.replace("%s", result));
     }

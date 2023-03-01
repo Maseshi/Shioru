@@ -1,42 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "kill",
     "description": "Fake messages that say you will kill something.",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "kill <name>",
-    "aliases": ["kia", "ฆ่า"],
-    async execute(client, message, args) {
-        const inputName = args.join(" ");
-
-        if (!inputName) return message.reply(client.translate.commands.kill.empty);
-
-        const authorUsername = message.author.username;
-        const clientUsername = client.user.username;
-        const killEmbed = new EmbedBuilder()
-            .setDescription(client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName))
-            .setColor("Default");
-
-        if (inputName === clientUsername) return message.reply(client.translate.commands.kill.do_not_kill_me);
-
-        message.channel.send({
-            "embeds": [killEmbed]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

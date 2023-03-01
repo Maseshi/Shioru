@@ -2,84 +2,20 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
+    "enable": true,
     "name": "levelingBoard",
     "description": "See the ranking of people with the most EXP and Level on the server.",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "levelingBoard",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "levelingBoard",
-    "aliases": ["คะแนนเลเวล", "เลเวลผู้นำ", "levelingboard", "lboard", "levelingb", "lb"],
-    async execute(client, message, args) {
-        const map = [];
-        const max = 10;
-        const snapshot = await levelSystem(client, message, "GET/ALL");
-
-        if (!snapshot) return message.channel.send(client.translate.commands.levelingBoard.no_info);
-
-        for (const users in snapshot) {
-            const member = message.guild.members.cache.find(members => (members.id === users));
-
-            if (member) {
-                if (!member.user.bot) {
-                    const leveling = snapshot[member.user.id].leveling;
-
-                    if (leveling) {
-                        const exp = leveling.exp;
-                        const level = leveling.level;
-
-                        map.push({
-                            "data": {
-                                "exp": exp,
-                                "level": level,
-                                "avatar": member.user.displayAvatarURL()
-                            },
-                            "name": member.user.username,
-                            "value": client.translate.commands.levelingBoard.leveling_detail.replace("%s1", exp).replace("%s2", level)
-                        });
-                    }
-                }
-            }
-        }
-
-        map.sort((userA, userB) => userB.data.level - userA.data.level || userB.data.exp - userA.data.exp);
-
-        const userAvatar = map[0].data.avatar;
-
-        for (let i = 0; i < map.length; i++) {
-            if (!map[i]) return;
-            if (i === max) return;
-
-            delete map[i].data;
-            map[i].name = (i + 1) + ". " + map[i].name;
-        }
-
-        const clientColor = message.guild.members.me.displayHexColor;
-        const clientAvatar = client.user.avatarURL();
-        const clientUsername = client.user.username;
-        const embed = new EmbedBuilder()
-            .setColor(clientColor)
-            .setTitle(client.translate.commands.levelingBoard.server_rank)
-            .setAuthor({ "name": clientUsername, "iconURL": clientAvatar })
-            .setThumbnail(userAvatar)
-            .setDescription(client.translate.commands.levelingBoard.server_rank_description)
-            .addFields(map)
-            .setTimestamp()
-            .setFooter({ "text": client.translate.commands.levelingBoard.server_rank_tips, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/electric-light-bulb_1f4a1.png" });
-
-        message.channel.send({ "embeds": [embed] });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -151,4 +87,4 @@ module.exports.interaction.slash = {
 
         await interaction.editReply({ "embeds": [embed] });
     }
-};
+}

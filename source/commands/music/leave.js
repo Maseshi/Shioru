@@ -1,38 +1,20 @@
 const { PermissionsBitField } = require("discord.js")
 
 module.exports = {
+	"enable": true,
 	"name": "leave",
 	"description": "Exits the current audio channel.",
 	"category": "music",
 	"permissions": {
 		"client": [PermissionsBitField.Flags.SendMessages]
-	}
-};
-
-module.exports.command = {
-	"enable": true,
+	},
 	"usage": "leave",
-	"aliases": ["l", "dc", "dis", "disconnect", "ออก", "ออกจาก"],
-	async execute(client, message, args) {
-		const queue = client.music.getQueue(message);
-
-		const meChannel = message.guild.members.me.voice.channel;
-
-		if (queue && message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.leave.another_player_is_playing);
-		if (!meChannel) return message.reply(client.translate.commands.leave.not_in_any_channel);
-
-		const connection = client.music.voices.get(meChannel.guild);
-
-		connection.leave(meChannel.guild);
-		message.channel.send(client.translate.commands.leave.now_leave);
-	}
-}
-
-module.exports.interaction = {
-	"enable": true
+    "function": {
+        "command": {}
+    }
 };
 
-module.exports.interaction.slash = {
+module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

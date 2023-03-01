@@ -1,53 +1,21 @@
-const { ChannelType, PermissionsBitField } = require("discord.js")
+const { PermissionsBitField } = require("discord.js")
 
 module.exports = {
+    "enable": true,
     "name": "say",
     "description": "Let the bot print instead",
     "category": "me",
     "permissions": {
         "user": [PermissionsBitField.Flags.ManageMessages],
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "say (channel: name, id) <text>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "say (channel: name, id) <text>",
-    "aliases": ["s", "พูด", "ส่งข้อความ"],
-    async execute(client, message, args) {
-        const inputChannel = args[0];
-        const inputText = args.slice(1).join(" ");
-        const textChannel = [ChannelType.GuildText, ChannelType.GuildCategory, ChannelType.GuildNews, ChannelType.GuildNewsThread, ChannelType.GuildPublicThread, ChannelType.GuildPrivateThread, ChannelType.GuildForum];
-        const channel = message.guild.channels.cache.find(channels => (channels.id === inputChannel) || (channels.name === inputChannel));
-    
-        if (!channel) {
-            if (!args.join(" ")) return message.reply(client.translate.commands.say.empty);
-    
-            await message.delete();
-            await message.channel.send(args.join(" "));
-            message.reply({
-                "content": client.translate.commands.say.success,
-                "ephemeral": true
-            });
-        } else {
-            if (!inputText) return message.reply(client.translate.commands.say.empty);
-            if (channel.type === textChannel) return message.reply(client.translate.commands.say.invalid_type);
-    
-            await message.delete();
-            await channel.send(inputText);
-            message.reply({
-                "content": client.translate.commands.say.success,
-                "ephemeral": true
-            });
-        }
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -99,8 +67,6 @@ module.exports.interaction.slash = {
         const inputChannel = interaction.options.get("channel");
 
         if (!inputChannel) {
-            if (!inputText) return await interaction.editReply(interaction.client.translate.commands.say.empty);
-
             await interaction.editReply(inputText);
             await interaction.followUp({
                 "content": interaction.client.translate.commands.say.success,

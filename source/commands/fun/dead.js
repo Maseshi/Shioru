@@ -1,35 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "dead",
     "description": "Fake message that says you commit suicide.",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "dead",
-    "aliases": ["die", "dead", "ตาย", "เสียชีวิต"],
-    async execute(client, message, args) {
-        const authorUsername = message.author.username;
-        const deadEmbed = new EmbedBuilder()
-            .setDescription(client.translate.commands.dead.suicide.replace("%s", authorUsername))
-            .setColor("Default");
-
-        message.channel.send({
-            "embeds": [deadEmbed]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -52,4 +37,4 @@ module.exports.interaction.slash = {
             "embeds": [deadEmbed]
         });
     }
-};
+}

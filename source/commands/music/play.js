@@ -2,6 +2,7 @@ const { PermissionsBitField } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
+    "enable": true,
     "name": "play",
     "description": "Sing to listen",
     "category": "music",
@@ -12,40 +13,14 @@ module.exports = {
             PermissionsBitField.Flags.Speak,
             PermissionsBitField.Flags.Connect
         ]
+    },
+    "usage": "play <source: name, id, link>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "play <source: name, id, link>",
-    "aliases": ["เล่น", "p", "เพลง"],
-    async execute(client, message, args) {
-        const inputSource = args.join(" ");
-        const voiceChannel = message.member.voice.channel;
-
-        if (!inputSource) return message.reply(client.translate.commands.play.no_song_input);
-        if (!voiceChannel) return message.reply(client.translate.commands.play.not_in_channel);
-
-        try {
-            client.music.play(voiceChannel, inputSource, {
-                "member": message.member,
-                "textChannel": message.channel,
-                message
-            });
-        } catch (error) {
-            const connection = client.music.voices.get(voiceChannel.guild);
-
-            connection.leave(voiceChannel.guild);
-            catchError(client, message, module.exports.name, error);
-        }
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

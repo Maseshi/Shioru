@@ -1,34 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "stop",
     "description": "Stop playing current song",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "stop",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "stop",
-    "aliases": ["st", "หยุด", "หยุดเล่น"],
-    async execute(client, message, args) {
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.stop.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.stop.not_owner);
-
-        client.music.stop(message);
-        message.channel.send(client.translate.commands.stop.stopped);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

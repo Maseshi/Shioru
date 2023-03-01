@@ -1,6 +1,7 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "unban",
     "description": "Stop banning members who are banned in the server.",
     "category": "manager",
@@ -10,58 +11,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.BanMembers
         ]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "unban <member: id, username, tag> (reason)",
-    "aliases": ["unb", "ปลดแบน"],
-    async execute(client, message, args) {
-        const inputMember = args[0];
-        let inputReason = args.slice(1).join(" ");
-
-        if (!inputMember) return message.reply(client.translate.commands.unban.input_member_empty);
-
-        const banned = await message.guild.bans.fetch();
-
-        if (banned.length <= 0) return message.reply(client.translate.commands.unban.no_one_gets_banned);
-
-        const bannedUser = banned.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-
-        if (!bannedUser) return message.reply(client.translate.commands.unban.this_user_not_banned);
-        if (!inputReason) inputReason = "";
-
-        message.guild.bans.remove(bannedUser.user, {
-            "reason": inputReason
-        }).then(() => {
-            const authorUsername = message.author.username;
-            const memberUsername = bannedUser.user.username;
-            const memberID = bannedUser.user.id;
-            const memberAvatar = bannedUser.user.avatar;
-            const memberAvatarURL = "https://cdn.discordapp.com/avatars/" + memberID + "/" + memberAvatar + ".png";
-
-            if (!inputReason) inputReason = client.translate.commands.unban.no_reason;
-
-            const unbanEmbed = new EmbedBuilder()
-                .setTitle(client.translate.commands.unban.user_has_been_unbanned.replace("%s", memberUsername))
-                .setDescription(client.translate.commands.unban.reason_for_unban.replace("%s1", authorUsername).replace("%s2", inputReason))
-                .setColor("Green")
-                .setTimestamp()
-                .setThumbnail(memberAvatarURL);
-
-            message.channel.send({
-                "embeds": [unbanEmbed]
-            });
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

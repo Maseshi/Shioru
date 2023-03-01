@@ -2,6 +2,7 @@ const { PermissionsBitField } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
+	"enable": true,
 	"name": "purge",
 	"description": "Delete a lot of messages",
 	"category": "manager",
@@ -15,41 +16,14 @@ module.exports = {
 			PermissionsBitField.Flags.ReadMessageHistory,
 			PermissionsBitField.Flags.ManageMessages
 		]
-	}
-};
-
-module.exports.command = {
-	"enable": true,
+	},
 	"usage": "purge <amount>",
-	"aliases": ["clear", "messagedelete", "ลบข้อความ"],
-	async execute(client, message, args) {
-		let messageCount = parseInt(args[0]);
-
-		if (!messageCount) return message.reply(client.translate.commands.purge.purge_instructions);
-		if (messageCount > 100) return message.reply(client.translate.commands.purge.too_much);
-		if (messageCount <= 0) return message.reply(client.translate.commands.purge.too_little);
-
-		message.channel.messages.fetch({
-			"limit": 1
-		}).then((previousMessages) => {
-			message.channel.messages.fetch({
-				"limit": messageCount,
-				"before": previousMessages.first().id
-			}).then(async (messages) => {
-				await message.channel.bulkDelete(messages, true);
-				message.channel.send(client.translate.commands.purge.message_cleared.replace("%s", messages.size));
-			}).catch((error) => {
-				catchError(client, message, module.exports.name, error);
-			});
-		});
-	}
-}
-
-module.exports.interaction = {
-	"enable": true
+    "function": {
+        "command": {}
+    }
 };
 
-module.exports.interaction.slash = {
+module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {

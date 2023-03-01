@@ -2,6 +2,7 @@ const { parseEmoji, PermissionsBitField } = require('discord.js');
 const { parse } = require("twemoji-parser");
 
 module.exports = {
+    "enable": true,
     "name": "bigEmoji",
     "description": "Enlarge the emoji.",
     "category": "fun",
@@ -10,41 +11,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.EmbedLinks
         ]
+    },
+    "usage": "bigEmoji <emoji>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "bigEmoji <emoji>",
-    "aliases": ["bigemoji", "enlarge", "ขยาย"],
-    async execute(client, message, args) {
-        const inputEmoji = args[0];
-    
-        if (!inputEmoji) return message.reply(client.translate.commands.bigemoji.empty_value);
-    
-        const custom = parseEmoji(inputEmoji);
-    
-        if (custom.id) {
-            const baseURL = "https://cdn.discordapp.com/emojis/";
-            const file = custom.id + "." + custom.animated ? "gif" : "png";
-            const emojiURL = baseURL + file;
-    
-            return message.channel.send({ "files": [emojiURL] });
-        }
-    
-        const parsed = parse(inputEmoji, { "assetType": "png" });
-    
-        if (!parsed[0]) return message.reply(client.translate.commands.bigemoji.emoji_not_found);
-    
-        message.channel.send({ "files": [parsed[0].url] });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -75,7 +49,7 @@ module.exports.interaction.slash = {
         const inputEmoji = interaction.options.get("emoji").value;
 
         const custom = parseEmoji(inputEmoji);
-        
+
         if (custom.id) {
             const baseURL = "https://cdn.discordapp.com/emojis/";
             const file = custom.id + "." + custom.animated ? "gif" : "png";
@@ -85,9 +59,9 @@ module.exports.interaction.slash = {
         }
 
         const parsed = parse(inputEmoji, { "assetType": "png" });
-        
-        if (!parsed[0]) return await interaction.editReply(interaction.client.translate.commands.bigemoji.emoji_not_found);
+
+        if (!parsed[0]) return await interaction.editReply(interaction.client.translate.commands.bigEmoji.emoji_not_found);
 
         await interaction.editReply({ "files": [parsed[0].url] });
     }
-};
+}

@@ -1,34 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "skip",
     "description": "Skip the currently playing song.",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "skip",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "skip",
-    "aliases": ["sk", "ข้าม"],
-    async execute(client, message, args) {
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.skip.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.skip.not_owner);
-
-        client.music.skip(message);
-        message.channel.send(client.translate.commands.skip.skipped);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

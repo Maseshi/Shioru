@@ -1,61 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "settings",
     "description": "See how to configure for each settings.",
     "category": "settings",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "settings",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "settings",
-    "aliases": ["config", "cf", "set", "ตั้งค่า", "การตั้งค่า"],
-    async execute(client, message, args) {
-        const prefix = client.config.prefix;
-        const clientFetch = await client.user.fetch();
-        const clientColor = clientFetch.accentColor;
-        const settingsEmbed = new EmbedBuilder()
-            .setTitle(client.translate.commands.settings.title)
-            .setDescription(client.translate.commands.settings.description)
-            .setColor(clientColor)
-            .setFooter({ "text": client.translate.commands.settings.note, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/microsoft/54/information-source_2139.png" })
-            .addFields(
-                [
-                    {
-                        "name": client.translate.commands.settings.prefix,
-                        "value": "```" + prefix + "prefix```\n```/prefix```",
-                        "inline": true
-                    },
-                    {
-                        "name": client.translate.commands.settings.languages,
-                        "value": "```" + prefix + "lang```\n```/lang```",
-                        "inline": true
-                    },
-                    {
-                        "name": client.translate.commands.settings.notification,
-                        "value": "```" + prefix + "notify```\n```/notify```",
-                        "inline": true
-                    },
-                    {
-                        "name": client.translate.commands.settings.personal,
-                        "value": "```" + prefix + "personal```\n```/personal```",
-                        "inline": true
-                    }
-                ]
-            );
-    
-        message.channel.send({ "embeds": [settingsEmbed] });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -69,7 +28,6 @@ module.exports.interaction.slash = {
         }
     },
     async execute(interaction) {
-        const prefix = interaction.client.config.prefix;
         const clientFetch = await interaction.client.user.fetch();
         const clientColor = clientFetch.accentColor;
         const settingsEmbed = new EmbedBuilder()
@@ -81,22 +39,22 @@ module.exports.interaction.slash = {
                 [
                     {
                         "name": interaction.client.translate.commands.settings.prefix,
-                        "value": "```" + prefix + "prefix```\n```/prefix```",
+                        "value": "```/prefix```",
                         "inline": true
                     },
                     {
                         "name": interaction.client.translate.commands.settings.languages,
-                        "value": "```" + prefix + "lang```\n```/lang```",
+                        "value": "```/lang```",
                         "inline": true
                     },
                     {
                         "name": interaction.client.translate.commands.settings.notification,
-                        "value": "```" + prefix + "notify```\n```/notify```",
+                        "value": "```/notify```",
                         "inline": true
                     },
                     {
                         "name": interaction.client.translate.commands.settings.personal,
-                        "value": "```" + prefix + "personal```\n```/personal```",
+                        "value": "```/personal```",
                         "inline": true
                     }
                 ]

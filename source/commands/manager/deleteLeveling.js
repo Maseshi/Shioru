@@ -2,6 +2,7 @@ const { PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
+    "enable": true,
     "name": "deleteLevel",
     "description": "Removing EXP and Level of members",
     "category": "manager",
@@ -11,37 +12,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.ManageGuild
         ]
+    },
+    "usage": "deleteLevel <member: id, username, tag>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "deleteLevel <member: id, username, tag>",
-    "aliases": ["dleveling", "dlevel", "delleveling", "dellevel", "deletelevel", "deleteleveling", "ลบระดับชั้น"],
-    async execute(client, message, args) {
-        const inputMember = args.join(" ");
-    
-        if (!inputMember) return message.reply(client.translate.commands.deleteLevel.empty);
-    
-        const member = message.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
-    
-        if (!member) return message.reply(client.translate.commands.deleteLevel.can_not_find_user);
-    
-        const memberID = member.user.id;
-        const msg = await message.reply(client.translate.commands.deleteLevel.deleting);
-        const data = await levelSystem(client, message, "DELETE", memberID);
-    
-        if (data === "missing") return message.reply(client.translate.commands.deleteLevel.user_current_no_level);
-        if (data === "success") return msg.edit(client.translate.commands.deleteLevel.success);
-        if (data === "error") return msg.edit(client.translate.commands.deleteLevel.error);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {

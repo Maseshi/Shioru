@@ -2,81 +2,21 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, update } = require("firebase/database");
 
 module.exports = {
+    "enable": true,
     "name": "setCommand",
     "description": "Set the bot prefix for the server.",
     "category": "settings",
     "permissions": {
         "user": [PermissionsBitField.Flags.ManageGuild],
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "setCommand <options: enable, disable> <command>",
-    "aliases": ["setcommand", "cmd", "คำสั่ง"],
-    async execute(client, message, args) {
-        const input = args.join(" ");
-        const inputOption = args[0] ? args[0].toLowerCase() : "";
-        const inputCommand = args[1];
-
-        let commands;
-        const guildID = message.guild.id;
-        const prefix = client.config.prefix;
-        const commandsRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "commands");
-
-        if (!input) {
-            const clientFetch = await client.user.fetch();
-            const clientColor = clientFetch.accentColor;
-            const noInputEmbed = new EmbedBuilder()
-                .setTitle("🪄 คำสั่ง")
-                .setDescription(
-                    client.translate.commands.setCommand.description
-                        .replace("%s1", client.commands.size)
-                        .replace("%s2", client.commands.map(dirs => dirs.command.enable ? "`" + dirs.name + "`" : "||" + dirs.name + "||").join(", "))
-                        .replace("%s3", (prefix + module.exports.command.usage))
-                        .replace("%s4", ("/" + module.exports.command.usage))
-                )
-                .setColor(clientColor)
-                .setTimestamp()
-                .setFooter({ "text": client.translate.commands.setCommand.data_at });
-
-            return message.channel.send({
-                "embeds": [noInputEmbed]
-            });
-        }
-        if (!inputCommand) return message.reply(client.translate.commands.setCommand.command_input_empty);
-        if (inputCommand.toLowerCase() === module.exports.name.toLowerCase()) return message.reply(client.translate.commands.setCommand.can_not_manage_this_command);
-        if (client.commands.has(inputCommand)) commands = client.commands.get(inputCommand);
-        if (client.aliases.has(inputCommand)) commands = client.commands.get(client.aliases.get(inputCommand));
-        if (!commands) return message.reply(client.translate.commands.setCommand.command_not_found);
-
-        switch (inputOption) {
-            case "enable":
-                commands.command.enable = true;
-
-                update(child(commandsRef, inputCommand), true).then(() => {
-                    message.channel.send(client.translate.commands.setCommand.enabled.replace("%s", inputCommand));
-                });
-                break;
-            case "disable":
-                commands.command.enable = false;
-
-                update(child(commandsRef, inputCommand), false).then(() => {
-                    message.channel.send(client.translate.commands.setCommand.disabled.replace("%s", inputCommand));
-                });
-                break;
-            default:
-                return message.reply(client.translate.commands.setCommand.invalid_option.replace("%s", inputOption));
-        }
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -161,24 +101,22 @@ module.exports.interaction.slash = {
 
         let commands;
         const guildID = interaction.guild.id;
-        const prefix = interaction.client.config.prefix;
         const commandsRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "commands");
 
         if (subCommand === "info") {
             const clientFetch = await interaction.client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const noInputEmbed = new EmbedBuilder()
-                .setTitle("🪄 คำสั่ง")
+                .setTitle(interaction.client.translate.commands.setCommand.title)
                 .setDescription(
                     interaction.client.translate.commands.setCommand.description
                         .replace("%s1", interaction.client.commands.size)
                         .replace("%s2", interaction.client.commands.map(dirs => dirs.command.enable ? "`" + dirs.name + "`" : "||" + dirs.name + "||").join(", "))
-                        .replace("%s3", (prefix + module.exports.command.usage))
-                        .replace("%s4", ("/" + module.exports.command.usage))
+                        .replace("%s3", ("/" + module.exports.command.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
-                .setFooter({ "text": "ข้อมูลของเมื่อ" });
+                .setFooter({ "text": interaction.client.translate.commands.setCommand.data_at });
 
             return interaction.editReply({ "embeds": [noInputEmbed] });
         }

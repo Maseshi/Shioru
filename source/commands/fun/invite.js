@@ -1,6 +1,7 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+	"enable": true,
 	"name": "invite",
 	"description": "Create and receive invitation links to join the server.",
 	"category": "fun",
@@ -10,34 +11,14 @@ module.exports = {
 			PermissionsBitField.Flags.SendMessages,
 			PermissionsBitField.Flags.CreateInstantInvite
 		]
-	}
-}
-
-module.exports.command = {
-	"enable": true,
+	},
 	"usage": "invite",
-	"aliases": ["เชิญ"],
-	async execute(client, message, args) {
-		message.channel.createInvite().then((invite) => {
-			const guildIcon = message.guild.iconURL();
-			const inviteEmbed = new EmbedBuilder()
-				.setTitle(client.translate.commands.invite.membership_invitation_card)
-				.setDescription("||" + invite.url + "||")
-				.setColor("LightGrey")
-				.setFooter({ "text": client.translate.commands.invite.this_product_is_free, "iconURL": guildIcon });
-
-			message.channel.send({
-				"embeds": [inviteEmbed]
-			});
-		});
-	}
+    "function": {
+        "command": {}
+    }
 }
 
-module.exports.interaction = {
-	"enable": true
-};
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
@@ -64,4 +45,4 @@ module.exports.interaction.slash = {
 			});
 		});
 	}
-};
+}

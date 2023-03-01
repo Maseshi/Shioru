@@ -3,59 +3,20 @@ const { create } = require("sourcebin");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
+    "enable": true,
     "name": "paste",
     "description": "Paste the text in sourceb.in.",
     "category": "information",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "paste <title> <content>",
-    "aliases": ["วาง"],
-    async execute(client, message, args) {
-        const inputTitle = args.shift();
-        const inputContent = args.join(" ");
-    
-        if (!inputTitle) return message.reply(client.translate.commands.paste.title_empty);
-        if (!inputContent) return message.reply(client.translate.commands.paste.content_empty);
-    
-        let response;
-    
-        try {
-            response = await create(
-                [
-                    {
-                        "name": " ",
-                        "content": inputContent,
-                        "language": "text",
-                    },
-                ],
-                {
-                    "title": inputTitle,
-                    "description": " ",
-                }
-            );
-        } catch (error) {
-            return catchError(client, message, module.exports.help.name, error);
-        }
-    
-        if (!response) return message.reply(client.translate.commands.paste.backend_not_response);
-    
-        const url = response.url;
-        const raw = "https://cdn.sourceb.in/bins/" + response.key + "/0";
-    
-        message.channel.send(("**Sourcebin**\n🔸 " + client.translate.commands.paste.file + ": <%s1>\n🔹 " + client.translate.commands.paste.raw + ": <%s2>").replace("%s1", url).replace("%s2", raw));
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

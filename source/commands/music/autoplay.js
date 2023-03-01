@@ -1,35 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "autoplay",
     "description": "Turn on / off automatic music playing",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "autoplay",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "autoplay",
-    "aliases": ["เล่นอัตโนมัติ", "autop", "atplay", "atp"],
-    async execute(client, message, args) {
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.autoplay.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.autoplay.not_queue_owner);
-
-        const mode = client.music.toggleAutoplay(message);
-
-        message.channel.send(mode ? client.translate.commands.autoplay.on : client.translate.commands.autoplay.off);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

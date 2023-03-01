@@ -1,35 +1,20 @@
 const { PermissionsBitField } = require("discord.js")
 
 module.exports = {
+    "enable": true,
     "name": "pause",
     "description": "Temporarily stop playing songs in the queue.",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "pause",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "pause",
-    "aliases": ["pu", "หยุดชั่วคราว"],
-    async execute(client, message, args) {
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.pause.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.pause.not_owner);
-        if (queue.paused) return message.reply(client.translate.commands.pause.not_paused);
-
-        client.music.pause(message);
-        message.channel.send(client.translate.commands.pause.paused);
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

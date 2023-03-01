@@ -1,38 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "repeat",
     "description": "Toggle repeating playback mode.",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "repeat <mode: 0, 1, 2>",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "repeat <mode: 0, 1, 2>",
-    "aliases": ["loop", "วน", "ทำซ้ำ"],
-    async execute(client, message, args) {
-        const inputMode = parseInt(args[0]);
-        const queue = client.music.getQueue(message);
-
-        if (!queue) return message.reply(client.translate.commands.repeat.no_queue);
-        if (message.author.id !== queue.songs[0].user.id && queue.autoplay === false) return message.reply(client.translate.commands.repeat.not_owner);
-        if (!inputMode) return message.reply(client.translate.commands.repeat.repeat_guide);
-        if (inputMode <= 0) return message.reply(client.translate.commands.repeat.too_little);
-        if (inputMode >= 2) return message.reply(client.translate.commands.repeat.too_much);
-
-        const mode = client.music.setRepeatMode(message, inputMode);
-        message.channel.send(client.translate.commands.repeat.repeated.replace("%s", (mode ? mode == 2 ? client.translate.commands.repeat.repeat_queue : client.translate.commands.repeat.repeat_song : client.translate.commands.repeat.off)));
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

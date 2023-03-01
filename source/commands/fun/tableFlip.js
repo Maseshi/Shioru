@@ -1,42 +1,20 @@
 const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "tableFlip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
+    },
+    "usage": "tableFlip",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "tableFlip",
-    "aliases": ["tableflip", "tf", "ฟิบโต๊ะ"],
-    async execute(client, message, args) {
-        const frames = [
-            "(-°□°)-  ┬─┬",
-            "(╯°□°)╯    ]",
-            "(╯°□°)╯  ︵  ┻━┻",
-            "(╯°□°)╯       [",
-            "(╯°□°)╯           ┬─┬"
-        ];
-    
-        message.channel.send("(\\\\°□°)\\\\  ┬─┬").then((msg) => {
-            for (const frame of frames) {
-                setTimeout(() => {
-                    msg.edit(frame);
-                }, 1000);
-            }
-        });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name.toLowerCase(),
         "name_localizations": {
@@ -53,7 +31,7 @@ module.exports.interaction.slash = {
             "(╯°□°)╯       [",
             "(╯°□°)╯           ┬─┬"
         ];
-    
+
         await interaction.editReply("(\\\\°□°)\\\\  ┬─┬").then(() => {
             for (const frame of frames) {
                 setTimeout(async () => {
@@ -62,4 +40,4 @@ module.exports.interaction.slash = {
             }
         });
     }
-};
+}

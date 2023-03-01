@@ -1,6 +1,7 @@
 const { AttachmentBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "rip",
     "description": "Send RIP images",
     "category": "fun",
@@ -10,27 +11,14 @@ module.exports = {
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.AttachFiles
         ]
+    },
+    "usage": "rip",
+    "function": {
+        "command": {}
     }
 };
 
-module.exports.command = {
-    "enable": true,
-    "usage": "rip",
-    "aliases": ["rip", "อาร์ไอพี", "ลาก๋อย"],
-    async execute(client, message, args) {
-        const rip = new AttachmentBuilder("https://i.imgur.com/w3duR07.png");
-    
-        if (!rip) return message.reply(client.translate.commands.rip.no_image);
-    
-        message.channel.send({ "files": [rip] });
-    }
-}
-
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -50,4 +38,4 @@ module.exports.interaction.slash = {
 
         await interaction.editReply({ "files": [rip] });
     }
-};
+}

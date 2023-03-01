@@ -1,38 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "ping",
     "description": "Check the ping and api latency of the bot.",
     "category": "developer",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-};
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "ping",
-    "aliases": ["ปิง", "การเชื่อมต่อ"],
-    async execute(client, message, args) {
-        const msg = await message.channel.send(client.translate.commands.ping.waiting);
-        const ping = Math.round((msg.createdTimestamp - message.createdTimestamp) - client.ws.ping);
-        const api = Math.round(client.ws.ping);
-        const pingEmbed = new EmbedBuilder()
-            .setTitle(client.translate.commands.ping.connection)
-            .setDescription(client.translate.commands.ping.info.replace("%s1", ping).replace("%s2", api))
-
-        msg.edit({
-            "content": client.translate.commands.ping.result,
-            "embeds": [pingEmbed]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {

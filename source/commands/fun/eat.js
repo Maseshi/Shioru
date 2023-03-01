@@ -1,48 +1,20 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
+    "enable": true,
     "name": "eat",
     "description": "Fake text saying who you are eating.",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
-    }
-}
-
-module.exports.command = {
-    "enable": true,
+    },
     "usage": "eat <name>",
-    "aliases": ["e", "กิน"],
-    async execute(client, message, args) {
-        const inputName = args.join(" ");
-
-        if (!inputName) return message.reply(client.translate.commands.eat.empty);
-
-        const authorUsername = message.author.username;
-        const clientUsername = client.user.username;
-        const eatEmbed = new EmbedBuilder()
-            .setDescription(client.translate.commands.eat.already_eaten.replace("%s1", authorUsername).replace("%s2", inputName))
-            .setColor("Default");
-
-        if (inputName === clientUsername) {
-            return message.reply("...").then(() => {
-                setTimeout(() => {
-                    message.reply(client.translate.commands.eat.do_not_eat_me);
-                }, 8000);
-            });
-        }
-
-        message.channel.send({
-            "embeds": [eatEmbed]
-        });
+    "function": {
+        "command": {}
     }
 }
 
-module.exports.interaction = {
-    "enable": true
-}
-
-module.exports.interaction.slash = {
+module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
@@ -90,4 +62,4 @@ module.exports.interaction.slash = {
             "embeds": [eatEmbed]
         });
     }
-};
+}
