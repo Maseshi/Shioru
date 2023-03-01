@@ -7,7 +7,6 @@
     <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/v/release/Maseshi/Shioru?&style=for-the-badge">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
-    <img src="https://img.shields.io/github/workflow/status/Maseshi/Shioru/CodeQL?label=test&logo=circleci&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
     <a href="https://shioru.statuspage.io/">
         <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
@@ -16,7 +15,7 @@
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `Shelp` or `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
+Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
 
 ## Outstanding features
 
@@ -35,6 +34,7 @@ And many other interesting features...
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
 - [Firebase](https://firebase.google.com/) v9.0.0 or higher
+- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Quick setup guide
