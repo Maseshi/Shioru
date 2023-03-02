@@ -2,15 +2,19 @@
 const startTime = new Date().getTime();
 
 const { Client, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
-const { initializeApp } = require("firebase/app");
+const { readdirSync } = require("node:fs");
+const Spinnies = require("spinnies");
+
 const { DisTube, StreamType } = require("distube");
+const { DeezerPlugin } = require("@distube/deezer");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
-const { readdirSync } = require("node:fs");
+
+const { initializeApp } = require("firebase/app");
+
 const { version } = require("../package.json");
 const { asciiArt, ansiColor } = require("./utils/consoleUtils");
-const Spinnies = require("spinnies");
 const config = require("./configs/data");
 const language = require("./languages/en.json");
 
@@ -114,6 +118,7 @@ client.console = new Spinnies({
 client.translate = language;
 client.music = new DisTube(client, {
     "plugins": [
+        new DeezerPlugin(),
         new SpotifyPlugin(),
         new SoundCloudPlugin(),
         new YtDlpPlugin({ "update": false })
