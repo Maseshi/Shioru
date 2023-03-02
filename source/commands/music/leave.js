@@ -37,7 +37,7 @@ module.exports.function.command = {
 
 		const connection = interaction.client.music.voices.get(meChannel.guild);
 
-		connection.leave(meChannel.guild);
+		connection.leave();
 		await interaction.editReply(interaction.client.translate.commands.leave.now_leave);
 	}
 }
