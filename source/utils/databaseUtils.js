@@ -126,12 +126,13 @@ const chatSystem = async (client, message, mentioned, args) => {
     }
 };
 
-const levelSystem = async (client, message, method, arg, amount) => {
+const levelSystem = async (client, message, method, argument, amount) => {
     if (!client) return console.log("[levelSystem] Please configure CLIENT for localization (required).");
     if (!message) return console.log("[levelSystem] Please configure MESSAGE to make notifications and receive important basic information (required).");
     if (!method) return console.log("[levelSystem] Please specify a method to continue. (required).");
 
-    const userID = method.includes(["GET", "DELETE"]) ? arg : message.user.id;
+    const authorID = message.author ? message.author.id : message.user.id;
+    const userID = method.includes(["GET", "DELETE"]) ? argument : authorID;
     const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), message.guild.id);
     const guildUserRef = child(ref(getDatabase(), "projects/shioru/users"), userID);
     const guildUserSnapshot = client.api.users[userID];
@@ -203,10 +204,10 @@ const levelSystem = async (client, message, method, arg, amount) => {
                 }
                 return GETData;
             case "POST":
-                if (!arg) return console.log("[levelSystem/POST] Please specify the amount of experience.");
+                if (!argument) return console.log("[levelSystem/POST] Please specify the amount of experience.");
 
                 update(child(guildUserRef, "leveling"), {
-                    "exp": (exp += arg)
+                    "exp": (exp += argument)
                 });
                 break;
             case "PUT":
@@ -215,7 +216,7 @@ const levelSystem = async (client, message, method, arg, amount) => {
                 let alert = await notification(message);
 
                 try {
-                    await update(child(child(ref(getDatabase(), "projects/shioru/users"), arg), "leveling"), {
+                    await update(child(child(ref(getDatabase(), "projects/shioru/users"), argument), "leveling"), {
                         "exp": amount
                     });
                     PUTStatus = "success";
@@ -233,11 +234,11 @@ const levelSystem = async (client, message, method, arg, amount) => {
             case "DELETE":
                 let DELETEStatus = "";
 
-                if (!arg) return console.log("[levelSystem/DELETE] Please enter the user ID you wish to delete experience data for.");
+                if (!argument) return console.log("[levelSystem/DELETE] Please enter the user ID you wish to delete experience data for.");
                 if (!guildUserSnapshot.leveling) return DELETEStatus = "missing";
 
                 try {
-                    await remove(child(child(ref(getDatabase(), "projects/shioru/users"), arg), "leveling"));
+                    await remove(child(child(ref(getDatabase(), "projects/shioru/users"), argument), "leveling"));
                     DELETEStatus = "success";
                 } catch {
                     DELETEStatus = "error";
@@ -258,7 +259,7 @@ const levelSystem = async (client, message, method, arg, amount) => {
             }
         });
 
-        levelSystem(client, message, method, arg, amount);
+        levelSystem(client, message, method, argument, amount);
     }
 }
 
