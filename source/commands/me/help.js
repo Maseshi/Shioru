@@ -98,7 +98,7 @@ module.exports.function.command = {
 				info.addFields(
 					{
 						"name": "🏷️ " + categorize + " - (" + dir.size + ")",
-						"value": dir.map(dirs => dirs.interaction.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
+						"value": dir.map(dirs => dirs.enable ? ("`" + dirs.name + "`") : ("||" + dirs.name + "||")).join(", ")
 					}
 				);
 			});
