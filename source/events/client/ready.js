@@ -93,7 +93,10 @@ module.exports = async (client) => {
                   "user": pull.permissions.user ? pull.permissions.user.map(String) : []
                 },
                 "usage": pull.usage || "",
-                "aliases": pull.aliases || []
+                "function": {
+                  "command": pull.function.command ? true : false,
+                  "context": pull.function.context ? true : false
+                }
               }
             }
           }
