@@ -63,6 +63,19 @@ module.exports = (client) => {
 
     // Initial call to start submitting data.
     if (client.mode === "start" && enable) {
+        if (!apiKey) return client.console.fail("monitor-loading", {
+            "text": "The monitor API Key was not found in the environment. Opt out of sending performance data.",
+            "failColor": "yellowBright"
+        });
+        if (!pageId) return client.console.fail("monitor-loading", {
+            "text": "The monitor page ID was not found in the environment. Opt out of sending performance data.",
+            "failColor": "yellowBright"
+        });
+        if (!metricId) return client.console.fail("monitor-loading", {
+            "text": "The monitor metric ID was not found in the environment. Opt out of sending performance data.",
+            "failColor": "yellowBright"
+        });
+
         client.console.add("monitor-loading", {
             "text": "Preparing to send data to matrix"
         });

@@ -75,10 +75,17 @@ const updateApplicationCommands = async (client, reload = false) => {
                 { "body": data }
             );
         } else {
-            await rest.put(
-                Routes.applicationGuildCommands(clientID, guildID),
-                { "body": data }
-            );
+            if (guildID) {
+                await rest.put(
+                    Routes.applicationGuildCommands(clientID, guildID),
+                    { "body": data }
+                );
+            } else {
+                client.console.fail("app-commands-loading", {
+                    "text": "The testGuild key was not found in the environment. You may not be able to see recent commands.",
+                    "status": "non-spinnable"
+                });
+            }
         }
         if (!reload) {
             client.console.update("app-commands-loading", {
