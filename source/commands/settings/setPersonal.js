@@ -127,7 +127,7 @@ module.exports.function.command = {
                             .replace("%s1", (avatar ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
                             .replace("%s2", (info ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
                             .replace("%s3", (uid ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
-                            .replace("%s4", ("/" + module.exports.command.usage))
+                            .replace("%s4", ("/" + module.exports.usage))
                     )
                     .setColor(clientColor)
                     .setTimestamp()
@@ -156,7 +156,7 @@ module.exports.function.command = {
                 "info": true,
                 "uid": true
             }).then(() => {
-                module.exports.interaction.execute(interaction);
+                module.exports.function.command.execute(interaction);
             });
         }
     }

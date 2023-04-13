@@ -99,7 +99,7 @@ module.exports = (client) => {
           "text": "Loading command " + pull.name + " in category " + pull.category
         });
 
-        client.commands.set(pull.name, pull);
+        client.commands.set(pull.name.toLowerCase(), pull);
       }
     }
   });

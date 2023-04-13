@@ -112,7 +112,7 @@ module.exports.function.command = {
                     interaction.client.translate.commands.setCommand.description
                         .replace("%s1", interaction.client.commands.size)
                         .replace("%s2", interaction.client.commands.map(dirs => dirs.command.enable ? "`" + dirs.name + "`" : "||" + dirs.name + "||").join(", "))
-                        .replace("%s3", ("/" + module.exports.command.usage))
+                        .replace("%s3", ("/" + module.exports.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()

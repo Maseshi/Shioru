@@ -100,7 +100,7 @@ module.exports.function.command = {
                 .setDescription(
                     interaction.client.translate.commands.setLanguage.description
                         .replace("%s1", support[lang])
-                        .replace("%s2", ("/" + module.exports.command.usage))
+                        .replace("%s2", ("/" + module.exports.usage))
                 )
                 .setColor(clientColor)
                 .setTimestamp()
@@ -110,7 +110,6 @@ module.exports.function.command = {
                 "embeds": [noInputEmbed]
             });
         }
-
         if (subCommand === "set") {
             if (inputValue.value === lang) return await interaction.editReply(interaction.client.translate.commands.setLanguage.already_set.replace("%s", support[inputValue]));
 

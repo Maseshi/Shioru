@@ -225,7 +225,7 @@ module.exports.function.command = {
                         .replace("%s28", (threadDelete ? ("<#" + threadDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
                         .replace("%s29", (threadUpdate ? ("<#" + threadUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
                         .replace("%s30", (webhookUpdate ? ("<#" + webhookUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s31", ("/" + module.exports.command.usage))
+                        .replace("%s31", ("/" + module.exports.usage))
                     )
                     .setColor(clientColor)
                     .setTimestamp()
@@ -282,7 +282,7 @@ module.exports.function.command = {
                 "threadUpdate": false,
                 "webhookUpdate": false
             }).then(() => {
-                module.exports.interaction.execute(interaction);
+                module.exports.function.command.execute(interaction);
             });
         }
     }
