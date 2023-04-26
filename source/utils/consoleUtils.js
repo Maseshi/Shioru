@@ -1,22 +1,16 @@
-const { format } = require("util");
+const { format } = require("node:util");
 const { getApps } = require("firebase/app");
 const { createWriteStream, existsSync, mkdirSync } = require("node:fs");
-const discord = require("discord.js");
 const packages = require("../../package.json");
 
-const asciiArt =    "███████╗██╗  ██╗██╗ ██████╗ ██████╗ ██╗   ██╗ %s1\n" +
-                    "██╔════╝██║  ██║██║██╔═══██╗██╔══██╗██║   ██║ %s2\n" +
-                    "███████╗███████║██║██║   ██║██████╔╝██║   ██║ %s3\n" +
-                    "╚════██║██╔══██║██║██║   ██║██╔══██╗██║   ██║ %s4\n" +
-                    "███████║██║  ██║██║╚██████╔╝██║  ██║╚██████╔╝ %s5\n" +
-                    "╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  %s6"
-
+/**
+ * 8-bit: 256-color mode\
+ * https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+ * 
+ * @param {Number} code Color codes in ANSI
+ * @param {String} mode Supports 3 modes: **foreground**, **background** and **sgr**.
+ */
 const ansiColor = (code, mode) => {
-    // 8-bit: 256-color mode
-    // foreground: ESC[38;5;#m
-    // background: ESC[48;5;#m
-    // https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
-
     if (code === null) return console.log("[ansiColor] Please configure the color of ANSI.");
     if (!mode) return console.log("[ansiColor] Please confirm the ANSI mode, including 'foreground', 'background' and 'sgr'.");
 
@@ -25,7 +19,17 @@ const ansiColor = (code, mode) => {
     if (mode === "sgr") return "\x1b[" + code.toString() + "m";
 }
 
-const catchError = async (client, message, name, error) => {
+/**
+ * Detects errors and informs the user about them.
+ * 
+ * @param {Client} client 
+ * @param {String} message 
+ * @param {String} name The name of the command or event.
+ * @param {Error} error 
+ * @param {Boolean} private Set to `true` when you don't want to notify the user.
+ * @returns error
+ */
+const catchError = async (client, message, name, error, private = false) => {
     if (!name) return console.log("[catchError] Please specify the name of the command or function.");
     if (!error) return console.log("[catchError] Please forward any errors that have occurred.");
 
@@ -33,16 +37,6 @@ const catchError = async (client, message, name, error) => {
     const boldStyle = ansiColor(1, "sgr");
     const whiteColor = ansiColor(15, "foreground");
     const redBackground = ansiColor(9, "background");
-
-    const dateTime = (date) => {
-        const day = date.getDay();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        const seconds = date.getSeconds();
-        return "\u001b[1m[" + day + "-" + month + "-" + year + "." + hours + ":" + minutes + ":" + seconds + "]\u001b[0m"
-    }
 
     if (message) {
         const ping = Date.now() - message.createdTimestamp;
@@ -63,28 +57,28 @@ const catchError = async (client, message, name, error) => {
             .setTimestamp()
 
         if ((message.author && message.author.id) === client.user.id) {
-            message.edit({
+            if (!private) message.edit({
                 "content": null,
                 "embeds": [catchErrorEmbed],
                 "ephemeral": true
             });
         } else {
             try {
-                message.channel.send({
+                if (!private) message.channel.send({
                     "content": null,
                     "embeds": [catchErrorEmbed],
                     "ephemeral": true
                 });
             } catch {
                 try {
-                    message.send({
+                    if (!private) message.send({
                         "content": null,
                         "embeds": [catchErrorEmbed],
                         "ephemeral": true
                     });
                 } catch {
                     try {
-                        await message.editReply({
+                        if (!private) await message.editReply({
                             "content": null,
                             "embeds": [catchErrorEmbed],
                             "ephemeral": true
@@ -92,7 +86,7 @@ const catchError = async (client, message, name, error) => {
                     } catch (err) {
                         logGenerator("catch", err)
 
-                        console.group(dateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
+                        console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
                         console.group(boldStyle + "Full Error:" + clearStyle);
                         console.error(err);
                         console.groupEnd();
@@ -108,7 +102,7 @@ const catchError = async (client, message, name, error) => {
 
     logGenerator("catch", error);
 
-    console.group(dateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
+    console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
     console.group(boldStyle + "Full Error:" + clearStyle);
     console.error(error);
     console.groupEnd();
@@ -116,25 +110,28 @@ const catchError = async (client, message, name, error) => {
     console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
     console.info(boldStyle + "Node.js: " + clearStyle + process.version);
     console.groupEnd();
+    return error;
 }
 
+/**
+ * For quarantine logs as a temporary file
+ * 
+ * @param {String} name The name of the quarantined file or process name, e.g. **process**, **error**, **warn** etc.
+ * @param {String} info log data
+ * @example
+ * logGenerator("debug", "[WS => Shard 0] [HeartbeatTimer] Sending a heartbeat.")
+ */
 const logGenerator = (name, info) => {
     if (!name) return console.log("[LogGenerator] No name provided!");
     if (!info) return console.log("[LogGenerator] No info provided!");
 
+    const date = new Date();
+    const at = timeConsole(date, "date");
+    const when = timeConsole(date, "time");
     const directory = "./source/logs/";
 
     if (!existsSync(directory)) mkdirSync(directory);
 
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    const at = year + "-" + month + "-" + day;
-    const when = hours + ":" + minutes + ":" + seconds;
     const file = createWriteStream(directory + name + "_" + at + ".log", {
         "flags": "a"
     });
@@ -142,7 +139,7 @@ const logGenerator = (name, info) => {
     file.write(format("[%s]: %s\n", when, info));
 
     // After finishing the process, the new line will help to be easier to read.
-    ["exit", "SIGINT", "SIGUSR1", "SIGUSR2", "uncaughtException", "SIGTERM"].forEach((eventType) => {
+    ["exit", "SIGINT", "SIGUSR1", "SIGUSR2", "SIGTERM"].forEach((eventType) => {
         process.on(eventType, () => {
             process.stdin.resume();
             file.write("\n");
@@ -151,9 +148,28 @@ const logGenerator = (name, info) => {
     });
 }
 
+/**
+ * Calculated as the current time and tailored to the console time.
+ * 
+ * @param {Date} date time of occurrence
+ * @param {String} format Three options are supported: **full**, **date** and **time**.
+ */
+const timeConsole = (date, format = "full") => {
+    const day = date.getDay();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    if (format === "full") return year + "-" + month + "-" + day + "." + hours + ":" + minutes + ":" + seconds;
+    if (format === "date") return year + "-" + month + "-" + day;
+    if (format === "time") return hours + ":" + minutes + ":" + seconds;
+};
+
 module.exports = {
-    asciiArt,
     ansiColor,
     catchError,
-    logGenerator
+    logGenerator,
+    timeConsole
 }

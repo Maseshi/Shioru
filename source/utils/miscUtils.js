@@ -147,6 +147,31 @@ const remainingTime = (timeUntil) => {
     return time;
 }
 
+/**
+ * This helps in reducing the length of numbers from the thousands and above.
+ * To make it easier to read and keep statistics.
+ * 
+ * @param {Number} number The number want to convert
+ * @param {Number} digits The number of decimals to be stored.
+ * @returns A string of converted numbers: e.g. **12.34k**
+ * @example currencyFormatter(12345, 2); // => 12.34k
+ */
+const currencyFormatter = (number, digits) => {
+    const lookup = [
+      { "value": 1, "symbol": "" },
+      { "value": 1e3, "symbol": "k" },
+      { "value": 1e6, "symbol": "M" },
+      { "value": 1e9, "symbol": "G" },
+      { "value": 1e12, "symbol": "T" },
+      { "value": 1e15, "symbol": "P" },
+      { "value": 1e18, "symbol": "E" }
+    ];
+    const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    const item = lookup.slice().reverse().find((item) => number >= item.value);
+    
+    return item ? (number / item.value).toFixed(digits).replace(regex, "$1") + item.symbol : "0";
+  }
+
 module.exports = {
     containsLink,
     containsDiscordInvite,
@@ -154,5 +179,6 @@ module.exports = {
     randomInt,
     isHex,
     timeFormat,
-    remainingTime
+    remainingTime,
+    currencyFormatter
 };
