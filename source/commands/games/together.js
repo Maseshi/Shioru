@@ -1,5 +1,5 @@
 const { PermissionsBitField } = require("discord.js");
-const fetch = require("node-fetch");
+const { post } = require("axios").default;
 
 module.exports = {
     "enable": true,
@@ -13,7 +13,7 @@ module.exports = {
             PermissionsBitField.Flags.UseEmbeddedActivities
         ]
     },
-    "usage": "together <name> (channel: name, id)",
+    "usage": "together <name> [channel]",
     "function": {
         "command": {}
     }
@@ -24,7 +24,6 @@ module.exports.function.command = {
         "name": module.exports.name,
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Run a specific emulator through the audio channel.",
             "th": "เรียกใช้อีมูเลเตอร์ Together ผ่านช่องเสียง"
         },
         "options": [
@@ -148,11 +147,11 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputName = interaction.options.get("name").value;
-        const inputChannel = interaction.options.get("channel");
+        const inputName = interaction.options.getString("name");
+        const inputChannel = interaction.options.getChannel("channel");
 
         const token = interaction.client.config.token;
-        let voiceChannel = interaction.member.voice.channel;
+        const voiceChannel = interaction.member.voice.channel;
         const apps = {
             "youtube": "880218394199220334",
             "youtubedev": "880218832743055411",
@@ -179,34 +178,32 @@ module.exports.function.command = {
         };
 
         if (!inputChannel) {
-            if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.together.user_not_in_channel);
+            if (!voiceChannel) return await interaction.reply(interaction.client.translate.commands.together.user_not_in_channel);
         } else {
-            voiceChannel = interaction.guild.channels.cache.find(channels => (channels.id === inputChannel.value) || (channels.name === inputChannel.value));
-
-            if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.together.voice_channel_not_found);
+            if (!inputChannel) return await interaction.reply(interaction.client.translate.commands.together.voice_channel_not_found);
         }
 
-        fetch("https://discord.com/api/v10/channels/" + voiceChannel.id + "/invites", {
-            "method": "POST",
-            "body": JSON.stringify({
+        try {
+            const response = await post("https://discord.com/api/v10/channels/" + voiceChannel.id + "/invites", {
                 "max_age": 86400,
                 "max_uses": 0,
                 "target_application_id": apps[inputName],
                 "target_type": 2,
                 "temporary": false,
                 "validate": null,
-            }),
-            "headers": {
-                "Authorization": "Bot " + token,
-                "Content-Type": "application/json",
-            }
-        })
-            .then((res) => res.json())
-            .then(async (invite) => {
-                if (invite.error || !invite.code) return await interaction.editReply(interaction.client.translate.commands.together.can_not_open.replace("%s", inputName));
-                if (Number(invite.code) === 50013) return await interaction.editReply(interaction.client.translate.commands.together.do_not_have_permission);
-
-                await interaction.editReply(interaction.client.translate.commands.together.join_via_this_link + invite.code);
+            }, {
+                "headers": {
+                    "Authorization": "Bot " + token,
+                    "Content-Type": "application/json",
+                }
             });
+
+            if (response.data.error || !response.data.code) return await interaction.reply(interaction.client.translate.commands.together.can_not_open.replace("%s", inputName));
+            if (Number(response.data.code) === 50013) return await interaction.reply(interaction.client.translate.commands.together.do_not_have_permission);
+
+            await interaction.reply(interaction.client.translate.commands.together.join_via_this_link + response.data.code);
+        } catch (error) {
+            await interaction.reply(interaction.client.translate.commands.together.can_not_open.replace("%s", inputName))
+        }
     }
 }

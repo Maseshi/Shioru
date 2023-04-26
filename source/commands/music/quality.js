@@ -9,7 +9,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "quality <options: 0, 1>",
+    "usage": "quality <options>",
     "function": {
         "command": {}
     }
@@ -19,12 +19,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "quality",
             "th": "คุณภาพ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Try this command if you have sound problems or people with poor internet connection.",
             "th": "ลองใช้คำสั่งนี้หากคุณมีปัญหาด้านเสียงหรือผู้ที่มีการเชื่อมต่ออินเทอร์เน็ตไม่ดี"
         },
         "options": [
@@ -44,43 +42,43 @@ module.exports.function.command = {
                         "name_localizations": {
                             "th": "คุณภาพสูง"
                         },
-                        "value": "0",
+                        "value": "high",
                     },
                     {
                         "name": "Low Quality",
                         "name_localizations": {
                             "th": "คุณภาพต่ำ"
                         },
-                        "value": "1",
+                        "value": "low",
                     }
                 ]
             }
         ]
     },
     async execute(interaction) {
-        const inputOption = interaction.options.get("option");
+        const inputOption = interaction.options.getString("option") ?? "";
 
         const quality = interaction.client.music.options.streamType === 0 ? interaction.client.translate.commands.quality.focus_on_high_quality : interaction.client.translate.commands.quality.low_efficiency;
         const adviceEmbed = new EmbedBuilder()
             .setTitle(interaction.client.translate.commands.quality.advice_embed_title)
             .setDescription(interaction.client.translate.commands.quality.advice_embed_description.replace("%s", quality))
-            .setFooter({ "text": interaction.client.translate.commands.quality.advice_embed_footer_text, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/light-bulb_1f4a1.png" })
+            .setFooter({ "text": interaction.client.translate.commands.quality.advice_embed_footer_text })
             .setColor("Blue")
             .setTimestamp();
 
-        if (!inputOption) return await interaction.editReply({ "embeds": [adviceEmbed] });
+        if (!inputOption) return await interaction.reply({ "embeds": [adviceEmbed] });
 
         switch (inputOption) {
-            case "0":
+            case "high":
                 interaction.client.music.options.streamType = StreamType.OPUS;
-                await interaction.editReply(interaction.client.translate.commands.quality.opus_mode_selected);
+                await interaction.reply(interaction.client.translate.commands.quality.opus_mode_selected);
                 break;
-            case "1":
+            case "low":
                 interaction.client.music.options.streamType = StreamType.RAW;
-                await interaction.editReply(interaction.client.translate.commands.quality.raw_mode_selected);
+                await interaction.reply(interaction.client.translate.commands.quality.raw_mode_selected);
                 break;
             default:
-                await interaction.editReply({ "embeds": [adviceEmbed] });
+                await interaction.reply({ "embeds": [adviceEmbed] });
         }
     }
 };

@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "jump <number>",
+    "usage": "jump <number(Number)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "jump",
             "th": "กระโดด"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Skip to the selected queue number",
             "th": "ข้ามไปยังหมายเลขคิวที่เลือก"
         },
         "options": [
@@ -43,19 +41,19 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputAmount = interaction.options.get("number").value;
+        const inputAmount = interaction.options.getNumber("number");
 
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.jump.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.jump.not_queue_owner);
-        if (inputAmount > queue.songs.length) return await interaction.editReply(interaction.client.translate.commands.jump.too_much);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.jump.no_queue);
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.jump.not_queue_owner);
+        if (inputAmount > queue.songs.length) return await interaction.reply(interaction.client.translate.commands.jump.too_much);
 
         try {
             interaction.client.music.jump(interaction, inputAmount);
-            await interaction.editReply(interaction.client.translate.commands.jump.jumped.replace("%s", inputAmount));
+            await interaction.reply(interaction.client.translate.commands.jump.jumped.replace("%s", inputAmount));
         } catch (error) {
-            await interaction.editReply(interaction.client.translate.commands.jump.can_not_jump);
+            await interaction.reply(interaction.client.translate.commands.jump.can_not_jump);
         }
     }
 }

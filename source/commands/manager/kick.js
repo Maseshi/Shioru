@@ -12,22 +12,20 @@ module.exports = {
 			PermissionsBitField.Flags.KickMembers
 		]
 	},
-	"usage": "kick <member: id, username, tag> (reason)",
-    "function": {
-        "command": {}
-    }
+	"usage": "kick <member> [reason(String)]",
+	"function": {
+		"command": {}
+	}
 };
 
 module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "kick",
 			"th": "เตะ"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "Kick members from the server.",
 			"th": "เตะสมาชิกจากออกเซิร์ฟเวอร์"
 		},
 		"options": [
@@ -58,23 +56,20 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		const inputMember = interaction.options.get("member").value;
-		let inputReason = interaction.options.get("reason");
+		const inputMember = interaction.options.getMember("member");
+		const inputReason = interaction.options.getString("reason") ?? "";
 
-		const member = interaction.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+		const member = await interaction.guild.members.fetch(inputMember.id);
 
 		if (!member) return await interaction.editReply(interaction.client.translate.commands.kick.can_not_find_user);
 
-		const memberPosition = member.roles.highest.position;
+		const memberPosition = inputMember.roles.highest.position;
 		const authorPosition = interaction.member.roles.highest.position;
 
-		if (authorPosition < memberPosition) return await interaction.editReply(interaction.client.translate.commands.kick.members_have_a_higher_role);
-		if (!member.kickable) return await interaction.editReply(interaction.client.translate.commands.kick.members_have_a_higher_role_than_me);
-		if (!inputReason) inputReason = "";
+		if (authorPosition < memberPosition) return await interaction.reply(interaction.client.translate.commands.kick.members_have_a_higher_role);
+		if (!inputMember.kickable) return await interaction.reply(interaction.client.translate.commands.kick.members_have_a_higher_role_than_me);
 
-		const kicked = await member.kick({
-			"reason": inputReason
-		});
+		const kicked = await inputMember.kick({ "reason": inputReason });
 		const authorUsername = interaction.user.username;
 		const memberAvatar = kicked.user.avatarURL();
 		const memberUsername = kicked.user.username;
@@ -88,8 +83,6 @@ module.exports.function.command = {
 			.setTimestamp()
 			.setThumbnail(memberAvatar);
 
-		await interaction.editReply({
-			"embeds": [kickEmbed]
-		});
+		await interaction.reply({ "embeds": [kickEmbed] });
 	}
 };

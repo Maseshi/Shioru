@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "seek <second>",
+    "usage": "seek <second(Number)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "seek",
             "th": "ไปยังช่วง"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Change the duration of the currently playing song",
             "th": "เปลี่ยนระยะเวลาของเพลงที่กำลังเล่นอยู่"
         },
         "options": [
@@ -43,19 +41,19 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputSecond = interaction.options.get("second").value;
+        const inputSecond = interaction.options.getNumber("second");
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.seek.no_queue);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.seek.no_queue);
 
         const queueDuration = queue.songs.map((song, id) => song.duration);
         const queueFormatDuration = queue.songs.map((song, id) => song.formatDuration);
 
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.seek.not_owner);
-        if (!inputSecond) return await interaction.editReply(interaction.client.translate.commands.seek.seek_guide.replace("%s", queueDuration));
-        if (inputSecond >= parseInt(queueDuration.join())) return await interaction.editReply(interaction.client.translate.commands.seek.too_much.replace("%s", queueFormatDuration));
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.seek.not_owner);
+        if (!inputSecond) return await interaction.reply(interaction.client.translate.commands.seek.seek_guide.replace("%s", queueDuration));
+        if (inputSecond >= parseInt(queueDuration.join())) return await interaction.reply(interaction.client.translate.commands.seek.too_much.replace("%s", queueFormatDuration));
 
         interaction.client.music.seek(interaction, inputSecond);
-        await interaction.editReply(interaction.client.translate.commands.seek.sought);
+        await interaction.reply(interaction.client.translate.commands.seek.sought);
     }
 };

@@ -9,7 +9,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "leveling (member: id, username, tag)",
+    "usage": "leveling [member]",
     "function": {
         "command": {}
     }
@@ -19,12 +19,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "leveling",
             "th": "เลเวล"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "See information about your level.",
             "th": "ดูข้อมูลเกี่ยวกับเลเวลของคุณ"
         },
         "options": [
@@ -43,28 +41,24 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputMember = interaction.options.get("member");
+        const inputMember = interaction.options.getMember("member") ?? "";
 
-        let authorAvatar = interaction.user.displayAvatarURL();
-        let authorFetch = await interaction.user.fetch();
-        let authorID = interaction.user.id;
+        let author = interaction.user;
+        let authorAvatar = author.displayAvatarURL();
+        let authorFetch = await author.fetch();
         let memberBot = false;
 
         if (inputMember) {
-            const member = interaction.guild.members.cache.find(members => (members.user.username === inputMember.value) || (members.user.id === inputMember.value) || (members.user.tag === inputMember.value));
-
-            if (!member) return await interaction.editReply(interaction.client.translate.commands.leveling.can_not_find_user);
-
-            authorAvatar = member.user.avatarURL();
-            authorFetch = await member.user.fetch();
-            authorID = member.user.id;
-            memberBot = member.user.bot;
+            author = member.user;
+            authorAvatar = author.avatarURL();
+            authorFetch = await author.fetch();
+            memberBot = author.bot;
         }
-        if (memberBot) return await interaction.editReply(interaction.client.translate.commands.leveling.bot_do_not_have_level);
+        if (memberBot) return await interaction.reply(interaction.client.translate.commands.leveling.bot_do_not_have_level);
 
-        const data = await levelSystem(interaction.client, interaction, "GET", authorID);
+        const data = await levelSystem(interaction.client, interaction, "GET", { "member": author });
 
-        if (!data) return await interaction.editReply(interaction.client.translate.commands.leveling.user_no_data);
+        if (!data) return await interaction.reply(interaction.client.translate.commands.leveling.user_no_data);
 
         const exp = data.exp;
         const level = data.level;
@@ -88,8 +82,6 @@ module.exports.function.command = {
                 ]
             );
 
-        await interaction.editReply({
-            "embeds": [levelingEmbed]
-        });
+        await interaction.reply({ "embeds": [levelingEmbed] });
     }
 }

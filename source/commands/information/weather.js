@@ -10,7 +10,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "weather <area>",
+    "usage": "weather <area(String)> [degree_type]",
     "function": {
         "command": {}
     }
@@ -20,12 +20,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "weather",
             "th": "สภาพอากาศ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "See today's weather in each area.",
             "th": "ดูสภาพอากาศของวันนี้ในแต่ละพื้นที่ที่ต้องการ"
         },
         "options": [
@@ -40,17 +38,48 @@ module.exports.function.command = {
                     "th": "พื้นที่ที่คุณต้องการทราบสภาพอากาศ"
                 },
                 "required": true
+            },
+            {
+                "type": 3,
+                "name": "degree_type",
+                "name_localizations": {
+                    "th": "หน่วยวัด"
+                },
+                "description": "Unit of measure for weather conditions.",
+                "description_localizations": {
+                    "th": "หน่วยวัดของสภาพอากาศ"
+                },
+                "required": false,
+                "choices": [
+                    {
+                        "name": "Celsius",
+                        "name_localizations": {
+                            "th": "เซลเซียส"
+                        },
+                        "value": "C"
+                    },
+                    {
+                        "name": "Fahrenheit",
+                        "name_localizations": {
+                            "th": "ฟาเรนไฮต์"
+                        },
+                        "value": "F"
+                    }
+                ]
             }
         ]
     },
     async execute(interaction) {
-        const inputArea = interaction.options.get("area").value;
+        await interaction.deferReply();
+
+        const inputArea = interaction.options.getString("area");
+        const inputDegreeType = interaction.options.getString("degree_type");
 
         find({
             "search": inputArea,
-            "degreeType": "C"
+            "degreeType": inputDegreeType
         }, async (error, result) => {
-            if (error) return catchError(interaction.client, interaction, module.exports.help.name, error);
+            if (error) return catchError(interaction.client, interaction, module.exports.name, error);
             if (!result) return await interaction.editReply(interaction.client.translate.commands.weather.no_result_found);
 
             const city = result[0];

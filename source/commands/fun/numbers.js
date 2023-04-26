@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "numbers <min> <max>",
+    "usage": "numbers <min(Number)> <max(Number)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "numbers",
             "th": "ตัวเลข"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Random number.",
             "th": "สุ่มตัวเลข"
         },
         "options": [
@@ -54,17 +52,17 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        let inputMin = interaction.options.get("min").value;
-        let inputMax = interaction.options.get("max").value;
+        let inputMin = interaction.options.getNumber("min");
+        let inputMax = interaction.options.getNumber("max");
 
         if (inputMin > inputMax) {
-            const temp = inputMax;
+            let temp = inputMax;
             inputMax = inputMin;
             inputMin = temp;
         }
 
         const result = Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
 
-        await interaction.editReply(interaction.client.translate.commands.numbers.result.replace("%s", result));
+        await interaction.reply(interaction.client.translate.commands.numbers.result.replace("%s", result));
     }
 }

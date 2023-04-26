@@ -4,7 +4,7 @@ const { catchError } = require("../../utils/consoleUtils");
 module.exports = {
     "enable": true,
     "name": "play",
-    "description": "Sing to listen",
+    "description": "You can play-pause the music or sing along to it.",
     "category": "music",
     "permissions": {
         "user": [PermissionsBitField.Flags.Connect],
@@ -14,7 +14,7 @@ module.exports = {
             PermissionsBitField.Flags.Connect
         ]
     },
-    "usage": "play <source: name, id, link>",
+    "usage": "play [source(String)]",
     "function": {
         "command": {}
     }
@@ -24,13 +24,11 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "play",
             "th": "เล่น"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Sing to listen",
-            "th": "ร้องเพลงให้ฟัง"
+            "th": "เล่น-หยุดเพลงก็ได้หรือร้องเพลงให้ฟัง"
         },
         "options": [
             {
@@ -43,28 +41,41 @@ module.exports.function.command = {
                 "description_localizations": {
                     "th": "คุณสามารถค้นหาเพลงตามชื่อ ID หรือลิงค์"
                 },
-                "required": true
+                "required": false
             }
         ]
     },
     async execute(interaction) {
-        const inputSource = interaction.options.get("source").value;
-        const voiceChannel = interaction.member.voice.channel;
+        const inputSource = interaction.options.getString("source") ?? "";
 
-        if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.play.not_in_channel);
+        if (inputSource) {
+            const voiceChannel = interaction.member.voice.channel;
 
-        try {
-            await interaction.client.music.play(voiceChannel, inputSource, {
-                "member": interaction.member,
-                "textChannel": interaction.channel,
-                interaction
-            });
-            await interaction.deleteReply();
-        } catch (error) {
-            const connection = interaction.client.music.voices.get(voiceChannel.guild);
+            if (!voiceChannel) return await interaction.reply(interaction.client.translate.commands.play.not_in_channel);
 
-            connection.leave(voiceChannel.guild);
-            catchError(interaction.client, interaction, module.exports.name, error);
+            try {
+                await interaction.deferReply();
+                await interaction.client.music.play(voiceChannel, inputSource, {
+                    "member": interaction.member,
+                    "textChannel": interaction.channel,
+                    interaction
+                });
+                await interaction.deleteReply();
+            } catch (error) {
+                const connection = interaction.client.music.voices.get(voiceChannel.guild);
+
+                connection.leave(voiceChannel.guild);
+                catchError(interaction.client, interaction, module.exports.name, error);
+            }
+        } else {
+            const queue = interaction.client.music.getQueue(interaction);
+
+            if (!queue) return await interaction.reply(interaction.client.translate.commands.play.no_queue);
+            if (queue.paused) {
+                interaction.client.commands.get("resume").function.command.execute(interaction);
+            } else {
+                interaction.client.commands.get("pause").function.command.execute(interaction);
+            }
         }
     }
 };

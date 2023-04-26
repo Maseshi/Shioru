@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "eat <name>",
+    "usage": "eat <name(String)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "eat",
             "th": "กิน"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Fake text saying who you are eating.",
             "th": "ข้อความปลอมที่บอกว่าคุณกำลังจะกินใคร!"
         },
         "options": [
@@ -42,7 +40,7 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputName = interaction.options.get("name").value;
+        const inputName = interaction.options.getString("name");
 
         const authorUsername = interaction.user.username;
         const clientUsername = interaction.client.user.username;
@@ -51,15 +49,13 @@ module.exports.function.command = {
             .setColor("Default");
 
         if (inputName === clientUsername) {
-            return await interaction.editReply("...").then(() => {
-                setTimeout(async () => {
-                    await interaction.followUp(interaction.client.translate.commands.eat.do_not_eat_me);
-                }, 8000);
-            });
+            await interaction.reply("...");
+            setTimeout(async () => {
+                await interaction.followUp(interaction.client.translate.commands.eat.do_not_eat_me);
+            }, 8000);
+            return;
         }
 
-        await interaction.editReply({
-            "embeds": [eatEmbed]
-        });
+        await interaction.reply({ "embeds": [eatEmbed] });
     }
 }

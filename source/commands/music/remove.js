@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "remove <number>",
+    "usage": "remove <number(Number)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "remove",
             "th": "ลบ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Remove song from the queue",
             "th": "ลบเพลงออกจากคิว"
         },
         "options": [
@@ -43,14 +41,14 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputAmount = interaction.options.get("number").value;
+        const inputAmount = interaction.options.getNumber("number");
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.remove.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.remove.not_owner);
-        if (inputAmount >= queue.songs.length) return interaction.editReply(interaction.client.translate.commands.remove.too_much);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.remove.no_queue);
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.remove.not_owner);
+        if (inputAmount >= queue.songs.length) return await interaction.reply(interaction.client.translate.commands.remove.too_much);
 
         const song = queue.songs.splice(inputAmount, 1);
-        await interaction.editReply(interaction.client.translate.commands.remove.removed.replace("%s", song[0].name));
+        await interaction.reply(interaction.client.translate.commands.remove.removed.replace("%s", song[0].name));
     }
 };

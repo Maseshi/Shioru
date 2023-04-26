@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "uptime",
             "th": "เวลาทำงาน"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Displays the bots current uptime!",
             "th": "แสดงเวลาทำงานของบอทในปัจจุบัน!"
         }
     },
@@ -38,14 +36,15 @@ module.exports.function.command = {
             min.padStart(2, "0") + " " + interaction.client.translate.commands.uptime.minute + " " +
             sec.padStart(2, "0") + " " + interaction.client.translate.commands.uptime.second + " ";
 
+        const clientAvatar = interaction.client.user.displayAvatarURL();
+        const clientUsername = interaction.client.user.username;
         const clientColor = interaction.guild.members.me.displayHexColor;
         const uptimeEmbed = new EmbedBuilder()
+            .setColor(clientColor)
+            .setAuthor({ "iconURL": clientAvatar, "name": clientUsername })
             .setTitle(interaction.client.translate.commands.uptime.info_title)
-            .setDescription("```" + duration + "```")
-            .setColor(clientColor);
+            .setDescription("```" + duration + "```");
 
-        await interaction.editReply({
-            "embeds": [uptimeEmbed]
-        });
+        await interaction.reply({ "embeds": [uptimeEmbed] });
     }
 }

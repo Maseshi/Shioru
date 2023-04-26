@@ -18,22 +18,20 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "skip",
             "th": "ข้าม"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Skip the currently playing song.",
             "th": "ข้ามเพลงที่กำลังเล่นอยู่"
         }
     },
     async execute(interaction) {
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.skip.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.skip.not_owner);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.skip.no_queue);
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.skip.not_owner);
 
         interaction.client.music.skip(interaction);
-        await interaction.editReply(interaction.client.translate.commands.skip.skipped);
+        await interaction.reply(interaction.client.translate.commands.skip.skipped);
     }
 };

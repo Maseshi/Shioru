@@ -8,7 +8,7 @@ module.exports = {
 	"permissions": {
 		"client": [PermissionsBitField.Flags.SendMessages]
 	},
-	"usage": "reboot (password)",
+	"usage": "reboot [password(String)]",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "reboot",
 			"th": "รีบูต"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "Reboot the bot system.",
 			"th": "รีบูตระบบบอท"
 		},
 		"options": [
@@ -42,12 +40,12 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		if (interaction.user.id !== interaction.client.config.owner) return await interaction.editReply(interaction.client.translate.commands.reboot.not_owner);
+		if ((interaction.user.id !== interaction.client.config.team.owner) || (!interaction.client.config.team.developer.includes(interaction.user.id))) return await interaction.reply(interaction.client.translate.commands.reboot.not_owner);
 
 		const inputPassword = interaction.options.getString("password") ?? "";
 
 		if (!interaction.client.temp.password) {
-			const owner = await interaction.client.users.fetch(interaction.client.config.owner);
+			const owner = await interaction.client.users.fetch(interaction.client.config.team.owner);
 			let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			let password = "";
 
@@ -60,11 +58,11 @@ module.exports.function.command = {
 
 			interaction.client.temp.password = password;
 
-			owner.send("**:arrows_counterclockwise: มีคำขอสำหรับการรีสตาร์ทระบบใหม่ค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||".replace("%s", password));
+			owner.send(interaction.client.translate.commands.reboot.dm_to_owner.replace("%s", password));
 		}
-		if (inputPassword !== interaction.client.temp.password) return await interaction.editReply(interaction.client.translate.commands.reboot.password_is_incorrect);
+		if (inputPassword !== interaction.client.temp.password) return await interaction.reply(interaction.client.translate.commands.reboot.password_is_incorrect);
 
-		await interaction.editReply(interaction.client.translate.commands.reboot.rebooting);
+		await interaction.reply(interaction.client.translate.commands.reboot.rebooting);
 		await interaction.client.destroy();
 		await interaction.client.login(interaction.client.config.token);
 		await interaction.editReply(interaction.client.translate.commands.reboot.now_reboot);

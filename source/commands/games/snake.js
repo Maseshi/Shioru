@@ -23,12 +23,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "snake",
-            "th": "สายงู"
+            "th": "งู"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Play a snake board game.",
             "th": "เล่นเกมกระดานงู"
         }
     },
@@ -40,6 +38,8 @@ module.exports.function.command = {
         let snake = [{ "x": 5, "y": 5 }];
         let snakeLength = 1;
         let score = 0;
+        let startTime = new Date();
+        let endTime = 0;
         let gameEmbedMessage = null;
         let inGame = false;
 
@@ -105,6 +105,9 @@ module.exports.function.command = {
         };
         const gameOver = () => {
             inGame = false;
+            endTime = new Date();
+            
+            const playTime = endTime - startTime;
             const authorAvatar = interaction.user.displayAvatarURL();
             const authorUsername = interaction.user.username;
             const editEmbed = new EmbedBuilder()
@@ -177,7 +180,7 @@ module.exports.function.command = {
         snake = [{ "x": 5, "y": 5 }];
         newAppleLocation();
 
-        await interaction.editReply(interaction.client.translate.commands.snake.building_board_game);
+        await interaction.reply(interaction.client.translate.commands.snake.building_board_game);
 
         const authorAvatar = interaction.user.displayAvatarURL();
         const authorUsername = interaction.user.username;

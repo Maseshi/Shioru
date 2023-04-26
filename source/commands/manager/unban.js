@@ -12,7 +12,7 @@ module.exports = {
             PermissionsBitField.Flags.BanMembers
         ]
     },
-    "usage": "unban <member: id, username, tag> (reason)",
+    "usage": "unban <member(String)> [reason(String)]",
     "function": {
         "command": {}
     }
@@ -22,17 +22,15 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "unban",
             "th": "ปลดแบน"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Stop banning members who are banned in the server.",
             "th": "ปลดแบนสมาชิกที่ถูกแบนในเซิร์ฟเวอร์"
         },
         "options": [
             {
-                "type": 6,
+                "type": 3,
                 "name": "member",
                 "name_localizations": {
                     "th": "สมาชิก"
@@ -58,40 +56,34 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputMember = interaction.options.get("member").value;
-        let inputReason = interaction.options.get("reason");
+        const inputMember = interaction.options.getString("member");
+        const inputReason = interaction.options.getString("reason") ?? "";
 
-        const banned = await interaction.guild.bans.fetch();
+        const banned = await interaction.guild.bans.fetch(inputMember.id);
 
-        if (banned.length <= 0) return await interaction.editReply(interaction.client.translate.commands.unban.no_one_gets_banned);
+        if (banned.length <= 0) return await interaction.reply(interaction.client.translate.commands.unban.no_one_gets_banned);
 
         const bannedUser = banned.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
 
-        if (!bannedUser) return await interaction.editReply(interaction.client.translate.commands.unban.this_user_not_banned);
-        if (!inputReason) inputReason = "";
+        if (!bannedUser) return await interaction.reply(interaction.client.translate.commands.unban.this_user_not_banned);
 
-        interaction.guild.bans.remove(bannedUser.user, {
-            "reason": inputReason
-        }).then(async () => {
-            const authorUsername = interaction.user.username;
-            const memberUsername = bannedUser.user.username;
-            const memberID = bannedUser.user.id;
-            const memberAvatar = bannedUser.user.avatar;
-            const memberAvatarURL = "https://cdn.discordapp.com/avatars/" + memberID + "/" + memberAvatar + ".png";
-            const time = new Date().toISOString();
+        await interaction.guild.bans.remove(bannedUser.user, { "reason": inputReason });
 
-            if (!inputReason) inputReason = interaction.client.translate.commands.unban.no_reason;
+        const authorUsername = interaction.user.username;
+        const memberUsername = bannedUser.user.username;
+        const memberID = bannedUser.user.id;
+        const memberAvatar = bannedUser.user.avatar;
+        const memberAvatarURL = "https://cdn.discordapp.com/avatars/" + memberID + "/" + memberAvatar + ".png";
 
-            const unbanEmbed = new EmbedBuilder()
-                .setTitle(interaction.client.translate.commands.unban.user_has_been_unbanned.replace("%s", memberUsername))
-                .setDescription(interaction.client.translate.commands.unban.reason_for_unban.replace("%s1", authorUsername).replace("%s2", inputReason))
-                .setColor("Green")
-                .setTimestamp()
-                .setThumbnail(memberAvatarURL);
+        if (!inputReason) inputReason = interaction.client.translate.commands.unban.no_reason;
 
-            await interaction.editReply({
-                "embeds": [unbanEmbed]
-            });
-        });
+        const unbanEmbed = new EmbedBuilder()
+            .setTitle(interaction.client.translate.commands.unban.user_has_been_unbanned.replace("%s", memberUsername))
+            .setDescription(interaction.client.translate.commands.unban.reason_for_unban.replace("%s1", authorUsername).replace("%s2", inputReason))
+            .setColor("Green")
+            .setTimestamp()
+            .setThumbnail(memberAvatarURL);
+
+        await interaction.reply({ "embeds": [unbanEmbed] });
     }
 };

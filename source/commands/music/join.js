@@ -12,7 +12,7 @@ module.exports = {
 			PermissionsBitField.Flags.Connect
 		]
 	},
-	"usage": "join (channel: name, id)",
+	"usage": "join [channel",
     "function": {
         "command": {}
     }
@@ -22,12 +22,10 @@ module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "join",
 			"th": "เข้าร่วม"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "Join the audio channel.",
 			"th": "เข้าร่วมช่องสัญญาณเสียง"
 		},
 		"options": [
@@ -50,27 +48,23 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		const inputChannel = interaction.options.get("channel");
+		const inputChannel = interaction.options.getChannel("channel") ?? "";
 
 		const queue = interaction.client.music.getQueue(interaction);
 
-		if (queue && interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.editReply(interaction.client.translate.commands.join.another_player_is_playing);
+		if (queue && interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.join.another_player_is_playing);
 		if (!inputChannel) {
 			const voiceChannel = interaction.member.voice.channel;
 			const meChannel = interaction.guild.members.me.voice.channel;
 
-			if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.join.not_in_channel);
-			if (meChannel && meChannel.id === voiceChannel.id) return await interaction.editReply(interaction.client.translate.commands.join.already_joined);
+			if (!voiceChannel) return await interaction.reply(interaction.client.translate.commands.join.not_in_channel);
+			if (meChannel && meChannel.id === voiceChannel.id) return await interaction.reply(interaction.client.translate.commands.join.already_joined);
 
 			interaction.client.music.voices.join(voiceChannel);
-			await interaction.editReply(interaction.client.translate.commands.join.joined.replace("%s", voiceChannel.id));
+			await interaction.reply(interaction.client.translate.commands.join.joined.replace("%s", voiceChannel.id));
 		} else {
-			const channel = interaction.guild.channels.cache.find(channels => (channels.id === inputChannel.value) || (channels.name === inputChannel.value));
-
-			if (!channel) return await interaction.editReply(interaction.client.translate.commands.join.no_channel);
-
-			interaction.client.music.voices.join(channel);
-			await interaction.editReply(interaction.client.translate.commands.join.channel_joined.replace("%s", channel.id));
+			interaction.client.music.voices.join(inputChannel);
+			await interaction.reply(interaction.client.translate.commands.join.channel_joined.replace("%s", inputChannel.id));
 		}
 	}
 }

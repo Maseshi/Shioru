@@ -13,7 +13,7 @@ module.exports = {
             PermissionsBitField.Flags.ManageMessages
         ]
     },
-    "usage": "tictactoe <opponent: username, tag, id> (emoji) (emoji)",
+    "usage": "tictactoe <opponent> [x_emoji(String)] [o_emoji(String)]",
     "function": {
         "command": {}
     }
@@ -23,12 +23,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "tictactoe",
             "th": "โอเอกซ์"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Play tic-tac-toe with friends",
             "th": "เล่นโอเอกซ์กับเพื่อน"
         },
         "options": [
@@ -46,7 +44,7 @@ module.exports.function.command = {
             },
             {
                 "type": 3,
-                "name": "xemoji",
+                "name": "x_emoji",
                 "description": "Your emoji on the board",
                 "description_localizations": {
                     "th": "อีโมจิของคุณในกระดาน"
@@ -57,7 +55,7 @@ module.exports.function.command = {
             },
             {
                 "type": 3,
-                "name": "oemoji",
+                "name": "o_emoji",
                 "description": "The opponent emoji on the board",
                 "description_localizations": {
                     "th": "อีโมจิของฝั่งตรงข้ามในกระดาน"
@@ -70,8 +68,8 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const inputOpponent = interaction.options.getUser("opponent");
-        const inputFirstEmoji = interaction.options.getString("xemoji") ?? "❌";
-        const inputSecondEmoji = interaction.options.getString("oemoji") ?? "⭕";
+        const inputFirstEmoji = interaction.options.getString("x_emoji") ?? "❌";
+        const inputSecondEmoji = interaction.options.getString("o_emoji") ?? "⭕";
 
         const getRandomString = (length) => {
             let result = "";
@@ -85,7 +83,7 @@ module.exports.function.command = {
         }
         const checkResult = (tie, gameData, player, author, member, midDuel, gameCollector, inputFirstEmoji, inputSecondEmoji, emojiTopLeft, emojiTopCenter, emojiTopRight, emojiMiddleLeft, emojiMiddleCenter, emojiMiddleRight, emojiBottomLeft, emojiBottomCenter, emojiBottomRight) => {
             const winsMessage = async () => {
-                await interaction.followUp(interaction.client.translate.commands.tictactoe.winner.reaplce("%s", gameData[player].member.username))
+                await interaction.followUp(interaction.client.translate.commands.tictactoe.winner.replace("%s", gameData[player].member.username))
                 gameCollector.stop()
                 midDuel.delete(author.id)
                 midDuel.delete(member.id)
@@ -140,18 +138,19 @@ module.exports.function.command = {
             }
         }
 
-        if (inputOpponent.bot) return await interaction.editReply(interaction.client.translate.commands.tictactoe.can_not_play_with_bot);
-        if (/([\uD800-\uDBFF][\uDC00-\uDFFF])/g.test(inputFirstEmoji)) return await interaction.editReply(interaction.client.translate.commands.tictactoe.need_one_emoji)
-        if (/([\uD800-\uDBFF][\uDC00-\uDFFF])/g.test(inputSecondEmoji)) return await interaction.editReply(interaction.client.translate.commands.tictactoe.need_one_emoji)
+        if (inputOpponent.bot) return await interaction.reply(interaction.client.translate.commands.tictactoe.can_not_play_with_bot);
+        if (/([\uD800-\uDBFF][\uDC00-\uDFFF])/g.test(inputFirstEmoji)) return await interaction.reply(interaction.client.translate.commands.tictactoe.need_one_emoji)
+        if (/([\uD800-\uDBFF][\uDC00-\uDFFF])/g.test(inputSecondEmoji)) return await interaction.reply(interaction.client.translate.commands.tictactoe.need_one_emoji)
 
         let player = 0;
         const midDuel = new Set()
         const author = interaction.user;
         const member = inputOpponent;
 
-        if (midDuel.has(author.id)) return await interaction.editReply(interaction.client.translate.commands.tictactoe.in_duel.replace("%s", member.id))
-        if (midDuel.has(member.id)) return await interaction.editReply(interaction.client.translate.commands.tictactoe.in_another_duel.replace("%s", member.id))
-        if (member.id === interaction.client.user.id) return await interaction.editReply(interaction.client.translate.commands.tictactoe.can_not_duel_with_me)
+        if (!member) return await interaction.reply(interaction.client.translate.commands.tictactoe.member_not_found);
+        if (midDuel.has(author.id)) return await interaction.reply(interaction.client.translate.commands.tictactoe.in_duel.replace("%s", member.id))
+        if (midDuel.has(member.id)) return await interaction.reply(interaction.client.translate.commands.tictactoe.in_another_duel.replace("%s", member.id))
+        if (member.id === interaction.client.user.id) return await interaction.reply(interaction.client.translate.commands.tictactoe.can_not_duel_with_me)
 
         const gameData = [
             { "member": author, "emoji": inputFirstEmoji },
@@ -218,7 +217,7 @@ module.exports.function.command = {
             .setStyle(ButtonStyle.Secondary)
             .setLabel("~")
 
-        await interaction.editReply({
+        await interaction.reply({
             "embeds": [tictactoeEmbed],
             "components": [
                 {

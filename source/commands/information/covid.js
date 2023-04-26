@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const fetch = require("node-fetch");
+const { get } = require("axios").default;
 
 module.exports = {
     "enable": true,
@@ -12,7 +12,7 @@ module.exports = {
             PermissionsBitField.Flags.EmbedLinks
         ]
     },
-    "usage": "covid <country>",
+    "usage": "covid <country(String)>",
     "function": {
         "command": {}
     }
@@ -22,12 +22,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "covid",
             "th": "โควิด"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Get covid statistics for a country",
             "th": "สำหรวจสถิติโควิดในประเทศที่ต้องการ"
         },
         "options": [
@@ -46,52 +44,54 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputCountry = interaction.options.get("country").value;
+        const inputCountry = interaction.options.getString("country");
 
-        const response = await fetch("https://disease.sh/v3/covid-19/countries/" + inputCountry)
+        try {
+            const response = await get("https://disease.sh/v3/covid-19/countries/" + inputCountry)
 
-        if (response.status === 404) return await interaction.editReply(interaction.client.translate.commands.covid.country_not_found);
-        if (!response.ok) return await interaction.editReply(interaction.client.translate.commands.covid.backend_issue);
+            if (response.status === 404) return await interaction.reply(interaction.client.translate.commands.covid.country_not_found);
+            if (!response.data) return await interaction.reply(interaction.client.translate.commands.covid.backend_issue);
 
-        const data = await response.json();
+            const date = new Date(response.updated);
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = "0" + date.getMinutes();
+            const formattedTime = day + "/" + month + "/" + year + " " + interaction.client.translate.commands.covid.when + " " + hours + ':' + minutes.slice(-2);
 
-        const date = new Date(data.updated);
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        const hours = date.getHours();
-        const minutes = "0" + date.getMinutes();
-        const formattedTime = day + "/" + month + "/" + year + " " + interaction.client.translate.commands.covid.when + " " + hours + ':' + minutes.slice(-2);
+            const clientFetch = await interaction.client.user.fetch();
+            const clientColor = clientFetch.accentColor;
+            const covidEmbed = new EmbedBuilder()
+                .setTitle("🧫 Covid - %s".replace("%s", response.country))
+                .setThumbnail(response.countryInfo.flag)
+                .setColor(clientColor)
+                .addFields(
+                    [
+                        { "name": interaction.client.translate.commands.covid.cases_total, "value": response.cases.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.cases_today, "value": response.todayCases.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.deaths_total, "value": response.deaths.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.deaths_today, "value": response.todayDeaths.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.recovered, "value": response.recovered.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.active, "value": response.active.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.critical_stage, "value": response.critical.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.cases_per_one_million, "value": response.casesPerOneMillion.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.tests, "value": response.tests.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.tests_per_one_million, "value": response.testsPerOneMillion.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.population, "value": response.population.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.one_case_per_people, "value": response.oneCasePerPeople.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.one_death_per_people, "value": response.oneDeathPerPeople.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.one_test_per_people, "value": response.oneTestPerPeople.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.active_per_one_million, "value": response.activePerOneMillion.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.recovered_per_one_million, "value": response.recoveredPerOneMillion.toLocaleString(), "inline": true },
+                        { "name": interaction.client.translate.commands.covid.critical_per_one_million, "value": response.criticalPerOneMillion.toLocaleString(), "inline": true }
+                    ]
+                )
+                .setFooter({ "text": interaction.client.translate.commands.covid.updated_on.replace("%s", formattedTime) });
 
-        const clientFetch = await interaction.client.user.fetch();
-        const clientColor = clientFetch.accentColor;
-        const covidEmbed = new EmbedBuilder()
-            .setTitle("🧫 Covid - %s".replace("%s", data.country))
-            .setThumbnail(data.countryInfo.flag)
-            .setColor(clientColor)
-            .addFields(
-                [
-                    { "name": interaction.client.translate.commands.covid.cases_total, "value": data.cases.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.cases_today, "value": data.todayCases.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.deaths_total, "value": data.deaths.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.deaths_today, "value": data.todayDeaths.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.recovered, "value": data.recovered.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.active, "value": data.active.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.critical_stage, "value": data.critical.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.cases_per_one_million, "value": data.casesPerOneMillion.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.tests, "value": data.tests.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.tests_per_one_million, "value": data.testsPerOneMillion.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.population, "value": data.population.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.one_case_per_people, "value": data.oneCasePerPeople.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.one_death_per_people, "value": data.oneDeathPerPeople.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.one_test_per_people, "value": data.oneTestPerPeople.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.active_per_one_million, "value": data.activePerOneMillion.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.recovered_per_one_million, "value": data.recoveredPerOneMillion.toLocaleString(), "inline": true },
-                    { "name": interaction.client.translate.commands.covid.critical_per_one_million, "value": data.criticalPerOneMillion.toLocaleString(), "inline": true }
-                ]
-            )
-            .setFooter({ "text": interaction.client.translate.commands.covid.updated_on.replace("%s", formattedTime) });
-
-        await interaction.editReply({ "embeds": [covidEmbed] });
+            await interaction.reply({ "embeds": [covidEmbed] });
+        } catch (error) {
+            await interaction.reply(interaction.client.translate.commands.covid.country_not_found);
+        }
     }
 }

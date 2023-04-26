@@ -12,7 +12,7 @@ module.exports = {
 			PermissionsBitField.Flags.BanMembers
 		]
 	},
-	"usage": "ban <member: id, username, tag> (days) (reason)",
+	"usage": "ban <member> [days(Number)] [reason(String)]",
     "function": {
         "command": {}
     }
@@ -22,12 +22,10 @@ module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "ban",
 			"th": "แบน"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "Ban members within the server.",
 			"th": "แบนสมาชิกภายในเซิร์ฟเวอร์"
 		},
 		"options": [
@@ -72,39 +70,33 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		const inputMember = interaction.options.get("member").value;
-		let inputDays = interaction.options.get("days");
-		let inputReason = interaction.options.get("reason");
+		const inputMember = interaction.options.getMember("member");
+		const inputDays = interaction.options.getNumber("days") ?? 0;
+		const inputReason = interaction.options.getString("reason") ?? "";
 
-		const member = interaction.guild.members.cache.find(members => (members.user.username === inputMember) || (members.user.id === inputMember) || (members.user.tag === inputMember));
+		const member = await interaction.guild.members.fetch(inputMember.id);
+		const banned = await interaction.guild.bans.fetch(inputMember.id);
 
 		if (!member) return await interaction.editReply(interaction.client.translate.commands.ban.user_not_found);
+		if (!banned) return await interaction.reply(interaction.client.translate.commands.ban.member_has_banned);
 
-		const banned = await interaction.guild.bans.fetch();
-
-		if (banned.length > 0 && banned.map((user => user.user.id === member.user.id))) {
-			return await interaction.editReply(interaction.client.translate.commands.ban.member_has_banned)
-		}
-
-		const memberPosition = member.roles.highest.position;
+		const memberPosition = inputMember.roles.highest.position;
 		const authorPosition = interaction.member.roles.highest.position;
 
-		if (authorPosition < memberPosition) return await interaction.editReply(interaction.client.translate.commands.ban.members_have_a_higher_role);
-		if (!member.bannable) return await interaction.editReply(interaction.client.translate.commands.ban.members_have_a_higher_role_than_me);
-		if (!inputDays) inputDays = 0;
-		if (!inputReason) inputReason = "";
+		if (authorPosition < memberPosition) return await interaction.reply(interaction.client.translate.commands.ban.members_have_a_higher_role);
+		if (!inputMember.bannable) return await interaction.reply(interaction.client.translate.commands.ban.members_have_a_higher_role_than_me);
 
-		const ban = await interaction.guild.bans.create(member, {
+		const baned = await interaction.guild.bans.create(member, {
 			"deleteMessageDays": inputDays,
 			"reason": inputReason
 		});
 		const authorUsername = interaction.user.username;
-		const memberAvatar = ban.user.avatarURL();
-		const memberUsername = ban.user.username;
+		const memberAvatar = baned.user.avatarURL();
+		const memberUsername = baned.user.username;
 
 		let embedTitle = interaction.client.translate.commands.ban.banned_for_time.replace("%s1", memberUsername).replace("%s2", inputDays);
 
-		if (inputDays === 0) embedTitle = interaction.client.translate.commands.ban.permanently_banned.replace("%s", memberUsername);
+		if (!inputDays) embedTitle = interaction.client.translate.commands.ban.permanently_banned.replace("%s", memberUsername);
 		if (!inputReason) inputReason = interaction.client.translate.commands.ban.no_reason;
 
 		const banEmbed = new EmbedBuilder()
@@ -114,8 +106,6 @@ module.exports.function.command = {
 			.setTimestamp()
 			.setThumbnail(memberAvatar);
 
-		await interaction.editReply({
-			"embeds": [banEmbed]
-		});
+		await interaction.reply({ "embeds": [banEmbed] });
 	}
 };

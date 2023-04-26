@@ -19,19 +19,17 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "lyrics",
             "th": "เนื้อเพลง"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Get lyrics for the currently playing song",
             "th": "รับเนื้อเพลงสำหรับเพลงที่กำลังเล่นอยู่"
         }
     },
     async execute(interaction) {
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.lyrics.no_queue);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.lyrics.no_queue);
 
         let lyrics;
         const queueName = queue.songs.map((song, id) => song.name);
@@ -53,8 +51,6 @@ module.exports.function.command = {
             .setTimestamp()
             .setFooter({ "text": authorUsername, "iconURL": authorAvatar });
 
-        await interaction.editReply({
-            "embeds": [lyricsEmbed]
-        });
+        await interaction.reply({ "embeds": [lyricsEmbed] });
     }
 };

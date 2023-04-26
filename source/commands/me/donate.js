@@ -21,20 +21,23 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "donate",
             "th": "บริจาค"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Donate to support bots and bot developers.",
             "th": "บริจาคเพื่อสนับสนุนบอทและนักพัฒนาบอท"
         }
     },
     async execute(interaction) {
+        const github = "https://github.com/sponsors/Maseshi";
         const patreon = "https://www.patreon.com/maseshi";
         const bmc = "https://www.buymeacoffee.com/maseshi";
         const row = new ActionRowBuilder()
             .addComponents(
+                new ButtonBuilder()
+                    .setURL(github)
+                    .setLabel('Github')
+                    .setStyle(ButtonStyle.Link),
                 new ButtonBuilder()
                     .setURL(patreon)
                     .setLabel('Patreon')
@@ -45,7 +48,7 @@ module.exports.function.command = {
                     .setStyle(ButtonStyle.Link)
             );
 
-        await interaction.editReply({
+        await interaction.reply({
             "content": interaction.client.translate.commands.donate.thank_you_in_advance_message,
             "components": [row]
         });

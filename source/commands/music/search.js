@@ -10,7 +10,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "search [platform: youtube, soundcloud] [type: track, playlist] <song>",
+    "usage": "search <song(String)> [platform] [type]",
     "function": {
         "command": {}
     }
@@ -20,12 +20,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "search",
             "th": "ค้นหา"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Search for the song or playlist you want.",
             "th": "ค้นหาเพลงหรือเพลย์ลิสต์ที่คุณต้องการ"
         },
         "options": [
@@ -94,9 +92,11 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputSong = interaction.options.get("song").value;
-        const inputPlatform = interaction.options.get("platform");
-        let inputType = interaction.options.get("type");
+        await interaction.deferReply();
+
+        const inputSong = interaction.options.getString("song");
+        const inputPlatform = interaction.options.getString("platform") ?? "";
+        let inputType = interaction.options.getString("type") ?? "";
 
         const limit = 10;
         const voiceChannel = interaction.member.voice.channel;
@@ -182,16 +182,16 @@ module.exports.function.command = {
                 const connection = interaction.client.music.voices.get(voiceChannel.guild);
 
                 connection.leave(voiceChannel.guild);
-                catchError(interaction.client, interaction, module.exports.help.name, error);
+                catchError(interaction.client, interaction, module.exports.name, error);
             }
         }
 
-        if (!voiceChannel) return interaction.editReply(interaction.client.translate.commands.search.user_not_in_channel);
+        if (!voiceChannel) return await interaction.editReply(interaction.client.translate.commands.search.user_not_in_channel);
         if (inputPlatform) {
-            switch (inputPlatform.value) {
+            switch (inputPlatform) {
                 case "youtube":
                     if (inputType) {
-                        if (inputType.value === "track") inputType = "video";
+                        if (inputType === "track") inputType = "video";
 
                         try {
                             const results = await interaction.client.music.search(inputSong, {
@@ -200,7 +200,7 @@ module.exports.function.command = {
                                 "safeSearch": true
                             });
 
-                            searcher(inputPlatform.value, results);
+                            searcher(inputPlatform, results);
                         } catch {
                             await interaction.editReply(interaction.client.translate.commands.search.no_results);
                         }
@@ -211,7 +211,7 @@ module.exports.function.command = {
                                 "safeSearch": true
                             });
 
-                            searcher(inputPlatform.value, results);
+                            searcher(inputPlatform, results);
                         } catch {
                             await interaction.editReply(interaction.client.translate.commands.search.no_results);
                         }
@@ -220,9 +220,9 @@ module.exports.function.command = {
                 case "soundcloud":
                     if (inputType) {
                         try {
-                            const results = await SoundCloudPlugin.search(inputSong, inputType.value);
+                            const results = await SoundCloudPlugin.search(inputSong, inputType);
 
-                            searcher(inputPlatform.value, results);
+                            searcher(inputPlatform, results);
                         } catch {
                             await interaction.editReply(interaction.client.translate.commands.search.no_results);
                         }
@@ -230,7 +230,7 @@ module.exports.function.command = {
                         try {
                             const results = await SoundCloudPlugin.search(inputSong);
 
-                            searcher(inputPlatform.value, results);
+                            searcher(inputPlatform, results);
                         } catch {
                             await interaction.editReply(interaction.client.translate.commands.search.no_results);
                         }
@@ -239,7 +239,7 @@ module.exports.function.command = {
             }
         } else {
             if (inputType) {
-                if (inputType.value === "track") inputType = "video";
+                if (inputType === "track") inputType = "video";
 
                 try {
                     const results = await interaction.client.music.search(inputSong, {

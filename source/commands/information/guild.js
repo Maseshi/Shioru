@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "guild (info)",
+    "usage": "guild [info(String)]",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "guild",
-            "th": "สมาคม"
+            "th": "กิลด์"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Get information about the server.",
             "th": "รับข้อมูลเกี่ยวกับเซิร์ฟเวอร์"
         },
         "options": [
@@ -42,7 +40,7 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputInfo = interaction.options.get("info");
+        const inputInfo = interaction.options.getString("info") ?? "";
 
         const dateFormat = (data) => {
             if (!data) return;
@@ -129,7 +127,7 @@ module.exports.function.command = {
         const embed = new EmbedBuilder()
             .setTitle(interaction.client.translate.commands.guild.server_info)
             .setDescription(interaction.client.translate.commands.guild.server_info_description)
-            .setColor("BLUE")
+            .setColor("Blue")
             .setTimestamp()
             .setFooter({ "text": interaction.client.translate.commands.guild.info_date, "iconURL": guildIcon || "" })
             .setThumbnail(guildIcon || "")
@@ -224,19 +222,19 @@ module.exports.function.command = {
         ];
 
         if (inputInfo) {
-            if (info.includes(inputInfo.value)) {
+            if (info.includes(inputInfo)) {
                 for (let i = 0; i < info.length; i++) {
-                    if (inputInfo.value === info[i]) {
+                    if (inputInfo === info[i]) {
                         embed.addFields(infoList[i]);
-                        await interaction.editReply({ "embeds": [embed] });
+                        await interaction.reply({ "embeds": [embed] });
                     }
                 }
             } else {
-                await interaction.editReply(interaction.client.translate.commands.guild.specific_use.replace("%s", info.join(", ")));
+                await interaction.reply(interaction.client.translate.commands.guild.specific_use.replace("%s", info.join(", ")));
             }
         } else {
             embed.addFields(Array.from(infoList).slice(0, 25));
-            await interaction.editReply({ "embeds": [embed] });
+            await interaction.reply({ "embeds": [embed] });
         }
     }
 }

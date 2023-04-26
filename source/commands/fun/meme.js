@@ -1,6 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 const { randomInt } = require("../../utils/miscUtils");
-const fetch = require("node-fetch");
+const { get } = require("axios").default;
 
 module.exports = {
     "enable": true,
@@ -10,7 +10,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "meme [category]",
+    "usage": "meme [category(String)]",
     "function": {
         "command": {}
     }
@@ -20,12 +20,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "meme",
             "th": "มีม"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Randomly select the meme you want.",
             "th": "สุ่มเลือกมีมที่คุณต้องการ"
         },
         "options": [
@@ -43,36 +41,28 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputCategory = interaction.options.get("category");
+        const inputCategory = interaction.options.getString("category") ?? "";
 
         const randomEmbed = async (choice) => {
             const category = ["meme", "Memes_Of_The_Dank", "memes", "dankmemes"];
-            const random = choice ? choice.value : category[randomInt(category.length)];
-
-            const response = await fetch("https://www.reddit.com/r/" + random + "/random/.json");
-
-            if (response.status !== 200) {
-                return new EmbedBuilder()
-                    .setColor("Red")
-                    .setDescription(interaction.client.translate.commands.meme.can_not_fetch);
-            }
-
-            const data = await response.json();
-
-            if (!Array.isArray(data) || data.length === 0) {
-                return new EmbedBuilder()
-                    .setColor("Red")
-                    .setDescription(interaction.client.translate.commands.meme.meme_not_found.replace("%s", choice));
-            }
+            const random = choice ? choice : category[randomInt(category.length)];
 
             try {
-                const permalink = data[0].data.children[0].data.permalink;
+                const response = await get("https://www.reddit.com/r/" + random + "/random/.json");
+
+                if (!Array.isArray(response.data) || response.data.length === 0) {
+                    return new EmbedBuilder()
+                        .setColor("Red")
+                        .setDescription(interaction.client.translate.commands.meme.meme_not_found.replace("%s", choice));
+                }
+
+                const permalink = response.data[0].data.children[0].data.permalink;
                 const memeUrl = "https://reddit.com" + permalink;
-                const memeImage = data[0].data.children[0].data.url;
-                const memeTitle = data[0].data.children[0].data.title;
-                const memeUpvotes = data[0].data.children[0].data.ups;
-                const memeNumComments = data[0].data.children[0].data.num_comments;
-                const memeCreate = data[0].data.children[0].data.created;
+                const memeImage = response.data[0].data.children[0].data.url;
+                const memeTitle = response.data[0].data.children[0].data.title;
+                const memeUpvotes = response.data[0].data.children[0].data.ups;
+                const memeNumComments = response.data[0].data.children[0].data.num_comments;
+                const memeCreate = response.data[0].data.children[0].data.created;
 
                 return new EmbedBuilder()
                     .setTitle(memeTitle)
@@ -97,13 +87,13 @@ module.exports.function.command = {
                     .setEmoji("🔁")
             );
 
-        await interaction.editReply({
+        await interaction.reply({
             "embeds": [memeEmbed],
             "components": [buttonRow],
         });
 
         const collector = interaction.channel.createMessageCollector({
-            filter: (reactor) => reactor.user.id !== interaction.user.id,
+            "filter": (reactor) => reactor.member.id !== interaction.member.id,
             "time": 60,
             "max": 3,
             "dispose": true,
@@ -124,7 +114,7 @@ module.exports.function.command = {
         collector.on("end", async () => {
             buttonRow.components.forEach((button) => button.setDisabled(true));
 
-            return await interaction.editReply({ "components": [buttonRow] });
+            await interaction.editReply({ "components": [buttonRow] });
         });
     }
 }

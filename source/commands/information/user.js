@@ -9,7 +9,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "user (info) (member)",
+    "usage": "user [info] [member]",
     "function": {
         "command": {}
     }
@@ -19,12 +19,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "user",
             "th": "ผู้ใช้"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Get your user information",
             "th": "รับข้อมูลผู้ใช้ของคุณ"
         },
         "options": [
@@ -134,8 +132,8 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputInfo = interaction.options.get("info");
-        const inputMember = interaction.options.get("member");
+        const inputInfo = interaction.options.getString("info") ?? "";
+        const inputMember = interaction.options.getMember("member") ?? "";
 
         const dateFormat = (data) => {
             if (!data) return;
@@ -186,32 +184,31 @@ module.exports.function.command = {
         let tag = interaction.user.tag || interaction.client.translate.commands.user.unknown;
         let username = interaction.user.username || interaction.client.translate.commands.user.unknown;
 
-        const usersSnapshot = interaction.client.api.apps.discord.guilds[interaction.guild.id].data.users
+        const usersSnapshot = interaction.client.api.users
         const usersRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), interaction.guild.id), "data/users");
         const clientUsername = interaction.client.user.username;
         const clientAvatarURL = interaction.client.user.avatarURL();
         const embed = new EmbedBuilder()
             .setTitle(interaction.client.translate.commands.user.user_info)
             .setDescription(interaction.client.translate.commands.user.user_info_description)
-            .setColor("BLUE")
+            .setColor("Blue")
             .setTimestamp()
             .setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
             .setThumbnail(avatar)
             .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
-        const member = interaction.guild.members.cache.find(members => (members.user.username === (inputMember ? inputMember.value : "")) || (members.user.id === (inputMember ? inputMember.value : "")) || (members.user.tag === (inputMember ? inputMember.value : "")));
 
-        if (member) {
-            avatar = member.user.avatarURL() || interaction.client.translate.commands.user.unknown;
-            bot = member.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            createdAt = member.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
-            createdTimestamp = dateFormat(member.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
-            defaultAvatarURL = member.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
-            discriminator = member.user.discriminator || interaction.client.translate.commands.user.unknown;
-            id = member.user.id || interaction.client.translate.commands.user.unknown;
-            partial = member.user.partial ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            system = member.user.system ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            tag = member.user.tag || interaction.client.translate.commands.user.unknown;
-            username = member.user.username || interaction.client.translate.commands.user.unknown;
+        if (inputMember) {
+            avatar = inputMember.user.avatarURL() || interaction.client.translate.commands.user.unknown;
+            bot = inputMember.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
+            createdAt = inputMember.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
+            createdTimestamp = dateFormat(inputMember.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
+            defaultAvatarURL = inputMember.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
+            discriminator = inputMember.user.discriminator || interaction.client.translate.commands.user.unknown;
+            id = inputMember.user.id || interaction.client.translate.commands.user.unknown;
+            partial = inputMember.user.partial ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
+            system = inputMember.user.system ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
+            tag = inputMember.user.tag || interaction.client.translate.commands.user.unknown;
+            username = inputMember.user.username || interaction.client.translate.commands.user.unknown;
         }
 
         const info = [
@@ -243,55 +240,51 @@ module.exports.function.command = {
 
         if (inputInfo) {
             if (inputMember) {
-                if (member) {
-                    if (bot) {
-                        embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                            .setThumbnail(avatar);
+                if (bot) {
+                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                        .setThumbnail(avatar);
 
-                        for (let i = 0; i < info.length; i++) {
-                            if (inputInfo.value === info[i]) {
-                                embed.addFields(infoList[i]);
-                                await interaction.editReply({ "embeds": [embed] });
-                            }
-                        }
-                    } else {
-                        const snapshot = usersSnapshot[id].access
-
-                        if (snapshot) {
-                            if (snapshot.info) {
-                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                    .setThumbnail(avatar);
-
-                                for (let i = 0; i < info.length; i++) {
-                                    if (inputInfo.value === info[i]) {
-                                        embed.addFields(infoList[i]);
-                                        await interaction.editReply({ "embeds": [embed] });
-                                    }
-                                }
-                            } else {
-                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
-                            }
-                        } else {
-                            set(child(child(usersRef, id), "access"), {
-                                "avatar": false,
-                                "info": false,
-                                "uid": false
-                            }).then(() => {
-                                module.exports.interaction.execute(interaction);
-                            });
+                    for (let i = 0; i < info.length; i++) {
+                        if (inputInfo === info[i]) {
+                            embed.addFields(infoList[i]);
+                            await interaction.reply({ "embeds": [embed] });
                         }
                     }
                 } else {
-                    await interaction.editReply(interaction.client.translate.commands.user.can_not_find_user.replace("%s", interaction.client.config.owner));
+                    const snapshot = usersSnapshot[id].access
+
+                    if (snapshot) {
+                        if (snapshot.info) {
+                            embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                                .setThumbnail(avatar);
+
+                            for (let i = 0; i < info.length; i++) {
+                                if (inputInfo === info[i]) {
+                                    embed.addFields(infoList[i]);
+                                    await interaction.reply({ "embeds": [embed] });
+                                }
+                            }
+                        } else {
+                            await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
+                        }
+                    } else {
+                        set(child(child(usersRef, id), "access"), {
+                            "avatar": false,
+                            "info": false,
+                            "uid": false
+                        }).then(() => {
+                            module.exports.interaction.execute(interaction);
+                        });
+                    }
                 }
             } else {
-                if (member) {
+                if (inputMember) {
                     if (bot) {
                         embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
                             .setThumbnail(avatar)
                             .addFields(Array.from(infoList));
 
-                        await interaction.editReply({ "embeds": [embed] });
+                        await interaction.reply({ "embeds": [embed] });
                     } else {
                         const snapshot = usersSnapshot[id].access
 
@@ -301,9 +294,9 @@ module.exports.function.command = {
                                     .setThumbnail(avatar)
                                     .addFields(Array.from(infoList));
 
-                                await interaction.editReply({ "embeds": [embed] });
+                                await interaction.reply({ "embeds": [embed] });
                             } else {
-                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
+                                await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
                             }
                         } else {
                             set(child(child(usersRef, id), "access"), {
@@ -317,51 +310,47 @@ module.exports.function.command = {
                     }
                 } else {
                     for (let i = 0; i < info.length; i++) {
-                        if (inputInfo.value === info[i]) {
+                        if (inputInfo === info[i]) {
                             embed.addFields(infoList[i]);
-                            await interaction.editReply({ "embeds": [embed] });
+                            await interaction.reply({ "embeds": [embed] });
                         }
                     }
                 }
             }
         } else {
             if (inputMember) {
-                if (member) {
-                    if (bot) {
-                        embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                            .setThumbnail(avatar)
-                            .addFields(Array.from(infoList));
+                if (bot) {
+                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                        .setThumbnail(avatar)
+                        .addFields(Array.from(infoList));
 
-                        await interaction.editReply({ "embeds": [embed] });
-                    } else {
-                        const snapshot = usersSnapshot[id].access
-
-                        if (snapshot) {
-                            if (snapshot.info) {
-                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                    .setThumbnail(avatar)
-                                    .addFields(Array.from(infoList));
-
-                                await interaction.editReply({ "embeds": [embed] });
-                            } else {
-                                await interaction.editReply(interaction.client.translate.commands.user.info.not_allowed);
-                            }
-                        } else {
-                            set(child(child(usersRef, id), "access"), {
-                                "avatar": false,
-                                "info": false,
-                                "uid": false
-                            }).then(() => {
-                                module.exports.interaction.execute(interaction);
-                            });
-                        }
-                    }
+                    await interaction.reply({ "embeds": [embed] });
                 } else {
-                    await interaction.editReply(interaction.client.translate.commands.user.can_not_find_user.replace("%s", interaction.client.config.owner));
+                    const snapshot = usersSnapshot[id].access
+
+                    if (snapshot) {
+                        if (snapshot.info) {
+                            embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
+                                .setThumbnail(avatar)
+                                .addFields(Array.from(infoList));
+
+                            await interaction.reply({ "embeds": [embed] });
+                        } else {
+                            await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
+                        }
+                    } else {
+                        set(child(child(usersRef, id), "access"), {
+                            "avatar": false,
+                            "info": false,
+                            "uid": false
+                        }).then(() => {
+                            module.exports.interaction.execute(interaction);
+                        });
+                    }
                 }
             } else {
                 embed.addFields(Array.from(infoList));
-                await interaction.editReply({ "embeds": [embed] });
+                await interaction.reply({ "embeds": [embed] });
             }
         }
     }

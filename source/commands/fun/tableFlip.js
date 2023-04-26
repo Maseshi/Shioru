@@ -2,13 +2,13 @@ const { PermissionsBitField } = require("discord.js");
 
 module.exports = {
     "enable": true,
-    "name": "tableFlip",
+    "name": "tableflip",
     "description": "(\\\\°□°)\\\\  ┬─┬",
     "category": "fun",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "tableFlip",
+    "usage": "tableflip",
     "function": {
         "command": {}
     }
@@ -16,9 +16,8 @@ module.exports = {
 
 module.exports.function.command = {
     "data": {
-        "name": module.exports.name.toLowerCase(),
+        "name": module.exports.name,
         "name_localizations": {
-            "en-US": "tableflip",
             "th": "พลิกโต๊ะ"
         },
         "description": module.exports.description
@@ -32,12 +31,12 @@ module.exports.function.command = {
             "(╯°□°)╯           ┬─┬"
         ];
 
-        await interaction.editReply("(\\\\°□°)\\\\  ┬─┬").then(() => {
-            for (const frame of frames) {
-                setTimeout(async () => {
-                    await interaction.editReply(frame);
-                }, 1000);
-            }
-        });
+        await interaction.reply("(\\\\°□°)\\\\  ┬─┬");
+        
+        for (const frame of frames) {
+            setTimeout(async () => {
+                await interaction.editReply(frame);
+            }, 1000);
+        }
     }
 }

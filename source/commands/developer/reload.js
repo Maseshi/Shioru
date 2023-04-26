@@ -10,7 +10,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "reload <command: name, aliases>",
+    "usage": "reload <command(String)>",
     "function": {
         "command": {}
     }
@@ -20,12 +20,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "reload",
             "th": "โหลดซ้ำ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Reload the command that doesn't work.",
             "th": "โหลดคำสั่งที่ไม่ทำงานอีกครั้ง"
         },
         "options": [
@@ -44,32 +42,26 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputCommand = interaction.options.get("command").value;
+        const inputCommand = interaction.options.getString("command", true).toLowerCase();
 
-        const commandName = inputCommand.toLowerCase();
-        const command = interaction.client.interaction.get(commandName);
+        const command = interaction.client.commands.get(inputCommand);
+        const commandName = command.name.toLowerCase();
 
-        if (!command) return await interaction.editReply(interaction.client.translate.commands.reload.invalid_command);
+        if (!command) return await interaction.reply(interaction.client.translate.commands.reload.invalid_command);
 
-        readdirSync(path.join(__dirname, "..")).forEach(async (dirs) => {
-            const files = readdirSync(path.join(__dirname, "..", dirs));
+        delete require.cache[require.resolve("./" + commandName + ".js")];
 
-            if (files.includes(commandName + ".js")) {
-                const file = "../" + dirs + "/" + commandName + ".js";
+        try {
+            interaction.client.commands.delete(commandName);
 
-                try {
-                    delete require.cache[require.resolve(file)];
-                    interaction.client.interaction.delete(commandName);
+            const newCommand = require("./" + commandName + ".js");
+            const newCommandName = newCommand.name.toLowerCase();
 
-                    const pull = require(file);
-
-                    interaction.client.interaction.set(commandName, pull);
-                    await interaction.editReply(interaction.client.translate.commands.reload.reloaded.replace("%s", commandName));
-                } catch (error) {
-                    await interaction.editReply(interaction.client.translate.commands.reload.reload_error.replace("%s", inputCommand.toUpperCase()));
-                    console.log(error.stack || error);
-                }
-            }
-        });
+            interaction.client.commands.set(newCommandName, newCommand);
+            await interaction.reply(interaction.client.translate.commands.reload.reloaded.replace("%s", inputCommand));
+        } catch (error) {
+            console.error(error);
+            await interaction.reply(interaction.client.translate.commands.reload.reload_error.replace("%s", inputCommand.toUpperCase()));
+        }
     }
 }

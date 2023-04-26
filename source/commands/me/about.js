@@ -18,12 +18,10 @@ module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "about",
 			"th": "เกี่ยวกับ"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "See information about bots.",
 			"th": "ดูข้อมูลเกี่ยวกับบอท"
 		},
 	},
@@ -39,8 +37,8 @@ module.exports.function.command = {
 			.setColor(clientColor)
 			.setTimestamp(new Date(contentUpdate))
 			.setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
-			.setFooter({ "text": interaction.client.translate.commands.about.update_on, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/fountain-pen_1f58b-fe0f.png" });
+			.setFooter({ "text": interaction.client.translate.commands.about.update_on });
 
-		await interaction.editReply({ "embeds": [aboutEmbed] });
+		await interaction.reply({ "embeds": [aboutEmbed] });
 	}
 };

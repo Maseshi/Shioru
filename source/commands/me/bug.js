@@ -9,7 +9,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "bug <message>",
+    "usage": "bug <message(String)>",
     "function": {
         "command": {}
     }
@@ -19,12 +19,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "bug",
             "th": "บัค"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Report error information about bots.",
             "th": "รายงานข้อผิดพลาดเกี่ยวกับบอท"
         },
         "options": [
@@ -44,18 +42,17 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputMessage = interaction.options.get("message").value;
+        const inputMessage = interaction.options.getString("message");
 
-        const db = getDatabase();
-        const dbRef = ref(db, "projects/shioru/bugs");
+        const bugsRef = ref(getDatabase(), "projects/shioru/bugs");
 
         const authorUid = interaction.user.id;
         const authorTag = interaction.user.tag;
         const date = new Date();
 
-        await interaction.editReply(interaction.client.translate.commands.bug.sending);
+        await interaction.reply(interaction.client.translate.commands.bug.sending);
 
-        await update(push(dbRef), {
+        await update(push(bugsRef), {
             "message": inputMessage,
             "user": authorTag,
             "uid": authorUid,

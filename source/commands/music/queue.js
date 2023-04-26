@@ -18,19 +18,17 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "queue",
             "th": "คิว"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Check songs in the queue",
             "th": "ตรวจสอบเพลงในคิว"
         }
     },
     async execute(interaction) {
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.queue.no_queue);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.queue.no_queue);
 
         const queueList = queue.songs.map((song, id) => id + ". " + song.name + " - `" + song.formattedDuration + "`").slice(1, 10).join("\n");
         const queuePreviousList = queue.previousSongs.map((song, id) => (id + 1) + ". " + song.name + " - `" + song.formattedDuration + "`").slice(0, 10).join("\n")
@@ -98,8 +96,6 @@ module.exports.function.command = {
             .setTimestamp(queueCreatedTimestamp)
             .setFooter({ "text": interaction.client.translate.commands.queue.owner_this_queue.replace("%s", queueAuthorUsername), "iconURL": avatarURL });
 
-        await interaction.editReply({
-            "embeds": [queueEmbed]
-        });
+        await interaction.reply({ "embeds": [queueEmbed] });
     }
 };

@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const fetch = require('node-fetch');
+const { get } = require("axios").default;
 
 module.exports = {
     "enable": true,
@@ -18,13 +18,8 @@ module.exports = {
 module.exports.function.command = {
     "data": {
         "name": module.exports.name,
-        "name_localizations": {
-            "en-US": "nekos",
-            "th": "เนโกะ"
-        },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Random anime pictures as you want.",
             "th": "สุ่มรูปอนิเมะตามที่คุณต้องการ"
         },
         "options": [
@@ -137,7 +132,7 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputType = interaction.options.get("type").value;
+        const inputType = interaction.options.getString("type");
 
         const api = "https://nekos.life/api/v2";
         const endpoints = {
@@ -166,20 +161,22 @@ module.exports.function.command = {
             "waifu": "/img/waifu"
         };
 
-        fetch(api + endpoints[inputType])
-            .then(response => response.json())
-            .then(async data => {
-                const title = Object.keys(endpoints).find(key => endpoints[key] === endpoints[inputType]);
-                const authorUsername = interaction.user.username;
-                const authorAvatar = interaction.user.displayAvatarURL();
-                const nekosEmbed = new EmbedBuilder()
-                    .setTitle(title.charAt(0).toUpperCase() + title.slice(1))
-                    .setColor("Random")
-                    .setImage(data.url)
-                    .setTimestamp()
-                    .setFooter({ "iconURL": authorAvatar, "text": interaction.client.translate.commands.nekos.request_by.replace("%s", authorUsername) });
+        try {
+            const response = await get(api + endpoints[inputType]);
 
-                await interaction.editReply({ "embeds": [nekosEmbed] });
-            });
+            const title = Object.keys(endpoints).find(key => endpoints[key] === endpoints[inputType]);
+            const authorUsername = interaction.user.username;
+            const authorAvatar = interaction.user.displayAvatarURL();
+            const nekosEmbed = new EmbedBuilder()
+                .setColor("Random")
+                .setTitle(title.charAt(0).toUpperCase() + title.slice(1))
+                .setImage(response.data.url)
+                .setFooter({ "iconURL": authorAvatar, "text": interaction.client.translate.commands.nekos.request_by.replace("%s", authorUsername) })
+                .setTimestamp();
+
+            await interaction.reply({ "embeds": [nekosEmbed] });
+        } catch (error) {
+            await interaction.reply(interaction.client.translate.commands.nekos.can_not_fetch_data);
+        }
     }
 }

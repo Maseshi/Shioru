@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "dead",
             "th": "เสียชีวิต"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Fake message that says you commit suicide.",
             "th": "ข้อความปลอมที่บอกว่าคุณฆ่าตัวตาย!"
         }
     },
@@ -33,8 +31,6 @@ module.exports.function.command = {
             .setDescription(interaction.client.translate.commands.dead.suicide.replace("%s", authorUsername))
             .setColor("Default");
 
-        await interaction.editReply({
-            "embeds": [deadEmbed]
-        });
+        await interaction.reply({ "embeds": [deadEmbed] });
     }
 }

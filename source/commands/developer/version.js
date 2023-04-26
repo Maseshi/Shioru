@@ -19,22 +19,22 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "version",
             "th": "รุ่น"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Check the current bot version.",
             "th": "ตรวจสอบเวอร์ชันของบอทในปัจจุบัน!"
         }
     },
     async execute(interaction) {
+        const clientAvatar = interaction.client.user.displayAvatarURL();
+        const clientUsername = interaction.client.user.username;
+        const clientColor = interaction.guild.members.me.displayHexColor;
         const versionEmbed = new EmbedBuilder()
-            .setDescription(interaction.client.translate.commands.version.working_in_version.replace("%s", version))
-            .setColor("Green");
+            .setColor(clientColor)
+            .setAuthor({ "iconURL": clientAvatar, "name": clientUsername })
+            .setDescription(interaction.client.translate.commands.version.working_in_version.replace("%s", version));
 
-        await interaction.editReply({
-            "embeds": [versionEmbed]
-        });
+        await interaction.reply({ "embeds": [versionEmbed] });
     }
 }

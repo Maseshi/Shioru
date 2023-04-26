@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "kill <name>",
+    "usage": "kill <name(String)>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "kill",
             "th": "ฆ่า"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Fake messages that say you will kill something.",
             "th": "ข้อความปลอมที่บอกว่าคุณจะฆ่าอะไรบางอย่าง"
         },
         "options": [
@@ -42,7 +40,7 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputName = interaction.options.get("name").value;
+        const inputName = interaction.options.getString("name");
 
         const authorUsername = interaction.user.username;
         const clientUsername = interaction.client.user.username;
@@ -50,10 +48,8 @@ module.exports.function.command = {
             .setDescription(interaction.client.translate.commands.kill.killed.replace("%s1", authorUsername).replace("%s2", inputName))
             .setColor("Default");
 
-        if (inputName === clientUsername) return await interaction.editReply(interaction.client.translate.commands.kill.do_not_kill_me);
+        if (inputName === clientUsername) return await interaction.reply(interaction.client.translate.commands.kill.do_not_kill_me);
 
-        await interaction.editReply({
-            "embeds": [killEmbed]
-        });
+        await interaction.reply({ "embeds": [killEmbed] });
     }
 }

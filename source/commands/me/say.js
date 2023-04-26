@@ -9,7 +9,7 @@ module.exports = {
         "user": [PermissionsBitField.Flags.ManageMessages],
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "say (channel: name, id) <text>",
+    "usage": "say <text(String)> [channel]",
     "function": {
         "command": {}
     }
@@ -19,12 +19,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "say",
             "th": "พูด"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Let the bot print instead",
             "th": "ปล่อยให้บอทพิมพ์แทน"
         },
         "options": [
@@ -63,23 +61,15 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputText = interaction.options.get("text").value;
-        const inputChannel = interaction.options.get("channel");
+        const inputText = interaction.options.getString("text");
+        const inputChannel = interaction.options.getChannel("channel") ?? "";
 
         if (!inputChannel) {
-            await interaction.editReply(inputText);
-            await interaction.followUp({
-                "content": interaction.client.translate.commands.say.success,
-                "ephemeral": true
-            });
+            await interaction.channel.send(inputText);
+            await interaction.reply({ "content": interaction.client.translate.commands.say.success, "ephemeral": true});
         } else {
-            const channel = interaction.guild.channels.cache.find(channels => (channels.id === inputChannel.value) || (channels.name === inputChannel.value));
-
-            await channel.send(inputText);
-            await interaction.editReply({
-                "content": interaction.client.translate.commands.say.success,
-                "ephemeral": true
-            });
+            await inputChannel.send(inputText);
+            await interaction.reply({ "content": interaction.client.translate.commands.say.success, "ephemeral": true});
         }
     }
 }

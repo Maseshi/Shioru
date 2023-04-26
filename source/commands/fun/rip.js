@@ -21,21 +21,16 @@ module.exports = {
 module.exports.function.command = {
     "data": {
         "name": module.exports.name,
-        "name_localizations": {
-            "en-US": "rip",
-            "th": "ตาย"
-        },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Send RIP images",
             "th": "ส่งภาพ RIP"
         }
     },
     async execute(interaction) {
         const rip = new AttachmentBuilder("https://i.imgur.com/w3duR07.png");
 
-        if (!rip) return await interaction.editReply(interaction.client.translate.commands.rip.no_image);
+        if (!rip) return await interaction.reply(interaction.client.translate.commands.rip.no_image);
 
-        await interaction.editReply({ "files": [rip] });
+        await interaction.reply({ "files": [rip] });
     }
 }

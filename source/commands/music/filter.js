@@ -3,12 +3,12 @@ const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 module.exports = {
     "enable": true,
     "name": "filter",
-    "description": "Filter your music to be more powerful.",
+    "description": "Add more powerful filters to your music.",
     "category": "music",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "filter <option> <filters>",
+    "usage": "filter: add <filter(String)>, remove <filter(String)>, set <filter(String)>, list, now, clear",
     "function": {
         "command": {}
     }
@@ -18,71 +18,129 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "filter",
-            "th": "กรอง"
+            "th": "ฟิลเตอร์"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Filter your music to be more powerful.",
-            "th": "กรองเพลงของคุณให้มีพลังมากขึ้น"
+            "th": "ใส่ฟิลเตอร์ในเพลงของคุณให้มีพลังมากขึ้น"
         },
         "options": [
             {
-                "type": 3,
-                "name": "option",
+                "type": 1,
+                "name": "add",
                 "name_localizations": {
-                    "th": "ตัวเลือก"
+                    "th": "เพิ่ม"
                 },
-                "description": "Options for filter actions",
+                "description": "Add a filter to the queue.",
                 "description_localizations": {
-                    "th": "ตัวเลือกสำหรับการกระทำเกี่ยวกับตัวกรอง"
+                    "th": "เพิ่มฟิลเตอร์เข้าไปในคิว"
                 },
-                "required": true,
-                "choices": [
+                "options": [
                     {
-                        "name": "add",
-                        "value": "add",
-                    },
-                    {
-                        "name": "remove",
-                        "value": "remove",
-                    },
-                    {
-                        "name": "set",
-                        "value": "set",
-                    },
-                    {
-                        "name": "available",
-                        "value": "available",
-                    },
-                    {
-                        "name": "list",
-                        "value": "list",
-                    },
-                    {
-                        "name": "clear",
-                        "value": "clear",
-                    },
+                        "type": 3,
+                        "name": "filter",
+                        "name_localizations": {
+                            "th": "ฟิลเตอร์"
+                        },
+                        "description": "The filters you want to use.",
+                        "description_localizations": {
+                            "th": "รูปแบบเสียงที่คุณต้องการใช้ คุณสามารถระบุเพิ่มเติมได้โดยใช้ \",\" สำหรับรุปแบบหลายรายการ"
+                        },
+                        "required": true
+                    }
                 ]
             },
             {
-                "type": 3,
-                "name": "filters",
+                "type": 1,
+                "name": "remove",
                 "name_localizations": {
-                    "th": "ตัวกรอง"
+                    "th": "ลบ"
                 },
-                "description": "The filters you want to use.",
+                "description": "Remove the filter in the queue.",
                 "description_localizations": {
-                    "th": "รูปแบบเสียงที่คุณต้องการใช้ คุณสามารถระบุเพิ่มเติมได้โดยใช้ \",\" สำหรับรุปแบบหลายรายการ"
+                    "th": "ลบฟิลเตอร์ในคิว"
+                },
+                "options": [
+                    {
+                        "type": 3,
+                        "name": "filter",
+                        "name_localizations": {
+                            "th": "ฟิลเตอร์"
+                        },
+                        "description": "The filters you want to use.",
+                        "description_localizations": {
+                            "th": "รูปแบบเสียงที่คุณต้องการใช้ คุณสามารถระบุเพิ่มเติมได้โดยใช้ \",\" สำหรับรุปแบบหลายรายการ"
+                        },
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "type": 1,
+                "name": "set",
+                "name_localizations": {
+                    "th": "ตั้ง"
+                },
+                "description": "Set all new queue filters.",
+                "description_localizations": {
+                    "th": "ตั้งค่าฟิลเตอร์ในคิวใหม่ทั้งหมด"
+                },
+                "options": [
+                    {
+                        "type": 3,
+                        "name": "filter",
+                        "name_localizations": {
+                            "th": "ฟิลเตอร์"
+                        },
+                        "description": "The filters you want to use.",
+                        "description_localizations": {
+                            "th": "รูปแบบเสียงที่คุณต้องการใช้ คุณสามารถระบุเพิ่มเติมได้โดยใช้ \",\" สำหรับรุปแบบหลายรายการ"
+                        },
+                        "required": true
+                    }
+                ]
+            },
+            {
+                "type": 1,
+                "name": "list",
+                "name_localizations": {
+                    "th": "รายการ"
+                },
+                "description": "See all supported filters.",
+                "description_localizations": {
+                    "th": "ดูฟิลเตอร์ทั้งหมดที่รองรับ"
+                }
+            },
+            {
+                "type": 1,
+                "name": "now",
+                "name_localizations": {
+                    "th": "ตอนนี้"
+                },
+                "description": "View filters that are currently queued.",
+                "description_localizations": {
+                    "th": "ดูฟิลเตอร์ที่อยู่คิวตอนนี้"
+                }
+            },
+            {
+                "type": 1,
+                "name": "clear",
+                "name_localizations": {
+                    "th": "ล้าง"
+                },
+                "description": "Remove all filters in the queue.",
+                "description_localizations": {
+                    "th": "ลบฟิลเตอร์ทั้งหมดในคิว"
                 }
             }
         ]
     },
     async execute(interaction) {
-        const inputOption = interaction.options.get("option").value;
-        const inputFilters = interaction.options.get("filters").value.split(",").map(value => value.toLowerCase());
+        const subCommand = interaction.options.getSubcommand();
+        const inputFilters = interaction.options.getString("filter") ?? "";
 
         const queue = interaction.client.music.getQueue(interaction);
+        const filterString = inputFilters.split(",").map(value => value.toLowerCase());
         const filterList = Object.keys(interaction.client.music.filters);
         const filterEmbed = {
             "content": interaction.client.translate.commands.filter.sound_filtering,
@@ -117,49 +175,49 @@ module.exports.function.command = {
             }
         };
 
-        if (!queue) return interaction.editReply(interaction.client.translate.commands.filter.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return interaction.editReply(interaction.client.translate.commands.filter.not_queue_owner);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.filter.no_queue);
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.filter.not_queue_owner);
 
-        switch (inputOption) {
+        switch (subCommand) {
             case "add":
-                if (!inputFilters.length) return interaction.editReply(filterEmbed);
+                if (!filterString.length) return await interaction.reply(filterEmbed);
 
-                const addCheck = checkFilters(inputFilters);
-                if (addCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", addCheck.invalid.join(", ")));
+                const addCheck = checkFilters(filterString);
+                if (addCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", addCheck.invalid.join(", ")));
 
-                await queue.filters.add(inputFilters);
-                interaction.editReply(interaction.client.translate.commands.filter.add_filter.replace("%s", inputFilters.join(", ")));
+                await queue.filters.add(filterString);
+                await interaction.reply(interaction.client.translate.commands.filter.add_filter.replace("%s", filterString.join(", ")));
                 break;
             case "remove":
-                if (!inputFilters.length) return interaction.editReply(filterEmbed);
+                if (!filterString.length) return await interaction.reply(filterEmbed);
 
-                const removeCheck = checkFilters(inputFilters);
-                if (removeCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", removeCheck.invalid.join(", ")));
+                const removeCheck = checkFilters(filterString);
+                if (removeCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", removeCheck.invalid.join(", ")));
 
-                await queue.filters.remove(inputFilters);
-                interaction.editReply(interaction.client.translate.commands.filter.remove_filter.replace("%s", inputFilters.join(", ")));
+                await queue.filters.remove(filterString);
+                await interaction.reply(interaction.client.translate.commands.filter.remove_filter.replace("%s", filterString.join(", ")));
                 break;
             case "set":
-                if (!inputFilters.length) return interaction.editReply(filterEmbed);
+                if (!filterString.length) return await interaction.reply(filterEmbed);
 
-                const setCheck = checkFilters(inputFilters);
-                if (setCheck.invalid.length > 0) return interaction.editReply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", setCheck.invalid.join(", ")));
+                const setCheck = checkFilters(filterString);
+                if (setCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", setCheck.invalid.join(", ")));
 
-                await queue.filters.set(inputFilters);
-                interaction.editReply(interaction.client.translate.commands.filter.set_filter.replace("%s", inputFilters.join(", ")));
+                await queue.filters.set(filterString);
+                await interaction.reply(interaction.client.translate.commands.filter.set_filter.replace("%s", filterString.join(", ")));
                 break;
-            case "available":
+            case "list":
                 const availableEmbed = new EmbedBuilder()
                     .setTitle(interaction.client.translate.commands.filter.available_filter)
                     .setDescription(interaction.client.translate.commands.filter.available_filter_description.replace("%s1", filterList.length).replace("%s2", filterList))
                     .setColor("Green");
 
-                interaction.editReply({
+                await interaction.reply({
                     "content": interaction.client.translate.commands.filter.sound_filtering,
                     "embeds": [availableEmbed]
                 });
                 break;
-            case "list":
+            case "now":
                 const filtersName = queue.filters.names.join(", ");
                 const filtersSize = queue.filters.names.length;
                 const listEmbed = new EmbedBuilder()
@@ -167,16 +225,14 @@ module.exports.function.command = {
                     .setDescription(filtersSize ? interaction.client.translate.commands.filter.list_filter_description.replace("%s1", filtersSize).replace("%s2", filtersName) : interaction.client.translate.commands.filter.list_filter_description_empty)
                     .setColor("Blue");
 
-                interaction.editReply({
-                    "embeds": [listEmbed]
-                });
+                await interaction.reply({ "embeds": [listEmbed] });
                 break;
             case "clear":
                 await queue.filters.clear();
-                interaction.editReply(interaction.client.translate.commands.filter.clear_filter);
+                await interaction.reply(interaction.client.translate.commands.filter.clear_filter);
                 break;
             default:
-                return interaction.editReply(interaction.client.translate.commands.filter.unknown_input_option);
+                return await interaction.reply(interaction.client.translate.commands.filter.unknown_input_option);
         }
     }
 };

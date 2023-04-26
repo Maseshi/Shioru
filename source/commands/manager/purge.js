@@ -17,22 +17,20 @@ module.exports = {
 			PermissionsBitField.Flags.ManageMessages
 		]
 	},
-	"usage": "purge <amount>",
-    "function": {
-        "command": {}
-    }
+	"usage": "purge <amount(Number)>",
+	"function": {
+		"command": {}
+	}
 };
 
 module.exports.function.command = {
 	"data": {
 		"name": module.exports.name,
 		"name_localizations": {
-			"en-US": "purge",
 			"th": "ล้าง"
 		},
 		"description": module.exports.description,
 		"description_localizations": {
-			"en-US": "Delete a lot of messages",
 			"th": "ลบข้อความจำนวนมาก"
 		},
 		"options": [
@@ -53,20 +51,20 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		let messageCount = interaction.options.get("amount").value;
+		const inputAmount = interaction.options.getNumber("amount");
 
-		interaction.channel.messages.fetch({
-			"limit": 1
-		}).then((previousMessages) => {
-			interaction.channel.messages.fetch({
-				"limit": messageCount,
+		const previousMessages = await interaction.channel.messages.fetch({ "limit": 1 });
+
+		try {
+			const messages = await interaction.channel.messages.fetch({
+				"limit": inputAmount,
 				"before": previousMessages.first().id
-			}).then(async (messages) => {
-				await interaction.channel.bulkDelete(messages, true);
-				await interaction.editReply(interaction.client.translate.commands.purge.message_cleared.replace("%s", messages.size));
-			}).catch((error) => {
-				catchError(interaction.client, interaction, module.exports.name, error);
 			});
-		});
+
+			await interaction.channel.bulkDelete(messages, true);
+			await interaction.reply(interaction.client.translate.commands.purge.message_cleared.replace("%s", messages.size));
+		} catch (error) {
+			catchError(interaction.client, interaction, module.exports.name, error);
+		}
 	}
 };

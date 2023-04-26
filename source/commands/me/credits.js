@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "credits",
             "th": "เครดิต"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Credit of other creators.",
             "th": "เครดิตของผู้สร้างรายอื่น"
         }
     },
@@ -38,7 +36,7 @@ module.exports.function.command = {
             .setDescription(interaction.client.translate.commands.credits.creator_credit_description)
             .setColor(clientColor)
             .setTimestamp(new Date(contentUpdate))
-            .setFooter({ "text": interaction.client.translate.commands.credits.update_on, "iconURL": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/lower-left-ballpoint-pen_1f58a.png" })
+            .setFooter({ "text": interaction.client.translate.commands.credits.update_on })
             .setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
             .addFields(
                 [
@@ -49,8 +47,6 @@ module.exports.function.command = {
                 ]
             );
 
-        await interaction.editReply({
-            "embeds": [creditEmbed]
-        });
+        await interaction.reply({ "embeds": [creditEmbed] });
     }
 };

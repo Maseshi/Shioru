@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "repeat <mode: 0, 1, 2>",
+    "usage": "repeat <mode>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "repeat",
             "th": "ทำซ้ำ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Toggle repeating playback mode.",
             "th": "สลับโหมดของการเล่นเพลงซ้ำ"
         },
         "options": [
@@ -40,7 +38,7 @@ module.exports.function.command = {
                 "required": true,
                 "choices": [
                     {
-                        "name": "Disabled",
+                        "name": "Disable",
                         "name_localizations": {
                             "th": "ปิดการใช้งาน"
                         },
@@ -67,13 +65,13 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputMode = interaction.options.get("mode").value;
+        const inputMode = interaction.options.getNumber("mode");
         const queue = interaction.client.music.getQueue(interaction);
 
-        if (!queue) return await interaction.editReply(interaction.client.translate.commands.repeat.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return interaction.editReply(interaction.client.translate.commands.repeat.not_owner);
+        if (!queue) return await interaction.reply(interaction.client.translate.commands.repeat.no_queue);
+        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.repeat.not_owner);
 
         const mode = interaction.client.music.setRepeatMode(interaction, inputMode);
-        await interaction.editReply(interaction.client.translate.commands.repeat.repeated.replace("%s", (mode ? mode == 2 ? interaction.client.translate.commands.repeat.repeat_queue : interaction.client.translate.commands.repeat.repeat_song : interaction.client.translate.commands.repeat.off)));
+        await interaction.reply(interaction.client.translate.commands.repeat.repeated.replace("%s", (mode ? mode == 2 ? interaction.client.translate.commands.repeat.repeat_queue : interaction.client.translate.commands.repeat.repeat_song : interaction.client.translate.commands.repeat.off)));
     }
 };

@@ -8,7 +8,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "status <type: online, offline, idle, dnd>",
+    "usage": "status <type>",
     "function": {
         "command": {}
     }
@@ -18,12 +18,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "status",
             "th": "สถานะ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Check the status of all members within the server",
             "th": "ตรวจสอบสถานะของสมาชิกทั้งหมดภายในเซิร์ฟเวอร์"
         },
         "options": [
@@ -72,7 +70,7 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputType = interaction.options.get("type").value;
+        const inputType = interaction.options.getString("type");
 
         const guildIcon = interaction.guild.iconURL();
         const statusEmbed = new EmbedBuilder()
@@ -85,36 +83,28 @@ module.exports.function.command = {
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.online_status.replace("%s", onlineCount))
                     .setColor("Green");
-                await interaction.editReply({
-                    "embeds": [statusEmbed]
-                });
+                await interaction.reply({ "embeds": [statusEmbed] });
                 break;
             case "offline":
                 const offlineCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.offline_status.replace("%s", offlineCount))
                     .setColor("Grey");
-                await interaction.editReply({
-                    "embeds": [statusEmbed]
-                });
+                await interaction.reply({ "embeds": [statusEmbed] });
                 break;
             case "idle":
                 const idleCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.idle_status.replace("%s", idleCount))
                     .setColor("Yellow");
-                await interaction.editReply({
-                    "embeds": [statusEmbed]
-                });
+                await interaction.reply({ "embeds": [statusEmbed] });
                 break;
             case "dnd":
                 const dndCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.dnd_status.replace("%s", dndCount))
                     .setColor("Red");
-                await interaction.editReply({
-                    "embeds": [statusEmbed]
-                });
+                await interaction.reply({ "embeds": [statusEmbed] });
                 break;
         }
     }

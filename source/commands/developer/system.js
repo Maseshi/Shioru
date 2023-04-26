@@ -20,19 +20,17 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "system",
             "th": "ระบบ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Get system operating status and more",
             "th": "รับสถานะการทำงานของระบบและอื่น ๆ"
         }
     },
     async execute(interaction) {
-        await interaction.editReply(interaction.client.translate.commands.system.loading);
+        await interaction.reply(interaction.client.translate.commands.system.loading);
 
-        get({
+        const data = await get({
             "time": "uptime",
             "system": "manufacturer, model",
             "bios": "vendor, version, releaseDate",
@@ -42,73 +40,101 @@ module.exports.function.command = {
             "battery": "hasBattery, isCharging, percent, type",
             "graphics": "controllers, displays",
             "osInfo": "platform, arch"
-        }).then(async (data) => {
-            const serverSeconds = (data.time.uptime / 1000);
-            const serverDays = Math.floor(serverSeconds / (3600 * 24));
-            const serverHours = Math.floor(serverSeconds % (3600 * 24) / 3600);
+        });
 
-            const systemManufacturer = data.system.manufacturer;
-            const systemModel = data.system.model;
+        // Uptime
+        const serverSeconds = (data.time.uptime / 1000);
+        const serverDays = Math.floor(serverSeconds / (3600 * 24));
+        const serverHours = Math.floor(serverSeconds % (3600 * 24) / 3600);
 
-            const biosVendor = data.bios.vendor;
-            const biosVersion = data.bios.version;
-            const biosReleaseDate = data.bios.releaseDate;
+        // System
+        const systemManufacturer = data.system.manufacturer;
+        const systemModel = data.system.model;
 
-            const cpuManufacturer = data.cpu.manufacturer;
-            const cpuBrand = data.cpu.brand;
-            const cpuSpeed = data.cpu.speed;
-            const cpuCores = data.cpu.cores;
-            const cpuPhysicalCores = data.cpu.physicalCores;
+        // BIOS
+        const biosVendor = data.bios.vendor;
+        const biosVersion = data.bios.version;
+        const biosReleaseDate = data.bios.releaseDate;
 
-            const cpuTempMain = data.cpuTemperature.cpuTempMain;
+        // CPU
+        const cpuManufacturer = data.cpu.manufacturer;
+        const cpuBrand = data.cpu.brand;
+        const cpuSpeed = data.cpu.speed;
+        const cpuCores = data.cpu.cores;
+        const cpuPhysicalCores = data.cpu.physicalCores;
 
-            const memUsed = (data.mem.used / 1024 / 1024).toFixed(2);
-            const memTotal = (data.mem.total / 1024 / 1024).toFixed(2);
+        // Temperature
+        const cpuTempMain = data.cpuTemperature.cpuTempMain;
 
-            const batteryHasBattery = data.battery.hasBattery;
-            const batteryIsCharging = data.battery.isCharging;
-            const batteryPercent = data.battery.percent;
-            const batteryType = data.battery.type;
+        // Memory
+        const memUsed = (data.mem.used / 1024 / 1024).toFixed(2);
+        const memTotal = (data.mem.total / 1024 / 1024).toFixed(2);
 
-            const gpuControllers = data.graphics.controllers;
-            const gpuControllersLength = gpuControllers.length;
-            let gpuMain = "",
-                gpuMainModel = "",
-                gpuMainFanSpeed = "",
-                gpuMainMemoryTotal = "",
-                gpuMainMemoryUsed = "",
-                gpuMainTemperatureGpu = "";
-            for (let i = 0; i < gpuControllersLength; i++) {
-                gpuMainModel = gpuControllers[i].model;
-                gpuMainFanSpeed = gpuControllers[i].fanSpeed;
-                gpuMainMemoryTotal = gpuControllers[i].memoryTotal;
-                gpuMainMemoryUsed = gpuControllers[i].memoryUsed;
-                gpuMainTemperatureGpu = gpuControllers[i].temperatureGpu;
+        // Battery
+        const batteryHasBattery = data.battery.hasBattery;
+        const batteryIsCharging = data.battery.isCharging;
+        const batteryPercent = data.battery.percent;
+        const batteryType = data.battery.type;
 
-                gpuMain += ("```" + gpuMainModel + ", " + (gpuMainMemoryUsed ? (gpuMainMemoryTotal ? (gpuMainMemoryUsed + "/" + gpuMainMemoryTotal + "MB") : "") : "") + (gpuMainFanSpeed ? gpuMainFanSpeed + " " : "") + (gpuMainTemperatureGpu ? gpuMainTemperatureGpu : "") + "```");
+        // Graphics Controllers
+        let gpuMain = interaction.client.translate.commands.system.unknown;
+        const gpuControllers = data.graphics.controllers;
+        if (gpuControllers.length) {
+            for (const gpuController of gpuControllers) {
+                const gpuMainModel = gpuController.model;
+                const gpuMainFanSpeed = gpuController.fanSpeed;
+                const gpuMainMemoryTotal = gpuController.memoryTotal;
+                const gpuMainMemoryUsed = gpuController.memoryUsed;
+                const gpuMainTemperatureGpu = gpuController.temperatureGpu;
+
+                gpuMain += (
+                    "```"
+                    + gpuMainModel
+                    + ", "
+                    + (
+                        gpuMainMemoryUsed ? (
+                            gpuMainMemoryTotal ? (
+                                gpuMainMemoryUsed + "/" + gpuMainMemoryTotal + "MB"
+                            ) : ""
+                        ) : ""
+                    )
+                    + (gpuMainFanSpeed ? (gpuMainFanSpeed + " ") : "")
+                    + (gpuMainTemperatureGpu ?? "")
+                    + "```"
+                );
             }
+        }
 
-            const gpuDisplays = data.graphics.displays;
-            const gpuDisplaysLength = gpuDisplays.length;
-            let gpuSecond = "",
-                gpuSecondModel = "",
-                gpuSecondMain = "";
-            for (let i = 0; i < gpuDisplaysLength; i++) {
-                gpuSecondModel = gpuDisplays[i].model;
-                gpuSecondMain = gpuDisplays[i].main;
+        // Graphics Displays
+        let gpuSecond = interaction.client.translate.commands.system.unknown;
+        const gpuDisplays = data.graphics.displays;
+        for (const gpuDisplay of gpuDisplays) {
+            const gpuSecondModel = gpuDisplay.model;
+            const gpuSecondMain = gpuDisplay.main;
 
-                gpuSecond += ("```" + gpuSecondModel + ", " + (gpuSecondMain ? interaction.client.translate.commands.system.main : "") + "```");
-            }
+            gpuSecond += (
+                "```"
+                + gpuSecondModel
+                + ", "
+                + (gpuSecondMain ? interaction.client.translate.commands.system.main : "")
+                + "```"
+            );
+        }
 
-            const osPlatform = data.osInfo.platform;
-            const osArch = data.osInfo.arch;
+        // Operating System
+        const osPlatform = data.osInfo.platform;
+        const osArch = data.osInfo.arch;
 
-            const clientColor = interaction.guild.members.me.displayHexColor;
-            const systemEmbed = new EmbedBuilder()
-                .setTitle(interaction.client.translate.commands.system.info_title)
-                .setDescription(interaction.client.translate.commands.system.info_description)
-                .setColor(clientColor)
-                .addFields([
+        const clientAvatar = interaction.client.user.displayAvatarURL();
+        const clientUsername = interaction.client.user.username;
+        const clientColor = interaction.guild.members.me.displayHexColor;
+        const systemEmbed = new EmbedBuilder()
+            .setColor(clientColor)
+            .setAuthor({ "iconURL": clientAvatar, "name": clientUsername })
+            .setTitle(interaction.client.translate.commands.system.info_title)
+            .setDescription(interaction.client.translate.commands.system.info_description)
+            .addFields(
+                [
                     {
                         "name": "• Discord.js",
                         "value": "```" + "v" + version + "```",
@@ -169,12 +195,12 @@ module.exports.function.command = {
                         "value": "```" + (osPlatform ? (osPlatform + " " + osArch) : interaction.client.translate.commands.system.unknown) + "```",
                         "inline": true
                     }
-                ]);
+                ]
+            );
 
-            await interaction.editReply({
-                "content": null,
-                "embeds": [systemEmbed]
-            });
+        await interaction.editReply({
+            "content": null,
+            "embeds": [systemEmbed]
         });
     }
 }

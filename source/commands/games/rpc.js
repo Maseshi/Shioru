@@ -12,7 +12,7 @@ module.exports = {
             PermissionsBitField.Flags.ManageMessages
         ]
     },
-    "usage": "rpc (member)",
+    "usage": "rpc [opponent]",
     "function": {
         "command": {}
     }
@@ -22,12 +22,10 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "en-US": "rpc",
             "th": "เป่ายิ้งฉุบ"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Play rock-paper-scissors with friends or me",
             "th": "เล่นเป่ายิ้งฉุบกับเพื่อนหรือกับฉัน"
         },
         "options": [
@@ -48,7 +46,10 @@ module.exports.function.command = {
     async execute(interaction) {
         const inputOpponent = interaction.options.getUser("opponent");
 
-        if (inputOpponent && inputOpponent.bot && (inputOpponent.id !== interaction.client.user.id)) return await interaction.editReply(interaction.client.translate.commands.rpc.can_not_play_with_another_bot);
+        const member = await interaction.guild.members.fetch(inputOpponent.id);
+
+        if (inputOpponent && !member) return await interaction.reply(interaction.client.translate.commands.rpc.member_not_found);
+        if (inputOpponent && inputOpponent.bot && (inputOpponent.id !== interaction.client.user.id)) return await interaction.reply(interaction.client.translate.commands.rpc.can_not_play_with_another_bot);
 
         const authorUser = interaction.user;
         const gameObjects = {
@@ -78,7 +79,7 @@ module.exports.function.command = {
                     .setStyle(ButtonStyle.Primary)
             );
 
-        await interaction.editReply({
+        await interaction.reply({
             "embeds": [rpcEmbed],
             "components": [rpcRow]
         });
