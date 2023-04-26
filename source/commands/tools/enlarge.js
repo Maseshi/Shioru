@@ -1,18 +1,17 @@
 const { parseEmoji, PermissionsBitField } = require('discord.js');
-const { parse } = require("twemoji-parser");
 
 module.exports = {
     "enable": true,
-    "name": "bigEmoji",
+    "name": "enlarge",
     "description": "Enlarge the emoji.",
-    "category": "fun",
+    "category": "tools",
     "permissions": {
         "client": [
             PermissionsBitField.Flags.SendMessages,
             PermissionsBitField.Flags.EmbedLinks
         ]
     },
-    "usage": "bigEmoji <emoji>",
+    "usage": "enlarge <emoji(String)>",
     "function": {
         "command": {}
     }
@@ -20,14 +19,12 @@ module.exports = {
 
 module.exports.function.command = {
     "data": {
-        "name": module.exports.name.toLowerCase(),
+        "name": module.exports.name,
         "name_localizations": {
-            "en-US": "bigemoji",
             "th": "อิโมจิตัวใหญ่"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Enlarge the emoji.",
             "th": "ขยายอิโมจิให้ใหญ่ขึ้น"
         },
         "options": [
@@ -46,22 +43,17 @@ module.exports.function.command = {
         ]
     },
     async execute(interaction) {
-        const inputEmoji = interaction.options.get("emoji").value;
+        const inputEmoji = interaction.options.getString("emoji");
 
-        const custom = parseEmoji(inputEmoji);
+        const parsedEmoji = parseEmoji(inputEmoji);
 
-        if (custom.id) {
-            const baseURL = "https://cdn.discordapp.com/emojis/";
-            const file = custom.id + "." + custom.animated ? "gif" : "png";
-            const emojiURL = baseURL + file;
+        if (inputEmoji.startsWith("<") && inputEmoji.endsWith(">")) {
+            const fileType = custom.id + "." + custom.animated ? "gif" : "png";
+            const emojiURL = "https://cdn.discordapp.com/emojis/" + parsedEmoji.id + fileType;
 
-            return await interaction.editReply({ "files": [emojiURL] });
+            await interaction.reply({ "files": [emojiURL] });
+        } else {
+            await interaction.reply(interaction.client.translate.commands.enlarge.emoji_not_found);
         }
-
-        const parsed = parse(inputEmoji, { "assetType": "png" });
-
-        if (!parsed[0]) return await interaction.editReply(interaction.client.translate.commands.bigEmoji.emoji_not_found);
-
-        await interaction.editReply({ "files": [parsed[0].url] });
     }
 }
