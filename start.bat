@@ -1,0 +1,9 @@
+@echo off
+
+cls
+echo Start with start.bat...
+echo Installing components...
+npm install --save
+echo Completing the component installation.
+echo Starting the system...
+node ./source/shard.js
