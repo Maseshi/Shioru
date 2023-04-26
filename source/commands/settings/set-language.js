@@ -3,14 +3,14 @@ const { getDatabase, ref, child, update } = require("firebase/database");
 
 module.exports = {
     "enable": true,
-    "name": "setLanguage",
+    "name": "set-language",
     "description": "Sets language for the bot.",
     "category": "settings",
     "permissions": {
         "user": [PermissionsBitField.Flags.ManageGuild],
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "setLanguage [option: set] <value>",
+    "usage": "set-language: get, set <value>",
     "function": {
         "command": {}
     }
@@ -18,28 +18,25 @@ module.exports = {
 
 module.exports.function.command = {
     "data": {
-        "name": module.exports.name.toLowerCase(),
+        "name": module.exports.name,
         "name_localizations": {
-            "en-US": "language",
-            "th": "ภาษา"
+            "th": "ตั้งค่าภาษา"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Sets language for the bot.",
             "th": "ตั้งค่าภาษาสำหรับบอท"
         },
         "options": [
             {
                 "type": 1,
-                "name": "current",
+                "name": "get",
                 "name_localizations": {
-                    "th": "ปัจจุบัน"
+                    "th": "รับ"
                 },
                 "description": "See the language that is currently being used.",
                 "description_localizations": {
                     "th": "ดูภาษาที่กำลังใช้งานอยู่"
                 },
-                "required": false
             },
             {
                 "type": 1,
@@ -51,7 +48,6 @@ module.exports.function.command = {
                 "description_localizations": {
                     "th": "ตั้งค่าภาษาสำหรับบอท"
                 },
-                "required": false,
                 "options": [
                     {
                         "type": 3,
@@ -85,40 +81,41 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
-        const inputValue = interaction.options.get("value");
 
         const guildID = interaction.guild.id;
         const lang = interaction.client.config.language.code;
         const support = interaction.client.config.language.support;
         const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
 
-        if (subCommand === "current") {
-            const clientFetch = await interaction.client.user.fetch();
-            const clientColor = clientFetch.accentColor;
-            const noInputEmbed = new EmbedBuilder()
-                .setTitle(interaction.client.translate.commands.setLanguage.title)
-                .setDescription(
-                    interaction.client.translate.commands.setLanguage.description
-                        .replace("%s1", support[lang])
-                        .replace("%s2", ("/" + module.exports.usage))
-                )
-                .setColor(clientColor)
-                .setTimestamp()
-                .setFooter({ "text": interaction.client.translate.commands.setLanguage.data_at })
+        switch (subCommand) {
+            case "current":
+                const clientFetch = await interaction.client.user.fetch();
+                const clientColor = clientFetch.accentColor;
+                const noInputEmbed = new EmbedBuilder()
+                    .setTitle(interaction.client.translate.commands.set_language.title)
+                    .setDescription(
+                        interaction.client.translate.commands.set_language.description
+                            .replace("%s1", support[lang])
+                            .replace("%s2", ("/" + module.exports.usage))
+                    )
+                    .setColor(clientColor)
+                    .setTimestamp()
+                    .setFooter({ "text": interaction.client.translate.commands.set_language.data_at })
 
-            await interaction.editReply({
-                "embeds": [noInputEmbed]
-            });
-        }
-        if (subCommand === "set") {
-            if (inputValue.value === lang) return await interaction.editReply(interaction.client.translate.commands.setLanguage.already_set.replace("%s", support[inputValue]));
+                await interaction.reply({ "embeds": [noInputEmbed] });
+                break;
+            case "set":
+                const inputValue = interaction.options.getString("value");
 
-            interaction.client.config.language.code = inputValue.value;
-            interaction.client.translate = require("../../languages/" + inputValue.value + ".json");
+                if (inputValue === lang) return await interaction.reply(interaction.client.translate.commands.set_language.already_set.replace("%s", support[inputValue]));
 
-            update(languageRef, inputValue.value).then(async () => {
-                await interaction.editReply(interaction.client.translate.commands.setLanguage.set_success.replace("%s", support[inputValue.value]));
-            });
+                interaction.client.config.language.code = inputValue;
+                interaction.client.translate = require("../../languages/" + inputValue + ".json");
+
+                update(languageRef, inputValue).then(async () => {
+                    await interaction.reply(interaction.client.translate.commands.set_language.set_success.replace("%s", support[inputValue]));
+                });
+                break;
         }
     }
 };

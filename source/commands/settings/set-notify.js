@@ -3,14 +3,14 @@ const { getDatabase, ref, child, set } = require("firebase/database");
 
 module.exports = {
     "enable": true,
-    "name": "setNotify",
+    "name": "set-notify",
     "description": "Set up the notifications you want.",
     "category": "settings",
     "permissions": {
         "user": [PermissionsBitField.Flags.ManageGuild],
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "setNotify [option: set, remove] <type> <channel>",
+    "usage": "set-notify: get, set <type(String)> <channel>, remove <type(String)>",
     "function": {
         "command": {}
     }
@@ -18,28 +18,25 @@ module.exports = {
 
 module.exports.function.command = {
     "data": {
-        "name": module.exports.name.toLowerCase(),
+        "name": module.exports.name,
         "name_localizations": {
-            "en-US": "notify",
-            "th": "การแจ้งเตือน"
+            "th": "ตั้งค่าการแจ้งเตือน"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Set up the notifications you want.",
             "th": "ตั้งค่าการแจ้งเตือนที่คุณต้องการ"
         },
         "options": [
             {
                 "type": 1,
-                "name": "info",
+                "name": "get",
                 "name_localizations": {
-                    "th": "ข้อมูล"
+                    "th": "รับ"
                 },
                 "description": "Receive information about each channel's notification.",
                 "description_localizations": {
                     "th": "รับข้อมูลการแจ้งเตือนของแต่ละช่อง"
-                },
-                "required": false
+                }
             },
             {
                 "type": 1,
@@ -51,7 +48,6 @@ module.exports.function.command = {
                 "description_localizations": {
                     "th": "ประเภทของการแจ้งเตือนที่คุณต้องการตั้งค่า"
                 },
-                "required": false,
                 "options": [
                     {
                         "type": 3,
@@ -97,7 +93,6 @@ module.exports.function.command = {
                 "description_localizations": {
                     "th": "ประเภทของการแจ้งเตือนที่คุณต้องการลบ"
                 },
-                "required": false,
                 "options": [
                     {
                         "type": 3,
@@ -117,8 +112,6 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
-        const inputType = interaction.options.get("type");
-        const inputChannel = interaction.options.get("channel");
 
         const guildID = interaction.guild.id;
         const notifyRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "notification");
@@ -188,66 +181,69 @@ module.exports.function.command = {
             const threadUpdate = notifySnapshot.threadUpdate;
             const webhookUpdate = notifySnapshot.webhookUpdate;
 
-            if (subCommand === "info") {
-                const clientFetch = await interaction.client.user.fetch();
-                const clientColor = clientFetch.accentColor;
-                const noInputEmbed = new EmbedBuilder()
-                    .setTitle(interaction.client.translate.commands.setNotify.title)
-                    .setDescription(
-                        interaction.client.translate.commands.setNotify.description
-                        .replace("%s1", (alert ? ("<#" + alert + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s2", (channelCreate ? ("<#" + channelCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s3", (channelDelete ? ("<#" + channelDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s4", (channelPinsUpdate ? ("<#" + channelPinsUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s5", (channelUpdate ? ("<#" + channelUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s6", (emojiCreate ? ("<#" + emojiCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s7", (emojiDelete ? ("<#" + emojiDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s8", (emojiUpdate ? ("<#" + emojiUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s9", (guildBanAdd ? ("<#" + guildBanAdd + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s10", (guildBanRemove ? ("<#" + guildBanRemove + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s11", (guildIntegrationsUpdate ? ("<#" + guildIntegrationsUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s12", (guildMemberAdd ? ("<#" + guildMemberAdd + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s13", (guildMemberRemove ? ("<#" + guildMemberRemove + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s14", (guildMembersChunk ? ("<#" + guildMembersChunk + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s15", (guildUnavailable ? ("<#" + guildUnavailable + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s16", (inviteCreate ? ("<#" + inviteCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s17", (inviteDelete ? ("<#" + inviteDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s18", (roleCreate ? ("<#" + roleCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s19", (roleDelete ? ("<#" + roleDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s20", (roleUpdate ? ("<#" + roleUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s21", (stageInstanceCreate ? ("<#" + stageInstanceCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s22", (stageInstanceDelete ? ("<#" + stageInstanceDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s23", (stageInstanceUpdate ? ("<#" + stageInstanceUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s24", (stickerCreate ? ("<#" + stickerCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s25", (stickerDelete ? ("<#" + stickerDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s26", (stickerUpdate ? ("<#" + stickerUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s27", (threadCreate ? ("<#" + threadCreate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s28", (threadDelete ? ("<#" + threadDelete + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s29", (threadUpdate ? ("<#" + threadUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s30", (webhookUpdate ? ("<#" + webhookUpdate + ">") : interaction.client.translate.commands.setNotify.not_set))
-                        .replace("%s31", ("/" + module.exports.usage))
-                    )
-                    .setColor(clientColor)
-                    .setTimestamp()
-                    .setFooter({ "text": interaction.client.translate.commands.setNotify.data_at });
+            switch (subCommand) {
+                case "info":
+                    const clientFetch = await interaction.client.user.fetch();
+                    const clientColor = clientFetch.accentColor;
+                    const noInputEmbed = new EmbedBuilder()
+                        .setTitle(interaction.client.translate.commands.set_notify.title)
+                        .setDescription(
+                            interaction.client.translate.commands.set_notify.description
+                                .replace("%s1", (alert ? ("<#" + alert + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s2", (channelCreate ? ("<#" + channelCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s3", (channelDelete ? ("<#" + channelDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s4", (channelPinsUpdate ? ("<#" + channelPinsUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s5", (channelUpdate ? ("<#" + channelUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s6", (emojiCreate ? ("<#" + emojiCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s7", (emojiDelete ? ("<#" + emojiDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s8", (emojiUpdate ? ("<#" + emojiUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s9", (guildBanAdd ? ("<#" + guildBanAdd + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s10", (guildBanRemove ? ("<#" + guildBanRemove + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s11", (guildIntegrationsUpdate ? ("<#" + guildIntegrationsUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s12", (guildMemberAdd ? ("<#" + guildMemberAdd + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s13", (guildMemberRemove ? ("<#" + guildMemberRemove + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s14", (guildMembersChunk ? ("<#" + guildMembersChunk + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s15", (guildUnavailable ? ("<#" + guildUnavailable + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s16", (inviteCreate ? ("<#" + inviteCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s17", (inviteDelete ? ("<#" + inviteDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s18", (roleCreate ? ("<#" + roleCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s19", (roleDelete ? ("<#" + roleDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s20", (roleUpdate ? ("<#" + roleUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s21", (stageInstanceCreate ? ("<#" + stageInstanceCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s22", (stageInstanceDelete ? ("<#" + stageInstanceDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s23", (stageInstanceUpdate ? ("<#" + stageInstanceUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s24", (stickerCreate ? ("<#" + stickerCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s25", (stickerDelete ? ("<#" + stickerDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s26", (stickerUpdate ? ("<#" + stickerUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s27", (threadCreate ? ("<#" + threadCreate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s28", (threadDelete ? ("<#" + threadDelete + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s29", (threadUpdate ? ("<#" + threadUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s30", (webhookUpdate ? ("<#" + webhookUpdate + ">") : interaction.client.translate.commands.set_notify.not_set))
+                                .replace("%s31", ("/" + module.exports.usage))
+                        )
+                        .setColor(clientColor)
+                        .setTimestamp()
+                        .setFooter({ "text": interaction.client.translate.commands.set_notify.data_at });
 
-                return await interaction.editReply({ "embeds": [noInputEmbed] });
-            }
-            if (subCommand === "set") {
-                if (!type.includes(inputType)) return interaction.editReply(interaction.client.translate.commands.setNotify.type_not_found.replace("%s", type.join(", ")));
+                    await interaction.reply({ "embeds": [noInputEmbed] });
+                    break;
+                case "set":
+                    const inputSetType = interaction.options.getString("type");
+                    const inputSetChannel = interaction.options.getChannel("channel");
 
-                const channel = interaction.guild.channels.cache.find(channels => (channels.id === inputChannel.value) || (channels.name === inputChannel.value));
+                    if (!type.includes(inputSetType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
 
-                if (!channel) return await interaction.editReply(interaction.client.translate.commands.setNotify.channel_not_found);
+                    await set(child(notifyRef, inputSetType), inputSetChannel.id.toString());
+                    await interaction.reply(interaction.client.translate.commands.set_notify.set_success.replace("%s1", inputSetType).replace("%s2", inputSetChannel.id));
+                    break;
+                case "remove":
+                    const inputRemoveType = interaction.options.getString("type");
 
-                await set(child(notifyRef, inputType.value), channel.id.toString());
-                await interaction.editReply(interaction.client.translate.commands.setNotify.set_success.replace("%s1", inputType.value).replace("%s2", channel.id));
-            }
-            if (subCommand === "remove") {
-                if (!type.includes(inputType)) return interaction.editReply(interaction.client.translate.commands.setNotify.type_not_found.replace("%s", type.join(", ")));
-                
-                await set(child(notifyRef, inputType.value), false);
-                await interaction.editReply(interaction.client.translate.commands.setNotify.remove_success.replace("%s", inputType.value));
+                    if (!type.includes(inputRemoveType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
+
+                    await set(child(notifyRef, inputRemoveType), false);
+                    await interaction.reply(interaction.client.translate.commands.set_notify.remove_success.replace("%s", inputRemoveType));
+                    break;
             }
         } else {
             set(notifyRef, {

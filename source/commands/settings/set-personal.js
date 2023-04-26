@@ -3,13 +3,13 @@ const { getDatabase, ref, child, set } = require("firebase/database");
 
 module.exports = {
     "enable": true,
-    "name": "setPersonal",
+    "name": "set-personal",
     "description": "Set up about your information.",
     "category": "settings",
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "setPersonal [type: avatar, info, uid] <boolean>",
+    "usage": "set-personal: get, set <type> <boolean>",
     "function": {
         "command": {}
     }
@@ -17,28 +17,25 @@ module.exports = {
 
 module.exports.function.command = {
     "data": {
-        "name": module.exports.name.toLowerCase(),
+        "name": module.exports.name,
         "name_localizations": {
-            "en-US": "personal",
-            "th": "ข้อมูลส่วนตัว"
+            "th": "ตั้งค่าข้อมูลส่วนตัว"
         },
         "description": module.exports.description,
         "description_localizations": {
-            "en-US": "Set up about your information.",
             "th": "ตั้งค่าเกี่ยวกับข้อมูลของคุณ"
         },
         "options": [
             {
                 "type": 1,
-                "name": "current",
+                "name": "get",
                 "name_localizations": {
-                    "th": "ปัจจุบัน"
+                    "th": "รับ"
                 },
                 "description": "See your current settings.",
                 "description_localizations": {
                     "th": "ดูการตั้งค่าปัจจุบันของคุณ"
-                },
-                "required": false,
+                }
             },
             {
                 "type": 1,
@@ -50,7 +47,6 @@ module.exports.function.command = {
                 "description_localizations": {
                     "th": "ตั้งค่าการอนุญาตของคุณเพื่อดูส่วนบุคคลของคุณ (เฉพาะ Shioru)"
                 },
-                "required": false,
                 "options": [
                     {
                         "type": 3,
@@ -105,8 +101,6 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
-        const inputType = interaction.options.get("type").value;
-        const inputBoolean = interaction.options.get("boolean").value;
 
         const authorID = interaction.author.id;
         const accessRef = child(child(ref(getDatabase(), "projects/shioru/users"), authorID), "access");
@@ -117,38 +111,37 @@ module.exports.function.command = {
             const info = accessSnapshot.info;
             const uid = accessSnapshot.uid;
 
-            if (subCommand === "current") {
-                const clientFetch = await interaction.client.user.fetch();
-                const clientColor = clientFetch.accentColor;
-                const noInputEmbed = new EmbedBuilder()
-                    .setTitle(interaction.client.translate.commands.setPersonal.title)
-                    .setDescription(
-                        interaction.client.translate.commands.setPersonal.description
-                            .replace("%s1", (avatar ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
-                            .replace("%s2", (info ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
-                            .replace("%s3", (uid ? interaction.client.translate.commands.setPersonal.yes : interaction.client.translate.commands.setPersonal.no))
-                            .replace("%s4", ("/" + module.exports.usage))
-                    )
-                    .setColor(clientColor)
-                    .setTimestamp()
-                    .setFooter({ "text": interaction.client.translate.commands.setPersonal.data_at });
+            switch (subCommand) {
+                case "current":
+                    const clientFetch = await interaction.client.user.fetch();
+                    const clientColor = clientFetch.accentColor;
+                    const noInputEmbed = new EmbedBuilder()
+                        .setTitle(interaction.client.translate.commands.set_personal.title)
+                        .setDescription(
+                            interaction.client.translate.commands.set_personal.description
+                                .replace("%s1", (avatar ? interaction.client.translate.commands.set_personal.yes : interaction.client.translate.commands.set_personal.no))
+                                .replace("%s2", (info ? interaction.client.translate.commands.set_personal.yes : interaction.client.translate.commands.set_personal.no))
+                                .replace("%s3", (uid ? interaction.client.translate.commands.set_personal.yes : interaction.client.translate.commands.set_personal.no))
+                                .replace("%s4", ("/" + module.exports.usage))
+                        )
+                        .setColor(clientColor)
+                        .setTimestamp()
+                        .setFooter({ "text": interaction.client.translate.commands.set_personal.data_at });
 
-                return await interaction.editReply({
-                    "embeds": [noInputEmbed]
-                });
-            }
+                    await interaction.reply({ "embeds": [noInputEmbed] });
+                    break;
+                case "set":
+                    const inputType = interaction.options.getString("type");
+                    const inputBoolean = interaction.options.getBoolean("boolean");
 
-            if (subCommand === "set") {
-                switch (inputBoolean) {
-                    case true:
+                    if (inputBoolean) {
                         await set(child(accessRef, inputType), true);
-                        await interaction.editReply(interaction.client.translate.commands.setPersonal.true_success.replace("%s", inputType));
-                        break;
-                    case false:
+                        await interaction.reply(interaction.client.translate.commands.set_personal.true_success.replace("%s", inputType));
+                    } else {
                         await set(child(accessRef, inputType), false);
-                        await interaction.editReply(interaction.client.translate.commands.setPersonal.false_success.replace("%s", inputType));
-                        break;
-                }
+                        await interaction.reply(interaction.client.translate.commands.set_personal.false_success.replace("%s", inputType));
+                    }
+                    break;
             }
         } else {
             set(accessRef, {
