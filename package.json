@@ -1,12 +1,12 @@
 {
   "name": "shioru",
-  "version": "3.2.8",
+  "version": "3.3.0",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "private": true,
   "main": "./source/main.js",
   "scripts": {
-    "start": "node ./source/main.js",
-    "dev": "nodemon ./source/main.js"
+    "start": "node ./source/shard.js",
+    "dev": "nodemon --trace-warnings ./source/main.js"
   },
   "author": {
     "name": "Maseshi",
@@ -18,23 +18,22 @@
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.16.0",
     "@distube/deezer": "^1.0.0",
-    "@distube/soundcloud": "^1.3.0",
+    "@distube/soundcloud": "^1.3.2",
     "@distube/spotify": "^1.5.1",
     "@distube/yt-dlp": "^1.1.3",
-    "@distube/ytdl-core": "^4.11.8",
+    "@distube/ytdl-core": "^4.11.9",
     "@vitalets/google-translate-api": "^9.1.0",
+    "axios": "^1.3.6",
+    "captcha-canvas": "^3.2.1",
     "discord.js": "^14.9.0",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
-    "firebase": "^9.19.1",
+    "firebase": "^9.20.0",
     "lyrics-finder": "^21.7.0",
-    "minecraft-server-util": "^5.4.2",
-    "node-fetch": "^2.6.9",
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
     "systeminformation": "^5.17.12",
-    "twemoji-parser": "^14.0.0",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
