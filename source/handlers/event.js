@@ -1,45 +1,65 @@
 const { readdirSync } = require("node:fs");
+const { join } = require("node:path");
 
 module.exports = (client) => {
     client.console.add("events-loading", {
-        "text": "All events are starting to load."
+        "text": "Preparing to load all events...",
+        "failColor": "yellowBright"
     });
 
-    readdirSync("./source/events/").forEach((dirs) => {
-        const events = readdirSync("./source/events/" + dirs + "/").filter(files => files.endsWith(".js"));
-        
-        for (const file of events) {
-            const eventName = file.split(".")[0];
-            const pull = require("../events/" + dirs + "/" + file);
-            
-            if (pull.disabled) {
-                client.console.fail("events-loading", {
-                    "text": "The " + eventName + " event is deprecated.",
-                    "failColor": "yellowBright"
-                });
-                process.exit(0);
-            } else {
-                try {
-                    client.console.update("events-loading", {
-                        "text": "Loading event " + eventName + " in category " + dirs
-                    });
+    const eventsPath = join(__dirname, "../events");
+    const eventFiles = readdirSync(eventsPath).filter(file => file.endsWith(".js"));
 
-                    client.on(eventName, pull.bind(null, client))
-                    delete require.cache[require.resolve("../events/" + dirs + "/" + file)];
-                } catch (error) {
-                    client.console.fail("events-loading", {
-                        "text": "Error loading event in " + ("./events/" + dirs + "/" + file)
-                    });
-                    console.group();
-                        console.error(error);
-                    console.groupEnd();
-                    process.exit(1);
-                }
-            }
+    for (const [fileIndex, file] of eventFiles.entries()) {
+        const filePath = join(eventsPath, file);
+        const event = require(filePath);
+
+        if (!event.length) {
+            client.console.update("events-loading", {
+                "text": "Empty file unload and skip loading at (" + filePath + ")"
+            });
         }
-    });
+        if (typeof event.name !== "string") {
+            client.console.fail("events-loading", {
+                "text": "Error loading event name " + event.name + "."
+            });
+            console.group();
+            console.warn("Path: " + filePath);
+            console.warn("Type: Event");
+            console.warn("Reason: You have a missing NAME or NAME is not a string.");
+            console.groupEnd();
+            return process.exit();
+        }
+        if (typeof event.once !== "boolean") {
+            client.console.fail("events-loading", {
+                "text": "Error loading event name " + event.name + "."
+            });
+            console.group();
+            console.warn("Path: " + filePath);
+            console.warn("Type: Event");
+            console.warn("Reason: You have a missing ONCE or ONCE is not a boolean.");
+            console.groupEnd();
+            return process.exit();
+        }
 
-    client.console.succeed("events-loading", {
-        "text": "All events are verified. Did not find any problems."
-    });
+        if (event.once) {
+            client.console.update("events-loading", {
+                "text": "Loading event " + event.name + " at (" + filePath + ")"
+            });
+
+            client.once(event.name, (...args) => event.execute(...args));
+        } else {
+            client.console.update("events-loading", {
+                "text": "Loading event " + event.name + " at (" + filePath + ")"
+            });
+
+            client.on(event.name, (...args) => event.execute(...args));
+        }
+
+        if (fileIndex === (eventFiles.length - 1)) {
+            client.console.succeed("events-loading", {
+                "text": "All events are verified. Did not find any problems."
+            });
+        }
+    }
 };

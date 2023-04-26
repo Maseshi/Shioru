@@ -1,19 +1,8 @@
 const discord = require("discord.js");
 const packages = require("../../package.json");
-const { ansiColor, logGenerator } = require("../utils/consoleUtils");
+const { ansiColor, logGenerator, timeConsole } = require("../utils/consoleUtils");
 
 module.exports = (client) => {
-    const consoleDateTime = (date) => {
-        const day = date.getDate();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        const seconds = date.getSeconds();
-
-        return "\u001b[1m[" + year + "-" + month + "-" + day + "." + hours + ":" + minutes + ":" + seconds + "]\u001b[0m"
-    };
-
     const clearStyle = ansiColor(0, "sgr")
     const boldStyle = ansiColor(1, "sgr")
     const whiteColor = ansiColor(15, "foreground")
@@ -27,82 +16,79 @@ module.exports = (client) => {
     process.setMaxListeners(0);
 
     process.on("SIGINT", () => {
-        console.log(orangeBackground + whiteColor + " Bot is about to shut down. " + clearStyle);
+        console.info(orangeBackground + whiteColor + " Bot is about to shut down. " + clearStyle);
     });
 
-    process.on('SIGUSR1', () => {
-        console.log(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
+    process.on("SIGUSR1", () => {
+        console.info(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
     });
     
-    process.on('SIGUSR2', () => {
-        console.log(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
+    process.on("SIGUSR2", () => {
+        console.info(yellowBackground + whiteColor + " Bot is about to restart. " + clearStyle);
     });
 
     process.on("rejectionHandled", (promise) => {
-        logGenerator("process", promise);
-
-        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Rejection Handled" + clearStyle);
+        console.group(timeConsole(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Rejection Handled" + clearStyle);
             console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(promise);
             console.groupEnd();
-            console.log(boldStyle + "Promise: " + clearStyle + promise);
-            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+            console.log(boldStyle + "CPU:", (process.cpuUsage().user / 1024 / 1024).toFixed(2));
+            console.log(boldStyle + "Memory:", ((process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + "/" + (process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)));
+            console.log(boldStyle + "Package:", packages.version);
+            console.log(boldStyle + "Discord.js:", discord.version);
+            console.log(boldStyle + "Node.js:", process.version);
         console.groupEnd();
+
+        logGenerator("process", promise);
     });
 
     process.on("uncaughtException", (err, origin) => {
-        logGenerator("process", (err + "\n" + origin));
-
-        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception" + clearStyle);
+        console.group(timeConsole(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception" + clearStyle);
             console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(err);
                 console.error(origin);
             console.groupEnd();
-            console.log(boldStyle + "Error: " + clearStyle + err)
-            console.log(boldStyle + "Origin: " + clearStyle + origin);
-            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+            console.log(boldStyle + "Package:", packages.version);
+            console.log(boldStyle + "Discord.js:", discord.version);
+            console.log(boldStyle + "Node.js:", process.version);
         console.groupEnd();
-        if (client.mode === "start") process.exit(1);
+
+        logGenerator("process", (err + "\n" + origin));
+        
+        if (client.mode === "dev") setImmediate(() => process.exit(1));
     });
 
     process.on("uncaughtExceptionMonitor", (err, origin) => {
-        logGenerator("process", (err + "\n" + origin));
-
-        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception Monitor" + clearStyle);
+        console.group(timeConsole(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Uncaught Exception Monitor" + clearStyle);
             console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(err);
                 console.error(origin);
             console.groupEnd();
-            console.log(boldStyle + "Error: " + clearStyle + err)
-            console.log(boldStyle + "Origin: " + clearStyle + origin);
-            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+            console.log(boldStyle + "Package:", packages.version);
+            console.log(boldStyle + "Discord.js:", discord.version);
+            console.log(boldStyle + "Node.js:", process.version);
         console.groupEnd();
+
+        logGenerator("process", (err + "\n" + origin));
     });
 
     process.on("unhandledRejection", (reason, promise) => {
-        logGenerator("process", (reason + "\n" + promise));
-
-        console.group(consoleDateTime(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Unhandled Rejection" + clearStyle);
+        console.group(timeConsole(new Date()) + " :: " + redBackground + whiteColor + boldStyle + "Unhandled Rejection" + clearStyle);
             console.group(boldStyle + "Full Error:" + clearStyle);
                 console.error(reason);
                 console.error(promise);
             console.groupEnd();
-            console.log(boldStyle + "Reason: " + clearStyle + reason);
-            console.log(boldStyle + "Promise: " + clearStyle + promise);
-            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+            console.log(boldStyle + "Package:", packages.version);
+            console.log(boldStyle + "Discord.js:", discord.version);
+            console.log(boldStyle + "Node.js:", process.version);
         console.groupEnd();
-        if (client.mode === "start") process.exit(1);
+
+        logGenerator("process", (reason + "\n" + promise));
+
+        if (client.mode === "dev") setImmediate(() => process.exit(1));
     });
 
     process.on("exit", (code) => {
-        console.log(grayBackground + blackColor + " Bot is about to shut down with the code: " + code + " " + clearStyle);
+        console.info(grayBackground + blackColor + " Bot is about to shut down with the code: " + code + " " + clearStyle);
     });
 };

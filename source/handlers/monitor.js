@@ -1,4 +1,4 @@
-const https = require('https');
+const https = require("https");
 
 module.exports = (client) => {
     // The following 4 are the actual values that pertain to your account and this specific metric.
@@ -6,8 +6,8 @@ module.exports = (client) => {
     const pageId = client.config.monitoring.config.pageId;
     const metricId = client.config.monitoring.config.metricId;
     const enable = client.config.monitoring.enable;
+    
     const apiBase = "https://api.statuspage.io/v1";
-
     const url = apiBase + "/pages/" + pageId + "/metrics/" + metricId + "/data.json";
     const authHeader = { "Authorization": "OAuth " + apiKey };
     const options = { "method": "POST", "headers": authHeader };
@@ -18,7 +18,7 @@ module.exports = (client) => {
     const epochInSeconds = Math.floor(new Date() / 1000);
 
     // This function gets called every second.
-    function submitPoint(count) {
+    const submitPoint = (count) => {
         count = count + 1;
 
         if (count > totalPoints) return client.console.succeed("monitor-loading", {
@@ -30,27 +30,27 @@ module.exports = (client) => {
 
         const data = {
             "timestamp": currentTimestamp,
-            "value": randomValue,
+            "value": randomValue
         };
 
-        const request = https.request(url, options, function (response) {
+        const request = https.request(url, options, (response) => {
             if (response.statusMessage === "Unauthorized") {
                 return client.console.fail("monitor-loading", {
                     "text": "Error encountered. Please ensure that your page code and authorization key are correct.",
                     "failColor": "yellowBright"
                 });
             }
-            response.on("data", function () {
+            response.on("data", () => {
                 client.console.update("monitor-loading", {
                     "text": "Testing processing submitted point " + count + " of " + totalPoints
                 });
             });
-            response.on("end", function () {
-                setTimeout(function () {
+            response.on("end", () => {
+                setTimeout(() => {
                     submitPoint(count);
                 }, 1000);
             });
-            response.on("error", function (error) {
+            response.on("error", (error) => {
                 client.console.fail("monitor-loading", {
                     "text": "Error caught: " + error.message,
                     "failColor": "redBright"
@@ -65,15 +65,12 @@ module.exports = (client) => {
     if (client.mode === "start" && enable) {
         if (!apiKey) return client.console.fail("monitor-loading", {
             "text": "The monitor API Key was not found in the environment. Opt out of sending performance data.",
-            "failColor": "yellowBright"
         });
         if (!pageId) return client.console.fail("monitor-loading", {
             "text": "The monitor page ID was not found in the environment. Opt out of sending performance data.",
-            "failColor": "yellowBright"
         });
         if (!metricId) return client.console.fail("monitor-loading", {
             "text": "The monitor metric ID was not found in the environment. Opt out of sending performance data.",
-            "failColor": "yellowBright"
         });
 
         client.console.add("monitor-loading", {
