@@ -5,6 +5,12 @@
             "my_profile_detail": "私の名前は %s です。私は 6 月 21 日の日曜日に生まれました。家に住んでいます。__Chaiwat Suwannarat(Masashi)__ は私に知識とスキルを与えてくれた人です。あなたを快適にするのが私の義務です。 up **コマンド**で私がすべてを勉強したこと私が住んでいるすべての人にみんなが私と一緒に幸せになることを願っています!!そして、私の素敵な恩人へのすべての助けとサポートに感謝します.よろしくお願いします\n\n【公式サイト】(https://maseshi.web.app/)\n【プライバシーポリシー】(https://maseshi.web.app/privacy-policy) | サービス】(https ://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat.All rights reserved.",
             "update_on": "更新"
         },
+        "afk": {
+            "currently_afk": "❎ あなたは現在 AFK です",
+            "currently_not_afk": "❎ あなたは今AFKではありません.",
+            "now_afk": "💤 あなたは現在 AFK です。AFK モードを終了するには、メッセージを書くか /afk remove してください。",
+            "now_not_afk": "🔙 あなたの AFK ステータスは解除されました."
+        },
         "anime": {
             "auto_cancel": "読みたい数字を入力するだけ! (1分以内にキャンセル)",
             "choose_now": "今すぐ選択してください!!",
@@ -20,6 +26,17 @@
             "start_date": "**開始日**",
             "synopsis": "**要約:**",
             "undefined": "未定義"
+        },
+        "automod": {
+            "flaged_words_name": "冒とく的な表現をブロックします。 性的コンテンツ と侮辱",
+            "flaged_words_success": "✅ AutoMod ルールが作成されました。これらの単語はすべて抑制されます。",
+            "keyword_name": "単語 %s の使用を禁止する",
+            "keyword_success": "✅ AutoMod ルールが作成されました。単語 %s を含むすべてのメッセージが削除されます。",
+            "mention_spam_name": "メンションされたスパムを防止する",
+            "mention_spam_success": "✅ AutoMod ルールが作成されました。複数の言及スパムは抑制されます。",
+            "prevent_message": "このメッセージは保護されています。",
+            "spam_messages_name": "スパム メッセージを防止する",
+            "spam_messages_success": "✅ AutoMod ルールが作成されました。メッセージ スパムは抑制されます。"
         },
         "autoplay": {
             "no_queue": "❎うーん...でも曲はまだ始まっていないの?",
@@ -37,14 +54,24 @@
             "reason_for_ban": "禁止者: %s1\n理由: %s2",
             "user_not_found": "❎ このメンバーが見つかりません.再度確認してください。"
         },
-        "bigEmoji": {
-            "emoji_not_found": "❎ その絵文字は存在しないか、絵文字ではない可能性があります。",
-            "large_emoji": "大きな絵文字",
-            "requested_by": "%s からリクエストされました"
+        "board": {
+            "leveling_detail": "経験: %s1, レベル: %s2",
+            "no_info": "❎ このサーバーにはまだメンバーがいません. 経験値があります。",
+            "server_rank": "このサーバーのレベルランク",
+            "server_rank_description": "このサーバー内のトップ 10 メンバーの 1 つ。 次の順序で、最も多くのレベルを収集できます",
+            "server_rank_tips": "ヒント: 他のメンバーと話す. さらにレベルアップします。"
         },
         "bug": {
             "sending": "📨 では、少々お待ちください。 開発者に手紙を送ります...",
             "success*": "✅ ありがとうございます...他に何かありましたら教えてください (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ キャプチャ システムのセットアップが完了し、有効化されました。",
+            "currently_disable": "ℹ️ キャプチャは現在無効になっています。",
+            "currently_enable": "ℹ️ キャプチャが有効になりました",
+            "disabled_captcha": "✅ キャプチャが無効になりました",
+            "enabled_captcha": "✅ キャプチャが有効になっています",
+            "need_to_setup_before": "❎ 使用前に /captcha setup を使用してキャプチャを設定してください"
         },
         "covid": {
             "active": "アクティブ",
@@ -78,12 +105,11 @@
         "dead": {
             "suicide": "%s は自殺を決意しました 💔 安らかに"
         },
-        "deleteLevel": {
-            "can_not_find_user": "❎ このメンバーが見つかりません。 え..タイプミスかどうか..?",
-            "deleting": "📁 このメンバーの経験レベルを削除しています",
-            "error": "❎ このユーザーが見つかりません。",
-            "success": "✅ このメンバーの経験レベルは削除されました!",
-            "user_current_no_level": "❎ メンバーにはレベルがありません。"
+        "decode": {
+            "after": "デコード後",
+            "before": "デコード前",
+            "decode_message": "🔓 デコード メッセージ",
+            "decode_success": "メッセージは正常にデコードされました。"
         },
         "donate": {
             "thank_you_in_advance_message": "❤️ 事前に開発者をサポートしていただきありがとうございます。 以下のようにサポート用のチャネルがあります。"
@@ -91,6 +117,40 @@
         "eat": {
             "already_eaten": "%s1 は %s2 を胃に食べました。",
             "do_not_eat_me": "私は少し小さいです. うーん…食べちゃダメ…"
+        },
+        "eight_ball": {
+            "answer": "答え",
+            "game": "🎱 8ボールゲーム",
+            "question": "質問",
+            "risk": "運を使って質問に答えてください。",
+            "roll_ball": "ボールを転がす!!"
+        },
+        "emoji": {
+            "deleted_emoji": "✅ **%s** 絵文字は削除されました。",
+            "edited_emoji": "%s は絵文字を正常に編集しました。",
+            "uploading_you_emoji": "📤 絵文字をアップロードしています...",
+            "you_emoji_is_ready": "%s 絵文字の準備ができました。 試してみよう！！"
+        },
+        "encode": {
+            "after": "エンコード後",
+            "before": "エンコード前",
+            "encode_message": "🔒 メッセージをエンコード",
+            "encode_success": "あなたのメッセージは正常にエンコードされました."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ その絵文字は存在しないか、絵文字ではない可能性があります。",
+            "large_emoji": "大きな絵文字",
+            "requested_by": "%s からリクエストされました"
+        },
+        "exp": {
+            "can_not_find_user": "❎ このメンバーが見つかりません。え..タイプミスか?",
+            "error": "❎ そのメンバーの経験値を設定できません.後でもう一度試してください。",
+            "experience": "経験",
+            "exp_was_changed": "%s はすべての経験レベルを蓄積しました。保有:",
+            "level": "レベル (レベル)",
+            "notification_complete": "✅ 設定が完了しました...",
+            "set_by_staff": "あなたの体験は、このサーバーのチームによって設定されました。",
+            "success": "✅セットアップが完了しました..."
         },
         "filter": {
             "add_filter": "🎼 目的のオーディオ形式を **%s** に正常に追加しました。",
@@ -185,32 +245,36 @@
             "yes": "はいはい"
         },
         "help": {
-            "aliases": "エイリアス: ",
-            "command": "コマンド: ",
+            "category": "カテゴリー: %s",
+            "client_permissions": "パーミッション (ボット): %s",
+            "command": "コマンド: %s",
             "command_detail": "📑 コマンドの詳細 ",
             "command_incorrect": "❎ 無効なコマンド",
             "command_incorrect_guide": "ええと...このコマンドは存在しません.すべてのコマンドのリストを表示するには、`/help` と入力してもう一度確認してください。",
             "commands_description": [
                 "私が学んだ、または研究したすべてのコマンド理解して実際に使う",
                 "私に電話する前にプレフィックスは **/** でなければなりません",
-                "`<>` は必須を意味し、`()` はオプションです。回答が必要な場合とそうでない場合があります。",
-                "各コマンドの詳細は `/help (コマンド)` と打てば願いが叶う!!"
+                "`<>` は必須、`()` は入力タイプ、`[]` はオプションを意味します。",
+                "各コマンドの詳細は `/help [コマンド]` と打てば願いが叶う!!"
             ],
-            "description": "説明: ",
+            "description": "説明: %s",
             "document_name": "ヘルプ ドキュメント",
-            "how_to_use": "使い方: ",
+            "how_to_use": "使い方: %s",
             "no_description": "説明なし",
+            "no_need_permissions": "必要な権限はありません",
             "request_by": "リクエスト者",
-            "type": "タイプ: ",
-            "unknown_how_to_use": "使用する方法はありません"
+            "unknown_how_to_use": "使用する方法はありません",
+            "user_permissions": "パーミッション (ユーザー): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ このサーバーでメンバーがまったく見つかりませんでした。",
+            "success": "✅ <@%s> がキャストされました!"
         },
         "invite": {
+            "can_not_create_invite_link": "❎ 招待リンクを生成できません もう一度やり直してください。",
             "me_do_not_have_permission": "🚫 このチャンネルで招待リンクを作成する権限がありません.",
             "membership_invitation_card": "会員招待カード",
             "this_product_is_free": "この製品は無料です. ボスを保留にしないでください。"
-        },
-        "inviteMe": {
-            "can_not_create_invite_link": "❎ 招待リンクを生成できません もう一度やり直してください。"
         },
         "join": {
             "already_joined": "❎ え..でも私は今ここにいますか?",
@@ -243,6 +307,19 @@
             "not_in_any_channel": "❎ 私は現在、どのチャンネルにも参加していません...",
             "now_leave": "◀️現在のチャンネルを離れました。"
         },
+        "level": {
+            "delete_error": "❎ このユーザーが見つかりません。",
+            "delete_success": "✅ このメンバーの経験レベルは削除されました!",
+            "deleting": "📁 このメンバーの経験レベルを削除しています",
+            "experience": "経験",
+            "level": "レベル (レベル)",
+            "level_was_changed": "%s はすべての経験レベルを蓄積しました。持っている:",
+            "notification_complete": "✅ 設定が完了しました...",
+            "set_by_staff": "あなたのクラスは、このサーバーのチームによって設定されました。",
+            "set_error": "❎ そのメンバーのティアを設定できません。 後でもう一度試してください。",
+            "set_success": "✅ 設定に成功しました...",
+            "user_current_no_level": "❎ メンバーにはレベルがありません。"
+        },
         "leveling": {
             "bot_do_not_have_level": "❎ 私を含め、ボットにはレベルがありません。",
             "can_not_find_user": "❎ このメンバーが見つかりません。 え..タイプミスか?",
@@ -251,12 +328,8 @@
             "user_no_data": "💨うーん...このメンバーはまだランクも経験もありません.",
             "your_experience": "あなたの経験"
         },
-        "levelingBoard": {
-            "leveling_detail": "経験: %s1, レベル: %s2",
-            "no_info": "❎ このサーバーにはまだメンバーがいません. 経験値があります。",
-            "server_rank": "このサーバーのレベルランク",
-            "server_rank_description": "このサーバー内のトップ 10 メンバーの 1 つ。 次の順序で、最も多くのレベルを収集できます",
-            "server_rank_tips": "ヒント: 他のメンバーと話す. さらにレベルアップします。"
+        "license": {
+            "copyright_content": "📝 著作権で保護されたコンテンツ"
         },
         "logs": {
             "can_not_delete_file": "❎ ログ ファイルを削除できません。\n```JavaScript\n%s\n```",
@@ -272,24 +345,23 @@
             "no_queue": "❎ 現在、私が演奏している曲はありません。",
             "playing_lyrics": "📋 現在再生中の曲の歌詞"
         },
-        "mcServer": {
-            "address": "アドレス",
-            "do_not_have": "持っていません",
-            "edition": "版",
-            "last_check": "最後にチェックした",
-            "maximum_player_count": "プレイヤーの最大数",
-            "mode": "モード",
-            "motd": "説明",
-            "player_in_server": "サーバー内のプレイヤー",
-            "port": "ポート",
-            "server_available": "```🟢 このサーバーは現在利用可能です```",
-            "server_detail": "このサーバーの詳細情報",
-            "server_unavailable": "```🔴 このサーバーは一時的にダウンしています```",
-            "version": "バージョン"
-        },
         "meme": {
             "can_not_fetch": "ミームの取得に失敗しました. もう一度お試しください。",
             "meme_not_found": "%s に一致するタイプのミームが見つかりませんでした。"
+        },
+        "minecraft": {
+            "address": "アドレス",
+            "do_not_have": "持っていません",
+            "ip": "IPアドレス",
+            "last_check": "最後にチェックした",
+            "maximum_player_count": "プレイヤーの最大数",
+            "motd": "説明",
+            "player_in_server": "サーバー内のプレイヤー",
+            "port": "ポート",
+            "server_available": "🟢 このサーバーは現在利用可能です",
+            "server_unavailable": "🔴 このサーバーは一時的にダウンしています",
+            "skin_of": "🎴 %s スキン",
+            "version": "バージョン"
         },
         "musicInfo": {
             "detail": "📄 現在再生中の曲の詳細",
@@ -302,6 +374,7 @@
             "uploader": "🎬 アップローダー"
         },
         "nekos": {
+            "can_not_fetch_data": "❎ リクエストした画像を一時的に取得できません. 後でもう一度試してください。",
             "request_by": "%s からリクエストされました"
         },
         "nowPlaying": {
@@ -326,11 +399,12 @@
         },
         "ping": {
             "connection": "📡接続",
-            "info": "接続信号は %s1 ミリ秒です。\n往復応答時間は %s2 ミリ秒です。",
+            "info": "ラウンドトリップ遅延は %s1 ミリ秒です\nWebsocket ハートビートは %s2 ミリ秒です",
             "result": "🏓ポン",
             "waiting": "🏓 Ping..."
         },
         "play": {
+            "no_queue": "❎ まだ曲を再生していません",
             "not_in_channel": "❓ 最初に任意のチャンネルに移動します。 そうでなければ、私の言うことを聞かないでください..."
         },
         "previous": {
@@ -341,6 +415,10 @@
         },
         "purge": {
             "message_cleared": "`%s メッセージ` メッセージを正常に削除しました 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "QR コードを使用する準備ができました。",
+            "qrcode_title": "🧩QRコード"
         },
         "quality": {
             "advice_embed_description": "```現在の品質: %s```\nサーバーへのアクセスが多すぎてパフォーマンスの問題が発生することが問題の原因である場合があります。ただし、これを設定する前にインターネット接続を確認することをお勧めします。\n`0` - **OPUS** を使用して音声ファイルを圧縮します。これにより音質が向上しますが、より多くのリソースを使用します。 **(推奨)**\n`1` - ソース オーディオを直接使用します。これによりパフォーマンスが向上しますが、使用するリソースは少なくなります.",
@@ -378,6 +456,7 @@
             "volume": "🔉 ボリューム"
         },
         "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: システムの再起動の要求があります!!**\n本人であることを確認するには、コマンドを実行したサーバーでこのパスワードを入力してください。\n必要ない場合は無視できます\n今日までお世話になりました:)\n||%s||",
             "not_owner": "🛑 やめて..受け取らないで。 この機能にはルート権限のみが必要です.",
             "now_reboot": "✅ 再起動しました!!",
             "password_is_incorrect": "❎ パスワードが正しくありません。 再度確認してください。",
@@ -418,6 +497,7 @@
             "can_not_play_with_another_bot": "❎ このゲームを他のボットと一緒にプレイすることはできません.",
             "choose_options": "以下のオプションを選択してください。",
             "game_timeout": "このゲームはタイムアウトしました. 楽しんでくれてありがとう。",
+            "member_not_found": "❎ メンバーはもうこのサーバーにいないようです.",
             "rock_paper_scissors": "🎮じゃんけん",
             "user_answered": "%s は既に回答を選択しています。 相手からの返事を待っています...",
             "user_winner": "<@%s> が勝者です!",
@@ -446,55 +526,35 @@
             "sought": "🕘 現在再生中の曲の時間が変更されました。",
             "too_much": "❎ この曲の時間は %s です.それ以上のものはありません."
         },
-        "setCommand": {
+        "set_command": {
             "can_not_manage_this_command": "❎ このコマンドは管理できません。",
             "command_input_empty": "❎ 処理したいコマンドを入力してください。",
             "command_not_found": "❎ コマンドが見つかりませんでした.文字または文字をもう一度確認してください。",
             "data_at": "いつのデータ",
-            "description": "**setCommand** - すべてのコマンドを管理します。たとえば、`open`-||close|| 個々のコマンドを実行します。など\n\n**コマンド** - (%s1):\n%s2\n\n> 次のように入力して変更できます:\n> ```%s3```",
+            "description": "**set-command** - すべてのコマンドを管理します。たとえば、`open`-||close|| 個々のコマンドを実行します。など\n\n**コマンド** - (%s1):\n%s2\n\n> 次のように入力して変更できます:\n> ```%s3```",
             "disabled": "☑️ コマンド **%s** は無効になっています。",
             "enabled": "✅ コマンド **%s** が有効になりました",
             "title": "🪄 コマンド"
         },
-        "setEXP": {
-            "can_not_find_user": "❎ このメンバーが見つかりません。え..タイプミスか?",
-            "error": "❎ そのメンバーの経験値を設定できません.後でもう一度試してください。",
-            "experience": "経験",
-            "exp_was_changed": "%s はすべての経験レベルを蓄積しました。保有:",
-            "level": "レベル (レベル)",
-            "notification_complete": "✅ 設定が完了しました...",
-            "set_by_staff": "あなたの体験は、このサーバーのチームによって設定されました。",
-            "success": "✅セットアップが完了しました..."
-        },
-        "setLanguage": {
+        "set_language": {
             "already_set": "❎ ああ..しかし、このサーバーは既に %s 言語を使用しています.",
-            "description": "**言語** - 理解しやすいように言語を設定してください。\n\nこのサーバーの言語は: `%s1`\n\n> タイプで変更できます:\n > ```%s2```",
+            "description": "**set-language** - 理解しやすいように言語を設定してください。\n\nこのサーバーの言語は: `%s1`\n\n> タイプで変更できます:\n > ```%s2```",
             "set_success": "✅ 言語を **%s** に変更しました",
             "title": "🌐 言語"
         },
-        "setLevel": {
-            "can_not_find_user": "❎ このメンバーが見つかりません。え..タイプミスか?",
-            "error": "❎ メンバーのレベルを設定できません。後でもう一度試してください。",
-            "experience": "経験",
-            "level": "レベル (レベル)",
-            "level_was_changed": "%s はすべての経験レベルを蓄積しました。持っている:",
-            "notification_complete": "✅ 設定が完了しました...",
-            "set_by_staff": "あなたのクラスは、このサーバーのチームによって設定されました。",
-            "success": "✅セットアップが完了しました..."
-        },
-        "setNotify": {
+        "set_notify": {
             "channel_not_found": "❎ このサーバーでチャンネルが見つかりませんでした.再度確認してください。",
             "data_at": "いつのデータ",
-            "description": "**notify** - サーバーから最新情報を受け取るように各タイプの通知を設定します。\n\n**アラート** - 一般通知: %s1\n**channelCreate** - 新しいチャンネル: %s2\n**channelDelete** - 削除されたチャンネル: %s3\n**channelPinsUpdate** - ピン留めされたチャンネル ピン: %s4\n**channelUpdate** - チャンネルの更新: %s5\n**emojiCreate** - 新しい絵文字: %s6\n**emojiDelete** - 絵文字の正しい削除: %s7\n**emojiUpdate** - 絵文字更新: %s8\n**guildBanAdd** - 禁止されたメンバー: %s9\n**guildBanRemove** - 禁止されたメンバー: %s10\n**guildIntegrationsUpdate** - ギルド統合の更新: %s11\n**guildMemberAdd* * - メンバー参加サーバー: %s12\n**guildMemberRemove** - メンバー脱退サーバー: %s13 \n**guildMembersChunk** - 多くのギルド メンバーを獲得: %s14\n**guildUnavailable** - サーバー利用不可: %s15 \n**inviteCreate** - 招待リンクが作成されました: %s16 \n**inviteDelete** - 招待リンクが削除されました: %s17\n**roleCreate** - 作成された役割: %s18\n**roleDelete** - 役割削除: %s19\n**roleUpdate** - 更新されたロール: %s20\n**stageInstanceCreate** - 作成されたステージ: %s21\n**stageInstanceDelete** - ステージが削除されました: %s22\n**stageInstanceUpdate** - ステージ更新: %s23\n**stickerCreate** - ステッカーが作成されました: %24\n**stickerDelete** - ステッカーが削除されました: %s25\n**stickerUpdate** - ステッカー スレッドが更新されました: %s26\n**threadCreate* * - スレッドが作成されました: %s27\n**threadDelete** - スレッドが削除されました: %s28\n**threadUpdate** - スレッドが更新されました: %s29\n**webhookUpdate** - Webhook が更新されました: %s30\n\n> 次のように入力して変更できます:\n> ```%s31```",
+            "description": "**set-notify** - サーバーから最新情報を受け取るように各タイプの通知を設定します。\n\n**アラート** - 一般通知: %s1\n**channelCreate** - 新しいチャンネル: %s2\n**channelDelete** - 削除されたチャンネル: %s3\n**channelPinsUpdate** - ピン留めされたチャンネル ピン: %s4\n**channelUpdate** - チャンネルの更新: %s5\n**emojiCreate** - 新しい絵文字: %s6\n**emojiDelete** - 絵文字の正しい削除: %s7\n**emojiUpdate** - 絵文字更新: %s8\n**guildBanAdd** - 禁止されたメンバー: %s9\n**guildBanRemove** - 禁止されたメンバー: %s10\n**guildIntegrationsUpdate** - ギルド統合の更新: %s11\n**guildMemberAdd* * - メンバー参加サーバー: %s12\n**guildMemberRemove** - メンバー脱退サーバー: %s13 \n**guildMembersChunk** - 多くのギルド メンバーを獲得: %s14\n**guildUnavailable** - サーバー利用不可: %s15 \n**inviteCreate** - 招待リンクが作成されました: %s16 \n**inviteDelete** - 招待リンクが削除されました: %s17\n**roleCreate** - 作成された役割: %s18\n**roleDelete** - 役割削除: %s19\n**roleUpdate** - 更新されたロール: %s20\n**stageInstanceCreate** - 作成されたステージ: %s21\n**stageInstanceDelete** - ステージが削除されました: %s22\n**stageInstanceUpdate** - ステージ更新: %s23\n**stickerCreate** - ステッカーが作成されました: %24\n**stickerDelete** - ステッカーが削除されました: %s25\n**stickerUpdate** - ステッカー スレッドが更新されました: %s26\n**threadCreate* * - スレッドが作成されました: %s27\n**threadDelete** - スレッドが削除されました: %s28\n**threadUpdate** - スレッドが更新されました: %s29\n**webhookUpdate** - Webhook が更新されました: %s30\n\n> 次のように入力して変更できます:\n> ```%s31```",
             "not_set": "`未設定`",
             "remove_success": "✅ タイプ `%s` の通知を正常に削除しました。",
             "set_success": "✅ 通知タイプ `%s1` がフィールド `<#%s2>` に設定されました。",
             "title": "🔔 お知らせ",
             "type_not_found": "❎うーん...そのようなタイプはないようです.現在、これらのタイプのみが利用可能です: %s"
         },
-        "setPersonal": {
+        "set_personal": {
             "data_at": "いつのデータ",
-            "description": "**個人** - 個人データを表示するための権限を設定します。 (Shioru のみに適用されます。)\n\nプロファイルを表示: `%s1`\nDiscord プロファイルを表示: `%s2`\nID を表示: `%s3`\n\n> 次のように入力して変更できます:\n> ` ``%s4```",
+            "description": "**set-personal** - 個人データを表示するための権限を設定します。 (Shioru のみに適用されます。)\n\nプロファイルを表示: `%s1`\nDiscord プロファイルを表示: `%s2`\nID を表示: `%s3`\n\n> 次のように入力して変更できます:\n> ` ``%s4```",
             "false_success": "✅ %s の認証が解除されました。",
             "no": "いいえ",
             "title": "📄個人データ",
@@ -507,7 +567,7 @@
             "note": "注: 一部のコマンドは、実行前に特定の権限が必要になる場合があります。",
             "notification": "🔔 通知 (サーバー)",
             "personal": "📄 個人データ (非公開)",
-            "prefix": "❕ プレフィックス (サーバー)",
+            "prefix": "❕ 命令 (サーバー)",
             "title": "⚙️設定"
         },
         "shuffle": {
@@ -516,6 +576,7 @@
             "now_shuffle": "🔀 シャッフルが始まりました..."
         },
         "shutdown": {
+            "dm_to_owner": "**:red_circle: シャットダウンの要求!!**\n本人であることを確認するには、コマンドを実行したサーバーでこのパスワードを入力してください。\n不要な場合は無視してかまいません.続ける\n今日までお世話になりました:)\n||%s||",
             "not_owner": "🛑 やめて..受け取らないで。 この機能にはルート権限のみが必要です.",
             "now_shutdown": "💤 Discord がシャットダウンされました..またね~",
             "password_is_incorrect": "❎ パスワードが正しくありません。 再度確認してください。",
@@ -539,6 +600,13 @@
             "idle_status": "現在のアイドル メンバー数は \n```%s```",
             "offline_status": "現在オフラインのメンバー数は\n```%s```です",
             "online_status": "現在オンラインのメンバー数は \n```%s``` です"
+        },
+        "sticker": {
+            "deleted_sticker": "✅ **%s** ステッカーが正常に削除されました",
+            "does_not_support_gif": "❎ 申し訳ありません...Discord は現在、GIF としてのカスタム ステッカーをサポートしていません。",
+            "edited_sticker": "%s はステッカーを正常に編集しました。",
+            "uploading_you_sticker": "📤 ステッカーをアップロードしています...",
+            "you_sticker_is_ready": "%s ステッカーの準備ができました。 試してみよう！！"
         },
         "stop": {
             "no_queue": "❎ えっと...私が演奏している曲はありません.",
@@ -574,10 +642,20 @@
             "can_not_play_with_bot": "❎ このゲームはボットではプレイできません.",
             "in_another_duel": "❎ <@%s> は現在、他の誰かと決闘中です。",
             "in_duel": "❎いいえ、いいえ、<@%s>で決闘を終わらせなければなりません。",
+            "member_not_found": "❎ メンバーは別の場所で拉致されたようです.",
             "need_one_emoji": "❎ ❌ や ⭕ などの絵文字を 1 ついただけますか?",
             "tie": "ネクタイ！",
             "wait_opponent": "❓ 反対側で少し待ちます。",
             "winner": "%s が勝った!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ 自分でタイムアウトを設定することはできません。",
+            "can_not_set_timeout": "❎ 彼は私よりも高い役割を持っているため、彼にタイムアウトを設定することはできません。",
+            "can_not_set_to_admin": "❎ 管理者のタイムアウトは設定できません。",
+            "dm_to_user": "⌛ %s1 でタイムアウトになりました。そのサーバーで残り時間を確認できます **理由**: %s2",
+            "member_not_found": "❎ メンバーが見つかりませんでした.",
+            "no_reason": "理由なし",
+            "success": "%s1 は %s2 分後にタイムアウトするように設定されています **理由**: %s3"
         },
         "together": {
             "can_not_open": "❌ うーん、%s は開けません。",
@@ -598,6 +676,15 @@
             "reason_for_unban": "禁止解除者: %s1\n理由: %s2\nメンバーの禁止解除後、そのようなメンバーは、このサーバーに正常に参加できます。",
             "this_user_not_banned": "❎ ええと.. そのメンバーは禁止されていません.いくつかの優れた新しいキーワードをチェックしてください。もう一周…",
             "user_has_been_unbanned": "%s の禁止が解除されました"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ 自分でタイムアウトを設定することはできません",
+            "can_not_set_to_admin": "❎ 管理者にタイムアウトを設定することはできません.",
+            "can_not_set_untimeout": "❎ 彼は私よりも高い役割を持っているため、彼をタイムアウトに設定することはできません。",
+            "dm_to_user": "⏲️ %s1 でのタイムアウトの設定がキャンセルされました **理由**: %s2",
+            "member_not_found": "❎ メンバーが見つかりませんでした.",
+            "no_reason": "理由なし",
+            "success": "%s1 はタイムアウトしないように設定されました **理由**: %s2"
         },
         "uptime": {
             "days": "日",
@@ -734,8 +821,16 @@
             "guild_notification": "🗄️サーバー"
         },
         "guildMemberAdd": {
+            "captcha_error": "検証エラーが発生しました. サーバーのスタッフに連絡して対処してください。",
+            "captcha_success": "%s で確認されました",
             "greet": "こんにちは、新しいメンバー。 **これは自動メッセージです** \nサーバーに参加していただきありがとうございます。誰かと話し始める前に、このサーバーに関する情報をよく読んでください。",
-            "welcome": "サーバーへようこそ."
+            "solve_the_captcha": "キャプチャを解決して %s で確認",
+            "submit_answer_captcha": "回答のキャプチャを送信",
+            "submit_you_answer_guide": "キャプチャと思われるものを送信してください",
+            "use_button_below": "下のボタンを使用して回答を送信してください!",
+            "welcome": "サーバーへようこそ.",
+            "wrong_answer": "間違っているようです。 もう一度試してみましょう...",
+            "your_answer": "あなたのキャプチャ回答"
         },
         "guildMemberRemove": {
             "user_has_exited": "このサーバーから脱出しました...(彼はどこへ行ったのですか?..)"
@@ -763,6 +858,11 @@
             "invite_code_deleted": "`%s` この招待コードは削除されました。",
             "invite_code_expires": "`%s` この招待コードは期限切れです。",
             "invite_notification": "🏷️招待"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 帰ってきました。 AFKステータスを自動的にキャンセル",
+            "no_reason_for_afk": "なし",
+            "that_user_is_afk": "%s1 は現在画面に表示されていません (AFK)。今は話さないでください。\n**Leave Messages**: %s2"
         },
         "roleCreate": {
             "role_create": "<@&%s> が作成されました",

@@ -5,6 +5,12 @@
             "my_profile_detail": "My name is %s, born on Sunday June 21. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
             "update_on": "update on"
         },
+        "afk": {
+            "currently_afk": "❎ You're currently AFK",
+            "currently_not_afk": "❎ You're not AFK right now.",
+            "now_afk": "💤 You are currently AFK, write a message or /afk remove to exit AFK mode.",
+            "now_not_afk": "🔙 Your AFK status has been unset."
+        },
         "anime": {
             "auto_cancel": "Just type in the number you want to read! (cancel within 1 minute)",
             "choose_now": "Choose now!!",
@@ -20,6 +26,17 @@
             "start_date": "**start date**",
             "synopsis": "**Summary:**",
             "undefined": "undefined"
+        },
+        "automod": {
+            "flagged_words_name": "Block profanity. sexual content and insults",
+            "flagged_words_success": "✅ Your AutoMod rule has been created, all those words will be suppressed.",
+            "keyword_name": "Prevent using the word %s",
+            "keyword_success": "✅ Your AutoMod rule has been created, all messages containing the word %s will be deleted.",
+            "mention_spam_name": "Prevent spam when mentioned",
+            "mention_spam_success": "✅ Your AutoMod rule has been created. Multiple mention spam will be suppressed.",
+            "prevent_message": "This message is protected.",
+            "spam_messages_name": "Prevent spam messages",
+            "spam_messages_success": "✅ Your AutoMod rule has been created. Message spam will be suppressed."
         },
         "autoplay": {
             "no_queue": "❎ Ummm...but the song hasn't started yet?",
@@ -37,14 +54,24 @@
             "reason_for_ban": "Ban by: %s1\nreason: %s2",
             "user_not_found": "❎ I can't find this member. Please check again."
         },
-        "bigEmoji": {
-            "emoji_not_found": "❎ It doesn't look like that emoji, or it might not be.",
-            "large_emoji": "big emoji",
-            "requested_by": "Requested by %s"
+        "board": {
+            "leveling_detail": "Experience: %s1, Level: %s2",
+            "no_info": "❎ There are no members on this server yet. that is worth the experience",
+            "server_rank": "This server's level rank",
+            "server_rank_description": "One of the top 10 members on this server. that can collect the most own levels, respectively, as follows",
+            "server_rank_tips": "Tips: Chatting with other members will make you gain more levels"
         },
         "bug": {
             "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
             "success": "✅ ok thank you...if you find anything else please tell me (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ The captcha system setup has been completed and activated.",
+            "currently_disable": "ℹ️ captcha is now disabled.",
+            "currently_enable": "ℹ️ captcha is now enabled",
+            "disabled_captcha": "✅ captcha has been disabled",
+            "enabled_captcha": "✅ captcha has been enabled",
+            "need_to_setup_before": "❎ Please set captcha before use using /captcha setup"
         },
         "covid": {
             "active": "Active",
@@ -78,12 +105,11 @@
         "dead": {
             "suicide": "%s decided to kill himself 💔 rest in peace"
         },
-        "deleteLevel": {
-            "can_not_find_user": "❎ This member could not be found. Is it a typo..?",
-            "deleting": "📁 is deleting this member's experience level information.",
-            "error": "❎ This user could not be found.",
-            "success": "✅ This member's experience level has been deleted!",
-            "user_current_no_level": "❎ Such members do not have any level."
+        "decode": {
+            "after": "After decoding",
+            "before": "Before decoding",
+            "decode_message": "🔓 Decode message",
+            "decode_success": "The message was successfully decoded."
         },
         "donate": {
             "thank_you_in_advance_message": "❤️ Thank you for supporting my developers in advance. I have the following channels for support."
@@ -91,6 +117,40 @@
         "eat": {
             "already_eaten": "%s1 has eaten %s2 in the stomach.",
             "do_not_eat_me": "I..I'm a little small. It's not appetizing..."
+        },
+        "eight_ball": {
+            "answer": "Answer",
+            "game": "🎱 8ball game",
+            "question": "question",
+            "risk": "Spend your luck on questions to redeem answers.",
+            "roll_ball": "Roll the ball!!"
+        },
+        "emojis": {
+            "deleted_emoji": "✅ **%s** The emoji has been deleted.",
+            "edited_emoji": "%s successfully edited the emoji.",
+            "uploading_you_emoji": "📤 Uploading your emoji...",
+            "you_emoji_is_ready": "%s Your emoji is ready. Let's try it!!"
+        },
+        "encode": {
+            "after": "After encoding",
+            "before": "Before encoding",
+            "encode_message": "🔒 Encode message",
+            "encode_success": "Your message was successfully encoded."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ It doesn't look like that emoji, or it might not be.",
+            "large_emoji": "big emoji",
+            "requested_by": "Requested by %s"
+        },
+        "exp": {
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "error": "❎ This member's experience value cannot be set. Please try again later.",
+            "experience": "Experience (Exp)",
+            "exp_was_changed": "%s has accumulated all experience levels. Contains:",
+            "level": "Level (Level)",
+            "notification_complete": "✅ Setup is complete...",
+            "set_by_staff": "Your experience is set by the team on this server.",
+            "success": "✅ Setup is complete..."
         },
         "filter": {
             "add_filter": "🎼 Added the desired sound format to **%s** already.",
@@ -185,32 +245,36 @@
             "yes": "yes"
         },
         "help": {
-            "aliases": "Aliases: ",
-            "command": "Command: ",
+            "category": "Category: %s",
+            "client_permissions": "Permissions (bot): %s",
+            "command": "Command: %s",
             "command_detail": "📑 Command details ",
             "command_incorrect": "❎ Invalid command",
             "command_incorrect_guide": "Eh...no command. Try rechecking by typing `/help` to see a list of all my commands.",
             "commands_description": [
                 "All the commands that I have learned or studied understandable and practical",
                 "which before calling me Must have a prefix **/**",
-                "`<>` means required and `()` is optional, may or may not be answered.",
-                "For details of each command type `/help (command)` and the wish will come true!!"
+                "`<>` means required, `()` is the input type, and `[]` is optional.",
+                "For details of each command type `/help [command]` and the wish will come true!!"
             ],
-            "description": "Description: ",
+            "description": "Description: %s",
             "document_name": "Help Documentation",
-            "how_to_use": "How to use: ",
+            "how_to_use": "How to use: %s",
             "no_description": "No description",
+            "no_need_permissions": "No required permissions",
             "request_by": "requested by",
-            "type": "Type: ",
-            "unknown_how_to_use": "There is no way to use it."
+            "unknown_how_to_use": "There is no way to use it.",
+            "user_permissions": "Permissions (user): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ The member was not found in this server at all.",
+            "success": "✅ <@%s> has been cast!"
         },
         "invite": {
+            "can_not_create_invite_link": "❎ The invite link could not be created. Please try again.",
             "me_do_not_have_permission": "🚫 I don't have permission to create an invite link in this channel.",
             "membership_invitation_card": "Membership Invitation Card",
             "this_product_is_free": "This product is free. Don't place it again."
-        },
-        "inviteMe": {
-            "can_not_create_invite_link": "❎ The invite link could not be created. Please try again."
         },
         "join": {
             "already_joined": "❎ Eh..but I'm here too?",
@@ -243,6 +307,19 @@
             "not_in_any_channel": "❎ I'm not on any channel right now...",
             "now_leave": "◀️ I left my current channel."
         },
+        "level": {
+            "delete_error": "❎ Can't find this user.",
+            "delete_success": "✅ This member's experience level has been deleted!",
+            "deleting": "📁 Deleting this member's experience level",
+            "experience": "Experience",
+            "level": "Level",
+            "level_was_changed": "%s has accumulated all experience levels. Has:",
+            "notification_complete": "✅ The configuration is complete...",
+            "set_by_staff": "Your class is set by a team on this server.",
+            "set_error": "❎ Can't set the tier of that member. Please try again later.",
+            "set_success": "✅ Set successfully...",
+            "user_current_no_level": "❎ The member no longer has a level."
+        },
         "leveling": {
             "bot_do_not_have_level": "❎ Bots don't have levels, including me.",
             "can_not_find_user": "❎ This member could not be found. Is it a typo?",
@@ -251,12 +328,8 @@
             "user_no_data": "💨 Hmmm...this member doesn't have any rank and experience yet.",
             "your_experience": "Your experience"
         },
-        "levelingBoard": {
-            "leveling_detail": "Experience: %s1, Level: %s2",
-            "no_info": "❎ There are no members on this server yet. that is worth the experience",
-            "server_rank": "This server's level rank",
-            "server_rank_description": "One of the top 10 members on this server. that can collect the most own levels, respectively, as follows",
-            "server_rank_tips": "Tips: Chatting with other members will make you gain more levels"
+        "license": {
+            "copyright_content": "📝 Copyrighted content"
         },
         "logs": {
             "can_not_delete_file": "❎ The log file cannot be deleted.\n```JavaScript\n%s\n```",
@@ -272,24 +345,23 @@
             "no_queue": "❎ There's no song I'm playing right now.",
             "playing_lyrics": "📋 Lyrics of the currently playing song"
         },
-        "mcServer": {
-            "address": "Address",
-            "do_not_have": "None",
-            "edition": "Edition",
-            "last_check": "Last checked",
-            "maximum_player_count": "Maximum number of players",
-            "mode": "mode",
-            "motd": "Description",
-            "player_in_server": "Player in server",
-            "port": "Port",
-            "server_available": "```🟢 This server is currently open ```",
-            "server_detail": "Details of this server",
-            "server_unavailable": "```🔴 This server has been temporarily disabled```",
-            "version": "Version"
-        },
         "meme": {
             "can_not_fetch": "Failed to fetch the meme. Please try again",
             "meme_not_found": "Couldn't find a meme of type that matches %s."
+        },
+        "minecraft": {
+            "address": "Address",
+            "do_not_have": "None",
+            "ip": "IP Address",
+            "last_check": "Last checked",
+            "maximum_player_count": "Maximum number of players",
+            "motd": "Description",
+            "player_in_server": "Player in server",
+            "port": "Port",
+            "server_available": "🟢 This server is currently open",
+            "server_unavailable": "🔴 This server has been temporarily disabled",
+            "skin_of": "🎴 Skin of %s",
+            "version": "Version"
         },
         "musicInfo": {
             "detail": "📄 Details of the currently playing song",
@@ -302,6 +374,7 @@
             "uploader": "🎬 Uploader"
         },
         "nekos": {
+            "can_not_fetch_data": "❎ Temporarily unable to get the image you requested. Please try again later.",
             "request_by": "Requested by %s"
         },
         "nowPlaying": {
@@ -326,11 +399,12 @@
         },
         "ping": {
             "connection": "📡 Connection",
-            "info": "Ping is %s1 ms \nRoundtrip Latency is %s2 ms",
+            "info": "Roundtrip latency is %s1 ms\nWebsocket heartbeat is %s2 ms",
             "result": "🏓 Pong",
             "waiting": "🏓 Pinging..."
         },
         "play": {
+            "no_queue": "❎ Haven't played any songs yet",
             "not_in_channel": "❓ Enter any channel first. If not, listen to me..."
         },
         "previous": {
@@ -341,6 +415,10 @@
         },
         "purge": {
             "message_cleared": "The number of `%s messages` has been deleted 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "Your QR code is ready to use.",
+            "qrcode_title": "🧩 QR Code"
         },
         "quality": {
             "advice_embed_description": "```Current Quality: %s```\nSometimes the problem can be caused by a server with so much traffic that it causes performance issues. However, I recommend you to check your internet connection before setting this.\n`0` - Use **OPUS** to compress audio files. This will result in better sound quality but also consume more resources. **(recommended)**\n`1` - Uses audio directly from the source. This will result in better efficiency but less resource usage.",
@@ -378,6 +456,7 @@
             "volume": "🔉 Volume"
         },
         "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: There's a request for a system restart!!**\nTo confirm it's you, please enter this password on the server you ran the command on.\nYou can ignore it if Don't want to continue.\nThank you for taking care of me until today :)\n||%s||",
             "not_owner": "🛑 Don't..don't. This function requires top privileges only",
             "now_reboot": "✅ System restarted!!",
             "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
@@ -418,6 +497,7 @@
             "can_not_play_with_another_bot": "❎ You cannot play this game with other bots.",
             "choose_options": "Choose options below.",
             "game_timeout": "This game has timed out. Thank you for having fun.",
+            "member_not_found": "❎ The member doesn't appear to be on this server anymore.",
             "rock_paper_scissors": "🎮 Rock Paper Scissors",
             "tie": "Tie!",
             "user_answered": "%s has already chosen an answer. Waiting for an answer from the other side...",
@@ -446,55 +526,35 @@
             "sought": "🕘 Change the time of the currently playing song.",
             "too_much": "❎ The time of this song is at %s, nothing more than this."
         },
-        "setCommand": {
+        "set_command": {
             "can_not_manage_this_command": "❎ You cannot manage this command.",
             "command_input_empty": "❎ Please enter the command you want to handle.",
             "command_not_found": "❎ The command was not found. Try checking the characters or characters again.",
             "data_at": "data of when",
-            "description": "**setCommand** - Manage all my commands, e.g. `open`-||close|| Execute individual commands. etc.\n\n**command** - (%s1):\n%s2\n\n> You can change it by typing:\n> ```%s3```",
+            "description": "**set-command** - Manage all my commands, e.g. `open`-||close|| Execute individual commands. etc.\n\n**command** - (%s1):\n%s2\n\n> You can change it by typing:\n> ```%s3```",
             "disabled": "☑️ The command **%s** has been disabled.",
             "enabled": "✅ The command **%s** has been enabled",
             "title": "🪄 Commands"
         },
-        "setEXP": {
-            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
-            "error": "❎ This member's experience value cannot be set. Please try again later.",
-            "experience": "Experience (Exp)",
-            "exp_was_changed": "%s has accumulated all experience levels. Contains:",
-            "level": "Level (Level)",
-            "notification_complete": "✅ Setup is complete...",
-            "set_by_staff": "Your experience is set by the team on this server.",
-            "success": "✅ Setup is complete..."
-        },
-        "setLanguage": {
+        "set_language": {
             "already_set": "❎ eh..but this server is already using %s",
-            "description": "**lang** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```",
+            "description": "**set-language** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```",
             "set_success": "✅ The language has been changed to **%s** already.",
             "title": "🌐 Language"
         },
-        "setLevel": {
-            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
-            "error": "❎ Unable to set the tier of that member. Please try again later.",
-            "experience": "experience (Exp)",
-            "level": "level (Level)",
-            "level_was_changed": "%s has accumulated all experience levels. Contains:",
-            "notification_complete": "✅ Setup is complete...",
-            "set_by_staff": "Your tier is set by a team on this server.",
-            "success": "✅ Setup is complete..."
-        },
-        "setNotify": {
+        "set_notify": {
             "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
             "data_at": "data of when",
-            "description": "**notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General Notification: %s1\n**channelCreate** - New Channel: %s2\n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pins Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New Emoji: %s6\n**emojiDelete** - Emoji Correct Delete: %s7\n**emojiUpdate** - Emoji Updated: %s8\n**guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Unbanned: %s10\n**guildIntegrationsUpdate** - Guild Integration Update: %s11\n**guildMemberAdd** - Member Join Server: %s12\n**guildMemberRemove** - Member Leave Server: %s13 \n**guildMembersChunk** - Gained many guild members: %s14\n**guildUnavailable** - Server unavailable: %s15\n**inviteCreate** - Invite link generated: %s16 \n**inviteDelete** - Invite Link Removed: %s17\n**roleCreate** - Role Created: %s18\n**roleDelete** - Role Removed: %s19\n**roleUpdate** - Roles updated: %s20\n**stageInstanceCreate** - Stages created: %s21\n**stageInstanceDelete** - Stages deleted: %s22\n**stageInstanceUpdate** - Stages Updated: %s23\n**stickerCreate** - Sticker Created: %24\n**stickerDelete** - Sticker Removed: %s25\n**stickerUpdate** - Sticker Thread updated: %s26\n**threadCreate** - Thread created: %s27\n**threadDelete** - Thread deleted: %s28\n**threadUpdate** - Thread updated: %s29\n**webhookUpdate** - The webhook has been updated: %s30\n\n> You can change it by typing:\n> ```%s31```",
+            "description": "**set-notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General Notification: %s1\n**channelCreate** - New Channel: %s2\n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pins Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New Emoji: %s6\n**emojiDelete** - Emoji Correct Delete: %s7\n**emojiUpdate** - Emoji Updated: %s8\n**guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Unbanned: %s10\n**guildIntegrationsUpdate** - Guild Integration Update: %s11\n**guildMemberAdd** - Member Join Server: %s12\n**guildMemberRemove** - Member Leave Server: %s13 \n**guildMembersChunk** - Gained many guild members: %s14\n**guildUnavailable** - Server unavailable: %s15\n**inviteCreate** - Invite link generated: %s16 \n**inviteDelete** - Invite Link Removed: %s17\n**roleCreate** - Role Created: %s18\n**roleDelete** - Role Removed: %s19\n**roleUpdate** - Roles updated: %s20\n**stageInstanceCreate** - Stages created: %s21\n**stageInstanceDelete** - Stages deleted: %s22\n**stageInstanceUpdate** - Stages Updated: %s23\n**stickerCreate** - Sticker Created: %24\n**stickerDelete** - Sticker Removed: %s25\n**stickerUpdate** - Sticker Thread updated: %s26\n**threadCreate** - Thread created: %s27\n**threadDelete** - Thread deleted: %s28\n**threadUpdate** - Thread updated: %s29\n**webhookUpdate** - The webhook has been updated: %s30\n\n> You can change it by typing:\n> ```%s31```",
             "not_set": "`not set`",
             "remove_success": "✅ The notification type `%s` has been removed successfully.",
             "set_success": "✅ The notification type `%s1` has been set to the field `<#%s2>` already.",
             "title": "🔔 Notification",
             "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s"
         },
-        "setPersonal": {
+        "set_personal": {
             "data_at": "data of when",
-            "description": "**personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```",
+            "description": "**set-personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```",
             "false_success": "✅ Your %s has been deauthorized.",
             "no": "No",
             "title": "📄 Personal Information",
@@ -503,11 +563,11 @@
         },
         "settings": {
             "description": "You can configure it according to your needs using these commands.",
-            "languages": "🌐 languages (server)",
+            "languages": "🌐 Languages (server)",
             "note": "Note: Some commands may require certain permissions to run.",
             "notification": "🔔 Notification (server)",
             "personal": "📄 Personal information (personal)",
-            "prefix": "❕ prefix (server)",
+            "prefix": "❕ Commands (server)",
             "title": "⚙️ Settings"
         },
         "shuffle": {
@@ -516,6 +576,7 @@
             "now_shuffle": "🔀 Shuffle queue started..."
         },
         "shutdown": {
+            "dm_to_owner": "**:red_circle: There is a request for a shutdown!!**\nTo confirm it's you, please enter this password on the server from which you run the command.\nYou can ignore it if you don't want it. Continue\nThank you for taking care of me until today :)\n||%s||",
             "not_owner": "🛑 Don't..don't. This function requires top privileges only",
             "now_shutdown": "💤 The system has been shut down on Discord.. see you later~",
             "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
@@ -539,6 +600,13 @@
             "idle_status": "The number of currently absent members is \n```%s```",
             "offline_status": "The number of members that are currently offline is \n```%s```",
             "online_status": "The number of members currently online is \n```%s```"
+        },
+        "stickers": {
+            "deleted_sticker": "✅ **%s** Sticker successfully deleted",
+            "does_not_support_gif": "❎ Sorry...Discord does not currently support custom stickers as GIFs.",
+            "edited_sticker": "%s successfully edited the sticker.",
+            "uploading_you_sticker": "📤 Uploading your sticker...",
+            "you_sticker_is_ready": "%s Your sticker is ready. Let's try it!!"
         },
         "stop": {
             "no_queue": "❎ Eh...there's no song I'm playing.",
@@ -574,10 +642,20 @@
             "can_not_play_with_bot": "❎ You cannot play this game with bots.",
             "in_another_duel": "❎ <@%s> is currently in a duel with someone else.",
             "in_duel": "❎ No, no, you must finish the duel with <@%s>.",
+            "member_not_found": "❎ The member appears to have been abducted somewhere else.",
             "need_one_emoji": "❎ May I have one emoji like ❌ or ⭕?",
             "tie": "Tie!",
             "wait_opponent": "❓ Wait on the opposite side for a moment.",
             "winner": "%s won!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ You can't set a timeout for yourself.",
+            "can_not_set_timeout": "❎ I can't set a timeout for him because he has a higher role than me.",
+            "can_not_set_to_admin": "❎ You cannot set timeouts for admins.",
+            "dm_to_user": "⌛ You are timed out in %s1, you can see the remaining time in that server **reason**: %s2",
+            "member_not_found": "❎ Member Not Found is no longer on this server.",
+            "no_reason": "no reason given",
+            "success": "%s1 is set to timeout in %s2 minutes **reason**: %s3"
         },
         "together": {
             "can_not_open": "❌ Umm..I can't open %s",
@@ -598,6 +676,15 @@
             "reason_for_unban": "Unban by: %s1\nReason: %s2\nAfter the member has been unbanned. Such members will be able to join this server normally",
             "this_user_not_banned": "❎ Eh..that member wasn't banned. Check out some great new keywords. One more time...",
             "user_has_been_unbanned": "%s has been unbanned"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ You can't set a timeout for yourself",
+            "can_not_set_to_admin": "❎ You cannot set a timeout for admins.",
+            "can_not_set_untimeout": "❎ I can't set him to untimeout because he has a higher role than me.",
+            "dm_to_user": "⏲️ You have been canceled to set a timeout on %s1 **reason**: %s2",
+            "member_not_found": "❎ Member Not Found is no longer on this server.",
+            "no_reason": "no reason given",
+            "success": "%s1 has been set to not timeout **reason**: %s2"
         },
         "uptime": {
             "days": "day",
@@ -734,8 +821,16 @@
             "guild_notification": "🗄️ Server"
         },
         "guildMemberAdd": {
+            "captcha_error": "There was a validation error. Contact the server staff to take action.",
+            "captcha_success": "You have been verified in %s",
             "greet": "Hello new member. **This is an automated message** \nThank you for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
-            "welcome": "Welcome to the server."
+            "solve_the_captcha": "Resolve the captcha to confirm in %s",
+            "submit_answer_captcha": "Submit answer captcha",
+            "submit_you_answer_guide": "Submit what you think captchas are",
+            "use_button_below": "Use the button below to submit your answer!",
+            "welcome": "Welcome to the server.",
+            "wrong_answer": "It seems wrong. Let's try again...",
+            "your_answer": "your captcha answer"
         },
         "guildMemberRemove": {
             "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
@@ -763,6 +858,11 @@
             "invite_code_deleted": "`%s` This invite code has been deleted.",
             "invite_code_expires": "`%s` This invitation code has expired.",
             "invite_notification": "🏷️ Invitation"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 You've come back. Automatically cancel AFK status",
+            "no_reason_for_afk": "none",
+            "that_user_is_afk": "%s1 isn't on screen right now (AFK), don't talk about them right now.\n**Leave Messages**: %s2"
         },
         "roleCreate": {
             "role_create": "<@&%s> has been created",
