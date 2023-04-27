@@ -1,976 +1,976 @@
 {
     "commands": {
         "about": {
-            "my_profile": "私のプロフィール",
-            "my_profile_detail": "私の名前は %s です。私は 6 月 21 日の日曜日に生まれました。家に住んでいます。__Chaiwat Suwannarat(Masashi)__ は私に知識とスキルを与えてくれた人です。あなたを快適にするのが私の義務です。 up **コマンド**で私がすべてを勉強したこと私が住んでいるすべての人にみんなが私と一緒に幸せになることを願っています!!そして、私の素敵な恩人へのすべての助けとサポートに感謝します.よろしくお願いします\n\n【公式サイト】(https://maseshi.web.app/)\n【プライバシーポリシー】(https://maseshi.web.app/privacy-policy) | サービス】(https ://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat.All rights reserved.",
-            "update_on": "更新"
+            "my_profile": "My Profile",
+            "my_profile_detail": "My name is %s, born on Sunday June 21. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
+            "update_on": "update on"
         },
         "afk": {
-            "currently_afk": "❎ あなたは現在 AFK です",
-            "currently_not_afk": "❎ あなたは今AFKではありません.",
-            "now_afk": "💤 あなたは現在 AFK です。AFK モードを終了するには、メッセージを書くか /afk remove してください。",
-            "now_not_afk": "🔙 あなたの AFK ステータスは解除されました."
+            "currently_afk": "❎ You're currently AFK",
+            "currently_not_afk": "❎ You're not AFK right now.",
+            "now_afk": "💤 You are currently AFK, write a message or /afk remove to exit AFK mode.",
+            "now_not_afk": "🔙 Your AFK status has been unset."
         },
         "anime": {
-            "auto_cancel": "読みたい数字を入力するだけ! (1分以内にキャンセル)",
-            "choose_now": "今すぐ選択してください!!",
-            "data_not_found": "❎ これは見つかりませんでした.それをチェックしよう。ほら、たぶんそんなことは実際にはありません.",
-            "end_date": "**終了日**",
-            "english_name": "**英語名**",
-            "in_progress": "進行状況",
-            "japan_name": "**日本語名**",
-            "link": "**リンク**",
-            "popularity_rank": "**人気ランク**",
-            "short_information": "これは要約された情報です。詳細を読みたい場合は、リンクをクリックしてください!!",
-            "similar_stories": "似たようなストーリーが 5 件見つかりました。どのお話が読みたいですか～",
-            "start_date": "**開始日**",
-            "synopsis": "**要約:**",
-            "undefined": "未定義"
+            "auto_cancel": "Just type in the number you want to read! (cancel within 1 minute)",
+            "choose_now": "Choose now!!",
+            "data_not_found": "❎ I couldn't find this. check carefully Look, maybe there's really no such thing.",
+            "end_date": "**end date**",
+            "english_name": "**english name**",
+            "in_progress": "Processing",
+            "japan_name": "**Japanese name**",
+            "link": "**Link**",
+            "popularity_rank": "**popularity rank**",
+            "short_information": "This is just a summary. If you want to read more, click on the link!!",
+            "similar_stories": "I found 5 stories that are similar. Which story would you like to read~",
+            "start_date": "**start date**",
+            "synopsis": "**Summary:**",
+            "undefined": "undefined"
         },
         "automod": {
-            "flaged_words_name": "冒とく的な表現をブロックします。 性的コンテンツ と侮辱",
-            "flaged_words_success": "✅ AutoMod ルールが作成されました。これらの単語はすべて抑制されます。",
-            "keyword_name": "単語 %s の使用を禁止する",
-            "keyword_success": "✅ AutoMod ルールが作成されました。単語 %s を含むすべてのメッセージが削除されます。",
-            "mention_spam_name": "メンションされたスパムを防止する",
-            "mention_spam_success": "✅ AutoMod ルールが作成されました。複数の言及スパムは抑制されます。",
-            "prevent_message": "このメッセージは保護されています。",
-            "spam_messages_name": "スパム メッセージを防止する",
-            "spam_messages_success": "✅ AutoMod ルールが作成されました。メッセージ スパムは抑制されます。"
+            "flagged_words_name": "Block profanity. sexual content and insults",
+            "flagged_words_success": "✅ Your AutoMod rule has been created, all those words will be suppressed.",
+            "keyword_name": "Prevent using the word %s",
+            "keyword_success": "✅ Your AutoMod rule has been created, all messages containing the word %s will be deleted.",
+            "mention_spam_name": "Prevent spam when mentioned",
+            "mention_spam_success": "✅ Your AutoMod rule has been created. Multiple mention spam will be suppressed.",
+            "prevent_message": "This message is protected.",
+            "spam_messages_name": "Prevent spam messages",
+            "spam_messages_success": "✅ Your AutoMod rule has been created. Message spam will be suppressed."
         },
         "autoplay": {
-            "no_queue": "❎うーん...でも曲はまだ始まっていないの?",
-            "not_queue_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "off": "📻 自動再生モードはオフ",
-            "on": "📻 自動再生モードがオンです。"
+            "no_queue": "❎ Ummm...but the song hasn't started yet?",
+            "not_queue_owner": "🚫 Only the owner of the queue can change it.",
+            "off": "📻 Autoplay mode turned off",
+            "on": "📻 Autoplay mode turned on"
         },
         "ban": {
-            "banned_for_time": "%s1 は **%s2** 日間禁止されています",
-            "member_has_banned": "❎ メンバーは既に禁止されています。ご安心ください。",
-            "members_have_a_higher_role": "❎ 自分より高い役割を持つ人を禁止することはできません.",
-            "members_have_a_higher_role_than_me": "❎ そのようなメンバーを追放することはできません.彼は私よりも高い役割を持っているからです。",
-            "no_reason": "禁止されたメンバーは理由を言いませんでした。",
-            "permanently_banned": "%s は永久に禁止されました",
-            "reason_for_ban": "禁止者: %s1\n理由: %s2",
-            "user_not_found": "❎ このメンバーが見つかりません.再度確認してください。"
+            "banned_for_time": "%s1 has been banned for **%s2** days",
+            "member_has_banned": "❎ This member has already been banned, so feel free.",
+            "members_have_a_higher_role": "❎ You can't ban someone above you.",
+            "members_have_a_higher_role_than_me": "❎ I can't ban that member. because he has a higher role than me",
+            "no_reason": "The ban member didn't give a reason.",
+            "permanently_banned": "%s has been permanently banned",
+            "reason_for_ban": "Ban by: %s1\nreason: %s2",
+            "user_not_found": "❎ I can't find this member. Please check again."
         },
         "board": {
-            "leveling_detail": "経験: %s1, レベル: %s2",
-            "no_info": "❎ このサーバーにはまだメンバーがいません. 経験値があります。",
-            "server_rank": "このサーバーのレベルランク",
-            "server_rank_description": "このサーバー内のトップ 10 メンバーの 1 つ。 次の順序で、最も多くのレベルを収集できます",
-            "server_rank_tips": "ヒント: 他のメンバーと話す. さらにレベルアップします。"
+            "leveling_detail": "Experience: %s1, Level: %s2",
+            "no_info": "❎ There are no members on this server yet. that is worth the experience",
+            "server_rank": "This server's level rank",
+            "server_rank_description": "One of the top 10 members on this server. that can collect the most own levels, respectively, as follows",
+            "server_rank_tips": "Tips: Chatting with other members will make you gain more levels"
         },
         "bug": {
-            "sending": "📨 では、少々お待ちください。 開発者に手紙を送ります...",
-            "success*": "✅ ありがとうございます...他に何かありましたら教えてください (●'◡'●)"
+            "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
+            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
         },
         "captcha": {
-            "captcha_setup_success": "✅ キャプチャ システムのセットアップが完了し、有効化されました。",
-            "currently_disable": "ℹ️ キャプチャは現在無効になっています。",
-            "currently_enable": "ℹ️ キャプチャが有効になりました",
-            "disabled_captcha": "✅ キャプチャが無効になりました",
-            "enabled_captcha": "✅ キャプチャが有効になっています",
-            "need_to_setup_before": "❎ 使用前に /captcha setup を使用してキャプチャを設定してください"
+            "captcha_setup_success": "✅ The captcha system setup has been completed and activated.",
+            "currently_disable": "ℹ️ captcha is now disabled.",
+            "currently_enable": "ℹ️ captcha is now enabled",
+            "disabled_captcha": "✅ captcha has been disabled",
+            "enabled_captcha": "✅ captcha has been enabled",
+            "need_to_setup_before": "❎ Please set captcha before use using /captcha setup"
         },
         "covid": {
-            "active": "アクティブ",
-            "active_per_one_million": "100万あたりアクティブ",
-            "backend_issue": "❎ コントリビューター側に問題があるようです.次回はもう一度お試しください。",
-            "cases_per_one_million": "100万人あたりの患者数",
-            "cases_today": "今日の患者",
-            "cases_total": "総患者数",
-            "country_not_found": "❎ うーん..指定された国に関する情報が見つかりませんでした.",
-            "critical_per_one_million": "100 万あたりのクリティカル",
-            "critical_stage": "クリティカル ステージ",
-            "deaths_today": "今日の死亡",
-            "deaths_total": "総死亡数",
-            "one_case_per_people": "1人1ケース",
-            "one_death_per_people": "一人につき一死",
-            "one_test_per_people": "1 人 1 回のテスト",
-            "population": "人口",
-            "recovered": "回復",
-            "recovered_per_one_million": "100万ごとに回収",
-            "tests": "テスト",
-            "tests_per_one_million": "100 万あたりのテスト数",
-            "updated_on": "最新のアップデート %s",
-            "when": "いつ"
+            "active": "Active",
+            "active_per_one_million": "Active per 1 million",
+            "backend_issue": "❎ There seems to be a problem on the contributor's side. Please try again next time",
+            "cases_per_one_million": "Cases per 1 million",
+            "cases_today": "Cases today",
+            "cases_total": "Cases total",
+            "country_not_found": "❎ Umm..I couldn't find the information for the country you specified.",
+            "critical_per_one_million": "Critical per 1 million",
+            "critical_stage": "Critical stage",
+            "deaths_today": "Deaths today",
+            "deaths_total": "Deaths total",
+            "one_case_per_people": "1 cases per people",
+            "one_death_per_people": "1 death per people",
+            "one_test_per_people": "1 test per people",
+            "population": "Population",
+            "recovered": "Recovered",
+            "recovered_per_one_million": "Recovered per 1 million",
+            "tests": "Tests",
+            "tests_per_one_million": "Tests per 1 million",
+            "updated_on": "Last updated %s",
+            "when": "when"
         },
         "credits": {
-            "creator_credit": "💳 他のクリエイターのクレジット",
-            "creator_credit_description": "一部のクリエイターは両方とも貢献者です. 中には外部からの撮影もございます。",
-            "natsuki_marina_credit": "情報: いくつかの写真とアバター \nFrom: https://www.pixiv.net/en/users/482462 \nウェブサイト: https://marina71712.wixsite.com/0-0v ",
-            "update_on": "更新"
+            "creator_credit": "💳 Credits to other creators",
+            "creator_credit_description": "Some creators are both contributors. Some of them come from outside.. Thank you for all your support",
+            "natsuki_marina_credit": "Info: some pictures and avatars \nFrom: https://www.pixiv.net/en/users/482462 \nWebsite: https://marina71712.wixsite.com/0-0v ",
+            "update_on": "update on"
         },
         "dead": {
-            "suicide": "%s は自殺を決意しました 💔 安らかに"
+            "suicide": "%s decided to kill himself 💔 rest in peace"
         },
         "decode": {
-            "after": "デコード後",
-            "before": "デコード前",
-            "decode_message": "🔓 デコード メッセージ",
-            "decode_success": "メッセージは正常にデコードされました。"
+            "after": "After decoding",
+            "before": "Before decoding",
+            "decode_message": "🔓 Decode message",
+            "decode_success": "The message was successfully decoded."
         },
         "donate": {
-            "thank_you_in_advance_message": "❤️ 事前に開発者をサポートしていただきありがとうございます。 以下のようにサポート用のチャネルがあります。"
+            "thank_you_in_advance_message": "❤️ Thank you for supporting my developers in advance. I have the following channels for support."
         },
         "eat": {
-            "already_eaten": "%s1 は %s2 を胃に食べました。",
-            "do_not_eat_me": "私は少し小さいです. うーん…食べちゃダメ…"
+            "already_eaten": "%s1 has eaten %s2 in the stomach.",
+            "do_not_eat_me": "I..I'm a little small. It's not appetizing..."
         },
         "eight_ball": {
-            "answer": "答え",
-            "game": "🎱 8ボールゲーム",
-            "question": "質問",
-            "risk": "運を使って質問に答えてください。",
-            "roll_ball": "ボールを転がす!!"
+            "answer": "Answer",
+            "game": "🎱 8ball game",
+            "question": "question",
+            "risk": "Spend your luck on questions to redeem answers.",
+            "roll_ball": "Roll the ball!!"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** 絵文字は削除されました。",
-            "edited_emoji": "%s は絵文字を正常に編集しました。",
-            "uploading_you_emoji": "📤 絵文字をアップロードしています...",
-            "you_emoji_is_ready": "%s 絵文字の準備ができました。 試してみよう！！"
+            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
+            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
+            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
+            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
         },
         "encode": {
-            "after": "エンコード後",
-            "before": "エンコード前",
-            "encode_message": "🔒 メッセージをエンコード",
-            "encode_success": "あなたのメッセージは正常にエンコードされました."
+            "after": "After encoding",
+            "before": "Before encoding",
+            "encode_message": "🔒 Encode message",
+            "encode_success": "Your message was successfully encoded."
         },
         "enlarge": {
-            "emoji_not_found": "❎ その絵文字は存在しないか、絵文字ではない可能性があります。",
-            "large_emoji": "大きな絵文字",
-            "requested_by": "%s からリクエストされました"
+            "emoji_not_found": "❎ It doesn't look like that emoji, or it might not be.",
+            "large_emoji": "big emoji",
+            "requested_by": "Requested by %s"
         },
         "exp": {
-            "can_not_find_user": "❎ このメンバーが見つかりません。え..タイプミスか?",
-            "error": "❎ そのメンバーの経験値を設定できません.後でもう一度試してください。",
-            "experience": "経験",
-            "exp_was_changed": "%s はすべての経験レベルを蓄積しました。保有:",
-            "level": "レベル (レベル)",
-            "notification_complete": "✅ 設定が完了しました...",
-            "set_by_staff": "あなたの体験は、このサーバーのチームによって設定されました。",
-            "success": "✅セットアップが完了しました..."
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "error": "❎ This member's experience value cannot be set. Please try again later.",
+            "experience": "Experience (Exp)",
+            "exp_was_changed": "%s has accumulated all experience levels. Contains:",
+            "level": "Level (Level)",
+            "notification_complete": "✅ Setup is complete...",
+            "set_by_staff": "Your experience is set by the team on this server.",
+            "success": "✅ Setup is complete..."
         },
         "filter": {
-            "add_filter": "🎼 目的のオーディオ形式を **%s** に正常に追加しました。",
-            "available_filter": "利用可能なフィルター スタイル",
-            "available_filter_description": "これらの %s1 形式 ```%s2``` の両方を使用して、音楽をさらに美しくします",
-            "clear_filter": "💨 すべてのオーディオ形式をクリアしました。現在は通常のサウンド形式です。",
-            "list_filter_description": "現在、このキュー %s1 パターンで使用中のパターンがあります\n```%s2```",
-            "list_filter_description_empty": "```現在使用されているオーディオ形式はありません.```",
-            "list_filter_title": "現在使用されているオーディオ形式",
-            "no_queue": "❎ 現在再生中の曲はありません。",
-            "not_queue_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "remove_filter": "🗑️ オーディオ形式 **%s** は削除されました。",
-            "set_filter": "🎼 優先オーディオ形式を **%s** に設定",
-            "sound_filtering": "❓ 音楽のサウンドをどのように変更しますか?",
-            "unknown_filter": "❎ うーん..サウンド `%s` の形式がわかりません。 **利用可能**または**ava**?",
-            "unknown_input_option": "❓ 次のパラメータのいずれかを指定できます: add, remove, set, available, list, clear"
+            "add_filter": "🎼 Added the desired sound format to **%s** already.",
+            "available_filter": "Available filter formats",
+            "available_filter_description": "Modify the soundtrack to make it even more beautiful by using all of these %s1 formats ```%s2```",
+            "clear_filter": "💨 All audio formats have been cleared. Now it will be a normal sound format",
+            "list_filter_description": "There are currently formats in use in this queue %s1 formats\n```%s2```",
+            "list_filter_description_empty": "```There are currently no audio formats being used.```",
+            "list_filter_title": "The audio format currently in use",
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_queue_owner": "🚫 Only the owner of the queue can change it.",
+            "remove_filter": "🗑️ The sound format **%s** has been removed successfully.",
+            "set_filter": "🎼 Set the desired audio format to **%s**",
+            "sound_filtering": "❓ How would you like to modify your music?",
+            "unknown_filter": "❎ Umm..I don't know the sound format `%s`, you can check it using **available** or **ava**.",
+            "unknown_input_option": "❓ You can specify the following parameters: add, remove, set, available, list, clear"
         },
         "guild": {
-            "afk_channel_id": "AFKチャンネルID",
-            "afk_timeout": "AFK タイムアウト",
-            "application_id": "アプリ ID",
-            "approximate_member_count": "おおよそのメンバー",
-            "approximate_presence_count": "おおよそのステータス",
-            "april": "4月",
-            "august": "8月",
-            "available": "準備完了",
-            "banner": "バナー",
-            "create_at": "作成時",
-            "create_timestamp": "作成日",
-            "december": "12月",
-            "default_message_notification": "通知",
-            "description": "説明",
-            "discovery_splash": "散乱",
-            "do_not_have": "持っていません",
-            "explicit_content_filter": "フィルタリング",
-            "features": "機能",
-            "february": "2月",
-            "format_at": "date%s1 at %s2 %s3 %s4 time %s5:%s6",
-            "friday": "金曜日",
-            "guild_available": "利用可能",
-            "icon": "アバター画像",
-            "id": "やった",
-            "info_date": "いつの情報",
-            "january": "1月",
-            "joined_at": "参加しました",
-            "join_timestamp": "参加日",
-            "july": "7月",
-            "june": "6月",
-            "large": "大",
-            "march": "3月",
-            "maximum_members": "最大メンバー数",
-            "maximum_presences": "最大プレゼンス",
-            "may": "5月",
-            "member_count": "メンバー",
-            "mfa_level": "MFAレベル",
-            "monday": "月曜日",
-            "name": "名前",
-            "name_acronym": "頭字語",
-            "no": "いいえ",
-            "none": "いいえ",
-            "november": "11月",
-            "nsfw_level": "NSFWレベル",
-            "october": "10月",
-            "off": "オフ",
-            "on": "オン",
-            "owner_id": "所有者 ID",
-            "partnered": "提携",
-            "preferred_locale": "スコープ",
-            "premium_subscription_count": "プレミアム サブスクリプション",
-            "premium_tier": "ブースター",
-            "public_updates_channel_id": "チャンネル ID を更新",
-            "rules_channel_id": "ルール チャンネル ID",
-            "saturday": "土曜日",
-            "september": "9月",
-            "server_info": "🗄 サーバー情報の詳細",
-            "server_info_description": "サーバーに関する詳細情報.これは Discord のデータに基づいています",
-            "specific_use": "💡 次のように特定のサーバー ユーザーを指定できます: **%s**",
-            "splash": "招待画像",
-            "sunday": "日曜日",
-            "system_channel_id": "システムチャンネルID",
-            "thursday": "木曜日",
-            "tuesday": "火曜日",
-            "unavailable": "準備ができていません",
-            "unknown": "不明",
-            "vanity_url_code": "招待コード",
-            "vanity_url_uses": "招待されました",
-            "verification_level": "検証",
-            "verified": "検証済み",
-            "wednesday": "水曜日",
-            "widget_channel_id": "ウィジェット チャンネル ID",
-            "widget_enabled": "ウィジェット",
-            "yes": "はいはい"
+            "afk_channel_id": "AFK Channel ID",
+            "afk_timeout": "AFK timeout",
+            "application_id": "App ID",
+            "approximate_member_count": "approximate member",
+            "approximate_presence_count": "approximate status",
+            "april": "April",
+            "august": "August",
+            "available": "Ready",
+            "banner": "Banner",
+            "create_at": "create on",
+            "create_timestamp": "Create date",
+            "december": "December",
+            "default_message_notification": "Notification",
+            "description": "Description",
+            "discovery_splash": "Splash",
+            "do_not_have": "None",
+            "explicit_content_filter": "filtering",
+            "features": "features",
+            "february": "February",
+            "format_at": "Day%s1 at %s2 %s3 %s4 time %s5:%s6.",
+            "friday": "Friday",
+            "guild_available": "Available",
+            "icon": "avatar",
+            "id": "ID",
+            "info_date": "Information of when",
+            "january": "January",
+            "joined_at": "joined on",
+            "join_timestamp": "join date",
+            "july": "July",
+            "june": "June",
+            "large": "Large",
+            "march": "March",
+            "maximum_members": "maximum members",
+            "maximum_presences": "maximum status",
+            "may": "May",
+            "member_count": "member",
+            "mfa_level": "MFA level",
+            "monday": "Monday",
+            "name": "Name",
+            "name_acronym": "acronym",
+            "no": "No",
+            "none": "No",
+            "november": "November",
+            "nsfw_level": "NSFW Level",
+            "october": "October",
+            "off": "off",
+            "on": "on",
+            "owner_id": "Owner ID",
+            "partnered": "Partnered",
+            "preferred_locale": "scope",
+            "premium_subscription_count": "Special member",
+            "premium_tier": "Booster",
+            "public_updates_channel_id": "Update channel id",
+            "rules_channel_id": "rules channel id",
+            "saturday": "Saturday",
+            "september": "September",
+            "server_info": "🗄 Server Information Details",
+            "server_info_description": "Detailed information about the server. which references the information from the information on Discord",
+            "specific_use": "💡 You can specify specific server user information as follows: **%s**",
+            "splash": "Invitation Picture",
+            "sunday": "Sunday",
+            "system_channel_id": "System Channel ID",
+            "thursday": "Thursday",
+            "tuesday": "Tuesday",
+            "unavailable": "unavailable",
+            "unknown": "Unknown",
+            "vanity_url_code": "Invitation Code",
+            "vanity_url_uses": "Invited",
+            "verification_level": "verification",
+            "verified": "verified",
+            "wednesday": "Wednesday",
+            "widget_channel_id": "Seven channel code",
+            "widget_enabled": "Witch Seven",
+            "yes": "yes"
         },
         "help": {
-            "category": "カテゴリー: %s",
-            "client_permissions": "パーミッション (ボット): %s",
-            "command": "コマンド: %s",
-            "command_detail": "📑 コマンドの詳細 ",
-            "command_incorrect": "❎ 無効なコマンド",
-            "command_incorrect_guide": "ええと...このコマンドは存在しません.すべてのコマンドのリストを表示するには、`/help` と入力してもう一度確認してください。",
+            "category": "Category: %s",
+            "client_permissions": "Permissions (bot): %s",
+            "command": "Command: %s",
+            "command_detail": "📑 Command details ",
+            "command_incorrect": "❎ Invalid command",
+            "command_incorrect_guide": "Eh...no command. Try rechecking by typing `/help` to see a list of all my commands.",
             "commands_description": [
-                "私が学んだ、または研究したすべてのコマンド理解して実際に使う",
-                "私に電話する前にプレフィックスは **/** でなければなりません",
-                "`<>` は必須、`()` は入力タイプ、`[]` はオプションを意味します。",
-                "各コマンドの詳細は `/help [コマンド]` と打てば願いが叶う!!"
+                "All the commands that I have learned or studied understandable and practical",
+                "which before calling me Must have a prefix **/**",
+                "`<>` means required, `()` is the input type, and `[]` is optional.",
+                "For details of each command type `/help [command]` and the wish will come true!!"
             ],
-            "description": "説明: %s",
-            "document_name": "ヘルプ ドキュメント",
-            "how_to_use": "使い方: %s",
-            "no_description": "説明なし",
-            "no_need_permissions": "必要な権限はありません",
-            "request_by": "リクエスト者",
-            "unknown_how_to_use": "使用する方法はありません",
-            "user_permissions": "パーミッション (ユーザー): %s"
+            "description": "Description: %s",
+            "document_name": "Help Documentation",
+            "how_to_use": "How to use: %s",
+            "no_description": "No description",
+            "no_need_permissions": "No required permissions",
+            "request_by": "requested by",
+            "unknown_how_to_use": "There is no way to use it.",
+            "user_permissions": "Permissions (user): %s"
         },
         "impersonate": {
-            "member_not_found": "❎ このサーバーでメンバーがまったく見つかりませんでした。",
-            "success": "✅ <@%s> がキャストされました!"
+            "member_not_found": "❎ The member was not found in this server at all.",
+            "success": "✅ <@%s> has been cast!"
         },
         "invite": {
-            "can_not_create_invite_link": "❎ 招待リンクを生成できません もう一度やり直してください。",
-            "me_do_not_have_permission": "🚫 このチャンネルで招待リンクを作成する権限がありません.",
-            "membership_invitation_card": "会員招待カード",
-            "this_product_is_free": "この製品は無料です. ボスを保留にしないでください。"
+            "can_not_create_invite_link": "❎ The invite link could not be created. Please try again.",
+            "me_do_not_have_permission": "🚫 I don't have permission to create an invite link in this channel.",
+            "membership_invitation_card": "Membership Invitation Card",
+            "this_product_is_free": "This product is free. Don't place it again."
         },
         "join": {
-            "already_joined": "❎ え..でも私は今ここにいますか?",
-            "another_player_is_playing": "🚫 現在、このコマンドは使用できません。他のメンバーが曲を演奏しているので",
-            "channel_joined": "✅ 私は既に <#%s> チャンネルに参加しています...",
-            "joined": "▶️ 私はすでに <#%s> フィールドにいます.",
-            "no_channel": "❎ 私はこのチャンネルを持っていません.タイプミスですか？",
-            "not_in_channel": "❓ 最初にチャンネルに参加する必要があります.そうしないと、どのフィールドが =3= かわかりません"
+            "already_joined": "❎ Eh..but I'm here too?",
+            "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
+            "channel_joined": "✅ I'm already in the <#%s> channel...",
+            "joined": "▶️ I'm already in the <#%s> field.",
+            "no_channel": "❎ I don't have this channel. Is it a typo?",
+            "not_in_channel": "❓ You need to join the channel first. Otherwise I don't know which channel =3="
         },
         "jump": {
-            "can_not_jump": "❎ そのようなキュー番号はないようです.再度確認してください。",
-            "jumped": "➿ キュー番号 %s の新しい曲にジャンプしました。",
-            "no_queue": "❎ 現在再生中の曲はありません。越えられない",
-            "not_queue_owner": "🚫 キューの所有者のみが変更を加えることができます."
+            "can_not_jump": "❎ There seems to be no such queue number at all. Please check again.",
+            "jumped": "➿ jumped to a new song in queue number %s already.",
+            "no_queue": "❎ There's no song I'm playing. can't skip",
+            "not_queue_owner": "🚫 Only the owner of the queue can change it."
         },
         "kick": {
-            "can_not_find_user": "❎ このメンバーが見つかりません。再度確認してください。",
-            "kicked_out": "%s はキックされました",
-            "members_have_a_higher_role": "❎ 自分より高い役割を持つ人をキックすることはできません.",
-            "members_have_a_higher_role_than_me": "❎ そのメンバーを追い出すことはできません.彼は私よりも高い役割を持っているからです。",
-            "no_reason": "キックしたメンバーは理由を言いませんでした。",
-            "reason_for_kick": "キック者: %s1\n理由: %s2"
+            "can_not_find_user": "❎ I can't find this member. Please check again.",
+            "kicked_out": "%s kicked out",
+            "members_have_a_higher_role": "❎ You can't kick someone above you.",
+            "members_have_a_higher_role_than_me": "❎ I can't kick that member. because he has a higher role than me",
+            "no_reason": "The member who kicked didn't give a reason",
+            "reason_for_kick": "Kicked by: %s1\nreason: %s2"
         },
         "kill": {
-            "do_not_kill_me": "❎ K あなたはこれをする.. 私と一緒じゃないでしょ...",
-            "killed": "%s1 があなた %s2 を殺しました 🔪"
+            "do_not_kill_me": "❎ Y..You can't do this to me... Huhh..",
+            "killed": "%s1 has successfully killed %s2 🔪"
         },
         "leave": {
-            "another_player_is_playing": "🚫 現在、このコマンドは使用できません。他のメンバーが曲を演奏しているので",
-            "not_in_any_channel": "❎ 私は現在、どのチャンネルにも参加していません...",
-            "now_leave": "◀️現在のチャンネルを離れました。"
+            "another_player_is_playing": "🚫 You cannot currently use this command. because there are other members playing music",
+            "not_in_any_channel": "❎ I'm not on any channel right now...",
+            "now_leave": "◀️ I left my current channel."
         },
         "level": {
-            "delete_error": "❎ このユーザーが見つかりません。",
-            "delete_success": "✅ このメンバーの経験レベルは削除されました!",
-            "deleting": "📁 このメンバーの経験レベルを削除しています",
-            "experience": "経験",
-            "level": "レベル (レベル)",
-            "level_was_changed": "%s はすべての経験レベルを蓄積しました。持っている:",
-            "notification_complete": "✅ 設定が完了しました...",
-            "set_by_staff": "あなたのクラスは、このサーバーのチームによって設定されました。",
-            "set_error": "❎ そのメンバーのティアを設定できません。 後でもう一度試してください。",
-            "set_success": "✅ 設定に成功しました...",
-            "user_current_no_level": "❎ メンバーにはレベルがありません。"
+            "delete_error": "❎ Can't find this user.",
+            "delete_success": "✅ This member's experience level has been deleted!",
+            "deleting": "📁 Deleting this member's experience level",
+            "experience": "Experience",
+            "level": "Level",
+            "level_was_changed": "%s has accumulated all experience levels. Has:",
+            "notification_complete": "✅ The configuration is complete...",
+            "set_by_staff": "Your class is set by a team on this server.",
+            "set_error": "❎ Can't set the tier of that member. Please try again later.",
+            "set_success": "✅ Set successfully...",
+            "user_current_no_level": "❎ The member no longer has a level."
         },
         "leveling": {
-            "bot_do_not_have_level": "❎ 私を含め、ボットにはレベルがありません。",
-            "can_not_find_user": "❎ このメンバーが見つかりません。 え..タイプミスか?",
-            "experience": "経験",
-            "level": "レベル (レベル)",
-            "user_no_data": "💨うーん...このメンバーはまだランクも経験もありません.",
-            "your_experience": "あなたの経験"
+            "bot_do_not_have_level": "❎ Bots don't have levels, including me.",
+            "can_not_find_user": "❎ This member could not be found. Is it a typo?",
+            "experience": "Experience (Exp)",
+            "level": "Level (Level)",
+            "user_no_data": "💨 Hmmm...this member doesn't have any rank and experience yet.",
+            "your_experience": "Your experience"
         },
         "license": {
-            "copyright_content": "📝 著作権で保護されたコンテンツ"
+            "copyright_content": "📝 Copyrighted content"
         },
         "logs": {
-            "can_not_delete_file": "❎ ログ ファイルを削除できません。\n```JavaScript\n%s\n```",
-            "can_not_read_file": "❎ ログ ファイルを読み取れません。\n```JavaScript\n%s\n```",
-            "file_has_been_deleted": "✅ **%s** は削除されました。",
-            "file_not_found": "❎ **%s** という名前のファイルがフォルダーに見つかりませんでした。",
-            "folder_empty": "💨 フォルダ内のロック ファイルは現在空です。 また後で来てください。",
-            "found_file": "ファイルの %s1 リストが見つかりました:\n```%s2```",
-            "owner_only": "🚫 申し訳ありません..このコマンドは管理者のみが使用できます."
+            "can_not_delete_file": "❎ The log file cannot be deleted.\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ The log file cannot be read.\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** has been deleted.",
+            "file_not_found": "❎ A file named **%s** was not found in the folder.",
+            "folder_empty": "💨 The lock file in the folder is currently empty. Please come back later.",
+            "found_file": "Found %s1 list of files:\n```%s2```",
+            "owner_only": "🚫 Sorry..this command can only be used by administrators."
         },
         "lyrics": {
-            "can_not_find_lyrics": "%s の歌詞が見つかりません。",
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "playing_lyrics": "📋 現在再生中の曲の歌詞"
+            "can_not_find_lyrics": "Could not find lyrics for %s.",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "playing_lyrics": "📋 Lyrics of the currently playing song"
         },
         "meme": {
-            "can_not_fetch": "ミームの取得に失敗しました. もう一度お試しください。",
-            "meme_not_found": "%s に一致するタイプのミームが見つかりませんでした。"
+            "can_not_fetch": "Failed to fetch the meme. Please try again",
+            "meme_not_found": "Couldn't find a meme of type that matches %s."
         },
         "minecraft": {
-            "address": "アドレス",
-            "do_not_have": "持っていません",
-            "ip": "IPアドレス",
-            "last_check": "最後にチェックした",
-            "maximum_player_count": "プレイヤーの最大数",
-            "motd": "説明",
-            "player_in_server": "サーバー内のプレイヤー",
-            "port": "ポート",
-            "server_available": "🟢 このサーバーは現在利用可能です",
-            "server_unavailable": "🔴 このサーバーは一時的にダウンしています",
-            "skin_of": "🎴 %s スキン",
-            "version": "バージョン"
+            "address": "Address",
+            "do_not_have": "None",
+            "ip": "IP Address",
+            "last_check": "Last checked",
+            "maximum_player_count": "Maximum number of players",
+            "motd": "Description",
+            "player_in_server": "Player in server",
+            "port": "Port",
+            "server_available": "🟢 This server is currently open",
+            "server_unavailable": "🔴 This server has been temporarily disabled",
+            "skin_of": "🎴 Skin of %s",
+            "version": "Version"
         },
         "musicInfo": {
-            "detail": "📄 現在再生中の曲の詳細",
-            "download_link": "📥ダウンロードリンク",
-            "duration": "🕒期間",
+            "detail": "📄 Details of the currently playing song",
+            "download_link": "📥 Download Link",
+            "duration": "🕒 Duration",
             "id": "🆔 ID",
-            "link": "🔗 リンク",
-            "music_name": "🎵曲名",
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "uploader": "🎬 アップローダー"
+            "link": "🔗 Link",
+            "music_name": "🎵 Song name",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "uploader": "🎬 Uploader"
         },
         "nekos": {
-            "can_not_fetch_data": "❎ リクエストした画像を一時的に取得できません. 後でもう一度試してください。",
-            "request_by": "%s からリクエストされました"
+            "can_not_fetch_data": "❎ Temporarily unable to get the image you requested. Please try again later.",
+            "request_by": "Requested by %s"
         },
         "nowPlaying": {
-            "autoplay": "📻 autoplay",
-            "filter": "🎼 オーディオ フィルター形式: `%s`",
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "owner_this_queue": "%s はこのキューの所有者です"
+            "autoplay": "📻 Autoplay",
+            "filter": "🎼 Audio filter style: `%s`",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "owner_this_queue": "%s isthe owner of this queue"
         },
         "numbers": {
-            "result": "結果は %s"
+            "result": "Result is %s"
         },
         "paste": {
-            "backend_not_response": "❎ サーバーからの応答が見つかりませんでした. 後でもう一度試すことができます。",
-            "file": "ファイル",
-            "raw": "生"
+            "backend_not_response": "❎ No response from server found. You can try again later.",
+            "file": "File",
+            "raw": "Raw"
         },
         "pause": {
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "not_paused": "📼 一時停止中です。 今日は変だ..",
-            "paused": "⏸ 再生が一時停止されました。"
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "not_paused": "📼 I'm stopping now. Today looks weird. Haha..",
+            "paused": "⏸ Paused the music."
         },
         "ping": {
-            "connection": "📡接続",
-            "info": "ラウンドトリップ遅延は %s1 ミリ秒です\nWebsocket ハートビートは %s2 ミリ秒です",
-            "result": "🏓ポン",
-            "waiting": "🏓 Ping..."
+            "connection": "📡 Connection",
+            "info": "Roundtrip latency is %s1 ms\nWebsocket heartbeat is %s2 ms",
+            "result": "🏓 Pong",
+            "waiting": "🏓 Pinging..."
         },
         "play": {
-            "no_queue": "❎ まだ曲を再生していません",
-            "not_in_channel": "❓ 最初に任意のチャンネルに移動します。 そうでなければ、私の言うことを聞かないでください..."
+            "no_queue": "❎ Haven't played any songs yet",
+            "not_in_channel": "❓ Enter any channel first. If not, listen to me..."
         },
         "previous": {
-            "no_previous_song_queue": "📼 最近再生された曲はありません。",
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "previous": "⏮前の曲の再生に戻りました"
+            "no_previous_song_queue": "📼 There is no song that was played recently.",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "previous": "⏮ Go back to the previous song."
         },
         "purge": {
-            "message_cleared": "`%s メッセージ` メッセージを正常に削除しました 💨"
+            "message_cleared": "The number of `%s messages` has been deleted 💨"
         },
         "qrcode": {
-            "qrcode_success": "QR コードを使用する準備ができました。",
-            "qrcode_title": "🧩QRコード"
+            "qrcode_success": "Your QR code is ready to use.",
+            "qrcode_title": "🧩 QR Code"
         },
         "quality": {
-            "advice_embed_description": "```現在の品質: %s```\nサーバーへのアクセスが多すぎてパフォーマンスの問題が発生することが問題の原因である場合があります。ただし、これを設定する前にインターネット接続を確認することをお勧めします。\n`0` - **OPUS** を使用して音声ファイルを圧縮します。これにより音質が向上しますが、より多くのリソースを使用します。 **(推奨)**\n`1` - ソース オーディオを直接使用します。これによりパフォーマンスが向上しますが、使用するリソースは少なくなります.",
-            "advice_embed_footer_text": "Discord の設定から追加のオーディオ品質を設定できます: [設定] > [オーディオ & ビデオ] > [詳細設定]。",
-            "advice_embed_title": "音質を調整する",
-            "focus_on_high_quality": "高品質に焦点を当てる",
-            "low_efficiency": "低効率",
-            "opus_mode_selected": "🎛️私は今**OPUS**を使ってオーディオファイルを圧縮しています.音質が向上します",
-            "raw_mode_selected": "🎛️元の音声に切り替えました。音質が低下する場合があります。"
+            "advice_embed_description": "```Current Quality: %s```\nSometimes the problem can be caused by a server with so much traffic that it causes performance issues. However, I recommend you to check your internet connection before setting this.\n`0` - Use **OPUS** to compress audio files. This will result in better sound quality but also consume more resources. **(recommended)**\n`1` - Uses audio directly from the source. This will result in better efficiency but less resource usage.",
+            "advice_embed_footer_text": "You can set additional audio quality from Discord settings: Settings > Audio & Video > Advanced.",
+            "advice_embed_title": "Adjust audio quality",
+            "focus_on_high_quality": "focus on high quality",
+            "low_efficiency": "Emphasis on low efficiency",
+            "opus_mode_selected": "🎛️ I have now used **OPUS** to help compress audio files. The sound quality will improve",
+            "raw_mode_selected": "🎛️ Switched to the original audio. may cause the sound quality to deteriorate."
         },
         "queue": {
-            "autoplay": "📻 autoplay",
-            "filter": "🎼 オーディオ フィルター形式: %s",
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "owner_this_queue": "%s はこのキューの所有者です。",
-            "previous_queue": "**前のキュー**",
-            "waiting_in_queue": "**次のキューを待っています**"
+            "autoplay": "📻 Autoplay",
+            "filter": "🎼 Audio filtering format: %s",
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "owner_this_queue": "%s is the owner of this queue.",
+            "previous_queue": "**Previous Queue**",
+            "waiting_in_queue": "**Waiting for next queue**"
         },
         "queueStatus": {
-            "autoplay": "📻 autoplay",
-            "duration": "🕒期間",
-            "filter": "🎼 オーディオ フィルタ パターン",
-            "no_queue": "❎ まだ曲を再生していません",
-            "now": "⌚今",
-            "off": "オフ",
-            "on": "オン",
-            "owner_this_queue": "%s はこのキューの所有者です。",
-            "paused": "一時停止",
-            "playing": "遊んでいる",
-            "queue_status": "📑 現在の曲キューのステータス",
-            "repeat": "🔁繰り返し",
-            "repeat_off": "オンにしない",
-            "repeat_this_queue": "このキュー",
-            "repeat_this_song": "この曲",
-            "volume": "🔉 ボリューム"
+            "autoplay": "📻 Autoplay",
+            "duration": "🕒 Duration",
+            "filter": "🎼 Sound filter style",
+            "no_queue": "❎ Haven't played any songs yet.",
+            "now": "⌚ Now",
+            "off": "Off",
+            "on": "On",
+            "owner_this_queue": "%s is the owner of this queue.",
+            "paused": "Pause",
+            "playing": "Playing",
+            "queue_status": "📑 Current song queue status",
+            "repeat": "🔁 Repeat",
+            "repeat_off": "Not on",
+            "repeat_this_queue": "This queue",
+            "repeat_this_song": "This song",
+            "volume": "🔉 Volume"
         },
         "reboot": {
-            "dm_to_owner": "**:arrows_counterclockwise: システムの再起動の要求があります!!**\n本人であることを確認するには、コマンドを実行したサーバーでこのパスワードを入力してください。\n必要ない場合は無視できます\n今日までお世話になりました:)\n||%s||",
-            "not_owner": "🛑 やめて..受け取らないで。 この機能にはルート権限のみが必要です.",
-            "now_reboot": "✅ 再起動しました!!",
-            "password_is_incorrect": "❎ パスワードが正しくありません。 再度確認してください。",
-            "rebooting": "🔄 再起動中..."
+            "dm_to_owner": "**:arrows_counterclockwise: There's a request for a system restart!!**\nTo confirm it's you, please enter this password on the server you ran the command on.\nYou can ignore it if Don't want to continue.\nThank you for taking care of me until today :)\n||%s||",
+            "not_owner": "🛑 Don't..don't. This function requires top privileges only",
+            "now_reboot": "✅ System restarted!!",
+            "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
+            "rebooting": "🔄 Rebooting..."
         },
         "reload": {
-            "invalid_command": "❎ うーん...このコマンドはないようです...よく確認してください。 もう一度、正しく入力しましたか?",
-            "reloaded": "✅ %s のリロードに成功しました!!",
-            "reload_error": "❌ ああ..%s コマンドをリロードしようとしましたが、うまくいきませんでした。"
+            "invalid_command": "❎ Hmmm...the command doesn't seem to exist...check it out. Again, did you type correctly?",
+            "reloaded": "✅ %s reloaded successfully!!",
+            "reload_error": "❌ Horrible.. I tried reloading the %s command but I can't."
         },
         "remove": {
-            "no_queue": "❎ まだ曲を再生していません",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "removed": "❌ **%s** はキューから削除されました。",
-            "too_much": "❎ そのようなキューはありません. もう一度確認して見てください。"
+            "no_queue": "❎ Haven't played any songs yet.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "removed": "❌ Removed **%s** from the queue.",
+            "too_much": "❎ There is no such queue. Please check again and again."
         },
         "repeat": {
-            "no_queue": "❎ 現在、私が演奏している曲はありません。",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "off": "リピートオフ",
-            "repeated": "🔁 %s は今です。",
-            "repeat_queue": "リピートキュー",
-            "repeat_song": "リピート曲",
-            "too_much": "❎上位モードはありません."
+            "no_queue": "❎ There's no song I'm playing right now.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "off": "Turn off duplication",
+            "repeated": "🔁 %s now",
+            "repeat_queue": "Repeat Queue",
+            "repeat_song": "Repeat song",
+            "too_much": "❎ There is no higher mode."
         },
         "resume": {
-            "no_queue": "❎ まだ曲を再生していません",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "now_playing": "📼 ええと..今私は遊んでいます",
-            "resumed": "▶️再生を最初から再開します。"
+            "no_queue": "❎ Haven't played any songs yet",
+            "not_owner": "🚫 Only the owner of the queue can change it",
+            "now_playing": "📼 Uh..I'm playing right now",
+            "resumed": "▶️ Resuming music from the beginning"
         },
         "rip": {
-            "no_image": "❎えーと…こんな感じ 削除されたか、別の場所に移動された可能性があります。"
+            "no_image": "❎ Hey...it looks like this picture. It may have been deleted or moved to another location."
         },
         "rpc": {
-            "answered": "答えを選択しました。",
-            "bot_winner": "やった!.<@%s>に勝った",
-            "can_not_play_with_another_bot": "❎ このゲームを他のボットと一緒にプレイすることはできません.",
-            "choose_options": "以下のオプションを選択してください。",
-            "game_timeout": "このゲームはタイムアウトしました. 楽しんでくれてありがとう。",
-            "member_not_found": "❎ メンバーはもうこのサーバーにいないようです.",
-            "rock_paper_scissors": "🎮じゃんけん",
-            "user_answered": "%s は既に回答を選択しています。 相手からの返事を待っています...",
-            "user_winner": "<@%s> が勝者です!",
-            "your_answer": "%s を選択しました",
-            "ネクタイ": "ネクタイ!"
+            "answered": "You have chosen your answer.",
+            "bot_winner": "Yay!..I won you <@%s>",
+            "can_not_play_with_another_bot": "❎ You cannot play this game with other bots.",
+            "choose_options": "Choose options below.",
+            "game_timeout": "This game has timed out. Thank you for having fun.",
+            "member_not_found": "❎ The member doesn't appear to be on this server anymore.",
+            "rock_paper_scissors": "🎮 Rock Paper Scissors",
+            "tie": "Tie!",
+            "user_answered": "%s has already chosen an answer. Waiting for an answer from the other side...",
+            "user_winner": "<@%s> is the winner!",
+            "your_answer": "You have now selected %s"
         },
         "say": {
-            "success": "✅ メッセージは正常に送信されました。"
+            "success": "✅ Your message has been sent."
         },
         "search": {
-            "get_list_of_songs": "📋 欲しい曲のリストを取得しました.すぐに音楽が再生されます...",
-            "invalid_number": "🔴 最後の検索はキャンセルされました。同じコマンドを入力して、もう一度検索できます。",
-            "no_results": "❎ 曲を検索してみましたが、結果が見つかりませんでした...",
-            "playlist_type": "プレイリスト",
-            "search_cancelled": "🕘 検索がキャンセルされました.. 選曲が見つからなかったため.",
-            "searching": "🔍 検索関連 %s",
-            "song_type": "曲",
-            "timer_choose": "%s を選択するのに 60 秒かかります。キャンセルするには、関係のない数字を入力するか、タイマーが切れるまで待つことができます。",
-            "title_results": "そのような %s の結果:",
-            "user_not_in_channel": "❓ 最初に任意のチャンネルに移動します。そうでなければ、私の言うことを聞かないでください..."
+            "get_list_of_songs": "📋 You have received the list of songs you want. and will start playing music in a moment...",
+            "invalid_number": "🔴 The last search has been canceled. You can search again by typing the same command.",
+            "no_results": "❎ I tried searching for the song but I didn't find any results...",
+            "playlist_type": "Playlist",
+            "search_cancelled": "🕘 Search has been canceled..because no song selections were found.",
+            "searching": "🔍 Search for relevant %s",
+            "song_type": "song",
+            "timer_choose": "You have time to select %s 60 seconds. If you want to cancel, you can type in an irrelevant number or wait until the timer expires.",
+            "title_results": "Search results for such %s:",
+            "user_not_in_channel": "❓ Enter any channel first. If not, listen to me..."
         },
         "seek": {
-            "no_queue": "❎ 現在再生中の曲はありません。",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "seek_guide": "❓ 現在再生中の曲の時間を何秒変更しますか? %s で数秒で再生中",
-            "sought": "🕘 現在再生中の曲の時間が変更されました。",
-            "too_much": "❎ この曲の時間は %s です.それ以上のものはありません."
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "seek_guide": "❓ How many seconds do you want to change the time of the currently playing song? Now playing for a second at %s",
+            "sought": "🕘 Change the time of the currently playing song.",
+            "too_much": "❎ The time of this song is at %s, nothing more than this."
         },
         "set_command": {
-            "can_not_manage_this_command": "❎ このコマンドは管理できません。",
-            "command_input_empty": "❎ 処理したいコマンドを入力してください。",
-            "command_not_found": "❎ コマンドが見つかりませんでした.文字または文字をもう一度確認してください。",
-            "data_at": "いつのデータ",
-            "description": "**set-command** - すべてのコマンドを管理します。たとえば、`open`-||close|| 個々のコマンドを実行します。など\n\n**コマンド** - (%s1):\n%s2\n\n> 次のように入力して変更できます:\n> ```%s3```",
-            "disabled": "☑️ コマンド **%s** は無効になっています。",
-            "enabled": "✅ コマンド **%s** が有効になりました",
-            "title": "🪄 コマンド"
+            "can_not_manage_this_command": "❎ You cannot manage this command.",
+            "command_input_empty": "❎ Please enter the command you want to handle.",
+            "command_not_found": "❎ The command was not found. Try checking the characters or characters again.",
+            "data_at": "data of when",
+            "description": "**set-command** - Manage all my commands, e.g. `open`-||close|| Execute individual commands. etc.\n\n**command** - (%s1):\n%s2\n\n> You can change it by typing:\n> ```%s3```",
+            "disabled": "☑️ The command **%s** has been disabled.",
+            "enabled": "✅ The command **%s** has been enabled",
+            "title": "🪄 Commands"
         },
         "set_language": {
-            "already_set": "❎ ああ..しかし、このサーバーは既に %s 言語を使用しています.",
-            "description": "**set-language** - 理解しやすいように言語を設定してください。\n\nこのサーバーの言語は: `%s1`\n\n> タイプで変更できます:\n > ```%s2```",
-            "set_success": "✅ 言語を **%s** に変更しました",
-            "title": "🌐 言語"
+            "already_set": "❎ eh..but this server is already using %s",
+            "description": "**set-language** - Set your language to make it easier to understand.\n\nThe language of this server is: `%s1`\n\n> You can change it by typing:\n > ```%s2```",
+            "set_success": "✅ The language has been changed to **%s** already.",
+            "title": "🌐 Language"
         },
         "set_notify": {
-            "channel_not_found": "❎ このサーバーでチャンネルが見つかりませんでした.再度確認してください。",
-            "data_at": "いつのデータ",
-            "description": "**set-notify** - サーバーから最新情報を受け取るように各タイプの通知を設定します。\n\n**アラート** - 一般通知: %s1\n**channelCreate** - 新しいチャンネル: %s2\n**channelDelete** - 削除されたチャンネル: %s3\n**channelPinsUpdate** - ピン留めされたチャンネル ピン: %s4\n**channelUpdate** - チャンネルの更新: %s5\n**emojiCreate** - 新しい絵文字: %s6\n**emojiDelete** - 絵文字の正しい削除: %s7\n**emojiUpdate** - 絵文字更新: %s8\n**guildBanAdd** - 禁止されたメンバー: %s9\n**guildBanRemove** - 禁止されたメンバー: %s10\n**guildIntegrationsUpdate** - ギルド統合の更新: %s11\n**guildMemberAdd* * - メンバー参加サーバー: %s12\n**guildMemberRemove** - メンバー脱退サーバー: %s13 \n**guildMembersChunk** - 多くのギルド メンバーを獲得: %s14\n**guildUnavailable** - サーバー利用不可: %s15 \n**inviteCreate** - 招待リンクが作成されました: %s16 \n**inviteDelete** - 招待リンクが削除されました: %s17\n**roleCreate** - 作成された役割: %s18\n**roleDelete** - 役割削除: %s19\n**roleUpdate** - 更新されたロール: %s20\n**stageInstanceCreate** - 作成されたステージ: %s21\n**stageInstanceDelete** - ステージが削除されました: %s22\n**stageInstanceUpdate** - ステージ更新: %s23\n**stickerCreate** - ステッカーが作成されました: %24\n**stickerDelete** - ステッカーが削除されました: %s25\n**stickerUpdate** - ステッカー スレッドが更新されました: %s26\n**threadCreate* * - スレッドが作成されました: %s27\n**threadDelete** - スレッドが削除されました: %s28\n**threadUpdate** - スレッドが更新されました: %s29\n**webhookUpdate** - Webhook が更新されました: %s30\n\n> 次のように入力して変更できます:\n> ```%s31```",
-            "not_set": "`未設定`",
-            "remove_success": "✅ タイプ `%s` の通知を正常に削除しました。",
-            "set_success": "✅ 通知タイプ `%s1` がフィールド `<#%s2>` に設定されました。",
-            "title": "🔔 お知らせ",
-            "type_not_found": "❎うーん...そのようなタイプはないようです.現在、これらのタイプのみが利用可能です: %s"
+            "channel_not_found": "❎ The channel could not be found on this server. Please check again.",
+            "data_at": "data of when",
+            "description": "**set-notify** - Set up notifications for each type to get the latest information from the server\n\n**alert** - General Notification: %s1\n**channelCreate** - New Channel: %s2\n**channelDelete** - Channel Deleted: %s3\n**channelPinsUpdate** - Channel Pins Pinned: %s4\n**channelUpdate** - Channel Updated: %s5\n**emojiCreate** - New Emoji: %s6\n**emojiDelete** - Emoji Correct Delete: %s7\n**emojiUpdate** - Emoji Updated: %s8\n**guildBanAdd** - Member Banned: %s9\n**guildBanRemove** - Member Unbanned: %s10\n**guildIntegrationsUpdate** - Guild Integration Update: %s11\n**guildMemberAdd** - Member Join Server: %s12\n**guildMemberRemove** - Member Leave Server: %s13 \n**guildMembersChunk** - Gained many guild members: %s14\n**guildUnavailable** - Server unavailable: %s15\n**inviteCreate** - Invite link generated: %s16 \n**inviteDelete** - Invite Link Removed: %s17\n**roleCreate** - Role Created: %s18\n**roleDelete** - Role Removed: %s19\n**roleUpdate** - Roles updated: %s20\n**stageInstanceCreate** - Stages created: %s21\n**stageInstanceDelete** - Stages deleted: %s22\n**stageInstanceUpdate** - Stages Updated: %s23\n**stickerCreate** - Sticker Created: %24\n**stickerDelete** - Sticker Removed: %s25\n**stickerUpdate** - Sticker Thread updated: %s26\n**threadCreate** - Thread created: %s27\n**threadDelete** - Thread deleted: %s28\n**threadUpdate** - Thread updated: %s29\n**webhookUpdate** - The webhook has been updated: %s30\n\n> You can change it by typing:\n> ```%s31```",
+            "not_set": "`not set`",
+            "remove_success": "✅ The notification type `%s` has been removed successfully.",
+            "set_success": "✅ The notification type `%s1` has been set to the field `<#%s2>` already.",
+            "title": "🔔 Notification",
+            "type_not_found": "❎ Hmmm...it seems there is no such type. Now there are only these types: %s"
         },
         "set_personal": {
-            "data_at": "いつのデータ",
-            "description": "**set-personal** - 個人データを表示するための権限を設定します。 (Shioru のみに適用されます。)\n\nプロファイルを表示: `%s1`\nDiscord プロファイルを表示: `%s2`\nID を表示: `%s3`\n\n> 次のように入力して変更できます:\n> ` ``%s4```",
-            "false_success": "✅ %s の認証が解除されました。",
-            "no": "いいえ",
-            "title": "📄個人データ",
-            "true_success": "✅ あなたの %s は承認されました.",
-            "yes": "はいはい"
+            "data_at": "data of when",
+            "description": "**set-personal** - Set permissions for viewing your personal information. (Applicable only for Shioru)\n\nProfiles can be viewed: `%s1`\nDiscord can be viewed: `%s2`\nProfiles can be viewed: `%s3`\n\n> You can change this by typing:\n> ```%s4```",
+            "false_success": "✅ Your %s has been deauthorized.",
+            "no": "No",
+            "title": "📄 Personal Information",
+            "true_success": "✅ Your %s has been authorized.",
+            "yes": "yes"
         },
         "settings": {
-            "description": "これらのコマンドを使用して、好みに合わせて構成できます。",
-            "languages": "🌐 言語 (サーバー)",
-            "note": "注: 一部のコマンドは、実行前に特定の権限が必要になる場合があります。",
-            "notification": "🔔 通知 (サーバー)",
-            "personal": "📄 個人データ (非公開)",
-            "prefix": "❕ 命令 (サーバー)",
-            "title": "⚙️設定"
+            "description": "You can configure it according to your needs using these commands.",
+            "languages": "🌐 Languages (server)",
+            "note": "Note: Some commands may require certain permissions to run.",
+            "notification": "🔔 Notification (server)",
+            "personal": "📄 Personal information (personal)",
+            "prefix": "❕ Commands (server)",
+            "title": "⚙️ Settings"
         },
         "shuffle": {
-            "no_queue": "❎ 現在再生中の曲はありません。",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "now_shuffle": "🔀 シャッフルが始まりました..."
+            "no_queue": "❎ There are no songs currently playing.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "now_shuffle": "🔀 Shuffle queue started..."
         },
         "shutdown": {
-            "dm_to_owner": "**:red_circle: シャットダウンの要求!!**\n本人であることを確認するには、コマンドを実行したサーバーでこのパスワードを入力してください。\n不要な場合は無視してかまいません.続ける\n今日までお世話になりました:)\n||%s||",
-            "not_owner": "🛑 やめて..受け取らないで。 この機能にはルート権限のみが必要です.",
-            "now_shutdown": "💤 Discord がシャットダウンされました..またね~",
-            "password_is_incorrect": "❎ パスワードが正しくありません。 再度確認してください。",
-            "shutting_down": "🔄 シャットダウン中..."
+            "dm_to_owner": "**:red_circle: There is a request for a shutdown!!**\nTo confirm it's you, please enter this password on the server from which you run the command.\nYou can ignore it if you don't want it. Continue\nThank you for taking care of me until today :)\n||%s||",
+            "not_owner": "🛑 Don't..don't. This function requires top privileges only",
+            "now_shutdown": "💤 The system has been shut down on Discord.. see you later~",
+            "password_is_incorrect": "❎ Your password is incorrect. Please check again.",
+            "shutting_down": "🔄 is shutting down itself..."
         },
         "skip": {
-            "no_queue": "❎ 現在再生中の曲はありません。 越えられない",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "skiped": "⏭ スキップして、キューで新しい曲の再生を開始しようとしています。"
+            "no_queue": "❎ There's no song I'm playing. can't skip",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "skipped": "⏭ skipped and about to start a new song in the queue."
         },
         "snake": {
-            "building_board_game": "🐍 要素を配置します。 しばらくお待ちください...",
-            "game_name": "スネーク: ゲーム",
-            "game_over": "ゲームオーバー",
-            "game_score": "スコア: **%s1**\n時間: **%s2** 秒",
-            "played_on": "%s によって開始"
+            "building_board_game": "🐍 Arranging elements. please wait a moment...",
+            "game_name": "Snake: Game",
+            "game_over": "Game over",
+            "game_score": "Score: **%s1**\nTime: **%s2** seconds",
+            "played_on": "Play started by %s"
         },
         "status": {
-            "data_by_server": "サーバーからデータを参照",
-            "dnd_status": "おやすみモードの現在のメンバー数は\n```%s```です",
-            "idle_status": "現在のアイドル メンバー数は \n```%s```",
-            "offline_status": "現在オフラインのメンバー数は\n```%s```です",
-            "online_status": "現在オンラインのメンバー数は \n```%s``` です"
+            "data_by_server": "Reference data from server",
+            "dnd_status": "The number of members currently do not disturb is \n```%s```",
+            "idle_status": "The number of currently absent members is \n```%s```",
+            "offline_status": "The number of members that are currently offline is \n```%s```",
+            "online_status": "The number of members currently online is \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ステッカーが正常に削除されました",
-            "does_not_support_gif": "❎ 申し訳ありません...Discord は現在、GIF としてのカスタム ステッカーをサポートしていません。",
-            "edited_sticker": "%s はステッカーを正常に編集しました。",
-            "uploading_you_sticker": "📤 ステッカーをアップロードしています...",
-            "you_sticker_is_ready": "%s ステッカーの準備ができました。 試してみよう！！"
+            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
+            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
+            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
+            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
+            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
         },
         "stop": {
-            "no_queue": "❎ えっと...私が演奏している曲はありません.",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "stopped": "⏹️ 音楽の再生を停止し、すべてのキューを削除しました。"
+            "no_queue": "❎ Eh...there's no song I'm playing.",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "stopped": "⏹️ Stopped playing and deleted all queues."
         },
         "system": {
             "info_battery": {
-                "charging": "充電中",
-                "not_charging": "充電していません",
-                "title": "• バッテリー",
-                "without": "なし"
+                "charging": "Charging",
+                "not_charging": "Not charging",
+                "title": "• Battery",
+                "without": "no"
             },
-            "info_description": "私が現在取り組んでいるシステムについて、システムから提供された情報は次のとおりです。",
-            "info_gpu_control": "• GPU (制御)",
-            "info_gpu_display": "GPU (ディスプレイ)",
-            "info_memory_used": "• 使用メモリ",
-            "info_platform": "• プラットフォーム",
-            "info_system": "• システム",
-            "info_temperature": "• CPU温度",
-            "info_title": "🖥 システムの基本",
+            "info_description": "The information of the system I am currently working on is as follows.",
+            "info_gpu_control": "• GPU (control)",
+            "info_gpu_display": "• GPU (display)",
+            "info_memory_used": "• Memory used",
+            "info_platform": "• Platform",
+            "info_system": "• System",
+            "info_temperature": "• CPU temperature",
+            "info_title": "🖥 System Basic Info",
             "info_uptime": {
-                "info": "%s1 日 %s2 時間 ",
-                "title": "• 勤務時間"
+                "info": "%s1 day %s2 hour ",
+                "title": "• working hours"
             },
-            "loading": "⚙️ サーバーからシステムデータの取得をリクエストしています...",
-            "main": "メイン",
-            "unknown": "不明"
+            "loading": "⚙️ Sending request to retrieve system data from server...",
+            "main": "main",
+            "unknown": "Unknown"
         },
         "tictactoe": {
-            "button_is_selected": "❎ スロットは既に使用されています。",
-            "can_not_duel_with_me": "❎ 私はこれらのゲームが苦手です. 私の方が判断力が優れています。",
-            "can_not_play_with_bot": "❎ このゲームはボットではプレイできません.",
-            "in_another_duel": "❎ <@%s> は現在、他の誰かと決闘中です。",
-            "in_duel": "❎いいえ、いいえ、<@%s>で決闘を終わらせなければなりません。",
-            "member_not_found": "❎ メンバーは別の場所で拉致されたようです.",
-            "need_one_emoji": "❎ ❌ や ⭕ などの絵文字を 1 ついただけますか?",
-            "tie": "ネクタイ！",
-            "wait_opponent": "❓ 反対側で少し待ちます。",
-            "winner": "%s が勝った!"
+            "button_is_selected": "❎ The slot is already occupied.",
+            "can_not_duel_with_me": "❎ I'm not good at these games. I'm better at judging.",
+            "can_not_play_with_bot": "❎ You cannot play this game with bots.",
+            "in_another_duel": "❎ <@%s> is currently in a duel with someone else.",
+            "in_duel": "❎ No, no, you must finish the duel with <@%s>.",
+            "member_not_found": "❎ The member appears to have been abducted somewhere else.",
+            "need_one_emoji": "❎ May I have one emoji like ❌ or ⭕?",
+            "tie": "Tie!",
+            "wait_opponent": "❓ Wait on the opposite side for a moment.",
+            "winner": "%s won!"
         },
         "timeout": {
-            "can_not_set_for_yourself": "❎ 自分でタイムアウトを設定することはできません。",
-            "can_not_set_timeout": "❎ 彼は私よりも高い役割を持っているため、彼にタイムアウトを設定することはできません。",
-            "can_not_set_to_admin": "❎ 管理者のタイムアウトは設定できません。",
-            "dm_to_user": "⌛ %s1 でタイムアウトになりました。そのサーバーで残り時間を確認できます **理由**: %s2",
-            "member_not_found": "❎ メンバーが見つかりませんでした.",
-            "no_reason": "理由なし",
-            "success": "%s1 は %s2 分後にタイムアウトするように設定されています **理由**: %s3"
+            "can_not_set_for_yourself": "❎ You can't set a timeout for yourself.",
+            "can_not_set_timeout": "❎ I can't set a timeout for him because he has a higher role than me.",
+            "can_not_set_to_admin": "❎ You cannot set timeouts for admins.",
+            "dm_to_user": "⌛ You are timed out in %s1, you can see the remaining time in that server **reason**: %s2",
+            "member_not_found": "❎ Member Not Found is no longer on this server.",
+            "no_reason": "no reason given",
+            "success": "%s1 is set to timeout in %s2 minutes **reason**: %s3"
         },
         "together": {
-            "can_not_open": "❌ うーん、%s は開けません。",
-            "do_not_have": "❎ ああ..今 %s1 を持っていないか、実際には持っていない.それだけです。\nしかし、現在利用可能な Together には合計 %s2 エントリがあります:\n```%s3```",
-            "do_not_have_permission": "❌ 操作権限がないためアクティベートできません。 モデレータに連絡してください。",
-            "join_via_this_link": "このリンクから参加してください。 https://discord.com/invite/",
-            "user_not_in_channel": "❎ まずオーディオ チャンネルの 1 つに移動するか、そのチャンネルの名前または ID を教えてください。彼らが正しいリンクを作成できるように",
-            "voice_channel_not_found": "❎ えー..でもそのボイスチャンネルはこのサーバーには存在しません.オーディオ チャンネルに移動して、もう一度やり直してください。"
+            "can_not_open": "❌ Umm..I can't open %s",
+            "do_not_have": "❎ ah..it doesn't have %s1 right now, or maybe not. That's it\nBut the available Together now has all %s2 entries,\n```%s3```",
+            "do_not_have_permission": "❌ I can't activate because I don't have permission to operate. Please contact the moderator.",
+            "join_via_this_link": "Join via this link. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Either enter one of the audio channels or just tell me the name or the channel's ID. He will be able to create the right link",
+            "voice_channel_not_found": "❎ Eh..but there's no voice channel on this server. Try going into the sound field and try again."
         },
         "translate": {
-            "can_not_translate": "❎ テキストは翻訳できません。後でもう一度試してください。",
-            "says": "言う",
-            "translate_support": "❎ 無効な翻訳コード.もう一度確認してください。\n** サポートされている言語:** %s"
+            "can_not_translate": "❎ The text cannot be translated. Please try again later",
+            "says": "says",
+            "translate_support": "❎ The translation code is invalid. Please check again.\n**Supported languages:** %s"
         },
         "unban": {
-            "no_one_gets_banned": "❎ 現在、サーバー上の誰も禁止されていません。",
-            "no_reason": "禁止解除されたメンバーは理由を言いませんでした。",
-            "reason_for_unban": "禁止解除者: %s1\n理由: %s2\nメンバーの禁止解除後、そのようなメンバーは、このサーバーに正常に参加できます。",
-            "this_user_not_banned": "❎ ええと.. そのメンバーは禁止されていません.いくつかの優れた新しいキーワードをチェックしてください。もう一周…",
-            "user_has_been_unbanned": "%s の禁止が解除されました"
+            "no_one_gets_banned": "❎ No one on the server has been banned yet.",
+            "no_reason": "The member who unbanned didn't give a reason.",
+            "reason_for_unban": "Unban by: %s1\nReason: %s2\nAfter the member has been unbanned. Such members will be able to join this server normally",
+            "this_user_not_banned": "❎ Eh..that member wasn't banned. Check out some great new keywords. One more time...",
+            "user_has_been_unbanned": "%s has been unbanned"
         },
         "untimeout": {
-            "can_not_set_for_yourself": "❎ 自分でタイムアウトを設定することはできません",
-            "can_not_set_to_admin": "❎ 管理者にタイムアウトを設定することはできません.",
-            "can_not_set_untimeout": "❎ 彼は私よりも高い役割を持っているため、彼をタイムアウトに設定することはできません。",
-            "dm_to_user": "⏲️ %s1 でのタイムアウトの設定がキャンセルされました **理由**: %s2",
-            "member_not_found": "❎ メンバーが見つかりませんでした.",
-            "no_reason": "理由なし",
-            "success": "%s1 はタイムアウトしないように設定されました **理由**: %s2"
+            "can_not_set_for_yourself": "❎ You can't set a timeout for yourself",
+            "can_not_set_to_admin": "❎ You cannot set a timeout for admins.",
+            "can_not_set_untimeout": "❎ I can't set him to untimeout because he has a higher role than me.",
+            "dm_to_user": "⏲️ You have been canceled to set a timeout on %s1 **reason**: %s2",
+            "member_not_found": "❎ Member Not Found is no longer on this server.",
+            "no_reason": "no reason given",
+            "success": "%s1 has been set to not timeout **reason**: %s2"
         },
         "uptime": {
-            "days": "日",
-            "hours": "時間",
-            "info_title": "🕒久しぶりに始めました",
-            "minute": "分",
-            "second": "秒"
+            "days": "day",
+            "hours": "hours",
+            "info_title": "🕒 started working for a while",
+            "minute": "minute",
+            "second": "second"
         },
         "user": {
-            "april": "4月",
-            "august": "8月",
-            "avatar": "アバター",
-            "bot": "ボット",
-            "can_not_find_user": "💡 メンバーが見つかりません.フルネームまたはユーザーIDを試してください.例: <@%s>",
-            "created_at": "作成時",
-            "created_timestamp": "作成日",
-            "december": "12月",
-            "default_avatar_url": "オリジナルアバター",
-            "discriminator": "終了コード",
-            "february": "2月",
-            "format_at": "date%s1 at %s2 %s3 %s4 time %s5:%s6",
-            "friday": "金曜日",
-            "id": "やった",
-            "info_date": "いつの情報",
-            "january": "1月",
-            "july": "7月",
-            "june": "6月",
-            "march": "3月",
-            "may": "5月",
-            "monday": "月曜日",
-            "none": "いいえ",
-            "november": "11月",
-            "october": "10月",
-            "partial": "部分的",
-            "saturday": "土曜日",
-            "september": "9月",
-            "sunday": "日曜日",
-            "system": "システム",
-            "tag": "タグ",
-            "thursday": "木曜日",
-            "tuesday": "火曜日",
-            "unknown": "不明",
-            "user_info": "👥 ユーザー情報の詳細",
-            "user_info_description": "ユーザーに関する詳細情報.これは Discord のデータに基づいています",
-            "username": "ユーザー名",
-            "wednesday": "水曜日",
-            "yes": "はいはい"
+            "april": "April",
+            "august": "August",
+            "avatar": "avatar",
+            "bot": "bot",
+            "can_not_find_user": "💡 I can't find that member..try using your full name or username, for example: <@%s>",
+            "created_at": "created on",
+            "created_timestamp": "Created date",
+            "december": "December",
+            "default_avatar_url": "Original Avatar",
+            "discriminator": "End code",
+            "february": "February",
+            "format_at": "%s1 at %s2 %s3 %s4 time %s5:%s6.",
+            "friday": "Friday",
+            "id": "ID",
+            "info_date": "Information of when",
+            "january": "January",
+            "july": "July",
+            "june": "June",
+            "march": "March",
+            "may": "May",
+            "monday": "Monday",
+            "none": "No",
+            "november": "November",
+            "october": "October",
+            "partial": "Partial",
+            "saturday": "Saturday",
+            "september": "September",
+            "sunday": "Sunday",
+            "system": "System",
+            "tag": "tag",
+            "thursday": "Thursday",
+            "tuesday": "Tuesday",
+            "unknown": "Unknown",
+            "user_info": "👥 User Information Details",
+            "user_info_description": "Detailed information about the user. which references the information from the information on Discord",
+            "username": "Username",
+            "wednesday": "Wednesday",
+            "yes": "yes"
         },
         "version": {
-            "working_in_version": "バージョンに取り組んでいます: **%s**"
+            "working_in_version": "I'm working on version: **%s**"
         },
         "volume": {
-            "adjusted": "🔊 音量を次のレベルに調整: **%s**",
-            "no_queue": "❎ えーと…私が演奏している曲は存在しません。 どんな音にする？",
-            "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "this_volume": "🔈 現在の音量: **%s**"
+            "adjusted": "🔊 Adjust the volume to: **%s**",
+            "no_queue": "❎ Eh...there's no song I'm playing. What are you going to adjust the sound for?",
+            "not_owner": "🚫 Only the owner of the queue can change it.",
+            "this_volume": "🔈 Current volume is: **%s**"
         },
         "weather": {
-            "clear_weather": "晴天",
-            "cloudy": "曇り",
-            "date": "📆日付",
-            "day": "📅日",
-            "degree_type": "⚖️測定単位",
-            "feels_like": "🎐 のように感じる",
-            "humidity": "💧湿度",
-            "information_from_microsoft": "マイクロソフトが提供する正確で正確な情報",
-            "light_rain": "雨",
-            "mostly_clear": "ほぼクリア",
-            "mostly_cloudy": "おおむね曇り",
-            "mostly_sunny": "おおむね晴れ",
-            "no_result_found": "❎ えっと…このエリアの情報を見つけました。でも見つからなかった",
-            "partly_cloudy": "所により曇り",
-            "partly_sunny": "ときどき晴れ",
-            "rain": "雨",
-            "rain_showers": "大雨",
-            "sunny": "晴れ",
-            "temperature": "🌡️温度",
-            "timezone": "🌐 タイムゾーン",
-            "weather": "⛅天気",
-            "weather_at_the_moment": "__**%s1**__ の現在の天気は \n```%s2```",
-            "wind": "🎏 風"
+            "clear_weather": "Clear weather",
+            "cloudy": "Cloudy",
+            "date": "📆 date",
+            "day": "📅 day",
+            "degree_type": "⚖️ unit of measure",
+            "feels_like": "🎐 feels like",
+            "humidity": "💧 Humidity",
+            "information_from_microsoft": "Accurate and accurate information provided by Microsoft.",
+            "light_rain": "Light rain",
+            "mostly_clear": "Mostly clear sky",
+            "mostly_cloudy": "Mostly cloudy",
+            "mostly_sunny": "Mostly sunny",
+            "no_result_found": "❎ Eh...I've found this area's information. but I can't find it",
+            "partly_cloudy": "Partly cloudy",
+            "partly_sunny": "Partly sunny",
+            "rain": "Rain",
+            "rain_showers": "Heavy rain",
+            "sunny": "sunny",
+            "temperature": "🌡️ temperature",
+            "timezone": "🌐 timezone",
+            "weather": "⛅ Weather",
+            "weather_at_the_moment": "The weather for __**%s1**__ is currently \n```%s2```",
+            "wind": "🎏 wind"
         }
     },
     "events": {
         "channelCreate": {
-            "channel_notification": "🪧チャンネル",
-            "member_create_channel": ">サーバー メンバーがチャンネルを作成しました: <#%s>"
+            "channel_notification": "🪧 Channel",
+            "member_create_channel": "> A server member has created a channel: <#%s>"
         },
         "channelDelete": {
-            "channel_notification": "🪧チャンネル",
-            "member_delete_channel": "> サーバー メンバーがチャンネルを爆破しました: `%s`"
+            "channel_notification": "🪧 Channel",
+            "member_delete_channel": "> A server member has exploded the channel: `%s`"
         },
         "channelPinsUpdate": {
-            "channel_notification": "🪧チャンネル",
-            "member_pins_in_channel": "> チャンネルのサーバー メンバー ピン: %s2 の <#%s1>"
+            "channel_notification": "🪧 Channel",
+            "member_pins_in_channel": "> Server member pins channel: <#%s1> on %s2"
         },
         "channelUpdate": {
-            "channel_notification": "🪧チャンネル",
-            "member_update_channel": "> サーバー上のメンバーがチャンネルで何かを変更しました: `%s1` から <#%s2>"
+            "channel_notification": "🪧 Channel",
+            "member_update_channel": "> The server member has changed some information in the field: `%s1` to <#%s2>"
         },
         "emojiCreate": {
-            "emoji_notification": "😊絵文字",
-            "member_create_emoji": "> サーバー メンバーが新しい絵文字を作成しました: :%s:"
+            "emoji_notification": "😊 Emoji",
+            "member_create_emoji": "> A server member has created a new emoji: :%s:"
         },
         "emojiDelete": {
-            "emoji_notification": "😊絵文字",
-            "member_delete_emoji": "> サーバー メンバーが絵文字を削除しました: :%s:"
+            "emoji_notification": "😊 Emoji",
+            "member_delete_emoji": "> The server member deleted the emoji: :%s:"
         },
         "emojiUpdate": {
-            "emoji_notification": "😊絵文字",
-            "member_update_emoji": "> サーバー メンバーが絵文字を %s1 から %s2 に変更しました"
+            "emoji_notification": "😊 Emoji",
+            "member_update_emoji": "> The server member has changed the new emoji from: %s1 to %s2"
         },
         "guildBanAdd": {
-            "guild_notification": "🗄️サーバー",
-            "member_ban_add": "> <@%s1> はこのサーバー内で既に禁止されています\n**理由:**\n```%s2```"
+            "guild_notification": "🗄️ Server",
+            "member_ban_add": "> <@%s1> has been banned within this server.\n**Reason:**\n```%s2```"
         },
         "guildBanRemove": {
-            "guild_notification": "🗄️サーバー",
-            "member_ban_remove": "> <@%s1> はこのサーバー内で禁止解除されました\n**理由:**\n```%s2```"
+            "guild_notification": "🗄️ Server",
+            "member_ban_remove": "> <@%s1> has been unbanned within this server.\n**Reason:**\n```%s2```"
         },
         "guildCreate": {
-            "advice": "**💡 アドバイス**",
-            "advice_detail": "このギルドを所有している場合..使用する前にこのギルドの設定を完了させたい. `Ssettings` コマンドを使用してみてください。",
-            "description": "こんにちは..この %s に招待していただきありがとうございます。あ、皿洗いもできるし、洗濯もできる。すごいですね～ ハハ、どこ？冗談です",
-            "get_started": "スタートに到達しました!!",
-            "help_information_and_documentation": "**📄 ヘルプとドキュメント**",
-            "help_information_and_documentation_detail": "何ができるか知りたい..とても簡単. 「Shelp」または「/help」と入力するだけで、誰かが教えてくれます。もちろん、以下のリンクにアクセスすると、開発者や他の人が提供するドキュメントが表示されます。彼はすでにあなたのためにそれを書いています.\n> https://shiorus.web.app/",
-            "join_on": "参加",
-            "support_multiple_languages": "**🌐 多言語サポート**",
-            "support_multiple_languages_detail": "複数の言語をサポートしています。言語を変更するには`Slanguage <言語コード>` または `/language <言語コード>` で設定できます。"
+            "advice": "**💡 Advice**",
+            "advice_detail": "If you're the owner of this guild.. I'd like to complete the guild setup before I actually use it, because something you might not need. So try the `Ssettings` command.",
+            "description": "Hello..I'd like to thank you for inviting me to this %s.\nSomeone seems to be wondering what I can do? Oh, wash the dishes, do the laundry. It's awesome, isn't it~ haha, where is it? I'm kidding",
+            "get_started": "The beginning has arrived!!",
+            "help_information_and_documentation": "**📄 Help and Documentation**",
+            "help_information_and_documentation_detail": "Want to know what I can do?..it's easy. Just type `Shelp` or `/help` and someone will tell you. Of course, just go to the link below and there will be documentation that the developer and others. He wrote it for you\n> https://shiorus.web.app/",
+            "join_on": "Join on",
+            "support_multiple_languages": "**🌐 Support multiple languages**",
+            "support_multiple_languages_detail": "I support multiple languages. To change the language You can set it by `Slanguage <language code>` or `/language <language code>`"
         },
         "guildIntegrationsUpdate": {
-            "guild_integrations_update": "このサーバーは %s の統合に成功しました. 今後の更新があるとすぐに、新しい記事を受け取ることができます.",
-            "guild_notification": "🗄️サーバー"
+            "guild_integrations_update": "This server has successfully integrated %s. You will receive new articles as soon as there are future updates.",
+            "guild_notification": "🗄️ Server"
         },
         "guildMemberAdd": {
-            "captcha_error": "検証エラーが発生しました. サーバーのスタッフに連絡して対処してください。",
-            "captcha_success": "%s で確認されました",
-            "greet": "こんにちは、新しいメンバー。 **これは自動メッセージです** \nサーバーに参加していただきありがとうございます。誰かと話し始める前に、このサーバーに関する情報をよく読んでください。",
-            "solve_the_captcha": "キャプチャを解決して %s で確認",
-            "submit_answer_captcha": "回答のキャプチャを送信",
-            "submit_you_answer_guide": "キャプチャと思われるものを送信してください",
-            "use_button_below": "下のボタンを使用して回答を送信してください!",
-            "welcome": "サーバーへようこそ.",
-            "wrong_answer": "間違っているようです。 もう一度試してみましょう...",
-            "your_answer": "あなたのキャプチャ回答"
+            "captcha_error": "There was a validation error. Contact the server staff to take action.",
+            "captcha_success": "You have been verified in %s",
+            "greet": "Hello new member. **This is an automated message** \nThank you for joining our server. Please read the information about this server carefully before starting to talk to everyone.",
+            "solve_the_captcha": "Resolve the captcha to confirm in %s",
+            "submit_answer_captcha": "Submit answer captcha",
+            "submit_you_answer_guide": "Submit what you think captchas are",
+            "use_button_below": "Use the button below to submit your answer!",
+            "welcome": "Welcome to the server.",
+            "wrong_answer": "It seems wrong. Let's try again...",
+            "your_answer": "your captcha answer"
         },
         "guildMemberRemove": {
-            "user_has_exited": "このサーバーから脱出しました...(彼はどこへ行ったのですか?..)"
+            "user_has_exited": "Has escaped from this server...(let's go somewhere with him..)"
         },
         "guildMembersChunk": {
-            "guild_members_chunk": "%s サーバーのメンバーを歓迎します。ここでお待ちしています。",
-            "guild_notification": "🗄️サーバー"
+            "guild_members_chunk": "Welcome members from the %s server, we're waiting for you here.",
+            "guild_notification": "🗄️ Server"
         },
         "guildUnavailable": {
-            "guild_notification": "🗄️サーバー",
-            "guild_unavailable": "このサーバーは一時的に利用できません. このサーバーの管理者に連絡してください。"
+            "guild_notification": "🗄️ Server",
+            "guild_unavailable": "This server is temporarily unavailable. Please contact the administrator of this server."
         },
         "interactionCreate": {
-            "client_is_not_allowed": "🚫 うーん..いくつかの権限がありません.だから私は続けることができません、すなわち **%s**",
-            "command_error": "❌ このコマンドの実行中にエラーが発生しました!",
-            "command_is_disabled": "⚫ このコマンドは、サーバー上で内部的に無効になっています。サーバー管理者に連絡してください。",
-            "no_permission": "🚫 うーん...アプリケーション コマンドを使用する権限がないようです (/)。モデレーターに問い合わせてください (≧∇≦)",
-            "user_is_not_allowed": "🚫 私はあなたにこのコマンドを与えることはできません.これらの権限をまだ持っていない場合: **%s**"
+            "client_is_not_allowed": "🚫 Umm.. I'm missing some permissions. So I can't go on, including **%s**",
+            "command_error": "❌ There was an error while executing this command!",
+            "command_is_disabled": "⚫ This command has been disabled on the server. Please contact your server administrator.",
+            "no_permission": "🚫 Ummm...it looks like you don't have permission to use the application commands (/), try asking the moderator (≧∇≦)",
+            "user_is_not_allowed": "🚫 I can't get you to use this command. If you don't have these permissions: **%s**"
         },
         "inviteCreate": {
-            "invite_create": "招待リンクが正常に作成されました。\n**リンク:** %s1\n**有効期限:** %s2\n**最大:** %s3\n```%s4` `` ",
-            "invite_notification": "🏷️招待"
+            "invite_create": "Invite link created successfully.\n**Link:** %s1\n**Expires:** %s2\n**Maximum:** %s3\n```%s4` ``",
+            "invite_notification": "🏷️ Invitation"
         },
         "inviteDelete": {
-            "invite_code_deleted": "`%s` この招待コードは削除されました。",
-            "invite_code_expires": "`%s` この招待コードは期限切れです。",
-            "invite_notification": "🏷️招待"
+            "invite_code_deleted": "`%s` This invite code has been deleted.",
+            "invite_code_expires": "`%s` This invitation code has expired.",
+            "invite_notification": "🏷️ Invitation"
         },
         "messageCreate": {
-            "afk_user_come_back": "🔙 帰ってきました。 AFKステータスを自動的にキャンセル",
-            "no_reason_for_afk": "なし",
-            "that_user_is_afk": "%s1 は現在画面に表示されていません (AFK)。今は話さないでください。\n**Leave Messages**: %s2"
+            "afk_user_come_back": "🔙 You've come back. Automatically cancel AFK status",
+            "no_reason_for_afk": "none",
+            "that_user_is_afk": "%s1 isn't on screen right now (AFK), don't talk about them right now.\n**Leave Messages**: %s2"
         },
         "roleCreate": {
-            "role_create": "<@&%s> が作成されました",
-            "role_notification": "🔖 ロール"
+            "role_create": "<@&%s> has been created",
+            "role_notification": "🔖 Role"
         },
         "roleDelete": {
-            "role_delete": "`%s` は削除されました。",
-            "role_notification": "🔖 ロール"
+            "role_delete": "`%s` has been deleted.",
+            "role_notification": "🔖 Role"
         },
         "roleUpdate": {
-            "role_notification": "🔖 ロール",
-            "role_update": "`%s1` は <@&%s2> に更新されました"
+            "role_notification": "🔖 Role",
+            "role_update": "`%s1` has been updated to <@&%s2>"
         },
         "stageInstanceCreate": {
-            "stage_instance_create": "<#%s> が作成されました",
-            "stage_notification": "🎤 ステージ"
+            "stage_instance_create": "<#%s> has been created",
+            "stage_notification": "🎤 Stage"
         },
         "stageInstanceDelete": {
-            "stage_instance_delete": "`%s` は削除されました。",
-            "stage_notification": "🎤 ステージ"
+            "stage_instance_delete": "`%s` has been deleted.",
+            "stage_notification": "🎤 Stage"
         },
         "stageInstanceUpdate": {
-            "stage_instance_update": "`%s1` は <#%s2> に更新されました",
-            "stage_notification": "🎤 ステージ"
+            "stage_instance_update": "`%s1` has been updated to <#%s2>",
+            "stage_notification": "🎤 Stage"
         },
         "stickerCreate": {
-            "sticker_create": "**%s** すぐに使用できます",
-            "sticker_notification": "👻 ステッカー"
+            "sticker_create": "**%s** ready to use",
+            "sticker_notification": "👻 Sticker"
         },
         "stickerDelete": {
-            "sticker_delete": "**%s** は削除されました",
-            "sticker_notification": "👻 ステッカー"
+            "sticker_delete": "**%s** has been deleted",
+            "sticker_notification": "👻 Sticker"
         },
         "stickerUpdate": {
-            "sticker_notification": "👻 ステッカー",
-            "sticker_update": "`%s1` は **%s2** に更新されました"
+            "sticker_notification": "👻 Sticker",
+            "sticker_update": "`%s1` has been updated to **%s2**"
         },
         "threadCreate": {
-            "thread_create": "<#%s> が作成されました",
-            "thread_notification": "#️⃣スレッド"
+            "thread_create": "<#%s> has been created",
+            "thread_notification": "#️⃣ Thread"
         },
         "threadDelete": {
-            "thread_delete": "**%s** は削除されました",
-            "thread_notification": "#️⃣スレッド"
+            "thread_delete": "**%s** has been deleted",
+            "thread_notification": "#️⃣ Thread"
         },
         "threadUpdate": {
-            "thread_notification": "#️⃣スレッド",
-            "thread_update": "`%s1` は **%s2** に更新されました"
+            "thread_notification": "#️⃣ Thread",
+            "thread_update": "`%s1` has been updated to **%s2**"
         },
         "webhookUpdate": {
-            "webhook_notification": "🎣 ウェブフック",
-            "webhook_update": "**%s2** の **%s1** がフィールド <#%s3> で更新されました"
+            "webhook_notification": "🎣 Webhook",
+            "webhook_update": "**%s1** of **%s2** has been updated in field <#%s3>"
         }
     },
     "handlers": {
         "music": {
             "addList": {
-                "added_list": "✅ `%s2` 曲を含むプレイリスト **%s1** が追加されました。"
+                "added_list": "✅ Added a playlist **%s1** containing `%s2` songs already."
             },
             "addSong": {
-                "added_song": "✅ 曲 **%s1** `%s2` が追加されました。"
+                "added_song": "✅ The song **%s1** `%s2` has been added already."
             },
             "disconnect": {
-                "disconnected": "🔌 正常に切断され、すべてのキューが削除されました。"
+                "disconnected": "🔌 You have successfully disconnected and deleted all queues."
             },
             "empty": {
-                "no_user_in_channel": "💨 ああ..みんなどこにいるの?だから、私が先に戸惑う～"
+                "no_user_in_channel": "💨 Oh, where have they all gone? Well, let's go first~"
             },
             "error": {
-                "playlist_not_found": "❎ そのプレイリストが見つかりません.別のプレイリストをお探しですか？"
+                "playlist_not_found": "❎ I can't find that playlist. Try another playlist?"
             },
             "finish": {
-                "queue_is_empty": "🍃 キューが空になりました.次の曲を演奏する準備はできましたか？"
+                "queue_is_empty": "🍃 My queue is empty now. Ready to play the next song."
             },
             "playSong": {
-                "playing_song": "🎶 曲 **%s1** `%s2` を再生中"
+                "playing_song": "🎶 Playing song **%s1** `%s2`"
             },
             "searchCancel": {
-                "search_cancelled": "🕘 検索がキャンセルされました.. 選曲が見つからなかったため."
+                "search_cancelled": "🕘 Search has been canceled..because no song selections were found."
             },
             "searchDone": {
-                "get_list_of_songs": "📋 欲しい曲のリストを取得しました。すぐに音楽が再生されます..."
+                "get_list_of_songs": "📋 You have received the list of songs you want. And will start playing music in a moment..."
             },
             "searchInvalidAnswer": {
-                "search_cancelled": "🔴最近の検索がキャンセルされました。同じコマンドを入力して、もう一度検索できます。"
+                "search_cancelled": "🔴 The last search has been canceled. You can search again by typing the same command."
             },
             "searchNoResult": {
-                "no_results": "❎ 曲を検索してみましたが、結果が見つかりませんでした..."
+                "no_results": "❎ I tried searching for the song but I didn't find any results..."
             },
             "searchResult": {
-                "searching": "🔎関連曲を検索",
-                "timer_choose": "曲を選択するのに 60 秒かかります。キャンセルしたい場合は、関係のない数字を入力するか、タイマーが切れるまで待つことができます。",
-                "title_results": "曲の検索結果:",
-                "tool_name": "音楽ファインダー"
+                "searching": "🔎 Search for related songs",
+                "timer_choose": "You have 60 seconds to choose a song. If you want to cancel, you can type an unrelated number or wait until the timer expires.",
+                "title_results": "Search results for that song:",
+                "tool_name": "Music Searcher"
             }
         }
     },
     "utils": {
         "consoleUtils": {
-            "an_error_occurred": "🔴処理中にエラーが発生しました。",
-            "error_detail": "コマンド: **%s1**\nバージョン: **%s2**\n発生時刻: **%s3**\nサーバー: **%s4**\nエラー遅延: **%s5ms* *\nReceive-Transmit: **%s6ms**\nエラー結果:\n```JavaScript\n%s7\n```\n> **Tips Secret**: コマンドを使用してすぐにバグを報告できます:\n> ```Sbug <メッセージ>```\n> ```/bug <メッセージ>```\n[問題を報告]. (https://github.com/Maseshi/Shioru/issues /new?assignees=&labels=bag&template=bug_report.md&title=) • [お知らせ](https://maseshi.web.app/projects?id=shioru&tab=news )",
-            "server_abnormal": "異常",
-            "server_normal": "ノーマル"
+            "an_error_occurred": "🔴 An error occurred while processing.",
+            "error_detail": "Command: **%s1**\nVersion: **%s2**\nOccurrence time: **%s3**\nServer: **%s4**\nDetails Delay: **%s5ms**\nReceive - Send: **%s6ms**\nError result:\n```JavaScript\n%s7\n```\n> **Tip**: You can report the error immediately by using commands: \n> ```Sbug <message>```\n> ```/bug <message> ```\n[Report a problem](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [News](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "Abnormal",
+            "server_normal": "Normal"
         },
         "databaseUtils": {
-            "congratulations": "おめでとう!!",
-            "level_up": "*%s1* の階層が ```%s2``` に昇格しました",
-            "was_moved": "どうしたの?"
+            "congratulations": "Congratulations!!",
+            "level_up": "The *%s1* class is now promoted to ```%s2```",
+            "was_mentioned": "What's wrong?"
         }
     }
 }
