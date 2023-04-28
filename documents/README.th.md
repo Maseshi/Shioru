@@ -11,6 +11,9 @@
     <a href="https://shioru.statuspage.io/">
         <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
+    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+        <img style="width:140;height:30px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png 2x" alt="Crowdin | Agile localization for tech companies" />
+    </a>
 </div>
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
@@ -29,6 +32,10 @@
 - สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+
+## Improve Translate
+
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## ข้อกำหนดเบื้องต้น
 

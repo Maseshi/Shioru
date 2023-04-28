@@ -11,6 +11,9 @@
     <a href="https://shioru.statuspage.io/">
         <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
+    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+        <img style="width:140;height:30px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png 2x" alt="Crowdin | Agile localization for tech companies" />
+    </a>
 </div>
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
@@ -29,6 +32,10 @@
 - アプリケーションコマンド (/) が使用できます。
 
 などなど、興味深い機能がたくさん...
+
+## 翻訳を改善する
+
+既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
 
 ## 前提条件
 

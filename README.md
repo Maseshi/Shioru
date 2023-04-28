@@ -8,8 +8,11 @@
     <img src="https://img.shields.io/github/v/release/Maseshi/Shioru?&style=for-the-badge">
     <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
     <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
-    <a href="https://shioru.statuspage.io/">
+    <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
         <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
+    </a>
+    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+        <img style="width:140;height:30px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png 2x" alt="Crowdin | Agile localization for tech companies" />
     </a>
 </div>
 
@@ -30,6 +33,10 @@ Your good server assistant will help make your server look more lively. She can 
 
 And many other interesting features...
 
+## Improve Translate
+
+You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru-bot).
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
@@ -44,9 +51,9 @@ And many other interesting features...
 - Go to the [Discord Developer Portal](https://discord.com/developers/applications)
 - Click **"New Application"** and give your bot a name and accept the Discord policy rules.
 - Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Setup a bot
 
@@ -65,7 +72,7 @@ npm install --save
 - Go to https://firebase.google.com/ and start setting up the project.
 - Add a new project and go through the steps.
 - Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
@@ -73,16 +80,19 @@ npm install --save
 
 - Rename the `.env.example` file to `.env` and add all values.
 - Go to terminal and run `npm run dev` for development and `npm start` for production.
-    > **NOTE**: When in development mode Some features may not work.
+  > **NOTE**: When in development mode Some features may not work.
 
 ## Quick Troubleshooting
 
 - If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+
 ```bat
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
+
 - If you can't play music or music playback commands are not working, install [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```
