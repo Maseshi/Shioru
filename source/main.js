@@ -189,7 +189,7 @@ const handlerFiles = readdirSync(handlersPath);
 
 for (const handler of handlerFiles) {
     require(handlersPath + "/" + handler)(client);
-};
+}
 
 client.console.add("check-internet-connection", {
     "text": "Checking connection to server"
