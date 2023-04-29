@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
+const { dateFormat } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -134,43 +135,6 @@ module.exports.function.command = {
     async execute(interaction) {
         const inputInfo = interaction.options.getString("info") ?? "";
         const inputMember = interaction.options.getMember("member") ?? "";
-
-        const dateFormat = (data) => {
-            if (!data) return;
-
-            const date = new Date(data);
-            const days = [
-                interaction.client.translate.commands.guild.sunday,
-                interaction.client.translate.commands.guild.monday,
-                interaction.client.translate.commands.guild.tuesday,
-                interaction.client.translate.commands.guild.wednesday,
-                interaction.client.translate.commands.guild.thursday,
-                interaction.client.translate.commands.guild.friday,
-                interaction.client.translate.commands.guild.saturday
-            ];
-            const months = [
-                interaction.client.translate.commands.guild.january,
-                interaction.client.translate.commands.guild.february,
-                interaction.client.translate.commands.guild.march,
-                interaction.client.translate.commands.guild.april,
-                interaction.client.translate.commands.guild.may,
-                interaction.client.translate.commands.guild.june,
-                interaction.client.translate.commands.guild.july,
-                interaction.client.translate.commands.guild.august,
-                interaction.client.translate.commands.guild.september,
-                interaction.client.translate.commands.guild.october,
-                interaction.client.translate.commands.guild.november,
-                interaction.client.translate.commands.guild.december
-            ];
-
-            return interaction.client.translate.commands.guild.format_at
-                .replace("%s1", days[date.getDay()])
-                .replace("%s2", date.getDate())
-                .replace("%s3", months[date.getMonth()])
-                .replace("%s4", date.getFullYear())
-                .replace("%s5", date.getHours())
-                .replace("%s6", date.getMinutes());
-        };
 
         let avatar = interaction.user.avatarURL() || interaction.client.translate.commands.user.unknown;
         let bot = interaction.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;

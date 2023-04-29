@@ -140,6 +140,43 @@ const timeFormat = (timeInSeconds) => {
     );
 }
 
+const dateFormat = (data) => {
+    if (!data) return console.log("[dateFormat] Please enter date information to continue.");
+
+    const date = new Date(data);
+    const days = [
+        interaction.client.translate.utils.miscUtils.sunday,
+        interaction.client.translate.utils.miscUtils.monday,
+        interaction.client.translate.utils.miscUtils.tuesday,
+        interaction.client.translate.utils.miscUtils.wednesday,
+        interaction.client.translate.utils.miscUtils.thursday,
+        interaction.client.translate.utils.miscUtils.friday,
+        interaction.client.translate.utils.miscUtils.saturday
+    ];
+    const months = [
+        interaction.client.translate.utils.miscUtils.january,
+        interaction.client.translate.utils.miscUtils.february,
+        interaction.client.translate.utils.miscUtils.march,
+        interaction.client.translate.utils.miscUtils.april,
+        interaction.client.translate.utils.miscUtils.may,
+        interaction.client.translate.utils.miscUtils.june,
+        interaction.client.translate.utils.miscUtils.july,
+        interaction.client.translate.utils.miscUtils.august,
+        interaction.client.translate.utils.miscUtils.september,
+        interaction.client.translate.utils.miscUtils.october,
+        interaction.client.translate.utils.miscUtils.november,
+        interaction.client.translate.utils.miscUtils.december
+    ];
+
+    return interaction.client.translate.utils.miscUtils.format_at
+        .replace("%s1", days[date.getDay()])
+        .replace("%s2", date.getDate())
+        .replace("%s3", months[date.getMonth()])
+        .replace("%s4", date.getFullYear())
+        .replace("%s5", date.getHours())
+        .replace("%s6", date.getMinutes());
+};
+
 const remainingTime = (timeUntil) => {
     const seconds = Math.abs((timeUntil - new Date()) / 1000);
     const time = timeFormat(seconds);
@@ -179,6 +216,7 @@ module.exports = {
     randomInt,
     isHex,
     timeFormat,
+    dateFormat,
     remainingTime,
     currencyFormatter
 };

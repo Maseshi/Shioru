@@ -9,7 +9,7 @@ module.exports = {
     "permissions": {
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "ping",
+    "usage": "stats",
     "function": {
         "command": {}
     }

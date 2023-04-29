@@ -13,7 +13,7 @@ module.exports = (client) => {
     client.music.on("disconnect", (queue) => {
         queue.textChannel.send(client.translate.handlers.music.disconnect.disconnected);
     });
-    
+
     client.music.on("empty", (queue) => {
         queue.textChannel.send(client.translate.handlers.music.empty.no_user_in_channel);
     });
@@ -23,7 +23,7 @@ module.exports = (client) => {
         const connection = client.music.voices.get(meChannel.guild);
 
         if ((error.toString()).includes("Unknown Playlist")) return channel.send(client.translate.handlers.music.error.playlist_not_found);
-		
+
         connection.leave(meChannel.guild);
         catchError(client, channel, "music", error);
     });
@@ -43,26 +43,26 @@ module.exports = (client) => {
         queue.textChannel.send(client.translate.handlers.music.playSong.playing_song.replace("%s1", song.name).replace("%s2", song.formattedDuration));
     });
 
-    client.music.on("searchCancel", (message, query) => {
+    client.music.on("searchCancel", (message) => {
         message.reply(client.translate.handlers.music.searchCancel.search_cancelled);
     });
 
-    client.music.on("searchDone", (message, answer, query) => {
+    client.music.on("searchDone", (message) => {
         message.reply(client.translate.handlers.music.searchDone.get_list_of_songs);
     });
 
-    client.music.on("searchInvalidAnswer", (message, answer, query) => {
+    client.music.on("searchInvalidAnswer", (_message, answer) => {
         answer.reply(client.translate.handlers.music.searchInvalidAnswer.search_cancelled);
     });
 
-    client.music.on("searchNoResult", (message, query) => {
+    client.music.on("searchNoResult", (message) => {
         message.reply(client.translate.handlers.music.searchNoResult.no_results);
     });
 
     client.music.on("searchResult", (message, result) => {
         let index = 0;
         const data = result.map(song => "**" + (++index) + "**. " + song.name + " `" + song.formattedDuration + "` : **" + song.uploader.name + "**").join("\n");
-        
+
         const authorAvatar = message.author.displayAvatarURL();
         const authorUsername = message.author.username;
         const searchResultEmbed = new EmbedBuilder()
@@ -80,7 +80,7 @@ module.exports = (client) => {
                     }
                 ]
             );
-    
+
         message.channel.send({ "embeds": [searchResultEmbed] });
     });
 };

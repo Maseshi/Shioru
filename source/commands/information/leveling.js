@@ -19,7 +19,7 @@ module.exports.function.command = {
     "data": {
         "name": module.exports.name,
         "name_localizations": {
-            "th": "เลเวล"
+            "th": "เลเวลลิ่ง"
         },
         "description": module.exports.description,
         "description_localizations": {
