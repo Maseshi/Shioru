@@ -12,7 +12,10 @@
         <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
     </a>
     <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
-        <img style="width:140;height:30px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/dark/crowdin-on-light@2x.png 2x" alt="Crowdin | Agile localization for tech companies" />
+      <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+    </a>
+    <a href="https://www.codefactor.io/repository/github/maseshi/shioru">
+      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
     </a>
 </div>
 
