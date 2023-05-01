@@ -23,7 +23,7 @@
     "@distube/yt-dlp": "^1.1.3",
     "@distube/ytdl-core": "^4.11.9",
     "@vitalets/google-translate-api": "^9.1.0",
-    "axios": "^1.3.6",
+    "axios": "^1.4.0",
     "captcha-canvas": "^3.2.1",
     "discord.js": "^14.9.0",
     "distube": "^4.0.4",
