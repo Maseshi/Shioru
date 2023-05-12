@@ -1,22 +1,25 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-    <h1>
-        <strong>Shioru</strong>
-    </h1>
-    <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white&style=for-the-badge" />
-    <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
-    <img src="https://img.shields.io/github/v/release/Maseshi/Shioru?&style=for-the-badge">
-    <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github&style=for-the-badge" />
-    <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?style=for-the-badge">
-    <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
-        <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&style=for-the-badge&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
-    </a>
-    <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
-      <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
-    </a>
-    <a href="https://www.codefactor.io/repository/github/maseshi/shioru">
-      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
-    </a>
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
+  <h1>
+    <strong>Shioru</strong>
+  </h1>
+  <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
+  <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
+    <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
+  </a>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  </a>
+  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+  </a>
+  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+  </a>
 </div>
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
