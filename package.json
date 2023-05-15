@@ -28,7 +28,7 @@
     "discord.js": "^14.11.0",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
-    "firebase": "^9.21.0",
+    "firebase": "^9.22.0",
     "lyrics-finder": "^21.7.0",
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
