@@ -1,958 +1,958 @@
 {
     "commands": {
         "about": {
-            "my_profile": "ข้อมูลส่วนตัวของฉัน",
-            "my_profile_detail": "ฉันชื่อ %s เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Chaiwat Suwannarat(Masashi)__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากคะ\n\n[เว็บไซต์ทางการ](https://maseshi.web.app/)\n[นโยบายความเป็นส่วนตัว](https://maseshi.web.app/privacy-policy) | [เงื่อนไขการให้บริการ](https://maseshi.web.app/terms-of-service)\n\n© 2563-2565 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-            "update_on": "อัพเดทเมื่อ"
+            "my_profile": "a profilom",
+            "my_profile_detail": "A nevem %s június 21-én, vasárnap születtem. Egy házban élek. __Chaiwat Suwannarat(Masashi)__ az, aki megszül, és tudást és képességeket ad. **különböző hogy mindent tanulmányoztam mindenkinek, ahol élek Remélem mindenki boldog lesz velem!! És köszönöm a kedves jótevőimnek nyújtott minden segítséget és támogatást. Nagyon köszönöm.\n\n[Hivatalos webhely](https://maseshi.web.app/)\n[Adatvédelmi irányelvek](https://maseshi.web. app/privacy-policy) | [Általános Szerződési Feltételek](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Minden jog fenntartva.",
+            "update_on": "frissítve mikor"
         },
         "afk": {
-            "currently_afk": "❎ ตอนนี้คุณกำลัง AFK อยู่",
-            "currently_not_afk": "❎ ตอนนี้คุณไม่ได้ AFK อยู่",
-            "now_afk": "💤 ตอนนี้คุณกำลัง AFK อยู่, เขียนสักข้อความหรือ /afk remove เพื่อออกจากโหมด AFK",
-            "now_not_afk": "🔙 ยกเลิกการตั้งสถานะ AFK ของคุณแล้ว"
+            "currently_afk": "❎ Most AFK vagy",
+            "currently_not_afk": "❎ Jelenleg nem vagy AFK.",
+            "now_afk": "💤 Most már AFK vagy, írj üzenetet, vagy /afk Remove gombbal lépj ki az AFK módból.",
+            "now_not_afk": "🔙 Az AFK állapota nincs beállítva."
         },
         "anime": {
-            "auto_cancel": "เพียงแค่พิมพ์หมายเลขที่คุณต้องการอ่าน! (ยกเลิกภายใน 1 นาที)",
-            "choose_now": "เลือกเลยย.!!",
-            "data_not_found": "❎ ไม่เจอเรื่องนี้นะ ลองตรวจสอบดีๆ ดูสิหรืออาจจะไม่มีเรื่องนี้จริงๆ อะ",
-            "end_date": "**วันที่สิ้นสุด**",
-            "english_name": "**ชื่ออังกฤษ**",
-            "in_progress": "กำลังดำเนินการ",
-            "japan_name": "**ชื่อญี่ปุ่น**",
-            "link": "**ลิงค์**",
-            "popularity_rank": "**อันดับความนิยม**",
-            "short_information": "นี่เป็นเพียงข้อมูลที่สรุปมาแล้วเท่านั้น อยากอ่านเพิ่มเติมคลิกเข้าไปที่ลิงค์เลยย.!!",
-            "similar_stories": "ฉันเจอ 5 เรื่องที่ใกล้เคียงกัน อยากอ่านเรื่องไหนกันละ~",
-            "start_date": "**วันที่เริ่มต้น**",
-            "synopsis": "**สรุป:**",
-            "undefined": "ไม่ได้กำหนด"
+            "auto_cancel": "Csak írja be az olvasni kívánt számot! (lemondás 1 percen belül)",
+            "choose_now": "Válassz most.!!",
+            "data_not_found": "❎ Nem találtam ezt a történetet. Nézzük meg. Nézd, lehet, hogy tényleg nincs ilyen?",
+            "end_date": "**Befejezés dátuma**",
+            "english_name": "**Angol név**",
+            "in_progress": "folyamatban",
+            "japan_name": "** japán név**",
+            "link": "**link**",
+            "popularity_rank": "**Népszerűségi rangsor**",
+            "short_information": "Ez csak az információk összefoglalása. Ha többet szeretnél olvasni, kattints a linkre!!",
+            "similar_stories": "5 hasonló dolgot találtam. Melyik történetet szeretnéd elolvasni~",
+            "start_date": "**kezdő dátum**",
+            "synopsis": "**összesít:**",
+            "undefined": "határozatlan"
         },
         "automod": {
-            "flagged_words_name": "บล็อกคำหยาบคาย เนื้อหาเกี่ยวกับเรื่องเพศ และคำสบประมาท",
-            "flagged_words_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว คำเหล่านั้นทั้งหมดจะถูกระงับ",
-            "keyword_name": "ป้องกันไม่ให้ใช้คำ %s",
-            "keyword_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว ข้อความทั้งหมดที่มีคำว่า %s จะถูกลบ",
-            "mention_spam_name": "ป้องกันสแปมเมื่อกล่าวถึง",
-            "mention_spam_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมเมื่อกล่าวถึงหลายครั้งจะถูกระงับ",
-            "prevent_message": "ข้อความนี้ถูกป้องกัน",
-            "spam_messages_name": "ป้องกันสแปมข้อความ",
-            "spam_messages_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมข้อความจะถูกระงับ"
+            "flagged_words_name": "blokkolja a káromkodást szexuális tartalom és sértések",
+            "flagged_words_success": "✅ Az AutoMod-szabályok létrejöttek, ezek a szavak el lesznek távolítva.",
+            "keyword_name": "A %sszó használatának megakadályozása.",
+            "keyword_success": "✅ Az AutoMod-szabályod elkészült, a %s szót tartalmazó összes üzenet törlődik.",
+            "mention_spam_name": "A spam megelőzése, ha arról van szó",
+            "mention_spam_success": "✅ Az AutoMod-szabály létrehozva, a többszöri megemlítések spamküldése el lesz távolítva.",
+            "prevent_message": "Ez az üzenet védett.",
+            "spam_messages_name": "blokkolja a spam üzeneteket",
+            "spam_messages_success": "✅ Az AutoMod-szabályok létrejöttek, az üzenetlevélszemét el lesz távolítva."
         },
         "autoplay": {
-            "no_queue": "❎ อืมม...แต่ว่าเพลงมันยังไม่ได้เริ่มเล่นเลยนะ?",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "📻 ปิดโหมดการเล่นอัตโนมัติแล้ว",
-            "on": "📻 เปิดโหมดการเล่นอัตโนมัติแล้ว"
+            "no_queue": "❎ Hmm...de a dal még el sem kezdődött?",
+            "not_queue_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "off": "📻 Az automatikus lejátszás mód ki van kapcsolva",
+            "on": "📻 Az automatikus lejátszási mód bekapcsolva"
         },
         "ban": {
-            "banned_for_time": "%s1 ถูกแบนเป็นเวลา **%s2** วัน",
-            "member_has_banned": "❎ สมาชิกดังกล่าวถูกแบนอยู่แล้ว สบายใจได้",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถแบนผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถแบนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่แบนไม่ได้ให้เหตุผลไว้คะ",
-            "permanently_banned": "%s ถูกแบนอย่างถาวร",
-            "reason_for_ban": "แบนโดย: %s1\nเหตุผล: %s2",
-            "user_not_found": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ"
+            "banned_for_time": "%s1 **%s2** napra kitiltva",
+            "member_has_banned": "❎ Az ilyen tagok már ki vannak tiltva, érezd jól magad.",
+            "members_have_a_higher_role": "❎ Nem tilthatsz ki valakit, aki magasabb szerepet tölt be nálad.",
+            "members_have_a_higher_role_than_me": "❎ Nem tudom kitiltani azt a tagot. mert neki magasabb szerepe van nálam",
+            "no_reason": "A kitiltó tagok nem indokolták meg.",
+            "permanently_banned": "%s véglegesen kitiltva",
+            "reason_for_ban": "Kitiltotta: %s1\nOk: %s2",
+            "user_not_found": "❎ Nem találom ezt a tagot. Kérlek nézd meg újra."
         },
         "board": {
-            "leveling_detail": "ค่าประสบการณ์: %s1, ระดับชั้น: %s2",
-            "no_info": "❎ บนเซิร์ฟเวอร์นี้ยังไม่มีสมาชิกใดๆ ที่มีค่าประสบการณ์เลยคะ",
-            "server_rank": "อันดับเลเวลของเซิร์ฟเวอร์นี้",
-            "server_rank_description": "1 ใน 10 อันดับ สมาชิกภายในเซิร์ฟเวอร์นี้ ที่เก็บสะสมเลเวลของตัวเองได้เยอะที่สุด ตามลำดับ ดังนี้",
-            "server_rank_tips": "เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น"
+            "leveling_detail": "Tapasztalat: %s1, fokozat: %s2",
+            "no_info": "❎ Még nincsenek tagok ezen a szerveren. aminek tapasztalati értéke van",
+            "server_rank": "Ennek a szervernek a besorolása",
+            "server_rank_description": "1 a legjobb 10 tag közül ezen a szerveren. akik a legtöbbet gyűjthetik össze saját szintjükből, a következő sorrendben",
+            "server_rank_tips": "Tipp: Csevegés más tagokkal több szintet fog szerezni"
         },
         "bug": {
-            "sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
-            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
+            "sending": "📨 Oké... csak egy pillanat Adj egy percet, hogy levelet küldjek a fejlesztőnek...",
+            "success*": "✅ Rendben, köszönöm... Ha találsz még valamit, kérlek szólj (●'◡'●)"
         },
         "captcha": {
-            "captcha_setup_success": "✅ ตั้งค่าระบบ captcha เสร็จสิ้นและเปิดใช้งานเรียบร้อยแล้ว",
-            "currently_disable": "ℹ️ ตอนนี้ captcha ถูกปิดอยู่แล้ว",
-            "currently_enable": "ℹ️ ตอนนี้ captcha ถูกเปิดอยู่แล้ว",
-            "disabled_captcha": "✅ ปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "enabled_captcha": "✅ เปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "need_to_setup_before": "❎ กรุณาตั้งค่า captcha ก่อนใช้งานโดยใช้คำสั่ง /captcha setup"
+            "captcha_setup_success": "✅ A captcha rendszer beállítása és aktiválása sikeresen megtörtént.",
+            "currently_disable": "ℹ️ A Captcha bezárt.",
+            "currently_enable": "ℹ️ A Captcha mostantól engedélyezve van.",
+            "disabled_captcha": "✅ A captcha le van tiltva",
+            "enabled_captcha": "✅ A captcha sikeresen engedélyezve",
+            "need_to_setup_before": "❎ Használat előtt állítsa be a captcha parancsot a /captcha setup paranccsal."
         },
         "covid": {
-            "active": "แอคทีฟ",
-            "active_per_one_million": "แอคทีฟต่อ 1 ล้าน",
-            "backend_issue": "❎ ดูเหมือนว่าจะเกิดปัญหาขึ้นในฝั่งของผู้ให้ข้อมูลน่ะคะ กรุณาลองใหม่ในคราวหน้านะ",
-            "cases_per_one_million": "คนไข้ต่อ 1 ล้าน",
-            "cases_today": "คนไข้วันนี้",
-            "cases_total": "คนไข้ทั้งหมด",
-            "country_not_found": "❎ เอิ่มม..ไม่เจอข้อมูลของประเทศที่คุณระบุเลยคะ",
-            "critical_per_one_million": "ระยะวิกฤติต่อ 1 ล้าน",
-            "critical_stage": "ระยะวิกฤต",
-            "deaths_today": "เสียชีวิตวันนี้",
-            "deaths_total": "เสียชีวิตทั้งหมด",
-            "one_case_per_people": "คนไข้ต่อ 1 คน",
-            "one_death_per_people": "เสียชีวิตต่อ 1 คน",
-            "one_test_per_people": "การทดสอบต่อ 1 คน",
-            "population": "ประชากร",
-            "recovered": "หายแล้ว",
-            "recovered_per_one_million": "หายแล้วต่อ 1 ล้าน",
-            "tests": "ทดสอบ",
-            "tests_per_one_million": "การทดสอบต่อ 1 ล้าน",
-            "updated_on": "อัพเดทล่าสุด %s",
-            "when": "เมื่อ"
+            "active": "aktív",
+            "active_per_one_million": "aktív 1 millióan",
+            "backend_issue": "❎ Úgy tűnik, hogy probléma van az informátor oldalán. Kérjük, legközelebb próbálkozzon újra.",
+            "cases_per_one_million": "Betegek száma 1 millióra",
+            "cases_today": "ezt a beteget",
+            "cases_total": "minden beteg",
+            "country_not_found": "❎ Öhm... Nem találom az Ön által megadott ország adatait.",
+            "critical_per_one_million": "kritikus időszak 1 millióan",
+            "critical_stage": "kritikus időszak",
+            "deaths_today": "ma meghalt",
+            "deaths_total": "mind meghaltak",
+            "one_case_per_people": "betegenként",
+            "one_death_per_people": "halálozás személyenként",
+            "one_test_per_people": "Tesztelés személyenként",
+            "population": "népesség",
+            "recovered": "elmúlt",
+            "recovered_per_one_million": "1 millióra vetítve",
+            "tests": "teszt",
+            "tests_per_one_million": "Tesztek 1 millióra",
+            "updated_on": "Legutóbbi frissítés %s",
+            "when": "amikor"
         },
         "credits": {
-            "creator_credit": "💳 เครดิตของผู้สร้างคนอื่นๆ",
-            "creator_credit_description": "ซึ่งบางผู้สร้างเป็นทั้งผู้มีส่วนร่วม บางส่วนำมาจากภายนอก..ขอขอบคุณทุกการสนับสนุน",
-            "natsuki_marina_credit": "ข้อมูล: รูปภาพบางส่วนและรูปภาพประจำตัว \nจาก: https://www.pixiv.net/en/users/482462 \nเว็บไซต์: https://marina71712.wixsite.com/0-0v",
-            "update_on": "อัพเดทเมื่อ"
+            "creator_credit": "💳 Köszönet a többi alkotónak",
+            "creator_credit_description": "amelynek egyes alkotói mindketten közreműködők Néhányat kívülről vettek..Köszönjük minden támogatását.",
+            "natsuki_marina_credit": "Információ: Néhány kép és avatar \ninnen: https://www.pixiv.net/en/users/482462 \nWeboldal: https://marina71712.wixsite.com/0-0v",
+            "update_on": "mikor frissítve"
         },
         "dead": {
-            "suicide": "%s ตัดสินใจที่จะฆ่าตัวตาย 💔 หลับให้สบาย"
+            "suicide": "%s , hogy öngyilkos lesz 💔 Nyugodj békében"
         },
         "decode": {
-            "after": "หลังถอดรหัส",
-            "before": "ก่อนถอดรหัส",
-            "decode_message": "🔓 ถอดรหัสข้อความ",
-            "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "dekódolás után",
+            "before": "dekódolás előtt",
+            "decode_message": "🔓 Üzenetek visszafejtése",
+            "decode_success": "Az üzenet visszafejtve."
         },
         "donate": {
-            "thank_you_in_advance_message": "❤️ ขอขอบคุณสำหรับการสนับสนุนผู้พัฒนาของฉันล่วงหน้านะคะ ฉันมีช่องทางสำหรับการสนับสนุนดังนี้คะ"
+            "thank_you_in_advance_message": "❤️ Köszönöm, hogy előre is támogatod a fejlesztőimet. A következő támogatási csatornám van."
         },
         "eat": {
-            "already_eaten": "%s1 ได้กิน %s2 ลงไปในท้องแล้ว",
-            "do_not_eat_me": "ฉ..ฉันตัวเล็กนิดเดียวเอง ม..ไม่น่ากินหรอก..."
+            "already_eaten": "%s1 beleevett %s2-t a gyomorba",
+            "do_not_eat_me": "én.. Kicsit kicsi vagyok. m..nem jó enni..."
         },
         "eight_ball": {
-            "answer": "คำตอบ",
-            "game": "🎱 เกม 8ball",
-            "question": "คำถาม",
-            "risk": "ใช้ดวงของคุณกับคำถามเพื่อแลกคำตอบ",
-            "roll_ball": "หมุนลูกบอลเลย!!"
+            "answer": "válasz",
+            "game": "🎱 8ball játék",
+            "question": "kérdés",
+            "risk": "Használd a szerencsédet a kérdések megválaszolásához.",
+            "roll_ball": "Dobd a labdát!!"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
-            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
-            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
-            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_emoji": "✅ **%s** Emoji törölve.",
+            "edited_emoji": "%s hangulatjel javítva",
+            "uploading_you_emoji": "📤 Emoji feltöltése...",
+            "you_emoji_is_ready": "%s Az emoji készen áll. Próbáljuk ki!!"
         },
         "encode": {
-            "after": "หลังเข้ารหัส",
-            "before": "ก่อนเข้ารหัส",
-            "encode_message": "🔒 เข้ารหัสข้อความ",
-            "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "titkosítás után",
+            "before": "kódolás előtt",
+            "encode_message": "🔒 Üzenetek titkosítása",
+            "encode_success": "Az üzenet titkosítva lett."
         },
         "enlarge": {
-            "emoji_not_found": "❎ ดูเหมือนว่าจะไม่มีอีโมจินั้นนะหรือมันอาจจะไม่ใช่อีโมจิอะ",
-            "large_emoji": "อีโมจิตัวใหญ่ๆ",
-            "requested_by": "ร้องขอโดย %s"
+            "emoji_not_found": "❎ Úgy tűnik, hogy az emoji hiányzik, vagy nem emoji.",
+            "large_emoji": "nagy emoji",
+            "requested_by": "%skérte"
         },
         "exp": {
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "error": "❎ ไม่สามารถตั้งค่าค่าประสบการณ์ของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "exp_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "level": "ชั้น (Level)",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ค่าประสบการณ์ของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา..."
+            "can_not_find_user": "❎ Nem található ez a tag. Eh.. Elírás vagy nem?",
+            "error": "❎ Nem lehet beállítani az ilyen tagok tapasztalatát. Kérlek, próbáld újra később.",
+            "experience": "Tapasztalati pontok (Exp)",
+            "exp_was_changed": "%s felhalmozott összes tapasztalati szint rendelkezik:",
+            "level": "Szint",
+            "notification_complete": "✅ A beállítás megtörtént...",
+            "set_by_staff": "Az Ön tapasztalatait a szerver csapata határozza meg.",
+            "success": "✅ A beállítás megtörtént..."
         },
         "filter": {
-            "add_filter": "🎼 เพิ่มรูปแบบเสียงที่จะต้องการเป็น **%s** เรียบร้อยแล้วคะ",
-            "available_filter": "รูปแบบการกรองที่พร้อมใช้งาน",
-            "available_filter_description": "ปรับเปลี่ยนรูปแบบเสียงเพลงให้ไพเราะมากยิ่งขึ้นด้วยการใช้รูปแบบทั้ง %s1 รูปแบบเหล่านี้ ```%s2```",
-            "clear_filter": "💨 ล้างรูปแบบเสียงทั้งหมดออกแล้ว ตอนนี้จะเป็นรูปแบบเสียงแบบปกติคะ",
-            "list_filter_description": "ขณะนี้มีรูปแบบที่กำลังใช้งานในคิวนี้อยู่ %s1 รูปแบบ\n```%s2```",
-            "list_filter_description_empty": "```ยังไม่มีรูปแบบเสียงที่กำลังใช้ในขณะนี้คะ```",
-            "list_filter_title": "รูปแบบเสียงที่กำลังใช้ในปัจจุบัน",
-            "no_queue": "❎ ไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "remove_filter": "🗑️ ลบรูปแบบเสียง **%s** ออกเรียบร้อยแล้วคะ",
-            "set_filter": "🎼 ตั้งค่ารูปแบบเสียงที่จะต้องการเป็น **%s**",
-            "sound_filtering": "❓ ต้องการปรับเปลี่ยนเสียงเพลงของคุณเป็นแบบไหนดีคะ?",
-            "unknown_filter": "❎ เอิ่มม..ฉันไม่รู้จักรูปแบบของเสียง `%s` คุณสามารถตรวจสอบได้โดยใช้ **available** หรือ **ava** คะ",
-            "unknown_input_option": "❓ คุณสามารถระบุพารามิเตอร์ได้ดังต่อไปนี้เลยคะ: add, remove, set, available, list, clear"
+            "add_filter": "🎼 Adja hozzá a szükséges hangformátumot, hogy már **%s** legyen.",
+            "available_filter": "Elérhető szűrőformátumok",
+            "available_filter_description": "Tegye személyre zenéjét ezekkel a %s1 ```%s2``` formátumokkal",
+            "clear_filter": "💨 Minden hangformátumot töröltünk. Most normál hangformátum lesz.",
+            "list_filter_description": "Jelenleg aktív minták vannak ebben a sorban: %s1 minta\n```%s2```",
+            "list_filter_description_empty": "```Jelenleg nincs használatban hangformátum.```",
+            "list_filter_title": "A jelenleg használt hangformátum",
+            "no_queue": "❎ Jelenleg nincs lejátszott dal.",
+            "not_queue_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "remove_filter": "🗑️ A **%s** hangformátum eltávolítva.",
+            "set_filter": "🎼 Állítsa be a kívánt hangformátumot **%s**",
+            "sound_filtering": "❓ Szeretné megváltoztatni zenéje hangzását?",
+            "unknown_filter": "❎ Öhm..nem tudom a `%s` hang formátumát, ellenőrizheti a **elérhető** vagy **ava**?",
+            "unknown_input_option": "❓ A következő paramétereket adhatja meg: hozzáadás, eltávolítás, beállítás, elérhető, lista, törlés."
         },
         "guild": {
-            "afk_channel_id": "รหัสช่อง AFK",
-            "afk_timeout": "เวลาจำกัด AFK",
-            "application_id": "รหัสแอปฯ",
-            "approximate_member_count": "สมาชิกโดยประมาณ",
-            "approximate_presence_count": "สถานะโดยประมาณ",
-            "available": "พร้อม",
-            "banner": "แบนเนอร์",
-            "create_at": "สร้างเมื่อ",
-            "create_timestamp": "สร้างวันที่",
-            "default_message_notification": "แจ้งเตือน",
-            "description": "คำอธิบาย",
-            "discovery_splash": "คำโปรย",
-            "do_not_have": "ไม่มี",
-            "explicit_content_filter": "การกรอง",
-            "features": "คุณสมบัติ",
-            "guild_available": "พร้อมใช้งาน",
-            "icon": "ภาพประจำตัว",
-            "id": "รหัส",
-            "info_date": "ข้อมูลของเมื่อ",
-            "joined_at": "เข้าร่วมเมื่อ",
-            "join_timestamp": "เข้าร่วมวันที่",
-            "large": "ขนาดใหญ่",
-            "maximum_members": "สมาชิกสูงสุด",
-            "maximum_presences": "สถานะสูงสุด",
-            "member_count": "สมาชิก",
-            "mfa_level": "ระดับ MFA",
-            "name": "ชื่อ",
-            "name_acronym": "ชื่อย่อ",
-            "no": "ไม่",
-            "none": "ไม่ใช่",
-            "nsfw_level": "ระดับ NSFW",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_id": "รหัสเจ้าของ",
-            "partnered": "มีส่วนร่วม",
-            "preferred_locale": "ขอบเขต",
-            "premium_subscription_count": "สมาชิกพิเศษ",
-            "premium_tier": "บูสต์เตอร์",
-            "public_updates_channel_id": "รหัสช่องอัพเดท",
-            "rules_channel_id": "รหัสช่องกติกา",
-            "server_info": "🗄 รายละเอียดข้อมูลเซิร์ฟเวอร์",
-            "server_info_description": "ข้อมูลเกี่ยวกับเซิร์ฟเวอร์โดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "specific_use": "💡 คุณสามารถระบุข้อมูลผู้ใช้เซิร์ฟเวอร์แบบเจาะจงได้ดังนี้: **%s**",
-            "splash": "รูปเชิญชวน",
-            "system_channel_id": "รหัสช่องระบบ",
-            "unavailable": "ไม่พร้อม",
-            "unknown": "ไม่ทราบ",
-            "vanity_url_code": "โค้ดเชิญ",
-            "vanity_url_uses": "เชิญแล้ว",
-            "verification_level": "การตรวจสอบ",
-            "verified": "ยืนยัน",
-            "widget_channel_id": "รหัสช่องวิตเจ็ด",
-            "widget_enabled": "วิตเจ็ด",
-            "yes": "ใช่"
+            "afk_channel_id": "AFK csatorna kódja",
+            "afk_timeout": "korlátozott ideig AFK",
+            "application_id": "alkalmazás kódja",
+            "approximate_member_count": "Becsült tagok száma",
+            "approximate_presence_count": "becsült állapot",
+            "available": "kész",
+            "banner": "transzparens",
+            "create_at": "készült ekkor",
+            "create_timestamp": "építési dátum",
+            "default_message_notification": "figyelmeztet",
+            "description": "Leírás",
+            "discovery_splash": "szlogen",
+            "do_not_have": "nincs",
+            "explicit_content_filter": "szűrő",
+            "features": "funkció",
+            "guild_available": "használatra kész",
+            "icon": "Avatar",
+            "id": "kód",
+            "info_date": "információ, hogy mikor",
+            "joined_at": "csatlakozott",
+            "join_timestamp": "csatlakozás dátuma",
+            "large": "nagy méretű",
+            "maximum_members": "Max tag",
+            "maximum_presences": "legmagasabb státusz",
+            "member_count": "tag",
+            "mfa_level": "MFA szint",
+            "name": "név",
+            "name_acronym": "monogram",
+            "no": "nem",
+            "none": "nem",
+            "nsfw_level": "NSFW szinten",
+            "off": "kikapcsolni",
+            "on": "nyisd ki",
+            "owner_id": "tulajdonos kódja",
+            "partnered": "részt venni",
+            "preferred_locale": "hatálya",
+            "premium_subscription_count": "különleges tagja",
+            "premium_tier": "gyorsító",
+            "public_updates_channel_id": "Frissítse a csatorna kódját",
+            "rules_channel_id": "szabályok doboz kódja",
+            "server_info": "🗄 Részletes szerver információk",
+            "server_info_description": "Részletes szerver információk Ami a Discord adatain alapul.",
+            "specific_use": "💡 Konkrét szerver felhasználói információkat a következők szerint adhat meg: **%s**",
+            "splash": "meghívó kép",
+            "system_channel_id": "rendszer csatorna kódja",
+            "unavailable": "nem áll készen",
+            "unknown": "Nem tudom",
+            "vanity_url_code": "meghívó kód",
+            "vanity_url_uses": "meghívott",
+            "verification_level": "ellenőrzése",
+            "verified": "megerősít",
+            "widget_channel_id": "witseven csatorna kóddal",
+            "widget_enabled": "szomorúság",
+            "yes": "Igen"
         },
         "help": {
-            "category": "หมวดหมู่: %s",
-            "client_permissions": "สิทธิ์ (บอท): %s",
-            "command": "คำสั่ง: %s",
-            "command_detail": "📑 รายละเอียดของคำสั่ง ",
-            "command_incorrect": "❎ คำสั่งไม่ถูกต้อง",
-            "command_incorrect_guide": "เอ๋...ไม่มีคำสั่งนี้นะคะ ลองตรวจสอบใหม่โดยพิมพ์ `/help` เพื่อดูรายการคำสั่งทั้งหมดของฉันคะ",
+            "category": "Kategória: %s",
+            "client_permissions": "Engedélyek (botok): %s",
+            "command": "Rendelés: %s",
+            "command_detail": "📑 Megrendelés részletei ",
+            "command_incorrect": "❎ Helytelen sorrend",
+            "command_incorrect_guide": "Eh... nekem nincs ilyen parancsom. Kérjük, ellenőrizze újra a `/help' beírásával a parancsaim teljes listájának megtekintéséhez.",
             "commands_description": [
-                "คำสั่งทั้งหมดที่ฉันได้เรียนหรือศึกษามา เข้าใจและใช้งานได้จริง",
-                "ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **/**",
-                "`<>` หมายถึงจำเป็น `()` คือประเภทของค่าที่นำเข้าและ `[]` เป็นตัวเลือกที่ไม่จำเป็นต้องตอบก็ได้",
-                "สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `/help [คำสั่ง]` แล้วคำอธิฐานจะเป็นจริง!!"
+                "Minden parancs, amit megtanultam vagy tanultam. megérteni és ténylegesen használni",
+                "ami mielőtt felhívott volna Az előtag **/** legyen.",
+                "A „<>” azt jelenti, hogy kötelező, a „()” a beviteli típus, a „[]” pedig nem kötelező.",
+                "Az egyes parancsok részleteiért írja be a `/help [command]` parancsot, és kívánsága valóra válik!!"
             ],
-            "description": "คำอธิบาย: %s",
-            "document_name": "เอกสารข้อมูลช่วยเหลือ",
-            "how_to_use": "วิธีใช้: %s",
-            "no_description": "ไม่มีคำอธิบาย",
-            "no_need_permissions": "ไม่มีสิทธิ์ที่ต้องการ",
-            "request_by": "ร้องขอโดย",
-            "unknown_how_to_use": "ไม่มีวิธีการใช้งาน",
-            "user_permissions": "สิทธิ์ (ผู้ใช้): %s"
+            "description": "Leírás: %s",
+            "document_name": "Súgólap",
+            "how_to_use": "Segítség: %s",
+            "no_description": "nincs leírás",
+            "no_need_permissions": "Nincsenek szükséges engedélyek",
+            "request_by": "által kért",
+            "unknown_how_to_use": "nincs mód használni",
+            "user_permissions": "Engedélyek (felhasználók): %s"
         },
         "impersonate": {
-            "member_not_found": "❎ ไม่พบสมาชิกดังกล่าวในเซิร์ฟเวอร์นี้เลยคะ",
-            "success": "✅ <@%s> ถูกเสกข้อความขึ้นมาแล้ว!"
+            "member_not_found": "❎ Nem találhatók ilyen tagok ezen a szerveren.",
+            "success": "✅ <@%s> Az üzenet elkészült!"
         },
         "invite": {
-            "can_not_create_invite_link": "❎ ไม่สามารถสร้างลิงค์เชิญได้ กรุณาลองใหม่อีกครั้ง",
-            "me_do_not_have_permission": "🚫 ฉันไม่มีสิทธิ์ในการสร้างลิงค์เชิญในช่องนี้คะ",
-            "membership_invitation_card": "บัตรเชิญสมาชิก",
-            "this_product_is_free": "สินค้านี้ฟรี ห้ามวางจำหนายต่อ"
+            "can_not_create_invite_link": "❎ Nem lehet meghívó hivatkozást létrehozni Kérlek próbáld újra.",
+            "me_do_not_have_permission": "🚫 Nincs engedélyem meghívó link létrehozására ezen a csatornán.",
+            "membership_invitation_card": "tagi meghívó",
+            "this_product_is_free": "Ez a termék ingyenes, ne értékesítse tovább."
         },
         "join": {
-            "already_joined": "❎ เอ๋..แต่ฉันก็อยู่ด้วยแล้วนี่ไง?",
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "channel_joined": "✅ ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วค้าา...",
-            "joined": "▶️ ตอนนี้ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วคะ",
-            "no_channel": "❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?",
-            "not_in_channel": "❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3="
+            "already_joined": "❎ Eh..de most itt vagyok?",
+            "another_player_is_playing": "🚫 Ezt a rendelést jelenleg nem tudod használni. mert más tagok zenélnek",
+            "channel_joined": "✅ Már benne vagyok a csatornán <#%s>...",
+            "joined": "▶️ Most már a <#%s> csatornán vagyok.",
+            "no_channel": "❎ Nincs ez a csatorna. Ez elírás?",
+            "not_in_channel": "❓ Először csatlakoznod kell a csatornához. Egyébként nem tudom melyik mező =3="
         },
         "jump": {
-            "can_not_jump": "❎ ดูเหมือนว่าจะไม่มีหมายเลขคิวดังกล่าวเลยนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "jumped": "➿ กระโดดไปยังเพลงใหม่ในคิวเลขที่ %s แล้วคะ",
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ"
+            "can_not_jump": "❎ Úgy tűnik, egyáltalán nincs ilyen sorszám. Kérlek nézd meg újra.",
+            "jumped": "➿ Ugrás a %s sorszámú új dalra már.",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet játszok. nem tud átlépni",
+            "not_queue_owner": "🚫 Csak a sor tulajdonosa módosíthatja."
         },
         "kick": {
-            "can_not_find_user": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ",
-            "kicked_out": "%s ถูกเตะออก",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถเตะผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถเตะสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่เตะไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_kick": "เตะโดย: %s1\nเหตุผล: %s2"
+            "can_not_find_user": "❎ Nem találom ezt a tagot. Kérlek nézd meg újra.",
+            "kicked_out": "%s kirúgott",
+            "members_have_a_higher_role": "❎ Nem rúghatsz olyan embereket, akik magasabbak nálad.",
+            "members_have_a_higher_role_than_me": "❎ Nem tudom megrúgni azt a tagot. mert neki magasabb szerepe van nálam",
+            "no_reason": "A rúgó tagok nem indokolták meg.",
+            "reason_for_kick": "Kirúgta: %s1\nOk: %s2"
         },
         "kill": {
-            "do_not_kill_me": "❎ ค คุณจะทำอย่างงี้..ก กับฉันไม่ได้นะคะ ฮืออ...",
-            "killed": "%s1 ได้ฆ่าคุณ %s2 เรียบร้อยแล้ว 🔪"
+            "do_not_kill_me": "❎ Valami ilyesmit fogsz csinálni.. Nem velem, haha...",
+            "killed": "%s1 már megölt %s2 🔪"
         },
         "leave": {
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "not_in_any_channel": "❎ ตอนนี้ฉันยังไม่ได้อยู่ในช่องไหนเลย...",
-            "now_leave": "◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ"
+            "another_player_is_playing": "🚫 Ezt a rendelést jelenleg nem tudod használni. mert más tagok zenélnek",
+            "not_in_any_channel": "❎ Most még nem vagyok jelen egyetlen csatornán sem...",
+            "now_leave": "◀️ Kiléptem az aktuális csatornából."
         },
         "level": {
-            "delete_error": "❎ ไม่พบผู้ใช้รายนี้เลยคะ",
-            "delete_success": "✅ ลบระดับประสบการณ์ของสมาชิกนี้เรียบร้อยแล้วคะ!",
-            "deleting": "📁 กำลังลบข้อมูลระดับประสบการณ์ของสมาชิกนี้",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "level_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ระดับชั้นของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "set_error": "❎ ไม่สามารถตั้งค่าระดับชั้นของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "set_success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "user_current_no_level": "❎ สมาชิกดังกล่าวไม่มีระดับชั้นอยู่แล้ว"
+            "delete_error": "❎ Egyáltalán nem található ez a felhasználó.",
+            "delete_success": "✅ Ennek a tagnak a tapasztalati szintjét töröltük!",
+            "deleting": "📁 Tapasztalati szintű adatok törlése ehhez a taghoz.",
+            "experience": "Tapasztalati pontok (Exp)",
+            "level": "Szint",
+            "level_was_changed": "%s felhalmozott összes tapasztalati szint rendelkezik:",
+            "notification_complete": "✅ A beállítás megtörtént...",
+            "set_by_staff": "Az osztályodat a csapat állította be ezen a szerveren.",
+            "set_error": "❎ Az ilyen tagok szintjét nem lehet beállítani. Kérlek, próbáld újra később.",
+            "set_success": "✅ A beállítás megtörtént...",
+            "user_current_no_level": "❎ Az ilyen tagoknak nincs osztályszintjük."
         },
         "leveling": {
-            "bot_do_not_have_level": "❎ บอทจะไม่มีเลเวลนะคะรวมถึงฉันด้วยคะ",
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "user_no_data": "💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับชั้นและค่าประสบการณ์เลยคะ",
-            "your_experience": "ค่าประสบการณ์ของคุณ"
+            "bot_do_not_have_level": "❎ A robotoknak nem lesz szintje, nekem sem.",
+            "can_not_find_user": "❎ Nem található ez a tag. Eh.. Elírás vagy nem?",
+            "experience": "Tapasztalati pontok (Exp)",
+            "level": "Szint",
+            "user_no_data": "💨 Hmm... Ennek a tagnak nincs szintje és tapasztalata.",
+            "your_experience": "Az Ön tapasztalata"
         },
         "license": {
-            "copyright_content": "📝 เนื้อหาที่มีลิขสิทธิ์"
+            "copyright_content": "📝 Szerzői jog által védett tartalom"
         },
         "logs": {
-            "can_not_delete_file": "❎ ไม่สามารถลบไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "can_not_read_file": "❎ ไม่สามารถอ่านไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "file_has_been_deleted": "✅ **%s** ถูกลบแล้วเรียบร้อยคะ",
-            "file_not_found": "❎ ไม่พบไฟล์ที่มีชื่อ **%s** ในโฟลเดอร์เลยคะ",
-            "folder_empty": "💨 ขณะนี้ไฟล์ล็อกในโฟลเดอร์ว่างเปล่า ลองกลับมาใหม่อีกครั้งในภายหลังนะคะ",
-            "found_file": "พบ %s1 รายการของไฟล์:\n```%s2```",
-            "owner_only": "🚫 ขออภัย..คำสั่งนี้สามารถใช้งานได้เฉพาะผู้ดูแลระบบเท่านั้นคะ"
+            "can_not_delete_file": "❎ A fenti naplófájl nem törölhető.\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ A fenti naplófájl nem olvasható.\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** már törölve",
+            "file_not_found": "❎ Nem található a **%s** nevű fájl a mappában.",
+            "folder_empty": "💨 Most a mappában lévő naplófájl üres. Próbáljon meg később visszatérni.",
+            "found_file": "%s1 bejegyzés található a következő fájlokból:\n```%s2```",
+            "owner_only": "🚫 Sajnáljuk, ezt a parancsot csak rendszergazdák használhatják."
         },
         "lyrics": {
-            "can_not_find_lyrics": "ไม่พบเนื้อเพลงของ %s.",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "playing_lyrics": "📋 เนื้อเพลงของเพลงที่กำลังเล่น"
+            "can_not_find_lyrics": "Nem található dalszöveg a %shoz.",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "playing_lyrics": "📋 Az éppen játszott dal szövege"
         },
         "meme": {
-            "can_not_fetch": "ดึงข้อมูลมีมไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
-            "meme_not_found": "ไม่พบมีมประเภทที่ตรงกับ %s"
+            "can_not_fetch": "Nem sikerült lekérni a mémet. Kérlek próbáld újra.",
+            "meme_not_found": "Nem található %snak megfelelő típusú mém."
         },
         "minecraft": {
-            "address": "ที่อยู่",
-            "do_not_have": "ไม่มี",
-            "ip": "ที่อยู่ IP",
-            "last_check": "ตรวจสอบล่าสุดเมื่อ",
-            "maximum_player_count": "จำนวนผู้เล่นสูงสุด",
-            "motd": "คำอธิบาย",
-            "player_in_server": "ผู้เล่นในเซิร์ฟเวอร์",
-            "port": "พอร์ท",
-            "server_available": "🟢 เซิร์ฟเวอร์นี้กำลังเปิดให้บริการ",
-            "server_unavailable": "🔴 เซิร์ฟเวอร์นี้ได้ปิดไปชั่วคราว",
-            "skin_of": "🎴 สกินของ %s",
-            "version": "เวอร์ชั่น"
+            "address": "cím",
+            "do_not_have": "nincs",
+            "ip": "IP-cím",
+            "last_check": "utoljára ellenőrizve",
+            "maximum_player_count": "A játékosok maximális száma",
+            "motd": "Leírás",
+            "player_in_server": "szerver játékosok",
+            "port": "kikötő",
+            "server_available": "🟢 Ez a szerver jelenleg nyitva van.",
+            "server_unavailable": "🔴 Ez a szerver átmenetileg zárva tart.",
+            "skin_of": "🎴 Skins %s",
+            "version": "változat"
         },
         "musicInfo": {
-            "detail": "📄 รายละเอียดของเพลงที่กำลังเล่น",
-            "download_link": "📥 ลิงค์ดาวน์โหลด",
-            "duration": "🕒 ระยะเวลา",
-            "id": "🆔 ไอดี",
-            "link": "🔗 ลิงค์",
-            "music_name": "🎵 ชื่อเพลง",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "uploader": "🎬 ผู้อัพโหลด"
+            "detail": "📄 Az éppen lejátszott dal részletei",
+            "download_link": "📥 Letöltési link",
+            "duration": "🕒 Időtartam",
+            "id": "🆔 azonosító",
+            "link": "🔗 Link",
+            "music_name": "🎵 A dal neve",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "uploader": "🎬 feltöltő"
         },
         "nekos": {
-            "can_not_fetch_data": "❎ ไม่สามารถรับภาพที่คุณต้องการได้ชั่วคราว กรุณาลองใหม่อีกครั้งในภายหลัง",
-            "request_by": "ร้องขอโดย %s"
+            "can_not_fetch_data": "❎ Átmenetileg nem tudja elérni a kívánt képet. Kérlek, próbáld újra később.",
+            "request_by": "%skérte"
         },
         "nowPlaying": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: `%s`",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้"
+            "autoplay": "📻 Automatikus lejátszás",
+            "filter": "🎼 Hangszűrő minta: `%s",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "owner_this_queue": "%s ennek a sornak a tulajdonosa"
         },
         "numbers": {
-            "result": "ผลลัพธ์คือ %s"
+            "result": "Az eredmény %s"
         },
         "paste": {
-            "backend_not_response": "❎ ไม่พบการตอบกลับจากเซิร์ฟเวอร์เลยคะ คุณสามารถลองใหม่อีกครั้งในภายหลังได้คะ",
-            "file": "ไฟล์",
-            "raw": "ดิบ"
+            "backend_not_response": "❎ Egyáltalán nem érkezett válasz a szervertől. Később újra megpróbálhatja.",
+            "file": "fájlt",
+            "raw": "nyers"
         },
         "pause": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮ่ะ..",
-            "paused": "⏸ หยุดเล่นเพลงชั่วคราวแล้วคะ"
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "not_paused": "📼 Most elakadtam. ma furán néz ki..",
+            "paused": "⏸ Állítsa le most a zenét."
         },
         "ping": {
-            "connection": "📡 การเชื่อมต่อ",
-            "info": "เวลาแฝงไปกลับ คือ %s1 มิลลิวินาที\nอัตราการทำงานของเว็บซ็อกเก็ต คือ %s2 มิลลิวินาที",
-            "result": "🏓 ปอง",
-            "waiting": "🏓 ปิง..."
+            "connection": "📡 Csatlakozás",
+            "info": "Az oda-vissza késés %s1 ms\nwebaljzat üzemideje %s2 ms",
+            "result": "🏓 Pong",
+            "waiting": "🏓 Ping..."
         },
         "play": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "no_queue": "❎ Most még nem játszottam le egyetlen dalt sem.",
+            "not_in_channel": "❓ Először írjon be egy csatornát. Különben ne hallgass rám..."
         },
         "previous": {
-            "no_previous_song_queue": "📼 ยังไม่มีเพลงที่พึ่งเล่นไปเมื่อสักครู่นี้เลยอะ",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "previous": "⏮ กลับไปเล่นเพลงที่ผ่านมาแล้ว"
+            "no_previous_song_queue": "📼 Nincs olyan dal, amelyet mostanában játszottak volna.",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "previous": "⏮ Visszalépés az előző dalhoz"
         },
         "purge": {
-            "message_cleared": "ลบข้อความจำนวน `%s ข้อความ` ให้เรียบร้อยแล้วคะ 💨"
+            "message_cleared": "Sikeresen eltávolított `%s üzenetet 💨"
         },
         "qrcode": {
-            "qrcode_success": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ",
-            "qrcode_title": "🧩 คิวอาร์โค้ด"
+            "qrcode_success": "QR-kódja használatra kész.",
+            "qrcode_title": "🧩 QR kód"
         },
         "quality": {
-            "advice_embed_description": "```คุณภาพในปัจจุบัน: %s```\nบางครั้งปัญหาอาจเกิดจากเซิร์ฟเวอร์ที่มีการเข้าถึงการใช้งานมากจนทำให้เกิดปัญหาด้านประสิทธิภาพ อย่างไรก็ตามฉันแนะนำให้คุณควรตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณก่อนตั้งค่าสิ่งนี้\n`0` - ใช้ **OPUS** ในการบีบอัดไฟล์เสียง ซึ่งจะทำให้ได้คุณภาพเสียงที่ดีขึ้นแต่ก็ใช้ทรัพยากรมากขึ้นเช่นกัน **(แนะนำ)**\n`1` - ใช้เสียงจากต้นทางโดยตรง ซึ่งจะทำให้ได้ประสิทธิดีขึ้นแต่ก็ใช้ทรัพยากรน้อยลง",
-            "advice_embed_footer_text": "คุณสามารถตั้งค่าคุณภาพเสียงเพิ่มเติมได้จากการตั้งค่าของ Discord: การตั้งค่า > เสียงและวิดีโอ > ขั้นสูง",
-            "advice_embed_title": "ปรับแต่งคุณภาพเสียง",
-            "focus_on_high_quality": "เน้นคุณภาพสูง",
-            "low_efficiency": "เน้นประสิทธิภาพต่ำ",
-            "opus_mode_selected": "🎛️ ตอนนี้ฉันได้ใช้ **OPUS** ในการช่วยบีบอัดไฟล์เสียงแล้ว คุณภาพของเสียงจะดีขึ้น",
-            "raw_mode_selected": "🎛️ เปลี่ยนไปใช้เสียงจากทางต้นฉบับแล้ว อาจจะทำให้คุณภาพเสียงลดลง"
+            "advice_embed_description": "``` Jelenlegi minőség: %s```\nNéha a problémát egy olyan kiszolgáló okozhatja, amely túl sok hozzáféréssel rendelkezik, ami teljesítménybeli problémákat okoz.\nazt javaslom, hogy a beállítás előtt ellenőrizze az internetkapcsolatot. Ez jobb hangminőséget biztosít, de több erőforrást is használ **(ajánlott)**\n`1` – Közvetlenül a forrásból származó hangot használja. Ez jobb teljesítményt biztosít, de kevesebb erőforrást használ.",
+            "advice_embed_footer_text": "További hangminőséget állíthat be a Discord beállításainál: Beállítások > Hang és videó > Speciális.",
+            "advice_embed_title": "Szabja testre a hangminőséget",
+            "focus_on_high_quality": "a magas minőségre összpontosít",
+            "low_efficiency": "összpontosítson az alacsony teljesítményre",
+            "opus_mode_selected": "🎛️ Mostantól az **OPUS**-t használtam az audiofájlok tömörítésére. A hangminőség javulni fog.",
+            "raw_mode_selected": "🎛️ Az eredeti hangra váltott Ez csökkentheti a hangminőséget."
         },
         "queue": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: %s",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "previous_queue": "**คิวก่อนหน้านี้**",
-            "waiting_in_queue": "**กำลังรอเล่นในคิวถัดไป**"
+            "autoplay": "📻 Automatikus lejátszás",
+            "filter": "🎼 Hangszűrő minta: %s",
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet éppen játszok.",
+            "owner_this_queue": "%s ennek a sornak a tulajdonosa",
+            "previous_queue": "**előző sor**",
+            "waiting_in_queue": "**Várakozás a következő sorra**"
         },
         "queueStatus": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "duration": "🕒 ระยะเวลา",
-            "filter": "🎼 รูปแบบการกรองเสียง",
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "now": "⌚ ตอนนี้",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "paused": "หยุดชั่วคราว",
-            "playing": "กำลังเล่น",
-            "queue_status": "📑 สถานะของคิวเพลงปัจจุบัน",
-            "repeat": "🔁 ทำซ้ำ",
-            "repeat_off": "ไม่ได้เปิด",
-            "repeat_this_queue": "คิวนี้",
-            "repeat_this_song": "เพลงนี้",
-            "volume": "🔉 ระดับเสียง"
+            "autoplay": "📻 Automatikus lejátszás",
+            "duration": "🕒 Időtartam",
+            "filter": "🎼 hangszűrő minta",
+            "no_queue": "❎ Most még nem játszottam le egyetlen dalt sem.",
+            "now": "⌚ most",
+            "off": "kikapcsolni",
+            "on": "nyisd ki",
+            "owner_this_queue": "%s ennek a sornak a tulajdonosa",
+            "paused": "szünet",
+            "playing": "játszik",
+            "queue_status": "📑 Az aktuális dalsor állapota",
+            "repeat": "🔁 Ismételje meg",
+            "repeat_off": "nincs nyitva",
+            "repeat_this_queue": "ezt a sort",
+            "repeat_this_song": "ez a dal",
+            "volume": "🔉 hangerő"
         },
         "reboot": {
-            "dm_to_owner": "**:arrows_counterclockwise: มีคำขอสำหรับการรีสตาร์ทระบบใหม่ค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_reboot": "✅ เริ่มระบบใหม่แล้วคะ!!",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "rebooting": "🔄 กำลังเริ่มระบบใหม่..."
+            "dm_to_owner": "**:arrows_counterclockwise: Új rendszerindítási kérelem érkezett!!**\nÖn személyazonosságának megerősítéséhez adja meg ezt a jelszót azon a szerveren, ahol a parancsot futtatja\nHa nem akarja folytatni, figyelmen kívül hagyhatja\nKöszönöm, hogy a mai napig vigyázol rám :)\n||%s||",
+            "not_owner": "🛑 Ne... ne vedd el. Ez a funkció csak felsőbb szintű jogosultságokat igényel.",
+            "now_reboot": "✅ Új rendszer indult!!",
+            "password_is_incorrect": "❎ A jelszó helytelen. Kérlek nézd meg újra.",
+            "rebooting": "🔄 Újraindítás..."
         },
         "reload": {
-            "invalid_command": "❎ อืมม...ดูเหมือนจะไม่มีคำสั่งนี้นะคะ...ลองตรวจสอบดีๆ อีกครั้งนะคะว่าพิมพ์ถูกหรือเปล่า?",
-            "reloaded": "✅ %s โหลดใหม่เรียบร้อยแล้ว!!",
-            "reload_error": "❌ แย่ละ..ฉันพยายามโหลดคำสั่ง %s ใหม่แล้ว แต่ทำไม่ได้อะ"
+            "invalid_command": "❎ Hmmm...úgy tűnik, hogy nem ez a sorrend... próbálja meg alaposan ellenőrizni Még egyszer: helyes vagy sem?",
+            "reloaded": "✅ %s Sikeresen újratöltve!!",
+            "reload_error": "❌ A fenébe..próbáltam újra betölteni a %s parancsot, de nem megy."
         },
         "remove": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "removed": "❌ ลบ **%s** ออกจากคิวแล้วคะ.",
-            "too_much": "❎ ไม่มีคิวดังกล่าวคะ ลองตรวจสอบใหม่ดูอีกครั้งนะคะ"
+            "no_queue": "❎ Most még nem játszottam le egyetlen dalt sem.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "removed": "❌ **%s** eltávolítva a sorból.",
+            "too_much": "❎ Nincs ilyen sor. Kérlek nézd meg újra."
         },
         "repeat": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "ปิดการทำซ้ำ",
-            "repeated": "🔁 %sปัจจุบันนี้แล้วคะ",
-            "repeat_queue": "ทำซ้ำคิว",
-            "repeat_song": "ทำซ้ำเพลง",
-            "too_much": "❎ ไม่มีโหมดที่สูงกว่านี้แล้วคะ"
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet jelenleg játszok.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "off": "ismételje meg",
+            "repeated": "🔁 %smost",
+            "repeat_queue": "ismétlési sor",
+            "repeat_song": "ismételje meg a dalt",
+            "too_much": "❎ Nincs ennél magasabb mód."
         },
         "resume": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_playing": "📼 เห..ตอนนี้ฉันก็กำลังเล่นอยู่นะ",
-            "resumed": "▶️ กำลังเล่นเพลงต่อจากจุดเดิมแล้วคะ"
+            "no_queue": "❎ Most még nem játszottam le egyetlen dalt sem.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "now_playing": "📼 Szia.. Most játszom.",
+            "resumed": "▶️ A dal ugyanarról a pontról szól."
         },
         "rip": {
-            "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้วนะค่ะ"
+            "no_image": "❎ Ó... úgy néz ki, mint ez a kép Lehet, hogy törölték vagy másik helyre helyezték át."
         },
         "rpc": {
-            "answered": "คุณได้เลือกคำตอบของคุณแล้ว",
-            "bot_winner": "เย้!..ฉันชนะคุณ <@%s>",
-            "can_not_play_with_another_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทตัวอื่นได้นะคะ",
-            "choose_options": "เลือกตัวเลือกด้านล่างนี้ได้เลย",
-            "game_timeout": "เกมนี้หมดเวลาแล้วค่ะ ขอบคุณที่มาสนุกกันนะคะ",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะไม่อยู่ในเซิร์ฟเวอร์นี้แล้วแฮ่ะ",
-            "rock_paper_scissors": "🎮 เป่ายิ้งฉุบ",
-            "tie": "เสมอกัน!",
-            "user_answered": "%s ได้เลือกคำตอบแล้ว กำลังรอคำตอบจากอีกฝั่ง...",
-            "user_winner": "<@%s> คือผู้ชนะ!",
-            "your_answer": "ตอนนี้คุณได้เลือก %s"
+            "answered": "Ön kiválasztotta a választ.",
+            "bot_winner": "Jaj!..megvertelek <@%s>",
+            "can_not_play_with_another_bot": "❎ Nem játszhatja ezt a játékot más botokkal.",
+            "choose_options": "Válasszon az alábbi lehetőségek közül.",
+            "game_timeout": "Ez a játék lejárt. Köszönöm a szórakozást.",
+            "member_not_found": "❎ Úgy tűnik, hogy az ilyen tagok már nincsenek ezen a szerveren.",
+            "rock_paper_scissors": "🎮 kőpapírolló",
+            "tie": "Nyakkendő!",
+            "user_answered": "%s válasz lett kiválasztva. Várom a választ a másik oldalról...",
+            "user_winner": "<@%s> a nyertes!",
+            "your_answer": "Most %s"
         },
         "say": {
-            "success": "✅ ส่งข้อความเรียบร้อยแล้วคะ"
+            "success": "✅ Üzenetét elküldtük."
         },
         "search": {
-            "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่...",
-            "invalid_number": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม",
-            "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย...",
-            "playlist_type": "เพลย์ลิสต์",
-            "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ",
-            "searching": "🔍 ค้นหา%sที่เกี่ยวข้อง",
-            "song_type": "เพลง",
-            "timer_choose": "มีเวลาในการเลือก%s 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-            "title_results": "ผลการค้นหาของ%sดังกล่าว:",
-            "user_not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "get_list_of_songs": "📋 Megkaptam a kívánt dalok listáját. és egy pillanat múlva elkezd zenélni...",
+            "invalid_number": "🔴 A legutóbbi kereséseket törölték. Ugyanazon parancs beírásával újra kereshet.",
+            "no_results": "❎ Próbáltam rákeresni a dalra, de nem találtam eredményt...",
+            "playlist_type": "lejátszási lista",
+            "search_cancelled": "🕘 Megszakítottam a keresést..mert nem található dalválasztás.",
+            "searching": "🔍 Találj%skapcsolódót",
+            "song_type": "dal",
+            "timer_choose": "Választható idő%s 60 másodperc Ha törölni akarja, beírhat egy nem releváns számot, vagy várhat az idő lejártáig.",
+            "title_results": "%stalálat, például:",
+            "user_not_in_channel": "❓ Először írjon be egy csatornát. Különben ne hallgass rám..."
         },
         "seek": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "seek_guide": "❓ ต้องการเปลี่ยนเวลาของเพลงที่เล่นอยู่เป็นเวลากี่วินาทีดีคะ? ตอนนี้เล่นอยู่วินาทีที่ %s",
-            "sought": "🕘 เปลี่ยนแปลงเวลาของเพลงที่เล่นอยู่ในปัจจุบันแล้วคะ",
-            "too_much": "❎ เวลาของเพลงนี้อยู่ที่ %s เกินกว่านี้ก็ไม่มีอะไรอะ"
+            "no_queue": "❎ Jelenleg nincs lejátszott dal.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "seek_guide": "❓ Hány másodpercig szeretné megváltoztatni az éppen lejátszott dal idejét? Most %smásodpercnél játszik",
+            "sought": "🕘 Megváltoztatta az éppen lejátszott dal időpontját.",
+            "too_much": "❎ Ennek a dalnak az ideje %s Nincs ennél több."
         },
         "set_command": {
-            "can_not_manage_this_command": "❎ คุณไม่สามารถจัดการกับคำสั่งนี้ได้",
-            "command_input_empty": "❎ กรุณากรอกคำสั่งที่ต้องการจะจัดการด้วยคะ",
-            "command_not_found": "❎ ไม่พบคำสั่งดังกล่าว ลองตรวจสอบอักขระหรือตัวอักษรใหม่อีกครั้ง",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-command** - จัดการคำสั่งของฉันทั้งหมด เช่น `เปิด`-||ปิด|| ใช้งานคำสั่งแต่ละรายการ เป็นต้น\n\n**คำสั่ง** - (%s1):\n%s2\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s3```",
-            "disabled": "☑️ ปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "enabled": "✅ เปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "title": "🪄 คำสั่ง"
+            "can_not_manage_this_command": "❎ Ezt a sorrendet nem módosíthatja.",
+            "command_input_empty": "❎ Kérjük, adja meg a megrendelést, amellyel foglalkozni szeretne.",
+            "command_not_found": "❎ A fenti parancs nem található. Próbálja újra ellenőrizni a karaktereket vagy karaktereket.",
+            "data_at": "információ, hogy mikor",
+            "description": "**set-command** - kezeli az összes parancsomat, pl. `on`-||off||, egyedi parancsok futtatása stb.\n\n**parancsok** - (%s1):\n%s2\n\n> Ön Ez lehet módosítva a következő beírásával:\n> ```%s3```",
+            "disabled": "☑️ Rendelés letiltva **%s** már.",
+            "enabled": "✅ A rendelés aktiválva **%s** már.",
+            "title": "🪄 parancsot"
         },
         "set_language": {
-            "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา %s อยู่แล้วนะ",
-            "description": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาของเซิร์ฟเวอร์นี้คือ: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
-            "set_success": "✅ เปลี่ยนภาษาเป็น **%s** เรียบร้อยแล้วคะ",
-            "title": "🌐 ภาษา"
+            "already_set": "❎ Eh...de ez a szerver már %s nyelvet használja",
+            "description": "**%s-language** - Állítsa be\n\nnyelvet%sez\nmegkönnyíti a megértést\n\n",
+            "set_success": "✅ Már módosította a nyelvet **%s**-ra.",
+            "title": "🌐 Nyelv"
         },
         "set_notify": {
-            "channel_not_found": "❎ ไม่พบช่องดังกล่าวในเซิร์ฟเวอร์นี้เลยอะ ลองตรวจสอบใหม่อีกครั้งนะคะ",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-notify** - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์\n\n**alert** - การแจ้งเตือนทั่วไป: %s1\n**channelCreate** - ช่องใหม่: %s2\n**channelDelete** - ช่องถูกลบ: %s3\n**channelPinsUpdate** - ช่องได้รับการปักหมุด: %s4\n**channelUpdate** - ช่องได้รับการอัพเดท: %s5\n**emojiCreate** - อีโมจิใหม่: %s6\n**emojiDelete** - อีโมจิถูกลบ: %s7\n**emojiUpdate** - อีโมจิได้รับการอัพเดท: %s8\n**guildBanAdd** - สมาชิกถูกแบน: %s9\n**guildBanRemove** - สมาชิกถูกปลดแบน: %s10\n**guildIntegrationsUpdate** - อัปเดตการรวมกิลด์: %s11\n**guildMemberAdd** - สมาชิกเข้าร่วมเซิร์ฟเวอร์: %s12\n**guildMemberRemove** - สมาชิกออกจากเซิร์ฟเวอร์: %s13\n**guildMembersChunk** - ได้รับสมาชิกกิลด์จำนวนมาก: %s14\n**guildUnavailable** - เซิร์ฟเวอร์ไม่พร้อมใช้งาน: %s15\n**inviteCreate** - ลิงค์เชิญถูกสร้าง: %s16\n**inviteDelete** - ลิงค์เชิญถูกลบ: %s17\n**roleCreate** - บทบาทถูกสร้าง: %s18\n**roleDelete** - บทบาทถูกลบ: %s19\n**roleUpdate** - บทบาทได้รับการอัพเดท: %s20\n**stageInstanceCreate** - เวทีถูกสร้าง: %s21\n**stageInstanceDelete** - เวทีถูกลบ: %s22\n**stageInstanceUpdate** - เวทีได้รับการอัพเดท: %s23\n**stickerCreate** - สติกเกอร์ถูกสร้าง: %24\n**stickerDelete** - สติกเกอร์ถูกลบ: %s25\n**stickerUpdate** - สติกเกอร์ได้รับการอัพเดท: %s26\n**threadCreate** - เธรดถูกสร้าง: %s27\n**threadDelete** - เธรดถูกลบ: %s28\n**threadUpdate** - เธรดได้รับการอัพเดท: %s29\n**webhookUpdate** - เว็บฮุกได้รับการอัพเดท: %s30\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s31```",
-            "not_set": "`ไม่ได้ตั้งค่า`",
-            "remove_success": "✅ ลบการแจ้งเตือนประเภท `%s` ออกเรียบร้อยแล้วค่ะ",
-            "set_success": "✅ ตั้งค่าการแจ้งเตือนประเภท `%s1` เป็นช่อง `<#%s2>` เรียบร้อยแล้วค่ะ",
-            "title": "🔔 การแจ้งเตือน",
-            "type_not_found": "❎ อืมม...ดูเหมือนว่าจะไม่มีประเภทดังกล่าวนะคะ ตอนนี้ยังมีแค่ประเภทเหล่านี้: %s"
+            "channel_not_found": "❎ Nem található ilyen csatorna ezen a szerveren. Kérlek nézd meg újra.",
+            "data_at": "információ, hogy mikor",
+            "description": "**set-notify** - Állítsa be az egyes értesítéstípusokat, hogy megkapja a legfrissebb információkat a szervertől\n\n**riasztás** - Általános értesítés: %s1\n**csatornaLétrehoz** - Új csatorna: %s2\n* *csatorna törlése* * - Csatorna törölve: %s3\n**csatornaPinsUpdate** - Csatorna rögzítve: %s4\n**csatorna frissítése** - Csatorna frissítve: %s5\n**emojiCreate** - E Új hangulatjelek: %s6\n**emojiDelete** - Emojik törölve: %s7\n**emojiUpdate** - Hangulatjelek frissítve: %s8\n**guildBanAdd** - Kitiltott tagok: %s9\n**guildBanRemove** - Tag kitiltása: %s10\n- **GuildInte Integrációs frissítés: %s11\n**guildMemberAdd** - Tag csatlakozási kiszolgáló: %s12\n** guildMemberRemove** - Tag bal oldali szervere: %s13\n**guildMembersChunk** - Sok céhtag lett: %s\n**guild*28 * - A szerver nem elérhető: %s15\n**inviteCreate** - Meghívó link létrehozva: %s16\n**inviteDelete** - Meghívó link törölve: %s17\n**roleCreate** - Szerep létrehozva: %s18\n**roleDelete* * - Szerepkör törölve: %s19\n* *roleUpdate** - Szerep frissítve: %s20\n**stageInstanceCreate** - Létrehozott szakasz: %s21\n**stageInstanceDelete** - Törölt szakasz: %s22\n**stageInstanceUpdate** A szakasz megtörtént Frissítések: %s23\n**stickerCreate** - Matricák létrehozva: %24\n**matrica törlése** - Matricák eltávolítva: %s25\n**stickerUpdate** - Matricák frissítve: %s26\n**threadCreate** - Téma létrehozva: %s27\n**threadDelete** - Szál törölve: %s28\n**threadUpdate** - Szál frissítve: %s29\n**webhookUpdate** - Webhook Frissítve: %s30\n\n>\nbeírásával módosíthatja > ```%s31```",
+            "not_set": "\"Nincs beállítva\".",
+            "remove_success": "✅ Sikeresen eltávolította a „%s” értesítéstípust.",
+            "set_success": "✅ A `%s1` riasztástípus a `<#%s2>` csatornára lett állítva.",
+            "title": "🔔 Értesítések",
+            "type_not_found": "❎ Hmm...úgy tűnik, nincs ilyen típus. Jelenleg csak a következő típusok állnak rendelkezésre: %s"
         },
         "set_personal": {
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-personal** - ตั้งค่าการอนุญาตสำหรับการดูข้อมูลส่วนตัวของคุณ (มีผลเฉพาะกับ Shioru เท่านั้น)\n\nสามารถดูโปรไฟล์ได้: `%s1`\nสามารถดูข้อมูลใน Discord ได้: `%s2`\nสามารถดูรหัสประจำตัวได้: `%s3`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s4```",
-            "false_success": "✅ %s ของคุณได้รับการยกเลิกการอนุญาตแล้วคะ",
-            "no": "ไม่ใช่",
-            "title": "📄 ข้อมูลส่วนบุคคล",
-            "true_success": "✅ %s ของคุณได้รับการอนุญาตแล้วคะ",
-            "yes": "ใช่"
+            "data_at": "információ, hogy mikor",
+            "description": "**set-personal** - Engedélyek beállítása a személyes adatok megtekintéséhez. (Csak Shioru esetén érvényes)\n\nMegnézheti a profilt: `%s1`\nMegnézheti a viszályadatokat: `%s2`\nMegtekintheti az azonosítót: `%s3`\n\n> A következő beírásával módosíthatja:\n> ```%s4 ```",
+            "false_success": "✅ %s Engedélyét törölték.",
+            "no": "nem",
+            "title": "📄 Személyes adatok",
+            "true_success": "✅ A %s engedélyezve van.",
+            "yes": "Igen"
         },
         "settings": {
-            "description": "คุณสามารถกำหนดค่าตามความต้องการของคุณได้โดยใช้งานคำสั่งเหล่านี้",
-            "languages": "🌐 ภาษา (เซิร์ฟเวอร์)",
-            "note": "หมายเหตุ: บางคำสั่งอาจจะต้องการสิทธิ์บางอย่างก่อนทำงาน",
-            "notification": "🔔 การแจ้งเตือน (เซิร์ฟเวอร์)",
-            "personal": "📄 ข้อมูลส่วนบุคคล (ส่วนตัว)",
-            "prefix": "❕ คำสั่ง (เซิร์ฟเวอร์)",
-            "title": "⚙️ การตั้งค่า"
+            "description": "Ezekkel a parancsokkal az igényeinek megfelelően konfigurálhatja.",
+            "languages": "🌐 Nyelv (szerver)",
+            "note": "Megjegyzés: Egyes parancsok futtatása előtt bizonyos engedélyekre lehet szükség.",
+            "notification": "🔔 Értesítés (szerver)",
+            "personal": "📄 Személyes adatok (személyes)",
+            "prefix": "❕ parancs (szerver)",
+            "title": "⚙️ Beállítások"
         },
         "shuffle": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_shuffle": "🔀 เริ่มสับเปลี่ยนคิวแล้ว..."
+            "no_queue": "❎ Jelenleg nincs lejátszott dal.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "now_shuffle": "🔀 Megkezdődik a sorváltás..."
         },
         "shutdown": {
-            "dm_to_owner": "**:red_circle: มีคำขอสำหรับการปิดระบบค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_shutdown": "💤 ปิดระบบบน Discord แล้วคะ..แล้วพบกันใหม่นะคะ~",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "shutting_down": "🔄 กำลังปิดระบบตัวเอง..."
+            "dm_to_owner": "**:red_circle: Leállítási kérelem érkezett!!**\nÖn személyazonossága megerősítéséhez adja meg ezt a jelszót azon a szerveren, amelyen a parancsot futtatja\nHa nem akarja folytatni, figyelmen kívül\n. Vigyázz rám a mai napig :)\n||%s||",
+            "not_owner": "🛑 Ne... ne vedd el. Ez a funkció csak felsőbb szintű jogosultságokat igényel.",
+            "now_shutdown": "💤 A rendszer a Discordon le van tiltva..Viszontlátásra~",
+            "password_is_incorrect": "❎ A jelszó helytelen. Kérlek nézd meg újra.",
+            "shutting_down": "🔄 A rendszer leállítása..."
         },
         "skip": {
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "skipped": "⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว"
+            "no_queue": "❎ Jelenleg nincs olyan dal, amelyet játszok. nem tud átlépni",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "skipped": "⏭ Kihagytam, és hamarosan elkezdek egy új dalt játszani a sorban."
         },
         "snake": {
-            "building_board_game": "🐍 กำลังจัดวางองค์ประกอบ กรุณารอสักครู่...",
-            "game_name": "งู: เกม",
-            "game_over": "เกมจบแล้ว",
-            "game_score": "คะแนน: **%s1**\nเวลา: **%s2** วินาที",
-            "played_on": "เริ่มเล่นแล้วโดย %s"
+            "building_board_game": "🐍 Összetétel Kis türelmét kérem...",
+            "game_name": "Snake: The Game",
+            "game_over": "játék vége",
+            "game_score": "Pontszám: **%s1**\nIdő: **%s2** másodperc",
+            "played_on": "%s-val indult"
         },
         "status": {
-            "data_by_server": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์",
-            "dnd_status": "จำนวนสมาชิกที่ห้ามรบกวนในขณะนี้ คือ \n```%s```",
-            "idle_status": "จำนวนสมาชิกที่ไม่อยู่ในขณะนี้ คือ \n```%s```",
-            "offline_status": "จำนวนสมาชิกที่ออฟไลน์ในขณะนี้ คือ \n```%s```",
-            "online_status": "จำนวนสมาชิกที่ออนไลน์ในขณะนี้ คือ \n```%s```"
+            "data_by_server": "Referencia adatok a szerverről.",
+            "dnd_status": "A Ne zavarjanak módban jelenleg \n```%s``` tagok száma.",
+            "idle_status": "A jelenleg hiányzó tagok száma \n```%s```.",
+            "offline_status": "A jelenleg nem elérhető tagok száma \n```%s```",
+            "online_status": "Jelenleg online tagok száma \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
-            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
-            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
-            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
-            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_sticker": "✅ **%s** A matrica sikeresen eltávolítva",
+            "does_not_support_gif": "❎ Sajnáljuk... A Discord jelenleg nem támogatja a GIF-alapú egyéni matricákat.",
+            "edited_sticker": "%s matrica szerkesztve.",
+            "uploading_you_sticker": "📤 Matricák feltöltése...",
+            "you_sticker_is_ready": "%s A matrica készen áll. Próbáljuk ki!!"
         },
         "stop": {
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "stopped": "⏹️ หยุดเล่นเพลงและลบคิวทั้งหมดออกแล้วคะ"
+            "no_queue": "❎ Eh...az általam játszott dal nem érhető el.",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "stopped": "⏹️ Állítsa le a zenelejátszást, és törölje az összes sort."
         },
         "system": {
             "info_battery": {
-                "charging": "กำลังชาร์จ",
-                "not_charging": "ไม่ได้ชาร์จ",
-                "title": "• แบตเตอรี่",
-                "without": "ไม่มี"
+                "charging": "töltés",
+                "not_charging": "nem tölt",
+                "title": "• akkumulátor",
+                "without": "nincs"
             },
-            "info_description": "ข้อมูลของระบบที่ฉันกำลังทำงานอยู่ในขณะนี้ตามที่ทางระบบให้ข้อมูลมาได้ดังนี้คะ",
-            "info_gpu_control": "• GPU (ควบคุม)",
-            "info_gpu_display": "• GPU (แสดงผล)",
-            "info_memory_used": "• หน่วยความจำที่ใช้ไป",
-            "info_platform": "• แพลตฟอร์ม",
-            "info_system": "• ระบบ",
-            "info_temperature": "• อุณหภูมิ CPU",
-            "info_title": "🖥 ข้อมูลพื้นฐานของระบบ",
+            "info_description": "Annak a rendszernek az információi, amelyen jelenleg dolgozom, a rendszer által biztosított módon a következők.",
+            "info_gpu_control": "• GPU (vezérlő)",
+            "info_gpu_display": "• GPU (kijelző)",
+            "info_memory_used": "• használt memória",
+            "info_platform": "• Felület",
+            "info_system": "• rendszer",
+            "info_temperature": "• CPU hőmérséklet",
+            "info_title": "🖥 A rendszer alapinformációi",
             "info_uptime": {
-                "info": "%s1 วัน %s2 ชั่วโมง ",
-                "title": "• เวลาทำงาน"
+                "info": "%s1 nap %s2 óra ",
+                "title": "• Munkaidő"
             },
-            "loading": "⚙️ กำลังส่งคำขอดึงข้อมูลระบบจากเซิร์ฟเวอร์...",
-            "main": "หลัก",
-            "unknown": "ไม่ทราบ"
+            "loading": "⚙️ Kérelem küldése a rendszeradatok lekérésére a szerverről...",
+            "main": "fő-",
+            "unknown": "Nem tudom"
         },
         "tictactoe": {
-            "button_is_selected": "❎ ช่องนั้นถูกครอบครองอยู่แล้ว",
-            "can_not_duel_with_me": "❎ ฉันไม่ถนัดการเล่นเกมพวกนี้หรอก ฉันถนัดตัดสินมากกว่าน่ะ",
-            "can_not_play_with_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทได้นะคะ",
-            "in_another_duel": "❎ <@%s> ขณะนี้อยู่ในการดวลกับคนอื่นอยู่",
-            "in_duel": "❎ ไม่ได้สิๆ คุณต้องดวลกับ <@%s> ให้จบก่อนน",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะถูกลักพาตัวไปที่อื่นแล้วคะ",
-            "need_one_emoji": "❎ ขอเป็นอีโมจิ 1 ตัวน้าอย่างเช่น ❌ หรือ ⭕ ก็ได้",
-            "tie": "เสมอกัน!",
-            "wait_opponent": "❓ รอฝั่งตรงข้ามสักครู่นะ",
-            "winner": "%s ชนะแล้ว!"
+            "button_is_selected": "❎ A csatorna már foglalt.",
+            "can_not_duel_with_me": "❎ Nem vagyok jó ezekben a játékokban. ítélkezőbb vagyok.",
+            "can_not_play_with_bot": "❎ Ezt a játékot nem lehet botokkal játszani.",
+            "in_another_duel": "❎ <@%s> Jelenleg párbajban valaki mással.",
+            "in_duel": "❎ Nem, a végsőkig meg kell küzdened a <@%s>-val.",
+            "member_not_found": "❎ Úgy tűnik, hogy az ilyen tagokat valahol máshol rabolták el.",
+            "need_one_emoji": "❎ Kaphatok 1 hangulatjelet, mint például ❌ vagy ⭕?",
+            "tie": "Nyakkendő!",
+            "wait_opponent": "❓ Várjon egy pillanatra az ellenkező oldalra.",
+            "winner": "%s nyert!"
         },
         "timeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งหมดเวลาให้ตัวเองได้",
-            "can_not_set_timeout": "❎ ฉันไม่สามารถตั้งหมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งหมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน %s1 ซึ่งคุณสามารถดูเวลาที่เหลือได้ในเซิร์ฟเวอร์นั้น **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้หมดเวลาใน %s2 นาที **เหตุผล**: %s3"
+            "can_not_set_for_yourself": "❎ Nem állíthat be időtúllépést magának.",
+            "can_not_set_timeout": "❎ Nem tudok időkorlátot beállítani neki, mert magasabb szerepe van nálam.",
+            "can_not_set_to_admin": "❎ Nem állíthat be időtúllépést a moderátorok számára.",
+            "dm_to_user": "⌛ %s1-ben időtúllépésre van beállítva, a fennmaradó időt láthatja a szerveren **Ok**: %s2",
+            "member_not_found": "❎ A tagok nem mondják, hogy már nincsenek ezen a szerveren.",
+            "no_reason": "nem ad okot",
+            "success": "%s1 %s2 percen belül lejár **Ok**: %s3"
         },
         "together": {
-            "can_not_open": "❌ เอิ่มม..คือว่า เปิด %s ไม่ได้อะ",
-            "do_not_have": "❎ อ่าา..ตอนนี้ยังไม่มี %s1 อะ หรือไม่ก็อาจจะไม่มีจริงๆ นั้นแหล่ะ\nแต่ Together ที่ใช้ได้ในตอนนี้มีทั้งหมด %s2 รายการ คือ\n```%s3```",
-            "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแล",
-            "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/",
-            "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ได้ถูก",
-            "voice_channel_not_found": "❎ เอ๋..แต่ไม่มีช่องเสียงนั้นอยู่ในเซิร์ฟเวอร์นี้นะ ลองเข้าไปในช่องเสียงแล้วลองใหม่สิ"
+            "can_not_open": "❌ Ööö..ezért nem tudom megnyitni %s",
+            "do_not_have": "❎ Ah.. Most még mindig nincs %s1, vagy lehet, hogy nincs is\n, de a most használható Együtt %s2 elemet tartalmaz, nevezetesen\n```%s3```",
+            "do_not_have_permission": "❌ Nem tudom aktiválni, mert nincs működési engedélyem. Kérjük, forduljon a moderátorhoz.",
+            "join_via_this_link": "Csatlakozz ezen a linken keresztül. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Először lépjen be az egyik hangcsatornába, vagy mondja meg annak a csatornának a nevét vagy azonosítóját. Képes lesz megfelelően linket létrehozni.",
+            "voice_channel_not_found": "❎ Eh...de nincs hangcsatorna ezen a szerveren Lépjen be az audiocsatornába, és próbálja újra."
         },
         "translate": {
-            "can_not_translate": "❎ ไม่สามารถแปลภาษาข้อความดังกล่าวได้ กรุณาลองใหม่อีกครั้งในภายหลังนะคะ",
-            "says": "พูดว่า",
-            "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** %s"
+            "can_not_translate": "❎ Nem lehet lefordítani az ilyen szöveg nyelvét. Kérlek, próbáld újra később.",
+            "says": "mond",
+            "translate_support": "❎ Érvénytelen fordítási kód Kérjük, ellenőrizze újra.\n**Támogatott nyelvek:** %s"
         },
         "unban": {
-            "no_one_gets_banned": "❎ ตอนนี้ยังไม่มีใครในเซิร์ฟเวอร์ที่ถูกแบนอยู่เลยอะ",
-            "no_reason": "สมาชิกที่ปลดแบนไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_unban": "ปลดแบนโดย: %s1\nเหตุผล: %s2\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-            "this_user_not_banned": "❎ เอ๋..สมาชิกที่ว่านั้นไม่ได้โดนแบนนะ ลองตรวจดูคีย์เวิร์ดใหม่ดีๆ อีกรอบสิ...",
-            "user_has_been_unbanned": "%s ได้รับการปลดแบน"
+            "no_one_gets_banned": "❎ A szerveren jelenleg senki sincs kitiltva.",
+            "no_reason": "A kitiltott tagok nem indokolták meg.",
+            "reason_for_unban": "Feloldotta: %s1\nOk: %s2\nMiután a tagot feloldották. Az ilyen tagok normálisan csatlakozhatnak ehhez a szerverhez.",
+            "this_user_not_banned": "❎ Eh.. azt a tagot nem tiltották ki. Nézzünk meg még egyszer néhány nagyszerű új kulcsszót...",
+            "user_has_been_unbanned": "%s tiltva"
         },
         "untimeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับตัวเองได้",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "can_not_set_untimeout": "❎ ฉันไม่สามารถตั้งให้ไม่หมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน %s1 แล้ว **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้ไม่หมดเวลาแล้ว **เหตุผล**: %s2"
+            "can_not_set_for_yourself": "❎ Nem állíthat be időtúllépést magának.",
+            "can_not_set_to_admin": "❎ Nem állíthat be időtúllépést a moderátorok számára.",
+            "can_not_set_untimeout": "❎ Nem tudom beállítani, hogy ne hagyja ki az időt, mert magasabb szerepe van nálam.",
+            "dm_to_user": "⏲️ Törölték Önt, hogy időtúllépést állítson be %s1-ben **Ok**: %s2",
+            "member_not_found": "❎ A tagok nem mondják, hogy már nincsenek ezen a szerveren.",
+            "no_reason": "nem ad okot",
+            "success": "%s1 Időtúllépés beállítva **Ok**: %s2"
         },
         "uptime": {
-            "days": "วัน",
-            "hours": "ชั่วโมง",
-            "info_title": "🕒 เริ่มทำงานมาแล้ว เป็นเวลา",
-            "minute": "นาที",
-            "second": "วินาที"
+            "days": "nap",
+            "hours": "óra",
+            "info_title": "🕒 Ideje elkezdeni dolgozni.",
+            "minute": "perc",
+            "second": "második"
         },
         "user": {
-            "avatar": "ภาพประจำตัว",
-            "bot": "บอท",
-            "can_not_find_user": "💡 ฉันหาสมาชิกดังกล่าวไม่เจออะ..ลองใช้ชื่อเต็มหรือรหัสผู้ใช้ดูนะคะ ตัวอย่าง: <@%s>",
-            "created_at": "สร้างเมื่อ",
-            "created_timestamp": "สร้างวันที่",
-            "default_avatar_url": "ภาพประจำตัวเดิม",
-            "discriminator": "รหัสท้าย",
-            "id": "รหัสประจำตัว",
-            "info_date": "ข้อมูลของเมื่อ",
-            "none": "ไม่",
-            "partial": "บางส่วน",
-            "system": "ระบบ",
-            "tag": "แท็ก",
-            "unknown": "ไม่ทราบ",
-            "user_info": "👥 รายละเอียดข้อมูลผู้ใช้งาน",
-            "user_info_description": "ข้อมูลเกี่ยวกับผู้ใช้งานโดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "username": "ชื่อผู้ใช้",
-            "yes": "ใช่"
+            "avatar": "Avatar",
+            "bot": "bot",
+            "can_not_find_user": "💡 Nem találom azt a tagot..próbáld meg a teljes nevet vagy a felhasználónevet. Példa: <@%s>",
+            "created_at": "készült ekkor",
+            "created_timestamp": "építési dátum",
+            "default_avatar_url": "eredeti avatar",
+            "discriminator": "lábléc kódja",
+            "id": "ID",
+            "info_date": "információ, hogy mikor",
+            "none": "nem",
+            "partial": "néhány",
+            "system": "rendszer",
+            "tag": "címkéket",
+            "unknown": "Nem tudom",
+            "user_info": "👥 Felhasználói információk részletei",
+            "user_info_description": "Részletes információk a felhasználókról Ami a Discord adatain alapul.",
+            "username": "Felhasználónév",
+            "yes": "Igen"
         },
         "version": {
-            "working_in_version": "ฉันกำลังทำงานอยู่บนเวอร์ชั่น: **%s**"
+            "working_in_version": "A verzión dolgozom: **%s**"
         },
         "volume": {
-            "adjusted": "🔊 ปรับเสียงไปที่ระดับ: **%s**",
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ จะไปปรับเสียงอะไรอ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "this_volume": "🔈 ปริมาณเสียงปัจจุบันคือ: **%s**"
+            "adjusted": "🔊 Állítsa be a hangerőt: **%s**",
+            "no_queue": "❎ Eh...az általam játszott dal nem érhető el. Mit fogsz igazítani?",
+            "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
+            "this_volume": "🔈 Jelenlegi hangerő: **%s**"
         },
         "weather": {
-            "clear_weather": "อากาศแจ่มใส",
-            "cloudy": "มีเมฆมาก",
-            "date": "📆 วันที่",
-            "day": "📅 วัน",
-            "degree_type": "⚖️ หน่วยวัด",
-            "feels_like": "🎐 รู้สึกเหมือน",
-            "humidity": "💧 ความชื้น",
-            "information_from_microsoft": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft",
-            "light_rain": "ฝนตกปรอยๆ",
-            "mostly_clear": "ท้องฟ้าแจ่มใสเป็นส่วนใหญ่",
-            "mostly_cloudy": "มีเมฆมากเป็นส่วนใหญ่",
-            "mostly_sunny": "แดดจัดเป็นส่วนใหญ่",
-            "no_result_found": "❎ เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-            "partly_cloudy": "มีเมฆบางส่วน",
-            "partly_sunny": "แดดออกเป็นบางส่วน",
-            "rain": "ฝนตก",
-            "rain_showers": "ฝนตกหนัก",
-            "sunny": "แดดจัด",
-            "temperature": "🌡️ อุณหภูมิ",
-            "timezone": "🌐 เขตเวลา",
-            "weather": "⛅ สภาพอากาศ",
-            "weather_at_the_moment": "สภาพอากาศของ __**%s1**__ ในขณะนี้คือ \n```%s2```",
-            "wind": "🎏 ลม"
+            "clear_weather": "tiszta idő",
+            "cloudy": "felhős",
+            "date": "📆 dátum",
+            "day": "📅 nap",
+            "degree_type": "⚖️ Mértékegységek",
+            "feels_like": "🎐 úgy érzem",
+            "humidity": "💧 Páratartalom",
+            "information_from_microsoft": "Pontos és pontos információk a Microsofttól",
+            "light_rain": "szitálás",
+            "mostly_clear": "Többnyire felhős",
+            "mostly_cloudy": "Többnyire felhős",
+            "mostly_sunny": "Túlnyomóan napos",
+            "no_result_found": "❎ Eh...kerestem információkat erről a területről, de nem találtam.",
+            "partly_cloudy": "részben felhős",
+            "partly_sunny": "részben napos",
+            "rain": "eső",
+            "rain_showers": "heves esőzés",
+            "sunny": "napos",
+            "temperature": "🌡️ Hőmérséklet",
+            "timezone": "🌐 Időzóna",
+            "weather": "⛅ Időjárás",
+            "weather_at_the_moment": "__**%s1**__ időjárása most \n```%s2```.",
+            "wind": "🎏 szél"
         }
     },
     "events": {
         "channelCreate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_create_channel": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างช่อง: <#%s>"
+            "channel_notification": "🪧 csatorna",
+            "member_create_channel": "> Szervertag által létrehozott csatorna: <#%s>"
         },
         "channelDelete": {
-            "channel_notification": "🪧 ช่อง",
-            "member_delete_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ระเบิดช่อง: `%s`"
+            "channel_notification": "🪧 csatorna",
+            "member_delete_channel": "> Szervertag robbantott csatorna: `%s`"
         },
         "channelPinsUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_pins_in_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ปักหมุนที่ช่อง: <#%s1> เมื่อ %s2"
+            "channel_notification": "🪧 csatorna",
+            "member_pins_in_channel": "> A kiszolgáló tagja rögzítette a helyet: <#%s1>, ha %s2"
         },
         "channelUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_update_channel": "> สมาชิกในเซิร์ฟเวอร์ได้เปลี่ยนแปลงข้อมูลบางอย่างที่ช่อง: `%s1` เป็น <#%s2>"
+            "channel_notification": "🪧 csatorna",
+            "member_update_channel": "> Egy szervertag módosított néhány mezőt: `%s1` <#%s2>-re."
         },
         "emojiCreate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_create_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างอีโมจิใหม่: :%s:"
+            "emoji_notification": "😊 Emoji",
+            "member_create_emoji": "> A szerver tagja új hangulatjelet hozott létre: :%s:"
         },
         "emojiDelete": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_delete_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้ลบอีโมจิ: :%s:"
+            "emoji_notification": "😊 Emoji",
+            "member_delete_emoji": "> Szervertag törölt emoji: :%s:"
         },
         "emojiUpdate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_update_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้เปลียนแปลงอีโมจิใหม่จาก: %s1 เป็น %s2"
+            "emoji_notification": "😊 Emoji",
+            "member_update_emoji": "> A kiszolgáló tagja megváltoztatta az új hangulatjelet: %s1-ről %s2-re."
         },
         "guildBanAdd": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_add": "> <@%s1> ถูกแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ Szerver",
+            "member_ban_add": "> <@%s1> Már kitiltva ezen a szerveren\n**Ok:**\n```%s2```"
         },
         "guildBanRemove": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_remove": "> <@%s1> ได้รับการปลดแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ Szerver",
+            "member_ban_remove": "> <@%s1> Feloldva a tiltás ezen a szerveren\n**ok:**\n```%s2```"
         },
         "guildCreate": {
-            "advice": "**💡 คำแนะนำ**",
-            "advice_detail": "ถ้าคุณเป็นเจ้าของกิลล์นี้ละก็..ฉันต้องการที่จะตั้งค่ากิลล์นี้ให้สมบูรณ์ก่อนที่จะใช้งานจริงๆ ละ เพราะบางอย่างคุณอาจจะไม่ต้องการก็ได้ เพราะฉะนั้นให้ลองใช้คำสั่ง `Ssettings` ดูนะคะ",
-            "description": "สวัสดี..ฉันขอขอบคุณที่เชิญฉันมายัง %s แห่งนี้\nดูเหมือนว่าจะมีคนสงสัยว่าฉันทำอะไรได้บ้าง? ออ..ล้างจาน, ซักผ้าเป็นน่ะ สุดยอดไปเลยใช่ไหมล่าา~ ฮาาใช่ที่ไหนละ ฉันล้อเล่นน่ะ",
-            "get_started": "มาถึงจุดเริ่มต้นแล้ว!!",
-            "help_information_and_documentation": "**📄 ข้อมูลช่วยเหลือและเอกสาร**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `Shelp` หรือ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
-            "join_on": "เข้าร่วมเมื่อ",
-            "support_multiple_languages": "**🌐 รองรับหลายภาษา**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `Slanguage <รหัสภาษา>` หรือ `/language <รหัสภาษา>`"
+            "advice": "**💡 Tippek**",
+            "advice_detail": "Ha Ön ennek a céhnek a tulajdonosa.. szeretném befejezni a céh beállítását, mielőtt használnám, mert lehet, hogy néhány dologra nincs szüksége. Ezért próbálja meg a \"Settings\" parancsot használni.",
+            "description": "Helló... köszönöm, hogy meghívott erre a %s helyre\núgy tűnik, az emberek kíváncsiak, mit tehetek? Ó..tud mosogatni, mosni. Félelmetes, ugye~ Haha, hol van? viccelek",
+            "get_started": "Az elejére megérkezett!!",
+            "help_information_and_documentation": "**📄 Segítség és dokumentáció**",
+            "help_information_and_documentation_detail": "Szeretné tudni, mit tehetek?...nagyon egyszerű Csak írja be a \"Shelp\" vagy a \"/help\" parancsot, és valaki megmondja. Természetesen csak menjen az alábbi linkre, és ott lesz a fejlesztő és mások által biztosított dokumentáció. Már írt\n> https://shiorus.web.app/",
+            "join_on": "csatlakozzon",
+            "support_multiple_languages": "** 🌐 Több nyelvet támogat**",
+            "support_multiple_languages_detail": "Több nyelvet is támogatok. A nyelv megváltoztatásához A `Slanguage <nyelvi kód>` vagy a `/language <language code>` paraméterrel állíthatja be."
         },
         "guildIntegrationsUpdate": {
-            "guild_integrations_update": "เซิร์ฟเวอร์นี้ได้รวม %s เรียบร้อยแล้ว คุณจะได้รับบทความใหม่ทันทีมีการอัพเดทในอนาคต",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_integrations_update": "Ez a szerver már egyesítette %s . Azonnal megkapja az új cikkeket a jövőbeni frissítésekkel.",
+            "guild_notification": "🗄️ Szerver"
         },
         "guildMemberAdd": {
-            "captcha_error": "มีข้อผิดพลาดในการตรวจสอบ ติดต่อเจ้าหน้าที่เซิร์ฟเวอร์เพื่อดำเนินการ",
-            "captcha_success": "คุณได้รับการยืนยันแล้วใน %s",
-            "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคนนะค่ะ",
-            "solve_the_captcha": "แก้ไข captcha เพื่อยืนยันใน %s",
-            "submit_answer_captcha": "ส่งคำตอบแคปต์ชา",
-            "submit_you_answer_guide": "ส่งสิ่งที่คุณคิดว่าแคปต์ชาคืออะไร",
-            "use_button_below": "ใช้ปุ่มด้านล่างเพื่อส่งคำตอบของคุณ!",
-            "welcome": "ยินดีต้อนรับสู่เซิร์ฟเวอร์",
-            "wrong_answer": "ดูเหมือนจะผิดนะ ลองใหม่อีกรอบ...",
-            "your_answer": "คำตอบแคปต์ชาของคุณ"
+            "captcha_error": "Érvényesítési hiba történt. Vegye fel a kapcsolatot a szerver személyzetével, hogy intézkedjen.",
+            "captcha_success": "%s-ban igazolt",
+            "greet": "Hello új tag **Ez egy automatikus üzenet** \nKöszönjük, hogy csatlakozott szerverünkhöz. Kérjük, figyelmesen olvassa el az erről a szerverről szóló információkat, mielőtt bárkivel beszélni kezd.",
+            "solve_the_captcha": "Javítva a captcha %s-ban történő ellenőrzéshez",
+            "submit_answer_captcha": "Küldj egy captcha választ",
+            "submit_you_answer_guide": "Add meg, hogy szerinted mi a captcha",
+            "use_button_below": "Válaszának elküldéséhez használja az alábbi gombot!",
+            "welcome": "Üdvözöljük a szerveren",
+            "wrong_answer": "Rossznak tűnik. Próbáld újra...",
+            "your_answer": "válaszolj a captcha-ra"
         },
         "guildMemberRemove": {
-            "user_has_exited": "ได้หนีออกจากเซิร์ฟเวอร์นี้ไปแล้วว...(ไปไหนของเขากันน้าาา..)"
+            "user_has_exited": "Már megszökött erről a szerverről...(Menjünk a helyére..)"
         },
         "guildMembersChunk": {
-            "guild_members_chunk": "ยินดีต้อนรับสมาชิกจากเซิร์ฟเวอร์ %s พวกเรากำลังรอพวกคุณอยู่ที่นี่",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_members_chunk": "Üdvözöljük a tagokat %s szerverről. Itt várunk benneteket.",
+            "guild_notification": "🗄️ Szerver"
         },
         "guildUnavailable": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "guild_unavailable": "ขณะนี้..เซิร์ฟเวอร์นี้ไม่สามารถทำงานได้อย่างปกติชั่วคราว กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์นี้"
+            "guild_notification": "🗄️ Szerver",
+            "guild_unavailable": "Jelenleg...ez a szerver átmenetileg nem elérhető. Kérjük, lépjen kapcsolatba a szerver rendszergazdájával."
         },
         "interactionCreate": {
-            "client_is_not_allowed": "🚫 เอิ่มม..ฉันขาดการอนุญาตบางอย่าง เลยทำให้ฉันไปต่อไม่ได้ ได้แก่ **%s**",
-            "command_error": "❌ เกิดข้อผิดพลาดขณะดำเนินการคำสั่งนี้!",
-            "command_is_disabled": "⚫ คำสั่งนี้ถูกปิดใช้งานภายในเซิร์ฟเวอร์แล้วคะ กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์ของคุณ",
-            "no_permission": "🚫 อืมม...ดูเหมือนว่าคุณไม่มีสิทธิ์ในการใช้งานคำสั่งแอปพลิเคชั่น (/) นะคะ ลองสอบถามผู้ดูแลดูนะคะ (≧∇≦)",
-            "user_is_not_allowed": "🚫 ฉันไม่สามารถให้คุณใช้งานคำสั่งนี้ได้ หากคุณยังไม่มีการอนุญาตเหล่านี้: **%s**"
+            "client_is_not_allowed": "🚫 Hmmm... hiányzik néhány engedély. Szóval nem tudom folytatni, mégpedig **%s**",
+            "command_error": "❌ Hiba történt a megrendelés végrehajtása közben!",
+            "command_is_disabled": "⚫ Ez a rendelés le van tiltva a szerveren. Kérjük, forduljon a szerver rendszergazdájához.",
+            "no_permission": "🚫 Hmm...Úgy tűnik, nincs engedélye az alkalmazásparancs (/) használatára, kérdezze meg a moderátorokat (≧∇≦)",
+            "user_is_not_allowed": "🚫 Nem engedhetem, hogy használja ezt a rendelést. Ha még nem rendelkezik ezekkel az engedélyekkel: **%s**"
         },
         "inviteCreate": {
-            "invite_create": "สร้างลิงค์สำหรับเชิญสมาชิกเรียบร้อยแล้ว\n**ลิงค์:** %s1\n**หมดอายุ:** %s2\n**สูงสุด:** %s3\n```%s4```",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_create": "Meghívó link sikeresen létrehozva\n**Link:** %s1\n**Lejár:** %s2\n**Maximum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Meghívó"
         },
         "inviteDelete": {
-            "invite_code_deleted": "`%s` รหัสเชิญนี้ถูกลบไปแล้ว",
-            "invite_code_expires": "`%s` รหัสเชิญนี้หมดอายุแล้ว",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_code_deleted": "`%s` Ez a meghívókód törölve lett.",
+            "invite_code_expires": "`%s` Ez a meghívó kód lejárt.",
+            "invite_notification": "🏷️ Meghívó"
         },
         "messageCreate": {
-            "afk_user_come_back": "🔙 คุณได้กลับมาแล้ว ยกเลิกการตั้งสถานะ AFK โดยอัตโนมัติ",
-            "no_reason_for_afk": "ไม่มี",
-            "that_user_is_afk": "%s1 ตอนนี้ไม่ได้อยู่ที่หน้าจอ (AFK), อย่าพึ่งพูดถึงเขาในเวลานี้\n**ข้อความที่ทิ้งไว้**: %s2"
+            "afk_user_come_back": "🔙 Visszatértél Az AFK állapot automatikus törlése",
+            "no_reason_for_afk": "nincs",
+            "that_user_is_afk": "%s1 Most nincs képernyőn (AFK), most ne említse meg\n**Üzenet hagyása**: %s2"
         },
         "roleCreate": {
-            "role_create": "<@&%s> ได้ถูกสร้างขึ้นแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_create": "<@&%s> létrejött.",
+            "role_notification": "🔖 Szerep"
         },
         "roleDelete": {
-            "role_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_delete": "`%s` törölve.",
+            "role_notification": "🔖 Szerep"
         },
         "roleUpdate": {
-            "role_notification": "🔖 บทบาท",
-            "role_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <@&%s2>"
+            "role_notification": "🔖 Szerep",
+            "role_update": "`%s1` frissítve a következőre: <@&%s2>"
         },
         "stageInstanceCreate": {
-            "stage_instance_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_create": "<#%s> létrejött.",
+            "stage_notification": "🎤 színpad"
         },
         "stageInstanceDelete": {
-            "stage_instance_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_delete": "`%s` törölve.",
+            "stage_notification": "🎤 színpad"
         },
         "stageInstanceUpdate": {
-            "stage_instance_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <#%s2>",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_update": "`%s1` frissítve a következőre: <#%s2>.",
+            "stage_notification": "🎤 színpad"
         },
         "stickerCreate": {
-            "sticker_create": "**%s** พร้อมใช้งานแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_create": "**%s** Most elérhető",
+            "sticker_notification": "👻 matrica"
         },
         "stickerDelete": {
-            "sticker_delete": "**%s** ถูกลบไปแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_delete": "**%s** törölve",
+            "sticker_notification": "👻 matrica"
         },
         "stickerUpdate": {
-            "sticker_notification": "👻 สติกเกอร์",
-            "sticker_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "sticker_notification": "👻 matrica",
+            "sticker_update": "`%s1` frissítve a következőre: **%s2**"
         },
         "threadCreate": {
-            "thread_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_create": "<#%s> létrejött.",
+            "thread_notification": "#️⃣ Szálak"
         },
         "threadDelete": {
-            "thread_delete": "**%s** ได้ถูกลบไปแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_delete": "**%s** törölve",
+            "thread_notification": "#️⃣ Szálak"
         },
         "threadUpdate": {
-            "thread_notification": "#️⃣ เธรด",
-            "thread_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "thread_notification": "#️⃣ Szálak",
+            "thread_update": "`%s1` frissítve a következőre: **%s2**"
         },
         "webhookUpdate": {
-            "webhook_notification": "🎣 เว็บฮุก",
-            "webhook_update": "**%s1** จาก **%s2** ได้รับการอัพเดทแล้วในช่อง <#%s3>"
+            "webhook_notification": "🎣 Web Hook",
+            "webhook_update": "**%s1** / **%s2** frissült a <#%s3> csatornán."
         }
     },
     "handlers": {
         "music": {
             "addList": {
-                "added_list": "✅ เพิ่มเพลย์ลิสต์ **%s1** ประกอบไปด้วยเพลงจำนวน `%s2` เพลง เรียบร้อยแล้วคะ"
+                "added_list": "✅ Hozzáadott egy lejátszási listát **%s1**, amely már tartalmaz `%s2` dalt."
             },
             "addSong": {
-                "added_song": "✅ เพิ่มเพลง **%s1** `%s2` เรียบร้อยแล้วคะ"
+                "added_song": "✅ Adjon hozzá dalokat **%s1** `%s2` már."
             },
             "disconnect": {
-                "disconnected": "🔌 ตัดการเชื่อมต่อและลบคิวทั้งหมดออกเรียบร้อยแล้วคะ"
+                "disconnected": "🔌 Leválasztotta és már törölte az összes sort."
             },
             "empty": {
-                "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+                "no_user_in_channel": "💨 Ó.. Hová tűntek? Akkor..először fogd be~"
             },
             "error": {
-                "playlist_not_found": "❎ ฉันหาเพลย์ลิสต์นั้นไม่เจอะ ลองหาเพลย์ลิสต์อื่นดูไหม?"
+                "playlist_not_found": "❎ Nem találom a lejátszási listát. Más lejátszási listát keresel?"
             },
             "finish": {
-                "queue_is_empty": "🍃 ตอนนี้ฉันคิวว่างแล้ว พร้อมที่จะเล่นเพลงต่อไปแล้วคะ"
+                "queue_is_empty": "🍃 Most már üres a sorom. Készen áll a következő dal lejátszására?"
             },
             "playSong": {
-                "playing_song": "🎶 กำลังเล่นเพลง **%s1** `%s2`"
+                "playing_song": "🎶 Zene lejátszása **%s1** `%s2`"
             },
             "searchCancel": {
-                "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ"
+                "search_cancelled": "🕘 Megszakítottam a keresést..mert nem található dalválasztás."
             },
             "searchDone": {
-                "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่..."
+                "get_list_of_songs": "📋 Megkaptam a kívánt dalok listáját. és egy pillanat múlva elkezd zenélni..."
             },
             "searchInvalidAnswer": {
-                "search_cancelled": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม"
+                "search_cancelled": "🔴 A legutóbbi kereséseket törölték. Ugyanazon parancs beírásával újra kereshet."
             },
             "searchNoResult": {
-                "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย..."
+                "no_results": "❎ Próbáltam rákeresni a dalra, de nem találtam eredményt..."
             },
             "searchResult": {
-                "searching": "🔎 ค้นหาเพลงที่เกี่ยวข้อง",
-                "timer_choose": "มีเวลาในการเลือกเพลง 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-                "title_results": "ผลการค้นหาของเพลงดังกล่าว:",
-                "tool_name": "เครื่องค้นหาเพลง"
+                "searching": "🔎 Keressen kapcsolódó dalokat",
+                "timer_choose": "A dal kiválasztásához 60 másodperc áll rendelkezésre. Ha le szeretné mondani, írjon be egy nem releváns számot, vagy várjon az idők végezetéig.",
+                "title_results": "Az ilyen dalok keresési eredményei:",
+                "tool_name": "zenei kereső"
             }
         }
     },
     "utils": {
         "miscUtils": {
-            "april": "เมษายน",
-            "august": "สิงหาคม",
-            "december": "ธันวาคม",
-            "february": "กุมภาพันธ์",
-            "format_at": "วัน%s1 ที่ %s2 %s3 %s4 เวลา %s5:%s6 น.",
-            "friday": "ศุกร์",
-            "january": "มกราคม",
-            "july": "กรกฎาคม",
-            "june": "มิถุนายน",
-            "march": "มีนาคม",
-            "may": "พฤษภาคม",
-            "monday": "จันทร์",
-            "november": "พฤศจิกายน",
-            "october": "ตุลาคม",
-            "saturday": "เสาร์",
-            "september": "กันยายน",
-            "sunday": "อาทิตย์",
-            "thursday": "พฤหัสบดี",
-            "tuesday": "อังคาร",
-            "wednesday": "พุธ"
+            "april": "április",
+            "august": "augusztus",
+            "december": "december",
+            "february": "február",
+            "format_at": "%snap 1 %s %s3 %s4 4. idő %s:%s6 óra.",
+            "friday": "péntek",
+            "january": "január",
+            "july": "július",
+            "june": "június",
+            "march": "március",
+            "may": "Lehet",
+            "monday": "hétfő",
+            "november": "november",
+            "october": "október",
+            "saturday": "szombat",
+            "september": "szeptember",
+            "sunday": "hét",
+            "thursday": "csütörtök",
+            "tuesday": "kedd",
+            "wednesday": "szerda"
         },
         "consoleUtils": {
-            "an_error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-            "error_detail": "คำสั่ง: **%s1**\nเวอร์ชั่น: **%s2**\nเวลาที่เกิดขึ้น: **%s3**\nเซิร์ฟเวอร์: **%s4**\nความล่าช้า: **%s5ms**\nรับ - ส่งข้อมูล: **%s6ms**\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n%s7\n```\n> **เคล็ดลับ**: คุณสามารถรายงานข้อผิดพลาดได้ทันทีโดยใช้คำสั่ง:\n> ```Sbug <ข้อความ>```\n> ```/bug <ข้อความ>```\n[รายงานปัญหา](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [ข่าวสาร](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "ผิดปกติ",
-            "server_normal": "ปกติ"
+            "an_error_occurred": "🔴 Hiba történt a végrehajtás során.",
+            "error_detail": "Parancs: **%s1**\nVerzió: **%s2**\nIdőzített: **%s3**\nSzerver: **%s4**\nKésés: **%s5ms**\nFogadás-Adás: * *%s6ms**\nHiba eredménye:\n```JavaScript\n%s7\n```\n> **Tipp**: A hibát azonnal jelentheti a következő paranccsal:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problémajelentés](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Hírek ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "rendellenes",
+            "server_normal": "Normál"
         },
         "databaseUtils": {
-            "congratulations": "ยินดีด้วย!!",
-            "level_up": "ตอนนี้ระดับชั้นของ *%s1* ได้เลื่อนขั้นเป็น ```%s2```",
-            "was_mentioned": "มีอะไรหรอคะ?"
+            "congratulations": "Gratulálunk!!",
+            "level_up": "A *%s1* osztály most ```%s2```-ra frissült.",
+            "was_mentioned": "Mi a baj?"
         }
     }
 }
