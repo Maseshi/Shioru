@@ -30,14 +30,14 @@
 
 - [Discord.js](https://discord.js.org/) v14 で動作します。
 - ご希望の様々なアイテムをカスタマイズ可能
-- 両方から音楽を再生できます [YouTube](https://www.youtube.com/)、[Spotify](https://www.spotify.com/)、[SoundCloud](https://soundcloud.com/)の再生システムを搭載。音楽は自動的に再開します
+- 両方から音楽を再生できます [YouTube](https://www.youtube.com/)、[Spotify](https://www.spotify.com/)、[SoundCloud](https://soundcloud.com/)の再生システムを搭載。 音楽は自動的に再開します
 - 複数の言語をサポート 対応言語は当リポジトリの【言語ファイル】(https://github.com/Maseshi/shioru/blob/main/source/languages)から確認できます。
 - ティアシステム (レベルと経験)
 - サーバー通知のカスタマイズのサポート
 - `@Shioru`の後に伝えたいメッセージを入力すると、チャットできます。
 - アプリケーションコマンド (/) が使用できます。
 
-などなど、興味深い機能がたくさん...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
 ## 翻訳を改善する
 
@@ -55,16 +55,14 @@
 
 - [Discord Developer Portal](https://discord.com/developers/applications) に移動します。
 - **"New Application"**をクリックしてボットに名前を付け、Discord ポリシー ルールに同意します。
-- **"Bot"** ページに移動し、**Privileged Gateway Intent** セクションのすべてのオプションを有効にします。
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- **OAuth2 > URL Generator** ページに移動し、`bot` と `applications.commands` を選択し、`Administrator` を選択してから、リンクをコピーしてブラウザのアドレスに貼り付けて、ボットをサーバーに招待します。
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- **"Bot"** ページに移動し、**Privileged Gateway Intent** セクションのすべてのオプションを有効にします。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- **OAuth2 > URL Generator** ページに移動し、`bot` と `applications.commands` を選択し、`Administrator` を選択してから、リンクをコピーしてブラウザのアドレスに貼り付けて、ボットをサーバーに招待します。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### ボットを設定する
 
 - ターミナルを起動し、次のコマンドを実行します。
 
-```bat
+```bash
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
@@ -76,16 +74,14 @@ npm install --save
 
 - https://firebase.google.com/ にアクセスして、プロジェクトのセットアップを開始します。
 - 新しいプロジェクトを追加し、手順に従います。
-- 最初のアプリケーションを **ウェブサイト** に追加し、オプション **「このアプリの Firebase Hosting もセットアップする」** を選択せず​​にアプリに名前を付けて、アプリを登録します。
-![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase は構成に関する情報を提供します。これらの値をファイルに適用します。 `.env.example`
+- 最初のアプリケーションを **ウェブサイト** に追加し、オプション **「このアプリの Firebase Hosting もセットアップする」** を選択せず​​にアプリに名前を付けて、アプリを登録します。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase は構成に関する情報を提供します。 これらの値をファイルに適用します。 `.env.example`
 - **[作成] > [リアルタイム データベース](https://console.firebase.google.com/u/0/project/_/database/data)** に移動して、ストレージ データベースを作成します。
 
 ### 発展させる
 
 - ファイルの名前を変更します `.env.example` を `.env` として、必要なすべての値を挿入します。
-- ターミナルに移動し、開発用に`npm run dev`、本番用に「npm start」を実行します。
-     > **注**: 開発モードの場合 一部の機能が動作しない場合があります。
+- ターミナルに移動し、開発用に`npm run dev`、本番用に「npm start」を実行します。 > **注**: 開発モードの場合 一部の機能が動作しない場合があります。
 
 ## クイックトラブルシューティング
 
@@ -108,7 +104,3 @@ npm install ffmpeg-static@latest --save
 ## 問題が見つかりました
 
 問題が発生した場合 現在の仕事から タブからお知らせください。 [issue](https://github.com/Maseshi/Shioru/issues) のリポジトリです。
-
-## Google 翻訳
-
-このドキュメントの内容は、[Google 翻訳](https://translate.google.com/) サービスによって翻訳されています。 エラーが発生したことをお詫び申し上げます。
