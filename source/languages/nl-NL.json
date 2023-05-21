@@ -1,0 +1,958 @@
+{
+    "commands": {
+        "about": {
+            "my_profile": "mijn profiel",
+            "my_profile_detail": "Mijn naam is %s ik ben geboren op zondag 21 juni. Ik woon in een huis. __Chaiwat Suwannarat(Masashi)__ is degene die mij ter wereld brengt en mij kennis en vaardigheden geeft. **verschillende dat ik alles heb bestudeerd voor iedereen waar ik woon Ik hoop dat iedereen blij zal zijn om bij mij te zijn!! En bedankt voor alle hulp en steun aan mijn lieve weldoeners. Heel erg bedankt.\n\n[Officiële website](https://maseshi.web.app/)\n[Privacybeleid](https: //maseshi.web. app/privacy-policy) [Servicevoorwaarden](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Alle rechten voorbehouden.",
+            "update_on": "bijgewerkt wanneer"
+        },
+        "afk": {
+            "currently_afk": "❎ Nu ben je AFK",
+            "currently_not_afk": "❎ Je bent nu niet AFK.",
+            "now_afk": "💤 Nu ben je AFK, schrijf een bericht of /afk remove om de AFK-modus te verlaten.",
+            "now_not_afk": "🔙 Je AFK-status is uitgeschakeld."
+        },
+        "anime": {
+            "auto_cancel": "Typ gewoon het nummer in dat u wilt lezen! (opzeggen binnen 1 minuut)",
+            "choose_now": "Kies nu.!!",
+            "data_not_found": "❎ Ik heb dit verhaal niet gevonden. Laten we het bekijken. Kijk, misschien bestaat zoiets echt niet?",
+            "end_date": "**Einddatum**",
+            "english_name": "**Engelse naam**",
+            "in_progress": "bezig",
+            "japan_name": "** Japanse naam **",
+            "link": "**koppeling**",
+            "popularity_rank": "**Populariteitsranglijst**",
+            "short_information": "Dit is slechts een samenvatting van informatie. Wil je meer lezen, klik dan op de link!!",
+            "similar_stories": "Ik vond 5 soortgelijke dingen. Welk verhaal wil jij lezen~",
+            "start_date": "**begin datum**",
+            "synopsis": "**samenvatten:**",
+            "undefined": "ongedefinieerd"
+        },
+        "automod": {
+            "flagged_words_name": "godslastering blokkeren seksuele inhoud en beledigingen",
+            "flagged_words_success": "✅ Je AutoMod-regels zijn gemaakt, al die woorden worden onderdrukt.",
+            "keyword_name": "Voorkom dat woord %swordt gebruikt.",
+            "keyword_success": "✅ Uw AutoMod-regel is gemaakt, alle berichten met het woord %s worden verwijderd.",
+            "mention_spam_name": "Voorkom spam als het gaat om",
+            "mention_spam_success": "✅ Uw AutoMod-regel gemaakt, spammen op meerdere vermeldingen wordt onderdrukt.",
+            "prevent_message": "Dit bericht is beveiligd.",
+            "spam_messages_name": "berichtenspam blokkeren",
+            "spam_messages_success": "✅ Uw AutoMod-regels zijn gemaakt, berichtspam wordt onderdrukt."
+        },
+        "autoplay": {
+            "no_queue": "❎ Hmm... maar het nummer is nog niet eens begonnen?",
+            "not_queue_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "off": "📻 Autoplay-modus uitgeschakeld",
+            "on": "📻 Automatische afspeelmodus ingeschakeld"
+        },
+        "ban": {
+            "banned_for_time": "%s1 verbannen voor **%s2** dagen",
+            "member_has_banned": "❎ Dergelijke leden zijn al verbannen. Voel je op je gemak.",
+            "members_have_a_higher_role": "❎ Je kunt iemand met een hogere rol dan jij niet verbannen.",
+            "members_have_a_higher_role_than_me": "❎ Ik kan dat lid niet verbannen. omdat hij een hogere rol heeft dan ik",
+            "no_reason": "Leden die verbannen hebben geen reden gegeven.",
+            "permanently_banned": "%s permanent verbannen",
+            "reason_for_ban": "Verbannen door: %s1\nReden: %s2",
+            "user_not_found": "❎ Ik kan dit lid niet vinden. Controleer alstublieft nog een keer."
+        },
+        "board": {
+            "leveling_detail": "Ervaring: %s1, Cijfer: %s2",
+            "no_info": "❎ Er zijn nog geen leden op deze server. dat heeft belevingswaarde",
+            "server_rank": "De level ranking van deze server",
+            "server_rank_description": "1 van de top 10 leden binnen deze server. die het meeste van hun eigen niveaus kunnen verzamelen, in de volgende volgorde",
+            "server_rank_tips": "Tip: chatten met andere leden zal meer niveaus bereiken"
+        },
+        "bug": {
+            "sending": "📨 Oké.. even geduld Geef me even de tijd om een brief naar de ontwikkelaar te sturen...",
+            "success*": "✅ Oké, bedankt... Als je nog iets vindt, vertel het me dan alsjeblieft (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ Het captcha-systeem is succesvol ingesteld en geactiveerd.",
+            "currently_disable": "ℹ️ Captcha is nu gesloten.",
+            "currently_enable": "ℹ️ Captcha is nu ingeschakeld.",
+            "disabled_captcha": "✅ captcha is uitgeschakeld",
+            "enabled_captcha": "✅ captcha succesvol ingeschakeld",
+            "need_to_setup_before": "❎ Stel captcha in voor gebruik met de /captcha setup-opdracht."
+        },
+        "covid": {
+            "active": "actief",
+            "active_per_one_million": "actief per 1 miljoen",
+            "backend_issue": "❎ Er lijkt een probleem te zijn aan de kant van de informant. Probeer het de volgende keer opnieuw.",
+            "cases_per_one_million": "Patiënten per 1 miljoen",
+            "cases_today": "deze patiënt",
+            "cases_total": "alle patiënten",
+            "country_not_found": "❎ Umm.. Ik kan de informatie van het door u opgegeven land niet vinden.",
+            "critical_per_one_million": "kritieke periode per 1 miljoen",
+            "critical_stage": "kritieke periode",
+            "deaths_today": "vandaag overleden",
+            "deaths_total": "allemaal overleden",
+            "one_case_per_people": "per patiënt",
+            "one_death_per_people": "dood per persoon",
+            "one_test_per_people": "Testen per persoon",
+            "population": "bevolking",
+            "recovered": "weg",
+            "recovered_per_one_million": "Verloren per 1 miljoen",
+            "tests": "test",
+            "tests_per_one_million": "Testen per 1 miljoen",
+            "updated_on": "Laatste update %s",
+            "when": "wanneer"
+        },
+        "credits": {
+            "creator_credit": "💳 Credits voor andere makers",
+            "creator_credit_description": "waaraan sommige makers beide bijdragen Sommigen van hen zijn van buitenaf genomen. Bedankt voor al je steun.",
+            "natsuki_marina_credit": "Informatie: Enkele foto's en avatars \nvan: https://www.pixiv.net/en/users/482462 \nWebsite: https://marina71712.wixsite.com/0-0v",
+            "update_on": "bijgewerkt wanneer"
+        },
+        "dead": {
+            "suicide": "%s zelfmoord te plegen 💔 rust zacht"
+        },
+        "decode": {
+            "after": "na het decoderen",
+            "before": "voor het decoderen",
+            "decode_message": "🔓 Berichten decoderen",
+            "decode_success": "Het bericht is gedecodeerd."
+        },
+        "donate": {
+            "thank_you_in_advance_message": "❤️ Alvast bedankt om mijn ontwikkelaars te steunen. Ik heb een kanaal voor ondersteuning als volgt."
+        },
+        "eat": {
+            "already_eaten": "%s1 heeft %s2 in de maag gegeten",
+            "do_not_eat_me": "Ik... Ik ben een beetje klein. m..niet lekker om te eten..."
+        },
+        "eight_ball": {
+            "answer": "antwoord",
+            "game": "🎱 8ball-spel",
+            "question": "vraag",
+            "risk": "Gebruik je geluk op vragen om antwoorden te krijgen.",
+            "roll_ball": "Rol de bal!!"
+        },
+        "emoji": {
+            "deleted_emoji": "✅ **%s** Emoji is verwijderd.",
+            "edited_emoji": "%s emoji opgelost",
+            "uploading_you_emoji": "📤 Uw emoji uploaden...",
+            "you_emoji_is_ready": "%s Je emoji is klaar. Laten we het proberen!!"
+        },
+        "encode": {
+            "after": "na versleuteling",
+            "before": "voor het coderen",
+            "encode_message": "🔒 Versleutel berichten",
+            "encode_success": "Het bericht is versleuteld."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ Het lijkt erop dat de emoji ontbreekt of dat het geen emoji is.",
+            "large_emoji": "grote emoji",
+            "requested_by": "gevraagd door %s"
+        },
+        "exp": {
+            "can_not_find_user": "❎ Kan dit lid niet vinden. Eh.. Typefout of niet?",
+            "error": "❎ Kan de ervaring van dergelijke leden niet instellen. Probeer het later opnieuw.",
+            "experience": "Ervaringspunten (Exp)",
+            "exp_was_changed": "%s verzameld alle ervaringsniveaus hebben:",
+            "level": "Niveau",
+            "notification_complete": "✅ Installatie is gedaan...",
+            "set_by_staff": "Uw ervaring wordt bepaald door het team op deze server.",
+            "success": "✅ Installatie is gedaan..."
+        },
+        "filter": {
+            "add_filter": "🎼 Voeg het vereiste geluidsformaat toe om al **%s** te zijn.",
+            "available_filter": "Beschikbare filterformaten",
+            "available_filter_description": "Personaliseer je muziek door deze %s1 formaten ```%s2``` te gebruiken",
+            "clear_filter": "💨 Alle audioformaten zijn gewist. Nu wordt het een normaal geluidsformaat.",
+            "list_filter_description": "Er zijn momenteel actieve patronen in deze wachtrij: %s1 patronen\n```%s2```",
+            "list_filter_description_empty": "```Er wordt momenteel geen audioformaat gebruikt.```",
+            "list_filter_title": "Het audioformaat dat momenteel wordt gebruikt",
+            "no_queue": "❎ Er wordt momenteel geen nummer afgespeeld.",
+            "not_queue_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "remove_filter": "🗑️Audioformaat **%s** is verwijderd.",
+            "set_filter": "🎼 Stel het gewenste audioformaat in op **%s**",
+            "sound_filtering": "❓ Wil je het geluid van je muziek veranderen?",
+            "unknown_filter": "❎ Umm..Ik weet het formaat van het geluid `%sniet, je kunt het controleren met **beschikbaar** of **beschikbaar**?",
+            "unknown_input_option": "❓ U kunt de volgende parameters specificeren: toevoegen, verwijderen, instellen, beschikbaar, lijst, wissen."
+        },
+        "guild": {
+            "afk_channel_id": "AFK-kanaalcode",
+            "afk_timeout": "beperkte tijd AFK",
+            "application_id": "app-code",
+            "approximate_member_count": "Geschatte leden",
+            "approximate_presence_count": "geschatte toestand",
+            "available": "klaar",
+            "banner": "spandoek",
+            "create_at": "gemaakt op",
+            "create_timestamp": "bouwdatum",
+            "default_message_notification": "waarschuwen",
+            "description": "Beschrijving",
+            "discovery_splash": "slogan",
+            "do_not_have": "heb geen",
+            "explicit_content_filter": "filteren",
+            "features": "functie",
+            "guild_available": "klaar voor gebruik",
+            "icon": "Avatar",
+            "id": "code",
+            "info_date": "informatie wanneer",
+            "joined_at": "toegetreden",
+            "join_timestamp": "toetredingsdatum",
+            "large": "grote maat",
+            "maximum_members": "Max lid",
+            "maximum_presences": "hoogste stand",
+            "member_count": "lid",
+            "mfa_level": "MFA-niveau",
+            "name": "naam",
+            "name_acronym": "initialen",
+            "no": "Nee",
+            "none": "Nee",
+            "nsfw_level": "NSFW-niveau",
+            "off": "uitschakelen",
+            "on": "open",
+            "owner_id": "eigenaarscode",
+            "partnered": "deelnemen",
+            "preferred_locale": "domein",
+            "premium_subscription_count": "speciaal lid",
+            "premium_tier": "booster",
+            "public_updates_channel_id": "Kanaalcode bijwerken",
+            "rules_channel_id": "regels vak code",
+            "server_info": "🗄 Gedetailleerde serverinformatie",
+            "server_info_description": "Gedetailleerde serverinformatie Die is gebaseerd op gegevens van Discord.",
+            "specific_use": "💡 U kunt als volgt specifieke servergebruikersinformatie opgeven: **%s**",
+            "splash": "uitnodiging foto",
+            "system_channel_id": "systeem kanaalcode",
+            "unavailable": "Niet klaar",
+            "unknown": "Ik weet het niet",
+            "vanity_url_code": "uitnodigingscode",
+            "vanity_url_uses": "uitgenodigd",
+            "verification_level": "controleren",
+            "verified": "bevestigen",
+            "widget_channel_id": "witseven kanaalcode",
+            "widget_enabled": "droefheid",
+            "yes": "Ja"
+        },
+        "help": {
+            "category": "Categorie: %s",
+            "client_permissions": "Machtigingen (bots): %s",
+            "command": "Bestelling: %s",
+            "command_detail": "📑 Bestelgegevens ",
+            "command_incorrect": "❎ Verkeerde bestelling",
+            "command_incorrect_guide": "Eh... Ik heb deze bestelling niet. Probeer opnieuw te controleren door `/help` te typen om een lijst met al mijn opdrachten te zien.",
+            "commands_description": [
+                "Alle commando's die ik heb geleerd of bestudeerd. begrijpen en daadwerkelijk gebruiken",
+                "die voordat je me belt Het voorvoegsel moet **/** zijn.",
+                "`<>` betekent vereist, `()` is het invoertype en `[]` is optioneel.",
+                "Typ `/help [commando]` voor details over elk commando en je wens zal uitkomen!!"
+            ],
+            "description": "Beschrijving: %s",
+            "document_name": "Hulpblad",
+            "how_to_use": "Hulp: %s",
+            "no_description": "Geen beschrijving",
+            "no_need_permissions": "Geen vereiste machtigingen",
+            "request_by": "aangevraagd door",
+            "unknown_how_to_use": "geen manier om te gebruiken",
+            "user_permissions": "Machtigingen (gebruikers): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ Kan dergelijke leden niet vinden op deze server.",
+            "success": "✅ <@%s> Het bericht is aangemaakt!"
+        },
+        "invite": {
+            "can_not_create_invite_link": "❎ Kan uitnodigingslink niet genereren Probeer het opnieuw.",
+            "me_do_not_have_permission": "🚫 Ik heb geen toestemming om een uitnodigingslink in dit kanaal te maken.",
+            "membership_invitation_card": "uitnodigingskaart voor leden",
+            "this_product_is_free": "Dit product is gratis, niet doorverkopen."
+        },
+        "join": {
+            "already_joined": "❎ Eh..maar ik ben hier nu?",
+            "another_player_is_playing": "🚫 Je kunt deze bestelling momenteel niet gebruiken. omdat er andere leden muziek spelen",
+            "channel_joined": "✅ Ik zit al in het kanaal <#%s>...",
+            "joined": "▶️ Nu zit ik al in het kanaal <#%s>.",
+            "no_channel": "❎ Ik heb dit kanaal niet. Is het een typefout?",
+            "not_in_channel": "❓ Je moet eerst lid worden van het kanaal. Anders weet ik niet welk veld =3="
+        },
+        "jump": {
+            "can_not_jump": "❎ Er lijkt helemaal geen wachtrijnummer te zijn. Controleer alstublieft nog een keer.",
+            "jumped": "➿ Spring al naar een nieuw nummer in wachtrij nummer %s.",
+            "no_queue": "❎ Er is geen nummer dat ik momenteel speel. kan niet oversteken",
+            "not_queue_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen."
+        },
+        "kick": {
+            "can_not_find_user": "❎ Ik kan dit lid niet vinden. Controleer alstublieft nog een keer.",
+            "kicked_out": "%s uitgegooid",
+            "members_have_a_higher_role": "❎ Je kunt geen mensen schoppen die hoger staan dan jij.",
+            "members_have_a_higher_role_than_me": "❎ Ik kan dat lid niet schoppen. omdat hij een hogere rol heeft dan ik",
+            "no_reason": "Leden die schopten gaven geen reden op.",
+            "reason_for_kick": "Geschopt door: %s1\nReden: %s2"
+        },
+        "kill": {
+            "do_not_kill_me": "❎ Je gaat zoiets doen.. Niet bij mij, hahaha...",
+            "killed": "%s1 heeft je al vermoord %s2 🔪"
+        },
+        "leave": {
+            "another_player_is_playing": "🚫 Je kunt deze bestelling momenteel niet gebruiken. omdat er andere leden muziek spelen",
+            "not_in_any_channel": "❎ Nu ben ik nog niet op een kanaal...",
+            "now_leave": "◀️ Ik ben uit het huidige kanaal."
+        },
+        "level": {
+            "delete_error": "❎ Kan deze gebruiker helemaal niet vinden.",
+            "delete_success": "✅ Het ervaringsniveau van dit lid is verwijderd!",
+            "deleting": "📁 Gegevens over ervaringsniveau voor dit lid verwijderen.",
+            "experience": "Ervaringspunten (Exp)",
+            "level": "Niveau",
+            "level_was_changed": "%s verzameld alle ervaringsniveaus hebben:",
+            "notification_complete": "✅ Installatie is gedaan...",
+            "set_by_staff": "Je klas wordt ingesteld door het team op deze server.",
+            "set_error": "❎ Kan het niveau van dergelijke leden niet instellen. Probeer het later opnieuw.",
+            "set_success": "✅ Installatie is gedaan...",
+            "user_current_no_level": "❎ Dergelijke leden hebben geen klasniveau."
+        },
+        "leveling": {
+            "bot_do_not_have_level": "❎ Bots hebben geen levels, ik ook niet.",
+            "can_not_find_user": "❎ Kan dit lid niet vinden. Eh.. Typefout of niet?",
+            "experience": "Ervaringspunten (Exp)",
+            "level": "Niveau",
+            "user_no_data": "💨 Hmm... Dit lid heeft geen niveau en ervaring.",
+            "your_experience": "Jouw ervaring"
+        },
+        "license": {
+            "copyright_content": "📝 Auteursrechtelijk beschermde inhoud"
+        },
+        "logs": {
+            "can_not_delete_file": "❎ Kan het bovenstaande logbestand niet verwijderen\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ Kan het bovenstaande logbestand niet lezen\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** reeds verwijderd",
+            "file_not_found": "❎ Kan een bestand met de naam **%s** niet vinden in de map.",
+            "folder_empty": "💨 Nu is het logbestand in de map leeg. Probeer later nog eens terug te komen.",
+            "found_file": "Gevonden %s1 vermeldingen van bestanden:\n```%s2```",
+            "owner_only": "🚫 Sorry..Deze opdracht kan alleen worden gebruikt door beheerders."
+        },
+        "lyrics": {
+            "can_not_find_lyrics": "Geen songtekst gevonden voor %s.",
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "playing_lyrics": "📋 Tekst van het nummer dat momenteel wordt afgespeeld"
+        },
+        "meme": {
+            "can_not_fetch": "Kan meme niet ophalen. Probeer het opnieuw.",
+            "meme_not_found": "Er is geen meme van type %sgevonden."
+        },
+        "minecraft": {
+            "address": "adres",
+            "do_not_have": "heb geen",
+            "ip": "IP adres",
+            "last_check": "laatst gecontroleerd",
+            "maximum_player_count": "Maximaal aantal spelers",
+            "motd": "Beschrijving",
+            "player_in_server": "server-spelers",
+            "port": "haven",
+            "server_available": "🟢 Deze server is momenteel open.",
+            "server_unavailable": "🔴 Deze server is tijdelijk gesloten.",
+            "skin_of": "🎴 Huiden van %s",
+            "version": "versie"
+        },
+        "musicInfo": {
+            "detail": "📄 Details van het momenteel afgespeelde nummer",
+            "download_link": "📥 Downloadlink",
+            "duration": "🕒 Duur",
+            "id": "🆔 ID",
+            "link": "🔗 Koppelen",
+            "music_name": "🎵 Naam van het nummer",
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "uploader": "🎬 uploader"
+        },
+        "nekos": {
+            "can_not_fetch_data": "❎ Tijdelijk niet in staat om de gewenste foto te krijgen. Probeer het later opnieuw.",
+            "request_by": "gevraagd door %s"
+        },
+        "nowPlaying": {
+            "autoplay": "📻 Automatisch afspelen",
+            "filter": "🎼 Spraakfilterpatroon: `%s`",
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "owner_this_queue": "%s is de eigenaar van deze wachtrij"
+        },
+        "numbers": {
+            "result": "Resultaat is %s"
+        },
+        "paste": {
+            "backend_not_response": "❎ Geen enkele reactie van de server. U kunt het later opnieuw proberen.",
+            "file": "bestand",
+            "raw": "rauw"
+        },
+        "pause": {
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "not_paused": "📼 Nu zit ik vast. Ziet er raar uit vandaag..",
+            "paused": "⏸ Pauzeer de muziek nu."
+        },
+        "ping": {
+            "connection": "📡Verbinding",
+            "info": "Round trip latency is %s1 ms\nweb socket uptime is %s2 ms",
+            "result": "🏓Pong",
+            "waiting": "🏓 Pingen..."
+        },
+        "play": {
+            "no_queue": "❎ Nu heb ik nog geen nummers gespeeld.",
+            "not_in_channel": "❓ Voer eerst een willekeurig kanaal in. Luister anders niet naar me..."
+        },
+        "previous": {
+            "no_previous_song_queue": "📼 Er is geen nummer dat onlangs is afgespeeld.",
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "previous": "⏮ Ga terug naar het vorige nummer"
+        },
+        "purge": {
+            "message_cleared": "`%s berichten` succesvol verwijderd 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "Je QR-code is klaar voor gebruik.",
+            "qrcode_title": "🧩 QR-code"
+        },
+        "quality": {
+            "advice_embed_description": "```Huidige kwaliteit: %s```\nSoms kan het probleem worden veroorzaakt doordat een server er te veel toegang toe heeft, wat prestatieproblemen veroorzaakt. Ik raad u echter aan\ninternetverbinding te controleren voordat u dit instelt.2 `0` - Gebruik **OPUS** om audiobestanden te comprimeren. Dit levert een betere geluidskwaliteit op, maar verbruikt ook meer bronnen **(aanbevolen)**\n`1` - Gebruik het geluid rechtstreeks van de bron. Dit zorgt voor betere prestaties, maar gebruikt minder bronnen.",
+            "advice_embed_footer_text": "U kunt extra audiokwaliteit instellen via de Discord-instellingen: Instellingen > Audio en video > Geavanceerd.",
+            "advice_embed_title": "Pas de geluidskwaliteit aan",
+            "focus_on_high_quality": "focus op hoge kwaliteit",
+            "low_efficiency": "focus op lage prestaties",
+            "opus_mode_selected": "🎛️ Ik heb nu **OPUS** gebruikt om audiobestanden te comprimeren. De geluidskwaliteit zal worden verbeterd.",
+            "raw_mode_selected": "🎛️ Overgeschakeld naar het geluid van het origineel Het kan de geluidskwaliteit verminderen."
+        },
+        "queue": {
+            "autoplay": "📻 Automatisch afspelen",
+            "filter": "🎼 Audiofilterpatroon: %s",
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "owner_this_queue": "%s is de eigenaar van deze wachtrij",
+            "previous_queue": "**vorige wachtrij**",
+            "waiting_in_queue": "**Wachten op de volgende rij**"
+        },
+        "queueStatus": {
+            "autoplay": "📻 Automatisch afspelen",
+            "duration": "🕒 Duur",
+            "filter": "🎼 audiofilterpatroon",
+            "no_queue": "❎ Nu heb ik nog geen nummers gespeeld.",
+            "now": "⌚ nu",
+            "off": "uitschakelen",
+            "on": "open",
+            "owner_this_queue": "%s is de eigenaar van deze wachtrij",
+            "paused": "pauze",
+            "playing": "spelen",
+            "queue_status": "📑 Status van de huidige nummerwachtrij",
+            "repeat": "🔁 Herhaal",
+            "repeat_off": "niet open",
+            "repeat_this_queue": "deze wachtrij",
+            "repeat_this_song": "dit liedje",
+            "volume": "🔉 geluidsvolume"
+        },
+        "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: Er is een verzoek om het systeem opnieuw op te starten!!**\nOm te bevestigen dat u het bent, voert u dit wachtwoord in op de server waarop u de opdracht uitvoert\nU kunt het negeren als u niet verder wilt gaan\nBedankt dat je nog steeds voor me zorgt tot vandaag :)\n||%s||",
+            "not_owner": "🛑 Niet doen.. neem het niet. Deze functie vereist alleen topprivileges.",
+            "now_reboot": "✅ Nieuw systeem gestart!!",
+            "password_is_incorrect": "❎ Het wachtwoord is onjuist. Controleer alstublieft nog een keer.",
+            "rebooting": "🔄 Opnieuw opstarten..."
+        },
+        "reload": {
+            "invalid_command": "❎ Hmmm...het lijkt deze bestelling niet te hebben...probeer het zorgvuldig te controleren Nogmaals, klopt het of niet?",
+            "reloaded": "✅ %s Succesvol herladen!!",
+            "reload_error": "❌ Verdomme..Ik heb geprobeerd het commando %s opnieuw te laden, maar dat lukt niet."
+        },
+        "remove": {
+            "no_queue": "❎ Nu heb ik nog geen nummers gespeeld.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "removed": "❌ **%s** uit de wachtrij verwijderd.",
+            "too_much": "❎ Er is geen wachtrij. Controleer alstublieft nog een keer."
+        },
+        "repeat": {
+            "no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "off": "herhalen uit",
+            "repeated": "🔁 %snu",
+            "repeat_queue": "herhaal wachtrij",
+            "repeat_song": "herhaal het liedje",
+            "too_much": "❎ Er is geen hogere modus dan deze."
+        },
+        "resume": {
+            "no_queue": "❎ Nu heb ik nog geen nummers gespeeld.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "now_playing": "📼 Hé.. Nu ben ik aan het spelen.",
+            "resumed": "▶️ Het nummer wordt vanaf hetzelfde punt afgespeeld."
+        },
+        "rip": {
+            "no_image": "❎ Oh... het lijkt op deze foto Het is mogelijk verwijderd of verplaatst naar een andere plaats."
+        },
+        "rpc": {
+            "answered": "Je hebt je antwoord gekozen.",
+            "bot_winner": "Yay!..Ik heb je verslagen <@%s>",
+            "can_not_play_with_another_bot": "❎ Je kunt dit spel niet spelen met andere bots.",
+            "choose_options": "Kies hieronder een optie.",
+            "game_timeout": "Dit spel is verlopen. Bedankt voor het plezier.",
+            "member_not_found": "❎ Dergelijke leden lijken niet langer op deze server te zijn.",
+            "rock_paper_scissors": "🎮 steen papier schaar",
+            "tie": "Stropdas!",
+            "user_answered": "%s antwoorden zijn geselecteerd. Wachtend op een antwoord van de andere kant...",
+            "user_winner": "<@%s> is de winnaar!",
+            "your_answer": "Je hebt nu %s"
+        },
+        "say": {
+            "success": "✅ Je bericht is verzonden."
+        },
+        "search": {
+            "get_list_of_songs": "📋 Ik heb de lijst met nummers ontvangen die ik wil. en zal zometeen muziek gaan spelen...",
+            "invalid_number": "🔴 Recente zoekopdrachten zijn geannuleerd. U kunt opnieuw zoeken door dezelfde opdracht te typen.",
+            "no_results": "❎ Ik heb geprobeerd over het nummer te zoeken, maar kon geen resultaten vinden...",
+            "playlist_type": "afspeellijst",
+            "search_cancelled": "🕘 De zoekopdracht geannuleerd..omdat er geen nummerselectie is gevonden.",
+            "searching": "🔍 Vind%sgerelateerd",
+            "song_type": "liedje",
+            "timer_choose": "Er is een tijd om%s seconden te kiezen 60. Als u wilt annuleren, kunt u een nummer typen dat niet relevant is of wachten tot het einde van de tijd.",
+            "title_results": "Resultaten van%szoals:",
+            "user_not_in_channel": "❓ Voer eerst een willekeurig kanaal in. Luister anders niet naar me..."
+        },
+        "seek": {
+            "no_queue": "❎ Er wordt momenteel geen nummer afgespeeld.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "seek_guide": "❓ Hoeveel seconden wil je de tijd van het spelende nummer wijzigen? Speelt nu op %sseconden",
+            "sought": "🕘 De tijd gewijzigd van het nummer dat momenteel wordt afgespeeld.",
+            "too_much": "❎ De tijd van dit nummer staat op %s Er is niets meer dan dit."
+        },
+        "set_command": {
+            "can_not_manage_this_command": "❎ U kunt deze bestelling niet manipuleren.",
+            "command_input_empty": "❎ Voer de bestelling in die u wilt afhandelen.",
+            "command_not_found": "❎ De bovenstaande opdracht is niet gevonden. Probeer de tekens of tekens opnieuw te controleren.",
+            "data_at": "informatie wanneer",
+            "description": "**set-command** - handelt al mijn commando's af, bijv. `on`-||off||, voert individuele commando's uit etc.\n\n**commando's** - (%s1):\n%s2\n\n> jij Dit kan gewijzigd door te typen:\n> ```%s3```",
+            "disabled": "☑️Bestelling uitgeschakeld **%s** al.",
+            "enabled": "✅Bestelling al **%s** geactiveerd.",
+            "title": "🪄 opdracht"
+        },
+        "set_language": {
+            "already_set": "❎ Eh..maar deze server gebruikt al taal %s",
+            "description": "**set-language** - Stel uw taal in, dit zal uw begrip aanzienlijk vergemakkelijken\n\nDe taal van deze server is: `%s1`\n\n> U kunt deze wijzigen door te typen:\n> ```%s2. ```",
+            "set_success": "✅ De taal al gewijzigd in **%s**.",
+            "title": "🌐 Taal"
+        },
+        "set_notify": {
+            "channel_not_found": "❎ Kan zo'n kanaal niet vinden op deze server. Controleer alstublieft nog een keer.",
+            "data_at": "informatie wanneer",
+            "description": "**set-notify** - Stel elk type notificatie in om de laatste informatie van de server te ontvangen\n\n**alert** - Algemene notificatie: %s1\n**channelCreate** - Nieuw kanaal: %s2\n* *channelDelete* * - Kanaal verwijderd: %s3\n**channelPinsUpdate** - Kanaal vastgemaakt: %s4\n**channelUpdate** - Kanaal bijgewerkt: %s5\n**emojiCreate** - E Nieuwe emoji's: %s6\n**emojiDelete** - Emoji's verwijderd: %s7\n**emojiUpdate** - Emoji's bijgewerkt: %s8\n**guildBanAdd** - Leden verbannen: %s9\n**guildBanRemove** - Lid opgeheven: %s10\n**guildIntegrationsUpdate** - Guild Integratie-update: %s11\n**guildMemberAdd** - Member join server: %s12\n** guildMemberRemove** - Member left server: %s13\n**guildMembersChunk** - Veel gildeleden gekregen: %s14\n**guildUnavailable* * - Server niet beschikbaar: %s15\n**inviteCreate** - Uitnodigingslink gemaakt: %s16\n**inviteDelete** - Uitnodigingslink verwijderd: %s17\n**roleCreate** - Rol gemaakt: %s18\n**roleDelete* * - Rol verwijderd: %s19\n* *roleUpdate** - Rol bijgewerkt: %s20\n**stageInstanceCreate** - Stage gemaakt: %s21\n**stageInstanceDelete** - Stage verwijderd: %s22\n**stageInstanceUpdate** - Stage is bijgewerkt Updates: %s23\n**stickerCreate** - Stickers gemaakt: %24\n**stickerDelete** - Stickers verwijderd: %s25\n**stickerUpdate** - Stickers bijgewerkt: %s26\n**threadCreate** - Discussie aangemaakt: %s27\n**threadDelete** - Discussie verwijderd: %s28\n**threadUpdate** - Discussie bijgewerkt: %s29\n**webhookUpdate** - Webhook Bijgewerkt: %s30\n\n> U kunt dit wijzigen door te typen:\n> ```%s31```",
+            "not_set": "`Niet ingesteld`",
+            "remove_success": "✅ Verwijder meldingstype `%s` met succes.",
+            "set_success": "✅ Alarmtype `%s1` is ingesteld op kanaal `<#%s2>`.",
+            "title": "🔔 Meldingen",
+            "type_not_found": "❎ Hmm... zo'n type lijkt er niet te zijn. Momenteel zijn alleen deze typen beschikbaar: %s"
+        },
+        "set_personal": {
+            "data_at": "informatie wanneer",
+            "description": "**set-personal** - Stel machtigingen in voor het bekijken van uw persoonlijke gegevens. (Alleen effectief voor Shioru)\n\nKan profiel bekijken: `%s1`\nKan Discord-informatie bekijken: `%s2`\nKan ID bekijken: `%s3`\n\n> U kunt het wijzigen door te typen:\n> ```%s4 ```",
+            "false_success": "✅ %s Uw machtiging is ingetrokken.",
+            "no": "Nee",
+            "title": "📄 Persoonlijke gegevens",
+            "true_success": "✅ Je %s is geautoriseerd.",
+            "yes": "Ja"
+        },
+        "settings": {
+            "description": "U kunt het configureren volgens uw behoeften met behulp van deze opdrachten.",
+            "languages": "🌐 Taal (Server)",
+            "note": "Opmerking: sommige opdrachten hebben mogelijk bepaalde machtigingen nodig voordat ze worden uitgevoerd.",
+            "notification": "🔔 Melding (server)",
+            "personal": "📄 Persoonlijke informatie (Persoonlijk)",
+            "prefix": "❕ opdracht (server)",
+            "title": "⚙️ Instellingen"
+        },
+        "shuffle": {
+            "no_queue": "❎ Er wordt momenteel geen nummer afgespeeld.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "now_shuffle": "🔀 Wachtrijen wisselen..."
+        },
+        "shutdown": {
+            "dm_to_owner": "**:red_circle: Er is een verzoek tot afsluiten!!**\nOm te bevestigen dat u het bent, voert u dit wachtwoord in op de server waarop u de opdracht uitvoert\n\nkunt het negeren als u niet wilt doorgaan. Zorg voor mij tot vandaag :)\n||%s||",
+            "not_owner": "🛑 Niet doen.. neem het niet. Deze functie vereist alleen topprivileges.",
+            "now_shutdown": "💤 Het systeem op Discord is uitgeschakeld..Tot ziens~",
+            "password_is_incorrect": "❎ Het wachtwoord is onjuist. Controleer alstublieft nog een keer.",
+            "shutting_down": "🔄 Mijn systeem afsluiten..."
+        },
+        "skip": {
+            "no_queue": "❎ Er is geen nummer dat ik momenteel speel. kan niet oversteken",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "skipped": "⏭ Ik heb het overgeslagen en sta op het punt een nieuw nummer in de wachtrij te spelen."
+        },
+        "snake": {
+            "building_board_game": "🐍 Samenstelling een moment alstublieft...",
+            "game_name": "Slang: het spel",
+            "game_over": "spel is over",
+            "game_score": "Score: **%s1**\nTijd: **%s2** seconden",
+            "played_on": "Gestart door %s"
+        },
+        "status": {
+            "data_by_server": "Referentiegegevens van de server.",
+            "dnd_status": "Het aantal leden dat momenteel in Niet storen staat, is \n```%s```.",
+            "idle_status": "Het aantal leden dat momenteel afwezig is, is \n```%s```.",
+            "offline_status": "Het aantal leden dat momenteel offline is, is \n```%s```",
+            "online_status": "Het aantal leden dat momenteel online is, is \n```%s```"
+        },
+        "sticker": {
+            "deleted_sticker": "✅ **%s** Sticker succesvol verwijderd",
+            "does_not_support_gif": "❎ Sorry...Discord ondersteunt momenteel geen GIF-gebaseerde aangepaste stickers.",
+            "edited_sticker": "%s Stickers zijn bewerkt.",
+            "uploading_you_sticker": "📤 Je stickers uploaden...",
+            "you_sticker_is_ready": "%s Je sticker is klaar. Laten we het proberen!!"
+        },
+        "stop": {
+            "no_queue": "❎ Eh...het nummer dat ik afspeel is niet beschikbaar.",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "stopped": "⏹️Stop met het afspelen van muziek en verwijder alle wachtrijen."
+        },
+        "system": {
+            "info_battery": {
+                "charging": "opladen",
+                "not_charging": "niet opladen",
+                "title": "• accu",
+                "without": "heb geen"
+            },
+            "info_description": "De informatie van het systeem waar ik momenteel aan werk, zoals verstrekt door het systeem, is als volgt.",
+            "info_gpu_control": "• GPU (Controller)",
+            "info_gpu_display": "• GPU (weergave)",
+            "info_memory_used": "• gebruikt geheugen",
+            "info_platform": "• Platform",
+            "info_system": "• systeem",
+            "info_temperature": "• CPU-temperatuur",
+            "info_title": "🖥 Basisinformatie van het systeem",
+            "info_uptime": {
+                "info": "%s1 dag %s2 uur ",
+                "title": "• Werktijd"
+            },
+            "loading": "⚙️ Verzoek verzenden om systeemgegevens van server op te halen...",
+            "main": "voornaamst",
+            "unknown": "Ik weet het niet"
+        },
+        "tictactoe": {
+            "button_is_selected": "❎ Het kanaal is al bezet.",
+            "can_not_duel_with_me": "❎ Ik ben niet goed in het spelen van deze spelletjes. Ik ben meer veroordelend.",
+            "can_not_play_with_bot": "❎ Je kunt dit spel niet met bots spelen.",
+            "in_another_duel": "❎ <@%s> Momenteel in een duel met iemand anders.",
+            "in_duel": "❎ Nee, je moet vechten met <@%s> tot het einde.",
+            "member_not_found": "❎ Zulke leden lijken ergens anders te zijn ontvoerd.",
+            "need_one_emoji": "❎ Mag ik 1 emoji zoals ❌ of ⭕?",
+            "tie": "Stropdas!",
+            "wait_opponent": "❓ Wacht even op de overkant.",
+            "winner": "%s gewonnen!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ U kunt geen time-out voor uzelf instellen.",
+            "can_not_set_timeout": "❎ Ik kan geen time-out voor hem instellen omdat hij een hogere rol heeft dan ik.",
+            "can_not_set_to_admin": "❎ U kunt geen time-out instellen voor moderators.",
+            "dm_to_user": "⌛ U bent ingesteld op een time-out in %s1, u kunt de resterende tijd op die server zien **Reden**: %s2",
+            "member_not_found": "❎ Leden zeggen niet dat ze niet langer op deze server zijn.",
+            "no_reason": "geeft geen reden",
+            "success": "%s1 verloopt over %s2 minuten **Reden**: %s3"
+        },
+        "together": {
+            "can_not_open": "❌ Ummm..daarom kan ik %s niet openen",
+            "do_not_have": "❎ Ah..Nu is er nog steeds geen %s1 of misschien is er niet echt\n, maar Together dat nu kan worden gebruikt heeft %s2 items, namelijk\n```%s3```",
+            "do_not_have_permission": "❌ Ik kan niet activeren omdat ik geen toestemming heb om te bedienen. Neem dan contact op met de moderator.",
+            "join_via_this_link": "Doe mee via deze link. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Ga eerst naar een van de spraakkanalen, of vertel me de naam of ID van dat kanaal. Hij zal in staat zijn om op de juiste manier een link te maken.",
+            "voice_channel_not_found": "❎ Eh..maar er is geen geluidskanaal in deze server Ga naar het audiokanaal en probeer het opnieuw."
+        },
+        "translate": {
+            "can_not_translate": "❎ Kan de taal van dergelijke tekst niet vertalen. Probeer het later opnieuw.",
+            "says": "inspraak",
+            "translate_support": "❎ Ongeldige vertaalcode Controleer het opnieuw.\n**Ondersteunde talen:** %s"
+        },
+        "unban": {
+            "no_one_gets_banned": "❎ Niemand op de server is momenteel verbannen.",
+            "no_reason": "Leden die de ban ongedaan maakten, gaven geen reden op.",
+            "reason_for_unban": "De ban opgeheven door: %s1\nReden: %s2\nNadat de ban van het lid is opgeheven. Dergelijke leden kunnen normaal lid worden van deze server.",
+            "this_user_not_banned": "❎ Eh.. dat lid was niet verbannen. Laten we nog een keer een aantal geweldige nieuwe zoekwoorden bekijken...",
+            "user_has_been_unbanned": "%s ongedaan gemaakt"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ U kunt geen time-out voor uzelf instellen.",
+            "can_not_set_to_admin": "❎ U kunt geen time-out instellen voor moderators.",
+            "can_not_set_untimeout": "❎ Ik kan hem niet zo instellen dat hij geen time-out krijgt omdat hij een hogere rol heeft dan ik.",
+            "dm_to_user": "⏲️ Je bent geannuleerd om een time-out in te stellen in %s1 **Reden**: %s2",
+            "member_not_found": "❎ Leden zeggen niet dat ze niet langer op deze server zijn.",
+            "no_reason": "geeft geen reden",
+            "success": "%s1 Time-out is ingesteld **Reden**: %s2"
+        },
+        "uptime": {
+            "days": "dag",
+            "hours": "uur",
+            "info_title": "🕒 Het is tijd om te gaan werken.",
+            "minute": "minuut",
+            "second": "seconde"
+        },
+        "user": {
+            "avatar": "Avatar",
+            "bot": "bot",
+            "can_not_find_user": "💡 Ik kan dat lid niet vinden..probeer de volledige naam of gebruikersnaam. Voorbeeld: <@%s>",
+            "created_at": "gemaakt op",
+            "created_timestamp": "bouwdatum",
+            "default_avatar_url": "originele avatar",
+            "discriminator": "voettekst code",
+            "id": "ID kaart",
+            "info_date": "informatie wanneer",
+            "none": "Nee",
+            "partial": "sommige",
+            "system": "systeem",
+            "tag": "labels",
+            "unknown": "Ik weet het niet",
+            "user_info": "👥 Gebruikersgegevens",
+            "user_info_description": "Gedetailleerde informatie over gebruikers Die is gebaseerd op gegevens van Discord.",
+            "username": "Gebruikersnaam",
+            "yes": "Ja"
+        },
+        "version": {
+            "working_in_version": "Ik werk aan versie: **%s**"
+        },
+        "volume": {
+            "adjusted": "🔊 Volume aanpassen naar: **%s**",
+            "no_queue": "❎ Eh...het nummer dat ik afspeel is niet beschikbaar. Wat ga je aanpassen?",
+            "not_owner": "🚫 Alleen de eigenaar van de wachtrij kan deze wijzigen.",
+            "this_volume": "🔈 Het huidige geluidsvolume is: **%s**"
+        },
+        "weather": {
+            "clear_weather": "helder weer",
+            "cloudy": "bewolkt",
+            "date": "📆 datum",
+            "day": "📅 dag",
+            "degree_type": "⚖️ Maateenheden",
+            "feels_like": "🎐 zin in",
+            "humidity": "💧 Vochtigheid",
+            "information_from_microsoft": "Nauwkeurige en nauwkeurige informatie door Microsoft",
+            "light_rain": "motregen",
+            "mostly_clear": "Voornamelijk bewolkt",
+            "mostly_cloudy": "Voornamelijk bewolkt",
+            "mostly_sunny": "Voornamelijk zonnig",
+            "no_result_found": "❎ Eh...Ik heb gezocht naar informatie over dit gebied, maar ik kon het niet vinden.",
+            "partly_cloudy": "Half bewolkt",
+            "partly_sunny": "gedeeltelijk zonnig",
+            "rain": "regen",
+            "rain_showers": "zware regen",
+            "sunny": "zonnig",
+            "temperature": "🌡️ Temperatuur",
+            "timezone": "🌐 Tijdzone",
+            "weather": "⛅ Weer",
+            "weather_at_the_moment": "Het weer van __**%s1**__ is nu \n```%s2```.",
+            "wind": "🎏 Wind"
+        }
+    },
+    "events": {
+        "channelCreate": {
+            "channel_notification": "🪧 Kanaal",
+            "member_create_channel": "> Door serverlid gemaakt kanaal: <#%s>"
+        },
+        "channelDelete": {
+            "channel_notification": "🪧 Kanaal",
+            "member_delete_channel": "> Serverlid geëxplodeerd kanaal: `%s`"
+        },
+        "channelPinsUpdate": {
+            "channel_notification": "🪧 Kanaal",
+            "member_pins_in_channel": "> Serverlid heeft het slot vastgezet: <#%s1> wanneer %s2"
+        },
+        "channelUpdate": {
+            "channel_notification": "🪧 Kanaal",
+            "member_update_channel": "> Een serverlid heeft enkele velden gewijzigd: `%s1` in <#%s2>."
+        },
+        "emojiCreate": {
+            "emoji_notification": "😊Emoji",
+            "member_create_emoji": "> Serverlid heeft een nieuwe emoji gemaakt: :%s:"
+        },
+        "emojiDelete": {
+            "emoji_notification": "😊Emoji",
+            "member_delete_emoji": "> Serverlid verwijderde emoji: :%s:"
+        },
+        "emojiUpdate": {
+            "emoji_notification": "😊Emoji",
+            "member_update_emoji": "> Het serverlid heeft de nieuwe emoji gewijzigd van: %s1 in %s2."
+        },
+        "guildBanAdd": {
+            "guild_notification": "🗄️ Bediener",
+            "member_ban_add": "> <@%s1> Reeds verbannen binnen deze server\n**Reden:**\n```%s2```"
+        },
+        "guildBanRemove": {
+            "guild_notification": "🗄️ Bediener",
+            "member_ban_remove": "> <@%s1> Is verwijderd binnen deze server\n**reden:**\n```%s2```"
+        },
+        "guildCreate": {
+            "advice": "**💡Tips**",
+            "advice_detail": "Als je de eigenaar bent van deze gilde. Ik wil deze gilde-configuratie voltooien voordat ik hem gebruik, omdat sommige dingen je misschien niet nodig hebt. Probeer daarom het commando `Ssettings` te gebruiken.",
+            "description": "Hallo..bedankt dat je me hebt uitgenodigd op deze %s plaats\nhet lijkt erop dat mensen zich afvragen wat ik kan doen? Oh .. kan afwassen, de was doen. Het is geweldig, nietwaar~ Haha, waar is het? grapje",
+            "get_started": "Het is bij het begin aangekomen!!",
+            "help_information_and_documentation": "**📄 Hulp en documentatie**",
+            "help_information_and_documentation_detail": "Wil je weten wat ik kan doen?..zeer eenvoudig. Typ gewoon `Shelp` of `/help` en iemand zal het je vertellen. Ga natuurlijk gewoon naar de onderstaande link en er zal documentatie worden verstrekt door de ontwikkelaar en anderen. Hij heeft al\ngeschreven > https://shiorus.web.app/",
+            "join_on": "doe mee",
+            "support_multiple_languages": "** 🌐 Ondersteunt meerdere talen **",
+            "support_multiple_languages_detail": "Ik ondersteun meerdere talen. Om de taal te veranderen U kunt dit instellen met `Slanguage <taalcode>` of `/taal <taalcode>`."
+        },
+        "guildIntegrationsUpdate": {
+            "guild_integrations_update": "Deze server is al samengevoegd %s . Je ontvangt direct nieuwe artikelen met toekomstige updates.",
+            "guild_notification": "🗄️ Bediener"
+        },
+        "guildMemberAdd": {
+            "captcha_error": "Er is een validatiefout opgetreden. Neem contact op met het serverpersoneel om actie te ondernemen.",
+            "captcha_success": "U bent geverifieerd in %s",
+            "greet": "Hallo nieuw lid **Dit is een automatisch bericht** \nBedankt dat je lid bent geworden van onze server. Lees de informatie over deze server aandachtig door voordat u met iemand begint te praten.",
+            "solve_the_captcha": "Vaste captcha om te verifiëren in %s",
+            "submit_answer_captcha": "Stuur een captcha-antwoord",
+            "submit_you_answer_guide": "Dien in wat u denkt dat captcha is",
+            "use_button_below": "Gebruik onderstaande knop om je antwoord in te sturen!",
+            "welcome": "Welkom op de server",
+            "wrong_answer": "Het lijkt verkeerd. Probeer het nog eens...",
+            "your_answer": "beantwoord je captcha"
+        },
+        "guildMemberRemove": {
+            "user_has_exited": "Is al ontsnapt van deze server...(Laten we naar zijn huis gaan...)"
+        },
+        "guildMembersChunk": {
+            "guild_members_chunk": "Welkom leden van server %s We wachten hier op je.",
+            "guild_notification": "🗄️ Bediener"
+        },
+        "guildUnavailable": {
+            "guild_notification": "🗄️ Bediener",
+            "guild_unavailable": "Momenteel..deze server is tijdelijk niet beschikbaar. Neem contact op met de beheerder van deze server."
+        },
+        "interactionCreate": {
+            "client_is_not_allowed": "🚫 Ummm..Ik mis wat machtigingen. Ik kan dus niet verder, namelijk **%s**",
+            "command_error": "❌ Er is een fout opgetreden bij het uitvoeren van deze bestelling!",
+            "command_is_disabled": "⚫ Deze bestelling is uitgeschakeld binnen de server. Neem contact op met uw serverbeheerder.",
+            "no_permission": "🚫 Hmm...Het lijkt erop dat je geen toestemming hebt om het applicatiecommando (/) te gebruiken, vraag dit aan de moderators (≧∇≦)",
+            "user_is_not_allowed": "🚫 Ik kan je deze bestelling niet laten gebruiken. Als u deze rechten nog niet heeft: **%s**"
+        },
+        "inviteCreate": {
+            "invite_create": "Uitnodigingslink succesvol aangemaakt\n**Link:** %s1\n**Verloopt:** %s2\n**Maximum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Uitnodiging"
+        },
+        "inviteDelete": {
+            "invite_code_deleted": "`%s` Deze uitnodigingscode is verwijderd.",
+            "invite_code_expires": "`%s` Deze uitnodigingscode is verlopen.",
+            "invite_notification": "🏷️ Uitnodiging"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 Je bent teruggekeerd AFK-status automatisch uitgeschakeld",
+            "no_reason_for_afk": "heb geen",
+            "that_user_is_afk": "%s1 Nu niet op scherm (AFK), noem hem nu niet\n**Bericht achterlaten**: %s2"
+        },
+        "roleCreate": {
+            "role_create": "<@&%s> is aangemaakt.",
+            "role_notification": "🔖 Rol"
+        },
+        "roleDelete": {
+            "role_delete": "`%s` is verwijderd.",
+            "role_notification": "🔖 Rol"
+        },
+        "roleUpdate": {
+            "role_notification": "🔖 Rol",
+            "role_update": "`%s1` is bijgewerkt naar <@&%s2>"
+        },
+        "stageInstanceCreate": {
+            "stage_instance_create": "<#%s> is aangemaakt.",
+            "stage_notification": "🎤 podium"
+        },
+        "stageInstanceDelete": {
+            "stage_instance_delete": "`%s` is verwijderd.",
+            "stage_notification": "🎤 podium"
+        },
+        "stageInstanceUpdate": {
+            "stage_instance_update": "`%s1` is bijgewerkt naar <#%s2>.",
+            "stage_notification": "🎤 podium"
+        },
+        "stickerCreate": {
+            "sticker_create": "**%s** Nu beschikbaar",
+            "sticker_notification": "👻 sticker"
+        },
+        "stickerDelete": {
+            "sticker_delete": "**%s** is verwijderd",
+            "sticker_notification": "👻 sticker"
+        },
+        "stickerUpdate": {
+            "sticker_notification": "👻 sticker",
+            "sticker_update": "`%s1` is bijgewerkt naar **%s2**"
+        },
+        "threadCreate": {
+            "thread_create": "<#%s> is aangemaakt.",
+            "thread_notification": "#️⃣ Draden"
+        },
+        "threadDelete": {
+            "thread_delete": "**%s** is verwijderd",
+            "thread_notification": "#️⃣ Draden"
+        },
+        "threadUpdate": {
+            "thread_notification": "#️⃣ Draden",
+            "thread_update": "`%s1` is bijgewerkt naar **%s2**"
+        },
+        "webhookUpdate": {
+            "webhook_notification": "🎣 Webhook",
+            "webhook_update": "**%s1** van **%s2** is bijgewerkt op het kanaal <#%s3>."
+        }
+    },
+    "handlers": {
+        "music": {
+            "addList": {
+                "added_list": "✅ Een afspeellijst toegevoegd **%s1 ** met al `%s2` nummers."
+            },
+            "addSong": {
+                "added_song": "✅ Voeg nummers toe **%s1** `%s2` al."
+            },
+            "disconnect": {
+                "disconnected": "🔌 De verbinding verbroken en alle wachtrijen al verwijderd."
+            },
+            "empty": {
+                "no_user_in_channel": "💨 Oh.. Waar zijn ze allemaal gebleven? Dan .. hou eerst je mond ~"
+            },
+            "error": {
+                "playlist_not_found": "❎ Ik kan die afspeellijst niet vinden. Op zoek naar een andere afspeellijst?"
+            },
+            "finish": {
+                "queue_is_empty": "🍃 Nu is mijn wachtrij leeg. Klaar om het volgende nummer te spelen?"
+            },
+            "playSong": {
+                "playing_song": "🎶 Muziek speelt **%s1** `%s2`"
+            },
+            "searchCancel": {
+                "search_cancelled": "🕘 De zoekopdracht geannuleerd..omdat er geen nummerselectie is gevonden."
+            },
+            "searchDone": {
+                "get_list_of_songs": "📋 Ik heb de lijst met nummers ontvangen die ik wil. en zal zometeen muziek gaan spelen..."
+            },
+            "searchInvalidAnswer": {
+                "search_cancelled": "🔴 Recente zoekopdrachten zijn geannuleerd. U kunt opnieuw zoeken door dezelfde opdracht te typen."
+            },
+            "searchNoResult": {
+                "no_results": "❎ Ik heb geprobeerd over het nummer te zoeken, maar kon geen resultaten vinden..."
+            },
+            "searchResult": {
+                "searching": "🔎 Vind gerelateerde nummers",
+                "timer_choose": "Er is 60 seconden de tijd om een nummer te kiezen. Als je wilt annuleren, kun je een irrelevant nummer typen of wachten tot het einde der tijden.",
+                "title_results": "Zoekresultaten van dergelijke nummers:",
+                "tool_name": "muziek zoekmachine"
+            }
+        }
+    },
+    "utils": {
+        "miscUtils": {
+            "april": "april",
+            "august": "augustus",
+            "december": "December",
+            "february": "Februari",
+            "format_at": "Dag%s1 %s %s3 %s4 Tijd %s5:%s6 p.m.",
+            "friday": "Vrijdag",
+            "january": "Januari",
+            "july": "juli",
+            "june": "juni",
+            "march": "Maart",
+            "may": "Kunnen",
+            "monday": "Maandag",
+            "november": "november",
+            "october": "oktober",
+            "saturday": "Zaterdag",
+            "september": "september",
+            "sunday": "week",
+            "thursday": "Donderdag",
+            "tuesday": "Dinsdag",
+            "wednesday": "Woensdag"
+        },
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Er is een fout opgetreden tijdens de uitvoering.",
+            "error_detail": "Commando: **%s1**\nVersie: **%s2**\nGetimed: **%s3**\nServer: **%s4**\nLatentie: **%s5ms**\nOntvangen-zenden: * *%s6ms**\nFoutresultaat:\n```JavaScript\n%s7\n```\n> **Tip**: U kunt een fout onmiddellijk melden met het commando:\n> ```Sbug <bericht>`` `\n> ```/bug <bericht>```\n[probleemrapport](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Nieuws ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "abnormaal",
+            "server_normal": "normaal"
+        },
+        "databaseUtils": {
+            "congratulations": "Gefeliciteerd!!",
+            "level_up": "De klasse van *%s1* is nu geüpgraded naar ```%s2```.",
+            "was_mentioned": "Wat is er mis?"
+        }
+    }
+}
