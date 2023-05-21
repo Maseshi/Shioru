@@ -8,99 +8,99 @@
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Durum" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="kalabalık" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+  <a title="Kod Faktörü" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="Kod Faktörü" />
   </a>
-  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
+  <a title="top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
     <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[TR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+İyi sunucu asistanınız, sunucunuzun daha canlı görünmesine yardımcı olacaktır. `/help` yazarak farklı komutların detaylı bilgilerini bulabileceğiniz birçok şey yapabilir.Shioru'yu[buraya](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## Özellikler
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- [Discord.js](https://discord.js.org/) v14 üzerinde çalışır.
+- İstenen çeşitli öğeleri özelleştirebilme
+- Otomatik oynatma ile [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) ve [SoundCloud](https://soundcloud.com/) müzik çalınabilir.
+- Birden çok dili destekleyin Desteklenen dilleri bu deponun[dil](https://github.com/Maseshi/shioru/blob/main/source/languages)dosyasından kontrol edebilirsiniz.
+- Katman sistemi (seviye ve deneyim)
+- Sunucu bildirimi özelleştirme desteği
+- `@Shioru` yazarak ve ardından iletmek istediğiniz mesajı yazarak konuşabilirsiniz.
+- Uygulama komutu (/) kullanılabilir.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+ve diğer birçok ilginç özellik...
 
-## Improve Translate
+## Çeviriyi İyileştir
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)bulunmayan bir dili çevirmemize yardımcı olabilirsiniz.
 
-## ข้อกำหนดเบื้องต้น
+## Önkoşullar
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
-- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/) v18.0.0 veya üstü
+- [Firebase](https://firebase.google.com/) v9.0.0 veya üzeri
+- [git](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## Hızlı Kurulum Kılavuzu
 
-### เริ่มต้นใช้งาน
+### Başlamak
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- [Discord Geliştirici Portalına Git](https://discord.com/developers/applications)
+- **"New Application"** tıklayın ve botunuza bir isim verin ve Discord politika kurallarını kabul edin.
+- Sayfa **"Bot"** gidin ve bölüm **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Sayfa **giderek botunuzu sunucuya davet edin OAuth2 > URL Oluşturucu** seçin `bot` ve `apps.commands` seçin `Yönetici` sonra bağlantıyı kopyalayın ve tarayıcınızın adresine yapıştırın. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### robot kur
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- Bir terminal başlatın ve aşağıdaki komutu çalıştırın.
 
 ```bash
-git clone https://github.com/Maseshi/Shioru.git
+git klonu https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm kurulum -- kaydet
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- **config** bazı verileri `./source/config.js`değiştirebilirsiniz.
 
-### ตั้งค่า Firebase
+### Firebase'i kurun
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- https://firebase.google.com/ adresine gidin ve projeyi kurmaya başlayın.
+- Yeni bir proje ekleyin ve adımları izleyin.
+- **Web Sitesi ile ilk uygulamanızı ekleyin** İsteğe bağlı olarak uygulamanızı adlandırın **"Bu uygulama için Firebase Barındırma'yı da kurun"** ve uygulamayı kaydedin. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase size yapılandırma hakkında bilgi verecektir. Bu değerleri `.env.example`dosyasına uygulayın
+- Bir depolama veritabanı oluşturmak için ** > [gerçek zamanlı veritabanı oluştur](https://console.firebase.google.com/u/0/project/_/database/data)** seçeneğine gidin.
 
-### พัฒนา
+### geliştirmek
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- `.env.example` dosyasını `.env` olarak yeniden adlandırın ve gerekli tüm değerleri ekleyin.
+- Terminale gidin ve geliştirme için `npm run dev` ve üretim için `npm start` komutlarını çalıştırın > **Not**: Geliştirme modundayken Bazı özellikler çalışmayabilir.
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## Hızlı Sorun Giderme
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- **sodyum** paketini kuramazsanız, bunun yerine **libsodium-wrappers** kurun.
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm sodyum kaldır
+npm kurulum libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Müziğinizi çalamıyorsanız veya müzik çalma komutları çalışmıyorsa, [ffmpeg](https://ffmpeg.org/download.html) **(önerilen)** kurun veya **ffmpeg-static** paketini kurun ve tekrar deneyin.
 ```bat
-npm install ffmpeg-static@latest --save
+npm kurulum ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## kredi
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+Bu harika çalışmalarınızın kullanılmasına izin verdiğiniz için tüm orijinal yaratıcılara teşekkür ederiz.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Avatar çizimi yapan: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## bir sorun bulundu
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+Herhangi bir sorunla karşılaşırsanız şu anki işinizden Bu deponun [sayı](https://github.com/Maseshi/Shioru/issues) sekmesinden bize bildirebilirsiniz.
