@@ -81,7 +81,7 @@ npm install --save
 ### desarrollar
 
 - Cambie el nombre del archivo `.env.example` a `.env` e inserte todos los valores necesarios.
-- Vaya a la terminal y ejecute los comandos `npm run dev` para desarrollo y `npm start` para producción > **Nota**: en modo de desarrollo Es posible que algunas características no funcionen.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Solución rápida de problemas
 
