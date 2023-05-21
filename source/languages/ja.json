@@ -28,8 +28,8 @@
             "undefined": "未定義"
         },
         "automod": {
-            "flagged_words_name": "บล็อกคำหยาบคาย เนื้อหาเกี่ยวกับเรื่องเพศ และคำสบประมาท",
-            "flagged_words_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว คำเหล่านั้นทั้งหมดจะถูกระงับ",
+            "flagged_words_name": "冒とく的な表現をブロック性的コンテンツと侮辱",
+            "flagged_words_success": "✅ AutoMod ルールが作成されました。これらの単語はすべて抑制されます。",
             "keyword_name": "単語 %s の使用を禁止する",
             "keyword_success": "✅ AutoMod ルールが作成されました。単語 %s を含むすべてのメッセージが削除されます。",
             "mention_spam_name": "メンションされたスパムを防止する",
@@ -479,7 +479,7 @@
             "game_timeout": "このゲームはタイムアウトしました. 楽しんでくれてありがとう。",
             "member_not_found": "❎ メンバーはもうこのサーバーにいないようです.",
             "rock_paper_scissors": "🎮じゃんけん",
-            "tie": "เสมอกัน!",
+            "tie": "ネクタイ！",
             "user_answered": "%s は既に回答を選択しています。 相手からの返事を待っています...",
             "user_winner": "<@%s> が勝者です!",
             "your_answer": "%s を選択しました"
@@ -565,7 +565,7 @@
         "skip": {
             "no_queue": "❎ 現在再生中の曲はありません。 越えられない",
             "not_owner": "🚫 キューの所有者のみが変更を加えることができます.",
-            "skipped": "⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว"
+            "skipped": "⏭ スキップして、キュー内の新しい曲の再生を開始しようとしました。"
         },
         "snake": {
             "building_board_game": "🐍 要素を配置します。 しばらくお待ちください...",
@@ -952,7 +952,7 @@
         "databaseUtils": {
             "congratulations": "おめでとう!!",
             "level_up": "*%s1* の階層が ```%s2``` に昇格しました",
-            "was_mentioned": "มีอะไรหรอคะ?"
+            "was_mentioned": "どうしたの？"
         }
     }
 }
