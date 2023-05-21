@@ -81,7 +81,7 @@ npm instalace --save
 ### rozvíjet
 
 - Přejmenujte soubor `.env.example` na `.env` a vložte všechny potřebné hodnoty.
-- Přejděte na terminál a spusťte příkazy `npm run dev` pro vývoj a `npm start` pro produkci > **Poznámka**: Ve vývojovém režimu Některé funkce nemusí fungovat.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Rychlé odstraňování problémů
 
