@@ -81,7 +81,7 @@ npm installer --lagre
 ### utvikle
 
 - Gi nytt navn til filen `.env.example` til `.env` og sett inn alle nødvendige verdier.
-- Gå til terminalen og kjør kommandoene `npm kjør dev` for utvikling og `npm start` for produksjon > **Merk**: Når du er i utviklingsmodus Noen funksjoner fungerer kanskje ikke.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Rask feilsøking
 
