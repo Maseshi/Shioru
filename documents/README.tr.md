@@ -81,7 +81,7 @@ npm kurulum -- kaydet
 ### geliştirmek
 
 - `.env.example` dosyasını `.env` olarak yeniden adlandırın ve gerekli tüm değerleri ekleyin.
-- Terminale gidin ve geliştirme için `npm run dev` ve üretim için `npm start` komutlarını çalıştırın > **Not**: Geliştirme modundayken Bazı özellikler çalışmayabilir.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Hızlı Sorun Giderme
 
