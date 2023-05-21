@@ -1,0 +1,958 @@
+{
+    "commands": {
+        "about": {
+            "my_profile": "Mano profilis",
+            "my_profile_detail": "Mano vardas %s gimiau sekmadienį, birželio 21 d. Gyvenu name. __Chaiwat Suwannarat(Masashi)__ yra tas, kuris mane pagimdo ir suteikia žinių bei gebėjimų.**Įvairūs kad aš viską išstudijavau visiems, kur aš gyvenu Tikiuosi visiems bus malonu būti su manimi!! Ir ačiū už visą pagalbą ir paramą mano mieliems geradariams. Labai ačiū.\n\n[Oficiali svetainė](https://maseshi.web.app/)\n[Privatumo politika](https://maseshi.web. app/privacy-policy) | [Paslaugų teikimo sąlygos](https://maseshi.web.app/terms-of-service)\n\n© 2020–2022 Chaiwat Suwannarat. Visos teisės saugomos.",
+            "update_on": "atnaujinta kada"
+        },
+        "afk": {
+            "currently_afk": "❎ Dabar esate AFK",
+            "currently_not_afk": "❎ Šiuo metu jūs nesate AFK.",
+            "now_afk": "💤 Dabar esate AFK, parašykite žinutę arba /afk pašalinkite, kad išeitumėte iš AFK režimo.",
+            "now_not_afk": "🔙 Jūsų AFK būsena nenustatyta."
+        },
+        "anime": {
+            "auto_cancel": "Tiesiog įveskite skaičių, kurį norite perskaityti! (atšaukti per 1 minutę)",
+            "choose_now": "Rinkitės dabar.!!",
+            "data_not_found": "❎ Neradau šios istorijos. Pažiūrėkime. Žiūrėk, gal iš tikrųjų to nėra?",
+            "end_date": "**Pabaigos data**",
+            "english_name": "**Angliškas pavadinimas**",
+            "in_progress": "vyksta",
+            "japan_name": "** japoniškas vardas**",
+            "link": "**nuoroda**",
+            "popularity_rank": "**Populiarumo reitingas**",
+            "short_information": "Tai tik informacijos santrauka. Jei norite paskaityti daugiau, spustelėkite nuorodą!!",
+            "similar_stories": "Radau 5 panašius dalykus. Kurią istoriją norite perskaityti ~",
+            "start_date": "**pradžios data**",
+            "synopsis": "** apibendrinimas:**",
+            "undefined": "neapibrėžtas"
+        },
+        "automod": {
+            "flagged_words_name": "blokuoti nešvankybę seksualinio turinio ir įžeidinėjimai",
+            "flagged_words_success": "✅ Jūsų „AutoMod“ taisyklės buvo sukurtos, visi šie žodžiai bus užblokuoti.",
+            "keyword_name": "Neleiskite naudoti žodžio %s.",
+            "keyword_success": "✅ Jūsų AutoMod taisyklė sukurta, visi pranešimai, kuriuose yra žodis %s , bus ištrinti.",
+            "mention_spam_name": "Užkirsti kelią šlamštui, kai kalbama apie tai",
+            "mention_spam_success": "✅ Sukurta „AutoMod“ taisyklė, kelių paminėjimų šlamštas bus užblokuotas.",
+            "prevent_message": "Šis pranešimas yra apsaugotas.",
+            "spam_messages_name": "blokuoti pranešimų šlamštą",
+            "spam_messages_success": "✅ Jūsų „AutoMod“ taisyklės sukurtos, pranešimų šlamštas bus užblokuotas."
+        },
+        "autoplay": {
+            "no_queue": "❎ Hmm... bet daina dar net neprasidėjo?",
+            "not_queue_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "off": "📻 Automatinio paleidimo režimas išjungtas",
+            "on": "📻 Įjungtas automatinio atkūrimo režimas"
+        },
+        "ban": {
+            "banned_for_time": "%s1 uždraustas **%s2** dienoms",
+            "member_has_banned": "❎ Tokie nariai jau uždrausti. Jauskitės patogiai.",
+            "members_have_a_higher_role": "❎ Negalite uždrausti žmogaus, kuris atlieka aukštesnį vaidmenį nei jūs.",
+            "members_have_a_higher_role_than_me": "❎ Negaliu uždrausti to nario. nes jis turi aukštesnį vaidmenį nei aš",
+            "no_reason": "Uždraudę nariai nenurodė priežasties.",
+            "permanently_banned": "%s uždrausta visam laikui",
+            "reason_for_ban": "Užblokavo: %s1\nPriežastis: %s2",
+            "user_not_found": "❎ Nerandu šio nario. Prašau patikrinti dar kartą."
+        },
+        "board": {
+            "leveling_detail": "Patirtis: %s1, pažymys: %s2",
+            "no_info": "❎ Šiame serveryje dar nėra narių. kuri turi patirties vertę",
+            "server_rank": "Šio serverio lygio reitingas",
+            "server_rank_description": "1 iš 10 geriausių narių šiame serveryje. kurie gali surinkti daugiausiai savo lygių, tokia tvarka",
+            "server_rank_tips": "Patarimas: kalbėkite su kitais nariais įgis daugiau lygių"
+        },
+        "bug": {
+            "sending": "📨 Gerai... akimirka Duok man šiek tiek laiko išsiųsti laišką kūrėjui...",
+            "success*": "✅ Gerai, ačiū... Jei dar ką nors rasite, pasakykite man (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ Captcha sistema nustatyta ir sėkmingai suaktyvinta.",
+            "currently_disable": "ℹ️ „Captcha“ dabar uždaryta.",
+            "currently_enable": "ℹ️ „Captcha“ dabar įjungta.",
+            "disabled_captcha": "✅ Captcha išjungtas",
+            "enabled_captcha": "✅ Captcha sėkmingai įjungtas",
+            "need_to_setup_before": "❎ Prieš naudodami nustatykite captcha naudodami komandą /captcha setup."
+        },
+        "covid": {
+            "active": "aktyvus",
+            "active_per_one_million": "aktyvių 1 mln",
+            "backend_issue": "❎ Atrodo, kad informatoriaus pusėje yra problema. Bandykite dar kartą kitą kartą.",
+            "cases_per_one_million": "Pacientų tenka 1 mln",
+            "cases_today": "šis pacientas",
+            "cases_total": "visų pacientų",
+            "country_not_found": "❎ Um... Negaliu rasti jūsų nurodytos šalies informacijos.",
+            "critical_per_one_million": "kritinis laikotarpis tenka 1 mln",
+            "critical_stage": "kritinis laikotarpis",
+            "deaths_today": "šiandien mirė",
+            "deaths_total": "visi mirė",
+            "one_case_per_people": "vienam pacientui",
+            "one_death_per_people": "mirtis vienam asmeniui",
+            "one_test_per_people": "Testavimas vienam asmeniui",
+            "population": "gyventojų",
+            "recovered": "dingo",
+            "recovered_per_one_million": "Prarasta už 1 mln",
+            "tests": "bandymas",
+            "tests_per_one_million": "Bandymai 1 mln",
+            "updated_on": "Paskutinis atnaujinimas %s",
+            "when": "kada"
+        },
+        "credits": {
+            "creator_credit": "💳 Pagarba kitiems kūrėjams",
+            "creator_credit_description": "kurių kai kurie kūrėjai yra ir prisidėję Kai kurie iš jų paimti iš išorės..Ačiū už visą jūsų palaikymą.",
+            "natsuki_marina_credit": "Informacija: Kai kurios nuotraukos ir avatarai \niš: https://www.pixiv.net/en/users/482462 \nSvetainė: https://marina71712.wixsite.com/0-0v",
+            "update_on": "atnaujinta kada"
+        },
+        "dead": {
+            "suicide": "%s nusižudyti 💔 Ilsėkis ramybėje"
+        },
+        "decode": {
+            "after": "po dekodavimo",
+            "before": "prieš dekoduojant",
+            "decode_message": "🔓 Iššifruoti pranešimus",
+            "decode_success": "Laiškas buvo iššifruotas."
+        },
+        "donate": {
+            "thank_you_in_advance_message": "❤️ Ačiū, kad palaikote mano kūrėjus iš anksto. Turiu tokį paramos kanalą."
+        },
+        "eat": {
+            "already_eaten": "%s1 suvalgė %s2 į skrandį",
+            "do_not_eat_me": "aš.. aš šiek tiek mažas. m..netinka valgyti..."
+        },
+        "eight_ball": {
+            "answer": "atsakyti",
+            "game": "🎱 8 kamuolių žaidimas",
+            "question": "klausimas",
+            "risk": "Pasinaudokite savo sėkme klausdami, kad gautumėte atsakymus.",
+            "roll_ball": "Rit kamuolį!!"
+        },
+        "emoji": {
+            "deleted_emoji": "✅ **%s** Jaustukai buvo ištrinti.",
+            "edited_emoji": "%s jaustukų ištaisyta",
+            "uploading_you_emoji": "📤 Įkeliamas jaustukas...",
+            "you_emoji_is_ready": "%s Jūsų jaustukas paruoštas. Pabandykim!!"
+        },
+        "encode": {
+            "after": "po šifravimo",
+            "before": "prieš kodavimą",
+            "encode_message": "🔒 Šifruoti pranešimus",
+            "encode_success": "Laiškas buvo užšifruotas."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ Panašu, kad jaustuko trūksta arba tai gali būti ne jaustukas.",
+            "large_emoji": "didelis jaustukas",
+            "requested_by": "paprašė %s"
+        },
+        "exp": {
+            "can_not_find_user": "❎ Negaliu rasti šio nario. Ech.. Rašybos klaida ar ne?",
+            "error": "❎ Negaliu nustatyti tokių narių patirties. Pabandykite dar kartą vėliau.",
+            "experience": "Patirties taškai (Exp)",
+            "exp_was_changed": "%s sukauptų visų patirties lygių:",
+            "level": "Lygis",
+            "notification_complete": "✅ Sąranka baigta...",
+            "set_by_staff": "Jūsų patirtį nustato šio serverio komanda.",
+            "success": "✅ Sąranka baigta..."
+        },
+        "filter": {
+            "add_filter": "🎼 Pridėkite norimą garso formatą, kad jau būtų **%s**.",
+            "available_filter": "Galimi filtrų formatai",
+            "available_filter_description": "Suasmeninkite savo muziką naudodami šiuos %s1 formatus ```%s2```",
+            "clear_filter": "💨 Visi garso formatai buvo išvalyti. Dabar tai bus įprastas garso formatas.",
+            "list_filter_description": "Šiuo metu šioje eilėje yra aktyvių šablonų: %s1 šablonų\n```%s2```",
+            "list_filter_description_empty": "``` Šiuo metu nenaudojamas joks garso formatas.```",
+            "list_filter_title": "Šiuo metu naudojamas garso formatas",
+            "no_queue": "❎ Šiuo metu nėra grojamos dainos.",
+            "not_queue_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "remove_filter": "🗑️ Garso formatas **%s** buvo pašalintas.",
+            "set_filter": "🎼 Nustatykite pageidaujamą garso formatą į **%s**",
+            "sound_filtering": "❓ Norite pakeisti savo muzikos garsą?",
+            "unknown_filter": "❎ Um..nežinau garso formato `%s, galite jį patikrinti naudodami **galima** arba **ava**?",
+            "unknown_input_option": "❓ Galite nurodyti šiuos parametrus: pridėti, pašalinti, nustatyti, pasiekiama, sąrašas, išvalyti."
+        },
+        "guild": {
+            "afk_channel_id": "AFK kanalo kodas",
+            "afk_timeout": "riboto laiko AFK",
+            "application_id": "programos kodas",
+            "approximate_member_count": "Numatomas narių skaičius",
+            "approximate_presence_count": "numatoma būklė",
+            "available": "pasiruošę",
+            "banner": "baneris",
+            "create_at": "sukurtas",
+            "create_timestamp": "pastatymo data",
+            "default_message_notification": "įspėti",
+            "description": "apibūdinimas",
+            "discovery_splash": "šūkis",
+            "do_not_have": "neturi",
+            "explicit_content_filter": "filtravimas",
+            "features": "funkcija",
+            "guild_available": "paruoštas naudoti",
+            "icon": "Avataras",
+            "id": "kodas",
+            "info_date": "informacija, kada",
+            "joined_at": "prisijungė prie",
+            "join_timestamp": "įstojimo data",
+            "large": "didelis dydis",
+            "maximum_members": "Maksimalus narys",
+            "maximum_presences": "aukščiausias statusas",
+            "member_count": "narys",
+            "mfa_level": "MFA lygis",
+            "name": "vardas",
+            "name_acronym": "inicialai",
+            "no": "ne",
+            "none": "ne",
+            "nsfw_level": "NSFW lygis",
+            "off": "Išjunk",
+            "on": "atviras",
+            "owner_id": "savininko kodas",
+            "partnered": "dalyvauti",
+            "preferred_locale": "apimtis",
+            "premium_subscription_count": "ypatingas narys",
+            "premium_tier": "stiprintuvas",
+            "public_updates_channel_id": "Atnaujinkite kanalo kodą",
+            "rules_channel_id": "taisyklių dėžutės kodas",
+            "server_info": "🗄 Išsami serverio informacija",
+            "server_info_description": "Išsami serverio informacija Kuris pagrįstas „Discord“ duomenimis.",
+            "specific_use": "💡 Konkrečią serverio vartotojo informaciją galite nurodyti taip: **%s**",
+            "splash": "kvietimo nuotrauka",
+            "system_channel_id": "sistemos kanalo kodas",
+            "unavailable": "nepasirengusi",
+            "unknown": "Nežinau",
+            "vanity_url_code": "pakvietimo kodas",
+            "vanity_url_uses": "pakviestas",
+            "verification_level": "tikrinimas",
+            "verified": "patvirtinti",
+            "widget_channel_id": "wiitseven kanalo kodas",
+            "widget_enabled": "liūdesys",
+            "yes": "taip"
+        },
+        "help": {
+            "category": "Kategorija: %s",
+            "client_permissions": "Leidimai (botai): %s",
+            "command": "Užsakymas: %s",
+            "command_detail": "📑 Užsakymo detalės ",
+            "command_incorrect": "❎ Neteisinga tvarka",
+            "command_incorrect_guide": "Ech... Aš neturiu šio įsakymo. Patikrinkite dar kartą įvesdami „/help“, kad pamatytumėte visą mano komandų sąrašą.",
+            "commands_description": [
+                "Visos komandos, kurias išmokau ar išmokau. suprasti ir iš tikrųjų naudoti",
+                "kuri prieš skambindama man Priešdėlis turi būti **/**.",
+                "„<>“ reiškia, kad būtina, „()“ yra įvesties tipas, o „[]“ yra neprivaloma.",
+                "Norėdami gauti daugiau informacijos apie kiekvieną komandą, įveskite `/help [command]' ir jūsų noras išsipildys!!"
+            ],
+            "description": "Aprašymas: %s",
+            "document_name": "Pagalbos lapas",
+            "how_to_use": "Pagalba: %s",
+            "no_description": "Nėra aprašymo",
+            "no_need_permissions": "Nereikia jokių leidimų",
+            "request_by": "prašoma",
+            "unknown_how_to_use": "jokiu būdu naudoti",
+            "user_permissions": "Leidimai (naudotojai): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ Negaliu rasti tokių narių šiame serveryje.",
+            "success": "✅ <@%s> Pranešimas sukurtas!"
+        },
+        "invite": {
+            "can_not_create_invite_link": "❎ Nepavyko sugeneruoti kvietimo nuorodos Prašau, pabandykite dar kartą.",
+            "me_do_not_have_permission": "🚫 Neturiu leidimo kurti kvietimo nuorodos šiame kanale.",
+            "membership_invitation_card": "nario kvietimo kortelė",
+            "this_product_is_free": "Šis produktas yra nemokamas, neperparduokite."
+        },
+        "join": {
+            "already_joined": "❎ Ech.. bet aš čia dabar?",
+            "another_player_is_playing": "🚫 Šiuo metu negalite naudoti šio užsakymo. nes yra kitų narių, grojančių muziką",
+            "channel_joined": "✅ Jau esu kanale <#%s>...",
+            "joined": "▶️ Dabar jau esu kanale <#%s>.",
+            "no_channel": "❎ Neturiu šio kanalo. Ar tai rašybos klaida?",
+            "not_in_channel": "❓ Pirmiausia turite prisijungti prie kanalo. Kitu atveju aš nežinau, kuris laukas =3="
+        },
+        "jump": {
+            "can_not_jump": "❎ Atrodo, kad tokio eilės numerio iš viso nėra. Prašau patikrinti dar kartą.",
+            "jumped": "➿ Jau pereikite prie naujos dainos %s eilėje.",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią groju. negali kirsti",
+            "not_queue_owner": "🚫 Keisti gali tik eilės savininkas."
+        },
+        "kick": {
+            "can_not_find_user": "❎ Nerandu šio nario. Prašau patikrinti dar kartą.",
+            "kicked_out": "%s išmestas",
+            "members_have_a_higher_role": "❎ Negalite spardyti žmonių, kurie yra aukštesni už jus.",
+            "members_have_a_higher_role_than_me": "❎ Negaliu to nario spardyti. nes jis turi aukštesnį vaidmenį nei aš",
+            "no_reason": "Spardydami nariai nenurodė priežasties.",
+            "reason_for_kick": "Spyrė: %s1\nPriežastis: %s2"
+        },
+        "kill": {
+            "do_not_kill_me": "❎ Tu padarysi kažką panašaus.. Ne su manimi, haha...",
+            "killed": "%s1 jau tave nužudė %s2 🔪"
+        },
+        "leave": {
+            "another_player_is_playing": "🚫 Šiuo metu negalite naudoti šio užsakymo. nes yra kitų narių, grojančių muziką",
+            "not_in_any_channel": "❎ Dabar aš dar nedalyvauju jokiame kanale...",
+            "now_leave": "◀️ Aš išėjau iš dabartinio kanalo."
+        },
+        "level": {
+            "delete_error": "❎ Visiškai nepavyksta rasti šio vartotojo.",
+            "delete_success": "✅ Šio nario patirties lygis buvo ištrintas!",
+            "deleting": "📁 Ištrinami šio nario patirties lygio duomenys.",
+            "experience": "Patirties taškai (Exp)",
+            "level": "Lygis",
+            "level_was_changed": "%s sukauptų visų patirties lygių:",
+            "notification_complete": "✅ Sąranka baigta...",
+            "set_by_staff": "Jūsų klasę nustato komanda šiame serveryje.",
+            "set_error": "❎ Negalima nustatyti tokių narių lygio. Pabandykite dar kartą vėliau.",
+            "set_success": "✅ Sąranka baigta...",
+            "user_current_no_level": "❎ Tokie nariai neturi klasės lygio."
+        },
+        "leveling": {
+            "bot_do_not_have_level": "❎ Botai neturės lygių, įskaitant mane.",
+            "can_not_find_user": "❎ Negaliu rasti šio nario. Ech.. Rašybos klaida ar ne?",
+            "experience": "Patirties taškai (Exp)",
+            "level": "Lygis",
+            "user_no_data": "💨 Hmm... Šis narys neturi lygio ir patirties.",
+            "your_experience": "Jūsų patirtis"
+        },
+        "license": {
+            "copyright_content": "📝 Autorių teisių saugomas turinys"
+        },
+        "logs": {
+            "can_not_delete_file": "❎ Nepavyko ištrinti aukščiau pateikto žurnalo failo.\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ Nepavyksta perskaityti aukščiau esančio žurnalo failo.\n``` JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** jau ištrintas",
+            "file_not_found": "❎ Aplanke nepavyksta rasti failo, pavadinto **%s**.",
+            "folder_empty": "💨 Dabar žurnalo failas aplanke tuščias. Pabandykite sugrįžti vėliau.",
+            "found_file": "Rasta %s1 failų įrašų:\n```%s2```",
+            "owner_only": "🚫 Atsiprašome.. Šią komandą gali naudoti tik administratoriai."
+        },
+        "lyrics": {
+            "can_not_find_lyrics": "%sžodžių nerasta.",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "playing_lyrics": "📋 Šiuo metu grojamos dainos žodžiai"
+        },
+        "meme": {
+            "can_not_fetch": "Nepavyko gauti memo. Prašau, pabandykite dar kartą.",
+            "meme_not_found": "Nerasta %stipo memo."
+        },
+        "minecraft": {
+            "address": "adresu",
+            "do_not_have": "neturi",
+            "ip": "IP adresas",
+            "last_check": "paskutinį kartą tikrintas",
+            "maximum_player_count": "Maksimalus žaidėjų skaičius",
+            "motd": "apibūdinimas",
+            "player_in_server": "serverio žaidėjai",
+            "port": "uostas",
+            "server_available": "🟢 Šis serveris šiuo metu veikia.",
+            "server_unavailable": "🔴 Šis serveris laikinai uždarytas.",
+            "skin_of": "🎴 Skinai iš %s",
+            "version": "versija"
+        },
+        "musicInfo": {
+            "detail": "📄 Išsami informacija apie šiuo metu grojamą dainą",
+            "download_link": "📥 Atsisiuntimo nuoroda",
+            "duration": "🕒 Trukmė",
+            "id": "🆔 ID",
+            "link": "🔗 Nuoroda",
+            "music_name": "🎵 Dainos pavadinimas",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "uploader": "🎬 įkėlėjas"
+        },
+        "nekos": {
+            "can_not_fetch_data": "❎ Laikinai nepavyksta gauti norimos nuotraukos. Pabandykite dar kartą vėliau.",
+            "request_by": "paprašė %s"
+        },
+        "nowPlaying": {
+            "autoplay": "📻 Automatinis paleidimas",
+            "filter": "🎼 Balso filtro šablonas: `%s",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "owner_this_queue": "%s yra šios eilės savininkas"
+        },
+        "numbers": {
+            "result": "Rezultatas yra %s"
+        },
+        "paste": {
+            "backend_not_response": "❎ Jokio atsakymo iš serverio. Vėliau galėsite bandyti dar kartą.",
+            "file": "failą",
+            "raw": "neapdorotas"
+        },
+        "pause": {
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "not_paused": "📼 Dabar aš įstrigo. Keistai šiandien atrodo..",
+            "paused": "⏸ Pristabdykite muziką dabar."
+        },
+        "ping": {
+            "connection": "📡 Ryšys",
+            "info": "Kelionės į abi puses delsa yra %s1 ms\nžiniatinklio lizdo veikimo laikas yra %s2 ms",
+            "result": "🏓 Tenisas",
+            "waiting": "🏓 Ping..."
+        },
+        "play": {
+            "no_queue": "❎ Dabar dar negrojau jokios dainos.",
+            "not_in_channel": "❓ Pirmiausia įveskite bet kurį kanalą. Kitaip neklausyk manęs..."
+        },
+        "previous": {
+            "no_previous_song_queue": "📼 Nėra neseniai skambėjusios dainos.",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "previous": "⏮ Grįžkite į ankstesnę dainą"
+        },
+        "purge": {
+            "message_cleared": "Sėkmingai pašalinta `%s pranešimų ` 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "Jūsų QR kodas paruoštas naudoti.",
+            "qrcode_title": "🧩 QR kodas"
+        },
+        "quality": {
+            "advice_embed_description": "``` Dabartinė kokybė: %s```\nKartais problemą gali sukelti serveris, turintis per didelę prieigą prie jo ir sukeliantis našumo problemų. Tačiau aš rekomenduoju prieš nustatydami patikrinti savo interneto ryšį\n`0` – naudokite **OPUS** garso failams suspausti. Tai suteiks jums geresnę garso kokybę, bet taip pat sunaudosite daugiau išteklių **(rekomenduojama)**\n`1` – naudokite garsą tiesiai iš šaltinio. Tai užtikrins geresnį našumą, bet naudos mažiau išteklių.",
+            "advice_embed_footer_text": "Papildomą garso kokybę galite nustatyti „Discord“ nustatymuose: Nustatymai > Garsas ir vaizdo įrašas > Išplėstinė.",
+            "advice_embed_title": "Tinkinkite garso kokybę",
+            "focus_on_high_quality": "sutelkti dėmesį į aukštą kokybę",
+            "low_efficiency": "sutelkti dėmesį į žemą našumą",
+            "opus_mode_selected": "🎛️ Dabar naudoju **OPUS**, kad padėčiau suspausti garso failus. Garso kokybė pagerės.",
+            "raw_mode_selected": "🎛️ Perjungtas į garsą iš originalo Tai gali pabloginti garso kokybę."
+        },
+        "queue": {
+            "autoplay": "📻 Automatinis paleidimas",
+            "filter": "🎼 Garso filtro raštas: %s",
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "owner_this_queue": "%s yra šios eilės savininkas",
+            "previous_queue": "**ankstesnė eilė**",
+            "waiting_in_queue": "**Laukiu kitos eilės**"
+        },
+        "queueStatus": {
+            "autoplay": "📻 Automatinis paleidimas",
+            "duration": "🕒 Trukmė",
+            "filter": "🎼 garso filtro modelis",
+            "no_queue": "❎ Dabar dar negrojau jokios dainos.",
+            "now": "⌚ dabar",
+            "off": "Išjunk",
+            "on": "atviras",
+            "owner_this_queue": "%s yra šios eilės savininkas",
+            "paused": "Pauzė",
+            "playing": "žaidžiant",
+            "queue_status": "📑 Dabartinės dainų eilės būsena",
+            "repeat": "🔁 Pakartokite",
+            "repeat_off": "ne atviras",
+            "repeat_this_queue": "šią eilę",
+            "repeat_this_song": "Ši daina",
+            "volume": "🔉 garso stiprumas"
+        },
+        "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: Yra užklausa dėl naujo sistemos paleidimo!!**\nNorėdami patvirtinti, kad tai jūs, įveskite šį slaptažodį serveryje, kuriame vykdote komandą\nGalite jo nepaisyti, jei nenorite tęsti\nAčiū, kad iki šiol manimi rūpinatės :)\n||%s||",
+            "not_owner": "🛑 Neimk.. neimk. Šiai funkcijai reikalingos tik aukščiausios teisės.",
+            "now_reboot": "✅ Pradėjome naują sistemą!",
+            "password_is_incorrect": "❎ Slaptažodis neteisingas. Prašau patikrinti dar kartą.",
+            "rebooting": "🔄 Perkraunama..."
+        },
+        "reload": {
+            "invalid_command": "❎ Hmmm...atrodo, kad tokios tvarkos nėra...pabandykite atidžiai patikrinti Vėlgi, tai teisinga ar ne?",
+            "reloaded": "✅ %s sėkmingai įkelta!!",
+            "reload_error": "❌ Po velnių..bandžiau iš naujo įkelti komandą %s , bet negaliu."
+        },
+        "remove": {
+            "no_queue": "❎ Dabar dar negrojau jokios dainos.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "removed": "❌ Pašalinta **%s** iš eilės.",
+            "too_much": "❎ Tokios eilės nėra. Prašau patikrinti dar kartą."
+        },
+        "repeat": {
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "off": "pakartokite",
+            "repeated": "🔁 %sdabar",
+            "repeat_queue": "kartoti eilę",
+            "repeat_song": "kartoti dainą",
+            "too_much": "❎ Nėra aukštesnio režimo nei šis."
+        },
+        "resume": {
+            "no_queue": "❎ Dabar dar negrojau jokios dainos.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "now_playing": "📼 Ei.. Dabar aš žaidžiu.",
+            "resumed": "▶️ Daina groja iš to paties taško."
+        },
+        "rip": {
+            "no_image": "❎ O... atrodo kaip ši nuotrauka Jis gali būti ištrintas arba perkeltas į kitą vietą."
+        },
+        "rpc": {
+            "answered": "Jūs pasirinkote savo atsakymą.",
+            "bot_winner": "Taip!..aš tave įveikiau <@%s>",
+            "can_not_play_with_another_bot": "❎ Negalite žaisti šio žaidimo su kitais robotais.",
+            "choose_options": "Toliau pasirinkite parinktį.",
+            "game_timeout": "Šio žaidimo galiojimo laikas baigėsi. Ačiū, kad smagiai praleidote laiką.",
+            "member_not_found": "❎ Atrodo, kad tokių narių šiame serveryje nebėra.",
+            "rock_paper_scissors": "🎮 Popierinės žirklės",
+            "tie": "Kaklaraištis!",
+            "user_answered": "Pasirinkta %s atsakymų. Laukiu atsakymo iš kitos pusės...",
+            "user_winner": "<@%s> yra nugalėtojas!",
+            "your_answer": "Dabar pasirinkote %s"
+        },
+        "say": {
+            "success": "✅ Jūsų žinutė išsiųsta."
+        },
+        "search": {
+            "get_list_of_songs": "📋 Gavau norimų dainų sąrašą. ir po akimirkos pradės groti muziką...",
+            "invalid_number": "🔴 Naujausios paieškos buvo atšauktos. Galite ieškoti dar kartą įvesdami tą pačią komandą.",
+            "no_results": "❎ Bandžiau ieškoti dainos, bet neradau jokių rezultatų...",
+            "playlist_type": "grojaraštis",
+            "search_cancelled": "🕘 Paieška atšaukta, nes nerasta dainų pasirinkimo.",
+            "searching": "🔍 Raskite%ssusijusių",
+            "song_type": "daina",
+            "timer_choose": "Yra laikas pasirinkti%s 60 sekundžių Jei norite atšaukti, galite įvesti skaičių, kuris nėra aktualus, arba palaukti iki laiko pabaigos.",
+            "title_results": "Rezultatai iš%stokių:",
+            "user_not_in_channel": "❓ Pirmiausia įveskite bet kurį kanalą. Kitaip neklausyk manęs..."
+        },
+        "seek": {
+            "no_queue": "❎ Šiuo metu nėra grojamos dainos.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "seek_guide": "❓ Kiek sekundžių norite pakeisti šiuo metu grojamos dainos laiką? Dabar žaidžiama %ssekundės",
+            "sought": "🕘 Pakeistas šiuo metu grojamos dainos laikas.",
+            "too_much": "❎ Šios dainos laikas yra %s Nėra nieko daugiau nei tai."
+        },
+        "set_command": {
+            "can_not_manage_this_command": "❎ Negalite manipuliuoti šiuo užsakymu.",
+            "command_input_empty": "❎ Įveskite užsakymą, kurį norite atlikti.",
+            "command_not_found": "❎ Aukščiau pateikta komanda nerasta. Pabandykite dar kartą patikrinti simbolius ar simbolius.",
+            "data_at": "informacija, kada",
+            "description": "**set-command** – tvarko visas mano komandas, pvz., `on`-||off||, paleidžia atskiras komandas ir tt\n\n**komandos** - (%s1):\n%s2\n\n> jūs Tai gali būti pakeistas įvesdamas:\n> ```%s3```",
+            "disabled": "☑️ Užsakymas išjungtas **%s** jau.",
+            "enabled": "✅ Užsakymas aktyvuotas **%s** jau.",
+            "title": "🪄 komanda"
+        },
+        "set_language": {
+            "already_set": "❎ Ech... bet šis serveris jau naudoja %s kalbą",
+            "description": "**set-language** – nustatykite savo kalbą, tai labai palengvins jūsų supratimą\n\nŠios serverio kalba yra: `%s1`\n\n> Galite pakeisti ją įvesdami:\n> ```%s2. ```",
+            "set_success": "✅ Jau pakeista kalba į **%s**.",
+            "title": "🌐 Kalba"
+        },
+        "set_notify": {
+            "channel_not_found": "❎ Šiame serveryje nepavyksta rasti tokio kanalo. Prašau patikrinti dar kartą.",
+            "data_at": "informacija, kada",
+            "description": "**set-notify** – nustatykite kiekvieno tipo pranešimus, kad gautumėte naujausią informaciją iš serverio\n\n**alert** – Bendrasis pranešimas: %s1\n**channelCreate** – Naujas kanalas: %s2\n* *channelDelete* * - Kanalas ištrintas: %s3\n**kanalasPinsAtnaujinti** - Kanalas prisegtas: %s4\n**kanalo atnaujinimas** - kanalas atnaujintas: %s5\n**emojiCreate** - E Nauji jaustukai: %s6\n**jaustukų ištrynimas** - Jaustukai ištrinti: %s7\n**emojiUpdate** - Jaustukai atnaujinti: %s8\n**guildBanAdd** - Nariai uždrausti: %s9\n**guildBanRemove** - Narys atšauktas: %s10\n- **GuildInte Integracijos atnaujinimas: %s11\n**guildMemberAdd** - Narių prisijungimo serveris: %s12\n** guildMemberRemove** - Nario kairysis serveris: %s13\n**guildMembersChunk** - Pritraukta daug gildijos narių: %s14 *\n**guild*28 * - Serveris nepasiekiamas: %s15\n**inviteCreate** - Pakvietimo nuoroda sukurta: %s16\n**inviteDelete** - Pakvietimo nuoroda ištrinta: %s17\n**roleCreate** - Vaidmuo sukurta: %s18\n**roleDelete* * - Vaidmuo ištrintas: %s19\n* *roleUpdate** - Vaidmuo atnaujintas: %s20\n**stageInstanceCreate** - Etapas sukurtas: %s21\n**stageInstanceDelete** - Etapas ištrintas: %s22\n**stageInstanceUpdate** Etapas buvo Atnaujinimai: %s23\n**lipdukasKurti** - Lipdukai sukurti: %24\n**lipdukasIštrinti** - Lipdukai pašalinti: %s25\n**lipdukas Atnaujinti** - Lipdukai atnaujinti: %s26\n**threadCreate** - tema sukurta: %s27\n**threadDelete** - tema ištrinta: %s28\n**threadUpdate** - tema atnaujinta: %s29\n**webhookUpdate** - Webhook Atnaujinta: %s30\n\n> Galite pakeisti ją įvesdami:\n> ```%s31```",
+            "not_set": "„Nenustatyta“.",
+            "remove_success": "✅ Sėkmingai pašalinkite pranešimo tipą „%s“.",
+            "set_success": "✅ Įspėjimo tipas „%s1“ nustatytas į kanalą „<#%s2>“.",
+            "title": "🔔 Pranešimai",
+            "type_not_found": "❎ Hmm...atrodo, kad tokio tipo nėra. Šiuo metu galimi tik šie tipai: %s"
+        },
+        "set_personal": {
+            "data_at": "informacija, kada",
+            "description": "**set-personal** – nustatykite leidimus peržiūrėti savo asmeninius duomenis. (Galioja tik Shioru)\n\nGali peržiūrėti profilį: `%s1`\nGali peržiūrėti nesutarimų informaciją: `%s2`\nGaliu peržiūrėti ID: `%s3`\n\n> Galite jį pakeisti įvesdami :\n> ```%s4 ```",
+            "false_success": "✅ %s Jūsų įgaliojimas buvo atšauktas.",
+            "no": "ne",
+            "title": "📄 Asmeninė informacija",
+            "true_success": "✅ Jūsų %s buvo įgaliotas.",
+            "yes": "taip"
+        },
+        "settings": {
+            "description": "Galite sukonfigūruoti jį pagal savo poreikius naudodami šias komandas.",
+            "languages": "🌐 Kalba (serveris)",
+            "note": "Pastaba: kai kurioms komandoms gali prireikti tam tikrų leidimų prieš jas paleidžiant.",
+            "notification": "🔔 Pranešimas (serveris)",
+            "personal": "📄 Asmeninė informacija (asmeninė)",
+            "prefix": "❕ komanda (serveris)",
+            "title": "⚙️ Nustatymai"
+        },
+        "shuffle": {
+            "no_queue": "❎ Šiuo metu nėra grojamos dainos.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "now_shuffle": "🔀 Pradedame keisti eiles..."
+        },
+        "shutdown": {
+            "dm_to_owner": "**:red_circle: Yra užklausa išjungti!!**\nNorėdami patvirtinti, kad tai jūs, įveskite šį slaptažodį serveryje, kuriame vykdote komandą\nJei nenorite tęsti,\njo nepaisyti. Rūpinkitės manimi iki šiandien :)\n||%s||",
+            "not_owner": "🛑 Neimk.. neimk. Šiai funkcijai reikalingos tik aukščiausios teisės.",
+            "now_shutdown": "💤 Discord sistema išjungta. Iki pasimatymo ~",
+            "password_is_incorrect": "❎ Slaptažodis neteisingas. Prašau patikrinti dar kartą.",
+            "shutting_down": "🔄 Išjungiau sistemą..."
+        },
+        "skip": {
+            "no_queue": "❎ Šiuo metu nėra dainos, kurią groju. negali kirsti",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "skipped": "⏭ Praleidau jį ir netrukus pradėjau leisti naują dainą eilėje."
+        },
+        "snake": {
+            "building_board_game": "🐍 Sudėtis prašau šiek tiek palaukti...",
+            "game_name": "Gyvatė: žaidimas",
+            "game_over": "žaidimas baigtas",
+            "game_score": "Rezultatas: **%s1**\nLaikas: **%s2** sekundės",
+            "played_on": "Pradėjo nuo %s"
+        },
+        "status": {
+            "data_by_server": "Nuorodiniai duomenys iš serverio.",
+            "dnd_status": "Netrukdymo režimo narių skaičius šiuo metu yra \n```%s```.",
+            "idle_status": "Narių, kurių šiuo metu nėra, skaičius yra \n```%s```.",
+            "offline_status": "Šiuo metu neprisijungusių narių skaičius yra \n```%s```",
+            "online_status": "Šiuo metu prisijungusių narių skaičius yra \n```%s```"
+        },
+        "sticker": {
+            "deleted_sticker": "✅ **%s** Lipdukas sėkmingai pašalintas",
+            "does_not_support_gif": "❎ Atsiprašome... „Discord“ šiuo metu nepalaiko tinkintų GIF lipdukų.",
+            "edited_sticker": "Redaguota %s lipdukų.",
+            "uploading_you_sticker": "📤 Įkeliame lipdukus...",
+            "you_sticker_is_ready": "%s Jūsų lipdukas paruoštas. Pabandykim!!"
+        },
+        "stop": {
+            "no_queue": "❎ Ech... daina, kurią groju, nepasiekiama.",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "stopped": "⏹️ Nustokite leisti muziką ir ištrinkite visas eiles."
+        },
+        "system": {
+            "info_battery": {
+                "charging": "įkrovimas",
+                "not_charging": "nekraunama",
+                "title": "• baterija",
+                "without": "neturi"
+            },
+            "info_description": "Sistemos, su kuria šiuo metu dirbu, informacija, kurią pateikia sistema, yra tokia.",
+            "info_gpu_control": "• GPU (valdiklis)",
+            "info_gpu_display": "• GPU (ekranas)",
+            "info_memory_used": "• panaudota atmintis",
+            "info_platform": "• Platforma",
+            "info_system": "• sistema",
+            "info_temperature": "• CPU temperatūra",
+            "info_title": "🖥 Pagrindinė sistemos informacija",
+            "info_uptime": {
+                "info": "%s1 diena %s2 valandos ",
+                "title": "• Darbo laikas"
+            },
+            "loading": "⚙️ Siunčiama užklausa gauti sistemos duomenis iš serverio...",
+            "main": "pagrindinis",
+            "unknown": "Nežinau"
+        },
+        "tictactoe": {
+            "button_is_selected": "❎ Kanalas jau užimtas.",
+            "can_not_duel_with_me": "❎ Aš nemoku žaisti šiuos žaidimus. Aš labiau smerkiu.",
+            "can_not_play_with_bot": "❎ Negalite žaisti šio žaidimo su robotais.",
+            "in_another_duel": "❎ <@%s> Šiuo metu dvikovoje su kuo nors kitu.",
+            "in_duel": "❎ Ne, jūs turite kovoti su <@%s> iki galo.",
+            "member_not_found": "❎ Atrodo, kad tokie nariai buvo pagrobti kažkur kitur.",
+            "need_one_emoji": "❎ Ar galiu turėti 1 jaustuką, pvz., ❌ arba ⭕?",
+            "tie": "Kaklaraištis!",
+            "wait_opponent": "❓ Šiek tiek palaukite priešingos pusės.",
+            "winner": "%s laimėjo!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ Negalite sau nustatyti skirtojo laiko.",
+            "can_not_set_timeout": "❎ Negaliu jam skirti laiko, nes jis turi aukštesnį vaidmenį nei aš.",
+            "can_not_set_to_admin": "❎ Negalite nustatyti moderatorių skirtojo laiko.",
+            "dm_to_user": "⌛ Nustatyta, kad laikas baigsis %s1, likusį laiką galite matyti tame serveryje **Priežastis**: %s2",
+            "member_not_found": "❎ Nariai nesako, kad jų nebėra šiame serveryje.",
+            "no_reason": "nepateikia priežasties",
+            "success": "Nustatyta, kad %s1 galiojimo laikas baigsis po %s2 minučių **Priežastis**: %s3"
+        },
+        "together": {
+            "can_not_open": "❌ Ummm..todėl negaliu atidaryti %s",
+            "do_not_have": "❎ Ak..Dabar vis dar nėra %s1 arba iš tikrųjų gali nebūti\n, bet kartu, kurį galima naudoti dabar, yra %s2 elementai, būtent\n```%s3```",
+            "do_not_have_permission": "❌ Negaliu suaktyvinti, nes neturiu leidimo veikti. Susisiekite su moderatoriumi.",
+            "join_via_this_link": "Prisijunkite per šią nuorodą. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Pirmiausia eikite į vieną iš balso kanalų arba galite pasakyti man to kanalo pavadinimą arba ID. Jis sugebės tinkamai sukurti nuorodą.",
+            "voice_channel_not_found": "❎ Ech... bet šiame serveryje nėra garso kanalo Eikite į garso kanalą ir bandykite dar kartą."
+        },
+        "translate": {
+            "can_not_translate": "❎ Neįmanoma išversti tokio teksto kalbos. Pabandykite dar kartą vėliau.",
+            "says": "pasakyti",
+            "translate_support": "❎ Neteisingas vertimo kodas Patikrinkite dar kartą.\n**Palaikomos kalbos:** %s"
+        },
+        "unban": {
+            "no_one_gets_banned": "❎ Niekas serveryje šiuo metu nėra uždraustas.",
+            "no_reason": "Nariai, kurie atšaukė blokavimą, nenurodė priežasties.",
+            "reason_for_unban": "Atšauktas: %s1\nPriežastis: %s2\nPo to, kai narys buvo panaikintas. Tokie nariai galės prisijungti prie šio serverio įprastai.",
+            "this_user_not_banned": "❎ Ech.. tas narys nebuvo užblokuotas. Dar kartą patikrinkime keletą puikių naujų raktinių žodžių...",
+            "user_has_been_unbanned": "%s neblokuotas"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ Negalite sau nustatyti skirtojo laiko.",
+            "can_not_set_to_admin": "❎ Negalite nustatyti moderatorių skirtojo laiko.",
+            "can_not_set_untimeout": "❎ Negaliu nustatyti, kad jis nepraleistų laiko, nes jis turi aukštesnį vaidmenį nei aš.",
+            "dm_to_user": "⏲️ Buvote atšauktas, kad galėtumėte nustatyti skirtąjį laiką per %s1 **Priežastis**: %s2",
+            "member_not_found": "❎ Nariai nesako, kad jų nebėra šiame serveryje.",
+            "no_reason": "nepateikia priežasties",
+            "success": "%s1 Buvo nustatytas skirtasis laikas **Priežastis**: %s2"
+        },
+        "uptime": {
+            "days": "dieną",
+            "hours": "valandą",
+            "info_title": "🕒 Pats laikas pradėti dirbti.",
+            "minute": "minutė",
+            "second": "antra"
+        },
+        "user": {
+            "avatar": "Avataras",
+            "bot": "botas",
+            "can_not_find_user": "💡 Nerandu to nario.. Pabandykite visą vardą arba vartotojo vardą. Pavyzdys: <@%s>",
+            "created_at": "sukurtas",
+            "created_timestamp": "pastatymo data",
+            "default_avatar_url": "originalus avataras",
+            "discriminator": "poraštės kodas",
+            "id": "ID",
+            "info_date": "informacija, kada",
+            "none": "ne",
+            "partial": "kai kurie",
+            "system": "sistema",
+            "tag": "žymės",
+            "unknown": "Nežinau",
+            "user_info": "👥 Išsami informacija apie naudotoją",
+            "user_info_description": "Išsami informacija apie vartotojus Kuris pagrįstas „Discord“ duomenimis.",
+            "username": "Vartotojo vardas",
+            "yes": "taip"
+        },
+        "version": {
+            "working_in_version": "Dirbu su versija: **%s**"
+        },
+        "volume": {
+            "adjusted": "🔊 Sureguliuokite garsumą į: **%s**",
+            "no_queue": "❎ Ech... daina, kurią groju, nepasiekiama. Ką ketini koreguoti?",
+            "not_owner": "🚫 Keisti gali tik eilės savininkas.",
+            "this_volume": "🔈 Dabartinis garso stiprumas yra: **%s**"
+        },
+        "weather": {
+            "clear_weather": "giedras oras",
+            "cloudy": "Debesuota",
+            "date": "📆 data",
+            "day": "📅 diena",
+            "degree_type": "⚖️ Matavimo vienetai",
+            "feels_like": "🎐 jautiesi kaip",
+            "humidity": "💧 Drėgmė",
+            "information_from_microsoft": "Tiksli ir tiksli „Microsoft“ informacija",
+            "light_rain": "dulksna",
+            "mostly_clear": "Daugiausia debesuota",
+            "mostly_cloudy": "Daugiausia debesuota",
+            "mostly_sunny": "daugiausia saulėta",
+            "no_result_found": "❎ Ech...Ieškojau informacijos apie šią sritį, bet neradau.",
+            "partly_cloudy": "debesuota",
+            "partly_sunny": "iš dalies saulėta",
+            "rain": "lietus",
+            "rain_showers": "liūtis",
+            "sunny": "saulėta",
+            "temperature": "🌡️ Temperatūra",
+            "timezone": "🌐 Laiko juosta",
+            "weather": "⛅ Oras",
+            "weather_at_the_moment": "Oras __**%s1**__ dabar yra \n```%s2```.",
+            "wind": "🎏 vėjas"
+        }
+    },
+    "events": {
+        "channelCreate": {
+            "channel_notification": "🪧 Kanalas",
+            "member_create_channel": "> Serverio narys sukūrė kanalą: <#%s>"
+        },
+        "channelDelete": {
+            "channel_notification": "🪧 Kanalas",
+            "member_delete_channel": "> Serverio nario išsprogdintas kanalas: `%s`"
+        },
+        "channelPinsUpdate": {
+            "channel_notification": "🪧 Kanalas",
+            "member_pins_in_channel": "> Serverio narys prisegė lizdą: <#%s1>, kai %s2"
+        },
+        "channelUpdate": {
+            "channel_notification": "🪧 Kanalas",
+            "member_update_channel": "> Serverio narys pakeitė kai kuriuos laukus: `%s1` į <#%s2>."
+        },
+        "emojiCreate": {
+            "emoji_notification": "😊 Emoji",
+            "member_create_emoji": "> Serverio narys sukūrė naują jaustuką: :%s:"
+        },
+        "emojiDelete": {
+            "emoji_notification": "😊 Emoji",
+            "member_delete_emoji": "> Serverio narys ištrynė jaustuką: :%s:"
+        },
+        "emojiUpdate": {
+            "emoji_notification": "😊 Emoji",
+            "member_update_emoji": "> Serverio narys pakeitė naują jaustuką iš: %s1 į %s2."
+        },
+        "guildBanAdd": {
+            "guild_notification": "🗄️ Serveris",
+            "member_ban_add": "> <@%s1> Jau uždrausta šiame serveryje\n**Priežastis:**\n```%s2```"
+        },
+        "guildBanRemove": {
+            "guild_notification": "🗄️ Serveris",
+            "member_ban_remove": "> <@%s1> Buvo panaikintas užblokavimas šiame serveryje\n**Priežastis:**\n```%s2```"
+        },
+        "guildCreate": {
+            "advice": "**💡 Patarimai**",
+            "advice_detail": "Jei esate šios gildijos savininkas..Noriu užbaigti šios gildijos sąranką prieš naudodamiesi ja, nes kai kurių dalykų galbūt nenorėsite. Todėl pabandykite naudoti komandą „Nustatymai“.",
+            "description": "Sveiki..ačiū, kad pakvietėte mane į šią %s vietą\nPanašu, kad žmonėms kyla klausimas, ką man daryti? O..gali plauti indus, skalbti. Tai nuostabu, ar ne~ Haha, kur tai yra? aš juokauju",
+            "get_started": "Atėjo į pradžią!!",
+            "help_information_and_documentation": "**📄 Pagalba ir dokumentacija**",
+            "help_information_and_documentation_detail": "Norite sužinoti, ką aš galiu padaryti?...labai lengva. Tiesiog įveskite „Shelp“ arba „/help“ ir kas nors jums pasakys. Žinoma, tiesiog eikite į žemiau esančią nuorodą ir ten bus kūrėjo ir kitų pateikti dokumentai. Jis jau parašė\n> https://shiorus.web.app/",
+            "join_on": "prisijungė prie",
+            "support_multiple_languages": "** 🌐 Palaiko kelias kalbas**",
+            "support_multiple_languages_detail": "Aš palaikau kelias kalbas. Norėdami pakeisti kalbą Jį galite nustatyti naudodami „Slanguage <language code>“ arba „/language <language code>“."
+        },
+        "guildIntegrationsUpdate": {
+            "guild_integrations_update": "Šis serveris jau sujungė %s . Iš karto gausite naujus straipsnius su būsimais atnaujinimais.",
+            "guild_notification": "🗄️ Serveris"
+        },
+        "guildMemberAdd": {
+            "captcha_error": "Įvyko patvirtinimo klaida. Norėdami imtis veiksmų, susisiekite su serverio darbuotojais.",
+            "captcha_success": "Esate patvirtintas %s",
+            "greet": "Sveiki naujas narys **Tai automatizuotas pranešimas** \nDėkojame, kad prisijungėte prie mūsų serverio. Prieš pradėdami su kuo nors kalbėtis, atidžiai perskaitykite informaciją apie šį serverį.",
+            "solve_the_captcha": "Ištaisyta „captcha“, kad būtų galima patikrinti %s",
+            "submit_answer_captcha": "Siųsti captcha atsakymą",
+            "submit_you_answer_guide": "Pateikite tai, kas, jūsų manymu, yra „captcha“.",
+            "use_button_below": "Norėdami pateikti atsakymą, naudokite žemiau esantį mygtuką!",
+            "welcome": "Sveiki atvykę į serverį",
+            "wrong_answer": "Atrodo negerai. Bandyk iš naujo...",
+            "your_answer": "atsakykite į savo captcha"
+        },
+        "guildMemberRemove": {
+            "user_has_exited": "Jau pabėgo iš šio serverio...(Eime pas jį..)"
+        },
+        "guildMembersChunk": {
+            "guild_members_chunk": "Sveiki nariai iš serverio %s Laukiame jūsų čia.",
+            "guild_notification": "🗄️ Serveris"
+        },
+        "guildUnavailable": {
+            "guild_notification": "🗄️ Serveris",
+            "guild_unavailable": "Šiuo metu...šis serveris laikinai nepasiekiamas. Susisiekite su šio serverio administratoriumi."
+        },
+        "interactionCreate": {
+            "client_is_not_allowed": "🚫 Ummm... man trūksta kelių leidimų. Taigi aš negaliu tęsti, būtent **%s**",
+            "command_error": "❌ Vykdant šį užsakymą įvyko klaida!",
+            "command_is_disabled": "⚫ Šis užsakymas buvo išjungtas serveryje. Susisiekite su serverio administratoriumi.",
+            "no_permission": "🚫 Hmm...Atrodo, kad neturite leidimo naudoti programos komandos (/), klauskite moderatorių (≧∇≦)",
+            "user_is_not_allowed": "🚫 Negaliu leisti jums pasinaudoti šiuo užsakymu. Jei dar neturite šių leidimų: **%s**"
+        },
+        "inviteCreate": {
+            "invite_create": "Kvietimo nuoroda sėkmingai sukurta\n**Nuoroda:** %s1\n**Galiojimas baigiasi:** %s2\n**Maksimalus:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Kvietimas"
+        },
+        "inviteDelete": {
+            "invite_code_deleted": "`%s` Šis pakvietimo kodas buvo pašalintas.",
+            "invite_code_expires": "`%s` Šis pakvietimo kodas nebegalioja.",
+            "invite_notification": "🏷️ Kvietimas"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 Jūs grįžote Automatiškai atšaukti AFK būseną",
+            "no_reason_for_afk": "neturi",
+            "that_user_is_afk": "%s1 Dabar ne ekrane (AFK), nemini jo dabar\n**Palik žinutę**: %s2"
+        },
+        "roleCreate": {
+            "role_create": "<@&%s> buvo sukurtas.",
+            "role_notification": "🔖 Vaidmuo"
+        },
+        "roleDelete": {
+            "role_delete": "„%s“ buvo ištrintas.",
+            "role_notification": "🔖 Vaidmuo"
+        },
+        "roleUpdate": {
+            "role_notification": "🔖 Vaidmuo",
+            "role_update": "`%s1` buvo atnaujintas į <@&%s2>"
+        },
+        "stageInstanceCreate": {
+            "stage_instance_create": "<#%s> buvo sukurtas.",
+            "stage_notification": "🎤 scena"
+        },
+        "stageInstanceDelete": {
+            "stage_instance_delete": "„%s“ buvo ištrintas.",
+            "stage_notification": "🎤 scena"
+        },
+        "stageInstanceUpdate": {
+            "stage_instance_update": "„%s1“ buvo atnaujintas į <#%s2>.",
+            "stage_notification": "🎤 scena"
+        },
+        "stickerCreate": {
+            "sticker_create": "**%s** Dabar galima",
+            "sticker_notification": "👻 lipdukas"
+        },
+        "stickerDelete": {
+            "sticker_delete": "**%s** buvo ištrintas",
+            "sticker_notification": "👻 lipdukas"
+        },
+        "stickerUpdate": {
+            "sticker_notification": "👻 lipdukas",
+            "sticker_update": "`%s1` buvo atnaujintas į **%s2**"
+        },
+        "threadCreate": {
+            "thread_create": "<#%s> buvo sukurtas.",
+            "thread_notification": "#️⃣ Temos"
+        },
+        "threadDelete": {
+            "thread_delete": "**%s** buvo ištrintas",
+            "thread_notification": "#️⃣ Temos"
+        },
+        "threadUpdate": {
+            "thread_notification": "#️⃣ Temos",
+            "thread_update": "`%s1` buvo atnaujintas į **%s2**"
+        },
+        "webhookUpdate": {
+            "webhook_notification": "🎣 Web Hook",
+            "webhook_update": "**%s1** iš **%s2** buvo atnaujintas kanale <#%s3>."
+        }
+    },
+    "handlers": {
+        "music": {
+            "addList": {
+                "added_list": "✅ Pridėtas grojaraštis **%s1**, kuriame jau yra%s2 dainų."
+            },
+            "addSong": {
+                "added_song": "✅ Jau pridėkite dainų **%s1** `%s2`."
+            },
+            "disconnect": {
+                "disconnected": "🔌 Jau atjungtos ir ištrintos visos eilės."
+            },
+            "empty": {
+                "no_user_in_channel": "💨 Oi.. Kur jie visi dingo? Tada..Pirmiausia užsičiaupk~"
+            },
+            "error": {
+                "playlist_not_found": "❎ Nerandu to grojaraščio. Ieškote kito grojaraščio?"
+            },
+            "finish": {
+                "queue_is_empty": "🍃 Dabar mano eilė tuščia. Pasiruošę paleisti kitą dainą?"
+            },
+            "playSong": {
+                "playing_song": "🎶 Groja muzika **%s1** `%s2`"
+            },
+            "searchCancel": {
+                "search_cancelled": "🕘 Paieška atšaukta, nes nerasta dainų pasirinkimo."
+            },
+            "searchDone": {
+                "get_list_of_songs": "📋 Gavau norimų dainų sąrašą. ir po akimirkos pradės groti muziką..."
+            },
+            "searchInvalidAnswer": {
+                "search_cancelled": "🔴 Naujausios paieškos buvo atšauktos. Galite ieškoti dar kartą įvesdami tą pačią komandą."
+            },
+            "searchNoResult": {
+                "no_results": "❎ Bandžiau ieškoti dainos, bet neradau jokių rezultatų..."
+            },
+            "searchResult": {
+                "searching": "🔎 Raskite susijusių dainų",
+                "timer_choose": "Dainai pasirinkti yra 60 sekundžių. Jei norite atšaukti, galite įvesti nesusijusį skaičių arba palaukti iki laiko pabaigos.",
+                "title_results": "Tokių dainų paieškos rezultatai:",
+                "tool_name": "muzikos paieškos sistema"
+            }
+        }
+    },
+    "utils": {
+        "miscUtils": {
+            "april": "Balandis",
+            "august": "Rugpjūtis",
+            "december": "gruodį",
+            "february": "vasario mėn",
+            "format_at": "Diena%s1 %s %s3 %s4 Laikas %s5:%s18 val.",
+            "friday": "penktadienis",
+            "january": "sausio mėn",
+            "july": "liepos mėn",
+            "june": "birželio mėn",
+            "march": "Kovas",
+            "may": "Gegužė",
+            "monday": "pirmadienis",
+            "november": "lapkritis",
+            "october": "Spalio mėn",
+            "saturday": "šeštadienis",
+            "september": "rugsėjis",
+            "sunday": "savaitę",
+            "thursday": "ketvirtadienis",
+            "tuesday": "antradienis",
+            "wednesday": "trečiadienį"
+        },
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Vykdant įvyko klaida.",
+            "error_detail": "Komanda: **%s1**\nVersija: **%s2**\nLaikinas: **%s3**\nServeris: **%s4**\nVėlavimas: **%s5 ms**\nPriėmimas-Perdavimas: * *%s6ms**\nKlaidos rezultatas:\n``` JavaScript\n%s7\n```\n> **Patarimas**: galite nedelsdami pranešti apie klaidą naudodami komandą:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problemos ataskaita](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Naujienos ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "neįprastas",
+            "server_normal": "normalus"
+        },
+        "databaseUtils": {
+            "congratulations": "sveikinu!!",
+            "level_up": "*%s1* klasė dabar atnaujinta į ```%s2```.",
+            "was_mentioned": "Kas negerai?"
+        }
+    }
+}
