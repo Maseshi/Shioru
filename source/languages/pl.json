@@ -1,958 +1,958 @@
 {
     "commands": {
         "about": {
-            "my_profile": "ข้อมูลส่วนตัวของฉัน",
-            "my_profile_detail": "ฉันชื่อ %s เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Chaiwat Suwannarat(Masashi)__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากคะ\n\n[เว็บไซต์ทางการ](https://maseshi.web.app/)\n[นโยบายความเป็นส่วนตัว](https://maseshi.web.app/privacy-policy) | [เงื่อนไขการให้บริการ](https://maseshi.web.app/terms-of-service)\n\n© 2563-2565 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-            "update_on": "อัพเดทเมื่อ"
+            "my_profile": "mój profil",
+            "my_profile_detail": "Nazywam się %s urodziłem się w niedzielę 21 czerwca. Mieszkam w domu. __Chaiwat Suwannarat (Masashi)__ jest osobą, która mnie urodziła i dała mi wiedzę i umiejętności. **różne że studiowałem wszystko wszystkim tam, gdzie mieszkam Mam nadzieję, że wszyscy będą szczęśliwi będąc ze mną!! I dziękuję za wszelką pomoc i wsparcie moim kochanym dobroczyńcom. Dziękuję bardzo.\n\n[Oficjalna strona internetowa](https://maseshi.web.app/)\n[Polityka prywatności](https: //maseshi.web. app/privacy-policy) | [Warunki korzystania z usługi] (https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Wszelkie prawa zastrzeżone.",
+            "update_on": "zaktualizowane kiedy"
         },
         "afk": {
-            "currently_afk": "❎ ตอนนี้คุณกำลัง AFK อยู่",
-            "currently_not_afk": "❎ ตอนนี้คุณไม่ได้ AFK อยู่",
-            "now_afk": "💤 ตอนนี้คุณกำลัง AFK อยู่, เขียนสักข้อความหรือ /afk remove เพื่อออกจากโหมด AFK",
-            "now_not_afk": "🔙 ยกเลิกการตั้งสถานะ AFK ของคุณแล้ว"
+            "currently_afk": "❎ Teraz jesteś AFK",
+            "currently_not_afk": "❎ Nie jesteś teraz AFK.",
+            "now_afk": "💤 Teraz jesteś AFK, napisz wiadomość lub /afk usuń, aby wyjść z trybu AFK.",
+            "now_not_afk": "🔙 Twój status AFK został anulowany."
         },
         "anime": {
-            "auto_cancel": "เพียงแค่พิมพ์หมายเลขที่คุณต้องการอ่าน! (ยกเลิกภายใน 1 นาที)",
-            "choose_now": "เลือกเลยย.!!",
-            "data_not_found": "❎ ไม่เจอเรื่องนี้นะ ลองตรวจสอบดีๆ ดูสิหรืออาจจะไม่มีเรื่องนี้จริงๆ อะ",
-            "end_date": "**วันที่สิ้นสุด**",
-            "english_name": "**ชื่ออังกฤษ**",
-            "in_progress": "กำลังดำเนินการ",
-            "japan_name": "**ชื่อญี่ปุ่น**",
-            "link": "**ลิงค์**",
-            "popularity_rank": "**อันดับความนิยม**",
-            "short_information": "นี่เป็นเพียงข้อมูลที่สรุปมาแล้วเท่านั้น อยากอ่านเพิ่มเติมคลิกเข้าไปที่ลิงค์เลยย.!!",
-            "similar_stories": "ฉันเจอ 5 เรื่องที่ใกล้เคียงกัน อยากอ่านเรื่องไหนกันละ~",
-            "start_date": "**วันที่เริ่มต้น**",
-            "synopsis": "**สรุป:**",
-            "undefined": "ไม่ได้กำหนด"
+            "auto_cancel": "Po prostu wpisz numer, który chcesz przeczytać! (anuluj w ciągu 1 minuty)",
+            "choose_now": "Wybierz teraz.!!",
+            "data_not_found": "❎ Nie znalazłem tej historii. Sprawdźmy to. Słuchaj, może naprawdę nie ma czegoś takiego?",
+            "end_date": "**Data końcowa**",
+            "english_name": "**Angielskie imie**",
+            "in_progress": "w trakcie",
+            "japan_name": "** japońska nazwa **",
+            "link": "**połączyć**",
+            "popularity_rank": "**Ranking popularności**",
+            "short_information": "To tylko podsumowanie informacji. Jeśli chcesz przeczytać więcej, kliknij w link!!",
+            "similar_stories": "Znalazłem 5 podobnych rzeczy. Którą historię chcesz przeczytać~",
+            "start_date": "**Data rozpoczęcia**",
+            "synopsis": "**podsumować:**",
+            "undefined": "nieokreślony"
         },
         "automod": {
-            "flagged_words_name": "บล็อกคำหยาบคาย เนื้อหาเกี่ยวกับเรื่องเพศ และคำสบประมาท",
-            "flagged_words_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว คำเหล่านั้นทั้งหมดจะถูกระงับ",
-            "keyword_name": "ป้องกันไม่ให้ใช้คำ %s",
-            "keyword_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว ข้อความทั้งหมดที่มีคำว่า %s จะถูกลบ",
-            "mention_spam_name": "ป้องกันสแปมเมื่อกล่าวถึง",
-            "mention_spam_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมเมื่อกล่าวถึงหลายครั้งจะถูกระงับ",
-            "prevent_message": "ข้อความนี้ถูกป้องกัน",
-            "spam_messages_name": "ป้องกันสแปมข้อความ",
-            "spam_messages_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมข้อความจะถูกระงับ"
+            "flagged_words_name": "blokować wulgaryzmy treści seksualne i obelgi",
+            "flagged_words_success": "✅ Twoje reguły AutoModa zostały utworzone, wszystkie te słowa zostaną usunięte.",
+            "keyword_name": "Zapobiegaj używaniu słowa %s.",
+            "keyword_success": "✅ Twoja reguła AutoMod została utworzona, wszystkie wiadomości zawierające słowo %s zostaną usunięte.",
+            "mention_spam_name": "Zapobiegaj spamowi, jeśli chodzi o",
+            "mention_spam_success": "✅ Twoja reguła AutoModa została utworzona, spamowanie wielokrotnymi wzmiankami zostanie zablokowane.",
+            "prevent_message": "Ta wiadomość jest chroniona.",
+            "spam_messages_name": "blokować spam wiadomości",
+            "spam_messages_success": "✅ Twoje reguły AutoModa zostały utworzone, spam w wiadomościach zostanie zablokowany."
         },
         "autoplay": {
-            "no_queue": "❎ อืมม...แต่ว่าเพลงมันยังไม่ได้เริ่มเล่นเลยนะ?",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "📻 ปิดโหมดการเล่นอัตโนมัติแล้ว",
-            "on": "📻 เปิดโหมดการเล่นอัตโนมัติแล้ว"
+            "no_queue": "❎ Hmm...ale piosenka jeszcze się nie zaczęła?",
+            "not_queue_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "off": "📻 Tryb autoodtwarzania wyłączony",
+            "on": "📻 Tryb automatycznego odtwarzania włączony"
         },
         "ban": {
-            "banned_for_time": "%s1 ถูกแบนเป็นเวลา **%s2** วัน",
-            "member_has_banned": "❎ สมาชิกดังกล่าวถูกแบนอยู่แล้ว สบายใจได้",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถแบนผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถแบนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่แบนไม่ได้ให้เหตุผลไว้คะ",
-            "permanently_banned": "%s ถูกแบนอย่างถาวร",
-            "reason_for_ban": "แบนโดย: %s1\nเหตุผล: %s2",
-            "user_not_found": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ"
+            "banned_for_time": "%s1 zbanowany na **%s2** dni",
+            "member_has_banned": "❎ Tacy członkowie są już zbanowani. Czuj się komfortowo.",
+            "members_have_a_higher_role": "❎ Nie możesz zbanować kogoś, kto ma wyższą rolę niż Ty.",
+            "members_have_a_higher_role_than_me": "❎ Nie mogę zbanować tego członka. ponieważ ma wyższą rolę ode mnie",
+            "no_reason": "Członkowie, którzy zbanowali, nie podali powodu.",
+            "permanently_banned": "%s zbanowanych na stałe",
+            "reason_for_ban": "Zablokowany przez: %s1\nPowód: %s2",
+            "user_not_found": "❎ Nie mogę znaleźć tego użytkownika. Prosze Sprawdź ponownie."
         },
         "board": {
-            "leveling_detail": "ค่าประสบการณ์: %s1, ระดับชั้น: %s2",
-            "no_info": "❎ บนเซิร์ฟเวอร์นี้ยังไม่มีสมาชิกใดๆ ที่มีค่าประสบการณ์เลยคะ",
-            "server_rank": "อันดับเลเวลของเซิร์ฟเวอร์นี้",
-            "server_rank_description": "1 ใน 10 อันดับ สมาชิกภายในเซิร์ฟเวอร์นี้ ที่เก็บสะสมเลเวลของตัวเองได้เยอะที่สุด ตามลำดับ ดังนี้",
-            "server_rank_tips": "เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น"
+            "leveling_detail": "Doświadczenie: %s1, Stopień: %s2",
+            "no_info": "❎ Na tym serwerze nie ma jeszcze żadnych członków. która ma wartość doświadczenia",
+            "server_rank": "Ranking poziomów tego serwera",
+            "server_rank_description": "1 z 10 najlepszych członków na tym serwerze. którzy mogą zebrać najwięcej własnych poziomów, w następującej kolejności",
+            "server_rank_tips": "Wskazówka: czatowanie z innymi członkami zdobędzie więcej poziomów"
         },
         "bug": {
-            "sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
-            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
+            "sending": "📨 Ok.. chwileczkę Daj mi chwilę na wysłanie listu do dewelopera...",
+            "success*": "✅ Ok, dziękuję... Jeśli znajdziesz coś jeszcze, powiedz mi (●'◡'●)"
         },
         "captcha": {
-            "captcha_setup_success": "✅ ตั้งค่าระบบ captcha เสร็จสิ้นและเปิดใช้งานเรียบร้อยแล้ว",
-            "currently_disable": "ℹ️ ตอนนี้ captcha ถูกปิดอยู่แล้ว",
-            "currently_enable": "ℹ️ ตอนนี้ captcha ถูกเปิดอยู่แล้ว",
-            "disabled_captcha": "✅ ปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "enabled_captcha": "✅ เปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "need_to_setup_before": "❎ กรุณาตั้งค่า captcha ก่อนใช้งานโดยใช้คำสั่ง /captcha setup"
+            "captcha_setup_success": "✅ System captcha został pomyślnie skonfigurowany i aktywowany.",
+            "currently_disable": "ℹ️ Captcha jest teraz zamknięta.",
+            "currently_enable": "ℹ️ Captcha jest teraz włączona.",
+            "disabled_captcha": "✅ funkcja captcha została wyłączona",
+            "enabled_captcha": "✅ pomyślnie włączono captcha",
+            "need_to_setup_before": "❎ Przed użyciem ustaw captcha za pomocą polecenia /captcha setup."
         },
         "covid": {
-            "active": "แอคทีฟ",
-            "active_per_one_million": "แอคทีฟต่อ 1 ล้าน",
-            "backend_issue": "❎ ดูเหมือนว่าจะเกิดปัญหาขึ้นในฝั่งของผู้ให้ข้อมูลน่ะคะ กรุณาลองใหม่ในคราวหน้านะ",
-            "cases_per_one_million": "คนไข้ต่อ 1 ล้าน",
-            "cases_today": "คนไข้วันนี้",
-            "cases_total": "คนไข้ทั้งหมด",
-            "country_not_found": "❎ เอิ่มม..ไม่เจอข้อมูลของประเทศที่คุณระบุเลยคะ",
-            "critical_per_one_million": "ระยะวิกฤติต่อ 1 ล้าน",
-            "critical_stage": "ระยะวิกฤต",
-            "deaths_today": "เสียชีวิตวันนี้",
-            "deaths_total": "เสียชีวิตทั้งหมด",
-            "one_case_per_people": "คนไข้ต่อ 1 คน",
-            "one_death_per_people": "เสียชีวิตต่อ 1 คน",
-            "one_test_per_people": "การทดสอบต่อ 1 คน",
-            "population": "ประชากร",
-            "recovered": "หายแล้ว",
-            "recovered_per_one_million": "หายแล้วต่อ 1 ล้าน",
-            "tests": "ทดสอบ",
-            "tests_per_one_million": "การทดสอบต่อ 1 ล้าน",
-            "updated_on": "อัพเดทล่าสุด %s",
-            "when": "เมื่อ"
+            "active": "aktywny",
+            "active_per_one_million": "aktywnych na 1 milion",
+            "backend_issue": "❎ Wydaje się, że jest problem po stronie informatora. Spróbuj ponownie następnym razem.",
+            "cases_per_one_million": "Pacjenci na 1 milion",
+            "cases_today": "tego pacjenta",
+            "cases_total": "wszyscy pacjenci",
+            "country_not_found": "❎ Umm.. Nie mogę znaleźć informacji o podanym kraju.",
+            "critical_per_one_million": "okres krytyczny na 1 milion",
+            "critical_stage": "okres krytyczny",
+            "deaths_today": "zmarł dzisiaj",
+            "deaths_total": "wszyscy umarli",
+            "one_case_per_people": "na pacjenta",
+            "one_death_per_people": "śmierć na osobę",
+            "one_test_per_people": "Testowanie na osobę",
+            "population": "populacja",
+            "recovered": "stracony",
+            "recovered_per_one_million": "Strata na 1 milion",
+            "tests": "test",
+            "tests_per_one_million": "Testy na 1 milion",
+            "updated_on": "Najnowsza aktualizacja %s",
+            "when": "Kiedy"
         },
         "credits": {
-            "creator_credit": "💳 เครดิตของผู้สร้างคนอื่นๆ",
-            "creator_credit_description": "ซึ่งบางผู้สร้างเป็นทั้งผู้มีส่วนร่วม บางส่วนำมาจากภายนอก..ขอขอบคุณทุกการสนับสนุน",
-            "natsuki_marina_credit": "ข้อมูล: รูปภาพบางส่วนและรูปภาพประจำตัว \nจาก: https://www.pixiv.net/en/users/482462 \nเว็บไซต์: https://marina71712.wixsite.com/0-0v",
-            "update_on": "อัพเดทเมื่อ"
+            "creator_credit": "💳 Podziękowania dla innych twórców",
+            "creator_credit_description": "których niektórzy twórcy są współtwórcami Niektóre z nich pochodzą z zewnątrz. Dziękuję za wsparcie.",
+            "natsuki_marina_credit": "Informacje: Niektóre zdjęcia i awatary \nz: https://www.pixiv.net/en/users/482462 \nStrona internetowa: https://marina71712.wixsite.com/0-0v",
+            "update_on": "zaktualizowane kiedy"
         },
         "dead": {
-            "suicide": "%s ตัดสินใจที่จะฆ่าตัวตาย 💔 หลับให้สบาย"
+            "suicide": "%s popełnić samobójstwo 💔 spoczywaj w pokoju"
         },
         "decode": {
-            "after": "หลังถอดรหัส",
-            "before": "ก่อนถอดรหัส",
-            "decode_message": "🔓 ถอดรหัสข้อความ",
-            "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "po rozszyfrowaniu",
+            "before": "przed dekodowaniem",
+            "decode_message": "🔓 Odszyfruj wiadomości",
+            "decode_success": "Wiadomość została odszyfrowana."
         },
         "donate": {
-            "thank_you_in_advance_message": "❤️ ขอขอบคุณสำหรับการสนับสนุนผู้พัฒนาของฉันล่วงหน้านะคะ ฉันมีช่องทางสำหรับการสนับสนุนดังนี้คะ"
+            "thank_you_in_advance_message": "❤️ Z góry dziękuję za wsparcie moich programistów. Mam kanał wsparcia w następujący sposób."
         },
         "eat": {
-            "already_eaten": "%s1 ได้กิน %s2 ลงไปในท้องแล้ว",
-            "do_not_eat_me": "ฉ..ฉันตัวเล็กนิดเดียวเอง ม..ไม่น่ากินหรอก..."
+            "already_eaten": "%s1 zjadło %s2 do żołądka",
+            "do_not_eat_me": "Jestem trochę mały. m..nie nadaje się do jedzenia..."
         },
         "eight_ball": {
-            "answer": "คำตอบ",
-            "game": "🎱 เกม 8ball",
-            "question": "คำถาม",
-            "risk": "ใช้ดวงของคุณกับคำถามเพื่อแลกคำตอบ",
-            "roll_ball": "หมุนลูกบอลเลย!!"
+            "answer": "odpowiedź",
+            "game": "🎱 gra w 8 piłek",
+            "question": "pytanie",
+            "risk": "Wykorzystaj swoje szczęście na pytania, aby uzyskać odpowiedzi.",
+            "roll_ball": "Rzuć piłkę!!"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
-            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
-            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
-            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_emoji": "✅ **%s** Emotikony zostały usunięte.",
+            "edited_emoji": "Naprawiono %s emotikonów",
+            "uploading_you_emoji": "📤 Przesyłanie emotikonów...",
+            "you_emoji_is_ready": "%s Twój emotikon jest gotowy. Spróbujmy!!"
         },
         "encode": {
-            "after": "หลังเข้ารหัส",
-            "before": "ก่อนเข้ารหัส",
-            "encode_message": "🔒 เข้ารหัสข้อความ",
-            "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "po zaszyfrowaniu",
+            "before": "przed kodowaniem",
+            "encode_message": "🔒 Szyfruj wiadomości",
+            "encode_success": "Wiadomość została zaszyfrowana."
         },
         "enlarge": {
-            "emoji_not_found": "❎ ดูเหมือนว่าจะไม่มีอีโมจินั้นนะหรือมันอาจจะไม่ใช่อีโมจิอะ",
-            "large_emoji": "อีโมจิตัวใหญ่ๆ",
-            "requested_by": "ร้องขอโดย %s"
+            "emoji_not_found": "❎ Wygląda na to, że brakuje emoji lub może to nie być emoji.",
+            "large_emoji": "duży emotikon",
+            "requested_by": "zażądał %s"
         },
         "exp": {
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "error": "❎ ไม่สามารถตั้งค่าค่าประสบการณ์ของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "exp_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "level": "ชั้น (Level)",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ค่าประสบการณ์ของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา..."
+            "can_not_find_user": "❎ Nie mogę znaleźć tego członka. Ech.. Literówka czy nie?",
+            "error": "❎ Nie można ustawić doświadczenia takich członków. Spróbuj ponownie później.",
+            "experience": "Punkty doświadczenia (doświadczenie)",
+            "exp_was_changed": "%s zgromadzonych wszystkie poziomy doświadczenia mają:",
+            "level": "Poziom",
+            "notification_complete": "✅ Konfiguracja jest zakończona...",
+            "set_by_staff": "Twoje doświadczenie jest ustalane przez zespół na tym serwerze.",
+            "success": "✅ Konfiguracja jest zakończona..."
         },
         "filter": {
-            "add_filter": "🎼 เพิ่มรูปแบบเสียงที่จะต้องการเป็น **%s** เรียบร้อยแล้วคะ",
-            "available_filter": "รูปแบบการกรองที่พร้อมใช้งาน",
-            "available_filter_description": "ปรับเปลี่ยนรูปแบบเสียงเพลงให้ไพเราะมากยิ่งขึ้นด้วยการใช้รูปแบบทั้ง %s1 รูปแบบเหล่านี้ ```%s2```",
-            "clear_filter": "💨 ล้างรูปแบบเสียงทั้งหมดออกแล้ว ตอนนี้จะเป็นรูปแบบเสียงแบบปกติคะ",
-            "list_filter_description": "ขณะนี้มีรูปแบบที่กำลังใช้งานในคิวนี้อยู่ %s1 รูปแบบ\n```%s2```",
-            "list_filter_description_empty": "```ยังไม่มีรูปแบบเสียงที่กำลังใช้ในขณะนี้คะ```",
-            "list_filter_title": "รูปแบบเสียงที่กำลังใช้ในปัจจุบัน",
-            "no_queue": "❎ ไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "remove_filter": "🗑️ ลบรูปแบบเสียง **%s** ออกเรียบร้อยแล้วคะ",
-            "set_filter": "🎼 ตั้งค่ารูปแบบเสียงที่จะต้องการเป็น **%s**",
-            "sound_filtering": "❓ ต้องการปรับเปลี่ยนเสียงเพลงของคุณเป็นแบบไหนดีคะ?",
-            "unknown_filter": "❎ เอิ่มม..ฉันไม่รู้จักรูปแบบของเสียง `%s` คุณสามารถตรวจสอบได้โดยใช้ **available** หรือ **ava** คะ",
-            "unknown_input_option": "❓ คุณสามารถระบุพารามิเตอร์ได้ดังต่อไปนี้เลยคะ: add, remove, set, available, list, clear"
+            "add_filter": "🎼 Dodaj żądany format dźwięku, aby już był **%s**.",
+            "available_filter": "Dostępne formaty filtrów",
+            "available_filter_description": "Spersonalizuj swoją muzykę za pomocą tych formatów %s1 ```%s2```",
+            "clear_filter": "💨 Wszystkie formaty audio zostały wyczyszczone. Teraz będzie to normalny format dźwięku.",
+            "list_filter_description": "Obecnie w tej kolejce są aktywne wzorce: %s1 wzorce\n```%s2```",
+            "list_filter_description_empty": "```Brak aktualnie używanego formatu audio.```",
+            "list_filter_title": "Aktualnie używany format dźwięku",
+            "no_queue": "❎ Obecnie nie jest odtwarzany żaden utwór.",
+            "not_queue_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "remove_filter": "🗑️ Format audio **%s** został usunięty.",
+            "set_filter": "🎼 Ustaw preferowany format audio na **%s**",
+            "sound_filtering": "❓Chcesz zmienić brzmienie swojej muzyki?",
+            "unknown_filter": "❎ Umm.. Nie znam formatu dźwięku `%s`, możesz to sprawdzić za pomocą **dostępne** czy **ava**?",
+            "unknown_input_option": "❓ Możesz określić następujące parametry: dodaj, usuń, ustaw, dostępne, lista, wyczyść."
         },
         "guild": {
-            "afk_channel_id": "รหัสช่อง AFK",
-            "afk_timeout": "เวลาจำกัด AFK",
-            "application_id": "รหัสแอปฯ",
-            "approximate_member_count": "สมาชิกโดยประมาณ",
-            "approximate_presence_count": "สถานะโดยประมาณ",
-            "available": "พร้อม",
-            "banner": "แบนเนอร์",
-            "create_at": "สร้างเมื่อ",
-            "create_timestamp": "สร้างวันที่",
-            "default_message_notification": "แจ้งเตือน",
-            "description": "คำอธิบาย",
-            "discovery_splash": "คำโปรย",
-            "do_not_have": "ไม่มี",
-            "explicit_content_filter": "การกรอง",
-            "features": "คุณสมบัติ",
-            "guild_available": "พร้อมใช้งาน",
-            "icon": "ภาพประจำตัว",
-            "id": "รหัส",
-            "info_date": "ข้อมูลของเมื่อ",
-            "joined_at": "เข้าร่วมเมื่อ",
-            "join_timestamp": "เข้าร่วมวันที่",
-            "large": "ขนาดใหญ่",
-            "maximum_members": "สมาชิกสูงสุด",
-            "maximum_presences": "สถานะสูงสุด",
-            "member_count": "สมาชิก",
-            "mfa_level": "ระดับ MFA",
-            "name": "ชื่อ",
-            "name_acronym": "ชื่อย่อ",
-            "no": "ไม่",
-            "none": "ไม่ใช่",
-            "nsfw_level": "ระดับ NSFW",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_id": "รหัสเจ้าของ",
-            "partnered": "มีส่วนร่วม",
-            "preferred_locale": "ขอบเขต",
-            "premium_subscription_count": "สมาชิกพิเศษ",
-            "premium_tier": "บูสต์เตอร์",
-            "public_updates_channel_id": "รหัสช่องอัพเดท",
-            "rules_channel_id": "รหัสช่องกติกา",
-            "server_info": "🗄 รายละเอียดข้อมูลเซิร์ฟเวอร์",
-            "server_info_description": "ข้อมูลเกี่ยวกับเซิร์ฟเวอร์โดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "specific_use": "💡 คุณสามารถระบุข้อมูลผู้ใช้เซิร์ฟเวอร์แบบเจาะจงได้ดังนี้: **%s**",
-            "splash": "รูปเชิญชวน",
-            "system_channel_id": "รหัสช่องระบบ",
-            "unavailable": "ไม่พร้อม",
-            "unknown": "ไม่ทราบ",
-            "vanity_url_code": "โค้ดเชิญ",
-            "vanity_url_uses": "เชิญแล้ว",
-            "verification_level": "การตรวจสอบ",
-            "verified": "ยืนยัน",
-            "widget_channel_id": "รหัสช่องวิตเจ็ด",
-            "widget_enabled": "วิตเจ็ด",
-            "yes": "ใช่"
+            "afk_channel_id": "Kod kanału AFK",
+            "afk_timeout": "AFK ograniczony czasowo",
+            "application_id": "kod aplikacji",
+            "approximate_member_count": "Szacunkowa liczba członków",
+            "approximate_presence_count": "szacowany stan",
+            "available": "gotowy",
+            "banner": "transparent",
+            "create_at": "utworzony na",
+            "create_timestamp": "Data budowy",
+            "default_message_notification": "ostrzegać",
+            "description": "Opis",
+            "discovery_splash": "slogan",
+            "do_not_have": "nie mieć",
+            "explicit_content_filter": "filtracja",
+            "features": "funkcja",
+            "guild_available": "gotowy do użycia",
+            "icon": "Awatara",
+            "id": "kod",
+            "info_date": "informacja kiedy",
+            "joined_at": "dołączył do",
+            "join_timestamp": "data dołączenia",
+            "large": "duży rozmiar",
+            "maximum_members": "Maksymalny członek",
+            "maximum_presences": "najwyższy stan",
+            "member_count": "członek",
+            "mfa_level": "poziomie MSZ",
+            "name": "nazwa",
+            "name_acronym": "inicjały",
+            "no": "NIE",
+            "none": "NIE",
+            "nsfw_level": "poziom NSFW",
+            "off": "wyłączyć coś",
+            "on": "otwarty",
+            "owner_id": "kod właściciela",
+            "partnered": "brać udział",
+            "preferred_locale": "zakres",
+            "premium_subscription_count": "członek specjalny",
+            "premium_tier": "Wzmacniacz",
+            "public_updates_channel_id": "Zaktualizuj kod kanału",
+            "rules_channel_id": "kod pola zasad",
+            "server_info": "🗄 Szczegółowe informacje o serwerze",
+            "server_info_description": "Szczegółowe informacje o serwerze Który jest oparty na danych z Discord.",
+            "specific_use": "💡 Możesz określić konkretne informacje o użytkowniku serwera w następujący sposób: **%s**",
+            "splash": "obrazek z zaproszeniem",
+            "system_channel_id": "kod kanału systemowego",
+            "unavailable": "nie gotowy",
+            "unknown": "nie wiem",
+            "vanity_url_code": "kod zaproszenia",
+            "vanity_url_uses": "zaproszony",
+            "verification_level": "kontrola",
+            "verified": "potwierdzać",
+            "widget_channel_id": "witseven kod kanału",
+            "widget_enabled": "smutek",
+            "yes": "Tak"
         },
         "help": {
-            "category": "หมวดหมู่: %s",
-            "client_permissions": "สิทธิ์ (บอท): %s",
-            "command": "คำสั่ง: %s",
-            "command_detail": "📑 รายละเอียดของคำสั่ง ",
-            "command_incorrect": "❎ คำสั่งไม่ถูกต้อง",
-            "command_incorrect_guide": "เอ๋...ไม่มีคำสั่งนี้นะคะ ลองตรวจสอบใหม่โดยพิมพ์ `/help` เพื่อดูรายการคำสั่งทั้งหมดของฉันคะ",
+            "category": "Kategoria: %s",
+            "client_permissions": "Uprawnienia (boty): %s",
+            "command": "Zamówienie: %s",
+            "command_detail": "📑 Szczegóły zamówienia ",
+            "command_incorrect": "❎ Niewłaściwa kolejność",
+            "command_incorrect_guide": "Ech... Nie mam tego zamówienia. Sprawdź ponownie, wpisując `/help`, aby zobaczyć pełną listę moich poleceń.",
             "commands_description": [
-                "คำสั่งทั้งหมดที่ฉันได้เรียนหรือศึกษามา เข้าใจและใช้งานได้จริง",
-                "ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **/**",
-                "`<>` หมายถึงจำเป็น `()` คือประเภทของค่าที่นำเข้าและ `[]` เป็นตัวเลือกที่ไม่จำเป็นต้องตอบก็ได้",
-                "สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `/help [คำสั่ง]` แล้วคำอธิฐานจะเป็นจริง!!"
+                "Wszystkie polecenia, których się nauczyłem lub studiowałem. zrozumieć i faktycznie wykorzystać",
+                "który przed telefonem do mnie Przedrostek musi mieć postać **/**.",
+                "`<>` oznacza wymagany, `()` to typ danych wejściowych, a `[]` jest opcjonalny.",
+                "Aby uzyskać szczegółowe informacje o każdym poleceniu, wpisz `/help [polecenie]`, a Twoje życzenie się spełni!!"
             ],
-            "description": "คำอธิบาย: %s",
-            "document_name": "เอกสารข้อมูลช่วยเหลือ",
-            "how_to_use": "วิธีใช้: %s",
-            "no_description": "ไม่มีคำอธิบาย",
-            "no_need_permissions": "ไม่มีสิทธิ์ที่ต้องการ",
-            "request_by": "ร้องขอโดย",
-            "unknown_how_to_use": "ไม่มีวิธีการใช้งาน",
-            "user_permissions": "สิทธิ์ (ผู้ใช้): %s"
+            "description": "Opis: %s",
+            "document_name": "Arkusz pomocy",
+            "how_to_use": "Pomoc: %s",
+            "no_description": "Bez opisu",
+            "no_need_permissions": "Brak wymaganych uprawnień",
+            "request_by": "na wniosek",
+            "unknown_how_to_use": "nie ma jak używać",
+            "user_permissions": "Uprawnienia (użytkownicy): %s"
         },
         "impersonate": {
-            "member_not_found": "❎ ไม่พบสมาชิกดังกล่าวในเซิร์ฟเวอร์นี้เลยคะ",
-            "success": "✅ <@%s> ถูกเสกข้อความขึ้นมาแล้ว!"
+            "member_not_found": "❎ Nie można znaleźć takich członków na tym serwerze.",
+            "success": "✅ <@%s> Wiadomość została utworzona!"
         },
         "invite": {
-            "can_not_create_invite_link": "❎ ไม่สามารถสร้างลิงค์เชิญได้ กรุณาลองใหม่อีกครั้ง",
-            "me_do_not_have_permission": "🚫 ฉันไม่มีสิทธิ์ในการสร้างลิงค์เชิญในช่องนี้คะ",
-            "membership_invitation_card": "บัตรเชิญสมาชิก",
-            "this_product_is_free": "สินค้านี้ฟรี ห้ามวางจำหนายต่อ"
+            "can_not_create_invite_link": "❎ Nie można wygenerować linku z zaproszeniem Proszę spróbuj ponownie.",
+            "me_do_not_have_permission": "🚫 Nie mam uprawnień do utworzenia linku z zaproszeniem na tym kanale.",
+            "membership_invitation_card": "karta zaproszenia członka",
+            "this_product_is_free": "Ten produkt jest bezpłatny, nie odsprzedawaj."
         },
         "join": {
-            "already_joined": "❎ เอ๋..แต่ฉันก็อยู่ด้วยแล้วนี่ไง?",
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "channel_joined": "✅ ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วค้าา...",
-            "joined": "▶️ ตอนนี้ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วคะ",
-            "no_channel": "❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?",
-            "not_in_channel": "❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3="
+            "already_joined": "❎ Ech.. ale teraz tu jestem?",
+            "another_player_is_playing": "🚫 W tej chwili nie możesz skorzystać z tego zamówienia. ponieważ są inni członkowie grający muzykę",
+            "channel_joined": "✅ Jestem już na kanale <#%s>...",
+            "joined": "▶️ Teraz jestem już na kanale <#%s>.",
+            "no_channel": "❎ Nie mam tego kanału. Czy to pomyłka?",
+            "not_in_channel": "❓ Najpierw musisz dołączyć do kanału. W przeciwnym razie nie wiem, które pole =3="
         },
         "jump": {
-            "can_not_jump": "❎ ดูเหมือนว่าจะไม่มีหมายเลขคิวดังกล่าวเลยนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "jumped": "➿ กระโดดไปยังเพลงใหม่ในคิวเลขที่ %s แล้วคะ",
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ"
+            "can_not_jump": "❎ Wydaje się, że w ogóle nie ma takiego numeru kolejki. Prosze Sprawdź ponownie.",
+            "jumped": "➿ Przejdź do nowej piosenki w kolejce numer %s już.",
+            "no_queue": "❎ Nie ma aktualnie odtwarzanej piosenki. nie może przejść",
+            "not_queue_owner": "🚫 Tylko właściciel kolejki może to zmienić."
         },
         "kick": {
-            "can_not_find_user": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ",
-            "kicked_out": "%s ถูกเตะออก",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถเตะผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถเตะสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่เตะไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_kick": "เตะโดย: %s1\nเหตุผล: %s2"
+            "can_not_find_user": "❎ Nie mogę znaleźć tego użytkownika. Prosze Sprawdź ponownie.",
+            "kicked_out": "%s wyrzucony",
+            "members_have_a_higher_role": "❎ Nie możesz kopać ludzi, którzy są wyżej od ciebie.",
+            "members_have_a_higher_role_than_me": "❎ Nie mogę kopnąć tego członka. ponieważ ma wyższą rolę ode mnie",
+            "no_reason": "Członkowie, którzy kopali, nie podali powodu.",
+            "reason_for_kick": "Wyrzucony przez: %s1\nPowód: %s2"
         },
         "kill": {
-            "do_not_kill_me": "❎ ค คุณจะทำอย่างงี้..ก กับฉันไม่ได้นะคะ ฮืออ...",
-            "killed": "%s1 ได้ฆ่าคุณ %s2 เรียบร้อยแล้ว 🔪"
+            "do_not_kill_me": "❎ Zrobisz coś takiego.. Nie ze mną hehe...",
+            "killed": "%s1 już cię zabił %s2 🔪"
         },
         "leave": {
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "not_in_any_channel": "❎ ตอนนี้ฉันยังไม่ได้อยู่ในช่องไหนเลย...",
-            "now_leave": "◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ"
+            "another_player_is_playing": "🚫 W tej chwili nie możesz skorzystać z tego zamówienia. ponieważ są inni członkowie grający muzykę",
+            "not_in_any_channel": "❎ Teraz nie jestem jeszcze na żadnym kanale...",
+            "now_leave": "◀️ Jestem poza bieżącym kanałem."
         },
         "level": {
-            "delete_error": "❎ ไม่พบผู้ใช้รายนี้เลยคะ",
-            "delete_success": "✅ ลบระดับประสบการณ์ของสมาชิกนี้เรียบร้อยแล้วคะ!",
-            "deleting": "📁 กำลังลบข้อมูลระดับประสบการณ์ของสมาชิกนี้",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "level_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ระดับชั้นของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "set_error": "❎ ไม่สามารถตั้งค่าระดับชั้นของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "set_success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "user_current_no_level": "❎ สมาชิกดังกล่าวไม่มีระดับชั้นอยู่แล้ว"
+            "delete_error": "❎ W ogóle nie można znaleźć tego użytkownika.",
+            "delete_success": "✅ Poziom doświadczenia tego członka został usunięty!",
+            "deleting": "📁 Usuwanie danych poziomu doświadczenia tego członka.",
+            "experience": "Punkty doświadczenia (doświadczenie)",
+            "level": "Poziom",
+            "level_was_changed": "%s zgromadzonych wszystkie poziomy doświadczenia mają:",
+            "notification_complete": "✅ Konfiguracja jest zakończona...",
+            "set_by_staff": "Twoja klasa jest ustalana przez zespół na tym serwerze.",
+            "set_error": "❎ Nie można ustawić poziomu takich członków. Spróbuj ponownie później.",
+            "set_success": "✅ Konfiguracja jest zakończona...",
+            "user_current_no_level": "❎ Tacy członkowie nie mają poziomu klasowego."
         },
         "leveling": {
-            "bot_do_not_have_level": "❎ บอทจะไม่มีเลเวลนะคะรวมถึงฉันด้วยคะ",
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "user_no_data": "💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับชั้นและค่าประสบการณ์เลยคะ",
-            "your_experience": "ค่าประสบการณ์ของคุณ"
+            "bot_do_not_have_level": "❎ Boty nie będą miały poziomów, w tym ja.",
+            "can_not_find_user": "❎ Nie mogę znaleźć tego członka. Ech.. Literówka czy nie?",
+            "experience": "Punkty doświadczenia (doświadczenie)",
+            "level": "Poziom",
+            "user_no_data": "💨 Hmm... Ten członek nie ma poziomu ani doświadczenia.",
+            "your_experience": "Twoje doświadczenie"
         },
         "license": {
-            "copyright_content": "📝 เนื้อหาที่มีลิขสิทธิ์"
+            "copyright_content": "📝 Treść chroniona prawem autorskim"
         },
         "logs": {
-            "can_not_delete_file": "❎ ไม่สามารถลบไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "can_not_read_file": "❎ ไม่สามารถอ่านไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "file_has_been_deleted": "✅ **%s** ถูกลบแล้วเรียบร้อยคะ",
-            "file_not_found": "❎ ไม่พบไฟล์ที่มีชื่อ **%s** ในโฟลเดอร์เลยคะ",
-            "folder_empty": "💨 ขณะนี้ไฟล์ล็อกในโฟลเดอร์ว่างเปล่า ลองกลับมาใหม่อีกครั้งในภายหลังนะคะ",
-            "found_file": "พบ %s1 รายการของไฟล์:\n```%s2```",
-            "owner_only": "🚫 ขออภัย..คำสั่งนี้สามารถใช้งานได้เฉพาะผู้ดูแลระบบเท่านั้นคะ"
+            "can_not_delete_file": "❎ Nie można usunąć powyższego pliku dziennika\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ Nie można odczytać powyższego pliku dziennika\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** już usunięte",
+            "file_not_found": "❎ Nie można znaleźć pliku o nazwie **%s** w folderze.",
+            "folder_empty": "💨 Teraz plik dziennika w folderze jest pusty. Spróbuj wrócić później.",
+            "found_file": "Znaleziono %s1 wpisów plików:\n```%s2```",
+            "owner_only": "🚫 Przepraszamy... to polecenie może być używane tylko przez administratorów."
         },
         "lyrics": {
-            "can_not_find_lyrics": "ไม่พบเนื้อเพลงของ %s.",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "playing_lyrics": "📋 เนื้อเพลงของเพลงที่กำลังเล่น"
+            "can_not_find_lyrics": "Nie znaleziono tekstu dla %s.",
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "playing_lyrics": "📋 Tekst aktualnie odtwarzanej piosenki"
         },
         "meme": {
-            "can_not_fetch": "ดึงข้อมูลมีมไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
-            "meme_not_found": "ไม่พบมีมประเภทที่ตรงกับ %s"
+            "can_not_fetch": "Nie udało się pobrać mema. Proszę spróbuj ponownie.",
+            "meme_not_found": "Nie znaleziono mema typu pasującego %s."
         },
         "minecraft": {
-            "address": "ที่อยู่",
-            "do_not_have": "ไม่มี",
-            "ip": "ที่อยู่ IP",
-            "last_check": "ตรวจสอบล่าสุดเมื่อ",
-            "maximum_player_count": "จำนวนผู้เล่นสูงสุด",
-            "motd": "คำอธิบาย",
-            "player_in_server": "ผู้เล่นในเซิร์ฟเวอร์",
-            "port": "พอร์ท",
-            "server_available": "🟢 เซิร์ฟเวอร์นี้กำลังเปิดให้บริการ",
-            "server_unavailable": "🔴 เซิร์ฟเวอร์นี้ได้ปิดไปชั่วคราว",
-            "skin_of": "🎴 สกินของ %s",
-            "version": "เวอร์ชั่น"
+            "address": "adres",
+            "do_not_have": "nie mieć",
+            "ip": "adres IP",
+            "last_check": "ostatnio sprawdzane",
+            "maximum_player_count": "Maksymalna liczba graczy",
+            "motd": "Opis",
+            "player_in_server": "gracze serwera",
+            "port": "Port",
+            "server_available": "🟢 Ten serwer jest obecnie otwarty.",
+            "server_unavailable": "🔴 Ten serwer jest tymczasowo zamknięty.",
+            "skin_of": "🎴 Skórki %s",
+            "version": "wersja"
         },
         "musicInfo": {
-            "detail": "📄 รายละเอียดของเพลงที่กำลังเล่น",
-            "download_link": "📥 ลิงค์ดาวน์โหลด",
-            "duration": "🕒 ระยะเวลา",
-            "id": "🆔 ไอดี",
-            "link": "🔗 ลิงค์",
-            "music_name": "🎵 ชื่อเพลง",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "uploader": "🎬 ผู้อัพโหลด"
+            "detail": "📄 Szczegóły aktualnie odtwarzanego utworu",
+            "download_link": "📥 Link do pobrania",
+            "duration": "🕒 Czas trwania",
+            "id": "🆔 ID",
+            "link": "🔗 Łącze",
+            "music_name": "🎵 Nazwa piosenki",
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "uploader": "🎬 przesyłający"
         },
         "nekos": {
-            "can_not_fetch_data": "❎ ไม่สามารถรับภาพที่คุณต้องการได้ชั่วคราว กรุณาลองใหม่อีกครั้งในภายหลัง",
-            "request_by": "ร้องขอโดย %s"
+            "can_not_fetch_data": "❎ Chwilowo nie można uzyskać żądanego obrazu. Spróbuj ponownie później.",
+            "request_by": "zażądał %s"
         },
         "nowPlaying": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: `%s`",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้"
+            "autoplay": "📻 Automatyczne odtwarzanie",
+            "filter": "🎼 Wzór filtra głosu: `%s`",
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "owner_this_queue": "%s jest właścicielem tej kolejki"
         },
         "numbers": {
-            "result": "ผลลัพธ์คือ %s"
+            "result": "Wynik to %s"
         },
         "paste": {
-            "backend_not_response": "❎ ไม่พบการตอบกลับจากเซิร์ฟเวอร์เลยคะ คุณสามารถลองใหม่อีกครั้งในภายหลังได้คะ",
-            "file": "ไฟล์",
-            "raw": "ดิบ"
+            "backend_not_response": "❎ Brak odpowiedzi z serwera. Możesz spróbować ponownie później.",
+            "file": "plik",
+            "raw": "surowy"
         },
         "pause": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮ่ะ..",
-            "paused": "⏸ หยุดเล่นเพลงชั่วคราวแล้วคะ"
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "not_paused": "📼 Teraz utknąłem. Dziwnie dziś wygląda..",
+            "paused": "⏸ Wstrzymaj teraz muzykę."
         },
         "ping": {
-            "connection": "📡 การเชื่อมต่อ",
-            "info": "เวลาแฝงไปกลับ คือ %s1 มิลลิวินาที\nอัตราการทำงานของเว็บซ็อกเก็ต คือ %s2 มิลลิวินาที",
-            "result": "🏓 ปอง",
-            "waiting": "🏓 ปิง..."
+            "connection": "📡 Połączenie",
+            "info": "Opóźnienie w obie strony wynosi %sms. Czas działania\ngniazda internetowego wynosi %sms",
+            "result": "🏓 Pong",
+            "waiting": "🏓 Pinguj..."
         },
         "play": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "no_queue": "❎ Teraz nie grałem jeszcze żadnych piosenek.",
+            "not_in_channel": "❓ Najpierw wprowadź dowolny kanał. Inaczej nie słuchaj mnie..."
         },
         "previous": {
-            "no_previous_song_queue": "📼 ยังไม่มีเพลงที่พึ่งเล่นไปเมื่อสักครู่นี้เลยอะ",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "previous": "⏮ กลับไปเล่นเพลงที่ผ่านมาแล้ว"
+            "no_previous_song_queue": "📼 Nie ma ostatnio odtwarzanej piosenki.",
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "previous": "⏮ Wróć do poprzedniej piosenki"
         },
         "purge": {
-            "message_cleared": "ลบข้อความจำนวน `%s ข้อความ` ให้เรียบร้อยแล้วคะ 💨"
+            "message_cleared": "Pomyślnie usunięto `%s wiadomości ` 💨"
         },
         "qrcode": {
-            "qrcode_success": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ",
-            "qrcode_title": "🧩 คิวอาร์โค้ด"
+            "qrcode_success": "Twój kod QR jest gotowy do użycia.",
+            "qrcode_title": "🧩 kod QR"
         },
         "quality": {
-            "advice_embed_description": "```คุณภาพในปัจจุบัน: %s```\nบางครั้งปัญหาอาจเกิดจากเซิร์ฟเวอร์ที่มีการเข้าถึงการใช้งานมากจนทำให้เกิดปัญหาด้านประสิทธิภาพ อย่างไรก็ตามฉันแนะนำให้คุณควรตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณก่อนตั้งค่าสิ่งนี้\n`0` - ใช้ **OPUS** ในการบีบอัดไฟล์เสียง ซึ่งจะทำให้ได้คุณภาพเสียงที่ดีขึ้นแต่ก็ใช้ทรัพยากรมากขึ้นเช่นกัน **(แนะนำ)**\n`1` - ใช้เสียงจากต้นทางโดยตรง ซึ่งจะทำให้ได้ประสิทธิดีขึ้นแต่ก็ใช้ทรัพยากรน้อยลง",
-            "advice_embed_footer_text": "คุณสามารถตั้งค่าคุณภาพเสียงเพิ่มเติมได้จากการตั้งค่าของ Discord: การตั้งค่า > เสียงและวิดีโอ > ขั้นสูง",
-            "advice_embed_title": "ปรับแต่งคุณภาพเสียง",
-            "focus_on_high_quality": "เน้นคุณภาพสูง",
-            "low_efficiency": "เน้นประสิทธิภาพต่ำ",
-            "opus_mode_selected": "🎛️ ตอนนี้ฉันได้ใช้ **OPUS** ในการช่วยบีบอัดไฟล์เสียงแล้ว คุณภาพของเสียงจะดีขึ้น",
-            "raw_mode_selected": "🎛️ เปลี่ยนไปใช้เสียงจากทางต้นฉบับแล้ว อาจจะทำให้คุณภาพเสียงลดลง"
+            "advice_embed_description": "```Obecna jakość: %s```\nCzasami przyczyną problemu może być serwer, który ma do niego zbyt duży dostęp, co powoduje problemy z wydajnością. Zalecam jednak sprawdzenie połączenia internetowego przed konfiguracją\n`0` - Użyj **OPUS** do kompresji plików audio. Zapewni to lepszą jakość dźwięku, ale spowoduje również większe zużycie zasobów **(zalecane)**\n`1` - Użyj dźwięku bezpośrednio ze źródła. Zapewni to lepszą wydajność, ale zużywa mniej zasobów.",
+            "advice_embed_footer_text": "Możesz ustawić dodatkową jakość dźwięku w ustawieniach Discord: Ustawienia > Audio i wideo > Zaawansowane.",
+            "advice_embed_title": "Dostosuj jakość dźwięku",
+            "focus_on_high_quality": "postaw na wysoką jakość",
+            "low_efficiency": "skup się na niskiej wydajności",
+            "opus_mode_selected": "🎛️ Użyłem teraz **OPUS** do kompresji plików audio. Jakość dźwięku ulegnie poprawie.",
+            "raw_mode_selected": "🎛️ Przełączono na dźwięk z oryginału Może to obniżyć jakość dźwięku."
         },
         "queue": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: %s",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "previous_queue": "**คิวก่อนหน้านี้**",
-            "waiting_in_queue": "**กำลังรอเล่นในคิวถัดไป**"
+            "autoplay": "📻 Automatyczne odtwarzanie",
+            "filter": "🎼 Wzór filtra audio: %s",
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "owner_this_queue": "%s jest właścicielem tej kolejki",
+            "previous_queue": "**poprzednia kolejka**",
+            "waiting_in_queue": "**Oczekiwanie na następną kolejkę**"
         },
         "queueStatus": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "duration": "🕒 ระยะเวลา",
-            "filter": "🎼 รูปแบบการกรองเสียง",
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "now": "⌚ ตอนนี้",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "paused": "หยุดชั่วคราว",
-            "playing": "กำลังเล่น",
-            "queue_status": "📑 สถานะของคิวเพลงปัจจุบัน",
-            "repeat": "🔁 ทำซ้ำ",
-            "repeat_off": "ไม่ได้เปิด",
-            "repeat_this_queue": "คิวนี้",
-            "repeat_this_song": "เพลงนี้",
-            "volume": "🔉 ระดับเสียง"
+            "autoplay": "📻 Automatyczne odtwarzanie",
+            "duration": "🕒 Czas trwania",
+            "filter": "🎼 wzór filtra audio",
+            "no_queue": "❎ Teraz nie grałem jeszcze żadnych piosenek.",
+            "now": "⌚ teraz",
+            "off": "wyłączyć coś",
+            "on": "otwarty",
+            "owner_this_queue": "%s jest właścicielem tej kolejki",
+            "paused": "pauza",
+            "playing": "gra",
+            "queue_status": "📑 Stan bieżącej kolejki utworów",
+            "repeat": "🔁 Powtórz",
+            "repeat_off": "zamknięte",
+            "repeat_this_queue": "ta kolejka",
+            "repeat_this_song": "ta piosenka",
+            "volume": "🔉 głośność dźwięku"
         },
         "reboot": {
-            "dm_to_owner": "**:arrows_counterclockwise: มีคำขอสำหรับการรีสตาร์ทระบบใหม่ค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_reboot": "✅ เริ่มระบบใหม่แล้วคะ!!",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "rebooting": "🔄 กำลังเริ่มระบบใหม่..."
+            "dm_to_owner": "**:arrows_counterclockwise: Pojawiła się prośba o ponowne uruchomienie systemu!!**\nAby potwierdzić, że to ty, wprowadź to hasło na serwerze, na którym uruchamiasz polecenie\nMożesz je zignorować, jeśli nie chcesz kontynuować\nDziękuję, że opiekujesz się mną do dziś :)\n||%s||",
+            "not_owner": "🛑 Nie .. nie bierz tego. Ta funkcja wymaga tylko najwyższych uprawnień.",
+            "now_reboot": "✅ Uruchomiłem nowy system!!",
+            "password_is_incorrect": "❎ Hasło jest nieprawidłowe. Prosze Sprawdź ponownie.",
+            "rebooting": "🔄 Ponowne uruchamianie..."
         },
         "reload": {
-            "invalid_command": "❎ อืมม...ดูเหมือนจะไม่มีคำสั่งนี้นะคะ...ลองตรวจสอบดีๆ อีกครั้งนะคะว่าพิมพ์ถูกหรือเปล่า?",
-            "reloaded": "✅ %s โหลดใหม่เรียบร้อยแล้ว!!",
-            "reload_error": "❌ แย่ละ..ฉันพยายามโหลดคำสั่ง %s ใหม่แล้ว แต่ทำไม่ได้อะ"
+            "invalid_command": "❎ Hmmm… wygląda na to, że nie ma takiej kolejności… spróbuj dokładnie sprawdzić Ponownie, czy to jest poprawne, czy nie?",
+            "reloaded": "✅ %s Przeładowano pomyślnie!",
+            "reload_error": "❌ Cholera..Próbowałem ponownie załadować polecenie %s ale nie mogę."
         },
         "remove": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "removed": "❌ ลบ **%s** ออกจากคิวแล้วคะ.",
-            "too_much": "❎ ไม่มีคิวดังกล่าวคะ ลองตรวจสอบใหม่ดูอีกครั้งนะคะ"
+            "no_queue": "❎ Teraz nie grałem jeszcze żadnych piosenek.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "removed": "❌ Usunięto **%s** z kolejki.",
+            "too_much": "❎Nie ma takiej kolejki. Prosze Sprawdź ponownie."
         },
         "repeat": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "ปิดการทำซ้ำ",
-            "repeated": "🔁 %sปัจจุบันนี้แล้วคะ",
-            "repeat_queue": "ทำซ้ำคิว",
-            "repeat_song": "ทำซ้ำเพลง",
-            "too_much": "❎ ไม่มีโหมดที่สูงกว่านี้แล้วคะ"
+            "no_queue": "❎ W tej chwili nie ma utworu, który aktualnie odtwarzam.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "off": "powtórzyć",
+            "repeated": "🔁 %steraz",
+            "repeat_queue": "powtórka kolejki",
+            "repeat_song": "powtórz piosenkę",
+            "too_much": "❎ Nie ma wyższego trybu niż ten."
         },
         "resume": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_playing": "📼 เห..ตอนนี้ฉันก็กำลังเล่นอยู่นะ",
-            "resumed": "▶️ กำลังเล่นเพลงต่อจากจุดเดิมแล้วคะ"
+            "no_queue": "❎ Teraz nie grałem jeszcze żadnych piosenek.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "now_playing": "📼 Hej.. Teraz gram.",
+            "resumed": "▶️ Utwór jest odtwarzany z tego samego miejsca."
         },
         "rip": {
-            "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้วนะค่ะ"
+            "no_image": "❎ Och... wygląda jak na tym obrazku Mógł zostać usunięty lub przeniesiony w inne miejsce."
         },
         "rpc": {
-            "answered": "คุณได้เลือกคำตอบของคุณแล้ว",
-            "bot_winner": "เย้!..ฉันชนะคุณ <@%s>",
-            "can_not_play_with_another_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทตัวอื่นได้นะคะ",
-            "choose_options": "เลือกตัวเลือกด้านล่างนี้ได้เลย",
-            "game_timeout": "เกมนี้หมดเวลาแล้วค่ะ ขอบคุณที่มาสนุกกันนะคะ",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะไม่อยู่ในเซิร์ฟเวอร์นี้แล้วแฮ่ะ",
-            "rock_paper_scissors": "🎮 เป่ายิ้งฉุบ",
-            "tie": "เสมอกัน!",
-            "user_answered": "%s ได้เลือกคำตอบแล้ว กำลังรอคำตอบจากอีกฝั่ง...",
-            "user_winner": "<@%s> คือผู้ชนะ!",
-            "your_answer": "ตอนนี้คุณได้เลือก %s"
+            "answered": "Wybrałeś swoją odpowiedź.",
+            "bot_winner": "Yay!.. Pokonałem cię <@%s>",
+            "can_not_play_with_another_bot": "❎ Nie możesz grać w tę grę z innymi botami.",
+            "choose_options": "Wybierz opcję poniżej.",
+            "game_timeout": "Ta gra wygasła. Dziękuję za dobrą zabawę.",
+            "member_not_found": "❎ Wygląda na to, że takich członków nie ma już na tym serwerze.",
+            "rock_paper_scissors": "🎮 nożyczki do papieru kamiennego",
+            "tie": "Krawat!",
+            "user_answered": "Wybrano %s odpowiedzi. Czekam na odpowiedź z drugiej strony...",
+            "user_winner": "<@%s> jest zwycięzcą!",
+            "your_answer": "Wybrałeś teraz %s"
         },
         "say": {
-            "success": "✅ ส่งข้อความเรียบร้อยแล้วคะ"
+            "success": "✅ Twoja wiadomość została wysłana."
         },
         "search": {
-            "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่...",
-            "invalid_number": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม",
-            "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย...",
-            "playlist_type": "เพลย์ลิสต์",
-            "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ",
-            "searching": "🔍 ค้นหา%sที่เกี่ยวข้อง",
-            "song_type": "เพลง",
-            "timer_choose": "มีเวลาในการเลือก%s 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-            "title_results": "ผลการค้นหาของ%sดังกล่าว:",
-            "user_not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "get_list_of_songs": "📋 Otrzymałem listę piosenek, które chcę. i za chwilę zacznie grać muzyka...",
+            "invalid_number": "🔴 Ostatnie wyszukiwania zostały anulowane. Możesz wyszukać ponownie, wpisując to samo polecenie.",
+            "no_results": "❎ Próbowałem wyszukać piosenkę, ale nie mogłem znaleźć żadnych wyników...",
+            "playlist_type": "lista odtwarzania",
+            "search_cancelled": "🕘 Anulowano wyszukiwanie... ponieważ nie znaleziono żadnego wyboru utworu.",
+            "searching": "🔍 Znajdź%spowiązanych",
+            "song_type": "piosenka",
+            "timer_choose": "Jest czas do wyboru%s 60 sekund.Jeśli chcesz anulować, możesz wpisać nieistotną liczbę lub poczekać do końca czasu.",
+            "title_results": "Wyniki%stakich:",
+            "user_not_in_channel": "❓ Najpierw wprowadź dowolny kanał. Inaczej nie słuchaj mnie..."
         },
         "seek": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "seek_guide": "❓ ต้องการเปลี่ยนเวลาของเพลงที่เล่นอยู่เป็นเวลากี่วินาทีดีคะ? ตอนนี้เล่นอยู่วินาทีที่ %s",
-            "sought": "🕘 เปลี่ยนแปลงเวลาของเพลงที่เล่นอยู่ในปัจจุบันแล้วคะ",
-            "too_much": "❎ เวลาของเพลงนี้อยู่ที่ %s เกินกว่านี้ก็ไม่มีอะไรอะ"
+            "no_queue": "❎ Obecnie nie jest odtwarzany żaden utwór.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "seek_guide": "❓ O ile sekund chcesz zmienić czas aktualnie odtwarzanej piosenki? Teraz odtwarzane od %ssekundy",
+            "sought": "🕘 Zmieniono czas aktualnie odtwarzanej piosenki.",
+            "too_much": "❎ Czas trwania tej piosenki to %s Nie ma nic poza tym."
         },
         "set_command": {
-            "can_not_manage_this_command": "❎ คุณไม่สามารถจัดการกับคำสั่งนี้ได้",
-            "command_input_empty": "❎ กรุณากรอกคำสั่งที่ต้องการจะจัดการด้วยคะ",
-            "command_not_found": "❎ ไม่พบคำสั่งดังกล่าว ลองตรวจสอบอักขระหรือตัวอักษรใหม่อีกครั้ง",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-command** - จัดการคำสั่งของฉันทั้งหมด เช่น `เปิด`-||ปิด|| ใช้งานคำสั่งแต่ละรายการ เป็นต้น\n\n**คำสั่ง** - (%s1):\n%s2\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s3```",
-            "disabled": "☑️ ปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "enabled": "✅ เปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "title": "🪄 คำสั่ง"
+            "can_not_manage_this_command": "❎ Nie możesz manipulować tą kolejnością.",
+            "command_input_empty": "❎Wpisz zamówienie, którym chcesz się zająć.",
+            "command_not_found": "❎ Powyższe polecenie nie zostało znalezione. Spróbuj ponownie sprawdzić znaki lub znaki.",
+            "data_at": "informacja kiedy",
+            "description": "**set-command** - obsługuje wszystkie moje polecenia, np. `on`-||off||, uruchamia poszczególne polecenia itp.\n\n**polecenia** - (%s1):\n%s2\n\n> ty To może być zmienić wpisując:\n> ```%s3```",
+            "disabled": "☑️ Zamówienie wyłączone **%s** już.",
+            "enabled": "✅ Zamówienie aktywowane **%s** już.",
+            "title": "🪄 polecenie"
         },
         "set_language": {
-            "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา %s อยู่แล้วนะ",
-            "description": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาของเซิร์ฟเวอร์นี้คือ: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
-            "set_success": "✅ เปลี่ยนภาษาเป็น **%s** เรียบร้อยแล้วคะ",
-            "title": "🌐 ภาษา"
+            "already_set": "❎ Ech… ale ten serwer już używa języka %s",
+            "description": "**set-język** - Ustaw swój język, to znacznie ułatwi zrozumienie\n\nJęzyk tego serwera to: `%s1`\n\n> Możesz go zmienić, wpisując:\n> ```%s2. ```",
+            "set_success": "✅ Zmieniłem już język na **%s**.",
+            "title": "🌐Język"
         },
         "set_notify": {
-            "channel_not_found": "❎ ไม่พบช่องดังกล่าวในเซิร์ฟเวอร์นี้เลยอะ ลองตรวจสอบใหม่อีกครั้งนะคะ",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-notify** - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์\n\n**alert** - การแจ้งเตือนทั่วไป: %s1\n**channelCreate** - ช่องใหม่: %s2\n**channelDelete** - ช่องถูกลบ: %s3\n**channelPinsUpdate** - ช่องได้รับการปักหมุด: %s4\n**channelUpdate** - ช่องได้รับการอัพเดท: %s5\n**emojiCreate** - อีโมจิใหม่: %s6\n**emojiDelete** - อีโมจิถูกลบ: %s7\n**emojiUpdate** - อีโมจิได้รับการอัพเดท: %s8\n**guildBanAdd** - สมาชิกถูกแบน: %s9\n**guildBanRemove** - สมาชิกถูกปลดแบน: %s10\n**guildIntegrationsUpdate** - อัปเดตการรวมกิลด์: %s11\n**guildMemberAdd** - สมาชิกเข้าร่วมเซิร์ฟเวอร์: %s12\n**guildMemberRemove** - สมาชิกออกจากเซิร์ฟเวอร์: %s13\n**guildMembersChunk** - ได้รับสมาชิกกิลด์จำนวนมาก: %s14\n**guildUnavailable** - เซิร์ฟเวอร์ไม่พร้อมใช้งาน: %s15\n**inviteCreate** - ลิงค์เชิญถูกสร้าง: %s16\n**inviteDelete** - ลิงค์เชิญถูกลบ: %s17\n**roleCreate** - บทบาทถูกสร้าง: %s18\n**roleDelete** - บทบาทถูกลบ: %s19\n**roleUpdate** - บทบาทได้รับการอัพเดท: %s20\n**stageInstanceCreate** - เวทีถูกสร้าง: %s21\n**stageInstanceDelete** - เวทีถูกลบ: %s22\n**stageInstanceUpdate** - เวทีได้รับการอัพเดท: %s23\n**stickerCreate** - สติกเกอร์ถูกสร้าง: %24\n**stickerDelete** - สติกเกอร์ถูกลบ: %s25\n**stickerUpdate** - สติกเกอร์ได้รับการอัพเดท: %s26\n**threadCreate** - เธรดถูกสร้าง: %s27\n**threadDelete** - เธรดถูกลบ: %s28\n**threadUpdate** - เธรดได้รับการอัพเดท: %s29\n**webhookUpdate** - เว็บฮุกได้รับการอัพเดท: %s30\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s31```",
-            "not_set": "`ไม่ได้ตั้งค่า`",
-            "remove_success": "✅ ลบการแจ้งเตือนประเภท `%s` ออกเรียบร้อยแล้วค่ะ",
-            "set_success": "✅ ตั้งค่าการแจ้งเตือนประเภท `%s1` เป็นช่อง `<#%s2>` เรียบร้อยแล้วค่ะ",
-            "title": "🔔 การแจ้งเตือน",
-            "type_not_found": "❎ อืมม...ดูเหมือนว่าจะไม่มีประเภทดังกล่าวนะคะ ตอนนี้ยังมีแค่ประเภทเหล่านี้: %s"
+            "channel_not_found": "❎ Nie można znaleźć takiego kanału na tym serwerze. Prosze Sprawdź ponownie.",
+            "data_at": "informacja kiedy",
+            "description": "**set-notify** - Ustaw każdy typ powiadomienia, aby otrzymywać najświeższe informacje z serwera\n\n**alert** - Powiadomienie ogólne: %s1\n**channelCreate** - Nowy kanał: %s2\n* *channelDelete* * - Kanał usunięty: %s3\n**channelPinsUpdate** - Kanał przypięty: %s4\n**channelUpdate** - Kanał zaktualizowany: %s5\n**emojiCreate** - E Nowe emotikony: %s6\n**emojiDelete** - Usunięte emotikony: %s7\n**emojiUpdate** - Zaktualizowane emotikony: %s8\n**guildBanAdd** - Członkowie zbanowani: %s9\n**guildBanRemove** - Członek niezbanowany: %s10\n**guildIntegrationsUpdate** - Gildia Aktualizacja integracji: %s11\n**guildMemberAdd** - Dołączenie członka do serwera: %s12\n** guildMemberRemove** - Członek opuścił serwer: %s13\n**guildMembersChunk** - Zyskano wielu członków gildii: %s14\n**guildUnavailable* * - Serwer niedostępny: %s15\n**inviteCreate** - Utworzono łącze zaproszenia: %s16\n**inviteDelete** - Usunięto łącze zaproszenia: %s17\n**roleCreate** - Utworzono rolę: %s18\n**roleDelete* * - Rola usunięta: %s19\n* *roleUpdate** - Rola zaktualizowana: %s20\n**stageInstanceCreate** - Utworzona scena: %s21\n**stageInstanceDelete** - Usunięta scena: %s22\n**stageInstanceUpdate** - Etap został zaktualizowany: %s23\n**stickerCreate** - Utworzono naklejki: %24\n**stickerDelete** - Usunięto naklejki: %s25\n**stickerUpdate** - Zaktualizowano naklejki: %s26\n**threadCreate** - Wątek utworzony: %s27\n**threadDelete** - Wątek usunięty: %s28\n**threadUpdate** - Wątek zaktualizowany: %s29\n**webhookUpdate** - Webhook Zaktualizowany: %s30\n\n> Możesz go zmienić, wpisując:\n> ```%s31```",
+            "not_set": "`Nie ustawiono`",
+            "remove_success": "✅ Pomyślnie usuń typ powiadomienia `%s`.",
+            "set_success": "✅ Typ alertu `%s1` został ustawiony na kanał `<#%s2>`.",
+            "title": "🔔 Powiadomienia",
+            "type_not_found": "❎ Hmm...wydaje się, że nie ma takiego typu. Obecnie dostępne są tylko te typy: %s"
         },
         "set_personal": {
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-personal** - ตั้งค่าการอนุญาตสำหรับการดูข้อมูลส่วนตัวของคุณ (มีผลเฉพาะกับ Shioru เท่านั้น)\n\nสามารถดูโปรไฟล์ได้: `%s1`\nสามารถดูข้อมูลใน Discord ได้: `%s2`\nสามารถดูรหัสประจำตัวได้: `%s3`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s4```",
-            "false_success": "✅ %s ของคุณได้รับการยกเลิกการอนุญาตแล้วคะ",
-            "no": "ไม่ใช่",
-            "title": "📄 ข้อมูลส่วนบุคคล",
-            "true_success": "✅ %s ของคุณได้รับการอนุญาตแล้วคะ",
-            "yes": "ใช่"
+            "data_at": "informacja kiedy",
+            "description": "**set-personal** - Ustaw uprawnienia do przeglądania swoich danych osobowych. (Dotyczy tylko Shioru)\n\nMoże wyświetlać profil: `%s1`\nMoże wyświetlać informacje o Discordzie: `%s2`\nMoże wyświetlać identyfikator: `%s3`\n\n> Możesz to zmienić, wpisując:\n> ```%s4 ```",
+            "false_success": "✅ %s Twoja autoryzacja została anulowana.",
+            "no": "NIE",
+            "title": "📄 Dane osobowe",
+            "true_success": "✅ Twoje %s zostało autoryzowane.",
+            "yes": "Tak"
         },
         "settings": {
-            "description": "คุณสามารถกำหนดค่าตามความต้องการของคุณได้โดยใช้งานคำสั่งเหล่านี้",
-            "languages": "🌐 ภาษา (เซิร์ฟเวอร์)",
-            "note": "หมายเหตุ: บางคำสั่งอาจจะต้องการสิทธิ์บางอย่างก่อนทำงาน",
-            "notification": "🔔 การแจ้งเตือน (เซิร์ฟเวอร์)",
-            "personal": "📄 ข้อมูลส่วนบุคคล (ส่วนตัว)",
-            "prefix": "❕ คำสั่ง (เซิร์ฟเวอร์)",
-            "title": "⚙️ การตั้งค่า"
+            "description": "Możesz skonfigurować go zgodnie ze swoimi potrzebami za pomocą tych poleceń.",
+            "languages": "🌐 Język (serwer)",
+            "note": "Uwaga: Niektóre polecenia mogą wymagać pewnych uprawnień przed ich uruchomieniem.",
+            "notification": "🔔 Powiadomienie (serwer)",
+            "personal": "📄 Dane osobowe (dane osobowe)",
+            "prefix": "❕ polecenie (serwer)",
+            "title": "⚙️ Ustawienia"
         },
         "shuffle": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_shuffle": "🔀 เริ่มสับเปลี่ยนคิวแล้ว..."
+            "no_queue": "❎ Obecnie nie jest odtwarzany żaden utwór.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "now_shuffle": "🔀 Rozpoczyna się zmiana kolejek..."
         },
         "shutdown": {
-            "dm_to_owner": "**:red_circle: มีคำขอสำหรับการปิดระบบค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_shutdown": "💤 ปิดระบบบน Discord แล้วคะ..แล้วพบกันใหม่นะคะ~",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "shutting_down": "🔄 กำลังปิดระบบตัวเอง..."
+            "dm_to_owner": "**:red_circle: Jest prośba o zamknięcie!!**\nAby potwierdzić, że to ty, wprowadź to hasło na serwerze, na którym uruchamiasz polecenie\n\nje zignorować, jeśli nie chcesz kontynuować. Zaopiekuj się mną do dzisiaj :)\n||%s||",
+            "not_owner": "🛑 Nie .. nie bierz tego. Ta funkcja wymaga tylko najwyższych uprawnień.",
+            "now_shutdown": "💤 System na Discordzie został wyłączony. Do zobaczenia~",
+            "password_is_incorrect": "❎ Hasło jest nieprawidłowe. Prosze Sprawdź ponownie.",
+            "shutting_down": "🔄 Zamykam system..."
         },
         "skip": {
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "skipped": "⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว"
+            "no_queue": "❎ Nie ma aktualnie odtwarzanej piosenki. nie może przejść",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "skipped": "⏭ Pominąłem go i mam zamiar rozpocząć odtwarzanie nowej piosenki w kolejce."
         },
         "snake": {
-            "building_board_game": "🐍 กำลังจัดวางองค์ประกอบ กรุณารอสักครู่...",
-            "game_name": "งู: เกม",
-            "game_over": "เกมจบแล้ว",
-            "game_score": "คะแนน: **%s1**\nเวลา: **%s2** วินาที",
-            "played_on": "เริ่มเล่นแล้วโดย %s"
+            "building_board_game": "🐍 Kompozycja proszę chwilę poczekać...",
+            "game_name": "Wąż: gra",
+            "game_over": "koniec gry",
+            "game_score": "Wynik: **%s1**\nCzas: **%s2** sekundy",
+            "played_on": "Rozpoczęty przez %s"
         },
         "status": {
-            "data_by_server": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์",
-            "dnd_status": "จำนวนสมาชิกที่ห้ามรบกวนในขณะนี้ คือ \n```%s```",
-            "idle_status": "จำนวนสมาชิกที่ไม่อยู่ในขณะนี้ คือ \n```%s```",
-            "offline_status": "จำนวนสมาชิกที่ออฟไลน์ในขณะนี้ คือ \n```%s```",
-            "online_status": "จำนวนสมาชิกที่ออนไลน์ในขณะนี้ คือ \n```%s```"
+            "data_by_server": "Dane referencyjne z serwera.",
+            "dnd_status": "Liczba członków aktualnie w trybie Nie przeszkadzać wynosi \n```%s```.",
+            "idle_status": "Liczba obecnie nieobecnych członków wynosi \n```%s```.",
+            "offline_status": "Liczba członków obecnie offline wynosi \n```%s```",
+            "online_status": "Liczba członków aktualnie online wynosi \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
-            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
-            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
-            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
-            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_sticker": "✅ **%s** Naklejka usunięta pomyślnie",
+            "does_not_support_gif": "❎ Przepraszamy… Discord obecnie nie obsługuje niestandardowych naklejek opartych na GIF-ach.",
+            "edited_sticker": "%s naklejek zostało edytowanych.",
+            "uploading_you_sticker": "📤 Trwa przesyłanie naklejek...",
+            "you_sticker_is_ready": "%s Twoja naklejka jest gotowa. Spróbujmy!!"
         },
         "stop": {
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "stopped": "⏹️ หยุดเล่นเพลงและลบคิวทั้งหมดออกแล้วคะ"
+            "no_queue": "❎ Ech... piosenka, którą odtwarzam, jest niedostępna.",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "stopped": "⏹️ Przestań odtwarzać muzykę i usuń wszystkie kolejki."
         },
         "system": {
             "info_battery": {
-                "charging": "กำลังชาร์จ",
-                "not_charging": "ไม่ได้ชาร์จ",
-                "title": "• แบตเตอรี่",
-                "without": "ไม่มี"
+                "charging": "ładowanie",
+                "not_charging": "nie ładuje się",
+                "title": "• bateria",
+                "without": "nie mieć"
             },
-            "info_description": "ข้อมูลของระบบที่ฉันกำลังทำงานอยู่ในขณะนี้ตามที่ทางระบบให้ข้อมูลมาได้ดังนี้คะ",
-            "info_gpu_control": "• GPU (ควบคุม)",
-            "info_gpu_display": "• GPU (แสดงผล)",
-            "info_memory_used": "• หน่วยความจำที่ใช้ไป",
-            "info_platform": "• แพลตฟอร์ม",
-            "info_system": "• ระบบ",
-            "info_temperature": "• อุณหภูมิ CPU",
-            "info_title": "🖥 ข้อมูลพื้นฐานของระบบ",
+            "info_description": "Informacje o systemie, nad którym obecnie pracuję, dostarczone przez system, są następujące.",
+            "info_gpu_control": "• GPU (kontroler)",
+            "info_gpu_display": "• GPU (wyświetlacz)",
+            "info_memory_used": "• używana pamięć",
+            "info_platform": "• Platforma",
+            "info_system": "• system",
+            "info_temperature": "• Temperatura procesora",
+            "info_title": "🖥 Podstawowe informacje o systemie",
             "info_uptime": {
-                "info": "%s1 วัน %s2 ชั่วโมง ",
-                "title": "• เวลาทำงาน"
+                "info": "%s1 dzień %s2 godz ",
+                "title": "• Czas pracy"
             },
-            "loading": "⚙️ กำลังส่งคำขอดึงข้อมูลระบบจากเซิร์ฟเวอร์...",
-            "main": "หลัก",
-            "unknown": "ไม่ทราบ"
+            "loading": "⚙️ Wysyłanie żądania pobrania danych systemowych z serwera...",
+            "main": "główny",
+            "unknown": "nie wiem"
         },
         "tictactoe": {
-            "button_is_selected": "❎ ช่องนั้นถูกครอบครองอยู่แล้ว",
-            "can_not_duel_with_me": "❎ ฉันไม่ถนัดการเล่นเกมพวกนี้หรอก ฉันถนัดตัดสินมากกว่าน่ะ",
-            "can_not_play_with_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทได้นะคะ",
-            "in_another_duel": "❎ <@%s> ขณะนี้อยู่ในการดวลกับคนอื่นอยู่",
-            "in_duel": "❎ ไม่ได้สิๆ คุณต้องดวลกับ <@%s> ให้จบก่อนน",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะถูกลักพาตัวไปที่อื่นแล้วคะ",
-            "need_one_emoji": "❎ ขอเป็นอีโมจิ 1 ตัวน้าอย่างเช่น ❌ หรือ ⭕ ก็ได้",
-            "tie": "เสมอกัน!",
-            "wait_opponent": "❓ รอฝั่งตรงข้ามสักครู่นะ",
-            "winner": "%s ชนะแล้ว!"
+            "button_is_selected": "❎ Kanał jest już zajęty.",
+            "can_not_duel_with_me": "❎ Nie jestem dobry w granie w te gry. Jestem bardziej osądzający.",
+            "can_not_play_with_bot": "❎ Nie możesz grać w tę grę z botami.",
+            "in_another_duel": "❎ <@%s> Obecnie w pojedynku z kimś innym.",
+            "in_duel": "❎ Nie, musisz walczyć z <@%s> do końca.",
+            "member_not_found": "❎ Wydaje się, że tacy członkowie zostali porwani gdzie indziej.",
+            "need_one_emoji": "❎ Czy mogę mieć 1 emoji typu ❌ lub ⭕?",
+            "tie": "Krawat!",
+            "wait_opponent": "❓ Poczekaj chwilę na drugą stronę.",
+            "winner": "%s wygranych!"
         },
         "timeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งหมดเวลาให้ตัวเองได้",
-            "can_not_set_timeout": "❎ ฉันไม่สามารถตั้งหมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งหมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน %s1 ซึ่งคุณสามารถดูเวลาที่เหลือได้ในเซิร์ฟเวอร์นั้น **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้หมดเวลาใน %s2 นาที **เหตุผล**: %s3"
+            "can_not_set_for_yourself": "❎ Nie możesz ustawić limitu czasu dla siebie.",
+            "can_not_set_timeout": "❎ Nie mogę ustawić dla niego limitu czasu, ponieważ ma wyższą rolę niż ja.",
+            "can_not_set_to_admin": "❎ Nie można ustawić limitu czasu dla moderatorów.",
+            "dm_to_user": "⌛ Ustawiono limit czasu za %s1, możesz zobaczyć pozostały czas na tym serwerze **Powód**: %s2",
+            "member_not_found": "❎ Członkowie nie mówią, że nie są już na tym serwerze.",
+            "no_reason": "nie podaje przyczyny",
+            "success": "%s1 wygaśnie za %s2 minuty **Powód**: %s3"
         },
         "together": {
-            "can_not_open": "❌ เอิ่มม..คือว่า เปิด %s ไม่ได้อะ",
-            "do_not_have": "❎ อ่าา..ตอนนี้ยังไม่มี %s1 อะ หรือไม่ก็อาจจะไม่มีจริงๆ นั้นแหล่ะ\nแต่ Together ที่ใช้ได้ในตอนนี้มีทั้งหมด %s2 รายการ คือ\n```%s3```",
-            "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแล",
-            "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/",
-            "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ได้ถูก",
-            "voice_channel_not_found": "❎ เอ๋..แต่ไม่มีช่องเสียงนั้นอยู่ในเซิร์ฟเวอร์นี้นะ ลองเข้าไปในช่องเสียงแล้วลองใหม่สิ"
+            "can_not_open": "❌ Ummm..dlatego nie mogę otworzyć %s",
+            "do_not_have": "❎ Ach..Teraz nadal nie ma %s1 lub może tak naprawdę nie być\n, ale Razem, którego można teraz użyć, ma teraz %s2 elementy, a mianowicie\n```%s3```",
+            "do_not_have_permission": "❌Nie mogę aktywować, ponieważ nie mam uprawnień do działania. Proszę o kontakt z moderatorem.",
+            "join_via_this_link": "Dołącz przez ten link. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Najpierw przejdź do jednego z kanałów głosowych lub podaj nazwę lub identyfikator tego kanału. Będzie w stanie poprawnie utworzyć link.",
+            "voice_channel_not_found": "❎ Ech... ale na tym serwerze nie ma kanału dźwiękowego Przejdź do kanału audio i spróbuj ponownie."
         },
         "translate": {
-            "can_not_translate": "❎ ไม่สามารถแปลภาษาข้อความดังกล่าวได้ กรุณาลองใหม่อีกครั้งในภายหลังนะคะ",
-            "says": "พูดว่า",
-            "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** %s"
+            "can_not_translate": "❎ Nie można przetłumaczyć języka takiego tekstu. Spróbuj ponownie później.",
+            "says": "mowić",
+            "translate_support": "❎ Nieprawidłowy kod tłumaczenia Sprawdź ponownie\n**Obsługiwane języki:** %s"
         },
         "unban": {
-            "no_one_gets_banned": "❎ ตอนนี้ยังไม่มีใครในเซิร์ฟเวอร์ที่ถูกแบนอยู่เลยอะ",
-            "no_reason": "สมาชิกที่ปลดแบนไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_unban": "ปลดแบนโดย: %s1\nเหตุผล: %s2\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-            "this_user_not_banned": "❎ เอ๋..สมาชิกที่ว่านั้นไม่ได้โดนแบนนะ ลองตรวจดูคีย์เวิร์ดใหม่ดีๆ อีกรอบสิ...",
-            "user_has_been_unbanned": "%s ได้รับการปลดแบน"
+            "no_one_gets_banned": "❎ Nikt na serwerze nie jest obecnie zbanowany.",
+            "no_reason": "Członkowie, którzy odbanowali, nie podali powodu.",
+            "reason_for_unban": "Odbanowany przez: %s1\nPowód: %s2\nPo odbanowaniu członka. Tacy członkowie będą mogli normalnie dołączyć do tego serwera.",
+            "this_user_not_banned": "❎ Ech… ten członek nie został zbanowany. Sprawdźmy jeszcze raz kilka świetnych nowych słów kluczowych...",
+            "user_has_been_unbanned": "%s odblokowanych"
         },
         "untimeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับตัวเองได้",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "can_not_set_untimeout": "❎ ฉันไม่สามารถตั้งให้ไม่หมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน %s1 แล้ว **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้ไม่หมดเวลาแล้ว **เหตุผล**: %s2"
+            "can_not_set_for_yourself": "❎ Nie możesz ustawić limitu czasu dla siebie.",
+            "can_not_set_to_admin": "❎ Nie można ustawić limitu czasu dla moderatorów.",
+            "can_not_set_untimeout": "❎ Nie mogę ustawić go tak, żeby nie kończył limitu czasu, bo ma wyższą rolę ode mnie.",
+            "dm_to_user": "⏲️ Zostałeś anulowany, aby ustawić limit czasu za %s1 **Powód**: %s2",
+            "member_not_found": "❎ Członkowie nie mówią, że nie są już na tym serwerze.",
+            "no_reason": "nie podaje przyczyny",
+            "success": "%s1 Limit czasu został ustawiony **Powód**: %s2"
         },
         "uptime": {
-            "days": "วัน",
-            "hours": "ชั่วโมง",
-            "info_title": "🕒 เริ่มทำงานมาแล้ว เป็นเวลา",
-            "minute": "นาที",
-            "second": "วินาที"
+            "days": "dzień",
+            "hours": "godzina",
+            "info_title": "🕒 Czas zacząć działać.",
+            "minute": "minuta",
+            "second": "drugi"
         },
         "user": {
-            "avatar": "ภาพประจำตัว",
-            "bot": "บอท",
-            "can_not_find_user": "💡 ฉันหาสมาชิกดังกล่าวไม่เจออะ..ลองใช้ชื่อเต็มหรือรหัสผู้ใช้ดูนะคะ ตัวอย่าง: <@%s>",
-            "created_at": "สร้างเมื่อ",
-            "created_timestamp": "สร้างวันที่",
-            "default_avatar_url": "ภาพประจำตัวเดิม",
-            "discriminator": "รหัสท้าย",
-            "id": "รหัสประจำตัว",
-            "info_date": "ข้อมูลของเมื่อ",
-            "none": "ไม่",
-            "partial": "บางส่วน",
-            "system": "ระบบ",
-            "tag": "แท็ก",
-            "unknown": "ไม่ทราบ",
-            "user_info": "👥 รายละเอียดข้อมูลผู้ใช้งาน",
-            "user_info_description": "ข้อมูลเกี่ยวกับผู้ใช้งานโดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "username": "ชื่อผู้ใช้",
-            "yes": "ใช่"
+            "avatar": "Awatara",
+            "bot": "nerw",
+            "can_not_find_user": "💡 Nie mogę znaleźć tego członka... spróbuj podać imię i nazwisko lub nazwę użytkownika. Przykład: <@%s>",
+            "created_at": "utworzony na",
+            "created_timestamp": "Data budowy",
+            "default_avatar_url": "oryginalny awatar",
+            "discriminator": "kod stopki",
+            "id": "ID",
+            "info_date": "informacja kiedy",
+            "none": "NIE",
+            "partial": "Niektóre",
+            "system": "system",
+            "tag": "tagi",
+            "unknown": "nie wiem",
+            "user_info": "👥 Szczegóły informacji o użytkowniku",
+            "user_info_description": "Szczegółowe informacje o użytkownikach Który jest oparty na danych z Discord.",
+            "username": "Nazwa użytkownika",
+            "yes": "Tak"
         },
         "version": {
-            "working_in_version": "ฉันกำลังทำงานอยู่บนเวอร์ชั่น: **%s**"
+            "working_in_version": "Pracuję nad wersją: **%s**"
         },
         "volume": {
-            "adjusted": "🔊 ปรับเสียงไปที่ระดับ: **%s**",
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ จะไปปรับเสียงอะไรอ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "this_volume": "🔈 ปริมาณเสียงปัจจุบันคือ: **%s**"
+            "adjusted": "🔊 Dostosuj głośność do: **%s**",
+            "no_queue": "❎ Ech... piosenka, którą odtwarzam, jest niedostępna. Co będziesz regulować?",
+            "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
+            "this_volume": "🔈 Bieżąca głośność dźwięku to: **%s**"
         },
         "weather": {
-            "clear_weather": "อากาศแจ่มใส",
-            "cloudy": "มีเมฆมาก",
-            "date": "📆 วันที่",
-            "day": "📅 วัน",
-            "degree_type": "⚖️ หน่วยวัด",
-            "feels_like": "🎐 รู้สึกเหมือน",
-            "humidity": "💧 ความชื้น",
-            "information_from_microsoft": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft",
-            "light_rain": "ฝนตกปรอยๆ",
-            "mostly_clear": "ท้องฟ้าแจ่มใสเป็นส่วนใหญ่",
-            "mostly_cloudy": "มีเมฆมากเป็นส่วนใหญ่",
-            "mostly_sunny": "แดดจัดเป็นส่วนใหญ่",
-            "no_result_found": "❎ เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-            "partly_cloudy": "มีเมฆบางส่วน",
-            "partly_sunny": "แดดออกเป็นบางส่วน",
-            "rain": "ฝนตก",
-            "rain_showers": "ฝนตกหนัก",
-            "sunny": "แดดจัด",
-            "temperature": "🌡️ อุณหภูมิ",
-            "timezone": "🌐 เขตเวลา",
-            "weather": "⛅ สภาพอากาศ",
-            "weather_at_the_moment": "สภาพอากาศของ __**%s1**__ ในขณะนี้คือ \n```%s2```",
-            "wind": "🎏 ลม"
+            "clear_weather": "ładna pogoda",
+            "cloudy": "pochmurny",
+            "date": "📆 data",
+            "day": "📅 dzień",
+            "degree_type": "⚖️ Jednostki miary",
+            "feels_like": "🎐 ochotę",
+            "humidity": "💧 Wilgotność",
+            "information_from_microsoft": "Dokładne i dokładne informacje firmy Microsoft",
+            "light_rain": "mżawka",
+            "mostly_clear": "Przeważnie pochmurno",
+            "mostly_cloudy": "Przeważnie pochmurno",
+            "mostly_sunny": "przeważnie słonecznie",
+            "no_result_found": "❎ Ech... Szukałem informacji o tej okolicy, ale nie mogłem znaleźć.",
+            "partly_cloudy": "częściowe zachmurzenie",
+            "partly_sunny": "częściowo słonecznie",
+            "rain": "deszcz",
+            "rain_showers": "ulewa",
+            "sunny": "słoneczny",
+            "temperature": "🌡️ Temperatura",
+            "timezone": "🌐 Strefa czasowa",
+            "weather": "⛅ Pogoda",
+            "weather_at_the_moment": "Pogoda __**%s1**__ to teraz \n```%s2```.",
+            "wind": "🎏 wiatr"
         }
     },
     "events": {
         "channelCreate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_create_channel": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างช่อง: <#%s>"
+            "channel_notification": "🪧 Kanał",
+            "member_create_channel": "> Członek serwera utworzył kanał: <#%s>"
         },
         "channelDelete": {
-            "channel_notification": "🪧 ช่อง",
-            "member_delete_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ระเบิดช่อง: `%s`"
+            "channel_notification": "🪧 Kanał",
+            "member_delete_channel": "> Rozszerzony kanał członka serwera: `%s`"
         },
         "channelPinsUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_pins_in_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ปักหมุนที่ช่อง: <#%s1> เมื่อ %s2"
+            "channel_notification": "🪧 Kanał",
+            "member_pins_in_channel": "> Członek serwera przypiął miejsce: <#%s1> gdy %s2"
         },
         "channelUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_update_channel": "> สมาชิกในเซิร์ฟเวอร์ได้เปลี่ยนแปลงข้อมูลบางอย่างที่ช่อง: `%s1` เป็น <#%s2>"
+            "channel_notification": "🪧 Kanał",
+            "member_update_channel": "> Członek serwera zmienił niektóre pola: `%s1` na <#%s2>."
         },
         "emojiCreate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_create_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างอีโมจิใหม่: :%s:"
+            "emoji_notification": "😊 Emotikony",
+            "member_create_emoji": "> Członek serwera utworzył nowe emoji: :%s:"
         },
         "emojiDelete": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_delete_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้ลบอีโมจิ: :%s:"
+            "emoji_notification": "😊 Emotikony",
+            "member_delete_emoji": "> Członek serwera usunął emoji: :%s:"
         },
         "emojiUpdate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_update_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้เปลียนแปลงอีโมจิใหม่จาก: %s1 เป็น %s2"
+            "emoji_notification": "😊 Emotikony",
+            "member_update_emoji": "> Członek serwera zmienił nowe emotikony z: %s1 na %s2."
         },
         "guildBanAdd": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_add": "> <@%s1> ถูกแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ Serwer",
+            "member_ban_add": "> <@%s1> Już zbanowany na tym serwerze\n**Powód:**\n```%s2```"
         },
         "guildBanRemove": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_remove": "> <@%s1> ได้รับการปลดแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ Serwer",
+            "member_ban_remove": "> <@%s1> Został odblokowany na tym serwerze\n**powód:**\n```%s2```"
         },
         "guildCreate": {
-            "advice": "**💡 คำแนะนำ**",
-            "advice_detail": "ถ้าคุณเป็นเจ้าของกิลล์นี้ละก็..ฉันต้องการที่จะตั้งค่ากิลล์นี้ให้สมบูรณ์ก่อนที่จะใช้งานจริงๆ ละ เพราะบางอย่างคุณอาจจะไม่ต้องการก็ได้ เพราะฉะนั้นให้ลองใช้คำสั่ง `Ssettings` ดูนะคะ",
-            "description": "สวัสดี..ฉันขอขอบคุณที่เชิญฉันมายัง %s แห่งนี้\nดูเหมือนว่าจะมีคนสงสัยว่าฉันทำอะไรได้บ้าง? ออ..ล้างจาน, ซักผ้าเป็นน่ะ สุดยอดไปเลยใช่ไหมล่าา~ ฮาาใช่ที่ไหนละ ฉันล้อเล่นน่ะ",
-            "get_started": "มาถึงจุดเริ่มต้นแล้ว!!",
-            "help_information_and_documentation": "**📄 ข้อมูลช่วยเหลือและเอกสาร**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `Shelp` หรือ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
-            "join_on": "เข้าร่วมเมื่อ",
-            "support_multiple_languages": "**🌐 รองรับหลายภาษา**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `Slanguage <รหัสภาษา>` หรือ `/language <รหัสภาษา>`"
+            "advice": "**💡 Wskazówki**",
+            "advice_detail": "Jeśli jesteś właścicielem tej gildii... chcę dokończyć konfigurację gildii przed jej użyciem, ponieważ niektóre rzeczy mogą ci nie być potrzebne. Dlatego spróbuj użyć polecenia `Ssettings`.",
+            "description": "Witam.. dziękuję za zaproszenie mnie do tego miejsca %s\nwygląda na to, że ludzie zastanawiają się, co mogę zrobić? Och..umie zmywać naczynia, robić pranie. Jest super, prawda~ Haha, gdzie to jest? Żartuję",
+            "get_started": "Dotarło na początek!!",
+            "help_information_and_documentation": "**📄 Pomoc i dokumentacja**",
+            "help_information_and_documentation_detail": "Chcesz wiedzieć, co potrafię?... bardzo proste. Po prostu wpisz `Shelp` lub `/help`, a ktoś ci powie. Oczywiście, po prostu przejdź do poniższego linku, a pojawi się dokumentacja dostarczona przez programistę i innych. Napisał już\n> https://shiorus.web.app/",
+            "join_on": "przyłącz się",
+            "support_multiple_languages": "** 🌐 Obsługuje wiele języków **",
+            "support_multiple_languages_detail": "Obsługuję wiele języków. Aby zmienić język Możesz to ustawić za pomocą `Slanguage <kod języka>` lub `/language <kod języka>`."
         },
         "guildIntegrationsUpdate": {
-            "guild_integrations_update": "เซิร์ฟเวอร์นี้ได้รวม %s เรียบร้อยแล้ว คุณจะได้รับบทความใหม่ทันทีมีการอัพเดทในอนาคต",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_integrations_update": "Ten serwer został już połączony %s . Otrzymasz natychmiast nowe artykuły z przyszłymi aktualizacjami.",
+            "guild_notification": "🗄️ Serwer"
         },
         "guildMemberAdd": {
-            "captcha_error": "มีข้อผิดพลาดในการตรวจสอบ ติดต่อเจ้าหน้าที่เซิร์ฟเวอร์เพื่อดำเนินการ",
-            "captcha_success": "คุณได้รับการยืนยันแล้วใน %s",
-            "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคนนะค่ะ",
-            "solve_the_captcha": "แก้ไข captcha เพื่อยืนยันใน %s",
-            "submit_answer_captcha": "ส่งคำตอบแคปต์ชา",
-            "submit_you_answer_guide": "ส่งสิ่งที่คุณคิดว่าแคปต์ชาคืออะไร",
-            "use_button_below": "ใช้ปุ่มด้านล่างเพื่อส่งคำตอบของคุณ!",
-            "welcome": "ยินดีต้อนรับสู่เซิร์ฟเวอร์",
-            "wrong_answer": "ดูเหมือนจะผิดนะ ลองใหม่อีกรอบ...",
-            "your_answer": "คำตอบแคปต์ชาของคุณ"
+            "captcha_error": "Wystąpił błąd weryfikacji. Skontaktuj się z obsługą serwera, aby podjąć działania.",
+            "captcha_success": "Jesteś zweryfikowany w %s",
+            "greet": "Witam nowego członka **To jest wiadomość automatyczna** \nDziękujemy za dołączenie do naszego serwera. Przeczytaj uważnie informacje o tym serwerze, zanim zaczniesz z kimkolwiek rozmawiać.",
+            "solve_the_captcha": "Naprawiono captcha do weryfikacji w %s",
+            "submit_answer_captcha": "Wyślij odpowiedź captcha",
+            "submit_you_answer_guide": "Prześlij, czym Twoim zdaniem jest captcha",
+            "use_button_below": "Użyj przycisku poniżej, aby przesłać odpowiedź!",
+            "welcome": "Witamy na serwerze",
+            "wrong_answer": "Wydaje się źle. Spróbuj ponownie...",
+            "your_answer": "odpowiedz na swoją captchę"
         },
         "guildMemberRemove": {
-            "user_has_exited": "ได้หนีออกจากเซิร์ฟเวอร์นี้ไปแล้วว...(ไปไหนของเขากันน้าาา..)"
+            "user_has_exited": "Uciekł już z tego serwera...(Chodźmy do niego..)"
         },
         "guildMembersChunk": {
-            "guild_members_chunk": "ยินดีต้อนรับสมาชิกจากเซิร์ฟเวอร์ %s พวกเรากำลังรอพวกคุณอยู่ที่นี่",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_members_chunk": "Witamy użytkowników z serwera %s Czekamy na Ciebie tutaj.",
+            "guild_notification": "🗄️ Serwer"
         },
         "guildUnavailable": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "guild_unavailable": "ขณะนี้..เซิร์ฟเวอร์นี้ไม่สามารถทำงานได้อย่างปกติชั่วคราว กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์นี้"
+            "guild_notification": "🗄️ Serwer",
+            "guild_unavailable": "Obecnie... ten serwer jest chwilowo niedostępny. Skontaktuj się z administratorem tego serwera."
         },
         "interactionCreate": {
-            "client_is_not_allowed": "🚫 เอิ่มม..ฉันขาดการอนุญาตบางอย่าง เลยทำให้ฉันไปต่อไม่ได้ ได้แก่ **%s**",
-            "command_error": "❌ เกิดข้อผิดพลาดขณะดำเนินการคำสั่งนี้!",
-            "command_is_disabled": "⚫ คำสั่งนี้ถูกปิดใช้งานภายในเซิร์ฟเวอร์แล้วคะ กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์ของคุณ",
-            "no_permission": "🚫 อืมม...ดูเหมือนว่าคุณไม่มีสิทธิ์ในการใช้งานคำสั่งแอปพลิเคชั่น (/) นะคะ ลองสอบถามผู้ดูแลดูนะคะ (≧∇≦)",
-            "user_is_not_allowed": "🚫 ฉันไม่สามารถให้คุณใช้งานคำสั่งนี้ได้ หากคุณยังไม่มีการอนุญาตเหล่านี้: **%s**"
+            "client_is_not_allowed": "🚫 Ummm.. Brakuje mi niektórych uprawnień. Więc nie mogę iść dalej, a mianowicie **%s**",
+            "command_error": "❌ Wystąpił błąd podczas wykonywania tego zamówienia!",
+            "command_is_disabled": "⚫ To zamówienie zostało wyłączone na serwerze. Skontaktuj się z administratorem serwera.",
+            "no_permission": "🚫 Hmm... Wygląda na to, że nie masz uprawnień do używania polecenia aplikacji (/), zapytaj moderatorów (≧∇≦)",
+            "user_is_not_allowed": "🚫 Nie mogę pozwolić ci skorzystać z tego zamówienia. Jeśli nie masz jeszcze tych uprawnień: **%s**"
         },
         "inviteCreate": {
-            "invite_create": "สร้างลิงค์สำหรับเชิญสมาชิกเรียบร้อยแล้ว\n**ลิงค์:** %s1\n**หมดอายุ:** %s2\n**สูงสุด:** %s3\n```%s4```",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_create": "Link do zaproszenia utworzony pomyślnie\n**Link:** %s1\n**Wygasa:** %s2\n**Maksimum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Zaproszenie"
         },
         "inviteDelete": {
-            "invite_code_deleted": "`%s` รหัสเชิญนี้ถูกลบไปแล้ว",
-            "invite_code_expires": "`%s` รหัสเชิญนี้หมดอายุแล้ว",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_code_deleted": "`%s` Ten kod zaproszenia został usunięty.",
+            "invite_code_expires": "`%s` Ten kod zaproszenia wygasł.",
+            "invite_notification": "🏷️ Zaproszenie"
         },
         "messageCreate": {
-            "afk_user_come_back": "🔙 คุณได้กลับมาแล้ว ยกเลิกการตั้งสถานะ AFK โดยอัตโนมัติ",
-            "no_reason_for_afk": "ไม่มี",
-            "that_user_is_afk": "%s1 ตอนนี้ไม่ได้อยู่ที่หน้าจอ (AFK), อย่าพึ่งพูดถึงเขาในเวลานี้\n**ข้อความที่ทิ้งไว้**: %s2"
+            "afk_user_come_back": "🔙 Wróciłeś Automatycznie anuluj status AFK",
+            "no_reason_for_afk": "nie mieć",
+            "that_user_is_afk": "%s1 Teraz nie na ekranie (AFK), nie wspominaj o nim teraz\n**Zostaw wiadomość**: %s2"
         },
         "roleCreate": {
-            "role_create": "<@&%s> ได้ถูกสร้างขึ้นแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_create": "<@&%s> został utworzony.",
+            "role_notification": "🔖 Rola"
         },
         "roleDelete": {
-            "role_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_delete": "`%s` zostało usunięte.",
+            "role_notification": "🔖 Rola"
         },
         "roleUpdate": {
-            "role_notification": "🔖 บทบาท",
-            "role_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <@&%s2>"
+            "role_notification": "🔖 Rola",
+            "role_update": "`%s1` został zaktualizowany do <@&%s2>"
         },
         "stageInstanceCreate": {
-            "stage_instance_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_create": "<#%s> został utworzony.",
+            "stage_notification": "🎤 scena"
         },
         "stageInstanceDelete": {
-            "stage_instance_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_delete": "`%s` zostało usunięte.",
+            "stage_notification": "🎤 scena"
         },
         "stageInstanceUpdate": {
-            "stage_instance_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <#%s2>",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_update": "`%s1` został zaktualizowany do <#%s2>.",
+            "stage_notification": "🎤 scena"
         },
         "stickerCreate": {
-            "sticker_create": "**%s** พร้อมใช้งานแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_create": "**%s** Teraz dostępne",
+            "sticker_notification": "👻 naklejka"
         },
         "stickerDelete": {
-            "sticker_delete": "**%s** ถูกลบไปแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_delete": "**%s** zostało usunięte",
+            "sticker_notification": "👻 naklejka"
         },
         "stickerUpdate": {
-            "sticker_notification": "👻 สติกเกอร์",
-            "sticker_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "sticker_notification": "👻 naklejka",
+            "sticker_update": "`%s1` został zaktualizowany do **%s2**"
         },
         "threadCreate": {
-            "thread_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_create": "<#%s> został utworzony.",
+            "thread_notification": "#️⃣ Wątki"
         },
         "threadDelete": {
-            "thread_delete": "**%s** ได้ถูกลบไปแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_delete": "**%s** zostało usunięte",
+            "thread_notification": "#️⃣ Wątki"
         },
         "threadUpdate": {
-            "thread_notification": "#️⃣ เธรด",
-            "thread_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "thread_notification": "#️⃣ Wątki",
+            "thread_update": "`%s1` został zaktualizowany do **%s2**"
         },
         "webhookUpdate": {
-            "webhook_notification": "🎣 เว็บฮุก",
-            "webhook_update": "**%s1** จาก **%s2** ได้รับการอัพเดทแล้วในช่อง <#%s3>"
+            "webhook_notification": "🎣 hak sieciowy",
+            "webhook_update": "**%s1** z **%s2** zostało zaktualizowane na kanale <#%s3>."
         }
     },
     "handlers": {
         "music": {
             "addList": {
-                "added_list": "✅ เพิ่มเพลย์ลิสต์ **%s1** ประกอบไปด้วยเพลงจำนวน `%s2` เพลง เรียบร้อยแล้วคะ"
+                "added_list": "✅ Dodano listę odtwarzania **%s1 ** zawierającą już `%s2` piosenki."
             },
             "addSong": {
-                "added_song": "✅ เพิ่มเพลง **%s1** `%s2` เรียบร้อยแล้วคะ"
+                "added_song": "✅ Dodaj utwory **%s1** `%s2` już."
             },
             "disconnect": {
-                "disconnected": "🔌 ตัดการเชื่อมต่อและลบคิวทั้งหมดออกเรียบร้อยแล้วคะ"
+                "disconnected": "🔌 Odłączono i usunięto już wszystkie kolejki."
             },
             "empty": {
-                "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+                "no_user_in_channel": "💨 Och.. Gdzie oni wszyscy się podziali? Więc… zamknij się najpierw~"
             },
             "error": {
-                "playlist_not_found": "❎ ฉันหาเพลย์ลิสต์นั้นไม่เจอะ ลองหาเพลย์ลิสต์อื่นดูไหม?"
+                "playlist_not_found": "❎ Nie mogę znaleźć tej listy odtwarzania. Szukasz innej playlisty?"
             },
             "finish": {
-                "queue_is_empty": "🍃 ตอนนี้ฉันคิวว่างแล้ว พร้อมที่จะเล่นเพลงต่อไปแล้วคะ"
+                "queue_is_empty": "🍃 Teraz moja kolejka jest pusta. Gotowy do odtworzenia następnego utworu?"
             },
             "playSong": {
-                "playing_song": "🎶 กำลังเล่นเพลง **%s1** `%s2`"
+                "playing_song": "🎶 Odtwarzanie muzyki **%s1** `%s2`"
             },
             "searchCancel": {
-                "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ"
+                "search_cancelled": "🕘 Anulowano wyszukiwanie... ponieważ nie znaleziono żadnego wyboru utworu."
             },
             "searchDone": {
-                "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่..."
+                "get_list_of_songs": "📋 Otrzymałem listę piosenek, które chcę. i za chwilę zacznie grać muzyka..."
             },
             "searchInvalidAnswer": {
-                "search_cancelled": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม"
+                "search_cancelled": "🔴 Ostatnie wyszukiwania zostały anulowane. Możesz wyszukać ponownie, wpisując to samo polecenie."
             },
             "searchNoResult": {
-                "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย..."
+                "no_results": "❎ Próbowałem wyszukać piosenkę, ale nie mogłem znaleźć żadnych wyników..."
             },
             "searchResult": {
-                "searching": "🔎 ค้นหาเพลงที่เกี่ยวข้อง",
-                "timer_choose": "มีเวลาในการเลือกเพลง 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-                "title_results": "ผลการค้นหาของเพลงดังกล่าว:",
-                "tool_name": "เครื่องค้นหาเพลง"
+                "searching": "🔎 Znajdź powiązane utwory",
+                "timer_choose": "Na wybór utworu jest 60 sekund.Jeśli chcesz anulować, możesz wpisać nieistotną liczbę lub poczekać do końca czasu.",
+                "title_results": "Wyniki wyszukiwania takich utworów:",
+                "tool_name": "wyszukiwarka muzyki"
             }
         }
     },
     "utils": {
         "miscUtils": {
-            "april": "เมษายน",
-            "august": "สิงหาคม",
-            "december": "ธันวาคม",
-            "february": "กุมภาพันธ์",
-            "format_at": "วัน%s1 ที่ %s2 %s3 %s4 เวลา %s5:%s6 น.",
-            "friday": "ศุกร์",
-            "january": "มกราคม",
-            "july": "กรกฎาคม",
-            "june": "มิถุนายน",
-            "march": "มีนาคม",
-            "may": "พฤษภาคม",
-            "monday": "จันทร์",
-            "november": "พฤศจิกายน",
-            "october": "ตุลาคม",
-            "saturday": "เสาร์",
-            "september": "กันยายน",
-            "sunday": "อาทิตย์",
-            "thursday": "พฤหัสบดี",
-            "tuesday": "อังคาร",
-            "wednesday": "พุธ"
+            "april": "Kwiecień",
+            "august": "Sierpień",
+            "december": "Grudzień",
+            "february": "Luty",
+            "format_at": "Dzień%s1 %s %s3 %s4 Godzina %s5:%s18:00",
+            "friday": "Piątek",
+            "january": "Styczeń",
+            "july": "Lipiec",
+            "june": "Czerwiec",
+            "march": "Marsz",
+            "may": "Móc",
+            "monday": "Poniedziałek",
+            "november": "Listopad",
+            "october": "Październik",
+            "saturday": "Sobota",
+            "september": "Wrzesień",
+            "sunday": "tydzień",
+            "thursday": "Czwartek",
+            "tuesday": "Wtorek",
+            "wednesday": "Środa"
         },
         "consoleUtils": {
-            "an_error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-            "error_detail": "คำสั่ง: **%s1**\nเวอร์ชั่น: **%s2**\nเวลาที่เกิดขึ้น: **%s3**\nเซิร์ฟเวอร์: **%s4**\nความล่าช้า: **%s5ms**\nรับ - ส่งข้อมูล: **%s6ms**\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n%s7\n```\n> **เคล็ดลับ**: คุณสามารถรายงานข้อผิดพลาดได้ทันทีโดยใช้คำสั่ง:\n> ```Sbug <ข้อความ>```\n> ```/bug <ข้อความ>```\n[รายงานปัญหา](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [ข่าวสาร](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "ผิดปกติ",
-            "server_normal": "ปกติ"
+            "an_error_occurred": "🔴 Wystąpił błąd podczas wykonywania.",
+            "error_detail": "Polecenie: **%s1**\nWersja: **%s2**\nCzas: **%s3**\nSerwer: **%s4**\nOpóźnienie: **%s5 ms**\nOdbiór-wysyłanie: * *%s6ms**\nBłąd Wynik:\n```JavaScript\n%s7\n```\n> **Wskazówka**: Możesz natychmiast zgłosić błąd za pomocą polecenia:\n> ``Sbug <komunikat>`` `\n> ```/bug <wiadomość>```\n[raport o problemie](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Wiadomości ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "nieprawidłowy",
+            "server_normal": "normalna"
         },
         "databaseUtils": {
-            "congratulations": "ยินดีด้วย!!",
-            "level_up": "ตอนนี้ระดับชั้นของ *%s1* ได้เลื่อนขั้นเป็น ```%s2```",
-            "was_mentioned": "มีอะไรหรอคะ?"
+            "congratulations": "Gratulacje!!",
+            "level_up": "Klasa *%s1* została teraz uaktualniona do ```%s2```.",
+            "was_mentioned": "Co jest nie tak?"
         }
     }
 }
