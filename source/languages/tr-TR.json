@@ -1,0 +1,958 @@
+{
+    "commands": {
+        "about": {
+            "my_profile": "benim profilim",
+            "my_profile_detail": "Adım %s 21 Haziran Pazar günü doğdum. Bir evde yaşıyorum. __Chaiwat Suwannarat(Masashi)__ beni doğuran, bana bilgi ve yetenekler veren kişidir. **çeşitli hepsini inceledim yaşadığım herkese Umarım herkes benimle olmaktan mutlu olur!! Ve sevgili hayırseverlerime tüm yardım ve destekleri için teşekkür ederim. Çok teşekkür ederim.\n\n[Resmi Web Sitesi](https://maseshi.web.app/)\n[Gizlilik Politikası](https: //maseshi.web. app/privacy-policy) | [Hizmet Şartları](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Tüm hakları saklıdır.",
+            "update_on": "ne zaman güncellendi"
+        },
+        "afk": {
+            "currently_afk": "❎ Artık AFK'siniz",
+            "currently_not_afk": "❎ Şu anda AFK değilsiniz.",
+            "now_afk": "💤Artık AFK oldunuz, mesaj yazın veya AFK modundan çıkmak için /afk kaldırın.",
+            "now_not_afk": "🔙 AFK durumunuz ayarlanmadı."
+        },
+        "anime": {
+            "auto_cancel": "Okumak istediğiniz sayıyı yazmanız yeterli! (1 dakika içinde iptal edin)",
+            "choose_now": "Şimdi seç.!!",
+            "data_not_found": "❎ Bu hikayeyi bulamadım. Hadi kontrol edelim. Bak, belki gerçekten böyle bir şey yoktur?",
+            "end_date": "**Bitiş tarihi**",
+            "english_name": "**İngilizce isim**",
+            "in_progress": "devam etmekte",
+            "japan_name": "** Japonca adı **",
+            "link": "**bağlantı**",
+            "popularity_rank": "**Popülerlik Sıralaması**",
+            "short_information": "Bu sadece bilgilerin bir özetidir. Devamını okumak isterseniz linke tıklayın!!",
+            "similar_stories": "5 benzer şey buldum. Hangi hikayeyi okumak istersin~",
+            "start_date": "**Başlangıç tarihi**",
+            "synopsis": "**özetle:**",
+            "undefined": "Tanımsız"
+        },
+        "automod": {
+            "flagged_words_name": "küfürü engelle cinsel içerik ve hakaretler",
+            "flagged_words_success": "✅ AutoMod kurallarınız oluşturuldu, tüm bu kelimeler bastırılacak.",
+            "keyword_name": "%skelimesinin kullanılmasını engelle.",
+            "keyword_success": "✅ AutoMod kuralınız oluşturuldu, %s kelimesini içeren tüm mesajlar silinecektir.",
+            "mention_spam_name": "Gerektiğinde spam'i önleyin",
+            "mention_spam_success": "✅ AutoMod kuralınız oluşturuldu, birden fazla bahsedildiğinde spam gönderme engellenecektir.",
+            "prevent_message": "Bu mesaj korumalıdır.",
+            "spam_messages_name": "ileti spam'ını engelle",
+            "spam_messages_success": "✅ AutoMod kurallarınız oluşturuldu, spam mesajlar engellenecek."
+        },
+        "autoplay": {
+            "no_queue": "❎ Hmm...ama şarkı daha başlamadı mı?",
+            "not_queue_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "off": "📻 Otomatik oynatma modu kapatıldı",
+            "on": "📻 Otomatik oynatma modu açık"
+        },
+        "ban": {
+            "banned_for_time": "%s1 **%s2** gün süreyle yasaklandı",
+            "member_has_banned": "❎ Bu tür üyeler zaten yasaklanmıştır, içiniz rahat olsun.",
+            "members_have_a_higher_role": "❎ Sizden daha yüksek role sahip birini yasaklayamazsınız.",
+            "members_have_a_higher_role_than_me": "❎ O üyeyi yasaklayamam. çünkü benden daha yüksek bir role sahip",
+            "no_reason": "Banlanan üyeler bir sebep belirtmediler.",
+            "permanently_banned": "%s kalıcı olarak yasaklandı",
+            "reason_for_ban": "Yasaklayan: %s1\nSebep: %s2",
+            "user_not_found": "❎ Bu üyeyi bulamıyorum. Lütfen tekrar kontrol edin."
+        },
+        "board": {
+            "leveling_detail": "Deneyim: %s1, Derece: %s2",
+            "no_info": "❎ Bu sunucuda henüz üye yok. deneyim değeri olan",
+            "server_rank": "Bu sunucunun seviye sıralaması",
+            "server_rank_description": "Bu sunucudaki ilk 10 üyeden 1'i. Sırasıyla kendi seviyelerinin çoğunu kim toplayabilir?",
+            "server_rank_tips": "İpucu: Diğer üyelerle sohbet etme daha fazla seviye kazanacak"
+        },
+        "bug": {
+            "sending": "📨 Tamam.. bir dakika Geliştiriciye bir mektup göndermem için bana bir dakika verin...",
+            "success*": "✅ Tamam, teşekkürler... Başka bir şey bulursan lütfen söyle (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ Captcha sistemi başarıyla kuruldu ve aktif hale getirildi.",
+            "currently_disable": "ℹ️ Captcha artık kapalı.",
+            "currently_enable": "ℹ️ Captcha artık etkin.",
+            "disabled_captcha": "✅ captcha devre dışı bırakıldı",
+            "enabled_captcha": "✅ captcha başarıyla etkinleştirildi",
+            "need_to_setup_before": "❎ Lütfen kullanmadan önce /captcha kurulum komutunu kullanarak captcha'yı ayarlayın."
+        },
+        "covid": {
+            "active": "aktif",
+            "active_per_one_million": "1 milyonda aktif",
+            "backend_issue": "❎ Muhbir tarafında bir sorun var gibi görünüyor. Lütfen bir dahaki sefere tekrar deneyin.",
+            "cases_per_one_million": "1 milyona düşen hasta sayısı",
+            "cases_today": "bu hasta",
+            "cases_total": "tüm hastalar",
+            "country_not_found": "❎ Hmm.. Belirttiğiniz ülkenin bilgisini bulamıyorum.",
+            "critical_per_one_million": "1 milyonda kritik dönem",
+            "critical_stage": "kritik dönem",
+            "deaths_today": "bugün öldü",
+            "deaths_total": "hepsi öldü",
+            "one_case_per_people": "hasta başına",
+            "one_death_per_people": "kişi başına ölüm",
+            "one_test_per_people": "Kişi başı test",
+            "population": "nüfus",
+            "recovered": "gitmiş",
+            "recovered_per_one_million": "1 milyonda kayıp",
+            "tests": "Ölçek",
+            "tests_per_one_million": "1 milyonda test sayısı",
+            "updated_on": "Son güncelleme %s",
+            "when": "Ne zaman"
+        },
+        "credits": {
+            "creator_credit": "💳 Diğer içerik oluşturuculara verilen krediler",
+            "creator_credit_description": "bazı içerik oluşturucuların her ikisinin de katkıda bulunduğu Bazıları dışarıdan alınmıştır..Tüm desteğiniz için teşekkür ederiz.",
+            "natsuki_marina_credit": "Bilgi: Bazı resimler ve avatarlar \n: https://www.pixiv.net/en/users/482462 \nWeb sitesi: https://marina71712.wixsite.com/0-0v",
+            "update_on": "ne zaman güncellendi"
+        },
+        "dead": {
+            "suicide": "İntihar etmeye %s 💔 huzur içinde yat"
+        },
+        "decode": {
+            "after": "şifresini çözdükten sonra",
+            "before": "kod çözmeden önce",
+            "decode_message": "🔓 mesajların şifresini çöz",
+            "decode_success": "Mesajın şifresi çözüldü."
+        },
+        "donate": {
+            "thank_you_in_advance_message": "❤️ Geliştiricilerimi şimdiden desteklediğiniz için teşekkür ederim. Aşağıdaki gibi destek için bir kanalım var."
+        },
+        "eat": {
+            "already_eaten": "%s1 %s2 mideye yemiştir",
+            "do_not_eat_me": "Ben.. Ben biraz küçüğüm. m..yemek için iyi değil..."
+        },
+        "eight_ball": {
+            "answer": "cevap",
+            "game": "🎱 8 top oyunu",
+            "question": "soru",
+            "risk": "Cevap almak için sorularda şansınızı kullanın.",
+            "roll_ball": "Topu yuvarlayın!!"
+        },
+        "emoji": {
+            "deleted_emoji": "✅ **%s** Emoji silindi.",
+            "edited_emoji": "%s emoji düzeltildi",
+            "uploading_you_emoji": "📤 Emojiniz yükleniyor...",
+            "you_emoji_is_ready": "%s Emojiniz hazır. Hadi deneyelim!!"
+        },
+        "encode": {
+            "after": "şifrelemeden sonra",
+            "before": "kodlamadan önce",
+            "encode_message": "🔒 Mesajları şifrele",
+            "encode_success": "Mesaj şifrelendi."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ Emoji eksik gibi görünüyor veya emoji olmayabilir.",
+            "large_emoji": "büyük emoji",
+            "requested_by": "%starafından talep edildi"
+        },
+        "exp": {
+            "can_not_find_user": "❎ Bu üye bulunamıyor. Eh.. Yazım hatası mı değil mi?",
+            "error": "❎ Bu tür üyelerin deneyimi ayarlanamıyor. Lütfen daha sonra tekrar deneyiniz.",
+            "experience": "Tecrübe Puanı (Exp)",
+            "exp_was_changed": "%s birikmiş tüm deneyim seviyeleri:",
+            "level": "Seviye",
+            "notification_complete": "✅ Kurulum tamamlandı...",
+            "set_by_staff": "Deneyiminiz bu sunucudaki ekip tarafından belirlenir.",
+            "success": "✅ Kurulum tamamlandı..."
+        },
+        "filter": {
+            "add_filter": "🎼Zaten gerekli ses formatını **%s** olacak şekilde ekleyin.",
+            "available_filter": "Kullanılabilir filtre biçimleri",
+            "available_filter_description": "Bu %s1 biçimlerini kullanarak müziğinizi kişiselleştirin ```%s2```",
+            "clear_filter": "💨 Tüm ses formatları temizlendi. Şimdi normal bir ses formatı olacak.",
+            "list_filter_description": "Şu anda bu kuyrukta aktif kalıplar var: %s1 kalıp\n```%s2```",
+            "list_filter_description_empty": "```Şu anda kullanılmakta olan bir ses formatı yok.```",
+            "list_filter_title": "Şu anda kullanılmakta olan ses formatı",
+            "no_queue": "❎ Şu anda çalan şarkı yok.",
+            "not_queue_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "remove_filter": "🗑️ Ses formatı **%s** kaldırıldı.",
+            "set_filter": "🎼 Tercih edilen ses formatını **%s** olarak ayarlayın",
+            "sound_filtering": "❓ Müziğinizin sesini değiştirmek mi istiyorsunuz?",
+            "unknown_filter": "❎ Hmm..`%ssesinin formatını bilmiyorum, kullanarak kontrol edebilirsiniz. **mevcut** veya **ava**?",
+            "unknown_input_option": "❓ Şu parametreleri belirleyebilirsiniz: ekle, kaldır, ayarla, kullanılabilir, listele, temizle."
+        },
+        "guild": {
+            "afk_channel_id": "AFK kanal kodu",
+            "afk_timeout": "sınırlı süreli AFK",
+            "application_id": "uygulama kodu",
+            "approximate_member_count": "Tahmini üyeler",
+            "approximate_presence_count": "tahmini durum",
+            "available": "hazır",
+            "banner": "afiş",
+            "create_at": "oluşturuldu",
+            "create_timestamp": "kuruluş zamanı",
+            "default_message_notification": "uyarmak",
+            "description": "Tanım",
+            "discovery_splash": "kısa açıklama",
+            "do_not_have": "yok",
+            "explicit_content_filter": "filtreleme",
+            "features": "özellik",
+            "guild_available": "kullanıma hazır",
+            "icon": "avatarı",
+            "id": "kod",
+            "info_date": "ne zaman bilgi",
+            "joined_at": "katıldı",
+            "join_timestamp": "katılım tarihi",
+            "large": "büyük beden",
+            "maximum_members": "Maksimum üye",
+            "maximum_presences": "en yüksek statü",
+            "member_count": "üye",
+            "mfa_level": "MFA seviyesi",
+            "name": "isim",
+            "name_acronym": "baş harfler",
+            "no": "HAYIR",
+            "none": "HAYIR",
+            "nsfw_level": "NSFW seviyesi",
+            "off": "kapamak",
+            "on": "açık",
+            "owner_id": "sahip kodu",
+            "partnered": "katılmak",
+            "preferred_locale": "kapsam",
+            "premium_subscription_count": "özel üye",
+            "premium_tier": "yükseltici",
+            "public_updates_channel_id": "Kanal kodunu güncelle",
+            "rules_channel_id": "kurallar kutusu kodu",
+            "server_info": "🗄 Ayrıntılı sunucu bilgisi",
+            "server_info_description": "Ayrıntılı sunucu bilgileri Discord'dan alınan verilere dayanmaktadır.",
+            "specific_use": "💡 Belirli sunucu kullanıcı bilgilerini şu şekilde belirtebilirsiniz: **%s**",
+            "splash": "davetiye resmi",
+            "system_channel_id": "sistem kanal kodu",
+            "unavailable": "hazır değil",
+            "unknown": "bilmiyorum",
+            "vanity_url_code": "davet kodu",
+            "vanity_url_uses": "davet edildi",
+            "verification_level": "kontrol etme",
+            "verified": "onaylamak",
+            "widget_channel_id": "witseven kanal kodu",
+            "widget_enabled": "üzüntü",
+            "yes": "Evet"
+        },
+        "help": {
+            "category": "Kategori: %s",
+            "client_permissions": "İzinler (botlar): %s",
+            "command": "Sipariş: %s",
+            "command_detail": "📑 Sipariş detayları ",
+            "command_incorrect": "❎ Yanlış sıralama",
+            "command_incorrect_guide": "Eh... Bu sipariş bende yok. Komutlarımın tam listesini görmek için lütfen `/help` yazarak tekrar kontrol edin.",
+            "commands_description": [
+                "Öğrendiğim veya çalıştığım tüm komutlar. anlamak ve fiilen kullanmak",
+                "hangi beni aramadan önce Önek **/** olmalıdır.",
+                "\"<>\" gerekli anlamına gelir, \"()\" giriş tipidir ve \"[]\" isteğe bağlıdır.",
+                "Her komutun ayrıntıları için `/help [command]` yazın ve dileğiniz gerçek olsun!!"
+            ],
+            "description": "Açıklama: %s",
+            "document_name": "Yardım Sayfası",
+            "how_to_use": "Yardım: %s",
+            "no_description": "açıklama yok",
+            "no_need_permissions": "Gerekli izin yok",
+            "request_by": "tarafından talep edildi",
+            "unknown_how_to_use": "kullanmanın yolu yok",
+            "user_permissions": "İzinler (kullanıcılar): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ Bu sunucuda böyle üyeler bulunamıyor.",
+            "success": "✅ <@%s> Mesaj oluşturuldu!"
+        },
+        "invite": {
+            "can_not_create_invite_link": "❎ Davet bağlantısı oluşturulamıyor Lütfen tekrar deneyin.",
+            "me_do_not_have_permission": "🚫 Bu kanalda davet linki oluşturma yetkim bulunmamaktadır.",
+            "membership_invitation_card": "üye davetiye",
+            "this_product_is_free": "Bu ürün ücretsizdir, tekrar satmayın."
+        },
+        "join": {
+            "already_joined": "❎ Eh..ama şimdi buradayım?",
+            "another_player_is_playing": "🚫 Şu anda bu siparişi kullanamazsınız. çünkü müzik çalan başka üyeler var",
+            "channel_joined": "✅ Zaten <#%s> kanalındayım...",
+            "joined": "▶️ Artık <#%s> kanalındayım.",
+            "no_channel": "❎ Bu kanala sahip değilim. Bir yazım hatası mı?",
+            "not_in_channel": "❓ Önce kanala katılmalısınız. Aksi takdirde hangi alan olduğunu bilmiyorum =3="
+        },
+        "jump": {
+            "can_not_jump": "❎ Böyle bir sıra numarası yok gibi. Lütfen tekrar kontrol edin.",
+            "jumped": "➿ Şimdiden %s numaralı sıradaki yeni şarkıya atlayın.",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok. geçemez",
+            "not_queue_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir."
+        },
+        "kick": {
+            "can_not_find_user": "❎ Bu üyeyi bulamıyorum. Lütfen tekrar kontrol edin.",
+            "kicked_out": "%s atıldı",
+            "members_have_a_higher_role": "❎ Sizden daha yüksek olan insanları tekmeleyemezsiniz.",
+            "members_have_a_higher_role_than_me": "❎ O üyeyi tekmeleyemiyorum. çünkü benden daha yüksek bir role sahip",
+            "no_reason": "Tekme atan üyeler bir sebep belirtmedi.",
+            "reason_for_kick": "Gönderen: %s1\nSebep: %s2"
+        },
+        "kill": {
+            "do_not_kill_me": "❎Böyle bir şey yapacaksın.. Benimle değil, haha...",
+            "killed": "%s1 zaten seni öldürdü %s2 🔪"
+        },
+        "leave": {
+            "another_player_is_playing": "🚫 Şu anda bu siparişi kullanamazsınız. çünkü müzik çalan başka üyeler var",
+            "not_in_any_channel": "❎ Şimdi henüz hiçbir kanalda değilim...",
+            "now_leave": "◀️Mevcut kanaldan çıktım."
+        },
+        "level": {
+            "delete_error": "❎ Bu kullanıcı hiçbir şekilde bulunamıyor.",
+            "delete_success": "✅ Bu üyenin deneyim seviyesi silinmiştir!",
+            "deleting": "📁 Bu üye için deneyim düzeyi verileri siliniyor.",
+            "experience": "Tecrübe Puanı (Exp)",
+            "level": "Seviye",
+            "level_was_changed": "%s birikmiş tüm deneyim seviyeleri:",
+            "notification_complete": "✅ Kurulum tamamlandı...",
+            "set_by_staff": "Sınıfınız bu sunucudaki ekip tarafından belirlenir.",
+            "set_error": "❎ Bu tür üyelerin seviyesi ayarlanamıyor. Lütfen daha sonra tekrar deneyiniz.",
+            "set_success": "✅ Kurulum tamamlandı...",
+            "user_current_no_level": "❎ Bu tür üyelerin sınıf düzeyi yoktur."
+        },
+        "leveling": {
+            "bot_do_not_have_level": "❎ Ben de dahil olmak üzere botların seviyeleri olmayacak.",
+            "can_not_find_user": "❎ Bu üye bulunamıyor. Eh.. Yazım hatası mı değil mi?",
+            "experience": "Tecrübe Puanı (Exp)",
+            "level": "Seviye",
+            "user_no_data": "💨Hmm... Bu üyenin bir seviyesi ve deneyimi yok.",
+            "your_experience": "Deneyiminiz"
+        },
+        "license": {
+            "copyright_content": "📝 Telif hakkıyla korunan içerik"
+        },
+        "logs": {
+            "can_not_delete_file": "❎ Yukarıdaki günlük dosyası silinemiyor\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ Yukarıdaki günlük dosyası okunamıyor\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** zaten silinmiş",
+            "file_not_found": "❎ Klasörde **%s** adlı bir dosya bulunamıyor.",
+            "folder_empty": "💨 Artık klasördeki günlük dosyası boş. Daha sonra tekrar gelmeyi deneyin.",
+            "found_file": "Bulunan %s1 dosya girişi:\n```%s2```",
+            "owner_only": "🚫 Üzgünüm.. bu komut sadece yöneticiler tarafından kullanılabilir."
+        },
+        "lyrics": {
+            "can_not_find_lyrics": "%siçin şarkı sözü bulunamadı.",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "playing_lyrics": "📋 Çalan şarkının sözleri"
+        },
+        "meme": {
+            "can_not_fetch": "Meme getirilemedi. Lütfen tekrar deneyin.",
+            "meme_not_found": "%sile eşleşen türde meme bulunamadı."
+        },
+        "minecraft": {
+            "address": "adres",
+            "do_not_have": "yok",
+            "ip": "IP adresi",
+            "last_check": "son kontrol",
+            "maximum_player_count": "Maksimum oyuncu sayısı",
+            "motd": "Tanım",
+            "player_in_server": "sunucu oyuncuları",
+            "port": "liman",
+            "server_available": "🟢 Bu sunucu şu anda açık.",
+            "server_unavailable": "🔴Bu sunucu geçici olarak kapatılmıştır.",
+            "skin_of": "🎴 %sdış görünüm",
+            "version": "sürüm"
+        },
+        "musicInfo": {
+            "detail": "📄 Çalmakta olan şarkının ayrıntıları",
+            "download_link": "📥 İndirme Bağlantısı",
+            "duration": "🕒 Süre",
+            "id": "🆔 kimlik",
+            "link": "🔗 Bağlantı",
+            "music_name": "🎵 Şarkı adı",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "uploader": "🎬 yükleyici"
+        },
+        "nekos": {
+            "can_not_fetch_data": "❎ İstediğiniz resim geçici olarak alınamıyor. Lütfen daha sonra tekrar deneyiniz.",
+            "request_by": "%starafından talep edildi"
+        },
+        "nowPlaying": {
+            "autoplay": "📻 Otomatik Oynatma",
+            "filter": "🎼 Ses filtresi modeli: `%s`",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "owner_this_queue": "%s bu kuyruğun sahibi"
+        },
+        "numbers": {
+            "result": "Sonuç %s"
+        },
+        "paste": {
+            "backend_not_response": "❎ Sunucudan hiç yanıt yok. Daha sonra tekrar deneyebilirsiniz.",
+            "file": "dosya",
+            "raw": "çiğ"
+        },
+        "pause": {
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "not_paused": "📼 Şimdi sıkışıp kaldım. Bugün garip görünüyor..",
+            "paused": "⏸ Müziği şimdi duraklatın."
+        },
+        "ping": {
+            "connection": "📡 bağlantı",
+            "info": "Gidiş-dönüş gecikmesi %s1 ms\nweb soketi çalışma süresi %s2 ms",
+            "result": "🏓 tenis",
+            "waiting": "🏓 Ping..."
+        },
+        "play": {
+            "no_queue": "❎ Şimdi henüz hiç şarkı çalmadım.",
+            "not_in_channel": "❓ Önce herhangi bir kanalı girin. Yoksa beni dinleme..."
+        },
+        "previous": {
+            "no_previous_song_queue": "📼 Yakın zamanda çalınan şarkı bulunmamaktadır.",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "previous": "⏮ Önceki şarkıya geri dön"
+        },
+        "purge": {
+            "message_cleared": "`%s mesaj ` başarıyla silindi 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "QR kodunuz kullanıma hazır.",
+            "qrcode_title": "🧩 QR kodu"
+        },
+        "quality": {
+            "advice_embed_description": "```Geçerli kalite: %s```\nBazen sorun, sunucuya çok fazla erişimi olan ve performans sorunlarına neden olan bir sunucudan kaynaklanabilir. Ancak, bunu kurmadan önce internet bağlantınızı kontrol etmenizi tavsiye ederim.2 0` - Ses dosyalarını\niçin **OPUS** kullanın. Bu size daha iyi ses kalitesi sağlarken aynı zamanda daha fazla kaynak kullanır **(önerilen)**\n`1` - Sesi doğrudan kaynaktan kullanın. Bu, daha iyi performans sağlar ancak daha az kaynak kullanır.",
+            "advice_embed_footer_text": "Ek ses kalitesini Discord ayarlarından ayarlayabilirsiniz: Ayarlar > Ses ve Video > Gelişmiş.",
+            "advice_embed_title": "Ses kalitesini özelleştirin",
+            "focus_on_high_quality": "yüksek kaliteye odaklanmak",
+            "low_efficiency": "Düşük performansa odaklanmak",
+            "opus_mode_selected": "🎛️ Artık ses dosyalarını sıkıştırmaya yardımcı olması için **OPUS** kullandım. Ses kalitesi artacaktır.",
+            "raw_mode_selected": "🎛️ Orijinal sese geçildi Ses kalitesini düşürebilir."
+        },
+        "queue": {
+            "autoplay": "📻 Otomatik Oynatma",
+            "filter": "🎼 Ses Filtresi Modeli: %s",
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "owner_this_queue": "%s bu kuyruğun sahibi",
+            "previous_queue": "**önceki sıra**",
+            "waiting_in_queue": "**Bir sonraki sırayı bekliyorum**"
+        },
+        "queueStatus": {
+            "autoplay": "📻 Otomatik Oynatma",
+            "duration": "🕒 Süre",
+            "filter": "🎼 ses filtresi deseni",
+            "no_queue": "❎ Şimdi henüz hiç şarkı çalmadım.",
+            "now": "⌚ şimdi",
+            "off": "kapamak",
+            "on": "açık",
+            "owner_this_queue": "%s bu kuyruğun sahibi",
+            "paused": "Duraklat",
+            "playing": "oynamak",
+            "queue_status": "📑 Geçerli şarkı sırasının durumu",
+            "repeat": "🔁 Tekrarla",
+            "repeat_off": "açık değil",
+            "repeat_this_queue": "bu sıra",
+            "repeat_this_song": "bu şarkı",
+            "volume": "🔉 ses seviyesi"
+        },
+        "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: Yeni bir sistem yeniden başlatma isteği var!!**\nKimliğinizi onaylamak için, lütfen komutu çalıştırdığınız sunucuya bu parolayı girin\nDevam etmek istemiyorsanız göz ardı edebilirsiniz\nBugüne kadar benimle ilgilendiğin için teşekkür ederim :)\n||%s||",
+            "not_owner": "🛑 Alma.. alma. Bu işlev yalnızca en yüksek ayrıcalıkları gerektirir.",
+            "now_reboot": "✅ Yeni bir sistem başlattı!!",
+            "password_is_incorrect": "❎ Parola yanlış. Lütfen tekrar kontrol edin.",
+            "rebooting": "🔄 Yeniden başlatılıyor..."
+        },
+        "reload": {
+            "invalid_command": "❎ Hmmm... bu sıralama yok gibi... dikkatlice kontrol etmeye çalışın Yine, doğru mu değil mi?",
+            "reloaded": "✅ %s Başarıyla yeniden yüklendi!!",
+            "reload_error": "❌Lanet %s komutunu yeniden yüklemeye çalıştım ama yapamıyorum."
+        },
+        "remove": {
+            "no_queue": "❎ Şimdi henüz hiç şarkı çalmadım.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "removed": "❌ Sıradan **%s** kaldırıldı.",
+            "too_much": "❎ Böyle bir sıra yoktur. Lütfen tekrar kontrol edin."
+        },
+        "repeat": {
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "off": "tekrarlamak",
+            "repeated": "🔁 şimdi %s",
+            "repeat_queue": "kuyruğu tekrarla",
+            "repeat_song": "şarkıyı tekrar et",
+            "too_much": "❎ Bundan daha yüksek mod yoktur."
+        },
+        "resume": {
+            "no_queue": "❎ Şimdi henüz hiç şarkı çalmadım.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "now_playing": "📼Hey.. Şimdi oynuyorum.",
+            "resumed": "▶️ Şarkı aynı noktadan çalmaktadır."
+        },
+        "rip": {
+            "no_image": "❎ Ah... bu resme benziyor Silinmiş veya başka bir yere taşınmış olabilir."
+        },
+        "rpc": {
+            "answered": "Cevabınızı seçtiniz.",
+            "bot_winner": "Yaşasın!..Seni yendim <@%s>",
+            "can_not_play_with_another_bot": "❎ Bu oyunu diğer botlarla oynayamazsınız.",
+            "choose_options": "Aşağıdan bir seçenek belirleyin.",
+            "game_timeout": "Bu oyunun süresi doldu. Eğlendiğin için teşekkürler.",
+            "member_not_found": "❎ Bu tür üyeler artık bu sunucuda görünmüyor.",
+            "rock_paper_scissors": "🎮 taş kağıt makas",
+            "tie": "Bağlamak!",
+            "user_answered": "%s Yanıt seçildi. Karşı taraftan cevap bekliyorum...",
+            "user_winner": "<@%s> kazanan!",
+            "your_answer": "Şimdi %s"
+        },
+        "say": {
+            "success": "✅ Mesajınız gönderildi."
+        },
+        "search": {
+            "get_list_of_songs": "📋 İstediğim şarkıların listesini aldım. ve birazdan müzik çalmaya başlayacak...",
+            "invalid_number": "🔴 Son aramalar iptal edildi. Aynı komutu yazarak tekrar arama yapabilirsiniz.",
+            "no_results": "❎ Şarkı hakkında arama yapmaya çalıştım ama sonuç bulamadım...",
+            "playlist_type": "çalma listesi",
+            "search_cancelled": "🕘 Şarkı seçimi bulunamadığından arama iptal edildi.",
+            "searching": "🔍 İlgili%stane bul",
+            "song_type": "şarkı",
+            "timer_choose": "%s 60 saniye seçme süresi var iptal etmek isterseniz alakasız bir sayı yazabilir veya sürenin bitmesini bekleyebilirsiniz.",
+            "title_results": "%sgibi sonuçlar:",
+            "user_not_in_channel": "❓ Önce herhangi bir kanalı girin. Yoksa beni dinleme..."
+        },
+        "seek": {
+            "no_queue": "❎ Şimdi çalmakta olan şarkı yok.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "seek_guide": "❓ Çalmakta olan şarkının süresini kaç saniye değiştirmek istiyorsunuz? Şimdi %ssaniyede oynuyor",
+            "sought": "🕘 Çalmakta olan şarkının saati değiştirildi.",
+            "too_much": "❎ Bu şarkının süresi %s . Bundan daha fazlası yok."
+        },
+        "set_command": {
+            "can_not_manage_this_command": "❎ Bu sırayı değiştiremezsiniz.",
+            "command_input_empty": "❎ Lütfen işlem yapmak istediğiniz siparişi giriniz.",
+            "command_not_found": "❎ Yukarıdaki komut bulunamadı. Karakterleri veya karakterleri tekrar kontrol etmeyi deneyin.",
+            "data_at": "ne zaman bilgi",
+            "description": "%sset-command** - tüm%syönetir\n\nörneğin `on`-||off||,\ntek komutları çalıştır\n\n. yazarak değiştirildi:\n> ```%s3```",
+            "disabled": "☑️ Sipariş devre dışı **%s** zaten.",
+            "enabled": "✅Sipariş **%s** şimdiden etkinleştirildi.",
+            "title": "🪄 komut"
+        },
+        "set_language": {
+            "already_set": "❎ Eh..fakat bu sunucu zaten %s dilini kullanıyor",
+            "description": "**set-language** - Dilinizi ayarlayın, bu, anlamanızı büyük ölçüde kolaylaştıracaktır\n\nBu sunucunun dili: `%s1`\n\n> Yazarak değiştirebilirsiniz:\n> ```%s2. ```",
+            "set_success": "✅ Dil zaten **%s** olarak değiştirildi.",
+            "title": "🌐 Dil"
+        },
+        "set_notify": {
+            "channel_not_found": "❎ Bu sunucuda böyle bir kanal bulunamıyor. Lütfen tekrar kontrol edin.",
+            "data_at": "ne zaman bilgi",
+            "description": "**set-notify** - Sunucudan en son bilgileri almak için her bildirim türünü ayarlayın\n\n**alert** - Genel bildirim: %s1\n**channelCreate** - Yeni kanal: %s2\n* *channelDelete* * - Kanal Silindi: %s3\n**channelPinsUpdate** - Kanal Sabitlendi: %s4\n**channelUpdate** - Kanal Güncellendi: %s5\n**emojiCreate** - E Yeni emojiler: %s6\n**emojiDelete** - Emojiler silindi: %s7\n**emojiUpdate** - Emojiler güncellendi: %s8\n**guildBanAdd** - Yasaklanan üyeler: %s9\n**guildBanRemove** - Üyenin yasağı kaldırıldı: %s10\n**guildBanAdd** - Guild Entegrasyon Güncellemesi: %s11\n**guildMemberAdd** - Üye katılma sunucusu: %s12\n** guildMemberRemove** - Üye sunucudan ayrıldı: %s13\n**guildMembersChunk** - Birçok lonca üyesi kazandı: %s14\n**guildUnavailable* * - Sunucu kullanılamıyor: %s15\n**inviteCreate** - Davet bağlantısı oluşturuldu: %s16\n**inviteDelete** - Davet bağlantısı silindi: %s17\n**roleCreate** - Rol oluşturuldu: %s18\n**roleDelete* * - Rol silindi: %s19\n* *roleUpdate** - Rol güncellendi: %s20\n**stageInstanceCreate** - Aşama oluşturuldu: %s21\n**stageInstanceDelete** - Aşama silindi: %s22\n**stageInstanceUpdate** - Aşama Yapılan Güncellemeler: %s23\n**stickerCreate** - Çıkartmalar oluşturuldu: %24\n**stickerDelete** - Çıkartmalar kaldırıldı: %s25\n**stickerUpdate** - Çıkartmalar güncellendi: %s26\n**threadCreate** - Konu oluşturuldu: %s27\n**threadDelete** - Konu silindi: %s28\n**threadUpdate** - Konu güncellendi: %s29\n**webhookUpdate** - Webhook Güncellendi: %s30\n\n>\nyazarak değiştirebilirsiniz > ```%s31```",
+            "not_set": "\"Ayarlanmadı\"",
+            "remove_success": "✅ \"%s\" bildirim türünü başarıyla kaldırın.",
+            "set_success": "✅ Uyarı türü `%s1`, `<#%s2>` kanalına ayarlandı.",
+            "title": "🔔 Bildirimler",
+            "type_not_found": "❎ Hmm... öyle bir tip yok gibi. Şu anda yalnızca şu türler mevcuttur: %s"
+        },
+        "set_personal": {
+            "data_at": "ne zaman bilgi",
+            "description": "**set-personal** - Kişisel verilerinizi görüntülemek için izinleri ayarlayın. (Yalnızca Shioru için etkilidir)\n\nProfili görüntüleyebilir: `%s1`\nDiscord bilgilerini görüntüleyebilir: `%s2`\nKimliği görüntüleyebilir: `%s3`\n\n> Şunu yazarak değiştirebilirsiniz :\n> ``%s4 ```",
+            "false_success": "✅ %s Yetkilendirmeniz iptal edildi.",
+            "no": "HAYIR",
+            "title": "📄 Kişisel bilgiler",
+            "true_success": "✅ %s numaranız yetkilendirildi.",
+            "yes": "Evet"
+        },
+        "settings": {
+            "description": "Bu komutları kullanarak ihtiyaçlarınıza göre yapılandırabilirsiniz.",
+            "languages": "🌐 Dil (Sunucu)",
+            "note": "Not: Bazı komutlar, çalıştırılmadan önce belirli izinler gerektirebilir.",
+            "notification": "🔔 Bildirim (Sunucu)",
+            "personal": "📄 Kişisel Bilgiler (Kişisel)",
+            "prefix": "❕ komut (sunucu)",
+            "title": "⚙️ Ayarlar"
+        },
+        "shuffle": {
+            "no_queue": "❎ Şimdi çalmakta olan şarkı yok.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "now_shuffle": "🔀Sıra değiştirmeye başlıyoruz..."
+        },
+        "shutdown": {
+            "dm_to_owner": "**:red_circle: Kapatma talebi var!!**\nSiz olduğunuzu doğrulamak için lütfen komutu çalıştırdığınız sunucuya bu şifreyi giriniz\nDevam etmek istemiyorsanız göz ardı\n. Bana iyi bakın bugüne kadar :)\n||%s||",
+            "not_owner": "🛑 Alma.. alma. Bu işlev yalnızca en yüksek ayrıcalıkları gerektirir.",
+            "now_shutdown": "💤 Discord sistemi kapatılmıştır..Tekrar görüşmek üzere~",
+            "password_is_incorrect": "❎ Parola yanlış. Lütfen tekrar kontrol edin.",
+            "shutting_down": "🔄 Sistemim kapatılıyor..."
+        },
+        "skip": {
+            "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok. geçemez",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "skipped": "⏭ Onu atladım ve sırada yeni bir şarkı çalmaya başlamak üzereyim."
+        },
+        "snake": {
+            "building_board_game": "🐍 Kompozisyon Bir süre bekleyin lütfen...",
+            "game_name": "Yılan: Oyun",
+            "game_over": "oyun bitti",
+            "game_score": "Puan: **%s1**\nSüre: **%s2** saniye",
+            "played_on": "%starafından başlatıldı"
+        },
+        "status": {
+            "data_by_server": "Sunucudan referans verileri.",
+            "dnd_status": "Şu anda Rahatsız Etmeyin'de bulunan üye sayısı \n```%s`` şeklindedir.",
+            "idle_status": "Şu anda yok olan üye sayısı \n```%s``` şeklindedir.",
+            "offline_status": "Şu anda çevrimdışı olan üye sayısı \n```%s```",
+            "online_status": "Şu anda çevrimiçi olan üye sayısı \n``%s```"
+        },
+        "sticker": {
+            "deleted_sticker": "✅ **%s** Etiket başarıyla kaldırıldı",
+            "does_not_support_gif": "❎ Üzgünüm...Discord şu anda GIF tabanlı özel çıkartmaları desteklemiyor.",
+            "edited_sticker": "%s Etiketler düzenlendi.",
+            "uploading_you_sticker": "📤 Çıkartmalarınız yükleniyor...",
+            "you_sticker_is_ready": "%s Çıkartmanız hazır. Hadi deneyelim!!"
+        },
+        "stop": {
+            "no_queue": "❎ Eh...çaldığım şarkı mevcut değil.",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "stopped": "⏹️Müzik çalmayı bırakın ve tüm kuyrukları silin."
+        },
+        "system": {
+            "info_battery": {
+                "charging": "Doluyor",
+                "not_charging": "şarj olmuyor",
+                "title": "• pil",
+                "without": "yok"
+            },
+            "info_description": "Şu anda üzerinde çalışmakta olduğum sistemin sistem tarafından sağlanan bilgileri aşağıdaki gibidir.",
+            "info_gpu_control": "• GPU (Denetleyici)",
+            "info_gpu_display": "• GPU (Ekran)",
+            "info_memory_used": "• kullanılmış hafıza",
+            "info_platform": "• Platform",
+            "info_system": "• sistem",
+            "info_temperature": "• CPU sıcaklığı",
+            "info_title": "🖥 Sistemin temel bilgileri",
+            "info_uptime": {
+                "info": "%s1 gün %s2 saat ",
+                "title": "• Çalışma zamanı"
+            },
+            "loading": "⚙️ Sistem verilerini sunucudan almak için istek gönderiliyor...",
+            "main": "ana",
+            "unknown": "bilmiyorum"
+        },
+        "tictactoe": {
+            "button_is_selected": "❎ Kanal zaten dolu.",
+            "can_not_duel_with_me": "❎ Bu oyunları oynamakta iyi değilim. Ben daha yargılayıcıyım.",
+            "can_not_play_with_bot": "❎ Bu oyunu botlarla oynayamazsınız.",
+            "in_another_duel": "❎ <@%s> Şu anda başka biriyle düello halinde.",
+            "in_duel": "❎ Hayır, <@%s> ile sonuna kadar savaşmalısın.",
+            "member_not_found": "❎ Bu tür üyeler başka bir yerden kaçırılmış gibi görünüyor.",
+            "need_one_emoji": "❎ ❌ veya ⭕ gibi 1 emoji alabilir miyim?",
+            "tie": "Bağlamak!",
+            "wait_opponent": "❓Bir süre karşı tarafı bekleyin.",
+            "winner": "%s kazandı!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ Kendinize bir zaman aşımı süresi ayarlayamazsınız.",
+            "can_not_set_timeout": "❎ Benden daha yüksek bir role sahip olduğu için ona bir mola belirleyemiyorum.",
+            "can_not_set_to_admin": "❎ Moderatörler için bir zaman aşımı süresi ayarlayamazsınız.",
+            "dm_to_user": "⌛ %s1'de zaman aşımına uğradınız, o sunucuda kalan süreyi görebilirsiniz **Sebep**: %s2",
+            "member_not_found": "❎ Üyeler artık bu sunucuda olmadıklarını söylemezler.",
+            "no_reason": "bir sebep vermiyor",
+            "success": "%s1, %s2 dakikada sona erecek şekilde ayarlandı **Sebep**: %s3"
+        },
+        "together": {
+            "can_not_open": "❌ Hmm.. bu yüzden %s açamıyorum",
+            "do_not_have": "❎ Ah..Şimdi hala %s1 yok ya da gerçekten\nolmayabilir ama Together şu anda %s2 öğeye sahip, yani\n```%s3```",
+            "do_not_have_permission": "❌Aktivasyon iznim olmadığı için aktif edemiyorum. Lütfen moderatörle iletişime geçin.",
+            "join_via_this_link": "Bu bağlantı aracılığıyla katılın. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Önce ses kanallarından birine gidin veya bana o kanalın adını veya kimliğini söyleyebilirsiniz. Düzgün bir bağlantı oluşturabilecektir.",
+            "voice_channel_not_found": "❎ Eh..ama bu sunucuda ses kanalı yok Ses kanalına gidin ve tekrar deneyin."
+        },
+        "translate": {
+            "can_not_translate": "❎ Bu tür bir metnin dili çevrilemiyor. Lütfen daha sonra tekrar deneyiniz.",
+            "says": "söylemek",
+            "translate_support": "❎ Geçersiz çeviri kodu Lütfen tekrar kontrol edin\n**Desteklenen Diller:** %s"
+        },
+        "unban": {
+            "no_one_gets_banned": "❎ Sunucudaki hiç kimse şu anda yasaklı değil.",
+            "no_reason": "Banını kaldıran üyeler bir sebep belirtmediler.",
+            "reason_for_unban": "Ban kaldıran: %s1\nSebep: %s2\nÜyenin ban kaldırıldıktan sonra. Bu tür üyeler bu sunucuya normal olarak katılabileceklerdir.",
+            "this_user_not_banned": "❎ Eh.. o üye yasaklanmadı. Harika yeni anahtar kelimelere bir kez daha göz atalım...",
+            "user_has_been_unbanned": "%s yasaksız"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ Kendinize bir zaman aşımı süresi ayarlayamazsınız.",
+            "can_not_set_to_admin": "❎ Moderatörler için bir zaman aşımı süresi ayarlayamazsınız.",
+            "can_not_set_untimeout": "❎ Benden daha yüksek bir role sahip olduğu için mola vermemesini ayarlayamam.",
+            "dm_to_user": "⏲️ %sbir zaman aşımı ayarlamak için iptal edildiniz 1 **Sebep**: %s2",
+            "member_not_found": "❎ Üyeler artık bu sunucuda olmadıklarını söylemezler.",
+            "no_reason": "bir sebep vermiyor",
+            "success": "%s1 Zaman aşımı ayarlandı **Sebep**: %s2"
+        },
+        "uptime": {
+            "days": "gün",
+            "hours": "saat",
+            "info_title": "🕒 Çalışmaya başlama zamanı.",
+            "minute": "dakika",
+            "second": "ikinci"
+        },
+        "user": {
+            "avatar": "avatarı",
+            "bot": "bot",
+            "can_not_find_user": "💡 O üyeyi bulamıyorum..tam adı veya kullanıcı adını deneyin.Örnek: <@%s>",
+            "created_at": "oluşturuldu",
+            "created_timestamp": "kuruluş zamanı",
+            "default_avatar_url": "orijinal avatar",
+            "discriminator": "altbilgi kodu",
+            "id": "İD",
+            "info_date": "ne zaman bilgi",
+            "none": "HAYIR",
+            "partial": "bazı",
+            "system": "sistem",
+            "tag": "etiketler",
+            "unknown": "bilmiyorum",
+            "user_info": "👥 Kullanıcı bilgileri ayrıntıları",
+            "user_info_description": "Kullanıcılar hakkında detaylı bilgi Discord'dan alınan verilere dayanmaktadır.",
+            "username": "Kullanıcı adı",
+            "yes": "Evet"
+        },
+        "version": {
+            "working_in_version": "Sürüm üzerinde çalışıyorum: **%s**"
+        },
+        "volume": {
+            "adjusted": "🔊 Sesi şu şekilde ayarlayın: **%s**",
+            "no_queue": "❎ Eh...çaldığım şarkı mevcut değil. Neyi ayarlayacaksın?",
+            "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
+            "this_volume": "🔈 Geçerli ses seviyesi: **%s**"
+        },
+        "weather": {
+            "clear_weather": "açık hava",
+            "cloudy": "bulutlu",
+            "date": "📆 tarih",
+            "day": "📅 gün",
+            "degree_type": "⚖️ Ölçü birimleri",
+            "feels_like": "🎐 gibi hissetmek",
+            "humidity": "💧 Nem",
+            "information_from_microsoft": "Microsoft'tan Doğru ve Doğru Bilgiler",
+            "light_rain": "çiselemek",
+            "mostly_clear": "Çok bulutlu",
+            "mostly_cloudy": "Çoğunlukla Bulutlu",
+            "mostly_sunny": "çoğunlukla güneşli",
+            "no_result_found": "❎ Eh...Bu alanla ilgili bilgi aradım ama bulamadım.",
+            "partly_cloudy": "Parçalı bulutlu",
+            "partly_sunny": "kısmen güneşli",
+            "rain": "yağmur",
+            "rain_showers": "yoğun yağış",
+            "sunny": "güneşli",
+            "temperature": "🌡️ Sıcaklık",
+            "timezone": "🌐 Saat Dilimi",
+            "weather": "⛅ Hava Durumu",
+            "weather_at_the_moment": "__**%s1**__ hava durumu şimdi \n```%s2```.",
+            "wind": "🎏 rüzgar"
+        }
+    },
+    "events": {
+        "channelCreate": {
+            "channel_notification": "🪧 Kanal",
+            "member_create_channel": "> Sunucu üyesi tarafından oluşturulan kanal: <#%s>"
+        },
+        "channelDelete": {
+            "channel_notification": "🪧 Kanal",
+            "member_delete_channel": "> Sunucu üyesi patlamış kanal: `%s`"
+        },
+        "channelPinsUpdate": {
+            "channel_notification": "🪧 Kanal",
+            "member_pins_in_channel": "> Sunucu üyesi yuvayı sabitledi: %s2 olduğunda <#%s1>"
+        },
+        "channelUpdate": {
+            "channel_notification": "🪧 Kanal",
+            "member_update_channel": "> Bir sunucu üyesi bazı alanları değiştirdi: `%s1` <#%s2> olarak."
+        },
+        "emojiCreate": {
+            "emoji_notification": "😊 Emojiler",
+            "member_create_emoji": "> Sunucu üyesi yeni bir emoji oluşturdu: :%s:"
+        },
+        "emojiDelete": {
+            "emoji_notification": "😊 Emojiler",
+            "member_delete_emoji": "> Sunucu üyesi silinen emoji: :%s:"
+        },
+        "emojiUpdate": {
+            "emoji_notification": "😊 Emojiler",
+            "member_update_emoji": "> Sunucu üyesi yeni emojiyi %s1'den %s2'ye değiştirdi."
+        },
+        "guildBanAdd": {
+            "guild_notification": "🗄️ Sunucu",
+            "member_ban_add": "> <@%s1> Bu sunucuda zaten yasaklı\n**Sebep:**\n```%s2```"
+        },
+        "guildBanRemove": {
+            "guild_notification": "🗄️ Sunucu",
+            "member_ban_remove": "> <@%s1> Bu sunucuda ban kaldırıldı\n**sebep:**\n```%s2```"
+        },
+        "guildCreate": {
+            "advice": "**💡 İpuçları**",
+            "advice_detail": "Eğer bu loncanın sahibiyseniz... Kullanmadan önce bu lonca kurulumunu tamamlamak istiyorum çünkü bazı şeylere ihtiyacınız olmayabilir. Bu nedenle, \"Ayarlar\" komutunu kullanmayı deneyin.",
+            "description": "Merhaba.. beni bu %s yer\ndavet ettiğiniz için teşekkür ederim, görünüşe göre insanlar ne yapabileceğimi merak ediyor? Oh.. bulaşık yıkayabilir, çamaşır yıkayabilir. Harika, değil mi~ Haha, nerede? Şaka yapıyorum",
+            "get_started": "Başında geldi!!",
+            "help_information_and_documentation": "**📄 Yardım ve belgeler**",
+            "help_information_and_documentation_detail": "Ne yapabileceğimi bilmek ister misiniz?..çok kolay. Sadece \"Shelp\" veya \"/help\" yazın, birisi size söyleyecektir. Tabii ki, aşağıdaki bağlantıya gidin ve geliştirici ve diğerleri tarafından sağlanan belgeler olacaktır. Zaten\n> https://shiorus.web.app/ yazmıştır.",
+            "join_on": "katıl",
+            "support_multiple_languages": "** 🌐 Birden çok dili destekler **",
+            "support_multiple_languages_detail": "Birden çok dili destekliyorum. dili değiştirmek için Bunu \"Slanguage <language code>\" veya \"/language <language code>\" ile ayarlayabilirsiniz."
+        },
+        "guildIntegrationsUpdate": {
+            "guild_integrations_update": "Bu sunucu zaten %s birleştirdi. Gelecekteki güncellemelerle hemen yeni makaleler alacaksınız.",
+            "guild_notification": "🗄️ Sunucu"
+        },
+        "guildMemberAdd": {
+            "captcha_error": "Bir doğrulama hatası oluştu. Harekete geçmek için sunucu ekibiyle iletişime geçin.",
+            "captcha_success": "%sdoğrulandınız",
+            "greet": "merhaba yeni üye **Bu otomatik bir mesajdır** \nSunucumuza katıldığınız için teşekkür ederiz. Herhangi biriyle konuşmaya başlamadan önce lütfen bu sunucu hakkındaki bilgileri dikkatlice okuyunuz.",
+            "solve_the_captcha": "%sdoğrulamak için sabit captcha",
+            "submit_answer_captcha": "Bir captcha yanıtı gönder",
+            "submit_you_answer_guide": "Captcha'nın ne olduğunu düşündüğünüzü gönderin",
+            "use_button_below": "Cevabınızı göndermek için aşağıdaki düğmeyi kullanın!",
+            "welcome": "sunucuya hoş geldiniz",
+            "wrong_answer": "Yanlış görünüyor. Tekrar deneyin...",
+            "your_answer": "captcha'nızı yanıtlayın"
+        },
+        "guildMemberRemove": {
+            "user_has_exited": "Bu sunucudan çoktan kaçtı...(Hadi onun yerine gidelim..)"
+        },
+        "guildMembersChunk": {
+            "guild_members_chunk": "Sunucu %s hoş geldiniz üyeler. Sizi buraya bekliyoruz.",
+            "guild_notification": "🗄️ Sunucu"
+        },
+        "guildUnavailable": {
+            "guild_notification": "🗄️ Sunucu",
+            "guild_unavailable": "Şu anda..bu sunucu geçici olarak kullanılamıyor. Lütfen bu sunucunun yöneticisi ile iletişime geçin."
+        },
+        "interactionCreate": {
+            "client_is_not_allowed": "🚫 Ummm.. Bazı izinleri kaçırıyorum. Yani devam edemem, yani **%s**",
+            "command_error": "❌ Bu sipariş yürütülürken bir hata oluştu!",
+            "command_is_disabled": "⚫ Bu sipariş sunucu içerisinde devre dışı bırakılmıştır. Lütfen sunucu yöneticinize başvurun.",
+            "no_permission": "🚫 Hmm...Uygulama komutunu (/) kullanma izniniz yok gibi görünüyor, lütfen moderatörlere sorun (≧∇≦)",
+            "user_is_not_allowed": "🚫Bu siparişi kullanmanıza izin veremem. Halihazırda bu izinlere sahip değilseniz: **%s**"
+        },
+        "inviteCreate": {
+            "invite_create": "Davet bağlantısı başarıyla oluşturuldu\n**Bağlantı:** %s1\n**Süre:** %s2\n**Maksimum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Davetiye"
+        },
+        "inviteDelete": {
+            "invite_code_deleted": "`%s` Bu davet kodu silindi.",
+            "invite_code_expires": "`%s` Bu davet kodunun süresi doldu.",
+            "invite_notification": "🏷️ Davetiye"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 Geri döndün AFK durumunun ayarını otomatik olarak kaldır",
+            "no_reason_for_afk": "yok",
+            "that_user_is_afk": "%s1 Ekranda yok (AFK), şimdi ondan bahsetme\n**Mesaj bırakın**: %s2"
+        },
+        "roleCreate": {
+            "role_create": "<@&%s> oluşturuldu.",
+            "role_notification": "🔖 rol"
+        },
+        "roleDelete": {
+            "role_delete": "`%s` silindi.",
+            "role_notification": "🔖 rol"
+        },
+        "roleUpdate": {
+            "role_notification": "🔖 rol",
+            "role_update": "`%s1` <@&%s2> olarak güncellendi"
+        },
+        "stageInstanceCreate": {
+            "stage_instance_create": "<#%s> oluşturuldu.",
+            "stage_notification": "🎤 sahne"
+        },
+        "stageInstanceDelete": {
+            "stage_instance_delete": "`%s` silindi.",
+            "stage_notification": "🎤 sahne"
+        },
+        "stageInstanceUpdate": {
+            "stage_instance_update": "`%s1` <#%s2> olarak güncellendi.",
+            "stage_notification": "🎤 sahne"
+        },
+        "stickerCreate": {
+            "sticker_create": "**%s** Şimdi mevcut",
+            "sticker_notification": "👻 çıkartma"
+        },
+        "stickerDelete": {
+            "sticker_delete": "**%s** silindi",
+            "sticker_notification": "👻 çıkartma"
+        },
+        "stickerUpdate": {
+            "sticker_notification": "👻 çıkartma",
+            "sticker_update": "`%s1` **%s2** olarak güncellendi"
+        },
+        "threadCreate": {
+            "thread_create": "<#%s> oluşturuldu.",
+            "thread_notification": "#️⃣ Konular"
+        },
+        "threadDelete": {
+            "thread_delete": "**%s** silindi",
+            "thread_notification": "#️⃣ Konular"
+        },
+        "threadUpdate": {
+            "thread_notification": "#️⃣ Konular",
+            "thread_update": "`%s1` **%s2** olarak güncellendi"
+        },
+        "webhookUpdate": {
+            "webhook_notification": "🎣 Ağ Kancası",
+            "webhook_update": "**%s1** / **%s2** <#%s3> kanalında güncellendi."
+        }
+    },
+    "handlers": {
+        "music": {
+            "addList": {
+                "added_list": "✅ Halihazırda `%s2` şarkı içeren **%s1** bir çalma listesi eklendi."
+            },
+            "addSong": {
+                "added_song": "✅ Zaten **%s1** `%s2` şarkı ekleyin."
+            },
+            "disconnect": {
+                "disconnected": "🔌 Bağlantı kesildi ve şimdiden tüm kuyruklar silindi."
+            },
+            "empty": {
+                "no_user_in_channel": "💨 Ah.. Nereye gittiler? O zaman..önce kapa çeneni~"
+            },
+            "error": {
+                "playlist_not_found": "❎ O çalma listesini bulamıyorum. Başka bir çalma listesi mi arıyorsunuz?"
+            },
+            "finish": {
+                "queue_is_empty": "🍃Artık sıram boş. Bir sonraki şarkıyı çalmaya hazır mısınız?"
+            },
+            "playSong": {
+                "playing_song": "🎶 Müzik çalıyor **%s1** `%s2`"
+            },
+            "searchCancel": {
+                "search_cancelled": "🕘 Şarkı seçimi bulunamadığından arama iptal edildi."
+            },
+            "searchDone": {
+                "get_list_of_songs": "📋 İstediğim şarkıların listesini aldım. ve birazdan müzik çalmaya başlayacak..."
+            },
+            "searchInvalidAnswer": {
+                "search_cancelled": "🔴 Son aramalar iptal edildi. Aynı komutu yazarak tekrar arama yapabilirsiniz."
+            },
+            "searchNoResult": {
+                "no_results": "❎ Şarkı hakkında arama yapmaya çalıştım ama sonuç bulamadım..."
+            },
+            "searchResult": {
+                "searching": "🔎 İlgili şarkıları bulun",
+                "timer_choose": "Şarkı seçmek için 60 saniye süreniz var, iptal etmek isterseniz alakasız bir sayı yazabilir veya sürenin bitmesini bekleyebilirsiniz.",
+                "title_results": "Bu tür şarkıların arama sonuçları:",
+                "tool_name": "müzik arama motoru"
+            }
+        }
+    },
+    "utils": {
+        "miscUtils": {
+            "april": "Nisan",
+            "august": "Ağustos",
+            "december": "Aralık",
+            "february": "Şubat",
+            "format_at": "Gün%s1 %s %s3 %s4 Saat %s5:%s6 p.m.",
+            "friday": "Cuma",
+            "january": "Ocak",
+            "july": "Temmuz",
+            "june": "Haziran",
+            "march": "Mart",
+            "may": "Mayıs",
+            "monday": "Pazartesi",
+            "november": "Kasım",
+            "october": "Ekim",
+            "saturday": "Cumartesi",
+            "september": "Eylül",
+            "sunday": "hafta",
+            "thursday": "Perşembe",
+            "tuesday": "Salı",
+            "wednesday": "Çarşamba"
+        },
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Yürütme sırasında bir hata oluştu.",
+            "error_detail": "Komut: **%s1**\nSürüm: **%s2**\nZamanlı: **%s3**\nSunucu: **%s4**\nGecikme: **%s5ms**\nAlma-İletme: * *%s6ms**\nHata Sonuç:\n``JavaScript\n%s7\n```\n> **İpucu**: Bir hatayı hemen şu komutu kullanarak bildirebilirsiniz:\n> ``Hata <message>`` `\n> ```/bug <message>```\n[sorun raporu](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Haberler ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "olağan dışı",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Tebrikler!!",
+            "level_up": "*%s1* sınıfı artık ```%s2``` sınıfına yükseltildi.",
+            "was_mentioned": "Sorun nedir?"
+        }
+    }
+}
