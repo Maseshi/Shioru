@@ -81,7 +81,7 @@ npm asennus --tallenna
 ### kehittää
 
 - Nimeä tiedosto uudelleen `.env.example` muotoon `.env` ja lisää kaikki tarvittavat arvot.
-- Mene terminaaliin ja suorita komennot `npm run dev` kehitystä varten ja `npm start` tuotantoa varten > **Huomautus**: Kehitystilassa Jotkut ominaisuudet eivät ehkä toimi.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Nopea vianetsintä
 

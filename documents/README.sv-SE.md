@@ -81,7 +81,7 @@ npm installera --spara
 ### utveckla
 
 - Byt namn på filen `.env.example` till `.env` och infoga alla nödvändiga värden.
-- Gå till terminalen och kör kommandona `npm kör dev` för utveckling och `npm start` för produktion > **Note**: I utvecklingsläge Vissa funktioner kanske inte fungerar.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Snabb felsökning
 

@@ -81,7 +81,7 @@ npm install --save
 ### dezvolta
 
 - Redenumiți fișierul `.env.example` la `.env` și introduceți toate valorile necesare.
-- Mergeți la terminal și rulați comenzile `npm run dev` pentru dezvoltare și `npm start` pentru producție > **Nota**: Când sunteți în modul de dezvoltare Este posibil ca unele funcții să nu funcționeze.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Depanare rapidă
 

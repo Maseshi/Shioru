@@ -81,7 +81,7 @@ npm installer -- gem
 ### udvikle
 
 - Omdøb filen `.env.eksempel` til `.env` og indsæt alle de nødvendige værdier.
-- Gå til terminalen og kør kommandoerne `npm kør dev` for udvikling og `npm start` for produktion > **Note**: Når i udviklingstilstand Nogle funktioner virker muligvis ikke.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Hurtig fejlfinding
 

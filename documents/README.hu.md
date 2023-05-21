@@ -81,7 +81,7 @@ npm telepítés -- mentés
 ### fejleszteni
 
 - Nevezze át a fájlt `.env.example` re `.env` ra, és írja be az összes szükséges értéket.
-- Lépjen a terminálra, és futtassa a `npm dev` futtatása fejlesztéshez és `npm start` termeléshez parancsokat > ****megjegyzés: Fejlesztési módban Előfordulhat, hogy egyes funkciók nem működnek.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Gyors hibaelhárítás
 
