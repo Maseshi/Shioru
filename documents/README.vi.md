@@ -8,99 +8,99 @@
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Trạng thái" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="đám đông" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
   <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
   </a>
-  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
+  <a title="top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
     <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[VI](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [GIÀ](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+Trợ lý máy chủ tốt của bạn sẽ giúp máy chủ của bạn trông sinh động hơn. Cô ấy có thể làm nhiều việc mà bạn có thể tìm thấy thông tin chi tiết của các lệnh khác nhau bằng cách gõ `/help` Bạn có thể mời Shioru tham gia máy chủ của mình từ[tại đây](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## Đặc trưng
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- Hoạt động trên [Discord.js](https://discord.js.org/) v14.
+- Có thể tùy chỉnh nhiều mục mong muốn
+- Có thể phát nhạc từ [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) và [SoundCloud](https://soundcloud.com/) với tính năng phát lại tự động.
+- Hỗ trợ nhiều ngôn ngữ Bạn có thể kiểm tra các ngôn ngữ được hỗ trợ từ các tệp[ngôn ngữ](https://github.com/Maseshi/shioru/blob/main/source/languages)của kho lưu trữ này.
+- Hệ thống bậc (trình độ và kinh nghiệm)
+- Hỗ trợ tùy chỉnh thông báo máy chủ
+- Bạn có thể nói chuyện bằng cách nhập `@Shioru` theo sau là tin nhắn bạn muốn liên lạc.
+- Lệnh ứng dụng (/) có thể được sử dụng.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+và nhiều tính năng thú vị khác...
 
-## Improve Translate
+## Cải thiện bản dịch
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+Bạn có thể giúp chúng tôi dịch một ngôn ngữ hiện có hoặc một ngôn ngữ hiện không khả dụng tại [Crowdin](https://crowdin.com/project/shioru-bot).
 
-## ข้อกำหนดเบื้องต้น
+## điều kiện tiên quyết
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
+- [Node.js](https://nodejs.org/) v18.0.0 trở lên
+- [Firebase](https://firebase.google.com/) v9.0.0 trở lên
 - [Git](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## Hướng dẫn cài đặt nhanh
 
-### เริ่มต้นใช้งาน
+### Bắt đầu
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Chuyển đến [Cổng thông tin dành cho nhà phát triển Discord](https://discord.com/developers/applications)
+- Nhấp vào **"Ứng dụng mới"** và đặt tên cho bot của bạn và chấp nhận các quy tắc của chính sách Discord.
+- Chuyển đến trang **"Bot"** và bật tất cả các tùy chọn trong phần **Mục đích cổng đặc quyền** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Mời bot của bạn vào máy chủ bằng cách truy cập trang **OAuth2 > Trình tạo URL** chọn `bot` và `ứng dụng.lệnh` chọn `Quản trị viên` sau đó sao chép liên kết và dán vào địa chỉ trình duyệt của bạn. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### Thiết lập bot
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- Khởi chạy một thiết bị đầu cuối và chạy lệnh sau.
 
 ```bash
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm cài đặt --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- Bạn có thể sửa đổi một số dữ liệu trong **config** at `./source/config.js`
 
-### ตั้งค่า Firebase
+### Thiết lập căn cứ hỏa lực
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- Truy cập https://firebase.google.com/ và bắt đầu thiết lập dự án.
+- Thêm một dự án mới và làm theo các bước.
+- Thêm ứng dụng đầu tiên của bạn với **Trang web** Đặt tên cho ứng dụng của bạn tùy chọn **"Cũng thiết lập Dịch vụ lưu trữ Firebase cho ứng dụng này"** và đăng ký ứng dụng. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase sẽ cung cấp cho bạn thông tin về cấu hình. Áp dụng các giá trị này cho tệp `.env.example`
+- Đến **tạo > [cơ sở dữ liệu thời gian thực](https://console.firebase.google.com/u/0/project/_/database/data)** để tạo cơ sở dữ liệu lưu trữ.
 
-### พัฒนา
+### phát triển
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- Đổi tên tệp `.env.example` thành `.env` và chèn tất cả các giá trị cần thiết.
+- Đi đến thiết bị đầu cuối và chạy các lệnh `npm run dev` để phát triển và `npm start` để sản xuất > **Lưu ý**: Khi ở chế độ phát triển Một số tính năng có thể không hoạt động.
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## Khắc phục sự cố nhanh
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- Nếu bạn không thể cài đặt gói **sodium** , hãy cài đặt **libsodium-wrappers** để thay thế.
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm gỡ cài đặt natri
+npm cài đặt libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Nếu bạn không thể phát nhạc hoặc các lệnh phát lại nhạc không hoạt động, hãy cài đặt [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** hoặc cài đặt gói **ffmpeg-static** và thử lại.
 ```bat
-npm install ffmpeg-static@latest --save
+npm cài đặt ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## tín dụng
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+Cảm ơn tất cả những người sáng tạo ban đầu đã cho phép sử dụng những tác phẩm tuyệt vời này của bạn.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Avatar vẽ bởi: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## tìm thấy một vấn đề
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+Nếu bạn gặp bất kỳ vấn đề từ công việc hiện tại của bạn Bạn có thể cho chúng tôi biết thông qua tab [vấn đề](https://github.com/Maseshi/Shioru/issues) của kho lưu trữ này.

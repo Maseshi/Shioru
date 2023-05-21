@@ -22,85 +22,85 @@
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[DE](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+Ihr guter Serverassistent wird dazu beitragen, dass Ihr Server lebendiger aussieht. Sie kann viele Dinge tun, zu denen Sie detaillierte Informationen zu den verschiedenen Befehlen finden können, indem Sie `/help` Sie können Shioru von[hier aus einladen, Ihrem Server beizutreten](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## Merkmale
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- Funktioniert auf [Discord.js](https://discord.js.org/) v14.
+- Kann eine Vielzahl gewünschter Artikel individuell anpassen
+- Musik kann von [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) und [SoundCloud](https://soundcloud.com/) mit automatischer Wiedergabe abgespielt werden.
+- Unterstützt mehrere Sprachen Sie können die unterstützten Sprachen in[Sprachdatei](https://github.com/Maseshi/shioru/blob/main/source/languages)dieses Repositorys überprüfen.
+- Stufensystem (Niveau und Erfahrung)
+- Unterstützung für die Anpassung der Serverbenachrichtigung
+- Sie können sprechen, indem Sie `@Shioru` eingeben, gefolgt von der Nachricht, die Sie übermitteln möchten.
+- Der Anwendungsbefehl (/) kann verwendet werden.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+und viele weitere interessante Features...
 
-## Improve Translate
+## Verbessern Sie die Übersetzung
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+Sie können uns helfen, eine vorhandene Sprache oder eine Sprache zu übersetzen, die derzeit nicht unter [Crowdin](https://crowdin.com/project/shioru-bot)verfügbar ist.
 
-## ข้อกำหนดเบื้องต้น
+## Voraussetzungen
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
+- [Node.js](https://nodejs.org/) v18.0.0 oder höher
+- [Firebase](https://firebase.google.com/) v9.0.0 oder höher
 - [Git](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## Kurzanleitung zur Einrichtung
 
-### เริ่มต้นใช้งาน
+### Loslegen
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Gehen Sie zu [Discord Developer Portal](https://discord.com/developers/applications)
+- Klicken Sie auf **„Neue Anwendung“** , geben Sie Ihrem Bot einen Namen und akzeptieren Sie die Richtlinienregeln von Discord.
+- Gehen Sie zu Seite **„Bot“** und aktivieren Sie alle Optionen in Abschnitt **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Laden Sie Ihren Bot zum Server ein, indem Sie auf Seite **gehen. OAuth2 > URL-Generator** Wählen Sie `Bot` und `Anwendungen. Befehle` Wählen Sie `Administrator` Kopieren Sie dann den Link und fügen Sie ihn in die Adresse Ihres Browsers ein. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### Richten Sie einen Bot ein
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- Starten Sie ein Terminal und führen Sie den folgenden Befehl aus.
 
 ```bash
-git clone https://github.com/Maseshi/Shioru.git
+Git-Klon https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- Sie können einige Daten in **config** unter `./source/config.js`ändern
 
-### ตั้งค่า Firebase
+### Richten Sie Firebase ein
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- Gehen Sie zu https://firebase.google.com/ und beginnen Sie mit der Einrichtung des Projekts.
+- Fügen Sie ein neues Projekt hinzu und befolgen Sie die Schritte.
+- Fügen Sie Ihre erste Anwendung mit **Website hinzu.** Benennen Sie Ihre App optional. **„Richten Sie auch Firebase Hosting für diese App ein“** und registrieren Sie die App. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase stellt Ihnen Informationen zur Konfiguration zur Verfügung. Wenden Sie diese Werte auf Datei `.env.example`an
+- Gehen Sie zu **erstellen > [Echtzeitdatenbank](https://console.firebase.google.com/u/0/project/_/database/data)** , um eine Speicherdatenbank zu erstellen.
 
-### พัฒนา
+### entwickeln
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- Benennen Sie die Datei `.env.example` in `.env` um und fügen Sie alle erforderlichen Werte ein.
+- Gehen Sie zum Terminal und führen Sie die Befehle `npm run dev` für die Entwicklung und `npm start` für die Produktion aus. > **Hinweis**: Im Entwicklungsmodus Einige Funktionen funktionieren möglicherweise nicht.
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## Schnelle Fehlerbehebung
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- Wenn Sie Paket **Natrium** nicht installieren können, installieren Sie stattdessen **libsodium-wrappers**.
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm deinstalliert Natrium
+npm installiert libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Wenn Sie Ihre Musik nicht abspielen können oder die Musikwiedergabebefehle nicht funktionieren, installieren Sie [ffmpeg](https://ffmpeg.org/download.html) **(empfohlen)** oder installieren Sie das **ffmpeg-static** Paket und versuchen Sie es erneut.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## Kredit
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+Vielen Dank an alle Originalschöpfer, die die Nutzung Ihrer wunderbaren Werke gestattet haben.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Avatar-Zeichnung von: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## habe ein Problem gefunden
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+Wenn Sie auf Probleme stoßen von Ihrem aktuellen Job Sie können uns dies über die Registerkarte [Problem](https://github.com/Maseshi/Shioru/issues) dieses Repositorys mitteilen.

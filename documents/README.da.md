@@ -22,85 +22,85 @@
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[DA](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+Din gode serverassistent vil hjælpe din server til at se mere livlig ud. Hun kan gøre mange ting, som du kan finde detaljeret information om forskellige kommandoer ved at skrive `/help` Du kan invitere Shioru til at deltage i din server fra[her](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## Funktioner
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- Virker på [Discord.js](https://discord.js.org/) v14.
+- I stand til at tilpasse en række ønskede emner
+- Musik kan afspilles fra [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) og [SoundCloud](https://soundcloud.com/) med automatisk afspilning.
+- Understøtter flere sprog Du kan kontrollere de understøttede sprog fra[sprog](https://github.com/Maseshi/shioru/blob/main/source/languages)-filer i dette lager.
+- Tier system (niveau og erfaring)
+- Understøttelse af tilpasning af servermeddelelser
+- Du kan tale ved at skrive `@Shioru` efterfulgt af den besked, du vil kommunikere.
+- Applikationskommandoen (/) kan bruges.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+og mange andre interessante funktioner...
 
-## Improve Translate
+## Forbedre Oversæt
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+Du kan hjælpe os med at oversætte et eksisterende sprog eller et sprog, der i øjeblikket ikke er tilgængeligt hos [Crowdin](https://crowdin.com/project/shioru-bot).
 
-## ข้อกำหนดเบื้องต้น
+## Forudsætninger
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
+- [Node.js](https://nodejs.org/) v18.0.0 eller nyere
+- [Firebase](https://firebase.google.com/) v9.0.0 eller nyere
 - [Git](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## Hurtig installationsvejledning
 
-### เริ่มต้นใช้งาน
+### Kom igang
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Gå til [Discord Developer Portal](https://discord.com/developers/applications)
+- Klik på **"Ny applikation"** og navngiv din bot og accepter Discord-politikreglerne.
+- Gå til side **"Bot"** og aktiver alle muligheder i afsnit **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Inviter din bot til serveren ved at gå til side **OAuth2 > URL Generator** vælg `bot` og `applications.commands` vælg `Administrator` og kopier derefter linket og indsæt det i din browsers adresse. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### Opsæt en bot
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- Start en terminal og kør følgende kommando.
 
 ```bash
-git clone https://github.com/Maseshi/Shioru.git
+git klon https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm installer -- gem
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- Du kan ændre nogle data i **config** på `./source/config.js`
 
-### ตั้งค่า Firebase
+### Konfigurer Firebase
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- Gå til https://firebase.google.com/ og start opsætningen af projektet.
+- Tilføj et nyt projekt og følg trinene.
+- Tilføj din første applikation med **Website** Navngiv din app valgfrit **"Konfigurer også Firebase Hosting for denne app"** og registrer appen. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase vil give dig oplysninger om konfigurationen. Anvend disse værdier på fil `.env.example`
+- Gå til **opret > [realtidsdatabase](https://console.firebase.google.com/u/0/project/_/database/data)** for at oprette en lagerdatabase.
 
-### พัฒนา
+### udvikle
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- Omdøb filen `.env.eksempel` til `.env` og indsæt alle de nødvendige værdier.
+- Gå til terminalen og kør kommandoerne `npm kør dev` for udvikling og `npm start` for produktion > **Note**: Når i udviklingstilstand Nogle funktioner virker muligvis ikke.
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## Hurtig fejlfinding
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- Hvis du ikke kan installere pakke **sodium** , installer **libsodium-wrappers** i stedet for.
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm afinstaller natrium
+npm installer libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Hvis du ikke kan afspille din musik, eller musikafspilningskommandoer ikke virker, skal du installere [ffmpeg](https://ffmpeg.org/download.html) **(anbefalet)** eller installere **ffmpeg-static** -pakken og prøve igen.
 ```bat
-npm install ffmpeg-static@latest --save
+npm installer ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## kredit
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+Tak til alle originale skabere for at tillade brugen af disse vidunderlige værker.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Avatar tegning af: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## fundet et problem
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+Hvis du støder på problemer fra dit nuværende arbejde Du kan fortælle os det via fanen [udgave](https://github.com/Maseshi/Shioru/issues) i dette lager.
