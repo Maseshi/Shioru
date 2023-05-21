@@ -47,7 +47,6 @@ You can help us translate existing languages or languages that are not currently
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
 - [Firebase](https://firebase.google.com/) v9.0.0 or higher
-- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Quick setup guide
@@ -56,16 +55,14 @@ You can help us translate existing languages or languages that are not currently
 
 - Go to the [Discord Developer Portal](https://discord.com/developers/applications)
 - Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Setup a bot
 
 - Launch a terminal and run the following commands.
 
-```bat
+```bash
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
@@ -77,28 +74,23 @@ npm install --save
 
 - Go to https://firebase.google.com/ and start setting up the project.
 - Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
 ### Development
 
 - Rename the `.env.example` file to `.env` and add all values.
-- Go to terminal and run `npm run dev` for development and `npm start` for production.
-  > **NOTE**: When in development mode Some features may not work.
+- Go to terminal and run `npm run dev` for development and `npm start` for production. > **NOTE**: When in development mode Some features may not work.
 
 ## Quick Troubleshooting
 
 - If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
-
 ```bat
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-
-- If you can't play music or music playback commands are not working, install [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
-
+- If you can't play music or music playback commands are not working, install [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
@@ -112,7 +104,3 @@ Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/e
 ## Found a problem
 
 If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
-
-## Google Translate
-
-The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.
