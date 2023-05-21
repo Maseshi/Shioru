@@ -81,7 +81,7 @@ npm install --save
 ### ontwikkelen
 
 - Hernoem het bestand `.env.example` naar `.env` en voer alle benodigde waarden in.
-- Ga naar de terminal en voer de opdrachten uit `npm run dev` voor ontwikkeling en `npm start` voor productie > **Opmerking**: In de ontwikkelingsmodus Sommige functies werken mogelijk niet.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Snelle probleemoplossing
 
