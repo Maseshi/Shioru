@@ -1,5 +1,7 @@
 files:
   - source: /source/languages/th.json
+    ignore:
+      - /source/languages/*.md
     translation: /source/languages/%osx_locale%.json
   - source: /documents/README.th.md
     translation: /documents/README.%osx_locale%.md
