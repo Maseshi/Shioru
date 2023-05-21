@@ -81,7 +81,7 @@ npm įdiegti --save
 ### vystytis
 
 - Pervardykite failą `.env.example` į `.env` ir įterpkite visas reikalingas reikšmes.
-- Eikite į terminalą ir paleiskite komandas `npm paleisti dev` kūrimui ir `npm start` gamybai > ****pastaba : Kai įjungtas kūrimo režimas Kai kurios funkcijos gali neveikti.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Greitas trikčių šalinimas
 
