@@ -81,7 +81,7 @@ npm cài đặt --save
 ### phát triển
 
 - Đổi tên tệp `.env.example` thành `.env` và chèn tất cả các giá trị cần thiết.
-- Đi đến thiết bị đầu cuối và chạy các lệnh `npm run dev` để phát triển và `npm start` để sản xuất > **Lưu ý**: Khi ở chế độ phát triển Một số tính năng có thể không hoạt động.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Khắc phục sự cố nhanh
 
