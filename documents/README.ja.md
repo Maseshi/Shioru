@@ -1,28 +1,28 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
   <h1>
-    <strong>Shioru</strong>
+    <strong>しおる</strong>
   </h1>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="スターテス" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="クラウディン" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+  <a title="コードファクター" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="コードファクター" />
   </a>
-  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
+  <a title="トップ.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
     <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) [](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 優れたサーバー アシスタントは、サーバーをより活発に見せるのに役立ちます。 彼女ができることはたくさんあり、詳細なコマンドは `/help` を入力して見つけることができます [ここ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
@@ -37,7 +37,7 @@
 - `@Shioru`の後に伝えたいメッセージを入力すると、チャットできます。
 - アプリケーションコマンド (/) が使用できます。
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+他にもたくさんの興味深い機能があります...
 
 ## 翻訳を改善する
 
@@ -47,7 +47,7 @@
 
 - [Node.js](https://nodejs.org/) v18.0.0 以降
 - [Firebase](https://firebase.google.com/) v9.0.0 以降
-- [Git](https://git-scm.com/downloads)
+- [ギット](https://git-scm.com/downloads)
 
 ## クイックセットアップガイド
 
@@ -87,8 +87,8 @@ npm install --save
 
 - **sodium** パッケージをインストールできない場合は、代わりに **libsodium-wrappers** をインストールしてください。
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm アンインストールナトリウム
+npm インストール libsodium-wrappers@latest --save
 ```
 - 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
 ```bat
