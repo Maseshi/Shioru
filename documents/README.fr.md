@@ -8,59 +8,59 @@
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Statut" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+  <a title="CodeFacteur" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFacteur" />
   </a>
   <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
     <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [ème](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. Elle peut faire beaucoup de choses dont vous pouvez trouver des informations détaillées sur différentes commandes en tapant `/help` Vous pouvez inviter Shioru à rejoindre votre serveur à partir de[ici](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## Caractéristiques
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- Fonctionne sur [Discord.js](https://discord.js.org/) v14.
+- Capable de personnaliser une variété d'articles souhaités
+- La musique peut être lue à partir de [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) et [SoundCloud](https://soundcloud.com/) avec lecture automatique.
+- Prise en charge de plusieurs langues Vous pouvez vérifier les langues prises en charge à partir des fichiers[langue](https://github.com/Maseshi/shioru/blob/main/source/languages)de ce référentiel.
+- Système de niveaux (niveau et expérience)
+- Prise en charge de la personnalisation des notifications du serveur
+- Vous pouvez parler en tapant `@Shioru` suivi du message que vous souhaitez communiquer.
+- La commande d'application (/) peut être utilisée.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+et bien d'autres fonctionnalités intéressantes...
 
-## Improve Translate
+## Améliorer Traduire
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+Vous pouvez nous aider à traduire une langue existante ou une langue qui n'est pas disponible actuellement chez [Crowdin](https://crowdin.com/project/shioru-bot).
 
-## ข้อกำหนดเบื้องต้น
+## Conditions préalables
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
-- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/) v18.0.0 ou supérieur
+- [Firebase](https://firebase.google.com/) v9.0.0 ou supérieur
+- [Gite](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## Guide d'installation rapide
 
-### เริ่มต้นใช้งาน
+### Commencer
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Aller à [Discord Developer Portal](https://discord.com/developers/applications)
+- Cliquez sur **"Nouvelle application"** et donnez un nom à votre bot et acceptez les règles de la politique Discord.
+- Allez à la page **"Bot"** et activez toutes les options dans la section **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invitez votre bot sur le serveur en vous rendant sur la page **OAuth2 > Générateur d'URL** sélectionnez `bot` et `applications.commands` sélectionnez `Administrator` puis copiez le lien et collez-le dans l'adresse de votre navigateur. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### Configurer un bot
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- Lancez un terminal et exécutez la commande suivante.
 
 ```bash
 git clone https://github.com/Maseshi/Shioru.git
@@ -68,39 +68,39 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- Vous pouvez modifier certaines données dans **config** à `./source/config.js`
 
-### ตั้งค่า Firebase
+### Configurer Firebase
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- Accédez à https://firebase.google.com/ et commencez à configurer le projet.
+- Ajoutez un nouveau projet et suivez les étapes.
+- Ajoutez votre première application avec **Site Web** Nommez éventuellement votre application **"Configurez également l'hébergement Firebase pour cette application"** et enregistrez l'application. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase vous fournira des informations sur la configuration. Appliquer ces valeurs au fichier `.env.example`
+- Allez à **créer > [base de données temps réel](https://console.firebase.google.com/u/0/project/_/database/data)** pour créer une base de données de stockage.
 
-### พัฒนา
+### développer
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- Renommez le fichier `.env.example` en `.env` et insérez toutes les valeurs nécessaires.
+- Accédez au terminal et exécutez les commandes `npm run dev` pour le développement et `npm start` pour la production > **Note**: En mode développement Certaines fonctionnalités peuvent ne pas fonctionner.
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## Dépannage rapide
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- Si vous ne pouvez pas installer le package **sodium** , installez **libsodium-wrappers** à la place.
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm désinstaller sodium
+npm installer libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Si vous ne pouvez pas lire votre musique ou si les commandes de lecture de musique ne fonctionnent pas, installez [ffmpeg](https://ffmpeg.org/download.html) **(recommandé)** ou installez le package **ffmpeg-static** et réessayez.
 ```bat
-npm install ffmpeg-static@latest --save
+npm installer ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## crédit
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+Merci à tous les créateurs originaux d'avoir permis l'utilisation de ces merveilleuses œuvres.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Dessin d'avatar par : [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## trouvé un problème
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+Si vous rencontrez des problèmes de votre travail actuel Vous pouvez nous le faire savoir via l'onglet [numéro](https://github.com/Maseshi/Shioru/issues) de ce référentiel.
