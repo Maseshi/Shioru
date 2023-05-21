@@ -81,7 +81,7 @@ npm instalacija --spremi
 ### razviti
 
 - Preimenujte datoteku `.env.example` u `.env` i umetnite sve potrebne vrijednosti.
-- Idite na terminal i pokrenite naredbe `npm run dev` za razvoj i `npm start` za proizvodnju > **Napomena**: Kada ste u razvojnom načinu Neke značajke možda neće raditi.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Brzo rješavanje problema
 
