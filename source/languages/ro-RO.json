@@ -1,0 +1,958 @@
+{
+    "commands": {
+        "about": {
+            "my_profile": "profilul meu",
+            "my_profile_detail": "Numele meu este %s m-am nascut duminica, 21 iunie. Locuiesc intr-o casa. __Chaiwat Suwannarat(Masashi)__ este cel care ma naste si imi da cunostinte si abilitati. **diverse că le-am studiat pe toate tuturor unde locuiesc Sper ca toata lumea sa fie fericita sa fie alaturi de mine!! Și vă mulțumesc pentru tot ajutorul și sprijinul acordat dragilor mei binefăcători. Vă mulțumesc foarte mult.\n\n[Site-ul oficial](https://maseshi.web.app/)\n[Politica de confidențialitate](https: //maseshi.web. app/privacy-policy) | [Termeni și condiții](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Toate drepturile rezervate.",
+            "update_on": "actualizat când"
+        },
+        "afk": {
+            "currently_afk": "❎ Acum ești AFK",
+            "currently_not_afk": "❎ Nu ești AFK acum.",
+            "now_afk": "💤 Acum sunteți AFK, scrieți un mesaj sau /afk eliminați pentru a ieși din modul AFK.",
+            "now_not_afk": "🔙 Starea dvs. AFK a fost anulată."
+        },
+        "anime": {
+            "auto_cancel": "Doar introduceți numărul pe care doriți să-l citiți! (anulați în decurs de 1 minut)",
+            "choose_now": "Alege acum.!!",
+            "data_not_found": "❎ Nu am găsit această poveste. Hai să verificăm. Uite, poate chiar nu există așa ceva?",
+            "end_date": "**Data de încheiere**",
+            "english_name": "**Nume englezesc**",
+            "in_progress": "în curs",
+            "japan_name": "** Nume japonez **",
+            "link": "**legătură**",
+            "popularity_rank": "**Clasament de popularitate**",
+            "short_information": "Acesta este doar un rezumat al informațiilor. Daca vrei sa citesti mai multe, click pe link!!",
+            "similar_stories": "Am gasit 5 lucruri asemanatoare. Ce poveste vrei să citești~",
+            "start_date": "**data de început**",
+            "synopsis": "**rezuma:**",
+            "undefined": "nedefinit"
+        },
+        "automod": {
+            "flagged_words_name": "blochează blasfemia conținut sexual și insulte",
+            "flagged_words_success": "✅ Au fost create regulile tale AutoMod, toate acele cuvinte vor fi suprimate.",
+            "keyword_name": "Împiedicați utilizarea cuvântului %s.",
+            "keyword_success": "✅ Regula ta AutoMod a fost creată, toate mesajele care conțin cuvântul %s vor fi șterse.",
+            "mention_spam_name": "Preveniți spamul atunci când vine vorba de",
+            "mention_spam_success": "✅ Regula dvs. AutoMod creată, spam-ul pe mai multe mențiuni va fi suprimat.",
+            "prevent_message": "Acest mesaj este protejat.",
+            "spam_messages_name": "blocați mesajele spam",
+            "spam_messages_success": "✅ Regulile tale AutoMod au fost create, mesajele spam vor fi suprimate."
+        },
+        "autoplay": {
+            "no_queue": "❎ Hmm...dar melodia nici nu a început încă?",
+            "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "off": "📻 Modul de redare automată este dezactivat",
+            "on": "📻 Modul de redare automată este activat"
+        },
+        "ban": {
+            "banned_for_time": "%s1 interzis pentru **%s2** zile",
+            "member_has_banned": "❎ Astfel de membri sunt deja interziși. Simțiți-vă confortabil.",
+            "members_have_a_higher_role": "❎ Nu poți interzice pe cineva cu un rol mai înalt decât tine.",
+            "members_have_a_higher_role_than_me": "❎ Nu pot interzice acel membru. pentru că el are un rol mai înalt decât mine",
+            "no_reason": "Membrii care au interzis nu au dat un motiv.",
+            "permanently_banned": "%s interzis permanent",
+            "reason_for_ban": "Banat de: %s1\nMotiv: %s2",
+            "user_not_found": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou."
+        },
+        "board": {
+            "leveling_detail": "Experiență: %s1, Nota: %s2",
+            "no_info": "❎ Nu există încă membri pe acest server. care are valoare de experiență",
+            "server_rank": "Clasamentul nivelului acestui server",
+            "server_rank_description": "1 dintre primii 10 membri ai acestui server. care pot colecta cele mai multe dintre propriile niveluri, în ordinea următoare",
+            "server_rank_tips": "Sfat: discutați cu alți membri va câștiga mai multe niveluri"
+        },
+        "bug": {
+            "sending": "📨 Bine.. doar un moment Dă-mi un moment să trimit o scrisoare dezvoltatorului...",
+            "success*": "✅ Ok, mulțumesc... Dacă mai găsești ceva, te rog să-mi spui (●'◡'●)"
+        },
+        "captcha": {
+            "captcha_setup_success": "✅ Sistemul captcha a fost configurat și activat cu succes.",
+            "currently_disable": "ℹ️ Captcha este acum închis.",
+            "currently_enable": "ℹ️ Captcha este acum activată.",
+            "disabled_captcha": "✅ Captcha a fost dezactivat",
+            "enabled_captcha": "✅ Captcha a fost activat cu succes",
+            "need_to_setup_before": "❎ Vă rugăm să setați captcha înainte de utilizare utilizând comanda /captcha setup."
+        },
+        "covid": {
+            "active": "activ",
+            "active_per_one_million": "activ la 1 milion",
+            "backend_issue": "❎ Se pare că există o problemă din partea informatorului. Vă rugăm să încercați din nou data viitoare.",
+            "cases_per_one_million": "Pacienți la 1 milion",
+            "cases_today": "acest pacient",
+            "cases_total": "toti pacientii",
+            "country_not_found": "❎ Umm.. Nu găsesc informațiile despre țara pe care ați specificat-o.",
+            "critical_per_one_million": "perioadă critică la 1 milion",
+            "critical_stage": "perioada critica",
+            "deaths_today": "a murit azi",
+            "deaths_total": "toti au murit",
+            "one_case_per_people": "per pacient",
+            "one_death_per_people": "deces de persoană",
+            "one_test_per_people": "Testare pe persoană",
+            "population": "populatie",
+            "recovered": "plecat",
+            "recovered_per_one_million": "Pierdut la 1 milion",
+            "tests": "Test",
+            "tests_per_one_million": "Teste la 1 milion",
+            "updated_on": "Ultima actualizare %s",
+            "when": "când"
+        },
+        "credits": {
+            "creator_credit": "💳 Credite altor creatori",
+            "creator_credit_description": "la care unii creatori sunt ambii contribuitori Unele dintre ele sunt luate din afara..Va multumesc pentru tot sprijinul acordat.",
+            "natsuki_marina_credit": "Informații: Câteva poze și avatare \nde la: https://www.pixiv.net/en/users/482462 \nSite: https://marina71712.wixsite.com/0-0v",
+            "update_on": "actualizat când"
+        },
+        "dead": {
+            "suicide": "%s să se sinucidă 💔 odihnește-te în pace"
+        },
+        "decode": {
+            "after": "după decodare",
+            "before": "înainte de decodare",
+            "decode_message": "🔓 Decriptați mesajele",
+            "decode_success": "Mesajul a fost decriptat."
+        },
+        "donate": {
+            "thank_you_in_advance_message": "❤️ Vă mulțumesc pentru susținerea dezvoltatorilor mei în avans. Am un canal de asistență după cum urmează."
+        },
+        "eat": {
+            "already_eaten": "%s1 a mâncat %s2 în stomac",
+            "do_not_eat_me": "Eu... sunt un pic mic. m..nu e bine de mâncat..."
+        },
+        "eight_ball": {
+            "answer": "Răspuns",
+            "game": "🎱 Joc cu 8 mingi",
+            "question": "întrebare",
+            "risk": "Folosește-ți norocul la întrebări pentru a obține răspunsuri.",
+            "roll_ball": "Dati mingea!!"
+        },
+        "emoji": {
+            "deleted_emoji": "✅ **%s** Emoji a fost șters.",
+            "edited_emoji": "%s emoji remediat",
+            "uploading_you_emoji": "📤 Se încarcă emoji-ul...",
+            "you_emoji_is_ready": "%s Emoji-ul tău este gata. Hai sa incercam!!"
+        },
+        "encode": {
+            "after": "după criptare",
+            "before": "înainte de codificare",
+            "encode_message": "🔒 Criptați mesajele",
+            "encode_success": "Mesajul a fost criptat."
+        },
+        "enlarge": {
+            "emoji_not_found": "❎ Se pare că emoji-ul lipsește sau s-ar putea să nu fie un emoji.",
+            "large_emoji": "emoji mare",
+            "requested_by": "solicitat de %s"
+        },
+        "exp": {
+            "can_not_find_user": "❎ Nu găsesc acest membru. Eh.. Greșeală sau nu?",
+            "error": "❎ Nu pot seta experiența unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
+            "experience": "Puncte de experiență (Exp)",
+            "exp_was_changed": "%s acumulat toate nivelurile de experiență au:",
+            "level": "Nivel",
+            "notification_complete": "✅ Configurarea este finalizată...",
+            "set_by_staff": "Experiența ta este stabilită de echipa de pe acest server.",
+            "success": "✅ Configurarea este finalizată..."
+        },
+        "filter": {
+            "add_filter": "🎼 Adăugați formatul de sunet necesar să fie deja **%s**.",
+            "available_filter": "Formate de filtrare disponibile",
+            "available_filter_description": "Personalizați-vă muzica utilizând aceste formate %s1 ```%s2```",
+            "clear_filter": "💨 Toate formatele audio au fost șterse. Acum va fi un format de sunet normal.",
+            "list_filter_description": "În prezent există modele active în această coadă: %s1 modele\n```%s2```",
+            "list_filter_description_empty": "```Nu există niciun format audio utilizat în prezent.```",
+            "list_filter_title": "Formatul audio utilizat în prezent",
+            "no_queue": "❎ Nu se redă nicio melodie în prezent.",
+            "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "remove_filter": "🗑️ Formatul audio **%s** a fost eliminat.",
+            "set_filter": "🎼 Setați formatul audio preferat la **%s**",
+            "sound_filtering": "❓ Vrei să schimbi sunetul muzicii tale?",
+            "unknown_filter": "❎ Umm..Nu știu formatul sunetului `%s, îl puteți verifica folosind **disponibil** sau **disponibil**?",
+            "unknown_input_option": "❓ Puteți specifica următorii parametri: adăugare, eliminare, setare, disponibil, listă, ștergere."
+        },
+        "guild": {
+            "afk_channel_id": "Cod de canal AFK",
+            "afk_timeout": "timp limitat AFK",
+            "application_id": "codul aplicației",
+            "approximate_member_count": "Membri estimați",
+            "approximate_presence_count": "starea estimată",
+            "available": "gata",
+            "banner": "banner",
+            "create_at": "creat in",
+            "create_timestamp": "data constructiei",
+            "default_message_notification": "a avertiza",
+            "description": "Descriere",
+            "discovery_splash": "slogan",
+            "do_not_have": "nu am",
+            "explicit_content_filter": "filtrare",
+            "features": "caracteristică",
+            "guild_available": "gata de folosire",
+            "icon": "Avatar",
+            "id": "cod",
+            "info_date": "informații despre când",
+            "joined_at": "s-a alăturat",
+            "join_timestamp": "Data înscrierii",
+            "large": "marime mare",
+            "maximum_members": "Max membru",
+            "maximum_presences": "statutul cel mai înalt",
+            "member_count": "membru",
+            "mfa_level": "Nivel MFA",
+            "name": "Nume",
+            "name_acronym": "initialele",
+            "no": "Nu",
+            "none": "Nu",
+            "nsfw_level": "Nivelul NSFW",
+            "off": "opriți",
+            "on": "deschis",
+            "owner_id": "cod de proprietar",
+            "partnered": "participa",
+            "preferred_locale": "domeniul de aplicare",
+            "premium_subscription_count": "membru special",
+            "premium_tier": "rapel",
+            "public_updates_channel_id": "Actualizați codul canalului",
+            "rules_channel_id": "codul casetei de reguli",
+            "server_info": "🗄 Informații detaliate despre server",
+            "server_info_description": "Informații detaliate despre server Care se bazează pe date de la Discord.",
+            "specific_use": "💡 Puteți specifica informații specifice despre utilizatorul serverului, după cum urmează: **%s**",
+            "splash": "poza de invitatie",
+            "system_channel_id": "codul canalului de sistem",
+            "unavailable": "nu e gata",
+            "unknown": "Nu stiu",
+            "vanity_url_code": "cod de invitație",
+            "vanity_url_uses": "invitat",
+            "verification_level": "control",
+            "verified": "a confirma",
+            "widget_channel_id": "cu șapte coduri de canale",
+            "widget_enabled": "tristeţe",
+            "yes": "da"
+        },
+        "help": {
+            "category": "Categorie: %s",
+            "client_permissions": "Permisiuni (boți): %s",
+            "command": "Comanda: %s",
+            "command_detail": "📑Detalii comandă ",
+            "command_incorrect": "❎ Ordine incorectă",
+            "command_incorrect_guide": "Eh... Nu am această comandă. Vă rugăm să verificați din nou tastând `/help` pentru a vedea lista completă a comenzilor mele.",
+            "commands_description": [
+                "Toate comenzile pe care le-am învățat sau studiat. înțelege și folosește efectiv",
+                "care înainte de a mă suna Prefixul trebuie să fie **/**.",
+                "`<>` înseamnă obligatoriu, `()` este tipul de intrare și `[]` este opțional.",
+                "Pentru detalii despre fiecare comandă tastați `/help [comandă]` și dorința dvs. se va împlini!!"
+            ],
+            "description": "Descriere: %s",
+            "document_name": "Fișă de ajutor",
+            "how_to_use": "Ajutor: %s",
+            "no_description": "fără descriere",
+            "no_need_permissions": "Nu există permisiuni necesare",
+            "request_by": "solicitat de",
+            "unknown_how_to_use": "nici o modalitate de a folosi",
+            "user_permissions": "Permisiuni (utilizatori): %s"
+        },
+        "impersonate": {
+            "member_not_found": "❎ Nu pot găsi astfel de membri pe acest server.",
+            "success": "✅ <@%s> Mesajul a fost creat!"
+        },
+        "invite": {
+            "can_not_create_invite_link": "❎ Nu se poate genera linkul de invitație Vă rugăm să încercați din nou.",
+            "me_do_not_have_permission": "🚫 Nu am permisiunea de a crea un link de invitație pe acest canal.",
+            "membership_invitation_card": "card de invitație pentru membru",
+            "this_product_is_free": "Acest produs este gratuit, nu revinde."
+        },
+        "join": {
+            "already_joined": "❎ Eh..dar sunt aici acum?",
+            "another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
+            "channel_joined": "✅ Sunt deja pe canal <#%s>...",
+            "joined": "▶️ Acum sunt deja pe canal <#%s>.",
+            "no_channel": "❎ Nu am acest canal. Este o greșeală de tipar?",
+            "not_in_channel": "❓ Mai întâi trebuie să vă alăturați canalului. Altfel nu știu ce câmp =3="
+        },
+        "jump": {
+            "can_not_jump": "❎ Se pare că nu există deloc un astfel de număr de coadă. Vă rugăm să verificați din nou.",
+            "jumped": "➿ Treceți deja la melodia nouă din coada numărul %s.",
+            "no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
+            "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba."
+        },
+        "kick": {
+            "can_not_find_user": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou.",
+            "kicked_out": "%s dat afară",
+            "members_have_a_higher_role": "❎ Nu poți da cu piciorul pe oameni care sunt mai sus decât tine.",
+            "members_have_a_higher_role_than_me": "❎ Nu pot da cu piciorul pe acel membru. pentru că el are un rol mai înalt decât mine",
+            "no_reason": "Membrii care au lovit nu au dat un motiv.",
+            "reason_for_kick": "Lovitură de: %s1\nMotiv: %s2"
+        },
+        "kill": {
+            "do_not_kill_me": "❎ Vei face asa ceva... Nu cu mine, haha...",
+            "killed": "%s1 te-a ucis deja %s2 🔪"
+        },
+        "leave": {
+            "another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
+            "not_in_any_channel": "❎ Acum nu sunt încă pe niciun canal...",
+            "now_leave": "◀️ Am ieșit din canalul curent."
+        },
+        "level": {
+            "delete_error": "❎ Nu găsesc deloc acest utilizator.",
+            "delete_success": "✅ Nivelul de experiență al acestui membru a fost șters!",
+            "deleting": "📁 Se șterg datele la nivel de experiență pentru acest membru.",
+            "experience": "Puncte de experiență (Exp)",
+            "level": "Nivel",
+            "level_was_changed": "%s acumulat toate nivelurile de experiență au:",
+            "notification_complete": "✅ Configurarea este finalizată...",
+            "set_by_staff": "Clasa ta este stabilită de echipa de pe acest server.",
+            "set_error": "❎ Nu se poate seta nivelul unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
+            "set_success": "✅ Configurarea este finalizată...",
+            "user_current_no_level": "❎ Astfel de membri nu au un nivel de clasă."
+        },
+        "leveling": {
+            "bot_do_not_have_level": "❎ Boții nu vor avea niveluri, inclusiv eu.",
+            "can_not_find_user": "❎ Nu găsesc acest membru. Eh.. Greșeală sau nu?",
+            "experience": "Puncte de experiență (Exp)",
+            "level": "Nivel",
+            "user_no_data": "💨 Hmm... Acest membru nu are nivel și experiență.",
+            "your_experience": "Experienta ta"
+        },
+        "license": {
+            "copyright_content": "📝 Conținut protejat prin drepturi de autor"
+        },
+        "logs": {
+            "can_not_delete_file": "❎ Nu se poate șterge fișierul jurnal de mai sus.\n```JavaScript\n%s\n```",
+            "can_not_read_file": "❎ Nu se poate citi fișierul jurnal de mai sus.\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** deja șters",
+            "file_not_found": "❎ Nu se găsește un fișier numit **%s** în dosar.",
+            "folder_empty": "💨 Acum fișierul jurnal din folder este gol. Încercați să reveniți mai târziu.",
+            "found_file": "S-au găsit %s1 intrări de fișiere:\n```%s2```",
+            "owner_only": "🚫 Ne pare rău..Această comandă poate fi folosită numai de administratori."
+        },
+        "lyrics": {
+            "can_not_find_lyrics": "Nu s-au găsit versuri pentru %s.",
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "playing_lyrics": "📋 Versurile melodiei care se redă în prezent"
+        },
+        "meme": {
+            "can_not_fetch": "Nu s-a putut prelua meme. Vă rugăm să încercați din nou.",
+            "meme_not_found": "Nu a fost găsit niciun meme de tip care să corespundă cu %s."
+        },
+        "minecraft": {
+            "address": "abordare",
+            "do_not_have": "nu am",
+            "ip": "adresa IP",
+            "last_check": "ultima verificare",
+            "maximum_player_count": "Numărul maxim de jucători",
+            "motd": "Descriere",
+            "player_in_server": "jucători pe server",
+            "port": "port",
+            "server_available": "🟢 Acest server este deschis în prezent.",
+            "server_unavailable": "🔴 Acest server este închis temporar.",
+            "skin_of": "🎴 Piei de %s",
+            "version": "versiune"
+        },
+        "musicInfo": {
+            "detail": "📄 Detalii despre melodia care se redă în prezent",
+            "download_link": "📥 Link de descărcare",
+            "duration": "🕒 Durata",
+            "id": "🆔 ID",
+            "link": "🔗 Link",
+            "music_name": "🎵 Numele melodiei",
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "uploader": "🎬 încărcător"
+        },
+        "nekos": {
+            "can_not_fetch_data": "❎ Nu se poate obține temporar fotografia dorită. Vă rugăm să încercați din nou mai târziu.",
+            "request_by": "solicitat de %s"
+        },
+        "nowPlaying": {
+            "autoplay": "📻 Redare automată",
+            "filter": "🎼 Model de filtru de voce: `%s",
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "owner_this_queue": "%s este proprietarul acestei cozi"
+        },
+        "numbers": {
+            "result": "Rezultatul este %s"
+        },
+        "paste": {
+            "backend_not_response": "❎ Niciun răspuns de la server. Puteți încerca din nou mai târziu.",
+            "file": "fişier",
+            "raw": "brut"
+        },
+        "pause": {
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "not_paused": "📼 Acum sunt blocat. Pare ciudat azi..",
+            "paused": "⏸ Întrerupeți muzica acum."
+        },
+        "ping": {
+            "connection": "📡 Conexiune",
+            "info": "Latența dus-întors este de %s1 ms\ntimpul de funcționare a soclului web este de %s2 ms",
+            "result": "🏓 Pong",
+            "waiting": "🏓 Ping..."
+        },
+        "play": {
+            "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+            "not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta..."
+        },
+        "previous": {
+            "no_previous_song_queue": "📼 Nu există niciun cântec care să fi fost cântat recent.",
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "previous": "⏮ Reveniți la melodia anterioară"
+        },
+        "purge": {
+            "message_cleared": "S-au eliminat `%s mesaje` cu succes 💨"
+        },
+        "qrcode": {
+            "qrcode_success": "Codul dvs. QR este gata de utilizare.",
+            "qrcode_title": "🧩 Cod QR"
+        },
+        "quality": {
+            "advice_embed_description": "```Calitate actuală: %s```\nUneori, problema poate fi cauzată de un server care are prea mult acces la el, provocând probleme de performanță. Cu toate acestea, vă recomand să vă verificați conexiunea la internet înainte de a configura acest lucru.\n`0` - Folosiți **OPUS** pentru a comprima fișierele audio. Acest lucru vă va oferi o calitate mai bună a sunetului, dar va folosi și mai multe resurse **(recomandat)**\n`1` - Folosiți sunetul direct de la sursă. Acest lucru va oferi performanțe mai bune, dar va folosi mai puține resurse.",
+            "advice_embed_footer_text": "Puteți seta o calitate audio suplimentară din setările Discord: Setări > Audio și video > Avansat.",
+            "advice_embed_title": "Personalizați calitatea sunetului",
+            "focus_on_high_quality": "concentrați-vă pe calitate înaltă",
+            "low_efficiency": "concentrați-vă pe performanță scăzută",
+            "opus_mode_selected": "🎛️ Acum am folosit **OPUS** pentru a ajuta la comprimarea fișierelor audio. Calitatea sunetului se va îmbunătăți.",
+            "raw_mode_selected": "🎛️ S-a trecut la sunetul din original Poate reduce calitatea sunetului."
+        },
+        "queue": {
+            "autoplay": "📻 Redare automată",
+            "filter": "🎼 Model de filtru audio: %s",
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "owner_this_queue": "%s este proprietarul acestei cozi",
+            "previous_queue": "** coada anterioară **",
+            "waiting_in_queue": "**Așteptăm următoarea coadă**"
+        },
+        "queueStatus": {
+            "autoplay": "📻 Redare automată",
+            "duration": "🕒 Durata",
+            "filter": "🎼 model de filtru audio",
+            "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+            "now": "⌚ acum",
+            "off": "opriți",
+            "on": "deschis",
+            "owner_this_queue": "%s este proprietarul acestei cozi",
+            "paused": "pauză",
+            "playing": "joc",
+            "queue_status": "📑 Starea cozii de cântece curente",
+            "repeat": "🔁 Repetați",
+            "repeat_off": "nu este deschis",
+            "repeat_this_queue": "această coadă",
+            "repeat_this_song": "acest cantec",
+            "volume": "🔉 volumul sunetului"
+        },
+        "reboot": {
+            "dm_to_owner": "**:arrows_counterclockwise: Există o cerere pentru o nouă repornire a sistemului!!**\nPentru a confirma că sunteți dvs., vă rugăm să introduceți această parolă pe serverul pe care rulați comanda\nO puteți ignora dacă nu doriți să continuați\nMultumesc pentru ca ai grija de mine pana azi :)\n||%s||",
+            "not_owner": "🛑 Nu... nu-l lua. Această funcție necesită numai privilegii de top.",
+            "now_reboot": "✅ Am pornit un nou sistem!!",
+            "password_is_incorrect": "❎ Parola este incorectă. Vă rugăm să verificați din nou.",
+            "rebooting": "🔄 Se repornește..."
+        },
+        "reload": {
+            "invalid_command": "❎ Hmmm...nu pare să aibă această ordine...încercați să verificați cu atenție Din nou, este corect sau nu?",
+            "reloaded": "✅ %s Reîncărcat cu succes!!",
+            "reload_error": "❌ La naiba..Am încercat să reîncarc comanda %s dar nu pot."
+        },
+        "remove": {
+            "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "removed": "❌ Eliminat **%s** din coadă.",
+            "too_much": "❎ Nu există o astfel de coadă. Vă rugăm să verificați din nou."
+        },
+        "repeat": {
+            "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "off": "repetați",
+            "repeated": "🔁 %sacum",
+            "repeat_queue": "repeta coada",
+            "repeat_song": "repeta melodia",
+            "too_much": "❎ Nu există un mod mai înalt decât acesta."
+        },
+        "resume": {
+            "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "now_playing": "📼 Hei.. Acum joc.",
+            "resumed": "▶️ Cântecul se redă din același punct."
+        },
+        "rip": {
+            "no_image": "❎ Oh...seamănă cu această poză Este posibil să fi fost șters sau mutat în alt loc."
+        },
+        "rpc": {
+            "answered": "Ți-ai ales răspunsul.",
+            "bot_winner": "Da!..Te-am bătut <@%s>",
+            "can_not_play_with_another_bot": "❎ Nu puteți juca acest joc cu alți roboți.",
+            "choose_options": "Alegeți o opțiune de mai jos.",
+            "game_timeout": "Acest joc a expirat. Vă mulțumesc că v-ați distrat.",
+            "member_not_found": "❎ Astfel de membri par să nu mai fie pe acest server.",
+            "rock_paper_scissors": "🎮 foarfece de hârtie pentru stâncă",
+            "tie": "Cravată!",
+            "user_answered": "Au fost selectate %s răspunsuri. Aștept un răspuns din partea cealaltă...",
+            "user_winner": "<@%s> este câștigătorul!",
+            "your_answer": "Acum ați selectat %s"
+        },
+        "say": {
+            "success": "✅Mesajul dvs. a fost trimis."
+        },
+        "search": {
+            "get_list_of_songs": "📋 Am primit lista de melodii pe care le doresc. și va începe să cânte muzică într-o clipă...",
+            "invalid_number": "🔴 Căutările recente au fost anulate. Puteți căuta din nou tastând aceeași comandă.",
+            "no_results": "❎ Am încercat să caut despre melodie, dar nu am găsit niciun rezultat...",
+            "playlist_type": "lista de redare",
+            "search_cancelled": "🕘 Am anulat căutarea..pentru că nu a fost găsită nicio selecție de cântec.",
+            "searching": "🔍 Găsiți%sînrudite",
+            "song_type": "cântec",
+            "timer_choose": "Există un timp pentru a alege%s 60 de secunde. Dacă doriți să anulați, puteți introduce un număr care nu este relevant sau puteți aștepta până la sfârșitul timpului.",
+            "title_results": "Rezultate de%sastfel:",
+            "user_not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta..."
+        },
+        "seek": {
+            "no_queue": "❎ Acum nu se redă nicio melodie.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "seek_guide": "❓ Câte secunde doriți să schimbați timpul melodiei care se redă curent? Acum se joacă la %ssecundă",
+            "sought": "🕘 S-a schimbat ora melodiei care se redă în prezent.",
+            "too_much": "❎ Ora acestui cântec este la %s Nu există nimic mai mult decât asta."
+        },
+        "set_command": {
+            "can_not_manage_this_command": "❎ Nu puteți manipula această ordine.",
+            "command_input_empty": "❎ Vă rugăm să introduceți comanda cu care doriți să vă ocupați.",
+            "command_not_found": "❎ Comanda de mai sus nu a fost găsită. Încercați să verificați din nou personajele sau caracterele.",
+            "data_at": "informații despre când",
+            "description": "**set-command** - gestionează toate comenzile mele, de exemplu, `on`-||off||, rulează comenzi individuale etc.\n\n**comenzi** - (%s1):\n%s2\n\n> tu Acest lucru poate fi schimbat prin tastarea:\n> ```%s3```",
+            "disabled": "☑️ Comanda dezactivată **%s** deja.",
+            "enabled": "✅ Comanda activată **%s** deja.",
+            "title": "🪄 comanda"
+        },
+        "set_language": {
+            "already_set": "❎ Eh... dar acest server folosește deja limba %s",
+            "description": "**set-language** - Setați-vă limba, aceasta vă va facilita foarte mult înțelegerea\n\nLimba acestui server este: `%s1`\n\n> O puteți schimba tastând:\n> ```%s2. ```",
+            "set_success": "✅ Am schimbat deja limba la **%s**.",
+            "title": "🌐 Limba"
+        },
+        "set_notify": {
+            "channel_not_found": "❎ Nu pot găsi niciun astfel de canal pe acest server. Vă rugăm să verificați din nou.",
+            "data_at": "informații despre când",
+            "description": "**set-notify** - Setați fiecare tip de notificare pentru a primi cele mai recente informații de la server\n\n**alerta** - Notificare generală: %s1\n**channelCreate** - Canal nou: %s2\n* *channelDelete* * - Canal șters: %s3\n**channelPinsUpdate** - Canal fixat: %s4\n**channelUpdate** - Canal actualizat: %s5\n**emojiCreate** - E Emoji-uri noi: %s6\n**emojiDelete** - Emoji-uri șterse: %s7\n**emojiUpdate** - Emoji-uri actualizate: %s8\n**guildBanAdd** - Membri interziși: %s9\n**guildBanRemove** - Membru neinterzis: %s10\n**guildBanAdd** - GuildIntegrations Actualizare de integrare: %s11\n**guildMemberAdd** - Server de alăturare membrilor: %s12\n** guildMemberRemove** - Server de membru rămas: %s13\n**guildMembersChunk** - A câștigat mulți membri ai breslei: %s14\n**guildUnavailable* * - Server indisponibil: %s15\n**inviteCreate** - Link de invitație creat: %s16\n**inviteDelete** - Link de invitație șters: %s17\n**roleCreate** - Rol creat: %s18\n**roleDelete* * - Rol șters: %s19\n* *roleUpdate** - Rol actualizat: %s20\n**stageInstanceCreate** - Etapa creată: %s21\n**stageInstanceDelete** - Etapa șters: %s22\n**pdate Instance -** Etapa a fost Actualizări: %s23\n**stickerCreate** - Autocolante create: %24\n**stickerDelete** - Autocolante eliminate: %s25\n**stickerUpdate** - Autocolante actualizate: %s26\n**threadCreate** - Thread creat: %s27\n**threadDelete** - Subiect șters: %s28\n**threadUpdate** - Subiect actualizat: %s29\n**webhookUpdate** - Webhook Actualizat: %s30\n\n> Îl puteți schimba tastând:\n> ```%s31```",
+            "not_set": "`Nu setat`",
+            "remove_success": "✅ Eliminați tipul de notificare `%scu succes.",
+            "set_success": "✅ Tipul de alertă `%s1` a fost setat pe canalul `<#%s2>`.",
+            "title": "🔔 Notificări",
+            "type_not_found": "❎ Hmm...Se pare că nu există un astfel de tip. Momentan sunt disponibile doar aceste tipuri: %s"
+        },
+        "set_personal": {
+            "data_at": "informații despre când",
+            "description": "**set-personal** - Setați permisiunile pentru vizualizarea datelor dvs. personale. (E valabil numai pentru Shioru)\n\nPot vizualiza profilul: `%s1`\nPot vedea informații despre Discord: `%s2`\nPot vedea ID-ul: `%s3`\n\n> Îl poți schimba tastând:\n> ```%s4 ```",
+            "false_success": "✅ %s Autorizarea dvs. a fost anulată.",
+            "no": "Nu",
+            "title": "📄 Informații personale",
+            "true_success": "✅ %s dvs. a fost autorizat.",
+            "yes": "da"
+        },
+        "settings": {
+            "description": "Îl puteți configura în funcție de nevoile dvs. folosind aceste comenzi.",
+            "languages": "🌐 Limbă (server)",
+            "note": "Notă: Unele comenzi pot necesita anumite permisiuni înainte de a rula.",
+            "notification": "🔔 Notificare (Server)",
+            "personal": "📄 Informații personale (personale)",
+            "prefix": "❕ comandă (server)",
+            "title": "⚙️ Setări"
+        },
+        "shuffle": {
+            "no_queue": "❎ Acum nu se redă nicio melodie.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "now_shuffle": "🔀 Începe să schimbi cozile..."
+        },
+        "shutdown": {
+            "dm_to_owner": "**:red_circle: Există o cerere de închidere!!**\nPentru a confirma că sunteți dvs., vă rugăm să introduceți această parolă pe serverul pe care rulați comanda\nO\nignora dacă nu doriți să continuați. Aveți grijă de mine până astăzi :)\n||%s||",
+            "not_owner": "🛑 Nu... nu-l lua. Această funcție necesită numai privilegii de top.",
+            "now_shutdown": "💤 Sistemul de pe Discord a fost dezactivat..Ne vedem din nou~",
+            "password_is_incorrect": "❎ Parola este incorectă. Vă rugăm să verificați din nou.",
+            "shutting_down": "🔄 Îmi închid sistemul..."
+        },
+        "skip": {
+            "no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "skipped": "⏭ Am sărit peste el și pe punctul de a începe să cânt o melodie nouă în coadă."
+        },
+        "snake": {
+            "building_board_game": "🐍 Compoziție te rog asteapta un moment...",
+            "game_name": "Snake: The Game",
+            "game_over": "joc încheiat",
+            "game_score": "Scor: **%s1**\nTimp: **%s2** secunde",
+            "played_on": "Începe cu %s"
+        },
+        "status": {
+            "data_by_server": "Date de referință de la server.",
+            "dnd_status": "Numărul de membri în prezent în Nu deranja este \n```%s```.",
+            "idle_status": "Numărul de membri care sunt absenți în prezent este \n```%s```.",
+            "offline_status": "Numărul de membri în prezent offline este \n```%s```",
+            "online_status": "Numărul de membri online în prezent este \n```%s```"
+        },
+        "sticker": {
+            "deleted_sticker": "✅ **%s** Stickerul a fost eliminat cu succes",
+            "does_not_support_gif": "❎ Ne pare rău... Discord nu acceptă momentan autocolante personalizate bazate pe GIF.",
+            "edited_sticker": "%s autocolante au fost editate.",
+            "uploading_you_sticker": "📤 Se încarcă autocolante...",
+            "you_sticker_is_ready": "%s Autocolantul dvs. este gata. Hai sa incercam!!"
+        },
+        "stop": {
+            "no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă.",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "stopped": "⏹️ Opriți redarea muzicii și ștergeți toate cozile."
+        },
+        "system": {
+            "info_battery": {
+                "charging": "încărcarea",
+                "not_charging": "nu se incarca",
+                "title": "• baterie",
+                "without": "nu am"
+            },
+            "info_description": "Informațiile sistemului la care lucrez în prezent, așa cum sunt furnizate de sistem, sunt următoarele.",
+            "info_gpu_control": "• GPU (controller)",
+            "info_gpu_display": "• GPU (afișaj)",
+            "info_memory_used": "• memorie folosită",
+            "info_platform": "• Platformă",
+            "info_system": "• sistem",
+            "info_temperature": "• Temperatura CPU",
+            "info_title": "🖥 Informații de bază ale sistemului",
+            "info_uptime": {
+                "info": "%s1 zi %s2 ore ",
+                "title": "• Timp de lucru"
+            },
+            "loading": "⚙️ Se trimite cererea de preluare a datelor sistemului de pe server...",
+            "main": "principal",
+            "unknown": "Nu stiu"
+        },
+        "tictactoe": {
+            "button_is_selected": "❎ Canalul este deja ocupat.",
+            "can_not_duel_with_me": "❎ Nu mă pricep să joc aceste jocuri. Sunt mai judecător.",
+            "can_not_play_with_bot": "❎ Nu puteți juca acest joc cu roboți.",
+            "in_another_duel": "❎ <@%s> Momentan într-un duel cu altcineva.",
+            "in_duel": "❎ Nu, trebuie să lupți cu <@%s> până la sfârșit.",
+            "member_not_found": "❎ Astfel de membri par să fi fost răpiți în altă parte.",
+            "need_one_emoji": "❎ Pot avea 1 emoji ca ❌ sau ⭕?",
+            "tie": "Cravată!",
+            "wait_opponent": "❓ Așteptați o clipă partea opusă.",
+            "winner": "%s castigat!"
+        },
+        "timeout": {
+            "can_not_set_for_yourself": "❎ Nu puteți seta un timeout pentru dvs.",
+            "can_not_set_timeout": "❎ Nu îi pot stabili un timeout pentru că are un rol mai înalt decât mine.",
+            "can_not_set_to_admin": "❎ Nu puteți seta un timeout pentru moderatori.",
+            "dm_to_user": "⌛ Sunteți setat să expirați în %s1, puteți vedea timpul rămas pe acel server **Motiv**: %s2",
+            "member_not_found": "❎ Membrii nu spun că nu mai sunt pe acest server.",
+            "no_reason": "nu da un motiv",
+            "success": "%s1 este setat să expire în %s2 minute **Motiv**: %s3"
+        },
+        "together": {
+            "can_not_open": "❌ Ummm..de aceea nu pot deschide %s",
+            "do_not_have": "❎ Ah..Acum încă nu există %s1 sau poate că nu există cu adevărat\n, dar Together that can be used acum are %s2 itemi, și anume\n```%s3```",
+            "do_not_have_permission": "❌ Nu mă pot activa pentru că nu am permisiunea de a opera. Vă rugăm să contactați moderatorul.",
+            "join_via_this_link": "Alăturați-vă prin acest link. https://discord.com/invite/",
+            "user_not_in_channel": "❎ Accesați mai întâi unul dintre canalele vocale sau îmi puteți spune numele sau ID-ul canalului respectiv. El va putea crea un link în mod corespunzător.",
+            "voice_channel_not_found": "❎ Eh..dar nu există niciun canal de sunet pe acest server Accesați canalul audio și încercați din nou."
+        },
+        "translate": {
+            "can_not_translate": "❎ Nu se poate traduce limba unui astfel de text. Vă rugăm să încercați din nou mai târziu.",
+            "says": "Spune",
+            "translate_support": "❎ Cod de traducere nevalid Vă rugăm să verificați din nou.\n**Limbi acceptate:** %s"
+        },
+        "unban": {
+            "no_one_gets_banned": "❎ Nimeni de pe server nu este interzis în prezent.",
+            "no_reason": "Membrii care au anulat interdicția nu au dat un motiv.",
+            "reason_for_unban": "Unbanned de: %s1\nMotiv: %s2\nDupă ce membrul a fost anulat. Astfel de membri se vor putea alătura acestui server în mod normal.",
+            "this_user_not_banned": "❎ Eh.. acel membru nu a fost interzis. Să verificăm încă o dată câteva cuvinte cheie noi grozave...",
+            "user_has_been_unbanned": "%s neinterzis"
+        },
+        "untimeout": {
+            "can_not_set_for_yourself": "❎ Nu puteți seta un timeout pentru dvs.",
+            "can_not_set_to_admin": "❎ Nu puteți seta un timeout pentru moderatori.",
+            "can_not_set_untimeout": "❎ Nu pot să-l setez să nu-i pană pentru că are un rol mai înalt decât mine.",
+            "dm_to_user": "⏲️ Ai fost anulat pentru a seta un timeout în %s1 **Motiv**: %s2",
+            "member_not_found": "❎ Membrii nu spun că nu mai sunt pe acest server.",
+            "no_reason": "nu da un motiv",
+            "success": "%s1 Timeout a fost setat **Motiv**: %s2"
+        },
+        "uptime": {
+            "days": "zi",
+            "hours": "ora",
+            "info_title": "🕒 Este timpul să începem munca.",
+            "minute": "minut",
+            "second": "al doilea"
+        },
+        "user": {
+            "avatar": "Avatar",
+            "bot": "bot",
+            "can_not_find_user": "💡 Nu găsesc acel membru... încercați numele complet sau numele de utilizator. Exemplu: <@%s>",
+            "created_at": "creat in",
+            "created_timestamp": "data constructiei",
+            "default_avatar_url": "avatarul original",
+            "discriminator": "cod de subsol",
+            "id": "ID",
+            "info_date": "informații despre când",
+            "none": "Nu",
+            "partial": "niste",
+            "system": "sistem",
+            "tag": "Etichete",
+            "unknown": "Nu stiu",
+            "user_info": "👥 Detalii informații despre utilizator",
+            "user_info_description": "Informații detaliate despre utilizatori Care se bazează pe date de la Discord.",
+            "username": "Nume de utilizator",
+            "yes": "da"
+        },
+        "version": {
+            "working_in_version": "Lucrez la versiunea: **%s**"
+        },
+        "volume": {
+            "adjusted": "🔊 Reglați volumul la: **%s**",
+            "no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă. Ce ai de gând să ajustezi?",
+            "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+            "this_volume": "🔈 Volumul curent al sunetului este: **%s**"
+        },
+        "weather": {
+            "clear_weather": "vreme buna",
+            "cloudy": "noros",
+            "date": "📆 data",
+            "day": "📅 zi",
+            "degree_type": "⚖️ Unități de măsură",
+            "feels_like": "🎐 simt ca",
+            "humidity": "💧 Umiditate",
+            "information_from_microsoft": "Informații exacte și exacte de la Microsoft",
+            "light_rain": "burniță",
+            "mostly_clear": "Predominant înnourat",
+            "mostly_cloudy": "Predominant înnourat",
+            "mostly_sunny": "predominant însorit",
+            "no_result_found": "❎ Eh...Am căutat informații despre această zonă, dar nu le-am găsit.",
+            "partly_cloudy": "parțial înnorat",
+            "partly_sunny": "parțial însorit",
+            "rain": "ploaie",
+            "rain_showers": "ploaie torentiala",
+            "sunny": "însorită",
+            "temperature": "🌡️ Temperatura",
+            "timezone": "🌐 Fus orar",
+            "weather": "⛅ Vremea",
+            "weather_at_the_moment": "Vremea de __**%s1**__ este acum \n```%s2```.",
+            "wind": "🎏 Vânt"
+        }
+    },
+    "events": {
+        "channelCreate": {
+            "channel_notification": "🪧 Canalul",
+            "member_create_channel": "> Canalul creat de membrul serverului: <#%s>"
+        },
+        "channelDelete": {
+            "channel_notification": "🪧 Canalul",
+            "member_delete_channel": "> Canalul explodat membru al serverului: `%s`"
+        },
+        "channelPinsUpdate": {
+            "channel_notification": "🪧 Canalul",
+            "member_pins_in_channel": "> Membrul serverului a fixat slotul: <#%s1> când %s2"
+        },
+        "channelUpdate": {
+            "channel_notification": "🪧 Canalul",
+            "member_update_channel": "> Un membru al serverului a schimbat unele câmpuri: `%s1` în <#%s2>."
+        },
+        "emojiCreate": {
+            "emoji_notification": "😊 Emoji",
+            "member_create_emoji": "> Membrul serverului a creat un nou emoji: :%s:"
+        },
+        "emojiDelete": {
+            "emoji_notification": "😊 Emoji",
+            "member_delete_emoji": "> Emoji șters de membru al serverului: :%s:"
+        },
+        "emojiUpdate": {
+            "emoji_notification": "😊 Emoji",
+            "member_update_emoji": "> Membrul serverului a schimbat noul emoji de la: %s1 la %s2."
+        },
+        "guildBanAdd": {
+            "guild_notification": "🗄️ Server",
+            "member_ban_add": "> <@%s1> Deja interzis pe acest server\n**Motiv:**\n```%s2```"
+        },
+        "guildBanRemove": {
+            "guild_notification": "🗄️ Server",
+            "member_ban_remove": "> <@%s1> A fost dezbannizat pe acest server\n**Motiv:**\n```%s2```"
+        },
+        "guildCreate": {
+            "advice": "**💡 Sfaturi**",
+            "advice_detail": "Dacă sunteți proprietarul acestei bresle..Vreau să finalizez această configurare a breslei înainte de a o folosi, pentru că s-ar putea să nu le doriți unele lucruri. Prin urmare, încercați să utilizați comanda `Ssettings`.",
+            "description": "Buna ziua..multumesc ca m-ati invitat in acest %s loc\nSe pare ca oamenii se intreaba ce pot sa fac? Oh..poți spăla vasele, spăla rufele. Este minunat, nu-i așa~ Haha, unde este? Glumesc",
+            "get_started": "A sosit la inceput!!",
+            "help_information_and_documentation": "**📄 Ajutor și documentație**",
+            "help_information_and_documentation_detail": "Vrei să știi ce pot face?..foarte ușor. Doar tastați `Shelp` sau `/help` și cineva vă va spune. Desigur, accesați linkul de mai jos și va exista documentație furnizată de dezvoltator și de alții. El a scris deja\n> https://shiorus.web.app/",
+            "join_on": "alăturați-vă",
+            "support_multiple_languages": "** 🌐 Suporta mai multe limbi **",
+            "support_multiple_languages_detail": "Suport mai multe limbi. Pentru a schimba limba Îl puteți seta prin `Slanguage <codul limbii>` sau `/language <codul limbii>`."
+        },
+        "guildIntegrationsUpdate": {
+            "guild_integrations_update": "Acest server a fuzionat deja %s . Veți primi imediat articole noi cu actualizări viitoare.",
+            "guild_notification": "🗄️ Server"
+        },
+        "guildMemberAdd": {
+            "captcha_error": "A apărut o eroare de validare. Contactați personalul serverului pentru a lua măsuri.",
+            "captcha_success": "Ești verificat în %s",
+            "greet": "Bună membru nou **Acesta este un mesaj automat** \nVă mulțumim că v-ați alăturat serverului nostru. Vă rugăm să citiți cu atenție informațiile despre acest server înainte de a începe să vorbiți cu cineva.",
+            "solve_the_captcha": "S-a corectat captcha pentru a verifica în %s",
+            "submit_answer_captcha": "Trimiteți un răspuns captcha",
+            "submit_you_answer_guide": "Trimiteți ceea ce credeți că este captcha",
+            "use_button_below": "Folosește butonul de mai jos pentru a trimite răspunsul tău!",
+            "welcome": "Bun venit pe server",
+            "wrong_answer": "Pare greșit. Încearcă din nou...",
+            "your_answer": "răspunde la captcha"
+        },
+        "guildMemberRemove": {
+            "user_has_exited": "A scăpat deja de pe acest server... (Să mergem la el..)"
+        },
+        "guildMembersChunk": {
+            "guild_members_chunk": "Bine ați venit membrii de pe serverul %s Vă așteptăm aici.",
+            "guild_notification": "🗄️ Server"
+        },
+        "guildUnavailable": {
+            "guild_notification": "🗄️ Server",
+            "guild_unavailable": "Momentan... acest server este temporar indisponibil. Vă rugăm să contactați administratorul acestui server."
+        },
+        "interactionCreate": {
+            "client_is_not_allowed": "🚫 Ummm..Îmi lipsesc niște permisiuni. Deci nu pot continua, și anume **%s**",
+            "command_error": "❌ A apărut o eroare la executarea acestei comenzi!",
+            "command_is_disabled": "⚫ Această comandă a fost dezactivată pe server. Vă rugăm să contactați administratorul serverului dvs.",
+            "no_permission": "🚫 Hmm...Se pare că nu aveți permisiunea de a utiliza comanda aplicației (/), vă rugăm să întrebați moderatorii (≧∇≦)",
+            "user_is_not_allowed": "🚫 Nu vă pot lăsa să utilizați această comandă. Dacă nu aveți deja aceste permisiuni: **%s**"
+        },
+        "inviteCreate": {
+            "invite_create": "Link de invitație creat cu succes\n**Link:** %s1\n**Expiră:** %s2\n**Maximum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ Invitație"
+        },
+        "inviteDelete": {
+            "invite_code_deleted": "`%s` Acest cod de invitație a fost șters.",
+            "invite_code_expires": "`%s` Acest cod de invitație a expirat.",
+            "invite_notification": "🏷️ Invitație"
+        },
+        "messageCreate": {
+            "afk_user_come_back": "🔙 Te-ai întors Dezactivați automat starea AFK",
+            "no_reason_for_afk": "nu am",
+            "that_user_is_afk": "%s1 Acum nu pe ecran (AFK), nu-l menționați acum\n**Lasă mesaj**: %s2"
+        },
+        "roleCreate": {
+            "role_create": "<@&%s> a fost creat.",
+            "role_notification": "🔖 Rol"
+        },
+        "roleDelete": {
+            "role_delete": "`%s` a fost șters.",
+            "role_notification": "🔖 Rol"
+        },
+        "roleUpdate": {
+            "role_notification": "🔖 Rol",
+            "role_update": "`%s1` a fost actualizat la <@&%s2>"
+        },
+        "stageInstanceCreate": {
+            "stage_instance_create": "<#%s> a fost creat.",
+            "stage_notification": "🎤 scena"
+        },
+        "stageInstanceDelete": {
+            "stage_instance_delete": "`%s` a fost șters.",
+            "stage_notification": "🎤 scena"
+        },
+        "stageInstanceUpdate": {
+            "stage_instance_update": "`%s1` a fost actualizat la <#%s2>.",
+            "stage_notification": "🎤 scena"
+        },
+        "stickerCreate": {
+            "sticker_create": "**%s** Acum disponibil",
+            "sticker_notification": "👻 autocolant"
+        },
+        "stickerDelete": {
+            "sticker_delete": "**%s** a fost șters",
+            "sticker_notification": "👻 autocolant"
+        },
+        "stickerUpdate": {
+            "sticker_notification": "👻 autocolant",
+            "sticker_update": "`%s1` a fost actualizat la **%s2**"
+        },
+        "threadCreate": {
+            "thread_create": "<#%s> a fost creat.",
+            "thread_notification": "#️⃣ Fire"
+        },
+        "threadDelete": {
+            "thread_delete": "**%s** a fost șters",
+            "thread_notification": "#️⃣ Fire"
+        },
+        "threadUpdate": {
+            "thread_notification": "#️⃣ Fire",
+            "thread_update": "`%s1` a fost actualizat la **%s2**"
+        },
+        "webhookUpdate": {
+            "webhook_notification": "🎣 Webhook",
+            "webhook_update": "**%s1** din **%s2** a fost actualizat pe canalul <#%s3>."
+        }
+    },
+    "handlers": {
+        "music": {
+            "addList": {
+                "added_list": "✅ A adăugat o listă de redare **%s1** care conține deja `%s2` melodii."
+            },
+            "addSong": {
+                "added_song": "✅ Adăugați deja melodii **%s1** `%s2`."
+            },
+            "disconnect": {
+                "disconnected": "🔌 Deconectat și șters deja toate cozile."
+            },
+            "empty": {
+                "no_user_in_channel": "💨 Oh.. Unde s-au dus toți? Apoi..taci mai întâi~"
+            },
+            "error": {
+                "playlist_not_found": "❎ Nu găsesc acea listă de redare. Cauți un alt playlist?"
+            },
+            "finish": {
+                "queue_is_empty": "🍃 Acum coada mea este goală. Ești gata să cânți următoarea melodie?"
+            },
+            "playSong": {
+                "playing_song": "🎶 Redare muzică **%s1** `%s2`"
+            },
+            "searchCancel": {
+                "search_cancelled": "🕘 Am anulat căutarea..pentru că nu a fost găsită nicio selecție de cântec."
+            },
+            "searchDone": {
+                "get_list_of_songs": "📋 Am primit lista de melodii pe care le doresc. și va începe să cânte muzică într-o clipă..."
+            },
+            "searchInvalidAnswer": {
+                "search_cancelled": "🔴 Căutările recente au fost anulate. Puteți căuta din nou tastând aceeași comandă."
+            },
+            "searchNoResult": {
+                "no_results": "❎ Am încercat să caut despre melodie, dar nu am găsit niciun rezultat..."
+            },
+            "searchResult": {
+                "searching": "🔎 Găsiți melodii similare",
+                "timer_choose": "Există 60 de secunde pentru a alege o melodie. Dacă doriți să anulați, puteți introduce un număr irelevant sau puteți aștepta până la sfârșitul timpului.",
+                "title_results": "Rezultatele căutării unor astfel de cântece:",
+                "tool_name": "motor de căutare muzicală"
+            }
+        }
+    },
+    "utils": {
+        "miscUtils": {
+            "april": "Aprilie",
+            "august": "August",
+            "december": "decembrie",
+            "february": "februarie",
+            "format_at": "Ziua%s1 %s %s3 %s4 Ora %s5:%s6 p.m.",
+            "friday": "vineri",
+            "january": "ianuarie",
+            "july": "iulie",
+            "june": "iunie",
+            "march": "Martie",
+            "may": "Mai",
+            "monday": "luni",
+            "november": "noiembrie",
+            "october": "octombrie",
+            "saturday": "sâmbătă",
+            "september": "Septembrie",
+            "sunday": "săptămână",
+            "thursday": "joi",
+            "tuesday": "marţi",
+            "wednesday": "miercuri"
+        },
+        "consoleUtils": {
+            "an_error_occurred": "🔴 A apărut o eroare în timpul execuției.",
+            "error_detail": "Comanda: **%s1**\nVersiune: **%s2**\nTemporizată: **%s3**\nServer: **%s4**\nLatență: **%s5ms**\nRecepție-Transmite: * *%s6ms**\nRezultat eroare:\n```JavaScript\n%s7\n```\n> **Sfat**: Puteți raporta o eroare imediat utilizând comanda:\n> ```Sbug <message>`` `\n> ```/bug <mesaj>```\n[raport de problemă](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Știri ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "neobișnuit",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Felicitări!!",
+            "level_up": "Clasa *%s1* a fost acum actualizată la ```%s2```.",
+            "was_mentioned": "Ce s-a întâmplat?"
+        }
+    }
+}
