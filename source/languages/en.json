@@ -63,7 +63,7 @@
         },
         "bug": {
             "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
-            "success": "✅ ok thank you...if you find anything else please tell me (●'◡'●)"
+            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
         },
         "captcha": {
             "captcha_setup_success": "✅ The captcha system setup has been completed and activated.",
@@ -125,11 +125,11 @@
             "risk": "Spend your luck on questions to redeem answers.",
             "roll_ball": "Roll the ball!!"
         },
-        "emojis": {
-            "deleted_emoji": "✅ **%s** The emoji has been deleted.",
-            "edited_emoji": "%s successfully edited the emoji.",
-            "uploading_you_emoji": "📤 Uploading your emoji...",
-            "you_emoji_is_ready": "%s Your emoji is ready. Let's try it!!"
+        "emoji": {
+            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
+            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
+            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
+            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
         },
         "encode": {
             "after": "After encoding",
@@ -581,12 +581,12 @@
             "offline_status": "The number of members that are currently offline is \n```%s```",
             "online_status": "The number of members currently online is \n```%s```"
         },
-        "stickers": {
-            "deleted_sticker": "✅ **%s** Sticker successfully deleted",
-            "does_not_support_gif": "❎ Sorry...Discord does not currently support custom stickers as GIFs.",
-            "edited_sticker": "%s successfully edited the sticker.",
-            "uploading_you_sticker": "📤 Uploading your sticker...",
-            "you_sticker_is_ready": "%s Your sticker is ready. Let's try it!!"
+        "sticker": {
+            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
+            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
+            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
+            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
+            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
         },
         "stop": {
             "no_queue": "❎ Eh...there's no song I'm playing.",
