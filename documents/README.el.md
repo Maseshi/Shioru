@@ -24,7 +24,7 @@
 
 [EL](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Ο καλός βοηθός διακομιστή σας θα βοηθήσει τον διακομιστή σας να φαίνεται πιο ζωντανός. Μπορεί να κάνει πολλά πράγματα για τα οποία μπορείτε να βρείτε λεπτομερείς πληροφορίες για διαφορετικές εντολές πληκτρολογώντας `/help` Μπορείτε να προσκαλέσετε τη Shioru να συμμετάσχει στον διακομιστή σας από[εδώ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Χαρακτηριστικά
 
@@ -55,8 +55,8 @@
 
 - Μεταβείτε στο [Discord Developer Portal](https://discord.com/developers/applications)
 - Κάντε κλικ στο **"Νέα εφαρμογή"** και ονομάστε το bot σας και αποδεχτείτε τους κανόνες της πολιτικής Discord.
-- Μεταβείτε στη σελίδα **"Bot"** και ενεργοποιήστε όλες τις επιλογές στην ενότητα **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Προσκαλέστε το bot σας στον διακομιστή μεταβαίνοντας στη σελίδα **OAuth2 > Δημιουργία URL** επιλέξτε `bot` και `applications.commands` επιλέξτε `Διαχειριστής` , στη συνέχεια αντιγράψτε τον σύνδεσμο και επικολλήστε τον στη διεύθυνση του προγράμματος περιήγησής σας. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Ρυθμίστε ένα bot
 
@@ -74,14 +74,14 @@ npm install --save
 
 - Μεταβείτε στη διεύθυνση https://firebase.google.com/ και ξεκινήστε τη ρύθμιση του έργου.
 - Προσθέστε ένα νέο έργο και ακολουθήστε τα βήματα.
-- Προσθέστε την πρώτη σας εφαρμογή με **Ιστότοπο** Ονομάστε την εφαρμογή σας προαιρετικά **"Επίσης, ρυθμίστε το Firebase Hosting για αυτήν την εφαρμογή"** και καταχωρήστε την εφαρμογή. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Το Firebase θα σας παρέχει πληροφορίες σχετικά με τη διαμόρφωση. Εφαρμόστε αυτές τις τιμές στο αρχείο `.env.example`
-- Μεταβείτε στο **δημιουργία > [βάσης δεδομένων σε πραγματικό χρόνο](https://console.firebase.google.com/u/0/project/_/database/data)** για να δημιουργήσετε μια βάση δεδομένων αποθήκευσης.
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
+- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
 
 ### αναπτύσσω
 
 - Μετονομάστε το αρχείο `.env.example` σε `.env` και εισαγάγετε όλες τις απαραίτητες τιμές.
-- Μεταβείτε στο τερματικό και εκτελέστε τις εντολές `npm run dev` για ανάπτυξη και `npm start` για παραγωγή > **Σημείωση**: Όταν βρίσκεται σε λειτουργία ανάπτυξης Ορισμένες λειτουργίες ενδέχεται να μην λειτουργούν.
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Γρήγορη αντιμετώπιση προβλημάτων
 
