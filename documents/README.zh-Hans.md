@@ -24,43 +24,43 @@
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+您的好服务器助手将帮助您的服务器看起来更生动。 她可以做很多事情，您可以通过键入 `/help` 您可以从[here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## คุณสมบัติเด่น
+## 特征
 
-- ทำงานบน [Discord.js](https://discord.js.org/) v14
-- สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) และ [SoundCloud](https://soundcloud.com/) พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/shioru/blob/main/source/languages)ของที่เก็บนี้
-- ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
-- สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
-- สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- 适用于 [Discord.js](https://discord.js.org/) v14。
+- 能够定制各种想要的物品
+- 可以从 [YouTube](https://www.youtube.com/)、 [Spotify](https://www.spotify.com/) 和 [SoundCloud](https://soundcloud.com/) 自动播放音乐。
+- 支持多种语言可以在本仓库的[语言文件](https://github.com/Maseshi/shioru/blob/main/source/languages)中查看支持的语言。
+- 等级制度（水平和经验）
+- 支持服务器通知自定义
+- 您可以通过键入 `@Shioru` 以及您想要交流的消息来进行交谈。
+- 可以使用应用程序命令 (/)。
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+和许多其他有趣的功能......
 
-## Improve Translate
+## 改进翻译
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru-bot).
+您可以帮助我们翻译一种现有语言或一种当前在 [Crowdin](https://crowdin.com/project/shioru-bot)不可用的语言。
 
-## ข้อกำหนดเบื้องต้น
+## 先决条件
 
-- [Node.js](https://nodejs.org/) v18.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/) v9.0.0 หรือมากกว่า
+- [Node.js](https://nodejs.org/) v18.0.0 或更高版本
+- [Firebase](https://firebase.google.com/) v9.0.0 或更高版本
 - [Git](https://git-scm.com/downloads)
 
-## คู่มือการตั้งค่าด่วน
+## 快速设置指南
 
-### เริ่มต้นใช้งาน
+### 开始吧
 
-- ไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
-- คลิก **"New Application"** แล้วตั้งชื่อบอทของคุณและยอมรับกฎนโยบายของ Discord
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- 转到 [Discord 开发人员门户](https://discord.com/developers/applications)
+- 单击 **“新应用程序”** 并为您的机器人命名并接受 Discord 策略规则。
+- 转到第 **页“Bot”** 并启用 **节“特权网关意图** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- 通过转到页面 **OAuth2 > URL Generator** 选择 `bot` 和 `applications.commands` 选择 `Administrator` 将您的机器人邀请到服务器，然后复制链接并将其粘贴到浏览器的地址中。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ตั้งค่าบอท
+### 设置一个机器人
 
-- เปิดใช้งานเทอร์มินัลแล้วรันคำสั่งต่อไปนี้
+- 启动终端并运行以下命令。
 
 ```bash
 git clone https://github.com/Maseshi/Shioru.git
@@ -68,39 +68,39 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/config.js`
+- 可以修改 **config** at `./source/config.js`中的一些数据
 
-### ตั้งค่า Firebase
+### 设置火力地堡
 
-- ไปที่ https://firebase.google.com/ และเริ่มตั้งค่าโครงการ
-- เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- ไปที่ **สร้าง > [ฐานข้อมูลเรียลไทม์](https://console.firebase.google.com/u/0/project/_/database/data)** เพื่อสร้างฐานข้อมูลสำหรับจัดเก็บข้อมูล
+- 转到 https://firebase.google.com/ 并开始设置项目。
+- 添加一个新项目并按照步骤操作。
+- 添加您的第一个应用程序 **网站** 可选地命名您的应用程序 **“同时为此应用程序设置 Firebase 托管”** 并注册该应用程序。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase 将为您提供有关配置的信息。 将这些值应用到文件 ``
+- 转到 **create > [realtime database](https://console.firebase.google.com/u/0/project/_/database/data)** 创建存储数据库。
 
-### พัฒนา
+### 发展
 
-- ทำการเปลี่ยนชื่อไฟล์ `.env.example` เป็น `.env` แล้วใส่ค่าที่จำเป็นทั้งหมด
+- 将文件 `.env.example` 重命名为 `.env` 并插入所有必要的值。
 - ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
-## การแก้ไขปัญหาอย่างรวดเร็ว
+## 快速故障排除
 
-- หากคุณไม่สามารถติดตั้งแพ็คเกจ **sodium** ได้ ให้ติดตั้ง **libsodium-wrappers** แทน
+- 如果您无法安装 package **sodium** ，请安装 **libsodium-wrappers**。
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
+npm 卸载钠
+npm 安装 libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [ffmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- 如果您无法播放音乐或音乐播放命令不起作用，请安装 [ffmpeg](https://ffmpeg.org/download.html) **(推荐)** 或安装 **ffmpeg-static** 包并重试。
 ```bat
 npm install ffmpeg-static@latest --save
 ```
 
-## เครดิต
+## 信用
 
-ขอขอบคุณผู้สร้างจากต้นทางทุกท่านที่อนุญาตให้สามารถใช้งานผลงานอันยอดเยี่ยมเหล่านี้ของท่านได้
+感谢所有原创者允许使用您的这些精彩作品。
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+头像绘制者： [夏月まりな（NATSUKI MARINA）](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
-## พบปัญหา
+## 发现问题
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issue](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+如果您遇到任何问题从你现在的工作您可以通过此存储库的 [issue](https://github.com/Maseshi/Shioru/issues) 选项卡让我们知道。
