@@ -1,958 +1,958 @@
 {
     "commands": {
         "about": {
-            "my_profile": "ข้อมูลส่วนตัวของฉัน",
-            "my_profile_detail": "ฉันชื่อ %s เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Chaiwat Suwannarat(Masashi)__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากคะ\n\n[เว็บไซต์ทางการ](https://maseshi.web.app/)\n[นโยบายความเป็นส่วนตัว](https://maseshi.web.app/privacy-policy) | [เงื่อนไขการให้บริการ](https://maseshi.web.app/terms-of-service)\n\n© 2563-2565 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-            "update_on": "อัพเดทเมื่อ"
+            "my_profile": "我的简历",
+            "my_profile_detail": "我的名字是 %s 我出生于 6 月 21 日星期日。我住在一所房子里。__Chaiwat Suwannarat(Masashi)__ 是生我并给我知识和能力的人。**各种我已经研究了所有给我住的每个人希望大家和我在一起会很开心！！并感谢您对我可爱的恩人的所有帮助和支持。非常感谢。\n\n[官方网站](https://maseshi.web.app/)\n[隐私政策](https://maseshi.web. app/privacy-policy) | [服务条款](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat。保留所有权利。",
+            "update_on": "更新时间"
         },
         "afk": {
-            "currently_afk": "❎ ตอนนี้คุณกำลัง AFK อยู่",
-            "currently_not_afk": "❎ ตอนนี้คุณไม่ได้ AFK อยู่",
-            "now_afk": "💤 ตอนนี้คุณกำลัง AFK อยู่, เขียนสักข้อความหรือ /afk remove เพื่อออกจากโหมด AFK",
-            "now_not_afk": "🔙 ยกเลิกการตั้งสถานะ AFK ของคุณแล้ว"
+            "currently_afk": "❎ 现在你挂了",
+            "currently_not_afk": "❎ 你现在不是 AFK。",
+            "now_afk": "💤 现在你挂机了，写一条消息或/afk remove 退出挂机模式。",
+            "now_not_afk": "🔙 您的挂机状态已取消。"
         },
         "anime": {
-            "auto_cancel": "เพียงแค่พิมพ์หมายเลขที่คุณต้องการอ่าน! (ยกเลิกภายใน 1 นาที)",
-            "choose_now": "เลือกเลยย.!!",
-            "data_not_found": "❎ ไม่เจอเรื่องนี้นะ ลองตรวจสอบดีๆ ดูสิหรืออาจจะไม่มีเรื่องนี้จริงๆ อะ",
-            "end_date": "**วันที่สิ้นสุด**",
-            "english_name": "**ชื่ออังกฤษ**",
-            "in_progress": "กำลังดำเนินการ",
-            "japan_name": "**ชื่อญี่ปุ่น**",
-            "link": "**ลิงค์**",
-            "popularity_rank": "**อันดับความนิยม**",
-            "short_information": "นี่เป็นเพียงข้อมูลที่สรุปมาแล้วเท่านั้น อยากอ่านเพิ่มเติมคลิกเข้าไปที่ลิงค์เลยย.!!",
-            "similar_stories": "ฉันเจอ 5 เรื่องที่ใกล้เคียงกัน อยากอ่านเรื่องไหนกันละ~",
-            "start_date": "**วันที่เริ่มต้น**",
-            "synopsis": "**สรุป:**",
-            "undefined": "ไม่ได้กำหนด"
+            "auto_cancel": "只需输入您要阅读的数字！ （1分钟内取消）",
+            "choose_now": "现在选择。",
+            "data_not_found": "❎ 我还没有找到这个故事。让我们来看看。你看，也许真的没有这样的东西？",
+            "end_date": "**结束日期**",
+            "english_name": "**英文名**",
+            "in_progress": "进行中",
+            "japan_name": "** 日本名字 **",
+            "link": "**关联**",
+            "popularity_rank": "**人气排行**",
+            "short_information": "这只是信息的摘要。如果您想阅读更多内容，请单击链接！",
+            "similar_stories": "我发现了5个类似的东西。你想看哪个故事~",
+            "start_date": "**开始日期**",
+            "synopsis": "**总结：**",
+            "undefined": "不明确的"
         },
         "automod": {
-            "flagged_words_name": "บล็อกคำหยาบคาย เนื้อหาเกี่ยวกับเรื่องเพศ และคำสบประมาท",
-            "flagged_words_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว คำเหล่านั้นทั้งหมดจะถูกระงับ",
-            "keyword_name": "ป้องกันไม่ให้ใช้คำ %s",
-            "keyword_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว ข้อความทั้งหมดที่มีคำว่า %s จะถูกลบ",
-            "mention_spam_name": "ป้องกันสแปมเมื่อกล่าวถึง",
-            "mention_spam_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมเมื่อกล่าวถึงหลายครั้งจะถูกระงับ",
-            "prevent_message": "ข้อความนี้ถูกป้องกัน",
-            "spam_messages_name": "ป้องกันสแปมข้อความ",
-            "spam_messages_success": "✅ สร้างกฎ AutoMod ของคุณแล้ว การสแปมข้อความจะถูกระงับ"
+            "flagged_words_name": "阻止脏话色情内容和侮辱",
+            "flagged_words_success": "✅ 您的 AutoMod 规则已创建，所有这些词都将被抑制。",
+            "keyword_name": "防止使用字 %s。",
+            "keyword_success": "✅ 您的 AutoMod 规则已创建，所有包含单词 %s 的消息都将被删除。",
+            "mention_spam_name": "防止垃圾邮件",
+            "mention_spam_success": "✅ 您的 AutoMod 规则已创建，多次提及的垃圾邮件将被禁止。",
+            "prevent_message": "此消息受保护。",
+            "spam_messages_name": "阻止垃圾邮件",
+            "spam_messages_success": "✅ 您的 AutoMod 规则已创建，垃圾邮件将被禁止。"
         },
         "autoplay": {
-            "no_queue": "❎ อืมม...แต่ว่าเพลงมันยังไม่ได้เริ่มเล่นเลยนะ?",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "📻 ปิดโหมดการเล่นอัตโนมัติแล้ว",
-            "on": "📻 เปิดโหมดการเล่นอัตโนมัติแล้ว"
+            "no_queue": "❎ 嗯...但是这首歌还没开始？",
+            "not_queue_owner": "🚫 只有队列的所有者才能更改它。",
+            "off": "📻 自动播放模式关闭",
+            "on": "📻 自动播放模式开启"
         },
         "ban": {
-            "banned_for_time": "%s1 ถูกแบนเป็นเวลา **%s2** วัน",
-            "member_has_banned": "❎ สมาชิกดังกล่าวถูกแบนอยู่แล้ว สบายใจได้",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถแบนผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถแบนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่แบนไม่ได้ให้เหตุผลไว้คะ",
-            "permanently_banned": "%s ถูกแบนอย่างถาวร",
-            "reason_for_ban": "แบนโดย: %s1\nเหตุผล: %s2",
-            "user_not_found": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ"
+            "banned_for_time": "%s1 被禁 **%s2** 天",
+            "member_has_banned": "❎ 这样的会员已经被ban了，放心吧。",
+            "members_have_a_higher_role": "❎ 您不能禁止角色高于您的人。",
+            "members_have_a_higher_role_than_me": "❎ 我不能禁止这样的成员。因为他的角色比我高",
+            "no_reason": "被封禁的成员没有给出理由。",
+            "permanently_banned": "%s 永久禁止",
+            "reason_for_ban": "禁止者： %s1\n原因： %s2",
+            "user_not_found": "❎ 我找不到这个成员。请再检查一次。"
         },
         "board": {
-            "leveling_detail": "ค่าประสบการณ์: %s1, ระดับชั้น: %s2",
-            "no_info": "❎ บนเซิร์ฟเวอร์นี้ยังไม่มีสมาชิกใดๆ ที่มีค่าประสบการณ์เลยคะ",
-            "server_rank": "อันดับเลเวลของเซิร์ฟเวอร์นี้",
-            "server_rank_description": "1 ใน 10 อันดับ สมาชิกภายในเซิร์ฟเวอร์นี้ ที่เก็บสะสมเลเวลของตัวเองได้เยอะที่สุด ตามลำดับ ดังนี้",
-            "server_rank_tips": "เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น"
+            "leveling_detail": "经验： %s1，等级： %s2",
+            "no_info": "❎ 此服务器上还没有成员。有经验值的",
+            "server_rank": "本服等级排名",
+            "server_rank_description": "此服务器中前 10 名成员中的 1 个。谁能收集到自己关卡最多的，顺序如下",
+            "server_rank_tips": "提示：与其他成员聊天将获得更多的水平"
         },
         "bug": {
-            "sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
-            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
+            "sending": "📨 好的..等一下给我一点时间给开发商发一封信...",
+            "success*": "✅ 好的，谢谢...如果你有什么发现，请告诉我(●'◡'●)"
         },
         "captcha": {
-            "captcha_setup_success": "✅ ตั้งค่าระบบ captcha เสร็จสิ้นและเปิดใช้งานเรียบร้อยแล้ว",
-            "currently_disable": "ℹ️ ตอนนี้ captcha ถูกปิดอยู่แล้ว",
-            "currently_enable": "ℹ️ ตอนนี้ captcha ถูกเปิดอยู่แล้ว",
-            "disabled_captcha": "✅ ปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "enabled_captcha": "✅ เปิดใช้งาน captcha เรียบร้อยแล้ว",
-            "need_to_setup_before": "❎ กรุณาตั้งค่า captcha ก่อนใช้งานโดยใช้คำสั่ง /captcha setup"
+            "captcha_setup_success": "✅ 已成功设置并激活验证码系统。",
+            "currently_disable": "ℹ️ 验证码现已关闭。",
+            "currently_enable": "ℹ️ 验证码现已启用。",
+            "disabled_captcha": "✅ 验证码已被禁用",
+            "enabled_captcha": "✅ 成功启用验证码",
+            "need_to_setup_before": "❎ 使用前请使用 /captcha setup 命令设置验证码。"
         },
         "covid": {
-            "active": "แอคทีฟ",
-            "active_per_one_million": "แอคทีฟต่อ 1 ล้าน",
-            "backend_issue": "❎ ดูเหมือนว่าจะเกิดปัญหาขึ้นในฝั่งของผู้ให้ข้อมูลน่ะคะ กรุณาลองใหม่ในคราวหน้านะ",
-            "cases_per_one_million": "คนไข้ต่อ 1 ล้าน",
-            "cases_today": "คนไข้วันนี้",
-            "cases_total": "คนไข้ทั้งหมด",
-            "country_not_found": "❎ เอิ่มม..ไม่เจอข้อมูลของประเทศที่คุณระบุเลยคะ",
-            "critical_per_one_million": "ระยะวิกฤติต่อ 1 ล้าน",
-            "critical_stage": "ระยะวิกฤต",
-            "deaths_today": "เสียชีวิตวันนี้",
-            "deaths_total": "เสียชีวิตทั้งหมด",
-            "one_case_per_people": "คนไข้ต่อ 1 คน",
-            "one_death_per_people": "เสียชีวิตต่อ 1 คน",
-            "one_test_per_people": "การทดสอบต่อ 1 คน",
-            "population": "ประชากร",
-            "recovered": "หายแล้ว",
-            "recovered_per_one_million": "หายแล้วต่อ 1 ล้าน",
-            "tests": "ทดสอบ",
-            "tests_per_one_million": "การทดสอบต่อ 1 ล้าน",
-            "updated_on": "อัพเดทล่าสุด %s",
-            "when": "เมื่อ"
+            "active": "积极的",
+            "active_per_one_million": "每 100 万人活跃",
+            "backend_issue": "❎ 举报人这边好像有问题。请下次再试。",
+            "cases_per_one_million": "每百万患者",
+            "cases_today": "这个病人",
+            "cases_total": "所有患者",
+            "country_not_found": "❎ 嗯.. 我找不到你指定的国家的信息。",
+            "critical_per_one_million": "每 100 万人的关键期",
+            "critical_stage": "关键期",
+            "deaths_today": "今天死了",
+            "deaths_total": "都死了",
+            "one_case_per_people": "每个病人",
+            "one_death_per_people": "每人死亡",
+            "one_test_per_people": "每人测试",
+            "population": "人口",
+            "recovered": "走了",
+            "recovered_per_one_million": "每百万人损失",
+            "tests": "测试",
+            "tests_per_one_million": "每 100 万人的测试次数",
+            "updated_on": "最新更新 %s",
+            "when": "什么时候"
         },
         "credits": {
-            "creator_credit": "💳 เครดิตของผู้สร้างคนอื่นๆ",
-            "creator_credit_description": "ซึ่งบางผู้สร้างเป็นทั้งผู้มีส่วนร่วม บางส่วนำมาจากภายนอก..ขอขอบคุณทุกการสนับสนุน",
-            "natsuki_marina_credit": "ข้อมูล: รูปภาพบางส่วนและรูปภาพประจำตัว \nจาก: https://www.pixiv.net/en/users/482462 \nเว็บไซต์: https://marina71712.wixsite.com/0-0v",
-            "update_on": "อัพเดทเมื่อ"
+            "creator_credit": "💳 向其他创作者致谢",
+            "creator_credit_description": "其中一些创作者都是参与者有些是从外面拍的。。谢谢大家的支持。",
+            "natsuki_marina_credit": "资料：部分图片和头像 \n来自：https://www.pixiv.net/en/users/482462 \n网址：https://marina71712.wixsite.com/0-0v",
+            "update_on": "更新时间"
         },
         "dead": {
-            "suicide": "%s ตัดสินใจที่จะฆ่าตัวตาย 💔 หลับให้สบาย"
+            "suicide": "%s 自杀💔安息吧"
         },
         "decode": {
-            "after": "หลังถอดรหัส",
-            "before": "ก่อนถอดรหัส",
-            "decode_message": "🔓 ถอดรหัสข้อความ",
-            "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "解码后",
+            "before": "解码前",
+            "decode_message": "🔓 解密消息",
+            "decode_success": "消息已被解密。"
         },
         "donate": {
-            "thank_you_in_advance_message": "❤️ ขอขอบคุณสำหรับการสนับสนุนผู้พัฒนาของฉันล่วงหน้านะคะ ฉันมีช่องทางสำหรับการสนับสนุนดังนี้คะ"
+            "thank_you_in_advance_message": "❤️ 感谢您提前支持我的开发人员。我有一个支持渠道如下。"
         },
         "eat": {
-            "already_eaten": "%s1 ได้กิน %s2 ลงไปในท้องแล้ว",
-            "do_not_eat_me": "ฉ..ฉันตัวเล็กนิดเดียวเอง ม..ไม่น่ากินหรอก..."
+            "already_eaten": "%s1 已经把 %s2 吃进肚子里了",
+            "do_not_eat_me": "我..我有点小。我……不好吃……"
         },
         "eight_ball": {
-            "answer": "คำตอบ",
-            "game": "🎱 เกม 8ball",
-            "question": "คำถาม",
-            "risk": "ใช้ดวงของคุณกับคำถามเพื่อแลกคำตอบ",
-            "roll_ball": "หมุนลูกบอลเลย!!"
+            "answer": "回答",
+            "game": "🎱 8 球游戏",
+            "question": "问题",
+            "risk": "在问题上使用你的运气来获得答案。",
+            "roll_ball": "滚球！！"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
-            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
-            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
-            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_emoji": "✅ **%s** 表情符号已被删除。",
+            "edited_emoji": "%s 表情符号已修复",
+            "uploading_you_emoji": "📤 正在上传您的表情符号...",
+            "you_emoji_is_ready": "%s 您的表情符号已准备就绪。让我们试试吧！"
         },
         "encode": {
-            "after": "หลังเข้ารหัส",
-            "before": "ก่อนเข้ารหัส",
-            "encode_message": "🔒 เข้ารหัสข้อความ",
-            "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+            "after": "加密后",
+            "before": "编码前",
+            "encode_message": "🔒 加密消息",
+            "encode_success": "消息已加密。"
         },
         "enlarge": {
-            "emoji_not_found": "❎ ดูเหมือนว่าจะไม่มีอีโมจินั้นนะหรือมันอาจจะไม่ใช่อีโมจิอะ",
-            "large_emoji": "อีโมจิตัวใหญ่ๆ",
-            "requested_by": "ร้องขอโดย %s"
+            "emoji_not_found": "❎ 表情符号好像不见了，或者它可能不是表情符号。",
+            "large_emoji": "大表情符号",
+            "requested_by": "%s请求"
         },
         "exp": {
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "error": "❎ ไม่สามารถตั้งค่าค่าประสบการณ์ของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "exp_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "level": "ชั้น (Level)",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ค่าประสบการณ์ของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา..."
+            "can_not_find_user": "❎ 找不到该成员。嗯.. 错别字了吗？",
+            "error": "❎ 无法设置此类会员的体验。请稍后再试。",
+            "experience": "经验值 (Exp)",
+            "exp_was_changed": "%s 累积所有经验等级有：",
+            "level": "等级",
+            "notification_complete": "✅设置完成...",
+            "set_by_staff": "您的体验由团队在此服务器上设置。",
+            "success": "✅设置完成..."
         },
         "filter": {
-            "add_filter": "🎼 เพิ่มรูปแบบเสียงที่จะต้องการเป็น **%s** เรียบร้อยแล้วคะ",
-            "available_filter": "รูปแบบการกรองที่พร้อมใช้งาน",
-            "available_filter_description": "ปรับเปลี่ยนรูปแบบเสียงเพลงให้ไพเราะมากยิ่งขึ้นด้วยการใช้รูปแบบทั้ง %s1 รูปแบบเหล่านี้ ```%s2```",
-            "clear_filter": "💨 ล้างรูปแบบเสียงทั้งหมดออกแล้ว ตอนนี้จะเป็นรูปแบบเสียงแบบปกติคะ",
-            "list_filter_description": "ขณะนี้มีรูปแบบที่กำลังใช้งานในคิวนี้อยู่ %s1 รูปแบบ\n```%s2```",
-            "list_filter_description_empty": "```ยังไม่มีรูปแบบเสียงที่กำลังใช้ในขณะนี้คะ```",
-            "list_filter_title": "รูปแบบเสียงที่กำลังใช้ในปัจจุบัน",
-            "no_queue": "❎ ไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "remove_filter": "🗑️ ลบรูปแบบเสียง **%s** ออกเรียบร้อยแล้วคะ",
-            "set_filter": "🎼 ตั้งค่ารูปแบบเสียงที่จะต้องการเป็น **%s**",
-            "sound_filtering": "❓ ต้องการปรับเปลี่ยนเสียงเพลงของคุณเป็นแบบไหนดีคะ?",
-            "unknown_filter": "❎ เอิ่มม..ฉันไม่รู้จักรูปแบบของเสียง `%s` คุณสามารถตรวจสอบได้โดยใช้ **available** หรือ **ava** คะ",
-            "unknown_input_option": "❓ คุณสามารถระบุพารามิเตอร์ได้ดังต่อไปนี้เลยคะ: add, remove, set, available, list, clear"
+            "add_filter": "🎼 添加所需的声音格式为 **%s** 。",
+            "available_filter": "可用的过滤器格式",
+            "available_filter_description": "使用这些 %s1 格式 ```%s2``` 个性化您的音乐",
+            "clear_filter": "💨 所有音频格式都已清除。现在它将是一种正常的声音格式。",
+            "list_filter_description": "此队列中当前有活动模式： %s1 模式\n```%s2```",
+            "list_filter_description_empty": "```当前没有使用音频格式。```",
+            "list_filter_title": "当前使用的音频格式",
+            "no_queue": "❎ 当前没有正在播放的歌曲。",
+            "not_queue_owner": "🚫 只有队列的所有者才能更改它。",
+            "remove_filter": "🗑️ 音频格式 **%s** 已被删除。",
+            "set_filter": "🎼 将首选音频格式设置为 **%s**",
+            "sound_filtering": "❓ 想改变音乐的声音吗？",
+            "unknown_filter": "❎ 嗯..我不知道声音 `%s的格式，你可以用**可用** 或 **ava**？",
+            "unknown_input_option": "❓ 您可以指定以下参数：add、remove、set、available、list、clear。"
         },
         "guild": {
-            "afk_channel_id": "รหัสช่อง AFK",
-            "afk_timeout": "เวลาจำกัด AFK",
-            "application_id": "รหัสแอปฯ",
-            "approximate_member_count": "สมาชิกโดยประมาณ",
-            "approximate_presence_count": "สถานะโดยประมาณ",
-            "available": "พร้อม",
-            "banner": "แบนเนอร์",
-            "create_at": "สร้างเมื่อ",
-            "create_timestamp": "สร้างวันที่",
-            "default_message_notification": "แจ้งเตือน",
-            "description": "คำอธิบาย",
-            "discovery_splash": "คำโปรย",
-            "do_not_have": "ไม่มี",
-            "explicit_content_filter": "การกรอง",
-            "features": "คุณสมบัติ",
-            "guild_available": "พร้อมใช้งาน",
-            "icon": "ภาพประจำตัว",
-            "id": "รหัส",
-            "info_date": "ข้อมูลของเมื่อ",
-            "joined_at": "เข้าร่วมเมื่อ",
-            "join_timestamp": "เข้าร่วมวันที่",
-            "large": "ขนาดใหญ่",
-            "maximum_members": "สมาชิกสูงสุด",
-            "maximum_presences": "สถานะสูงสุด",
-            "member_count": "สมาชิก",
-            "mfa_level": "ระดับ MFA",
-            "name": "ชื่อ",
-            "name_acronym": "ชื่อย่อ",
-            "no": "ไม่",
-            "none": "ไม่ใช่",
-            "nsfw_level": "ระดับ NSFW",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_id": "รหัสเจ้าของ",
-            "partnered": "มีส่วนร่วม",
-            "preferred_locale": "ขอบเขต",
-            "premium_subscription_count": "สมาชิกพิเศษ",
-            "premium_tier": "บูสต์เตอร์",
-            "public_updates_channel_id": "รหัสช่องอัพเดท",
-            "rules_channel_id": "รหัสช่องกติกา",
-            "server_info": "🗄 รายละเอียดข้อมูลเซิร์ฟเวอร์",
-            "server_info_description": "ข้อมูลเกี่ยวกับเซิร์ฟเวอร์โดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "specific_use": "💡 คุณสามารถระบุข้อมูลผู้ใช้เซิร์ฟเวอร์แบบเจาะจงได้ดังนี้: **%s**",
-            "splash": "รูปเชิญชวน",
-            "system_channel_id": "รหัสช่องระบบ",
-            "unavailable": "ไม่พร้อม",
-            "unknown": "ไม่ทราบ",
-            "vanity_url_code": "โค้ดเชิญ",
-            "vanity_url_uses": "เชิญแล้ว",
-            "verification_level": "การตรวจสอบ",
-            "verified": "ยืนยัน",
-            "widget_channel_id": "รหัสช่องวิตเจ็ด",
-            "widget_enabled": "วิตเจ็ด",
-            "yes": "ใช่"
+            "afk_channel_id": "挂机频道代码",
+            "afk_timeout": "限时AFK",
+            "application_id": "应用代码",
+            "approximate_member_count": "估计成员",
+            "approximate_presence_count": "估计状态",
+            "available": "准备好",
+            "banner": "横幅",
+            "create_at": "创建于",
+            "create_timestamp": "建造日期",
+            "default_message_notification": "警告",
+            "description": "描述",
+            "discovery_splash": "标语",
+            "do_not_have": "没有",
+            "explicit_content_filter": "过滤",
+            "features": "特征",
+            "guild_available": "可以使用",
+            "icon": "头像",
+            "id": "代码",
+            "info_date": "什么时候的信息",
+            "joined_at": "加入",
+            "join_timestamp": "加入日期",
+            "large": "大尺寸",
+            "maximum_members": "最大成员",
+            "maximum_presences": "最高地位",
+            "member_count": "成员",
+            "mfa_level": "MFA级别",
+            "name": "姓名",
+            "name_acronym": "缩写",
+            "no": "不",
+            "none": "不",
+            "nsfw_level": "NSFW级别",
+            "off": "关",
+            "on": "打开",
+            "owner_id": "所有者代码",
+            "partnered": "参加",
+            "preferred_locale": "范围",
+            "premium_subscription_count": "特别会员",
+            "premium_tier": "助推器",
+            "public_updates_channel_id": "更新频道代码",
+            "rules_channel_id": "规则框代码",
+            "server_info": "🗄 详细的服务器信息",
+            "server_info_description": "详细的服务器信息这是基于 Discord 的数据。",
+            "specific_use": "💡 您可以指定具体的服务器用户信息如下：**%s**",
+            "splash": "请柬图片",
+            "system_channel_id": "系统信道码",
+            "unavailable": "没有准备好",
+            "unknown": "不知道",
+            "vanity_url_code": "邀请代码",
+            "vanity_url_uses": "邀请",
+            "verification_level": "检查",
+            "verified": "确认",
+            "widget_channel_id": "witseven频道代码",
+            "widget_enabled": "悲伤",
+            "yes": "是的"
         },
         "help": {
-            "category": "หมวดหมู่: %s",
-            "client_permissions": "สิทธิ์ (บอท): %s",
-            "command": "คำสั่ง: %s",
-            "command_detail": "📑 รายละเอียดของคำสั่ง ",
-            "command_incorrect": "❎ คำสั่งไม่ถูกต้อง",
-            "command_incorrect_guide": "เอ๋...ไม่มีคำสั่งนี้นะคะ ลองตรวจสอบใหม่โดยพิมพ์ `/help` เพื่อดูรายการคำสั่งทั้งหมดของฉันคะ",
+            "category": "类别： %s",
+            "client_permissions": "权限（机器人）： %s",
+            "command": "订单: %s",
+            "command_detail": "📑 订单详情 ",
+            "command_incorrect": "❎ 顺序错误",
+            "command_incorrect_guide": "呃……我没有这个订单。请输入 `/help` 再次查看我的命令的完整列表。",
             "commands_description": [
-                "คำสั่งทั้งหมดที่ฉันได้เรียนหรือศึกษามา เข้าใจและใช้งานได้จริง",
-                "ซึ่งก่อนเรียกฉัน ต้องมีตัวนำหน้าคือ **/**",
-                "`<>` หมายถึงจำเป็น `()` คือประเภทของค่าที่นำเข้าและ `[]` เป็นตัวเลือกที่ไม่จำเป็นต้องตอบก็ได้",
-                "สำหรับรายละเอียดของแต่ละคำสั่งให้พิมพ์ว่า `/help [คำสั่ง]` แล้วคำอธิฐานจะเป็นจริง!!"
+                "我学习或研究过的所有命令。理解并实际使用",
+                "在打电话给我之前前缀必须是**/**。",
+                "`<>` 表示必需，`()` 是输入类型，`[]` 是可选的。",
+                "有关每个命令的详细信息，请输入 `/help [command]`，您的愿望就会实现！！"
             ],
-            "description": "คำอธิบาย: %s",
-            "document_name": "เอกสารข้อมูลช่วยเหลือ",
-            "how_to_use": "วิธีใช้: %s",
-            "no_description": "ไม่มีคำอธิบาย",
-            "no_need_permissions": "ไม่มีสิทธิ์ที่ต้องการ",
-            "request_by": "ร้องขอโดย",
-            "unknown_how_to_use": "ไม่มีวิธีการใช้งาน",
-            "user_permissions": "สิทธิ์ (ผู้ใช้): %s"
+            "description": "描述: %s",
+            "document_name": "帮助表",
+            "how_to_use": "帮助： %s",
+            "no_description": "没有说明",
+            "no_need_permissions": "没有必需的权限",
+            "request_by": "被要求",
+            "unknown_how_to_use": "没办法用",
+            "user_permissions": "权限（用户）： %s"
         },
         "impersonate": {
-            "member_not_found": "❎ ไม่พบสมาชิกดังกล่าวในเซิร์ฟเวอร์นี้เลยคะ",
-            "success": "✅ <@%s> ถูกเสกข้อความขึ้นมาแล้ว!"
+            "member_not_found": "❎ 在此服务器中找不到此类成员。",
+            "success": "✅ <@%s> 消息已创建！"
         },
         "invite": {
-            "can_not_create_invite_link": "❎ ไม่สามารถสร้างลิงค์เชิญได้ กรุณาลองใหม่อีกครั้ง",
-            "me_do_not_have_permission": "🚫 ฉันไม่มีสิทธิ์ในการสร้างลิงค์เชิญในช่องนี้คะ",
-            "membership_invitation_card": "บัตรเชิญสมาชิก",
-            "this_product_is_free": "สินค้านี้ฟรี ห้ามวางจำหนายต่อ"
+            "can_not_create_invite_link": "❎ 无法生成邀请链接请再试一次。",
+            "me_do_not_have_permission": "🚫 我无权在此频道中创建邀请链接。",
+            "membership_invitation_card": "会员邀请卡",
+            "this_product_is_free": "本产品免费，请勿转售。"
         },
         "join": {
-            "already_joined": "❎ เอ๋..แต่ฉันก็อยู่ด้วยแล้วนี่ไง?",
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "channel_joined": "✅ ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วค้าา...",
-            "joined": "▶️ ตอนนี้ฉันอยู่ในช่อง <#%s> เรียบร้อยแล้วคะ",
-            "no_channel": "❎ ไม่มีช่องนี้นะคะ พิมพ์ผิดหรือเปล่า?",
-            "not_in_channel": "❓ คุณต้องเข้าร่วมช่องก่อนนะคะ ไม่งั้นฉันไม่รู้ว่าช่องไหน =3="
+            "already_joined": "❎ 嗯..但我现在在这里？",
+            "another_player_is_playing": "🚫 您目前无法使用此订单。因为还有其他成员在演奏音乐",
+            "channel_joined": "✅ 我已经在频道 <#%s>...",
+            "joined": "▶️现在我已经在频道<#%s>了。",
+            "no_channel": "❎ 我没有这个频道。是打错了吗？",
+            "not_in_channel": "❓ 您必须先加入频道。不然不知道是哪个字段=3="
         },
         "jump": {
-            "can_not_jump": "❎ ดูเหมือนว่าจะไม่มีหมายเลขคิวดังกล่าวเลยนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "jumped": "➿ กระโดดไปยังเพลงใหม่ในคิวเลขที่ %s แล้วคะ",
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ"
+            "can_not_jump": "❎ 好像根本就没有这个排队号。请再检查一次。",
+            "jumped": "➿ 已跳转到队列编号 %s 中的新歌曲。",
+            "no_queue": "❎ 目前没有正在播放的歌曲。不能穿越",
+            "not_queue_owner": "🚫 只有队列的所有者才能更改它。"
         },
         "kick": {
-            "can_not_find_user": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ",
-            "kicked_out": "%s ถูกเตะออก",
-            "members_have_a_higher_role": "❎ คุณไม่สามารถเตะผู้ที่มีบทบาทสูงกว่าคุณได้",
-            "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถเตะสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "no_reason": "สมาชิกที่เตะไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_kick": "เตะโดย: %s1\nเหตุผล: %s2"
+            "can_not_find_user": "❎ 我找不到这个成员。请再检查一次。",
+            "kicked_out": "%s 被踢出",
+            "members_have_a_higher_role": "❎ 你不能踢比你高的人。",
+            "members_have_a_higher_role_than_me": "❎ 我不能踢那个成员。因为他的角色比我高",
+            "no_reason": "踢人的成员没有给出理由。",
+            "reason_for_kick": "踢人： %s1\n原因： %s2"
         },
         "kill": {
-            "do_not_kill_me": "❎ ค คุณจะทำอย่างงี้..ก กับฉันไม่ได้นะคะ ฮืออ...",
-            "killed": "%s1 ได้ฆ่าคุณ %s2 เรียบร้อยแล้ว 🔪"
+            "do_not_kill_me": "❎ 你会做这样的事情..跟我没关系，哈哈。。。",
+            "killed": "%s1 已经杀了你 %s2 🔪"
         },
         "leave": {
-            "another_player_is_playing": "🚫 คุณยังไม่สามารถใช้งานคำสั่งนี้ได้ในขณะนี้ เนื่องจากมีสมาชิกอื่นกำลังเล่นเพลงอยู่คะ",
-            "not_in_any_channel": "❎ ตอนนี้ฉันยังไม่ได้อยู่ในช่องไหนเลย...",
-            "now_leave": "◀️ ฉันออกมาจากช่องปัจจุบันแล้วคะ"
+            "another_player_is_playing": "🚫 您目前无法使用此订单。因为还有其他成员在演奏音乐",
+            "not_in_any_channel": "❎ 现在我还没有在任何频道上...",
+            "now_leave": "◀️ 我退出了当前频道。"
         },
         "level": {
-            "delete_error": "❎ ไม่พบผู้ใช้รายนี้เลยคะ",
-            "delete_success": "✅ ลบระดับประสบการณ์ของสมาชิกนี้เรียบร้อยแล้วคะ!",
-            "deleting": "📁 กำลังลบข้อมูลระดับประสบการณ์ของสมาชิกนี้",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "level_was_changed": "%s ได้สะสมระดับประสบการณ์ทั้งหมด มี:",
-            "notification_complete": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "set_by_staff": "ระดับชั้นของคุณถูกตั้งค่าโดยทีมในเซิร์ฟเวอร์นี้",
-            "set_error": "❎ ไม่สามารถตั้งค่าระดับชั้นของสมาชิกดังกล่าวได้คะ โปรดลองใหม่อีกครั้งในภายหลังนะคะ",
-            "set_success": "✅ ตั้งค่าเสร็จเรียบร้อยแล้วค่าา...",
-            "user_current_no_level": "❎ สมาชิกดังกล่าวไม่มีระดับชั้นอยู่แล้ว"
+            "delete_error": "❎ 根本找不到这个用户。",
+            "delete_success": "✅ 该会员的经验等级已被删除！",
+            "deleting": "📁 删除该成员的经验等级数据。",
+            "experience": "经验值 (Exp)",
+            "level": "等级",
+            "level_was_changed": "%s 累积所有经验等级有：",
+            "notification_complete": "✅设置完成...",
+            "set_by_staff": "您的班级由该服务器上的团队设置。",
+            "set_error": "❎ 无法设置此类成员的级别。请稍后再试。",
+            "set_success": "✅设置完成...",
+            "user_current_no_level": "❎ 此类成员没有等级。"
         },
         "leveling": {
-            "bot_do_not_have_level": "❎ บอทจะไม่มีเลเวลนะคะรวมถึงฉันด้วยคะ",
-            "can_not_find_user": "❎ ไม่พบสมาชิกรายนี้นะคะ เอ๋..พิมพ์ผิดหรือเปล่า?",
-            "experience": "ค่าประสบการณ์ (Exp)",
-            "level": "ชั้น (Level)",
-            "user_no_data": "💨 อืมม...สมาชิกรายนี้ยังไม่มีระดับชั้นและค่าประสบการณ์เลยคะ",
-            "your_experience": "ค่าประสบการณ์ของคุณ"
+            "bot_do_not_have_level": "❎ 机器人不会有等级，包括我。",
+            "can_not_find_user": "❎ 找不到该成员。嗯.. 错别字了吗？",
+            "experience": "经验值 (Exp)",
+            "level": "等级",
+            "user_no_data": "💨 嗯...该会员没有等级和经验。",
+            "your_experience": "您的体验"
         },
         "license": {
-            "copyright_content": "📝 เนื้อหาที่มีลิขสิทธิ์"
+            "copyright_content": "📝 受版权保护的内容"
         },
         "logs": {
-            "can_not_delete_file": "❎ ไม่สามารถลบไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "can_not_read_file": "❎ ไม่สามารถอ่านไฟล์ล็อกดังกล่าวได้คะ\n```JavaScript\n%s\n```",
-            "file_has_been_deleted": "✅ **%s** ถูกลบแล้วเรียบร้อยคะ",
-            "file_not_found": "❎ ไม่พบไฟล์ที่มีชื่อ **%s** ในโฟลเดอร์เลยคะ",
-            "folder_empty": "💨 ขณะนี้ไฟล์ล็อกในโฟลเดอร์ว่างเปล่า ลองกลับมาใหม่อีกครั้งในภายหลังนะคะ",
-            "found_file": "พบ %s1 รายการของไฟล์:\n```%s2```",
-            "owner_only": "🚫 ขออภัย..คำสั่งนี้สามารถใช้งานได้เฉพาะผู้ดูแลระบบเท่านั้นคะ"
+            "can_not_delete_file": "❎ 不能删除上面的日志文件。0\n``JavaScript\n%s\n```",
+            "can_not_read_file": "❎ 无法读取上面的日志文件\n```JavaScript\n%s\n```",
+            "file_has_been_deleted": "✅ **%s** 已删除",
+            "file_not_found": "❎ 在文件夹中找不到名为 **%s** 的文件。",
+            "folder_empty": "💨 现在文件夹中的日志文件是空的。请稍后再回来尝试。",
+            "found_file": "找到 %s1 个文件条目：\n```%s2```",
+            "owner_only": "🚫 抱歉..此命令只能由管理员使用。"
         },
         "lyrics": {
-            "can_not_find_lyrics": "ไม่พบเนื้อเพลงของ %s.",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "playing_lyrics": "📋 เนื้อเพลงของเพลงที่กำลังเล่น"
+            "can_not_find_lyrics": "找不到 %s的歌词。",
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "playing_lyrics": "📋 当前播放歌曲的歌词"
         },
         "meme": {
-            "can_not_fetch": "ดึงข้อมูลมีมไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
-            "meme_not_found": "ไม่พบมีมประเภทที่ตรงกับ %s"
+            "can_not_fetch": "无法获取表情包。请再试一次。",
+            "meme_not_found": "未找到类型匹配 %s的模因。"
         },
         "minecraft": {
-            "address": "ที่อยู่",
-            "do_not_have": "ไม่มี",
-            "ip": "ที่อยู่ IP",
-            "last_check": "ตรวจสอบล่าสุดเมื่อ",
-            "maximum_player_count": "จำนวนผู้เล่นสูงสุด",
-            "motd": "คำอธิบาย",
-            "player_in_server": "ผู้เล่นในเซิร์ฟเวอร์",
-            "port": "พอร์ท",
-            "server_available": "🟢 เซิร์ฟเวอร์นี้กำลังเปิดให้บริการ",
-            "server_unavailable": "🔴 เซิร์ฟเวอร์นี้ได้ปิดไปชั่วคราว",
-            "skin_of": "🎴 สกินของ %s",
-            "version": "เวอร์ชั่น"
+            "address": "地址",
+            "do_not_have": "没有",
+            "ip": "IP地址",
+            "last_check": "最后检查",
+            "maximum_player_count": "最多玩家人数",
+            "motd": "描述",
+            "player_in_server": "服务器玩家",
+            "port": "港口",
+            "server_available": "🟢 这个服务器目前是开放的。",
+            "server_unavailable": "🔴本服务器暂时关闭。",
+            "skin_of": "🎴 %s皮肤",
+            "version": "版本"
         },
         "musicInfo": {
-            "detail": "📄 รายละเอียดของเพลงที่กำลังเล่น",
-            "download_link": "📥 ลิงค์ดาวน์โหลด",
-            "duration": "🕒 ระยะเวลา",
-            "id": "🆔 ไอดี",
-            "link": "🔗 ลิงค์",
-            "music_name": "🎵 ชื่อเพลง",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "uploader": "🎬 ผู้อัพโหลด"
+            "detail": "📄 当前播放歌曲的详细信息",
+            "download_link": "📥 下载链接",
+            "duration": "🕒持续时间",
+            "id": "🆔身份证",
+            "link": "🔗 链接",
+            "music_name": "🎵 歌名",
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "uploader": "🎬 上传者"
         },
         "nekos": {
-            "can_not_fetch_data": "❎ ไม่สามารถรับภาพที่คุณต้องการได้ชั่วคราว กรุณาลองใหม่อีกครั้งในภายหลัง",
-            "request_by": "ร้องขอโดย %s"
+            "can_not_fetch_data": "❎ 暂时无法得到您想要的图片。请稍后再试。",
+            "request_by": "%s请求"
         },
         "nowPlaying": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: `%s`",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้"
+            "autoplay": "📻 自动播放",
+            "filter": "🎼 语音过滤模式：`%s",
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "owner_this_queue": "%s 是这个队列的所有者"
         },
         "numbers": {
-            "result": "ผลลัพธ์คือ %s"
+            "result": "结果为 %s"
         },
         "paste": {
-            "backend_not_response": "❎ ไม่พบการตอบกลับจากเซิร์ฟเวอร์เลยคะ คุณสามารถลองใหม่อีกครั้งในภายหลังได้คะ",
-            "file": "ไฟล์",
-            "raw": "ดิบ"
+            "backend_not_response": "❎ 服务器根本没有响应。您可以稍后再试。",
+            "file": "文件",
+            "raw": "生的"
         },
         "pause": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮ่ะ..",
-            "paused": "⏸ หยุดเล่นเพลงชั่วคราวแล้วคะ"
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "not_paused": "📼 现在我卡住了。今天看起来怪怪的。。",
+            "paused": "⏸ 现在暂停音乐。"
         },
         "ping": {
-            "connection": "📡 การเชื่อมต่อ",
-            "info": "เวลาแฝงไปกลับ คือ %s1 มิลลิวินาที\nอัตราการทำงานของเว็บซ็อกเก็ต คือ %s2 มิลลิวินาที",
-            "result": "🏓 ปอง",
-            "waiting": "🏓 ปิง..."
+            "connection": "📡连接",
+            "info": "往返延迟为 %s1 毫秒\nWeb 套接字正常运行时间为 %s2 毫秒",
+            "result": "🏓乒乓球",
+            "waiting": "🏓 平..."
         },
         "play": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "no_queue": "❎ 现在我还没有播放任何歌曲。",
+            "not_in_channel": "❓ 先进入任何频道。否则，别听我的..."
         },
         "previous": {
-            "no_previous_song_queue": "📼 ยังไม่มีเพลงที่พึ่งเล่นไปเมื่อสักครู่นี้เลยอะ",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "previous": "⏮ กลับไปเล่นเพลงที่ผ่านมาแล้ว"
+            "no_previous_song_queue": "📼 最近没有播放过的歌曲。",
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "previous": "⏮ 返回上一首歌曲"
         },
         "purge": {
-            "message_cleared": "ลบข้อความจำนวน `%s ข้อความ` ให้เรียบร้อยแล้วคะ 💨"
+            "message_cleared": "已成功删除 `%s 消息`💨"
         },
         "qrcode": {
-            "qrcode_success": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ",
-            "qrcode_title": "🧩 คิวอาร์โค้ด"
+            "qrcode_success": "您的二维码可以使用了。",
+            "qrcode_title": "🧩二维码"
         },
         "quality": {
-            "advice_embed_description": "```คุณภาพในปัจจุบัน: %s```\nบางครั้งปัญหาอาจเกิดจากเซิร์ฟเวอร์ที่มีการเข้าถึงการใช้งานมากจนทำให้เกิดปัญหาด้านประสิทธิภาพ อย่างไรก็ตามฉันแนะนำให้คุณควรตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณก่อนตั้งค่าสิ่งนี้\n`0` - ใช้ **OPUS** ในการบีบอัดไฟล์เสียง ซึ่งจะทำให้ได้คุณภาพเสียงที่ดีขึ้นแต่ก็ใช้ทรัพยากรมากขึ้นเช่นกัน **(แนะนำ)**\n`1` - ใช้เสียงจากต้นทางโดยตรง ซึ่งจะทำให้ได้ประสิทธิดีขึ้นแต่ก็ใช้ทรัพยากรน้อยลง",
-            "advice_embed_footer_text": "คุณสามารถตั้งค่าคุณภาพเสียงเพิ่มเติมได้จากการตั้งค่าของ Discord: การตั้งค่า > เสียงและวิดีโอ > ขั้นสูง",
-            "advice_embed_title": "ปรับแต่งคุณภาพเสียง",
-            "focus_on_high_quality": "เน้นคุณภาพสูง",
-            "low_efficiency": "เน้นประสิทธิภาพต่ำ",
-            "opus_mode_selected": "🎛️ ตอนนี้ฉันได้ใช้ **OPUS** ในการช่วยบีบอัดไฟล์เสียงแล้ว คุณภาพของเสียงจะดีขึ้น",
-            "raw_mode_selected": "🎛️ เปลี่ยนไปใช้เสียงจากทางต้นฉบับแล้ว อาจจะทำให้คุณภาพเสียงลดลง"
+            "advice_embed_description": "```当前质量： %s```\n有时问题可能是由于服务器访问过多而导致性能问题。但是，我建议您在设置之前检查您的互联网连接\n`0` - 使用**OPUS** 压缩音频文件。这将为您提供更好的音质，但也会使用更多资源**（推荐）**\n`1` - 直接使用来自源的声音。这将提供更好的性能但使用更少的资源。",
+            "advice_embed_footer_text": "您可以从 Discord 设置中设置额外的音频质量：设置 > 音频和视频 > 高级。",
+            "advice_embed_title": "自定义音质",
+            "focus_on_high_quality": "专注于高质量",
+            "low_efficiency": "专注于低性能",
+            "opus_mode_selected": "🎛️ 我现在已经使用 **OPUS** 来帮助压缩音频文件。音质会提高。",
+            "raw_mode_selected": "🎛️ 切换到原来的声音它可能会降低音质。"
         },
         "queue": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "filter": "🎼 รูปแบบการกรองเสียง: %s",
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "previous_queue": "**คิวก่อนหน้านี้**",
-            "waiting_in_queue": "**กำลังรอเล่นในคิวถัดไป**"
+            "autoplay": "📻 自动播放",
+            "filter": "🎼 音频过滤器模式： %s",
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "owner_this_queue": "%s 是这个队列的所有者",
+            "previous_queue": "**上一个队列**",
+            "waiting_in_queue": "**等待下一个队列**"
         },
         "queueStatus": {
-            "autoplay": "📻 เล่นอัตโนมัติ",
-            "duration": "🕒 ระยะเวลา",
-            "filter": "🎼 รูปแบบการกรองเสียง",
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "now": "⌚ ตอนนี้",
-            "off": "ปิด",
-            "on": "เปิด",
-            "owner_this_queue": "%s คือเจ้าของคิวนี้",
-            "paused": "หยุดชั่วคราว",
-            "playing": "กำลังเล่น",
-            "queue_status": "📑 สถานะของคิวเพลงปัจจุบัน",
-            "repeat": "🔁 ทำซ้ำ",
-            "repeat_off": "ไม่ได้เปิด",
-            "repeat_this_queue": "คิวนี้",
-            "repeat_this_song": "เพลงนี้",
-            "volume": "🔉 ระดับเสียง"
+            "autoplay": "📻 自动播放",
+            "duration": "🕒持续时间",
+            "filter": "🎼 音频过滤模式",
+            "no_queue": "❎ 现在我还没有播放任何歌曲。",
+            "now": "⌚现在",
+            "off": "关",
+            "on": "打开",
+            "owner_this_queue": "%s 是这个队列的所有者",
+            "paused": "暂停",
+            "playing": "玩",
+            "queue_status": "📑 当前歌曲队列状态",
+            "repeat": "🔁 重复",
+            "repeat_off": "没开",
+            "repeat_this_queue": "这个队列",
+            "repeat_this_song": "这首歌",
+            "volume": "🔉 音量"
         },
         "reboot": {
-            "dm_to_owner": "**:arrows_counterclockwise: มีคำขอสำหรับการรีสตาร์ทระบบใหม่ค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_reboot": "✅ เริ่มระบบใหม่แล้วคะ!!",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "rebooting": "🔄 กำลังเริ่มระบบใหม่..."
+            "dm_to_owner": "**:arrows_counterclockwise: 有重新启动新系统的请求！！**\n为了确认是您，请在您运行命令的服务器中输入此密码\n如果您不想继续，可以忽略它\n谢谢你直到今天还照顾我:)\n||%s||",
+            "not_owner": "🛑 不要.. 不要接受它。此功能仅需要最高权限。",
+            "now_reboot": "✅ 开启新系统！！",
+            "password_is_incorrect": "❎ 密码不正确。请再检查一次。",
+            "rebooting": "🔄 重启..."
         },
         "reload": {
-            "invalid_command": "❎ อืมม...ดูเหมือนจะไม่มีคำสั่งนี้นะคะ...ลองตรวจสอบดีๆ อีกครั้งนะคะว่าพิมพ์ถูกหรือเปล่า?",
-            "reloaded": "✅ %s โหลดใหม่เรียบร้อยแล้ว!!",
-            "reload_error": "❌ แย่ละ..ฉันพยายามโหลดคำสั่ง %s ใหม่แล้ว แต่ทำไม่ได้อะ"
+            "invalid_command": "❎ 嗯……好像没有这个订单……你仔细看看再一次，它是否正确？",
+            "reloaded": "✅ %s 重新加载成功！！",
+            "reload_error": "❌该死的..我试图重新加载命令 %s 但我不能。"
         },
         "remove": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "removed": "❌ ลบ **%s** ออกจากคิวแล้วคะ.",
-            "too_much": "❎ ไม่มีคิวดังกล่าวคะ ลองตรวจสอบใหม่ดูอีกครั้งนะคะ"
+            "no_queue": "❎ 现在我还没有播放任何歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "removed": "❌ 从队列中删除了 **%s**。",
+            "too_much": "❎ 没有这样的队列。请再检查一次。"
         },
         "repeat": {
-            "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "off": "ปิดการทำซ้ำ",
-            "repeated": "🔁 %sปัจจุบันนี้แล้วคะ",
-            "repeat_queue": "ทำซ้ำคิว",
-            "repeat_song": "ทำซ้ำเพลง",
-            "too_much": "❎ ไม่มีโหมดที่สูงกว่านี้แล้วคะ"
+            "no_queue": "❎ 目前没有正在播放的歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "off": "重复",
+            "repeated": "🔁 现在 %s",
+            "repeat_queue": "重复队列",
+            "repeat_song": "重复这首歌",
+            "too_much": "❎没有比这更高的模式了。"
         },
         "resume": {
-            "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_playing": "📼 เห..ตอนนี้ฉันก็กำลังเล่นอยู่นะ",
-            "resumed": "▶️ กำลังเล่นเพลงต่อจากจุดเดิมแล้วคะ"
+            "no_queue": "❎ 现在我还没有播放任何歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "now_playing": "📼嘿..现在我在玩。",
+            "resumed": "▶️ 这首歌是从同一个点播放的。"
         },
         "rip": {
-            "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้วนะค่ะ"
+            "no_image": "❎ 哦...看起来像这张照片它可能已被删除或移动到另一个地方。"
         },
         "rpc": {
-            "answered": "คุณได้เลือกคำตอบของคุณแล้ว",
-            "bot_winner": "เย้!..ฉันชนะคุณ <@%s>",
-            "can_not_play_with_another_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทตัวอื่นได้นะคะ",
-            "choose_options": "เลือกตัวเลือกด้านล่างนี้ได้เลย",
-            "game_timeout": "เกมนี้หมดเวลาแล้วค่ะ ขอบคุณที่มาสนุกกันนะคะ",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะไม่อยู่ในเซิร์ฟเวอร์นี้แล้วแฮ่ะ",
-            "rock_paper_scissors": "🎮 เป่ายิ้งฉุบ",
-            "tie": "เสมอกัน!",
-            "user_answered": "%s ได้เลือกคำตอบแล้ว กำลังรอคำตอบจากอีกฝั่ง...",
-            "user_winner": "<@%s> คือผู้ชนะ!",
-            "your_answer": "ตอนนี้คุณได้เลือก %s"
+            "answered": "你已经选择了你的答案。",
+            "bot_winner": "耶！...我打败了你 <@%s>",
+            "can_not_play_with_another_bot": "❎ 你不能和其他机器人一起玩这个游戏。",
+            "choose_options": "选择下面的一个选项。",
+            "game_timeout": "此游戏已过期。谢谢你玩得开心。",
+            "member_not_found": "❎ 此类成员似乎已不在此服务器上。",
+            "rock_paper_scissors": "🎮石头剪刀布",
+            "tie": "领带！",
+            "user_answered": "已选择%s 答案。等待对方的回答...",
+            "user_winner": "<@%s> 是赢家！",
+            "your_answer": "您现在选择了 %s"
         },
         "say": {
-            "success": "✅ ส่งข้อความเรียบร้อยแล้วคะ"
+            "success": "✅ 您的信息已发送。"
         },
         "search": {
-            "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่...",
-            "invalid_number": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม",
-            "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย...",
-            "playlist_type": "เพลย์ลิสต์",
-            "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ",
-            "searching": "🔍 ค้นหา%sที่เกี่ยวข้อง",
-            "song_type": "เพลง",
-            "timer_choose": "มีเวลาในการเลือก%s 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-            "title_results": "ผลการค้นหาของ%sดังกล่าว:",
-            "user_not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา..."
+            "get_list_of_songs": "📋 我已经收到了我想要的歌曲列表。马上就会开始播放音乐...",
+            "invalid_number": "🔴 最近的搜索已被取消。您可以通过键入相同的命令再次搜索。",
+            "no_results": "❎ 我试图搜索这首歌，但找不到任何结果......",
+            "playlist_type": "播放列表",
+            "search_cancelled": "🕘 取消搜索..因为没有找到歌曲选择。",
+            "searching": "🔍 找到%s相关",
+            "song_type": "歌曲",
+            "timer_choose": "有一个时间可以选择%s 60秒，如果要取消可以打一个不相关的数字或者等到时间结束。",
+            "title_results": "%s这样的结果：",
+            "user_not_in_channel": "❓ 先进入任何频道。否则，别听我的..."
         },
         "seek": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "seek_guide": "❓ ต้องการเปลี่ยนเวลาของเพลงที่เล่นอยู่เป็นเวลากี่วินาทีดีคะ? ตอนนี้เล่นอยู่วินาทีที่ %s",
-            "sought": "🕘 เปลี่ยนแปลงเวลาของเพลงที่เล่นอยู่ในปัจจุบันแล้วคะ",
-            "too_much": "❎ เวลาของเพลงนี้อยู่ที่ %s เกินกว่านี้ก็ไม่มีอะไรอะ"
+            "no_queue": "❎ 现在没有正在播放的歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "seek_guide": "❓ 你想改变当前播放歌曲的时间多少秒？现在在 %s秒播放",
+            "sought": "🕘 更改了当前播放歌曲的时间。",
+            "too_much": "❎ 这首歌的时间是 %s ，没有别的了。"
         },
         "set_command": {
-            "can_not_manage_this_command": "❎ คุณไม่สามารถจัดการกับคำสั่งนี้ได้",
-            "command_input_empty": "❎ กรุณากรอกคำสั่งที่ต้องการจะจัดการด้วยคะ",
-            "command_not_found": "❎ ไม่พบคำสั่งดังกล่าว ลองตรวจสอบอักขระหรือตัวอักษรใหม่อีกครั้ง",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-command** - จัดการคำสั่งของฉันทั้งหมด เช่น `เปิด`-||ปิด|| ใช้งานคำสั่งแต่ละรายการ เป็นต้น\n\n**คำสั่ง** - (%s1):\n%s2\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s3```",
-            "disabled": "☑️ ปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "enabled": "✅ เปิดใช้งานคำสั่ง **%s** เรียบร้อยแล้วคะ",
-            "title": "🪄 คำสั่ง"
+            "can_not_manage_this_command": "❎ 你不能操纵这个命令。",
+            "command_input_empty": "❎ 请输入您要处理的订单。",
+            "command_not_found": "❎ 没有找到上面的命令。尝试再次检查字符或字符。",
+            "data_at": "什么时候的信息",
+            "description": "**set-command** - 处理我的所有命令，例如 `on`-||off||，运行单个命令等\n\n**commands** - (%s1):\n%s2\n\n> you This can be通过键入更改：\n> ```%s3```",
+            "disabled": "☑️订单已禁用**%s**。",
+            "enabled": "✅ 订单激活 **%s** 已经。",
+            "title": "🪄 命令"
         },
         "set_language": {
-            "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา %s อยู่แล้วนะ",
-            "description": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาของเซิร์ฟเวอร์นี้คือ: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
-            "set_success": "✅ เปลี่ยนภาษาเป็น **%s** เรียบร้อยแล้วคะ",
-            "title": "🌐 ภาษา"
+            "already_set": "❎ 嗯..但是这个服务器已经在使用语言 %s",
+            "description": "**set-language** - 设置您的语言，这将极大地促进您的理解\n\n本服务器的语言是：`%s1`\n\n> 您可以通过键入更改它：\n> ```%s2. ```",
+            "set_success": "✅ 已经将语言更改为 **%s**。",
+            "title": "🌐 语言"
         },
         "set_notify": {
-            "channel_not_found": "❎ ไม่พบช่องดังกล่าวในเซิร์ฟเวอร์นี้เลยอะ ลองตรวจสอบใหม่อีกครั้งนะคะ",
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-notify** - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์\n\n**alert** - การแจ้งเตือนทั่วไป: %s1\n**channelCreate** - ช่องใหม่: %s2\n**channelDelete** - ช่องถูกลบ: %s3\n**channelPinsUpdate** - ช่องได้รับการปักหมุด: %s4\n**channelUpdate** - ช่องได้รับการอัพเดท: %s5\n**emojiCreate** - อีโมจิใหม่: %s6\n**emojiDelete** - อีโมจิถูกลบ: %s7\n**emojiUpdate** - อีโมจิได้รับการอัพเดท: %s8\n**guildBanAdd** - สมาชิกถูกแบน: %s9\n**guildBanRemove** - สมาชิกถูกปลดแบน: %s10\n**guildIntegrationsUpdate** - อัปเดตการรวมกิลด์: %s11\n**guildMemberAdd** - สมาชิกเข้าร่วมเซิร์ฟเวอร์: %s12\n**guildMemberRemove** - สมาชิกออกจากเซิร์ฟเวอร์: %s13\n**guildMembersChunk** - ได้รับสมาชิกกิลด์จำนวนมาก: %s14\n**guildUnavailable** - เซิร์ฟเวอร์ไม่พร้อมใช้งาน: %s15\n**inviteCreate** - ลิงค์เชิญถูกสร้าง: %s16\n**inviteDelete** - ลิงค์เชิญถูกลบ: %s17\n**roleCreate** - บทบาทถูกสร้าง: %s18\n**roleDelete** - บทบาทถูกลบ: %s19\n**roleUpdate** - บทบาทได้รับการอัพเดท: %s20\n**stageInstanceCreate** - เวทีถูกสร้าง: %s21\n**stageInstanceDelete** - เวทีถูกลบ: %s22\n**stageInstanceUpdate** - เวทีได้รับการอัพเดท: %s23\n**stickerCreate** - สติกเกอร์ถูกสร้าง: %24\n**stickerDelete** - สติกเกอร์ถูกลบ: %s25\n**stickerUpdate** - สติกเกอร์ได้รับการอัพเดท: %s26\n**threadCreate** - เธรดถูกสร้าง: %s27\n**threadDelete** - เธรดถูกลบ: %s28\n**threadUpdate** - เธรดได้รับการอัพเดท: %s29\n**webhookUpdate** - เว็บฮุกได้รับการอัพเดท: %s30\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s31```",
-            "not_set": "`ไม่ได้ตั้งค่า`",
-            "remove_success": "✅ ลบการแจ้งเตือนประเภท `%s` ออกเรียบร้อยแล้วค่ะ",
-            "set_success": "✅ ตั้งค่าการแจ้งเตือนประเภท `%s1` เป็นช่อง `<#%s2>` เรียบร้อยแล้วค่ะ",
-            "title": "🔔 การแจ้งเตือน",
-            "type_not_found": "❎ อืมม...ดูเหมือนว่าจะไม่มีประเภทดังกล่าวนะคะ ตอนนี้ยังมีแค่ประเภทเหล่านี้: %s"
+            "channel_not_found": "❎ 在此服务器中找不到任何此类频道。请再检查一次。",
+            "data_at": "什么时候的信息",
+            "description": "**set-notify** - 设置每种类型的通知以接收来自服务器的最新信息\n\n**alert** - 一般通知： %s1\n**channelCreate** - 新频道： %s2\n* *channelDelete* * - 频道删除： %s3\n**channelPinsUpdate** - 频道固定： %s4\n**channelUpdate** - 频道更新： %s5\n**emojiCreate** - E 新表情符号： %s6\n**emojiDelete** - 表情符号删除： %s7\n**emojiUpdate** - 表情符号更新： %s8\n**guildBanAdd** - 成员被禁止： %s9\n**guildBanRemove** - 成员解禁： %s10\n**guildIntegrationsUpdate** - 公会集成更新： %s11\n**guildMemberAdd** - 成员加入服务器： %s12\n**guildMemberRemove** - 成员离开服务器： %s13\n**guildMembersChunk** - 获得许多公会成员： %s14\n**guildUnavailable* * - 服务器不可用： %s15\n**inviteCreate** - 创建邀请链接： %s16\n**inviteDelete** - 删除邀请链接： %s17\n**roleCreate** - 创建角色： %s18\n**roleDelete* * - 角色删除： %s19\n* *roleUpdate** - 角色更新： %s20\n**stageInstanceCreate** - 舞台创建： %s21\n**stageInstanceDelete** - 舞台删除： %s22\n**stageInstanceUpdate** -舞台已更新： %s23\n**stickerCreate** - 贴纸已创建： %24\n**stickerDelete** - 贴纸已删除： %s25\n**stickerUpdate** - 贴纸已更新： %s26\n**threadCreate** - 主题创建： %s27\n**threadDelete** - 线程已删除： %s28\n**threadUpdate** - 线程已更新： %s29\n**webhookUpdate** - Webhook 已更新： %s30\n\n> 您可以通过键入以下内容来更改它：\n>```%s31```",
+            "not_set": "`未设置`",
+            "remove_success": "✅ 成功删除通知类型 `%s。",
+            "set_success": "✅ 警报类型 `%s1` 已设置为通道 `<#%s2>`。",
+            "title": "🔔 通知",
+            "type_not_found": "❎ 嗯……好像没有这个类型。目前只有这些类型可用： %s"
         },
         "set_personal": {
-            "data_at": "ข้อมูลของเมื่อ",
-            "description": "**set-personal** - ตั้งค่าการอนุญาตสำหรับการดูข้อมูลส่วนตัวของคุณ (มีผลเฉพาะกับ Shioru เท่านั้น)\n\nสามารถดูโปรไฟล์ได้: `%s1`\nสามารถดูข้อมูลใน Discord ได้: `%s2`\nสามารถดูรหัสประจำตัวได้: `%s3`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s4```",
-            "false_success": "✅ %s ของคุณได้รับการยกเลิกการอนุญาตแล้วคะ",
-            "no": "ไม่ใช่",
-            "title": "📄 ข้อมูลส่วนบุคคล",
-            "true_success": "✅ %s ของคุณได้รับการอนุญาตแล้วคะ",
-            "yes": "ใช่"
+            "data_at": "什么时候的信息",
+            "description": "**set-personal** - 设置查看个人数据的权限。 （仅对 Shioru 有效）\n\n可以查看个人资料：`%s1`\n可以查看 Discord 信息：`%s2`\n可以查看 ID：`%s3`\n\n> 您可以通过键入更改它：\n> ```%s4 ```",
+            "false_success": "✅ %s 您的授权已被取消。",
+            "no": "不",
+            "title": "📄 个人信息",
+            "true_success": "✅ 您的 %s 已被授权。",
+            "yes": "是的"
         },
         "settings": {
-            "description": "คุณสามารถกำหนดค่าตามความต้องการของคุณได้โดยใช้งานคำสั่งเหล่านี้",
-            "languages": "🌐 ภาษา (เซิร์ฟเวอร์)",
-            "note": "หมายเหตุ: บางคำสั่งอาจจะต้องการสิทธิ์บางอย่างก่อนทำงาน",
-            "notification": "🔔 การแจ้งเตือน (เซิร์ฟเวอร์)",
-            "personal": "📄 ข้อมูลส่วนบุคคล (ส่วนตัว)",
-            "prefix": "❕ คำสั่ง (เซิร์ฟเวอร์)",
-            "title": "⚙️ การตั้งค่า"
+            "description": "您可以使用这些命令根据您的需要进行配置。",
+            "languages": "🌐 语言（服务器）",
+            "note": "注意：某些命令在运行之前可能需要特定权限。",
+            "notification": "🔔 通知（服务器）",
+            "personal": "📄 个人信息（个人）",
+            "prefix": "❕ 命令（服务器）",
+            "title": "⚙️ 设置"
         },
         "shuffle": {
-            "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "now_shuffle": "🔀 เริ่มสับเปลี่ยนคิวแล้ว..."
+            "no_queue": "❎ 现在没有正在播放的歌曲。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "now_shuffle": "🔀 开始切换队列..."
         },
         "shutdown": {
-            "dm_to_owner": "**:red_circle: มีคำขอสำหรับการปิดระบบค่าา!!**\nเพื่อยืนยันว่าเป็นท่านกรุณากรอกรหัสผ่านนี้ในเซิร์ฟเวอร์ที่ท่านเรียกใช้คำสั่ง\nท่านสามารถละเว้นได้หากไม่ต้องการดำเนินการต่อ\nขอขอบคุณที่ท่านยังดูแลฉันมาจนถึงทุกวันนี้นะคะ :)\n||%s||",
-            "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-            "now_shutdown": "💤 ปิดระบบบน Discord แล้วคะ..แล้วพบกันใหม่นะคะ~",
-            "password_is_incorrect": "❎ รหัสผ่านไม่ถูกต้องนะคะ ลองตรวจสอบใหม่อีกครั้งคะ",
-            "shutting_down": "🔄 กำลังปิดระบบตัวเอง..."
+            "dm_to_owner": "**:red_circle: 有关机请求！！**\n为了确认是你，请在你运行命令的服务器上输入这个密码\n如果你不想继续，\n忽略它。照顾我直到今天:)\n||%s||",
+            "not_owner": "🛑 不要.. 不要接受它。此功能仅需要最高权限。",
+            "now_shutdown": "💤 Discord 上的系统已被禁用..再见~",
+            "password_is_incorrect": "❎ 密码不正确。请再检查一次。",
+            "shutting_down": "🔄 正在关闭我的系统..."
         },
         "skip": {
-            "no_queue": "❎ ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ ข้ามไม่ได้อ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "skipped": "⏭ ข้ามแล้วคะและกำลังจะเริ่มเล่นเพลงใหม่ในคิว"
+            "no_queue": "❎ 目前没有正在播放的歌曲。不能穿越",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "skipped": "⏭ 我跳过了它，准备开始播放队列中的新歌。"
         },
         "snake": {
-            "building_board_game": "🐍 กำลังจัดวางองค์ประกอบ กรุณารอสักครู่...",
-            "game_name": "งู: เกม",
-            "game_over": "เกมจบแล้ว",
-            "game_score": "คะแนน: **%s1**\nเวลา: **%s2** วินาที",
-            "played_on": "เริ่มเล่นแล้วโดย %s"
+            "building_board_game": "🐍作文请稍候...",
+            "game_name": "贪吃蛇：游戏",
+            "game_over": "游戏结束",
+            "game_score": "得分：**%s1**\n时间：**%s2** 秒",
+            "played_on": "从 %s开始"
         },
         "status": {
-            "data_by_server": "อ้างอิงข้อมูลจากเซิร์ฟเวอร์",
-            "dnd_status": "จำนวนสมาชิกที่ห้ามรบกวนในขณะนี้ คือ \n```%s```",
-            "idle_status": "จำนวนสมาชิกที่ไม่อยู่ในขณะนี้ คือ \n```%s```",
-            "offline_status": "จำนวนสมาชิกที่ออฟไลน์ในขณะนี้ คือ \n```%s```",
-            "online_status": "จำนวนสมาชิกที่ออนไลน์ในขณะนี้ คือ \n```%s```"
+            "data_by_server": "从服务器引用数据。",
+            "dnd_status": "目前在免打扰中的成员数为 \n%s。",
+            "idle_status": "当前缺席的成员数为 \n```%s```。",
+            "offline_status": "当前离线会员数为 \n```%s```",
+            "online_status": "当前在线会员数为 \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
-            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
-            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
-            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
-            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_sticker": "✅ **%s** 贴纸移除成功",
+            "does_not_support_gif": "❎ 抱歉...Discord 目前不支持基于 GIF 的自定义贴纸。",
+            "edited_sticker": "%s 贴纸已被编辑。",
+            "uploading_you_sticker": "📤 正在上传您的贴纸...",
+            "you_sticker_is_ready": "%s 您的贴纸已准备就绪。让我们试试吧！"
         },
         "stop": {
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "stopped": "⏹️ หยุดเล่นเพลงและลบคิวทั้งหมดออกแล้วคะ"
+            "no_queue": "❎ 呃...我正在播放的歌曲不可用。",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "stopped": "⏹️ 停止播放音乐并删除所有队列。"
         },
         "system": {
             "info_battery": {
-                "charging": "กำลังชาร์จ",
-                "not_charging": "ไม่ได้ชาร์จ",
-                "title": "• แบตเตอรี่",
-                "without": "ไม่มี"
+                "charging": "收费",
+                "not_charging": "不收费",
+                "title": "• 电池",
+                "without": "没有"
             },
-            "info_description": "ข้อมูลของระบบที่ฉันกำลังทำงานอยู่ในขณะนี้ตามที่ทางระบบให้ข้อมูลมาได้ดังนี้คะ",
-            "info_gpu_control": "• GPU (ควบคุม)",
-            "info_gpu_display": "• GPU (แสดงผล)",
-            "info_memory_used": "• หน่วยความจำที่ใช้ไป",
-            "info_platform": "• แพลตฟอร์ม",
-            "info_system": "• ระบบ",
-            "info_temperature": "• อุณหภูมิ CPU",
-            "info_title": "🖥 ข้อมูลพื้นฐานของระบบ",
+            "info_description": "系统提供的我目前在做的系统信息如下。",
+            "info_gpu_control": "• GPU（控制器）",
+            "info_gpu_display": "• GPU（显示器）",
+            "info_memory_used": "• 已用内存",
+            "info_platform": "• 平台",
+            "info_system": "• 系统",
+            "info_temperature": "• CPU 温度",
+            "info_title": "🖥 系统基本信息",
             "info_uptime": {
-                "info": "%s1 วัน %s2 ชั่วโมง ",
-                "title": "• เวลาทำงาน"
+                "info": "%s1 天 %s2 小时 ",
+                "title": "• 工作时间"
             },
-            "loading": "⚙️ กำลังส่งคำขอดึงข้อมูลระบบจากเซิร์ฟเวอร์...",
-            "main": "หลัก",
-            "unknown": "ไม่ทราบ"
+            "loading": "⚙️ 正在发送请求以从服务器获取系统数据...",
+            "main": "主要的",
+            "unknown": "不知道"
         },
         "tictactoe": {
-            "button_is_selected": "❎ ช่องนั้นถูกครอบครองอยู่แล้ว",
-            "can_not_duel_with_me": "❎ ฉันไม่ถนัดการเล่นเกมพวกนี้หรอก ฉันถนัดตัดสินมากกว่าน่ะ",
-            "can_not_play_with_bot": "❎ คุณไม่สามารถเล่นเกมนี้กับบอทได้นะคะ",
-            "in_another_duel": "❎ <@%s> ขณะนี้อยู่ในการดวลกับคนอื่นอยู่",
-            "in_duel": "❎ ไม่ได้สิๆ คุณต้องดวลกับ <@%s> ให้จบก่อนน",
-            "member_not_found": "❎ สมาชิกดังกล่าวเหมือนจะถูกลักพาตัวไปที่อื่นแล้วคะ",
-            "need_one_emoji": "❎ ขอเป็นอีโมจิ 1 ตัวน้าอย่างเช่น ❌ หรือ ⭕ ก็ได้",
-            "tie": "เสมอกัน!",
-            "wait_opponent": "❓ รอฝั่งตรงข้ามสักครู่นะ",
-            "winner": "%s ชนะแล้ว!"
+            "button_is_selected": "❎ 频道已被占用。",
+            "can_not_duel_with_me": "❎ 我不擅长玩这些游戏。我更有判断力。",
+            "can_not_play_with_bot": "❎ 你不能用机器人玩这个游戏。",
+            "in_another_duel": "❎ <@%s> 目前正在与其他人决斗。",
+            "in_duel": "❎ 不行，你必须和<@%s>战斗到最后。",
+            "member_not_found": "❎ 这些成员似乎是在别处被绑架的。",
+            "need_one_emoji": "❎ 我可以有 1 个 emoji 像 ❌ 或 ⭕ 吗？",
+            "tie": "领带！",
+            "wait_opponent": "❓ 稍等一下对面。",
+            "winner": "%s 胜！"
         },
         "timeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งหมดเวลาให้ตัวเองได้",
-            "can_not_set_timeout": "❎ ฉันไม่สามารถตั้งหมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งหมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน %s1 ซึ่งคุณสามารถดูเวลาที่เหลือได้ในเซิร์ฟเวอร์นั้น **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้หมดเวลาใน %s2 นาที **เหตุผล**: %s3"
+            "can_not_set_for_yourself": "❎ 您不能为自己设置超时。",
+            "can_not_set_timeout": "❎ 我不能给他设置暂停，因为他的角色比我高。",
+            "can_not_set_to_admin": "❎ 您不能为版主设置超时。",
+            "dm_to_user": "⌛ 您在 %s1 设置超时，您可以在该服务器中看到剩余时间 **原因**： %s2",
+            "member_not_found": "❎ 成员不要说他们不再在此服务器上。",
+            "no_reason": "没有给出理由",
+            "success": "%s1 设置为在 %s2 分钟后过期 **原因**： %s3"
         },
         "together": {
-            "can_not_open": "❌ เอิ่มม..คือว่า เปิด %s ไม่ได้อะ",
-            "do_not_have": "❎ อ่าา..ตอนนี้ยังไม่มี %s1 อะ หรือไม่ก็อาจจะไม่มีจริงๆ นั้นแหล่ะ\nแต่ Together ที่ใช้ได้ในตอนนี้มีทั้งหมด %s2 รายการ คือ\n```%s3```",
-            "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแล",
-            "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/",
-            "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ได้ถูก",
-            "voice_channel_not_found": "❎ เอ๋..แต่ไม่มีช่องเสียงนั้นอยู่ในเซิร์ฟเวอร์นี้นะ ลองเข้าไปในช่องเสียงแล้วลองใหม่สิ"
+            "can_not_open": "❌ 嗯..这就是我打不开 %s 的原因",
+            "do_not_have": "❎ 啊..现在还是没有 %s1 也可能真的没有\n但是 Together that can be used 现在有 %s2 项，即\n```%s3```",
+            "do_not_have_permission": "❌我没法激活，因为我没有操作权限。请联系版主。",
+            "join_via_this_link": "通过此链接加入。 https://discord.com/invite/",
+            "user_not_in_channel": "❎ 先进入其中一个语音频道，或者你可以告诉我那个频道的名称或 ID。他将能够正确创建链接。",
+            "voice_channel_not_found": "❎ Eh..但是这个服务器没有声音通道进入音频频道并重试。"
         },
         "translate": {
-            "can_not_translate": "❎ ไม่สามารถแปลภาษาข้อความดังกล่าวได้ กรุณาลองใหม่อีกครั้งในภายหลังนะคะ",
-            "says": "พูดว่า",
-            "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** %s"
+            "can_not_translate": "❎ 无法翻译此类文本的语言。请稍后再试。",
+            "says": "说",
+            "translate_support": "❎ 翻译代码无效请再次检查\n**支持的语言：** %s"
         },
         "unban": {
-            "no_one_gets_banned": "❎ ตอนนี้ยังไม่มีใครในเซิร์ฟเวอร์ที่ถูกแบนอยู่เลยอะ",
-            "no_reason": "สมาชิกที่ปลดแบนไม่ได้ให้เหตุผลไว้คะ",
-            "reason_for_unban": "ปลดแบนโดย: %s1\nเหตุผล: %s2\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-            "this_user_not_banned": "❎ เอ๋..สมาชิกที่ว่านั้นไม่ได้โดนแบนนะ ลองตรวจดูคีย์เวิร์ดใหม่ดีๆ อีกรอบสิ...",
-            "user_has_been_unbanned": "%s ได้รับการปลดแบน"
+            "no_one_gets_banned": "❎ 服务器上目前没有人被禁止。",
+            "no_reason": "解封的成员没有给出理由。",
+            "reason_for_unban": "解禁者： %s1\n原因： %s2\n成员被解禁之后。这样的会员才能正常加入本服务器。",
+            "this_user_not_banned": "❎ Eh..那个成员没有被禁止。让我们再检查一些很棒的新关键字...",
+            "user_has_been_unbanned": "%s 解封"
         },
         "untimeout": {
-            "can_not_set_for_yourself": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับตัวเองได้",
-            "can_not_set_to_admin": "❎ คุณไม่สามารถตั้งให้ไม่หมดเวลาให้กับผู้ที่เป็นผูดูแลได้",
-            "can_not_set_untimeout": "❎ ฉันไม่สามารถตั้งให้ไม่หมดเวลาเขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-            "dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน %s1 แล้ว **เหตุผล**: %s2",
-            "member_not_found": "❎ สมาชิกไม่กล่าวไม่ได้อยู่ในเซิร์ฟเวอร์นี้แล้วคะ",
-            "no_reason": "ไม่ได้ให้เหตุผลไว้",
-            "success": "%s1 ถูกตั้งให้ไม่หมดเวลาแล้ว **เหตุผล**: %s2"
+            "can_not_set_for_yourself": "❎ 您不能为自己设置超时。",
+            "can_not_set_to_admin": "❎ 您不能为版主设置超时。",
+            "can_not_set_untimeout": "❎ 我不能设置他不超时，因为他的角色比我高。",
+            "dm_to_user": "⏲️ 您已被取消在 %s1 设置超时 **原因**： %s2",
+            "member_not_found": "❎ 成员不要说他们不再在此服务器上。",
+            "no_reason": "没有给出理由",
+            "success": "%s1 已设置超时 **原因**： %s2"
         },
         "uptime": {
-            "days": "วัน",
-            "hours": "ชั่วโมง",
-            "info_title": "🕒 เริ่มทำงานมาแล้ว เป็นเวลา",
-            "minute": "นาที",
-            "second": "วินาที"
+            "days": "天",
+            "hours": "小时",
+            "info_title": "🕒 是时候开始工作了。",
+            "minute": "分钟",
+            "second": "第二"
         },
         "user": {
-            "avatar": "ภาพประจำตัว",
-            "bot": "บอท",
-            "can_not_find_user": "💡 ฉันหาสมาชิกดังกล่าวไม่เจออะ..ลองใช้ชื่อเต็มหรือรหัสผู้ใช้ดูนะคะ ตัวอย่าง: <@%s>",
-            "created_at": "สร้างเมื่อ",
-            "created_timestamp": "สร้างวันที่",
-            "default_avatar_url": "ภาพประจำตัวเดิม",
-            "discriminator": "รหัสท้าย",
-            "id": "รหัสประจำตัว",
-            "info_date": "ข้อมูลของเมื่อ",
-            "none": "ไม่",
-            "partial": "บางส่วน",
-            "system": "ระบบ",
-            "tag": "แท็ก",
-            "unknown": "ไม่ทราบ",
-            "user_info": "👥 รายละเอียดข้อมูลผู้ใช้งาน",
-            "user_info_description": "ข้อมูลเกี่ยวกับผู้ใช้งานโดยละเอียด ซึ่งอ้างอิงข้อมูลมาจากข้อมูลบน Discord",
-            "username": "ชื่อผู้ใช้",
-            "yes": "ใช่"
+            "avatar": "头像",
+            "bot": "机器人",
+            "can_not_find_user": "💡 我找不到该成员..尝试全名或用户名。示例：<@%s>",
+            "created_at": "创建于",
+            "created_timestamp": "建造日期",
+            "default_avatar_url": "原头像",
+            "discriminator": "页脚代码",
+            "id": "ID",
+            "info_date": "什么时候的信息",
+            "none": "不",
+            "partial": "一些",
+            "system": "系统",
+            "tag": "标签",
+            "unknown": "不知道",
+            "user_info": "👥 用户信息详情",
+            "user_info_description": "有关用户的详细信息这是基于 Discord 的数据。",
+            "username": "用户名",
+            "yes": "是的"
         },
         "version": {
-            "working_in_version": "ฉันกำลังทำงานอยู่บนเวอร์ชั่น: **%s**"
+            "working_in_version": "我正在处理版本：**%s**"
         },
         "volume": {
-            "adjusted": "🔊 ปรับเสียงไปที่ระดับ: **%s**",
-            "no_queue": "❎ เอ๋...ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ จะไปปรับเสียงอะไรอ่ะ",
-            "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
-            "this_volume": "🔈 ปริมาณเสียงปัจจุบันคือ: **%s**"
+            "adjusted": "🔊 将音量调整为：**%s**",
+            "no_queue": "❎ 呃...我正在播放的歌曲不可用。你要调整什么？",
+            "not_owner": "🚫 只有队列的所有者才能更改它。",
+            "this_volume": "🔈 当前音量为：**%s**"
         },
         "weather": {
-            "clear_weather": "อากาศแจ่มใส",
-            "cloudy": "มีเมฆมาก",
-            "date": "📆 วันที่",
-            "day": "📅 วัน",
-            "degree_type": "⚖️ หน่วยวัด",
-            "feels_like": "🎐 รู้สึกเหมือน",
-            "humidity": "💧 ความชื้น",
-            "information_from_microsoft": "ข้อมูลที่ถูกต้องและแม่นย้ำโดย Microsoft",
-            "light_rain": "ฝนตกปรอยๆ",
-            "mostly_clear": "ท้องฟ้าแจ่มใสเป็นส่วนใหญ่",
-            "mostly_cloudy": "มีเมฆมากเป็นส่วนใหญ่",
-            "mostly_sunny": "แดดจัดเป็นส่วนใหญ่",
-            "no_result_found": "❎ เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-            "partly_cloudy": "มีเมฆบางส่วน",
-            "partly_sunny": "แดดออกเป็นบางส่วน",
-            "rain": "ฝนตก",
-            "rain_showers": "ฝนตกหนัก",
-            "sunny": "แดดจัด",
-            "temperature": "🌡️ อุณหภูมิ",
-            "timezone": "🌐 เขตเวลา",
-            "weather": "⛅ สภาพอากาศ",
-            "weather_at_the_moment": "สภาพอากาศของ __**%s1**__ ในขณะนี้คือ \n```%s2```",
-            "wind": "🎏 ลม"
+            "clear_weather": "天气晴朗",
+            "cloudy": "多云的",
+            "date": "📆 约会",
+            "day": "📅 一天",
+            "degree_type": "⚖️ 计量单位",
+            "feels_like": "🎐感觉",
+            "humidity": "💧湿度",
+            "information_from_microsoft": "Microsoft 准确无误的信息",
+            "light_rain": "细雨",
+            "mostly_clear": "大致多云",
+            "mostly_cloudy": "大致多云",
+            "mostly_sunny": "大多时间晴天",
+            "no_result_found": "❎ 额...找了这方面的资料，没找到。",
+            "partly_cloudy": "多云",
+            "partly_sunny": "局部晴朗",
+            "rain": "雨",
+            "rain_showers": "倾盆大雨",
+            "sunny": "晴天",
+            "temperature": "🌡️温度",
+            "timezone": "🌐 时区",
+            "weather": "⛅ 天气",
+            "weather_at_the_moment": "__**%s1**__ 的天气现在是 \n```%s2```。",
+            "wind": "🎏 风"
         }
     },
     "events": {
         "channelCreate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_create_channel": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างช่อง: <#%s>"
+            "channel_notification": "🪧频道",
+            "member_create_channel": "> 服务器成员创建频道：<#%s>"
         },
         "channelDelete": {
-            "channel_notification": "🪧 ช่อง",
-            "member_delete_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ระเบิดช่อง: `%s`"
+            "channel_notification": "🪧频道",
+            "member_delete_channel": "> 服务器成员爆炸频道：`%s"
         },
         "channelPinsUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_pins_in_channel": "> สมาชิกในเซิร์ฟเวอร์ได้ปักหมุนที่ช่อง: <#%s1> เมื่อ %s2"
+            "channel_notification": "🪧频道",
+            "member_pins_in_channel": "> 服务器成员已固定插槽：<#%s1> 当 %s2"
         },
         "channelUpdate": {
-            "channel_notification": "🪧 ช่อง",
-            "member_update_channel": "> สมาชิกในเซิร์ฟเวอร์ได้เปลี่ยนแปลงข้อมูลบางอย่างที่ช่อง: `%s1` เป็น <#%s2>"
+            "channel_notification": "🪧频道",
+            "member_update_channel": "> 服务器成员更改了一些字段：`%s1` 到 <#%s2>。"
         },
         "emojiCreate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_create_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้สร้างอีโมจิใหม่: :%s:"
+            "emoji_notification": "😊 表情符号",
+            "member_create_emoji": "> 服务器成员创建了一个新的表情符号： :%s:"
         },
         "emojiDelete": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_delete_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้ลบอีโมจิ: :%s:"
+            "emoji_notification": "😊 表情符号",
+            "member_delete_emoji": "> 服务器成员删除表情符号: :%s:"
         },
         "emojiUpdate": {
-            "emoji_notification": "😊 อีโมจิ",
-            "member_update_emoji": "> สมาชิกในเซิร์ฟเวอร์ได้เปลียนแปลงอีโมจิใหม่จาก: %s1 เป็น %s2"
+            "emoji_notification": "😊 表情符号",
+            "member_update_emoji": "> 服务器成员已将新表情符号从： %s1 更改为 %s2。"
         },
         "guildBanAdd": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_add": "> <@%s1> ถูกแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ 服务器",
+            "member_ban_add": "> <@%s1> 已在此服务器\n内被禁止 **原因：**\n```%s2```"
         },
         "guildBanRemove": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "member_ban_remove": "> <@%s1> ได้รับการปลดแบนภายในเซิร์ฟเวอร์นี้แล้ว\n**เหตุผล:**\n```%s2```"
+            "guild_notification": "🗄️ 服务器",
+            "member_ban_remove": "> <@%s1> 已在此服务器\n内解封 **原因：**\n```%s2```"
         },
         "guildCreate": {
-            "advice": "**💡 คำแนะนำ**",
-            "advice_detail": "ถ้าคุณเป็นเจ้าของกิลล์นี้ละก็..ฉันต้องการที่จะตั้งค่ากิลล์นี้ให้สมบูรณ์ก่อนที่จะใช้งานจริงๆ ละ เพราะบางอย่างคุณอาจจะไม่ต้องการก็ได้ เพราะฉะนั้นให้ลองใช้คำสั่ง `Ssettings` ดูนะคะ",
-            "description": "สวัสดี..ฉันขอขอบคุณที่เชิญฉันมายัง %s แห่งนี้\nดูเหมือนว่าจะมีคนสงสัยว่าฉันทำอะไรได้บ้าง? ออ..ล้างจาน, ซักผ้าเป็นน่ะ สุดยอดไปเลยใช่ไหมล่าา~ ฮาาใช่ที่ไหนละ ฉันล้อเล่นน่ะ",
-            "get_started": "มาถึงจุดเริ่มต้นแล้ว!!",
-            "help_information_and_documentation": "**📄 ข้อมูลช่วยเหลือและเอกสาร**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `Shelp` หรือ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
-            "join_on": "เข้าร่วมเมื่อ",
-            "support_multiple_languages": "**🌐 รองรับหลายภาษา**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `Slanguage <รหัสภาษา>` หรือ `/language <รหัสภาษา>`"
+            "advice": "**💡 小贴士**",
+            "advice_detail": "如果你是这个公会的所有者..我想在使用它之前完成这个公会设置，因为有些事情你可能不想要。因此，请尝试使用 `Ssettings` 命令。",
+            "description": "您好..感谢您邀请我到这个 %s place\n似乎人们在想我能做什么？哦..可以洗碗，洗衣服。厉害了对不对~哈哈，在哪啊？我在开玩笑",
+            "get_started": "它已经到达了开始！",
+            "help_information_and_documentation": "**📄 帮助和文档**",
+            "help_information_and_documentation_detail": "想知道我能做什么？..很简单。只需输入 `Shelp` 或 `/help`，就会有人告诉您。当然，只需转到下面的链接，就会有开发人员和其他人提供的文档。他已经写了\n> https://shiorus.web.app/",
+            "join_on": "加入",
+            "support_multiple_languages": "** 🌐 支持多种语言 **",
+            "support_multiple_languages_detail": "我支持多种语言。更改语言您可以通过`Slanguage <语言代码>`或`/语言<语言代码>`来设置它。"
         },
         "guildIntegrationsUpdate": {
-            "guild_integrations_update": "เซิร์ฟเวอร์นี้ได้รวม %s เรียบร้อยแล้ว คุณจะได้รับบทความใหม่ทันทีมีการอัพเดทในอนาคต",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_integrations_update": "此服务器已合并 %s 。一旦有未来更新，您将收到新文章。",
+            "guild_notification": "🗄️ 服务器"
         },
         "guildMemberAdd": {
-            "captcha_error": "มีข้อผิดพลาดในการตรวจสอบ ติดต่อเจ้าหน้าที่เซิร์ฟเวอร์เพื่อดำเนินการ",
-            "captcha_success": "คุณได้รับการยืนยันแล้วใน %s",
-            "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคนนะค่ะ",
-            "solve_the_captcha": "แก้ไข captcha เพื่อยืนยันใน %s",
-            "submit_answer_captcha": "ส่งคำตอบแคปต์ชา",
-            "submit_you_answer_guide": "ส่งสิ่งที่คุณคิดว่าแคปต์ชาคืออะไร",
-            "use_button_below": "ใช้ปุ่มด้านล่างเพื่อส่งคำตอบของคุณ!",
-            "welcome": "ยินดีต้อนรับสู่เซิร์ฟเวอร์",
-            "wrong_answer": "ดูเหมือนจะผิดนะ ลองใหม่อีกรอบ...",
-            "your_answer": "คำตอบแคปต์ชาของคุณ"
+            "captcha_error": "出现验证错误。联系服务员采取行动。",
+            "captcha_success": "您已通过 %s验证",
+            "greet": "新会员你好**这是一条自动消息** \n感谢您加入我们的服务器。在开始与任何人交谈之前，请仔细阅读有关此服务器的信息。",
+            "solve_the_captcha": "固定验证码以验证 %s",
+            "submit_answer_captcha": "发送验证码答案",
+            "submit_you_answer_guide": "提交您认为的验证码",
+            "use_button_below": "使用下面的按钮提交您的答案！",
+            "welcome": "欢迎来到服务器",
+            "wrong_answer": "好像不对。再试一次...",
+            "your_answer": "回答你的验证码"
         },
         "guildMemberRemove": {
-            "user_has_exited": "ได้หนีออกจากเซิร์ฟเวอร์นี้ไปแล้วว...(ไปไหนของเขากันน้าาา..)"
+            "user_has_exited": "已经从这个服务器逃脱了...（我们去他的地方吧..）"
         },
         "guildMembersChunk": {
-            "guild_members_chunk": "ยินดีต้อนรับสมาชิกจากเซิร์ฟเวอร์ %s พวกเรากำลังรอพวกคุณอยู่ที่นี่",
-            "guild_notification": "🗄️ เซิร์ฟเวอร์"
+            "guild_members_chunk": "欢迎 %s 服务器的会员，我们在这里等你。",
+            "guild_notification": "🗄️ 服务器"
         },
         "guildUnavailable": {
-            "guild_notification": "🗄️ เซิร์ฟเวอร์",
-            "guild_unavailable": "ขณะนี้..เซิร์ฟเวอร์นี้ไม่สามารถทำงานได้อย่างปกติชั่วคราว กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์นี้"
+            "guild_notification": "🗄️ 服务器",
+            "guild_unavailable": "Currently..此服务器暂时不可用。请联系此服务器的管理员。"
         },
         "interactionCreate": {
-            "client_is_not_allowed": "🚫 เอิ่มม..ฉันขาดการอนุญาตบางอย่าง เลยทำให้ฉันไปต่อไม่ได้ ได้แก่ **%s**",
-            "command_error": "❌ เกิดข้อผิดพลาดขณะดำเนินการคำสั่งนี้!",
-            "command_is_disabled": "⚫ คำสั่งนี้ถูกปิดใช้งานภายในเซิร์ฟเวอร์แล้วคะ กรุณาติดต่อผู้ดูแลเซิร์ฟเวอร์ของคุณ",
-            "no_permission": "🚫 อืมม...ดูเหมือนว่าคุณไม่มีสิทธิ์ในการใช้งานคำสั่งแอปพลิเคชั่น (/) นะคะ ลองสอบถามผู้ดูแลดูนะคะ (≧∇≦)",
-            "user_is_not_allowed": "🚫 ฉันไม่สามารถให้คุณใช้งานคำสั่งนี้ได้ หากคุณยังไม่มีการอนุญาตเหล่านี้: **%s**"
+            "client_is_not_allowed": "🚫 嗯..我缺少一些权限。所以我不能继续下去，即**%s**",
+            "command_error": "❌ 执行此订单时发生错误！",
+            "command_is_disabled": "⚫ 此命令已在服务器中被禁用。请联系您的服务器管理员。",
+            "no_permission": "🚫 嗯...看来你没有权限使用应用命令(/)，请版主询问(≧∇≦)",
+            "user_is_not_allowed": "🚫 我不能让你用这个订单。如果您还没有这些权限：**%s**"
         },
         "inviteCreate": {
-            "invite_create": "สร้างลิงค์สำหรับเชิญสมาชิกเรียบร้อยแล้ว\n**ลิงค์:** %s1\n**หมดอายุ:** %s2\n**สูงสุด:** %s3\n```%s4```",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_create": "邀请链接创建成功\n**Link:** %s1\n**Expires:** %s2\n**Maximum:** %s3\n```%s4```",
+            "invite_notification": "🏷️ 邀请函"
         },
         "inviteDelete": {
-            "invite_code_deleted": "`%s` รหัสเชิญนี้ถูกลบไปแล้ว",
-            "invite_code_expires": "`%s` รหัสเชิญนี้หมดอายุแล้ว",
-            "invite_notification": "🏷️ คำเชิญ"
+            "invite_code_deleted": "`%s` 此邀请码已被删除。",
+            "invite_code_expires": "`%s` 此邀请码已过期。",
+            "invite_notification": "🏷️ 邀请函"
         },
         "messageCreate": {
-            "afk_user_come_back": "🔙 คุณได้กลับมาแล้ว ยกเลิกการตั้งสถานะ AFK โดยอัตโนมัติ",
-            "no_reason_for_afk": "ไม่มี",
-            "that_user_is_afk": "%s1 ตอนนี้ไม่ได้อยู่ที่หน้าจอ (AFK), อย่าพึ่งพูดถึงเขาในเวลานี้\n**ข้อความที่ทิ้งไว้**: %s2"
+            "afk_user_come_back": "🔙 你回来了自动解除挂机状态",
+            "no_reason_for_afk": "没有",
+            "that_user_is_afk": "%s1 现在不在屏幕上（AFK），现在不要提及他\n**留言**： %s2"
         },
         "roleCreate": {
-            "role_create": "<@&%s> ได้ถูกสร้างขึ้นแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_create": "<@&%s> 已创建。",
+            "role_notification": "🔖 角色"
         },
         "roleDelete": {
-            "role_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "role_notification": "🔖 บทบาท"
+            "role_delete": "`%s` 已被删除。",
+            "role_notification": "🔖 角色"
         },
         "roleUpdate": {
-            "role_notification": "🔖 บทบาท",
-            "role_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <@&%s2>"
+            "role_notification": "🔖 角色",
+            "role_update": "`%s1` 已更新为 <@&%s2>"
         },
         "stageInstanceCreate": {
-            "stage_instance_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_create": "<#%s> 已创建。",
+            "stage_notification": "🎤舞台"
         },
         "stageInstanceDelete": {
-            "stage_instance_delete": "`%s` ได้ถูกลบไปแล้ว",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_delete": "`%s` 已被删除。",
+            "stage_notification": "🎤舞台"
         },
         "stageInstanceUpdate": {
-            "stage_instance_update": "`%s1` ได้รับการอัพเดทใหม่เป็น <#%s2>",
-            "stage_notification": "🎤 เวที"
+            "stage_instance_update": "`%s1` 已更新为 <#%s2>。",
+            "stage_notification": "🎤舞台"
         },
         "stickerCreate": {
-            "sticker_create": "**%s** พร้อมใช้งานแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_create": "**%s** 现在可用",
+            "sticker_notification": "👻贴纸"
         },
         "stickerDelete": {
-            "sticker_delete": "**%s** ถูกลบไปแล้ว",
-            "sticker_notification": "👻 สติกเกอร์"
+            "sticker_delete": "**%s** 已被删除",
+            "sticker_notification": "👻贴纸"
         },
         "stickerUpdate": {
-            "sticker_notification": "👻 สติกเกอร์",
-            "sticker_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "sticker_notification": "👻贴纸",
+            "sticker_update": "`%s1` 已更新为 **%s2**"
         },
         "threadCreate": {
-            "thread_create": "<#%s> ได้ถูกสร้างขึ้นแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_create": "<#%s> 已创建。",
+            "thread_notification": "#️⃣ 话题"
         },
         "threadDelete": {
-            "thread_delete": "**%s** ได้ถูกลบไปแล้ว",
-            "thread_notification": "#️⃣ เธรด"
+            "thread_delete": "**%s** 已被删除",
+            "thread_notification": "#️⃣ 话题"
         },
         "threadUpdate": {
-            "thread_notification": "#️⃣ เธรด",
-            "thread_update": "`%s1` ได้รับการอัพเดทใหม่เป็น **%s2**"
+            "thread_notification": "#️⃣ 话题",
+            "thread_update": "`%s1` 已更新为 **%s2**"
         },
         "webhookUpdate": {
-            "webhook_notification": "🎣 เว็บฮุก",
-            "webhook_update": "**%s1** จาก **%s2** ได้รับการอัพเดทแล้วในช่อง <#%s3>"
+            "webhook_notification": "🎣 网络钩子",
+            "webhook_update": "**%s1** of **%s2** 已在频道 <#%s3> 上更新。"
         }
     },
     "handlers": {
         "music": {
             "addList": {
-                "added_list": "✅ เพิ่มเพลย์ลิสต์ **%s1** ประกอบไปด้วยเพลงจำนวน `%s2` เพลง เรียบร้อยแล้วคะ"
+                "added_list": "✅ 添加了一个播放列表 **%s1** 已经包含 `%s2` 首歌曲。"
             },
             "addSong": {
-                "added_song": "✅ เพิ่มเพลง **%s1** `%s2` เรียบร้อยแล้วคะ"
+                "added_song": "✅ 已添加歌曲 **%s1** `%s2`。"
             },
             "disconnect": {
-                "disconnected": "🔌 ตัดการเชื่อมต่อและลบคิวทั้งหมดออกเรียบร้อยแล้วคะ"
+                "disconnected": "🔌 已经断开并删除了所有队列。"
             },
             "empty": {
-                "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+                "no_user_in_channel": "💨 哦.. 他们都去哪儿了？那..先闭嘴~"
             },
             "error": {
-                "playlist_not_found": "❎ ฉันหาเพลย์ลิสต์นั้นไม่เจอะ ลองหาเพลย์ลิสต์อื่นดูไหม?"
+                "playlist_not_found": "❎ 我找不到那个播放列表。寻找另一个播放列表？"
             },
             "finish": {
-                "queue_is_empty": "🍃 ตอนนี้ฉันคิวว่างแล้ว พร้อมที่จะเล่นเพลงต่อไปแล้วคะ"
+                "queue_is_empty": "🍃 现在我的队列是空的。准备好播放下一首歌曲了吗？"
             },
             "playSong": {
-                "playing_song": "🎶 กำลังเล่นเพลง **%s1** `%s2`"
+                "playing_song": "🎶 音乐播放 **%s1** `%s2`"
             },
             "searchCancel": {
-                "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ"
+                "search_cancelled": "🕘 取消搜索..因为没有找到歌曲选择。"
             },
             "searchDone": {
-                "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่..."
+                "get_list_of_songs": "📋 我已经收到了我想要的歌曲列表。马上就会开始播放音乐..."
             },
             "searchInvalidAnswer": {
-                "search_cancelled": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม"
+                "search_cancelled": "🔴 最近的搜索已被取消。您可以通过键入相同的命令再次搜索。"
             },
             "searchNoResult": {
-                "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย..."
+                "no_results": "❎ 我试图搜索这首歌，但找不到任何结果......"
             },
             "searchResult": {
-                "searching": "🔎 ค้นหาเพลงที่เกี่ยวข้อง",
-                "timer_choose": "มีเวลาในการเลือกเพลง 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-                "title_results": "ผลการค้นหาของเพลงดังกล่าว:",
-                "tool_name": "เครื่องค้นหาเพลง"
+                "searching": "🔎 查找相关歌曲",
+                "timer_choose": "有60秒的时间可以选择歌曲，如果要取消可以输入一个无关的数字或者等到时间结束。",
+                "title_results": "此类歌曲的搜索结果：",
+                "tool_name": "音乐搜索引擎"
             }
         }
     },
     "utils": {
         "miscUtils": {
-            "april": "เมษายน",
-            "august": "สิงหาคม",
-            "december": "ธันวาคม",
-            "february": "กุมภาพันธ์",
-            "format_at": "วัน%s1 ที่ %s2 %s3 %s4 เวลา %s5:%s6 น.",
-            "friday": "ศุกร์",
-            "january": "มกราคม",
-            "july": "กรกฎาคม",
-            "june": "มิถุนายน",
-            "march": "มีนาคม",
-            "may": "พฤษภาคม",
-            "monday": "จันทร์",
-            "november": "พฤศจิกายน",
-            "october": "ตุลาคม",
-            "saturday": "เสาร์",
-            "september": "กันยายน",
-            "sunday": "อาทิตย์",
-            "thursday": "พฤหัสบดี",
-            "tuesday": "อังคาร",
-            "wednesday": "พุธ"
+            "april": "四月",
+            "august": "八月",
+            "december": "十二月",
+            "february": "二月",
+            "format_at": "第%s天 1 1 %s2 %s %s4 时间 %s5:%s下午 6 点",
+            "friday": "星期五",
+            "january": "一月",
+            "july": "七月",
+            "june": "六月",
+            "march": "行进",
+            "may": "可能",
+            "monday": "周一",
+            "november": "十一月",
+            "october": "十月",
+            "saturday": "周六",
+            "september": "九月",
+            "sunday": "星期",
+            "thursday": "周四",
+            "tuesday": "周二",
+            "wednesday": "周三"
         },
         "consoleUtils": {
-            "an_error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-            "error_detail": "คำสั่ง: **%s1**\nเวอร์ชั่น: **%s2**\nเวลาที่เกิดขึ้น: **%s3**\nเซิร์ฟเวอร์: **%s4**\nความล่าช้า: **%s5ms**\nรับ - ส่งข้อมูล: **%s6ms**\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n%s7\n```\n> **เคล็ดลับ**: คุณสามารถรายงานข้อผิดพลาดได้ทันทีโดยใช้คำสั่ง:\n> ```Sbug <ข้อความ>```\n> ```/bug <ข้อความ>```\n[รายงานปัญหา](https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&template=bug_report.md&title=) • [ข่าวสาร](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "ผิดปกติ",
-            "server_normal": "ปกติ"
+            "an_error_occurred": "🔴 执行时出错。",
+            "error_detail": "命令：**%s1**\n版本：**%s2**\n定时：**%s3**\n服务器：**%s4**\n延迟：**%s5ms**\n接收-传输：* *%s6ms**\nError Result:\n```JavaScript\n%s7\n```\n> **提示**：您可以使用命令立即报告错误：\n> ```Sbug <message>`` `\n> ```/bug <消息>```\n[问题报告](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [新闻](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "异常",
+            "server_normal": "普通的"
         },
         "databaseUtils": {
-            "congratulations": "ยินดีด้วย!!",
-            "level_up": "ตอนนี้ระดับชั้นของ *%s1* ได้เลื่อนขั้นเป็น ```%s2```",
-            "was_mentioned": "มีอะไรหรอคะ?"
+            "congratulations": "恭喜！！",
+            "level_up": "*%s1* 类现已升级为 ```%s2```。",
+            "was_mentioned": "怎么了？"
         }
     }
 }
