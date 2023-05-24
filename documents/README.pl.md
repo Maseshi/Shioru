@@ -11,7 +11,7 @@
   <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Tłum" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
   <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
