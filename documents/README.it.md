@@ -11,7 +11,7 @@
   <a title="Stato" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Affollato" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
   <a title="Codice Fattore" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
@@ -47,7 +47,7 @@ Puoi aiutarci a tradurre una lingua esistente o una lingua che non è attualment
 
 - [Node.js](https://nodejs.org/) v18.0.0 o versione successiva
 - [Firebase](https://firebase.google.com/) v9.0.0 o superiore
-- [Idiota](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 ## Guida rapida all'installazione
 
