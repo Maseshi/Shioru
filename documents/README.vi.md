@@ -24,7 +24,7 @@
 
 [VI](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [GIÀ](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Trợ lý máy chủ tốt của bạn sẽ giúp máy chủ của bạn trông sinh động hơn. Cô ấy có thể làm nhiều việc mà bạn có thể tìm thấy thông tin chi tiết của các lệnh khác nhau bằng cách gõ `/help` Bạn có thể mời Shioru tham gia máy chủ của mình từ[tại đây](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Đặc trưng
 
@@ -55,8 +55,8 @@ Bạn có thể giúp chúng tôi dịch một ngôn ngữ hiện có hoặc m�
 
 - Chuyển đến [Cổng thông tin dành cho nhà phát triển Discord](https://discord.com/developers/applications)
 - Nhấp vào **"Ứng dụng mới"** và đặt tên cho bot của bạn và chấp nhận các quy tắc của chính sách Discord.
-- Chuyển đến trang **"Bot"** và bật tất cả các tùy chọn trong phần **Mục đích cổng đặc quyền** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Mời bot của bạn vào máy chủ bằng cách truy cập trang **OAuth2 > Trình tạo URL** chọn `bot` và `ứng dụng.lệnh` chọn `Quản trị viên` sau đó sao chép liên kết và dán vào địa chỉ trình duyệt của bạn. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Thiết lập bot
 
@@ -74,8 +74,8 @@ npm cài đặt --save
 
 - Truy cập https://firebase.google.com/ và bắt đầu thiết lập dự án.
 - Thêm một dự án mới và làm theo các bước.
-- Thêm ứng dụng đầu tiên của bạn với **Trang web** Đặt tên cho ứng dụng của bạn tùy chọn **"Cũng thiết lập Dịch vụ lưu trữ Firebase cho ứng dụng này"** và đăng ký ứng dụng. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase sẽ cung cấp cho bạn thông tin về cấu hình. Áp dụng các giá trị này cho tệp `.env.example`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Đến **tạo > [cơ sở dữ liệu thời gian thực](https://console.firebase.google.com/u/0/project/_/database/data)** để tạo cơ sở dữ liệu lưu trữ.
 
 ### phát triển
