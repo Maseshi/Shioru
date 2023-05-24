@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Toestand" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
@@ -22,7 +22,7 @@
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [D](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [D](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) |
 
 Uw goede serverassistent zal ervoor zorgen dat uw server er levendiger uitziet. Ze kan veel dingen doen waarvan je gedetailleerde informatie over verschillende commando's kunt vinden door `/help` te typen.Je kunt Shioru uitnodigen om lid te worden van je server vanaf[hier](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
@@ -43,7 +43,7 @@ en vele andere interessante functies...
 
 U kunt ons helpen een bestaande taal te vertalen of een taal die momenteel niet beschikbaar is bij [Crowdin](https://crowdin.com/project/shioru-bot).
 
-## Vereisten
+## ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v18.0.0 of hoger
 - [Firebase](https://firebase.google.com/) v9.0.0 of hoger
@@ -58,7 +58,7 @@ U kunt ons helpen een bestaande taal te vertalen of een taal die momenteel niet 
 - Ga naar pagina **"Bot"** en schakel alle opties in sectie **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - Nodig uw bot uit voor de server door naar pagina **OAuth2 > URL Generator** te gaan selecteer `bot` en `applications.commands` selecteer `Beheerder` kopieer de link en plak deze in het adres van uw browser. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### Zet een robot op
+### ตั้งค่าบอท
 
 - Start een terminal en voer de volgende opdracht uit.
 
