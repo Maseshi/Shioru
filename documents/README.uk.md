@@ -24,7 +24,7 @@
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Ваш хороший серверний помічник допоможе вашому серверу виглядати жвавіше. Вона може робити багато речей, про які ви можете знайти детальну інформацію про різні команди, ввівши `/help` Ви можете запросити Шіору приєднатися до вашого сервера з[тут](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## особливості
 
@@ -55,8 +55,8 @@
 
 - Перейдіть на [портал розробників Discord](https://discord.com/developers/applications)
 - Натисніть **«Нова програма»** , назвіть свого бота та прийміть правила політики Discord.
-- Перейдіть на сторінку **«Бот»** і ввімкніть усі параметри в розділі **Привілейований шлюз Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Запросіть свого бота на сервер, перейшовши на сторінку **OAuth2 > Генератор URL-адрес** виберіть `бот` і `applications.commands` виберіть `Адміністратор` , потім скопіюйте посилання та вставте його в адресу свого браузера. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Налаштувати бота
 
@@ -74,8 +74,8 @@ npm install --save
 
 - Перейдіть на сторінку https://firebase.google.com/ і почніть налаштування проекту.
 - Додайте новий проект і виконайте вказівки.
-- Додайте свою першу програму за допомогою **Веб-сайт** Назвіть програму за бажанням **«Також налаштуйте Firebase Hosting для цієї програми»** і зареєструйте програму. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase надасть вам інформацію про конфігурацію. Застосуйте ці значення до файлу `.env.example`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Перейдіть до **створити > [базу даних у реальному часі](https://console.firebase.google.com/u/0/project/_/database/data)** , щоб створити базу даних для зберігання.
 
 ### розвивати
