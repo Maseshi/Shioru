@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
   <h1>
-    <strong>시오루</strong>
+    <strong>Shioru</strong>
   </h1>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
@@ -47,13 +47,13 @@
 
 - [Node.js](https://nodejs.org/) v18.0.0 이상
 - [Firebase](https://firebase.google.com/) v9.0.0 이상
-- [힘내](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 ## 빠른 설정 가이드
 
 ### 시작하다
 
-- [Discord 개발자 포털로 이동](https://discord.com/developers/applications)
+- Discord 개발자 포털로 이동
 - **"새 애플리케이션"** 클릭하고 봇에 이름을 지정하고 Discord 정책 규칙을 수락합니다.
 - 페이지 **"Bot"** 로 이동하여 섹션 **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - 페이지 **OAuth2 > URL 생성기** 선택 `봇` 및 `applications.commands` 선택 `관리자` 로 이동하여 봇을 서버에 초대한 다음 링크를 복사하여 브라우저 주소에 붙여넣습니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
