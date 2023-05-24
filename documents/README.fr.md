@@ -37,7 +37,7 @@ Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. El
 - Vous pouvez parler en tapant `@Shioru` suivi du message que vous souhaitez communiquer.
 - La commande d'application (/) peut être utilisée.
 
-et bien d'autres fonctionnalités intéressantes...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
 ## Améliorer Traduire
 
