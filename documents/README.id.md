@@ -22,9 +22,9 @@
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) |
 
-Asisten server Anda yang baik akan membantu server Anda terlihat lebih hidup. Dia dapat melakukan banyak hal dimana Anda dapat menemukan informasi detail dari berbagai perintah dengan mengetik `/help` Anda dapat mengundang Shioru untuk bergabung dengan server Anda dari[di sini](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Fitur
 
@@ -55,8 +55,8 @@ Anda dapat membantu kami menerjemahkan bahasa yang ada atau bahasa yang saat ini
 
 - Pergi ke [Portal Pengembang Perselisihan](https://discord.com/developers/applications)
 - Klik **"Aplikasi Baru"** dan beri nama bot Anda dan terima aturan kebijakan Discord.
-- Buka halaman **"Bot"** dan aktifkan semua opsi di bagian **Intent Gateway Privileged** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Undang bot Anda ke server dengan masuk ke halaman **OAuth2 > Generator URL** pilih `bot` dan `aplikasi.perintah` pilih `Administrator` lalu salin tautan dan tempel di alamat browser Anda. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Siapkan bot
 
@@ -74,8 +74,8 @@ npm instal --save
 
 - Buka https://firebase.google.com/ dan mulai menyiapkan proyek.
 - Tambahkan proyek baru dan ikuti langkah-langkahnya.
-- Tambahkan aplikasi pertama Anda dengan **Situs web** Beri nama aplikasi Anda secara opsional **"Siapkan juga Firebase Hosting untuk aplikasi ini"** dan daftarkan aplikasi. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase akan memberi Anda informasi tentang konfigurasi. Terapkan nilai-nilai ini ke file `.env.example`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Buka **buat > [basis data waktu nyata](https://console.firebase.google.com/u/0/project/_/database/data)** untuk membuat basis data penyimpanan.
 
 ### mengembangkan
