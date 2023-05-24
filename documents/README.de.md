@@ -51,7 +51,7 @@ Sie können uns helfen, eine vorhandene Sprache oder eine Sprache zu übersetzen
 
 ## Kurzanleitung zur Einrichtung
 
-### Loslegen
+### เริ่มต้นใช้งาน
 
 - Gehen Sie zu [Discord Developer Portal](https://discord.com/developers/applications)
 - Klicken Sie auf **„Neue Anwendung“** , geben Sie Ihrem Bot einen Namen und akzeptieren Sie die Richtlinienregeln von Discord.
