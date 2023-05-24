@@ -24,7 +24,7 @@
 
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Asistentul dvs. bun de server va ajuta serverul dvs. să arate mai animat. Ea poate face multe lucruri pe care le puteți găsi informații detaliate despre diferite comenzi tastând `/help` Puteți invita Shioru să se alăture serverului dvs. de la[aici](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Caracteristici
 
@@ -55,8 +55,8 @@ Ne puteți ajuta să traducem o limbă existentă sau o limbă care nu este disp
 
 - Accesați [Discord Developer Portal](https://discord.com/developers/applications)
 - Faceți clic pe **„Aplicație nouă”** și denumiți botul dvs. și acceptați regulile politicii Discord.
-- Accesați pagina **„Bot”** și activați toate opțiunile din secțiunea **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invitați-vă botul pe server accesând pagina **OAuth2 > URL Generator** selectați `bot` și `aplicații.comenzi` selectați `Administrator` apoi copiați linkul și inserați-l în adresa browserului dvs. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Configurați un bot
 
@@ -74,8 +74,8 @@ npm install --save
 
 - Accesați https://firebase.google.com/ și începeți configurarea proiectului.
 - Adăugați un proiect nou și urmați pașii.
-- Adăugați prima aplicație cu **Site web** Numiți aplicația opțional **„Configurați și găzduirea Firebase pentru această aplicație”** și înregistrați aplicația. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase vă va oferi informații despre configurație. Aplicați aceste valori la fișierul `.env.exemplu`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Accesați **creați > [bază de date în timp real](https://console.firebase.google.com/u/0/project/_/database/data)** pentru a crea o bază de date de stocare.
 
 ### dezvolta
