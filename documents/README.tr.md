@@ -8,10 +8,10 @@
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Durum" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="kalabalık" target="_blank" href="https://crowdin.com/project/shioru-bot">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
     <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
   </a>
   <a title="Kod Faktörü" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
@@ -22,7 +22,7 @@
   </a>
 </div>
 
-[TR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+[TR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) |
 
 İyi sunucu asistanınız, sunucunuzun daha canlı görünmesine yardımcı olacaktır. `/help` yazarak farklı komutların detaylı bilgilerini bulabileceğiniz birçok şey yapabilir.Shioru'yu[buraya](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
@@ -51,14 +51,14 @@ Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)b
 
 ## Hızlı Kurulum Kılavuzu
 
-### Başlamak
+### เริ่มต้นใช้งาน
 
-- [Discord Geliştirici Portalına Git](https://discord.com/developers/applications)
+- Discord Geliştirici Portalına Git
 - **"New Application"** tıklayın ve botunuza bir isim verin ve Discord politika kurallarını kabul edin.
 - Sayfa **"Bot"** gidin ve bölüm **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - Sayfa **giderek botunuzu sunucuya davet edin OAuth2 > URL Oluşturucu** seçin `bot` ve `apps.commands` seçin `Yönetici` sonra bağlantıyı kopyalayın ve tarayıcınızın adresine yapıştırın. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### robot kur
+### ตั้งค่าบอท
 
 - Bir terminal başlatın ve aşağıdaki komutu çalıştırın.
 
