@@ -1,14 +1,14 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
   <h1>
-    <strong>Сиору</strong>
+    <strong>Shioru</strong>
   </h1>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
   <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Положение дел" target="_blank" href="https://shioru.statuspage.io/">
+  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
   <a title="Краудин" target="_blank" href="https://crowdin.com/project/shioru-bot">
@@ -43,15 +43,15 @@
 
 Вы можете помочь нам перевести существующий язык или язык, который в настоящее время недоступен на [Crowdin](https://crowdin.com/project/shioru-bot).
 
-## Предпосылки
+## ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v18.0.0 или выше
 - [Firebase](https://firebase.google.com/) v9.0.0 или выше
-- [Гит](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 
 ## Руководство по быстрой установке
 
-### Начать
+### เริ่มต้นใช้งาน
 
 - Перейти на [Портал разработчиков Discord](https://discord.com/developers/applications)
 - Нажмите **«Новое приложение»** , назовите своего бота и примите правила политики Discord.
