@@ -24,7 +24,7 @@
 
 [LT](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Jūsų geras serverio padėjėjas padės jūsų serveriui atrodyti gyvesniam. Ji gali padaryti daug dalykų, kuriuos galite rasti išsamią informaciją apie įvairias komandas, įvesdami `/help` Galite pakviesti Shioru prisijungti prie jūsų serverio iš[čia](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## funkcijos
 
@@ -55,8 +55,8 @@ Galite padėti mums išversti esamą kalbą arba kalbą, kurios šiuo metu nėra
 
 - Eikite į [Discord kūrėjų portalą](https://discord.com/developers/applications)
 - Spustelėkite **„Nauja programa“** , pavadinkite savo robotą ir sutikite su „Discord“ politikos taisyklėmis.
-- Eikite į **puslapį „Bot“** ir įjunkite visas parinktis **skyriuje „Privilegijuoto šliuzo tikslas** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Pakvieskite savo robotą į serverį eidami į puslapį **OAuth2 > URL generatorius** pasirinkite `bot` ir `Applications.commands` pasirinkite `Administratorius` tada nukopijuokite nuorodą ir įklijuokite ją į savo naršyklės adresą. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Nustatykite robotą
 
@@ -74,8 +74,8 @@ npm įdiegti --save
 
 - Eikite į https://firebase.google.com/ ir pradėkite nustatyti projektą.
 - Pridėkite naują projektą ir atlikite nurodytus veiksmus.
-- Pridėkite pirmąją programą naudodami **svetainės** Pavadinkite programą pasirinktinai **„Taip pat nustatykite šios programos „Firebase Hosting“** ir užregistruokite programą. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- „Firebase“ suteiks informacijos apie konfigūraciją. Taikykite šias reikšmes failui `.env.example`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Eikite į **sukurti > [realaus laiko duomenų bazę](https://console.firebase.google.com/u/0/project/_/database/data)** norėdami sukurti saugojimo duomenų bazę.
 
 ### vystytis
