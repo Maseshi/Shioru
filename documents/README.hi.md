@@ -55,8 +55,8 @@
 
 - [डिसॉर्डर डेवलपर पोर्टल](https://discord.com/developers/applications)पर जाएं
 - **"नया एप्लिकेशन"** पर क्लिक करें और अपने बॉट को नाम दें और डिस्कॉर्ड नीति नियमों को स्वीकार करें।
-- पेज **"बॉट"** पर जाएं और सेक्शन **प्रिविलेज्ड गेटवे इंटेंट** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- पेज **OAuth2 > URL जेनरेटर** सेलेक्ट `बॉट` और `एप्लिकेशन पर जाकर अपने बॉट को सर्वर पर आमंत्रित करें। कमांड` सिलेक्ट `एडमिनिस्ट्रेटर` फिर लिंक को कॉपी करें और इसे अपने ब्राउज़र के एड्रेस में पेस्ट करें। ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### एक बॉट सेट करें
 
@@ -74,8 +74,8 @@ npm install --save
 
 - https://firebase.google.com/ पर जाएं और प्रोजेक्ट सेट करना शुरू करें।
 - एक नई परियोजना जोड़ें और चरणों का पालन करें।
-- **वेबसाइट के साथ अपना पहला एप्लिकेशन जोड़ें** वैकल्पिक रूप से अपने ऐप को नाम दें **"इस ऐप के लिए फायरबेस होस्टिंग भी सेट करें"** और ऐप को पंजीकृत करें। ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- फायरबेस आपको कॉन्फ़िगरेशन के बारे में जानकारी प्रदान करेगा। इन मानों को फ़ाइल `.env.example`पर लागू करें
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - स्टोरेज डेटाबेस बनाने के लिए **पर जाएं > [रीयलटाइम डेटाबेस](https://console.firebase.google.com/u/0/project/_/database/data)** बनाएं।
 
 ### विकास करना
