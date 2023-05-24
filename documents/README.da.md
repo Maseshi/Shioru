@@ -24,7 +24,7 @@
 
 [DA](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-Din gode serverassistent vil hjælpe din server til at se mere livlig ud. Hun kan gøre mange ting, som du kan finde detaljeret information om forskellige kommandoer ved at skrive `/help` Du kan invitere Shioru til at deltage i din server fra[her](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Funktioner
 
@@ -55,8 +55,8 @@ Du kan hjælpe os med at oversætte et eksisterende sprog eller et sprog, der i 
 
 - Gå til [Discord Developer Portal](https://discord.com/developers/applications)
 - Klik på **"Ny applikation"** og navngiv din bot og accepter Discord-politikreglerne.
-- Gå til side **"Bot"** og aktiver alle muligheder i afsnit **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Inviter din bot til serveren ved at gå til side **OAuth2 > URL Generator** vælg `bot` og `applications.commands` vælg `Administrator` og kopier derefter linket og indsæt det i din browsers adresse. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Opsæt en bot
 
@@ -74,8 +74,8 @@ npm installer -- gem
 
 - Gå til https://firebase.google.com/ og start opsætningen af projektet.
 - Tilføj et nyt projekt og følg trinene.
-- Tilføj din første applikation med **Website** Navngiv din app valgfrit **"Konfigurer også Firebase Hosting for denne app"** og registrer appen. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase vil give dig oplysninger om konfigurationen. Anvend disse værdier på fil `.env.example`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Gå til **opret > [realtidsdatabase](https://console.firebase.google.com/u/0/project/_/database/data)** for at oprette en lagerdatabase.
 
 ### udvikle
