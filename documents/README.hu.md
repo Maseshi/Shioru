@@ -24,7 +24,7 @@
 
 [HU](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
-A jó szerverasszisztens segít a szerverének élénkebb kinézetében. Sok mindent megtehet, amelyekről részletes információkat találhat a különböző parancsokról `/help` Meghívhatja Shiorut, hogy csatlakozzon a szerveréhez[innen](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 ## Jellemzők
 
@@ -55,8 +55,8 @@ Segíthet nekünk lefordítani egy meglévő vagy egy olyan nyelvet, amely jelen
 
 - Lépjen a [Discord fejlesztői portálra](https://discord.com/developers/applications)
 - Kattintson **„Új alkalmazás”** lehetőségre, nevezze el a botját, és fogadja el a Discord szabályzat szabályait.
-- Lépjen a **"Bot"** oldalra, és engedélyezze az összes opciót **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Hívja meg a botját a szerverre **oldalra lépve OAuth2 > URL-generátor** válassza ki `bot` és `Applications-t.commands` válassza a `Adminisztrátor` lehetőséget, majd másolja ki a hivatkozást és illessze be böngészője címébe. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Állíts be egy botot
 
@@ -74,8 +74,8 @@ npm telepítés -- mentés
 
 - Nyissa meg a https://firebase.google.com/ oldalt, és kezdje el a projekt beállítását.
 - Adjon hozzá egy új projektet, és kövesse a lépéseket.
-- Adja hozzá első alkalmazását **Webhellyel** Nevezze el az alkalmazást opcionálisan **„A Firebase Hosting beállítása ehhez az alkalmazáshoz is”** , és regisztrálja az alkalmazást. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- A Firebase tájékoztatást nyújt a konfigurációról. Alkalmazza ezeket az értékeket `.env.example`fájlra
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Menjen a **létrehozása > [valós idejű adatbázis létrehozásához](https://console.firebase.google.com/u/0/project/_/database/data)** tároló adatbázis létrehozásához.
 
 ### fejleszteni
@@ -99,7 +99,7 @@ npm install ffmpeg-static@latest --save
 
 Köszönet minden eredeti alkotónak, hogy lehetővé tették e csodálatos műveid felhasználását.
 
-[rajza: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)お着替え中](https://www.pixiv.net/en/artworks/76075098)
+ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
 ## problémát talált
 
