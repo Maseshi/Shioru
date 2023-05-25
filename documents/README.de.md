@@ -36,17 +36,17 @@ Ihr guter Serverassistent wird dazu beitragen, dass Ihr Server lebendiger aussie
 - Funktioniert auf [Discord.js](https://discord.js.org/) v14.
 - Kann eine Vielzahl gewünschter Artikel individuell anpassen
 - Musik kann von [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) und [SoundCloud](https://soundcloud.com/) mit automatischer Wiedergabe abgespielt werden.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Unterstützt mehrere Sprachen Sie können die unterstützten Sprachen in[Sprachdatei](https://github.com/Maseshi/shioru/blob/main/source/languages)dieses Repositorys überprüfen.
 - Stufensystem (Niveau und Erfahrung)
 - Unterstützung für die Anpassung der Serverbenachrichtigung
 - Sie können sprechen, indem Sie `@Shioru` eingeben, gefolgt von der Nachricht, die Sie übermitteln möchten.
 - Der Anwendungsbefehl (/) kann verwendet werden.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+und viele weitere interessante Features...
 
-## ปรับปรุงการแปล
+## Verbessern Sie die Übersetzung
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+Sie können uns helfen, eine vorhandene Sprache oder eine Sprache zu übersetzen, die derzeit nicht unter [Crowdin](https://crowdin.com/project/shioru-bot)verfügbar ist.
 
 ## Voraussetzungen
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Sie können einige Daten in **config** unter `./source/config.js`ändern
 
 ### Richten Sie Firebase ein
 
@@ -98,10 +98,11 @@ npm install --save
 
 - Wenn Sie Paket **Natrium** nicht installieren können, installieren Sie stattdessen **libsodium-wrappers**.
 ```bat
-npm deinstalliert Natrium
-npm installiert libsodium-wrappers@latest --save
+Git-Klon https://github.com/Maseshi/Shioru.git
+cd Shioru
+npm install --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Wenn Sie Ihre Musik nicht abspielen können oder die Musikwiedergabebefehle nicht funktionieren, installieren Sie [ffmpeg](https://ffmpeg.org/download.html) **(empfohlen)** oder installieren Sie das **ffmpeg-static** Paket und versuchen Sie es erneut.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
