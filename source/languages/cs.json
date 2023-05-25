@@ -797,10 +797,10 @@
             "description": "Ahoj..děkuji za pozvání na toto místo %s\nZdá se, že lidé se ptají, co mohu dělat? Oh..umí mýt nádobí, prát. Je to úžasné, že ~ Haha, kde to je? dělám si srandu",
             "get_started": "Přišlo to na začátek!!",
             "help_information_and_documentation": "**📄 Nápověda a dokumentace**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Chcete vědět, co umím?...velmi snadné. Stačí napsat `Shelp` nebo `/help` a někdo vám to řekne. Samozřejmě stačí přejít na odkaz níže a tam bude dokumentace poskytnutá vývojářem a dalšími. Už napsal\n> https://shiorus.web.app/",
             "join_on": "připojit se",
             "support_multiple_languages": "** 🌐 Podporuje více jazyků**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Podporuji více jazyků. Chcete-li změnit jazyk Můžete jej nastavit pomocí `Slanguage <kód jazyka>` nebo `/language <kód jazyka>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Tento server již sloučil %s . Okamžitě budete dostávat nové články s budoucími aktualizacemi.",
