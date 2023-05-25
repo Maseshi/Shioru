@@ -27,6 +27,10 @@
             "synopsis": "**összesít:**",
             "undefined": "határozatlan"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blokkolja a káromkodást szexuális tartalom és sértések",
             "flagged_words_success": "✅ Az AutoMod-szabályok létrejöttek, ezek a szavak el lesznek távolítva.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Szeretné megváltoztatni zenéje hangzását?",
             "unknown_filter": "❎ Öhm..nem tudom a `%s` hang formátumát, ellenőrizheti a **elérhető** vagy **ava**?",
             "unknown_input_option": "❓ A következő paramétereket adhatja meg: hozzáadás, eltávolítás, beállítás, elérhető, lista, törlés."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK csatorna kódja",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh...de ez a szerver már %s nyelvet használja",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**%s-language** - Állítsa be\n\nnyelvet%sez\nmegkönnyíti a megértést\n\n",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Már módosította a nyelvet **%s**-ra.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Nyelv"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "játék vége",
             "game_score": "Pontszám: **%s1**\nIdő: **%s2** másodperc",
             "played_on": "%s-val indult"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Referencia adatok a szerverről.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Csak a sor tulajdonosa módosíthatja.",
             "this_volume": "🔈 Jelenlegi hangerő: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "tiszta idő",
             "cloudy": "felhős",
             "date": "📆 dátum",
             "day": "📅 nap",
             "degree_type": "⚖️ Mértékegységek",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 úgy érzem",
             "humidity": "💧 Páratartalom",
             "information_from_microsoft": "Pontos és pontos információk a Microsofttól",
@@ -723,6 +748,7 @@
             "sunny": "napos",
             "temperature": "🌡️ Hőmérséklet",
             "timezone": "🌐 Időzóna",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Időjárás",
             "weather_at_the_moment": "__**%s1**__ időjárása most \n```%s2```.",
             "wind": "🎏 szél"
@@ -771,10 +797,10 @@
             "description": "Helló... köszönöm, hogy meghívott erre a %s helyre\núgy tűnik, az emberek kíváncsiak, mit tehetek? Ó..tud mosogatni, mosni. Félelmetes, ugye~ Haha, hol van? viccelek",
             "get_started": "Az elejére megérkezett!!",
             "help_information_and_documentation": "**📄 Segítség és dokumentáció**",
-            "help_information_and_documentation_detail": "Szeretné tudni, mit tehetek?...nagyon egyszerű Csak írja be a \"Shelp\" vagy a \"/help\" parancsot, és valaki megmondja. Természetesen csak menjen az alábbi linkre, és ott lesz a fejlesztő és mások által biztosított dokumentáció. Már írt\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
             "join_on": "csatlakozzon",
             "support_multiple_languages": "** 🌐 Több nyelvet támogat**",
-            "support_multiple_languages_detail": "Több nyelvet is támogatok. A nyelv megváltoztatásához A `Slanguage <nyelvi kód>` vagy a `/language <language code>` paraméterrel állíthatja be."
+            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Ez a szerver már egyesítette %s . Azonnal megkapja az új cikkeket a jövőbeni frissítésekkel.",
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Hiba történt a végrehajtás során.",
+            "error_detail": "Parancs: **%s1**\nVerzió: **%s2**\nIdőzített: **%s3**\nSzerver: **%s4**\nKésés: **%s5ms**\nFogadás-Adás: * *%s6ms**\nHiba eredménye:\n```JavaScript\n%s7\n```\n> **Tipp**: A hibát azonnal jelentheti a következő paranccsal:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problémajelentés](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Hírek ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "rendellenes",
+            "server_normal": "Normál"
+        },
+        "databaseUtils": {
+            "congratulations": "Gratulálunk!!",
+            "level_up": "A *%s1* osztály most ```%s2```-ra frissült."
+        },
         "miscUtils": {
             "april": "április",
             "august": "augusztus",
@@ -942,17 +978,6 @@
             "thursday": "csütörtök",
             "tuesday": "kedd",
             "wednesday": "szerda"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Hiba történt a végrehajtás során.",
-            "error_detail": "Parancs: **%s1**\nVerzió: **%s2**\nIdőzített: **%s3**\nSzerver: **%s4**\nKésés: **%s5ms**\nFogadás-Adás: * *%s6ms**\nHiba eredménye:\n```JavaScript\n%s7\n```\n> **Tipp**: A hibát azonnal jelentheti a következő paranccsal:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problémajelentés](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Hírek ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "rendellenes",
-            "server_normal": "Normál"
-        },
-        "databaseUtils": {
-            "congratulations": "Gratulálunk!!",
-            "level_up": "A *%s1* osztály most ```%s2```-ra frissült.",
-            "was_mentioned": "Mi a baj?"
         }
     }
 }
