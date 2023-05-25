@@ -23,7 +23,7 @@
   </a>
 </div>
 
-आपका अच्छा सर्वर सहायक आपके सर्वर को अधिक जीवंत दिखने में मदद करेगा। वह बहुत कुछ कर सकती है जिसके लिए आप `/help` टाइप करके विभिन्न कमांड की विस्तृत जानकारी प्राप्त कर सकते हैं।आप शिओरू को[यहाँ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[एन](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [वें](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [जेए](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,23 +36,23 @@
 - [Discord.js](https://discord.js.org/) v14 पर काम करता है।
 - वांछित वस्तुओं की एक किस्म को अनुकूलित करने में सक्षम
 - स्वचालित प्लेबैक के साथ [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) और [SoundCloud](https://soundcloud.com/) से संगीत चलाया जा सकता है।
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- कई भाषाओं का समर्थन करें आप इस रिपॉजिटरी की[भाषा फाइल](https://github.com/Maseshi/shioru/blob/main/source/languages)में समर्थित भाषाओं की जांच कर सकते हैं।
 - टियर सिस्टम (स्तर और अनुभव)
 - सर्वर अधिसूचना अनुकूलन के लिए समर्थन
 - आप जिस संदेश से संवाद करना चाहते हैं उसके बाद `@Shioru` टाइप करके बात कर सकते हैं।
 - एप्लिकेशन कमांड (/) का उपयोग किया जा सकता है।
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+आपका अच्छा सर्वर सहायक आपके सर्वर को अधिक जीवंत दिखने में मदद करेगा। वह बहुत कुछ कर सकती है जिसके लिए आप `/help` टाइप करके विभिन्न कमांड की विस्तृत जानकारी प्राप्त कर सकते हैं।आप शिओरू को[यहाँ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-## ปรับปรุงการแปล
+## अनुवाद में सुधार करें
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+और कई अन्य रोचक विशेषताएं...
 
 ## आवश्यक शर्तें
 
 - [Node.js](https://nodejs.org/) v18.0.0 या अधिक
 - [फायरबेस](https://firebase.google.com/) v9.0.0 या अधिक
-- [FFmpeg](https://www.ffmpeg.org/download.html)
+- [गिट](https://www.ffmpeg.org/download.html)
 - [गिट](https://git-scm.com/downloads)
 
 ## त्वरित सेटअप गाइड
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- आप **कॉन्फ़िगरेशन** में `./source/config.js`में कुछ डेटा संशोधित कर सकते हैं
 
 ### फायरबेस सेट करें
 
@@ -98,20 +98,19 @@ npm install --save
 
 - यदि आप पैकेज **सोडियम** स्थापित नहीं कर सकते हैं, तो इसके बजाय **लिबसोडियम-रैपर** स्थापित करें।
 ```bat
-एनपीएम अनइंस्टॉल सोडियम
-एनपीएम इंस्टॉल करें libsodium-wrappers@latest --save
+npm ffmpeg-स्थिर @ नवीनतम स्थापित करें --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- यदि आप अपना संगीत नहीं चला सकते हैं या संगीत प्लेबैक आदेश काम नहीं करते हैं, तो [ffmpeg](https://ffmpeg.org/download.html) **(अनुशंसित)** स्थापित करें या **ffmpeg-स्थैतिक** पैकेज स्थापित करें और पुनः प्रयास करें।
 ```bat
 npm ffmpeg-स्थिर @ नवीनतम स्थापित करें --save
 ```
 
 ## श्रेय
 
-अपने इन अद्भुत कार्यों के उपयोग की अनुमति देने के लिए सभी मूल रचनाकारों को धन्यवाद।
+आप किसी मौजूदा भाषा या ऐसी भाषा का अनुवाद करने में हमारी मदद कर सकते हैं जो वर्तमान में [Crowdin](https://crowdin.com/project/shioru-bot)पर उपलब्ध नहीं है।
 
-अवतार आरेखण द्वारा: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+अपने इन अद्भुत कार्यों के उपयोग की अनुमति देने के लिए सभी मूल रचनाकारों को धन्यवाद।
 
 ## एक समस्या मिली
 
-यदि आपको कोई समस्या आती है आपके वर्तमान कार्य से आप हमें इस रिपॉजिटरी के [अंक](https://github.com/Maseshi/Shioru/issues) टैब के माध्यम से बता सकते हैं।
+अवतार आरेखण द्वारा: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
