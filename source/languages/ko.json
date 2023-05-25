@@ -797,10 +797,10 @@
             "description": "안녕하세요..저를 초대해 주셔서 감사합니다 %s 장소\n사람들이 제가 무엇을 할 수 있는지 궁금해하는 것 같습니다? 오.. 설겆이를 할 수 있고 빨래를 할 수 있습니다. 굉장하지 않나요~ ㅎㅎ 어디죠? 농담이야",
             "get_started": "시작점에 도착했습니다!!",
             "help_information_and_documentation": "**📄 도움말 및 문서**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "내가 무엇을 할 수 있는지 알고 싶습니까?..매우 쉽습니다. `Shelp` 또는 `/help`를 입력하면 누군가 알려줄 것입니다. 물론 아래 링크로 이동하면 개발자 및 다른 사람들이 제공하는 문서가 있을 것입니다. 그는 이미\n> https://shiorus.web.app/을 작성했습니다.",
             "join_on": "합류하다",
             "support_multiple_languages": "** 🌐 다국어 지원**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "여러 언어를 지원합니다. 언어를 변경하려면 `Slanguage <언어 코드>` 또는 `/language <언어 코드>`로 설정할 수 있습니다."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "이 서버는 이미 병합되었습니다 %s . 향후 업데이트가 있는 즉시 새 기사를 받게 됩니다.",
