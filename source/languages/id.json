@@ -797,10 +797,10 @@
             "description": "Halo..terima kasih telah mengundang saya ke tempat %s\nini. Sepertinya orang bertanya-tanya apa yang bisa saya lakukan? Oh..bisa cuci piring, cuci baju. Mengagumkan bukan~ Haha, dimana? aku bercanda",
             "get_started": "Itu telah tiba di awal!!",
             "help_information_and_documentation": "**📄 Bantuan dan dokumentasi**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Ingin tahu apa yang bisa saya lakukan?..sangat mudah. Cukup ketik `Shelp` atau `/help` dan seseorang akan memberi tahu Anda. Tentunya langsung saja ke link dibawah ini dan akan ada dokumentasi yang disediakan oleh pihak developer dan lainnya. Dia sudah menulis\n> https://shiorus.web.app/",
             "join_on": "bergabung",
             "support_multiple_languages": "** 🌐 Mendukung banyak bahasa **",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Saya mendukung banyak bahasa. Untuk mengubah bahasa Anda dapat menyetelnya dengan `Slanguage <language code>` atau `/language <language code>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Server ini telah digabungkan %s . Anda akan menerima artikel baru segera setelah ada pembaruan di masa mendatang.",
