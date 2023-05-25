@@ -797,10 +797,10 @@
             "description": "Witam.. dziękuję za zaproszenie mnie do tego miejsca %s\nwygląda na to, że ludzie zastanawiają się, co mogę zrobić? Och..umie zmywać naczynia, robić pranie. Jest super, prawda~ Haha, gdzie to jest? Żartuję",
             "get_started": "Dotarło na początek!!",
             "help_information_and_documentation": "**📄 Pomoc i dokumentacja**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Chcesz wiedzieć, co potrafię?... bardzo proste. Po prostu wpisz `Shelp` lub `/help`, a ktoś ci powie. Oczywiście, po prostu przejdź do poniższego linku, a pojawi się dokumentacja dostarczona przez programistę i innych. Napisał już\n> https://shiorus.web.app/",
             "join_on": "przyłącz się",
             "support_multiple_languages": "** 🌐 Obsługuje wiele języków **",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Obsługuję wiele języków. Aby zmienić język Możesz to ustawić za pomocą `Slanguage <kod języka>` lub `/language <kod języka>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Ten serwer został już połączony %s . Otrzymasz natychmiast nowe artykuły z przyszłymi aktualizacjami.",
