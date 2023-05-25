@@ -1,52 +1,58 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>Shioru</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
   <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Краудин" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="Краудин" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="КодФактор" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="КодФактор" />
   </a>
   <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [ЭТ](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [Я](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
-
 Ваш хороший помощник по серверу поможет вашему серверу выглядеть более живым. Она может делать много вещей, и вы можете найти подробную информацию о различных командах, набрав `/help` Вы можете пригласить Шиору присоединиться к вашему серверу из[здесь](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## Функции
 
 - Работает на [Discord.js](https://discord.js.org/) v14.
 - Возможность настроить различные желаемые элементы
 - Музыку можно воспроизводить с [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) и [SoundCloud](https://soundcloud.com/) с автоматическим воспроизведением.
-- Поддержка нескольких языков Вы можете проверить поддерживаемые языки в языковом файле[](https://github.com/Maseshi/shioru/blob/main/source/languages)этого репозитория.
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - Уровневая система (уровень и опыт)
 - Поддержка настройки уведомлений сервера
 - Вы можете говорить, набрав `@Shioru` , а затем сообщение, которое вы хотите передать.
 - Можно использовать команду приложения (/).
 
-и много других интересных функций...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## Улучшить перевод
+## ปรับปรุงการแปล
 
-Вы можете помочь нам перевести существующий язык или язык, который в настоящее время недоступен на [Crowdin](https://crowdin.com/project/shioru-bot).
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v18.0.0 или выше
 - [Firebase](https://firebase.google.com/) v9.0.0 или выше
+- [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Руководство по быстрой установке
@@ -62,13 +68,18 @@
 
 - Запустите терминал и выполните следующую команду.
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
 
-- Вы можете изменить некоторые данные в **config** в `./source/config.js`
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Настроить Firebase
 
@@ -90,7 +101,7 @@ npm install --save
 npm удалить натрий
 npm установить libsodium-wrappers@latest --save
 ```
-- Если вы не можете воспроизвести музыку или команды воспроизведения музыки не работают, установите [ffmpeg](https://ffmpeg.org/download.html) **(рекомендуется)** или установите пакет **ffmpeg-static** и повторите попытку.
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm установить ffmpeg-static@latest --save
 ```
