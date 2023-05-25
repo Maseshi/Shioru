@@ -36,17 +36,17 @@ Twój dobry asystent serwera sprawi, że Twój serwer będzie wyglądał bardzie
 - Działa na [Discord.js](https://discord.js.org/) v14.
 - Możliwość dostosowania różnych pożądanych elementów
 - Muzykę można odtwarzać z [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) i [SoundCloud](https://soundcloud.com/) z automatycznym odtwarzaniem.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Obsługa wielu języków Możesz sprawdzić obsługiwane języki z[plików językowych](https://github.com/Maseshi/shioru/blob/main/source/languages)tego repozytorium.
 - System poziomów (poziom i doświadczenie)
 - Obsługa dostosowywania powiadomień serwera
 - Możesz rozmawiać, wpisując `@Shioru` , a następnie wiadomość, którą chcesz przekazać.
 - Można użyć polecenia aplikacji (/).
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+i wiele innych ciekawych funkcji...
 
-## ปรับปรุงการแปล
+## Popraw tłumaczenie
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+Możesz pomóc nam przetłumaczyć istniejący język lub język, który nie jest obecnie dostępny w [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## Wymagania wstępne
 
@@ -79,7 +79,7 @@ cd Shioru
 npm zainstaluj --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Możesz zmodyfikować niektóre dane w **config** w `./source/config.js`
 
 ### Skonfiguruj Firebase
 
@@ -98,10 +98,11 @@ npm zainstaluj --save
 
 - Jeśli nie możesz zainstalować pakietu **sodu** , zamiast tego zainstaluj **pakiety libsodium-wrappers**.
 ```bat
-npm odinstaluj sód
-npm zainstaluj libsodium-wrappers@latest --save
+git klon https://github.com/Maseshi/Shioru.git
+cd Shioru
+npm zainstaluj --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Jeśli nie możesz odtwarzać muzyki lub polecenia odtwarzania muzyki nie działają, zainstaluj [ffmpeg](https://ffmpeg.org/download.html) **(zalecane)** lub zainstaluj pakiet **ffmpeg-static** i spróbuj ponownie.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
