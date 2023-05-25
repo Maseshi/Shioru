@@ -24,6 +24,7 @@
  */
 
 const { Client, Collection, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
+const { OpenAIApi, Configuration } = require("openai");
 const { DisTube, StreamType } = require("distube");
 const { DeezerPlugin } = require("@distube/deezer");
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -37,7 +38,7 @@ const { ansiColor } = require("./utils/consoleUtils");
 const { version } = require("../package.json");
 const Spinnies = require("spinnies");
 const config = require("./configs/data");
-const language = require("./languages/en.json");
+const language = require("./languages/en-US.json");
 
 // Start detecting working time
 const startTime = new Date().getTime();
@@ -54,7 +55,7 @@ console.info(blueBrightColor + "╚════██║██╔══██║
 console.info(blueBrightColor + "███████║██║  ██║██║╚██████╔╝██║  ██║╚██████╔╝ " + version.charAt(3) + clearStyle);
 console.info(blueBrightColor + "╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  " + version.charAt(4) + clearStyle);
 console.info("Copyright (C) 2020-2023 Chaiwat Suwannarat. All rights reserved.");
-console.info("Website: https://shiorus.web.app/, License: MIT");
+console.info("Website: https://shiorus.web.app/, License: MIT, CC0-1.0");
 console.info();
 
 /**
@@ -109,7 +110,6 @@ const client = new Client({
         GatewayIntentBits.DirectMessageReactions,
         GatewayIntentBits.DirectMessageTyping,
         GatewayIntentBits.DirectMessages,
-        // GatewayIntentBits.GuildBans,
         GatewayIntentBits.GuildEmojisAndStickers,
         GatewayIntentBits.GuildIntegrations,
         GatewayIntentBits.GuildInvites,
@@ -117,6 +117,7 @@ const client = new Client({
         GatewayIntentBits.GuildMessageReactions,
         GatewayIntentBits.GuildMessageTyping,
         GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildModeration,
         GatewayIntentBits.GuildPresences,
         GatewayIntentBits.GuildScheduledEvents,
         GatewayIntentBits.GuildVoiceStates,
@@ -179,6 +180,25 @@ client.music = new DisTube(client, {
     },
     "streamType": StreamType.OPUS
 });
+client.ai = new OpenAIApi(
+    new Configuration({
+        "apiKey": client.config.openai.apiKey,
+        "basePath": client.config.openai.basePath
+    })
+);
+
+// Check environnement
+if (!client.config.openai.apiKey) return console.error("[ENV] OPENAI_API_KEY It needs to be set up in the environment.");
+if (!client.config.openai.basePath) return console.error("[ENV] OPENAI_BASE_PATH It needs to be set up in the environment.");
+if (!client.config.server.apiKey) return console.error("[ENV] API_KEY It needs to be set up in the environment.");
+if (!client.config.server.authDomain) return console.error("[ENV] AUTH_DOMAIN It needs to be set up in the environment.");
+if (!client.config.server.databaseURL) return console.error("[ENV] DATABASE_URL It needs to be set up in the environment.");
+if (!client.config.server.projectId) return console.error("[ENV] PROJECT_ID It needs to be set up in the environment.");
+if (!client.config.server.storageBucket) return console.error("[ENV] STORAGE_BUCKET It needs to be set up in the environment.");
+if (!client.config.server.messagingSenderId) return console.error("[ENV] MESSAGING_SENDER_ID It needs to be set up in the environment.");
+if (!client.config.server.appId) return console.error("[ENV] APP_ID It needs to be set up in the environment.");
+if (!client.config.server.measurementId) return console.error("[ENV] MEASUREMENT_ID It needs to be set up in the environment.");
+if (!client.config.token) return console.error("[ENV] TOKEN It needs to be set up in the environment.");
 
 // Start connecting to the server.
 initializeApp(client.config.server);
@@ -191,6 +211,7 @@ for (const handler of handlerFiles) {
     require(handlersPath + "/" + handler)(client);
 }
 
+// Check internet connection.
 client.console.add("check-internet-connection", {
     "text": "Checking connection to server"
 });
