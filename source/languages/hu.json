@@ -797,10 +797,10 @@
             "description": "Helló... köszönöm, hogy meghívott erre a %s helyre\núgy tűnik, az emberek kíváncsiak, mit tehetek? Ó..tud mosogatni, mosni. Félelmetes, ugye~ Haha, hol van? viccelek",
             "get_started": "Az elejére megérkezett!!",
             "help_information_and_documentation": "**📄 Segítség és dokumentáció**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Szeretné tudni, mit tehetek?...nagyon egyszerű Csak írja be a \"Shelp\" vagy a \"/help\" parancsot, és valaki megmondja. Természetesen csak menjen az alábbi linkre, és ott lesz a fejlesztő és mások által biztosított dokumentáció. Már írt\n> https://shiorus.web.app/",
             "join_on": "csatlakozzon",
             "support_multiple_languages": "** 🌐 Több nyelvet támogat**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Több nyelvet is támogatok. A nyelv megváltoztatásához A `Slanguage <nyelvi kód>` vagy a `/language <language code>` paraméterrel állíthatja be."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Ez a szerver már egyesítette %s . Azonnal megkapja az új cikkeket a jövőbeni frissítésekkel.",
