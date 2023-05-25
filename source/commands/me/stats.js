@@ -41,30 +41,31 @@ module.exports.function.command = {
                 interaction.client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
             ];
 
-            try {
-                const results = await Promise.all(promises);
-                const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-                const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
+            return Promise.all(promises)
+                .then(async (results) => {
+                    const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
+                    const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
 
-                statsEmbed.setFields(
-                    [
-                        {
-                            "name": "Server count:",
-                            "value": totalGuilds.toString(),
-                            "inline": true
-                        },
-                        {
-                            "name": "Member count:",
-                            "value": totalMembers.toString(),
-                            "inline": true
-                        }
-                    ]
-                );
+                    statsEmbed.setFields(
+                        [
+                            {
+                                "name": interaction.client.translate.commands.stats.server_count,
+                                "value": totalGuilds.toString(),
+                                "inline": true
+                            },
+                            {
+                                "name": interaction.client.translate.commands.stats.member_count,
+                                "value": totalMembers.toString(),
+                                "inline": true
+                            }
+                        ]
+                    );
 
-                await interaction.reply({ "embeds": [statsEmbed] });
-            } catch (error) {
-                catchError(interaction.client, interaction, module.exports.name, error)
-            }
+                    return await interaction.reply({ "embeds": [statsEmbed] });
+                })
+                .catch((error) => {
+                    catchError(interaction.client, interaction, module.exports.name, error)
+                });
         } else {
             const totalGuilds = interaction.client.guilds.cache.size;
             const totalMembers = interaction.client.users.cache.size;
@@ -72,12 +73,12 @@ module.exports.function.command = {
             statsEmbed.setFields(
                 [
                     {
-                        "name": "Server count:",
+                        "name": interaction.client.translate.commands.stats.server_count,
                         "value": totalGuilds.toString(),
                         "inline": true
                     },
                     {
-                        "name": "Member count:",
+                        "name": interaction.client.translate.commands.stats.member_count,
                         "value": totalMembers.toString(),
                         "inline": true
                     }

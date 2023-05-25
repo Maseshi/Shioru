@@ -32,7 +32,7 @@ module.exports.function.command = {
         if (!queue) return await interaction.reply(interaction.client.translate.commands.lyrics.no_queue);
 
         let lyrics;
-        const queueName = queue.songs.map((song, id) => song.name);
+        const queueName = queue.songs.map((song) => song.name);
 
         try {
             lyrics = await lyricsFinder(queueName, "");

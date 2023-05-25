@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildBanRemove,
     "once": false,
     execute(ban) {
-        if (ban.client.mode === "start") {
-            settingsData(ban.client, ban.guild);
-        }
+        settingsData(ban.client, ban.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), ban.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(ban.client.user.username)), "guilds"), ban.guild.id);
         const channelRef = child(guildRef, "notification/guildBanRemove");
         const channelSnapshot = ban.client.api.guilds[ban.guild.id].notification.guildBanRemove;
 

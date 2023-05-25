@@ -1,6 +1,4 @@
 const { PermissionsBitField } = require("discord.js");
-const { readdirSync } = require("node:fs");
-const path = require("path");
 
 module.exports = {
     "enable": true,

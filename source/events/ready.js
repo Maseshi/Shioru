@@ -1,11 +1,12 @@
 const { Events, ActivityType } = require("discord.js");
+const { AutoPoster } = require("topgg-autoposter");
 const { readdirSync } = require("node:fs");
 const { join } = require("node:path");
 const { getApps } = require("firebase/app");
 const { getFirestore, doc, setDoc } = require("firebase/firestore");
-const { getDatabase, get, onValue, ref, update } = require("firebase/database");
+const { getDatabase, get, onValue, ref, child, set, update } = require("firebase/database");
 const { checkForUpdates, updateApplicationCommands } = require("../utils/clientUtils");
-const { currencyFormatter } = require("../utils/miscUtils");
+const { currencyFormatter, IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
   "name": Events.ClientReady,
@@ -29,6 +30,34 @@ module.exports = {
     // Check for update
     checkForUpdates(client);
 
+    // Send bot statistics to Top.gg
+    if (client.mode === "start") {
+      if (client.config.top_gg_token) {
+        client.console.add("top-gg-send-info-loading", {
+          "text": "Sending statistics data to Top.gg..."
+        });
+
+        setInterval(() => {
+          const poster = AutoPoster(client.config.top_gg_token, client);
+
+          poster.on("posted", (stats) => {
+            if (client.console.pick("top-gg-send-info-loading")) {
+              client.console.update("top-gg-send-info-loading", {
+                "text": "Posted statistics data to Top.gg with " + stats.serverCount + " servers",
+                "status": "non-spinnable"
+              });
+            }
+          });
+          poster.on("error", (error) => {
+            client.console.fail("top-gg-send-info-loading", {
+              "text": "Unable to post statistical data to Top.gg.\n" + error,
+              "status": "non-spinnable"
+            });
+          });
+        }, 60000);
+      }
+    }
+
     // Check server is set up.
     if (!getApps.length) {
       client.console.add("server-check-loading", {
@@ -46,11 +75,15 @@ module.exports = {
         "text": "Receiving data from database.",
         "indent": 2
       });
-      get(ref(getDatabase(), "projects/shioru")).then((data) => {
-        if (data.exists()) client.api = data.val();
+      get(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username))).then((data) => {
+        if (!data.exists()) set(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "");
 
-        onValue(ref(getDatabase(), "projects/shioru"), (snapshot) => {
-          if (snapshot.exists()) client.api = snapshot.val();
+        client.api = data.val();
+
+        onValue(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), (snapshot) => {
+          if (!snapshot.exists()) set(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "");
+
+          client.api = snapshot.val();
         });
 
         client.console.succeed("server-database-data-loading", {
@@ -69,11 +102,15 @@ module.exports = {
         "text": "Receiving statistics from database.",
         "indent": 2
       });
-      get(ref(getDatabase(), "statistics/shioru")).then((data) => {
-        if (data.exists()) client.api.statistics = data.val();
+      get(child(ref(getDatabase(), "statistics"), IDConvertor(client.user.username))).then((data) => {
+        if (!data.exists()) set(child(ref(getDatabase(), "statistics"), IDConvertor(client.user.username)), "");
 
-        onValue(ref(getDatabase(), "statistics/shioru"), (snapshot) => {
-          if (snapshot.exists()) client.api.statistics = snapshot.val();
+        client.api.statistics = data.val();
+
+        onValue(child(ref(getDatabase(), "statistics"), IDConvertor(client.user.username)), (snapshot) => {
+          if (!snapshot.exists()) set(child(ref(getDatabase(), "statistics"), IDConvertor(client.user.username)), "");
+
+          client.api.statistics = snapshot.val();
         });
 
         client.console.succeed("server-database-statistics-loading", {
@@ -108,7 +145,7 @@ module.exports = {
               "text": "Sending information about the " + command.name + " command."
             });
 
-            setDoc(doc(getFirestore(), "Information", "shioru"), {
+            setDoc(doc(getFirestore(), "Information", IDConvertor(client.user.username)), {
               "commands": {
                 [command.category]: {
                   [command.name]: {
@@ -153,12 +190,12 @@ module.exports = {
         const guildSize = client.guilds.cache.size;
         const userSize = client.users.cache.size;
 
-        const prevGuildSize = client.api.statistics ? client.api.statistics.size.guilds : guildSize;
-        const prevUserSize = client.api.statistics ? client.api.statistics.size.users : userSize;
+        const prevGuildSize = client.api.statistics ? client.api.statistics.size ? client.api.statistics.size.guilds : guildSize : guildSize;
+        const prevUserSize = client.api.statistics ? client.api.statistics.size ? client.api.statistics.size.users : userSize : userSize;
 
         if (client.mode === "start") {
           if (guildSize !== prevGuildSize || userSize !== prevUserSize) {
-            update(ref(getDatabase(), "statistics/shioru/size"), {
+            update(child(child(ref(getDatabase(), "statistics"), IDConvertor(client.user.username)), "size"), {
               "commands": commandSize,
               "guilds": guildSize,
               "users": userSize
@@ -180,7 +217,7 @@ module.exports = {
     if (client.shard && client.shard.count) {
       const promises = [
         client.shard.fetchClientValues("guilds.cache.size"),
-        client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
+        client.shard.broadcastEval(script => script.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0))
       ];
       const results = await Promise.all(promises);
 
@@ -240,7 +277,7 @@ module.exports = {
       if (client.shard && client.shard.count) {
         const promises = [
           client.shard.fetchClientValues("guilds.cache.size"),
-          client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
+          client.shard.broadcastEval(script => script.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
         ];
         const results = await Promise.all(promises);
 

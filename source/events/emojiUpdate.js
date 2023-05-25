@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildEmojiUpdate,
     "once": false,
     execute(oldEmoji, newEmoji) {
-        if (newEmoji.client.mode === "start") {
-            settingsData(newEmoji.client, newEmoji.guild);
-        }
+        settingsData(newEmoji.client, newEmoji.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), newEmoji.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(newEmoji.client.user.username)), "guilds"), newEmoji.guild.id);
         const channelRef = child(guildRef, "notification/emojiUpdate");
         const channelSnapshot = newEmoji.client.api.guilds[newEmoji.guild.id].notification.emojiUpdate;
 

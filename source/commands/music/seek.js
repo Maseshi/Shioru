@@ -42,12 +42,13 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const inputSecond = interaction.options.getNumber("second");
+        
         const queue = interaction.client.music.getQueue(interaction);
 
         if (!queue) return await interaction.reply(interaction.client.translate.commands.seek.no_queue);
 
-        const queueDuration = queue.songs.map((song, id) => song.duration);
-        const queueFormatDuration = queue.songs.map((song, id) => song.formatDuration);
+        const queueDuration = queue.songs.map((song) => song.duration);
+        const queueFormatDuration = queue.songs.map((song) => song.formatDuration);
 
         if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.seek.not_owner);
         if (!inputSecond) return await interaction.reply(interaction.client.translate.commands.seek.seek_guide.replace("%s", queueDuration));

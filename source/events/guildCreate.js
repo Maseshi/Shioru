@@ -1,38 +1,34 @@
 const { Events, PermissionsBitField, EmbedBuilder, AttachmentBuilder, ChannelType } = require("discord.js");
-const { getDatabase, ref, update } = require("firebase/database");
+const { getDatabase, ref, child, update } = require("firebase/database");
 const { updateApplicationCommands } = require("../utils/clientUtils")
 const { settingsData } = require("../utils/databaseUtils");
 const { catchError } = require("../utils/consoleUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildCreate,
     "once": false,
     async execute(guild) {
-        if (guild.client.mode === "start") {
-            const guildSize = guild.client.guilds.cache.size;
-            const userSize = guild.client.users.cache.size;
+        settingsData(guild.client, guild);
+        updateApplicationCommands(guild.client, true);
 
-            update(ref(getDatabase(), "statistics/shioru/size"), {
-                "guilds": guildSize,
-                "users": userSize
-            });
-
-            settingsData(guild.client, guild);
-        }
-
-        await updateApplicationCommands(guild.client, true)
-
+        const guildSize = guild.client.guilds.cache.size;
+        const userSize = guild.client.users.cache.size;
         const channels = guild.channels.cache.find(channel => channel.type === ChannelType.GuildText && channel.permissionsFor(guild.members.me).has(PermissionsBitField.Flags.SendMessages));
         const guildChannel = guild.channels.cache.get(channels ? channels.id : guild.systemChannelId);
 
+        update(child(child(ref(getDatabase(), "statistics"), IDConvertor(guild.client.user.username)), "size"), {
+            "guilds": guildSize,
+            "users": userSize
+        });
+
         if (guildChannel) {
             const guildName = guild.name;
+            const languageCode = guild.client.config.language.code;
             const clientFetch = await guild.client.user.fetch();
             const clientColor = clientFetch.accentColor;
             const clientAvatar = guild.client.user.displayAvatarURL();
             const clientUsername = guild.client.user.username;
-            const languageCode = guild.client.config.language.code;
-            const attachment = new AttachmentBuilder("./source/assets/images/shioru-discord-cover-" + languageCode + ".png", { "name": "shioru-discord-cover.png" });
             const guildCreateEmbed = new EmbedBuilder()
                 .setTitle(guild.client.translate.events.guildCreate.get_started)
                 .setDescription(guild.client.translate.events.guildCreate.description.replace("%s", guildName))
@@ -58,12 +54,31 @@ module.exports = {
                     ]
                 );
 
-            guildChannel.send({
-                "embeds": [guildCreateEmbed],
-                "files": [attachment]
-            }).catch((error) => {
-                catchError(guild.client, guild.systemChannel, "guildCreate", error);
-            });
+            try {
+                guildChannel.send({
+                    "embeds": [guildCreateEmbed],
+                    "files": [
+                        new AttachmentBuilder(
+                            "./source/assets/images/shioru-discord-cover-" + languageCode + ".png",
+                            { "name": "shioru-discord-cover.png" }
+                        )
+                    ]
+                });
+            } catch {
+                try {
+                    guildChannel.send({
+                        "embeds": [guildCreateEmbed],
+                        "files": [
+                            new AttachmentBuilder(
+                                "./source/assets/images/shioru-discord-cover-en-US.png",
+                                { "name": "shioru-discord-cover.png" }
+                            )
+                        ]
+                    });
+                } catch (error) {
+                    catchError(guild.client, guild.systemChannel, "guildCreate", error);
+                }
+            }
         }
     }
 };

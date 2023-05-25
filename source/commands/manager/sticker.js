@@ -221,63 +221,54 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputFile = interaction.options.getAttachment("file") ?? "";
+        const inputSticker = interaction.options.getString("sticker") ?? "";
+        const inputName = interaction.options.getString("name") ?? "";
+        const inputTags = interaction.options.getString("tags") ?? "";
+        const inputDescription = interaction.options.getString("description") ?? "";
+        const inputReason = interaction.options.getString("reason") ?? "";
 
         switch (subCommand) {
             case "add":
-                const inputAddFile = interaction.options.getAttachment("file");
-                const inputAddName = interaction.options.getString("name");
-                const inputAddTags = interaction.options.getString("tags") ?? "";
-                const inputAddDescription = interaction.options.getString("description") ?? "";
-                const inputAddReason = interaction.options.getString("reason") ?? "";
-
-                if (inputAddFile.contentType === "image/gif") return await interaction.reply(interaction.client.translate.commands.sticker.does_not_support_gif);
+                if (inputFile.contentType === "image/gif") return await interaction.reply(interaction.client.translate.commands.sticker.does_not_support_gif);
 
                 try {
                     await interaction.reply(interaction.client.translate.commands.sticker.uploading_you_sticker);
 
                     const addSticker = await interaction.guild.stickers.create({
-                        "attachment": inputAddFile.attachment,
-                        "name": inputAddName,
-                        "tags": inputAddTags,
-                        "description": inputAddDescription,
-                        "reason": inputAddReason
+                        "attachment": inputFile.attachment,
+                        "name": inputName,
+                        "tags": inputTags,
+                        "description": inputDescription,
+                        "reason": inputReason
                     });
 
                     if (!addSticker) return;
 
-                    await interaction.editReply(interaction.client.translate.commands.sticker.you_sticker_is_ready.replace("%s", inputAddName));
+                    await interaction.editReply(interaction.client.translate.commands.sticker.you_sticker_is_ready.replace("%s", inputName));
                 } catch (error) {
                     await interaction.reply(error.rawError.message);
                 }
                 break;
             case "delete":
-                const inputDeleteSticker = interaction.options.getString("sticker");
-                const inputDeleteReason = interaction.options.getString("reason") ?? "";
-
                 try {
                     await interaction.guild.stickers.delete({
-                        "sticker": inputDeleteSticker,
-                        "reason": inputDeleteReason
+                        "sticker": inputSticker,
+                        "reason": inputReason
                     });
-                    await interaction.reply(interaction.client.translate.commands.sticker.deleted_sticker.replace("%s", inputDeleteSticker));
+                    await interaction.reply(interaction.client.translate.commands.sticker.deleted_sticker.replace("%s", inputSticker));
                 } catch (error) {
                     await interaction.reply(error.rawError.message);
                 }
                 break;
             case "edit":
-                const inputEditSticker = interaction.options.getString("sticker");
-                const inputEditName = interaction.options.getString("name") ?? "";
-                const inputEditDescription = interaction.options.getString("description") ?? "";
-                const inputEditTags = interaction.options.getString("tags") ?? "";
-                const inputEditReason = interaction.options.getString("reason") ?? "";
-
                 try {
                     const editSticker = await interaction.guild.stickers.edit({
-                        "sticker": inputEditSticker,
-                        "name": inputEditName,
-                        "description": inputEditDescription,
-                        "tags": inputEditTags,
-                        "reason": inputEditReason
+                        "sticker": inputSticker,
+                        "name": inputName,
+                        "description": inputDescription,
+                        "tags": inputTags,
+                        "reason": inputReason
                     });
 
                     await interaction.reply(interaction.client.translate.commands.sticker.edited_sticker.replace("%s", editSticker));

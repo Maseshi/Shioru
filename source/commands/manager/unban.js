@@ -57,7 +57,7 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const inputMember = interaction.options.getString("member");
-        const inputReason = interaction.options.getString("reason") ?? "";
+        const inputReason = interaction.options.getString("reason") ?? interaction.client.translate.commands.unban.no_reason;
 
         const banned = await interaction.guild.bans.fetch(inputMember.id);
 
@@ -74,8 +74,6 @@ module.exports.function.command = {
         const memberID = bannedUser.user.id;
         const memberAvatar = bannedUser.user.avatar;
         const memberAvatarURL = "https://cdn.discordapp.com/avatars/" + memberID + "/" + memberAvatar + ".png";
-
-        if (!inputReason) inputReason = interaction.client.translate.commands.unban.no_reason;
 
         const unbanEmbed = new EmbedBuilder()
             .setTitle(interaction.client.translate.commands.unban.user_has_been_unbanned.replace("%s", memberUsername))

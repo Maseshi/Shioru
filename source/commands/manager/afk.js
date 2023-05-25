@@ -1,5 +1,6 @@
 const { PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set, remove } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils")
 
 module.exports = {
     "enable": true,
@@ -63,18 +64,16 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputMessage = interaction.options.getString("message") ?? "";
 
         const guildID = interaction.guild.id;
         const afkSnapshot = interaction.client.api.guilds[guildID].afk;
-        const afkRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "afk");
+        const afkRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), guildID), "afk");
+        const nickname = interaction.member.nickname || interaction.user.username;
 
         switch (subCommand) {
             case "set":
                 if (afkSnapshot && afkSnapshot[interaction.user.id]) return await interaction.reply({ "content": interaction.client.translate.commands.afk.currently_afk, "ephemeral": true });
-
-                const inputMessage = interaction.options.getString("message") ?? "";
-
-                const nickname = interaction.member.nickname || interaction.user.username;
 
                 await set(child(afkRef, interaction.user.id), {
                     "message": inputMessage,

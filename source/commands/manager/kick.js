@@ -57,7 +57,7 @@ module.exports.function.command = {
 	},
 	async execute(interaction) {
 		const inputMember = interaction.options.getMember("member");
-		const inputReason = interaction.options.getString("reason") ?? "";
+		const inputReason = interaction.options.getString("reason") ?? interaction.client.translate.commands.kick.no_reason;
 
 		const member = await interaction.guild.members.fetch(inputMember.id);
 
@@ -73,8 +73,6 @@ module.exports.function.command = {
 		const authorUsername = interaction.user.username;
 		const memberAvatar = kicked.user.avatarURL();
 		const memberUsername = kicked.user.username;
-
-		if (!inputReason) inputReason = interaction.client.translate.commands.kick.no_reason;
 
 		const kickEmbed = new EmbedBuilder()
 			.setTitle(interaction.client.translate.commands.kick.kicked_out.replace("%s", memberUsername))

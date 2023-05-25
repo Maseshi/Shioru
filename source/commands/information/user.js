@@ -1,6 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
-const { dateFormat } = require("../../utils/miscUtils");
+const { dateFormat, IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -139,7 +139,7 @@ module.exports.function.command = {
         let avatar = interaction.user.avatarURL() || interaction.client.translate.commands.user.unknown;
         let bot = interaction.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
         let createdAt = interaction.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
-        let createdTimestamp = dateFormat(interaction.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
+        let createdTimestamp = dateFormat(interaction.client, interaction.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
         let defaultAvatarURL = interaction.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
         let discriminator = interaction.user.discriminator || interaction.client.translate.commands.user.unknown;
         let id = interaction.user.id || interaction.client.translate.commands.user.unknown;
@@ -148,8 +148,8 @@ module.exports.function.command = {
         let tag = interaction.user.tag || interaction.client.translate.commands.user.unknown;
         let username = interaction.user.username || interaction.client.translate.commands.user.unknown;
 
-        const usersSnapshot = interaction.client.api.users
-        const usersRef = child(child(ref(getDatabase(), "Shioru/apps/discord/guilds"), interaction.guild.id), "data/users");
+        const usersSnapshot = interaction.client.api.users;
+        const usersRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), interaction.guild.id), "data/users");
         const clientUsername = interaction.client.user.username;
         const clientAvatarURL = interaction.client.user.avatarURL();
         const embed = new EmbedBuilder()
@@ -165,7 +165,7 @@ module.exports.function.command = {
             avatar = inputMember.user.avatarURL() || interaction.client.translate.commands.user.unknown;
             bot = inputMember.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
             createdAt = inputMember.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
-            createdTimestamp = dateFormat(inputMember.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
+            createdTimestamp = dateFormat(interaction.client, inputMember.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
             defaultAvatarURL = inputMember.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
             discriminator = inputMember.user.discriminator || interaction.client.translate.commands.user.unknown;
             id = inputMember.user.id || interaction.client.translate.commands.user.unknown;

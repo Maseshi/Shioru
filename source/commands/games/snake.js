@@ -106,7 +106,7 @@ module.exports.function.command = {
         const gameOver = () => {
             inGame = false;
             endTime = new Date();
-            
+
             const playTime = endTime - startTime;
             const authorAvatar = interaction.user.displayAvatarURL();
             const authorUsername = interaction.user.username;
@@ -134,29 +134,34 @@ module.exports.function.command = {
                 const nextPos = { "x": snakeHead.x, "y": snakeHead.y };
 
                 switch (reaction.emoji.name) {
-                    case "⬅️":
+                    case "⬅️": {
                         let nextLeftX = snakeHead.x - 1;
                         if (nextLeftX < 0) nextLeftX = WIDTH - 1;
                         nextPos.x = nextLeftX;
                         break;
-                    case "⬆️":
+                    }
+                    case "⬆️": {
                         let nextTopY = snakeHead.y - 1;
                         if (nextTopY < 0) nextTopY = HEIGHT - 1;
                         nextPos.y = nextTopY;
                         break;
-                    case "⬇️":
+                    }
+                    case "⬇️": {
                         let nextBottomY = snakeHead.y + 1;
                         if (nextBottomY >= HEIGHT) nextBottomY = 0;
                         nextPos.y = nextBottomY;
                         break;
-                    case "➡️":
+                    }
+                    case "➡️": {
                         let nextRightX = snakeHead.x + 1;
                         if (nextRightX >= WIDTH) nextRightX = 0;
                         nextPos.x = nextRightX;
                         break;
-                    case "⏹️":
+                    }
+                    case "⏹️": {
                         gameOver();
                         break;
+                    }
                 }
 
                 reaction.users.remove(reaction.users.cache.filter(user => user.id !== gameEmbedMessage.author.id).first().id).then(() => {

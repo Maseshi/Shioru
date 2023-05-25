@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.ThreadUpdate,
     "once": false,
     execute(oldThread, newThread) {
-        if (newThread.client.mode === "start") {
-            settingsData(newThread.client, newThread.guild);
-        }
+        settingsData(newThread.client, newThread.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), newThread.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(newThread.client.user.username)), "guilds"), newThread.guild.id);
         const channelRef = child(guildRef, "notification/threadUpdate");
         const channelSnapshot = newThread.client.api.guilds[newThread.guild.id].notification.threadUpdate;
 

@@ -1,18 +1,17 @@
 const { Events } = require("discord.js");
-const { getDatabase, ref, update } = require("firebase/database");
+const { getDatabase, ref, child, update } = require("firebase/database");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildDelete,
     "once": false,
     execute(guild) {
-        if (guild.client.mode === "start") {
-            const guildSize = guild.client.guilds.cache.size;
-            const userSize = guild.client.users.cache.size;
+        const guildSize = guild.client.guilds.cache.size;
+        const userSize = guild.client.users.cache.size;
 
-            update(ref(getDatabase(), "statistics/shioru/size"), {
-                "guilds": guildSize,
-                "users": userSize
-            });
-        }
+        update(child(child(ref(getDatabase(), "statistics"), IDConvertor(guild.client.user.username)), "size"), {
+            "guilds": guildSize,
+            "users": userSize
+        });
     }
 };

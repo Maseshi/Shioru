@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.InviteCreate,
     "once": false,
     execute(invite) {
-        if (invite.client.mode === "start") {
-            settingsData(invite.client, invite.guild);
-        }
+        settingsData(invite.client, invite.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), invite.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(invite.client.user.username)), "guilds"), invite.guild.id);
         const channelRef = child(guildRef, "notification/inviteCreate");
         const channelSnapshot = invite.client.api.guilds[invite.guild.id].notification.inviteCreate;
 

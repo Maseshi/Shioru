@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, update } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -97,12 +98,12 @@ module.exports.function.command = {
         const subCommand = interaction.options.getSubcommand();
         const inputCommand = interaction.options.getString("command");
 
-        let commands;
+        let commands = "";
         const guildID = interaction.guild.id;
-        const commandsRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "commands");
+        const commandsRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), guildID), "commands");
 
         switch (subCommand) {
-            case "info":
+            case "get": {
                 const clientFetch = await interaction.client.user.fetch();
                 const clientColor = clientFetch.accentColor;
                 const noInputEmbed = new EmbedBuilder()
@@ -119,7 +120,8 @@ module.exports.function.command = {
 
                 await interaction.reply({ "embeds": [noInputEmbed] });
                 break;
-            case "enable":
+            }
+            case "enable": {
                 if (!inputCommand) return await interaction.reply(interaction.client.translate.commands.set_command.command_input_empty);
                 if (inputCommand.toLowerCase() === module.exports.name) return await interaction.reply(interaction.client.translate.commands.set_command.can_not_manage_this_command);
                 if (interaction.client.commands.has(inputCommand)) commands = interaction.client.commands.get(inputCommand);
@@ -128,23 +130,23 @@ module.exports.function.command = {
 
                 commands.command.enable = true;
 
-                update(child(commandsRef, inputCommand), true).then(async () => {
-                    await interaction.reply(interaction.client.translate.commands.set_command.enabled.replace("%s", inputCommand));
-                });
+                await update(child(commandsRef, inputCommand), true);
+                await interaction.reply(interaction.client.translate.commands.set_command.enabled.replace("%s", inputCommand));
                 break;
-            case "disable":
+            }
+            case "disable": {
                 if (!inputCommand) return await interaction.reply(interaction.client.translate.commands.set_command.command_input_empty);
                 if (inputCommand.toLowerCase() === module.exports.name) return await interaction.reply(interaction.client.translate.commands.set_command.can_not_manage_this_command);
                 if (interaction.client.commands.has(inputCommand)) commands = interaction.client.commands.get(inputCommand);
-                if (interaction.client.aliases.has(inputCommand)) commands = interaction.client.commands.get(client.aliases.get(inputCommand));
+                if (interaction.client.aliases.has(inputCommand)) commands = interaction.client.commands.get(interaction.client.aliases.get(inputCommand));
                 if (!commands) return await interaction.reply(interaction.client.translate.commands.set_command.command_not_found);
 
                 commands.command.enable = false;
 
-                update(child(commandsRef, inputCommand), false).then(async () => {
-                    await interaction.reply(interaction.client.translate.commands.set_command.disabled.replace("%s", inputCommand));
-                });
+                await update(child(commandsRef, inputCommand), false);
+                await interaction.reply(interaction.client.translate.commands.set_command.disabled.replace("%s", inputCommand));
                 break;
+            }
         }
     }
 }

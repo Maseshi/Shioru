@@ -1,4 +1,4 @@
-const { PermissionsBitField } = require("discord.js");
+const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { levelSystem } = require("../../utils/databaseUtils");
 
 module.exports = {
@@ -97,16 +97,15 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputMember = interaction.options.getMember("member") ?? "";
+        const inputAmount = interaction.options.getNumber("amount") ?? 0;
 
         switch (subCommand) {
-            case "set":
-                const inputSetMember = interaction.options.getMember("member");
-                const inputSetAmount = interaction.options.getNumber("amount");
+            case "set": {
+                const memberAvatar = inputMember.avatarURL();
+                const memberUsername = inputMember.username;
 
-                const memberAvatar = inputSetMember.avatarURL();
-                const memberUsername = inputSetMember.username;
-
-                const snapshotSet = levelSystem(interaction.client, interaction, "PUT", { "member": inputSetMember, "amount": inputSetAmount, "type": "level" });
+                const snapshotSet = levelSystem(interaction.client, interaction, "PUT", { "member": inputMember, "amount": inputAmount, "type": "level" });
 
                 const exp = snapshotSet.exp;
                 const level = snapshotSet.level;
@@ -139,17 +138,17 @@ module.exports.function.command = {
                     await interaction.reply(interaction.client.translate.commands.level.set_success);
                 }
                 break;
-            case "delete":
-                const inputDeleteMember = interaction.options.getMember("member");
-
+            }
+            case "delete": {
                 await interaction.reply(interaction.client.translate.commands.level.deleting);
 
-                const snapshotDelete = await levelSystem(interaction.client, interaction, "DELETE", { "member": inputDeleteMember });
+                const snapshotDelete = await levelSystem(interaction.client, interaction, "DELETE", { "member": inputMember });
 
                 if (snapshotDelete === "missing") return await interaction.editReply(interaction.client.translate.commands.level.user_current_no_level);
                 if (snapshotDelete === "success") return await interaction.editReply(interaction.client.translate.commands.level.delete_success);
                 if (snapshotDelete === "error") return await interaction.editReply(interaction.client.translate.commands.level.delete_error);
                 break;
+            }
         }
     }
 };

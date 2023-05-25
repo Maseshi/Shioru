@@ -78,34 +78,38 @@ module.exports.function.command = {
             .setFooter({ "text": interaction.client.translate.commands.status.data_by_server, "iconURL": guildIcon });
 
         switch (inputType) {
-            case "online":
+            case "online": {
                 const onlineCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "online" : null).size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.online_status.replace("%s", onlineCount))
                     .setColor("Green");
                 await interaction.reply({ "embeds": [statusEmbed] });
                 break;
-            case "offline":
+            }
+            case "offline": {
                 const offlineCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "offline" : "offline").size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.offline_status.replace("%s", offlineCount))
                     .setColor("Grey");
                 await interaction.reply({ "embeds": [statusEmbed] });
                 break;
-            case "idle":
+            }
+            case "idle": {
                 const idleCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "idle" : null).size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.idle_status.replace("%s", idleCount))
                     .setColor("Yellow");
                 await interaction.reply({ "embeds": [statusEmbed] });
                 break;
-            case "dnd":
+            }
+            case "dnd": {
                 const dndCount = interaction.guild.members.cache.filter(members => members.presence ? members.presence.status === "dnd" : null).size;
 
                 statusEmbed.setDescription(interaction.client.translate.commands.status.dnd_status.replace("%s", dndCount))
                     .setColor("Red");
                 await interaction.reply({ "embeds": [statusEmbed] });
                 break;
+            }
         }
     }
 }

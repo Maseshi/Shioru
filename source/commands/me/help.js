@@ -44,6 +44,9 @@ module.exports.function.command = {
 	async execute(interaction) {
 		const inputCommand = interaction.options.getString("command") ?? "";
 
+		const teamOwner = parseInt(interaction.client.config.team.owner);
+        const teamDev = interaction.client.config.team.developer.map(Number);
+
 		const info = new EmbedBuilder()
 			.setColor("#E01055")
 			.setTitle(interaction.client.translate.commands.help.document_name)
@@ -86,7 +89,7 @@ module.exports.function.command = {
 				const categorize = category.slice(0, 1).toUpperCase() + category.slice(1);
 
 				if (!dir.size) return;
-				if (category === "owner" && ((interaction.user.id !== interaction.client.config.team.owner) || (!interaction.client.config.team.developer.includes(interaction.user.id)))) return;
+				if (category === "owner" && ((interaction.user.id !== teamOwner) || (!teamDev.includes(interaction.user.id)))) return;
 				if (category === "owner") return info.addFields({ "name": "🔒 " + categorize + " - (" + dir.size + ")", "value": dir.map(dirs => "`" + dirs.name + "`").join(", ") });
 				if (category === "developer") return info.addFields({ "name": "⌨ " + categorize + " - (" + dir.size + ")", "value": dir.map(dirs => "`" + dirs.name + "`").join(", ") });
 				if (category === "settings") return info.addFields({ "name": "⚙️ " + categorize + " - (" + dir.size + ")", "value": dir.map(dirs => "`" + dirs.name + "`").join(", ") });

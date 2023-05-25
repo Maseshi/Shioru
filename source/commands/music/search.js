@@ -118,8 +118,8 @@ module.exports.function.command = {
                 return "**" + (++index) + "**" + ". " + name + " " + formattedDuration + uploaderName;
             }).join("\n");
 
-            const authorUsername = message.author.username;
-            const authorAvatar = message.author.displayAvatarURL();
+            const authorUsername = interaction.user.username;
+            const authorAvatar = interaction.user.displayAvatarURL();
             const searchEmbed = new EmbedBuilder()
                 .setTitle(interaction.client.translate.commands.search.searching.replace("%s", results[0].type === "video" || results[0].type === "track" ? interaction.client.translate.commands.search.song_type : interaction.client.translate.commands.search.playlist_type))
                 .setDescription(interaction.client.translate.commands.search.timer_choose.replace("%s", results[0].type === "video" || results[0].type === "track" ? interaction.client.translate.commands.search.song_type : interaction.client.translate.commands.search.playlist_type))

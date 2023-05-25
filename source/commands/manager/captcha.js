@@ -1,5 +1,6 @@
 const { PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -87,16 +88,15 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputRole = interaction.options.getRole("role") ?? "";
+        const inputCaptcha = interaction.options.getString("captcha") ?? "";
 
         const guildID = interaction.guild.id;
         const captchaSnapshot = interaction.client.api.guilds[guildID].captcha;
-        const captchaRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "captcha");
+        const captchaRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), guildID), "captcha");
 
         switch (subCommand) {
             case "setup":
-                const inputRole = interaction.options.getRole("role");
-                const inputCaptcha = interaction.options.getString("captcha");
-
                 await set(captchaRef, {
                     "enable": true,
                     "role": inputRole.id,

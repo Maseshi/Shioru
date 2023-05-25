@@ -49,7 +49,7 @@ module.exports.function.command = {
         let memberBot = false;
 
         if (inputMember) {
-            author = member.user;
+            author = inputMember;
             authorAvatar = author.avatarURL();
             authorFetch = await author.fetch();
             memberBot = author.bot;

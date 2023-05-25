@@ -135,13 +135,19 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputCount = interaction.options.getInteger("count") ?? 0;
+        const inputWord = interaction.options.getString("word") ?? "";
+        const inputRegexPatterns = interaction.options.getString("regex_patterns") ?? "";
+        const inputAllowList = interaction.options.getString("allow_list") ?? "";
+
+        const teamOwner = parseInt(interaction.client.config.team.owner);
 
         switch (subCommand) {
             case "flagged_words":
                 try {
                     const flaggedWordsRule = await interaction.guild.autoModerationRules.create({
                         "name": interaction.client.translate.commands.automod.flagged_words_name,
-                        "creatorId": interaction.client.config.team.owner,
+                        "creatorId": teamOwner,
                         "enabled": true,
                         "eventType": 1,
                         "triggerType": 4,
@@ -175,7 +181,7 @@ module.exports.function.command = {
                 try {
                     const spamMessagesRule = await interaction.guild.autoModerationRules.create({
                         "name": interaction.client.translate.commands.automod.spam_messages_name,
-                        "creatorId": interaction.client.config.team.owner,
+                        "creatorId": teamOwner,
                         "enabled": true,
                         "eventType": 1,
                         "triggerType": 3,
@@ -204,12 +210,10 @@ module.exports.function.command = {
                 }
                 break;
             case "mention_spam":
-                const inputCount = interaction.options.getInteger("count");
-
                 try {
                     const mentionSpamRule = await interaction.guild.autoModerationRules.create({
                         "name": interaction.client.translate.commands.automod.mention_spam_name,
-                        "creatorId": interaction.client.config.team.owner,
+                        "creatorId": teamOwner,
                         "enabled": true,
                         "eventType": 1,
                         "triggerType": 5,
@@ -240,14 +244,10 @@ module.exports.function.command = {
                 }
                 break;
             case "keyword":
-                const inputWord = interaction.options.getString("word");
-                const inputRegexPatterns = interaction.options.getString("regex_patterns") ?? "";
-                const inputAllowList = interaction.options.getString("allow_list") ?? "";
-
                 try {
                     const keywordRule = await interaction.guild.autoModerationRules.create({
                         "name": interaction.client.translate.commands.automod.keyword_name.replace("%s", inputWord),
-                        "creatorId": interaction.client.config.team.owner,
+                        "creatorId": teamOwner,
                         "enabled": true,
                         "eventType": 1,
                         "triggerType": 1,

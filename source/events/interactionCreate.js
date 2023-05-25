@@ -3,6 +3,7 @@ const { getDatabase, ref, child, set, increment } = require("firebase/database")
 const { BitwisePermissionFlags } = require("../utils/clientUtils");
 const { catchError } = require("../utils/consoleUtils");
 const { levelSystem, settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
 	"name": Events.InteractionCreate,
@@ -17,8 +18,9 @@ module.exports = {
 		}
 
 		// Automatic settings data on database
+		settingsData(interaction.client, interaction.guild);
+		
 		if (interaction.client.mode === "start") {
-			settingsData(interaction.client, interaction.guild);
 			levelSystem(interaction.client, interaction, "POST", { "amount": 123, "type": "exp" });
 		}
 
@@ -52,10 +54,10 @@ module.exports = {
 
 		// When user interact in chat input
 		if (interaction.isChatInputCommand()) {
+			const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), interaction.guild.id);
 			const guildSnapshot = interaction.client.api.guilds[interaction.guild.id];
-			const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), interaction.guild.id);
 
-			if (!guildSnapshot.commands || !Object.keys(guildSnapshot.commands).includes(command.name)) {
+			if (!guildSnapshot || !guildSnapshot.commands || !Object.keys(guildSnapshot.commands).includes(command.name)) {
 				set(child(child(guildRef, "commands"), command.name), true);
 			}
 			if ((typeof guildSnapshot.commands[command.name] === "boolean") && (command.enable !== guildSnapshot.commands[command.name])) {
@@ -70,8 +72,8 @@ module.exports = {
 
 				// Stores information when the bot is working properly.
 				if (interaction.client.mode === "start") {
-					set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1) || 1);
-					set(child(ref(getDatabase(), "statistics/shioru/commands"), command.name), increment(1) || 1);
+					set(child(child(ref(getDatabase(), "statistics"), IDConvertor(interaction.client.user.username)), "size/worked"), increment(1) || 1);
+					set(child(child(child(ref(getDatabase(), "statistics"), IDConvertor(interaction.client.user.username)), "commands"), command.name), increment(1) || 1);
 				}
 			} catch (error) {
 				if (interaction.replied || interaction.deferred) {
@@ -91,8 +93,8 @@ module.exports = {
 
 				// Stores information when the bot is working properly.
 				if (interaction.client.mode === "start") {
-					set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1) || 1);
-					set(child(ref(getDatabase(), "statistics/shioru/context"), command.name), increment(1) || 1);
+					set(child(child(ref(getDatabase(), "statistics"), IDConvertor(interaction.client.user.username)), "size/worked"), increment(1) || 1);
+					set(child(child(child(ref(getDatabase(), "statistics"), IDConvertor(interaction.client.user.username)), "context"), command.name), increment(1) || 1);
 				}
 			} catch (error) {
 				if (interaction.replied || interaction.deferred) {

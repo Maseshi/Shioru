@@ -43,7 +43,7 @@ module.exports.function.command = {
         const subCommand = interaction.options.getSubcommand();
 
         switch (subCommand) {
-            case "level":
+            case "level": {
                 const map = [];
                 const max = 10;
                 const snapshot = await levelSystem(interaction.client, interaction, "GET/ALL");
@@ -102,6 +102,7 @@ module.exports.function.command = {
 
                 await interaction.reply({ "embeds": [embed] });
                 break;
+            }
         }
     }
 }

@@ -715,7 +715,7 @@ module.exports.function.command = {
                 });
             }
         });
-        gameCollector.on("end", async collected => {
+        gameCollector.on("end", async () => {
             ButtonTopLeft.setDisabled();
             ButtonTopCenter.setDisabled();
             ButtonTopRight.setDisabled();

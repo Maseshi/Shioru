@@ -1,4 +1,4 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+const { PermissionsBitField } = require("discord.js");
 const { join } = require("node:path");
 const { readFileSync } = require("node:fs");
 
@@ -29,19 +29,20 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const licensePath = join(__dirname, "../../../");
-        const license = readFileSync(licensePath + "/LICENSE", "utf8");
+        const MITLicense = readFileSync(licensePath + "LICENSE", { "encoding": "utf-8" });
+        const CC0License = readFileSync(licensePath + "LICENSE-ASSETS", { "encoding": "utf-8" });
 
-        const clientFetch = await interaction.client.user.fetch();
-        const clientAvatar = interaction.client.user.avatarURL();
-        const clientUsername = interaction.client.user.username;
-        const clientColor = clientFetch.accentColor;
-        const licenseEmbed = new EmbedBuilder()
-            .setColor(clientColor)
-            .setAuthor({ "name": clientUsername, "iconURL": clientAvatar, "url": "https://shiorus.web.app/" })
-            .setTitle(interaction.client.translate.commands.license.copyright_content)
-            .setDescription("```" + license + "```")
-            .setTimestamp();
-
-        await interaction.reply({ "embeds": [licenseEmbed] });
+        await interaction.reply({
+            "files": [
+                {
+                    "attachment": Buffer.from(MITLicense),
+                    "name": "LICENSE.txt"
+                },
+                {
+                    "attachment": Buffer.from(CC0License),
+                    "name": "LICENSE-ASSETS.txt"
+                }
+            ]
+        });
     }
 };

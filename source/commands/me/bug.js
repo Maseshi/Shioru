@@ -1,5 +1,6 @@
 const { PermissionsBitField } = require("discord.js");
-const { getDatabase, ref, push, update } = require("firebase/database");
+const { getDatabase, ref, child, push, update } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -44,7 +45,7 @@ module.exports.function.command = {
     async execute(interaction) {
         const inputMessage = interaction.options.getString("message");
 
-        const bugsRef = ref(getDatabase(), "projects/shioru/bugs");
+        const bugsRef = child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "bugs");
 
         const authorUid = interaction.user.id;
         const authorTag = interaction.user.tag;

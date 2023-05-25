@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildUnavailable,
     "once": false,
     execute(guild) {
-        if (guild.client.mode === "start") {
-            settingsData(guild.client, guild);
-        }
+        settingsData(guild.client, guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(guild.client.user.username)), "guilds"), guild.id);
         const channelRef = child(guildRef, "notification/guildUnavailable");
         const channelSnapshot = guild.client.api.guilds[guild.id].notification.guildUnavailable;
 

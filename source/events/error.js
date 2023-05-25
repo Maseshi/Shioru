@@ -6,6 +6,6 @@ module.exports = {
     "once": false,
     execute(error) {
         logGenerator("error", error);
-        console.log(error);
+        console.error(error);
     }
 };

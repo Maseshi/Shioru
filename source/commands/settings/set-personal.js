@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -101,10 +102,14 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputType = interaction.options.getString("type") ?? "";
+        const inputBoolean = interaction.options.getBoolean("boolean") ?? false;
 
-        const authorID = interaction.author.id;
-        const accessRef = child(child(ref(getDatabase(), "projects/shioru/users"), authorID), "access");
-        const accessSnapshot = interaction.client.api.users[authorID].access;
+        const userID = interaction.user.id;
+        const clientFetch = await interaction.client.user.fetch();
+        const clientColor = clientFetch.accentColor;
+        const accessRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "users"), userID), "access");
+        const accessSnapshot = interaction.client.api.users[userID].access;
 
         if (accessSnapshot) {
             const avatar = accessSnapshot.avatar;
@@ -112,9 +117,7 @@ module.exports.function.command = {
             const uid = accessSnapshot.uid;
 
             switch (subCommand) {
-                case "current":
-                    const clientFetch = await interaction.client.user.fetch();
-                    const clientColor = clientFetch.accentColor;
+                case "get": {
                     const noInputEmbed = new EmbedBuilder()
                         .setTitle(interaction.client.translate.commands.set_personal.title)
                         .setDescription(
@@ -130,10 +133,8 @@ module.exports.function.command = {
 
                     await interaction.reply({ "embeds": [noInputEmbed] });
                     break;
-                case "set":
-                    const inputType = interaction.options.getString("type");
-                    const inputBoolean = interaction.options.getBoolean("boolean");
-
+                }
+                case "set": {
                     if (inputBoolean) {
                         await set(child(accessRef, inputType), true);
                         await interaction.reply(interaction.client.translate.commands.set_personal.true_success.replace("%s", inputType));
@@ -142,15 +143,15 @@ module.exports.function.command = {
                         await interaction.reply(interaction.client.translate.commands.set_personal.false_success.replace("%s", inputType));
                     }
                     break;
+                }
             }
         } else {
-            set(accessRef, {
+            await set(accessRef, {
                 "avatar": true,
                 "info": true,
                 "uid": true
-            }).then(() => {
-                module.exports.function.command.execute(interaction);
             });
+            module.exports.function.command.execute(interaction);
         }
     }
 };

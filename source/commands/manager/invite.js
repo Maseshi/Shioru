@@ -57,7 +57,7 @@ module.exports.function.command = {
 		const subCommand = interaction.options.getSubcommand();
 
 		switch (subCommand) {
-			case "guild":
+			case "guild": {
 				const invite = await interaction.channel.createInvite();
 				const guildIcon = interaction.guild.iconURL();
 				const inviteEmbed = new EmbedBuilder()
@@ -68,7 +68,8 @@ module.exports.function.command = {
 
 				await interaction.reply({ "embeds": [inviteEmbed] });
 				break;
-			case "me":
+			}
+			case "me": {
 				try {
 					const link = interaction.client.generateInvite({
 						"scopes": [
@@ -86,6 +87,7 @@ module.exports.function.command = {
 					console.groupEnd();
 				}
 				break;
+			}
 		}
 	}
 }

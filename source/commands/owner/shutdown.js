@@ -9,9 +9,9 @@ module.exports = {
 		"client": [PermissionsBitField.Flags.SendMessages]
 	},
 	"usage": "shutdown [password(String)]",
-    "function": {
-        "command": {}
-    }
+	"function": {
+		"command": {}
+	}
 };
 
 module.exports.function.command = {
@@ -40,13 +40,15 @@ module.exports.function.command = {
 		]
 	},
 	async execute(interaction) {
-		if ((interaction.user.id !== interaction.client.config.team.owner) || (!interaction.client.config.team.developer.includes(interaction.user.id))) return await interaction.reply(interaction.client.translate.commands.shutdown.not_owner);
-
 		const inputPassword = interaction.options.getString("password") ?? "";
 
+		const teamOwner = parseInt(interaction.client.config.team.owner);
+        const teamDev = interaction.client.config.team.developer.map(Number);
+
+		if ((interaction.user.id !== teamOwner) || (!teamDev.includes(interaction.user.id))) return await interaction.reply(interaction.client.translate.commands.shutdown.not_owner);
 		if (!interaction.client.temp.password) {
-			const owner = await interaction.client.users.fetch(interaction.client.config.team.owner);
-			let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			const owner = await interaction.client.users.fetch(teamOwner);
+			const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			let password = "";
 
 			interaction.client.temp.password = 0;

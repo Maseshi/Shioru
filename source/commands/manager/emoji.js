@@ -172,20 +172,19 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputEmoji = interaction.options.getAttachment("emoji") ?? "";
+        const inputName = interaction.options.getString("name") ?? "";
+        const inputReason = interaction.options.getString("reason") ?? "";
 
         switch (subCommand) {
             case "add":
-                const inputAddEmoji = interaction.options.getAttachment("emoji");
-                const inputAddName = interaction.options.getString("name");
-                const inputAddReason = interaction.options.getString("reason") ?? "";
-
                 try {
                     await interaction.reply(interaction.client.translate.commands.emoji.uploading_you_emoji);
 
                     const addEmoji = await interaction.guild.emojis.create({
-                        "attachment": inputAddEmoji.attachment,
-                        "name": inputAddName,
-                        "reason": inputAddReason
+                        "attachment": inputEmoji.attachment,
+                        "name": inputName,
+                        "reason": inputReason
                     });
 
                     if (!addEmoji) return;
@@ -196,29 +195,22 @@ module.exports.function.command = {
                 }
                 break;
             case "delete":
-                const inputDeleteEmoji = interaction.options.getString("emoji");
-                const inputDeleteReason = interaction.options.getString("reason") ?? "";
-
                 try {
                     await interaction.guild.emojis.delete({
-                        "emoji": inputDeleteEmoji,
-                        "reason": inputDeleteReason
+                        "emoji": inputEmoji,
+                        "reason": inputReason
                     });
-                    await interaction.reply(interaction.client.translate.commands.emoji.deleted_emoji.replace("%s", inputDeleteEmoji));
+                    await interaction.reply(interaction.client.translate.commands.emoji.deleted_emoji.replace("%s", inputEmoji));
                 } catch (error) {
                     await interaction.reply(error.rawError.message);
                 }
                 break;
             case "edit":
-                const inputEditEmoji = interaction.options.getString("emoji");
-                const inputEditName = interaction.options.getString("name") ?? "";
-                const inputEditReason = interaction.options.getString("reason") ?? "";
-
                 try {
                     const editEmoji = await interaction.guild.emojis.edit({
-                        "emoji": inputEditEmoji,
-                        "name": inputEditName,
-                        "reason": inputEditReason
+                        "emoji": inputEmoji,
+                        "name": inputName,
+                        "reason": inputReason
                     });
 
                     await interaction.reply(interaction.client.translate.commands.emoji.edited_emoji.replace("%s", editEmoji));

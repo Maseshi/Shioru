@@ -72,7 +72,7 @@ module.exports.function.command = {
 	async execute(interaction) {
 		const inputMember = interaction.options.getMember("member");
 		const inputDays = interaction.options.getNumber("days") ?? 0;
-		const inputReason = interaction.options.getString("reason") ?? "";
+		const inputReason = interaction.options.getString("reason") ?? interaction.client.translate.commands.ban.no_reason;
 
 		const member = await interaction.guild.members.fetch(inputMember.id);
 		const banned = await interaction.guild.bans.fetch(inputMember.id);
@@ -97,7 +97,6 @@ module.exports.function.command = {
 		let embedTitle = interaction.client.translate.commands.ban.banned_for_time.replace("%s1", memberUsername).replace("%s2", inputDays);
 
 		if (!inputDays) embedTitle = interaction.client.translate.commands.ban.permanently_banned.replace("%s", memberUsername);
-		if (!inputReason) inputReason = interaction.client.translate.commands.ban.no_reason;
 
 		const banEmbed = new EmbedBuilder()
 			.setTitle(embedTitle)

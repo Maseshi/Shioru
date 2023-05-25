@@ -48,7 +48,7 @@ module.exports.function.command = {
         const parsedEmoji = parseEmoji(inputEmoji);
 
         if (inputEmoji.startsWith("<") && inputEmoji.endsWith(">")) {
-            const fileType = custom.id + "." + custom.animated ? "gif" : "png";
+            const fileType = inputEmoji.id + "." + inputEmoji.animated ? "gif" : "png";
             const emojiURL = "https://cdn.discordapp.com/emojis/" + parsedEmoji.id + fileType;
 
             await interaction.reply({ "files": [emojiURL] });

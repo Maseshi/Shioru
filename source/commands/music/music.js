@@ -88,102 +88,100 @@ module.exports.function.command = {
         const queueAuthorAvatar = queue.songs[0].user.avatar;
         const queueAvatarURL = "https://cdn.discordapp.com/avatars/" + queueAuthorUid + "/" + queueAuthorAvatar + ".webp";
 
+        const musicInfoEmbed = new EmbedBuilder()
+            .setTitle(interaction.client.translate.commands.musicInfo.detail)
+            .setImage(queueThumbnail)
+            .setColor("Blue")
+            .setTimestamp()
+            .addFields(
+                [
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.music_name,
+                        "value": queueName,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.uploader,
+                        "value": "[" + queueUploaderName + "](" + queueUploaderURL + ")",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.duration,
+                        "value": queueTimestamp,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.id,
+                        "value": queueId,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.link,
+                        "value": queueURL,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.musicInfo.download_link,
+                        "value": "[Google Video](" + queueStreamURL + ")",
+                        "inline": true
+                    }
+                ]
+            );
+        const nowPlayingEmbed = new EmbedBuilder()
+            .setTitle(queueName)
+            .setURL(queueURL)
+            .setThumbnail(queueThumbnail)
+            .setColor("Blue")
+            .setTimestamp(queueCreatedTimestamp)
+            .setFooter({ "text": interaction.client.translate.commands.nowPlaying.owner_this_queue.replace("%s", queueAuthorUsername), "iconURL": queueAvatarURL });
+        const queueStatusEmbed = new EmbedBuilder()
+            .setTitle(interaction.client.translate.commands.queueStatus.queue_status)
+            .setColor("Blue")
+            .setTimestamp(queueCreatedTimestamp)
+            .setFooter({ "text": interaction.client.translate.commands.queueStatus.owner_this_queue.replace("%s", queueAuthorUsername), "iconURL": queueAvatarURL })
+            .addFields(
+                [
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.now,
+                        "value": "```" + queuePaused ? interaction.client.translate.commands.queueStatus.paused : interaction.client.translate.commands.queueStatus.playing + "```",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.volume,
+                        "value": "```" + queueVolume + "```",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.filter,
+                        "value": "```" + queueFilter.names.length > 0 ? queue.filters.names.join(", ") : "-:-" + "```",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.repeat,
+                        "value": "```" + queueRepeat ? queue.repeatMode === 2 ? interaction.client.translate.commands.queueStatus.repeat_this_queue : interaction.client.translate.commands.queueStatus.repeat_this_song : interaction.client.translate.commands.queueStatus.repeat_off + "```",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.autoplay,
+                        "value": "```" + queueAutoplay ? interaction.client.translate.commands.queueStatus.on : interaction.client.translate.commands.queueStatus.off + "```",
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.queueStatus.duration,
+                        "value": "```" + queueDurationCurrent + " / " + queueDuration + "```",
+                        "inline": true
+                    }
+                ]
+            );
+
         switch (subCommand) {
             case "detail":
-                const musicInfoEmbed = new EmbedBuilder()
-                    .setTitle(interaction.client.translate.commands.musicInfo.detail)
-                    .setImage(queueThumbnail)
-                    .setColor("Blue")
-                    .setTimestamp()
-                    .addFields(
-                        [
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.music_name,
-                                "value": queueName,
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.uploader,
-                                "value": "[" + queueUploaderName + "](" + queueUploaderURL + ")",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.duration,
-                                "value": queueTimestamp,
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.id,
-                                "value": queueId,
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.link,
-                                "value": queueURL,
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.musicInfo.download_link,
-                                "value": "[Google Video](" + queueStreamURL + ")",
-                                "inline": true
-                            }
-                        ]
-                    );
-
                 await interaction.reply({ "embeds": [musicInfoEmbed] });
                 break;
             case "playing":
-                const nowPlayingEmbed = new EmbedBuilder()
-                    .setTitle(queueName)
-                    .setURL(queueURL)
-                    .setThumbnail(queueThumbnail)
-                    .setColor("Blue")
-                    .setTimestamp(queueCreatedTimestamp)
-                    .setFooter({ "text": interaction.client.translate.commands.nowPlaying.owner_this_queue.replace("%s", queueAuthorUsername), "iconURL": queueAvatarURL });
-
                 await interaction.reply({ "embeds": [nowPlayingEmbed] });
                 break;
             case "status":
-                const queueStatusEmbed = new EmbedBuilder()
-                    .setTitle(interaction.client.translate.commands.queueStatus.queue_status)
-                    .setColor("Blue")
-                    .setTimestamp(queueCreatedTimestamp)
-                    .setFooter({ "text": interaction.client.translate.commands.queueStatus.owner_this_queue.replace("%s", queueAuthorUsername), "iconURL": queueAvatarURL })
-                    .addFields(
-                        [
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.now,
-                                "value": "```" + queuePaused ? interaction.client.translate.commands.queueStatus.paused : interaction.client.translate.commands.queueStatus.playing + "```",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.volume,
-                                "value": "```" + queueVolume + "```",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.filter,
-                                "value": "```" + queueFilter.names.length > 0 ? queue.filters.names.join(", ") : "-:-" + "```",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.repeat,
-                                "value": "```" + queueRepeat? queue.repeatMode === 2 ? interaction.client.translate.commands.queueStatus.repeat_this_queue : interaction.client.translate.commands.queueStatus.repeat_this_song : interaction.client.translate.commands.queueStatus.repeat_off + "```",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.autoplay,
-                                "value": "```" + queueAutoplay ? interaction.client.translate.commands.queueStatus.on : interaction.client.translate.commands.queueStatus.off + "```",
-                                "inline": true
-                            },
-                            {
-                                "name": interaction.client.translate.commands.queueStatus.duration,
-                                "value": "```" + queueDurationCurrent + " / " + queueDuration + "```",
-                                "inline": true
-                            }
-                        ]
-                    );
-
                 await interaction.reply({ "embeds": [queueStatusEmbed] });
                 break;
         }

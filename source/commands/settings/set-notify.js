@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -112,9 +113,13 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputType = interaction.options.getString("type") ?? "";
+        const inputChannel = interaction.options.getChannel("channel") ?? "";
 
         const guildID = interaction.guild.id;
-        const notifyRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "notification");
+        const clientFetch = await interaction.client.user.fetch();
+        const clientColor = clientFetch.accentColor;
+        const notifyRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), guildID), "notification");
         const notifySnapshot = interaction.client.api.guilds[guildID].notification;
         const type = [
             "alert",
@@ -182,9 +187,7 @@ module.exports.function.command = {
             const webhookUpdate = notifySnapshot.webhookUpdate;
 
             switch (subCommand) {
-                case "info":
-                    const clientFetch = await interaction.client.user.fetch();
-                    const clientColor = clientFetch.accentColor;
+                case "get": {
                     const noInputEmbed = new EmbedBuilder()
                         .setTitle(interaction.client.translate.commands.set_notify.title)
                         .setDescription(
@@ -227,23 +230,21 @@ module.exports.function.command = {
 
                     await interaction.reply({ "embeds": [noInputEmbed] });
                     break;
-                case "set":
-                    const inputSetType = interaction.options.getString("type");
-                    const inputSetChannel = interaction.options.getChannel("channel");
+                }
+                case "set": {
+                    if (!type.includes(inputType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
 
-                    if (!type.includes(inputSetType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
-
-                    await set(child(notifyRef, inputSetType), inputSetChannel.id.toString());
-                    await interaction.reply(interaction.client.translate.commands.set_notify.set_success.replace("%s1", inputSetType).replace("%s2", inputSetChannel.id));
+                    await set(child(notifyRef, inputType), inputChannel.id.toString());
+                    await interaction.reply(interaction.client.translate.commands.set_notify.set_success.replace("%s1", inputType).replace("%s2", inputChannel.id));
                     break;
-                case "remove":
-                    const inputRemoveType = interaction.options.getString("type");
+                }
+                case "remove": {
+                    if (!type.includes(inputType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
 
-                    if (!type.includes(inputRemoveType)) return await interaction.reply(interaction.client.translate.commands.set_notify.type_not_found.replace("%s", type.join(", ")));
-
-                    await set(child(notifyRef, inputRemoveType), false);
-                    await interaction.reply(interaction.client.translate.commands.set_notify.remove_success.replace("%s", inputRemoveType));
+                    await set(child(notifyRef, inputType), false);
+                    await interaction.reply(interaction.client.translate.commands.set_notify.remove_success.replace("%s", inputType));
                     break;
+                }
             }
         } else {
             set(notifyRef, {

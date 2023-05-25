@@ -74,14 +74,14 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputIP = interaction.options.getString("ip") ?? "";
+        const inputName = interaction.options.getString("name") ?? "";
 
         const clientUsername = interaction.client.user.username;
         const clientAvatar = interaction.client.user.displayAvatarURL();
 
         switch (subCommand) {
-            case "status":
-                const inputIP = interaction.options.getString("ip");
-
+            case "status": {
                 const statusEmbed = new EmbedBuilder()
                     .setColor("Green")
                     .setAuthor({ "name": clientUsername, "iconURL": clientAvatar })
@@ -120,16 +120,16 @@ module.exports.function.command = {
                             { "name": interaction.client.translate.commands.minecraft.motd, "value": "```" + motd + "```", "inline": false },
                         );
 
-                    await interaction.reply({ "embeds": [statusEmbed], "files": [response.data.icon ? icon : null] });
+                    await interaction.reply({
+                        "embeds": [statusEmbed],
+                        "files": [response.data.icon ? icon : null]
+                    });
                 } catch (error) {
                     await interaction.reply({ "embeds": [statusErrorEmbed] });
                 }
                 break;
-            case "skin":
-                const inputName = interaction.options.getString("name");
-
-                const skin = new AttachmentBuilder("https://minotar.net/armor/body/" + inputName + "/700.png", { "name": "skin.png" });
-
+            }
+            case "skin": {
                 const skinEmbed = new EmbedBuilder()
                     .setColor("Green")
                     .setAuthor({ "name": clientUsername, "iconURL": clientAvatar })
@@ -137,8 +137,17 @@ module.exports.function.command = {
                     .setImage("attachment://skin.png")
                     .setTimestamp();
 
-                await interaction.reply({ "embeds": [skinEmbed], "files": [skin] });
+                await interaction.reply({
+                    "embeds": [skinEmbed],
+                    "files": [
+                        new AttachmentBuilder(
+                            "https://minotar.net/armor/body/" + inputName + "/700.png",
+                            { "name": "skin.png" }
+                        )
+                    ]
+                });
                 break;
+            }
         }
     }
 }

@@ -13,17 +13,16 @@ const { CaptchaGenerator } = require("captcha-canvas")
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
 const { catchError } = require("../utils/consoleUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildMemberAdd,
     "once": false,
     async execute(member) {
         if (member.user.bot) return;
-        if (member.client.mode === "start") {
-            settingsData(member.client, member.guild);
-        }
+        settingsData(member.client, member.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), member.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(member.client.user.username)), "guilds"), member.guild.id);
         const channelRef = child(guildRef, "notification/guildMemberAdd");
         const channelSnapshot = member.client.api.guilds[member.guild.id].notification.guildMemberAdd;
         const captchaSnapshot = member.client.api.guilds[member.guild.id].captcha;

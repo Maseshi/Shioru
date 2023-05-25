@@ -191,23 +191,23 @@ module.exports.function.command = {
                         await interaction.followUp(interaction.client.translate.commands.rpc.user_winner.replace("%s", inputOpponent.id));
 
                         gameCollector.stop();
-                        return delete winner, playerOne, playerTwo;
+                        return winner = "", playerOne, playerTwo;
                     }
                     if (winner === authorUser.id) {
                         await interaction.followUp(interaction.client.translate.commands.rpc.user_winner.replace("%s", authorUser.id));
 
                         gameCollector.stop();
-                        return delete winner, playerOne, playerTwo;
+                        return winner = "", playerOne, playerTwo;
                     }
                     if (!winner) {
                         await interaction.followUp(interaction.client.translate.commands.rpc.tie);
 
                         gameCollector.stop();
-                        return delete winner, playerOne, playerTwo;
+                        return winner = "", playerOne, playerTwo;
                     }
                 }
             });
-            gameCollector.on("end", async collected => {
+            gameCollector.on("end", async () => {
                 rpcEmbed.setDescription(authorUser.username + " `" + gameObjects[playerOne] + "` VS `" + gameObjects[playerTwo] + "` " + inputOpponent.username);
 
                 await interaction.editReply({

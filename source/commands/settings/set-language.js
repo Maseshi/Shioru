@@ -1,5 +1,6 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
 const { getDatabase, ref, child, update } = require("firebase/database");
+const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
     "enable": true,
@@ -10,7 +11,7 @@ module.exports = {
         "user": [PermissionsBitField.Flags.ManageGuild],
         "client": [PermissionsBitField.Flags.SendMessages]
     },
-    "usage": "set-language: get, set <value>",
+    "usage": "set-language: get, support, set <value>",
     "function": {
         "command": {}
     }
@@ -36,7 +37,18 @@ module.exports.function.command = {
                 "description": "See the language that is currently being used.",
                 "description_localizations": {
                     "th": "ดูภาษาที่กำลังใช้งานอยู่"
+                }
+            },
+            {
+                "type": 1,
+                "name": "support",
+                "name_localizations": {
+                    "th": "รองรับ"
                 },
+                "description": "Explore supported languages",
+                "description_localizations": {
+                    "th": "สำรวจภาษาที่ระบบรองรับ"
+                }
             },
             {
                 "type": 1,
@@ -55,25 +67,11 @@ module.exports.function.command = {
                         "name_localizations": {
                             "th": "ค่า"
                         },
-                        "description": "The language code.",
+                        "description": "Language locale code (e.g. en-US)",
                         "description_localizations": {
-                            "th": "รหัสภาษา"
+                            "th": "รหัสสถานที่ของภาษา (ตัวอย่าง th-TH)"
                         },
-                        "required": true,
-                        "choices": [
-                            {
-                                "name": "English",
-                                "value": "en"
-                            },
-                            {
-                                "name": "日本",
-                                "value": "ja"
-                            },
-                            {
-                                "name": "ไทย",
-                                "value": "th"
-                            }
-                        ]
+                        "required": true
                     }
                 ]
             }
@@ -83,19 +81,19 @@ module.exports.function.command = {
         const subCommand = interaction.options.getSubcommand();
 
         const guildID = interaction.guild.id;
-        const lang = interaction.client.config.language.code;
+        const locale = interaction.client.config.language.code;
         const support = interaction.client.config.language.support;
-        const languageRef = child(child(ref(getDatabase(), "projects/shioru/guilds"), guildID), "language");
+        const clientFetch = await interaction.client.user.fetch();
+        const clientColor = clientFetch.accentColor;
+        const languageRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), guildID), "language");
 
         switch (subCommand) {
-            case "current":
-                const clientFetch = await interaction.client.user.fetch();
-                const clientColor = clientFetch.accentColor;
+            case "get": {
                 const noInputEmbed = new EmbedBuilder()
                     .setTitle(interaction.client.translate.commands.set_language.title)
                     .setDescription(
                         interaction.client.translate.commands.set_language.description
-                            .replace("%s1", support[lang])
+                            .replace("%s1", support[locale])
                             .replace("%s2", ("/" + module.exports.usage))
                     )
                     .setColor(clientColor)
@@ -104,18 +102,36 @@ module.exports.function.command = {
 
                 await interaction.reply({ "embeds": [noInputEmbed] });
                 break;
-            case "set":
+            }
+            case "support": {
+                const supportEmbed = new EmbedBuilder()
+                    .setTitle(interaction.client.translate.commands.set_language.title)
+                    .setDescription(
+                        interaction.client.translate.commands.set_language.support
+                            .replace("%s1", Object.keys(support).join(", "))
+                            .replace("%s2", ("/" + module.exports.usage))
+                    )
+                    .setColor(clientColor)
+                    .setTimestamp()
+                    .setFooter({ "text": interaction.client.translate.commands.set_language.data_at })
+
+                await interaction.reply({ "embeds": [supportEmbed] });
+                break;
+            }
+            case "set": {
                 const inputValue = interaction.options.getString("value");
 
-                if (inputValue === lang) return await interaction.reply(interaction.client.translate.commands.set_language.already_set.replace("%s", support[inputValue]));
+                if (!support.includes(inputValue)) return await interaction.reply(interaction.client.translate.commands.set_language.language_not_found.replace("%s", support[locale]));
+                if (inputValue === locale) return await interaction.reply(interaction.client.translate.commands.set_language.already_set.replace("%s", support[locale]));
 
                 interaction.client.config.language.code = inputValue;
                 interaction.client.translate = require("../../languages/" + inputValue + ".json");
 
                 update(languageRef, inputValue).then(async () => {
-                    await interaction.reply(interaction.client.translate.commands.set_language.set_success.replace("%s", support[inputValue]));
+                    await interaction.reply(interaction.client.translate.commands.set_language.set_success.replace("%s", support[locale]));
                 });
                 break;
+            }
         }
     }
 };

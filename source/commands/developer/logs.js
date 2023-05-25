@@ -120,36 +120,36 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputType = interaction.options.getString("type") ?? "";
+        const inputFilename = interaction.options.getString("filename") ?? "";
 
         const folderPath = "./source/logs/";
+        const teamOwner = parseInt(interaction.client.config.team.owner);
+        const teamDev = interaction.client.config.team.developer.map(Number);
 
         switch (subCommand) {
             case "get":
-                const inputGetType = interaction.options.getString("type");
-
                 try {
                     const logs = readdirSync(folderPath).filter(files => files.endsWith(".log"));
-                    const listFilename = logs.filter(log => log.includes(inputGetType));
+                    const listFilename = logs.filter(log => log.includes(inputType));
 
                     if (listFilename) {
                         await interaction.reply(interaction.client.translate.commands.logs.found_file.replace("%s1", listFilename.length).replace("%s2", listFilename.join(" \n")));
                     } else {
-                        await interaction.reply(interaction.client.translate.commands.logs.file_not_found.replace("%s", inputGetType));
+                        await interaction.reply(interaction.client.translate.commands.logs.file_not_found.replace("%s", inputType));
                     }
                 } catch (error) {
                     await interaction.reply(interaction.client.translate.commands.logs.folder_empty);
                 }
                 break;
             case "read":
-                const inputReadFilename = interaction.options.getString("filename");
-
                 try {
-                    const fileString = readFileSync(folderPath + inputReadFilename, "utf8");
+                    const fileString = readFileSync(folderPath + inputFilename, "utf8");
 
                     await interaction.reply("```JavaScript\n%s\n```".replace("%s", fileString));
                 } catch {
                     try {
-                        const fileString = readFileSync(folderPath + inputReadFilename + ".log", "utf8");
+                        const fileString = readFileSync(folderPath + inputFilename + ".log", "utf8");
 
                         await interaction.reply("```JavaScript\n%s\n```".replace("%s", fileString));
                     } catch (error) {
@@ -158,21 +158,19 @@ module.exports.function.command = {
                 }
                 break;
             case "delete":
-                const inputDeleteFilename = interaction.options.getString("filename");
-
-                if ((interaction.user.id !== interaction.client.config.team.owner) || (!interaction.client.config.team.developer.includes(interaction.user.id))) {
+                if ((interaction.user.id !== teamOwner) || (!teamDev.includes(interaction.user.id))) {
                     return interaction.reply(interaction.client.translate.commands.logs.owner_only);
                 }
 
                 try {
-                    unlinkSync(folderPath + inputDeleteFilename);
+                    unlinkSync(folderPath + inputFilename);
 
-                    await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputDeleteFilename));
+                    await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputFilename));
                 } catch {
                     try {
-                        unlinkSync(folderPath + inputDeleteFilename + ".log");
+                        unlinkSync(folderPath + inputFilename + ".log");
 
-                        await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputDeleteFilename));
+                        await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputFilename));
                     } catch (error) {
                         await interaction.reply(interaction.client.translate.commands.logs.can_not_delete_file.replace("%s", error));
                     }

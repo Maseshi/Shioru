@@ -72,12 +72,11 @@ module.exports.function.command = {
     },
     async execute(interaction) {
         const subCommand = interaction.options.getSubcommand();
+        const inputSetMember = interaction.options.getMember("member") ?? "";
+        const inputSetAmount = interaction.options.getNumber("amount") ?? 0;
 
         switch (subCommand) {
-            case "set":
-                const inputSetMember = interaction.options.getMember("member");
-                const inputSetAmount = interaction.options.getNumber("amount");
-
+            case "set": {
                 const memberAvatar = inputSetMember.avatarURL();
                 const memberUsername = inputSetMember.username;
 
@@ -114,6 +113,7 @@ module.exports.function.command = {
                     await interaction.reply(interaction.client.translate.commands.exp.success);
                 }
                 break;
+            }
         }
     }
 };

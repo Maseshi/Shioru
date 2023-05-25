@@ -1,16 +1,15 @@
 const { Events, EmbedBuilder, StickerFormatType } = require("discord.js");
 const { getDatabase, ref, child, set } = require("firebase/database");
 const { settingsData } = require("../utils/databaseUtils");
+const { IDConvertor } = require("../utils/miscUtils");
 
 module.exports = {
     "name": Events.GuildStickerUpdate,
     "once": false,
     execute(oldSticker, newSticker) {
-        if (newSticker.client.mode === "start") {
-            settingsData(newSticker.client, newSticker.guild);
-        }
+        settingsData(newSticker.client, newSticker.guild);
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), newSticker.guild.id);
+        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(newSticker.client.user.username)), "guilds"), newSticker.guild.id);
         const channelRef = child(guildRef, "notification/stickerUpdate");
         const channelSnapshot = newSticker.client.api.guilds[newSticker.guild.id].notification.stickerUpdate;
 

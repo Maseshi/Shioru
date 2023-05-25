@@ -179,34 +179,31 @@ module.exports.function.command = {
         if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.filter.not_queue_owner);
 
         switch (subCommand) {
-            case "add":
+            case "add": {
                 if (!filterString.length) return await interaction.reply(filterEmbed);
-
-                const addCheck = checkFilters(filterString);
-                if (addCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", addCheck.invalid.join(", ")));
+                if (checkFilters(filterString).invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", checkFilters(filterString).invalid.join(", ")));
 
                 await queue.filters.add(filterString);
                 await interaction.reply(interaction.client.translate.commands.filter.add_filter.replace("%s", filterString.join(", ")));
                 break;
-            case "remove":
+            }
+            case "remove": {
                 if (!filterString.length) return await interaction.reply(filterEmbed);
-
-                const removeCheck = checkFilters(filterString);
-                if (removeCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", removeCheck.invalid.join(", ")));
+                if (checkFilters(filterString).invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", checkFilters(filterString).invalid.join(", ")));
 
                 await queue.filters.remove(filterString);
                 await interaction.reply(interaction.client.translate.commands.filter.remove_filter.replace("%s", filterString.join(", ")));
                 break;
-            case "set":
+            }
+            case "set": {
                 if (!filterString.length) return await interaction.reply(filterEmbed);
-
-                const setCheck = checkFilters(filterString);
-                if (setCheck.invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", setCheck.invalid.join(", ")));
+                if (checkFilters(filterString).invalid.length > 0) return await interaction.reply(interaction.client.translate.commands.filter.unknown_filter.replace("%s", checkFilters(filterString).invalid.join(", ")));
 
                 await queue.filters.set(filterString);
                 await interaction.reply(interaction.client.translate.commands.filter.set_filter.replace("%s", filterString.join(", ")));
                 break;
-            case "list":
+            }
+            case "list": {
                 const availableEmbed = new EmbedBuilder()
                     .setTitle(interaction.client.translate.commands.filter.available_filter)
                     .setDescription(interaction.client.translate.commands.filter.available_filter_description.replace("%s1", filterList.length).replace("%s2", filterList))
@@ -217,7 +214,8 @@ module.exports.function.command = {
                     "embeds": [availableEmbed]
                 });
                 break;
-            case "now":
+            }
+            case "now": {
                 const filtersName = queue.filters.names.join(", ");
                 const filtersSize = queue.filters.names.length;
                 const listEmbed = new EmbedBuilder()
@@ -227,12 +225,15 @@ module.exports.function.command = {
 
                 await interaction.reply({ "embeds": [listEmbed] });
                 break;
-            case "clear":
+            }
+            case "clear": {
                 await queue.filters.clear();
                 await interaction.reply(interaction.client.translate.commands.filter.clear_filter);
                 break;
-            default:
+            }
+            default: {
                 return await interaction.reply(interaction.client.translate.commands.filter.unknown_input_option);
+            }
         }
     }
 };
