@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[LT](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Veikia su [Discord.js](https://discord.js.org/) v14.
 - Galiu pritaikyti įvairius norimus elementus
 - Muziką galima leisti iš [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) ir [SoundCloud](https://soundcloud.com/) su automatiniu atkūrimu.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Palaikykite kelias kalbas Palaikomas kalbas galite patikrinti šios saugyklos[kalbos faile](https://github.com/Maseshi/shioru/blob/main/source/languages).
 - Pakopų sistema (lygis ir patirtis)
 - Serverio pranešimų tinkinimo palaikymas
 - Galite kalbėti įvesdami `@Shioru` , o po to pranešimo, su kuriuo norite susisiekti.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Tobulinti vertimą
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+ir daug kitų įdomių funkcijų...
 
 ## Būtinos sąlygos
 
@@ -79,7 +79,7 @@ cd Shioru
 npm įdiegti --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Kai kuriuos duomenis galite keisti **config** adresu `./source/config.js`
 
 ### Nustatykite „Firebase“.
 
@@ -98,20 +98,19 @@ npm įdiegti --save
 
 - Jei negalite įdiegti paketo **sodium** , vietoj to įdiekite **libsodium-wrappers**.
 ```bat
-npm pašalinti natrio
-npm įdiegti libsodium-wrappers@latest --save
+npm įdiegti ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Jei negalite leisti muzikos arba muzikos atkūrimo komandos neveikia, įdiekite [ffmpeg](https://ffmpeg.org/download.html) **(rekomenduojama)** arba įdiekite paketą **ffmpeg-static** ir bandykite dar kartą.
 ```bat
 npm įdiegti ffmpeg-static@latest --save
 ```
 
 ## kreditas
 
-Dėkojame visiems originaliems kūrėjams už leidimą naudoti šiuos nuostabius jūsų kūrinius.
+Galite padėti mums išversti esamą kalbą arba kalbą, kurios šiuo metu nėra [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Avataro piešinys: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Dėkojame visiems originaliems kūrėjams už leidimą naudoti šiuos nuostabius jūsų kūrinius.
 
 ## rado problemą
 
-Jei susidursite su problemomis iš dabartinio darbo Galite mums pranešti per šios saugyklos skirtuką [](https://github.com/Maseshi/Shioru/issues) leidimas.
+Avataro piešinys: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
