@@ -27,6 +27,10 @@
             "synopsis": "**özetle:**",
             "undefined": "Tanımsız"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "küfürü engelle cinsel içerik ve hakaretler",
             "flagged_words_success": "✅ AutoMod kurallarınız oluşturuldu, tüm bu kelimeler bastırılacak.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Müziğinizin sesini değiştirmek mi istiyorsunuz?",
             "unknown_filter": "❎ Hmm..`%ssesinin formatını bilmiyorum, kullanarak kontrol edebilirsiniz. **mevcut** veya **ava**?",
             "unknown_input_option": "❓ Şu parametreleri belirleyebilirsiniz: ekle, kaldır, ayarla, kullanılabilir, listele, temizle."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK kanal kodu",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh..fakat bu sunucu zaten %s dilini kullanıyor",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Dilinizi ayarlayın, bu, anlamanızı büyük ölçüde kolaylaştıracaktır\n\nBu sunucunun dili: `%s1`\n\n> Yazarak değiştirebilirsiniz:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Dil zaten **%s** olarak değiştirildi.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Dil"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "oyun bitti",
             "game_score": "Puan: **%s1**\nSüre: **%s2** saniye",
             "played_on": "%starafından başlatıldı"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Sunucudan referans verileri.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
             "this_volume": "🔈 Geçerli ses seviyesi: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "açık hava",
             "cloudy": "bulutlu",
             "date": "📆 tarih",
             "day": "📅 gün",
             "degree_type": "⚖️ Ölçü birimleri",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 gibi hissetmek",
             "humidity": "💧 Nem",
             "information_from_microsoft": "Microsoft'tan Doğru ve Doğru Bilgiler",
@@ -723,6 +748,7 @@
             "sunny": "güneşli",
             "temperature": "🌡️ Sıcaklık",
             "timezone": "🌐 Saat Dilimi",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Hava Durumu",
             "weather_at_the_moment": "__**%s1**__ hava durumu şimdi \n```%s2```.",
             "wind": "🎏 rüzgar"
@@ -771,10 +797,10 @@
             "description": "Merhaba.. beni bu %s yer\ndavet ettiğiniz için teşekkür ederim, görünüşe göre insanlar ne yapabileceğimi merak ediyor? Oh.. bulaşık yıkayabilir, çamaşır yıkayabilir. Harika, değil mi~ Haha, nerede? Şaka yapıyorum",
             "get_started": "Başında geldi!!",
             "help_information_and_documentation": "**📄 Yardım ve belgeler**",
-            "help_information_and_documentation_detail": "Ne yapabileceğimi bilmek ister misiniz?..çok kolay. Sadece \"Shelp\" veya \"/help\" yazın, birisi size söyleyecektir. Tabii ki, aşağıdaki bağlantıya gidin ve geliştirici ve diğerleri tarafından sağlanan belgeler olacaktır. Zaten\n> https://shiorus.web.app/ yazmıştır.",
+            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
             "join_on": "katıl",
             "support_multiple_languages": "** 🌐 Birden çok dili destekler **",
-            "support_multiple_languages_detail": "Birden çok dili destekliyorum. dili değiştirmek için Bunu \"Slanguage <language code>\" veya \"/language <language code>\" ile ayarlayabilirsiniz."
+            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Bu sunucu zaten %s birleştirdi. Gelecekteki güncellemelerle hemen yeni makaleler alacaksınız.",
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Yürütme sırasında bir hata oluştu.",
+            "error_detail": "Komut: **%s1**\nSürüm: **%s2**\nZamanlı: **%s3**\nSunucu: **%s4**\nGecikme: **%s5ms**\nAlma-İletme: * *%s6ms**\nHata Sonuç:\n``JavaScript\n%s7\n```\n> **İpucu**: Bir hatayı hemen şu komutu kullanarak bildirebilirsiniz:\n> ``Hata <message>`` `\n> ```/bug <message>```\n[sorun raporu](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Haberler ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "olağan dışı",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Tebrikler!!",
+            "level_up": "*%s1* sınıfı artık ```%s2``` sınıfına yükseltildi."
+        },
         "miscUtils": {
             "april": "Nisan",
             "august": "Ağustos",
@@ -942,17 +978,6 @@
             "thursday": "Perşembe",
             "tuesday": "Salı",
             "wednesday": "Çarşamba"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Yürütme sırasında bir hata oluştu.",
-            "error_detail": "Komut: **%s1**\nSürüm: **%s2**\nZamanlı: **%s3**\nSunucu: **%s4**\nGecikme: **%s5ms**\nAlma-İletme: * *%s6ms**\nHata Sonuç:\n``JavaScript\n%s7\n```\n> **İpucu**: Bir hatayı hemen şu komutu kullanarak bildirebilirsiniz:\n> ``Hata <message>`` `\n> ```/bug <message>```\n[sorun raporu](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Haberler ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "olağan dışı",
-            "server_normal": "normal"
-        },
-        "databaseUtils": {
-            "congratulations": "Tebrikler!!",
-            "level_up": "*%s1* sınıfı artık ```%s2``` sınıfına yükseltildi.",
-            "was_mentioned": "Sorun nedir?"
         }
     }
 }
