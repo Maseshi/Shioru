@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[FI](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Toimii [Discord.js](https://discord.js.org/) v14:ssä.
 - Pystyy räätälöimään erilaisia haluttuja kohteita
 - Musiikkia voidaan toistaa [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) ja [SoundCloud](https://soundcloud.com/) automaattisella toistolla.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Tukee useita kieliä Voit tarkistaa tuetut kielet tämän arkiston[kielitiedostosta](https://github.com/Maseshi/shioru/blob/main/source/languages).
 - Tasojärjestelmä (taso ja kokemus)
 - Palvelimen ilmoitusten mukauttamisen tuki
 - Voit puhua kirjoittamalla `@Shioru` ja sen jälkeen viestin, jonka haluat kommunikoida.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Paranna käännöstä
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+ja monia muita mielenkiintoisia ominaisuuksia...
 
 ## Edellytykset
 
@@ -79,7 +79,7 @@ cd Shioru
 npm asennus --tallenna
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Voit muokata joitain tietoja kohdassa **config** osoitteessa `./source/config.js`
 
 ### Ota Firebase käyttöön
 
@@ -98,20 +98,19 @@ npm asennus --tallenna
 
 - Jos et voi asentaa pakettia **natrium** , asenna sen sijaan **libsodium-wrappers**.
 ```bat
-npm poista natrium
-npm asenna libsodium-wrappers@latest --save
+npm asentaa ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Jos et voi toistaa musiikkia tai musiikin toistokomennot eivät toimi, asenna [ffmpeg](https://ffmpeg.org/download.html) **(suositus)** tai asenna **ffmpeg-static** -paketti ja yritä uudelleen.
 ```bat
 npm asentaa ffmpeg-static@latest --save
 ```
 
 ## luotto
 
-Kiitos kaikille alkuperäisille tekijöille, jotka annoitte käyttää näitä upeita teoksianne.
+Voit auttaa meitä kääntämään olemassa olevan kielen tai kielen, joka ei ole tällä hetkellä saatavilla osoitteessa [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Avatar piirtäjä: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Kiitos kaikille alkuperäisille tekijöille, jotka annoitte käyttää näitä upeita teoksianne.
 
 ## löysi ongelman
 
-Jos kohtaat ongelmia nykyisestä työstäsi Voit ilmoittaa meille tämän arkiston [ongelma](https://github.com/Maseshi/Shioru/issues) -välilehden kautta.
+Avatar piirtäjä: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
