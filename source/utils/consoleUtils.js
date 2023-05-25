@@ -1,3 +1,4 @@
+const discord = require("discord.js");
 const { format } = require("node:util");
 const { getApps } = require("firebase/app");
 const { createWriteStream, existsSync, mkdirSync } = require("node:fs");
@@ -64,36 +65,44 @@ const catchError = async (client, message, name, error, private = false) => {
             });
         } else {
             try {
-                if (!private) message.channel.send({
+                if (!private) await message.editReply({
                     "content": null,
                     "embeds": [catchErrorEmbed],
                     "ephemeral": true
                 });
             } catch {
                 try {
-                    if (!private) message.send({
+                    if (!private) message.reply({
                         "content": null,
                         "embeds": [catchErrorEmbed],
                         "ephemeral": true
                     });
                 } catch {
                     try {
-                        if (!private) await message.editReply({
+                        if (!private) message.send({
                             "content": null,
                             "embeds": [catchErrorEmbed],
                             "ephemeral": true
                         });
-                    } catch (err) {
-                        logGenerator("catch", err)
+                    } catch {
+                        try {
+                            if (!private) message.channel.send({
+                                "content": null,
+                                "embeds": [catchErrorEmbed],
+                                "ephemeral": true
+                            });
+                        } catch (err) {
+                            logGenerator("catch", err)
 
-                        console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
-                        console.group(boldStyle + "Full Error:" + clearStyle);
-                        console.error(err);
-                        console.groupEnd();
-                        console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-                        console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-                        console.info(boldStyle + "Node.js: " + clearStyle + process.version);
-                        console.groupEnd();
+                            console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
+                            console.group(boldStyle + "Full Error:" + clearStyle);
+                            console.error(err);
+                            console.groupEnd();
+                            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
+                            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
+                            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
+                            console.groupEnd();
+                        }
                     }
                 }
             }
