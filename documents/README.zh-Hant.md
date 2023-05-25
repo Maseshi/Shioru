@@ -1,52 +1,58 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>Shioru</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
   <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
   </a>
   <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
-
 您的好服務器助手將幫助您的服務器看起來更生動。 她可以做很多事情，您可以通過鍵入 `/help` 您可以從[here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## คุณสมบัติเด่น
 
 - 適用於 [Discord.js](https://discord.js.org/) v14。
 - 能夠定制各種想要的物品
 - 可以從 [YouTube](https://www.youtube.com/)、 [Spotify](https://www.spotify.com/) 和 [SoundCloud](https://soundcloud.com/) 自動播放音樂。
-- 支持多種語言您可以從該存儲庫的[語言](https://github.com/Maseshi/shioru/blob/main/source/languages)文件中檢查支持的語言。
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - 等級制度（水平和經驗）
 - 支持服務器通知自定義
 - 您可以通過鍵入 `@Shioru` 以及您想要交流的消息來進行交談。
 - 可以使用應用程序命令 (/)。
 
-和許多其他有趣的功能......
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## 改進翻譯
+## ปรับปรุงการแปล
 
-您可以幫助我們翻譯一種現有語言或一種當前在 [Crowdin](https://crowdin.com/project/shioru-bot)不可用的語言。
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v18.0.0 或更高版本
 - [Firebase](https://firebase.google.com/) v9.0.0 或更高版本
+- [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## 快速設置指南
@@ -62,13 +68,18 @@
 
 - 啟動終端並運行以下命令。
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
 
-- 可以修改 **config** at `./source/config.js`中的一些數據
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Firebase 將為您提供有關配置的信息。
 
@@ -90,7 +101,7 @@ npm install --save
 npm 卸載鈉
 npm 安裝 libsodium-wrappers@latest --save
 ```
-- 如果您無法播放音樂或音樂播放命令不起作用，請安裝 [ffmpeg](https://ffmpeg.org/download.html) **(推薦)** 或安裝 **ffmpeg-static** 包並重試。
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm install ffmpeg-static@latest --save
 ```
