@@ -797,10 +797,10 @@
             "description": "Pozdrav..hvala što ste me pozvali na ovo %s mjesto\nčini se da se ljudi pitaju što mogu učiniti? Oh..može oprati suđe, oprati rublje. Sjajno je, zar ne ~ Haha, gdje je? šalim se",
             "get_started": "Stiglo je na početak!!",
             "help_information_and_documentation": "**📄 Pomoć i dokumentacija**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Želiš znati što mogu učiniti?..vrlo jednostavno. Samo upišite `Shelp` ili `/help` i netko će vam reći. Naravno, samo idite na vezu u nastavku i tamo će biti dokumentacija koju će osigurati programer i drugi. Već je napisao\n> https://shiorus.web.app/",
             "join_on": "pridruži se",
             "support_multiple_languages": "** 🌐 Podržava više jezika**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Podržavam više jezika. Za promjenu jezika Možete ga postaviti pomoću `Slanguage <jezična šifra>` ili `/language <jezična šifra>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Ovaj poslužitelj je već spojio %s . Primit ćete nove članke čim budu ažurirana.",
