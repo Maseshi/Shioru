@@ -1,74 +1,85 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>Shioru</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Durum" target="_blank" href="https://shioru.statuspage.io/">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
+  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="kalabalık" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="Kod Faktörü" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="Kod Faktörü" />
   </a>
   <a title="top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-[TR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
-
 İyi sunucu asistanınız, sunucunuzun daha canlı görünmesine yardımcı olacaktır. `/help` yazarak farklı komutların detaylı bilgilerini bulabileceğiniz birçok şey yapabilir.Shioru'yu[buraya](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## Özellikler
 
 - [Discord.js](https://discord.js.org/) v14 üzerinde çalışır.
 - İstenen çeşitli öğeleri özelleştirebilme
 - Otomatik oynatma ile [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) ve [SoundCloud](https://soundcloud.com/) müzik çalınabilir.
-- Birden çok dili destekleyin Desteklenen dilleri bu deponun[dil](https://github.com/Maseshi/shioru/blob/main/source/languages)dosyasından kontrol edebilirsiniz.
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - Katman sistemi (seviye ve deneyim)
 - Sunucu bildirimi özelleştirme desteği
 - `@Shioru` yazarak ve ardından iletmek istediğiniz mesajı yazarak konuşabilirsiniz.
 - Uygulama komutu (/) kullanılabilir.
 
-ve diğer birçok ilginç özellik...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## Çeviriyi İyileştir
+## ปรับปรุงการแปล
 
-Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)bulunmayan bir dili çevirmemize yardımcı olabilirsiniz.
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## Önkoşullar
 
 - [Node.js](https://nodejs.org/) v18.0.0 veya üstü
 - [Firebase](https://firebase.google.com/) v9.0.0 veya üzeri
+- [FFmpeg](https://www.ffmpeg.org/download.html)
 - [git](https://git-scm.com/downloads)
 
 ## Hızlı Kurulum Kılavuzu
 
-### Başlamak
+### เริ่มต้นใช้งาน
 
-- [Discord Geliştirici Portalına Git](https://discord.com/developers/applications)
+- Discord Geliştirici Portalına Git
 - **"New Application"** tıklayın ve botunuza bir isim verin ve Discord politika kurallarını kabul edin.
 - Sayfa **"Bot"** gidin ve bölüm **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - Sayfa **giderek botunuzu sunucuya davet edin OAuth2 > URL Oluşturucu** seçin `bot` ve `apps.commands` seçin `Yönetici` sonra bağlantıyı kopyalayın ve tarayıcınızın adresine yapıştırın. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### robot kur
+### ตั้งค่าบอท
 
 - Bir terminal başlatın ve aşağıdaki komutu çalıştırın.
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git klonu https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm kurulum -- kaydet
 ```
 
-- **config** bazı verileri `./source/config.js`değiştirebilirsiniz.
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Firebase'i kurun
 
@@ -90,7 +101,7 @@ npm kurulum -- kaydet
 npm sodyum kaldır
 npm kurulum libsodium-wrappers@latest --save
 ```
-- Müziğinizi çalamıyorsanız veya müzik çalma komutları çalışmıyorsa, [ffmpeg](https://ffmpeg.org/download.html) **(önerilen)** kurun veya **ffmpeg-static** paketini kurun ve tekrar deneyin.
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm kurulum ffmpeg-static@latest --save
 ```
