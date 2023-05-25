@@ -27,6 +27,10 @@
             "synopsis": "**podsumować:**",
             "undefined": "nieokreślony"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blokować wulgaryzmy treści seksualne i obelgi",
             "flagged_words_success": "✅ Twoje reguły AutoModa zostały utworzone, wszystkie te słowa zostaną usunięte.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓Chcesz zmienić brzmienie swojej muzyki?",
             "unknown_filter": "❎ Umm.. Nie znam formatu dźwięku `%s`, możesz to sprawdzić za pomocą **dostępne** czy **ava**?",
             "unknown_input_option": "❓ Możesz określić następujące parametry: dodaj, usuń, ustaw, dostępne, lista, wyczyść."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "Kod kanału AFK",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Ech… ale ten serwer już używa języka %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-język** - Ustaw swój język, to znacznie ułatwi zrozumienie\n\nJęzyk tego serwera to: `%s1`\n\n> Możesz go zmienić, wpisując:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Zmieniłem już język na **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐Język"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "koniec gry",
             "game_score": "Wynik: **%s1**\nCzas: **%s2** sekundy",
             "played_on": "Rozpoczęty przez %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Dane referencyjne z serwera.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Tylko właściciel kolejki może to zmienić.",
             "this_volume": "🔈 Bieżąca głośność dźwięku to: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "ładna pogoda",
             "cloudy": "pochmurny",
             "date": "📆 data",
             "day": "📅 dzień",
             "degree_type": "⚖️ Jednostki miary",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 ochotę",
             "humidity": "💧 Wilgotność",
             "information_from_microsoft": "Dokładne i dokładne informacje firmy Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "słoneczny",
             "temperature": "🌡️ Temperatura",
             "timezone": "🌐 Strefa czasowa",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Pogoda",
             "weather_at_the_moment": "Pogoda __**%s1**__ to teraz \n```%s2```.",
             "wind": "🎏 wiatr"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Wystąpił błąd podczas wykonywania.",
+            "error_detail": "Polecenie: **%s1**\nWersja: **%s2**\nCzas: **%s3**\nSerwer: **%s4**\nOpóźnienie: **%s5 ms**\nOdbiór-wysyłanie: * *%s6ms**\nBłąd Wynik:\n```JavaScript\n%s7\n```\n> **Wskazówka**: Możesz natychmiast zgłosić błąd za pomocą polecenia:\n> ``Sbug <komunikat>`` `\n> ```/bug <wiadomość>```\n[raport o problemie](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Wiadomości ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "nieprawidłowy",
+            "server_normal": "normalna"
+        },
+        "databaseUtils": {
+            "congratulations": "Gratulacje!!",
+            "level_up": "Klasa *%s1* została teraz uaktualniona do ```%s2```."
+        },
         "miscUtils": {
             "april": "Kwiecień",
             "august": "Sierpień",
@@ -942,17 +978,6 @@
             "thursday": "Czwartek",
             "tuesday": "Wtorek",
             "wednesday": "Środa"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Wystąpił błąd podczas wykonywania.",
-            "error_detail": "Polecenie: **%s1**\nWersja: **%s2**\nCzas: **%s3**\nSerwer: **%s4**\nOpóźnienie: **%s5 ms**\nOdbiór-wysyłanie: * *%s6ms**\nBłąd Wynik:\n```JavaScript\n%s7\n```\n> **Wskazówka**: Możesz natychmiast zgłosić błąd za pomocą polecenia:\n> ``Sbug <komunikat>`` `\n> ```/bug <wiadomość>```\n[raport o problemie](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Wiadomości ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "nieprawidłowy",
-            "server_normal": "normalna"
-        },
-        "databaseUtils": {
-            "congratulations": "Gratulacje!!",
-            "level_up": "Klasa *%s1* została teraz uaktualniona do ```%s2```.",
-            "was_mentioned": "Co jest nie tak?"
         }
     }
 }

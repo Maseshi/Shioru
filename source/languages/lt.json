@@ -27,6 +27,10 @@
             "synopsis": "** apibendrinimas:**",
             "undefined": "neapibrėžtas"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blokuoti nešvankybę seksualinio turinio ir įžeidinėjimai",
             "flagged_words_success": "✅ Jūsų „AutoMod“ taisyklės buvo sukurtos, visi šie žodžiai bus užblokuoti.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Norite pakeisti savo muzikos garsą?",
             "unknown_filter": "❎ Um..nežinau garso formato `%s, galite jį patikrinti naudodami **galima** arba **ava**?",
             "unknown_input_option": "❓ Galite nurodyti šiuos parametrus: pridėti, pašalinti, nustatyti, pasiekiama, sąrašas, išvalyti."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK kanalo kodas",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Ech... bet šis serveris jau naudoja %s kalbą",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** – nustatykite savo kalbą, tai labai palengvins jūsų supratimą\n\nŠios serverio kalba yra: `%s1`\n\n> Galite pakeisti ją įvesdami:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Jau pakeista kalba į **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Kalba"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "žaidimas baigtas",
             "game_score": "Rezultatas: **%s1**\nLaikas: **%s2** sekundės",
             "played_on": "Pradėjo nuo %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Nuorodiniai duomenys iš serverio.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Keisti gali tik eilės savininkas.",
             "this_volume": "🔈 Dabartinis garso stiprumas yra: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "giedras oras",
             "cloudy": "Debesuota",
             "date": "📆 data",
             "day": "📅 diena",
             "degree_type": "⚖️ Matavimo vienetai",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 jautiesi kaip",
             "humidity": "💧 Drėgmė",
             "information_from_microsoft": "Tiksli ir tiksli „Microsoft“ informacija",
@@ -723,6 +748,7 @@
             "sunny": "saulėta",
             "temperature": "🌡️ Temperatūra",
             "timezone": "🌐 Laiko juosta",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Oras",
             "weather_at_the_moment": "Oras __**%s1**__ dabar yra \n```%s2```.",
             "wind": "🎏 vėjas"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Vykdant įvyko klaida.",
+            "error_detail": "Komanda: **%s1**\nVersija: **%s2**\nLaikinas: **%s3**\nServeris: **%s4**\nVėlavimas: **%s5 ms**\nPriėmimas-Perdavimas: * *%s6ms**\nKlaidos rezultatas:\n``` JavaScript\n%s7\n```\n> **Patarimas**: galite nedelsdami pranešti apie klaidą naudodami komandą:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problemos ataskaita](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Naujienos ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "neįprastas",
+            "server_normal": "normalus"
+        },
+        "databaseUtils": {
+            "congratulations": "sveikinu!!",
+            "level_up": "*%s1* klasė dabar atnaujinta į ```%s2```."
+        },
         "miscUtils": {
             "april": "Balandis",
             "august": "Rugpjūtis",
@@ -942,17 +978,6 @@
             "thursday": "ketvirtadienis",
             "tuesday": "antradienis",
             "wednesday": "trečiadienį"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Vykdant įvyko klaida.",
-            "error_detail": "Komanda: **%s1**\nVersija: **%s2**\nLaikinas: **%s3**\nServeris: **%s4**\nVėlavimas: **%s5 ms**\nPriėmimas-Perdavimas: * *%s6ms**\nKlaidos rezultatas:\n``` JavaScript\n%s7\n```\n> **Patarimas**: galite nedelsdami pranešti apie klaidą naudodami komandą:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[problemos ataskaita](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Naujienos ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "neįprastas",
-            "server_normal": "normalus"
-        },
-        "databaseUtils": {
-            "congratulations": "sveikinu!!",
-            "level_up": "*%s1* klasė dabar atnaujinta į ```%s2```.",
-            "was_mentioned": "Kas negerai?"
         }
     }
 }

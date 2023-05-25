@@ -27,6 +27,10 @@
             "synopsis": "**zusammenfassen:**",
             "undefined": "nicht definiert"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "Schimpfwörter blockieren sexuelle Inhalte und Beleidigungen",
             "flagged_words_success": "✅ Ihre AutoMod-Regeln wurden erstellt, alle diese Wörter werden unterdrückt.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Möchten Sie den Klang Ihrer Musik ändern?",
             "unknown_filter": "❎ Ähm ... Ich kenne das Format des Tons „%s“ nicht, Sie können es mit überprüfen **verfügbar** oder **verfügbar**?",
             "unknown_input_option": "❓ Sie können die folgenden Parameter angeben: hinzufügen, entfernen, festlegen, verfügbar, auflisten, löschen."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK-Kanalcode",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Äh...aber dieser Server verwendet bereits Sprache %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-sprache** – Legen Sie Ihre Sprache fest, dies wird Ihr Verständnis erheblich erleichtern\n\nDie Sprache dieses Servers ist: `%s1`\n\n> Sie können sie ändern, indem Sie Folgendes eingeben:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Die Sprache wurde bereits auf **%s** geändert.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Sprache"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "Spiel ist aus",
             "game_score": "Ergebnis: **%s1**\nZeit: **%s2** Sekunden",
             "played_on": "Gestartet um %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Referenzdaten vom Server.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Nur der Besitzer der Warteschlange kann sie ändern.",
             "this_volume": "🔈 Aktuelle Lautstärke ist: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "klares Wetter",
             "cloudy": "wolkig",
             "date": "📆 Datum",
             "day": "📅 Tag",
             "degree_type": "⚖️ Maßeinheiten",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 Lust",
             "humidity": "💧 Luftfeuchtigkeit",
             "information_from_microsoft": "Genaue und genaue Informationen von Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "sonnig",
             "temperature": "🌡️ Temperatur",
             "timezone": "🌐 Zeitzone",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Wetter",
             "weather_at_the_moment": "Das Wetter vom __**%s1**__ ist jetzt \n```%s2```.",
             "wind": "🎏 Wind"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Während der Ausführung ist ein Fehler aufgetreten.",
+            "error_detail": "Befehl: **%s1**\nVersion: **%s2**\nZeitgesteuert: **%s3**\nServer: **%s4**\nLatenz: **%s5ms**\nEmpfangen-Senden: * *%s6ms**\nFehlerergebnis:\n„JavaScript\n%s7\n“\n> **Tipp**: Sie können einen Fehler sofort melden, indem Sie den Befehl\n> „Sbug <Nachricht>“ verwenden `\n> ```/bug <message>```\n[Problembericht](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Neuigkeiten ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "ungewöhnlich",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Glückwunsch!!",
+            "level_up": "Die Klasse *%s1* wurde jetzt auf „%s2“ aktualisiert."
+        },
         "miscUtils": {
             "april": "April",
             "august": "August",
@@ -942,17 +978,6 @@
             "thursday": "Donnerstag",
             "tuesday": "Dienstag",
             "wednesday": "Mittwoch"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Während der Ausführung ist ein Fehler aufgetreten.",
-            "error_detail": "Befehl: **%s1**\nVersion: **%s2**\nZeitgesteuert: **%s3**\nServer: **%s4**\nLatenz: **%s5ms**\nEmpfangen-Senden: * *%s6ms**\nFehlerergebnis:\n„JavaScript\n%s7\n“\n> **Tipp**: Sie können einen Fehler sofort melden, indem Sie den Befehl\n> „Sbug <Nachricht>“ verwenden `\n> ```/bug <message>```\n[Problembericht](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Neuigkeiten ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "ungewöhnlich",
-            "server_normal": "normal"
-        },
-        "databaseUtils": {
-            "congratulations": "Glückwunsch!!",
-            "level_up": "Die Klasse *%s1* wurde jetzt auf „%s2“ aktualisiert.",
-            "was_mentioned": "Was ist falsch?"
         }
     }
 }
