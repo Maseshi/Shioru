@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[BG](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Работи на [Discord.js](https://discord.js.org/) v14.
 - Възможност за персонализиране на различни желани елементи
 - Музиката може да се възпроизвежда от [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) и [SoundCloud](https://soundcloud.com/) с автоматично възпроизвеждане.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Поддръжка на множество езици Можете да проверите поддържаните езици от[езикови](https://github.com/Maseshi/shioru/blob/main/source/languages)файлове на това хранилище.
 - Система на нива (ниво и опит)
 - Поддръжка за персонализиране на известията на сървъра
 - Можете да говорите, като напишете `@Shioru` , последвано от съобщението, което искате да комуникирате.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Подобрете Преводач
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+и много други интересни функции...
 
 ## Предпоставки
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Можете да промените някои данни в **config** в `./source/config.js`
 
 ### Настройте Firebase
 
@@ -98,20 +98,19 @@ npm install --save
 
 - Ако не можете да инсталирате пакет **sodium** , вместо това инсталирайте **libsodium-wrappers**.
 ```bat
-npm деинсталиране на натрий
-npm инсталиране на libsodium-wrappers@latest --save
+npm инсталирайте ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Ако не можете да възпроизвеждате музиката си или командите за възпроизвеждане на музика не работят, инсталирайте [ffmpeg](https://ffmpeg.org/download.html) **(препоръчително)** или инсталирайте пакета **ffmpeg-static** и опитайте отново.
 ```bat
 npm инсталирайте ffmpeg-static@latest --save
 ```
 
 ## кредит
 
-Благодарим на всички оригинални творци, че позволиха използването на тези ваши прекрасни произведения.
+Можете да ни помогнете да преведем съществуващ език или език, който в момента не е наличен в [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Рисунка на аватар от: [夏月 まりな (НАЦУКИ МАРИНА)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Благодарим на всички оригинални творци, че позволиха използването на тези ваши прекрасни произведения.
 
 ## намери проблем
 
-Ако срещнете някакви проблеми от текущата ви работа Можете да ни уведомите чрез раздела [проблем](https://github.com/Maseshi/Shioru/issues) на това хранилище.
+Рисунка на аватар от: [夏月 まりな (НАЦУКИ МАРИНА)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
