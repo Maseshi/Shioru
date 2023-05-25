@@ -797,10 +797,10 @@
             "description": "Ciao..grazie per avermi invitato in questo %s posto\nsembra che le persone si stiano chiedendo cosa posso fare? Oh..sa lavare i piatti, fare il bucato. È fantastico, vero~ Haha, dov'è? Sto scherzando",
             "get_started": "È arrivato all'inizio!!",
             "help_information_and_documentation": "**📄 Aiuto e documentazione**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Vuoi sapere cosa posso fare?..molto facile. Basta digitare \"Shelp\" o \"/help\" e qualcuno te lo dirà. Ovviamente, basta andare al link sottostante e ci sarà la documentazione fornita dallo sviluppatore e altri. Ha già scritto\n> https://shiorus.web.app/",
             "join_on": "unisciti a",
             "support_multiple_languages": "** 🌐 Supporta più lingue **",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Supporto più lingue. Per cambiare la lingua Puoi impostarlo con `Slanguage <codice lingua>` o `/language <codice lingua>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Questo server ha già unito %s . Riceverai immediatamente nuovi articoli con futuri aggiornamenti.",
