@@ -1,14 +1,5 @@
-const containsLink = (text) => {
-    const LINK_PATTERN = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
-
-    return LINK_PATTERN.test(text);
-}
-
-const containsDiscordInvite = (text) => {
-    const DISCORD_INVITE_PATTERN = /(https?:\/\/)?(www.)?(discord.(gg|io|me|li|link|plus)|discorda?p?p?.com\/invite|invite.gg|dsc.gg|urlcord.cf)\/[^\s/]+?(?=\b)/;
-
-    return DISCORD_INVITE_PATTERN.test(text);
-}
+const http = require("node:http");
+const https = require("node:https");
 
 const supportTranslate = {
     "af": "Afrikaans",
@@ -118,14 +109,6 @@ const supportTranslate = {
     "zu": "Zulu"
 }
 
-const randomInt = (max) => {
-    return Math.floor(Math.random() * max);
-}
-
-const isHex = (text) => {
-    return /^#[0-9A-F]{6}$/i.test(text);
-}
-
 const timeFormat = (timeInSeconds) => {
     const days = Math.floor((timeInSeconds % 31536000) / 86400);
     const hours = Math.floor((timeInSeconds % 86400) / 3600);
@@ -140,35 +123,42 @@ const timeFormat = (timeInSeconds) => {
     );
 }
 
-const dateFormat = (data) => {
+/**
+ * Convert time and date.
+ * 
+ * @param {Client} client 
+ * @param {Date} data 
+ * @returns 
+ */
+const dateFormat = (client, data) => {
     if (!data) return console.log("[dateFormat] Please enter date information to continue.");
 
     const date = new Date(data);
     const days = [
-        interaction.client.translate.utils.miscUtils.sunday,
-        interaction.client.translate.utils.miscUtils.monday,
-        interaction.client.translate.utils.miscUtils.tuesday,
-        interaction.client.translate.utils.miscUtils.wednesday,
-        interaction.client.translate.utils.miscUtils.thursday,
-        interaction.client.translate.utils.miscUtils.friday,
-        interaction.client.translate.utils.miscUtils.saturday
+        client.translate.utils.miscUtils.sunday,
+        client.translate.utils.miscUtils.monday,
+        client.translate.utils.miscUtils.tuesday,
+        client.translate.utils.miscUtils.wednesday,
+        client.translate.utils.miscUtils.thursday,
+        client.translate.utils.miscUtils.friday,
+        client.translate.utils.miscUtils.saturday
     ];
     const months = [
-        interaction.client.translate.utils.miscUtils.january,
-        interaction.client.translate.utils.miscUtils.february,
-        interaction.client.translate.utils.miscUtils.march,
-        interaction.client.translate.utils.miscUtils.april,
-        interaction.client.translate.utils.miscUtils.may,
-        interaction.client.translate.utils.miscUtils.june,
-        interaction.client.translate.utils.miscUtils.july,
-        interaction.client.translate.utils.miscUtils.august,
-        interaction.client.translate.utils.miscUtils.september,
-        interaction.client.translate.utils.miscUtils.october,
-        interaction.client.translate.utils.miscUtils.november,
-        interaction.client.translate.utils.miscUtils.december
+        client.translate.utils.miscUtils.january,
+        client.translate.utils.miscUtils.february,
+        client.translate.utils.miscUtils.march,
+        client.translate.utils.miscUtils.april,
+        client.translate.utils.miscUtils.may,
+        client.translate.utils.miscUtils.june,
+        client.translate.utils.miscUtils.july,
+        client.translate.utils.miscUtils.august,
+        client.translate.utils.miscUtils.september,
+        client.translate.utils.miscUtils.october,
+        client.translate.utils.miscUtils.november,
+        client.translate.utils.miscUtils.december
     ];
 
-    return interaction.client.translate.utils.miscUtils.format_at
+    return client.translate.utils.miscUtils.format_at
         .replace("%s1", days[date.getDay()])
         .replace("%s2", date.getDate())
         .replace("%s3", months[date.getMonth()])
@@ -177,6 +167,12 @@ const dateFormat = (data) => {
         .replace("%s6", date.getMinutes());
 };
 
+/**
+ * Convert the time to the remaining time before continuing.
+ * 
+ * @param {Integer} timeUntil 
+ * @returns 
+ */
 const remainingTime = (timeUntil) => {
     const seconds = Math.abs((timeUntil - new Date()) / 1000);
     const time = timeFormat(seconds);
@@ -195,28 +191,68 @@ const remainingTime = (timeUntil) => {
  */
 const currencyFormatter = (number, digits) => {
     const lookup = [
-      { "value": 1, "symbol": "" },
-      { "value": 1e3, "symbol": "k" },
-      { "value": 1e6, "symbol": "M" },
-      { "value": 1e9, "symbol": "G" },
-      { "value": 1e12, "symbol": "T" },
-      { "value": 1e15, "symbol": "P" },
-      { "value": 1e18, "symbol": "E" }
+        { "value": 1, "symbol": "" },
+        { "value": 1e3, "symbol": "k" },
+        { "value": 1e6, "symbol": "M" },
+        { "value": 1e9, "symbol": "G" },
+        { "value": 1e12, "symbol": "T" },
+        { "value": 1e15, "symbol": "P" },
+        { "value": 1e18, "symbol": "E" }
     ];
     const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
     const item = lookup.slice().reverse().find((item) => number >= item.value);
-    
+
     return item ? (number / item.value).toFixed(digits).replace(regex, "$1") + item.symbol : "0";
-  }
+}
+
+/**
+ * Convert text to ID
+ * 
+ * @param {String} text 
+ */
+const IDConvertor = (text) => {
+    return text.toLowerCase().replace(/[^\w\s]/g, "-").replace(/ +/g, "-");
+}
+
+/**
+ * Sends a request using the native `http` or `https` library.
+ * 
+ * @param url The target URL.
+ * @returns HTTP or HTTPS response body.
+ */
+const request = (url) => {
+    return new Promise((resolve, reject) => {
+        let req = "";
+
+        try {
+            req = https.get(url, (res) => response(res));
+        } catch {
+            req = http.get(url, (res) => response(res));
+        }
+
+        const response = (response) => {
+            let data = "";
+
+            if (response.statusCode !== 200) {
+                reject(new Error("Request failed with status " + response.statusCode));
+            }
+
+            response.on("data", (chunk) => data += chunk);
+            response.on("end", () => resolve(data));
+        };
+
+        req.setTimeout(10000);
+        req.on("timeout", () => reject(new Error("Request timed out after 10s")));
+        req.on("error", (error) => reject(error));
+    });
+}
 
 module.exports = {
-    containsLink,
-    containsDiscordInvite,
     supportTranslate,
-    randomInt,
-    isHex,
     timeFormat,
     dateFormat,
     remainingTime,
-    currencyFormatter
+    currencyFormatter,
+    IDConvertor,
+    request
 };
