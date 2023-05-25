@@ -1,59 +1,65 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>시오루</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
   <a title="상태" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="크라우딘" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="크라우딘" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
   </a>
   <a title="탑.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-[KR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [번째](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [월](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
-
 당신의 좋은 서버 도우미는 당신의 서버가 더 활기차게 보이도록 도와줄 것입니다. 그녀는 `/help` 여기[에서 서버에 가입하도록 Shioru를 초대할 수 있습니다](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## 특징
 
 - [Discord.js](https://discord.js.org/) v14에서 작동합니다.
 - 원하는 다양한 아이템 커스터마이징 가능
 - 자동 재생 기능이 있는 [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) 및 [SoundCloud](https://soundcloud.com/) 에서 음악을 재생할 수 있습니다.
-- 여러 언어 지원 이 저장소의[언어 파일](https://github.com/Maseshi/shioru/blob/main/source/languages)에서 지원되는 언어를 확인할 수 있습니다.
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - 계층 시스템 (레벨과 경험치)
 - 서버 알림 사용자 정의 지원
 - `@Shioru` 다음에 전달하고 싶은 메시지를 입력하여 대화할 수 있습니다.
 - 응용 명령어(/)를 사용할 수 있습니다.
 
-그리고 다른 많은 흥미로운 기능들...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## 번역 개선
+## ปรับปรุงการแปล
 
-기존 언어 또는 현재 [Crowdin](https://crowdin.com/project/shioru-bot)에서 사용할 수 없는 언어를 번역하는 데 도움을 줄 수 있습니다.
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## 전제 조건
 
 - [Node.js](https://nodejs.org/) v18.0.0 이상
 - [Firebase](https://firebase.google.com/) v9.0.0 이상
-- [힘내](https://git-scm.com/downloads)
+- [FFmpeg](https://www.ffmpeg.org/download.html)
+- [Git](https://git-scm.com/downloads)
 
 ## 빠른 설정 가이드
 
 ### 시작하다
 
-- [Discord 개발자 포털로 이동](https://discord.com/developers/applications)
+- Discord 개발자 포털로 이동
 - **"새 애플리케이션"** 클릭하고 봇에 이름을 지정하고 Discord 정책 규칙을 수락합니다.
 - 페이지 **"Bot"** 로 이동하여 섹션 **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - 페이지 **OAuth2 > URL 생성기** 선택 `봇` 및 `applications.commands` 선택 `관리자` 로 이동하여 봇을 서버에 초대한 다음 링크를 복사하여 브라우저 주소에 붙여넣습니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
@@ -62,13 +68,18 @@
 
 - 터미널을 실행하고 다음 명령을 실행합니다.
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm 설치 --save
 ```
 
-- **config** at `./source/config.js`에서 일부 데이터를 수정할 수 있습니다.
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Firebase 설정
 
@@ -90,7 +101,7 @@ npm 설치 --save
 npm 제거 나트륨
 npm 설치 libsodium-wrappers@latest --save
 ```
-- 음악을 재생할 수 없거나 음악 재생 명령이 작동하지 않으면 [ffmpeg](https://ffmpeg.org/download.html) **(권장)** 설치하거나 **ffmpeg-static** 패키지를 설치하고 다시 시도하십시오.
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm 설치 ffmpeg-static@latest --저장
 ```
