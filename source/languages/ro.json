@@ -797,10 +797,10 @@
             "description": "Buna ziua..multumesc ca m-ati invitat in acest %s loc\nSe pare ca oamenii se intreaba ce pot sa fac? Oh..poți spăla vasele, spăla rufele. Este minunat, nu-i așa~ Haha, unde este? Glumesc",
             "get_started": "A sosit la inceput!!",
             "help_information_and_documentation": "**📄 Ajutor și documentație**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Vrei să știi ce pot face?..foarte ușor. Doar tastați `Shelp` sau `/help` și cineva vă va spune. Desigur, accesați linkul de mai jos și va exista documentație furnizată de dezvoltator și de alții. El a scris deja\n> https://shiorus.web.app/",
             "join_on": "alăturați-vă",
             "support_multiple_languages": "** 🌐 Suporta mai multe limbi **",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Suport mai multe limbi. Pentru a schimba limba Îl puteți seta prin `Slanguage <codul limbii>` sau `/language <codul limbii>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Acest server a fuzionat deja %s . Veți primi imediat articole noi cu actualizări viitoare.",
