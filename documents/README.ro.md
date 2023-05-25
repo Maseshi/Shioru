@@ -1,52 +1,58 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>Shioru</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
   <a title="stare" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
   </a>
   <a title="Sus.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
-Asistentul dvs. bun de server va ajuta serverul dvs. să arate mai animat. Ea poate face multe lucruri pe care le puteți găsi informații detaliate despre diferite comenzi tastând `/help` Puteți invita Shioru să se alăture serverului dvs. de la[aici](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## Caracteristici
 
 - Funcționează pe [Discord.js](https://discord.js.org/) v14.
 - Capabil să personalizeze o varietate de articole dorite
 - Muzica poate fi redată de pe [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) și [SoundCloud](https://soundcloud.com/) cu redare automată.
-- Suportă mai multe limbi Puteți verifica limbile acceptate din fișierele[limbă](https://github.com/Maseshi/shioru/blob/main/source/languages)din acest depozit.
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - Sistemul de niveluri (nivel și experiență)
 - Suport pentru personalizarea notificărilor serverului
 - Puteți vorbi tastând `@Shioru` urmat de mesajul pe care doriți să-l comunicați.
 - Comanda aplicației (/) poate fi utilizată.
 
-și multe alte caracteristici interesante...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## Îmbunătățiți Traducerea
+## ปรับปรุงการแปล
 
-Ne puteți ajuta să traducem o limbă existentă sau o limbă care nu este disponibilă în prezent la [Crowdin](https://crowdin.com/project/shioru-bot).
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## Cerințe preliminare
 
 - [Node.js](https://nodejs.org/) v18.0.0 sau mai mare
 - [Firebase](https://firebase.google.com/) v9.0.0 sau o versiune ulterioară
+- [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Ghid de instalare rapidă
@@ -55,27 +61,32 @@ Ne puteți ajuta să traducem o limbă existentă sau o limbă care nu este disp
 
 - Accesați [Discord Developer Portal](https://discord.com/developers/applications)
 - Faceți clic pe **„Aplicație nouă”** și denumiți botul dvs. și acceptați regulile politicii Discord.
-- Accesați pagina **„Bot”** și activați toate opțiunile din secțiunea **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invitați-vă botul pe server accesând pagina **OAuth2 > URL Generator** selectați `bot` și `aplicații.comenzi` selectați `Administrator` apoi copiați linkul și inserați-l în adresa browserului dvs. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Configurați un bot
 
 - Lansați un terminal și executați următoarea comandă.
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
 
-- Puteți modifica unele date în **config** la `./source/config.js`
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Configurați Firebase
 
 - Accesați https://firebase.google.com/ și începeți configurarea proiectului.
 - Adăugați un proiect nou și urmați pașii.
-- Adăugați prima aplicație cu **Site web** Numiți aplicația opțional **„Configurați și găzduirea Firebase pentru această aplicație”** și înregistrați aplicația. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase vă va oferi informații despre configurație. Aplicați aceste valori la fișierul `.env.exemplu`
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
 - Accesați **creați > [bază de date în timp real](https://console.firebase.google.com/u/0/project/_/database/data)** pentru a crea o bază de date de stocare.
 
 ### dezvolta
@@ -90,7 +101,7 @@ npm install --save
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- Dacă nu puteți reda muzica sau comenzile de redare a muzicii nu funcționează, instalați [ffmpeg](https://ffmpeg.org/download.html) **(recomandat)** sau instalați pachetul **ffmpeg-static** și încercați din nou.
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm install ffmpeg-static@latest --save
 ```
