@@ -27,6 +27,10 @@
             "synopsis": "**sammanfatta:**",
             "undefined": "odefinierad"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blockera svordomar sexuellt innehåll och förolämpningar",
             "flagged_words_success": "✅ Dina AutoMod-regler har skapats, alla dessa ord kommer att undertryckas.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Vill du ändra ljudet på din musik?",
             "unknown_filter": "❎ Umm..Jag vet inte formatet på ljudet `%s`, du kan kontrollera det med **tillgänglig** eller **ava**?",
             "unknown_input_option": "❓ Du kan ange följande parametrar: lägg till, ta bort, ställ in, tillgänglig, lista, rensa."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK kanalkod",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh...men den här servern använder redan språk %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Ställ in ditt språk, detta kommer avsevärt att underlätta din förståelse\n\nDenna servers språk är: `%s1`\n\n> Du kan ändra det genom att skriva:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Har redan ändrat språket till **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Språk"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "spelet över",
             "game_score": "Poäng: **%s1**\nTid: **%s2** sekunder",
             "played_on": "Började med %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Referensdata från servern.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
             "this_volume": "🔈 Aktuell ljudvolym är: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "klart väder",
             "cloudy": "molnig",
             "date": "📆 datum",
             "day": "📅 dag",
             "degree_type": "⚖️ Måttenheter",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 känns som",
             "humidity": "💧 Fuktighet",
             "information_from_microsoft": "Korrekt och korrekt information från Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "solig",
             "temperature": "🌡️ Temperatur",
             "timezone": "🌐 Tidszon",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Väder",
             "weather_at_the_moment": "Vädret för __**%s1**__ är nu \n```%s2```.",
             "wind": "🎏 vind"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Ett fel uppstod under körningen.",
+            "error_detail": "Kommando: **%s1**\nVersion: **%s2**\nTidsbestämd: **%s3**\nServer: **%s4**\nLatens: **%s5ms**\nMottagning-sändning: * *%s6ms**\nFelresultat:\n```JavaScript\n%s7\n```\n> **Tips**: Du kan rapportera ett fel omedelbart genom att använda kommandot:\n> ```Sbug <meddelande>`` `\n> ```/bug <meddelande>```\n[problemrapport](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Nyheter ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "ovanlig",
+            "server_normal": "vanligt"
+        },
+        "databaseUtils": {
+            "congratulations": "grattis!!",
+            "level_up": "Klassen *%s1* har nu uppgraderats till ```%s2```."
+        },
         "miscUtils": {
             "april": "april",
             "august": "augusti",
@@ -942,17 +978,6 @@
             "thursday": "torsdag",
             "tuesday": "tisdag",
             "wednesday": "onsdag"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Ett fel uppstod under körningen.",
-            "error_detail": "Kommando: **%s1**\nVersion: **%s2**\nTidsbestämd: **%s3**\nServer: **%s4**\nLatens: **%s5ms**\nMottagning-sändning: * *%s6ms**\nFelresultat:\n```JavaScript\n%s7\n```\n> **Tips**: Du kan rapportera ett fel omedelbart genom att använda kommandot:\n> ```Sbug <meddelande>`` `\n> ```/bug <meddelande>```\n[problemrapport](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Nyheter ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "ovanlig",
-            "server_normal": "vanligt"
-        },
-        "databaseUtils": {
-            "congratulations": "grattis!!",
-            "level_up": "Klassen *%s1* har nu uppgraderats till ```%s2```.",
-            "was_mentioned": "Vad är fel?"
         }
     }
 }
