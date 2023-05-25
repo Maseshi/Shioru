@@ -36,6 +36,7 @@ console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Checking con
 resolve("discord.com", (error) => {
     if (error) return console.error(consolePrefix.replace("%s", timeConsole(new Date())) + "Unable to connect to Discord server");
 
+    process.env.TERM = "xterm";
     process.env.CHECK_CONNECTION = true;
 
     console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Creating shading manager...");
@@ -69,7 +70,7 @@ resolve("discord.com", (error) => {
         });
 
         shard.on(ShardEvents.Disconnect, (event, id) => {
-            console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + (id + 1) + "/" + shardTotal + " has disconnected from the event.");
+            console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + ((id ?? 0) + 1) + "/" + shardTotal + " has disconnected from the event.");
             console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Code: " + event.code);
             console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Reason: " + event.reason);
             console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Clean: " + event.wasClean);
@@ -77,7 +78,7 @@ resolve("discord.com", (error) => {
         });
 
         shard.on(ShardEvents.Ready, (id, unavailableGuilds) => {
-            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + (id + 1) + "/" + shardTotal + " is ready");
+            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + ((id ?? 0) + 1) + "/" + shardTotal + " is ready");
 
             if (unavailableGuilds) {
                 console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Found " + unavailableGuilds.size + " currently unavailable guilds.");
@@ -87,7 +88,7 @@ resolve("discord.com", (error) => {
         });
 
         shard.on(ShardEvents.Reconnecting, (id) => {
-            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Reconnecting shard " + (id + 1) + "/" + shardTotal);
+            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Reconnecting shard " + ((id ?? 0) + 1) + "/" + shardTotal);
         });
     });
 
