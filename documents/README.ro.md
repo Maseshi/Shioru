@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Funcționează pe [Discord.js](https://discord.js.org/) v14.
 - Capabil să personalizeze o varietate de articole dorite
 - Muzica poate fi redată de pe [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) și [SoundCloud](https://soundcloud.com/) cu redare automată.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Suportă mai multe limbi Puteți verifica limbile acceptate din fișierele[limbă](https://github.com/Maseshi/shioru/blob/main/source/languages)din acest depozit.
 - Sistemul de niveluri (nivel și experiență)
 - Suport pentru personalizarea notificărilor serverului
 - Puteți vorbi tastând `@Shioru` urmat de mesajul pe care doriți să-l comunicați.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Îmbunătățiți Traducerea
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+și multe alte caracteristici interesante...
 
 ## Cerințe preliminare
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Puteți modifica unele date în **config** la `./source/config.js`
 
 ### Configurați Firebase
 
@@ -101,17 +101,17 @@ npm install --save
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Dacă nu puteți reda muzica sau comenzile de redare a muzicii nu funcționează, instalați [ffmpeg](https://ffmpeg.org/download.html) **(recomandat)** sau instalați pachetul **ffmpeg-static** și încercați din nou.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
 
 ## credit
 
-Mulțumim tuturor creatorilor originali pentru că ați permis utilizarea acestor lucrări minunate ale voastre.
+Ne puteți ajuta să traducem o limbă existentă sau o limbă care nu este disponibilă în prezent la [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Desen avatar de: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Mulțumim tuturor creatorilor originali pentru că ați permis utilizarea acestor lucrări minunate ale voastre.
 
 ## a gasit o problema
 
-Dacă întâmpinați probleme din munca ta curentă Ne puteți anunța prin fila [numărul](https://github.com/Maseshi/Shioru/issues) a acestui depozit.
+Desen avatar de: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
