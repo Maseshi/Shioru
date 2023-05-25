@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) |
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Bekerja pada [Discord.js](https://discord.js.org/) v14.
 - Mampu menyesuaikan berbagai item yang diinginkan
 - Musik dapat diputar dari [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) dan [SoundCloud](https://soundcloud.com/) dengan pemutaran otomatis.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Mendukung banyak bahasa Anda dapat memeriksa bahasa yang didukung di file[bahasa](https://github.com/Maseshi/shioru/blob/main/source/languages)dari repositori ini.
 - Sistem bertingkat (tingkat dan pengalaman)
 - Dukungan untuk kustomisasi pemberitahuan server
 - Anda dapat berbicara dengan mengetikkan `@Shioru` diikuti dengan pesan yang ingin Anda komunikasikan.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Tingkatkan Terjemahan
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+dan masih banyak fitur menarik lainnya...
 
 ## Prasyarat
 
@@ -79,7 +79,7 @@ cd Shioru
 npm instal --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Anda dapat memodifikasi beberapa data di **config** di `./source/config.js`
 
 ### Siapkan Firebase
 
@@ -101,17 +101,17 @@ npm instal --save
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [ffmpeg](https://ffmpeg.org/download.html) **(disarankan)** atau instal paket **ffmpeg-static** dan coba lagi.
 ```bat
 npm instal ffmpeg-static@latest --save
 ```
 
 ## kredit
 
-Terima kasih kepada semua pencipta asli yang mengizinkan penggunaan karya-karya Anda yang luar biasa ini.
+Anda dapat membantu kami menerjemahkan bahasa yang ada atau bahasa yang saat ini tidak tersedia di [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Terima kasih kepada semua pencipta asli yang mengizinkan penggunaan karya-karya Anda yang luar biasa ini.
 
 ## menemukan masalah
 
-Jika Anda menemui masalah dari pekerjaan Anda saat ini Anda dapat memberi tahu kami melalui tab [edisi](https://github.com/Maseshi/Shioru/issues) repositori ini.
+Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
