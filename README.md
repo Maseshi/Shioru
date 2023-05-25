@@ -78,7 +78,6 @@ sudo apt-get install autoconf automake g++ libtool build-essential
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-apt-get install autoconf automake g++ libtool
 npm install --save
 ```
 
