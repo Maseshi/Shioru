@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[VI](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [GIÀ](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Hoạt động trên [Discord.js](https://discord.js.org/) v14.
 - Có thể tùy chỉnh nhiều mục mong muốn
 - Có thể phát nhạc từ [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) và [SoundCloud](https://soundcloud.com/) với tính năng phát lại tự động.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Hỗ trợ nhiều ngôn ngữ Bạn có thể kiểm tra các ngôn ngữ được hỗ trợ từ các tệp[ngôn ngữ](https://github.com/Maseshi/shioru/blob/main/source/languages)của kho lưu trữ này.
 - Hệ thống bậc (trình độ và kinh nghiệm)
 - Hỗ trợ tùy chỉnh thông báo máy chủ
 - Bạn có thể nói chuyện bằng cách nhập `@Shioru` theo sau là tin nhắn bạn muốn liên lạc.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Cải thiện bản dịch
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+và nhiều tính năng thú vị khác...
 
 ## điều kiện tiên quyết
 
@@ -79,7 +79,7 @@ cd Shioru
 npm cài đặt --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Bạn có thể sửa đổi một số dữ liệu trong **config** at `./source/config.js`
 
 ### Thiết lập căn cứ hỏa lực
 
@@ -98,20 +98,19 @@ npm cài đặt --save
 
 - Nếu bạn không thể cài đặt gói **sodium** , hãy cài đặt **libsodium-wrappers** để thay thế.
 ```bat
-npm gỡ cài đặt natri
-npm cài đặt libsodium-wrappers@latest --save
+npm cài đặt ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Nếu bạn không thể phát nhạc hoặc các lệnh phát lại nhạc không hoạt động, hãy cài đặt [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** hoặc cài đặt gói **ffmpeg-static** và thử lại.
 ```bat
 npm cài đặt ffmpeg-static@latest --save
 ```
 
 ## tín dụng
 
-Cảm ơn tất cả những người sáng tạo ban đầu đã cho phép sử dụng những tác phẩm tuyệt vời này của bạn.
+Bạn có thể giúp chúng tôi dịch một ngôn ngữ hiện có hoặc một ngôn ngữ hiện không khả dụng tại [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Avatar vẽ bởi: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Cảm ơn tất cả những người sáng tạo ban đầu đã cho phép sử dụng những tác phẩm tuyệt vời này của bạn.
 
 ## tìm thấy một vấn đề
 
-Nếu bạn gặp bất kỳ vấn đề từ công việc hiện tại của bạn Bạn có thể cho chúng tôi biết thông qua tab [vấn đề](https://github.com/Maseshi/Shioru/issues) của kho lưu trữ này.
+Avatar vẽ bởi: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
