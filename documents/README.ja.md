@@ -1,52 +1,58 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>しおる</strong>
-  </h1>
+  <strong>
+    <h1>Shioru</h2>
+    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+  </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
   <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
   <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
     <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
   </a>
-  <a title="クラウディン" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
+  <a title="クラウディン" target="_blank" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
   <a title="コードファクター" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="コードファクター" />
   </a>
   <a title="トップ.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
   </a>
 </div>
 
-https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md
-
 優れたサーバー アシスタントは、サーバーをより活発に見せるのに役立ちます。 彼女ができることはたくさんあり、詳細なコマンドは `/help` を入力して見つけることができます [ここ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+
+<div align="center">
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
+    </img>
+  </a>
+</div>
 
 ## 特徴
 
 - [Discord.js](https://discord.js.org/) v14 で動作します。
 - ご希望の様々なアイテムをカスタマイズ可能
 - 両方から音楽を再生できます [YouTube](https://www.youtube.com/)、[Spotify](https://www.spotify.com/)、[SoundCloud](https://soundcloud.com/)の再生システムを搭載。 音楽は自動的に再開します
-- 複数の言語をサポート 対応言語は当リポジトリの【言語ファイル】(https://github.com/Maseshi/shioru/blob/main/source/languages)から確認できます。
+- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
 - ティアシステム (レベルと経験)
 - サーバー通知のカスタマイズのサポート
 - `@Shioru`の後に伝えたいメッセージを入力すると、チャットできます。
 - アプリケーションコマンド (/) が使用できます。
 
-他にもたくさんの興味深い機能があります...
+และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## 翻訳を改善する
+## ปรับปรุงการแปล
 
-既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## 前提条件
 
 - [Node.js](https://nodejs.org/) v18.0.0 以降
 - [Firebase](https://firebase.google.com/) v9.0.0 以降
+- [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## クイックセットアップガイド
@@ -62,13 +68,18 @@ https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md
 
 - ターミナルを起動し、次のコマンドを実行します。
 
-```bash
+```sh
+# On Linux or Darwin operating systems, you may need to run this command.
+sudo apt-get install autoconf automake g++ libtool build-essential
+```
+
+```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
 
-- `./source/config.js` の **config** で一部の情報を編集できます。
+- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
 
 ### Firebase をセットアップする
 
@@ -90,7 +101,7 @@ npm install --save
 npm アンインストールナトリウム
 npm インストール libsodium-wrappers@latest --save
 ```
-- 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
+- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
 ```bat
 npm install ffmpeg-static@latest --save
 ```
