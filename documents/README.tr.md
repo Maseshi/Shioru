@@ -36,17 +36,17 @@
 - [Discord.js](https://discord.js.org/) v14 üzerinde çalışır.
 - İstenen çeşitli öğeleri özelleştirebilme
 - Otomatik oynatma ile [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) ve [SoundCloud](https://soundcloud.com/) müzik çalınabilir.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Birden çok dili destekleyin Desteklenen dilleri bu deponun[dil](https://github.com/Maseshi/shioru/blob/main/source/languages)dosyasından kontrol edebilirsiniz.
 - Katman sistemi (seviye ve deneyim)
 - Sunucu bildirimi özelleştirme desteği
 - `@Shioru` yazarak ve ardından iletmek istediğiniz mesajı yazarak konuşabilirsiniz.
 - Uygulama komutu (/) kullanılabilir.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+ve diğer birçok ilginç özellik...
 
-## ปรับปรุงการแปล
+## Çeviriyi İyileştir
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)bulunmayan bir dili çevirmemize yardımcı olabilirsiniz.
 
 ## Önkoşullar
 
@@ -79,7 +79,7 @@ cd Shioru
 npm kurulum -- kaydet
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- **config** bazı verileri `./source/config.js`değiştirebilirsiniz.
 
 ### Firebase'i kurun
 
@@ -101,7 +101,7 @@ npm kurulum -- kaydet
 npm sodyum kaldır
 npm kurulum libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Müziğinizi çalamıyorsanız veya müzik çalma komutları çalışmıyorsa, [ffmpeg](https://ffmpeg.org/download.html) **(önerilen)** kurun veya **ffmpeg-static** paketini kurun ve tekrar deneyin.
 ```bat
 npm kurulum ffmpeg-static@latest --save
 ```
