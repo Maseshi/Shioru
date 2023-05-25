@@ -27,6 +27,10 @@
             "synopsis": "**rezuma:**",
             "undefined": "nedefinit"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blochează blasfemia conținut sexual și insulte",
             "flagged_words_success": "✅ Au fost create regulile tale AutoMod, toate acele cuvinte vor fi suprimate.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Vrei să schimbi sunetul muzicii tale?",
             "unknown_filter": "❎ Umm..Nu știu formatul sunetului `%s, îl puteți verifica folosind **disponibil** sau **disponibil**?",
             "unknown_input_option": "❓ Puteți specifica următorii parametri: adăugare, eliminare, setare, disponibil, listă, ștergere."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "Cod de canal AFK",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh... dar acest server folosește deja limba %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Setați-vă limba, aceasta vă va facilita foarte mult înțelegerea\n\nLimba acestui server este: `%s1`\n\n> O puteți schimba tastând:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Am schimbat deja limba la **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Limba"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "joc încheiat",
             "game_score": "Scor: **%s1**\nTimp: **%s2** secunde",
             "played_on": "Începe cu %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Date de referință de la server.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
             "this_volume": "🔈 Volumul curent al sunetului este: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "vreme buna",
             "cloudy": "noros",
             "date": "📆 data",
             "day": "📅 zi",
             "degree_type": "⚖️ Unități de măsură",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 simt ca",
             "humidity": "💧 Umiditate",
             "information_from_microsoft": "Informații exacte și exacte de la Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "însorită",
             "temperature": "🌡️ Temperatura",
             "timezone": "🌐 Fus orar",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Vremea",
             "weather_at_the_moment": "Vremea de __**%s1**__ este acum \n```%s2```.",
             "wind": "🎏 Vânt"
@@ -771,10 +797,10 @@
             "description": "Buna ziua..multumesc ca m-ati invitat in acest %s loc\nSe pare ca oamenii se intreaba ce pot sa fac? Oh..poți spăla vasele, spăla rufele. Este minunat, nu-i așa~ Haha, unde este? Glumesc",
             "get_started": "A sosit la inceput!!",
             "help_information_and_documentation": "**📄 Ajutor și documentație**",
-            "help_information_and_documentation_detail": "Vrei să știi ce pot face?..foarte ușor. Doar tastați `Shelp` sau `/help` și cineva vă va spune. Desigur, accesați linkul de mai jos și va exista documentație furnizată de dezvoltator și de alții. El a scris deja\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
             "join_on": "alăturați-vă",
             "support_multiple_languages": "** 🌐 Suporta mai multe limbi **",
-            "support_multiple_languages_detail": "Suport mai multe limbi. Pentru a schimba limba Îl puteți seta prin `Slanguage <codul limbii>` sau `/language <codul limbii>`."
+            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Acest server a fuzionat deja %s . Veți primi imediat articole noi cu actualizări viitoare.",
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 A apărut o eroare în timpul execuției.",
+            "error_detail": "Comanda: **%s1**\nVersiune: **%s2**\nTemporizată: **%s3**\nServer: **%s4**\nLatență: **%s5ms**\nRecepție-Transmite: * *%s6ms**\nRezultat eroare:\n```JavaScript\n%s7\n```\n> **Sfat**: Puteți raporta o eroare imediat utilizând comanda:\n> ```Sbug <message>`` `\n> ```/bug <mesaj>```\n[raport de problemă](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Știri ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "neobișnuit",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "Felicitări!!",
+            "level_up": "Clasa *%s1* a fost acum actualizată la ```%s2```."
+        },
         "miscUtils": {
             "april": "Aprilie",
             "august": "August",
@@ -942,17 +978,6 @@
             "thursday": "joi",
             "tuesday": "marţi",
             "wednesday": "miercuri"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 A apărut o eroare în timpul execuției.",
-            "error_detail": "Comanda: **%s1**\nVersiune: **%s2**\nTemporizată: **%s3**\nServer: **%s4**\nLatență: **%s5ms**\nRecepție-Transmite: * *%s6ms**\nRezultat eroare:\n```JavaScript\n%s7\n```\n> **Sfat**: Puteți raporta o eroare imediat utilizând comanda:\n> ```Sbug <message>`` `\n> ```/bug <mesaj>```\n[raport de problemă](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Știri ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "neobișnuit",
-            "server_normal": "normal"
-        },
-        "databaseUtils": {
-            "congratulations": "Felicitări!!",
-            "level_up": "Clasa *%s1* a fost acum actualizată la ```%s2```.",
-            "was_mentioned": "Ce s-a întâmplat?"
         }
     }
 }
