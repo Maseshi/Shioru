@@ -797,10 +797,10 @@
             "description": "Xin chào..cảm ơn bạn đã mời tôi đến nơi %s\nnày có vẻ như mọi người đang tự hỏi tôi có thể làm gì? Oh..có thể rửa bát, giặt giũ. Thật tuyệt phải không~ Haha, nó ở đâu vậy? tôi đang đùa",
             "get_started": "Nó đã đến lúc bắt đầu!!",
             "help_information_and_documentation": "**📄 Trợ giúp và tài liệu**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "Muốn biết tôi có thể làm gì?..rất dễ dàng. Chỉ cần gõ `Shelp` hoặc `/help` và ai đó sẽ cho bạn biết. Tất nhiên, chỉ cần truy cập liên kết bên dưới và sẽ có tài liệu do nhà phát triển và những người khác cung cấp. Anh ấy đã viết\n> https://shiorus.web.app/",
             "join_on": "tham gia vào",
             "support_multiple_languages": "** 🌐 Hỗ trợ nhiều ngôn ngữ **",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "Tôi hỗ trợ nhiều ngôn ngữ. Để thay đổi ngôn ngữ Bạn có thể đặt nó bằng `Ngôn ngữ <mã ngôn ngữ>` hoặc `/ngôn ngữ <mã ngôn ngữ>`."
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Máy chủ này đã được hợp nhất %s . Bạn sẽ nhận được bài viết mới ngay lập tức với các bản cập nhật trong tương lai.",
