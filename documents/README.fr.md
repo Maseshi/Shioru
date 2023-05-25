@@ -36,7 +36,7 @@ Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. El
 - Fonctionne sur [Discord.js](https://discord.js.org/) v14.
 - Capable de personnaliser une variété d'articles souhaités
 - La musique peut être lue à partir de [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) et [SoundCloud](https://soundcloud.com/) avec lecture automatique.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Prise en charge de plusieurs langues Vous pouvez vérifier les langues prises en charge à partir des fichiers[langue](https://github.com/Maseshi/shioru/blob/main/source/languages)de ce référentiel.
 - Système de niveaux (niveau et expérience)
 - Prise en charge de la personnalisation des notifications du serveur
 - Vous pouvez parler en tapant `@Shioru` suivi du message que vous souhaitez communiquer.
@@ -44,9 +44,9 @@ Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. El
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Améliorer Traduire
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+Vous pouvez nous aider à traduire une langue existante ou une langue qui n'est pas disponible actuellement chez [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## Conditions préalables
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Vous pouvez modifier certaines données dans **config** à `./source/config.js`
 
 ### Configurer Firebase
 
@@ -98,10 +98,9 @@ npm install --save
 
 - Si vous ne pouvez pas installer le package **sodium** , installez **libsodium-wrappers** à la place.
 ```bat
-npm désinstaller sodium
-npm installer libsodium-wrappers@latest --save
+npm installer ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Si vous ne pouvez pas lire votre musique ou si les commandes de lecture de musique ne fonctionnent pas, installez [ffmpeg](https://ffmpeg.org/download.html) **(recommandé)** ou installez le package **ffmpeg-static** et réessayez.
 ```bat
 npm installer ffmpeg-static@latest --save
 ```
