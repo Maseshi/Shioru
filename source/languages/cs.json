@@ -27,6 +27,10 @@
             "synopsis": "**shrnout:**",
             "undefined": "nedefinováno"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blokovat vulgární výrazy sexuální obsah a urážky",
             "flagged_words_success": "✅ Vaše pravidla AutoModu byla vytvořena, všechna tato slova budou potlačena.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Chcete změnit zvuk své hudby?",
             "unknown_filter": "❎ Umm..neznám formát zvuku `%s`, můžete to zkontrolovat pomocí **dostupné** nebo **ava**?",
             "unknown_input_option": "❓ Můžete zadat následující parametry: přidat, odebrat, nastavit, k dispozici, seznam, vymazat."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "Kód kanálu AFK",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh..ale tento server již používá jazyk %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Nastavte si jazyk, značně vám to usnadní porozumění\n\nJazyk tohoto serveru je: `%s1`\n\n> Můžete jej změnit zadáním:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Jazyk již byl změněn na **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Jazyk"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "konec hry",
             "game_score": "Skóre: **%s1**\nČas: **%s2** sekund",
             "played_on": "Zahájeno %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Referenční data ze serveru.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Změnit ji může pouze vlastník fronty.",
             "this_volume": "🔈 Aktuální hlasitost zvuku je: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "jasné počasí",
             "cloudy": "zataženo",
             "date": "📆 datum",
             "day": "📅 den",
             "degree_type": "⚖️ Měrné jednotky",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 cítit se jako",
             "humidity": "💧 Vlhkost",
             "information_from_microsoft": "Přesné a přesné informace od společnosti Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "slunný",
             "temperature": "🌡️ Teplota",
             "timezone": "🌐 Časové pásmo",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Počasí",
             "weather_at_the_moment": "Počasí __**%s1**__ je nyní \n```%s2```.",
             "wind": "🎏 Vítr"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Při provádění došlo k chybě.",
+            "error_detail": "Příkaz: **%s1**\nVerze: **%s2**\nČasově: **%s3**\nServer: **%s4**\nLatence: **%s5 ms**\nPříjem-Přenos: * *%s6 ms**\nVýsledek chyby:\n```JavaScript\n%s7\n```\n> **Tip**: Chybu můžete nahlásit okamžitě pomocí příkazu:\n> ```Sbug <zpráva>`` `\n> ```/bug <zpráva>```\n[zpráva o problému](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Zprávy ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "neobvyklý",
+            "server_normal": "normální"
+        },
+        "databaseUtils": {
+            "congratulations": "Gratulujeme!!",
+            "level_up": "Třída *%s1* byla nyní upgradována na ```%s2```."
+        },
         "miscUtils": {
             "april": "duben",
             "august": "srpen",
@@ -942,17 +978,6 @@
             "thursday": "Čtvrtek",
             "tuesday": "úterý",
             "wednesday": "středa"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Při provádění došlo k chybě.",
-            "error_detail": "Příkaz: **%s1**\nVerze: **%s2**\nČasově: **%s3**\nServer: **%s4**\nLatence: **%s5 ms**\nPříjem-Přenos: * *%s6 ms**\nVýsledek chyby:\n```JavaScript\n%s7\n```\n> **Tip**: Chybu můžete nahlásit okamžitě pomocí příkazu:\n> ```Sbug <zpráva>`` `\n> ```/bug <zpráva>```\n[zpráva o problému](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Zprávy ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "neobvyklý",
-            "server_normal": "normální"
-        },
-        "databaseUtils": {
-            "congratulations": "Gratulujeme!!",
-            "level_up": "Třída *%s1* byla nyní upgradována na ```%s2```.",
-            "was_mentioned": "Co je špatně?"
         }
     }
 }
