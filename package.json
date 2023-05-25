@@ -1,19 +1,41 @@
 {
   "name": "shioru",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
-  "private": true,
-  "main": "./source/main.js",
-  "scripts": {
-    "start": "node ./source/shard.js",
-    "dev": "nodemon --trace-warnings ./source/main.js"
+  "homepage": "https://github.com/Maseshi/Shioru#readme",
+  "bugs": {
+    "url": "https://github.com/Maseshi/Shioru/issues",
+    "email": "dermhioasw123@gmail.com"
   },
+  "license": "(MIT OR CC0-1.0)",
   "author": {
     "name": "Maseshi",
     "email": "dermhioasw123@gmail.com",
     "url": "https://maseshi.web.app/"
   },
-  "license": "MIT",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Maseshi"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/maseshi"
+    }
+  ],
+  "main": "./source/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maseshi/Shioru.git"
+  },
+  "scripts": {
+    "start": "node ./source/shard.js",
+    "dev": "nodemon --trace-warnings ./source/main.js",
+    "lint": "eslint ."
+  },
+  "config": {
+    "port": 8080
+  },
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.16.0",
@@ -21,22 +43,26 @@
     "@distube/soundcloud": "^1.3.2",
     "@distube/spotify": "^1.5.1",
     "@distube/yt-dlp": "^1.1.3",
-    "@distube/ytdl-core": "^4.11.9",
+    "@distube/ytdl-core": "^4.11.10",
+    "@top-gg/sdk": "^3.1.5",
     "@vitalets/google-translate-api": "^9.2.0",
     "axios": "^1.4.0",
     "captcha-canvas": "^3.2.1",
     "discord.js": "^14.11.0",
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
+    "fast-xml-parser": "^4.2.2",
     "firebase": "^9.22.0",
     "lyrics-finder": "^21.7.0",
+    "openai": "^3.2.1",
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
-    "systeminformation": "^5.17.12",
-    "weather-js": "^2.0.0"
+    "systeminformation": "^5.17.13",
+    "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
+    "eslint": "^8.41.0",
     "nodemon": "^2.0.22"
   },
   "optionalDependencies": {
@@ -47,5 +73,38 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "private": true,
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "browser": true,
+      "commonjs": true,
+      "es6": true
+    },
+    "globals": {
+      "$MONITOR_API_KEY": "readonly",
+      "$MONITOR_METRIC_ID": "readonly",
+      "$MONITOR_PAGE_ID": "readonly",
+      "$OPENAI_API_KEY": "readonly",
+      "$OPENAI_BASE_PATH": "readonly",
+      "$API_KEY": "readonly",
+      "$AUTH_DOMAIN": "readonly",
+      "$DATABASE_URL": "readonly",
+      "$PROJECT_ID": "readonly",
+      "$STORAGE_BUCKET": "readonly",
+      "$MESSAGING_SENDER_ID": "readonly",
+      "$APP_ID": "readonly",
+      "$MEASUREMENT_ID": "readonly",
+      "$TEST_GUILD": "readonly",
+      "$TOKEN": "readonly",
+      "$TOP_GG_API_KEY": "readonly"
+    },
+    "extends": "eslint:recommended",
+    "overrides": [],
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {}
   }
 }
