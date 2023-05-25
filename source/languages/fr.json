@@ -27,6 +27,10 @@
             "synopsis": "**résumer:**",
             "undefined": "indéfini"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "bloquer les grossièretés contenu sexuel et insultes",
             "flagged_words_success": "✅ Vos règles AutoMod ont été créées, tous ces mots seront supprimés.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Envie de changer le son de votre musique ?",
             "unknown_filter": "❎ Umm..Je ne connais pas le format du son `%s`, vous pouvez le vérifier en utilisant **disponible** ou **disponible** ?",
             "unknown_input_option": "❓ Vous pouvez spécifier les paramètres suivants : ajouter, supprimer, définir, disponible, liste, effacer."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "Code de canal AFK",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh..mais ce serveur utilise déjà la langue %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Définissez votre langue, cela facilitera grandement votre compréhension\n\nLa langue de ce serveur est : `%s1`\n\n> Vous pouvez la changer en tapant :\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Changé la langue en **%s** déjà.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Langue"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "jeu terminé",
             "game_score": "Score : **%s1**\nTemps : **%s2** secondes",
             "played_on": "Commencé par %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Données de référence du serveur.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Seul le propriétaire de la file d'attente peut la modifier.",
             "this_volume": "🔈 Le volume sonore actuel est : **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "temps clair",
             "cloudy": "nuageux",
             "date": "📆 rendez-vous",
             "day": "📅 jour",
             "degree_type": "⚖️ Unités de mesure",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 envie",
             "humidity": "💧 Humidité",
             "information_from_microsoft": "Informations exactes et exactes de Microsoft",
@@ -723,6 +748,7 @@
             "sunny": "ensoleillé",
             "temperature": "🌡️ Température",
             "timezone": "🌐 Fuseau Horaire",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Météo",
             "weather_at_the_moment": "Le temps de _**%s1**__ est maintenant \n```%s2```.",
             "wind": "🎏 vent"
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Une erreur s'est produite lors de l'exécution.",
+            "error_detail": "Commande : **%s1**\nVersion : **%s2**\nTemporisé : **%s3**\nServeur : **%s4**\nLatence : **%s5ms**\nRéception-Transmission : * *%s6ms**\nRésultat d'erreur :\n```JavaScript\n%s7\n```\n> **Astuce** : Vous pouvez signaler une erreur immédiatement en utilisant la commande :\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[rapport de problème](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Actualités ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "anormal",
+            "server_normal": "normal"
+        },
+        "databaseUtils": {
+            "congratulations": "toutes nos félicitations!!",
+            "level_up": "La classe de *%s1* a maintenant été mise à niveau vers ```%s2```."
+        },
         "miscUtils": {
             "april": "Avril",
             "august": "Août",
@@ -942,17 +978,6 @@
             "thursday": "Jeudi",
             "tuesday": "Mardi",
             "wednesday": "Mercredi"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Une erreur s'est produite lors de l'exécution.",
-            "error_detail": "Commande : **%s1**\nVersion : **%s2**\nTemporisé : **%s3**\nServeur : **%s4**\nLatence : **%s5ms**\nRéception-Transmission : * *%s6ms**\nRésultat d'erreur :\n```JavaScript\n%s7\n```\n> **Astuce** : Vous pouvez signaler une erreur immédiatement en utilisant la commande :\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[rapport de problème](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Actualités ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "anormal",
-            "server_normal": "normal"
-        },
-        "databaseUtils": {
-            "congratulations": "toutes nos félicitations!!",
-            "level_up": "La classe de *%s1* a maintenant été mise à niveau vers ```%s2```.",
-            "was_mentioned": "Qu'est-ce qui ne va pas?"
         }
     }
 }
