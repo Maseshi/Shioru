@@ -36,17 +36,17 @@
 - [Discord.js](https://discord.js.org/) v14 で動作します。
 - ご希望の様々なアイテムをカスタマイズ可能
 - 両方から音楽を再生できます [YouTube](https://www.youtube.com/)、[Spotify](https://www.spotify.com/)、[SoundCloud](https://soundcloud.com/)の再生システムを搭載。 音楽は自動的に再開します
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- 複数の言語をサポート 対応言語は当リポジトリの【言語ファイル】(https://github.com/Maseshi/shioru/blob/main/source/languages)から確認できます。
 - ティアシステム (レベルと経験)
 - サーバー通知のカスタマイズのサポート
 - `@Shioru`の後に伝えたいメッセージを入力すると、チャットできます。
 - アプリケーションコマンド (/) が使用できます。
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+他にもたくさんの興味深い機能があります...
 
-## ปรับปรุงการแปล
+## 翻訳を改善する
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
 
 ## 前提条件
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- `./source/config.js` の **config** で一部の情報を編集できます。
 
 ### Firebase をセットアップする
 
@@ -101,7 +101,7 @@ npm install --save
 npm アンインストールナトリウム
 npm インストール libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
 ```bat
 npm install ffmpeg-static@latest --save
 ```
