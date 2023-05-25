@@ -36,17 +36,17 @@ Uw goede serverassistent zal ervoor zorgen dat uw server er levendiger uitziet. 
 - Werkt op [Discord.js](https://discord.js.org/) v14.
 - In staat om een verscheidenheid aan gewenste items aan te passen
 - Muziek kan worden afgespeeld van [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) en [SoundCloud](https://soundcloud.com/) met automatische weergave.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Ondersteuning voor meerdere talen U kunt de ondersteunde talen controleren vanuit[taal](https://github.com/Maseshi/shioru/blob/main/source/languages)bestanden van deze repository.
 - Tier systeem (niveau en ervaring)
 - Ondersteuning voor aanpassing van servermeldingen
 - U kunt praten door `@Shioru` te typen, gevolgd door het bericht dat u wilt communiceren.
 - Het toepassingscommando (/) kan worden gebruikt.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+en vele andere interessante functies...
 
-## ปรับปรุงการแปล
+## Verbeter vertalen
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+U kunt ons helpen een bestaande taal te vertalen of een taal die momenteel niet beschikbaar is bij [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## ข้อกำหนดเบื้องต้น
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- U kunt enkele gegevens wijzigen in **config** op `./source/config.js`
 
 ### Stel Firebase in
 
@@ -101,7 +101,7 @@ npm install --save
 npm natrium verwijderen
 npm installeren libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Als je je muziek niet kunt afspelen of als de afspeelopdrachten voor muziek niet werken, installeer dan [ffmpeg](https://ffmpeg.org/download.html) **(aanbevolen)** of installeer het **ffmpeg-static** pakket en probeer het opnieuw.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
