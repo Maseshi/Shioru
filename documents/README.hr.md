@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[HR](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Radi na [Discord.js](https://discord.js.org/) v14.
 - Mogućnost prilagođavanja raznih željenih stavki
 - Glazba se može reproducirati s [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) i [SoundCloud](https://soundcloud.com/) s automatskom reprodukcijom.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Podržava više jezika Podržane jezike možete provjeriti u datotekama[jezika](https://github.com/Maseshi/shioru/blob/main/source/languages)ovog repozitorija.
 - Tier sustav (razina i iskustvo)
 - Podrška za prilagodbu obavijesti poslužitelja
 - Možete razgovarati upisivanjem `@Shioru` nakon čega slijedi poruka koju želite komunicirati.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Poboljšajte Prevoditelj
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+i mnoge druge zanimljive karakteristike...
 
 ## Preduvjeti
 
@@ -79,7 +79,7 @@ cd Shioru
 npm instalacija --spremi
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Možete izmijeniti neke podatke u **config** na `./source/config.js`
 
 ### Postavite Firebase
 
@@ -101,17 +101,17 @@ npm instalacija --spremi
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Ako ne možete reproducirati svoju glazbu ili naredbe za reprodukciju glazbe ne rade, instalirajte [ffmpeg](https://ffmpeg.org/download.html) **(preporučeno)** ili instalirajte **ffmpeg-static** paket i pokušajte ponovno.
 ```bat
 npm instaliraj ffmpeg-static@najnovije --spremi
 ```
 
 ## Kreditna
 
-Hvala svim izvornim stvarateljima što su dopustili korištenje ovih vaših prekrasnih djela.
+Možete nam pomoći prevesti postojeći jezik ili jezik koji trenutno nije dostupan na [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Crtanje avatara: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Hvala svim izvornim stvarateljima što su dopustili korištenje ovih vaših prekrasnih djela.
 
 ## pronašao problem
 
-Ako naiđete na bilo kakve probleme iz vašeg trenutnog posla Možete nas obavijestiti putem kartice [problem](https://github.com/Maseshi/Shioru/issues) ovog repozitorija.
+Crtanje avatara: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
