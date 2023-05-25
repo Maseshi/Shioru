@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[EL](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Λειτουργεί σε [Discord.js](https://discord.js.org/) v14.
 - Δυνατότητα προσαρμογής μιας ποικιλίας επιθυμητών αντικειμένων
 - Μπορεί να αναπαραχθεί μουσική από [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) και [SoundCloud](https://soundcloud.com/) με αυτόματη αναπαραγωγή.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Υποστήριξη πολλαπλών γλωσσών Μπορείτε να ελέγξετε τις υποστηριζόμενες γλώσσες από αρχεία[γλώσσας](https://github.com/Maseshi/shioru/blob/main/source/languages)αυτού του αποθετηρίου.
 - Σύστημα βαθμίδων (επίπεδο και εμπειρία)
 - Υποστήριξη για προσαρμογή ειδοποιήσεων διακομιστή
 - Μπορείτε να μιλήσετε πληκτρολογώντας `@Shioru` ακολουθούμενο από το μήνυμα που θέλετε να επικοινωνήσετε.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Βελτιώστε τη Μετάφραση
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+και πολλά άλλα ενδιαφέροντα χαρακτηριστικά...
 
 ## Προαπαιτούμενα
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Μπορείτε να τροποποιήσετε ορισμένα δεδομένα σε **config** at `./source/config.js`
 
 ### Ρυθμίστε το Firebase
 
@@ -98,20 +98,19 @@ npm install --save
 
 - Εάν δεν μπορείτε να εγκαταστήσετε το πακέτο **sodium** , εγκαταστήστε **libsodium-wrappers**.
 ```bat
-npm απεγκατάσταση νατρίου
-npm εγκατάσταση libsodium-wrappers@latest --save
+npm εγκατάσταση ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Εάν δεν μπορείτε να αναπαράγετε τη μουσική σας ή οι εντολές αναπαραγωγής μουσικής δεν λειτουργούν, εγκαταστήστε το [ffmpeg](https://ffmpeg.org/download.html) **(συνιστάται)** ή εγκαταστήστε το πακέτο **ffmpeg-static** και δοκιμάστε ξανά.
 ```bat
 npm εγκατάσταση ffmpeg-static@latest --save
 ```
 
 ## πίστωση
 
-Ευχαριστούμε όλους τους πρωτότυπους δημιουργούς που επέτρεψαν τη χρήση αυτών των υπέροχων έργων σας.
+Μπορείτε να μας βοηθήσετε να μεταφράσουμε μια υπάρχουσα γλώσσα ή μια γλώσσα που δεν είναι προς το παρόν διαθέσιμη στο [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Σχέδιο Avatar από: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Ευχαριστούμε όλους τους πρωτότυπους δημιουργούς που επέτρεψαν τη χρήση αυτών των υπέροχων έργων σας.
 
 ## βρήκε πρόβλημα
 
-Εάν αντιμετωπίσετε προβλήματα από την τρέχουσα εργασία σας Μπορείτε να μας ενημερώσετε μέσω της καρτέλας [τεύχος](https://github.com/Maseshi/Shioru/issues) αυτού του αποθετηρίου.
+Σχέδιο Avatar από: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
