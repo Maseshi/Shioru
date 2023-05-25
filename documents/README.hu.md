@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[HU](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - [Discord.js](https://discord.js.org/) v14-en működik.
 - Képes testreszabni a különféle kívánt elemeket
 - Zene lejátszható [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) és [SoundCloud](https://soundcloud.com/) készülékekről automatikus lejátszással.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Több nyelv támogatása A támogatott nyelveket a tárhely[nyelv](https://github.com/Maseshi/shioru/blob/main/source/languages)fájljából ellenőrizheti.
 - Szintrendszer (szint és tapasztalat)
 - Támogatás a szerver értesítések testreszabásához
 - Beszélhet úgy, hogy beírja `@Shioru` számot, majd a kommunikálni kívánt üzenetet.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## A Fordítás javítása
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+és még sok más érdekes funkció...
 
 ## Előfeltételek
 
@@ -79,7 +79,7 @@ cd Shioru
 npm telepítés -- mentés
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Néhány adatot módosíthat a **config** -ben a `./source/config.js`címen.
 
 ### A Firebase beállítása
 
@@ -101,16 +101,16 @@ npm telepítés -- mentés
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Ha nem tudja lejátszani a zenét, vagy a zenelejátszási parancsok nem működnek, telepítse [ffmpeg](https://ffmpeg.org/download.html) **(ajánlott)** vagy a **ffmpeg-static** csomagot, és próbálkozzon újra.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
 
 ## hitel
 
-Köszönet minden eredeti alkotónak, hogy lehetővé tették e csodálatos műveid felhasználását.
+Segíthet nekünk lefordítani egy meglévő vagy egy olyan nyelvet, amely jelenleg nem érhető el [Crowdin](https://crowdin.com/project/shioru-bot)webhelyen.
 
-ภาพวาดประจำตัวโดย: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Köszönet minden eredeti alkotónak, hogy lehetővé tették e csodálatos műveid felhasználását.
 
 ## problémát talált
 
