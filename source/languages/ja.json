@@ -797,10 +797,10 @@
             "description": "こんにちは..この %s に招待していただきありがとうございます。あ、皿洗いもできるし、洗濯もできる。すごいですね～ ハハ、どこ？冗談です",
             "get_started": "スタートに到達しました!!",
             "help_information_and_documentation": "**📄 ヘルプとドキュメント**",
-            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "何ができるか知りたい..とても簡単. 「Shelp」または「/help」と入力するだけで、誰かが教えてくれます。もちろん、以下のリンクにアクセスすると、開発者や他の人が提供するドキュメントが表示されます。彼はすでにあなたのためにそれを書いています.\n> https://shiorus.web.app/",
             "join_on": "参加",
             "support_multiple_languages": "**🌐 多言語サポート**",
-            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
+            "support_multiple_languages_detail": "複数の言語をサポートしています。言語を変更するには`Slanguage <言語コード>` または `/language <言語コード>` で設定できます。"
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "このサーバーは %s の統合に成功しました. 今後の更新があるとすぐに、新しい記事を受け取ることができます.",
