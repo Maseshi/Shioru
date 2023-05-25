@@ -27,6 +27,10 @@
             "synopsis": "**rezimirati:**",
             "undefined": "nedefiniran"
         },
+        "ask": {
+            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
+            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+        },
         "automod": {
             "flagged_words_name": "blokirati psovke seksualni sadržaj i uvrede",
             "flagged_words_success": "✅ Vaša AutoMod pravila su stvorena, sve te riječi će biti potisnute.",
@@ -167,6 +171,12 @@
             "sound_filtering": "❓ Želite li promijeniti zvuk svoje glazbe?",
             "unknown_filter": "❎ Umm..Ne znam format zvuka `%s, možete ga provjeriti pomoću **dostupan** ili **ava**?",
             "unknown_input_option": "❓ Možete odrediti sljedeće parametre: dodati, ukloniti, postaviti, dostupno, popis, izbrisati."
+        },
+        "generate": {
+            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
+            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
+            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "AFK kod kanala",
@@ -518,8 +528,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh..ali ovaj poslužitelj već koristi jezik %s",
+            "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Postavite svoj jezik, ovo će vam uvelike olakšati razumijevanje\n\nJezik ovog poslužitelja je: `%s1`\n\n> Možete ga promijeniti upisivanjem:\n> ```%s2. ```",
+            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
             "set_success": "✅ Već ste promijenili jezik u **%s**.",
+            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
             "title": "🌐 Jezik"
         },
         "set_notify": {
@@ -573,6 +586,10 @@
             "game_over": "igra je gotova",
             "game_score": "Rezultat: **%s1**\nVrijeme: **%s2** sekundi",
             "played_on": "Započeo %s"
+        },
+        "stats": {
+            "member_count": "จำนวนสมาชิก:",
+            "server_count": "จำนวนเซิร์ฟเวอร์:"
         },
         "status": {
             "data_by_server": "Referentni podaci s poslužitelja.",
@@ -702,12 +719,20 @@
             "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
             "this_volume": "🔈 Trenutna glasnoća zvuka je: **%s**"
         },
+        "vote": {
+            "invite": "เชิญ",
+            "tags": "แท็ก",
+            "vote": "โหวต",
+            "votes": "คะแนนโหวต"
+        },
         "weather": {
+            "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
             "clear_weather": "vedro vrijeme",
             "cloudy": "oblačno",
             "date": "📆 Datum",
             "day": "📅 dan",
             "degree_type": "⚖️ Jedinice mjere",
+            "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
             "feels_like": "🎐 Osjećaj se kao",
             "humidity": "💧 Vlažnost",
             "information_from_microsoft": "Točne i točne informacije od strane Microsofta",
@@ -723,6 +748,7 @@
             "sunny": "sunčano",
             "temperature": "🌡️ Temperatura",
             "timezone": "🌐 Vremenska zona",
+            "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
             "weather": "⛅ Vrijeme",
             "weather_at_the_moment": "Vrijeme __**%s1**__ je sada \n```%s2```.",
             "wind": "🎏 Vjetar"
@@ -771,10 +797,10 @@
             "description": "Pozdrav..hvala što ste me pozvali na ovo %s mjesto\nčini se da se ljudi pitaju što mogu učiniti? Oh..može oprati suđe, oprati rublje. Sjajno je, zar ne ~ Haha, gdje je? šalim se",
             "get_started": "Stiglo je na početak!!",
             "help_information_and_documentation": "**📄 Pomoć i dokumentacija**",
-            "help_information_and_documentation_detail": "Želiš znati što mogu učiniti?..vrlo jednostavno. Samo upišite `Shelp` ili `/help` i netko će vam reći. Naravno, samo idite na vezu u nastavku i tamo će biti dokumentacija koju će osigurati programer i drugi. Već je napisao\n> https://shiorus.web.app/",
+            "help_information_and_documentation_detail": "อยากรู้ว่าฉันทำอะไรได้บ้างน่ะหรอ..ง่ายมากเลยล่ะ เพียงแค่พิมพ์ `/help` แล้วจะมีคนมาบอกเองละแต่ถ้าอยากได้แบบละเอียดยิ๊บละก็ แน่นอนว่ามีแค่ไปที่ลิงค์ด้านล่างนี้แล้วจะมีเอกสารที่ทางผู้พัฒนาและคนอื่นๆ เขาเขียนไว้ให้แล้วละ\n> https://shiorus.web.app/",
             "join_on": "pridruži se",
             "support_multiple_languages": "** 🌐 Podržava više jezika**",
-            "support_multiple_languages_detail": "Podržavam više jezika. Za promjenu jezika Možete ga postaviti pomoću `Slanguage <jezična šifra>` ili `/language <jezična šifra>`."
+            "support_multiple_languages_detail": "ฉันรองรับการใช้งานในหลายภาษา หากต้องการเปลี่ยนแปลงภาษา คุณสามารถตั้งค่าได้โดย `/set-language <รหัสภาษา>`"
         },
         "guildIntegrationsUpdate": {
             "guild_integrations_update": "Ovaj poslužitelj je već spojio %s . Primit ćete nove članke čim budu ažurirana.",
@@ -921,6 +947,16 @@
         }
     },
     "utils": {
+        "consoleUtils": {
+            "an_error_occurred": "🔴 Došlo je do pogreške tijekom izvođenja.",
+            "error_detail": "Naredba: **%s1**\nVerzija: **%s2**\nVremenski ograničeno: **%s3**\nPoslužitelj: **%s4**\nKašnjenje: **%s5 ms**\nPrimanje-prijenos: * *%s6ms**\nRezultat pogreške:\n```JavaScript\n%s7\n```\n> **Savjet**: Možete odmah prijaviti pogrešku pomoću naredbe:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[izvješće o problemu](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Vijesti ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+            "server_abnormal": "nenormalan",
+            "server_normal": "normalan"
+        },
+        "databaseUtils": {
+            "congratulations": "Čestitamo!!",
+            "level_up": "Klasa *%s1* sada je nadograđena na ```%s2```."
+        },
         "miscUtils": {
             "april": "travanj",
             "august": "kolovoz",
@@ -942,17 +978,6 @@
             "thursday": "četvrtak",
             "tuesday": "utorak",
             "wednesday": "srijeda"
-        },
-        "consoleUtils": {
-            "an_error_occurred": "🔴 Došlo je do pogreške tijekom izvođenja.",
-            "error_detail": "Naredba: **%s1**\nVerzija: **%s2**\nVremenski ograničeno: **%s3**\nPoslužitelj: **%s4**\nKašnjenje: **%s5 ms**\nPrimanje-prijenos: * *%s6ms**\nRezultat pogreške:\n```JavaScript\n%s7\n```\n> **Savjet**: Možete odmah prijaviti pogrešku pomoću naredbe:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[izvješće o problemu](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Vijesti ](https://maseshi.web.app/projects?id=shioru&tab=news)",
-            "server_abnormal": "nenormalan",
-            "server_normal": "normalan"
-        },
-        "databaseUtils": {
-            "congratulations": "Čestitamo!!",
-            "level_up": "Klasa *%s1* sada je nadograđena na ```%s2```.",
-            "was_mentioned": "Što nije u redu?"
         }
     }
 }
