@@ -23,7 +23,7 @@
   </a>
 </div>
 
-ผู้ช่วยเซิร์ฟเวอร์ที่ดีของคุณจะช่วยให้เซิร์ฟเวอร์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งต่างๆ ได้โดยพิมพ์ `/help` คุณสามารถเชิญ Shioru เข้าร่วมเซิร์ฟเวอร์ของคุณได้จาก[ที่นี่](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+[DA](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
@@ -36,7 +36,7 @@
 - Virker på [Discord.js](https://discord.js.org/) v14.
 - I stand til at tilpasse en række ønskede emner
 - Musik kan afspilles fra [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) og [SoundCloud](https://soundcloud.com/) med automatisk afspilning.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Understøtter flere sprog Du kan kontrollere de understøttede sprog fra[sprog](https://github.com/Maseshi/shioru/blob/main/source/languages)-filer i dette lager.
 - Tier system (niveau og erfaring)
 - Understøttelse af tilpasning af servermeddelelser
 - Du kan tale ved at skrive `@Shioru` efterfulgt af den besked, du vil kommunikere.
@@ -44,9 +44,9 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## Forbedre Oversæt
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+og mange andre interessante funktioner...
 
 ## Forudsætninger
 
@@ -79,7 +79,7 @@ cd Shioru
 npm installer -- gem
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Du kan ændre nogle data i **config** på `./source/config.js`
 
 ### Konfigurer Firebase
 
@@ -98,20 +98,19 @@ npm installer -- gem
 
 - Hvis du ikke kan installere pakke **sodium** , installer **libsodium-wrappers** i stedet for.
 ```bat
-npm afinstaller natrium
-npm installer libsodium-wrappers@latest --save
+npm installer ffmpeg-static@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Hvis du ikke kan afspille din musik, eller musikafspilningskommandoer ikke virker, skal du installere [ffmpeg](https://ffmpeg.org/download.html) **(anbefalet)** eller installere **ffmpeg-static** -pakken og prøve igen.
 ```bat
 npm installer ffmpeg-static@latest --save
 ```
 
 ## kredit
 
-Tak til alle originale skabere for at tillade brugen af disse vidunderlige værker.
+Du kan hjælpe os med at oversætte et eksisterende sprog eller et sprog, der i øjeblikket ikke er tilgængeligt hos [Crowdin](https://crowdin.com/project/shioru-bot).
 
-Avatar tegning af: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Tak til alle originale skabere for at tillade brugen af disse vidunderlige værker.
 
 ## fundet et problem
 
-Hvis du støder på problemer fra dit nuværende arbejde Du kan fortælle os det via fanen [udgave](https://github.com/Maseshi/Shioru/issues) i dette lager.
+Avatar tegning af: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
