@@ -36,17 +36,17 @@ Il tuo buon assistente del server aiuterà il tuo server a sembrare più vivace.
 - Funziona su [Discord.js](https://discord.js.org/) v14.
 - In grado di personalizzare una varietà di elementi desiderati
 - La musica può essere riprodotta da [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) e [SoundCloud](https://soundcloud.com/) con riproduzione automatica.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- Supporta più lingue Puoi controllare le lingue supportate da[file di lingua](https://github.com/Maseshi/shioru/blob/main/source/languages)di questo repository.
 - Sistema a livelli (livello ed esperienza)
 - Supporto per la personalizzazione delle notifiche del server
 - Puoi parlare digitando `@Shioru` seguito dal messaggio che vuoi comunicare.
 - È possibile utilizzare il comando dell'applicazione (/).
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+e molte altre caratteristiche interessanti...
 
-## ปรับปรุงการแปล
+## Migliora Traduci
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
+Puoi aiutarci a tradurre una lingua esistente o una lingua che non è attualmente disponibile su [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## Prerequisiti
 
@@ -79,7 +79,7 @@ cd Shioru
 npm install --save
 ```
 
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
+- Puoi modificare alcuni dati in **config** in `./source/config.js`
 
 ### Configura Firebase
 
@@ -101,7 +101,7 @@ npm install --save
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
+- Se non riesci a riprodurre la tua musica o i comandi di riproduzione musicale non funzionano, installa [ffmpeg](https://ffmpeg.org/download.html) **(consigliato)** o installa il pacchetto **ffmpeg-static** e riprova.
 ```bat
 npm install ffmpeg-static@latest --save
 ```
