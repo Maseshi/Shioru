@@ -52,7 +52,7 @@
     "distube": "^4.0.4",
     "dotenv": "^16.0.3",
     "fast-xml-parser": "^4.2.2",
-    "firebase": "^9.22.0",
+    "firebase": "^9.22.1",
     "lyrics-finder": "^21.7.0",
     "openai": "^3.2.1",
     "sodium": "^3.0.2",
