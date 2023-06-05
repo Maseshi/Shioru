@@ -50,7 +50,7 @@
     "captcha-canvas": "^3.2.1",
     "discord.js": "^14.11.0",
     "distube": "^4.0.4",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.4",
     "fast-xml-parser": "^4.2.3",
     "firebase": "^9.22.1",
     "lyrics-finder": "^21.7.0",
