@@ -54,7 +54,7 @@
     "fast-xml-parser": "^4.2.4",
     "firebase": "^9.22.2",
     "lyrics-finder": "^21.7.0",
-    "openai": "^3.2.1",
+    "openai": "^3.3.0",
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
