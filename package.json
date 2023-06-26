@@ -58,7 +58,7 @@
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
-    "systeminformation": "^5.18.3",
+    "systeminformation": "^5.18.4",
     "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
