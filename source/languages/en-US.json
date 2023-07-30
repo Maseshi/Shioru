@@ -2,7 +2,7 @@
     "commands": {
         "about": {
             "my_profile": "My Profile",
-            "my_profile_detail": "My name is %s, born on Sunday June 21. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortableincreased with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
+            "my_profile_detail": "My name is %s, born on Sunday June 21. I live in a house. __Chaiwat Suwannarat(Masashi)__ gave birth to me and gave me various talents. It is my responsibility to help you feel comfortable, increase your productivity with various **commands** that I have studied all to everyone in the place where I live I hope everyone will be happy to be with me!! And thank you for all the help and support of my lovely benefactors. Thank you very much.\n\n[Official Website](https://maseshi.web.app/)\n[Privacy Policy](https://maseshi.web.app/privacy-policy) | [Terms and Conditions Service](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
             "update_on": "update on"
         },
         "afk": {
@@ -67,7 +67,7 @@
         },
         "bug": {
             "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
-            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
+            "success*": "✅ Ok thank you... if you find anything else please tell me (●'◡'●)"
         },
         "captcha": {
             "captcha_setup_success": "✅ The captcha system setup has been completed and activated.",
@@ -130,10 +130,10 @@
             "roll_ball": "Roll the ball!!"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
-            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
-            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
-            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_emoji": "✅ **%s** The emoji has been successfully deleted.",
+            "edited_emoji": "%s successfully edited the emoji.",
+            "uploading_you_emoji": "📤 Uploading your emoji...",
+            "you_emoji_is_ready": "%s Your emoji is ready. Let's try it!!"
         },
         "encode": {
             "after": "After encoding",
@@ -230,8 +230,8 @@
             "vanity_url_uses": "Invited",
             "verification_level": "Verification",
             "verified": "Verified",
-            "widget_channel_id": "Seven channel code",
-            "widget_enabled": "Witch Seven",
+            "widget_channel_id": "Widget channel ID",
+            "widget_enabled": "Widget Enabled",
             "yes": "yes"
         },
         "help": {
@@ -599,11 +599,11 @@
             "online_status": "The number of members currently online is \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
-            "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
-            "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
-            "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
-            "you_sticker_is_ready": "%s สติ๊กเกอร์ของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_sticker": "✅ **%s** Sticker successfully deleted",
+            "does_not_support_gif": "❎ Sorry... Discord does not currently support custom stickers as GIFs.",
+            "edited_sticker": "%s successfully edited the sticker.",
+            "uploading_you_sticker": "📤 Uploading your sticker...",
+            "you_sticker_is_ready": "%s Your sticker is ready. Let's try it!!"
         },
         "stop": {
             "no_queue": "❎ Eh...there's no song I'm playing.",
