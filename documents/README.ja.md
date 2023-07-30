@@ -51,6 +51,8 @@
 ## 前提条件
 
 - [Node.js](https://nodejs.org/) v18.0.0 以降
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
+- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
 - [Firebase](https://firebase.google.com/) v9.0.0 以降
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
@@ -70,7 +72,7 @@
 
 ```sh
 # On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install autoconf automake g++ libtool build-essential
+sudo apt-get install libtool autoconf automake g++
 ```
 
 ```bat
@@ -95,6 +97,10 @@ npm install --save
 - ターミナルに移動し、開発用に`npm run dev`、本番用に「npm start」を実行します。 > **注**: 開発モードの場合 一部の機能が動作しない場合があります。
 
 ## クイックトラブルシューティング
+
+- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - **sodium** パッケージをインストールできない場合は、代わりに **libsodium-wrappers** をインストールしてください。
 ```bat

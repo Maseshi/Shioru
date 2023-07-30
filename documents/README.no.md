@@ -51,6 +51,8 @@ og mange andre interessante funksjoner...
 ## Forutsetninger
 
 - [Node.js](https://nodejs.org/) v18.0.0 eller nyere
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
+- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
 - [Firebase](https://firebase.google.com/) v9.0.0 eller nyere
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
@@ -70,7 +72,7 @@ og mange andre interessante funksjoner...
 
 ```sh
 # On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install autoconf automake g++ libtool build-essential
+sudo apt-get install libtool autoconf automake g++
 ```
 
 ```bat
@@ -95,6 +97,10 @@ npm installer --lagre
 - ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
 
 ## Rask feilsøking
+
+- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Hvis du ikke kan installere pakke **sodium** , installer **libsodium-wrappers** i stedet.
 ```bat
