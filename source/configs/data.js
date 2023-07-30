@@ -35,29 +35,29 @@ module.exports = {
     // This section is optional and is recommended to be disabled.
     "monitoring": {
         "config": {
-            "apiKey": process.env.MONITOR_API_KEY || $MONITOR_API_KEY || "",
-            "metricId": process.env.MONITOR_METRIC_ID || $MONITOR_METRIC_ID || "",
-            "pageId": process.env.MONITOR_PAGE_ID || $MONITOR_PAGE_ID || ""
+            "apiKey": process.env.MONITOR_API_KEY ?? "",
+            "metricId": process.env.MONITOR_METRIC_ID ?? "",
+            "pageId": process.env.MONITOR_PAGE_ID ?? ""
         },
         "enable": true
     },
 
     // Setup OpenAI
     "openai": {
-        "apiKey": process.env.OPENAI_API_KEY || $OPENAI_API_KEY,
-        "basePath": process.env.OPENAI_BASE_PATH || $OPENAI_BASE_PATH
+        "apiKey": process.env.OPENAI_API_KEY ?? "",
+        "basePath": process.env.OPENAI_BASE_PATH ?? ""
     },
 
     // We use Firebase to deploy databases to the system.
     "server": {
-        "apiKey": process.env.API_KEY || $API_KEY,
-        "authDomain": process.env.AUTH_DOMAIN || $AUTH_DOMAIN,
-        "databaseURL": process.env.DATABASE_URL || $DATABASE_URL,
-        "projectId": process.env.PROJECT_ID || $PROJECT_ID,
-        "storageBucket": process.env.STORAGE_BUCKET || $STORAGE_BUCKET,
-        "messagingSenderId": process.env.MESSAGING_SENDER_ID || $MESSAGING_SENDER_ID,
-        "appId": process.env.APP_ID || $APP_ID,
-        "measurementId": process.env.MEASUREMENT_ID || $MEASUREMENT_ID
+        "apiKey": process.env.API_KEY ?? "",
+        "authDomain": process.env.AUTH_DOMAIN ?? "",
+        "databaseURL": process.env.DATABASE_URL ?? "",
+        "projectId": process.env.PROJECT_ID ?? "",
+        "storageBucket": process.env.STORAGE_BUCKET ?? "",
+        "messagingSenderId": process.env.MESSAGING_SENDER_ID ?? "",
+        "appId": process.env.APP_ID ?? "",
+        "measurementId": process.env.MEASUREMENT_ID ?? ""
     },
 
     // Discord ID of the team.
@@ -75,16 +75,19 @@ module.exports = {
         "application_commands": false,
 
         // The id of the guild used for the test.
-        "guild": process.env.TEST_GUILD || $TEST_GUILD || ""
+        "guild": process.env.TEST_GUILD ?? ""
     },
 
     // The bot token, which can be found on the Discord Developer page.
     // https://discord.com/developers/applications
-    "token": process.env.TOKEN || $TOKEN,
+    "token": process.env.TOKEN ?? "",
 
     // Setup Top.gg
-    "top_gg_token": process.env.TOP_GG_API_KEY || $TOP_GG_API_KEY || "",
+    "top_gg_token": process.env.TOP_GG_API_KEY ?? "",
 
     // Last time that personal information was updated
-    "update": "2021-02-26T20:08:27.467Z"
+    "update": "2021-02-26T20:08:27.467Z",
+
+    // Setup Weatherbit
+    "weatherbit_token": process.env.WEATHERBIT_KEY ?? ""
 };
