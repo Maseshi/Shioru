@@ -1,6 +1,3 @@
-const http = require("node:http");
-const https = require("node:https");
-
 const supportTranslate = {
     "af": "Afrikaans",
     "sq": "Albanian",
@@ -214,38 +211,6 @@ const IDConvertor = (text) => {
     return text.toLowerCase().replace(/[^\w\s]/g, "-").replace(/ +/g, "-");
 }
 
-/**
- * Sends a request using the native `http` or `https` library.
- * 
- * @param url The target URL.
- * @returns HTTP or HTTPS response body.
- */
-const request = (url) => {
-    return new Promise((resolve, reject) => {
-        let req = "";
-
-        try {
-            req = https.get(url, (res) => response(res));
-        } catch {
-            req = http.get(url, (res) => response(res));
-        }
-
-        const response = (response) => {
-            let data = "";
-
-            if (response.statusCode !== 200) {
-                reject(new Error("Request failed with status " + response.statusCode));
-            }
-
-            response.on("data", (chunk) => data += chunk);
-            response.on("end", () => resolve(data));
-        };
-
-        req.setTimeout(10000);
-        req.on("timeout", () => reject(new Error("Request timed out after 10s")));
-        req.on("error", (error) => reject(error));
-    });
-}
 
 module.exports = {
     supportTranslate,
@@ -253,6 +218,5 @@ module.exports = {
     dateFormat,
     remainingTime,
     currencyFormatter,
-    IDConvertor,
-    request
+    IDConvertor
 };
