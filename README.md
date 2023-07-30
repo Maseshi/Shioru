@@ -51,6 +51,8 @@ You can help us translate existing languages or languages that are not currently
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Python](https://www.python.org/downloads/) v2.0.0 or higher **(included in Node.js)**
+- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 or higher **(included in Node.js)**
 - [Firebase](https://firebase.google.com/) v9.0.0 or higher
 - [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
@@ -72,7 +74,7 @@ You can help us translate existing languages or languages that are not currently
 
 ```sh
 # On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install autoconf automake g++ libtool build-essential
+sudo apt-get install libtool autoconf automake g++
 ```
 
 ```bat
@@ -99,6 +101,10 @@ npm install --save
   > **NOTE**: When in development mode Some features may not work.
 
 ## Quick Troubleshooting
+
+- If you run into problems during component installation which on the terminal says `gyp ERR! stack Error: not found: make`. This problem may be caused by the **build tools** not being installed properly or they may not be installed yet. The solution is to download the latest version of [Node.js](https://nodejs.org/) and tick this section within the installation process.
+
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
 

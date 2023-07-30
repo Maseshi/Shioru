@@ -27,7 +27,7 @@ Your good server assistant will help make your server look more lively. She can 
 
 <div align="center">
   <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+    </img src="https://img.shields.io/badge/Switch_Languages-1967D2?logo=google-translate&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -51,8 +51,10 @@ You can help us translate existing languages or languages that are not currently
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Python](https://www.python.org/downloads/) v2.0.0 or higher **(included in Node.js)**
+- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 or higher **(included in Node.js)**
 - [Firebase](https://firebase.google.com/) v9.0.0 or higher
-- [FFmpeg](https://www.ffmpeg.org/download.html)
+- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Quick setup guide
@@ -61,8 +63,10 @@ You can help us translate existing languages or languages that are not currently
 
 - Go to the [Discord Developer Portal](https://discord.com/developers/applications)
 - Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Setup a bot
 
@@ -70,7 +74,7 @@ You can help us translate existing languages or languages that are not currently
 
 ```sh
 # On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install autoconf automake g++ libtool build-essential
+sudo apt-get install libtool autoconf automake g++
 ```
 
 ```bat
@@ -85,23 +89,32 @@ npm install --save
 
 - Go to https://firebase.google.com/ and start setting up the project.
 - Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
 ### Development
 
 - Rename the `.env.example` file to `.env` and add all values.
-- Go to terminal and run `npm run dev` for development and `npm start` for production. > **NOTE**: When in development mode Some features may not work.
+- Go to terminal and run `npm run dev` for development and `npm start` for production.
+  > **NOTE**: When in development mode Some features may not work.
 
 ## Quick Troubleshooting
 
+- If you run into problems during component installation which on the terminal says `gyp ERR! stack Error: not found: make`. This problem may be caused by the **build tools** not being installed properly or they may not be installed yet. The solution is to download the latest version of [Node.js](https://nodejs.org/) and tick this section within the installation process.
+
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+
 - If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+
 ```bat
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- If you can't play music or music playback commands are not working, install [FFmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package.
+
+- If you can't play music or music playback commands are not working, install [FFmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```
@@ -115,3 +128,7 @@ Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/e
 ## Found a problem
 
 If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
+
+## Google Translate
+
+The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.
