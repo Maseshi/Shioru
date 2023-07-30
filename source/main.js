@@ -24,6 +24,7 @@
  */
 
 const { Client, Collection, GatewayIntentBits, Partials, ActivityType } = require("discord.js");
+const { generateDependencyReport } = require("@discordjs/voice");
 const { OpenAIApi, Configuration } = require("openai");
 const { DisTube, StreamType } = require("distube");
 const { DeezerPlugin } = require("@distube/deezer");
@@ -48,12 +49,12 @@ const underlineStyle = ansiColor(4, "sgr");
 const yellowColor = ansiColor(11, "foreground");
 const blueBrightColor = ansiColor(33, "foreground");
 
-console.info(blueBrightColor + "███████╗██╗  ██╗██╗ ██████╗ ██████╗ ██╗   ██╗ v" + clearStyle);
-console.info(blueBrightColor + "██╔════╝██║  ██║██║██╔═══██╗██╔══██╗██║   ██║ " + version.charAt(0) + clearStyle);
-console.info(blueBrightColor + "███████╗███████║██║██║   ██║██████╔╝██║   ██║ " + version.charAt(1) + clearStyle);
-console.info(blueBrightColor + "╚════██║██╔══██║██║██║   ██║██╔══██╗██║   ██║ " + version.charAt(2) + clearStyle);
-console.info(blueBrightColor + "███████║██║  ██║██║╚██████╔╝██║  ██║╚██████╔╝ " + version.charAt(3) + clearStyle);
-console.info(blueBrightColor + "╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝  " + version.charAt(4) + clearStyle);
+console.info(blueBrightColor + "  ███████╗██╗  ██╗██╗ ██████╗ ██████╗ ██╗   ██╗  v" + clearStyle);
+console.info(blueBrightColor + "  ██╔════╝██║  ██║██║██╔═══██╗██╔══██╗██║   ██║  " + version.charAt(0) + clearStyle);
+console.info(blueBrightColor + "  ███████╗███████║██║██║   ██║██████╔╝██║   ██║  " + version.charAt(1) + clearStyle);
+console.info(blueBrightColor + "  ╚════██║██╔══██║██║██║   ██║██╔══██╗██║   ██║  " + version.charAt(2) + clearStyle);
+console.info(blueBrightColor + "  ███████║██║  ██║██║╚██████╔╝██║  ██║╚██████╔╝  " + version.charAt(3) + clearStyle);
+console.info(blueBrightColor + "  ╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝   " + version.charAt(4) + clearStyle);
 console.info("Copyright (C) 2020-2023 Chaiwat Suwannarat. All rights reserved.");
 console.info("Website: https://shiorus.web.app/, License: MIT, CC0-1.0");
 console.info();
@@ -65,15 +66,31 @@ console.info();
  * Development mode is "dev"
  */
 if (process.env.npm_lifecycle_event && process.env.npm_lifecycle_event === "dev") {
-    console.info(yellowColor + "┏━━━━━━━━━━━━━━ DEVELOPMENT MODE ━━━━━━━━━━━━━━┓" + clearStyle);
-    console.info(yellowColor + "┃                                              ┃" + clearStyle);
-    console.info(yellowColor + "┃  When in development mode some features may  ┃" + clearStyle);
-    console.info(yellowColor + "┃     not work, you can restart your system    ┃" + clearStyle);
-    console.info(yellowColor + "┃   immediately by typing " + underlineStyle + "rs" + clearStyle + yellowColor + " on the terminal.  ┃" + clearStyle);
-    console.info(yellowColor + "┃                                              ┃" + clearStyle);
-    console.info(yellowColor + "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + clearStyle);
+    console.info(yellowColor + "┏━━━━━━━━━━━━━━━ DEVELOPMENT MODE ━━━━━━━━━━━━━━━┓" + clearStyle);
+    console.info(yellowColor + "┃                                                ┃" + clearStyle);
+    console.info(yellowColor + "┃   When in development mode some features may   ┃" + clearStyle);
+    console.info(yellowColor + "┃      not work, you can restart your system     ┃" + clearStyle);
+    console.info(yellowColor + "┃    immediately by typing " + underlineStyle + "rs" + clearStyle + yellowColor + " on the terminal.   ┃" + clearStyle);
+    console.info(yellowColor + "┃                                                ┃" + clearStyle);
+    console.info(yellowColor + "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + clearStyle);
+    console.info();
+    console.info("# Voice Dependency Report");
+    console.info(generateDependencyReport());
     console.info();
 }
+
+// Check environnement
+if (!config.openai.apiKey) return console.error("[ENV] OPENAI_API_KEY It needs to be set up in the environment.");
+if (!config.openai.basePath) return console.error("[ENV] OPENAI_BASE_PATH It needs to be set up in the environment.");
+if (!config.server.apiKey) return console.error("[ENV] API_KEY It needs to be set up in the environment.");
+if (!config.server.authDomain) return console.error("[ENV] AUTH_DOMAIN It needs to be set up in the environment.");
+if (!config.server.databaseURL) return console.error("[ENV] DATABASE_URL It needs to be set up in the environment.");
+if (!config.server.projectId) return console.error("[ENV] PROJECT_ID It needs to be set up in the environment.");
+if (!config.server.storageBucket) return console.error("[ENV] STORAGE_BUCKET It needs to be set up in the environment.");
+if (!config.server.messagingSenderId) return console.error("[ENV] MESSAGING_SENDER_ID It needs to be set up in the environment.");
+if (!config.server.appId) return console.error("[ENV] APP_ID It needs to be set up in the environment.");
+if (!config.server.measurementId) return console.error("[ENV] MEASUREMENT_ID It needs to be set up in the environment.");
+if (!config.token) return console.error("[ENV] TOKEN It needs to be set up in the environment.");
 
 // Client setup
 const client = new Client({
@@ -180,28 +197,17 @@ client.music = new DisTube(client, {
     },
     "streamType": StreamType.OPUS
 });
-client.ai = new OpenAIApi(
-    new Configuration({
-        "apiKey": client.config.openai.apiKey,
-        "basePath": client.config.openai.basePath
-    })
-);
 
-// Check environnement
-if (!client.config.openai.apiKey) return console.error("[ENV] OPENAI_API_KEY It needs to be set up in the environment.");
-if (!client.config.openai.basePath) return console.error("[ENV] OPENAI_BASE_PATH It needs to be set up in the environment.");
-if (!client.config.server.apiKey) return console.error("[ENV] API_KEY It needs to be set up in the environment.");
-if (!client.config.server.authDomain) return console.error("[ENV] AUTH_DOMAIN It needs to be set up in the environment.");
-if (!client.config.server.databaseURL) return console.error("[ENV] DATABASE_URL It needs to be set up in the environment.");
-if (!client.config.server.projectId) return console.error("[ENV] PROJECT_ID It needs to be set up in the environment.");
-if (!client.config.server.storageBucket) return console.error("[ENV] STORAGE_BUCKET It needs to be set up in the environment.");
-if (!client.config.server.messagingSenderId) return console.error("[ENV] MESSAGING_SENDER_ID It needs to be set up in the environment.");
-if (!client.config.server.appId) return console.error("[ENV] APP_ID It needs to be set up in the environment.");
-if (!client.config.server.measurementId) return console.error("[ENV] MEASUREMENT_ID It needs to be set up in the environment.");
-if (!client.config.token) return console.error("[ENV] TOKEN It needs to be set up in the environment.");
-
-// Start connecting to the server.
-initializeApp(client.config.server);
+if (client.config.openai.apiKey) {
+    client.ai = new OpenAIApi(
+        new Configuration({
+            "apiKey": client.config.openai.apiKey,
+            "basePath": client.config.openai.basePath
+        })
+    );
+} else {
+    console.info("[ChatSystem] Use native chat system (v1) because OpenAI API key is not found.");
+}
 
 // Read the content file in the handlers.
 const handlersPath = join(__dirname, "handlers");
@@ -217,6 +223,9 @@ client.console.add("check-internet-connection", {
 });
 
 if (process.env.CHECK_CONNECTION) {
+    // Start connecting to the server.
+    initializeApp(client.config.server);
+
     // Start logging in and working
     client.login(client.config.token);
 
@@ -231,6 +240,9 @@ if (process.env.CHECK_CONNECTION) {
                 "text": "Unable to connect to Discord server"
             });
         } else {
+            // Start connecting to the server.
+            initializeApp(client.config.server);
+
             // Start logging in and working
             client.login(client.config.token);
 

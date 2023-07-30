@@ -110,7 +110,6 @@ module.exports.function.command = {
                 "components": [buttonRow],
             });
         });
-
         collector.on("end", async () => {
             buttonRow.components.forEach((button) => button.setDisabled(true));
 

@@ -1,5 +1,5 @@
 const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { getDatabase, ref, child, update } = require("firebase/database");
+const { getDatabase, ref, child, set } = require("firebase/database");
 const { IDConvertor } = require("../../utils/miscUtils");
 
 module.exports = {
@@ -69,7 +69,7 @@ module.exports.function.command = {
                         },
                         "description": "Language locale code (e.g. en-US)",
                         "description_localizations": {
-                            "th": "รหัสสถานที่ของภาษา (ตัวอย่าง th-TH)"
+                            "th": "รหัสสถานที่ของภาษา (ตัวอย่าง th)"
                         },
                         "required": true
                     }
@@ -121,14 +121,14 @@ module.exports.function.command = {
             case "set": {
                 const inputValue = interaction.options.getString("value");
 
-                if (!support.includes(inputValue)) return await interaction.reply(interaction.client.translate.commands.set_language.language_not_found.replace("%s", support[locale]));
+                if (!Object.keys(support).includes(inputValue)) return await interaction.reply(interaction.client.translate.commands.set_language.language_not_found.replace("%s", support[locale]));
                 if (inputValue === locale) return await interaction.reply(interaction.client.translate.commands.set_language.already_set.replace("%s", support[locale]));
 
                 interaction.client.config.language.code = inputValue;
                 interaction.client.translate = require("../../languages/" + inputValue + ".json");
 
-                update(languageRef, inputValue).then(async () => {
-                    await interaction.reply(interaction.client.translate.commands.set_language.set_success.replace("%s", support[locale]));
+                set(languageRef, inputValue).then(async () => {
+                    await interaction.reply(interaction.client.translate.commands.set_language.set_success.replace("%s", support[inputValue]));
                 });
                 break;
             }

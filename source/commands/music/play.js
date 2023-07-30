@@ -64,7 +64,7 @@ module.exports.function.command = {
             } catch (error) {
                 const connection = interaction.client.music.voices.get(voiceChannel.guild);
 
-                connection.leave(voiceChannel.guild);
+                if (connection) connection.leave(voiceChannel.guild);
                 catchError(interaction.client, interaction, module.exports.name, error);
             }
         } else {

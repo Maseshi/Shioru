@@ -19,7 +19,7 @@ module.exports = {
 
 		// Automatic settings data on database
 		settingsData(interaction.client, interaction.guild);
-		
+
 		if (interaction.client.mode === "start") {
 			levelSystem(interaction.client, interaction, "POST", { "amount": 123, "type": "exp" });
 		}
@@ -60,10 +60,15 @@ module.exports = {
 			if (!guildSnapshot || !guildSnapshot.commands || !Object.keys(guildSnapshot.commands).includes(command.name)) {
 				set(child(child(guildRef, "commands"), command.name), true);
 			}
-			if ((typeof guildSnapshot.commands[command.name] === "boolean") && (command.enable !== guildSnapshot.commands[command.name])) {
-				command.enable = guildSnapshot.commands[command.name];
+			if (guildSnapshot) {
+				if (typeof guildSnapshot.commands[command.name] !== "boolean") {
+					set(child(child(guildRef, "commands"), command.name), true);
+				}
+				if ((typeof guildSnapshot.commands[command.name] === "boolean") && (command.enable !== guildSnapshot.commands[command.name])) {
+					command.enable = guildSnapshot.commands[command.name];
+				}
 			}
-			if (!command.enable) {
+			if ((!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) && (command.enable === false)) {
 				return await interaction.reply(interaction.client.translate.events.interactionCreate.command_is_disabled);
 			}
 

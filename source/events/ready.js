@@ -49,10 +49,12 @@ module.exports = {
             }
           });
           poster.on("error", (error) => {
-            client.console.fail("top-gg-send-info-loading", {
-              "text": "Unable to post statistical data to Top.gg.\n" + error,
-              "status": "non-spinnable"
-            });
+            if (client.console.pick("top-gg-send-info-loading")) {
+              client.console.fail("top-gg-send-info-loading", {
+                "text": "Unable to post statistical data to Top.gg.\n" + error,
+                "status": "non-spinnable"
+              });
+            }
           });
         }, 60000);
       }

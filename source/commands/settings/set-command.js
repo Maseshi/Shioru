@@ -111,7 +111,7 @@ module.exports.function.command = {
                     .setDescription(
                         interaction.client.translate.commands.set_command.description
                             .replace("%s1", interaction.client.commands.size)
-                            .replace("%s2", interaction.client.commands.map(dirs => dirs.command.enable ? "`" + dirs.name + "`" : "||" + dirs.name + "||").join(", "))
+                            .replace("%s2", interaction.client.commands.map(dirs => dirs.enable ? "`" + dirs.name + "`" : "||" + dirs.name + "||").join(", "))
                             .replace("%s3", ("/" + module.exports.usage))
                     )
                     .setColor(clientColor)

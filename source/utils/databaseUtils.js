@@ -20,6 +20,8 @@ const chatSystem = async (client, message, mention, args, version = "v2") => {
     const chatSnapshot = client.api.chat;
     const argument = message.content.replace(/^<@!?\d{1,20}> ?/i, "");
 
+    if (!client.ai) version = "v1";
+
     switch (version) {
         case "v1": {
             // When the bot calls and asks some questions.
@@ -162,10 +164,10 @@ const chatSystem = async (client, message, mention, args, version = "v2") => {
                 "These questions were asked on Discord.",
                 "อย่าใช้คำว่า 'ครับ' ให้ใช้คำว่า 'คะ' หรือ 'ค่ะ' แทน.",
                 "อย่าใช้คำว่า 'ผม' หรือ 'กระผม' ให้ใช้คำว่า 'ฉัน', 'หนู', 'เค้า' หรือ 'ดิฉัน' แทน.",
-                chatSnapshot.system ? chatSnapshot.system.join(" ") : ""
+                chatSnapshot && chatSnapshot.system ? chatSnapshot.system.join(" ") : ""
             ];
 
-            if (usersSnapshot[message.author.id]) {
+            if (usersSnapshot && usersSnapshot[message.author.id]) {
                 message.channel.sendTyping();
 
                 if (usersSnapshot[message.author.id].history && (usersSnapshot[message.author.id].history.chat.length >= 0)) {
@@ -202,7 +204,7 @@ const chatSystem = async (client, message, mention, args, version = "v2") => {
 
                     if (response.data && !response.data.choices) {
                         catchError(client, message, "chatSystem", response.data, true);
-                        return message.channel.send("ตอนนี้ฉันยังไม่พร้อมตอบคำถามค่ะ ขออภัยด้วยนะคะ");
+                        return message.channel.send(client.translate.utils.databaseUtils.can_not_reply_at_this_time);
                     }
 
                     allMessages.push(
@@ -222,6 +224,9 @@ const chatSystem = async (client, message, mention, args, version = "v2") => {
                                 allMessages.splice(1, 6);
                                 await set(child(child(childUsers, message.author.id), "history/chat"), allMessages);
                                 return chatSystem(client, message, mention, args, version);
+                            }
+                            if (error.response.data.error.message && error.response.data.error.message.includes("under maintenance")) {
+                                return message.channel.send(client.translate.utils.databaseUtils.under_maintenance);
                             }
                         }
                         catchError(client, message, "chatSystem", error.response.data, true);
@@ -267,7 +272,7 @@ const levelSystem = async (client, message, method, { member = "", amount = 1, t
     if (!message) return console.log("[levelSystem] Please configure MESSAGE to make notifications and receive important basic information (required).");
     if (!method) return console.log("[levelSystem] Please specify a METHOD to continue. (required).");
 
-    const userID = member ? member.id : message.member.id;
+    const userID = member.id ?? message.member.id ?? message.user.id;
     const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "guilds"), message.guild.id);
     const guildUserRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "users"), userID);
     const guildUserSnapshot = client.api.users[userID];

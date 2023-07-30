@@ -69,83 +69,83 @@ module.exports.function.command = {
             const baseURL = "https://kitsu.io/api/edge";
             const anime = "/anime?page[limit]=5&filter[text]=" + inputTitle;
             const manga = "/manga?page[limit]=5&filter[text]=" + inputTitle;
-            const response = await get(baseURL + (anime || manga), {
+            var response = await get(baseURL + (anime || manga), {
                 "headers": {
                     "Accept": "application/vnd.api+json",
                     "Content-Type": "application/vnd.api+json"
                 }
             });
-
-            const clientAvatarURL = interaction.client.user.avatarURL();
-            const infoEmbed = new EmbedBuilder()
-                .setTitle("```" + inputTitle + "```")
-                .setDescription(interaction.client.translate.commands.anime.similar_stories)
-                .setColor(16083235)
-                .setFooter({ "text": interaction.client.translate.commands.anime.auto_cancel, "iconURL": clientAvatarURL })
-                .setAuthor({ "name": "Kitsu", "url": "https://kitsu.io/", "iconURL": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png" })
-                .addFields(
-                    [
-                        {
-                            "name": interaction.client.translate.commands.anime.choose_now,
-                            "value": titles(response.data.data)
-                        }
-                    ]
-                );
-
-            await interaction.reply({ "embeds": [infoEmbed] });
-
-            const collection = await interaction.channel.awaitMessages({
-                filter,
-                "max": 1,
-                "time": 60000,
-                "errors": ["time"]
-            });
-            const returnMessage = collection.first();
-            const index = parseInt(returnMessage.content) - 1;
-
-            const attributes = response.data.data[index].attributes;
-            const trimmedSynopsis = attributes.synopsis.length >= 1015 ? attributes.synopsis.substring(0, 1015) + "..." : attributes.synopsis;
-
-            infoEmbed.setColor(12601856)
-                .setFooter({ "text": interaction.client.translate.commands.anime.short_information, "iconURL": clientAvatarURL })
-                .setFields(
-                    [
-                        {
-                            "name": interaction.client.translate.commands.anime.japan_name,
-                            "value": attributes.titles.en_jp || interaction.client.translate.commands.anime.undefined
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.english_name,
-                            "value": attributes.titles.en || interaction.client.translate.commands.anime.undefined
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.start_date,
-                            "value": attributes.startDate,
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.end_date,
-                            "value": attributes.endDate || interaction.client.translate.commands.anime.in_progress,
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.popularity_rank,
-                            "value": attributes.popularityRank.toString(),
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.link,
-                            "value": "<https://kitsu.io/" + attributes.type + "/" + response.data.data[index].id + ">"
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.synopsis,
-                            "value": "```" + trimmedSynopsis + "```"
-                        }
-                    ]
-                );
-            await interaction.editReply({ "embeds": [infoEmbed] });
         } catch (error) {
-            await interaction.reply(interaction.client.translate.commands.anime.data_not_found);
+            return await interaction.reply(interaction.client.translate.commands.anime.data_not_found);
         }
+
+        const clientAvatarURL = interaction.client.user.avatarURL();
+        const infoEmbed = new EmbedBuilder()
+            .setTitle("```" + inputTitle + "```")
+            .setDescription(interaction.client.translate.commands.anime.similar_stories)
+            .setColor(16083235)
+            .setFooter({ "text": interaction.client.translate.commands.anime.auto_cancel, "iconURL": clientAvatarURL })
+            .setAuthor({ "name": "Kitsu", "url": "https://kitsu.io/", "iconURL": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png" })
+            .addFields(
+                [
+                    {
+                        "name": interaction.client.translate.commands.anime.choose_now,
+                        "value": titles(response.data.data)
+                    }
+                ]
+            );
+
+        await interaction.reply({ "embeds": [infoEmbed] });
+
+        const collection = await interaction.channel.awaitMessages({
+            filter,
+            "max": 1,
+            "time": 60000,
+            "errors": ["time"]
+        });
+        const returnMessage = collection.first();
+        const index = parseInt(returnMessage.content) - 1;
+
+        const attributes = response.data.data[index].attributes;
+        const trimmedSynopsis = attributes.synopsis.length >= 1015 ? attributes.synopsis.substring(0, 1015) + "..." : attributes.synopsis;
+
+        infoEmbed.setColor(12601856)
+            .setFooter({ "text": interaction.client.translate.commands.anime.short_information, "iconURL": clientAvatarURL })
+            .setFields(
+                [
+                    {
+                        "name": interaction.client.translate.commands.anime.japan_name,
+                        "value": attributes.titles.en_jp || interaction.client.translate.commands.anime.undefined
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.english_name,
+                        "value": attributes.titles.en || interaction.client.translate.commands.anime.undefined
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.start_date,
+                        "value": attributes.startDate,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.end_date,
+                        "value": attributes.endDate || interaction.client.translate.commands.anime.in_progress,
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.popularity_rank,
+                        "value": attributes.popularityRank.toString(),
+                        "inline": true
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.link,
+                        "value": "<https://kitsu.io/" + attributes.type + "/" + response.data.data[index].id + ">"
+                    },
+                    {
+                        "name": interaction.client.translate.commands.anime.synopsis,
+                        "value": "```" + trimmedSynopsis + "```"
+                    }
+                ]
+            );
+        await interaction.editReply({ "embeds": [infoEmbed] });
     }
 }
