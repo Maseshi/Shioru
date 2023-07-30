@@ -1,24 +1,36 @@
 #!/bin/sh -x
-
 clear
 
 echo Start with start.sh in administrator mode....
 
-echo Initiate component update...
+# Updating system components
+echo Initiate system components update...
 apt-get update -y || sudo apt-get update -y
 echo The component update is complete.
 
+# Python installation
+echo Installing Python...
+apt-get install -y python3 || sudo apt-get install -y python3
+echo Finished installing Python.
+
+# FFmpeg installation
 echo Installing FFmpeg...
-apt-get install ffmpeg -y || sudo apt-get install ffmpeg -y
+apt-get install -y ffmpeg || sudo apt-get install -y ffmpeg
 echo Finished installing FFmpeg.
 
-echo Installing build components...
-apt-get install build-essential -y || sudo apt-get install build-essential -y
-apt-get install autoconf automake g++ libtool -y || sudo apt-get install autoconf automake g++ libtool -y
-echo Finish installing building components.
+# Building Tools installation
+echo Installing building tool...
+apt-get install -y libtool autoconf automake g++ || sudo apt-get install -y libtool autoconf automake g++
+echo Finish installing building tool.
 
+# NPM installation
+echo Updating NPM to latest version...
+npm install -g npm@latest || sudo npm install -g npm@latest
+echo Finished Updating npm.
+
+# Components installation
 echo Installing components...
-npm install --save || sudo npm install --save
+npm install || sudo npm install
 echo Completing the component installation.
 
 echo Starting the system...
