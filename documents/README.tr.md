@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 İyi sunucu asistanınız, sunucunuzun daha canlı görünmesine yardımcı olacaktır. `/help` yazarak farklı komutların detaylı bilgilerini bulabileceğiniz birçok şey yapabilir.Shioru'yu[buraya](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@
 
 ve diğer birçok ilginç özellik...
 
-## Çeviriyi İyileştir
-
-Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)bulunmayan bir dili çevirmemize yardımcı olabilirsiniz.
-
 ## Önkoşullar
 
 - [Node.js](https://nodejs.org/) v18.0.0 veya üstü
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 veya üzeri
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [git](https://git-scm.com/downloads)
 
 ## Hızlı Kurulum Kılavuzu
 
-### เริ่มต้นใช้งาน
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - Discord Geliştirici Portalına Git
 - **"New Application"** tıklayın ve botunuza bir isim verin ve Discord politika kurallarını kabul edin.
@@ -68,17 +67,27 @@ Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)b
 
 ### ตั้งค่าบอท
 
-- Bir terminal başlatın ve aşağıdaki komutu çalıştırın.
-
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
-```
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
 ```bat
-git klonu https://github.com/Maseshi/Shioru.git
+@REM บน Windows
+npm install -g windows-build-tools
+```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- Bir terminal başlatın ve aşağıdaki komutu çalıştırın.
+
+```bat
+git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm kurulum -- kaydet
+npm install
 ```
 
 - **config** bazı verileri `./source/config.js`değiştirebilirsiniz.
@@ -94,7 +103,7 @@ npm kurulum -- kaydet
 ### geliştirmek
 
 - `.env.example` dosyasını `.env` olarak yeniden adlandırın ve gerekli tüm değerleri ekleyin.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## Hızlı Sorun Giderme
 
@@ -111,6 +120,10 @@ npm kurulum libsodium-wrappers@latest --save
 ```bat
 npm kurulum ffmpeg-static@latest --save
 ```
+
+## Çeviriyi İyileştir
+
+Mevcut bir dili veya şu anda [Crowdin](https://crowdin.com/project/shioru-bot)bulunmayan bir dili çevirmemize yardımcı olabilirsiniz.
 
 ## kredi
 
