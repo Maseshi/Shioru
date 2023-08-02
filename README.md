@@ -23,11 +23,13 @@
   </a>
 </div>
 
-Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
+[Switch Languages](https://github.com/Maseshi/Shioru/tree/main/documents)
+
+Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`.
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img src="https://img.shields.io/badge/Switch_Languages-1967D2?logo=google-translate&logoColor=white&style=for-the-badge" />
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -36,7 +38,7 @@ Your good server assistant will help make your server look more lively. She can 
 - Works on [Discord.js](https://discord.js.org/) v14
 - A wide variety of customizations can be made.
 - It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
+- Support for multiple languages, You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
 - Tier system (level and experience)
 - Support customization of server notifications
 - You can chat by typing `@Shioru` followed by the message you wish to communicate.
@@ -44,22 +46,19 @@ Your good server assistant will help make your server look more lively. She can 
 
 And many other interesting features...
 
-## Improve Translate
-
-You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru).
-
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
-- [Python](https://www.python.org/downloads/) v2.0.0 or higher **(included in Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 or higher **(included in Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 or higher
+- [Python](https://www.python.org/downloads/) v2.0.0 or higher
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Quick setup guide
 
-### Get started
+Tested on Mac, Linux and Windows Systems
+
+### Add bot to the server.   
 
 - Go to the [Discord Developer Portal](https://discord.com/developers/applications)
 - Click **"New Application"** and give your bot a name and accept the Discord policy rules.
@@ -70,17 +69,27 @@ You can help us translate existing languages or languages that are not currently
 
 ### Setup a bot
 
-- Launch a terminal and run the following commands.
+- Since we use [sodium](https://www.npmjs.com/package/sodium) for encryption and decryption, we need to install the following additional components:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM On Windows
+npm install -g windows-build-tools
 ```
+```sh
+# On MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# On Linux
+sudo apt-get install libtool-bin
+```
+
+- Launch a terminal and run the following commands.
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm install
 ```
 
 - You can edit some data in **config** at `./source/configs/data.js`.
@@ -98,7 +107,7 @@ npm install --save
 
 - Rename the `.env.example` file to `.env` and add all values.
 - Go to terminal and run `npm run dev` for development and `npm start` for production.
-  > **NOTE**: When in development mode Some features may not work.
+  > **NOTE**: When you enter development mode, some features may be disabled, such as sending statistics, updating data, etc.
 
 ## Quick Troubleshooting
 
@@ -118,6 +127,10 @@ npm install libsodium-wrappers@latest --save
 ```bat
 npm install ffmpeg-static@latest --save
 ```
+
+## Improve Translate
+
+You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru).
 
 ## Credits
 
