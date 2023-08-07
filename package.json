@@ -47,7 +47,7 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "axios": "^1.4.0",
     "captcha-canvas": "^3.2.1",
-    "discord.js": "^14.11.0",
+    "discord.js": "^14.12.1",
     "distube": "^4.0.6",
     "dotenv": "^16.3.1",
     "firebase": "^10.1.0",
