@@ -530,9 +530,9 @@
             "already_set": "❎ Eh..mais ce serveur utilise déjà la langue %s",
             "data_at": "ข้อมูลของเมื่อ",
             "description": "**set-language** - Définissez votre langue, cela facilitera grandement votre compréhension\n\nLa langue de ce serveur est : `%s1`\n\n> Vous pouvez la changer en tapant :\n> ```%s2. ```",
-            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
+            "language_not_found": "❎ La langue que vous avez spécifiée n'est pas reconnue par le système. Veuillez vérifier s'il y a des erreurs de frappe et réessayez. \n```%s```\n",
             "set_success": "✅ Changé la langue en **%s** déjà.",
-            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
+            "support": "**set-language** - Configurer votre langue rendra la compréhension beaucoup plus facile.\n\nLangues actuellement prises en charge : `%s1`\n\n> Vous pouvez changer cela en tapant :\n> ```%s2```",
             "title": "🌐 Langue"
         },
         "set_notify": {
