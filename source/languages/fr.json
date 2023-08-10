@@ -28,8 +28,8 @@
             "undefined": "indéfini"
         },
         "ask": {
-            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
-            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้"
+            "cannot_reply_at_this_time": "❎ Je ne peux pas répondre à votre question pour le moment, désolé.",
+            "error_cannot_reply": "❎ `[%s]` Je ne peux pas répondre à votre question pour le moment."
         },
         "automod": {
             "flagged_words_name": "bloquer les grossièretés contenu sexuel et insultes",
@@ -173,10 +173,10 @@
             "unknown_input_option": "❓ Vous pouvez spécifier les paramètres suivants : ajouter, supprimer, définir, disponible, liste, effacer."
         },
         "generate": {
-            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
-            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
-            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
-            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
+            "breaking_the_rules": "🚫 Je ne peux pas créer l'image que vous demandez, car l'image en question pourrait enfreindre les [règles](https://openai.com/policies/usage-policies).",
+            "cannot_generate_image": "❎ `[%s]` Je suis désolé(e), mais je ne peux pas créer l'image que vous demandez.",
+            "generating_images": "🕒 Je suis en train de créer l'image que vous demandez, veuillez patienter un instant...",
+            "result_images": "**Taille** : %s2\n**Prêt** : `%s2`"
         },
         "guild": {
             "afk_channel_id": "Code de canal AFK",
