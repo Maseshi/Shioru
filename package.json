@@ -47,7 +47,7 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "axios": "^1.4.0",
     "captcha-canvas": "^3.2.1",
-    "discord.js": "^14.11.0",
+    "discord.js": "^14.12.1",
     "distube": "^4.0.6",
     "dotenv": "^16.3.1",
     "firebase": "^10.1.0",
@@ -56,11 +56,11 @@
     "sodium": "^3.0.2",
     "sourcebin": "^5.0.0",
     "spinnies": "^0.5.1",
-    "systeminformation": "^5.18.10",
+    "systeminformation": "^5.18.15",
     "topgg-autoposter": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^8.46.0",
+    "eslint": "^8.47.0",
     "nodemon": "^3.0.1"
   },
   "optionalDependencies": {

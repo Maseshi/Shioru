@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 優れたサーバー アシスタントは、サーバーをより活発に見せるのに役立ちます。 彼女ができることはたくさんあり、詳細なコマンドは `/help` を入力して見つけることができます [ここ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@
 
 他にもたくさんの興味深い機能があります...
 
-## 翻訳を改善する
-
-既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
-
 ## 前提条件
 
 - [Node.js](https://nodejs.org/) v18.0.0 以降
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 以降
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## クイックセットアップガイド
 
-### 始めましょう
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - [Discord Developer Portal](https://discord.com/developers/applications) に移動します。
 - **"New Application"**をクリックしてボットに名前を付け、Discord ポリシー ルールに同意します。
@@ -68,17 +67,27 @@
 
 ### ボットを設定する
 
-- ターミナルを起動し、次のコマンドを実行します。
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM บน Windows
+npm install -g windows-build-tools
 ```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- ターミナルを起動し、次のコマンドを実行します。
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm install
 ```
 
 - `./source/config.js` の **config** で一部の情報を編集できます。
@@ -94,7 +103,7 @@ npm install --save
 ### 発展させる
 
 - ファイルの名前を変更します `.env.example` を `.env` として、必要なすべての値を挿入します。
-- ターミナルに移動し、開発用に`npm run dev`、本番用に「npm start」を実行します。 > **注**: 開発モードの場合 一部の機能が動作しない場合があります。
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## クイックトラブルシューティング
 
@@ -111,6 +120,10 @@ npm インストール libsodium-wrappers@latest --save
 ```bat
 npm install ffmpeg-static@latest --save
 ```
+
+## 翻訳を改善する
+
+既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
 
 ## クレジット
 

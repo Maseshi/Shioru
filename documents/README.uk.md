@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 [EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## Покращити Перекладач
-
-та багато інших цікавих функцій...
-
 ## передумови
 
 - [Node.js](https://nodejs.org/) версії 18.0.0 або новішої
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) версії 9.0.0 або новішої
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Посібник із швидкого налаштування
 
-### Почати
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - Перейдіть на [портал розробників Discord](https://discord.com/developers/applications)
 - Натисніть **«Нова програма»** , назвіть свого бота та прийміть правила політики Discord.
@@ -68,17 +67,27 @@
 
 ### Налаштувати бота
 
-- Запустіть термінал і виконайте таку команду.
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM บน Windows
+npm install -g windows-build-tools
 ```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- Запустіть термінал і виконайте таку команду.
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm install
 ```
 
 - Ви можете змінити деякі дані в **конфігурації** у `./source/config.js`
@@ -94,7 +103,7 @@ npm install --save
 ### розвивати
 
 - Перейменуйте файл `.env.example` на `.env` і вставте всі необхідні значення.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## Швидке усунення несправностей
 
@@ -111,6 +120,10 @@ npm install libsodium-wrappers@latest --save
 ```bat
 npm install ffmpeg-static@latest --save
 ```
+
+## Покращити Перекладач
+
+та багато інших цікавих функцій...
 
 ## кредит
 

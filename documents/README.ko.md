@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 당신의 좋은 서버 도우미는 당신의 서버가 더 활기차게 보이도록 도와줄 것입니다. 그녀는 `/help` 여기[에서 서버에 가입하도록 Shioru를 초대할 수 있습니다](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@
 
 그리고 다른 많은 흥미로운 기능들...
 
-## 번역 개선
-
-기존 언어 또는 현재 [Crowdin](https://crowdin.com/project/shioru-bot)에서 사용할 수 없는 언어를 번역하는 데 도움을 줄 수 있습니다.
-
 ## 전제 조건
 
 - [Node.js](https://nodejs.org/) v18.0.0 이상
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 이상
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## 빠른 설정 가이드
 
-### 시작하다
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - Discord 개발자 포털로 이동
 - **"새 애플리케이션"** 클릭하고 봇에 이름을 지정하고 Discord 정책 규칙을 수락합니다.
@@ -68,17 +67,27 @@
 
 ### 봇 설정
 
-- 터미널을 실행하고 다음 명령을 실행합니다.
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM บน Windows
+npm install -g windows-build-tools
 ```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- 터미널을 실행하고 다음 명령을 실행합니다.
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm 설치 --save
+npm install
 ```
 
 - **config** at `./source/config.js`에서 일부 데이터를 수정할 수 있습니다.
@@ -94,7 +103,7 @@ npm 설치 --save
 ### 개발하다
 
 - 파일 `.env.example` 의 이름을 `.env` 으로 바꾸고 필요한 모든 값을 삽입합니다.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## 빠른 문제 해결
 
@@ -110,6 +119,10 @@ npm 설치 ffmpeg-static@latest --저장
 ```bat
 npm 설치 ffmpeg-static@latest --저장
 ```
+
+## 번역 개선
+
+기존 언어 또는 현재 [Crowdin](https://crowdin.com/project/shioru-bot)에서 사용할 수 없는 언어를 번역하는 데 도움을 줄 수 있습니다.
 
 ## 신용 거래
 

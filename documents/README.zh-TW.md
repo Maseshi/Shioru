@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 您的好服務器助手將幫助您的服務器看起來更生動。 她可以做很多事情，您可以通過鍵入 `/help` 您可以從[here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@
 
 和許多其他有趣的功能......
 
-## 改進翻譯
-
-您可以幫助我們翻譯一種現有語言或一種當前在 [Crowdin](https://crowdin.com/project/shioru-bot)不可用的語言。
-
 ## ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v18.0.0 或更高版本
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 或更高版本
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## 快速設置指南
 
-### 開始吧
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - 轉到 [Discord 開發人員門戶](https://discord.com/developers/applications)
 - 單擊 **“新應用程序”** 並命名您的機器人並接受 Discord 策略規則。
@@ -68,17 +67,27 @@
 
 ### ตั้งค่าบอท
 
-- 啟動終端並運行以下命令。
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM บน Windows
+npm install -g windows-build-tools
 ```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- 啟動終端並運行以下命令。
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm install
 ```
 
 - 可以修改 **config** at `./source/config.js`中的一些數據
@@ -94,7 +103,7 @@ npm install --save
 ### 發展
 
 - 將文件 `.env.example` 重命名為 `.env` 並插入所有必要的值。
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## 快速故障排除
 
@@ -110,6 +119,10 @@ npm 安裝 ffmpeg-static@latest --save
 ```bat
 npm install ffmpeg-static@latest --save
 ```
+
+## 改進翻譯
+
+您可以幫助我們翻譯一種現有語言或一種當前在 [Crowdin](https://crowdin.com/project/shioru-bot)不可用的語言。
 
 ## 信用
 

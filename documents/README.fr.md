@@ -23,11 +23,13 @@
   </a>
 </div>
 
+[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+
 Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. Elle peut faire beaucoup de choses dont vous pouvez trouver des informations détaillées sur différentes commandes en tapant `/help` Vous pouvez inviter Shioru à rejoindre votre serveur à partir de[ici](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
 <div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
+    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
   </a>
 </div>
 
@@ -44,22 +46,19 @@ Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. El
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## Améliorer Traduire
-
-Vous pouvez nous aider à traduire une langue existante ou une langue qui n'est pas disponible actuellement chez [Crowdin](https://crowdin.com/project/shioru-bot).
-
 ## Conditions préalables
 
 - [Node.js](https://nodejs.org/) v18.0.0 ou supérieur
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools) 2019 หรือมากกว่า **(รวมอยู่ใน Node.js)**
-- [Firebase](https://firebase.google.com/) v9.0.0 ou supérieur
+- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Gite](https://git-scm.com/downloads)
 
 ## Guide d'installation rapide
 
-### Commencer
+ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+
+### เพิ่มบอทไปยังเซิร์ฟเวอร์
 
 - Aller à [Discord Developer Portal](https://discord.com/developers/applications)
 - Cliquez sur **"Nouvelle application"** et donnez un nom à votre bot et acceptez les règles de la politique Discord.
@@ -68,17 +67,27 @@ Vous pouvez nous aider à traduire une langue existante ou une langue qui n'est 
 
 ### Configurer un bot
 
-- Lancez un terminal et exécutez la commande suivante.
+เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
 
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install libtool autoconf automake g++
+```bat
+@REM บน Windows
+npm install -g windows-build-tools
 ```
+```sh
+# บน MacOS (Darwin)
+brew install libtool autoconf automake
+```
+```sh
+# บน Linux
+sudo apt-get install libtool-bin
+```
+
+- Lancez un terminal et exécutez la commande suivante.
 
 ```bat
 git clone https://github.com/Maseshi/Shioru.git
 cd Shioru
-npm install --save
+npm install
 ```
 
 - Vous pouvez modifier certaines données dans **config** à `./source/config.js`
@@ -94,7 +103,7 @@ npm install --save
 ### développer
 
 - Renommez le fichier `.env.example` en `.env` et insérez toutes les valeurs nécessaires.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## Dépannage rapide
 
@@ -110,6 +119,10 @@ npm installer ffmpeg-static@latest --save
 ```bat
 npm installer ffmpeg-static@latest --save
 ```
+
+## Améliorer Traduire
+
+Vous pouvez nous aider à traduire une langue existante ou une langue qui n'est pas disponible actuellement chez [Crowdin](https://crowdin.com/project/shioru-bot).
 
 ## crédit
 
