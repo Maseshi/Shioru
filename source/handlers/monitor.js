@@ -6,7 +6,7 @@ module.exports = (client) => {
     const pageId = client.config.monitoring.config.pageId;
     const metricId = client.config.monitoring.config.metricId;
     const enable = client.config.monitoring.enable;
-    
+
     const apiBase = "https://api.statuspage.io/v1";
     const url = apiBase + "/pages/" + pageId + "/metrics/" + metricId + "/data.json";
     const authHeader = { "Authorization": "OAuth " + apiKey };
@@ -63,6 +63,8 @@ module.exports = (client) => {
 
     // Initial call to start submitting data.
     if (client.mode === "start" && enable) {
+        client.console.add("monitor-loading");
+
         if (!apiKey) return client.console.fail("monitor-loading", {
             "text": "The monitor API Key was not found in the environment. Opt out of sending performance data.",
         });
@@ -73,7 +75,7 @@ module.exports = (client) => {
             "text": "The monitor metric ID was not found in the environment. Opt out of sending performance data.",
         });
 
-        client.console.add("monitor-loading", {
+        client.console.update("monitor-loading", {
             "text": "Preparing to send data to matrix"
         });
         submitPoint(0);
