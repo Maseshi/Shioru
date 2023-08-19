@@ -43,6 +43,8 @@ module.exports.function.command = {
     async execute(interaction) {
         const inputMessages = interaction.options.getString("messages");
 
+        if (!interaction.client.ai) return interaction.reply(interaction.client.translate.commands.ask.has_been_disabled);
+
         await interaction.deferReply();
 
         try {

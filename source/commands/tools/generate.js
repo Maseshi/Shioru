@@ -99,6 +99,8 @@ module.exports.function.command = {
         const inputNumber = interaction.options.getInteger("number") ?? 1;
         const inputSize = interaction.options.getString("size") ?? "1024x1024";
 
+        if (!interaction.client.ai) return interaction.reply(interaction.client.translate.commands.generate.has_been_disabled);
+
         switch (subCommand) {
             case "images": {
                 await interaction.reply(interaction.client.translate.commands.generate.generating_images);
