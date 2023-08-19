@@ -80,8 +80,8 @@ if (process.env.npm_lifecycle_event && process.env.npm_lifecycle_event === "dev"
 }
 
 // Check environnement
-if (!config.openai.apiKey) return console.error("[ENV] OPENAI_API_KEY It needs to be set up in the environment.");
-if (!config.openai.basePath) return console.error("[ENV] OPENAI_BASE_PATH It needs to be set up in the environment.");
+if (!config.openai.config.apiKey) return console.error("[ENV] OPENAI_API_KEY It needs to be set up in the environment.");
+if (!config.openai.config.basePath) return console.error("[ENV] OPENAI_BASE_PATH It needs to be set up in the environment.");
 if (!config.server.apiKey) return console.error("[ENV] API_KEY It needs to be set up in the environment.");
 if (!config.server.authDomain) return console.error("[ENV] AUTH_DOMAIN It needs to be set up in the environment.");
 if (!config.server.databaseURL) return console.error("[ENV] DATABASE_URL It needs to be set up in the environment.");
@@ -198,15 +198,15 @@ client.music = new DisTube(client, {
     "streamType": StreamType.OPUS
 });
 
-if (client.config.openai.apiKey) {
+if (client.config.openai.config.apiKey && client.config.openai.enable) {
     client.ai = new OpenAIApi(
         new Configuration({
-            "apiKey": client.config.openai.apiKey,
-            "basePath": client.config.openai.basePath
+            "apiKey": client.config.openai.config.apiKey,
+            "basePath": client.config.openai.config.basePath
         })
     );
 } else {
-    console.info("[ChatSystem] Use native chat system (v1) because OpenAI API key is not found.");
+    console.info("[ChatSystem] Use native chat system (v1) because OpenAI API key is not found or not enable.");
 }
 
 // Read the content file in the handlers.

@@ -39,13 +39,16 @@ module.exports = {
             "metricId": process.env.MONITOR_METRIC_ID ?? "",
             "pageId": process.env.MONITOR_PAGE_ID ?? ""
         },
-        "enable": true
+        "enable": false
     },
 
     // Setup OpenAI
     "openai": {
-        "apiKey": process.env.OPENAI_API_KEY ?? "",
-        "basePath": process.env.OPENAI_BASE_PATH ?? ""
+        "config": {
+            "apiKey": process.env.OPENAI_API_KEY ?? "",
+            "basePath": process.env.OPENAI_BASE_PATH ?? ""
+        },
+        "enable": true
     },
 
     // We use Firebase to deploy databases to the system.
