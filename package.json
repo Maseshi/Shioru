@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.4.7",
+  "version": "3.4.8",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "homepage": "https://github.com/Maseshi/Shioru#readme",
   "bugs": {
@@ -67,6 +67,7 @@
     "@distube/ytdl-core": "^4.11.17",
     "bufferutil": "^4.0.7",
     "erlpack": "^0.1.4",
+    "ffmpeg-static": "^5.1.0",
     "libsodium-wrappers": "^0.7.11",
     "opusscript": "^0.1.0",
     "sodium-native": "^4.0.4",
@@ -75,7 +76,8 @@
     "zlib-sync": "^0.1.8"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "python": ">=2.0.0"
   },
   "private": true
 }
