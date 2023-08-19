@@ -20,7 +20,7 @@ echo Finished installing FFmpeg.
 
 # Building Tools installation
 echo Installing building tool...
-apt-get install -y libtool autoconf automake g++ || sudo apt-get install -y libtool autoconf automake g++
+apt-get install -y libtool-bin || sudo apt-get install -y libtool-bin
 echo Finish installing building tool.
 
 # NPM installation
