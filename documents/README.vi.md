@@ -137,7 +137,7 @@ Bạn có thể giúp chúng tôi dịch các ngôn ngữ hiện có hoặc ngô
 
 Cảm ơn tất cả nhà sáng tạo gốc vì đã cho phép chúng tôi sử dụng những tác phẩm tuyệt vời này của bạn.
 
-Bức vẽ cá nhân bởi: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Avatar được vẽ bởi: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
 ## Tìm thấy vấn đề
 
