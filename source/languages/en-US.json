@@ -8,7 +8,6 @@
         "afk": {
             "currently_afk": "❎ You're currently AFK",
             "currently_not_afk": "❎ You're not AFK right now.",
-            "has_been_disabled": "❌ I can't answer questions because this function is disabled.",
             "now_afk": "💤 You are currently AFK, write a message or /afk remove to exit AFK mode.",
             "now_not_afk": "🔙 Your AFK status has been unset."
         },
@@ -30,7 +29,8 @@
         },
         "ask": {
             "cannot_reply_at_this_time": "❎ I'm temporarily unable to answer your question.",
-            "error_cannot_reply": "❎ `[%s]` I can't answer your question right now."
+            "error_cannot_reply": "❎ `[%s]` I can't answer your question right now.",
+            "has_been_disabled": "❌ ฉันไม่สามารถตอบคำถามได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ"
         },
         "automod": {
             "flagged_words_name": "Block profanity. sexual content and insults",
@@ -177,7 +177,7 @@
             "breaking_the_rules": "🚫 I can't make the picture you want. Since such images may violate [rules](https://openai.com/policies/usage-policies)",
             "cannot_generate_image": "❎ `[%s]` Sorry, I can't generate the image you requested.",
             "generating_images": "🕒 Generating the images you want in a moment...",
-            "has_been_disabled": "❌ I can't generate content because this function is disabled.",
+            "has_been_disabled": "❌ ฉันไม่สามารถสร้างผลงานได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ",
             "result_images": "**Size**: %s2\n**Prompt**: `%s2`"
         },
         "guild": {
