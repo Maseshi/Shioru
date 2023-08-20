@@ -101,12 +101,12 @@ npm install
 - Thêm một dự án mới và thực hiện các bước.
 - Thêm ứng dụng đầu tiên của bạn là **Website**, đặt tên ứng dụng của bạn mà không chọn **"Also set up Firebase Hosting for this app."** và đăng kí ứng dụng.
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase sẽ cung cấp cho bạn thông tin về cấu hình. Áp dụng các giá trị này cho tập tin `.env.example`.
+- Firebase sẽ cung cấp cho bạn thông tin về cấu hình. Áp dụng các giá trị này cho tệp `.env.example`.
 - Đi đến **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** để tạo cơ sở dữ liệu để lưu trữ dữ liệu.
 
 ### Phát triển
 
-- Đổi tên tập tin `.env.example` thành `.env` và thêm tất cả giá trị.
+- Đổi tên tệp `.env.example` thành `.env` và thêm tất cả giá trị.
 - Đi đến terminal và chạy `npm run dev` cho chế độ phát triển (development) và `npm start` cho chế độ cung cấp (production).
   > **LƯU Ý**: Khi bạn vào chế độ phát triển (development), một số tính năng có thể bị tắt, chẳng hạn như gửi thống kê, cập nhật dữ liệu, v.v.
 
