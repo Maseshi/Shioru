@@ -8,7 +8,7 @@ COPY package*.json /usr/src/app/
 
 RUN apk add --no-cache python3
 RUN apk add --no-cache ffmpeg
-RUN apk add --no-cache g++ make
+RUN apk add --no-cache libtool autoconf automake make g++
 RUN npm install -g npm@latest
 RUN npm install
 
