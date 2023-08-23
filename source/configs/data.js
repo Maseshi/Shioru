@@ -39,7 +39,8 @@ module.exports = {
             "metricId": process.env.MONITOR_METRIC_ID ?? "",
             "pageId": process.env.MONITOR_PAGE_ID ?? ""
         },
-        "enable": false
+        "enable": false,
+        "enable_api": true
     },
 
     // Setup OpenAI
