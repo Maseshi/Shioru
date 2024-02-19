@@ -30,7 +30,7 @@
         "ask": {
             "cannot_reply_at_this_time": "❎ I'm temporarily unable to answer your question.",
             "error_cannot_reply": "❎ `[%s]` I can't answer your question right now.",
-            "has_been_disabled": "❌ ฉันไม่สามารถตอบคำถามได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ"
+            "has_been_disabled": "I am unable to answer the question because the function has been disabled."
         },
         "automod": {
             "flagged_words_name": "Block profanity. sexual content and insults",
@@ -68,7 +68,7 @@
         },
         "bug": {
             "sending": "📨 Well..just a moment. Give me a moment to send a letter to the developer for a moment...",
-            "success*": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็ บอกๆ กันหน่อยน้า (●'◡'●)"
+            "success*": "Ok, thank you...if you find anything else please tell me. (●'◡'●)"
         },
         "captcha": {
             "captcha_setup_success": "✅ The captcha system setup has been completed and activated.",
@@ -131,10 +131,10 @@
             "roll_ball": "Roll the ball!!"
         },
         "emoji": {
-            "deleted_emoji": "✅ **%s** ลบอีโมจิเรียบร้อยแล้ว",
-            "edited_emoji": "%s แก้ไขอีโมจิเรียบร้อยแล้ว",
-            "uploading_you_emoji": "📤 กำลังอัพโหลดอีโมจิของคุณ...",
-            "you_emoji_is_ready": "%s อีโมจิของคุณพร้อมแล้ว ไปลองกันเลย!!"
+            "deleted_emoji": "**%s** The emoji has been successfully deleted.",
+            "edited_emoji": "%s The emoji has been successfully fixed.",
+            "uploading_you_emoji": "📤 Uploading your emoji...",
+            "you_emoji_is_ready": "%s Your emoji is ready. Go try it out!"
         },
         "encode": {
             "after": "After encoding",
@@ -177,7 +177,7 @@
             "breaking_the_rules": "🚫 I can't make the picture you want. Since such images may violate [rules](https://openai.com/policies/usage-policies)",
             "cannot_generate_image": "❎ `[%s]` Sorry, I can't generate the image you requested.",
             "generating_images": "🕒 Generating the images you want in a moment...",
-            "has_been_disabled": "❌ ฉันไม่สามารถสร้างผลงานได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ",
+            "has_been_disabled": "❌ I am unable to create this work because the function is disabled.",
             "result_images": "**Size**: %s2\n**Prompt**: `%s2`"
         },
         "guild": {
@@ -601,7 +601,7 @@
             "online_status": "The number of members currently online is \n```%s```"
         },
         "sticker": {
-            "deleted_sticker": "✅ **%s** ลบสติ๊กเกอร์เรียบร้อยแล้ว",
+            "deleted_sticker": "**%s** The sticker is successfully deleted.",
             "does_not_support_gif": "❎ ขออภัย...ขณะนี้ Discord ยังไม่รองรับสติ๊กเกอร์ที่กำหนดเองแบบ GIF",
             "edited_sticker": "%s แก้ไขสติ๊กเกอร์เรียบร้อยแล้ว",
             "uploading_you_sticker": "📤 กำลังอัพโหลดสติ๊กเกอร์ของคุณ...",
