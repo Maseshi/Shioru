@@ -107,7 +107,7 @@ npm install
 
 ## Pemecahan Masalah Cepat
 
-- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+- Jika Anda mengalami masalah selama instalasi komponen di mana pada terminal tertulis `gyp ERR! stack Error: not found: make` Masalah ini mungkin disebabkan oleh **Build tools** yang tidak terinstal dengan benar atau mungkin belum terinstal. Solusinya adalah mengunduh versi terbaru. [Node.js](https://nodejs.org/) dan periksa bagian ini dalam proses instalasi.
 
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
@@ -116,21 +116,21 @@ npm install
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [ffmpeg](https://ffmpeg.org/download.html) **(disarankan)** atau instal paket **ffmpeg-static** dan coba lagi.
+- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [FFmpeg](https://ffmpeg.org/download.html) **(Disarankan)** atau instal paket. **ffmpeg-static** dan coba lagi.
 ```bat
 npm instal ffmpeg-static@latest --save
 ```
 
-## Tingkatkan Terjemahan
+## Meningkatkan terjemahan
 
-dan masih banyak fitur menarik lainnya...
+Anda dapat membantu kami menerjemahkan bahasa yang sudah ada atau bahasa yang saat ini belum tersedia di [Crowdin](https://crowdin.com/project/shioru).
 
-## kredit
+## Kontributor
 
-Anda dapat membantu kami menerjemahkan bahasa yang ada atau bahasa yang saat ini tidak tersedia di [Crowdin](https://crowdin.com/project/shioru-bot).
+Terima kasih kepada semua pencipta asli yang telah mengizinkan penggunaan karya-karya yang luar biasa ini.
 
-Terima kasih kepada semua pencipta asli yang mengizinkan penggunaan karya-karya Anda yang luar biasa ini.
+Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
 ## menemukan masalah
 
-Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Jika Anda mengalami masalah dalam pekerjaan Anda saat ini, Anda dapat memberi tahu kami melalui tab [masalah](https://github.com/Maseshi/Shioru/issues) pada repositori ini.
