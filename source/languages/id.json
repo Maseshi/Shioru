@@ -28,9 +28,9 @@
             "undefined": "belum diartikan"
         },
         "ask": {
-            "cannot_reply_at_this_time": "❎ ฉันไม่สามารถตอบคำถามของคุณได้ชั่วคราวคะ",
-            "error_cannot_reply": "❎ `[%s]` ฉันไม่สามารถตอบคำถามของคุณได้ในขณะนี้",
-            "has_been_disabled": "❌ ฉันไม่สามารถตอบคำถามได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ"
+            "cannot_reply_at_this_time": "❎ Untuk sementara saya tidak dapat menjawab pertanyaan Anda.",
+            "error_cannot_reply": "❎ `[%s]` Saya tidak bisa menjawab pertanyaan Anda sekarang.",
+            "has_been_disabled": "❌ Saya tidak dapat menjawab pertanyaan karena fungsi ini dinonaktifkan."
         },
         "automod": {
             "flagged_words_name": "memblokir kata-kata kotor konten seksual dan penghinaan",
@@ -174,11 +174,11 @@
             "unknown_input_option": "❓ Anda dapat menentukan parameter berikut: tambah, hapus, atur, tersedia, daftar, hapus."
         },
         "generate": {
-            "breaking_the_rules": "🚫 ฉันไม่สามารถสร้างรูปภาพที่คุณต้องการให้ได้ เนื่องจากรูปภาพดังกล่าวอาจมีการละเมิด[กฎ](https://openai.com/policies/usage-policies)",
-            "cannot_generate_image": "❎ `[%s]` ขอโทษด้วยคะ ฉันไม่สามารถสร้างรูปภาพตามที่คุณขอได้คะ",
-            "generating_images": "🕒 กำลังสร้างรูปภาพที่คุณต้องการในอีกสักครู่...",
-            "has_been_disabled": "❌ ฉันไม่สามารถสร้างผลงานได้เนื่องจากฟังก์ชั่นนี้ถูกปิดใช้งานคะ",
-            "result_images": "**ขนาด**: %s2\n**พร้อมท์**: `%s2`"
+            "breaking_the_rules": "🚫 Saya tidak dapat membuat gambar yang Anda inginkan. Karena gambar tersebut mungkin melanggar [aturan](https://openai.com/policies/usage-policies)",
+            "cannot_generate_image": "❎ `[%s]` Maaf, saya tidak dapat membuat gambar yang Anda minta.",
+            "generating_images": "🕒 Menciptakan gambar yang Anda inginkan dalam sekejap...",
+            "has_been_disabled": "❌ Saya tidak dapat membuat karya karena fungsi ini dinonaktifkan.",
+            "result_images": "**Ukuran **: %s2\n**Permintaan**: `%s2`"
         },
         "guild": {
             "afk_channel_id": "Kode saluran AFK",
@@ -530,11 +530,11 @@
         },
         "set_language": {
             "already_set": "❎ Eh..tapi server ini sudah menggunakan bahasa %s",
-            "data_at": "ข้อมูลของเมื่อ",
+            "data_at": "informasi kapan",
             "description": "**set-language** - Atur bahasa Anda, ini akan sangat memudahkan pemahaman Anda\n\nBahasa server ini adalah: `%s1`\n\n> Anda dapat mengubahnya dengan mengetik:\n> ```%s2. ```",
-            "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```%s```",
+            "language_not_found": "❎ Bahasa yang Anda tentukan tidak ditemukan dalam sistem. Periksa apakah Anda melakukan kesalahan pengetikan dan coba lagi.\n```%s```",
             "set_success": "✅ Sudah mengubah bahasa menjadi **%s**.",
-            "support": "**set-language** - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับในขณะนี้: `%s1`\n\n> คุณสามารถเปลี่ยนได้โดยพิมพ์:\n> ```%s2```",
+            "support": "**set-language** - Mengatur bahasa Anda akan membuat Anda lebih mudah memahaminya.\n\nBahasa yang didukung saat ini: `%s1`\n\n> Anda dapat mengubahnya dengan mengetik:\n> ```%s2```",
             "title": "🌐 Bahasa"
         },
         "set_notify": {
@@ -590,8 +590,8 @@
             "played_on": "Dimulai dari %s"
         },
         "stats": {
-            "member_count": "จำนวนสมาชิก:",
-            "server_count": "จำนวนเซิร์ฟเวอร์:"
+            "member_count": "Jumlah anggota:",
+            "server_count": "Jumlah server:"
         },
         "status": {
             "data_by_server": "Referensi data dari server.",
@@ -722,7 +722,7 @@
             "this_volume": "🔈 Volume suara saat ini adalah: **%s**"
         },
         "vote": {
-            "invite": "เชิญ",
+            "invite": "Undang",
             "tags": "แท็ก",
             "vote": "โหวต",
             "votes": "คะแนนโหวต"
