@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
   <strong>
     <h1>Shioru</h2>
-    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+    <p>Asisten bawaan server Discord akan membantu Anda menjadikan server Anda tempat yang lebih baik</p>
   </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
@@ -23,9 +23,9 @@
   </a>
 </div>
 
-[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+[Ubah bahasa](https://github.com/Maseshi/Shioru/tree/main/documents)
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) |
+Asisten peladen yang baik akan membantu peladen Anda terlihat lebih hidup. Dia dapat melakukan banyak hal, yang dapat Anda lihat secara detail dengan mengetik `/help`. Anda dapat mengundang Shioru ke server Anda dari [sini](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
 
 <div align="center">
   <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
@@ -33,7 +33,7 @@
   </a>
 </div>
 
-## Fitur
+## Fitur-fitur
 
 - Bekerja pada [Discord.js](https://discord.js.org/) v14.
 - Mampu menyesuaikan berbagai item yang diinginkan
@@ -44,42 +44,42 @@
 - Anda dapat berbicara dengan mengetikkan `@Shioru` diikuti dengan pesan yang ingin Anda komunikasikan.
 - Perintah aplikasi (/) dapat digunakan.
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+dan banyak fitur menarik lainnya...
 
 ## Prasyarat
 
 - [Node.js](https://nodejs.org/) v18.0.0 atau lebih tinggi
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
+- [Python](https://www.python.org/downloads/) v2.0.0 atau lebih tinggi
 - [Firebase](https://firebase.google.com/)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
 ## Panduan Pengaturan Cepat
 
-ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+Diuji pada sistem Mac, Linux, dan Windows.
 
-### เพิ่มบอทไปยังเซิร์ฟเวอร์
+### Tambahkan bot ke server
 
-- Pergi ke [Portal Pengembang Perselisihan](https://discord.com/developers/applications)
-- Klik **"Aplikasi Baru"** dan beri nama bot Anda dan terima aturan kebijakan Discord.
-- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Buka [Portal Pengembang Discord](https://discord.com/developers/applications)
+- Klik **"Aplikasi Baru"** dan beri nama bot Anda dan setujui aturan kebijakan Discord
+- Buka halaman **"Bot"** dan aktifkan semua opsi di bagian "Bot". **Maksud Gerbang Khusus** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Undang bot Anda ke server dengan membuka halaman **OAuth2 > URL Generator**, pilih `bot` dan `applications.commands` lalu pilih `. Administrator` lalu salin tautan dan tempelkan di alamat peramban Anda. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### Siapkan bot
 
-เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
+Karena kami menggunakan [natrium](https://www.npmjs.com/package/sodium) dalam penyandian dan pengodean, maka kami perlu menginstal komponen tambahan berikut ini:
 
 ```bat
-@REM บน Windows
+@REM pada Windows
 npm install -g windows-build-tools
 ```
 ```sh
-# บน MacOS (Darwin)
+# Di MacOS (Darwin)
 brew install libtool autoconf automake
 ```
 ```sh
-# บน Linux
-sudo apt-get install libtool-bin
+# Di Linux
+sudo apt-get instal libtool-bin
 ```
 
 - Luncurkan terminal dan jalankan perintah berikut.
@@ -94,20 +94,20 @@ npm install
 
 ### Siapkan Firebase
 
-- Buka https://firebase.google.com/ dan mulai menyiapkan proyek.
+- Buka https://firebase.google.com/ dan mulailah menyiapkan proyek Anda.
 - Tambahkan proyek baru dan ikuti langkah-langkahnya.
-- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env.example`
-- Buka **buat > [basis data waktu nyata](https://console.firebase.google.com/u/0/project/_/database/data)** untuk membuat basis data penyimpanan.
+- Tambahkan juga aplikasi pertama Anda. **Situs Web** Beri nama aplikasi Anda tanpa perlu memilih opsi **"Siapkan Firebase Hosting untuk aplikasi ini"** dan daftarkan aplikasi. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase akan memberi Anda informasi tentang konfigurasinya. Terapkan nilai-nilai ini pada berkas. `.env.example`
+- Buka **Create > [Real-time database](https://console.firebase.google.com/u/0/project/_/database/data)** Untuk membuat database untuk menyimpan data.
 
 ### mengembangkan
 
 - Ganti nama file `.env.example` menjadi `.env` dan masukkan semua nilai yang diperlukan.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
+- Buka terminal dan jalankan perintah `npm run dev` untuk pengembangan dan `npm start` untuk produksi. > **Catatan**: Saat Anda memasuki mode pengembangan. Beberapa fitur mungkin dinonaktifkan, seperti mengirim statistik, memperbarui data, dll.
 
 ## Pemecahan Masalah Cepat
 
-- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+- Jika Anda mengalami masalah selama instalasi komponen di mana pada terminal tertulis `gyp ERR! stack Error: not found: make` Masalah ini mungkin disebabkan oleh **Build tools** yang tidak terinstal dengan benar atau mungkin belum terinstal. Solusinya adalah mengunduh versi terbaru. [Node.js](https://nodejs.org/) dan periksa bagian ini dalam proses instalasi.
 
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
@@ -116,21 +116,21 @@ npm install
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
-- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [ffmpeg](https://ffmpeg.org/download.html) **(disarankan)** atau instal paket **ffmpeg-static** dan coba lagi.
+- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [FFmpeg](https://ffmpeg.org/download.html) **(Disarankan)** atau instal paket. **ffmpeg-static** dan coba lagi.
 ```bat
 npm instal ffmpeg-static@latest --save
 ```
 
-## Tingkatkan Terjemahan
+## Meningkatkan terjemahan
 
-dan masih banyak fitur menarik lainnya...
+Anda dapat membantu kami menerjemahkan bahasa yang sudah ada atau bahasa yang saat ini belum tersedia di [Crowdin](https://crowdin.com/project/shioru).
 
-## kredit
+## Kontributor
 
-Anda dapat membantu kami menerjemahkan bahasa yang ada atau bahasa yang saat ini tidak tersedia di [Crowdin](https://crowdin.com/project/shioru-bot).
+Terima kasih kepada semua pencipta asli yang telah mengizinkan penggunaan karya-karya yang luar biasa ini.
 
-Terima kasih kepada semua pencipta asli yang mengizinkan penggunaan karya-karya Anda yang luar biasa ini.
+Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
 
 ## menemukan masalah
 
-Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+Jika Anda mengalami masalah dalam pekerjaan Anda saat ini, Anda dapat memberi tahu kami melalui tab [masalah](https://github.com/Maseshi/Shioru/issues) pada repositori ini.
