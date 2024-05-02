@@ -1,321 +1,173 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { dateFormat, IDConvertor } = require("../../utils/miscUtils");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+  Colors,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "user",
-    "description": "Get your user information",
-    "category": "information",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "user [info] [member]",
-    "function": {
-        "command": {}
+  category: 'information',
+  permissions: [PermissionFlagsBits.SendMessages],
+  usage: 'user: list, get [about(String)] [member(GuildMember)]',
+  data: new SlashCommandBuilder()
+    .setName('user')
+    .setDescription('Get your user information')
+    .setDescriptionLocalizations({
+      th: 'รับข้อมูลผู้ใช้ของคุณ',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('list')
+        .setDescription('See the types of data currently available.')
+        .setDescriptionLocalizations({
+          th: 'ดูประเภทของข้อมูลที่พร้อมใช้งานในขณะนี้',
+        })
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('get')
+        .setDescription('Get the information of the user you want to explore.')
+        .setDescriptionLocalizations({
+          th: 'รับข้อมูลของผู้ใช้ที่ต้องการจะสำรวจ',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('about')
+            .setDescription('Information you want to know, such as avatarURL')
+            .setDescriptionLocalizations({
+              th: 'ข้อมูลที่คุณต้องการจะทราบ เช่น avatarURL',
+            })
+            .setRequired(true)
+        )
+        .addUserOption((option) =>
+          option
+            .setName('member')
+            .setDescription('Information of other members you wish to see.')
+            .setDescriptionLocalizations({
+              th: 'ข้อมูลของสมาชิกคนอื่น ๆ ที่คุณต้องการดู',
+            })
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputAbout = interaction.options.getString('about') ?? ''
+    const inputMember = interaction.options.getMember('member') ?? ''
+
+    const user = inputMember ? inputMember.user : interaction.user
+    const userProperties = {
+      accentColor:
+        user.accentColor?.toString() ||
+        interaction.client.i18n.t('commands.user.none'),
+      avatar: user.avatar || interaction.client.i18n.t('commands.user.unknown'),
+      avatarURL:
+        user.avatarURL() || interaction.client.i18n.t('commands.user.none'),
+      avatarDecoration:
+        user.avatarDecoration ||
+        interaction.client.i18n.t('commands.user.unknown'),
+      avatarDecorationURL:
+        user.avatarDecorationURL() ||
+        interaction.client.i18n.t('commands.user.none'),
+      banner: user.banner || interaction.client.i18n.t('commands.user.unknown'),
+      bannerURL:
+        user.bannerURL() || interaction.client.i18n.t('commands.user.none'),
+      bot:
+        (user.bot
+          ? interaction.client.i18n.t('commands.user.yes')
+          : interaction.client.i18n.t('commands.user.no')) ||
+        interaction.client.i18n.t('commands.user.unknown'),
+      createAt:
+        new Date(user.createAt).toLocaleString(interaction.locale) ||
+        interaction.client.i18n.t('commands.user.unknown'),
+      createdTimestamp:
+        user.createdTimestamp?.toString() ||
+        interaction.client.i18n.t('commands.user.unknown'),
+      defaultAvatarURL:
+        user.defaultAvatarURL ||
+        interaction.client.i18n.t('commands.user.unknown'),
+      discriminator:
+        user.discriminator || interaction.client.i18n.t('commands.user.none'),
+      displayAvatarURL:
+        user.displayAvatarURL() ||
+        interaction.client.i18n.t('commands.user.none'),
+      displayName:
+        user.displayName || interaction.client.i18n.t('commands.user.unknown'),
+      flags:
+        user.flags.toArray().join(', ') ||
+        interaction.client.i18n.t('commands.user.none'),
+      globalName:
+        user.displayName || interaction.client.i18n.t('commands.user.unknown'),
+      hexAccentColor:
+        user.hexAccentColor || interaction.client.i18n.t('commands.user.none'),
+      id: user.id || interaction.client.i18n.t('commands.user.unknown'),
+      partial: user.partial
+        ? interaction.client.i18n.t('commands.user.yes')
+        : interaction.client.i18n.t('commands.user.no') ||
+          interaction.client.i18n.t('commands.user.unknown'),
+      system: user.system
+        ? interaction.client.i18n.t('commands.user.yes')
+        : interaction.client.i18n.t('commands.user.no') ||
+          interaction.client.i18n.t('commands.user.unknown'),
+      tag: user.tag || interaction.client.i18n.t('commands.user.none'),
+      username:
+        user.username || interaction.client.i18n.t('commands.user.unknown'),
     }
-};
+    const propertiesKeys = Object.keys(userProperties)
+    const propertiesData = Object.fromEntries(
+      Object.entries(userProperties).map(([key, value]) => [
+        key.toLowerCase(),
+        value,
+      ])
+    )
+    const propertiesName =
+      propertiesKeys[
+        propertiesKeys.findIndex((key) =>
+          key.toLowerCase().includes(inputAbout.toLowerCase())
+        )
+      ]
+    const propertiesType = propertiesKeys.map((type) => type.toLowerCase())
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "ผู้ใช้"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "รับข้อมูลผู้ใช้ของคุณ"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "info",
-                "name_localizations": {
-                    "th": "ข้อมูล"
-                },
-                "description": "The information you want to get",
-                "description_localizations": {
-                    "th": "ข้อมูลที่คุณต้องการจะดู"
-                },
-                "required": false,
-                "choices": [
-                    {
-                        "name": "Avatar link",
-                        "name_localizations": {
-                            "th": "ลิงค์รูปประจำตัว"
-                        },
-                        "value": "avatarURL"
-                    },
-                    {
-                        "name": "Bot",
-                        "name_localizations": {
-                            "th": "บอท"
-                        },
-                        "value": "bot"
-                    },
-                    {
-                        "name": "Created when",
-                        "name_localizations": {
-                            "th": "สร้างเมื่อ"
-                        },
-                        "value": "createdAt"
-                    },
-                    {
-                        "name": "Created when (Timestamp)",
-                        "name_localizations": {
-                            "th": "สร้างเมื่อ (ประทับเวลา)"
-                        },
-                        "value": "createdTimestamp"
-                    },
-                    {
-                        "name": "Default link of avatar",
-                        "name_localizations": {
-                            "th": "ลิงค์รูปประจำตัวค่าเริ่มต้น"
-                        },
-                        "value": "defaultAvatarURL"
-                    },
-                    {
-                        "name": "Discriminator",
-                        "name_localizations": {
-                            "th": "การแยกแยะ"
-                        },
-                        "value": "discriminator"
-                    },
-                    {
-                        "name": "ID",
-                        "name_localizations": {
-                            "th": "รหัสประจำตัว"
-                        },
-                        "value": "id"
-                    },
-                    {
-                        "name": "Partial",
-                        "name_localizations": {
-                            "th": "อคติ"
-                        },
-                        "value": "partial"
-                    },
-                    {
-                        "name": "System",
-                        "name_localizations": {
-                            "th": "ระบบ"
-                        },
-                        "value": "system"
-                    },
-                    {
-                        "name": "Tag",
-                        "name_localizations": {
-                            "th": "แท็ก"
-                        },
-                        "value": "tag"
-                    },
-                    {
-                        "name": "Username",
-                        "name_localizations": {
-                            "th": "ชื่อผู้ใช้"
-                        },
-                        "value": "username"
-                    }
-                ]
-            },
-            {
-                "type": 6,
-                "name": "member",
-                "name_localizations": {
-                    "th": "สมาชิก"
-                },
-                "description": "Information of other members you wish to see.",
-                "description_localizations": {
-                    "th": "ข้อมูลของสมาชิกคนอื่น ๆ ที่คุณต้องการเห็น"
-                },
-                "required": false
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputInfo = interaction.options.getString("info") ?? "";
-        const inputMember = interaction.options.getMember("member") ?? "";
+    switch (subcommand) {
+      case 'list': {
+        await interaction.reply(
+          interaction.client.i18n.t('commands.user.available_type_list', {
+            list: propertiesKeys.join(', '),
+          })
+        )
+        break
+      }
+      case 'get': {
+        if (!propertiesType.includes(inputAbout.toLowerCase()))
+          return interaction.reply(
+            interaction.client.i18n.t('commands.user.invalid_type')
+          )
 
-        let avatar = interaction.user.avatarURL() || interaction.client.translate.commands.user.unknown;
-        let bot = interaction.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-        let createdAt = interaction.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
-        let createdTimestamp = dateFormat(interaction.client, interaction.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
-        let defaultAvatarURL = interaction.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
-        let discriminator = interaction.user.discriminator || interaction.client.translate.commands.user.unknown;
-        let id = interaction.user.id || interaction.client.translate.commands.user.unknown;
-        let partial = interaction.user.partial ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-        let system = interaction.user.system ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-        let tag = interaction.user.tag || interaction.client.translate.commands.user.unknown;
-        let username = interaction.user.username || interaction.client.translate.commands.user.unknown;
+        const clientUsername = interaction.client.user.username
+        const clientAvatarURL = interaction.client.user.avatarURL()
+        const userEmbed = new EmbedBuilder()
+          .setTitle(interaction.client.i18n.t('commands.user.user_info'))
+          .setDescription(
+            interaction.client.i18n.t('commands.user.user_info_description')
+          )
+          .setColor(parseInt(userProperties.accentColor) || Colors.Aqua)
+          .setTimestamp()
+          .setFooter({
+            text: interaction.client.i18n.t('commands.user.info_date'),
+            iconURL: userProperties.avatarURL || '',
+          })
+          .setThumbnail(userProperties.avatarURL || '')
+          .setAuthor({ name: clientUsername, iconURL: clientAvatarURL })
 
-        const usersSnapshot = interaction.client.api.users;
-        const usersRef = child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(interaction.client.user.username)), "guilds"), interaction.guild.id), "data/users");
-        const clientUsername = interaction.client.user.username;
-        const clientAvatarURL = interaction.client.user.avatarURL();
-        const embed = new EmbedBuilder()
-            .setTitle(interaction.client.translate.commands.user.user_info)
-            .setDescription(interaction.client.translate.commands.user.user_info_description)
-            .setColor("Blue")
-            .setTimestamp()
-            .setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-            .setThumbnail(avatar)
-            .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
+        userEmbed.addFields({
+          name: propertiesName,
+          value: propertiesData[inputAbout.toLowerCase()],
+          inline: true,
+        })
 
-        if (inputMember) {
-            avatar = inputMember.user.avatarURL() || interaction.client.translate.commands.user.unknown;
-            bot = inputMember.user.bot ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            createdAt = inputMember.user.createdAt.toString() || interaction.client.translate.commands.user.unknown;
-            createdTimestamp = dateFormat(interaction.client, inputMember.user.createdTimestamp) || interaction.client.translate.commands.user.unknown;
-            defaultAvatarURL = inputMember.user.defaultAvatarURL || interaction.client.translate.commands.user.unknown;
-            discriminator = inputMember.user.discriminator || interaction.client.translate.commands.user.unknown;
-            id = inputMember.user.id || interaction.client.translate.commands.user.unknown;
-            partial = inputMember.user.partial ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            system = inputMember.user.system ? interaction.client.translate.commands.user.yes : interaction.client.translate.commands.user.none;
-            tag = inputMember.user.tag || interaction.client.translate.commands.user.unknown;
-            username = inputMember.user.username || interaction.client.translate.commands.user.unknown;
-        }
-
-        const info = [
-            "avatarURL",
-            "bot",
-            "createAt",
-            "createdTimestamp",
-            "defaultAvatarURL",
-            "discriminator",
-            "id",
-            "partial",
-            "system",
-            "tag",
-            "username"
-        ];
-        const infoList = [
-            { "name": interaction.client.translate.commands.user.avatar, "value": avatar, "inline": true },
-            { "name": interaction.client.translate.commands.user.bot, "value": bot, "inline": true },
-            { "name": interaction.client.translate.commands.user.created_at, "value": createdAt, "inline": true },
-            { "name": interaction.client.translate.commands.user.created_timestamp, "value": createdTimestamp, "inline": true },
-            { "name": interaction.client.translate.commands.user.default_avatar_url, "value": defaultAvatarURL, "inline": true },
-            { "name": interaction.client.translate.commands.user.discriminator, "value": discriminator, "inline": true },
-            { "name": interaction.client.translate.commands.user.id, "value": id, "inline": true },
-            { "name": interaction.client.translate.commands.user.partial, "value": partial, "inline": true },
-            { "name": interaction.client.translate.commands.user.system, "value": system, "inline": true },
-            { "name": interaction.client.translate.commands.user.tag, "value": tag, "inline": true },
-            { "name": interaction.client.translate.commands.user.username, "value": username, "inline": true }
-        ];
-
-        if (inputInfo) {
-            if (inputMember) {
-                if (bot) {
-                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                        .setThumbnail(avatar);
-
-                    for (let i = 0; i < info.length; i++) {
-                        if (inputInfo === info[i]) {
-                            embed.addFields(infoList[i]);
-                            await interaction.reply({ "embeds": [embed] });
-                        }
-                    }
-                } else {
-                    const snapshot = usersSnapshot[id].access
-
-                    if (snapshot) {
-                        if (snapshot.info) {
-                            embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                .setThumbnail(avatar);
-
-                            for (let i = 0; i < info.length; i++) {
-                                if (inputInfo === info[i]) {
-                                    embed.addFields(infoList[i]);
-                                    await interaction.reply({ "embeds": [embed] });
-                                }
-                            }
-                        } else {
-                            await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
-                        }
-                    } else {
-                        set(child(child(usersRef, id), "access"), {
-                            "avatar": false,
-                            "info": false,
-                            "uid": false
-                        }).then(() => {
-                            module.exports.interaction.execute(interaction);
-                        });
-                    }
-                }
-            } else {
-                if (inputMember) {
-                    if (bot) {
-                        embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                            .setThumbnail(avatar)
-                            .addFields(Array.from(infoList));
-
-                        await interaction.reply({ "embeds": [embed] });
-                    } else {
-                        const snapshot = usersSnapshot[id].access
-
-                        if (snapshot) {
-                            if (snapshot.info) {
-                                embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                    .setThumbnail(avatar)
-                                    .addFields(Array.from(infoList));
-
-                                await interaction.reply({ "embeds": [embed] });
-                            } else {
-                                await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
-                            }
-                        } else {
-                            set(child(child(usersRef, id), "access"), {
-                                "avatar": false,
-                                "info": false,
-                                "uid": false
-                            }).then(() => {
-                                module.exports.interaction.execute(interaction);
-                            });
-                        }
-                    }
-                } else {
-                    for (let i = 0; i < info.length; i++) {
-                        if (inputInfo === info[i]) {
-                            embed.addFields(infoList[i]);
-                            await interaction.reply({ "embeds": [embed] });
-                        }
-                    }
-                }
-            }
-        } else {
-            if (inputMember) {
-                if (bot) {
-                    embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                        .setThumbnail(avatar)
-                        .addFields(Array.from(infoList));
-
-                    await interaction.reply({ "embeds": [embed] });
-                } else {
-                    const snapshot = usersSnapshot[id].access
-
-                    if (snapshot) {
-                        if (snapshot.info) {
-                            embed.setFooter({ "text": interaction.client.translate.commands.user.info_date, "iconURL": avatar })
-                                .setThumbnail(avatar)
-                                .addFields(Array.from(infoList));
-
-                            await interaction.reply({ "embeds": [embed] });
-                        } else {
-                            await interaction.reply(interaction.client.translate.commands.user.info.not_allowed);
-                        }
-                    } else {
-                        set(child(child(usersRef, id), "access"), {
-                            "avatar": false,
-                            "info": false,
-                            "uid": false
-                        }).then(() => {
-                            module.exports.interaction.execute(interaction);
-                        });
-                    }
-                }
-            } else {
-                embed.addFields(Array.from(infoList));
-                await interaction.reply({ "embeds": [embed] });
-            }
-        }
+        await interaction.reply({ embeds: [userEmbed] })
+        break
+      }
     }
+  },
 }

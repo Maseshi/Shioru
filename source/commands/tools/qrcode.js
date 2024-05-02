@@ -1,58 +1,45 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "qrcode",
-    "description": "Generate your QR code.",
-    "category": "tools",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "qrcode <text(String)>",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('qrcode')
+    .setDescription('Generate your QR code.')
+    .setDescriptionLocalizations({
+      th: 'สร้างคิวอาร์โค้ดของคุณ',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addStringOption((option) =>
+      option
+        .setName('text')
+        .setDescription('Message to be encrypted.')
+        .setDescriptionLocalizations({
+          th: 'ข้อความหรือลิงค์ที่ต้องการจะสร้างคิวอาร์โค้ด',
+        })
+        .setRequired(true)
+    ),
+  async execute(interaction) {
+    const inputText = interaction.options.getString('text')
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "คิวอาร์โค้ด"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "สร้างคิวอาร์โค้ดของคุณ"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "text",
-                "name_localizations": {
-                    "th": "ข้อความ"
-                },
-                "description": "Message to be encrypted.",
-                "description_localizations": {
-                    "th": "ข้อความหรือลิงค์ที่ต้องการจะสร้างคิวอาร์โค้ด"
-                },
-                "required": true
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputText = interaction.options.getString("text");
+    const apiURL = 'https://api.qrserver.com/v1'
+    const createQRCode = '/create-qr-code/?size=1024x1024&data='
+    const data =
+      apiURL + createQRCode + inputText.replace(new RegExp(' ', 'g'), '%20')
 
-        const apiURL = "https://api.qrserver.com/v1";
-        const createQRCode = "/create-qr-code/?size=1024x1024&data=";
-        const data = apiURL + createQRCode + inputText.replace(new RegExp(" ", "g"), "%20")
+    const qrcodeEmbed = new EmbedBuilder()
+      .setColor('White')
+      .setTitle(interaction.client.i18n.t('commands.qrcode.qrcode_title'))
+      .setDescription(
+        interaction.client.i18n.t('commands.qrcode.qrcode_success')
+      )
+      .setImage(data)
+      .setTimestamp()
 
-        const qrcodeEmbed = new EmbedBuilder()
-            .setColor("White")
-            .setTitle(interaction.client.translate.commands.qrcode.qrcode_title)
-            .setDescription(interaction.client.translate.commands.qrcode.qrcode_success)
-            .setImage(data)
-            .setTimestamp();
-
-        await interaction.reply({ "embeds": [qrcodeEmbed] });
-    }
-};
+    await interaction.reply({ embeds: [qrcodeEmbed] })
+  },
+}

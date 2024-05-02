@@ -1,154 +1,156 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { levelSystem } = require("../../utils/databaseUtils");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+} = require('discord.js')
+const { fetchLevel, submitNotification } = require('../../utils/databaseUtils')
 
 module.exports = {
-    "enable": true,
-    "name": "level",
-    "description": "Manage levels within the server.",
-    "category": "manager",
-    "permissions": {
-        "user": [PermissionsBitField.Flags.ManageGuild],
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.ManageGuild
-        ]
-    },
-    "usage": "level: set <member> <amount(Number)>, delete <member>",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('level')
+    .setDescription('Manage levels within the server.')
+    .setDescriptionLocalizations({
+      th: 'จัดการเลเวลภายในเซิร์ฟเวอร์',
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
+    .setDMPermission(false)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('set')
+        .setDescription('Set Level of Members')
+        .setDescriptionLocalizations({
+          th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก',
+        })
+        .addUserOption((option) =>
+          option
+            .setName('member')
+            .setDescription(
+              'The name of the member who wants to set the level value.'
+            )
+            .setDescriptionLocalizations({
+              th: 'ชื่อของสมาชิกที่ต้องการกำหนดค่าเลเวล',
+            })
+            .setRequired(true)
+        )
+        .addIntegerOption((option) =>
+          option
+            .setName('amount')
+            .setDescription('The amount of level that you want to set.')
+            .setDescriptionLocalizations({
+              th: 'จำนวนเลเวลที่คุณต้องการตั้งค่า',
+            })
+            .setRequired(true)
+            .setMinValue(0)
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('delete')
+        .setDescription('Removing EXP and Level of members')
+        .setDescriptionLocalizations({
+          th: 'ลบ exp และเลเวลของสมาชิก',
+        })
+        .addUserOption((option) =>
+          option
+            .setName('member')
+            .setDescription('Members you want to delete levels.')
+            .setDescriptionLocalizations({
+              th: 'สมาชิกที่คุณต้องการลบระดับ',
+            })
+            .setRequired(true)
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputMember = interaction.options.getMember('member') ?? ''
+    const inputAmount = interaction.options.getNumber('amount') ?? 0
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "เลเวล"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "จัดการเลเวลภายในเซิร์ฟเวอร์"
-        },
-        "options": [
+    switch (subcommand) {
+      case 'set': {
+        const memberAvatar = inputMember.avatarURL()
+        const memberUsername = inputMember.username
+        const setLevelEmbed = new EmbedBuilder()
+          .setDescription(
+            interaction.client.i18n
+              .t('commands.level.level_was_changed')
+              .replace('%s', memberUsername)
+          )
+          .setColor('Blue')
+          .setThumbnail(memberAvatar)
+          .setFooter({
+            text: interaction.client.i18n.t('commands.level.set_by_staff'),
+          })
+          .addFields([
             {
-                "type": 1,
-                "name": "set",
-                "name_localizations": {
-                    "th": "ตั้งค่า"
-                },
-                "description": "Set Level of Members",
-                "description_localizations": {
-                    "th": "ตั้งค่าค่าประสบการณ์ของสมาชิก"
-                },
-                "options": [
-                    {
-                        "type": 6,
-                        "name": "member",
-                        "name_localizations": {
-                            "th": "สมาชิก"
-                        },
-                        "description": "The name of the member who wants to set the level value.",
-                        "description_localizations": {
-                            "th": "ชื่อของสมาชิกที่ต้องการกำหนดค่าเลเวล"
-                        },
-                        "required": true
-                    },
-                    {
-                        "type": 10,
-                        "name": "amount",
-                        "name_localizations": {
-                            "th": "จำนวน"
-                        },
-                        "description": "The amount of level that you want to set.",
-                        "description_localizations": {
-                            "th": "จำนวนเลเวลที่คุณต้องการตั้งค่า"
-                        },
-                        "required": true,
-                        "min_value": 0
-                    }
-                ]
+              name: interaction.client.i18n.t('commands.level.level'),
+              value: '```' + exp + '```',
             },
             {
-                "type": 1,
-                "name": "delete",
-                "name_localizations": {
-                    "th": "ลบ"
-                },
-                "description": "Removing EXP and Level of members",
-                "description_localizations": {
-                    "th": "ลบ exp และเลเวลของสมาชิก"
-                },
-                "options": [
-                    {
-                        "type": 6,
-                        "name": "member",
-                        "name_localizations": {
-                            "th": "สมาชิก"
-                        },
-                        "description": "Members you want to delete levels.",
-                        "description_localizations": {
-                            "th": "สมาชิกที่คุณต้องการลบระดับ"
-                        },
-                        "required": true
-                    }
-                ]
-            }
-        ]
-    },
-    async execute(interaction) {
-        const subCommand = interaction.options.getSubcommand();
-        const inputMember = interaction.options.getMember("member") ?? "";
-        const inputAmount = interaction.options.getNumber("amount") ?? 0;
+              name: interaction.client.i18n.t('commands.level.experience'),
+              value: '```' + level + '```',
+            },
+          ])
 
-        switch (subCommand) {
-            case "set": {
-                const memberAvatar = inputMember.avatarURL();
-                const memberUsername = inputMember.username;
+        const data = await fetchLevel(interaction.client, interaction, 'PUT', {
+          member: inputMember,
+          amount: inputAmount,
+          type: 'level',
+        })
+        const exp = data.exp
+        const level = data.level
+        const status = data.status
 
-                const snapshotSet = levelSystem(interaction.client, interaction, "PUT", { "member": inputMember, "amount": inputAmount, "type": "level" });
+        if (status === 'error')
+          return await interaction.reply(
+            interaction.client.i18n.t('commands.level.set_error')
+          )
 
-                const exp = snapshotSet.exp;
-                const level = snapshotSet.level;
-                const notify = snapshotSet.notify;
-                const status = snapshotSet.status;
+        const notified = submitNotification(
+          interaction.client,
+          interaction.guild,
+          'general',
+          setLevelEmbed
+        )
 
-                if (status === "error") return await interaction.reply(interaction.client.translate.commands.level.set_error);
-                if (notify) {
-                    const levelEmbed = new EmbedBuilder()
-                        .setDescription(interaction.client.translate.commands.level.level_was_changed.replace("%s", memberUsername))
-                        .setColor("Blue")
-                        .setThumbnail(memberAvatar)
-                        .setFooter({ "text": interaction.client.translate.commands.level.set_by_staff })
-                        .addFields(
-                            [
-                                {
-                                    "name": interaction.client.translate.commands.level.level,
-                                    "value": "```" + exp + "```"
-                                },
-                                {
-                                    "name": interaction.client.translate.commands.level.experience,
-                                    "value": "```" + level + "```"
-                                }
-                            ]
-                        );
-
-                    await notify.send({ "embeds": [levelEmbed] });
-                    await interaction.reply(interaction.client.translate.commands.level.notification_complete);
-                } else {
-                    await interaction.reply(interaction.client.translate.commands.level.set_success);
-                }
-                break;
-            }
-            case "delete": {
-                await interaction.reply(interaction.client.translate.commands.level.deleting);
-
-                const snapshotDelete = await levelSystem(interaction.client, interaction, "DELETE", { "member": inputMember });
-
-                if (snapshotDelete === "missing") return await interaction.editReply(interaction.client.translate.commands.level.user_current_no_level);
-                if (snapshotDelete === "success") return await interaction.editReply(interaction.client.translate.commands.level.delete_success);
-                if (snapshotDelete === "error") return await interaction.editReply(interaction.client.translate.commands.level.delete_error);
-                break;
-            }
+        if (notified) {
+          await interaction.reply(
+            interaction.client.i18n.t('commands.level.notification_complete')
+          )
+        } else {
+          await interaction.reply(
+            interaction.client.i18n.t('commands.level.set_success')
+          )
         }
+        break
+      }
+      case 'delete': {
+        await interaction.reply(
+          interaction.client.i18n.t('commands.level.deleting')
+        )
+
+        const data = await fetchLevel(
+          interaction.client,
+          interaction,
+          'DELETE',
+          { member: inputMember }
+        )
+        const status = data.status
+
+        if (status === 'missing')
+          return await interaction.editReply(
+            interaction.client.i18n.t('commands.level.user_current_no_level')
+          )
+        if (status === 'success')
+          return await interaction.editReply(
+            interaction.client.i18n.t('commands.level.delete_success')
+          )
+        if (status === 'error')
+          return await interaction.editReply(
+            interaction.client.i18n.t('commands.level.delete_error')
+          )
+        break
+      }
     }
-};
+  },
+}
