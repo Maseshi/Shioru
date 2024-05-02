@@ -35,19 +35,12 @@ const currencyFormatter = (number, digits) => {
  * is a valid URL, and `false` otherwise.
  */
 const validateURL = (string) => {
-  const pattern = new RegExp(
-    '^' + // Start of the line
-      '(https?:\\/\\/)?' + // Protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // Domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // Port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // Query string
-      '(\\#[-a-z\\d_]*)?' + // Fragment locator
-      '$', // End of the line.
-    'i'
-  )
-
-  return !!pattern.test(string)
+  try {
+    const newURL = new URL(string)
+    return newURL.protocol === 'http:' || newURL.protocol === 'https:'
+  } catch (error) {
+    return false
+  }
 }
 
 /**
