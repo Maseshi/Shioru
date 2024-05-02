@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Ganti nama file `.env.example` menjadi `.env` dan masukkan semua nilai yang diperlukan.
+- Buka https://firebase.google.com/ dan mulailah menyiapkan proyek Anda.
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
@@ -100,8 +100,8 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 ### 4. ตั้งค่าฐานข้อมูล
 
-- Buka https://firebase.google.com/ dan mulailah menyiapkan proyek Anda.
-- Tambahkan proyek baru dan ikuti langkah-langkahnya.
+- Buka [Portal Pengembang Discord](https://discord.com/developers/applications)
+- Klik **"Aplikasi Baru"** dan beri nama bot Anda dan setujui aturan kebijakan Discord
 - Tambahkan juga aplikasi pertama Anda. **Situs Web** Beri nama aplikasi Anda tanpa perlu memilih opsi **"Siapkan Firebase Hosting untuk aplikasi ini"** dan daftarkan aplikasi. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Buka **Create > [Real-time database](https://console.firebase.google.com/u/0/project/_/database/data)** Untuk membuat database untuk menyimpan data.
@@ -163,40 +163,6 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 เป็นไปได้ว่าคุณยังไม่ได้จำลองระบบฐานข้อมูลบนเครื่องในโหมดทดสอบ โดยคุณสามารถแก้ปัญหานี้ได้โดยปิดบอทแล้วรันคำสั่งดังนี้ในอีกหน้าหนึ่ง
 
-<<<<<<< HEAD
-- Jika Anda tidak dapat menginstal package **sodium** , instal **libsodium-wrappers** sebagai gantinya.
-
-```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
-```
-
-<<<<<<< Updated upstream
-
-- # Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [FFmpeg](https://ffmpeg.org/download.html) **(Disarankan)** atau instal paket. **ffmpeg-static** dan coba lagi.
-
-- Jika Anda tidak dapat memutar musik atau perintah pemutaran musik tidak berfungsi, instal [ffmpeg](https://ffmpeg.org/download.html) **(disarankan)** atau instal paket **ffmpeg-static** dan coba lagi.
-
-> > > > > > > Stashed changes
-
-```bat
-npm instal ffmpeg-static@latest --save
-```
-
-## Meningkatkan terjemahan
-
-Anda dapat membantu kami menerjemahkan bahasa yang sudah ada atau bahasa yang saat ini belum tersedia di [Crowdin](https://crowdin.com/project/shioru).
-
-## Kontributor
-
-Terima kasih kepada semua pencipta asli yang telah mengizinkan penggunaan karya-karya yang luar biasa ini.
-
-Gambar avatar oleh: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
-
-## menemukan masalah
-
-Jika Anda mengalami masalah dalam pekerjaan Anda saat ini, Anda dapat memberi tahu kami melalui tab [masalah](https://github.com/Maseshi/Shioru/issues) pada repositori ini.
-=======
 ```bat
 npm run emulators
 ```
@@ -208,4 +174,3 @@ Anda dapat membantu kami menerjemahkan bahasa yang sudah ada atau bahasa yang sa
 ## menemukan masalah
 
 หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issues](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
->>>>>>> 7cd9c5100281cee9c71d556039e6a723965221fa
