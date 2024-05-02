@@ -155,7 +155,7 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 ## แก้ไขปัญหาอย่างรวดเร็ว
 
-### `gyp ERR! stack Error: not found: make`
+### `gyp ERR! gyp ERR! stack Error: not found: make`
 
 ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
 
