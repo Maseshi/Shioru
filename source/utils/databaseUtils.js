@@ -1,531 +1,566 @@
-const { EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set, remove, update } = require("firebase/database");
-const { catchError } = require("./consoleUtils");
-const { IDConvertor } = require("./miscUtils");
+const { EmbedBuilder } = require('discord.js')
+const {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  setDoc,
+  updateDoc,
+  deleteField,
+} = require('firebase/firestore')
+const {
+  getDatabase,
+  ref,
+  child,
+  get,
+  set,
+  update,
+  increment,
+} = require('firebase/database')
+const { changeLanguage, embedBuilder } = require('./clientUtils')
 
 /**
- * A chat system that supports both mentions and general discussions.
- * This requires a database to be able to add or delete words in real time.
- * 
- * @param {Client} client 
- * @param {Message} message 
- * @param {Boolean} mention if mentioned
- * @param {String} args User Message
- * @param {String} version `v1`: Use the generated response data., `v2`: Use AI to generate the message response
+ * The `dataStructures` function returns different data dataStructures based on the value of the `select`
+ * parameter.
+ * @param {Client} client - The `client` parameter is an object that represents the client or bot that is using
+ * this `dataStructures` function. It likely contains various configurations and constants that are used
+ * within the function.
+ * @param {String} select - The `select` parameter is used to determine which dataStructures to return. It can have
+ * the following values:
+ * @returns The function `dataStructures` returns an object based on the value of the `select` parameter.
+ * The returned object has different properties and values depending on the value of `select`.
  */
-const chatSystem = async (client, message, mention, args, version = "v2") => {
-    const childRef = child(ref(getDatabase(), "projects"), IDConvertor(client.user.username));
-    const childUsers = child(childRef, "users");
-    const usersSnapshot = client.api.users;
-    const chatSnapshot = client.api.chat;
-    const argument = message.content.replace(/^<@!?\d{1,20}> ?/i, "");
-
-    if (!client.ai) version = "v1";
-
-    switch (version) {
-        case "v1": {
-            // When the bot calls and asks some questions.
-            if (argument) {
-                message.channel.sendTyping();
-
-                try {
-                    if (chatSnapshot) {
-                        const prompts = client.config.constants.prompts.concat(chatSnapshot.prompts);
-                        const replies = client.config.constants.replies.concat(chatSnapshot.replies);
-                        const alternative = client.config.constants.alternative.concat(chatSnapshot.alternative);
-
-                        const command = chatSnapshot.command;
-                        const script = chatSnapshot.script;
-
-                        // Remove all characters except word characters, space, and digits
-                        // 'tell me a story' -> 'tell me story'
-                        // 'i feel happy' -> 'happy'
-                        const text = argument.toLowerCase()
-                            .replace(/ a /g, " ")
-                            .replace(/pls/g, "please")
-                            .replace(/i feel /g, "")
-                            .replace(/whats/g, "what is")
-                            .replace(/please /g, "")
-                            .replace(/ please/g, "")
-                            .replace(/r u/g, "are you");
-
-                        const compare = (promptsArray, repliesArray, commandArray, scriptArray, string) => {
-                            let reply, command, script;
-                            for (let x = 0; x < promptsArray.length; x++) {
-                                for (let y = 0; y < promptsArray[x].length; y++) {
-                                    if (promptsArray[x][y] === string) {
-                                        let replies = repliesArray[x];
-                                        reply = replies[Math.floor(Math.random() * replies.length)];
-                                        break;
-                                    }
-                                }
-                                if (commandArray) {
-                                    for (let y = 0; y < commandArray[x].length; y++) {
-                                        if (commandArray[x][y] === string) {
-                                            let commands = commandArray[x];
-                                            command = commands[Math.floor(Math.random() * commands.length)];
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (scriptArray) {
-                                    for (let y = 0; y < scriptArray[x].length; y++) {
-                                        if (scriptArray[x][y] === string) {
-                                            let scripts = scriptArray[x];
-                                            script = scripts[Math.floor(Math.random() * scripts.length)];
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                            return { reply, command, script };
-                        }
-
-                        if (compare(prompts, replies, command, script, text).reply) {
-                            message.channel.send(compare(prompts, replies, command, script, text).reply);
-                        } else {
-                            message.channel.send(alternative[Math.floor(Math.random() * alternative.length)]);
-                        }
-                        if (compare(prompts, replies, command, script, text).command) {
-                            client.commands.get(compare(prompts, replies, command, script, text).command).run(client, message, args);
-                        }
-                        if (compare(prompts, replies, command, script, text).reply && compare(prompts, replies, command, script, text).script) {
-                            // Script format on database: ((client, message, answer) => {})
-                            // Script format when converted: ((client, message, answer) => {})(client, message, answer[randomWords])
-                            const answerScript = await eval(compare(prompts, replies, command, script, text).script)(client, message, compare(prompts, replies, command, script, text).reply);
-
-                            message.channel.send(answerScript);
-                        }
-                    } else {
-                        await set(child(childRef, "chat"), {
-                            "prompts": [
-                                client.config.constants.prompts
-                            ],
-                            "replies": [
-                                client.config.constants.replies
-                            ],
-                            "alternative": [
-                                client.config.constants.alternative
-                            ],
-                            "commands": [],
-                            "script": [],
-                            "system": []
-                        });
-                        chatSystem(client, message, mention, args, version);
-                    }
-                } catch (error) {
-                    catchError(client, message, "chatSystem", error);
-                }
-            }
-
-            // When the bot is called by tagging.
-            if (!argument && mention) {
-                message.channel.sendTyping();
-
-                try {
-                    if (chatSnapshot) {
-                        const alternative = client.config.constants.alternative.concat(chatSnapshot.alternative);
-                        const randomWords = Math.floor(Math.random() * alternative.length);
-
-                        message.channel.send(alternative[randomWords]);
-                    } else {
-                        await set(child(childRef, "chat"), {
-                            "prompts": [
-                                client.config.constants.prompts
-                            ],
-                            "replies": [
-                                client.config.constants.replies
-                            ],
-                            "alternative": [
-                                client.config.constants.alternative
-                            ],
-                            "commands": [],
-                            "script": [],
-                            "system": []
-                        });
-                        chatSystem(client, message, mention, args, version);
-                    }
-                } catch (error) {
-                    catchError(client, message, "chatSystem", error);
-                }
-            }
-            break;
-        }
-        case "v2": {
-            const allMessages = [];
-            const initMessages = [
-                "You are " + client.user.username + ".",
-                "You were born on April 28, 2020.",
-                "You don't have to give personal information every time.",
-                "You are a girl trained by Maseshi.",
-                "Answer as concisely as possible.",
-                "Here is some of your information on Discord: " + client.user.toString() + ".",
-                "Here is some information asked by the Discord user: " + message.author.toString() + ".",
-                "These questions were asked on Discord.",
-                "อย่าใช้คำว่า 'ครับ' ให้ใช้คำว่า 'คะ' หรือ 'ค่ะ' แทน.",
-                "อย่าใช้คำว่า 'ผม' หรือ 'กระผม' ให้ใช้คำว่า 'ฉัน', 'หนู', 'เค้า' หรือ 'ดิฉัน' แทน.",
-                chatSnapshot && chatSnapshot.system ? chatSnapshot.system.join(" ") : ""
-            ];
-
-            if (usersSnapshot && usersSnapshot[message.author.id]) {
-                message.channel.sendTyping();
-
-                if (usersSnapshot[message.author.id].history && (usersSnapshot[message.author.id].history.chat.length >= 0)) {
-                    usersSnapshot[message.author.id].history.chat.forEach(element => allMessages.push(element));
-                    allMessages[0].content = initMessages.join(" ");
-                    allMessages.push(
-                        {
-                            "role": "user",
-                            "content": argument ?? message.content ?? "Hi",
-                            "name": message.author.username
-                        }
-                    );
-                } else {
-                    allMessages.push(
-                        {
-                            "role": "system",
-                            "content": initMessages.join(" ")
-                        },
-                        {
-                            "role": "user",
-                            "content": argument ?? message.content ?? "Hi",
-                            "name": message.author.username
-                        }
-                    );
-                }
-
-                try {
-                    const response = await client.ai.createChatCompletion({
-                        "model": "gpt-4",
-                        "messages": allMessages,
-                        "max_tokens": 256,
-                        "user": client.user.username
-                    });
-
-                    if (response.data && !response.data.choices) {
-                        catchError(client, message, "chatSystem", response.data, true);
-                        return message.channel.send(client.translate.utils.databaseUtils.can_not_reply_at_this_time);
-                    }
-
-                    allMessages.push(
-                        {
-                            "role": "assistant",
-                            "content": response.data.choices[0].message.content
-                        }
-                    );
-
-                    set(child(child(childUsers, message.author.id), "history/chat"), allMessages);
-
-                    message.channel.send(response.data.choices[0].message.content);
-                } catch (error) {
-                    if (error.response) {
-                        if (error.response.data.error.type === "invalid_request_error") {
-                            if (error.response.data.error.code && error.response.data.error.code === "context_length_exceeded") {
-                                allMessages.splice(1, 6);
-                                await set(child(child(childUsers, message.author.id), "history/chat"), allMessages);
-                                return chatSystem(client, message, mention, args, version);
-                            }
-                            if (error.response.data.error.message && error.response.data.error.message.includes("under maintenance")) {
-                                return message.channel.send(client.translate.utils.databaseUtils.under_maintenance);
-                            }
-                        }
-                        catchError(client, message, "chatSystem", error.response.data, true);
-                    } else {
-                        catchError(client, message, "chatSystem", error);
-                    }
-                }
-            } else {
-                await set(child(childUsers, message.author.id), {
-                    "access": {
-                        "avatar": true,
-                        "info": true,
-                        "uid": true
-                    },
-                    "leveling": {
-                        "exp": 0,
-                        "level": 0
-                    },
-                    "history": {
-                        "chat": []
-                    }
-                });
-                chatSystem(client, message, mention, args, version);
-            }
-            break;
-        }
+const dataStructures = (client, select) => {
+  switch (select) {
+    case 'chat':
+      return {
+        prompts: [client.configs.constants.prompts],
+        replies: [client.configs.constants.replies],
+        alternatives: [client.configs.constants.alternatives],
+        scripts: [client.configs.constants.scripts],
+      }
+    case 'user':
+      return {
+        leveling: {
+          exp: 0,
+          level: 0,
+        },
+        history: {
+          chat: [],
+        },
+        guilds: [],
+      }
+    case 'guild':
+      return {
+        joinedAt: '',
+        createdAt: '',
+        description: '',
+        iconURL: '',
+        preferredLocale: '',
+        memberCount: 0,
+        name: '',
+        verified: false,
+      }
+    case 'language':
+      return {
+        type: 'USER',
+        locale: 'en-US',
+      }
+    case 'notification':
+      return {
+        enable: false,
+        channelId: '',
+        toggledAt: '',
+        content: '',
+        embed: {
+          createdAt: '',
+          createBy: '',
+          editor: [
+            // {
+            //   userId: '',
+            //   editedAt: '',
+            // },
+          ],
+          author: {
+            name: '',
+            url: '',
+            iconURL: '',
+          },
+          color: '',
+          title: '',
+          url: '',
+          description: '',
+          thumbnail: '',
+          timestamp: '',
+          image: '',
+          felids: [
+            {
+              name: '',
+              value: '',
+              inline: false,
+            },
+            {
+              name: '',
+              value: '',
+              inline: false,
+            },
+          ],
+          footer: {
+            text: '',
+            iconURL: '',
+          },
+        },
+      }
+    case 'djs': {
+      return {
+        enable: false,
+        toggledAt: '',
+        editedAt: '',
+        only: false,
+        roles: [],
+        users: [],
+      }
     }
-};
+  }
+}
 
 /**
- * A level system that uses a database to store import and export
- * 
- * @param {Client} client 
- * @param {Message} message 
- * @param {String} method **GET**, **GET/ALL**, **POST**, **PUT** or **DELETE**
+ * The fetchLevel function is a JavaScript function that retrieves and updates user level and
+ * experience data in a database, and can also send level up notifications.
+ * @param {Client} client - The `client` parameter is the client object that represents the Discord bot. It is
+ * used to access various functionalities and properties of the bot, such as the username and avatar.
+ * @param {Message} message - The `message` parameter is an object that contains information about the message
+ * that triggered the function. It typically includes properties such as the message content, author,
+ * channel, and guild.
+ * @param {String} method - The `method` parameter is a string that specifies the action to be performed. It can
+ * have the following values: 'GET', 'GET/ALL', 'POST', 'PUT' and 'DELETE'
  * @param {GuildMember} member Optional: Members within the guild who wish to change their information
  * @param {String} amount Optional: The desired amount will change the value.
  * @param {String} type Optional: **exp** or **level**
- * @returns 
+ * @returns The function `fetchLevel` returns a callback object with the following properties:
  */
-const levelSystem = async (client, message, method, { member = "", amount = 1, type = "exp" } = {}) => {
-    if (!client) return console.log("[levelSystem] Please configure CLIENT for localization (required).");
-    if (!message) return console.log("[levelSystem] Please configure MESSAGE to make notifications and receive important basic information (required).");
-    if (!method) return console.log("[levelSystem] Please specify a METHOD to continue. (required).");
+const fetchLevel = async (
+  client,
+  message,
+  method,
+  { member = '', amount = 1, type = 'exp' } = {}
+) => {
+  if (!client)
+    return client.logger.warn(
+      'Please configure CLIENT for localization (required).'
+    )
+  if (!message)
+    return client.logger.warn(
+      'Please configure MESSAGE to make notifications and receive important basic information (required).'
+    )
+  if (!method)
+    return client.logger.warn(
+      'Please specify a METHOD to continue. (required).'
+    )
 
-    const userID = member.id ?? message.member.id ?? message.user.id;
-    const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "guilds"), message.guild.id);
-    const guildUserRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "users"), userID);
-    const guildUserSnapshot = client.api.users[userID];
+  const usersCollection = collection(getFirestore(), 'users')
+  const userDoc = doc(
+    usersCollection,
+    member ? member.id : message.member.id ?? message.user.id
+  )
+  const usersSnapshot = await getDocs(usersCollection)
+  const userSnapshot = await getDoc(userDoc)
 
-    const notification = async (msg) => {
-        const guildSnapshot = client.api.guilds[message.guild.id];
-        const channelID = guildSnapshot.notification.alert;
+  const callback = {
+    status: 'padding',
+    exp: 0,
+    level: 0,
+    levelup: 0,
+    users: null,
+  }
 
-        if (channelID) {
-            if (typeof channelID === "boolean") {
-                const channel = msg.guild.channels.cache.find(channels => channels.id === channelID);
+  if (userSnapshot.exists()) {
+    const userData = userSnapshot.data()
+    const leveling = userData.leveling
+    let exp = leveling.exp || 0
+    let level = leveling.level || 0
 
-                if (!channel) {
-                    console.log("[levelSystem/notify] The specified notification channel could not be found.");
-                    return false;
-                } else {
-                    return channel;
-                }
-            } else {
-                await set(child(guildRef, "notification/alert"), false);
+    const base = 200
+    const levelup = level * level * base
 
-                notification(msg);
-            }
+    switch (method) {
+      case 'GET': {
+        if (userSnapshot.exists()) {
+          callback.status = 'success'
+          callback.exp = exp
+          callback.level = level
+          callback.levelup = levelup
         } else {
-            return false;
-        }
-    };
-
-    if (guildUserSnapshot) {
-        let exp = guildUserSnapshot.leveling.exp;
-        let level = guildUserSnapshot.leveling.level;
-        const nextEXP = level * level * 100;
-
-        if (exp >= nextEXP) {
-            const alert = await notification(message);
-            const authorUsername = message.member ? message.member.username : message.user.username;
-            const authorAvatar = message.member ? message.member.displayAvatarURL() : message.user.displayAvatarURL();
-            const levelSystemEmbed = new EmbedBuilder()
-                .setTitle(client.translate.utils.databaseUtils.level_up.replace("%s1", authorUsername).replace("%s2", level))
-                .setColor("Yellow")
-                .setThumbnail(authorAvatar);
-
-            await update(guildUserRef, {
-                "leveling": {
-                    "exp": (exp -= nextEXP),
-                    "level": ++level
-                }
-            });
-
-            if (alert) alert.send({ "embeds": [levelSystemEmbed] });
+          callback.status = 'null'
         }
 
-        switch (method) {
-            case "GET":
-            case "GET/ALL": {
-                let GETData = 0;
-
-                if (guildUserSnapshot) {
-                    if (method === "GET") {
-                        GETData = {
-                            "exp": exp,
-                            "level": level,
-                            "nextEXP": nextEXP
-                        };
-                    }
-                    if (method === "GET/ALL") {
-                        GETData = client.api.users;
-                    }
-                }
-                return GETData;
-            }
-            case "POST": {
-                if (!amount) return console.log("[levelSystem/POST] Please specify the amount of experience.");
-
-                if (type === "exp") update(child(guildUserRef, "leveling"), {
-                    "exp": (exp += amount)
-                });
-                if (type === "level") update(child(guildUserRef, "leveling"), {
-                    "level": (level += amount)
-                });
-                break;
-            }
-            case "PUT": {
-                let PUTData = 0;
-                let PUTStatus = "";
-                let alert = await notification(message);
-
-                try {
-                    if (type === "exp") await update(child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "users"), member), "leveling"), {
-                        "exp": amount
-                    });
-                    if (type === "level") await update(child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "users"), member), "leveling"), {
-                        "level": amount
-                    });
-                    PUTStatus = "success";
-                } catch {
-                    PUTStatus = "error";
-                }
-
-                PUTData = {
-                    "level": level,
-                    "exp": amount,
-                    "notify": alert,
-                    "status": PUTStatus
-                }
-                return PUTData;
-            }
-            case "DELETE": {
-                let DELETEStatus = "";
-
-                if (!member) return console.log("[levelSystem/DELETE] Please enter the user ID you wish to delete experience data for.");
-                if (!guildUserSnapshot.leveling) return DELETEStatus = "missing";
-
-                try {
-                    await remove(child(child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "users"), member), "leveling"));
-                    DELETEStatus = "success";
-                } catch {
-                    DELETEStatus = "error";
-                }
-                return DELETEStatus;
-            }
+        break
+      }
+      case 'GET/ALL': {
+        if (usersSnapshot.exists()) {
+          callback.status = 'success'
+          callback.users = usersSnapshot
+        } else {
+          callback.status = 'null'
         }
-    } else {
-        await set(guildUserRef, {
-            "access": {
-                "avatar": true,
-                "info": true,
-                "uid": true
-            },
-            "leveling": {
-                "exp": 0,
-                "level": 0
-            }
-        });
 
-        levelSystem(client, message, method, member, amount, type);
+        break
+      }
+      case 'POST': {
+        if (!amount) {
+          callback.status = 'error'
+          return client.logger.warn('Please specify the amount of experience.')
+        }
+
+        try {
+          if (type === 'exp')
+            await updateDoc(userDoc, {
+              ['leveling.exp']: (exp += amount),
+            })
+          if (type === 'level')
+            await updateDoc(userDoc, {
+              ['leveling.level']: (level += amount),
+            })
+
+          callback.status = 'success'
+        } catch {
+          callback.status = 'error'
+        }
+
+        break
+      }
+      case 'PUT': {
+        try {
+          if (type === 'exp')
+            await updateDoc(userDoc, {
+              ['leveling.exp']: amount,
+            })
+          if (type === 'level')
+            await updateDoc(userDoc, {
+              ['leveling.level']: amount,
+            })
+
+          callback.status = 'success'
+          callback.exp = exp
+          callback.level = level
+        } catch {
+          callback.status = 'error'
+        }
+
+        break
+      }
+      case 'DELETE': {
+        if (!member)
+          return client.logger.warn(
+            'Please enter the user ID you wish to delete experience data for.'
+          )
+        if (!leveling) {
+          callback.status = 'missing'
+          return client.logger.warn(
+            "The user's level information has disappeared."
+          )
+        }
+
+        try {
+          await updateDoc(userDoc, { leveling: deleteField() })
+          callback.status = 'success'
+        } catch {
+          callback.status = 'error'
+        }
+
+        break
+      }
     }
+
+    // Check if user has level up
+    if (exp >= levelup) {
+      const authorUsername = message.member
+        ? message.member.username
+        : message.user.username
+      const authorAvatar = message.member
+        ? message.member.displayAvatarURL()
+        : message.user.displayAvatarURL()
+      const levelSystemEmbed = new EmbedBuilder()
+        .setTitle(client.i18n.t('utils.databaseUtils.congratulations'))
+        .setDescription(
+          client.i18n
+            .t('utils.databaseUtils.level_up')
+            .replace('%s1', authorUsername)
+            .replace('%s2', level)
+        )
+        .setColor('Yellow')
+        .setThumbnail(authorAvatar)
+
+      await updateDoc(userDoc, {
+        leveling: {
+          exp: (exp -= levelup),
+          level: ++level,
+        },
+      })
+
+      submitNotification(client, message.guild, 'general', levelSystemEmbed)
+    }
+  } else {
+    await setDoc(userDoc, dataStructures(client, 'user'))
+    fetchLevel(client, message, method, { member, amount, type })
+  }
+
+  return callback
 }
 
 /**
- * A wizard to set up information in the database for each guild and user.
- * 
- * @param {Client} client 
- * @param {Guild} guild 
+ * Fetches statistics from the database based on the provided method and path.
+ *
+ * @param {string} method - The HTTP method to use (GET or POST).
+ * @param {string} path - The path to the statistics data in the database.
+ * @param {object} client - The client object representing the user.
+ * @returns {Promise<any>} - A promise that resolves to the fetched statistics data.
  */
-const settingsData = (client, guild) => {
-    const defaultLanguage = "en-US";
-    const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "guilds"), guild.id);
-    const guildSnapshot = client.api.guilds ? client.api.guilds[guild.id] : set(child(child(ref(getDatabase(), "projects"), IDConvertor(client.user.username)), "guilds"), guild.id);
-    const notificationList = [
-        "alert",
-        "channelCreate",
-        "channelDelete",
-        "channelPinsUpdate",
-        "channelUpdate",
-        "emojiCreate",
-        "emojiDelete",
-        "emojiUpdate",
-        "guildBanAdd",
-        "guildBanRemove",
-        "guildIntegrationsUpdate",
-        "guildMemberAdd",
-        "guildMemberRemove",
-        "guildMembersChunk",
-        "guildUnavailable",
-        "inviteCreate",
-        "inviteDelete",
-        "roleCreate",
-        "roleDelete",
-        "roleUpdate",
-        "stageInstanceCreate",
-        "stageInstanceDelete",
-        "stageInstanceUpdate",
-        "stickerCreate",
-        "stickerDelete",
-        "stickerUpdate",
-        "threadCreate",
-        "threadDelete",
-        "threadUpdate",
-        "webhookUpdate"
-    ];
+const fetchStatistics = async (method, path, client) => {
+  const statisticsRef = child(ref(getDatabase(), 'statistics'), path)
 
-    if (guildSnapshot) {
-        if (!guildSnapshot.joinedAt) set(child(guildRef, "joinedAt"), guild.joinedAt ?? null);
-        if (!guildSnapshot.createdAt) set(child(guildRef, "createdAt"), guild.createdAt ?? null);
-        if (!guildSnapshot.description || guildSnapshot.description !== guild.description) set(child(guildRef, "description"), guild.description ?? "");
-        if (!guildSnapshot.iconURL || guildSnapshot.iconURL !== guild.iconURL()) set(child(guildRef, "iconURL"), guild.iconURL() ?? "");
-        if (!guildSnapshot.language) set(child(guildRef, "language"), client.config.language.code ?? defaultLanguage);
-        if (!guildSnapshot.memberCount || guildSnapshot.memberCount !== guild.memberCount) set(child(guildRef, "memberCount"), guild.memberCount ?? 0);
-        if (!guildSnapshot.name || guildSnapshot.name !== guild.name) set(child(guildRef, "name"), guild.name ?? "");
-        if (!guildSnapshot.verified || guildSnapshot.verified !== guild.verified) set(child(guildRef, "verified"), guild.verified ?? false);
-    } else {
-        set(guildRef, {
-            "joinedAt": guild.joinedAt ?? null,
-            "createdAt": guild.createdAt ?? null,
-            "description": guild.description ?? "",
-            "iconURL": guild.iconURL() ?? "",
-            "language": client.config.language.code ?? defaultLanguage,
-            "memberCount": guild.memberCount ?? 0,
-            "name": guild.name ?? "",
-            "verified": guild.verified ?? false
-        });
-    }
+  switch (method) {
+    case 'GET': {
+      switch (path) {
+        case 'size': {
+          const statisticsSnapshot = await get(statisticsRef)
+          const statisticsVal = statisticsSnapshot.exists()
+            ? statisticsSnapshot.val()
+            : null
 
-    if (guildSnapshot && guildSnapshot.notification) {
-        for (const notificationIndex in notificationList) {
-            const notificationName = notificationList[notificationIndex];
-            const notificationSnapshot = guildSnapshot.notification[notificationName];
-
-            if (typeof notificationSnapshot === "undefined") set(child(child(guildRef, "notification"), notificationName), false);
-            if (typeof notificationSnapshot !== "boolean") set(child(child(guildRef, "notification"), notificationName), notificationSnapshot ? true : false);
+          return statisticsVal
         }
-    } else {
-        set(child(guildRef, "notification"), {
-            "alert": false,
-            "channelCreate": false,
-            "channelDelete": false,
-            "channelPinsUpdate": false,
-            "channelUpdate": false,
-            "emojiCreate": false,
-            "emojiDelete": false,
-            "emojiUpdate": false,
-            "guildBanAdd": false,
-            "guildBanRemove": false,
-            "guildIntegrationsUpdate": false,
-            "guildMemberAdd": false,
-            "guildMemberRemove": false,
-            "guildMembersChunk": false,
-            "guildUnavailable": false,
-            "inviteCreate": false,
-            "inviteDelete": false,
-            "roleCreate": false,
-            "roleDelete": false,
-            "roleUpdate": false,
-            "stageInstanceCreate": false,
-            "stageInstanceDelete": false,
-            "stageInstanceUpdate": false,
-            "stickerCreate": false,
-            "stickerDelete": false,
-            "stickerUpdate": false,
-            "threadCreate": false,
-            "threadDelete": false,
-            "threadUpdate": false,
-            "webhookUpdate": false
-        });
+      }
     }
+    case 'POST': {
+      switch (path) {
+        case 'size': {
+          const statisticsSnapshot = await get(statisticsRef)
+          const statisticsVal = statisticsSnapshot.exists()
+            ? statisticsSnapshot.val()
+            : null
+          const prevCommandSize = statisticsVal ? statisticsVal.commands : 0
+          const prevGuildSize = statisticsVal ? statisticsVal.guilds : 0
+          const prevUserSize = statisticsVal ? statisticsVal.users : 0
+          const commandSize = client.commands.size ?? 0
+          const guildSize = client.guilds.cache.size ?? 0
+          const userSize = client.users.cache.size ?? 0
 
-    client.config.language.code = guildSnapshot && Object.keys(client.config.language.support).includes(guildSnapshot.language) ? guildSnapshot.language : defaultLanguage;
-    client.translate = require("../languages/" + client.config.language.code + ".json");
+          if (prevCommandSize !== commandSize)
+            update(statisticsRef, {
+              commands: commandSize,
+            })
+          if (prevGuildSize !== guildSize)
+            update(statisticsRef, {
+              guilds: guildSize,
+            })
+          if (prevUserSize !== userSize)
+            update(statisticsRef, {
+              users: userSize,
+            })
+          break
+        }
+        case 'size/worked': {
+          set(statisticsRef, increment(1))
+          break
+        }
+        default: {
+          if (path.startsWith('command') || path.startsWith('context')) {
+            set(statisticsRef, increment(1))
+            break
+          }
+
+          client.logger.warn(`Unknown post path at ${path}`)
+          break
+        }
+      }
+    }
+  }
+}
+
+/**
+ * The `submitNotification` function sends a notification to a specified channel in a guild with optional
+ * embed data.
+ * @param {Client} client - The `client` parameter is typically an instance of the Discord.js `Client` class. It
+ * represents the bot or user that is connected to the Discord API.
+ * @param {Guild} guild - The `guild` parameter represents the guild (server) where the notification will be
+ * sent. It is an object that contains information about the guild, such as its ID, name, and other
+ * properties.
+ * @param {String} eventName - The `eventName` parameter is a string that represents the name of the event for
+ * which the notification is being sent. It could be something like "userJoined", "messageDeleted",
+ * etc.
+ * @param {EmbedBuilder} embedData - The `embedData` parameter is an object that contains the data for creating an
+ * embed message. It includes properties such as `author`, `color`, `title`, `description`,
+ * `thumbnail`, `fields`, `image`, `timestamp`, `footer`, etc. These properties are used to customize
+ * the
+ * @returns The function `submitNotification` returns the result of the `GuildChannel` method call.
+ */
+const submitNotification = async (client, guild, eventName, embedData) => {
+  const guildDoc = doc(getFirestore(), 'guilds', guild.id)
+  const guildSnapshot = await getDoc(guildDoc)
+
+  if (!guildSnapshot.exists()) return null
+
+  const guildData = guildSnapshot.data()
+  const notification = guildData.notification
+
+  if (!notification) return null
+
+  const notify = notification[eventName]
+
+  if (!notify) return null
+
+  const channelId = notify.id
+  const content = notify.content
+  const enable = notify.enable
+  const embed = notify.embed
+
+  const channel = guild.channels.cache.find(
+    (channel) => channel.id === channelId
+  )
+
+  if (!channel) return null
+  if (!enable) return null
+  if (embed) {
+    embedData = embedBuilder(
+      client,
+      embed.author.name,
+      embed.author.url,
+      embed.author.iconURL,
+      embed.color,
+      embed.title,
+      embed.url,
+      embed.description,
+      embed.thumbnail,
+      embed.fields[0].name,
+      embed.fields[0].value,
+      embed.fields[0].inline,
+      embed.fields[1].name,
+      embed.fields[1].value,
+      embed.fields[1].inline,
+      embed.image,
+      embed.timestamp,
+      embed.footer.text,
+      embed.footer.iconURL
+    )
+  }
+
+  return channel.send({
+    content: content ?? '',
+    embeds: [embedData],
+  })
+}
+
+/**
+ * The `initializeData` function initializes and updates data for a guild in a database based on the
+ * provided client and guild information.
+ * @param {Client} client - The `client` parameter is an object representing the Discord bot client. It is used
+ * to interact with the Discord API and perform actions on behalf of the bot.
+ * @param {Guild} guild - The `guild` parameter is an object that represents a Discord guild (server). It
+ * contains various properties such as `id`, `joinedAt`, `createdAt`, `description`, `iconURL`,
+ * `language`, `memberCount`, `name`, and `verified`. These properties are used to initialize or
+ */
+const initializeData = async (client, guild) => {
+  const guildDoc = doc(getFirestore(), 'guilds', guild.id)
+  const guildSnapshot = await getDoc(guildDoc)
+
+  if (guildSnapshot.exists()) {
+    const guildData = guildSnapshot.data()
+
+    if (!guildData.joinedAt || guildData.joinedAt !== guild.joinedAt)
+      updateDoc(guildDoc, {
+        joinedAt: guild.joinedAt ?? dataStructures(client, 'guild').joinedAt,
+      })
+    if (!guildData.createdAt || guildData.createdAt !== guild.createdAt)
+      updateDoc(guildDoc, {
+        createdAt: guild.createdAt ?? dataStructures(client, 'guild').createdAt,
+      })
+    if (!guildData.description || guildData.description !== guild.description)
+      updateDoc(guildDoc, {
+        description:
+          guild.description ?? dataStructures(client, 'guild').description,
+      })
+    if (!guildData.iconURL || guildData.iconURL !== guild.iconURL())
+      updateDoc(guildDoc, {
+        iconURL: guild.iconURL() ?? dataStructures(client, 'guild').iconURL,
+      })
+    if (
+      !guildData.preferredLocale ||
+      guildData.preferredLocale !== guild.preferredLocale
+    )
+      updateDoc(guildDoc, {
+        preferredLocale:
+          guild.preferredLocale ||
+          dataStructures(client, 'guild').preferredLocale,
+      })
+    if (!guildData.memberCount || guildData.memberCount !== guild.memberCount)
+      updateDoc(guildDoc, {
+        memberCount:
+          guild.memberCount ?? dataStructures(client, 'guild').memberCount,
+      })
+    if (!guildData.name || guildData.name !== guild.name)
+      updateDoc(guildDoc, {
+        name: guild.name ?? dataStructures(client, 'guild').name,
+      })
+    if (!guildData.verified || guildData.verified !== guild.verified)
+      updateDoc(guildDoc, {
+        verified: guild.verified ?? dataStructures(client, 'guild').verified,
+      })
+    if (
+      !guildData?.language ||
+      typeof guildData?.language !== typeof dataStructures(client, 'language')
+    )
+      updateDoc(guildDoc, {
+        language: dataStructures(client, 'language'),
+      })
+
+    if (guildData?.language) {
+      if (guildData.language?.type === 'CUSTOM')
+        changeLanguage(client, guildData.language.locale)
+      if (guildData.language?.type === 'GUILD')
+        changeLanguage(client, guildData.preferredLocale)
+    }
+    if (guildData?.djs) {
+      if (
+        guildData.djs.roles &&
+        client.configs.djs.roles.join() !== guildData.djs.roles.join()
+      )
+        client.configs.djs.roles = guildData.djs.roles
+      if (
+        guildData.djs.users &&
+        client.configs.djs.users.join() !== guildData.djs.users.join()
+      )
+        client.configs.djs.users = guildData.djs.users
+    }
+  } else {
+    await setDoc(
+      guildDoc,
+      {
+        joinedAt: guild.joinedAt ?? dataStructures(client, 'guild').joinedAt,
+        createdAt: guild.createdAt ?? dataStructures(client, 'guild').createdAt,
+        description:
+          guild.description ?? dataStructures(client, 'guild').description,
+        iconURL: guild.iconURL() ?? dataStructures(client, 'guild').iconURL,
+        language: dataStructures(client, 'language'),
+        preferredLocale:
+          guild.preferredLocale ??
+          dataStructures(client, 'guild').preferredLocale,
+        memberCount:
+          guild.memberCount ?? dataStructures(client, 'guild').memberCount,
+        name: guild.name ?? dataStructures(client, 'guild').name,
+        verified: guild.verified ?? dataStructures(client, 'guild').verified,
+      },
+      { marge: true }
+    )
+    initializeData(client, guild)
+  }
 }
 
 module.exports = {
-    chatSystem,
-    levelSystem,
-    settingsData
+  dataStructures,
+  fetchLevel,
+  fetchStatistics,
+  submitNotification,
+  initializeData,
 }
