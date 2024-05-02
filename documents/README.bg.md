@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Отидете на https://firebase.google.com/ и започнете да настройвате проекта.
+- Отидете на [Портал за разработчици на Discord](https://discord.com/developers/applications)
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 

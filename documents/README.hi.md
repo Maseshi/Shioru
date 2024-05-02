@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- https://firebase.google.com/ पर जाएं और प्रोजेक्ट सेट करना शुरू करें।
+- [डिसॉर्डर डेवलपर पोर्टल](https://discord.com/developers/applications)पर जाएं
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 

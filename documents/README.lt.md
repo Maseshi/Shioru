@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Eikite į https://firebase.google.com/ ir pradėkite nustatyti projektą.
+- Eikite į [Discord kūrėjų portalą](https://discord.com/developers/applications)
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
