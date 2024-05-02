@@ -92,7 +92,7 @@ module.exports = {
     }
 
     // Set language by type
-    if (!guildData.language.type || guildData.language.type === 'USER')
+    if (!guildData?.language.type || guildData?.language.type === 'USER')
       changeLanguage(interaction.client, interaction.locale)
 
     // Increase user level
