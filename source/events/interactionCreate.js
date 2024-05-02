@@ -110,7 +110,7 @@ module.exports = {
           `No command matching ${commandName} was found.`
         )
 
-      executeCommand(command, 'command')
+      executeCommand(command, 'commands')
     }
     if (interaction.isAutocomplete()) {
       const commandName = interaction.commandName
@@ -136,7 +136,7 @@ module.exports = {
           `No context matching ${contextName} was found.`
         )
 
-      executeCommand(context, 'context')
+      executeCommand(context, 'contexts')
     }
   },
 }
