@@ -1,5 +1,7 @@
 @echo off
 cls
+
+@REM Check is in admin mode
 net session >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 powershell start -verb runas "%0" am_admin & exit /b
 
@@ -40,7 +42,7 @@ echo Finish installing and updating FFmpeg.
 
 @REM Building Tools installation
 echo Installing building tools...
-call npm install -g windows-build-tools
+call npm install -g windows-build-tools@latest
 echo Finish installing building components.
 
 @REM NPM installation
@@ -54,5 +56,5 @@ call npm install
 echo Completing the component installation.
 
 echo Starting the system...
-call node ./source/shard.js
+call npm start
 exit /b 0

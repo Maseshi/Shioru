@@ -1,181 +1,128 @@
-const { PermissionsBitField } = require("discord.js");
-const { readdirSync, readFileSync, unlinkSync } = require("node:fs");
+const {
+  SlashCommandBuilder,
+  AttachmentBuilder,
+  PermissionFlagsBits,
+} = require('discord.js')
+const { join } = require('node:path')
+const { existsSync, readFileSync, unlinkSync } = require('node:fs')
+const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
-    "enable": true,
-    "name": "logs",
-    "description": "Manage logs files saved in the system.",
-    "category": "developer",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "logs: get [type], read [file(String)], delete [file(String)]",
-    "function": {
-        "command": {}
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('logs')
+    .setDescription('Manage log files to check functionality or fix bugs.')
+    .setDescriptionLocalizations({
+      th: 'จัดการไฟล์เอกสารบันทึกเพื่อตรวจสอบการทำงานหรือแก้ไขข้อบกพร่อง',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('get')
+        .setDescription('Download work memorandum files')
+        .setDescriptionLocalizations({
+          th: 'ดาวน์โหลดไฟล์เอกสารบันทึกเกี่ยวกับการทำงาน',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('type')
+            .setDescription('Type of document file')
+            .setDescriptionLocalizations({
+              th: 'ประเภทของไฟล์เอกสารบันทึก',
+            })
+            .setRequired(true)
+            .setChoices(
+              { name: 'app', value: 'app.log' },
+              { name: 'debug', value: 'debug.json.log' },
+              { name: 'error', value: 'error.json.log' },
+              { name: 'fetal', value: 'fetal.json.log' },
+              { name: 'info', value: 'info.json.log' },
+              { name: 'trace', value: 'trace.json.log' },
+              { name: 'warn', value: 'warn.json.log' }
+            )
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('delete')
+        .setDescription('Remove unwanted log files from the folder.')
+        .setDescriptionLocalizations({
+          th: 'ลบไฟล์ล็อกที่ไม่ต้องการออกจากโฟลเดอร์',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('type')
+            .setDescription('Type of document file')
+            .setDescriptionLocalizations({
+              th: 'ประเภทของไฟล์เอกสารบันทึก',
+            })
+            .setRequired(true)
+            .setChoices(
+              { name: 'app', value: 'app.log' },
+              { name: 'debug', value: 'debug.json.log' },
+              { name: 'error', value: 'error.json.log' },
+              { name: 'fetal', value: 'fetal.json.log' },
+              { name: 'info', value: 'info.json.log' },
+              { name: 'trace', value: 'trace.json.log' },
+              { name: 'warn', value: 'warn.json.log' }
+            )
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputType = interaction.options.getString('type')
+
+    const directory = join('logs')
+    const file = join(directory, inputType)
+    const teamOwner = interaction.client.configs.team.owner
+    const teamDev = interaction.client.configs.team.developer
+
+    if (!existsSync(directory))
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.logs.empty_directory')
+      )
+    if (!existsSync(file))
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.logs.file_missing')
+      )
+
+    switch (subcommand) {
+      case 'get': {
+        const attachment = new AttachmentBuilder(file, {
+          name: inputType,
+          description: interaction.client.i18n.t(
+            'commands.logs.attachment_description'
+          ),
+        })
+        const fileContent = readFileSync(file, { encoding: 'utf-8' })
+
+        if (fileContent <= 1)
+          return await interaction.reply(
+            interaction.client.i18n.t('commands.logs.empty_content')
+          )
+
+        await interaction.reply({
+          content: interaction.client.i18n.t('commands.logs.found_file'),
+          files: [attachment],
+        })
+        break
+      }
+      case 'delete': {
+        if (
+          interaction.user.id !== teamOwner ||
+          !teamDev.includes(interaction.user.id)
+        )
+          return await interaction.reply(
+            interaction.client.i18n.t('commands.logs.only_owner_and_developers')
+          )
+
+        unlinkSync(file)
+        await interaction.reply(
+          interaction.client.i18n.t('commands.logs.file_has_been_deleted')
+        )
+        break
+      }
     }
-}
-
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "จัดการล็อกไฟล์ที่บันทึกไว้ในระบบ"
-        },
-        "options": [
-            {
-                "type": 1,
-                "name": "get",
-                "name_localizations": {
-                    "th": "รับ"
-                },
-                "description": "Get the information contained in the folder.",
-                "description_localizations": {
-                    "th": "รับข้อมูลที่มีอยู่ในโฟลเดอร์"
-                },
-                "options": [
-                    {
-                        "type": 3,
-                        "name": "type",
-                        "name_localizations": {
-                            "th": "ประเภท"
-                        },
-                        "description": "type of log file",
-                        "description_localizations": {
-                            "th": "ประเภทของไฟล์ล็อก"
-                        },
-                        "choices": [
-                            {
-                                "name": "catch",
-                                "value": "catch"
-                            },
-                            {
-                                "name": "debug",
-                                "value": "debug"
-                            },
-                            {
-                                "name": "error",
-                                "value": "error"
-                            },
-                            {
-                                "name": "process",
-                                "value": "process"
-                            }
-                        ],
-                        "required": true
-                    }
-                ]
-            },
-            {
-                "type": 1,
-                "name": "read",
-                "name_localizations": {
-                    "th": "อ่าน"
-                },
-                "description": "Read the desired log file.",
-                "description_localizations": {
-                    "th": "อ่านไฟล์ล็อกที่ต้องการ"
-                },
-                "options": [
-                    {
-                        "type": 3,
-                        "name": "filename",
-                        "name_localizations": {
-                            "th": "ชื่อไฟล์"
-                        },
-                        "description": "The name of the file to read details within the file.",
-                        "description_localizations": {
-                            "th": "ชื่อของไฟล์ที่ต้องการอ่านรายละเอียดภายในไฟล์"
-                        },
-                        "required": true
-                    }
-                ]
-            },
-            {
-                "type": 1,
-                "name": "delete",
-                "name_localizations": {
-                    "th": "ลบ"
-                },
-                "description": "Remove unwanted log files from the folder.",
-                "description_localizations": {
-                    "th": "ลบไฟล์ล็อกที่ไม่ต้องการออกจากโฟลเดอร์"
-                },
-                "options": [
-                    {
-                        "type": 3,
-                        "name": "filename",
-                        "name_localizations": {
-                            "th": "ชื่อไฟล์"
-                        },
-                        "description": "The name of the file to be deleted from the folder.",
-                        "description_localizations": {
-                            "th": "ชื่อของไฟล์ที่ต้องการจะลบออกจากโฟลเดอร์"
-                        },
-                        "required": true
-                    }
-                ]
-            }
-        ]
-    },
-    async execute(interaction) {
-        const subCommand = interaction.options.getSubcommand();
-        const inputType = interaction.options.getString("type") ?? "";
-        const inputFilename = interaction.options.getString("filename") ?? "";
-
-        const folderPath = "./source/logs/";
-        const teamOwner = parseInt(interaction.client.config.team.owner);
-        const teamDev = interaction.client.config.team.developer.map(Number);
-
-        switch (subCommand) {
-            case "get":
-                try {
-                    const logs = readdirSync(folderPath).filter(files => files.endsWith(".log"));
-                    const listFilename = logs.filter(log => log.includes(inputType));
-
-                    if (listFilename) {
-                        await interaction.reply(interaction.client.translate.commands.logs.found_file.replace("%s1", listFilename.length).replace("%s2", listFilename.join(" \n")));
-                    } else {
-                        await interaction.reply(interaction.client.translate.commands.logs.file_not_found.replace("%s", inputType));
-                    }
-                } catch (error) {
-                    await interaction.reply(interaction.client.translate.commands.logs.folder_empty);
-                }
-                break;
-            case "read":
-                try {
-                    const fileString = readFileSync(folderPath + inputFilename, "utf8");
-
-                    await interaction.reply("```JavaScript\n%s\n```".replace("%s", fileString));
-                } catch {
-                    try {
-                        const fileString = readFileSync(folderPath + inputFilename + ".log", "utf8");
-
-                        await interaction.reply("```JavaScript\n%s\n```".replace("%s", fileString));
-                    } catch (error) {
-                        await interaction.reply(interaction.client.translate.commands.logs.can_not_read_file.replace("%s", error));
-                    }
-                }
-                break;
-            case "delete":
-                if ((interaction.user.id !== teamOwner) || (!teamDev.includes(interaction.user.id))) {
-                    return interaction.reply(interaction.client.translate.commands.logs.owner_only);
-                }
-
-                try {
-                    unlinkSync(folderPath + inputFilename);
-
-                    await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputFilename));
-                } catch {
-                    try {
-                        unlinkSync(folderPath + inputFilename + ".log");
-
-                        await interaction.reply(interaction.client.translate.commands.logs.file_has_been_deleted.replace("%s", inputFilename));
-                    } catch (error) {
-                        await interaction.reply(interaction.client.translate.commands.logs.can_not_delete_file.replace("%s", error));
-                    }
-                }
-                break;
-        }
-    }
+  },
 }

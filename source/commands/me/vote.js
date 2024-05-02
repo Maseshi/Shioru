@@ -1,78 +1,80 @@
-const { EmbedBuilder, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-const { Api } = require("@top-gg/sdk");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require('discord.js')
+const { get } = require('axios').default
 
 module.exports = {
-    "enable": true,
-    "name": "vote",
-    "description": "Vote for this bot on Top.gg.",
-    "category": "me",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "vote",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('vote')
+    .setDescription('Vote for this bot on Top.gg.')
+    .setDescriptionLocalizations({
+      th: 'โหวตคะแนนให้บอทนี้บน top.gg',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true),
+  async execute(interaction) {
+    const clientAvatar = interaction.client.user.avatarURL()
+    const clientUsername = interaction.client.user.username
+    const clientTopGgID = interaction.client.configs.top_gg.id
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "โหวต"
+    const topName = 'top.gg'
+    const topColor = '#FF3366'
+    const topURL = 'https://top.gg'
+    const topFavicon = `${topURL}/favicon.png`
+    const topBotLink = `${topURL}/bot/${clientTopGgID}`
+    const topResponse = await get(`${topURL}/api/bots/${clientTopGgID}`, {
+      headers: {
+        Authorization: interaction.client.configs.top_gg.token,
+      },
+    })
+
+    const date = new Date(topResponse.data.date)
+    const invite = topResponse.data.invite
+    const point = topResponse.data.points
+    const shortDescription = topResponse.data.shortdesc
+    const tags = topResponse.data.tags.join(', ')
+
+    const voteRow = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setURL(invite)
+        .setLabel(interaction.client.i18n.t('commands.vote.invite'))
+        .setStyle(ButtonStyle.Link),
+      new ButtonBuilder()
+        .setURL(topBotLink + '/vote')
+        .setLabel(interaction.client.i18n.t('commands.vote.vote'))
+        .setStyle(ButtonStyle.Link)
+    )
+    const voteEmbed = new EmbedBuilder()
+      .setTitle(clientUsername)
+      .setURL(topBotLink)
+      .setDescription(`\`\`\`${shortDescription}\`\`\``)
+      .setFields(
+        {
+          name: interaction.client.i18n.t('commands.vote.votes'),
+          value: point.toString(),
+          inline: false,
         },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "โหวตคะแนนให้บอทนี้บน top.gg"
-        },
-    },
-    async execute(interaction) {
-        const topName = "top.gg";
-        const topURL = "https://top.gg/";
-        const topColor = "#FF3366";
-        const topFavicon = topFavicon + "favicon.png";
-        const topBotLink = topFavicon + "bot/704706906505347183";
-        
-        const clientAvatar = interaction.client.user.avatarURL();
-        const clientUsername = interaction.client.user.username;
+        {
+          name: interaction.client.i18n.t('commands.vote.tags'),
+          value: tags,
+          inline: false,
+        }
+      )
+      .setThumbnail(clientAvatar)
+      .setColor(topColor)
+      .setTimestamp(date)
+      .setFooter({ text: interaction.client.i18n.t('commands.vote.added') })
+      .setAuthor({ name: topName, iconURL: topFavicon, url: topURL })
 
-        const api = new Api(interaction.client.config.top_gg_token);
-        const results = await api.getBot("704706906505347183");
-        const date = new Date(results.date);
-        const invite = results.invite;
-        const point = results.points;
-        const shortDescription = results.shortdesc;
-        const tags = results.tags.join(", ");
-
-        const voteRow = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setURL(invite)
-                    .setLabel(interaction.client.translate.commands.vote.invite)
-                    .setStyle(ButtonStyle.Link),
-                new ButtonBuilder()
-                    .setURL(topBotLink + "/vote")
-                    .setLabel(interaction.client.translate.commands.vote.vote)
-                    .setStyle(ButtonStyle.Link)
-            );
-        const voteEmbed = new EmbedBuilder()
-            .setTitle(clientUsername)
-            .setURL(topBotLink)
-            .setDescription(
-                [
-                    "**" + interaction.client.translate.commands.vote.votes + "**: `" + point + "`",
-                    "**" + interaction.client.translate.commands.vote.tags + "**: `" + tags + "`",
-                    "```" + shortDescription + "```"
-                ].join("\n")
-            )
-            .setThumbnail(clientAvatar)
-            .setColor(topColor)
-            .setTimestamp(date)
-            .setAuthor({ "name": topName, "iconURL": topFavicon, "url": topURL });
-
-        await interaction.reply({
-            "embeds": [voteEmbed],
-            "components": [voteRow]
-        });
-    }
-};
+    await interaction.reply({
+      embeds: [voteEmbed],
+      components: [voteRow],
+    })
+  },
+}

@@ -1,72 +1,40 @@
-const { PermissionsBitField } = require("discord.js");
-const { catchError } = require("../../utils/consoleUtils");
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const { chatPage } = require('../../utils/browserUtils')
 
 module.exports = {
-    "enable": true,
-    "name": "ask",
-    "description": "Ask the bot something",
-    "category": "me",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "ask <messages(String)>",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('ask')
+    .setDescription('Ask anything according to what you want.')
+    .setDescriptionLocalizations({
+      th: 'ถามอะไรก็ได้ตามสิ่งที่คุณต้องการ',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addStringOption((option) =>
+      option
+        .setName('prompt')
+        .setDescription('What do you want to ask?')
+        .setDescriptionLocalizations({
+          th: 'สิ่งที่ต้องการจะถาม',
+        })
+        .setRequired(true)
+        .setMinLength(5)
+    ),
+  async execute(interaction) {
+    const inputPrompt = interaction.options.getString('prompt')
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "ถาม"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "ถามบางอย่างกับบอท"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "messages",
-                "name_localizations": {
-                    "th": "ข้อความ"
-                },
-                "description": "What you want to ask.",
-                "description_localizations": {
-                    "th": "สิ่งที่คุณต้องการจะถาม"
-                },
-                "required": true
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputMessages = interaction.options.getString("messages");
+    await interaction.deferReply()
 
-        if (!interaction.client.ai) return interaction.reply(interaction.client.translate.commands.ask.has_been_disabled);
+    const response = await chatPage(inputPrompt, 'ask')
 
-        await interaction.deferReply();
+    if (response.status !== 200)
+      return interaction.editReply(
+        '❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้รอฉันว่างแล้วถามฉันใหม่อีกรอบในครั้งหน้าละกันนะ'
+      )
 
-        try {
-            const response = await interaction.client.ai.createCompletion({
-                "model": "text-davinci-003",
-                "prompt": inputMessages,
-                "user": interaction.client.user.username
-            });
+    const result = response.result
 
-            if (!response.data && response.data.choices) {
-                catchError(interaction.client, interaction, "chatSystem", response.data, true);
-                return await interaction.editReply(interaction.client.translate.commands.ask.cannot_reply_at_this_time);
-            }
-
-            interaction.editReply(response.data.choices[0].text);
-        } catch (error) {
-            if (error.response) {
-                await interaction.editReply(interaction.client.translate.commands.ask.error_cannot_reply.replace("%s", error.response.status));
-                return catchError(interaction.client, interaction, module.exports.name, error, true);
-            } else {
-                return catchError(interaction.client, interaction, module.exports.name, error);
-            }
-        }
-    }
-};
+    await interaction.editReply(`\`\`\`${result}\`\`\``)
+  },
+}

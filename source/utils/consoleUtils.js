@@ -1,184 +1,326 @@
-const discord = require("discord.js");
-const { format } = require("node:util");
-const { getApps } = require("firebase/app");
-const { createWriteStream, existsSync, mkdirSync } = require("node:fs");
-const packages = require("../../package.json");
+const discord = require('discord.js')
+const pino = require('pino')
+const { getApps } = require('firebase/app')
+const { join } = require('node:path')
+const { readFileSync } = require('node:fs')
+const { webhookSend } = require('./clientUtils')
+const packages = require('../../package.json')
 
 /**
- * 8-bit: 256-color mode\
- * https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
- * 
- * @param {Number} code Color codes in ANSI
- * @param {String} mode Supports 3 modes: **foreground**, **background** and **sgr**.
+ * The startScreen function displays the start screen of the application.
+ * It uses the colorize function to apply colors to the text.
+ * The function reads ASCII art files and replaces placeholders with package version characters.
+ * It then writes the formatted text to the standard output.
+ * If the application is running in development mode, it also displays a development mode message.
+ * If the application is running in sharding mode, it displays a sharding mode message.
+ *
+ * @returns {void}
  */
-const ansiColor = (code, mode) => {
-    if (code === null) return console.log("[ansiColor] Please configure the color of ANSI.");
-    if (!mode) return console.log("[ansiColor] Please confirm the ANSI mode, including 'foreground', 'background' and 'sgr'.");
+const startScreen = () => {
+  const { bright, blue, yellow } = colorize()
+  const shioruText = readFileSync('./source/assets/ascii/shioru.txt', 'utf-8')
+  const devModeText = readFileSync(
+    './source/assets/ascii/development.txt',
+    'utf-8'
+  )
+  const shardingModeText = readFileSync(
+    './source/assets/ascii/sharding.txt',
+    'utf-8'
+  )
 
-    if (mode === "foreground") return "\x1b[38;5;" + code.toString() + "m";
-    if (mode === "background") return "\x1b[48;5;" + code.toString() + "m";
-    if (mode === "sgr") return "\x1b[" + code.toString() + "m";
+  process.stdout.write(
+    blue(
+      bright(
+        shioruText
+          .replace('%char1', packages.version.charAt(0))
+          .replace('%char2', packages.version.charAt(2))
+          .replace('%char3', packages.version.charAt(4))
+      )
+    )
+  )
+  process.stdout.write('\n')
+  process.stdout.write(
+    'Copyright (C) 2020-2024 Chaiwat Suwannarat. All rights reserved.'
+  )
+  process.stdout.write('\n')
+  process.stdout.write(
+    'Website: https://shiorus.web.app/, License: MIT & CC0-1.0'
+  )
+  process.stdout.write('\n')
+
+  /**
+   * Check the work system from the script in packages.json.
+   * Example of use in development mode: npm run dev
+   * Production mode is "start"
+   * Development mode is "dev" or "serve"
+   */
+  if (process.env?.npm_lifecycle_event === 'dev') {
+    process.stdout.write('\n')
+    process.stdout.write(yellow(devModeText))
+    process.stdout.write('\n')
+  }
+  if (process.env?.npm_lifecycle_event === 'serve') {
+    process.stdout.write('\n')
+    process.stdout.write(yellow(shardingModeText))
+    process.stdout.write('\n')
+  }
 }
 
 /**
  * Detects errors and informs the user about them.
- * 
- * @param {Client} client 
- * @param {String} message 
+ *
+ * @param {Client} client
+ * @param {String} message
  * @param {String} name The name of the command or event.
- * @param {Error} error 
- * @param {Boolean} private Set to `true` when you don't want to notify the user.
+ * @param {Error} error
+ * @param {Boolean} silent Set to `true` when you don't want to notify user.
  * @returns error
  */
-const catchError = async (client, message, name, error, private = false) => {
-    if (!name) return console.log("[catchError] Please specify the name of the command or function.");
-    if (!error) return console.log("[catchError] Please forward any errors that have occurred.");
+const catchError = async (client, message, name, error, silent = false) => {
+  if (!name)
+    return client.logger.warn(
+      'Please specify the name of the command or function.'
+    )
+  if (!error)
+    return client.logger.warn('Please forward any errors that have occurred.')
+  if (message) {
+    const ping = Date.now() - message.createdTimestamp
+    const api = Math.round(client.ws.ping)
 
-    const clearStyle = ansiColor(0, "sgr");
-    const boldStyle = ansiColor(1, "sgr");
-    const whiteColor = ansiColor(15, "foreground");
-    const redBackground = ansiColor(9, "background");
+    const catchErrorEmbed = new discord.EmbedBuilder()
+      .setTitle(client.i18n.t('utils.consoleUtils.an_error_occurred'))
+      .setDescription(
+        client.i18n
+          .t('utils.consoleUtils.error_detail')
+          .replace('%s1', name)
+          .replace('%s2', packages.version)
+          .replace('%s3', new Date())
+          .replace(
+            '%s4',
+            getApps().length === 0
+              ? client.i18n.t('utils.consoleUtils.server_abnormal')
+              : client.i18n.t('utils.consoleUtils.server_normal')
+          )
+          .replace('%s5', ping)
+          .replace('%s6', api)
+          .replace('%s7', error)
+      )
+      .setColor(discord.Colors.Red)
+      .setTimestamp()
 
-    if (message) {
-        const ping = Date.now() - message.createdTimestamp;
-        const api = Math.round(client.ws.ping);
-
-        const catchErrorEmbed = new discord.EmbedBuilder()
-            .setTitle(client.translate.utils.consoleUtils.an_error_occurred)
-            .setDescription(
-                client.translate.utils.consoleUtils.error_detail.replace("%s1", name)
-                    .replace("%s2", packages.version)
-                    .replace("%s3", new Date())
-                    .replace("%s4", ((getApps().length === 0) ? client.translate.utils.consoleUtils.server_abnormal : client.translate.utils.consoleUtils.server_normal))
-                    .replace("%s5", ping)
-                    .replace("%s6", api)
-                    .replace("%s7", error)
-            )
-            .setColor("Red")
-            .setTimestamp()
-
-        if ((message.author && message.author.id) === client.user.id) {
-            if (!private) message.edit({
-                "content": null,
-                "embeds": [catchErrorEmbed],
-                "ephemeral": true
-            });
-        } else {
-            try {
-                if (!private) await message.editReply({
-                    "content": null,
-                    "embeds": [catchErrorEmbed],
-                    "ephemeral": true
-                });
-            } catch {
-                try {
-                    if (!private) message.reply({
-                        "content": null,
-                        "embeds": [catchErrorEmbed],
-                        "ephemeral": true
-                    });
-                } catch {
-                    try {
-                        if (!private) message.send({
-                            "content": null,
-                            "embeds": [catchErrorEmbed],
-                            "ephemeral": true
-                        });
-                    } catch {
-                        try {
-                            if (!private) message.channel.send({
-                                "content": null,
-                                "embeds": [catchErrorEmbed],
-                                "ephemeral": true
-                            });
-                        } catch (err) {
-                            logGenerator("catch", err)
-
-                            console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
-                            console.group(boldStyle + "Full Error:" + clearStyle);
-                            console.error(err);
-                            console.groupEnd();
-                            console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-                            console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-                            console.info(boldStyle + "Node.js: " + clearStyle + process.version);
-                            console.groupEnd();
-                        }
-                    }
-                }
-            }
-        }
+    const contents = {
+      content: null,
+      embeds: [catchErrorEmbed],
+      ephemeral: true,
     }
 
-    logGenerator("catch", error);
+    if (client.configs.logger.error.enable) {
+      const errorWebhook = new discord.WebhookClient({
+        url: client.configs.logger.error.webhookURL,
+      })
 
-    console.group("\u001b[1m[" + timeConsole(new Date()) + "]\u001b[0m :: " + redBackground + whiteColor + boldStyle + "Catch Error" + clearStyle);
-    console.group(boldStyle + "Full Error:" + clearStyle);
-    console.error(error);
-    console.groupEnd();
-    console.info(boldStyle + "Package:" + clearStyle + " v" + packages.version);
-    console.info(boldStyle + "Discord.js:" + clearStyle + " v" + discord.version);
-    console.info(boldStyle + "Node.js: " + clearStyle + process.version);
-    console.groupEnd();
-    return error;
+      webhookSend(
+        errorWebhook,
+        client.configs.logger.error.webhookName,
+        client.configs.logger.error.webhookAvatarURL,
+        '⚠️・error',
+        client.i18n
+          .t('utils.consoleUtils.error_detail')
+          .replace('%s1', name)
+          .replace('%s2', packages.version)
+          .replace('%s3', new Date())
+          .replace(
+            '%s4',
+            getApps().length === 0
+              ? client.i18n.t('utils.consoleUtils.server_abnormal')
+              : client.i18n.t('utils.consoleUtils.server_normal')
+          )
+          .replace('%s5', ping)
+          .replace('%s6', api)
+          .replace('%s7', error),
+        [],
+        'Red'
+      )
+    }
+
+    try {
+      if (!silent) await message.followUp(contents)
+    } catch {
+      try {
+        if (!silent) {
+          if (message.channel) await message.channel.reply(contents)
+          else await message.reply(contents)
+        }
+      } finally {
+        if (!silent) {
+          if (message.channel) await message.channel.send(contents)
+          else await message.send(contents)
+        }
+      }
+    }
+  }
+
+  client.logger.error(
+    {
+      version: {
+        package: packages.version,
+        discord: discord.version,
+        node: process.version,
+      },
+    },
+    'Catch Error'
+  )
+  client.logger.error(error)
+  return error
 }
 
 /**
- * For quarantine logs as a temporary file
- * 
- * @param {String} name The name of the quarantined file or process name, e.g. **process**, **error**, **warn** etc.
- * @param {String} info log data
+ * Returns an object with colorization functions for text.
+ *
+ * @returns {Object} An object with colorization functions.
+ *
  * @example
- * logGenerator("debug", "[WS => Shard 0] [HeartbeatTimer] Sending a heartbeat.")
+ *
+ * const colors = colorize();
+ * console.log(colors.red('This is red text'));
+ * console.log(colors.bgBlue('This has a blue background'));
  */
-const logGenerator = (name, info) => {
-    if (!name) return console.log("[LogGenerator] No name provided!");
-    if (!info) return console.log("[LogGenerator] No info provided!");
+const colorize = () => {
+  const colors = {
+    reset: '\x1b[0m',
+    bright: '\x1b[1m',
+    dim: '\x1b[2m',
+    underscore: '\x1b[4m',
+    blink: '\x1b[5m',
+    reverse: '\x1b[7m',
+    hidden: '\x1b[8m',
 
-    const date = new Date();
-    const at = timeConsole(date, "date");
-    const when = timeConsole(date, "time");
-    const directory = "./source/logs/";
+    black: '\x1b[30m',
+    red: '\x1b[31m',
+    green: '\x1b[32m',
+    yellow: '\x1b[33m',
+    blue: '\x1b[34m',
+    magenta: '\x1b[35m',
+    cyan: '\x1b[36m',
+    white: '\x1b[37m',
 
-    if (!existsSync(directory)) mkdirSync(directory);
+    bgBlack: '\x1b[40m',
+    bgRed: '\x1b[41m',
+    bgGreen: '\x1b[42m',
+    bgYellow: '\x1b[43m',
+    bgBlue: '\x1b[44m',
+    bgMagenta: '\x1b[45m',
+    bgCyan: '\x1b[46m',
+    bgWhite: '\x1b[47m',
+  }
 
-    const file = createWriteStream(directory + name + "_" + at + ".log", {
-        "flags": "a"
-    });
+  return {
+    reset: (text) => colors.reset + text + colors.reset,
+    bright: (text) => colors.bright + text + colors.reset,
+    dim: (text) => colors.dim + text + colors.reset,
+    underscore: (text) => colors.underscore + text + colors.reset,
+    blink: (text) => colors.blink + text + colors.reset,
+    reverse: (text) => colors.reverse + text + colors.reset,
+    hidden: (text) => colors.hidden + text + colors.reset,
 
-    file.write(format("[%s]: %s\n", when, info));
+    black: (text) => colors.black + text + colors.reset,
+    red: (text) => colors.red + text + colors.reset,
+    green: (text) => colors.green + text + colors.reset,
+    yellow: (text) => colors.yellow + text + colors.reset,
+    blue: (text) => colors.blue + text + colors.reset,
+    magenta: (text) => colors.magenta + text + colors.reset,
+    cyan: (text) => colors.cyan + text + colors.reset,
+    white: (text) => colors.white + text + colors.reset,
 
-    // After finishing the process, the new line will help to be easier to read.
-    ["exit", "SIGINT", "SIGUSR1", "SIGUSR2", "SIGTERM"].forEach((eventType) => {
-        process.on(eventType, () => {
-            process.stdin.resume();
-            file.write("\n");
-            process.exit();
-        });
-    });
+    bgBlack: (text) => colors.bgBlack + text + colors.reset,
+    bgRed: (text) => colors.bgRed + text + colors.reset,
+    bgGreen: (text) => colors.bgGreen + text + colors.reset,
+    bgYellow: (text) => colors.bgYellow + text + colors.reset,
+    bgBlue: (text) => colors.bgBlue + text + colors.reset,
+    bgMagenta: (text) => colors.bgMagenta + text + colors.reset,
+    bgCyan: (text) => colors.bgCyan + text + colors.reset,
+    bgWhite: (text) => colors.bgWhite + text + colors.reset,
+  }
 }
 
 /**
- * Calculated as the current time and tailored to the console time.
- * 
- * @param {Date} date time of occurrence
- * @param {String} format Three options are supported: **full**, **date** and **time**.
+ * Initializes a logger using the pino library with multiple targets for logging.
+ *
+ * @returns {Object} The logger object.
  */
-const timeConsole = (date, format = "full") => {
-    const day = date.getDay();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    if (format === "full") return year + "-" + month + "-" + day + "." + hours + ":" + minutes + ":" + seconds;
-    if (format === "date") return year + "-" + month + "-" + day;
-    if (format === "time") return hours + ":" + minutes + ":" + seconds;
-};
+const logger = pino({
+  name: packages.name,
+  level: 'trace',
+  transport: {
+    targets: [
+      {
+        target: 'pino-pretty',
+      },
+      {
+        level: 'trace',
+        target: 'pino-pretty',
+        options: {
+          colorize: false,
+          destination: join(__dirname, '..', '..', 'logs', 'app.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'fatal',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'fatal.json.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'error',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'error.json.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'warn',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'warn.json.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'info',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'info.json.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'debug',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'debug.json.log'),
+          mkdir: true,
+        },
+      },
+      {
+        level: 'trace',
+        target: 'pino/file',
+        options: {
+          destination: join(__dirname, '..', '..', 'logs', 'trace.json.log'),
+          mkdir: true,
+        },
+      },
+    ],
+    dedupe: false,
+  },
+})
 
 module.exports = {
-    ansiColor,
-    catchError,
-    logGenerator,
-    timeConsole
+  startScreen,
+  catchError,
+  colorize,
+  logger,
 }

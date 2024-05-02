@@ -20,7 +20,7 @@ echo Finished installing FFmpeg.
 
 # Building Tools installation
 echo Installing building tool...
-apt-get install -y libtool-bin || sudo apt-get install -y libtool-bin
+apt-get install -y build-essential || sudo apt-get install -y build-essential
 echo Finish installing building tool.
 
 # NPM installation
@@ -34,4 +34,4 @@ npm install || sudo npm install
 echo Completing the component installation.
 
 echo Starting the system...
-node ./source/shard.js || sudo node ./source/shard.js
+npm start || sudo npm start

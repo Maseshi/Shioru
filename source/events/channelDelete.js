@@ -1,31 +1,28 @@
-const { Events, EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { settingsData } = require("../utils/databaseUtils");
-const { IDConvertor } = require("../utils/miscUtils");
+const { Events, EmbedBuilder } = require('discord.js')
+const { submitNotification, initializeData } = require('../utils/databaseUtils')
 
 module.exports = {
-    "name": Events.ChannelDelete,
-    "once": false,
-    execute(channel) {
-        settingsData(channel.client, channel.guild);
+  name: Events.ChannelDelete,
+  once: false,
+  async execute(channel) {
+    const channelDeleteEmbed = new EmbedBuilder()
+      .setTitle(
+        channel.client.i18n.t('events.channelDelete.channel_notification')
+      )
+      .setDescription(
+        channel.client.i18n
+          .t('events.channelDelete.member_delete_channel')
+          .replace('%s', channel.name)
+      )
+      .setTimestamp()
+      .setColor('Yellow')
 
-        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(channel.client.user.username)), "guilds"), channel.guild.id);
-        const channelRef = child(guildRef, "notification/channelDelete");
-        const channelSnapshot = channel.client.api.guilds[channel.guild.id].notification.channelDelete;
-
-        if (typeof channelSnapshot === "boolean") {
-            const notification = channel.guild.channels.cache.find(channels => channels.id === channelSnapshot);
-            const channelDeleteEmbed = new EmbedBuilder()
-                .setTitle(channel.client.translate.events.channelDelete.channel_notification)
-                .setDescription(channel.client.translate.events.channelDelete.member_delete_channel.replace("%s", channel.name))
-                .setTimestamp()
-                .setColor("Yellow");
-
-            if (!notification) return;
-
-            notification.send({ "embeds": [channelDeleteEmbed] });
-        } else {
-            set(channelRef, channelSnapshot ? true : false).then(() => module.exports.execute(channel));
-        }
-    }
-};
+    await initializeData(channel.client, channel.guild)
+    await submitNotification(
+      channel.client,
+      channel.guild,
+      Events.ChannelDelete,
+      channelDeleteEmbed
+    )
+  },
+}

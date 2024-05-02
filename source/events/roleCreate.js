@@ -1,31 +1,26 @@
-const { Events, EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { settingsData } = require("../utils/databaseUtils");
-const { IDConvertor } = require("../utils/miscUtils");
+const { Events, EmbedBuilder } = require('discord.js')
+const { submitNotification, initializeData } = require('../utils/databaseUtils')
 
 module.exports = {
-    "name": Events.GuildRoleCreate,
-    "once": false,
-    execute(role) {
-        settingsData(role.client, role.guild);
+  name: Events.GuildRoleCreate,
+  once: false,
+  async execute(role) {
+    const roleCreateEmbed = new EmbedBuilder()
+      .setTitle(role.client.i18n.t('events.roleCreate.role_notification'))
+      .setDescription(
+        role.client.i18n
+          .t('events.roleCreate.role_create')
+          .replace('%s', role.id)
+      )
+      .setTimestamp()
+      .setColor('Yellow')
 
-        const guildRef = child(child(child(ref(getDatabase(), "projects"), IDConvertor(role.client.user.username)), "guilds"), role.guild.id);
-        const channelRef = child(guildRef, "notification/roleCreate");
-        const channelSnapshot = role.client.api.guilds[role.guild.id].notification.roleCreate;
-
-        if (typeof channelSnapshot === "boolean") {
-            const notification = role.guild.channels.cache.find(channels => channels.id === channelSnapshot);
-            const roleCreate = new EmbedBuilder()
-                .setTitle(role.client.translate.events.roleCreate.role_notification)
-                .setDescription(role.client.translate.events.roleCreate.role_create.replace("%s", role.id))
-                .setTimestamp()
-                .setColor("Yellow");
-
-            if (!notification) return;
-
-            notification.send({ "embeds": [roleCreate] });
-        } else {
-            set(channelRef, channelSnapshot ? true : false).then(() => module.exports.execute(role));
-        }
-    }
-};
+    await initializeData(role.client, role.guild)
+    await submitNotification(
+      role.client,
+      role.guild,
+      Events.GuildRoleCreate,
+      roleCreateEmbed
+    )
+  },
+}

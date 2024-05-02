@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
   <strong>
     <h1>Shioru</h2>
-    <p>Assistants within your Discord server will help make your server a better place to live.</p>
+    <p>Personal assistants in Discord that will help make your guild a better place.</p>
   </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
@@ -25,7 +25,7 @@
 
 [Switch Languages](https://github.com/Maseshi/Shioru/tree/main/documents)
 
-Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`.
+Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
 <div align="center">
   <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
@@ -43,89 +43,133 @@ Your good server assistant will help make your server look more lively. She can 
 - Support customization of server notifications
 - You can chat by typing `@Shioru` followed by the message you wish to communicate.
 - Able to use application commands (/)
+- Simulate a database system for testing
+- Supports working on shards
 
 And many other interesting features...
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
-- [Python](https://www.python.org/downloads/) v2.0.0 or higher
-- [Firebase](https://firebase.google.com/)
+- [Python](https://www.python.org/downloads/) v3.8.0 or higher
+- [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) or [manual install](#1-install-build-tools)
+- [Firebase Tools](https://firebase.google.com/docs/cli)
 - [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## Quick setup guide
+## Installation
 
-Tested on Mac, Linux and Windows Systems
+### 1. Install **Build Tools**
 
-### Add bot to the server.   
+Install **Build tools** by running the following command according to your operating system.
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-- Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
+- For Linux and MacOS operating systems
+
+```sh
+sudo apt update
+sudo apt install build-essential
+```
+
+- For Windows operating system
+
+```sh
+npm install --global --production --add-python-to-path windows-build-tools
+```
+
+> **💡 TIP**: You can skip this step through the Node.js installer as shown in the following image. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+
+### 2. Clone the bot and install the components.
+
+- Launch a terminal and run the following command.
+  ```bat
+  git clone https://github.com/Maseshi/Shioru.git
+  cd Shioru
+  npm install
+  ```
+- Change the file name `.env.example` to `.env` and enter all required values.
+  > **💡 NOTE**: You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
+
+### 3. Setup bot and invite to join.
+
+- Go to [Discord Developer Portal](https://discord.com/developers/applications)
+- Click **"New Application"** and name your bot and accept the Discord policy rules.
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intent** section.
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands`, selecting `Administrator`, then copy the link and paste it in the browser address bar. Your sir
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### Setup a bot
-
-- Since we use [sodium](https://www.npmjs.com/package/sodium) for encryption and decryption, we need to install the following additional components:
-
-```bat
-@REM On Windows
-npm install -g windows-build-tools
-```
-```sh
-# On MacOS (Darwin)
-brew install libtool autoconf automake
-```
-```sh
-# On Linux
-sudo apt-get install libtool-bin
-```
-
-- Launch a terminal and run the following commands.
-
-```bat
-git clone https://github.com/Maseshi/Shioru.git
-cd Shioru
-npm install
-```
-
-- You can edit some data in **config** at `./source/configs/data.js`.
-
-### Setup Firebase
+### 4. Setup database
 
 - Go to https://firebase.google.com/ and start setting up the project.
-- Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
+- Add a new project and follow the steps.
+- Add your first application with **Website** Name your app without needing to select the **"Also set up Firebase Hosting for this app."** option and register the app.
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
+- Firebase will provide you with information about its configuration. Apply these values to the file. `.env`
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
-### Development
+## 🪛 Development
 
-- Rename the `.env.example` file to `.env` and add all values.
-- Go to terminal and run `npm run dev` for development and `npm start` for production.
-  > **NOTE**: When you enter development mode, some features may be disabled, such as sending statistics, updating data, etc.
+- Open a terminal and run `npm run emulators` to simulate the database system in **dev mode**.
+- Open a new terminal and run the command `npm run dev`.
+  > **💡 NOTE**: When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
+
+## ☕ Serve
+
+Test the actual use by performing tasks similar to real use. The system will automatically calculate the split of the work fraction according to the number of guilds.
+
+- Open a terminal and run `npm run emulators` to simulate the database system in **emulation mode**.
+- Open a new terminal and run the command `npm run serve`.
+  > **💡 NOTE:** You will automatically enter development mode as this is a production simulation. Cause some features may not work.
+
+## 🍵 Production
+
+For actual use, the prepared command or set of commands can be used normally as follows:
+
+- On Linux or MacOS
+
+  ```sh
+  # with command file (recommend)
+
+  sh start.sh || sudo sh start.sh
+
+  # or with call command
+
+  npm start
+  ```
+
+- On Windows
+
+  ```bat
+  @REM with command file (recommend)
+
+  ./start.bat
+
+  @REM or with call command
+
+  npm start
+  ```
+
+### 🐳 Running on Docker
+
+This operation requires [Docker](https://www.docker.com/products/docker-desktop/)
+
+- Use the command `npm run docker:build` and wait for all the work to complete.
+- Then open the Docker program and run it with the required environment information (env) or use the command `npm run docker:run` and wait until the bot is running.
+  > **💡 NOTE**: You can check the functionality using the command `docker ps -a`.
 
 ## Quick Troubleshooting
 
-- If you run into problems during component installation which on the terminal says `gyp ERR! stack Error: not found: make`. This problem may be caused by the **build tools** not being installed properly or they may not be installed yet. The solution is to download the latest version of [Node.js](https://nodejs.org/) and tick this section within the installation process.
+### `gyp ERR! stack Error: not found: make`
 
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
 
-- If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+### `@firebase/firestore: Firestore (10.6.0): GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
 
-```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
-```
-
-- If you can't play music or music playback commands are not working, install [FFmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
+It is possible that you have not yet simulated the database system on the machine in test mode. You can solve this problem by closing the bot and running the following command on another page.
 
 ```bat
-npm install ffmpeg-static@latest --save
+npm run emulators
 ```
 
 ## Improve Translate

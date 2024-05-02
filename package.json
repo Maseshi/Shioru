@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.4.8",
+  "version": "3.6.0",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "homepage": "https://github.com/Maseshi/Shioru#readme",
   "bugs": {
@@ -30,54 +30,66 @@
   },
   "scripts": {
     "start": "node ./source/shard.js",
-    "dev": "nodemon --trace-warnings ./source/main.js",
-    "lint": "eslint ."
-  },
-  "config": {
-    "port": 8080
+    "test": "jest",
+    "serve": "node --env-file .env --watch-path ./source --watch-preserve-output ./source/shard.js",
+    "dev": "node --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js",
+    "debug": "node --inspect --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js",
+    "lint": "eslint --fix .",
+    "prettier": "prettier --check --write .",
+    "format": "npm run prettier && npm run lint",
+    "emulators": "firebase emulators:start",
+    "i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales",
+    "docker:build": "docker build -t maseshi/shioru:%npm_package_version% .",
+    "docker:push": "docker image push maseshi/shioru:%npm_package_version%",
+    "docker:run": "docker run --env-file .env -d maseshi/shioru:%npm_package_version%"
   },
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
-    "@discordjs/voice": "^0.16.0",
-    "@distube/deezer": "^1.0.0",
+    "@discordjs/voice": "^0.16.1",
+    "@distube/deezer": "^1.1.0",
     "@distube/soundcloud": "^1.3.3",
-    "@distube/spotify": "^1.5.1",
+    "@distube/spotify": "^1.6.1",
     "@distube/yt-dlp": "^1.1.3",
-    "@top-gg/sdk": "^3.1.5",
     "@vitalets/google-translate-api": "^9.2.0",
-    "axios": "^1.4.0",
-    "captcha-canvas": "^3.2.1",
-    "discord.js": "^14.12.1",
-    "distube": "^4.0.6",
-    "dotenv": "^16.3.1",
-    "firebase": "^10.1.0",
-    "lyrics-finder": "^21.7.0",
-    "openai": "^3.3.0",
-    "sodium": "^3.0.2",
-    "sourcebin": "^5.0.0",
-    "spinnies": "^0.5.1",
-    "systeminformation": "^5.18.15",
-    "topgg-autoposter": "^2.0.1"
+    "axios": "^1.6.8",
+    "captcha-canvas": "^2.3.1",
+    "discord-gamecord": "^4.4.2",
+    "discord.js": "^14.14.1",
+    "distube": "^4.2.2",
+    "firebase": "^10.11.1",
+    "genius-lyrics": "^4.4.7",
+    "i18next": "^23.11.3",
+    "i18next-fs-backend": "^2.3.1",
+    "pino": "^9.0.0",
+    "pino-pretty": "^11.0.0",
+    "puppeteer": "^22.7.1",
+    "sodium-native": "^4.1.1",
+    "systeminformation": "^5.22.7",
+    "topgg-autoposter": "^2.0.2"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
-    "nodemon": "^3.0.1"
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "i18n-unused": "^0.16.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5"
   },
   "optionalDependencies": {
-    "@distube/ytdl-core": "^4.11.17",
-    "bufferutil": "^4.0.7",
-    "erlpack": "^0.1.4",
-    "ffmpeg-static": "^5.1.0",
-    "libsodium-wrappers": "^0.7.11",
-    "opusscript": "^0.1.0",
-    "sodium-native": "^4.0.4",
-    "tweetnacl": "^1.0.3",
+    "@distube/ytdl-core": "^4.13.3",
+    "@distube/ytsr": "^2.0.0",
+    "bufferutil": "^4.0.8",
+    "osx-temperature-sensor": "^1.0.8",
     "utf-8-validate": "^6.0.3",
-    "zlib-sync": "^0.1.8"
+    "zlib-sync": "^0.1.9"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "python": ">=2.0.0"
+    "node": ">=20.6.0",
+    "python": ">=3.8.0",
+    "java": ">=11.0.0"
   },
   "private": true
 }

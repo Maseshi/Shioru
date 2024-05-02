@@ -1,81 +1,148 @@
-const { PermissionsBitField } = require("discord.js");
-const { catchError } = require("../../utils/consoleUtils");
+const {
+  SlashCommandBuilder,
+  ChannelType,
+  PermissionFlagsBits,
+} = require('discord.js')
+const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
-    "enable": true,
-    "name": "play",
-    "description": "You can play-pause the music or sing along to it.",
-    "category": "music",
-    "permissions": {
-        "user": [PermissionsBitField.Flags.Connect],
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.Speak,
-            PermissionsBitField.Flags.Connect
-        ]
-    },
-    "usage": "play [source(String)]",
-    "function": {
-        "command": {}
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.Speak,
+    PermissionFlagsBits.Connect,
+  ],
+  data: new SlashCommandBuilder()
+    .setName('play')
+    .setDescription('You can play-pause the music or sing along to it.')
+    .setDescriptionLocalizations({
+      th: 'เล่น-หยุดเพลงก็ได้หรือร้องเพลงให้ฟัง',
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
+    .setDMPermission(false)
+    .addStringOption((option) =>
+      option
+        .setName('song')
+        .setDescription('You can search for songs by name, ID or link.')
+        .setDescriptionLocalizations({
+          th: 'คุณสามารถค้นหาเพลงตามชื่อ, ID, หรือลิงค์',
+        })
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName('skip')
+        .setDescription(
+          'Immediately skip the currently playing song (if it exists) and play the added song.'
+        )
+        .setDescriptionLocalizations({
+          th: 'ข้ามเพลงที่เล่นอยู่ทันที (หากมีอยู่) และเล่นเพลงที่เพิ่มมา',
+        })
+    )
+    .addIntegerOption((option) =>
+      option
+        .setName('position')
+        .setDescription(
+          'The position of the playlist to be inserted or added, starting from zero.'
+        )
+        .setDescriptionLocalizations({
+          th: 'ตำแหน่งของเพลย์ลิสต์ที่ต้องการแทรกหรือเพิ่มโดยเริ่มต้นนับจากศูนย์',
+        })
+    )
+    .addChannelOption((option) =>
+      option
+        .setName('channel')
+        .setDescription('The channel that wants her to play music.')
+        .setDescriptionLocalizations({
+          th: 'ช่องที่ต้องการให้เธอเล่นเพลง',
+        })
+        .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
+    ),
+  async execute(interaction) {
+    const inputSong = interaction.options.getString('song') ?? ''
+    const inputSkip = interaction.options.getBoolean('skip') ?? false
+    const inputPosition = interaction.options.getInteger('position') ?? 0
+    const inputChannel = interaction.options.getChannel('channel') ?? ''
+
+    const djs = interaction.client.configs.djs
+    const queue = interaction.client.player.getQueue(interaction)
+    const voiceChannel = interaction.member.voice.channel
+
+    if (!inputSong) {
+      if (!queue)
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.play.no_queue')
+        )
+      if (queue.paused) {
+        return interaction.client.commands
+          .get('resume')
+          .function.command.execute(interaction)
+      } else {
+        return interaction.client.commands
+          .get('pause')
+          .function.command.execute(interaction)
+      }
     }
-};
+    if (!queue && (inputSkip || inputPosition))
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.play.no_queue')
+      )
+    if (queue && djs.enable) {
+      if (
+        interaction.user.id !== queue.songs[0].user.id &&
+        queue.autoplay === false
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.play.currently_playing')
+        )
+      if (
+        djs.users.includes(interaction.user.id) &&
+        djs.roles.includes(
+          interaction.member.roles.cache.map((role) => role.id)
+        ) &&
+        djs.only
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.play.not_a_dj')
+        )
+    }
+    if (!voiceChannel && !inputChannel)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.play.not_in_channel')
+      )
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "เล่น"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "เล่น-หยุดเพลงก็ได้หรือร้องเพลงให้ฟัง"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "source",
-                "name_localizations": {
-                    "th": "ที่มา"
-                },
-                "description": "You can search for songs by name, ID or link.",
-                "description_localizations": {
-                    "th": "คุณสามารถค้นหาเพลงตามชื่อ ID หรือลิงค์"
-                },
-                "required": false
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputSource = interaction.options.getString("source") ?? "";
-
-        if (inputSource) {
-            const voiceChannel = interaction.member.voice.channel;
-
-            if (!voiceChannel) return await interaction.reply(interaction.client.translate.commands.play.not_in_channel);
-
-            try {
-                await interaction.deferReply();
-                await interaction.client.music.play(voiceChannel, inputSource, {
-                    "member": interaction.member,
-                    "textChannel": interaction.channel,
-                    interaction
-                });
-                await interaction.deleteReply();
-            } catch (error) {
-                const connection = interaction.client.music.voices.get(voiceChannel.guild);
-
-                if (connection) connection.leave(voiceChannel.guild);
-                catchError(interaction.client, interaction, module.exports.name, error);
-            }
-        } else {
-            const queue = interaction.client.music.getQueue(interaction);
-
-            if (!queue) return await interaction.reply(interaction.client.translate.commands.play.no_queue);
-            if (queue.paused) {
-                interaction.client.commands.get("resume").function.command.execute(interaction);
-            } else {
-                interaction.client.commands.get("pause").function.command.execute(interaction);
-            }
+    try {
+      await interaction.deferReply()
+      await interaction.client.player.play(
+        voiceChannel ?? inputChannel,
+        inputSong,
+        {
+          member: interaction.member,
+          textChannel: interaction.channel,
+          skip: inputSkip,
+          position: inputPosition,
+          interaction,
         }
+      )
+      await interaction.deleteReply()
+    } catch (error) {
+      const connection = interaction.client.player.voices.get(
+        voiceChannel.guild
+      )
+
+      if (error.message.includes('seconds'))
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.play.can_not_connect')
+        )
+      if (error.message.includes('non-NSFW'))
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.play.can_not_play_in_non_nsfw')
+        )
+      if (!queue && connection) connection.leave(voiceChannel.guild)
+      catchError(
+        interaction.client,
+        interaction,
+        module.exports.data.name,
+        error
+      )
     }
-};
+  },
+}

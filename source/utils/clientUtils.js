@@ -1,165 +1,312 @@
-const { REST, Routes } = require("discord.js");
-const { ansiColor } = require("./consoleUtils");
-const { get } = require("axios").default;
-const packages = require("../../package.json");
-
-/**
- * Check for updates via Github and notify when new updates are available.
- * 
- * @param {Client} client 
- */
-const checkForUpdates = async (client) => {
-    const clearStyle = ansiColor(0, "sgr");
-    const greenColor = ansiColor(10, "foreground");
-    const blueBrightColor = ansiColor(33, "foreground");
-
-    if (!client.config.check_update.enable) return;
-    if (!client.config.check_update.releases_url) {
-        return client.console.add("check-update-loading", {
-            "text": "The releases_url value was not found in the environment. Cancel check for updates.",
-            "status": "non-spinnable"
-        });
-    }
-
-    client.console.add("check-update-loading", {
-        "text": "Checking for new version"
-    });
-
-    try {
-        const response = await get(client.config.check_update.releases_url);
-
-        if (response.status !== 200) {
-            return client.console.update("check-update-loading", {
-                "text": "Unable to detect latest version at this time.",
-                "status": "non-spinnable"
-            });
-        }
-        if (response.data) {
-            if (packages.version >= response.data.tag_name) {
-                client.console.update("check-update-loading", {
-                    "text": "Currently using the latest version.",
-                    "status": "non-spinnable"
-                });
-            } else {
-                client.console.update("check-update-loading", {
-                    "text": [
-                        ".",
-                        ". Update is available " + packages.version + " -> " + greenColor + response.data.tag_name + clearStyle,
-                        ". Run " + blueBrightColor + "npm pull" + clearStyle + " to update",
-                        "."
-                    ].join("\n"),
-                    "status": "non-spinnable"
-                });
-            }
-        }
-    } catch (error) {
-        client.console.fail("check-update-loading", {
-            "text": "Failed to check for new updates\n" + error
-        });
-    }
-}
+const { EmbedBuilder, WebhookClient, resolveColor } = require('discord.js')
 
 /**
  * Update information of all application commands both **global** and **guild**.
- * 
- * @param {Client} client 
+ *
+ * @param {Client} client
  * @param {Boolean} reload If set to `true`, no messages will be displayed on the console.
  */
 const updateApplicationCommands = async (client, reload = false) => {
-    const token = client.config.token;
-    const guildID = client.config.test.guild;
-    const clientID = client.user.id;
-    const rest = new REST({ "version": "10" }).setToken(token);
+  const guildID = client.configs.test_guild
 
-    if (!reload) {
-        client.console.add("app-commands-loading", {
-            "text": "Starting to refresh all application (/) commands."
-        });
+  try {
+    const commands = client.commands.map((command) => command.data)
+    const contexts = client.contexts.map((context) => context.data)
+    const data = [...commands, ...contexts]
+
+    if (!reload)
+      client.logger.info(
+        `Started refreshing ${data.length} application commands...`
+      )
+    if (client.mode === 'start') {
+      client.application.commands.set(data)
+
+      if (!reload)
+        client.logger.info(
+          `Successfully reloaded ${data.length} application commands.`
+        )
     }
+    if (client.mode !== 'start') {
+      if (!guildID) return
 
-    try {
-        const command = await client.commands.map((commands) => commands.function.command.data);
-        const context = await client.contexts.map((commands) => commands.function.context.data);
-        const data = command.concat(context);
+      const guild = await client.guilds.fetch(guildID)
 
-        if (client.mode === "start" || !client.config.test.application_commands) {
-            await rest.put(
-                Routes.applicationCommands(clientID),
-                { "body": data }
-            );
-        } else {
-            if (!guildID) return client.console.fail("app-commands-loading", {
-                "text": "The test_guild key was not found in the environment. You may not be able to see recent commands."
-            });
+      if (!guild)
+        return client.logger.warn(
+          'Unable to update command application in test guild.'
+        )
 
-            await rest.put(
-                Routes.applicationGuildCommands(clientID, guildID),
-                { "body": data }
-            );
-        }
-        if (!reload) {
-            client.console.update("app-commands-loading", {
-                "text": "Application commands is ready to use.",
-                "status": "non-spinnable"
-            });
-        }
-    } catch (error) {
-        if (!reload) {
-            client.console.fail("app-commands-loading", {
-                "text": "Application commands could not be completely reloaded.\n" + error
-            });
-        }
+      guild.commands.set(data)
+
+      if (!reload)
+        client.logger.info(
+          `Successfully reloaded ${data.length} application commands in ${guild.name}.`
+        )
     }
+  } catch (error) {
+    if (!reload)
+      client.logger.error(
+        error,
+        'Application commands could not be completely reloaded.'
+      )
+  }
 }
 
-const BitwisePermissionFlags = {
-    0x0000000000000001: "Create Invite",
-    0x0000000000000002: "Kick Members",
-    0x0000000000000004: "Ban Members",
-    0x0000000000000008: "Administrator",
-    0x0000000000000010: "Manage Channels",
-    0x0000000000000020: "Manage Server",
-    0x0000000000000040: "Add Reactions",
-    0x0000000000000080: "View Audit Log",
-    0x0000000000000100: "Priority Speaker",
-    0x0000000000000200: "Video",
-    0x0000000000000400: "Read Text Channels & See Voice Channels",
-    0x0000000000000800: "Send Messages",
-    0x0000000000001000: "Send TTS Messages",
-    0x0000000000002000: "Manage Messages",
-    0x0000000000004000: "Embed Links",
-    0x0000000000008000: "Attach Files",
-    0x0000000000010000: "Read Message History",
-    0x0000000000020000: "Mention @everyone, @here, and All Roles",
-    0x0000000000040000: "Use External Emojis",
-    0x0000000000080000: "View Server Insights",
-    0x0000000000100000: "Connect",
-    0x0000000000200000: "Speak",
-    0x0000000000400000: "Mute Members",
-    0x0000000000800000: "Deafen Members",
-    0x0000000001000000: "Move Members",
-    0x0000000002000000: "Use Voice Activity",
-    0x0000000004000000: "Change Nickname",
-    0x0000000008000000: "Manage Nicknames",
-    0x0000000010000000: "Manage Roles",
-    0x0000000020000000: "Manage Webhooks",
-    0x0000000040000000: "Manage Emojis & Stickers",
-    0x0000000080000000: "Use Application Commands",
-    0x0000000100000000: "Request to Speak",
-    0x0000000200000000: "Manage Events",
-    0x0000000400000000: "Manage Threads",
-    0x0000000800000000: "Create Public Threads",
-    0x0000001000000000: "Create Private Threads",
-    0x0000002000000000: "Use External Stickers",
-    0x0000004000000000: "Send Messages in Threads",
-    0x0000008000000000: "Use Embedded Activities",
-    0x0000010000000000: "Moderate Members",
-    0x0000020000000000: "View Creator Monetization Analytics",
-    0x0000040000000000: "Use Soundboard"
+const webhookSend = (configs, message) => {
+  if (!configs.enable) return
+  if (!configs.webhookURL) return
+
+  const webhook = new WebhookClient({
+    url: configs.webhookURL,
+  })
+
+  return webhook.send({
+    username: configs.username ?? '',
+    avatarURL: configs.avatarURL ?? '',
+    ...message,
+  })
+}
+
+const changeLanguage = (client, language) => {
+  if (client.i18n.language !== language) {
+    client.i18n.changeLanguage(language)
+  }
+}
+
+/**
+ * The `embedBuilder` function is a JavaScript function that takes in various parameters to build and
+ * customize an embed message for a Discord bot.
+ * @param {Client} client - The `client` parameter is typically the instance of the Discord.js client that is
+ * used to interact with the Discord API. It is used to access various functionalities and properties
+ * of the client, such as the i18n (internationalization) module in this case.
+ * @param {String} authorName - The name of the author of the embed.
+ * @param {String} authorURL - The `authorURL` parameter is a string that represents the URL of the author's
+ * name in the embed. It is an optional parameter and can be used to provide a link to the author's
+ * profile or website.
+ * @param {String} authorIconURL - The `authorIconURL` parameter is a string that represents the URL of the icon
+ * for the author of the embed. It is an optional parameter and can be used to display an icon next to
+ * the author's name in the embed.
+ * @param {String} color - The `color` parameter is used to set the color of the embed. It accepts a hexadecimal
+ * color code or a color name.
+ * @param {String} title - The title of the embed.
+ * @param {String} description - The `description` parameter is a string that represents the main content or
+ * message of the embed. It can be used to provide additional information or context about the embed.
+ * @param {String} url - The `url` parameter is a string that represents the URL that the embed's title should
+ * link to.
+ * @param {String} thumbnail - The `thumbnail` parameter is used to specify the URL of the thumbnail image to be
+ * displayed in the embed.
+ * @param {String} fieldName - The `fieldName` parameter is used to specify the name of a field in the embed. It
+ * is typically used in conjunction with the `fieldValue` parameter to provide additional information
+ * in the embed.
+ * @param {String} fieldValue - The `fieldValue` parameter is the value of the field in the embed. It is the
+ * content that will be displayed below the field name.
+ * @param {Boolean} fieldInline - The `fieldInline` parameter is a boolean value that determines whether the
+ * field should be displayed inline or not. If `fieldInline` is set to `true`, the field will be
+ * displayed inline with other fields. If `fieldInline` is set to `false` or omitted, the field will
+ * @param {String} image - The `image` parameter is used to specify the URL of the image to be displayed in the
+ * embed.
+ * @param {String} timestamp - The `timestamp` parameter is used to set the timestamp of the embed. It accepts a
+ * valid timestamp value, such as a Date object or a string in ISO 8601 format.
+ * @param {String} footerText - The `footerText` parameter is a string that represents the text to be displayed
+ * in the footer of the embed. It is typically used to provide additional information or attribution.
+ * @param {String} footerIconURL - The `footerIconURL` parameter is the URL of the icon that will be displayed
+ * next to the footer text in the embed. It is an optional parameter, so you can leave it empty if you
+ * don't want to include an icon.
+ * @returns The function `embedBuilder` returns an object with two properties: `data` and `error`. The
+ * `data` property contains the constructed embed object, while the `error` property indicates whether
+ * any errors occurred during the construction of the embed.
+ */
+const embedBuilder = (
+  client,
+  authorName,
+  authorURL,
+  authorIconURL,
+  color,
+  title,
+  url,
+  description,
+  thumbnail,
+  firstFieldName,
+  firstFieldValue,
+  firstFieldInline,
+  secondFieldName,
+  secondFieldValue,
+  secondFieldInline,
+  image,
+  timestamp,
+  footerText,
+  footerIconURL
+) => {
+  const embed = new EmbedBuilder()
+
+  try {
+    if (authorName) {
+      if (authorIconURL && !authorIconURL.startWith('http'))
+        return {
+          data: client.i18n.t('utils.clientUtils.is_not_a_link', {
+            input: 'author_icon_url',
+          }),
+          error: true,
+        }
+      if (authorURL && !authorURL.startWith('http'))
+        return {
+          data: client.i18n.t('utils.clientUtils.is_not_a_link', {
+            input: 'author_url',
+          }),
+          error: true,
+        }
+
+      embed.setAuthor({
+        name: authorName,
+        iconURL: authorIconURL,
+        url: authorURL,
+      })
+    }
+    if (color) {
+      try {
+        embed.setColor(resolveColor(color))
+      } catch {
+        return {
+          data: client.i18n.t('utils.clientUtils.color_is_not_valid'),
+          error: true,
+        }
+      }
+    }
+    if (title) embed.setTitle(title)
+    if (url) {
+      if (!url.startWith('http'))
+        return {
+          data: client.i18n.t('utils.clientUtils.is_not_a_link', {
+            input: 'url',
+          }),
+          error: true,
+        }
+
+      embed.setURL(url)
+    }
+    if (description) embed.setDescription(description)
+    if (thumbnail) {
+      if (!thumbnail.startWith('http'))
+        return {
+          data: client.i18n.t('utils.clientUtils.is_not_a_link', {
+            input: 'thumbnail',
+          }),
+          error: true,
+        }
+
+      embed.setThumbnail(thumbnail)
+    }
+    if (firstFieldName) {
+      if (!firstFieldValue)
+        return {
+          data: client.i18n.t('utils.clientUtils.need_other_input', {
+            input: 'thumbnail',
+          }),
+          error: true,
+        }
+
+      embed.addFields({
+        name: firstFieldName,
+        value: firstFieldValue,
+        inline: firstFieldInline,
+      })
+    }
+    if (secondFieldName) {
+      if (!secondFieldValue)
+        return {
+          data: client.i18n.t('utils.clientUtils.need_other_input', {
+            input: 'thumbnail',
+          }),
+          error: true,
+        }
+
+      embed.addFields({
+        name: secondFieldName,
+        value: secondFieldValue,
+        inline: secondFieldInline,
+      })
+    }
+    if (image) {
+      if (!image.startWith('http'))
+        return {
+          data: client.i18n.t('utils.clientUtils.is_not_a_link', {
+            input: 'image',
+          }),
+          error: true,
+        }
+
+      embed.setImage(image)
+    }
+    if (timestamp) {
+      try {
+        embed.setTimestamp(timestamp)
+      } catch {
+        return {
+          data: client.i18n.t('utils.clientUtils.timestamp_is_not_valid'),
+          error: true,
+        }
+      }
+    }
+    if (footerText) {
+      embed.setFooter({
+        text: footerText,
+        iconURL: footerIconURL,
+      })
+    }
+
+    return {
+      data: embed,
+      error: false,
+    }
+  } catch (error) {
+    return {
+      data: error,
+      error: true,
+    }
+  }
+}
+
+const usageBuilder = (command) => {
+  const optionTypes = {
+    3: '(String)',
+    4: '(Integer)',
+    5: '(Boolean)',
+    6: '(User)',
+    7: '(Channel)',
+    8: '(Role)',
+    9: '(Mentionable)',
+    10: '(Number)',
+    11: '(Attachment)',
+  }
+  let usage = command.data.name
+
+  const buildOption = (option) => {
+    let usageOption = ''
+
+    usageOption += !option.type ? '' : option.required ? '<' : '['
+    usageOption += option.name
+    usageOption += !option.type ? '' : optionTypes[option.type]
+    usageOption +=
+      option.options && option.options.length
+        ? ': ' + option.options.map(buildOption).join(', ')
+        : ''
+    usageOption += !option.type ? '' : option.required ? '>' : ']'
+
+    return usageOption
+  }
+
+  usage +=
+    command.data.options && command.data.options.length
+      ? ': ' + command.data.options.map(buildOption).join(', ')
+      : ''
+
+  return usage
 }
 
 module.exports = {
-    checkForUpdates,
-    updateApplicationCommands,
-    BitwisePermissionFlags
+  updateApplicationCommands,
+  webhookSend,
+  changeLanguage,
+  embedBuilder,
+  usageBuilder,
 }

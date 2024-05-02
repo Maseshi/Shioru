@@ -1,0 +1,6 @@
+┏━━━━━━━━━━━━━━━━ SHARDING MODE ━━━━━━━━━━━━━━━━━┓
+┃                                                ┃
+┃      In this mode, the system expands the      ┃
+┃   shard to the appropriate number of servers.  ┃
+┃                                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

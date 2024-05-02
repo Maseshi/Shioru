@@ -1,7 +1,8 @@
+project_id: '590379'
 files:
-  - source: /source/languages/th.json
+  - source: /source/locales/th/translation.json
     ignore:
-      - /source/languages/*.md
-    translation: /source/languages/%osx_locale%.json
+      - /source/locales/*.md
+    translation: /source/locales/%osx_locale%/translation.json
   - source: /documents/README.th.md
     translation: /documents/README.%osx_locale%.md

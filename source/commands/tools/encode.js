@@ -1,67 +1,53 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+  Colors,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "encode",
-    "description": "Encrypt your messages.",
-    "category": "tools",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "encode <text(String)>",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('encode')
+    .setDescription('Encrypt your messages.')
+    .setDescriptionLocalizations({
+      th: 'เข้ารหัสข้อความของคุณ',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addStringOption((option) =>
+      option
+        .setName('text')
+        .setDescription('Message to be encrypted.')
+        .setDescriptionLocalizations({
+          th: 'ข้อความที่ต้องการจะเข้ารหัส',
+        })
+        .setRequired(true)
+    ),
+  async execute(interaction) {
+    const inputText = interaction.options.getString('text')
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "เข้ารหัส"
+    const clientAvatar = interaction.client.user.displayAvatarURL()
+    const clientUsername = interaction.client.user.username
+    const encodeEmbed = new EmbedBuilder()
+      .setColor(Colors.Blue)
+      .setAuthor({ iconURL: clientAvatar, name: clientUsername })
+      .setTitle(interaction.client.i18n.t('commands.encode.encode_message'))
+      .setDescription(
+        interaction.client.i18n.t('commands.encode.encode_success')
+      )
+      .setFields(
+        {
+          name: interaction.client.i18n.t('commands.encode.before'),
+          value: '```' + inputText + '```',
         },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "เข้ารหัสข้อความของคุณ"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "text",
-                "name_localizations": {
-                    "th": "ข้อความ"
-                },
-                "description": "Message to be encrypted.",
-                "description_localizations": {
-                    "th": "ข้อความที่ต้องการจะเข้ารหัส"
-                },
-                "required": true
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputText = interaction.options.getString("text");
+        {
+          name: interaction.client.i18n.t('commands.encode.after'),
+          value: '```' + Buffer.from(inputText).toString('base64') + '```',
+        }
+      )
+      .setTimestamp()
 
-        const clientAvatar = interaction.client.user.displayAvatarURL();
-        const clientUsername = interaction.client.user.username;
-        const clientColor = interaction.guild.members.me.displayHexColor;
-        const encodeEmbed = new EmbedBuilder()
-            .setColor(clientColor)
-            .setAuthor({ "iconURL": clientAvatar, "name": clientUsername })
-            .setTitle(interaction.client.translate.commands.encode.encode_message)
-            .setDescription(interaction.client.translate.commands.encode.encode_success)
-            .setFields(
-                {
-                    "name": interaction.client.translate.commands.encode.before,
-                    "value": "```" + inputText + "```"
-                },
-                {
-                    "name": interaction.client.translate.commands.encode.after,
-                    "value": "```" + Buffer.from(inputText).toString("base64") + "```"
-                }
-            )
-            .setTimestamp();
-
-        await interaction.reply({ "embeds": [encodeEmbed], "ephemeral": true });
-    }
-};
+    await interaction.reply({ embeds: [encodeEmbed], ephemeral: true })
+  },
+}

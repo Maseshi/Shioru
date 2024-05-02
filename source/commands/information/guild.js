@@ -1,204 +1,319 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { dateFormat } = require("../../utils/miscUtils");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+  GuildDefaultMessageNotifications,
+  GuildExplicitContentFilter,
+  GuildMFALevel,
+  GuildNSFWLevel,
+  GuildPremiumTier,
+  GuildVerificationLevel,
+  Colors,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "guild",
-    "description": "Get information about the server.",
-    "category": "information",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "guild [info(String)]",
-    "function": {
-        "command": {}
+  category: 'information',
+  permissions: [PermissionFlagsBits.SendMessages],
+  usage: 'guild list, get [about(String)]',
+  data: new SlashCommandBuilder()
+    .setName('guild')
+    .setDescription('Get information about the guild.')
+    .setDescriptionLocalizations({
+      th: 'รับข้อมูลเกี่ยวกับกิลด์นี้',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(false)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('list')
+        .setDescription('See the types of data currently available.')
+        .setDescriptionLocalizations({
+          th: 'ดูประเภทของข้อมูลที่พร้อมใช้งานในขณะนี้',
+        })
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('get')
+        .setDescription('Get the information of the guild you want to know.')
+        .setDescriptionLocalizations({
+          th: 'รับข้อมูลของกิลด์ที่อยากรู้',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('about')
+            .setDescription(
+              'Information you want to know, such as afkChannelId'
+            )
+            .setDescriptionLocalizations({
+              th: 'ข้อมูลที่คุณต้องการจะทราบ เช่น afkChannelId',
+            })
+            .setRequired(true)
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputAbout = interaction.options.getString('about') ?? ''
+
+    await interaction.deferReply()
+
+    const guild = interaction.guild
+    const guildProperties = {
+      afkChannel: guild.afkChannel
+        ? `<#${guild.afkChannel.id}>`
+        : interaction.client.i18n.t('commands.guild.not_set'),
+      afkChannelId:
+        guild.afkChannelId || interaction.client.i18n.t('commands.guild.none'),
+      afkTimeout:
+        guild.afkTimeout?.toString() ||
+        interaction.client.i18n.t('commands.guild.not_set'),
+      applicationId:
+        guild.applicationId || interaction.client.i18n.t('commands.guild.none'),
+      approximateMemberCount:
+        guild.approximateMemberCount?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      approximatePresenceCount:
+        guild.approximatePresenceCount?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      autoModerationRules:
+        String((await guild.autoModerationRules.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.not_set'),
+      available:
+        (guild.available
+          ? interaction.client.i18n.t('commands.guild.ready')
+          : interaction.client.i18n.t('commands.guild.not_ready')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      banner:
+        guild.banner || interaction.client.i18n.t('commands.guild.unknown'),
+      bannerURL:
+        guild.bannerURL() || interaction.client.i18n.t('commands.guild.none'),
+      bans:
+        String((await guild.bans.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      channels:
+        String((await guild.channels.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      commands:
+        String((await guild.commands.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      createdAt:
+        new Date(guild.createdAt).toLocaleString(interaction.locale) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      createdTimestamp:
+        guild.createdTimestamp?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      defaultMessageNotifications:
+        GuildDefaultMessageNotifications[guild.defaultMessageNotifications] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      description:
+        guild.description || interaction.client.i18n.t('commands.guild.none'),
+      discoverySplash:
+        guild.discoverySplash ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      discoverySplashURL:
+        guild.discoverySplashURL() ||
+        interaction.client.i18n.t('commands.guild.none'),
+      emojis:
+        String((await guild.emojis.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.none'),
+      explicitContentFilter:
+        GuildExplicitContentFilter[guild.explicitContentFilter] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      features:
+        guild.features.join(', ') ||
+        interaction.client.i18n.t('commands.guild.none'),
+      icon: guild.icon || interaction.client.i18n.t('commands.guild.unknown'),
+      iconURL:
+        guild.iconURL() || interaction.client.i18n.t('commands.guild.none'),
+      id: guild.id || interaction.client.i18n.t('commands.guild.unknown'),
+      invites:
+        String((await guild.invites.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.none'),
+      large:
+        (guild.large
+          ? interaction.client.i18n.t('commands.guild.yes')
+          : interaction.client.i18n.t('commands.guild.no')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      maximumBitrate:
+        guild.maximumBitrate?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      maximumMembers:
+        guild.maximumMembers?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      maximumPresences:
+        guild.maximumPresences?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      maxStageVideoChannelUsers:
+        guild.maxStageVideoChannelUsers?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      maxVideoChannelUsers:
+        guild.maxVideoChannelUsers?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      memberCount:
+        guild.memberCount?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      mfaLevel:
+        GuildMFALevel[guild.mfaLevel] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      name: guild.name || interaction.client.i18n.t('commands.guild.unknown'),
+      nameAcronym:
+        guild.nameAcronym ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      nsfwLevel:
+        GuildNSFWLevel[guild.nsfwLevel] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      ownerId:
+        guild.ownerId || interaction.client.i18n.t('commands.guild.unknown'),
+      partnered:
+        (guild.partnered
+          ? interaction.client.i18n.t('commands.guild.yes')
+          : interaction.client.i18n.t('commands.guild.no')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      preferredLocale:
+        guild.preferredLocale ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      premiumProgressBarEnabled:
+        guild.premiumProgressBarEnabled ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      premiumSubscriptionCount:
+        guild.premiumSubscriptionCount?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      premiumTier:
+        GuildPremiumTier[guild.premiumTier] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      publicUpdatesChannel:
+        (guild.publicUpdatesChannel
+          ? `<#${guild.publicUpdatesChannel.id}>`
+          : interaction.client.i18n.t('commands.guild.not_set')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      publicUpdatesChannelId:
+        guild.publicUpdatesChannelId ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      roles:
+        String((await guild.roles.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      rulesChannel:
+        (guild.rulesChannel
+          ? `<#${guild.rulesChannel.id}>`
+          : interaction.client.i18n.t('commands.guild.not_set')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      rulesChannelId:
+        guild.rulesChannelId ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      safetyAlertsChannel:
+        (guild.safetyAlertsChannel
+          ? `<#${guild.safetyAlertsChannel}>`
+          : interaction.client.i18n.t('commands.guild.not_set')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      safetyAlertsChannelId:
+        guild.safetyAlertsChannelId ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      scheduledEvents:
+        String((await guild.scheduledEvents.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      shardId:
+        guild.shardId?.toString() ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      splash:
+        guild.splash || interaction.client.i18n.t('commands.guild.unknown'),
+      splashURL:
+        guild.splashURL() || interaction.client.i18n.t('commands.guild.none'),
+      stickers:
+        String((await guild.stickers.fetch()).size) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      systemChannel:
+        (guild.systemChannel
+          ? `<#${guild.systemChannel}>`
+          : interaction.client.i18n.t('commands.guild.not_set')) ||
+        interaction.client.i18n.t('commands.guild.none'),
+      systemChannelFlags:
+        guild.systemChannelFlags.toArray().join(', ') ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      systemChannelId:
+        guild.systemChannelId ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      vanityURLCode:
+        guild.vanityURLCode || interaction.client.i18n.t('commands.guild.none'),
+      vanityURLUses:
+        guild.vanityURLUses?.toString() ||
+        interaction.client.i18n.t('commands.guild.none'),
+      verificationLevel:
+        GuildVerificationLevel[guild.verificationLevel] ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      verified: guild.verified
+        ? interaction.client.i18n.t('commands.guild.yes')
+        : interaction.client.i18n.t('commands.guild.no'),
+      widgetChannel:
+        (guild.widgetChannel
+          ? `<#${guild.widgetChannel.id}>`
+          : interaction.client.i18n.t('commands.guild.not_set')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      widgetChannelId:
+        guild.widgetChannelId ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      widgetEnabled:
+        (guild.widgetEnabled
+          ? interaction.client.i18n.t('commands.guild.yes')
+          : interaction.client.i18n.t('commands.guild.no')) ||
+        interaction.client.i18n.t('commands.guild.unknown'),
+      widgetImageURL:
+        guild.widgetImageURL() ||
+        interaction.client.i18n.t('commands.guild.none'),
     }
-};
+    const propertiesKeys = Object.keys(guildProperties)
+    const propertiesData = Object.fromEntries(
+      Object.entries(guildProperties).map(([key, value]) => [
+        key.toLowerCase(),
+        value,
+      ])
+    )
+    const propertiesName =
+      propertiesKeys[
+        propertiesKeys.findIndex((key) =>
+          key.toLowerCase().includes(inputAbout.toLowerCase())
+        )
+      ]
+    const propertiesType = propertiesKeys.map((type) => type.toLowerCase())
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "กิลด์"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "รับข้อมูลเกี่ยวกับเซิร์ฟเวอร์"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "info",
-                "name_localizations": {
-                    "th": "ข้อมูล"
-                },
-                "description": "The information you want to be specific, for example afkChannelId.",
-                "description_localizations": {
-                    "th": "ข้อมูลที่คุณต้องการเฉพาะเช่น afkChannelId"
-                },
-                "required": false
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputInfo = interaction.options.getString("info") ?? "";
+    switch (subcommand) {
+      case 'list': {
+        await interaction.editReply(
+          interaction.client.i18n.t('commands.guild.available_type_list', {
+            list: propertiesKeys.join(', '),
+          })
+        )
+        break
+      }
+      case 'get': {
+        if (!propertiesType.includes(inputAbout.toLowerCase()))
+          return interaction.editReply(
+            interaction.client.i18n.t('commands.guild.invalid_type')
+          )
 
-        const afkChannelId = interaction.guild.afkChannelId || interaction.client.translate.commands.guild.unknown;
-        const afkTimeout = interaction.guild.afkTimeout.toString() || interaction.client.translate.commands.guild.unknown;
-        const applicationId = interaction.guild.applicationId || interaction.client.translate.commands.guild.do_not_have;
-        const approximateMemberCount = interaction.guild.approximateMemberCount || interaction.client.translate.commands.guild.unknown;
-        const approximatePresenceCount = interaction.guild.approximatePresenceCount || interaction.client.translate.commands.guild.unknown;
-        const available = interaction.guild.available ? interaction.client.translate.commands.guild.available : interaction.client.translate.commands.guild.unavailable;
-        const banner = interaction.guild.bannerURL() || interaction.client.translate.commands.guild.do_not_have;
-        const createdAt = dateFormat(interaction.client, interaction.guild.createAt) || interaction.client.translate.commands.guild.unknown;
-        const createdTimestamp = dateFormat(interaction.client, interaction.guild.createdTimestamp) || interaction.client.translate.commands.guild.unknown;
-        const defaultMessageNotification = interaction.guild.defaultMessageNotification || interaction.client.translate.commands.guild.unknown;
-        const description = interaction.guild.description || interaction.client.translate.commands.guild.do_not_have;
-        const discoverySplash = interaction.guild.discoverySplashURL() || interaction.client.translate.commands.guild.do_not_have;
-        const explicitContentFilter = interaction.guild.explicitContentFilter.toString() || interaction.client.translate.commands.guild.unknown;
-        const features = interaction.guild.features.join() || interaction.client.translate.commands.guild.do_not_have;
-        const icon = interaction.guild.iconURL() || interaction.client.translate.commands.guild.unknown;
-        const id = interaction.guild.id || interaction.client.translate.commands.guild.unknown;
-        const joinedAt = dateFormat(interaction.client, interaction.guild.joinedAt) || interaction.client.translate.commands.guild.unknown;
-        const joinTimestamp = dateFormat(interaction.client, interaction.guild.joinTimestamp) || interaction.client.translate.commands.guild.unknown;
-        const large = interaction.guild.large ? interaction.client.translate.commands.guild.yes : interaction.client.translate.commands.guild.no;
-        const maximumMembers = interaction.guild.maximumMembers.toString() || interaction.client.translate.commands.guild.unknown;
-        const maximumPresences = interaction.guild.maximumPresences || interaction.client.translate.commands.guild.unknown;
-        const memberCount = interaction.guild.memberCount.toString() || interaction.client.translate.commands.guild.unknown;
-        const mfaLevel = interaction.guild.mfaLevel || interaction.client.translate.commands.guild.unknown;
-        const name = interaction.guild.name || interaction.client.translate.commands.guild.unknown;
-        const nameAcronym = interaction.guild.nameAcronym || interaction.client.translate.commands.guild.do_not_have;
-        const nsfwLevel = interaction.guild.nsfwLevel || interaction.client.translate.commands.guild.unknown;
-        const ownerId = interaction.guild.ownerId || interaction.client.translate.commands.guild.unknown;
-        const partnered = interaction.guild.partnered ? interaction.client.translate.commands.guild.yes : interaction.client.translate.commands.guild.none;
-        const preferredLocale = interaction.guild.preferredLocale || interaction.client.translate.commands.guild.unknown;
-        const premiumSubscriptionCount = interaction.guild.premiumSubscriptionCount.toString() || interaction.client.translate.commands.guild.unknown;
-        const premiumTier = interaction.guild.premiumTier || interaction.client.translate.commands.guild.unknown;
-        const publicUpdatesChannelId = interaction.guild.publicUpdatesChannelId || interaction.client.translate.commands.guild.unknown;
-        const rulesChannelId = interaction.guild.rulesChannelId || interaction.client.translate.commands.guild.unknown;
-        const splash = interaction.guild.splashURL() || interaction.client.translate.commands.guild.do_not_have;
-        const systemChannelId = interaction.guild.systemChannelId || interaction.client.translate.commands.guild.unknown;
-        const vanityURLCode = interaction.guild.vanityURLCode || interaction.client.translate.commands.guild.do_not_have;
-        const vanityURLUses = interaction.guild.vanityURLUses || interaction.client.translate.commands.guild.unknown;
-        const verificationLevel = interaction.guild.verificationLevel || interaction.client.translate.commands.guild.unknown;
-        const verified = interaction.guild.verified ? interaction.client.translate.commands.guild.yes : interaction.client.translate.commands.guild.none;
-        const widgetChannelId = interaction.guild.widgetChannelId || interaction.client.translate.commands.guild.unknown;
-        const widgetEnabled = interaction.guild.widgetEnabled ? interaction.client.translate.commands.guild.on : interaction.client.translate.commands.guild.off;
+        const clientUsername = interaction.client.user.username
+        const clientAvatarURL = interaction.client.user.avatarURL()
+        const guildEmbed = new EmbedBuilder()
+          .setTitle(interaction.client.i18n.t('commands.guild.server_info'))
+          .setDescription(
+            interaction.client.i18n.t('commands.guild.server_info_description')
+          )
+          .setColor(Colors.Blue)
+          .setTimestamp()
+          .setFooter({
+            text: interaction.client.i18n.t('commands.guild.info_date'),
+            iconURL: guildProperties.iconURL || '',
+          })
+          .setThumbnail(guildProperties.iconURL || '')
+          .setAuthor({ name: clientUsername, iconURL: clientAvatarURL })
 
-        const clientUsername = interaction.client.user.username;
-        const clientAvatarURL = interaction.client.user.avatarURL();
-        const guildIcon = interaction.guild.iconURL();
-        const embed = new EmbedBuilder()
-            .setTitle(interaction.client.translate.commands.guild.server_info)
-            .setDescription(interaction.client.translate.commands.guild.server_info_description)
-            .setColor("Blue")
-            .setTimestamp()
-            .setFooter({ "text": interaction.client.translate.commands.guild.info_date, "iconURL": guildIcon || "" })
-            .setThumbnail(guildIcon || "")
-            .setAuthor({ "name": clientUsername, "iconURL": clientAvatarURL });
+        guildEmbed.addFields({
+          name: propertiesName,
+          value: propertiesData[inputAbout.toLowerCase()],
+          inline: true,
+        })
 
-        const info = [
-            "afkChannelId",
-            "afkTimeout",
-            "applicationId",
-            "approximateMemberCount",
-            "approximatePresenceCount",
-            "available",
-            "banner",
-            "createdAt",
-            "createdTimestamp",
-            "defaultMessageNotification",
-            "description",
-            "discoverySplash",
-            "explicitContentFilter",
-            "features",
-            "icon",
-            "id",
-            "joinedAt",
-            "joinTimestamp",
-            "large",
-            "maximumMembers",
-            "maximumPresences",
-            "memberCount",
-            "mfaLevel",
-            "name",
-            "nameAcronym",
-            "nsfwLevel",
-            "ownerId",
-            "partnered",
-            "preferredLocale",
-            "premiumSubscriptionCount",
-            "premiumTier",
-            "publicUpdatesChannelId",
-            "rulesChannelId",
-            "splash",
-            "systemChannelId",
-            "vanityURLCode",
-            "vanityURLUses",
-            "verificationLevel",
-            "verified",
-            "widgetChannelId",
-            "widgetEnabled"
-        ];
-
-        const infoList = [
-            { "name": interaction.client.translate.commands.guild.afk_channel_id, "value": afkChannelId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.afk_timeout, "value": afkTimeout, "inline": true },
-            { "name": interaction.client.translate.commands.guild.application_id, "value": applicationId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.approximate_member_count, "value": approximateMemberCount, "inline": true },
-            { "name": interaction.client.translate.commands.guild.approximate_presence_count, "value": approximatePresenceCount, "inline": true },
-            { "name": interaction.client.translate.commands.guild.guild_available, "value": available, "inline": true },
-            { "name": interaction.client.translate.commands.guild.banner, "value": banner, "inline": true },
-            { "name": interaction.client.translate.commands.guild.create_at, "value": createdAt, "inline": true },
-            { "name": interaction.client.translate.commands.guild.create_timestamp, "value": createdTimestamp, "inline": true },
-            { "name": interaction.client.translate.commands.guild.default_message_notification, "value": defaultMessageNotification, "inline": true },
-            { "name": interaction.client.translate.commands.guild.description, "value": description, "inline": true },
-            { "name": interaction.client.translate.commands.guild.discovery_splash, "value": discoverySplash, "inline": true },
-            { "name": interaction.client.translate.commands.guild.explicit_content_filter, "value": explicitContentFilter, "inline": true },
-            { "name": interaction.client.translate.commands.guild.features, "value": features, "inline": true },
-            { "name": interaction.client.translate.commands.guild.icon, "value": icon, "inline": true },
-            { "name": interaction.client.translate.commands.guild.id, "value": id, "inline": true },
-            { "name": interaction.client.translate.commands.guild.joined_at, "value": joinedAt, "inline": true },
-            { "name": interaction.client.translate.commands.guild.join_timestamp, "value": joinTimestamp, "inline": true },
-            { "name": interaction.client.translate.commands.guild.large, "value": large, "inline": true },
-            { "name": interaction.client.translate.commands.guild.maximum_members, "value": maximumMembers, "inline": true },
-            { "name": interaction.client.translate.commands.guild.maximum_presences, "value": maximumPresences, "inline": true },
-            { "name": interaction.client.translate.commands.guild.member_count, "value": memberCount, "inline": true },
-            { "name": interaction.client.translate.commands.guild.mfa_level, "value": mfaLevel, "inline": true },
-            { "name": interaction.client.translate.commands.guild.name, "value": name, "inline": true },
-            { "name": interaction.client.translate.commands.guild.name_acronym, "value": nameAcronym, "inline": true },
-            { "name": interaction.client.translate.commands.guild.nsfw_level, "value": nsfwLevel, "inline": true },
-            { "name": interaction.client.translate.commands.guild.owner_id, "value": ownerId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.partnered, "value": partnered, "inline": true },
-            { "name": interaction.client.translate.commands.guild.preferred_locale, "value": preferredLocale, "inline": true },
-            { "name": interaction.client.translate.commands.guild.premium_subscription_count, "value": premiumSubscriptionCount, "inline": true },
-            { "name": interaction.client.translate.commands.guild.premium_tier, "value": premiumTier, "inline": true },
-            { "name": interaction.client.translate.commands.guild.public_updates_channel_id, "value": publicUpdatesChannelId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.rules_channel_id, "value": rulesChannelId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.splash, "value": splash, "inline": true },
-            { "name": interaction.client.translate.commands.guild.system_channel_id, "value": systemChannelId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.vanity_url_code, "value": vanityURLCode, "inline": true },
-            { "name": interaction.client.translate.commands.guild.vanity_url_uses, "value": vanityURLUses, "inline": true },
-            { "name": interaction.client.translate.commands.guild.verification_level, "value": verificationLevel, "inline": true },
-            { "name": interaction.client.translate.commands.guild.verified, "value": verified, "inline": true },
-            { "name": interaction.client.translate.commands.guild.widget_channel_id, "value": widgetChannelId, "inline": true },
-            { "name": interaction.client.translate.commands.guild.widget_enabled, "value": widgetEnabled, "inline": true }
-        ];
-
-        if (inputInfo) {
-            if (info.includes(inputInfo)) {
-                for (let i = 0; i < info.length; i++) {
-                    if (inputInfo === info[i]) {
-                        embed.addFields(infoList[i]);
-                        await interaction.reply({ "embeds": [embed] });
-                    }
-                }
-            } else {
-                await interaction.reply(interaction.client.translate.commands.guild.specific_use.replace("%s", info.join(", ")));
-            }
-        } else {
-            embed.addFields(Array.from(infoList).slice(0, 25));
-            await interaction.reply({ "embeds": [embed] });
-        }
+        await interaction.editReply({ embeds: [guildEmbed] })
+        break
+      }
     }
+  },
 }
