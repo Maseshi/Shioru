@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
   <strong>
     <h1>Shioru</h2>
-    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+    <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
@@ -25,7 +25,7 @@
 
 [เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
 
-優れたサーバー アシスタントは、サーバーをより活発に見せるのに役立ちます。 彼女ができることはたくさんあり、詳細なコマンドは `/help` を入力して見つけることができます [ここ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
 
 <div align="center">
   <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
@@ -43,94 +43,134 @@
 - サーバー通知のカスタマイズのサポート
 - `@Shioru`の後に伝えたいメッセージを入力すると、チャットできます。
 - アプリケーションコマンド (/) が使用できます。
+- จำลองระบบฐานข้อมูลสำหรับทดสอบ
+- รองรับการทำงานบน Shard
 
 他にもたくさんの興味深い機能があります...
 
 ## 前提条件
 
-- [Node.js](https://nodejs.org/) v18.0.0 以降
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/)
+- [Node.js](https://nodejs.org/) v20.6.0 หรือมากกว่า
+- [Python](https://www.python.org/downloads/) v3.8.0 หรือมากกว่า
+- [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 หรือมากกว่า
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) หรือ[ติดตั้งด้วยตัวเอง](#1-ติดตั้ง-build-tools)
+- [Firebase Tools](https://firebase.google.com/docs/cli)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## クイックセットアップガイド
+## การติดตั้ง
 
-ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+### 1. ติดตั้ง **Build Tools**
 
-### เพิ่มบอทไปยังเซิร์ฟเวอร์
+ทำการติดตั้ง **Build tools** โดยรันคำสั่งดังต่อไปนี้ตามระบบปฏิบัติการของคุณ
+
+- สำหรับระบบปฏิบัติการ Linux และ MacOS
+
+```sh
+sudo apt update
+sudo apt install build-essential
+```
+
+- สำหรับระบบปฏิบัติการ Windows
+
+```sh
+npm install --global --production --add-python-to-path windows-build-tools
+```
+
+> **💡 ทริป**: คุณสามารถข้ามขั้นตอนนี้ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+
+### 2. โคลนบอทและติดตั้งส่วนประกอบ
+
+- ターミナルを起動し、次のコマンドを実行します。
+  ```bat
+  git clone https://github.com/Maseshi/Shioru.git
+  cd Shioru
+  npm install
+  ```
+- ファイルの名前を変更します `.env.example` を `.env` として、必要なすべての値を挿入します。
+
+  > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
+
+### 3. ตั้งค่าบอทและเชิญเข้าร่วม
 
 - [Discord Developer Portal](https://discord.com/developers/applications) に移動します。
 - **"New Application"**をクリックしてボットに名前を付け、Discord ポリシー ルールに同意します。
 - **"Bot"** ページに移動し、**Privileged Gateway Intent** セクションのすべてのオプションを有効にします。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- **OAuth2 > URL Generator** ページに移動し、`bot` と `applications.commands` を選択し、`Administrator` を選択してから、リンクをコピーしてブラウザのアドレスに貼り付けて、ボットをサーバーに招待します。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### ボットを設定する
-
-เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
-
-```bat
-@REM บน Windows
-npm install -g windows-build-tools
-```
-```sh
-# บน MacOS (Darwin)
-brew install libtool autoconf automake
-```
-```sh
-# บน Linux
-sudo apt-get install libtool-bin
-```
-
-- ターミナルを起動し、次のコマンドを実行します。
-
-```bat
-git clone https://github.com/Maseshi/Shioru.git
-cd Shioru
-npm install
-```
-
-- `./source/config.js` の **config** で一部の情報を編集できます。
-
-### Firebase をセットアップする
+### 4. ตั้งค่าฐานข้อมูล
 
 - https://firebase.google.com/ にアクセスして、プロジェクトのセットアップを開始します。
 - 新しいプロジェクトを追加し、手順に従います。
 - 最初のアプリケーションを **ウェブサイト** に追加し、オプション **「このアプリの Firebase Hosting もセットアップする」** を選択せず​​にアプリに名前を付けて、アプリを登録します。 ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase は構成に関する情報を提供します。 これらの値をファイルに適用します。 `.env.example`
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - **[作成] > [リアルタイム データベース](https://console.firebase.google.com/u/0/project/_/database/data)** に移動して、ストレージ データベースを作成します。
 
-### 発展させる
+## 🪛 การพัฒนา
 
-- ファイルの名前を変更します `.env.example` を `.env` として、必要なすべての値を挿入します。
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
+- เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดพัฒนา**
+- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run dev` > **💡 หมายเหตุ:** เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
-## クイックトラブルシューティング
+## ☕ จำลอง
 
-- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+ทดสอบการใช้งานจริงด้วยการทำงานที่คล้ายกับการใช้งานจริง โดยระบบจะคำนวณการแยกเศษของการทำงานตามจำนวนของกิลด์โดยอัตโนมัติ
 
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+- เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดจำลอง**
+- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run serve` > **💡 หมายเหตุ:** คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ทำให้คุณสมบัติบางอย่างอาจไม่ทำงาน
 
-- **sodium** パッケージをインストールできない場合は、代わりに **libsodium-wrappers** をインストールしてください。
+## 🍵 ใช้งานจริง
+
+สำหรับการใช้งานจริงสามารถใช้คำสั่งหรือชุดคำสั่งที่เตรียมไว้ได้ตามปกติ ดังนี้:
+
+- บน Linux หรือ MacOS
+
+  ```sh
+  # with command file (recommend)
+
+  sh start.sh || sudo sh start.sh
+
+  # or with call command
+
+  npm start
+  ```
+
+- บน Windows
+
+  ```bat
+  @REM with command file (recommend)
+
+  ./start.bat
+
+  @REM or with call command
+
+  npm start
+  ```
+
+### 🐳 ทำงานบน Docker
+
+การดำเนินการนี้จำเป็นต้องมี [Docker](https://www.docker.com/products/docker-desktop/)
+
+- ใช้คำสั่ง `npm run docker:build` แล้วรอให้ทำงานเสร็จทั้งหมด
+- จากนั้นเปิดโปรแกรม Docker แล้วสั่งรันพร้อมกับใส่ข้อมูลสภาพแวดล้อมที่จำเป็น (env) หรือใช้คำสั่ง `npm run docker:run` แล้วรอจนบอททำงาน > **💡 หมายเหตุ:** คุณสามารถตรวจสอบการทำงานได้โดยใช้คำสั่ง `docker ps -a`
+
+## แก้ไขปัญหาอย่างรวดเร็ว
+
+### `gyp ERR! stack Error: not found: make`
+
+ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
+
+### `@firebase/firestore: Firestore (10.6.0): GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
+
+เป็นไปได้ว่าคุณยังไม่ได้จำลองระบบฐานข้อมูลบนเครื่องในโหมดทดสอบ โดยคุณสามารถแก้ปัญหานี้ได้โดยปิดบอทแล้วรันคำสั่งดังนี้ในอีกหน้าหนึ่ง
+
 ```bat
-npm アンインストールナトリウム
-npm インストール libsodium-wrappers@latest --save
-```
-- 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
-```bat
-npm install ffmpeg-static@latest --save
+npm run emulators
 ```
 
-## 翻訳を改善する
+## ปรับปรุงการแปลภาษา
 
 既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
 
-## クレジット
-
-これらの素晴らしい作品の使用を許可してくれたすべてのオリジナル クリエイターに感謝します。
-
-アバターペイント: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
-
 ## 問題が見つかりました
 
-問題が発生した場合 現在の仕事から タブからお知らせください。 [issue](https://github.com/Maseshi/Shioru/issues) のリポジトリです。
+หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issues](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
