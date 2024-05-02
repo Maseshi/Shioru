@@ -1,0 +1,8 @@
+┏━━━━━━━━━━━━━━━ DEVELOPMENT MODE ━━━━━━━━━━━━━━━┓
+┃                                                ┃
+┃   When in development mode some features may   ┃
+┃     not work, It will restart automatically    ┃
+┃          when changes are made to the          ┃
+┃                ./source folder.                ┃
+┃                                                ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
