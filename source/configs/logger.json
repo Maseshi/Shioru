@@ -1,0 +1,44 @@
+{
+  "debug": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "error": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "issues": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "ready": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "shard": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "warn": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  },
+  "player": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "Kanta",
+    "webhookURL": "https://discord.com/api/webhooks/1232677767640780851/d1hZKXbTaME0hAV044_QxIxWaiAVP4AaARQuCCWiN0e78BNdAXuxGq73lCinsbj8CDuH"
+  }
+}

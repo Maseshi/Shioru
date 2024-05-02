@@ -5,92 +5,93 @@
  * It is recommended to look at the .env or .env.example files
  * to understand these values.
  */
-
-require("dotenv").config();
-
-const constants = require("./constants.json");
-const filters = require("./filters.json");
-const languages = require("./languages.json");
+const constants = require('./constants.json')
+const emulators = require('./emulators.json')
+const filters = require('./filters.json')
+const logger = require('./logger.json')
+const notification = require('./notification')
+const translation = require('./translation')
 
 module.exports = {
-    // Check bot updates from Github.
-    "check_update": {
-        "enable": true,
-        "releases_url": "https://api.github.com/repos/Maseshi/Shioru/releases/latest"
-    },
+  // Check bot updates from Github.
+  check_update: {
+    enable: true,
+    releases_url: 'https://api.github.com/repos/Maseshi/Shioru/releases/latest',
+  },
 
-    // The default for processing responses in chat.
-    "constants": constants,
+  // The default for processing responses in chat.
+  constants: constants,
 
-    // Filters for music.
-    "filters": filters,
+  // Music director.
+  djs: {
+    enable: false,
+    only: false,
+    roles: [],
+    users: [],
+  },
 
-    // Bot language settings.
-    "language": {
-        "code": "en-US",
-        "support": languages
-    },
+  // Firebase emulator suite
+  /// This configuration should match the file. firebase.json in the emulators section
+  /// if you don't have it yet. firebase.json, use "npm install -g firebase-tools",
+  /// run "firebase init", then set up emulators.
+  /// https://firebase.google.com/docs/emulator-suite
+  emulators: emulators,
 
-    // For checking performance.
-    // This section is optional and is recommended to be disabled.
-    "monitoring": {
-        "config": {
-            "apiKey": process.env.MONITOR_API_KEY ?? "",
-            "metricId": process.env.MONITOR_METRIC_ID ?? "",
-            "pageId": process.env.MONITOR_PAGE_ID ?? ""
-        },
-        "enable": false
-    },
+  // Filters for music.
+  filters: filters,
 
-    // Setup OpenAI
-    "openai": {
-        "config": {
-            "apiKey": process.env.OPENAI_API_KEY ?? "",
-            "basePath": process.env.OPENAI_BASE_PATH ?? ""
-        },
-        "enable": true
-    },
+  // Setup webhook logger
+  logger: logger,
 
-    // We use Firebase to deploy databases to the system.
-    "server": {
-        "apiKey": process.env.API_KEY ?? "",
-        "authDomain": process.env.AUTH_DOMAIN ?? "",
-        "databaseURL": process.env.DATABASE_URL ?? "",
-        "projectId": process.env.PROJECT_ID ?? "",
-        "storageBucket": process.env.STORAGE_BUCKET ?? "",
-        "messagingSenderId": process.env.MESSAGING_SENDER_ID ?? "",
-        "appId": process.env.APP_ID ?? "",
-        "measurementId": process.env.MEASUREMENT_ID ?? ""
-    },
+  // For checking performance.
+  monitoring: {
+    apiKey: process.env.MONITOR_API_KEY ?? '',
+    metricId: process.env.MONITOR_METRIC_ID ?? '',
+    pageId: process.env.MONITOR_PAGE_ID ?? '',
+  },
 
-    // Discord ID of the team.
-    "team": {
-        // For executing risky orders but does not have the same rights as the owner
-        "developer": [],
+  // Support notification alert
+  notification: notification,
 
-        // For use in processing suspicious requests.
-        "owner": "618836889239158785"
-    },
+  // We use Firebase to deploy databases to the system.
+  server: {
+    apiKey: process.env.API_KEY ?? '',
+    authDomain: process.env.AUTH_DOMAIN ?? '',
+    databaseURL: process.env.DATABASE_URL ?? '',
+    projectId: process.env.PROJECT_ID ?? '',
+    storageBucket: process.env.STORAGE_BUCKET ?? '',
+    messagingSenderId: process.env.MESSAGING_SENDER_ID ?? '',
+    appId: process.env.APP_ID ?? '',
+    measurementId: process.env.MEASUREMENT_ID ?? '',
+  },
 
-    // For setting application commands in test mode.
-    "test": {
-        // Useful when reaching the limits of Discord (Works only in test mode).
-        "application_commands": false,
+  // Discord ID of the team.
+  team: {
+    // For executing risky commands but does not have the same rights as the owner
+    developer: [
+      // '123456789101112131'
+      // '131121110987654321'
+    ],
 
-        // The id of the guild used for the test.
-        "guild": process.env.TEST_GUILD ?? ""
-    },
+    // For use in processing suspicious requests.
+    owner: '618836889239158785',
+  },
 
-    // The bot token, which can be found on the Discord Developer page.
-    // https://discord.com/developers/applications
-    "token": process.env.TOKEN ?? "",
+  // For setting application commands in test mode.
+  test_guild: '1041689622897508372',
 
-    // Setup Top.gg
-    "top_gg_token": process.env.TOP_GG_API_KEY ?? "",
+  // The bot token, which can be found on the Discord Developer page.
+  token: process.env.TOKEN ?? '',
 
-    // Last time that personal information was updated
-    "update": "2021-02-26T20:08:27.467Z",
+  // Setup Top.gg
+  top_gg_token: process.env.TOP_GG_API_KEY ?? '',
 
-    // Setup Weatherbit
-    "weatherbit_token": process.env.WEATHERBIT_KEY ?? ""
-};
+  // Translation support locales
+  translation: translation,
+
+  // Last time that personal information was updated
+  update: '2021-02-26T20:08:27.467Z',
+
+  // Setup Weatherbit
+  weatherbit_token: process.env.WEATHERBIT_KEY ?? '',
+}
