@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Nyissa meg a https://firebase.google.com/ oldalt, és kezdje el a projekt beállítását.
+- Lépjen a [Discord fejlesztői portálra](https://discord.com/developers/applications)
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
