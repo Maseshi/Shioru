@@ -1,0 +1,870 @@
+{
+  "commands": {
+    "about": {
+      "my_profile": "profiilini",
+      "my_profile_detail": "Nimeni on %s synnyin sunnuntaina 21. kesäkuuta Asun talossa __Chaiwat Suwannarat(Masashi)__ on se, joka synnyttää minut ja antaa minulle tietoa ja kykyjä. **erilaisia että olen opiskellut kaiken kaikille missä asun Toivottavasti kaikki ovat iloisia voidessamme olla kanssani!! Ja kiitos kaikesta avusta ja tuesta ihanille hyväntekijöilleni. Paljon kiitoksia.\n\n[Virallinen verkkosivusto](https://maseshi.web.app/)\n[Tietosuojakäytäntö](https://maseshi.web. app/privacy-policy) | [Käyttöehdot](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Kaikki oikeudet pidätetään.",
+      "update_on": "päivitetty milloin"
+    },
+    "afk": {
+      "currently_afk": "❎ Nyt olet AFK",
+      "currently_not_afk": "❎ Et ole AFK tällä hetkellä.",
+      "now_afk": "💤 Nyt olet AFK, kirjoita viesti tai /afk poista poistuaksesi AFK-tilasta.",
+      "now_not_afk": "🔙 AFK-tilasi on poistettu."
+    },
+    "anime": {
+      "auto_cancel": "Kirjoita vain numero, jonka haluat lukea! (peruuta 1 minuutin sisällä)",
+      "choose_now": "Valitse nyt.!!",
+      "data_not_found": "❎ En ole löytänyt tätä tarinaa. Katsotaanpa se. Katsos, ehkä sellaista ei todellakaan ole?",
+      "end_date": "**Päättymispäivä**",
+      "english_name": "**Englantilainen nimi**",
+      "in_progress": "käynnissä",
+      "japan_name": "** japanilainen nimi **",
+      "link": "**linkki**",
+      "popularity_rank": "**Suosiosijoitus**",
+      "short_information": "Tämä on vain yhteenveto tiedoista. Jos haluat lukea lisää, klikkaa linkkiä!!",
+      "similar_stories": "Löysin 5 samanlaista asiaa. Minkä tarinan haluat lukea~",
+      "start_date": "**Aloituspäivämäärä**",
+      "synopsis": "**yhteenveto:**",
+      "undefined": "määrittelemätön"
+    },
+    "ask": {},
+    "automod": {
+      "flagged_words_name": "estää kirosanoja seksuaalista sisältöä ja loukkauksia",
+      "flagged_words_success": "✅ AutoMod-sääntösi on luotu, kaikki sanat piilotetaan.",
+      "keyword_name": "Estä sanan %skäyttö.",
+      "keyword_success": "✅ AutoMod-sääntösi on luotu, kaikki sanan %s sisältävät viestit poistetaan.",
+      "mention_spam_name": "Estä roskapostia, kun se tulee",
+      "mention_spam_success": "✅ AutoMod-sääntösi on luotu, useiden mainintojen roskapostitus estetään.",
+      "prevent_message": "Tämä viesti on suojattu.",
+      "spam_messages_name": "estää roskapostin",
+      "spam_messages_success": "✅ AutoMod-säännöt on luotu, viestiroskaposti estetään."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm... mutta kappale ei ole vielä edes alkanut?",
+      "not_queue_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "off": "📻 Automaattinen toistotila pois päältä",
+      "on": "📻 Automaattinen toistotila päällä"
+    },
+    "ban": {
+      "banned_for_time": "%s1 kielletty **%s2** päiväksi",
+      "member_has_banned": "❎ Tällaiset jäsenet on jo kielletty. Tunne olosi mukavaksi.",
+      "members_have_a_higher_role": "❎ Et voi kieltää ketään, jolla on sinua korkeampi rooli.",
+      "members_have_a_higher_role_than_me": "❎ En voi kieltää tätä jäsentä. koska hänellä on korkeampi rooli kuin minulla",
+      "no_reason": "Kiellon tehneet jäsenet eivät antaneet syytä.",
+      "permanently_banned": "%s kielletty pysyvästi",
+      "reason_for_ban": "Kielletty: %s1\nSyy: %s2",
+      "user_not_found": "❎ En löydä tätä jäsentä. Tarkista uudestaan."
+    },
+    "board": {},
+    "bug": {},
+    "captcha": {
+      "captcha_setup_success": "✅ Captcha-järjestelmä on asennettu ja aktivoitu onnistuneesti.",
+      "currently_disable": "ℹ️ Captcha on nyt suljettu.",
+      "currently_enable": "ℹ️ Captcha on nyt käytössä.",
+      "disabled_captcha": "✅ captcha on poistettu käytöstä",
+      "enabled_captcha": "✅ captcha otettu käyttöön onnistuneesti",
+      "need_to_setup_before": "❎ Aseta captcha ennen käyttöä /captcha setup -komennolla."
+    },
+    "covid": {
+      "active": "aktiivinen",
+      "active_per_one_million": "aktiivinen 1 miljoonaa kohden",
+      "backend_issue": "❎ Ilmoittajan puolella näyttää olevan ongelma. Yritä uudelleen ensi kerralla.",
+      "cases_per_one_million": "Potilaita 1 miljoonaa kohden",
+      "cases_today": "tämä potilas",
+      "cases_total": "kaikki potilaat",
+      "country_not_found": "❎ Hmm.. En löydä määrittämäsi maan tietoja.",
+      "critical_per_one_million": "kriittinen ajanjakso 1 miljoonaa kohden",
+      "critical_stage": "kriittinen aika",
+      "deaths_today": "kuoli tänään",
+      "deaths_total": "kaikki kuolivat",
+      "one_case_per_people": "potilasta kohti",
+      "one_death_per_people": "kuolema per henkilö",
+      "one_test_per_people": "Testaus per henkilö",
+      "population": "väestö",
+      "recovered": "mennyt",
+      "recovered_per_one_million": "Tappio 1 miljoonaa kohden",
+      "tests": "testata",
+      "tests_per_one_million": "Testejä 1 miljoonaa kohden",
+      "updated_on": "Viimeisin päivitys %s",
+      "when": "kun"
+    },
+    "credits": {},
+    "dead": {
+      "suicide": "%s tehdä itsemurhan 💔 lepää rauhassa"
+    },
+    "decode": {
+      "after": "dekoodauksen jälkeen",
+      "before": "ennen dekoodausta",
+      "decode_message": "🔓 Pura viestien salaus",
+      "decode_success": "Viestin salaus on purettu."
+    },
+    "donate": {
+      "thank_you_in_advance_message": "❤️ Kiitos kehittäjieni tukemisesta etukäteen. Minulla on seuraava tukikanava."
+    },
+    "eat": {
+      "already_eaten": "%s1 on syönyt %s2 vatsaan",
+      "do_not_eat_me": "Minä.. olen vähän pieni. m..ei hyvä syödä..."
+    },
+    "eight_ball": {
+      "answer": "vastaus",
+      "game": "🎱 8 pallon peli",
+      "question": "kysymys",
+      "risk": "Käytä onneasi kysymyksiin saadaksesi vastauksia.",
+      "roll_ball": "Pyöritä palloa!!"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **%s** Emoji on poistettu.",
+      "edited_emoji": "%s emoji korjattu",
+      "uploading_you_emoji": "📤 Ladataan emojiasi...",
+      "you_emoji_is_ready": "%s Emojisi on valmis. Kokeillaan!!"
+    },
+    "encode": {
+      "after": "salauksen jälkeen",
+      "before": "ennen koodausta",
+      "encode_message": "🔒 Salaa viestit",
+      "encode_success": "Viesti on salattu."
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Näyttää siltä, että emoji puuttuu tai se ei ehkä ole emoji."
+    },
+    "exp": {
+      "error": "❎ Tällaisten jäsenten kokemusta ei voi määrittää. Yritä uudelleen myöhemmin.",
+      "experience": "Kokemuspisteet (Exp)",
+      "exp_was_changed": "%s kertynyttä kaikilla kokemustasoilla on:",
+      "level": "Taso",
+      "notification_complete": "✅ Asetukset on tehty...",
+      "set_by_staff": "Tämän palvelimen tiimi määrittää kokemuksesi.",
+      "success": "✅ Asetukset on tehty..."
+    },
+    "filter": {
+      "add_filter": "🎼 Lisää vaadittu äänimuoto, jotta se on jo **%s**.",
+      "available_filter": "Saatavilla olevat suodatinmuodot",
+      "available_filter_description": "Mukauta musiikkiasi käyttämällä näitä %s1 -muotoja ```%s2```",
+      "clear_filter": "💨 Kaikki ääniformaatit on tyhjennetty. Nyt se on normaali äänimuoto.",
+      "list_filter_description": "Tässä jonossa on tällä hetkellä aktiivisia malleja: %s1 mallia\n```%s2```",
+      "list_filter_description_empty": "``` Äänimuotoa ei ole tällä hetkellä käytössä.```",
+      "list_filter_title": "Tällä hetkellä käytössä oleva äänimuoto",
+      "no_queue": "❎ Tällä hetkellä ei toisteta kappaletta.",
+      "not_queue_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "remove_filter": "🗑️ Äänimuoto **%s** on poistettu.",
+      "set_filter": "🎼 Aseta haluamasi äänimuoto **%s**",
+      "sound_filtering": "❓ Haluatko muuttaa musiikkisi ääntä?",
+      "unknown_filter": "❎ Hmm..en tiedä äänen `%s` muotoa, voit tarkistaa sen käyttämällä **saatavilla** vai **ava**?",
+      "unknown_input_option": "❓ Voit määrittää seuraavat parametrit: lisää, poista, aseta, käytettävissä, luettelo, tyhjennä."
+    },
+    "generate": {},
+    "guild": {
+      "available": "valmis",
+      "info_date": "tiedot milloin",
+      "no": "ei",
+      "none": "ei",
+      "server_info": "🗄 Tarkat palvelintiedot",
+      "server_info_description": "Tarkat palvelimen tiedot Joka perustuu Discordin tietoihin.",
+      "unknown": "En tiedä",
+      "yes": "Joo"
+    },
+    "help": {
+      "category": "Luokka: %s",
+      "client_permissions": "Käyttöoikeudet (botit): %s",
+      "command": "Tilaus: %s",
+      "command_detail": "📑 Tilaustiedot ",
+      "command_incorrect": "❎ Väärä järjestys",
+      "command_incorrect_guide": "Eh... Minulla ei ole tätä tilausta. Tarkista uudelleen kirjoittamalla `/help' nähdäksesi täydellisen luettelon komentoistani.",
+      "commands_description": [
+        "Kaikki komennot, jotka olen oppinut tai opiskellut. ymmärtää ja todella käyttää",
+        "joka ennen kuin soitti minulle Etuliitteen on oltava **/**.",
+        "\"<>\" tarkoittaa pakollista, \"()\" on syöttötyyppi ja \"[]\" on valinnainen.",
+        "Lisätietoja kustakin komennosta kirjoita `/help [komento]` ja toiveesi toteutuu!!"
+      ],
+      "description": "Kuvaus: %s",
+      "document_name": "Ohje Sheet",
+      "how_to_use": "Apua: %s",
+      "no_description": "Ei kuvausta",
+      "no_need_permissions": "Ei vaadittuja käyttöoikeuksia",
+      "request_by": "pyytänyt",
+      "unknown_how_to_use": "ei tapaa käyttää",
+      "user_permissions": "Käyttöoikeudet (käyttäjät): %s"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Tällaisia jäseniä ei löydy tältä palvelimelta.",
+      "success": "✅ <@%s> Viesti on luotu!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Kutsulinkkiä ei voi luoda Yritä uudelleen.",
+      "membership_invitation_card": "jäsenen kutsukortti",
+      "this_product_is_free": "Tämä tuote on ilmainen, älä myy."
+    },
+    "join": {
+      "already_joined": "❎ Eh..mutta olenko täällä nyt?",
+      "another_player_is_playing": "🚫 Et voi käyttää tätä tilausta tällä hetkellä. koska muita jäseniä soittaa musiikkia",
+      "channel_joined": "✅ Olen jo kanavalla <#%s>...",
+      "joined": "▶️ Nyt olen jo kanavalla <#%s>.",
+      "not_in_channel": "❓ Sinun täytyy ensin liittyä kanavaan. Muuten en tiedä mikä kenttä =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Tällaista jononumeroa ei näytä olevan ollenkaan. Tarkista uudestaan.",
+      "jumped": "➿ Hyppää jo uuteen kappaleeseen jonossa numero %s.",
+      "no_queue": "❎ Toistan tällä hetkellä yhtään kappaletta. ei voi ylittää",
+      "not_queue_owner": "🚫 Vain jonon omistaja voi muuttaa sitä."
+    },
+    "kick": {
+      "can_not_find_user": "❎ En löydä tätä jäsentä. Tarkista uudestaan.",
+      "kicked_out": "%s potkittiin ulos",
+      "members_have_a_higher_role": "❎ Et voi potkia sinua korkeampia ihmisiä.",
+      "members_have_a_higher_role_than_me": "❎ En voi potkia sitä jäsentä. koska hänellä on korkeampi rooli kuin minulla",
+      "no_reason": "Potkineet jäsenet eivät antaneet syytä.",
+      "reason_for_kick": "Potkija: %s1\nSyy: %s2"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Teet jotain tällaista.. Ei minun kanssani, haha...",
+      "killed": "%s1 on jo tappanut sinut %s2 🔪"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Et voi käyttää tätä tilausta tällä hetkellä. koska muita jäseniä soittaa musiikkia",
+      "not_in_any_channel": "❎ Nyt en ole vielä millään kanavalla...",
+      "now_leave": "◀️ Olen poissa nykyiseltä kanavalta."
+    },
+    "level": {
+      "delete_error": "❎ Tätä käyttäjää ei löydy ollenkaan.",
+      "delete_success": "✅ Tämän jäsenen kokemustaso on poistettu!",
+      "deleting": "📁 Poistetaan tämän jäsenen kokemustason dataa.",
+      "experience": "Kokemuspisteet (Exp)",
+      "level": "Taso",
+      "level_was_changed": "%s kertynyttä kaikilla kokemustasoilla on:",
+      "notification_complete": "✅ Asetukset on tehty...",
+      "set_by_staff": "Tämän palvelimen tiimi on määrittänyt luokkasi.",
+      "set_error": "❎ Tällaisten jäsenten tasoa ei voi asettaa. Yritä uudelleen myöhemmin.",
+      "set_success": "✅ Asetukset on tehty...",
+      "user_current_no_level": "❎ Tällaisilla jäsenillä ei ole luokkatasoa."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Boteilla ei ole tasoja, minä mukaan lukien.",
+      "experience": "Kokemuspisteet (Exp)",
+      "level": "Taso",
+      "user_no_data": "💨 Hmm... Tällä jäsenellä ei ole tasoa ja kokemusta.",
+      "your_experience": "Sinun kokemuksesi"
+    },
+    "license": {},
+    "logs": {
+      "can_not_delete_file": "❎ Yllä olevaa lokitiedostoa ei voi poistaa.\n```JavaScript\n%s\n```",
+      "can_not_read_file": "❎ Yllä olevaa lokitiedostoa ei voi lukea.\n```JavaScript\n%s\n```",
+      "file_has_been_deleted": "✅ **%s** jo poistettu",
+      "file_not_found": "❎ Kansiosta ei löydy tiedostoa nimeltä **%s**.",
+      "folder_empty": "💨 Nyt kansion lokitiedosto on tyhjä. Yritä palata myöhemmin uudelleen.",
+      "found_file": "Löytyi %s1 tiedostoa:\n```%s2```",
+      "owner_only": "🚫 Anteeksi.. Vain järjestelmänvalvojat voivat käyttää tätä komentoa."
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Sanoja ei löytynyt sanalle %s.",
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "playing_lyrics": "📋 Parhaillaan soivan kappaleen sanat"
+    },
+    "meme": {
+      "can_not_fetch": "Meemin nouto epäonnistui. Yritä uudelleen.",
+      "meme_not_found": "Mitään tyyppiä %svastaavaa meemiä ei löytynyt."
+    },
+    "minecraft": {
+      "address": "osoite",
+      "do_not_have": "ei ole",
+      "ip": "IP-osoite",
+      "last_check": "viimeksi tarkastettu",
+      "maximum_player_count": "Pelaajien enimmäismäärä",
+      "motd": "Kuvaus",
+      "player_in_server": "palvelinpelaajia",
+      "port": "portti",
+      "server_available": "🟢 Tämä palvelin on tällä hetkellä auki.",
+      "server_unavailable": "🔴 Tämä palvelin on väliaikaisesti suljettu.",
+      "skin_of": "🎴 Skinit %s",
+      "version": "versio"
+    },
+    "musicInfo": {
+      "detail": "📄 Tällä hetkellä soivan kappaleen tiedot",
+      "download_link": "📥 Latauslinkki",
+      "duration": "🕒 Kesto",
+      "id": "🆔 ID",
+      "link": "🔗 Linkki",
+      "music_name": "🎵 Kappaleen nimi",
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "uploader": "🎬 lataaja"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Et voi tilapäisesti saada haluamaasi kuvaa. Yritä uudelleen myöhemmin.",
+      "request_by": "pyysi %s"
+    },
+    "nowPlaying": {
+      "filter": "🎼 Äänisuodatinkuvio: `%s",
+      "owner_this_queue": "%s on tämän jonon omistaja"
+    },
+    "numbers": {
+      "result": "Tulos on %s"
+    },
+    "paste": {
+      "backend_not_response": "❎ Ei vastausta palvelimelta ollenkaan. Voit yrittää myöhemmin uudelleen.",
+      "file": "tiedosto",
+      "raw": "raaka"
+    },
+    "pause": {
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "not_paused": "📼 Nyt olen jumissa. Näyttää oudolta tänään..",
+      "paused": "⏸ Keskeytä musiikki nyt."
+    },
+    "ping": {
+      "connection": "📡 Yhteys",
+      "info": "Meno-paluuviive on %s1 ms\nverkkopistorasian käyttöaika on %s2 ms",
+      "result": "🏓 Pong",
+      "waiting": "🏓 Ping..."
+    },
+    "play": {
+      "no_queue": "❎ En ole vielä soittanut yhtään kappaletta.",
+      "not_in_channel": "❓ Anna mikä tahansa kanava ensin. Muuten älä kuuntele minua..."
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Yhtään kappaletta ei ole soitettu äskettäin.",
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "previous": "⏮ Palaa edelliseen kappaleeseen"
+    },
+    "purge": {
+      "message_cleared": "`%s viestiä` poistettu onnistuneesti 💨"
+    },
+    "qrcode": {
+      "qrcode_success": "QR-koodisi on valmis käytettäväksi.",
+      "qrcode_title": "🧩 QR-koodi"
+    },
+    "quality": {
+      "advice_embed_description": "``` Nykyinen laatu: %s```\nJoskus ongelman voi aiheuttaa palvelin, jolla on liian paljon pääsyä siihen, mikä aiheuttaa suorituskykyongelmia. Suosittelen kuitenkin, että tarkistat Internet-yhteytesi ennen tämän määrittämistä\n`0` - Käytä **OPUS**-toimintoa äänitiedostojen pakkaamiseen. Tämä parantaa äänenlaatua, mutta käyttää myös enemmän resursseja **(suositus)**\n`1` - Käytä ääntä suoraan lähteestä. Tämä parantaa suorituskykyä, mutta käyttää vähemmän resursseja.",
+      "advice_embed_footer_text": "Voit asettaa lisää äänenlaatua Discord-asetuksista: Asetukset > Ääni ja video > Lisäasetukset.",
+      "advice_embed_title": "Mukauta äänenlaatua",
+      "focus_on_high_quality": "keskittyä korkeaan laatuun",
+      "low_efficiency": "keskittyä alhaiseen suorituskykyyn",
+      "opus_mode_selected": "🎛️ Olen nyt käyttänyt **OPUS:a** äänitiedostojen pakkaamiseen. Äänenlaatu paranee.",
+      "raw_mode_selected": "🎛️ Vaihdettu soundiin alkuperäisestä Se voi heikentää äänenlaatua."
+    },
+    "queue": {
+      "autoplay": "📻 Automaattinen toisto",
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "owner_this_queue": "%s on tämän jonon omistaja",
+      "previous_queue": "**edellinen jono**",
+      "waiting_in_queue": "**Seuraavaa jonoa odotellessa**"
+    },
+    "queueStatus": {
+      "autoplay": "📻 Automaattinen toisto",
+      "duration": "🕒 Kesto",
+      "filter": "🎼 äänisuodatinkuvio",
+      "now": "⌚ nyt",
+      "off": "sammuttaa",
+      "on": "avata",
+      "owner_this_queue": "%s on tämän jonon omistaja",
+      "paused": "tauko",
+      "playing": "pelaaminen",
+      "queue_status": "📑 Nykyisen kappalejonon tila",
+      "repeat": "🔁 Toista",
+      "repeat_off": "ei auki",
+      "repeat_this_queue": "tämä jono",
+      "repeat_this_song": "Tämä laulu",
+      "volume": "🔉 äänenvoimakkuus"
+    },
+    "reboot": {
+      "dm_to_owner": "**:arrows_counterclockwise: Järjestelmän uudelleenkäynnistystä pyydetään!!**\nVahvista henkilöllisyytesi kirjoittamalla tämä salasana palvelimelle, jossa suoritat komennon\nVoit jättää sen huomiotta, jos et halua jatkaa\nKiitos, että pidät minusta huolta vielä tähän päivään asti :)\n||%s||",
+      "not_owner": "🛑 Älä... älä ota sitä. Tämä toiminto vaatii vain huippuoikeuksia.",
+      "now_reboot": "✅ Käynnistetty uusi järjestelmä!!",
+      "password_is_incorrect": "❎ Salasana on väärä. Tarkista uudestaan.",
+      "rebooting": "🔄 Uudelleenkäynnistys..."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...se ei näytä olevan tätä järjestystä... yritä tarkistaa huolellisesti Jälleen, onko se oikein vai ei?",
+      "reloaded": "✅ %s Ladattu uudelleen onnistuneesti!!",
+      "reload_error": "❌ Hitto..yritin ladata komentoa %s uudelleen, mutta en onnistu."
+    },
+    "remove": {
+      "no_queue": "❎ En ole vielä soittanut yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "removed": "❌ Poistettu **%s** jonosta.",
+      "too_much": "❎ Tällaista jonoa ei ole. Tarkista uudestaan."
+    },
+    "repeat": {
+      "no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "off": "toista pois",
+      "repeated": "🔁 %snyt",
+      "repeat_queue": "toista jono",
+      "repeat_song": "toista kappale"
+    },
+    "resume": {
+      "no_queue": "❎ En ole vielä soittanut yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "now_playing": "📼 Hei.. Nyt pelaan.",
+      "resumed": "▶️ Kappale soi samasta kohdasta."
+    },
+    "rip": {
+      "no_image": "❎ Voi...se näyttää tältä kuvalta Se on saatettu poistaa tai siirtää toiseen paikkaan."
+    },
+    "rpc": {
+      "answered": "Olet valinnut vastauksesi.",
+      "bot_winner": "Jep!.. voitin sinut <@%s>",
+      "can_not_play_with_another_bot": "❎ Et voi pelata tätä peliä muiden robottien kanssa.",
+      "choose_options": "Valitse vaihtoehto alta.",
+      "game_timeout": "Tämä peli on vanhentunut. Kiitos hauskanpidosta.",
+      "member_not_found": "❎ Tällaisia jäseniä ei näytä olevan enää tällä palvelimella.",
+      "rock_paper_scissors": "🎮 kivipaperisakset",
+      "tie": "Solmio!",
+      "user_answered": "%s vastausta on valittu. Odotan vastausta toiselta puolelta...",
+      "user_winner": "<@%s> on voittaja!",
+      "your_answer": "Olet nyt valinnut %s"
+    },
+    "say": {
+      "success": "✅ Viestisi on lähetetty."
+    },
+    "search": {
+      "get_list_of_songs": "📋 Olen saanut listan haluamistani kappaleista. ja alkaa soittaa musiikkia hetken kuluttua...",
+      "invalid_number": "🔴 Viimeaikaiset haut on peruttu. Voit etsiä uudelleen kirjoittamalla saman komennon.",
+      "no_results": "❎ Yritin etsiä kappaleesta, mutta en löytänyt tuloksia...",
+      "playlist_type": "soittolista",
+      "search_cancelled": "🕘 Haku peruttu..koska kappalevalikoimaa ei löytynyt.",
+      "searching": "🔍 Etsi%saiheeseen liittyvää",
+      "song_type": "laulu",
+      "timer_choose": "Valittavana on aika%s 60 sekuntia. Jos haluat peruuttaa, voit kirjoittaa numeron, jolla ei ole merkitystä, tai odottaa ajan loppuun.",
+      "title_results": "Tulokset%ssta, kuten:",
+      "user_not_in_channel": "❓ Syötä mikä tahansa kanava ensin. Muuten älä kuuntele minua..."
+    },
+    "seek": {
+      "no_queue": "❎ Nyt ei toisteta yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "seek_guide": "❓ Kuinka monta sekuntia haluat muuttaa parhaillaan toistettavan kappaleen aikaa? Nyt pelataan %ssekuntia",
+      "sought": "🕘 Muutti parhaillaan soivan kappaleen aikaa.",
+      "too_much": "❎ Tämän kappaleen aika on %s Ei ole mitään muuta kuin tämä."
+    },
+    "set_command": {},
+    "set_language": {},
+    "set_notify": {},
+    "set_personal": {},
+    "settings": {
+      "description": "Voit määrittää sen tarpeidesi mukaan käyttämällä näitä komentoja.",
+      "languages": "🌐 Kieli (palvelin)",
+      "note": "Huomautus: Jotkin komennot saattavat vaatia tiettyjä käyttöoikeuksia ennen niiden suorittamista.",
+      "notification": "🔔 Ilmoitus (palvelin)",
+      "personal": "📄 Henkilötiedot (henkilökohtaiset)",
+      "title": "⚙️ Asetukset"
+    },
+    "shuffle": {
+      "no_queue": "❎ Nyt ei toisteta yhtään kappaletta.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "now_shuffle": "🔀 Jonojen vaihtaminen alkaa..."
+    },
+    "shutdown": {
+      "dm_to_owner": "**:red_circle: Sammutuspyyntö!!**\nVahvista henkilöllisyytesi kirjoittamalla tämä salasana palvelimelle, jolla suoritat komennon\n\njättää sen huomiotta, jos et halua jatkaa. Pidä minusta huolta tähän päivään asti :)\n||%s||",
+      "not_owner": "🛑 Älä... älä ota sitä. Tämä toiminto vaatii vain huippuoikeuksia.",
+      "now_shutdown": "💤 Discordin järjestelmä on poistettu käytöstä. Nähdään taas~",
+      "password_is_incorrect": "❎ Salasana on väärä. Tarkista uudestaan.",
+      "shutting_down": "🔄 Sammutan järjestelmän..."
+    },
+    "skip": {
+      "no_queue": "❎ Toistan tällä hetkellä yhtään kappaletta. ei voi ylittää",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "skipped": "⏭ Ohitin sen ja aloin soittamaan uutta kappaletta jonossa."
+    },
+    "snake": {
+      "building_board_game": "🐍 Koostumus odota hetki...",
+      "game_name": "Snake: Peli",
+      "game_over": "peli ohi",
+      "game_score": "Pisteet: **%s1**\nAika: **%s2** sekuntia",
+      "played_on": "Alkoi %s"
+    },
+    "stats": {
+      "member_count": "จำนวนสมาชิก:",
+      "server_count": "จำนวนเซิร์ฟเวอร์:"
+    },
+    "status": {
+      "data_by_server": "Viitetiedot palvelimelta.",
+      "dnd_status": "Älä häiritse -tilassa on tällä hetkellä \n```%s``` jäseniä.",
+      "idle_status": "Tällä hetkellä poissa olevien jäsenten määrä on \n```%s```.",
+      "offline_status": "Tällä hetkellä offline-tilassa olevien jäsenten määrä on \n```%s```",
+      "online_status": "Online-tilassa olevien jäsenten määrä on \n```%s```"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **%s** Tarra poistettu onnistuneesti",
+      "does_not_support_gif": "❎ Valitettavasti...Discord ei tällä hetkellä tue GIF-pohjaisia mukautettuja tarroja.",
+      "edited_sticker": "%s tarraa on muokattu.",
+      "uploading_you_sticker": "📤 Ladataan tarrojasi...",
+      "you_sticker_is_ready": "%s Tarrasi on valmis. Kokeillaan!!"
+    },
+    "stop": {
+      "no_queue": "❎ Eh...soittamani kappale ei ole saatavilla.",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "stopped": "⏹️ Lopeta musiikin toisto ja poista kaikki jonot."
+    },
+    "system": {
+      "info_battery": {},
+      "info_description": "Järjestelmän tiedot, jonka parissa työskentelen tällä hetkellä, ovat seuraavat.",
+      "info_gpu_control": "• GPU (ohjain)",
+      "info_gpu_display": "• GPU (näyttö)",
+      "info_memory_used": "• käytetty muisti",
+      "info_platform": "• Alusta",
+      "info_system": "• järjestelmä",
+      "info_temperature": "• Prosessorin lämpötila",
+      "info_title": "🖥 Järjestelmän perustiedot",
+      "info_uptime": {
+        "info": "%s1 päivä %s2 tuntia ",
+        "title": "• Työaika"
+      },
+      "loading": "⚙️ Lähetetään pyyntöä noutaa järjestelmätietoja palvelimelta...",
+      "main": "pää",
+      "unknown": "En tiedä"
+    },
+    "tictactoe": {
+      "button_is_selected": "❎ Kanava on jo varattu.",
+      "can_not_duel_with_me": "❎ En ole hyvä pelaamaan näitä pelejä. Olen tuomitsevampi.",
+      "can_not_play_with_bot": "❎ Et voi pelata tätä peliä boteilla.",
+      "in_another_duel": "❎ <@%s> Parhaillaan kaksintaistelussa jonkun muun kanssa.",
+      "in_duel": "❎ Ei, sinun täytyy taistella <@%s>:n kanssa loppuun asti.",
+      "member_not_found": "❎ Sellaiset jäsenet näyttävät olevan siepattu jossain muualla.",
+      "need_one_emoji": "❎ Voinko saada yhden emojin, kuten ❌ tai ⭕?",
+      "tie": "Solmio!",
+      "wait_opponent": "❓ Odota hetki vastakkaista puolta.",
+      "winner": "%s voitti!"
+    },
+    "timeout": {
+      "can_not_set_for_yourself": "❎ Et voi asettaa aikakatkaisua itsellesi.",
+      "can_not_set_timeout": "❎ En voi asettaa hänelle aikakatkaisua, koska hänellä on korkeampi rooli kuin minulla.",
+      "can_not_set_to_admin": "❎ Et voi asettaa aikakatkaisua valvojille.",
+      "dm_to_user": "⌛ Olet asetettu aikakatkaisuun kohdassa %s1, näet jäljellä olevan ajan kyseisellä palvelimella **Syy**: %s2",
+      "member_not_found": "❎ Jäsenet eivät sano, että he eivät ole enää tällä palvelimella.",
+      "no_reason": "ei anna syytä",
+      "success": "%s1 vanhenee %s2 minuutin kuluttua **Syy**: %s3"
+    },
+    "together": {
+      "can_not_open": "❌ Ummm... siksi en voi avata numeroa %s",
+      "do_not_have": "❎ Ah..Nyt ei vieläkään ole %s1 tai sitä ei välttämättä ole\n, mutta nyt käytettävässä Togetherissa on %s2 kohdetta, nimittäin\n```%s3```",
+      "do_not_have_permission": "❌ En voi aktivoida, koska minulla ei ole käyttöoikeutta. Ota yhteyttä moderaattoriin.",
+      "join_via_this_link": "Liity tämän linkin kautta. https://discord.com/invite/",
+      "user_not_in_channel": "❎ Siirry ensin johonkin äänikanavasta tai voit kertoa minulle kyseisen kanavan nimen tai tunnuksen. Hän osaa luoda linkin oikein.",
+      "voice_channel_not_found": "❎ Eh...mutta tässä palvelimessa ei ole äänikanavaa Siirry äänikanavalle ja yritä uudelleen."
+    },
+    "translate": {
+      "can_not_translate": "❎ Tällaisen tekstin kieltä ei voida kääntää. Yritä uudelleen myöhemmin.",
+      "says": "sanoa",
+      "translate_support": "❎ Virheellinen käännöskoodi Tarkista uudelleen\n**Tuetut kielet:** %s"
+    },
+    "unban": {
+      "no_one_gets_banned": "❎ Kukaan palvelimella ei ole tällä hetkellä kiellettyä.",
+      "no_reason": "Jäsenet, jotka poistivat bannin, eivät antaneet syytä.",
+      "reason_for_unban": "Unbannoinut: %s1\nSyy: %s2\nJäsenen bannauksen poistamisen jälkeen. Tällaiset jäsenet voivat liittyä tälle palvelimelle normaalisti.",
+      "this_user_not_banned": "❎ Eh.. sitä jäsentä ei bannattu. Katsotaanpa vielä kerran hienoja uusia avainsanoja...",
+      "user_has_been_unbanned": "%s estetty"
+    },
+    "untimeout": {
+      "can_not_set_for_yourself": "❎ Et voi asettaa aikakatkaisua itsellesi.",
+      "can_not_set_to_admin": "❎ Et voi asettaa aikakatkaisua valvojille.",
+      "can_not_set_untimeout": "❎ En voi asettaa häntä jättämään aikalisää, koska hänellä on korkeampi rooli kuin minulla.",
+      "dm_to_user": "⏲️ Sinut on peruutettu asettaaksesi aikakatkaisun %s1 **Syy**: %s2",
+      "member_not_found": "❎ Jäsenet eivät sano, että he eivät ole enää tällä palvelimella.",
+      "no_reason": "ei anna syytä",
+      "success": "%s1 Aikakatkaisu on asetettu **Syy**: %s2"
+    },
+    "uptime": {
+      "days": "päivä",
+      "hours": "tunnin",
+      "info_title": "🕒 On aika aloittaa työt.",
+      "minute": "minuutti",
+      "second": "toinen"
+    },
+    "user": {
+      "info_date": "tiedot milloin",
+      "none": "ei",
+      "unknown": "En tiedä",
+      "user_info": "👥 Käyttäjätiedot",
+      "user_info_description": "Yksityiskohtaiset tiedot käyttäjistä Joka perustuu Discordin tietoihin.",
+      "yes": "Joo"
+    },
+    "version": {
+      "working_in_version": "Työskentelen version parissa: **%s**"
+    },
+    "volume": {
+      "adjusted": "🔊 Säädä äänenvoimakkuus: **%s**",
+      "no_queue": "❎ Eh...soittamani kappale ei ole saatavilla. Mitä aiot säätää?",
+      "not_owner": "🚫 Vain jonon omistaja voi muuttaa sitä.",
+      "this_volume": "🔈 Nykyinen äänenvoimakkuus on: **%s**"
+    },
+    "vote": {
+      "invite": "เชิญ",
+      "tags": "แท็ก",
+      "vote": "โหวต",
+      "votes": "คะแนนโหวต"
+    },
+    "weather": {
+      "air_quality_index": "😷 ดัชนีคุณภาพอากาศ",
+      "broken_clouds": "เมฆแตก",
+      "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
+      "clear_sky": "ท้องฟ้าแจ่มใส",
+      "clouds": "☁️ เมฆ",
+      "country_code": "🗺️ รหัสประเทศ",
+      "day": "เช้า",
+      "dew_point": "💦 จุดน้ำค้าง",
+      "drizzle": "ละอองฝน",
+      "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "feels_like": "🎐 siltä tuntuu",
+      "few_clouds": "เมฆน้อย",
+      "flurries": "แปรปรวน",
+      "fog": "หมอก",
+      "freezing_fog": "หมอกเยือกแข็ง",
+      "freezing_rain": "ฝนเยือกแข็ง",
+      "haze": "หมอกควัน",
+      "heavy_drizzle": "ฝนตกปรอยๆ",
+      "heavy_rain": "ฝนตกหนัก",
+      "heavy_shower_rain": "ฝนตกหนัก",
+      "heavy_sleet": "ลูกเห็บตกหนัก",
+      "heavy_snow": "หิมะตกหนัก",
+      "heavy_snow_shower": "หิมะตกหนัก",
+      "humidity": "💧ความชื้น",
+      "latitude": "📍 ละติจูด",
+      "light_drizzle": "ฝนตกเบาบาง",
+      "light_rain": "ฝนตก",
+      "light_shower_rain": "ฝนตกหนักบางพื้นที่",
+      "light_snow": "หิมะตกโปรยปราย",
+      "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
+      "longitude": "📍 ลองจิจูด",
+      "millibars": "มิลลิบาร์",
+      "mist": "หมอก",
+      "mix_snow_rain": "หิมะ/ฝนผสม",
+      "moderate_rain": "ฝนตกปานกลาง",
+      "night": "กลางคืน",
+      "no_result_found": "❎ Eh...etsin tietoa tästä alueesta, mutta en löytänyt sitä.",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "observation_time": "⌚ เวลาสังเกตการณ์",
+      "overcast_clouds": "เมฆมืดครึ้ม",
+      "part_of_the_day": "🌗 ส่วนหนึ่งของวัน",
+      "pressure": "💨 ความดัน",
+      "sand_dust": "ทราย/ฝุ่น",
+      "scattered_clouds": "เมฆกระจัดกระจาย",
+      "sea_level_pressure": "🌊 ความกดอากาศที่ระดับน้ำทะเล",
+      "shower_rain": "ฝนโปรยปราย",
+      "sleet": "ลูกเห็บตก",
+      "smoke": "ควัน",
+      "snow": "หิมะตก",
+      "snow_fall": "❄️ หิมะตก",
+      "snow_shower": "หิมะโปรยปราย",
+      "state_code": "🗾 รหัสรัฐ",
+      "sunrise": "🌅 พระอาทิตย์ขึ้น",
+      "sunset": "🌇 พระอาทิตย์ตก",
+      "temperature": "🌡️ Lämpötila",
+      "thunderstorm_with_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_hail": "พายุฝนฟ้าคะนองพร้อมลูกเห็บ",
+      "thunderstorm_with_heavy_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_heavy_rain": "พายุฝนฟ้าคะนองพร้อมฝนตกหนัก",
+      "thunderstorm_with_light_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
+      "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
+      "timezone": "🌐 Aikavyöhyke",
+      "unknown": "ไม่ทราบ",
+      "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
+      "unknown_precipitation": "ไม่ทราบปริมาณฝน",
+      "uv_index": "🧴 ดัชนีรังสียูวี",
+      "visibility": "👀 ทัศนวิสัย",
+      "weather": "⛅ Sää",
+      "weather_at_the_moment": "Sää __**%s1**__ on nyt \n```%s2```.",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust_speed": "🍃 ความเร็วลมกระโชก",
+      "wind_speed": "🎏 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Kanava",
+      "member_create_channel": "> Palvelimen jäsenen luoma kanava: <#%s>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Kanava",
+      "member_delete_channel": "> Palvelimen jäsenen räjäytyskanava: `%s`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Kanava",
+      "member_pins_in_channel": "> Palvelimen jäsen on kiinnittänyt paikan: <#%s1>, kun %s2"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Kanava",
+      "member_update_channel": "> Palvelimen jäsen on vaihtanut joitakin kenttiä: `%s1` arvoon <#%s2>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> Palvelimen jäsen on luonut uuden emojin: :%s:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Palvelimen jäsen poistettu emoji: :%s:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> Palvelimen jäsen on vaihtanut uuden emojin arvosta %s1 arvoon %s2."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Palvelin",
+      "member_ban_add": "> <@%s1> Jo kielletty tällä palvelimella\n**Syy:**\n```%s2```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Palvelin",
+      "member_ban_remove": "> <@%s1> On poistettu esto tällä palvelimella\n**syy:**\n```%s2```"
+    },
+    "guildCreate": {
+      "advice": "**💡 Vinkkejä**",
+      "advice_detail": "Jos olet tämän killan omistaja..Haluan tehdä tämän killan asennuksen valmiiksi ennen sen käyttöä, koska joitain asioita et ehkä tarvitse. Siksi yritä käyttää Asetukset-komentoa.",
+      "description": "Hei..kiitos kutsustasi tähän %s paikkaan\nnäyttää siltä, että ihmiset ihmettelevät mitä voin tehdä? Voi...voi pestä astioita, pestä pyykkiä. Se on mahtavaa, eikö ~ Haha, missä se on? se oli vitsi",
+      "get_started": "Se on saapunut alkuun!!",
+      "help_information_and_documentation": "**📄 Apua ja dokumentaatiota**",
+      "help_information_and_documentation_detail": "Haluatko tietää, mitä voin tehdä?...erittäin helppoa. Kirjoita vain \"Shelp\" tai \"/help\", niin joku kertoo sinulle. Tietenkin mene vain alla olevaan linkkiin ja siellä on kehittäjän ja muiden toimittamat asiakirjat. Hän on jo kirjoittanut\n> https://shiorus.web.app/",
+      "join_on": "liity mukaan",
+      "support_multiple_languages": "** 🌐 Tukee useita kieliä**",
+      "support_multiple_languages_detail": "Tuen useita kieliä. Kielen vaihtamiseksi Voit asettaa sen komennolla \"Slanguage <language code>\" tai \"/language <language code>\"."
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Tämä palvelin on jo yhdistetty %s . Saat välittömästi uusia artikkeleita tulevien päivitysten kera.",
+      "guild_notification": "🗄️ Palvelin"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "Tapahtui vahvistusvirhe. Ota yhteyttä palvelimen henkilökuntaan ryhtyäksesi toimiin.",
+      "captcha_success": "Sinut on vahvistettu kohdassa %s",
+      "greet": "Hei uusi jäsen **Tämä on automaattinen viesti** \nKiitos liittymisestäsi palvelimellemme. Lue huolellisesti tämän palvelimen tiedot ennen kuin alat puhua kenenkään kanssa.",
+      "solve_the_captcha": "Korjattu captcha, joka vahvistetaan %s:ssa",
+      "submit_answer_captcha": "Lähetä captcha vastaus",
+      "submit_you_answer_guide": "Ilmoita, mikä mielestäsi captcha on",
+      "use_button_below": "Käytä alla olevaa painiketta lähettääksesi vastauksesi!",
+      "welcome": "Tervetuloa palvelimelle",
+      "wrong_answer": "Näyttää väärältä. Yritä uudelleen...",
+      "your_answer": "vastaa captchaasi"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "On jo paennut tältä palvelimelta...(Mennään hänen luokseen..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Tervetuloa jäsenet palvelimelta %s Odotamme sinua täällä.",
+      "guild_notification": "🗄️ Palvelin"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Palvelin",
+      "guild_unavailable": "Tällä hetkellä...tämä palvelin on tilapäisesti poissa käytöstä. Ota yhteyttä tämän palvelimen ylläpitäjään."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm... minulta puuttuu joitain käyttöoikeuksia. Joten en voi jatkaa, nimittäin **%s**",
+      "command_error": "❌ Tätä tilausta suoritettaessa tapahtui virhe!",
+      "command_is_disabled": "⚫ Tämä tilaus on poistettu käytöstä palvelimessa. Ota yhteyttä palvelimen järjestelmänvalvojaan.",
+      "no_permission": "🚫 Hmm...Näyttää siltä, että sinulla ei ole lupaa käyttää sovelluskomentoa (/), kysy moderaattorilta (≧∇≦)",
+      "user_is_not_allowed": "🚫 En voi antaa sinun käyttää tätä tilausta. Jos sinulla ei vielä ole näitä oikeuksia: **%s**"
+    },
+    "inviteCreate": {
+      "invite_create": "Kutsulinkki luotu onnistuneesti\n**Linkki:** %s1\n**Vanhenee:** %s2\n**Enimmäismäärä:** %s3\n```%s4```",
+      "invite_notification": "🏷️ Kutsu"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`%s` Tämä kutsukoodi on poistettu.",
+      "invite_code_expires": "`%s` Tämä kutsukoodi on vanhentunut.",
+      "invite_notification": "🏷️ Kutsu"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Olet palannut Poista AFK-tila automaattisesti",
+      "no_reason_for_afk": "ei ole",
+      "that_user_is_afk": "%s1 Ei nyt näytöllä (AFK), älä mainitse häntä nyt\n**Jätä viesti**: %s2"
+    },
+    "roleCreate": {
+      "role_create": "<@&%s> on luotu.",
+      "role_notification": "🔖 Rooli"
+    },
+    "roleDelete": {
+      "role_delete": "`%s` on poistettu.",
+      "role_notification": "🔖 Rooli"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Rooli",
+      "role_update": "`%s1` on päivitetty muotoon <@&%s2>"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#%s> on luotu.",
+      "stage_notification": "🎤 lavalla"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`%s` on poistettu.",
+      "stage_notification": "🎤 lavalla"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`%s1` on päivitetty muotoon <#%s2>.",
+      "stage_notification": "🎤 lavalla"
+    },
+    "stickerCreate": {
+      "sticker_create": "**%s** Nyt saatavilla",
+      "sticker_notification": "👻 tarra"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**%s** on poistettu",
+      "sticker_notification": "👻 tarra"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 tarra",
+      "sticker_update": "`%s1` on päivitetty muotoon **%s2**"
+    },
+    "threadCreate": {
+      "thread_create": "<#%s> on luotu.",
+      "thread_notification": "#️⃣ Langat"
+    },
+    "threadDelete": {
+      "thread_delete": "**%s** on poistettu",
+      "thread_notification": "#️⃣ Langat"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Langat",
+      "thread_update": "`%s1` on päivitetty muotoon **%s2**"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Web Hook",
+      "webhook_update": "**%s1** / **%s2** on päivitetty kanavalle <#%s3>."
+    }
+  },
+  "handlers": {
+    "music": {
+      "addList": {},
+      "addSong": {},
+      "disconnect": {},
+      "empty": {},
+      "error": {},
+      "finish": {},
+      "playSong": {},
+      "searchCancel": {},
+      "searchDone": {},
+      "searchInvalidAnswer": {},
+      "searchNoResult": {},
+      "searchResult": {}
+    }
+  },
+  "utils": {
+    "consoleUtils": {
+      "an_error_occurred": "🔴 Suorituksen aikana tapahtui virhe.",
+      "error_detail": "Komento: **%s1**\nVersio: **%s2**\nAjastettu: **%s3**\nPalvelin: **%s4**\nLatenssi: **%s5ms**\nVastaanotto-lähetys: * *%s6ms**\nVirhetulos:\n```JavaScript\n%s7\n```\n> **Vinkki**: Voit ilmoittaa virheestä välittömästi komennolla:\n> ```Sbug <message>`` `\n> ```/bug <message>```\n[ongelmaraportti](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Uutiset ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+      "server_abnormal": "epätavallinen",
+      "server_normal": "normaali"
+    },
+    "databaseUtils": {
+      "congratulations": "Onnittelut!!",
+      "level_up": "Luokka *%s1* on nyt päivitetty luokkaan ```%s2```."
+    },
+    "miscUtils": {
+      "april": "huhtikuu",
+      "august": "elokuu",
+      "december": "joulukuu",
+      "february": "helmikuu",
+      "format_at": "Päivä%s1 1 %s %s3 %s4 Aika %s5:%s18.00",
+      "friday": "perjantai",
+      "january": "tammikuu",
+      "july": "heinäkuu",
+      "june": "kesäkuuta",
+      "march": "maaliskuuta",
+      "may": "saattaa",
+      "monday": "maanantai",
+      "november": "marraskuu",
+      "october": "lokakuu",
+      "saturday": "lauantai",
+      "september": "syyskuu",
+      "sunday": "viikko",
+      "thursday": "torstai",
+      "tuesday": "tiistai",
+      "wednesday": "keskiviikko"
+    }
+  }
+}

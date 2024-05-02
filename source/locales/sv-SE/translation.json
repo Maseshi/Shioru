@@ -1,0 +1,870 @@
+{
+  "commands": {
+    "about": {
+      "my_profile": "min profil",
+      "my_profile_detail": "Jag heter %s jag föddes söndagen den 21 juni. Jag bor i ett hus. __Chaiwat Suwannarat(Masashi)__ är den som föder mig och ger mig kunskap och förmågor. **olika att jag har studerat allt till alla där jag bor Jag hoppas att alla blir glada över att vara med mig!! Och tack för all hjälp och stöd till mina underbara välgörare. Tack så mycket.\n\n[Officiell webbplats](https://maseshi.web.app/)\n[Sekretesspolicy](https: //maseshi.web. app/privacy-policy) | [Användarvillkor](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Med ensamrätt.",
+      "update_on": "uppdaterad när"
+    },
+    "afk": {
+      "currently_afk": "❎ Nu är du AFK",
+      "currently_not_afk": "❎ Du är inte AFK just nu.",
+      "now_afk": "💤 Nu är du AFK, skriv ett meddelande eller /afk ta bort för att avsluta AFK-läget.",
+      "now_not_afk": "🔙 Din AFK-status har avaktiverats."
+    },
+    "anime": {
+      "auto_cancel": "Skriv bara in numret du vill läsa! (avbryt inom 1 minut)",
+      "choose_now": "Välj nu.!!",
+      "data_not_found": "❎ Jag har inte hittat den här historien. Låt oss kolla upp det. Titta, det kanske verkligen inte finns något sådant?",
+      "end_date": "**Slutdatum**",
+      "english_name": "**Engelskt namn**",
+      "in_progress": "pågående",
+      "japan_name": "** japanskt namn **",
+      "link": "**länk**",
+      "popularity_rank": "**Popularitetsrankning**",
+      "short_information": "Detta är bara en sammanfattning av information. Vill du läsa mer, klicka på länken!!",
+      "similar_stories": "Jag hittade 5 liknande saker. Vilken berättelse vill du läsa~",
+      "start_date": "**start datum**",
+      "synopsis": "**sammanfatta:**",
+      "undefined": "odefinierad"
+    },
+    "ask": {},
+    "automod": {
+      "flagged_words_name": "blockera svordomar sexuellt innehåll och förolämpningar",
+      "flagged_words_success": "✅ Dina AutoMod-regler har skapats, alla dessa ord kommer att undertryckas.",
+      "keyword_name": "Förhindra att ord %sanvänds.",
+      "keyword_success": "✅ Din AutoMod-regel har skapats, alla meddelanden som innehåller ordet %s kommer att raderas.",
+      "mention_spam_name": "Förhindra spam när det gäller",
+      "mention_spam_success": "✅ Din AutoMod-regel skapad, spam vid flera omnämnanden kommer att undertryckas.",
+      "prevent_message": "Detta meddelande är skyddat.",
+      "spam_messages_name": "blockera skräppost",
+      "spam_messages_success": "✅ Dina AutoMod-regler har skapats, meddelandeskräp kommer att undertryckas."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm...men låten har inte ens börjat än?",
+      "not_queue_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "off": "📻 Autoplay-läget avstängt",
+      "on": "📻 Autouppspelningsläget är på"
+    },
+    "ban": {
+      "banned_for_time": "%s1 avstängd i **%s2** dagar",
+      "member_has_banned": "❎ Sådana medlemmar är redan förbjudna. Känn dig bekväm.",
+      "members_have_a_higher_role": "❎ Du kan inte förbjuda någon med en högre roll än dig.",
+      "members_have_a_higher_role_than_me": "❎ Jag kan inte blockera den medlemmen. för han har en högre roll än mig",
+      "no_reason": "Medlemmar som förbjöd angav ingen anledning.",
+      "permanently_banned": "%s förbjuden permanent",
+      "reason_for_ban": "Banad av: %s1\nOrsak: %s2",
+      "user_not_found": "❎ Jag kan inte hitta den här medlemmen. Försök igen tack."
+    },
+    "board": {},
+    "bug": {},
+    "captcha": {
+      "captcha_setup_success": "✅ Captcha-systemet har konfigurerats och aktiverats framgångsrikt.",
+      "currently_disable": "ℹ️ Captcha är nu stängt.",
+      "currently_enable": "ℹ️ Captcha är nu aktiverat.",
+      "disabled_captcha": "✅ captcha har inaktiverats",
+      "enabled_captcha": "✅ captcha aktiverad framgångsrikt",
+      "need_to_setup_before": "❎ Ställ in captcha före användning genom att använda kommandot /captcha setup."
+    },
+    "covid": {
+      "active": "aktiva",
+      "active_per_one_million": "aktiv per 1 miljon",
+      "backend_issue": "❎ Det verkar finnas ett problem på informantens sida. Försök igen nästa gång.",
+      "cases_per_one_million": "Patienter per 1 miljon",
+      "cases_today": "denna patient",
+      "cases_total": "alla patienter",
+      "country_not_found": "❎ Umm.. Jag kan inte hitta informationen om landet du angav.",
+      "critical_per_one_million": "kritisk period per 1 miljon",
+      "critical_stage": "kritisk period",
+      "deaths_today": "dog idag",
+      "deaths_total": "alla dog",
+      "one_case_per_people": "per patient",
+      "one_death_per_people": "död per person",
+      "one_test_per_people": "Testning per person",
+      "population": "befolkning",
+      "recovered": "borta",
+      "recovered_per_one_million": "Förlorade per 1 miljon",
+      "tests": "testa",
+      "tests_per_one_million": "Tester per 1 miljon",
+      "updated_on": "Senaste uppdatering %s",
+      "when": "när"
+    },
+    "credits": {},
+    "dead": {
+      "suicide": "%s för att begå självmord 💔 vila i frid"
+    },
+    "decode": {
+      "after": "efter avkodning",
+      "before": "före avkodning",
+      "decode_message": "🔓 Dekryptera meddelanden",
+      "decode_success": "Meddelandet har dekrypterats."
+    },
+    "donate": {
+      "thank_you_in_advance_message": "❤️ Tack för att du stöttar mina utvecklare i förväg. Jag har en kanal för support enligt följande."
+    },
+    "eat": {
+      "already_eaten": "%s1 har ätit %s2 i magen",
+      "do_not_eat_me": "Jag.. Jag är lite liten. m..inte bra att äta..."
+    },
+    "eight_ball": {
+      "answer": "svar",
+      "game": "🎱 8-bollsspel",
+      "question": "fråga",
+      "risk": "Använd lyckan på frågor för att få svar.",
+      "roll_ball": "Rulla bollen!!"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **%s** Emoji har tagits bort.",
+      "edited_emoji": "%s emoji fixade",
+      "uploading_you_emoji": "📤 Laddar upp din emoji...",
+      "you_emoji_is_ready": "%s Din emoji är klar. Låt oss testa det!!"
+    },
+    "encode": {
+      "after": "efter kryptering",
+      "before": "före kodning",
+      "encode_message": "🔒 Kryptera meddelanden",
+      "encode_success": "Meddelandet har krypterats."
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Det verkar som om emojin saknas eller så kanske det inte är en emoji."
+    },
+    "exp": {
+      "error": "❎ Kan inte ställa in upplevelsen för sådana medlemmar. Vänligen försök igen senare.",
+      "experience": "Erfarenhetspoäng (Exp)",
+      "exp_was_changed": "%s ackumulerat alla erfarenhetsnivåer har:",
+      "level": "Nivå",
+      "notification_complete": "✅ Installationen är klar...",
+      "set_by_staff": "Din upplevelse bestäms av teamet på den här servern.",
+      "success": "✅ Installationen är klar..."
+    },
+    "filter": {
+      "add_filter": "🎼 Lägg till det önskade ljudformatet så att det redan är **%s**.",
+      "available_filter": "Tillgängliga filterformat",
+      "available_filter_description": "Anpassa din musik genom att använda dessa %s1-format ```%s2```",
+      "clear_filter": "💨 Alla ljudformat har rensats. Nu blir det ett vanligt ljudformat.",
+      "list_filter_description": "Det finns för närvarande aktiva mönster i den här kön: %s1 mönster\n```%s2```",
+      "list_filter_description_empty": "```Det finns inget ljudformat som används för närvarande.```",
+      "list_filter_title": "Ljudformatet som används för närvarande",
+      "no_queue": "❎ Det finns ingen låt som spelas just nu.",
+      "not_queue_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "remove_filter": "🗑️ Ljudformat **%s** har tagits bort.",
+      "set_filter": "🎼 Ställ in önskat ljudformat till **%s**",
+      "sound_filtering": "❓ Vill du ändra ljudet på din musik?",
+      "unknown_filter": "❎ Umm..Jag vet inte formatet på ljudet `%s`, du kan kontrollera det med **tillgänglig** eller **ava**?",
+      "unknown_input_option": "❓ Du kan ange följande parametrar: lägg till, ta bort, ställ in, tillgänglig, lista, rensa."
+    },
+    "generate": {},
+    "guild": {
+      "available": "redo",
+      "info_date": "information om när",
+      "no": "Nej",
+      "none": "Nej",
+      "server_info": "🗄 Detaljerad serverinformation",
+      "server_info_description": "Detaljerad serverinformation Vilket är baserat på data från Discord.",
+      "unknown": "Vet inte",
+      "yes": "ja"
+    },
+    "help": {
+      "category": "Kategori: %s",
+      "client_permissions": "Behörigheter (bots): %s",
+      "command": "Beställning: %s",
+      "command_detail": "📑 Beställningsinformation ",
+      "command_incorrect": "❎ Felaktig ordning",
+      "command_incorrect_guide": "Eh... Jag har inte den här beställningen. Kontrollera igen genom att skriva `/help` för att se hela listan över mina kommandon.",
+      "commands_description": [
+        "Alla kommandon som jag har lärt mig eller studerat. förstå och faktiskt använda",
+        "som innan du ringde mig Prefixet måste vara **/**.",
+        "`<>` betyder obligatorisk, `()` är inmatningstypen och `[]` är valfritt.",
+        "För detaljer om varje kommando skriv `/help [kommando]` så kommer din önskan att gå i uppfyllelse!!"
+      ],
+      "description": "Beskrivning: %s",
+      "document_name": "Hjälpblad",
+      "how_to_use": "Hjälp: %s",
+      "no_description": "Ingen beskrivning",
+      "no_need_permissions": "Inga nödvändiga behörigheter",
+      "request_by": "Efterfrågad av",
+      "unknown_how_to_use": "inget sätt att använda",
+      "user_permissions": "Behörigheter (användare): %s"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Kan inte hitta sådana medlemmar på den här servern.",
+      "success": "✅ <@%s> Meddelandet har skapats!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Kan inte generera inbjudningslänk Var god försök igen.",
+      "membership_invitation_card": "medlemsinbjudningskort",
+      "this_product_is_free": "Denna produkt är gratis, sälj inte vidare."
+    },
+    "join": {
+      "already_joined": "❎ Eh...men jag är här nu?",
+      "another_player_is_playing": "🚫 Du kan inte använda denna beställning för tillfället. eftersom det finns andra medlemmar som spelar musik",
+      "channel_joined": "✅ Jag är redan i kanalen <#%s>...",
+      "joined": "▶️ Nu är jag redan i kanalen <#%s>.",
+      "not_in_channel": "❓ Du måste gå med i kanalen först. Annars vet jag inte vilket fält =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Det verkar inte finnas något sådant könummer alls. Försök igen tack.",
+      "jumped": "➿ Hoppa redan till ny låt i kö nummer %s.",
+      "no_queue": "❎ Det finns ingen låt som jag spelar just nu. kan inte korsa",
+      "not_queue_owner": "🚫 Endast ägaren av kön kan ändra den."
+    },
+    "kick": {
+      "can_not_find_user": "❎ Jag kan inte hitta den här medlemmen. Försök igen tack.",
+      "kicked_out": "%s utsparkad",
+      "members_have_a_higher_role": "❎ Du kan inte sparka människor som är högre än dig.",
+      "members_have_a_higher_role_than_me": "❎ Jag kan inte sparka den medlemmen. eftersom han har en högre roll än mig",
+      "no_reason": "Medlemmar som sparkade gav ingen anledning.",
+      "reason_for_kick": "Sparad av: %s1\nOrsak: %s2"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Du kommer att göra något sånt här.. Inte med mig, haha...",
+      "killed": "%s1 har redan dödat dig %s2 🔪"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Du kan inte använda denna beställning för tillfället. eftersom det finns andra medlemmar som spelar musik",
+      "not_in_any_channel": "❎ Nu är jag inte på någon kanal än...",
+      "now_leave": "◀️ Jag är borta från den nuvarande kanalen."
+    },
+    "level": {
+      "delete_error": "❎ Kan inte hitta den här användaren alls.",
+      "delete_success": "✅ Erfarenhetsnivån för denna medlem har tagits bort!",
+      "deleting": "📁 Raderar erfarenhetsnivådata för denna medlem.",
+      "experience": "Erfarenhetspoäng (Exp)",
+      "level": "Nivå",
+      "level_was_changed": "%s ackumulerat alla erfarenhetsnivåer har:",
+      "notification_complete": "✅ Installationen är klar...",
+      "set_by_staff": "Din klass bestäms av teamet på den här servern.",
+      "set_error": "❎ Kan inte ställa in nivån för sådana medlemmar. Vänligen försök igen senare.",
+      "set_success": "✅ Installationen är klar...",
+      "user_current_no_level": "❎ Sådana medlemmar har ingen klassnivå."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Botar kommer inte att ha nivåer, inklusive jag.",
+      "experience": "Erfarenhetspoäng (Exp)",
+      "level": "Nivå",
+      "user_no_data": "💨 Hmm... Den här medlemmen har ingen nivå och erfarenhet.",
+      "your_experience": "Din erfarenhet"
+    },
+    "license": {},
+    "logs": {
+      "can_not_delete_file": "❎ Kan inte ta bort loggfilen ovan.\n```JavaScript\n%s\n```",
+      "can_not_read_file": "❎ Kan inte läsa loggfilen ovan.\n```JavaScript\n%s\n```",
+      "file_has_been_deleted": "✅ **%s** redan borttagen",
+      "file_not_found": "❎ Kan inte hitta en fil med namnet **%s** i mappen.",
+      "folder_empty": "💨 Nu är loggfilen i mappen tom. Försök att komma tillbaka igen senare.",
+      "found_file": "Hittade %s1 poster av filer:\n```%s2```",
+      "owner_only": "🚫 Tyvärr..Detta kommando kan endast användas av administratörer."
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Inga texter hittades för %s.",
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "playing_lyrics": "📋 Texten till den låt som spelas för närvarande"
+    },
+    "meme": {
+      "can_not_fetch": "Det gick inte att hämta meme. Var god försök igen.",
+      "meme_not_found": "Inget meme av typen som matchar %shittades."
+    },
+    "minecraft": {
+      "address": "adress",
+      "do_not_have": "har inte",
+      "ip": "IP-adress",
+      "last_check": "kollade senast",
+      "maximum_player_count": "Max antal spelare",
+      "motd": "Beskrivning",
+      "player_in_server": "serverspelare",
+      "port": "hamn",
+      "server_available": "🟢 Den här servern är för närvarande öppen.",
+      "server_unavailable": "🔴 Denna server är tillfälligt stängd.",
+      "skin_of": "🎴 Skins på %s",
+      "version": "version"
+    },
+    "musicInfo": {
+      "detail": "📄 Detaljer om den låt som spelas för närvarande",
+      "download_link": "📥 Ladda ner länk",
+      "duration": "🕒 Varaktighet",
+      "id": "🆔 ID",
+      "link": "🔗 Länk",
+      "music_name": "🎵 Låtens namn",
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "uploader": "🎬 uppladdare"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Kan tillfälligt inte få den bild du vill ha. Vänligen försök igen senare.",
+      "request_by": "begärt av %s"
+    },
+    "nowPlaying": {
+      "filter": "🎼 Röstfiltermönster: `%s",
+      "owner_this_queue": "%s är ägaren till denna kö"
+    },
+    "numbers": {
+      "result": "Resultatet är %s"
+    },
+    "paste": {
+      "backend_not_response": "❎ Inget svar från servern alls. Du kan försöka igen senare.",
+      "file": "fil",
+      "raw": "rå"
+    },
+    "pause": {
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "not_paused": "📼 Nu har jag fastnat. Ser konstigt ut idag..",
+      "paused": "⏸ Pausa musiken nu."
+    },
+    "ping": {
+      "connection": "📡 Anslutning",
+      "info": "Rundturslatens är %s1 ms\nwebbsockets drifttid är %s2 ms",
+      "result": "🏓 Pong",
+      "waiting": "🏓 Pinga..."
+    },
+    "play": {
+      "no_queue": "❎ Nu har jag inte spelat några låtar än.",
+      "not_in_channel": "❓ Ange valfri kanal först. Annars, lyssna inte på mig..."
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Det finns ingen låt som har spelats nyligen.",
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "previous": "⏮ Gå tillbaka till föregående låt"
+    },
+    "purge": {
+      "message_cleared": "\"%s meddelanden\" har tagits bort 💨"
+    },
+    "qrcode": {
+      "qrcode_success": "Din QR-kod är redo att användas.",
+      "qrcode_title": "🧩 QR-kod"
+    },
+    "quality": {
+      "advice_embed_description": "```Aktuell kvalitet: %s```\nIbland kan problemet orsakas av att en server som har för mycket åtkomst till den orsakar prestandaproblem. Jag rekommenderar dock att du kontrollerar din internetanslutning innan du ställer in detta\n`0` - Använd **OPUS** för att komprimera ljudfiler. Detta kommer att ge dig bättre ljudkvalitet men kommer också att använda mer resurser **(rekommenderas)**\n`1` - Använd ljudet direkt från källan. Detta kommer att ge bättre prestanda men använda mindre resurser.",
+      "advice_embed_footer_text": "Du kan ställa in ytterligare ljudkvalitet från Discord-inställningarna: Inställningar > Ljud och video > Avancerat.",
+      "advice_embed_title": "Anpassa ljudkvaliteten",
+      "focus_on_high_quality": "fokusera på hög kvalitet",
+      "low_efficiency": "fokusera på låg prestanda",
+      "opus_mode_selected": "🎛️ Jag har nu använt **OPUS** för att hjälpa till att komprimera ljudfiler. Ljudkvaliteten kommer att förbättras.",
+      "raw_mode_selected": "🎛️ Bytte till ljudet från originalet Det kan försämra ljudkvaliteten."
+    },
+    "queue": {
+      "autoplay": "📻 Automatisk uppspelning",
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "owner_this_queue": "%s är ägaren till denna kö",
+      "previous_queue": "**föregående kö**",
+      "waiting_in_queue": "**Väntar på nästa kö**"
+    },
+    "queueStatus": {
+      "autoplay": "📻 Automatisk uppspelning",
+      "duration": "🕒 Varaktighet",
+      "filter": "🎼 ljudfiltermönster",
+      "now": "⌚ nu",
+      "off": "Stäng av",
+      "on": "öppen",
+      "owner_this_queue": "%s är ägaren till denna kö",
+      "paused": "paus",
+      "playing": "spelar",
+      "queue_status": "📑 Status för aktuell sångkö",
+      "repeat": "🔁 Upprepa",
+      "repeat_off": "inte öppen",
+      "repeat_this_queue": "denna kö",
+      "repeat_this_song": "den här låten",
+      "volume": "🔉 ljudvolym"
+    },
+    "reboot": {
+      "dm_to_owner": "**:arrows_counterclockwise: Det finns en begäran om en ny omstart av systemet!!**\nFör att bekräfta att det är du, vänligen ange detta lösenord på servern där du kör kommandot\nDu kan ignorera det om du inte vill fortsätta\nTack för att du fortfarande tar hand om mig tills idag :)\n||%s||",
+      "not_owner": "🛑 Ta det inte.. ta det inte. Denna funktion kräver endast högsta privilegier.",
+      "now_reboot": "✅ Startat ett nytt system!!",
+      "password_is_incorrect": "❎ Lösenordet är felaktigt. Försök igen tack.",
+      "rebooting": "🔄 Startar om..."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...det verkar inte ha den här beställningen...försök kontrollera noga Återigen, är det korrekt eller inte?",
+      "reloaded": "✅ %s har laddats om framgångsrikt!!",
+      "reload_error": "❌ Fan.. Jag försökte ladda om kommandot %s men jag kan inte."
+    },
+    "remove": {
+      "no_queue": "❎ Nu har jag inte spelat några låtar än.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "removed": "❌ Borttagen **%s** från kön.",
+      "too_much": "❎ Det finns ingen sådan kö. Försök igen tack."
+    },
+    "repeat": {
+      "no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "off": "upprepa",
+      "repeated": "🔁 %snu",
+      "repeat_queue": "upprepa kö",
+      "repeat_song": "upprepa låten"
+    },
+    "resume": {
+      "no_queue": "❎ Nu har jag inte spelat några låtar än.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "now_playing": "📼 Hej.. Nu spelar jag.",
+      "resumed": "▶️ Låten spelas från samma punkt."
+    },
+    "rip": {
+      "no_image": "❎ Åh...det ser ut som den här bilden Den kan ha tagits bort eller flyttats till en annan plats."
+    },
+    "rpc": {
+      "answered": "Du har valt ditt svar.",
+      "bot_winner": "Yay!..jag slog dig <@%s>",
+      "can_not_play_with_another_bot": "❎ Du kan inte spela det här spelet med andra bots.",
+      "choose_options": "Välj ett alternativ nedan.",
+      "game_timeout": "Det här spelet har gått ut. Tack för att du har roligt.",
+      "member_not_found": "❎ Sådana medlemmar verkar inte längre finnas på den här servern.",
+      "rock_paper_scissors": "🎮 stenpappersax",
+      "tie": "Slips!",
+      "user_answered": "%s svar har valts ut. Väntar på svar från andra sidan...",
+      "user_winner": "<@%s> är vinnaren!",
+      "your_answer": "Du har nu valt %s"
+    },
+    "say": {
+      "success": "✅ Ditt meddelande har skickats."
+    },
+    "search": {
+      "get_list_of_songs": "📋 Jag har fått listan över låtar jag vill ha. och kommer börja spela musik om ett ögonblick...",
+      "invalid_number": "🔴 De senaste sökningarna har avbrutits. Du kan söka igen genom att skriva samma kommando.",
+      "no_results": "❎ Jag försökte söka om låten men kunde inte hitta några resultat...",
+      "playlist_type": "Spellista",
+      "search_cancelled": "🕘 Avbröt sökningen..eftersom inget låtval hittades.",
+      "searching": "🔍 Hitta%srelaterade",
+      "song_type": "låt",
+      "timer_choose": "Det finns en tid att välja%s 60 sekunder. Om du vill avbryta kan du skriva ett nummer som inte är relevant eller vänta till tidens slut.",
+      "title_results": "Resultat av%ssådana:",
+      "user_not_in_channel": "❓ Ange valfri kanal först. Annars, lyssna inte på mig..."
+    },
+    "seek": {
+      "no_queue": "❎ Nu spelas ingen låt.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "seek_guide": "❓ Hur många sekunder vill du ändra tiden för låten som spelas? Spelar nu på %ssekunder",
+      "sought": "🕘 Ändrade tiden för den låt som spelas för närvarande.",
+      "too_much": "❎ Tiden för den här låten är %s Det finns inget mer än detta."
+    },
+    "set_command": {},
+    "set_language": {},
+    "set_notify": {},
+    "set_personal": {},
+    "settings": {
+      "description": "Du kan konfigurera den efter dina behov med dessa kommandon.",
+      "languages": "🌐 Språk (server)",
+      "note": "Obs: Vissa kommandon kan kräva vissa behörigheter innan de körs.",
+      "notification": "🔔 Avisering (server)",
+      "personal": "📄 Personlig information (privat)",
+      "title": "⚙️ Inställningar"
+    },
+    "shuffle": {
+      "no_queue": "❎ Nu spelas ingen låt.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "now_shuffle": "🔀 Börjar byta kö..."
+    },
+    "shutdown": {
+      "dm_to_owner": "**:red_circle: Det finns en begäran om avstängning!!**\nFör att bekräfta att det är du, vänligen ange detta lösenord på servern du kör kommandot på.\n\nkan ignorera det om du inte vill fortsätta. Ta hand om mig tills idag :)\n||%s||",
+      "not_owner": "🛑 Ta det inte.. ta det inte. Denna funktion kräver endast högsta privilegier.",
+      "now_shutdown": "💤 Systemet på Discord har inaktiverats..Vi ses igen~",
+      "password_is_incorrect": "❎ Lösenordet är felaktigt. Försök igen tack.",
+      "shutting_down": "🔄 Stänger av mitt system..."
+    },
+    "skip": {
+      "no_queue": "❎ Det finns ingen låt jag spelar just nu. kan inte korsa",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "skipped": "⏭ Jag hoppade över det och ska börja spela en ny låt i kön."
+    },
+    "snake": {
+      "building_board_game": "🐍 Sammansättning var god vänta ett ögonblick...",
+      "game_name": "Snake: The Game",
+      "game_over": "spelet över",
+      "game_score": "Poäng: **%s1**\nTid: **%s2** sekunder",
+      "played_on": "Började med %s"
+    },
+    "stats": {
+      "member_count": "จำนวนสมาชิก:",
+      "server_count": "จำนวนเซิร์ฟเวอร์:"
+    },
+    "status": {
+      "data_by_server": "Referensdata från servern.",
+      "dnd_status": "Antalet medlemmar för närvarande i Stör ej är \n```%s```.",
+      "idle_status": "Antalet medlemmar som för närvarande är frånvarande är \n```%s```.",
+      "offline_status": "Antalet medlemmar för närvarande offline är \n```%s```",
+      "online_status": "Antalet medlemmar online för närvarande är \n```%s```"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **%s** Klistermärket har tagits bort",
+      "does_not_support_gif": "❎ Tyvärr...Discord stöder för närvarande inte GIF-baserade anpassade klistermärken.",
+      "edited_sticker": "%s klistermärken har redigerats.",
+      "uploading_you_sticker": "📤 Laddar upp dina klistermärken...",
+      "you_sticker_is_ready": "%s Ditt klistermärke är klart. Låt oss testa det!!"
+    },
+    "stop": {
+      "no_queue": "❎ Eh...låten jag spelar är inte tillgänglig.",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "stopped": "⏹️ Sluta spela musik och ta bort alla köer."
+    },
+    "system": {
+      "info_battery": {},
+      "info_description": "Informationen om systemet som jag för närvarande arbetar med, som tillhandahålls av systemet, är följande.",
+      "info_gpu_control": "• GPU (kontroller)",
+      "info_gpu_display": "• GPU (skärm)",
+      "info_memory_used": "• använt minne",
+      "info_platform": "• Plattform",
+      "info_system": "• systemet",
+      "info_temperature": "• CPU temperatur",
+      "info_title": "🖥 Grundläggande information om systemet",
+      "info_uptime": {
+        "info": "%s1 dag %s2 timmar ",
+        "title": "• Arbetstid"
+      },
+      "loading": "⚙️ Skickar begäran om att hämta systemdata från servern...",
+      "main": "huvud",
+      "unknown": "Vet inte"
+    },
+    "tictactoe": {
+      "button_is_selected": "❎ Kanalen är redan upptagen.",
+      "can_not_duel_with_me": "❎ Jag är inte bra på att spela de här spelen. Jag är mer dömande.",
+      "can_not_play_with_bot": "❎ Du kan inte spela det här spelet med bots.",
+      "in_another_duel": "❎ <@%s> För närvarande i en duell med någon annan.",
+      "in_duel": "❎ Nej, du måste kämpa med <@%s> till slutet.",
+      "member_not_found": "❎ Sådana medlemmar verkar ha blivit kidnappade någon annanstans.",
+      "need_one_emoji": "❎ Kan jag ha 1 emoji som ❌ eller ⭕?",
+      "tie": "Slips!",
+      "wait_opponent": "❓ Vänta på motsatt sida ett ögonblick.",
+      "winner": "%s vunnit!"
+    },
+    "timeout": {
+      "can_not_set_for_yourself": "❎ Du kan inte ställa in en timeout för dig själv.",
+      "can_not_set_timeout": "❎ Jag kan inte sätta en timeout för honom eftersom han har en högre roll än mig.",
+      "can_not_set_to_admin": "❎ Du kan inte ställa in en timeout för moderatorer.",
+      "dm_to_user": "⌛ Du är inställd på timeout om %s1, du kan se den återstående tiden på den servern **Orsak**: %s2",
+      "member_not_found": "❎ Medlemmar säger inte att de inte längre finns på den här servern.",
+      "no_reason": "ger ingen anledning",
+      "success": "%s1 är inställd på att upphöra om %s2 minuter **Orsak**: %s3"
+    },
+    "together": {
+      "can_not_open": "❌ Ummm..det är därför jag inte kan öppna %s",
+      "do_not_have": "❎ Ah..Nu finns det fortfarande ingen %s1 eller kanske inte riktigt\nmen Tillsammans som kan användas nu har %s2 objekt, nämligen\n```%s3```",
+      "do_not_have_permission": "❌ Jag kan inte aktivera eftersom jag inte har behörighet att använda. Kontakta moderatorn.",
+      "join_via_this_link": "Gå med via denna länk. https://discord.com/invite/",
+      "user_not_in_channel": "❎ Gå in på en av röstkanalerna först, eller så kan du berätta för mig namnet eller ID för den kanalen. Han kommer att kunna skapa en länk ordentligt.",
+      "voice_channel_not_found": "❎ Eh...men det finns ingen ljudkanal på den här servern Gå in i ljudkanalen och försök igen."
+    },
+    "translate": {
+      "can_not_translate": "❎ Det går inte att översätta språket för sådan text. Vänligen försök igen senare.",
+      "says": "säga",
+      "translate_support": "❎ Ogiltig översättningskod Kontrollera igen\n**Språk som stöds:** %s"
+    },
+    "unban": {
+      "no_one_gets_banned": "❎ Ingen på servern är för närvarande avstängd.",
+      "no_reason": "Medlemmar som avböjde angav ingen anledning.",
+      "reason_for_unban": "Avstängd av: %s1\nOrsak: %s2\nEfter att medlemmen har avstängts. Sådana medlemmar kommer att kunna ansluta sig till denna server normalt.",
+      "this_user_not_banned": "❎ Eh... den medlemmen var inte bannlyst. Låt oss kolla in några fantastiska nya sökord en gång till...",
+      "user_has_been_unbanned": "%s avstängd"
+    },
+    "untimeout": {
+      "can_not_set_for_yourself": "❎ Du kan inte ställa in en timeout för dig själv.",
+      "can_not_set_to_admin": "❎ Du kan inte ställa in en timeout för moderatorer.",
+      "can_not_set_untimeout": "❎ Jag kan inte ställa in honom på att inte ta time-out eftersom han har en högre roll än jag.",
+      "dm_to_user": "⏲️ Du har avbrutits för att ställa in en timeout om %s1 **Orsak**: %s2",
+      "member_not_found": "❎ Medlemmar säger inte att de inte längre finns på den här servern.",
+      "no_reason": "ger ingen anledning",
+      "success": "%s1 Timeout har ställts in **Orsak**: %s2"
+    },
+    "uptime": {
+      "days": "dag",
+      "hours": "timme",
+      "info_title": "🕒 Det är dags att börja jobba.",
+      "minute": "minut",
+      "second": "andra"
+    },
+    "user": {
+      "info_date": "information om när",
+      "none": "Nej",
+      "unknown": "Vet inte",
+      "user_info": "👥 Användarinformationsdetaljer",
+      "user_info_description": "Detaljerad information om användare Vilket är baserat på data från Discord.",
+      "yes": "ja"
+    },
+    "version": {
+      "working_in_version": "Jag jobbar på version: **%s**"
+    },
+    "volume": {
+      "adjusted": "🔊 Justera volymen till: **%s**",
+      "no_queue": "❎ Eh...låten jag spelar är inte tillgänglig. Vad ska du justera?",
+      "not_owner": "🚫 Endast ägaren av kön kan ändra den.",
+      "this_volume": "🔈 Aktuell ljudvolym är: **%s**"
+    },
+    "vote": {
+      "invite": "เชิญ",
+      "tags": "แท็ก",
+      "vote": "โหวต",
+      "votes": "คะแนนโหวต"
+    },
+    "weather": {
+      "air_quality_index": "😷 ดัชนีคุณภาพอากาศ",
+      "broken_clouds": "เมฆแตก",
+      "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
+      "clear_sky": "ท้องฟ้าแจ่มใส",
+      "clouds": "☁️ เมฆ",
+      "country_code": "🗺️ รหัสประเทศ",
+      "day": "เช้า",
+      "dew_point": "💦 จุดน้ำค้าง",
+      "drizzle": "ละอองฝน",
+      "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "feels_like": "🎐 känns som",
+      "few_clouds": "เมฆน้อย",
+      "flurries": "แปรปรวน",
+      "fog": "หมอก",
+      "freezing_fog": "หมอกเยือกแข็ง",
+      "freezing_rain": "ฝนเยือกแข็ง",
+      "haze": "หมอกควัน",
+      "heavy_drizzle": "ฝนตกปรอยๆ",
+      "heavy_rain": "ฝนตกหนัก",
+      "heavy_shower_rain": "ฝนตกหนัก",
+      "heavy_sleet": "ลูกเห็บตกหนัก",
+      "heavy_snow": "หิมะตกหนัก",
+      "heavy_snow_shower": "หิมะตกหนัก",
+      "humidity": "💧ความชื้น",
+      "latitude": "📍 ละติจูด",
+      "light_drizzle": "ฝนตกเบาบาง",
+      "light_rain": "ฝนตก",
+      "light_shower_rain": "ฝนตกหนักบางพื้นที่",
+      "light_snow": "หิมะตกโปรยปราย",
+      "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
+      "longitude": "📍 ลองจิจูด",
+      "millibars": "มิลลิบาร์",
+      "mist": "หมอก",
+      "mix_snow_rain": "หิมะ/ฝนผสม",
+      "moderate_rain": "ฝนตกปานกลาง",
+      "night": "กลางคืน",
+      "no_result_found": "❎ Eh...jag sökte efter information om det här området, men jag kunde inte hitta det.",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "observation_time": "⌚ เวลาสังเกตการณ์",
+      "overcast_clouds": "เมฆมืดครึ้ม",
+      "part_of_the_day": "🌗 ส่วนหนึ่งของวัน",
+      "pressure": "💨 ความดัน",
+      "sand_dust": "ทราย/ฝุ่น",
+      "scattered_clouds": "เมฆกระจัดกระจาย",
+      "sea_level_pressure": "🌊 ความกดอากาศที่ระดับน้ำทะเล",
+      "shower_rain": "ฝนโปรยปราย",
+      "sleet": "ลูกเห็บตก",
+      "smoke": "ควัน",
+      "snow": "หิมะตก",
+      "snow_fall": "❄️ หิมะตก",
+      "snow_shower": "หิมะโปรยปราย",
+      "state_code": "🗾 รหัสรัฐ",
+      "sunrise": "🌅 พระอาทิตย์ขึ้น",
+      "sunset": "🌇 พระอาทิตย์ตก",
+      "temperature": "🌡️ Temperatur",
+      "thunderstorm_with_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_hail": "พายุฝนฟ้าคะนองพร้อมลูกเห็บ",
+      "thunderstorm_with_heavy_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_heavy_rain": "พายุฝนฟ้าคะนองพร้อมฝนตกหนัก",
+      "thunderstorm_with_light_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
+      "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
+      "timezone": "🌐 Tidszon",
+      "unknown": "ไม่ทราบ",
+      "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
+      "unknown_precipitation": "ไม่ทราบปริมาณฝน",
+      "uv_index": "🧴 ดัชนีรังสียูวี",
+      "visibility": "👀 ทัศนวิสัย",
+      "weather": "⛅ Väder",
+      "weather_at_the_moment": "Vädret för __**%s1**__ är nu \n```%s2```.",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust_speed": "🍃 ความเร็วลมกระโชก",
+      "wind_speed": "🎏 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Kanal",
+      "member_create_channel": "> Servermedlem skapade kanal: <#%s>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Kanal",
+      "member_delete_channel": "> Servermedlem exploderade kanal: `%s`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_pins_in_channel": "> Servermedlem har fäst platsen: <#%s1> när %s2"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_update_channel": "> En servermedlem har ändrat några fält: `%s1` till <#%s2>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> Servermedlem har skapat en ny emoji: :%s:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Servermedlem raderad emoji: :%s:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> Servermedlemmen har ändrat den nya emojin från: %s1 till %s2."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_add": "> <@%s1> Redan förbjuden på denna server\n**Orsak:**\n```%s2```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_remove": "> <@%s1> Har avförts inom denna server\n**orsak:**\n```%s2```"
+    },
+    "guildCreate": {
+      "advice": "**💡 Tips**",
+      "advice_detail": "Om du är ägaren till denna guild... Jag vill slutföra denna guild-inställning innan du använder den, eftersom vissa saker du kanske inte behöver. Försök därför att använda kommandot `Ssettings`.",
+      "description": "Hej..tack för att du bjöd in mig till denna %s plats\ndet verkar som att folk undrar vad jag kan göra? Åh..kan diska, tvätta. Det är fantastiskt, eller hur ~ Haha, var är det? jag skojar",
+      "get_started": "Det har kommit i början!!",
+      "help_information_and_documentation": "**📄 Hjälp och dokumentation**",
+      "help_information_and_documentation_detail": "Vill du veta vad jag kan göra?...väldigt enkelt. Skriv bara `Shelp` eller `/help` så kommer någon att berätta för dig. Naturligtvis, gå bara till länken nedan så kommer det att finnas dokumentation från utvecklaren och andra. Han har redan skrivit\n> https://shiorus.web.app/",
+      "join_on": "gå med",
+      "support_multiple_languages": "** 🌐 Stöder flera språk**",
+      "support_multiple_languages_detail": "Jag stöder flera språk. För att byta språk Du kan ställa in det med `Slanguage <språkkod>` eller `/language <språkkod>`."
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Denna server har redan slagit ihop %s . Du kommer att få nya artiklar omedelbart med framtida uppdateringar.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "Det uppstod ett valideringsfel. Kontakta serverpersonalen för att vidta åtgärder.",
+      "captcha_success": "Du är verifierad i %s",
+      "greet": "Hej ny medlem **Detta är ett automatiskt meddelande** \nTack för att du gick med i vår server. Läs noga informationen om denna server innan du börjar prata med någon.",
+      "solve_the_captcha": "Fixat captcha för att verifiera i %s",
+      "submit_answer_captcha": "Skicka ett captcha-svar",
+      "submit_you_answer_guide": "Skicka in vad du tror att captcha är",
+      "use_button_below": "Använd knappen nedan för att skicka ditt svar!",
+      "welcome": "Välkommen till servern",
+      "wrong_answer": "Det verkar fel. Försök igen...",
+      "your_answer": "svara på din captcha"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "Har redan rymt från den här servern...(Låt oss gå till hans plats..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Välkommen medlemmar från server %s Vi väntar på dig här.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Server",
+      "guild_unavailable": "För närvarande...den här servern är tillfälligt otillgänglig. Kontakta administratören för denna server."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm..Jag saknar några behörigheter. Så jag kan inte fortsätta, nämligen **%s**",
+      "command_error": "❌ Ett fel uppstod när den här ordern utfördes!",
+      "command_is_disabled": "⚫ Den här beställningen har inaktiverats på servern. Kontakta din serveradministratör.",
+      "no_permission": "🚫 Hmm...Det verkar som att du inte har behörighet att använda applikationskommandot (/), vänligen fråga moderatorerna (≧∇≦)",
+      "user_is_not_allowed": "🚫 Jag kan inte låta dig använda den här beställningen. Om du inte redan har dessa behörigheter: **%s**"
+    },
+    "inviteCreate": {
+      "invite_create": "Inbjudningslänk skapad framgångsrikt\n**Länk:** %s1\n**Upphör att gälla:** %s2\n**Max:** %s3\n```%s4```",
+      "invite_notification": "🏷️ Inbjudan"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`%s` Denna inbjudningskod har tagits bort.",
+      "invite_code_expires": "`%s` Denna inbjudningskod har upphört att gälla.",
+      "invite_notification": "🏷️ Inbjudan"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Du har kommit tillbaka Avaktivera AFK-status automatiskt",
+      "no_reason_for_afk": "har inte",
+      "that_user_is_afk": "%s1 Nu inte på skärmen (AFK), nämn honom inte nu\n**Lämna meddelande**: %s2"
+    },
+    "roleCreate": {
+      "role_create": "<@&%s> har skapats.",
+      "role_notification": "🔖 Roll"
+    },
+    "roleDelete": {
+      "role_delete": "`%s` har tagits bort.",
+      "role_notification": "🔖 Roll"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Roll",
+      "role_update": "`%s1` har uppdaterats till <@&%s2>"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#%s> har skapats.",
+      "stage_notification": "🎤 scen"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`%s` har tagits bort.",
+      "stage_notification": "🎤 scen"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`%s1` har uppdaterats till <#%s2>.",
+      "stage_notification": "🎤 scen"
+    },
+    "stickerCreate": {
+      "sticker_create": "**%s** Nu tillgänglig",
+      "sticker_notification": "👻 Klistermärken"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**%s** har raderats",
+      "sticker_notification": "👻 Klistermärken"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 Klistermärken",
+      "sticker_update": "`%s1` har uppdaterats till **%s2**"
+    },
+    "threadCreate": {
+      "thread_create": "<#%s> har skapats.",
+      "thread_notification": "#️⃣ Trådar"
+    },
+    "threadDelete": {
+      "thread_delete": "**%s** har raderats",
+      "thread_notification": "#️⃣ Trådar"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Trådar",
+      "thread_update": "`%s1` har uppdaterats till **%s2**"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Webhook",
+      "webhook_update": "**%s1** av **%s2** har uppdaterats på kanalen <#%s3>."
+    }
+  },
+  "handlers": {
+    "music": {
+      "addList": {},
+      "addSong": {},
+      "disconnect": {},
+      "empty": {},
+      "error": {},
+      "finish": {},
+      "playSong": {},
+      "searchCancel": {},
+      "searchDone": {},
+      "searchInvalidAnswer": {},
+      "searchNoResult": {},
+      "searchResult": {}
+    }
+  },
+  "utils": {
+    "consoleUtils": {
+      "an_error_occurred": "🔴 Ett fel uppstod under körningen.",
+      "error_detail": "Kommando: **%s1**\nVersion: **%s2**\nTidsbestämd: **%s3**\nServer: **%s4**\nLatens: **%s5ms**\nMottagning-sändning: * *%s6ms**\nFelresultat:\n```JavaScript\n%s7\n```\n> **Tips**: Du kan rapportera ett fel omedelbart genom att använda kommandot:\n> ```Sbug <meddelande>`` `\n> ```/bug <meddelande>```\n[problemrapport](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Nyheter ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+      "server_abnormal": "ovanlig",
+      "server_normal": "vanligt"
+    },
+    "databaseUtils": {
+      "congratulations": "grattis!!",
+      "level_up": "Klassen *%s1* har nu uppgraderats till ```%s2```."
+    },
+    "miscUtils": {
+      "april": "april",
+      "august": "augusti",
+      "december": "december",
+      "february": "februari",
+      "format_at": "Dag%s1 %s %s3 %s4 Tid %s5:%s6 kl.",
+      "friday": "fredag",
+      "january": "januari",
+      "july": "juli",
+      "june": "juni",
+      "march": "Mars",
+      "may": "Maj",
+      "monday": "måndag",
+      "november": "november",
+      "october": "oktober",
+      "saturday": "lördag",
+      "september": "september",
+      "sunday": "vecka",
+      "thursday": "torsdag",
+      "tuesday": "tisdag",
+      "wednesday": "onsdag"
+    }
+  }
+}

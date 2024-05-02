@@ -1,0 +1,870 @@
+{
+  "commands": {
+    "about": {
+      "my_profile": "내 프로필",
+      "my_profile_detail": "내 이름은 %s 나는 6월 21일 일요일에 태어났습니다. 나는 집에 살고 있습니다. __Chaiwat Suwannarat(Masashi)__는 나를 낳고 나에게 지식과 능력을 줍니다. **다양한 내가 다 공부했다고 내가 사는 모든 사람들에게 저와 함께하는 모든 분들이 행복하시길 바랍니다!! 그리고 사랑\n\n후원자님들의 많은 도움과\n에 감사드립니다. 진심으로 감사드립니다. app/privacy-policy) |[서비스 약관](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. All rights reserved.",
+      "update_on": "언제 업데이트"
+    },
+    "afk": {
+      "currently_afk": "❎ 이제 당신은 AFK입니다",
+      "currently_not_afk": "❎ 지금은 자리 비움이 아닙니다.",
+      "now_afk": "💤 이제 자리 비움 상태입니다. 메시지를 작성하거나 /afk 제거하여 자리 비움 모드를 종료하세요.",
+      "now_not_afk": "🔙 AFK 상태가 설정되지 않았습니다."
+    },
+    "anime": {
+      "auto_cancel": "읽고 싶은 번호를 입력하세요! (1분 이내 취소)",
+      "choose_now": "지금 선택하세요.!!",
+      "data_not_found": "❎ 이 이야기를 찾지 못했습니다. 확인 해보자. 봐, 정말 그런 건 없을까?",
+      "end_date": "**종료일**",
+      "english_name": "**영문이름**",
+      "in_progress": "진행 중",
+      "japan_name": "** 일본 이름 **",
+      "link": "**링크**",
+      "popularity_rank": "**인기 순위**",
+      "short_information": "이것은 정보의 요약일 뿐입니다. 더 읽어보고 싶다면 링크를 클릭!!",
+      "similar_stories": "5개의 유사한 항목을 찾았습니다. 어떤 이야기를 읽고 싶으신가요~",
+      "start_date": "**시작일**",
+      "synopsis": "**요약하다:**",
+      "undefined": "한정되지 않은"
+    },
+    "ask": {},
+    "automod": {
+      "flagged_words_name": "욕설 차단 성적인 내용 그리고 모욕",
+      "flagged_words_success": "✅ AutoMod 규칙이 생성되었으며 모든 단어가 표시되지 않습니다.",
+      "keyword_name": "워드 %s사용되지 않도록 합니다.",
+      "keyword_success": "✅ AutoMod 규칙이 생성되었으며 %s 단어가 포함된 모든 메시지가 삭제됩니다.",
+      "mention_spam_name": "스팸이 올 때 방지",
+      "mention_spam_success": "✅ AutoMod 규칙이 생성되어 여러 멘션에 대한 스팸이 억제됩니다.",
+      "prevent_message": "이 메시지는 보호됩니다.",
+      "spam_messages_name": "차단 메시지 스팸",
+      "spam_messages_success": "✅ AutoMod 규칙이 생성되었으며 메시지 스팸이 억제됩니다."
+    },
+    "autoplay": {
+      "no_queue": "❎ 음... 그런데 아직 노래가 재생되지 않았나요?",
+      "not_queue_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "off": "📻 자동 재생 모드 꺼짐",
+      "on": "📻 자동 재생 모드 켜짐"
+    },
+    "ban": {
+      "banned_for_time": "%s1 **%s2** 일 동안 차단",
+      "member_has_banned": "❎ 이미 차단된 회원이니 안심하세요.",
+      "members_have_a_higher_role": "❎ 자신보다 더 높은 역할을 가진 사람을 차단할 수 없습니다.",
+      "members_have_a_higher_role_than_me": "❎ 해당 회원을 차단할 수 없습니다. 나보다 더 높은 역할을 맡고 있기 때문에",
+      "no_reason": "차단한 멤버들은 이유를 밝히지 않았다.",
+      "permanently_banned": "%s 영구 금지",
+      "reason_for_ban": "차단자: %s1\n이유: %s2",
+      "user_not_found": "❎ 이 멤버를 찾을 수 없습니다. 다시 확인 해주세요."
+    },
+    "board": {},
+    "bug": {},
+    "captcha": {
+      "captcha_setup_success": "✅ captcha 시스템이 성공적으로 설정되고 활성화되었습니다.",
+      "currently_disable": "ℹ️ 보안 문자가 이제 닫힙니다.",
+      "currently_enable": "ℹ️ 보안 문자가 활성화되었습니다.",
+      "disabled_captcha": "✅ 보안문자가 비활성화되었습니다.",
+      "enabled_captcha": "✅ 보안 문자가 성공적으로 활성화되었습니다.",
+      "need_to_setup_before": "❎ /captcha 설정 명령어를 이용하여 보안문자를 설정 후 사용하시기 바랍니다."
+    },
+    "covid": {
+      "active": "활동적인",
+      "active_per_one_million": "100만 당 활성",
+      "backend_issue": "❎ 제보자 측에 문제가 있는 것 같습니다. 다음에 다시 시도하십시오.",
+      "cases_per_one_million": "100만 명당 환자",
+      "cases_today": "이 환자",
+      "cases_total": "모든 환자",
+      "country_not_found": "❎ 음.. 지정한 국가의 정보를 찾을 수 없습니다.",
+      "critical_per_one_million": "100만 당 임계 기간",
+      "critical_stage": "결정적 시기",
+      "deaths_today": "오늘 사망",
+      "deaths_total": "모두 죽었다",
+      "one_case_per_people": "환자 당",
+      "one_death_per_people": "1인당 사망",
+      "one_test_per_people": "1인당 테스트",
+      "population": "인구",
+      "recovered": "다 쓴",
+      "recovered_per_one_million": "100만 당 손실",
+      "tests": "시험",
+      "tests_per_one_million": "100만 명당 테스트",
+      "updated_on": "최신 업데이트 %s",
+      "when": "언제"
+    },
+    "credits": {},
+    "dead": {
+      "suicide": "자살하기로 %s 💔 편히 쉬세요"
+    },
+    "decode": {
+      "after": "디코딩 후",
+      "before": "디코딩하기 전에",
+      "decode_message": "🔓 메시지 해독",
+      "decode_success": "메시지가 해독되었습니다."
+    },
+    "donate": {
+      "thank_you_in_advance_message": "❤️ 사전에 제 개발자들을 지원해 주셔서 감사합니다. 다음과 같은 지원 채널이 있습니다."
+    },
+    "eat": {
+      "already_eaten": "%s1 %s2 뱃속에 먹었다",
+      "do_not_eat_me": "나.. 내가 좀 작아. 음..잘먹지않는다..."
+    },
+    "eight_ball": {
+      "answer": "답변",
+      "game": "🎱 8볼 게임",
+      "question": "질문",
+      "risk": "답을 얻으려면 질문에 운을 사용하세요.",
+      "roll_ball": "공 굴리기!!"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **%s** 이모티콘이 삭제되었습니다.",
+      "edited_emoji": "%s 이모티콘 고정",
+      "uploading_you_emoji": "📤 이모티콘 업로드 중...",
+      "you_emoji_is_ready": "%s 이모티콘이 준비되었습니다. 해 보자!!"
+    },
+    "encode": {
+      "after": "암호화 후",
+      "before": "인코딩하기 전에",
+      "encode_message": "🔒 메시지 암호화",
+      "encode_success": "메시지가 암호화되었습니다."
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ 이모티콘이 누락되었거나 이모티콘이 아닐 수 있습니다."
+    },
+    "exp": {
+      "error": "❎ 해당 회원의 경험치를 설정할 수 없습니다. 나중에 다시 시도 해주십시오.",
+      "experience": "경험치(Exp)",
+      "exp_was_changed": "%s 누적된 모든 경험 수준은 다음과 같습니다.",
+      "level": "수준",
+      "notification_complete": "✅ 설정 완료...",
+      "set_by_staff": "귀하의 경험은 이 서버의 팀에서 설정합니다.",
+      "success": "✅ 설정 완료..."
+    },
+    "filter": {
+      "add_filter": "🎼 이미 **%s**이 되도록 필요한 사운드 형식을 추가합니다.",
+      "available_filter": "사용 가능한 필터 형식",
+      "available_filter_description": "다음 %s1 형식 ```%s2```을 사용하여 음악을 맞춤 설정하세요.",
+      "clear_filter": "💨 모든 오디오 형식이 삭제되었습니다. 이제 정상적인 사운드 형식이 될 것입니다.",
+      "list_filter_description": "이 대기열에는 현재 활성 패턴이 있습니다: %s1 patterns\n```%s2```",
+      "list_filter_description_empty": "```현재 사용 중인 오디오 형식이 없습니다.```",
+      "list_filter_title": "현재 사용 중인 오디오 형식",
+      "no_queue": "❎ 현재 재생 중인 곡이 없습니다.",
+      "not_queue_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "remove_filter": "🗑️ 오디오 형식 **%s**이 제거되었습니다.",
+      "set_filter": "🎼 선호하는 오디오 형식을 **%s**으로 설정",
+      "sound_filtering": "❓ 음악의 사운드를 바꾸고 싶습니까?",
+      "unknown_filter": "❎ 음.. `%s` 소리의 형식을 모르겠습니다. 다음을 사용하여 확인할 수 있습니다. **사용 가능** 또는 **ava**?",
+      "unknown_input_option": "❓ 다음 매개변수를 지정할 수 있습니다: 추가, 제거, 설정, 사용 가능, 목록, 지우기."
+    },
+    "generate": {},
+    "guild": {
+      "available": "준비가 된",
+      "info_date": "언제의 정보",
+      "no": "아니요",
+      "none": "아니요",
+      "server_info": "🗄 자세한 서버 정보",
+      "server_info_description": "자세한 서버 정보 Discord의 데이터를 기반으로 합니다.",
+      "unknown": "몰라",
+      "yes": "예"
+    },
+    "help": {
+      "category": "범주: %s",
+      "client_permissions": "권한(봇): %s",
+      "command": "주문: %s",
+      "command_detail": "📑 주문 내역 ",
+      "command_incorrect": "❎ 잘못된 주문",
+      "command_incorrect_guide": "어... 이 명령이 없습니다. 내 명령의 전체 목록을 보려면 `/help`를 입력하여 다시 확인하십시오.",
+      "commands_description": [
+        "내가 배우거나 공부한 모든 명령. 이해하고 실제로 사용",
+        "나를 부르기 전에 접두사는 **/**여야 합니다.",
+        "`<>`는 필수, `()`는 입력 유형, `[]`는 선택 사항을 의미합니다.",
+        "각 명령어에 대한 자세한 내용은 `/help [command]`를 입력하면 소원이 이루어집니다!!"
+      ],
+      "description": "설명: %s",
+      "document_name": "도움말 시트",
+      "how_to_use": "도움말: %s",
+      "no_description": "설명 없음",
+      "no_need_permissions": "필요한 권한 없음",
+      "request_by": "에 의해 요청",
+      "unknown_how_to_use": "사용할 방법이 없다",
+      "user_permissions": "권한(사용자): %s"
+    },
+    "impersonate": {
+      "member_not_found": "❎ 이 서버에서 해당 구성원을 찾을 수 없습니다.",
+      "success": "✅ <@%s> 메시지가 생성되었습니다!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ 초대 링크를 생성할 수 없습니다. 다시 시도해 주세요.",
+      "membership_invitation_card": "회원 초대 카드",
+      "this_product_is_free": "이 제품은 무료이며 재판매하지 마십시오."
+    },
+    "join": {
+      "already_joined": "❎ 에..근데 나 지금 왔어?",
+      "another_player_is_playing": "🚫 현재 이 주문을 사용할 수 없습니다. 다른 멤버들이 음악을 하고 있기 때문에",
+      "channel_joined": "✅ 이미 채널 <#%s>에 있는데...",
+      "joined": "▶️ 지금은 이미 채널 <#%s>에 있습니다.",
+      "not_in_channel": "❓ 먼저 채널에 가입하셔야 합니다. 그렇지 않으면 어떤 필드 =3=인지 알 수 없습니다."
+    },
+    "jump": {
+      "can_not_jump": "❎ 해당 대기열 번호가 전혀 없는 것 같습니다. 다시 확인 해주세요.",
+      "jumped": "➿ 이미 대기열 번호 %s 의 새 노래로 이동합니다.",
+      "no_queue": "❎ 현재 재생 중인 곡이 없습니다. 건널 수 없다",
+      "not_queue_owner": "🚫 대기열 소유자만 변경할 수 있습니다."
+    },
+    "kick": {
+      "can_not_find_user": "❎ 이 멤버를 찾을 수 없습니다. 다시 확인 해주세요.",
+      "kicked_out": "%s 쫓겨남",
+      "members_have_a_higher_role": "❎ 자기보다 높은 사람을 차면 안 됩니다.",
+      "members_have_a_higher_role_than_me": "❎ 나는 그 멤버를 차버릴 수 없다. 나보다 더 높은 역할을 맡고 있기 때문에",
+      "no_reason": "발로 차는 멤버들은 이유를 밝히지 않았다.",
+      "reason_for_kick": "차인 사람: %s1\n이유: %s2"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ 이렇게 하게 됩니다.. 나랑은 안해, 하아...",
+      "killed": "%s1은 이미 당신을 죽였습니다 %s2 🔪"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 현재 이 주문을 사용할 수 없습니다. 다른 멤버들이 음악을 하고 있기 때문에",
+      "not_in_any_channel": "❎ 지금은 아직 어떤 채널도 안 나오네요...",
+      "now_leave": "◀️ 현재 채널에서 나갑니다."
+    },
+    "level": {
+      "delete_error": "❎ 이 사용자를 전혀 찾을 수 없습니다.",
+      "delete_success": "✅ 이 회원의 경험치가 삭제되었습니다!",
+      "deleting": "📁 이 회원의 경험 수준 데이터를 삭제합니다.",
+      "experience": "경험치(Exp)",
+      "level": "수준",
+      "level_was_changed": "%s 누적된 모든 경험 수준은 다음과 같습니다.",
+      "notification_complete": "✅ 설정 완료...",
+      "set_by_staff": "귀하의 클래스는 이 서버의 팀에서 설정합니다.",
+      "set_error": "❎ 해당 회원의 등급을 설정할 수 없습니다. 나중에 다시 시도 해주십시오.",
+      "set_success": "✅ 설정 완료...",
+      "user_current_no_level": "❎ 해당 회원은 등급이 없습니다."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ 저를 포함한 봇은 레벨이 없습니다.",
+      "experience": "경험치(Exp)",
+      "level": "수준",
+      "user_no_data": "💨 흠... 이 멤버는 레벨과 경험이 없습니다.",
+      "your_experience": "당신의 경험"
+    },
+    "license": {},
+    "logs": {
+      "can_not_delete_file": "❎ 위의 로그 파일을 삭제할 수 없습니다.\n```JavaScript\n%s\n```",
+      "can_not_read_file": "❎ 위의 로그 파일을 읽을 수 없음\n```JavaScript\n%s\n```",
+      "file_has_been_deleted": "✅ **%s** 이미 삭제됨",
+      "file_not_found": "❎ 폴더에서 이름이 **%s**인 파일을 찾을 수 없습니다.",
+      "folder_empty": "💨 이제 폴더의 로그 파일이 비어 있습니다. 나중에 다시 시도해 보세요.",
+      "found_file": "발견된 %s1개의 파일 항목:\n```%s2```",
+      "owner_only": "🚫 죄송합니다..이 명령은 관리자만 사용할 수 있습니다."
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "%s에 대한 가사를 찾을 수 없습니다.",
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "playing_lyrics": "📋 현재 재생 중인 노래의 가사"
+    },
+    "meme": {
+      "can_not_fetch": "밈을 가져오지 못했습니다. 다시 시도해 주세요.",
+      "meme_not_found": "%s과 일치하는 유형의 밈이 없습니다."
+    },
+    "minecraft": {
+      "address": "주소",
+      "do_not_have": "이 없습니다",
+      "ip": "IP 주소",
+      "last_check": "마지막으로 확인",
+      "maximum_player_count": "최대 플레이어 수",
+      "motd": "설명",
+      "player_in_server": "서버 플레이어",
+      "port": "포트",
+      "server_available": "🟢 이 서버는 현재 열려 있습니다.",
+      "server_unavailable": "🔴 이 서버는 일시적으로 닫힙니다.",
+      "skin_of": "🎴 %s의 스킨",
+      "version": "버전"
+    },
+    "musicInfo": {
+      "detail": "📄 현재 재생 중인 노래의 세부 정보",
+      "download_link": "📥 다운로드 링크",
+      "duration": "🕒 기간",
+      "id": "🆔 아이디",
+      "link": "🔗 링크",
+      "music_name": "🎵 노래 이름",
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "uploader": "🎬 업로더"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ 일시적으로 원하는 사진을 얻을 수 없습니다. 나중에 다시 시도 해주십시오.",
+      "request_by": "%s이 요청한"
+    },
+    "nowPlaying": {
+      "filter": "🎼 음성 필터 패턴: `%s`",
+      "owner_this_queue": "%s 은 이 대기열의 소유자입니다."
+    },
+    "numbers": {
+      "result": "결과는 %s입니다"
+    },
+    "paste": {
+      "backend_not_response": "❎ 서버로부터 전혀 응답이 없습니다. 나중에 다시 시도할 수 있습니다.",
+      "file": "파일",
+      "raw": "날것의"
+    },
+    "pause": {
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "not_paused": "📼 이제 막혔습니다. 오늘따라 이상해..",
+      "paused": "⏸ 지금 음악을 일시 중지하십시오."
+    },
+    "ping": {
+      "connection": "📡 연결",
+      "info": "왕복 지연 시간은 %s1ms\n웹 소켓 가동 시간은 %s2ms입니다.",
+      "result": "🏓 퐁",
+      "waiting": "🏓 핑..."
+    },
+    "play": {
+      "no_queue": "❎ 지금은 아직 어떤 노래도 연주하지 않았습니다.",
+      "not_in_channel": "❓ 아무 채널이나 먼저 들어가세요. 그렇지 않으면 내 말을 듣지 마십시오 ..."
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 최근 재생된 곡이 없습니다.",
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "previous": "⏮ 이전 노래로 돌아가기"
+    },
+    "purge": {
+      "message_cleared": "`%s 메시지 `를 성공적으로 삭제했습니다 💨"
+    },
+    "qrcode": {
+      "qrcode_success": "QR 코드를 사용할 준비가 되었습니다.",
+      "qrcode_title": "🧩 QR 코드"
+    },
+    "quality": {
+      "advice_embed_description": "```현재 품질: %s```\n서버에 너무 많은 액세스 권한이 있어 성능 문제가 발생하는 경우가 있습니다. 단, 설정하기 전에 인터넷 연결을 확인하는 것을 권장합니다\n`0` - **OPUS**를 사용하여 오디오 파일을 압축합니다. 이렇게 하면 더 나은 음질을 얻을 수 있지만 더 많은 리소스를 사용하게 됩니다. **(권장)**\n`1` - 소스에서 직접 사운드를 사용합니다. 이것은 더 나은 성능을 제공하지만 더 적은 리소스를 사용합니다.",
+      "advice_embed_footer_text": "Discord 설정(설정 > 오디오 및 비디오 > 고급)에서 추가 오디오 품질을 설정할 수 있습니다.",
+      "advice_embed_title": "음질 사용자 정의",
+      "focus_on_high_quality": "고품질에 초점",
+      "low_efficiency": "낮은 성능에 집중",
+      "opus_mode_selected": "🎛️ 이제 오디오 파일 압축을 돕기 위해 **OPUS**를 사용했습니다. 음질이 향상됩니다.",
+      "raw_mode_selected": "🎛️ 원본에서 소리로 전환됨 음질이 저하될 수 있습니다."
+    },
+    "queue": {
+      "autoplay": "📻 자동 재생",
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "owner_this_queue": "%s 은 이 대기열의 소유자입니다.",
+      "previous_queue": "**이전 대기열**",
+      "waiting_in_queue": "**다음 대기열을 기다리는 중**"
+    },
+    "queueStatus": {
+      "autoplay": "📻 자동 재생",
+      "duration": "🕒 기간",
+      "filter": "🎼 오디오 필터 패턴",
+      "now": "⌚ 지금",
+      "off": "끄다",
+      "on": "열려 있는",
+      "owner_this_queue": "%s 은 이 대기열의 소유자입니다.",
+      "paused": "정지시키다",
+      "playing": "놀이",
+      "queue_status": "📑 현재 노래 대기열 상태",
+      "repeat": "🔁 반복",
+      "repeat_off": "열려 있지 않음",
+      "repeat_this_queue": "이 대기열",
+      "repeat_this_song": "이 노래",
+      "volume": "🔉 음량"
+    },
+    "reboot": {
+      "dm_to_owner": "**:arrows_counterclockwise: 새로운 시스템 재시작 요청이 있습니다!!**\n본인 확인을 위해 명령을 실행하는 서버에 이 비밀번호를 입력하세요\n진행을 원하지 않으면 무시해도 됩니다\n고마워요 오늘도 잘 챙겨줘요 :)\n||%s||",
+      "not_owner": "🛑 하지마.. 받지마. 이 기능은 최상위 권한만 필요합니다.",
+      "now_reboot": "✅ 새로운 시스템 시작!!",
+      "password_is_incorrect": "❎ 비밀번호가 올바르지 않습니다. 다시 확인 해주세요.",
+      "rebooting": "🔄 재부팅 중..."
+    },
+    "reload": {
+      "invalid_command": "❎ 음...이 주문이 없는 것 같은데...잘 확인해보세요 다시 말하지만, 맞습니까?",
+      "reloaded": "✅ %s 성공적으로 다시 로드되었습니다!!",
+      "reload_error": "❌ 젠장..커맨드 %s 을 다시 불러오려고 했는데 안되네요."
+    },
+    "remove": {
+      "no_queue": "❎ 지금은 아직 어떤 노래도 연주하지 않았습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "removed": "❌ 대기열에서 **%s**을 제거했습니다.",
+      "too_much": "❎ 해당 대기열이 없습니다. 다시 확인 해주세요."
+    },
+    "repeat": {
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "off": "반복하다",
+      "repeated": "🔁 지금 %s",
+      "repeat_queue": "대기열 반복",
+      "repeat_song": "노래를 반복해"
+    },
+    "resume": {
+      "no_queue": "❎ 지금은 아직 어떤 노래도 연주하지 않았습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "now_playing": "📼 야.. 이제 놀고 있어.",
+      "resumed": "▶️ 같은 지점에서 노래가 재생되고 있습니다."
+    },
+    "rip": {
+      "no_image": "❎ 아...이 사진 같네 삭제되었거나 다른 위치로 이동되었을 수 있습니다."
+    },
+    "rpc": {
+      "answered": "답을 선택하셨습니다.",
+      "bot_winner": "야호!..내가 널 이겼다 <@%s>",
+      "can_not_play_with_another_bot": "❎ 이 게임은 다른 봇과 함께 플레이할 수 없습니다.",
+      "choose_options": "아래에서 옵션을 선택하세요.",
+      "game_timeout": "이 게임은 만료되었습니다. 재미있게 봐주셔서 감사합니다.",
+      "member_not_found": "❎ 해당 회원은 더 이상 이 서버에 없는 것 같습니다.",
+      "rock_paper_scissors": "🎮 가위바위보",
+      "tie": "묶다!",
+      "user_answered": "%s 답변이 선택되었습니다. 상대방의 답변을 기다리며...",
+      "user_winner": "<@%s>이 승자입니다!",
+      "your_answer": "이제 %s"
+    },
+    "say": {
+      "success": "✅ 메시지가 전송되었습니다."
+    },
+    "search": {
+      "get_list_of_songs": "📋 원하는 노래 목록을 받았습니다. 잠시 후 음악 재생을 시작합니다...",
+      "invalid_number": "🔴 최근 검색이 취소되었습니다. 동일한 명령을 입력하여 다시 검색할 수 있습니다.",
+      "no_results": "❎ 노래에 대해 검색해 보았지만 결과를 찾을 수 없었습니다...",
+      "playlist_type": "플레이리스트",
+      "search_cancelled": "🕘 검색을 취소했습니다..선택한 곡이 없기 때문입니다.",
+      "searching": "🔍 관련 항목%s찾기",
+      "song_type": "노래",
+      "timer_choose": "%s 60초를 선택할 수 있는 시간이 있으며, 취소를 원할 경우 관련 없는 숫자를 입력하거나 시간이 끝날 때까지 기다리면 됩니다.",
+      "title_results": "%s의 결과:",
+      "user_not_in_channel": "❓ 아무 채널이나 먼저 들어가세요. 그렇지 않으면 내 말을 듣지 마십시오 ..."
+    },
+    "seek": {
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "seek_guide": "❓ 현재 재생 중인 노래의 시간을 몇 초 동안 변경하시겠습니까? 지금 재생 중 %s초",
+      "sought": "🕘 현재 재생 중인 노래의 시간을 변경했습니다.",
+      "too_much": "❎ 이 노래의 시간은 %s 시입니다. 이 이상은 없습니다."
+    },
+    "set_command": {},
+    "set_language": {},
+    "set_notify": {},
+    "set_personal": {},
+    "settings": {
+      "description": "이러한 명령을 사용하여 필요에 따라 구성할 수 있습니다.",
+      "languages": "🌐 언어(서버)",
+      "note": "참고: 일부 명령은 실행하기 전에 특정 권한이 필요할 수 있습니다.",
+      "notification": "🔔 알림(서버)",
+      "personal": "📄 개인 정보(개인)",
+      "title": "⚙️ 설정"
+    },
+    "shuffle": {
+      "no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "now_shuffle": "🔀 대기열 전환 시작..."
+    },
+    "shutdown": {
+      "dm_to_owner": "**:red_circle: 종료 요청이 있습니다!!**\n본인 확인을 위해 명령을 실행하는 서버에 이 비밀번호를 입력하세요\n계속하고 싶지 않으면 무시해도\n. 잘 부탁드립니다 오늘까지 :)\n||%s||",
+      "not_owner": "🛑 하지마.. 받지마. 이 기능은 최상위 권한만 필요합니다.",
+      "now_shutdown": "💤 디스코드의 시스템이 비활성화 되었습니다..또 만나요~",
+      "password_is_incorrect": "❎ 비밀번호가 올바르지 않습니다. 다시 확인 해주세요.",
+      "shutting_down": "🔄 시스템 종료 중..."
+    },
+    "skip": {
+      "no_queue": "❎ 현재 재생 중인 곡이 없습니다. 건널 수 없다",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "skipped": "⏭ 건너뛰고 대기열에서 새 노래를 재생하려고 합니다."
+    },
+    "snake": {
+      "building_board_game": "🐍 구성 잠시만 기다려주세요...",
+      "game_name": "스네이크: 더 게임",
+      "game_over": "게임 끝",
+      "game_score": "점수: **%s1**\n시간: **%s2**초",
+      "played_on": "%s부터 시작"
+    },
+    "stats": {
+      "member_count": "จำนวนสมาชิก:",
+      "server_count": "จำนวนเซิร์ฟเวอร์:"
+    },
+    "status": {
+      "data_by_server": "서버의 참조 데이터.",
+      "dnd_status": "현재 방해금지%s에 있는 멤버 수는 \n입니다.",
+      "idle_status": "현재%s인 멤버 수는 \n입니다.",
+      "offline_status": "현재 오프라인 회원 수는 \n```%s```",
+      "online_status": "현재 온라인 회원 수는 \n```%s```"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **%s** 스티커 제거 성공",
+      "does_not_support_gif": "❎ 죄송합니다...Discord는 현재 GIF 기반 맞춤 스티커를 지원하지 않습니다.",
+      "edited_sticker": "%s 스티커가 수정되었습니다.",
+      "uploading_you_sticker": "📤 스티커 업로드 중...",
+      "you_sticker_is_ready": "%s 스티커가 준비되었습니다. 해 보자!!"
+    },
+    "stop": {
+      "no_queue": "❎ 어...지금 재생하고 있는 노래가 없습니다.",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "stopped": "⏹️ 음악 재생을 중지하고 모든 대기열을 삭제하십시오."
+    },
+    "system": {
+      "info_battery": {},
+      "info_description": "제가 현재 작업하고 있는 시스템의 정보는 시스템에서 제공하는 정보로 다음과 같습니다.",
+      "info_gpu_control": "• GPU(컨트롤러)",
+      "info_gpu_display": "• GPU(디스플레이)",
+      "info_memory_used": "• 사용한 메모리",
+      "info_platform": "• 플랫폼",
+      "info_system": "• 시스템",
+      "info_temperature": "• CPU 온도",
+      "info_title": "🖥 시스템의 기본 정보",
+      "info_uptime": {
+        "info": "%s1일 %s2시간 ",
+        "title": "• 근무 시간"
+      },
+      "loading": "⚙️ 서버에서 시스템 데이터 가져오기 요청을 보내는 중...",
+      "main": "기본",
+      "unknown": "몰라"
+    },
+    "tictactoe": {
+      "button_is_selected": "❎ 채널이 이미 사용 중입니다.",
+      "can_not_duel_with_me": "❎ 나는 이 게임을 잘 못한다. 나는 더 판단력이 있습니다.",
+      "can_not_play_with_bot": "❎ 이 게임은 봇으로 플레이할 수 없습니다.",
+      "in_another_duel": "❎ <@%s> 현재 다른 사람과 결투 중입니다.",
+      "in_duel": "❎ 아니, 끝까지 <@%s>과 싸워야 한다.",
+      "member_not_found": "❎ 그런 멤버들은 다른 곳에서 납치된 것 같다.",
+      "need_one_emoji": "❎ ❌나 ⭕ 같은 이모티콘을 1개 가질 수 있나요?",
+      "tie": "묶다!",
+      "wait_opponent": "❓ 잠시 반대쪽을 기다립니다.",
+      "winner": "%s 원!"
+    },
+    "timeout": {
+      "can_not_set_for_yourself": "❎ 자신을 위한 타임아웃을 설정할 수 없습니다.",
+      "can_not_set_timeout": "❎ 그는 나보다 더 높은 역할을 맡고 있기 때문에 타임아웃을 설정할 수 없습니다.",
+      "can_not_set_to_admin": "❎ 중재자에 대한 타임아웃은 설정할 수 없습니다.",
+      "dm_to_user": "⌛ 당신은 %s1에서 시간 초과로 설정되어 있으며, 해당 서버에서 남은 시간을 볼 수 있습니다. **이유**: %s2",
+      "member_not_found": "❎ 회원들은 더 이상 이 서버에 없다고 말하지 않습니다.",
+      "no_reason": "이유를 대지 않는다",
+      "success": "%s1은 %s2분 후에 만료되도록 설정됩니다. **이유**: %s3"
+    },
+    "together": {
+      "can_not_open": "❌ 음..그래서 못열어요 %s",
+      "do_not_have": "❎ 아..지금은 아직 %s1이 없거나\n없을 수도 있지만 이제 함께 사용할 수 있는 Together는 %s2 항목, 즉\n```%s3```",
+      "do_not_have_permission": "❌ 운영 권한이 없어서 활성화를 할 수 없습니다. 진행자에게 문의하십시오.",
+      "join_via_this_link": "이 링크를 통해 가입하세요. https://discord.com/invite/",
+      "user_not_in_channel": "❎ 먼저 음성 채널 중 하나로 들어가거나 해당 채널의 이름이나 ID를 알려주십시오. 그는 제대로 링크를 만들 수 있을 것입니다.",
+      "voice_channel_not_found": "❎ 에..근데 이 서버에 사운드 채널이 없네요 오디오 채널로 이동하여 다시 시도하십시오."
+    },
+    "translate": {
+      "can_not_translate": "❎ 해당 텍스트의 언어를 번역할 수 없습니다. 나중에 다시 시도 해주십시오.",
+      "says": "말하다",
+      "translate_support": "❎ 잘못된 번역 코드 다시 확인해주세요\n**지원 언어:** %s"
+    },
+    "unban": {
+      "no_one_gets_banned": "❎ 현재 서버에 차단된 사람이 없습니다.",
+      "no_reason": "해지를 한 멤버들은 이유를 밝히지 않았다.",
+      "reason_for_unban": "차단 해제: %s1\n이유: %s2\n회원이 차단 해제된 후. 이러한 구성원은 본 서버에 정상적으로 가입할 수 있습니다.",
+      "this_user_not_banned": "❎ 에.. 그 멤버는 차단되지 않았습니다. 멋진 새 키워드를 한 번 더 확인해 봅시다...",
+      "user_has_been_unbanned": "%s 금지되지 않음"
+    },
+    "untimeout": {
+      "can_not_set_for_yourself": "❎ 자신을 위한 타임아웃을 설정할 수 없습니다.",
+      "can_not_set_to_admin": "❎ 중재자에 대한 타임아웃은 설정할 수 없습니다.",
+      "can_not_set_untimeout": "❎ 그가 나보다 더 높은 역할을 맡고 있기 때문에 나는 그를 타임아웃하지 않도록 설정할 수 없다.",
+      "dm_to_user": "⏲️ %s1 **이유**: %s2에 타임아웃 설정이 취소되었습니다.",
+      "member_not_found": "❎ 회원들은 더 이상 이 서버에 없다고 말하지 않습니다.",
+      "no_reason": "이유를 대지 않는다",
+      "success": "%s1 타임아웃이 설정됨 **이유**: %s2"
+    },
+    "uptime": {
+      "days": "낮",
+      "hours": "시간",
+      "info_title": "🕒 일을 시작할 시간입니다.",
+      "minute": "분",
+      "second": "두번째"
+    },
+    "user": {
+      "info_date": "언제의 정보",
+      "none": "아니요",
+      "unknown": "몰라",
+      "user_info": "👥 사용자 정보 세부 정보",
+      "user_info_description": "사용자에 대한 자세한 정보 Discord의 데이터를 기반으로 합니다.",
+      "yes": "예"
+    },
+    "version": {
+      "working_in_version": "버전 작업 중: **%s**"
+    },
+    "volume": {
+      "adjusted": "🔊 볼륨 조절: **%s**",
+      "no_queue": "❎ 어...지금 재생하고 있는 노래가 없습니다. 무엇을 조정할 것인가?",
+      "not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+      "this_volume": "🔈 현재 사운드 볼륨: **%s**"
+    },
+    "vote": {
+      "invite": "เชิญ",
+      "tags": "แท็ก",
+      "vote": "โหวต",
+      "votes": "คะแนนโหวต"
+    },
+    "weather": {
+      "air_quality_index": "😷 ดัชนีคุณภาพอากาศ",
+      "broken_clouds": "เมฆแตก",
+      "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
+      "clear_sky": "ท้องฟ้าแจ่มใส",
+      "clouds": "☁️ เมฆ",
+      "country_code": "🗺️ รหัสประเทศ",
+      "day": "เช้า",
+      "dew_point": "💦 จุดน้ำค้าง",
+      "drizzle": "ละอองฝน",
+      "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "feels_like": "🎐 같은 느낌",
+      "few_clouds": "เมฆน้อย",
+      "flurries": "แปรปรวน",
+      "fog": "หมอก",
+      "freezing_fog": "หมอกเยือกแข็ง",
+      "freezing_rain": "ฝนเยือกแข็ง",
+      "haze": "หมอกควัน",
+      "heavy_drizzle": "ฝนตกปรอยๆ",
+      "heavy_rain": "ฝนตกหนัก",
+      "heavy_shower_rain": "ฝนตกหนัก",
+      "heavy_sleet": "ลูกเห็บตกหนัก",
+      "heavy_snow": "หิมะตกหนัก",
+      "heavy_snow_shower": "หิมะตกหนัก",
+      "humidity": "💧ความชื้น",
+      "latitude": "📍 ละติจูด",
+      "light_drizzle": "ฝนตกเบาบาง",
+      "light_rain": "ฝนตก",
+      "light_shower_rain": "ฝนตกหนักบางพื้นที่",
+      "light_snow": "หิมะตกโปรยปราย",
+      "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
+      "longitude": "📍 ลองจิจูด",
+      "millibars": "มิลลิบาร์",
+      "mist": "หมอก",
+      "mix_snow_rain": "หิมะ/ฝนผสม",
+      "moderate_rain": "ฝนตกปานกลาง",
+      "night": "กลางคืน",
+      "no_result_found": "❎ 어...이 지역에 대한 정보를 찾아봤지만 찾을 수 없었습니다.",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "observation_time": "⌚ เวลาสังเกตการณ์",
+      "overcast_clouds": "เมฆมืดครึ้ม",
+      "part_of_the_day": "🌗 ส่วนหนึ่งของวัน",
+      "pressure": "💨 ความดัน",
+      "sand_dust": "ทราย/ฝุ่น",
+      "scattered_clouds": "เมฆกระจัดกระจาย",
+      "sea_level_pressure": "🌊 ความกดอากาศที่ระดับน้ำทะเล",
+      "shower_rain": "ฝนโปรยปราย",
+      "sleet": "ลูกเห็บตก",
+      "smoke": "ควัน",
+      "snow": "หิมะตก",
+      "snow_fall": "❄️ หิมะตก",
+      "snow_shower": "หิมะโปรยปราย",
+      "state_code": "🗾 รหัสรัฐ",
+      "sunrise": "🌅 พระอาทิตย์ขึ้น",
+      "sunset": "🌇 พระอาทิตย์ตก",
+      "temperature": "🌡️ 온도",
+      "thunderstorm_with_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_hail": "พายุฝนฟ้าคะนองพร้อมลูกเห็บ",
+      "thunderstorm_with_heavy_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_heavy_rain": "พายุฝนฟ้าคะนองพร้อมฝนตกหนัก",
+      "thunderstorm_with_light_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
+      "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
+      "timezone": "🌐 시간대",
+      "unknown": "ไม่ทราบ",
+      "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
+      "unknown_precipitation": "ไม่ทราบปริมาณฝน",
+      "uv_index": "🧴 ดัชนีรังสียูวี",
+      "visibility": "👀 ทัศนวิสัย",
+      "weather": "⛅ 날씨",
+      "weather_at_the_moment": "__**%s1**__의 날씨는 현재 \n```%s2```입니다.",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust_speed": "🍃 ความเร็วลมกระโชก",
+      "wind_speed": "🎏 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 채널",
+      "member_create_channel": "> 서버 멤버 생성 채널: <#%s>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 채널",
+      "member_delete_channel": "> 서버 멤버 분해 채널: `%s`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 채널",
+      "member_pins_in_channel": "> 서버 구성원이 슬롯을 고정했습니다: <#%s1> %s2"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 채널",
+      "member_update_channel": "> 서버 구성원이 일부 필드를 변경했습니다: `%s1`에서 <#%s2>로."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 이모티콘",
+      "member_create_emoji": "> 서버 구성원이 새로운 이모티콘을 만들었습니다: :%s:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 이모티콘",
+      "member_delete_emoji": "> 서버 구성원 삭제 이모티콘: :%s:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 이모티콘",
+      "member_update_emoji": "> 서버 구성원이 새 이모티콘을 %s1에서 %s2로 변경했습니다."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ 서버",
+      "member_ban_add": "> <@%s1> 이 서버 내에서 이미 금지됨\n**이유:**\n```%s2```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ 서버",
+      "member_ban_remove": "> <@%s1> 이 서버 내에서 금지 해제되었습니다\n**이유:**\n```%s2```"
+    },
+    "guildCreate": {
+      "advice": "**💡팁**",
+      "advice_detail": "당신이 이 길드의 오너라면..이 길드를 사용하기 전에 이 길드 설정을 완료하고 싶습니다. 왜냐하면 당신에게 필요하지 않은 것들이 있을 수 있기 때문입니다. 따라서 `Ssettings` 명령을 사용해 보십시오.",
+      "description": "안녕하세요..저를 초대해 주셔서 감사합니다 %s 장소\n사람들이 제가 무엇을 할 수 있는지 궁금해하는 것 같습니다? 오.. 설겆이를 할 수 있고 빨래를 할 수 있습니다. 굉장하지 않나요~ ㅎㅎ 어디죠? 농담이야",
+      "get_started": "시작점에 도착했습니다!!",
+      "help_information_and_documentation": "**📄 도움말 및 문서**",
+      "help_information_and_documentation_detail": "내가 무엇을 할 수 있는지 알고 싶습니까?..매우 쉽습니다. `Shelp` 또는 `/help`를 입력하면 누군가 알려줄 것입니다. 물론 아래 링크로 이동하면 개발자 및 다른 사람들이 제공하는 문서가 있을 것입니다. 그는 이미\n> https://shiorus.web.app/을 작성했습니다.",
+      "join_on": "합류하다",
+      "support_multiple_languages": "** 🌐 다국어 지원**",
+      "support_multiple_languages_detail": "여러 언어를 지원합니다. 언어를 변경하려면 `Slanguage <언어 코드>` 또는 `/language <언어 코드>`로 설정할 수 있습니다."
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "이 서버는 이미 병합되었습니다 %s . 향후 업데이트가 있는 즉시 새 기사를 받게 됩니다.",
+      "guild_notification": "🗄️ 서버"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "확인 오류가 발생했습니다. 조치를 취하려면 서버 직원에게 문의하십시오.",
+      "captcha_success": "당신은 %s에서 확인되었습니다",
+      "greet": "안녕하세요 신입회원님 **이것은 자동 메시지입니다** \n저희 서버에 가입해주셔서 감사합니다. 다른 사람과 대화를 시작하기 전에 이 서버에 대한 정보를 주의 깊게 읽으십시오.",
+      "solve_the_captcha": "%s에서 확인하도록 고정 보안 문자",
+      "submit_answer_captcha": "보안 문자 답변 보내기",
+      "submit_you_answer_guide": "캡차가 무엇이라고 생각하는지 제출하세요.",
+      "use_button_below": "아래 버튼을 사용하여 답변을 제출하세요!",
+      "welcome": "서버에 오신 것을 환영합니다",
+      "wrong_answer": "잘못된 것 같습니다. 다시 시도하십시오...",
+      "your_answer": "당신의 보안 문자에 응답"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "이미 이 서버에서 탈출했다...(그의 집으로 가자..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "서버 %s 의 회원을 환영합니다. 여기에서 여러분을 기다리고 있습니다.",
+      "guild_notification": "🗄️ 서버"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ 서버",
+      "guild_unavailable": "현재..이 서버는 일시적으로 사용할 수 없습니다. 이 서버의 관리자에게 문의하십시오."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 음..일부 권한이 없습니다. 그래서 나는 계속할 수 없습니다, 즉 **%s**",
+      "command_error": "❌ 이 주문을 실행하는 동안 오류가 발생했습니다!",
+      "command_is_disabled": "⚫ 이 주문은 서버 내에서 비활성화되었습니다. 서버 관리자에게 문의하십시오.",
+      "no_permission": "🚫 흠...어플리케이션 명령어(/) 사용 권한이 없는 것 같으니 운영자에게 문의해주세요(≧∇≦)",
+      "user_is_not_allowed": "🚫 이 주문을 사용하게 할 수 없습니다. 아직 이러한 권한이 없는 경우: **%s**"
+    },
+    "inviteCreate": {
+      "invite_create": "초대 링크 생성 완료\n**링크:** %s1\n**만료:** %s2\n**최대:** %s3\n```%s4```",
+      "invite_notification": "🏷️ 초대장"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`%s` 이 초대 코드는 삭제되었습니다.",
+      "invite_code_expires": "`%s` 이 초대 코드는 만료되었습니다.",
+      "invite_notification": "🏷️ 초대장"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 당신은 돌아왔다 자동으로 AFK 상태 설정 해제",
+      "no_reason_for_afk": "이 없습니다",
+      "that_user_is_afk": "%s1 이제 화면에 표시되지 않음(AFK), 지금 그를 언급하지 않음\n**메시지 남기기**: %s2"
+    },
+    "roleCreate": {
+      "role_create": "<@&%s>이 생성되었습니다.",
+      "role_notification": "🔖 역할"
+    },
+    "roleDelete": {
+      "role_delete": "`%s`이(가) 삭제되었습니다.",
+      "role_notification": "🔖 역할"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 역할",
+      "role_update": "`%s1`이 <@&%s2>로 업데이트되었습니다."
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#%s>이(가) 생성되었습니다.",
+      "stage_notification": "🎤무대"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`%s`이(가) 삭제되었습니다.",
+      "stage_notification": "🎤무대"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`%s1`이 <#%s2>로 업데이트 되었습니다.",
+      "stage_notification": "🎤무대"
+    },
+    "stickerCreate": {
+      "sticker_create": "**%s** 지금 사용 가능",
+      "sticker_notification": "👻 스티커"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**%s**이(가) 삭제되었습니다.",
+      "sticker_notification": "👻 스티커"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 스티커",
+      "sticker_update": "`%s1`이 **%s2**로 업데이트되었습니다."
+    },
+    "threadCreate": {
+      "thread_create": "<#%s>이(가) 생성되었습니다.",
+      "thread_notification": "#️⃣ 스레드"
+    },
+    "threadDelete": {
+      "thread_delete": "**%s** 삭제됨",
+      "thread_notification": "#️⃣ 스레드"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ 스레드",
+      "thread_update": "`%s1`이 **%s2**로 업데이트되었습니다."
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 웹후크",
+      "webhook_update": "**%s1** of **%s2** 채널 <#%s3>에 업데이트 되었습니다."
+    }
+  },
+  "handlers": {
+    "music": {
+      "addList": {},
+      "addSong": {},
+      "disconnect": {},
+      "empty": {},
+      "error": {},
+      "finish": {},
+      "playSong": {},
+      "searchCancel": {},
+      "searchDone": {},
+      "searchInvalidAnswer": {},
+      "searchNoResult": {},
+      "searchResult": {}
+    }
+  },
+  "utils": {
+    "consoleUtils": {
+      "an_error_occurred": "🔴 실행 중 오류가 발생했습니다.",
+      "error_detail": "명령: **%s1**\n버전: **%s2**\n시간 제한: **%s3**\n서버: **%s4**\n대기 시간: **%s5ms**\n수신-전송: * *%s6ms**\n오류 결과:\n```JavaScript\n%s7\n```\n> **팁**:\n> ```Sbug <message>`` 명령을 사용하여 오류를 즉시 보고할 수 있습니다. `\n> ```/bug <message>```\n[이슈 리포트](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [뉴스 ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+      "server_abnormal": "특이한",
+      "server_normal": "정상"
+    },
+    "databaseUtils": {
+      "congratulations": "축하해요!!",
+      "level_up": "*%s1* 클래스는 이제 ```%s2```로 업그레이드되었습니다."
+    },
+    "miscUtils": {
+      "april": "4월",
+      "august": "팔월",
+      "december": "12월",
+      "february": "2월",
+      "format_at": "일%s1 %s %s3 %s4 시간 %s5:%s오후 6시",
+      "friday": "금요일",
+      "january": "1월",
+      "july": "칠월",
+      "june": "6월",
+      "march": "3월",
+      "may": "5월",
+      "monday": "월요일",
+      "november": "십일월",
+      "october": "십월",
+      "saturday": "토요일",
+      "september": "구월",
+      "sunday": "주",
+      "thursday": "목요일",
+      "tuesday": "화요일",
+      "wednesday": "수요일"
+    }
+  }
+}

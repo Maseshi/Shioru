@@ -1,0 +1,870 @@
+{
+  "commands": {
+    "about": {
+      "my_profile": "meu perfil",
+      "my_profile_detail": "Meu nome é %s nasci no domingo, 21 de junho. Moro em uma casa. __Chaiwat Suwannarat(Masashi)__ é quem me dá à luz e me dá conhecimentos e habilidades. **vários que eu estudei tudo para todos onde eu moro Espero que todos fiquem felizes em estar comigo!! E obrigado por toda a ajuda e apoio aos meus adoráveis benfeitores. Muito obrigado.\n\n[Site oficial](https://maseshi.web.app/)\n[Política de privacidade](https: //maseshi.web. app/privacy-policy) | [Termos de serviço](https://maseshi.web.app/terms-of-service)\n\n© 2020-2022 Chaiwat Suwannarat. Todos os direitos reservados.",
+      "update_on": "atualizado quando"
+    },
+    "afk": {
+      "currently_afk": "❎ Agora você está AFK",
+      "currently_not_afk": "❎ Você não está AFK agora.",
+      "now_afk": "💤 Agora você está AFK, escreva uma mensagem ou /afk remova para sair do modo AFK.",
+      "now_not_afk": "🔙 Seu status AFK foi desativado."
+    },
+    "anime": {
+      "auto_cancel": "Basta digitar o número que deseja ler! (cancelar em 1 minuto)",
+      "choose_now": "Escolha agora.!!",
+      "data_not_found": "❎ Não encontrei esta história. Vamos dar uma olhada. Olha, talvez não exista realmente tal coisa?",
+      "end_date": "**Data final**",
+      "english_name": "**Nome inglês**",
+      "in_progress": "em andamento",
+      "japan_name": "** nome japonês **",
+      "link": "**link**",
+      "popularity_rank": "**Classificação de popularidade**",
+      "short_information": "Este é apenas um resumo das informações. Se quiser ler mais, clique no link!!",
+      "similar_stories": "Encontrei 5 coisas semelhantes. Qual história você quer ler~",
+      "start_date": "**data de início**",
+      "synopsis": "**resumir:**",
+      "undefined": "indefinido"
+    },
+    "ask": {},
+    "automod": {
+      "flagged_words_name": "bloquear palavrões conteúdo sexual e insultos",
+      "flagged_words_success": "✅ Suas regras de AutoMod foram criadas, todas essas palavras serão suprimidas.",
+      "keyword_name": "Impede que a palavra %sseja usada.",
+      "keyword_success": "✅ Sua regra de AutoMod foi criada, todas as mensagens que contenham a palavra %s serão apagadas.",
+      "mention_spam_name": "Evite spam quando se trata de",
+      "mention_spam_success": "✅ Sua regra de AutoMod criada, spam em várias menções será suprimido.",
+      "prevent_message": "Esta mensagem está protegida.",
+      "spam_messages_name": "bloquear mensagens de spam",
+      "spam_messages_success": "✅ Suas regras de AutoMod foram criadas, mensagens de spam serão suprimidas."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm... mas a música ainda nem começou?",
+      "not_queue_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "off": "📻 Modo de reprodução automática desativado",
+      "on": "📻 Modo de reprodução automática ativado"
+    },
+    "ban": {
+      "banned_for_time": "%s1 banido por **%s2** dias",
+      "member_has_banned": "❎ Esses membros já foram banidos. Sinta-se à vontade.",
+      "members_have_a_higher_role": "❎ Você não pode banir alguém com uma função superior à sua.",
+      "members_have_a_higher_role_than_me": "❎ Não posso banir esse membro. porque ele tem um papel mais elevado do que eu",
+      "no_reason": "Os membros que baniram não deram um motivo.",
+      "permanently_banned": "%s banido permanentemente",
+      "reason_for_ban": "Banido por: %s1\nMotivo: %s2",
+      "user_not_found": "❎ Não consigo encontrar este membro. Por favor cheque novamente."
+    },
+    "board": {},
+    "bug": {},
+    "captcha": {
+      "captcha_setup_success": "✅ O sistema captcha foi configurado e ativado com sucesso.",
+      "currently_disable": "ℹ️ Captcha agora está fechado.",
+      "currently_enable": "ℹ️ Captcha agora está ativado.",
+      "disabled_captcha": "✅ captcha foi desativado",
+      "enabled_captcha": "✅ captcha habilitado com sucesso",
+      "need_to_setup_before": "❎ Defina o captcha antes de usar usando o comando de configuração /captcha."
+    },
+    "covid": {
+      "active": "ativo",
+      "active_per_one_million": "ativo por 1 milhão",
+      "backend_issue": "❎ Parece haver um problema do lado do informante. Por favor, tente novamente na próxima vez.",
+      "cases_per_one_million": "Pacientes por 1 milhão",
+      "cases_today": "este paciente",
+      "cases_total": "todos os pacientes",
+      "country_not_found": "❎ Umm.. Não consigo encontrar as informações do país que você especificou.",
+      "critical_per_one_million": "período crítico por 1 milhão",
+      "critical_stage": "período crítico",
+      "deaths_today": "morreu hoje",
+      "deaths_total": "todos morreram",
+      "one_case_per_people": "por paciente",
+      "one_death_per_people": "morte por pessoa",
+      "one_test_per_people": "Teste por pessoa",
+      "population": "população",
+      "recovered": "perdido",
+      "recovered_per_one_million": "Perdido por 1 milhão",
+      "tests": "teste",
+      "tests_per_one_million": "Testes por 1 milhão",
+      "updated_on": "Última atualização %s",
+      "when": "quando"
+    },
+    "credits": {},
+    "dead": {
+      "suicide": "%s cometer suicídio 💔 descanse em paz"
+    },
+    "decode": {
+      "after": "depois de decodificar",
+      "before": "antes de decodificar",
+      "decode_message": "🔓 Descriptografar mensagens",
+      "decode_success": "A mensagem foi descriptografada."
+    },
+    "donate": {
+      "thank_you_in_advance_message": "❤️ Obrigado por apoiar meus desenvolvedores com antecedência. Tenho um canal de suporte da seguinte forma."
+    },
+    "eat": {
+      "already_eaten": "%s1 comeu %s2 no estômago",
+      "do_not_eat_me": "Eu... eu sou um pouco pequeno. m..não é bom para comer..."
+    },
+    "eight_ball": {
+      "answer": "responder",
+      "game": "🎱 jogo de bola 8",
+      "question": "pergunta",
+      "risk": "Use sua sorte em perguntas para obter respostas.",
+      "roll_ball": "Role a bola!!"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **%s** Emoji foi deletado.",
+      "edited_emoji": "%s emoji corrigido",
+      "uploading_you_emoji": "📤 Carregando seu emoji...",
+      "you_emoji_is_ready": "%s Seu emoji está pronto. Vamos tentar!!"
+    },
+    "encode": {
+      "after": "depois da criptografia",
+      "before": "antes de codificar",
+      "encode_message": "🔒 Criptografar mensagens",
+      "encode_success": "A mensagem foi criptografada."
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Parece que o emoji está faltando ou pode não ser um emoji."
+    },
+    "exp": {
+      "error": "❎ Não é possível definir a experiência de tais membros. Por favor, tente novamente mais tarde.",
+      "experience": "Pontos de Experiência (Exp)",
+      "exp_was_changed": "%s acumulado todos os níveis de experiência têm:",
+      "level": "Nível",
+      "notification_complete": "✅A configuração está feita...",
+      "set_by_staff": "Sua experiência é definida pela equipe neste servidor.",
+      "success": "✅A configuração está feita..."
+    },
+    "filter": {
+      "add_filter": "🎼 Adicione o formato de som necessário para ser **%s** já.",
+      "available_filter": "Formatos de filtro disponíveis",
+      "available_filter_description": "Personalize sua música usando estes formatos %s1 ```%s2```",
+      "clear_filter": "💨 Todos os formatos de áudio foram apagados. Agora será um formato de som normal.",
+      "list_filter_description": "Existem padrões atualmente ativos nesta fila: %s1 padrões\n```%s2```",
+      "list_filter_description_empty": "```Não há nenhum formato de áudio sendo usado atualmente.```",
+      "list_filter_title": "O formato de áudio atualmente em uso",
+      "no_queue": "❎ Não há nenhuma música tocando no momento.",
+      "not_queue_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "remove_filter": "🗑️ O formato de áudio **%s** foi removido.",
+      "set_filter": "🎼 Defina o formato de áudio preferido para **%s**",
+      "sound_filtering": "❓ Quer mudar o som da sua música?",
+      "unknown_filter": "❎ Umm..Não sei o formato do som `%s`, você pode verificar usando **disponível** ou **ava**?",
+      "unknown_input_option": "❓ Você pode especificar os seguintes parâmetros: adicionar, remover, definir, disponível, listar, limpar."
+    },
+    "generate": {},
+    "guild": {
+      "available": "preparar",
+      "info_date": "informação de quando",
+      "no": "não",
+      "none": "não",
+      "server_info": "🗄 Informações detalhadas do servidor",
+      "server_info_description": "Informações detalhadas do servidor Que é baseado em dados do Discord.",
+      "unknown": "não sei",
+      "yes": "sim"
+    },
+    "help": {
+      "category": "Categoria: %s",
+      "client_permissions": "Permissões (bots): %s",
+      "command": "Ordem: %s",
+      "command_detail": "📑 Detalhes do pedido ",
+      "command_incorrect": "❎ Ordem incorreta",
+      "command_incorrect_guide": "Eh... eu não tenho esse pedido. Verifique novamente digitando `/help` para ver a lista completa dos meus comandos.",
+      "commands_description": [
+        "Todos os comandos que aprendi ou estudei. entender e realmente usar",
+        "que antes de me ligar O prefixo deve ser **/**.",
+        "`<>` significa obrigatório, `()` é o tipo de entrada e `[]` é opcional.",
+        "Para obter detalhes de cada comando, digite `/help [command]` e seu desejo se tornará realidade!!"
+      ],
+      "description": "Descrição: %s",
+      "document_name": "Folha de ajuda",
+      "how_to_use": "Ajuda: %s",
+      "no_description": "sem descrição",
+      "no_need_permissions": "Nenhuma permissão necessária",
+      "request_by": "Requerido por",
+      "unknown_how_to_use": "não tem como usar",
+      "user_permissions": "Permissões (usuários): %s"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Não é possível encontrar esses membros neste servidor.",
+      "success": "✅ <@%s> A mensagem foi criada!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Não é possível gerar link de convite Por favor, tente novamente.",
+      "membership_invitation_card": "cartão de convite de membro",
+      "this_product_is_free": "Este produto é gratuito, não revenda."
+    },
+    "join": {
+      "already_joined": "❎ Eh..mas eu estou aqui agora?",
+      "another_player_is_playing": "🚫 Você não pode usar este pedido no momento. porque há outros membros tocando música",
+      "channel_joined": "✅ Já estou no canal <#%s>...",
+      "joined": "▶️ Agora já estou no canal <#%s>.",
+      "not_in_channel": "❓ Você deve entrar no canal primeiro. Caso contrário, não sei qual campo =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Parece não haver tal número de fila. Por favor cheque novamente.",
+      "jumped": "➿ Pule para a nova música na fila número %s já.",
+      "no_queue": "❎ Não há nenhuma música que estou tocando no momento. não pode cruzar",
+      "not_queue_owner": "🚫 Apenas o dono da fila pode alterá-la."
+    },
+    "kick": {
+      "can_not_find_user": "❎ Não consigo encontrar este membro. Por favor cheque novamente.",
+      "kicked_out": "%s expulso",
+      "members_have_a_higher_role": "❎ Você não pode chutar pessoas que estão acima de você.",
+      "members_have_a_higher_role_than_me": "❎ Não consigo chutar esse membro. porque ele tem um papel mais elevado do que eu",
+      "no_reason": "Os membros que chutaram não deram um motivo.",
+      "reason_for_kick": "Kickado por: %s1\nMotivo: %s2"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Você vai fazer algo assim.. Comigo não haha...",
+      "killed": "%s1 já te matou %s2 🔪"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Você não pode usar este pedido no momento. porque há outros membros tocando música",
+      "not_in_any_channel": "❎ Agora ainda não estou em nenhum canal...",
+      "now_leave": "◀️ Estou fora do canal atual."
+    },
+    "level": {
+      "delete_error": "❎ Não consigo encontrar este usuário.",
+      "delete_success": "✅ O nível de experiência deste membro foi deletado!",
+      "deleting": "📁 Excluindo dados de nível de experiência para este membro.",
+      "experience": "Pontos de Experiência (Exp)",
+      "level": "Nível",
+      "level_was_changed": "%s acumulado todos os níveis de experiência têm:",
+      "notification_complete": "✅A configuração está feita...",
+      "set_by_staff": "Sua classe é definida pela equipe neste servidor.",
+      "set_error": "❎ Não é possível definir o nível de tais membros. Por favor, tente novamente mais tarde.",
+      "set_success": "✅A configuração está feita...",
+      "user_current_no_level": "❎ Esses membros não têm um nível de classe."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Bots não terão níveis, inclusive eu.",
+      "experience": "Pontos de Experiência (Exp)",
+      "level": "Nível",
+      "user_no_data": "💨 Hmm... Este membro não tem nível e experiência.",
+      "your_experience": "Sua experiência"
+    },
+    "license": {},
+    "logs": {
+      "can_not_delete_file": "❎ Não é possível excluir o arquivo de log acima.\n```JavaScript\n%s\n```",
+      "can_not_read_file": "❎ Não é possível ler o arquivo de log acima.\n```JavaScript\n%s\n```",
+      "file_has_been_deleted": "✅ **%s** já excluído",
+      "file_not_found": "❎ Não consigo encontrar um arquivo chamado **%s** na pasta.",
+      "folder_empty": "💨 Agora o arquivo de log na pasta está vazio. Tente voltar novamente mais tarde.",
+      "found_file": "Encontrado %s1 entradas de arquivos:\n```%s2```",
+      "owner_only": "🚫 Desculpe..este comando só pode ser usado por administradores."
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Nenhuma letra encontrada para %s.",
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "playing_lyrics": "📋 Letra da música que está tocando no momento"
+    },
+    "meme": {
+      "can_not_fetch": "Falha ao buscar o meme. Por favor, tente novamente.",
+      "meme_not_found": "Nenhum meme do tipo correspondente %sfoi encontrado."
+    },
+    "minecraft": {
+      "address": "endereço",
+      "do_not_have": "não tem",
+      "ip": "endereço de IP",
+      "last_check": "verificado pela última vez",
+      "maximum_player_count": "Número máximo de jogadores",
+      "motd": "Descrição",
+      "player_in_server": "jogadores do servidor",
+      "port": "porta",
+      "server_available": "🟢 Este servidor está aberto no momento.",
+      "server_unavailable": "🔴 Este servidor está temporariamente fechado.",
+      "skin_of": "🎴 Peles de %s",
+      "version": "versão"
+    },
+    "musicInfo": {
+      "detail": "📄 Detalhes da música que está tocando no momento",
+      "download_link": "📥Link para download",
+      "duration": "🕒 Duração",
+      "id": "🆔 Identificação",
+      "link": "🔗 Links",
+      "music_name": "🎵 Nome da música",
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "uploader": "🎬 carregador"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Temporariamente incapaz de obter a imagem desejada. Por favor, tente novamente mais tarde.",
+      "request_by": "solicitado por %s"
+    },
+    "nowPlaying": {
+      "filter": "🎼 Padrão de filtro de voz: `%s`",
+      "owner_this_queue": "%s é o dono desta fila"
+    },
+    "numbers": {
+      "result": "O resultado é %s"
+    },
+    "paste": {
+      "backend_not_response": "❎ Nenhuma resposta do servidor. Você pode tentar novamente mais tarde.",
+      "file": "arquivo",
+      "raw": "cru"
+    },
+    "pause": {
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "not_paused": "📼 Agora estou preso. Tá estranho hoje..",
+      "paused": "⏸ Pause a música agora."
+    },
+    "ping": {
+      "connection": "📡 Conexão",
+      "info": "A latência de ida e volta é %s1 ms\ntempo de atividade do soquete da web é %s2 ms",
+      "result": "🏓 Pong",
+      "waiting": "🏓Ping..."
+    },
+    "play": {
+      "no_queue": "❎ Agora ainda não toquei nenhuma música.",
+      "not_in_channel": "❓ Entre em qualquer canal primeiro. Caso contrário, não me escute..."
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Nenhuma música tocada recentemente.",
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "previous": "⏮ Volte para a música anterior"
+    },
+    "purge": {
+      "message_cleared": "`%s mensagens ` removidas com sucesso 💨"
+    },
+    "qrcode": {
+      "qrcode_success": "Seu código QR está pronto para uso.",
+      "qrcode_title": "🧩 Código QR"
+    },
+    "quality": {
+      "advice_embed_description": "```Qualidade atual: %s```\nÀs vezes, o problema pode ser causado por um servidor que tem muito acesso a ele, causando problemas de desempenho. No entanto, recomendo que você verifique sua conexão com a Internet antes de configurar isso\n`0` - Use **OPUS** para compactar arquivos de áudio. Isso lhe dará uma melhor qualidade de som, mas também usará mais recursos **(recomendado)**\n`1` - Use o som diretamente da fonte. Isso fornecerá melhor desempenho, mas usará menos recursos.",
+      "advice_embed_footer_text": "Você pode definir qualidade de áudio adicional nas configurações do Discord: Configurações > Áudio e Vídeo > Avançado.",
+      "advice_embed_title": "Personalize a qualidade do som",
+      "focus_on_high_quality": "foco em alta qualidade",
+      "low_efficiency": "foco em baixo desempenho",
+      "opus_mode_selected": "🎛️ Já usei **OPUS** para ajudar a compactar arquivos de áudio. A qualidade do som será melhorada.",
+      "raw_mode_selected": "🎛️ Mudou para o som do original Pode reduzir a qualidade do som."
+    },
+    "queue": {
+      "autoplay": "📻 Reprodução Automática",
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "owner_this_queue": "%s é o dono desta fila",
+      "previous_queue": "**fila anterior**",
+      "waiting_in_queue": "**Aguardando a próxima fila**"
+    },
+    "queueStatus": {
+      "autoplay": "📻 Reprodução Automática",
+      "duration": "🕒 Duração",
+      "filter": "🎼 padrão de filtro de áudio",
+      "now": "⌚ agora",
+      "off": "desligar",
+      "on": "abrir",
+      "owner_this_queue": "%s é o dono desta fila",
+      "paused": "pausa",
+      "playing": "jogando",
+      "queue_status": "📑 Status da fila de músicas atual",
+      "repeat": "🔁 Repita",
+      "repeat_off": "não aberto",
+      "repeat_this_queue": "esta fila",
+      "repeat_this_song": "esta canção",
+      "volume": "🔉 volume do som"
+    },
+    "reboot": {
+      "dm_to_owner": "**:arrows_counterclockwise: Há uma solicitação para uma nova reinicialização do sistema!!**\nPara confirmar sua identidade, digite esta senha no servidor onde você executa o comando\nVocê pode ignorá-la se não quiser continuar\nObrigado por ainda cuidares de mim até hoje :)\n||%s||",
+      "not_owner": "🛑 Não.. não tome. Esta função requer apenas privilégios superiores.",
+      "now_reboot": "✅Iniciou um novo sistema!!",
+      "password_is_incorrect": "❎ A senha está incorreta. Por favor cheque novamente.",
+      "rebooting": "🔄 Reiniciando..."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...parece que não tem essa ordem...tente verificar com cuidado Mais uma vez, está correto ou não?",
+      "reloaded": "✅ %s Recarregado com sucesso!!",
+      "reload_error": "❌ Droga..Tentei recarregar o comando %s mas não consigo."
+    },
+    "remove": {
+      "no_queue": "❎ Agora ainda não toquei nenhuma música.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "removed": "❌ Removido **%s** da fila.",
+      "too_much": "❎ Essa fila não existe. Por favor cheque novamente."
+    },
+    "repeat": {
+      "no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "off": "repetir fora",
+      "repeated": "🔁 %sagora",
+      "repeat_queue": "repetir fila",
+      "repeat_song": "repita a música"
+    },
+    "resume": {
+      "no_queue": "❎ Agora ainda não toquei nenhuma música.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "now_playing": "📼 Ei.. Agora estou jogando.",
+      "resumed": "▶️ A música está tocando do mesmo ponto."
+    },
+    "rip": {
+      "no_image": "❎ Ei... parece com esta foto Pode ter sido excluído ou movido para outro local."
+    },
+    "rpc": {
+      "answered": "Você escolheu sua resposta.",
+      "bot_winner": "Yay!..Eu venci você <@%s>",
+      "can_not_play_with_another_bot": "❎ Você não pode jogar este jogo com outros bots.",
+      "choose_options": "Escolha uma opção abaixo.",
+      "game_timeout": "Este jogo expirou. Obrigado por se divertir.",
+      "member_not_found": "❎ Esses membros parecem não estar mais neste servidor.",
+      "rock_paper_scissors": "🎮 pedra papel tesoura",
+      "tie": "Gravata!",
+      "user_answered": "%s respostas foram selecionadas. Esperando uma resposta do outro lado...",
+      "user_winner": "<@%s> é o vencedor!",
+      "your_answer": "Agora você selecionou %s"
+    },
+    "say": {
+      "success": "✅Sua mensagem foi enviada."
+    },
+    "search": {
+      "get_list_of_songs": "📋 Recebi a lista de músicas que desejo. e vai começar a tocar música em um momento...",
+      "invalid_number": "🔴 Pesquisas recentes foram canceladas. Você pode pesquisar novamente digitando o mesmo comando.",
+      "no_results": "❎ Tentei pesquisar sobre a música, mas não encontrei nenhum resultado...",
+      "playlist_type": "lista de reprodução",
+      "search_cancelled": "🕘 Pesquisa cancelada..porque nenhuma seleção de música foi encontrada.",
+      "searching": "🔍 Encontre%srelacionado",
+      "song_type": "canção",
+      "timer_choose": "Há um tempo para escolher%s a 60 segundos, se você quiser cancelar, pode digitar um número que não seja relevante ou esperar até o final do tempo.",
+      "title_results": "Resultados de%scomo:",
+      "user_not_in_channel": "❓ Entre em qualquer canal primeiro. Caso contrário, não me escute..."
+    },
+    "seek": {
+      "no_queue": "❎ Agora não há nenhuma música tocando no momento.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "seek_guide": "❓ Quantos segundos você deseja alterar o tempo da música que está tocando? Agora jogando em %ssegundo",
+      "sought": "🕘 Mudou o tempo da música que está tocando.",
+      "too_much": "❎ O tempo desta música é %s Não há nada além disso."
+    },
+    "set_command": {},
+    "set_language": {},
+    "set_notify": {},
+    "set_personal": {},
+    "settings": {
+      "description": "Você pode configurá-lo de acordo com suas necessidades usando esses comandos.",
+      "languages": "🌐 Idioma (Servidor)",
+      "note": "Observação: alguns comandos podem exigir determinadas permissões antes de serem executados.",
+      "notification": "🔔 Notificação (Servidor)",
+      "personal": "📄 Informações Pessoais (Pessoal)",
+      "title": "⚙️ Configurações"
+    },
+    "shuffle": {
+      "no_queue": "❎ Agora não há nenhuma música tocando no momento.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "now_shuffle": "🔀 Começando a trocar filas..."
+    },
+    "shutdown": {
+      "dm_to_owner": "**:red_circle: Há um pedido de desligamento!!**\nPara confirmar que é você, digite esta senha no servidor em que você executa o comando\n\npode ignorá-la se não quiser continuar. Cuide de mim até hoje :)\n||%s||",
+      "not_owner": "🛑 Não.. não tome. Esta função requer apenas privilégios superiores.",
+      "now_shutdown": "💤 O sistema no Discord foi desabilitado.. Até mais~",
+      "password_is_incorrect": "❎ A senha está incorreta. Por favor cheque novamente.",
+      "shutting_down": "🔄 Desligando meu sistema..."
+    },
+    "skip": {
+      "no_queue": "❎ Não há nenhuma música que estou tocando no momento. não pode cruzar",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "skipped": "⏭ Eu pulei e estava prestes a começar a tocar uma nova música na fila."
+    },
+    "snake": {
+      "building_board_game": "🐍 Composição por favor espere um momento...",
+      "game_name": "Serpente: O Jogo",
+      "game_over": "game Over",
+      "game_score": "Pontuação: **%s1**\nTempo: **%s2** segundos",
+      "played_on": "Iniciado por %s"
+    },
+    "stats": {
+      "member_count": "จำนวนสมาชิก:",
+      "server_count": "จำนวนเซิร์ฟเวอร์:"
+    },
+    "status": {
+      "data_by_server": "Dados de referência do servidor.",
+      "dnd_status": "O número de membros atualmente em Não Perturbe é \n```%s```.",
+      "idle_status": "O número de membros atualmente ausentes é \n```%s```.",
+      "offline_status": "O número de membros atualmente offline é \n```%s```",
+      "online_status": "O número de membros atualmente online é \n```%s```"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **%s** Adesivo removido com sucesso",
+      "does_not_support_gif": "❎ Desculpe... No momento, o Discord não oferece suporte a adesivos personalizados baseados em GIF.",
+      "edited_sticker": "%s Os adesivos foram editados.",
+      "uploading_you_sticker": "📤 Carregando seus adesivos...",
+      "you_sticker_is_ready": "%s Seu adesivo está pronto. Vamos tentar!!"
+    },
+    "stop": {
+      "no_queue": "❎ Eh...a música que estou tocando não está disponível.",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "stopped": "⏹️ Pare de tocar música e exclua todas as filas."
+    },
+    "system": {
+      "info_battery": {},
+      "info_description": "As informações do sistema em que estou trabalhando atualmente, fornecidas pelo sistema, são as seguintes.",
+      "info_gpu_control": "• GPU (Controlador)",
+      "info_gpu_display": "• GPU (Tela)",
+      "info_memory_used": "• memoria usada",
+      "info_platform": "• Plataforma",
+      "info_system": "• sistema",
+      "info_temperature": "• Temperatura da CPU",
+      "info_title": "🖥 Informações básicas do sistema",
+      "info_uptime": {
+        "info": "%s1 dia %s2 horas ",
+        "title": "• Tempo de trabalho"
+      },
+      "loading": "⚙️ Enviando solicitação para buscar dados do sistema do servidor...",
+      "main": "principal",
+      "unknown": "não sei"
+    },
+    "tictactoe": {
+      "button_is_selected": "❎ O canal já está ocupado.",
+      "can_not_duel_with_me": "❎ Não sou bom em jogar esses jogos. Eu sou mais crítico.",
+      "can_not_play_with_bot": "❎ Você não pode jogar este jogo com bots.",
+      "in_another_duel": "❎ <@%s> Atualmente em um duelo com outra pessoa.",
+      "in_duel": "❎ Não, você tem que lutar com <@%s> até o fim.",
+      "member_not_found": "❎ Esses membros parecem ter sido sequestrados em outro lugar.",
+      "need_one_emoji": "❎ Posso ter 1 emoji como ❌ ou ⭕?",
+      "tie": "Gravata!",
+      "wait_opponent": "❓Aguarde o lado oposto por alguns instantes.",
+      "winner": "%s ganhou!"
+    },
+    "timeout": {
+      "can_not_set_for_yourself": "❎ Você não pode definir um tempo limite para si mesmo.",
+      "can_not_set_timeout": "❎ Não posso definir um tempo limite para ele porque ele tem uma função superior à minha.",
+      "can_not_set_to_admin": "❎ Você não pode definir um tempo limite para moderadores.",
+      "dm_to_user": "⌛ Você está configurado para expirar em %s1, você pode ver o tempo restante naquele servidor **Razão**: %s2",
+      "member_not_found": "❎ Os membros não dizem que não estão mais neste servidor.",
+      "no_reason": "não dá uma razão",
+      "success": "%s1 está definido para expirar em %s2 minutos **Motivo**: %s3"
+    },
+    "together": {
+      "can_not_open": "❌ Ummm... é por isso que não consigo abrir %s",
+      "do_not_have": "❎ Ah..Agora ainda não há %s1 ou pode não haver realmente\n, mas o Together que pode ser usado agora tem %s2 itens, ou seja,\n```%s3```",
+      "do_not_have_permission": "❌ Não consigo ativar porque não tenho permissão para operar. Entre em contato com o moderador.",
+      "join_via_this_link": "Participe através deste link. https://discord.com/invite/",
+      "user_not_in_channel": "❎ Entre em um dos canais de voz primeiro, ou você pode me dizer o nome ou ID desse canal. Ele será capaz de criar um link corretamente.",
+      "voice_channel_not_found": "❎ Eh..mas não há canal de som neste servidor Vá para o canal de áudio e tente novamente."
+    },
+    "translate": {
+      "can_not_translate": "❎ Incapaz de traduzir o idioma de tal texto. Por favor, tente novamente mais tarde.",
+      "says": "dizer",
+      "translate_support": "❎ Código de tradução inválido Verifique novamente.\n**Idiomas suportados:** %s"
+    },
+    "unban": {
+      "no_one_gets_banned": "❎ Ninguém no servidor está banido no momento.",
+      "no_reason": "Os membros que cancelaram o banimento não deram um motivo.",
+      "reason_for_unban": "Desbanido por: %s1\nMotivo: %s2\nDepois que o membro foi desbanido. Esses membros poderão ingressar neste servidor normalmente.",
+      "this_user_not_banned": "❎ Eh.. esse membro não foi banido. Vamos verificar algumas novas palavras-chave excelentes mais uma vez...",
+      "user_has_been_unbanned": "%s não banido"
+    },
+    "untimeout": {
+      "can_not_set_for_yourself": "❎ Você não pode definir um tempo limite para si mesmo.",
+      "can_not_set_to_admin": "❎ Você não pode definir um tempo limite para moderadores.",
+      "can_not_set_untimeout": "❎ Não posso configurá-lo para não expirar porque ele tem um papel mais alto do que eu.",
+      "dm_to_user": "⏲️ Você foi cancelado para definir um tempo limite em %s1 **Motivo**: %s2",
+      "member_not_found": "❎ Os membros não dizem que não estão mais neste servidor.",
+      "no_reason": "não dá uma razão",
+      "success": "%s1 Tempo limite definido **Motivo**: %s2"
+    },
+    "uptime": {
+      "days": "dia",
+      "hours": "hora",
+      "info_title": "🕒 É hora de começar a trabalhar.",
+      "minute": "minuto",
+      "second": "segundo"
+    },
+    "user": {
+      "info_date": "informação de quando",
+      "none": "não",
+      "unknown": "não sei",
+      "user_info": "👥 Detalhes das informações do usuário",
+      "user_info_description": "Informações detalhadas sobre os usuários Que é baseado em dados do Discord.",
+      "yes": "sim"
+    },
+    "version": {
+      "working_in_version": "Estou trabalhando na versão: **%s**"
+    },
+    "volume": {
+      "adjusted": "🔊 Ajuste o volume para: **%s**",
+      "no_queue": "❎ Eh...a música que estou tocando não está disponível. O que você vai ajustar?",
+      "not_owner": "🚫 Apenas o dono da fila pode alterá-la.",
+      "this_volume": "🔈 O volume do som atual é: **%s**"
+    },
+    "vote": {
+      "invite": "เชิญ",
+      "tags": "แท็ก",
+      "vote": "โหวต",
+      "votes": "คะแนนโหวต"
+    },
+    "weather": {
+      "air_quality_index": "😷 ดัชนีคุณภาพอากาศ",
+      "broken_clouds": "เมฆแตก",
+      "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
+      "clear_sky": "ท้องฟ้าแจ่มใส",
+      "clouds": "☁️ เมฆ",
+      "country_code": "🗺️ รหัสประเทศ",
+      "day": "เช้า",
+      "dew_point": "💦 จุดน้ำค้าง",
+      "drizzle": "ละอองฝน",
+      "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "feels_like": "🎐 apetece",
+      "few_clouds": "เมฆน้อย",
+      "flurries": "แปรปรวน",
+      "fog": "หมอก",
+      "freezing_fog": "หมอกเยือกแข็ง",
+      "freezing_rain": "ฝนเยือกแข็ง",
+      "haze": "หมอกควัน",
+      "heavy_drizzle": "ฝนตกปรอยๆ",
+      "heavy_rain": "ฝนตกหนัก",
+      "heavy_shower_rain": "ฝนตกหนัก",
+      "heavy_sleet": "ลูกเห็บตกหนัก",
+      "heavy_snow": "หิมะตกหนัก",
+      "heavy_snow_shower": "หิมะตกหนัก",
+      "humidity": "💧ความชื้น",
+      "latitude": "📍 ละติจูด",
+      "light_drizzle": "ฝนตกเบาบาง",
+      "light_rain": "ฝนตก",
+      "light_shower_rain": "ฝนตกหนักบางพื้นที่",
+      "light_snow": "หิมะตกโปรยปราย",
+      "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
+      "longitude": "📍 ลองจิจูด",
+      "millibars": "มิลลิบาร์",
+      "mist": "หมอก",
+      "mix_snow_rain": "หิมะ/ฝนผสม",
+      "moderate_rain": "ฝนตกปานกลาง",
+      "night": "กลางคืน",
+      "no_result_found": "❎ Eh...procurei informações sobre essa área, mas não encontrei.",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "observation_time": "⌚ เวลาสังเกตการณ์",
+      "overcast_clouds": "เมฆมืดครึ้ม",
+      "part_of_the_day": "🌗 ส่วนหนึ่งของวัน",
+      "pressure": "💨 ความดัน",
+      "sand_dust": "ทราย/ฝุ่น",
+      "scattered_clouds": "เมฆกระจัดกระจาย",
+      "sea_level_pressure": "🌊 ความกดอากาศที่ระดับน้ำทะเล",
+      "shower_rain": "ฝนโปรยปราย",
+      "sleet": "ลูกเห็บตก",
+      "smoke": "ควัน",
+      "snow": "หิมะตก",
+      "snow_fall": "❄️ หิมะตก",
+      "snow_shower": "หิมะโปรยปราย",
+      "state_code": "🗾 รหัสรัฐ",
+      "sunrise": "🌅 พระอาทิตย์ขึ้น",
+      "sunset": "🌇 พระอาทิตย์ตก",
+      "temperature": "🌡️ Temperatura",
+      "thunderstorm_with_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_hail": "พายุฝนฟ้าคะนองพร้อมลูกเห็บ",
+      "thunderstorm_with_heavy_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_heavy_rain": "พายุฝนฟ้าคะนองพร้อมฝนตกหนัก",
+      "thunderstorm_with_light_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
+      "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
+      "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
+      "timezone": "🌐 Fuso Horário",
+      "unknown": "ไม่ทราบ",
+      "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
+      "unknown_precipitation": "ไม่ทราบปริมาณฝน",
+      "uv_index": "🧴 ดัชนีรังสียูวี",
+      "visibility": "👀 ทัศนวิสัย",
+      "weather": "⛅ Clima",
+      "weather_at_the_moment": "O clima de __**%s1**__ agora é \n```%s2```.",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust_speed": "🍃 ความเร็วลมกระโชก",
+      "wind_speed": "🎏 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Canal",
+      "member_create_channel": "> Canal criado pelo membro do servidor: <#%s>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Canal",
+      "member_delete_channel": "> Canal explodido do membro do servidor: `%s`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Canal",
+      "member_pins_in_channel": "> O membro do servidor fixou o slot: <#%s1> quando %s2"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Canal",
+      "member_update_channel": "> Um membro do servidor alterou alguns campos: `%s1` para <#%s2>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> O membro do servidor criou um novo emoji: :%s:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Emoji excluído do membro do servidor: :%s:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> O membro do servidor mudou o novo emoji de: %s1 para %s2."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Servidor",
+      "member_ban_add": "> <@%s1> Já banido neste servidor\n**Motivo:**\n```%s2```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Servidor",
+      "member_ban_remove": "> <@%s1> Foi desbanido neste servidor\n**motivo:**\n```%s2```"
+    },
+    "guildCreate": {
+      "advice": "**💡 Dicas**",
+      "advice_detail": "Se você é o proprietário desta guilda... Quero concluir a configuração desta guilda antes de usá-la, porque algumas coisas podem não ser necessárias. Portanto, tente usar o comando `Settings`.",
+      "description": "Olá... obrigado por me convidar para este %s lugar\nparece que as pessoas estão se perguntando o que posso fazer? Oh .. pode lavar pratos, lavar roupa. É incrível, não é~ Haha, onde está? Eu estou brincando",
+      "get_started": "Chegou no começo!!",
+      "help_information_and_documentation": "**📄 Ajuda e documentação**",
+      "help_information_and_documentation_detail": "Quer saber o que posso fazer?..muito fácil. Basta digitar `Shelp` ou `/help` e alguém lhe dirá. Claro, basta acessar o link abaixo e haverá documentação fornecida pelo desenvolvedor e outros. Ele já escreveu\n> https://shiorus.web.app/",
+      "join_on": "junte-se a",
+      "support_multiple_languages": "** 🌐 Suporta vários idiomas **",
+      "support_multiple_languages_detail": "Eu apoio vários idiomas. Para alterar o idioma Você pode configurá-lo por `Slanguage <código do idioma>` ou `/language <código do idioma>`."
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Este servidor já fundiu %s . Você receberá novos artigos assim que houver atualizações futuras.",
+      "guild_notification": "🗄️ Servidor"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "Ocorreu um erro de validação. Entre em contato com a equipe do servidor para agir.",
+      "captcha_success": "Você é verificado em %s",
+      "greet": "Olá novo membro **Esta é uma mensagem automática** \nObrigado por entrar em nosso servidor. Por favor, leia atentamente as informações sobre este servidor antes de começar a falar com alguém.",
+      "solve_the_captcha": "Captcha corrigido para verificar em %s",
+      "submit_answer_captcha": "Enviar uma resposta captcha",
+      "submit_you_answer_guide": "Envie o que você acha que o captcha é",
+      "use_button_below": "Use o botão abaixo para enviar sua resposta!",
+      "welcome": "Bem-vindo ao servidor",
+      "wrong_answer": "Parece errado. Tente novamente...",
+      "your_answer": "responda seu captcha"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "Já escapou deste servidor...(vamos para a casa dele..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Bem-vindos membros do servidor %s Esperamos vocês aqui.",
+      "guild_notification": "🗄️ Servidor"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Servidor",
+      "guild_unavailable": "Atualmente...este servidor está temporariamente indisponível. Entre em contato com o administrador deste servidor."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm..estou perdendo algumas permissões. Portanto, não posso continuar, ou seja, **%s**",
+      "command_error": "❌ Ocorreu um erro ao executar este pedido!",
+      "command_is_disabled": "⚫ Este pedido foi desabilitado dentro do servidor. Entre em contato com o administrador do servidor.",
+      "no_permission": "🚫 Hmm...Parece que você não tem permissão para usar o comando do aplicativo (/), pergunte aos moderadores (≧∇≦)",
+      "user_is_not_allowed": "🚫 Não posso deixar você usar este pedido. Se você ainda não tem essas permissões: **%s**"
+    },
+    "inviteCreate": {
+      "invite_create": "Link de convite criado com sucesso\n**Link:** %s1\n**Expira:** %s2\n**Máximo:** %s3\n```%s4```",
+      "invite_notification": "🏷️ Convite"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`%s` Este código de convite foi removido.",
+      "invite_code_expires": "`%s` Este código de convite expirou.",
+      "invite_notification": "🏷️ Convite"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Você voltou Desativar automaticamente o status AFK",
+      "no_reason_for_afk": "não tem",
+      "that_user_is_afk": "%s1 Agora não está na tela (AFK), não o mencione agora\n**Deixar mensagem**: %s2"
+    },
+    "roleCreate": {
+      "role_create": "<@&%s> foi criado.",
+      "role_notification": "🔖 Papel"
+    },
+    "roleDelete": {
+      "role_delete": "`%s` foi excluído.",
+      "role_notification": "🔖 Papel"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Papel",
+      "role_update": "`%s1` foi atualizado para <@&%s2>"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#%s> foi criado.",
+      "stage_notification": "🎤 palco"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`%s` foi excluído.",
+      "stage_notification": "🎤 palco"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`%s1` foi atualizado para <#%s2>.",
+      "stage_notification": "🎤 palco"
+    },
+    "stickerCreate": {
+      "sticker_create": "**%s** Agora disponível",
+      "sticker_notification": "👻 adesivo"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**%s** foi excluído",
+      "sticker_notification": "👻 adesivo"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 adesivo",
+      "sticker_update": "`%s1` foi atualizado para **%s2 **"
+    },
+    "threadCreate": {
+      "thread_create": "<#%s> foi criado.",
+      "thread_notification": "#️⃣ Tópicos"
+    },
+    "threadDelete": {
+      "thread_delete": "**%s** foi excluído",
+      "thread_notification": "#️⃣ Tópicos"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Tópicos",
+      "thread_update": "`%s1` foi atualizado para **%s2 **"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Webhook",
+      "webhook_update": "**%s1** de **%s2** foi atualizado no canal <#%s3>."
+    }
+  },
+  "handlers": {
+    "music": {
+      "addList": {},
+      "addSong": {},
+      "disconnect": {},
+      "empty": {},
+      "error": {},
+      "finish": {},
+      "playSong": {},
+      "searchCancel": {},
+      "searchDone": {},
+      "searchInvalidAnswer": {},
+      "searchNoResult": {},
+      "searchResult": {}
+    }
+  },
+  "utils": {
+    "consoleUtils": {
+      "an_error_occurred": "🔴 Ocorreu um erro durante a execução.",
+      "error_detail": "Comando: **%s1**\nVersão: **%s2**\nTemporizado: **%s3**\nServidor: **%s4**\nLatência: **%s5ms**\nReceber-Transmitir: * *%s6ms**\nResultado do erro:\n```JavaScript\n%s7\n```\n> **Dica**: Você pode relatar um erro imediatamente usando o comando:\n> ```Sbug <mensagem>`` `\n> ```/bug <mensagem>```\n[relatório de problema](https://github.com/Maseshi/Shioru/issues/new?assignees =&labels=bag&template=bug_report.md&title=) • [Notícias ](https://maseshi.web.app/projects?id=shioru&tab=news)",
+      "server_abnormal": "incomum",
+      "server_normal": "normal"
+    },
+    "databaseUtils": {
+      "congratulations": "Parabéns!!",
+      "level_up": "A classe de *%s1* agora foi atualizada para ```%s2```."
+    },
+    "miscUtils": {
+      "april": "abril",
+      "august": "Agosto",
+      "december": "dezembro",
+      "february": "Fevereiro",
+      "format_at": "Dia%s1 %s %s3 %s4 Horário %s5:%s18h",
+      "friday": "Sexta-feira",
+      "january": "Janeiro",
+      "july": "Julho",
+      "june": "Junho",
+      "march": "Marchar",
+      "may": "Poderia",
+      "monday": "Segunda-feira",
+      "november": "novembro",
+      "october": "Outubro",
+      "saturday": "Sábado",
+      "september": "Setembro",
+      "sunday": "semana",
+      "thursday": "Quinta-feira",
+      "tuesday": "Terça-feira",
+      "wednesday": "Quarta-feira"
+    }
+  }
+}
