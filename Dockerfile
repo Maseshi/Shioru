@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
 
-RUN apt-get update && apt-get install -y
+RUN apt-get update && apt-get upgrade -y
 RUN apk add --no-cache python3
 RUN apk add --no-cache ffmpeg
 RUN apk add --no-cache build-essential
