@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Omdøb filen `.env.eksempel` til `.env` og indsæt alle de nødvendige værdier.
+- Gå til https://firebase.google.com/ og start opsætningen af projektet.
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
@@ -100,8 +100,8 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 ### 4. ตั้งค่าฐานข้อมูล
 
-- Gå til https://firebase.google.com/ og start opsætningen af projektet.
-- Tilføj et nyt projekt og følg trinene.
+- Gå til [Discord Developer Portal](https://discord.com/developers/applications)
+- Klik på **"Ny applikation"** og navngiv din bot og accepter Discord-politikreglerne.
 - เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Gå til **opret > [realtidsdatabase](https://console.firebase.google.com/u/0/project/_/database/data)** for at oprette en lagerdatabase.
