@@ -73,10 +73,12 @@ Votre bon assistant de serveur aidera votre serveur à paraître plus vivant. El
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Si vous ne pouvez pas installer le package **sodium** , installez **libsodium-wrappers** à la place.
+
 ```bat
 npm installer ffmpeg-static@latest --save
 ```
+
 - Si vous ne pouvez pas lire votre musique ou si les commandes de lecture de musique ne fonctionnent pas, installez [ffmpeg](https://ffmpeg.org/download.html) **(recommandé)** ou installez le package **ffmpeg-static** et réessayez.
+
 ```bat
 npm installer ffmpeg-static@latest --save
 ```

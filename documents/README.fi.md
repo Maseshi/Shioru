@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Jos et voi asentaa pakettia **natrium** , asenna sen sijaan **libsodium-wrappers**.
+
 ```bat
 npm asentaa ffmpeg-static@latest --save
 ```
+
 - Jos et voi toistaa musiikkia tai musiikin toistokomennot eivät toimi, asenna [ffmpeg](https://ffmpeg.org/download.html) **(suositus)** tai asenna **ffmpeg-static** -paketti ja yritä uudelleen.
+
 ```bat
 npm asentaa ffmpeg-static@latest --save
 ```

@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Ако не можете да инсталирате пакет **sodium** , вместо това инсталирайте **libsodium-wrappers**.
+
 ```bat
 npm инсталирайте ffmpeg-static@latest --save
 ```
+
 - Ако не можете да възпроизвеждате музиката си или командите за възпроизвеждане на музика не работят, инсталирайте [ffmpeg](https://ffmpeg.org/download.html) **(препоръчително)** или инсталирайте пакета **ffmpeg-static** и опитайте отново.
+
 ```bat
 npm инсталирайте ffmpeg-static@latest --save
 ```

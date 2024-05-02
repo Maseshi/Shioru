@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Εάν δεν μπορείτε να εγκαταστήσετε το πακέτο **sodium** , εγκαταστήστε **libsodium-wrappers**.
+
 ```bat
 npm εγκατάσταση ffmpeg-static@latest --save
 ```
+
 - Εάν δεν μπορείτε να αναπαράγετε τη μουσική σας ή οι εντολές αναπαραγωγής μουσικής δεν λειτουργούν, εγκαταστήστε το [ffmpeg](https://ffmpeg.org/download.html) **(συνιστάται)** ή εγκαταστήστε το πακέτο **ffmpeg-static** και δοκιμάστε ξανά.
+
 ```bat
 npm εγκατάσταση ffmpeg-static@latest --save
 ```

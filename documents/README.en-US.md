@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
   <strong>
     <h1>Shioru</h2>
-    <p>Assistants within your Discord server will help make your server a better place to live.</p>
+    <p>Personal assistants in Discord that will help make your guild a better place.</p>
   </strong>
   <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
   <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
@@ -23,9 +23,9 @@
   </a>
 </div>
 
-[เปลี่ยนภาษา](https://github.com/Maseshi/Shioru/tree/main/documents)
+[Switch Languages](https://github.com/Maseshi/Shioru/tree/main/documents)
 
-Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
+Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
 <div align="center">
   <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
@@ -38,87 +38,138 @@ Your good server assistant will help make your server look more lively. She can 
 - Works on [Discord.js](https://discord.js.org/) v14
 - A wide variety of customizations can be made.
 - It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
+- Support for multiple languages, You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
 - Tier system (level and experience)
 - Support customization of server notifications
 - You can chat by typing `@Shioru` followed by the message you wish to communicate.
 - Able to use application commands (/)
+- Simulate a database system for testing
+- Supports working on shards
 
 And many other interesting features...
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
-- [Python](https://www.python.org/downloads/) v2.0.0 หรือมากกว่า
-- [Firebase](https://firebase.google.com/)
-- [FFmpeg](https://www.ffmpeg.org/download.html)
+- [Python](https://www.python.org/downloads/) v3.8.0 or higher
+- [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) or [manual install](#1-install-build-tools)
+- [Firebase Tools](https://firebase.google.com/docs/cli)
+- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## Quick setup guide
+## Installation
 
-ทดสอบแล้วบนระบบ Mac, Linux และ Windows
+### 1. Install **Build Tools**
 
-### เพิ่มบอทไปยังเซิร์ฟเวอร์
+Install **Build tools** by running the following command according to your operating system.
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-- Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- For Linux and MacOS operating systems
 
-### Setup a bot
-
-เนื่องจากเราใช้ [sodium](https://www.npmjs.com/package/sodium) ในการเข้ารหัสและถอดรหัส เราจึงจำเป็นต้องติดตั้งส่วนประกอบเพิ่มเติมต่อไปนี้:
-
-```bat
-@REM บน Windows
-npm install -g windows-build-tools
-```
 ```sh
-# บน MacOS (Darwin)
-brew install libtool autoconf automake
+sudo apt update
+sudo apt install build-essential
 ```
+
+- For Windows operating system
+
 ```sh
-# บน Linux
-sudo apt-get install libtool-bin
+npm install --global --production --add-python-to-path windows-build-tools
 ```
 
-- Launch a terminal and run the following commands.
+> **💡 TIP**: You can skip this step through the Node.js installer as shown in the following image. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
-```bat
-git clone https://github.com/Maseshi/Shioru.git
-cd Shioru
-npm install
-```
+### 2. Clone the bot and install the components.
 
-- You can edit some data in **config** at `./source/configs/data.js`.
+- Launch a terminal and run the following command.
+  ```bat
+  git clone https://github.com/Maseshi/Shioru.git
+  cd Shioru
+  npm install
+  ```
+- Change the file name `.env.example` to `.env` and enter all required values.
+  > **💡 NOTE**: You can edit some data in **config** at [./source/configs/data.js](../source/configs/data.js).
 
-### Setup Firebase
+### 3. Setup bot and invite to join.
+
+- Go to [Discord Developer Portal](https://discord.com/developers/applications)
+- Click **"New Application"** and name your bot and accept the Discord policy rules.
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intent** section.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands`, selecting `Administrator`, then copy the link and paste it in the browser address bar. Your sir
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+
+### 4. Setup database
 
 - Go to https://firebase.google.com/ and start setting up the project.
-- Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
+- Add a new project and follow the steps.
+- Add your first application with **Website** Name your app without needing to select the **"Also set up Firebase Hosting for this app."** option and register the app.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase will provide you with information about its configuration. Apply these values to the file. `.env`
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
-### Development
+## 🪛 Development
 
-- Rename the `.env.example` file to `.env` and add all values.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
+- Open a terminal and run `npm run emulators` to simulate the database system in **dev mode**.
+- Open a new terminal and run the command `npm run dev`.
+  > **💡 NOTE**: When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
+
+## ☕ Serve
+
+Test the actual use by performing tasks similar to real use. The system will automatically calculate the split of the work fraction according to the number of guilds.
+
+- Open a terminal and run `npm run emulators` to simulate the database system in **emulation mode**.
+- Open a new terminal and run the command `npm run serve`.
+  > **💡 NOTE:** You will automatically enter development mode as this is a production simulation. Cause some features may not work.
+
+## 🍵 Production
+
+For actual use, the prepared command or set of commands can be used normally as follows:
+
+- On Linux or MacOS
+
+  ```sh
+  # with command file (recommend)
+
+  sh start.sh || sudo sh start.sh
+
+  # or with call command
+
+  npm start
+  ```
+
+- On Windows
+
+  ```bat
+  @REM with command file (recommend)
+
+  ./start.bat
+
+  @REM or with call command
+
+  npm start
+  ```
+
+### 🐳 Running on Docker
+
+This operation requires [Docker](https://www.docker.com/products/docker-desktop/)
+
+- Use the command `npm run docker:build` and wait for all the work to complete.
+- Then open the Docker program and run it with the required environment information (env) or use the command `npm run docker:run` and wait until the bot is running.
+  > **💡 NOTE**: You can check the functionality using the command `docker ps -a`.
 
 ## Quick Troubleshooting
 
-- หากคุณพบปัญหาระหว่างการติดตั้งคอมโพเนนต์ซึ่งบนเทอร์มินัลระบุว่า `gyp ERR! stack Error: not found: make` ปัญหานี้อาจเกิดจาก **Build tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขคือดาวน์โหลดเวอร์ชันล่าสุดของ [Node.js](https://nodejs.org/) และทำเครื่องหมายที่ส่วนนี้ภายในขั้นตอนการติดตั้ง
+### `gyp ERR! stack Error: not found: make`
 
-  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
 
-- If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+### `@firebase/firestore: Firestore (10.6.0): GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
+
+It is possible that you have not yet simulated the database system on the machine in test mode. You can solve this problem by closing the bot and running the following command on another page.
+
 ```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
-```
-- If you can't play music or music playback commands are not working, install [FFmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package.
-```bat
-npm install ffmpeg-static@latest --save
+npm run emulators
 ```
 
 ## Improve Translate
@@ -134,3 +185,7 @@ Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/e
 ## Found a problem
 
 If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
+
+## Google Translate
+
+The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.

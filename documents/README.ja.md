@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,11 +114,14 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - **sodium** パッケージをインストールできない場合は、代わりに **libsodium-wrappers** をインストールしてください。
+
 ```bat
 npm アンインストールナトリウム
 npm インストール libsodium-wrappers@latest --save
 ```
+
 - 音楽を再生できない、または音楽再生コマンドが機能しない場合は、[ffmpeg](https://ffmpeg.org/download.html) **(推奨)** をインストールするか、パッケージをインストールしてください。 **ffmpeg-static** して再試行してください。
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

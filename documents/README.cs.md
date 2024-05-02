@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,11 +114,14 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Pokud nemůžete nainstalovat balíček **sodium** , nainstalujte místo toho **libsodium-wrappers**.
+
 ```bat
 npm odinstalovat sodík
 npm nainstalovat libsodium-wrappers@latest --save
 ```
+
 - Pokud nemůžete přehrávat hudbu nebo příkazy pro přehrávání hudby nefungují, nainstalujte [ffmpeg](https://ffmpeg.org/download.html) **(doporučeno)** nebo nainstalujte balíček **ffmpeg-static** a zkuste to znovu.
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

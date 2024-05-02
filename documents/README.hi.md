@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - यदि आप पैकेज **सोडियम** स्थापित नहीं कर सकते हैं, तो इसके बजाय **लिबसोडियम-रैपर** स्थापित करें।
+
 ```bat
 npm ffmpeg-स्थिर @ नवीनतम स्थापित करें --save
 ```
+
 - यदि आप अपना संगीत नहीं चला सकते हैं या संगीत प्लेबैक आदेश काम नहीं करते हैं, तो [ffmpeg](https://ffmpeg.org/download.html) **(अनुशंसित)** स्थापित करें या **ffmpeg-स्थैतिक** पैकेज स्थापित करें और पुनः प्रयास करें।
+
 ```bat
 npm ffmpeg-स्थिर @ नवीनतम स्थापित करें --save
 ```

@@ -73,10 +73,12 @@ en vele andere interessante functies...
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,11 +114,14 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Als u pakket **sodium** niet kunt installeren, installeer dan in plaats daarvan **libsodium-wrappers**.
+
 ```bat
 npm natrium verwijderen
 npm installeren libsodium-wrappers@latest --save
 ```
+
 - Als je je muziek niet kunt afspelen of als de afspeelopdrachten voor muziek niet werken, installeer dan [ffmpeg](https://ffmpeg.org/download.html) **(aanbevolen)** of installeer het **ffmpeg-static** pakket en probeer het opnieuw.
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

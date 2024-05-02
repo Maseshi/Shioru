@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - 如果您无法安装 package **sodium** ，请安装 **libsodium-wrappers**。
+
 ```bat
 npm 安装 ffmpeg-static@latest --save
 ```
+
 - 如果您无法播放音乐或音乐播放命令不起作用，请安装 [ffmpeg](https://ffmpeg.org/download.html) **(推荐)** 或安装 **ffmpeg-static** 包并重试。
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

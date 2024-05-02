@@ -73,10 +73,12 @@ Seu bom assistente de servidor ajudará seu servidor a parecer mais animado. Ela
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,11 +114,14 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Se você não conseguir instalar o pacote **sódio** , instale **libsodium-wrappers** em vez disso.
+
 ```bat
 npm desinstalar sódio
 npm instalar libsodium-wrappers@latest --save
 ```
+
 - Se você não conseguir reproduzir sua música ou os comandos de reprodução de música não funcionarem, instale [ffmpeg](https://ffmpeg.org/download.html) **(recomendado)** ou instale o pacote **ffmpeg-static** e tente novamente.
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

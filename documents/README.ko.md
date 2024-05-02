@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -96,7 +98,7 @@ npm install
 
 - https://firebase.google.com/으로 이동하여 프로젝트 설정을 시작합니다.
 - 새 프로젝트를 추가하고 단계를 따릅니다.
-- 웹사이트 **** 있는 첫 번째 애플리케이션을 추가합니다 **선택적으로 앱 이름** 지정합니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- 웹사이트 \***\* 있는 첫 번째 애플리케이션을 추가합니다 **선택적으로 앱 이름\*\* 지정합니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase에서 구성에 대한 정보를 제공합니다. 이 값을 파일 `.env.example`에 적용합니다.
 - **create > [realtime database](https://console.firebase.google.com/u/0/project/_/database/data)** 로 이동하여 스토리지 데이터베이스를 생성합니다.
 
@@ -112,10 +114,13 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - 패키지 **나트륨** 설치할 수 없는 경우 대신 **libsodium-wrappers** 을 설치하십시오.
+
 ```bat
 npm 설치 ffmpeg-static@latest --저장
 ```
+
 - 음악을 재생할 수 없거나 음악 재생 명령이 작동하지 않으면 [ffmpeg](https://ffmpeg.org/download.html) **(권장)** 설치하거나 **ffmpeg-static** 패키지를 설치하고 다시 시도하십시오.
+
 ```bat
 npm 설치 ffmpeg-static@latest --저장
 ```

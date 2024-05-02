@@ -73,10 +73,12 @@
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,11 +114,14 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Ha nem tudja telepíteni **sodium** csomagot, telepítsen helyette **libsodium-wrappers**.
+
 ```bat
 npm uninstall sodium
 npm install libsodium-wrappers@latest --save
 ```
+
 - Ha nem tudja lejátszani a zenét, vagy a zenelejátszási parancsok nem működnek, telepítse [ffmpeg](https://ffmpeg.org/download.html) **(ajánlott)** vagy a **ffmpeg-static** csomagot, és próbálkozzon újra.
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```

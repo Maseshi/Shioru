@@ -73,10 +73,12 @@ und viele weitere interessante Features...
 @REM บน Windows
 npm install -g windows-build-tools
 ```
+
 ```sh
 # บน MacOS (Darwin)
 brew install libtool autoconf automake
 ```
+
 ```sh
 # บน Linux
 sudo apt-get install libtool-bin
@@ -112,12 +114,15 @@ npm install
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 - Wenn Sie Paket **Natrium** nicht installieren können, installieren Sie stattdessen **libsodium-wrappers**.
+
 ```bat
 Git-Klon https://github.com/Maseshi/Shioru.git
 cd Shioru
 npm install --save
 ```
+
 - Wenn Sie Ihre Musik nicht abspielen können oder die Musikwiedergabebefehle nicht funktionieren, installieren Sie [ffmpeg](https://ffmpeg.org/download.html) **(empfohlen)** oder installieren Sie das **ffmpeg-static** Paket und versuchen Sie es erneut.
+
 ```bat
 npm install ffmpeg-static@latest --save
 ```
