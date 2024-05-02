@@ -1,201 +1,82 @@
-const { readdirSync } = require("node:fs");
-const { join } = require("node:path");
+const { Collection, PermissionsBitField } = require('discord.js')
+const { readdirSync } = require('node:fs')
+const { join } = require('node:path')
+const { usageBuilder } = require('../utils/clientUtils')
 
 module.exports = (client) => {
-  client.console.add("commands-loading", {
-    "text": "Preparing to load all commands...",
-    "failColor": "yellowBright"
-  });
+  const foldersPath = join(__dirname, '../commands')
+  const commandFolders = readdirSync(foldersPath)
 
-  const foldersPath = join(__dirname, "../commands");
-  const commandFolders = readdirSync(foldersPath);
+  client.cooldowns = new Collection()
+  client.commands = new Collection()
+  client.temp.commands = new Collection()
 
-  for (const [folderIndex, folder] of commandFolders.entries()) {
-    const commandsPath = join(foldersPath, folder);
-    const commandFiles = readdirSync(commandsPath).filter(file => file.endsWith(".js"));
+  client.logger.info('Verifying and loading all commands...')
 
-    for (const [fileIndex, file] of commandFiles.entries()) {
-      const filePath = join(commandsPath, file);
-      const command = require(filePath);
+  for (const folder of commandFolders) {
+    const commandsPath = join(foldersPath, folder)
+    const commandFiles = readdirSync(commandsPath).filter((file) =>
+      file.endsWith('.js')
+    )
 
-      client.console.update("commands-loading", {
-        "text": "Loading " + command.name + " command information at (" + filePath + ")"
-      });
+    for (const file of commandFiles) {
+      const filePath = join(commandsPath, file)
+      const commandName = file.split('.')[0]
+      const command = require(filePath)
 
-      if (!command.length) {
-        client.console.update("commands-loading", {
-          "text": "Empty file unload and skip loading at (" + filePath + ")"
-        });
+      client.logger.debug(
+        `Checking details of ${commandName} command at (${filePath})`
+      )
+
+      if (typeof command.data !== 'object') {
+        client.logger.warn(
+          {
+            path: filePath,
+            type: 'command',
+            reason: 'You have a missing "data" or "data" is not a object.',
+          },
+          `Unable to load command ${commandName} successfully.`
+        )
       }
-      if (typeof command.enable !== "boolean") {
-        client.console.fail("commands-loading", {
-          "text": "Error loading application (/) command name " + command.name + "."
-        });
-        console.group();
-        console.warn("Path: " + filePath);
-        console.warn("Type: Command");
-        console.warn("Reason: You have a missing ENABLE or ENABLE is not a boolean.");
-        console.groupEnd();
-        return process.exit();
+      if (typeof command.execute !== 'function') {
+        client.logger.warn(
+          {
+            path: filePath,
+            type: 'command',
+            reason:
+              'You have a missing "function" or "function" is not a string.',
+          },
+          `Unable to load command ${commandName} successfully.`
+        )
       }
-      if (typeof command.name !== "string") {
-        client.console.fail("commands-loading", {
-          "text": "Error loading application (/) command name " + command.name + "."
-        });
-        console.group();
-        console.warn("Path: " + filePath);
-        console.warn("Type: Command");
-        console.warn("Reason: You have a missing NAME or NAME is not a string.");
-        console.groupEnd();
-        return process.exit();
-      }
-      if (typeof command.description !== "string") {
-        client.console.fail("commands-loading", {
-          "text": "Error loading application (/) command name " + command.name + "."
-        });
-        console.group();
-        console.warn("Path: " + filePath);
-        console.warn("Type: Command");
-        console.warn("Reason: You have a missing DESCRIPTION or DESCRIPTION is not a string.");
-        console.groupEnd();
-        return process.exit();
-      }
-      if (typeof command.category !== "string") {
-        client.console.fail("commands-loading", {
-          "text": "Error loading application (/) command name " + command.name + "."
-        });
-        console.group();
-        console.warn("Path: " + filePath);
-        console.warn("Type: Command");
-        console.warn("Reason: You have a missing CATEGORY or CATEGORY is not a string.");
-        console.groupEnd();
-        return process.exit();
+      if (client.commands.get(command.data.name)) {
+        client.logger.warn(
+          {
+            path: filePath,
+            type: 'command',
+            reason: `Found a command with a duplicate name as ${command.data.name}.`,
+          },
+          `Unable to load command ${command.data.name} successfully.`
+        )
       }
 
-      if (command.function.command) {
-        client.console.update("commands-loading", {
-          "text": "Loading " + command.name + " command at (" + filePath + ")"
-        });
-
-        if (typeof command.function.command.data !== "object") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) command name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ChatInputCommand");
-          console.warn("Reason: You have a missing function.command.data or function.command.data is not a object.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (typeof command.function.command.data.name !== "string") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) command name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ChatInputCommand");
-          console.warn("Reason: You have a missing function.command.data.name or function.command.data.name is not a string.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (typeof command.function.command.data.description !== "string") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) command name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ChatInputCommand");
-          console.warn("Reason: You have a missing function.command.data.description or function.command.data.description is not a string.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (typeof command.function.command.execute !== "function") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) command name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ChatInputCommand");
-          console.warn("Reason: You have a missing function.command.execute or function.command.execute is not a function.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (client.commands.get(command.name)) {
-          client.console.fail("commands-loading", {
-            "text": "Unable to continue loading commands.",
-            "failColor": "redBright"
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ChatInputCommand");
-          console.warn("Reason: Found a command with a duplicate name as " + command.name + ".");
-          console.groupEnd();
-          return process.exit();
-        }
-
-        client.commands.set(command.name, command);
-      }
-
-      if (command.function.context) {
-        client.console.update("commands-loading", {
-          "text": "Loading " + command.name + " context at (" + filePath + ")"
-        });
-
-        if (typeof command.function.context.data !== "object") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) context name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ContextMenuCommand");
-          console.warn("Reason: You have a missing function.context.data or function.context.data is not a object.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (typeof command.function.context.data.name !== "string") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) context name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ContextMenuCommand");
-          console.warn("Reason: You have a missing function.context.data.name or function.context.data.name is not a string.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (typeof command.function.context.execute !== "function") {
-          client.console.fail("commands-loading", {
-            "text": "Error loading application (/) context name " + command.name + "."
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ContextMenuCommand");
-          console.warn("Reason: You have a missing function.context.execute or function.context.execute is not a function.");
-          console.groupEnd();
-          return process.exit();
-        }
-        if (client.contexts.get(command.name)) {
-          client.console.fail("commands-loading", {
-            "text": "Unable to continue loading contexts.",
-            "failColor": "redBright"
-          });
-          console.group();
-          console.warn("Path: " + filePath);
-          console.warn("Type: ContextMenuCommand");
-          console.warn("Reason: Found a context with a duplicate name as " + command.name + ".");
-          console.groupEnd();
-          return process.exit();
-        }
-
-        client.contexts.set(command.name, command);
-      }
-
-      if ((folderIndex === (commandFolders.length - 1)) && (fileIndex === (commandFiles.length - 1))) {
-        client.console.succeed("commands-loading", {
-          "text": "All application commands are verified. Did not find any problems."
-        });
-      }
+      client.commands.set(command.data.name, command)
+      client.temp.commands.set(folder, {
+        ...client.temp.commands.get(folder),
+        [command.data.name]: {
+          name: command.data.name ?? '',
+          description: {
+            'en-US': command.data.description ?? '',
+            ...(command.data.description_localizations ?? null),
+          },
+          cooldown: command.cooldown ?? 3,
+          category: folder ?? '',
+          permissions: command.permissions
+            ? new PermissionsBitField(command.permissions).toArray()
+            : [],
+          usage: usageBuilder(command),
+        },
+      })
     }
   }
-};
+}
