@@ -87,7 +87,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   cd Shioru
   npm install
   ```
-- Đổi tên tệp `.env.example` thành `.env` và chèn tất cả các giá trị cần thiết.
+- Truy cập https://firebase.google.com/ và bắt đầu thiết lập dự án.
 
   > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
@@ -100,8 +100,8 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 ### 4. ตั้งค่าฐานข้อมูล
 
-- Truy cập https://firebase.google.com/ và bắt đầu thiết lập dự án.
-- Thêm một dự án mới và làm theo các bước.
+- Chuyển đến [Cổng thông tin dành cho nhà phát triển Discord](https://discord.com/developers/applications)
+- Nhấp vào **"Ứng dụng mới"** và đặt tên cho bot của bạn và chấp nhận các quy tắc của chính sách Discord.
 - เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Đến **tạo > [cơ sở dữ liệu thời gian thực](https://console.firebase.google.com/u/0/project/_/database/data)** để tạo cơ sở dữ liệu lưu trữ.
