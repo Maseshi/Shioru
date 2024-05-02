@@ -261,7 +261,7 @@ module.exports = {
           guildCommand.type === ApplicationCommandType.ChatInput &&
           guildCommand.name === selection
       )
-      const id = guildCommand.id
+      const id = guildCommand.id ?? '0'
       const name = clientCommand.name
       const description =
         clientCommand.description[interaction.locale] ??
@@ -489,16 +489,17 @@ module.exports = {
             const commands = []
             const category = clientCommands.get(selection)
 
-            for (const command in category) {
-              const commandName = category[command].name
-              const commandDescription =
-                category[command].description[interaction.locale] ??
-                category[command].description['en-US']
-              const commandID = guildCommands.find(
+            for (const index in category) {
+              const guildCommand = guildCommands.find(
                 (guildCommand) =>
                   guildCommand.type === ApplicationCommandType.ChatInput &&
-                  guildCommand.name === commandName
-              ).id
+                  guildCommand.name === category[index].name
+              )
+              const commandID = guildCommand.id ?? '0'
+              const commandName = category[index].name
+              const commandDescription =
+                category[index].description[interaction.locale] ??
+                category[index].description['en-US']
 
               commands.push(
                 `- </${commandName}:${commandID}>: ${commandDescription}`
