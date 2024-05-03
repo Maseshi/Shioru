@@ -5,13 +5,9 @@ WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
 
-RUN apt-get update && apt-get upgrade -y
-RUN apk add --no-cache python3
-RUN apk add --no-cache ffmpeg
-RUN apk add --no-cache build-essential
-RUN apk add --no-cache git
-RUN npm install -g npm@latest
-RUN npm install
+RUN apt-get update -y && apt-get upgrade -y
+RUN apk add --no-cache git default-jre python3 ffmpeg build-essential
+RUN npm install -g npm@latest && npm install
 
 COPY . /usr/src/app
 

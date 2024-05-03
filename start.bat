@@ -1,60 +1,40 @@
 @echo off
 cls
 
-@REM Check is in admin mode
+echo ##################################################
+echo #             RUNNING VIA START.BAT              #
+echo ##################################################
+echo #                                                #
+echo # Running this script will automatically update  #
+echo # and install all necessary components. If you   #
+echo # don't want to continue, you can Ctrl + C       #
+echo # or ^C.                                         #
+echo #                                                #
+echo # Will install: chocolatey, git, nodejs-lts,     #
+echo # openjdk, python3, ffmpeg                       #
+echo # and visualstudio2022buildtools                 #
+echo #                                                #
+echo ##################################################
+
+@REM Check is in admin mode or not
 net session >nul 2>&1
-IF %ERRORLEVEL% NEQ 0 powershell start -verb runas "%0" am_admin & exit /b
+if %ERRORLEVEL% NEQ 0 powershell start -verb runas "%0" am_admin & exit /b
 
-echo Start with start.bat in administrator mode...
+echo Verifying installation of package manager...
+call choco --version >nul 2>&1
 
-@REM Chocolate installation
-echo Verifying installation of Chocolatey...
-call choco --version
+if %ERRORLEVEL% NEQ 0 (
+    echo Installing package manager...
+    powershell Set-ExecutionPolicy Bypass -Scope Process -Force
+    powershell [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    powershell iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+)
 
-if %ERRORLEVEL% EQU 0 exit /b 1
-
-echo Installing Chocolatey...
-powershell Set-ExecutionPolicy RemoteSigned
-powershell iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-echo Updating Chocolatey...
-call choco upgrade -y chocolatey
-echo Finish installing and updating Chocolatey.
-
-@REM Python installation
-echo Verifying installation of Python...
-call python --version
-
-if %ERRORLEVEL% EQU 0 exit /b 1
-
-echo Installing Python...
-call choco upgrade -y python3
-echo Finish installing and updating Python.
-
-@REM FFmpeg installation
-echo Verifying installation of FFmpeg...
-call ffmpeg -version
-
-if %ERRORLEVEL% EQU 0 exit /b 1
-
-echo Installing FFmpeg...
-call choco upgrade -y ffmpeg
-echo Finish installing and updating FFmpeg.
-
-@REM Building Tools installation
-echo Installing building tools...
-call npm install -g windows-build-tools@latest
-echo Finish installing building components.
-
-@REM NPM installation
-echo Updating NPM to latest version...
-call npm install -g npm@latest
-echo Finished Updating npm.
-
-@REM Components installation
-echo Installing components...
-call npm install
-echo Completing the component installation.
-
-echo Starting the system...
+echo Updating package manager and installing required components......
+call choco upgrade -y chocolatey && choco upgrade -y git nodejs-lts openjdk python3 ffmpeg visualstudio2022buildtools
+echo.
+echo Updating NPM to the latest version and installing packages...
+call npm install -g npm@latest && npm install
+echo.
+echo Starting up the system...
 call npm start
-exit /b 0

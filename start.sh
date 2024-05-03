@@ -1,37 +1,27 @@
 #!/bin/sh -x
 clear
 
-echo Start with start.sh in administrator mode....
-
-# Updating system components
-echo Initiate system components update...
-apt-get update -y || sudo apt-get update -y
-echo The component update is complete.
-
-# Python installation
-echo Installing Python...
-apt-get install -y python3 || sudo apt-get install -y python3
-echo Finished installing Python.
-
-# FFmpeg installation
-echo Installing FFmpeg...
-apt-get install -y ffmpeg || sudo apt-get install -y ffmpeg
-echo Finished installing FFmpeg.
-
-# Building Tools installation
-echo Installing building tool...
-apt-get install -y build-essential || sudo apt-get install -y build-essential
-echo Finish installing building tool.
-
-# NPM installation
-echo Updating NPM to latest version...
-npm install -g npm@latest || sudo npm install -g npm@latest
-echo Finished Updating npm.
-
-# Components installation
-echo Installing components...
-npm install || sudo npm install
-echo Completing the component installation.
-
-echo Starting the system...
-npm start || sudo npm start
+echo ##################################################
+echo #              RUNNING VIA START.SH              #
+echo ##################################################
+echo #                                                #
+echo # Running this script will automatically update  #
+echo # and install all necessary packages. If you   #
+echo # don't want to continue, you can Ctrl + C       #
+echo # or ^C.                                         #
+echo #                                                #
+echo # Will install: git, nodejs, default-jre,        #
+echo # python3, ffmpeg and build-essential           #
+echo #                                                #
+echo ##################################################
+echo.
+echo Updating system packages and installing required packages...
+sudo apt-get update -y && sudo apt-get upgrade -y
+sudo apt-get install curl && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y git nodejs default-jre python3 ffmpeg build-essential
+echo.
+echo Updating NPM to the latest version and installing components...
+sudo npm install -g npm@latest && sudo npm install
+echo.
+echo Starting up the system...
+sudo npm start
