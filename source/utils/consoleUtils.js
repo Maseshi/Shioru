@@ -151,7 +151,7 @@ const catchError = async (client, message, name, error, silent = false) => {
           if (message.channel) await message.channel.reply(contents)
           else await message.reply(contents)
         }
-      } finally {
+      } catch {
         if (!silent) {
           if (message.channel) await message.channel.send(contents)
           else await message.send(contents)

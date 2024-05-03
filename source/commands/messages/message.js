@@ -132,12 +132,12 @@ module.exports = {
         if (!inputChannel) {
           await interaction.channel.send({
             content: inputContent,
-            files: [inputAttachment],
+            files: inputAttachment ? [inputAttachment] : [],
           })
         } else {
           await inputChannel.send({
             content: inputContent,
-            files: [inputAttachment],
+            files: inputAttachment ? [inputAttachment] : [],
           })
         }
 
@@ -150,7 +150,7 @@ module.exports = {
         break
       case 'reply':
         try {
-          const message = await interaction.channel.message.fetch(inputID)
+          const message = await interaction.channel.messages.fetch(inputID)
 
           if (!message)
             return await interaction.reply({
@@ -162,7 +162,7 @@ module.exports = {
 
           await message.reply({
             content: inputContent,
-            files: [inputAttachment],
+            files: inputAttachment ? [inputAttachment] : [],
           })
         } catch (error) {
           catchError(
@@ -180,7 +180,7 @@ module.exports = {
         break
       case 'edit':
         try {
-          const message = await interaction.channel.message.fetch(inputID)
+          const message = await interaction.channel.messages.fetch(inputID)
 
           if (!message)
             return await interaction.reply({
@@ -199,7 +199,7 @@ module.exports = {
 
           await message.edit({
             content: inputContent,
-            files: [inputAttachment],
+            files: inputAttachment ? [inputAttachment] : [],
           })
         } catch (error) {
           catchError(
