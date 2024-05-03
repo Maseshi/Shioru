@@ -57,6 +57,10 @@ manager.on('shardCreate', (shard) => {
   const shardAt = shardID + 1
   const shardTotal = manager.totalShards
 
+  if (mode !== 'dev') updateChecker()
+  if (mode === 'start') systemMetricsSubmitter()
+  if (mode === 'start') statisticsSubmitter(manager)
+
   logEmbed
     .setColor(Colors.Blue)
     .setTitle('🆙・Launching Shard')
@@ -296,9 +300,5 @@ manager.on('shardCreate', (shard) => {
     )
   })
 })
-
-updateChecker()
-if (mode === 'start') systemMetricsSubmitter()
-if (mode === 'start') statisticsSubmitter(manager)
 
 manager.spawn()
