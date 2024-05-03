@@ -17,10 +17,12 @@ module.exports = {
         .setDescriptionLocalizations({
           th: 'ปรับระดับเสียงของเพลงจาก 0 ถึง 100',
         })
+        .setMinValue(0)
+        .setMaxValue(100)
         .setRequired(false)
     ),
   async execute(interaction) {
-    const inputPercent = interaction.options.getNumber('percent') ?? ''
+    const inputPercent = interaction.options.getInteger('percent') ?? 0
 
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)
