@@ -261,7 +261,7 @@ module.exports = {
           guildCommand.type === ApplicationCommandType.ChatInput &&
           guildCommand.name === selection
       )
-      const id = guildCommand.id ?? '0'
+      const id = guildCommand ? guildCommand.id : 0
       const name = clientCommand.name
       const description =
         clientCommand.description[interaction.locale] ??
@@ -495,7 +495,7 @@ module.exports = {
                   guildCommand.type === ApplicationCommandType.ChatInput &&
                   guildCommand.name === category[index].name
               )
-              const commandID = guildCommand.id ?? '0'
+              const commandID = guildCommand ? guildCommand.id : 0
               const commandName = category[index].name
               const commandDescription =
                 category[index].description[interaction.locale] ??
