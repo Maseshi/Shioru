@@ -109,7 +109,7 @@ const catchError = async (client, message, name, error, silent = false) => {
       .setTimestamp()
 
     const contents = {
-      content: null,
+      content: '',
       embeds: [catchErrorEmbed],
       ephemeral: true,
     }
