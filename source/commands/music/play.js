@@ -65,6 +65,7 @@ module.exports = {
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)
     const voiceChannel = interaction.member.voice.channel
+    const meChannel = interaction.guild.members.me.voice.channel
 
     if (!inputSong) {
       if (!queue)
@@ -124,10 +125,6 @@ module.exports = {
       )
       await interaction.deleteReply()
     } catch (error) {
-      const connection = interaction.client.player.voices.get(
-        voiceChannel.guild
-      )
-
       if (error.message.includes('seconds'))
         return await interaction.reply(
           interaction.client.i18n.t('commands.play.can_not_connect')
@@ -136,7 +133,12 @@ module.exports = {
         return await interaction.reply(
           interaction.client.i18n.t('commands.play.can_not_play_in_non_nsfw')
         )
-      if (!queue && connection) connection.leave(voiceChannel.guild)
+      if (!queue && meChannel) {
+        const connection = interaction.client.player.voices.get(meChannel)
+
+        connection.leave()
+      }
+
       catchError(
         interaction.client,
         interaction,
