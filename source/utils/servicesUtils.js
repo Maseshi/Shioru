@@ -61,7 +61,7 @@ const systemMetricsSubmitter = () => {
   child.info('Sending system matrix data to status page...')
 
   const submitPoint = async (count) => {
-    count++
+    ++count
 
     if (count > totalPoints)
       return child.info('Done, the matrix has been updated.')
@@ -104,6 +104,8 @@ const systemMetricsSubmitter = () => {
       }
     }
   }
+
+  submitPoint(0)
 }
 
 /**
