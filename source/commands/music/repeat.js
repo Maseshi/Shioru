@@ -27,7 +27,7 @@ module.exports = {
         .setMaxValue(2)
     ),
   async execute(interaction) {
-    const inputMode = interaction.options.getNumber('mode')
+    const inputMode = interaction.options.getInteger('mode')
 
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)

@@ -21,7 +21,7 @@ module.exports = {
         .setMinValue(0)
     ),
   async execute(interaction) {
-    const inputSecond = interaction.options.getNumber('second')
+    const inputSecond = interaction.options.getInteger('second')
 
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)

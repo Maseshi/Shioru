@@ -21,7 +21,7 @@ module.exports = {
         .setMinValue(1)
     ),
   async execute(interaction) {
-    const inputAmount = interaction.options.getNumber('number')
+    const inputAmount = interaction.options.getInteger('number')
 
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)
