@@ -68,7 +68,6 @@ module.exports = {
         // System
         const systemManufacturer = data.system.manufacturer
         const systemModel = data.system.model
-        const systemVirtual = data.system.virtual
 
         // BIOS
         const biosVendor = data.bios.vendor
@@ -156,7 +155,7 @@ module.exports = {
             },
             {
               name: '• Node.js',
-              value: '```' + `v${process.version}` + '```',
+              value: '```' + process.version + '```',
               inline: true,
             },
             {
@@ -179,16 +178,6 @@ module.exports = {
                 (systemManufacturer
                   ? `${systemManufacturer} ${systemModel}`
                   : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
-              inline: true,
-            },
-            {
-              name: interaction.client.i18n.t('commands.system.info_virtual'),
-              value:
-                '```' +
-                (systemVirtual
-                  ? interaction.client.i18n.t('commands.system.yes')
-                  : interaction.client.i18n.t('commands.system.no')) +
                 '```',
               inline: true,
             },
