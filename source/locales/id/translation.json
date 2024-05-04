@@ -69,12 +69,12 @@
       "member_has_banned": "❎ Anggota seperti itu sudah dilarang. Merasa nyaman.",
       "members_have_a_higher_role": "❎ Anda tidak dapat melarang seseorang dengan peran lebih tinggi dari Anda.",
       "members_have_a_higher_role_than_me": "❎ Saya tidak dapat mencekal anggota tersebut. karena dia memiliki peran yang lebih tinggi dari saya",
-      "no_one_gets_banned": "❎ ตอนนี้ยังไม่มีใครในเซิร์ฟเวอร์ที่ถูกแบนอยู่เลยอะ",
+      "no_one_gets_banned": "❎ Tidak ada seorang pun di server yang saat ini diblokir.",
       "no_reason": "Member yang dibanned tidak memberikan alasan.",
       "permanently_banned": "%s dilarang secara permanen",
       "reason_for_ban": "Dilarang Oleh: %s1\nAlasan: %s2",
       "reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-      "this_user_not_banned": "❎ เอ๋..สมาชิกที่ว่านั้นไม่ได้โดนแบนนะ ลองตรวจดูคีย์เวิร์ดใหม่ดีๆ อีกรอบสิ...",
+      "this_user_not_banned": "❎ Eh.. anggota itu tidak dilarang. Mari kita lihat beberapa kata kunci baru yang bagus sekali lagi...",
       "unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
       "unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
       "user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
@@ -294,9 +294,9 @@
       "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
       "no": "TIDAK",
       "none": "TIDAK",
-      "not_ready": "ไม่พร้อม",
+      "not_ready": "belum siap",
       "not_set": "ไม่ได้ตั้ง",
-      "ready": "พร้อม",
+      "ready": "siap",
       "server_info": "🗄 Informasi server terperinci",
       "server_info_description": "Informasi server terperinci Yang berdasarkan data dari Discord.",
       "unknown": "Tidak tahu",
@@ -333,7 +333,7 @@
       "me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
       "messages_category": "หมวดหมู่ของคำสั่งข้อความ",
       "music_category": "หมวดหมู่ของคำสั่งเพลง",
-      "none": "ไม่มี",
+      "none": "TIDAK",
       "other_links": "[เชิญฉัน]({{invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{status_link}}) | [ปรับปรุงภาษา]({{translation_link}}) | [เว็บไซต์]({{website_link}})",
       "refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
       "remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
@@ -355,9 +355,9 @@
       "this_product_is_free": "Produk ini gratis, jangan dijual kembali."
     },
     "issues": {
-      "bug_sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
+      "bug_sending": "📨 Oke.. sebentar Beri saya waktu sebentar untuk mengirim surat ke pengembang...",
       "bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
-      "feature_sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
+      "feature_sending": "📨 Oke.. sebentar Beri saya waktu sebentar untuk mengirim surat ke pengembang...",
       "feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
     },
     "join": {
@@ -392,16 +392,16 @@
       "changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
       "changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
       "description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
-      "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
+      "language_not_found": "❎ Bahasa yang Anda tentukan tidak ditemukan dalam sistem. Periksa apakah Anda melakukan kesalahan pengetikan dan coba lagi.\n```{{locales}}```",
       "support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
-      "title": "🌐 ภาษา"
+      "title": "🌐 Bahasa"
     },
     "leader": {
-      "leveling_detail": "ค่าประสบการณ์: %s1, ระดับชั้น: %s2",
-      "no_info": "❎ บนเซิร์ฟเวอร์นี้ยังไม่มีสมาชิกใดๆ ที่มีค่าประสบการณ์เลยคะ",
-      "server_rank": "อันดับเลเวลของเซิร์ฟเวอร์นี้",
-      "server_rank_description": "1 ใน 10 อันดับ สมาชิกภายในเซิร์ฟเวอร์นี้ ที่เก็บสะสมเลเวลของตัวเองได้เยอะที่สุด ตามลำดับ ดังนี้",
-      "server_rank_tips": "เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น"
+      "leveling_detail": "Pengalaman: %s1, Nilai: %s2",
+      "no_info": "❎ Belum ada anggota di server ini. yang memiliki nilai pengalaman",
+      "server_rank": "Peringkat level server ini",
+      "server_rank_description": "1 dari 10 anggota teratas dalam server ini. yang dapat mengumpulkan sebagian besar level mereka sendiri, dengan urutan sebagai berikut",
+      "server_rank_tips": "Tip: Mengobrol dengan anggota lain akan mendapatkan lebih banyak level"
     },
     "leave": {
       "another_player_is_playing": "🚫 Anda tidak dapat menggunakan pesanan ini saat ini. karena ada anggota lain yang memainkan musik",
@@ -470,28 +470,28 @@
       "version": "Versi: kapan"
     },
     "music": {
-      "autoplay": "📻 เล่นอัตโนมัติ",
-      "detail": "📄 รายละเอียดของเพลงที่กำลังเล่น",
-      "download_link": "📥 ลิงค์ดาวน์โหลด",
-      "duration": "🕒 ระยะเวลา",
-      "filter": "🎼 รูปแบบการกรองเสียง",
-      "id": "🆔 ไอดี",
-      "link": "🔗 ลิงค์",
-      "music_name": "🎵 ชื่อเพลง",
-      "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-      "now": "⌚ ตอนนี้",
-      "off": "ปิด",
-      "on": "เปิด",
-      "owner_this_queue": "%s คือเจ้าของคิวนี้",
-      "paused": "หยุดชั่วคราว",
-      "playing": "กำลังเล่น",
-      "queue_status": "📑 สถานะของคิวเพลงปัจจุบัน",
-      "repeat": "🔁 ทำซ้ำ",
-      "repeat_off": "ไม่ได้เปิด",
-      "repeat_this_queue": "คิวนี้",
-      "repeat_this_song": "เพลงนี้",
-      "uploader": "🎬 ผู้อัพโหลด",
-      "volume": "🔉 ระดับเสียง"
+      "autoplay": "📻 Putar Otomatis",
+      "detail": "📄 Detail lagu yang sedang diputar",
+      "download_link": "📥 Tautan Unduhan",
+      "duration": "🕒 Durasi",
+      "filter": "🎼 pola filter audio",
+      "id": "🆔 KTP",
+      "link": "🔗 Tautan",
+      "music_name": "🎵 Nama lagu",
+      "no_queue": "❎ Saat ini tidak ada lagu yang sedang saya putar.",
+      "now": "⌚ sekarang",
+      "off": "matikan",
+      "on": "membuka",
+      "owner_this_queue": "%s adalah pemilik antrian ini",
+      "paused": "berhenti sebentar",
+      "playing": "bermain",
+      "queue_status": "📑 Status antrean lagu saat ini",
+      "repeat": "🔁 Ulangi",
+      "repeat_off": "Tidak buka",
+      "repeat_this_queue": "antrian ini",
+      "repeat_this_song": "lagu ini",
+      "uploader": "🎬 pengunggah",
+      "volume": "🔉 volume suara"
     },
     "nekos": {
       "can_not_fetch_data": "❎ Untuk sementara tidak bisa mendapatkan gambar yang Anda inginkan. Coba lagi nanti.",
@@ -512,8 +512,8 @@
       "enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
       "enable_info": "- เปิดใช้งาน: {{enable}}",
       "list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
-      "no": "ไม่ใช่",
-      "none": "ไม่มี",
+      "no": "TIDAK",
+      "none": "TIDAK",
       "notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
       "notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
       "own": "มี",
@@ -522,11 +522,11 @@
       "require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
       "settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
       "temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
-      "title": "🔔 การแจ้งเตือน",
+      "title": "🔔 Pemberitahuan",
       "toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
-      "unknown": "ไม่ทราบ",
+      "unknown": "Tidak tahu",
       "unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
-      "yes": "ใช่"
+      "yes": "Ya"
     },
     "osu": {
       "generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
@@ -571,10 +571,10 @@
       "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮ่ะ ขอออกมาก่อนละกัน",
       "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
       "need_for_link": "❎ รูปแบบของเพลย์ลิสต์จะต้องเป็นลิงค์เท่านั้นนะคะ",
-      "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
+      "no_queue": "❎ Sekarang saya belum memainkan lagu apa pun.",
       "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-      "not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา...",
-      "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
+      "not_in_channel": "❓ Masuk ke saluran apa saja terlebih dahulu. Jika tidak, jangan dengarkan aku...",
+      "not_owner": "🚫 Hanya pemilik antrean yang dapat mengubahnya.",
       "playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
     },
     "previous": {
@@ -602,7 +602,7 @@
     },
     "queue": {
       "autoplay": "📻 Putar Otomatis",
-      "filter": "🎼 รูปแบบการกรองเสียง: `%s`",
+      "filter": "🎼 Pola filter suara: `%s",
       "no_queue": "❎ Saat ini tidak ada lagu yang sedang saya putar.",
       "owner_this_queue": "%s adalah pemilik antrian ini",
       "previous_queue": "**antrian sebelumnya**",
@@ -620,9 +620,9 @@
     },
     "related": {
       "added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
-      "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
+      "no_queue": "❎ Sekarang tidak ada lagu yang sedang diputar.",
       "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-      "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ"
+      "not_queue_owner": "🚫 Hanya pemilik antrean yang dapat mengubahnya."
     },
     "reload": {
       "invalid_command": "❎ Hmmm... sepertinya tidak ada pesanan ini... coba cek dengan teliti Sekali lagi, benar atau tidak?",
@@ -693,8 +693,8 @@
       "skipped": "⏭ Saya melewatkannya dan akan mulai memutar lagu baru dalam antrean."
     },
     "stats": {
-      "member_count": "จำนวนสมาชิก:",
-      "server_count": "จำนวนเซิร์ฟเวอร์:"
+      "member_count": "Jumlah anggota:",
+      "server_count": "Jumlah server:"
     },
     "status": {
       "data_by_server": "Referensi data dari server.",
@@ -735,14 +735,14 @@
       },
       "loading": "⚙️ Mengirim permintaan untuk mengambil data sistem dari server...",
       "main": "utama",
-      "no": "ไม่ใช่",
-      "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-      "now_reboot": "✅ เริ่มระบบใหม่แล้วคะ!!",
+      "no": "TIDAK",
+      "not_owner": "🛑 Jangan.. jangan diambil. Fungsi ini hanya membutuhkan hak istimewa teratas.",
+      "now_reboot": "✅ Memulai sistem baru!!",
       "now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
-      "rebooting": "🔄 กำลังเริ่มระบบใหม่...",
-      "shutting_down": "🔄 กำลังปิดระบบตัวเอง...",
+      "rebooting": "🔄 Memulai ulang...",
+      "shutting_down": "🔄 Mematikan sistem saya...",
       "unknown": "Tidak tahu",
-      "yes": "ใช่"
+      "yes": "Ya"
     },
     "timeout": {
       "can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
@@ -751,7 +751,7 @@
       "member_not_found": "❎ Anggota tidak mengatakan bahwa mereka tidak lagi berada di server ini.",
       "no_reason": "tidak memberikan alasan",
       "success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
-      "success_untimeout": "{{user}} ถูกตั้งให้ไม่หมดเวลาแล้ว **เหตุผล**: {{reason}}",
+      "success_untimeout": "{{user}} Timeout telah ditetapkan **Alasan**: {{reason}}",
       "timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
       "untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
     },
@@ -776,7 +776,7 @@
       "available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
       "info_date": "informasi kapan",
       "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-      "no": "ไม่ใช่",
+      "no": "TIDAK",
       "none": "TIDAK",
       "unknown": "Tidak tahu",
       "user_info": "👥 Detail informasi pengguna",
@@ -792,13 +792,13 @@
     },
     "vote": {
       "added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
-      "invite": "เชิญ",
-      "tags": "แท็ก",
-      "vote": "โหวต",
-      "votes": "คะแนนโหวต"
+      "invite": "Undang",
+      "tags": "Label",
+      "vote": "memilih",
+      "votes": "Suara"
     },
     "warn": {
-      "can_not_find_user": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ",
+      "can_not_find_user": "❎ Saya tidak dapat menemukan anggota ini. Silakan periksa lagi.",
       "members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
       "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
       "user_has_warned": "{{user}} ถูกตักเตือน",
@@ -806,79 +806,79 @@
       "you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
     },
     "weather": {
-      "air_quality_index": "😷 ดัชนีคุณภาพอากาศ",
-      "broken_clouds": "เมฆแตก",
-      "cannot_parse_data": "❎ เอิ่มม...เซิร์ฟเวอร์ส่งอะไรมาไม่รู้อะ อ่านไม่ออกเลยสักนิด งั้นเดี่ยวลองกลับมาใหม่อีกครั้งละกันนะ",
-      "clear_sky": "ท้องฟ้าแจ่มใส",
-      "clouds": "☁️ เมฆ",
-      "country_code": "🗺️ รหัสประเทศ",
-      "day": "เช้า",
-      "dew_point": "💦 จุดน้ำค้าง",
-      "drizzle": "ละอองฝน",
-      "error_with_code": "❎ [%s] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "air_quality_index": "😷 Indeks kualitas udara",
+      "broken_clouds": "Awan rusak",
+      "cannot_parse_data": "❎ Hhmm... server mengirimi saya sesuatu, saya tidak tahu. Tidak bisa membaca sama sekali Mari kita coba kembali sekali lagi",
+      "clear_sky": "Langitnya cerah.",
+      "clouds": "☁️ Awan",
+      "country_code": "🗺️ Kode negara",
+      "day": "Pagi",
+      "dew_point": "💦 Titik embun",
+      "drizzle": "Gerimis",
+      "error_with_code": "❎ [%s] Untuk sementara tidak dapat menampilkan informasi cuaca.",
       "feels_like": "🎐 rasanya",
-      "few_clouds": "เมฆน้อย",
-      "flurries": "แปรปรวน",
-      "fog": "หมอก",
-      "freezing_fog": "หมอกเยือกแข็ง",
-      "freezing_rain": "ฝนเยือกแข็ง",
-      "haze": "หมอกควัน",
-      "heavy_drizzle": "ฝนตกปรอยๆ",
-      "heavy_rain": "ฝนตกหนัก",
-      "heavy_shower_rain": "ฝนตกหนัก",
-      "heavy_sleet": "ลูกเห็บตกหนัก",
-      "heavy_snow": "หิมะตกหนัก",
-      "heavy_snow_shower": "หิมะตกหนัก",
-      "humidity": "💧ความชื้น",
-      "latitude": "📍 ละติจูด",
-      "light_drizzle": "ฝนตกเบาบาง",
-      "light_rain": "ฝนตก",
-      "light_shower_rain": "ฝนตกหนักบางพื้นที่",
-      "light_snow": "หิมะตกโปรยปราย",
-      "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
-      "longitude": "📍 ลองจิจูด",
-      "millibars": "มิลลิบาร์",
-      "mist": "หมอก",
-      "mix_snow_rain": "หิมะ/ฝนผสม",
-      "moderate_rain": "ฝนตกปานกลาง",
-      "night": "กลางคืน",
+      "few_clouds": "awan kecil",
+      "flurries": "varian",
+      "fog": "kabut",
+      "freezing_fog": "Kabut dingin",
+      "freezing_rain": "Hujan yang dingin",
+      "haze": "kabut asap",
+      "heavy_drizzle": "Saat ini hujan gerimis.",
+      "heavy_rain": "Hujan deras",
+      "heavy_shower_rain": "Hujan deras",
+      "heavy_sleet": "Hujan es lebat",
+      "heavy_snow": "Salju tebal",
+      "heavy_snow_shower": "Salju tebal",
+      "humidity": "💧 Kelembapan",
+      "latitude": "📍 Garis Lintang",
+      "light_drizzle": "Hujan ringan",
+      "light_rain": "Hujan",
+      "light_shower_rain": "Hujan deras di beberapa daerah",
+      "light_snow": "salju turun",
+      "liquid_equivalent_precipitation_rate": "🪁 Tingkat curah hujan",
+      "longitude": "📍 Garis Bujur",
+      "millibars": "milibar",
+      "mist": "Kabut",
+      "mix_snow_rain": "Bercampur Salju / Hujan",
+      "moderate_rain": "Hujan sedang",
+      "night": "malam hari",
       "no_result_found": "❎ Eh...Saya mencari informasi tentang area ini, tetapi saya tidak dapat menemukannya.",
-      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
-      "observation_time": "⌚ เวลาสังเกตการณ์",
-      "overcast_clouds": "เมฆมืดครึ้ม",
-      "part_of_the_day": "🌗 ส่วนหนึ่งของวัน",
-      "pressure": "💨 ความดัน",
-      "sand_dust": "ทราย/ฝุ่น",
-      "scattered_clouds": "เมฆกระจัดกระจาย",
-      "sea_level_pressure": "🌊 ความกดอากาศที่ระดับน้ำทะเล",
-      "shower_rain": "ฝนโปรยปราย",
-      "sleet": "ลูกเห็บตก",
-      "smoke": "ควัน",
-      "snow": "หิมะตก",
-      "snow_fall": "❄️ หิมะตก",
-      "snow_shower": "หิมะโปรยปราย",
-      "state_code": "🗾 รหัสรัฐ",
-      "sunrise": "🌅 พระอาทิตย์ขึ้น",
-      "sunset": "🌇 พระอาทิตย์ตก",
+      "no_token_provider": "❎ Saat ini saya tidak dapat melihat informasi cuaca. Ini karena tidak ada token yang diperlukan untuk meminta izin mengakses data cuaca.",
+      "observation_time": "⌚ Waktu pengamatan",
+      "overcast_clouds": "awan mendung",
+      "part_of_the_day": "🌗 Sebagian dari hari ini",
+      "pressure": "💨 Tekanan",
+      "sand_dust": "pasir/debu",
+      "scattered_clouds": "awan yang tersebar",
+      "sea_level_pressure": "🌊 Tekanan udara permukaan laut",
+      "shower_rain": "hujan ringan",
+      "sleet": "Hujan es",
+      "smoke": "asap",
+      "snow": "Salju turun",
+      "snow_fall": "❄️ Salju turun",
+      "snow_shower": "salju turun",
+      "state_code": "🗾 Kode negara",
+      "sunrise": "🌅 matahari terbit",
+      "sunset": "🌇 Matahari terbenam",
       "temperature": "🌡️ Suhu",
-      "thunderstorm_with_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
-      "thunderstorm_with_hail": "พายุฝนฟ้าคะนองพร้อมลูกเห็บ",
-      "thunderstorm_with_heavy_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
-      "thunderstorm_with_heavy_rain": "พายุฝนฟ้าคะนองพร้อมฝนตกหนัก",
-      "thunderstorm_with_light_drizzle": "พายุฝนฟ้าคะนองพร้อมฝนตกปรอยๆ",
-      "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
-      "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
+      "thunderstorm_with_drizzle": "Badai petir disertai hujan ringan",
+      "thunderstorm_with_hail": "Badai petir dengan hujan es",
+      "thunderstorm_with_heavy_drizzle": "Badai petir dengan hujan ringan",
+      "thunderstorm_with_heavy_rain": "Badai petir dengan hujan lebat",
+      "thunderstorm_with_light_drizzle": "Badai petir dengan hujan ringan",
+      "thunderstorm_with_light_rain": "Badai petir dengan hujan ringan",
+      "thunderstorm_with_rain": "Badai petir disertai hujan",
       "timezone": "🌐 Zona Waktu",
-      "unknown": "ไม่ทราบ",
-      "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
-      "unknown_precipitation": "ไม่ทราบปริมาณฝน",
-      "uv_index": "🧴 ดัชนีรังสียูวี",
-      "visibility": "👀 ทัศนวิสัย",
+      "unknown": "Tidak tahu",
+      "unknown_error": "❎ Sepertinya server tujuan mengalami masalah. Anda mungkin harus menunggu lebih lama...",
+      "unknown_precipitation": "Jumlah hujan tidak diketahui",
+      "uv_index": "🧴 Indeks UV",
+      "visibility": "👀 Visibilitas",
       "weather": "⛅ Cuaca",
       "weather_at_the_moment": "Cuaca __**%s1**__ sekarang \n```%s2```.",
-      "wind_direction": "🧭 ทิศทางลม",
-      "wind_gust_speed": "🍃 ความเร็วลมกระโชก",
-      "wind_speed": "🎏 ความเร็วลม"
+      "wind_direction": "🧭 Arah angin",
+      "wind_gust_speed": "🍃 Kecepatan angin embusan",
+      "wind_speed": "🎏 Kecepatan angin"
     }
   },
   "events": {
@@ -1033,43 +1033,43 @@
   "handlers": {
     "player": {
       "addList": {
-        "added_list": "✅ เพิ่มเพลย์ลิสต์ **%s1** ประกอบไปด้วยเพลงจำนวน `%s2` เพลง เรียบร้อยแล้วคะ"
+        "added_list": "✅ Menambahkan daftar putar **%s1** yang sudah berisi `%s2` lagu."
       },
       "addSong": {
-        "added_song": "✅ เพิ่มเพลง **%s1** `%s2` เรียบร้อยแล้วคะ"
+        "added_song": "✅ Tambahkan lagu **%s1** `%s2` sudah."
       },
       "disconnect": {
-        "disconnected": "🔌 ตัดการเชื่อมต่อและลบคิวทั้งหมดออกเรียบร้อยแล้วคะ"
+        "disconnected": "🔌 Terputus dan hapus semua antrean."
       },
       "empty": {
-        "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+        "no_user_in_channel": "💨 Oh.. Kemana perginya mereka semua? Jadi, saya bingung dulu~"
       },
       "error": {
-        "playlist_not_found": "❎ ฉันหาเพลย์ลิสต์นั้นไม่เจอะ ลองหาเพลย์ลิสต์อื่นดูไหม?"
+        "playlist_not_found": "❎ Saya tidak dapat menemukan playlist itu. Mencari daftar putar lain?"
       },
       "finish": {
-        "queue_is_empty": "🍃 ตอนนี้ฉันคิวว่างแล้ว พร้อมที่จะเล่นเพลงต่อไปแล้วคะ"
+        "queue_is_empty": "🍃 Sekarang antrian saya kosong. Siap memainkan lagu berikutnya?"
       },
       "playSong": {
-        "playing_song": "🎶 กำลังเล่นเพลง **%s1** `%s2`"
+        "playing_song": "🎶 Pemutaran musik **%s1** `%s2`"
       },
       "searchCancel": {
-        "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ"
+        "search_cancelled": "🕘 Membatalkan pencarian..karena tidak ada pilihan lagu yang ditemukan."
       },
       "searchDone": {
-        "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่..."
+        "get_list_of_songs": "📋 Saya telah menerima daftar lagu yang saya inginkan. dan akan mulai memutar musik sebentar lagi..."
       },
       "searchInvalidAnswer": {
-        "search_cancelled": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม"
+        "search_cancelled": "🔴 Pencarian terbaru telah dibatalkan. Anda dapat mencari lagi dengan mengetikkan perintah yang sama."
       },
       "searchNoResult": {
-        "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย..."
+        "no_results": "❎ Saya mencoba mencari tentang lagu tersebut tetapi tidak menemukan hasil apa pun..."
       },
       "searchResult": {
-        "searching": "🔎 ค้นหาเพลงที่เกี่ยวข้อง",
-        "timer_choose": "มีเวลาในการเลือกเพลง 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-        "title_results": "ผลการค้นหาของเพลงดังกล่าว:",
-        "tool_name": "เครื่องค้นหาเพลง"
+        "searching": "🔎 Temukan lagu terkait",
+        "timer_choose": "Ada waktu 60 detik untuk memilih lagu, jika ingin membatalkan, Anda dapat mengetikkan nomor yang tidak relevan atau menunggu hingga akhir waktu.",
+        "title_results": "Hasil pencarian lagu-lagu tersebut:",
+        "tool_name": "mesin pencari musik"
       }
     }
   },

@@ -69,12 +69,12 @@
       "member_has_banned": "❎ Bu tür üyeler zaten yasaklanmıştır, içiniz rahat olsun.",
       "members_have_a_higher_role": "❎ Sizden daha yüksek role sahip birini yasaklayamazsınız.",
       "members_have_a_higher_role_than_me": "❎ O üyeyi yasaklayamam. çünkü benden daha yüksek bir role sahip",
-      "no_one_gets_banned": "❎ ตอนนี้ยังไม่มีใครในเซิร์ฟเวอร์ที่ถูกแบนอยู่เลยอะ",
+      "no_one_gets_banned": "❎ Sunucudaki hiç kimse şu anda yasaklı değil.",
       "no_reason": "Banlanan üyeler bir sebep belirtmediler.",
       "permanently_banned": "%s kalıcı olarak yasaklandı",
       "reason_for_ban": "Yasaklayan: %s1\nSebep: %s2",
       "reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-      "this_user_not_banned": "❎ เอ๋..สมาชิกที่ว่านั้นไม่ได้โดนแบนนะ ลองตรวจดูคีย์เวิร์ดใหม่ดีๆ อีกรอบสิ...",
+      "this_user_not_banned": "❎ Eh.. o üye yasaklanmadı. Harika yeni anahtar kelimelere bir kez daha göz atalım...",
       "unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
       "unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
       "user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
@@ -294,9 +294,9 @@
       "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
       "no": "HAYIR",
       "none": "HAYIR",
-      "not_ready": "ไม่พร้อม",
+      "not_ready": "hazır değil",
       "not_set": "ไม่ได้ตั้ง",
-      "ready": "พร้อม",
+      "ready": "hazır",
       "server_info": "🗄 Ayrıntılı sunucu bilgisi",
       "server_info_description": "Ayrıntılı sunucu bilgileri Discord'dan alınan verilere dayanmaktadır.",
       "unknown": "bilmiyorum",
@@ -333,7 +333,7 @@
       "me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
       "messages_category": "หมวดหมู่ของคำสั่งข้อความ",
       "music_category": "หมวดหมู่ของคำสั่งเพลง",
-      "none": "ไม่มี",
+      "none": "HAYIR",
       "other_links": "[เชิญฉัน]({{invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{status_link}}) | [ปรับปรุงภาษา]({{translation_link}}) | [เว็บไซต์]({{website_link}})",
       "refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
       "remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
@@ -355,9 +355,9 @@
       "this_product_is_free": "Bu ürün ücretsizdir, tekrar satmayın."
     },
     "issues": {
-      "bug_sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
+      "bug_sending": "📨 Tamam.. bir dakika Geliştiriciye bir mektup göndermem için bana bir dakika verin...",
       "bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
-      "feature_sending": "📨 เอาละ..สักครู่นะ ขอเวลาส่งจดหมายให้ผู้พัฒนาแป็บหนึ่ง...",
+      "feature_sending": "📨 Tamam.. bir dakika Geliştiriciye bir mektup göndermem için bana bir dakika verin...",
       "feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
     },
     "join": {
@@ -394,14 +394,14 @@
       "description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
       "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
       "support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
-      "title": "🌐 ภาษา"
+      "title": "🌐 Dil"
     },
     "leader": {
-      "leveling_detail": "ค่าประสบการณ์: %s1, ระดับชั้น: %s2",
-      "no_info": "❎ บนเซิร์ฟเวอร์นี้ยังไม่มีสมาชิกใดๆ ที่มีค่าประสบการณ์เลยคะ",
-      "server_rank": "อันดับเลเวลของเซิร์ฟเวอร์นี้",
-      "server_rank_description": "1 ใน 10 อันดับ สมาชิกภายในเซิร์ฟเวอร์นี้ ที่เก็บสะสมเลเวลของตัวเองได้เยอะที่สุด ตามลำดับ ดังนี้",
-      "server_rank_tips": "เคล็ดลับ: การพูดคุยกับสมาชิกคนอื่นๆ จะทำให้ได้รับเลเวลมากขึ้น"
+      "leveling_detail": "Deneyim: %s1, Derece: %s2",
+      "no_info": "❎ Bu sunucuda henüz üye yok. deneyim değeri olan",
+      "server_rank": "Bu sunucunun seviye sıralaması",
+      "server_rank_description": "Bu sunucudaki ilk 10 üyeden 1'i. Sırasıyla kendi seviyelerinin çoğunu kim toplayabilir?",
+      "server_rank_tips": "İpucu: Diğer üyelerle sohbet etme daha fazla seviye kazanacak"
     },
     "leave": {
       "another_player_is_playing": "🚫 Şu anda bu siparişi kullanamazsınız. çünkü müzik çalan başka üyeler var",
@@ -470,28 +470,28 @@
       "version": "sürüm"
     },
     "music": {
-      "autoplay": "📻 เล่นอัตโนมัติ",
-      "detail": "📄 รายละเอียดของเพลงที่กำลังเล่น",
-      "download_link": "📥 ลิงค์ดาวน์โหลด",
-      "duration": "🕒 ระยะเวลา",
-      "filter": "🎼 รูปแบบการกรองเสียง",
-      "id": "🆔 ไอดี",
-      "link": "🔗 ลิงค์",
-      "music_name": "🎵 ชื่อเพลง",
-      "no_queue": "❎ ตอนนี้ไม่มีเพลงที่ฉันกำลังเล่นอยู่นะคะ",
-      "now": "⌚ ตอนนี้",
-      "off": "ปิด",
-      "on": "เปิด",
-      "owner_this_queue": "%s คือเจ้าของคิวนี้",
-      "paused": "หยุดชั่วคราว",
-      "playing": "กำลังเล่น",
-      "queue_status": "📑 สถานะของคิวเพลงปัจจุบัน",
-      "repeat": "🔁 ทำซ้ำ",
-      "repeat_off": "ไม่ได้เปิด",
-      "repeat_this_queue": "คิวนี้",
-      "repeat_this_song": "เพลงนี้",
-      "uploader": "🎬 ผู้อัพโหลด",
-      "volume": "🔉 ระดับเสียง"
+      "autoplay": "📻 Otomatik Oynatma",
+      "detail": "📄 Çalmakta olan şarkının ayrıntıları",
+      "download_link": "📥 İndirme Bağlantısı",
+      "duration": "🕒 Süre",
+      "filter": "🎼 ses filtresi deseni",
+      "id": "🆔 kimlik",
+      "link": "🔗 Bağlantı",
+      "music_name": "🎵 Şarkı adı",
+      "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
+      "now": "⌚ şimdi",
+      "off": "kapamak",
+      "on": "açık",
+      "owner_this_queue": "%s bu kuyruğun sahibi",
+      "paused": "Duraklat",
+      "playing": "oynamak",
+      "queue_status": "📑 Geçerli şarkı sırasının durumu",
+      "repeat": "🔁 Tekrarla",
+      "repeat_off": "açık değil",
+      "repeat_this_queue": "bu sıra",
+      "repeat_this_song": "bu şarkı",
+      "uploader": "🎬 yükleyici",
+      "volume": "🔉 ses seviyesi"
     },
     "nekos": {
       "can_not_fetch_data": "❎ İstediğiniz resim geçici olarak alınamıyor. Lütfen daha sonra tekrar deneyiniz.",
@@ -512,8 +512,8 @@
       "enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
       "enable_info": "- เปิดใช้งาน: {{enable}}",
       "list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
-      "no": "ไม่ใช่",
-      "none": "ไม่มี",
+      "no": "HAYIR",
+      "none": "HAYIR",
       "notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
       "notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
       "own": "มี",
@@ -522,11 +522,11 @@
       "require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
       "settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
       "temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
-      "title": "🔔 การแจ้งเตือน",
+      "title": "🔔 Bildirimler",
       "toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
-      "unknown": "ไม่ทราบ",
+      "unknown": "bilmiyorum",
       "unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
-      "yes": "ใช่"
+      "yes": "Evet"
     },
     "osu": {
       "generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
@@ -571,10 +571,10 @@
       "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮ่ะ ขอออกมาก่อนละกัน",
       "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
       "need_for_link": "❎ รูปแบบของเพลย์ลิสต์จะต้องเป็นลิงค์เท่านั้นนะคะ",
-      "no_queue": "❎ ตอนนี้ยังไม่ได้เล่นเพลงอะไรเลยนะ",
+      "no_queue": "❎ Şimdi henüz hiç şarkı çalmadım.",
       "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-      "not_in_channel": "❓ เข้าไปในช่องไหนก็ได้ก่อนสิ ไม่งั้นอดฟังน้าา...",
-      "not_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ",
+      "not_in_channel": "❓ Önce herhangi bir kanalı girin. Yoksa beni dinleme...",
+      "not_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir.",
       "playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
     },
     "previous": {
@@ -602,7 +602,7 @@
     },
     "queue": {
       "autoplay": "📻 Otomatik Oynatma",
-      "filter": "🎼 รูปแบบการกรองเสียง: `%s`",
+      "filter": "🎼 Ses filtresi modeli: `%s`",
       "no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
       "owner_this_queue": "%s bu kuyruğun sahibi",
       "previous_queue": "**önceki sıra**",
@@ -620,9 +620,9 @@
     },
     "related": {
       "added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
-      "no_queue": "❎ ตอนนี้ยังไม่มีเพลงที่กำลังเล่นอยู่เลยนะคะ",
+      "no_queue": "❎ Şimdi çalmakta olan şarkı yok.",
       "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-      "not_queue_owner": "🚫 เฉพาะเจ้าของคิวเท่านั้นที่จะเปลี่ยนแปลงได้คะ"
+      "not_queue_owner": "🚫 Sadece kuyruğun sahibi değiştirebilir."
     },
     "reload": {
       "invalid_command": "❎ Hmmm... bu sıralama yok gibi... dikkatlice kontrol etmeye çalışın Yine, doğru mu değil mi?",
@@ -735,14 +735,14 @@
       },
       "loading": "⚙️ Sistem verilerini sunucudan almak için istek gönderiliyor...",
       "main": "ana",
-      "no": "ไม่ใช่",
-      "not_owner": "🛑 อย่านะ..ไม่เอาๆ ฟังก์ชันนี้ต้องใช้สิทธิ์ระดับบนเท่านั้นนะ",
-      "now_reboot": "✅ เริ่มระบบใหม่แล้วคะ!!",
+      "no": "HAYIR",
+      "not_owner": "🛑 Alma.. alma. Bu işlev yalnızca en yüksek ayrıcalıkları gerektirir.",
+      "now_reboot": "✅ Yeni bir sistem başlattı!!",
       "now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
-      "rebooting": "🔄 กำลังเริ่มระบบใหม่...",
-      "shutting_down": "🔄 กำลังปิดระบบตัวเอง...",
+      "rebooting": "🔄 Yeniden başlatılıyor...",
+      "shutting_down": "🔄 Sistemim kapatılıyor...",
       "unknown": "bilmiyorum",
-      "yes": "ใช่"
+      "yes": "Evet"
     },
     "timeout": {
       "can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
@@ -751,7 +751,7 @@
       "member_not_found": "❎ Üyeler artık bu sunucuda olmadıklarını söylemezler.",
       "no_reason": "bir sebep vermiyor",
       "success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
-      "success_untimeout": "{{user}} ถูกตั้งให้ไม่หมดเวลาแล้ว **เหตุผล**: {{reason}}",
+      "success_untimeout": "{{user}} Zaman aşımı ayarlandı **Sebep**: {{reason}}",
       "timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
       "untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
     },
@@ -776,7 +776,7 @@
       "available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
       "info_date": "ne zaman bilgi",
       "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-      "no": "ไม่ใช่",
+      "no": "HAYIR",
       "none": "HAYIR",
       "unknown": "bilmiyorum",
       "user_info": "👥 Kullanıcı bilgileri ayrıntıları",
@@ -793,12 +793,12 @@
     "vote": {
       "added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
       "invite": "เชิญ",
-      "tags": "แท็ก",
+      "tags": "etiketler",
       "vote": "โหวต",
       "votes": "คะแนนโหวต"
     },
     "warn": {
-      "can_not_find_user": "❎ ฉันหาสมาชิกนี้ไม่เจอคะ ลองตรวจสอบใหม่อีกรอบคะ",
+      "can_not_find_user": "❎ Bu üyeyi bulamıyorum. Lütfen tekrar kontrol edin.",
       "members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
       "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
       "user_has_warned": "{{user}} ถูกตักเตือน",
@@ -823,16 +823,16 @@
       "freezing_fog": "หมอกเยือกแข็ง",
       "freezing_rain": "ฝนเยือกแข็ง",
       "haze": "หมอกควัน",
-      "heavy_drizzle": "ฝนตกปรอยๆ",
-      "heavy_rain": "ฝนตกหนัก",
-      "heavy_shower_rain": "ฝนตกหนัก",
+      "heavy_drizzle": "çiselemek",
+      "heavy_rain": "yoğun yağış",
+      "heavy_shower_rain": "yoğun yağış",
       "heavy_sleet": "ลูกเห็บตกหนัก",
       "heavy_snow": "หิมะตกหนัก",
       "heavy_snow_shower": "หิมะตกหนัก",
-      "humidity": "💧ความชื้น",
+      "humidity": "💧Nem",
       "latitude": "📍 ละติจูด",
       "light_drizzle": "ฝนตกเบาบาง",
-      "light_rain": "ฝนตก",
+      "light_rain": "yağmur",
       "light_shower_rain": "ฝนตกหนักบางพื้นที่",
       "light_snow": "หิมะตกโปรยปราย",
       "liquid_equivalent_precipitation_rate": "🪁 อัตราหยาดน้ำฟ้า",
@@ -869,7 +869,7 @@
       "thunderstorm_with_light_rain": "พายุฝนฟ้าคะนองพร้อมฝนปรอยๆ",
       "thunderstorm_with_rain": "พายุฝนฟ้าคะนองพร้อมฝน",
       "timezone": "🌐 Saat Dilimi",
-      "unknown": "ไม่ทราบ",
+      "unknown": "bilmiyorum",
       "unknown_error": "❎ ดูเหมือนเซิร์ฟเวอร์ปลายทางจะมีปัญหาคะ อาจจะต้องรออีกสักครู่...",
       "unknown_precipitation": "ไม่ทราบปริมาณฝน",
       "uv_index": "🧴 ดัชนีรังสียูวี",
@@ -1033,43 +1033,43 @@
   "handlers": {
     "player": {
       "addList": {
-        "added_list": "✅ เพิ่มเพลย์ลิสต์ **%s1** ประกอบไปด้วยเพลงจำนวน `%s2` เพลง เรียบร้อยแล้วคะ"
+        "added_list": "✅ Halihazırda `%s2` şarkı içeren **%s1** bir çalma listesi eklendi."
       },
       "addSong": {
-        "added_song": "✅ เพิ่มเพลง **%s1** `%s2` เรียบร้อยแล้วคะ"
+        "added_song": "✅ Zaten **%s1** `%s2` şarkı ekleyin."
       },
       "disconnect": {
-        "disconnected": "🔌 ตัดการเชื่อมต่อและลบคิวทั้งหมดออกเรียบร้อยแล้วคะ"
+        "disconnected": "🔌 Bağlantı kesildi ve şimdiden tüm kuyruklar silindi."
       },
       "empty": {
-        "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+        "no_user_in_channel": "💨 Ah.. Nereye gittiler? O zaman..önce kapa çeneni~"
       },
       "error": {
-        "playlist_not_found": "❎ ฉันหาเพลย์ลิสต์นั้นไม่เจอะ ลองหาเพลย์ลิสต์อื่นดูไหม?"
+        "playlist_not_found": "❎ O çalma listesini bulamıyorum. Başka bir çalma listesi mi arıyorsunuz?"
       },
       "finish": {
-        "queue_is_empty": "🍃 ตอนนี้ฉันคิวว่างแล้ว พร้อมที่จะเล่นเพลงต่อไปแล้วคะ"
+        "queue_is_empty": "🍃Artık sıram boş. Bir sonraki şarkıyı çalmaya hazır mısınız?"
       },
       "playSong": {
-        "playing_song": "🎶 กำลังเล่นเพลง **%s1** `%s2`"
+        "playing_song": "🎶 Müzik çalıyor **%s1** `%s2`"
       },
       "searchCancel": {
-        "search_cancelled": "🕘 ยกเลิกการค้นหาแล้ว..เนื่องจากไม่พบการเลือกเพลงใดๆ"
+        "search_cancelled": "🕘 Şarkı seçimi bulunamadığından arama iptal edildi."
       },
       "searchDone": {
-        "get_list_of_songs": "📋 ได้รับรายการของเพลงที่ต้องการแล้วคะ และจะเริ่มเล่นเพลงในอีกสักครู่..."
+        "get_list_of_songs": "📋 İstediğim şarkıların listesini aldım. ve birazdan müzik çalmaya başlayacak..."
       },
       "searchInvalidAnswer": {
-        "search_cancelled": "🔴 ยกเลิกการค้นหาล่าสุดแล้ว คุณสามารถค้นหาใหม่ได้อีกครั้งโดยการพิมพ์คำสั่งเดิม"
+        "search_cancelled": "🔴 Son aramalar iptal edildi. Aynı komutu yazarak tekrar arama yapabilirsiniz."
       },
       "searchNoResult": {
-        "no_results": "❎ ฉันพยายามค้นหาเกี่ยวกับเพลงดังกล่าวแล้วแต่ไม่เจอผลลัพธ์อะไรเลย..."
+        "no_results": "❎ Şarkı hakkında arama yapmaya çalıştım ama sonuç bulamadım..."
       },
       "searchResult": {
-        "searching": "🔎 ค้นหาเพลงที่เกี่ยวข้อง",
-        "timer_choose": "มีเวลาในการเลือกเพลง 60 วินาทีนะคะ หากต้องการยกเลิกสามารถพิมพ์เลขที่ไม่เกี่ยวข้องหรือรอจนหมดเวลาคะ",
-        "title_results": "ผลการค้นหาของเพลงดังกล่าว:",
-        "tool_name": "เครื่องค้นหาเพลง"
+        "searching": "🔎 İlgili şarkıları bulun",
+        "timer_choose": "Şarkı seçmek için 60 saniye süreniz var, iptal etmek isterseniz alakasız bir sayı yazabilir veya sürenin bitmesini bekleyebilirsiniz.",
+        "title_results": "Bu tür şarkıların arama sonuçları:",
+        "tool_name": "müzik arama motoru"
       }
     }
   },
