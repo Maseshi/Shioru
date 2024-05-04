@@ -46,7 +46,7 @@
 - จำลองระบบฐานข้อมูลสำหรับทดสอบ
 - รองรับการทำงานบน Shard
 
-และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
+ja monia muita mielenkiintoisia ominaisuuksia...
 
 ## Edellytykset
 
