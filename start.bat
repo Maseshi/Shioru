@@ -15,6 +15,7 @@ echo # openjdk, python3, ffmpeg                       #
 echo # and visualstudio2022buildtools                 #
 echo #                                                #
 echo ##################################################
+echo.
 
 @REM Check is in admin mode or not
 net session >nul 2>&1
