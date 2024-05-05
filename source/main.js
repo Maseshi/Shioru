@@ -37,7 +37,6 @@ const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 const { initializeApp } = require('firebase/app')
-const { getFirestore, connectFirestoreEmulator } = require('firebase/firestore')
 const { getDatabase, connectDatabaseEmulator } = require('firebase/database')
 const { getStorage, connectStorageEmulator } = require('firebase/storage')
 const { startScreen, logger } = require('./utils/consoleUtils')
@@ -246,11 +245,6 @@ if (client.mode !== 'start') {
     getDatabase(),
     client.configs.emulators.database.host,
     client.configs.emulators.database.port
-  )
-  connectFirestoreEmulator(
-    getFirestore(),
-    client.configs.emulators.firestore.host,
-    client.configs.emulators.firestore.port
   )
   connectStorageEmulator(
     getStorage(),
