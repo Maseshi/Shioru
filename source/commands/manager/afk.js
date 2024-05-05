@@ -1,12 +1,12 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 const {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  deleteField,
-} = require('firebase/firestore')
+  getDatabase,
+  ref,
+  child,
+  get,
+  update,
+  remove,
+} = require('firebase/database')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -51,15 +51,15 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand()
     const inputMessage = interaction.options.getString('message') ?? ''
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
 
     const nickname = interaction.member.nickname || interaction.user.username
 
     switch (subcommand) {
       case 'set':
         if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
+          const guildData = guildSnapshot.val()
 
           if (guildData.afk && guildData.afk[interaction.user.id]) {
             return await interaction.reply({
@@ -69,16 +69,10 @@ module.exports = {
           }
         }
 
-        await setDoc(
-          guildDoc,
-          {
-            [interaction.user.id]: {
-              message: inputMessage,
-              nickname: nickname,
-            },
-          },
-          { marge: true }
-        )
+        await update(child(guildRef, interaction.user.id), {
+          message: inputMessage,
+          nickname: nickname,
+        })
 
         try {
           await interaction.member.setNickname('[AFK] ' + nickname)
@@ -104,7 +98,7 @@ module.exports = {
             ephemeral: true,
           })
 
-        const guildData = guildSnapshot.data()
+        const guildData = guildSnapshot.val()
 
         if (guildData.afk || guildData.afk[interaction.user.id])
           return await interaction.reply({
@@ -130,11 +124,7 @@ module.exports = {
           )
         }
 
-        await updateDoc(guildDoc, {
-          afk: {
-            [interaction.user.id]: deleteField(),
-          },
-        })
+        await remove(child(child(guildRef, 'afk'), interaction.user.id))
         await interaction.reply({
           content: interaction.client.i18n.t('commands.afk.now_not_afk'),
           ephemeral: true,

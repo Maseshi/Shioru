@@ -4,15 +4,7 @@ const {
   PermissionFlagsBits,
   Colors,
 } = require('discord.js')
-const {
-  getFirestore,
-  doc,
-  updateDoc,
-  serverTimestamp,
-  arrayUnion,
-  arrayRemove,
-  getDoc,
-} = require('firebase/firestore')
+const { getDatabase, ref, child, get, update } = require('firebase/database')
 
 module.exports = {
   permissions: [
@@ -180,8 +172,11 @@ module.exports = {
     const inputRolesName = interaction.options.getRole('name') ?? ''
     const inputUsersName = interaction.options.getUser('name') ?? ''
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
+    const djsRef = child(
+      child(ref(getDatabase(), 'guilds'), interaction.guild.id),
+      'djs'
+    )
+    const djsSnapshot = await get(djsRef)
 
     const configs = interaction.client.config
 
@@ -209,9 +204,9 @@ module.exports = {
           )
 
         configs.djs.enable = true
-        await updateDoc(guildDoc, {
-          ['djs.enable']: true,
-          ['djs.toggledAt']: serverTimestamp(),
+        await update(djsRef, {
+          enable: true,
+          toggledAt: new Date(),
         })
 
         await interaction.reply(
@@ -226,9 +221,9 @@ module.exports = {
           )
 
         configs.djs.enable = false
-        await updateDoc(guildDoc, {
-          ['djs.enable']: false,
-          ['djs.toggledAt']: serverTimestamp(),
+        await update(djsRef, {
+          enable: false,
+          toggledAt: new Date(),
         })
 
         await interaction.reply(
@@ -245,9 +240,9 @@ module.exports = {
           )
 
         configs.djs.only = inputSet
-        await updateDoc(guildDoc, {
-          ['djs.only']: inputSet,
-          ['djs.editedAt']: serverTimestamp(),
+        await update(djsRef, {
+          only: inputSet,
+          editedAt: new Date(),
         })
 
         await interaction.reply(
@@ -270,9 +265,9 @@ module.exports = {
               )
 
             configs.djs.roles.push(inputRolesName.id)
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.roles']: arrayUnion(inputRolesName.id),
+            await update(djsRef, {
+              editedAt: new Date(),
+              roles: configs.djs.roles,
             })
 
             await interaction.reply(
@@ -289,17 +284,19 @@ module.exports = {
                   'commands.djs.role_currently_can_not_manage_music'
                 )
               )
-            if (configs.djs.roles.indexOf(inputRolesName.id) > -1) {
-              configs.djs.roles.splice(configs.djs.roles, 1)
-            } else {
+            if (configs.djs.roles.indexOf(inputRolesName.id) < 0) {
               return await interaction.reply(
                 interaction.client.i18n.t('commands.djs.role_not_found_in_list')
               )
             }
 
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.roles']: arrayRemove(inputRolesName.id),
+            configs.djs.roles.splice(
+              configs.djs.roles.indexOf(inputRolesName.id),
+              1
+            )
+            await update(djsRef, {
+              editedAt: new Date(),
+              roles: configs.djs.roles,
             })
 
             await interaction.reply(
@@ -316,18 +313,18 @@ module.exports = {
               )
 
             configs.djs.roles = []
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.roles']: [],
+            await update(djsRef, {
+              editedAt: new Date(),
+              roles: configs.djs.roles,
             })
 
-            if (guildSnapshot.exists()) {
-              const guildData = guildSnapshot.data()
+            if (djsSnapshot.exists()) {
+              const guildData = djsSnapshot.val()
 
-              if (!guildData.djs.roles.length && !guildData.djs.users.length) {
+              if (!guildData.roles.length && !guildData.users.length) {
                 configs.djs.enable = false
-                await updateDoc(guildDoc, {
-                  ['djs.enable']: false,
+                await update(djsRef, {
+                  enable: false,
                 })
               }
             }
@@ -351,9 +348,9 @@ module.exports = {
               )
 
             configs.djs.users.push(inputUsersName.id)
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.users']: arrayUnion(inputUsersName.id),
+            await update(djsRef, {
+              editedAt: new Date(),
+              users: configs.djs.users,
             })
 
             await interaction.reply(
@@ -370,17 +367,19 @@ module.exports = {
                   'commands.djs.user_have_been_added_before'
                 )
               )
-            if (configs.djs.users.indexOf(inputUsersName.id) > -1) {
-              configs.djs.users.splice(configs.djs.roles, 1)
-            } else {
+            if (configs.djs.users.indexOf(inputUsersName.id) < 0) {
               return await interaction.reply(
                 interaction.client.i18n.t('commands.djs.user_not_found_in_list')
               )
             }
 
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.users']: arrayRemove(inputUsersName.id),
+            configs.djs.users.splice(
+              configs.djs.users.indexOf(inputUsersName.id),
+              1
+            )
+            await update(djsRef, {
+              editedAt: new Date(),
+              users: configs.djs.users,
             })
 
             await interaction.reply(
@@ -397,18 +396,18 @@ module.exports = {
               )
 
             configs.djs.users = []
-            await updateDoc(guildDoc, {
-              ['djs.editedAt']: serverTimestamp(),
-              ['djs.users']: [],
+            await update(djsRef, {
+              editedAt: new Date(),
+              users: configs.djs.users,
             })
 
-            if (guildSnapshot.exists()) {
-              const guildData = guildSnapshot.data()
+            if (djsSnapshot.exists()) {
+              const guildData = djsSnapshot.val()
 
-              if (!guildData.djs.users.length && !guildData.djs.users.length) {
+              if (!guildData.users.length && !guildData.users.length) {
                 configs.djs.enable = false
-                await updateDoc(guildDoc, {
-                  ['djs.enable']: false,
+                await update(djsRef, {
+                  enable: false,
                 })
               }
             }

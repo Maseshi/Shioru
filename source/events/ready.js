@@ -1,6 +1,5 @@
 const { EmbedBuilder, Colors, Events, ActivityType } = require('discord.js')
 const { getApps } = require('firebase/app')
-const { getFirestore, doc, getDoc } = require('firebase/firestore')
 const {
   getDatabase,
   onValue,
@@ -200,28 +199,32 @@ module.exports = {
       const guilds = await client.guilds.fetch()
 
       guilds.forEach(async (guild) => {
-        const guildDoc = doc(getFirestore(), 'guilds', guild.id)
-        const guildSnapshot = await getDoc(guildDoc)
+        const guildRef = child(ref(getDatabase(), 'guilds'), guild.id)
+        const guildSnapshot = await get(guildRef)
 
         if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const antibot = guildData.antibot
+          const antiBotData = guildSnapshot.val().antibot
 
-          if (!antibot) return
+          if (!antiBotData) return
 
-          const antibotEnabledStartTime = new Date(antibot.enabledAt).getTime()
-          const antibotEnabledEndTime = new Date().getTime()
-          const antibotEnabledPassed =
-            antibotEnabledStartTime - antibotEnabledEndTime
+          const antiBotEnabledStartTime = new Date(
+            antiBotData.enabledAt
+          ).getTime()
+          const antiBotEnabledEndTime = new Date().getTime()
+          const antiBotEnabledPassed =
+            antiBotEnabledStartTime - antiBotEnabledEndTime
 
-          if (antibotEnabledPassed >= 10) {
+          if (antiBotEnabledPassed >= 10) {
             const members = await guilds.members.fetch()
 
-            if (!antibot.enable) return
+            if (!antiBotData.enable) return
 
             members.forEach((member) => {
               if (member.user.bot) {
-                if (!antibot.all && antibot.bots.includes(member.user.id))
+                if (
+                  !antiBotData.all &&
+                  antiBotData.bots.includes(member.user.id)
+                )
                   return
                 if (member.id !== client.user.id)
                   return member.kick({

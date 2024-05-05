@@ -6,12 +6,13 @@ const {
   Colors,
 } = require('discord.js')
 const {
-  getFirestore,
-  getDoc,
-  doc,
-  updateDoc,
-  deleteField,
-} = require('firebase/firestore')
+  getDatabase,
+  ref,
+  child,
+  get,
+  update,
+  remove,
+} = require('firebase/database')
 const { embedBuilder } = require('../../utils/clientUtils')
 const { dataStructures } = require('../../utils/databaseUtils')
 const { newLines } = require('../../utils/miscUtils')
@@ -550,8 +551,11 @@ module.exports = {
     const inputFooterIconURL =
       interaction.options.getString('embed_footer_icon_url') ?? ''
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
+    const notificationRef = child(
+      child(ref(getDatabase(), 'guilds'), interaction.guild.id),
+      'notification'
+    )
+    const notificationSnapshot = await get(notificationRef)
 
     const notification = interaction.client.configs.notification
 
@@ -565,9 +569,8 @@ module.exports = {
         break
       }
       case 'enable': {
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const notificationData = guildData.notification
+        if (notificationSnapshot.exists()) {
+          const notificationData = notificationSnapshot.val()
 
           if (!notification.includes(inputType))
             return await interaction.reply(
@@ -598,14 +601,14 @@ module.exports = {
                 )
               )
           } else {
-            await updateDoc(guildDoc, {
-              [`notification.${inputType}.channelId`]: inputChannel.id,
+            await update(child(notificationRef, inputType), {
+              channelId: inputChannel.id,
             })
           }
 
-          await updateDoc(guildDoc, {
-            [`notification.${inputType}.enable`]: true,
-            [`notification.${inputType}.toggledAt`]: new Date().getTime(),
+          await update(child(notificationRef, inputType), {
+            enable: true,
+            toggledAt: new Date(),
           })
           await interaction.reply(
             interaction.client.i18n.t(
@@ -631,9 +634,8 @@ module.exports = {
               }
             )
           )
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const notificationData = guildData.notification
+        if (notificationSnapshot.exists()) {
+          const notificationData = notificationSnapshot.val()
 
           if (!notificationData)
             return await interaction.reply(
@@ -653,9 +655,9 @@ module.exports = {
             )
         }
 
-        await updateDoc(guildDoc, {
-          [`notification.${inputType}.enable`]: false,
-          [`notification.${inputType}.toggledAt`]: new Date().getTime(),
+        await update(child(notificationRef, inputType), {
+          enable: false,
+          toggledAt: new Date(),
         })
         await interaction.reply(
           interaction.client.i18n.t(
@@ -668,9 +670,8 @@ module.exports = {
         break
       }
       case 'get': {
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const notificationData = guildData.notification
+        if (notificationSnapshot.exists()) {
+          const notificationData = notificationSnapshot.val()
 
           if (!notificationData)
             return await interaction.reply(
@@ -886,9 +887,8 @@ module.exports = {
         )
         const notify = dataStructures(interaction.client, 'notification')
 
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const notificationData = guildData.notification
+        if (notificationSnapshot.exists()) {
+          const notificationData = notificationSnapshot.val()
 
           if (subcommand === 'edit' && !notificationData)
             return await interaction.reply(
@@ -989,17 +989,16 @@ module.exports = {
             }
           }
           if (subcommand === 'edit') {
-            await updateDoc(guildDoc, {
-              [`notification.${inputType}`]: Object.entries(notify).reduce(
+            await update(
+              child(notificationRef, inputType),
+              Object.entries(notify).reduce(
                 (array, [key, value]) =>
                   value == null ? array : ((array[key] = value), array),
                 {}
-              ),
-            })
+              )
+            )
           } else {
-            await updateDoc(guildDoc, {
-              [`notification.${inputType}`]: notify,
-            })
+            await update(child(notificationRef, inputType), notify)
           }
 
           await interaction.reply(
@@ -1015,9 +1014,8 @@ module.exports = {
         break
       }
       case 'remove': {
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
-          const notificationData = guildData.notification
+        if (notificationSnapshot.exists()) {
+          const notificationData = notificationSnapshot.val()
 
           if (!notificationData)
             return await interaction.reply(
@@ -1033,9 +1031,7 @@ module.exports = {
               )
             )
 
-          await updateDoc(guildDoc, {
-            [`notification.${inputType}`]: deleteField(),
-          })
+          await remove(child(notificationRef, inputType))
           await interaction.reply(
             interaction.client.i18n.t(
               'commands.notify.unregistered_notification',

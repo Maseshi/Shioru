@@ -1,12 +1,12 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 const {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  deleteField,
-} = require('firebase/firestore')
+  getDatabase,
+  ref,
+  child,
+  get,
+  update,
+  remove,
+} = require('firebase/database')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -46,15 +46,15 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand()
     const inputAll = interaction.options.getBoolean('all') ?? false
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
 
     switch (subcommand) {
       case 'enable': {
         const bots = []
 
         if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.data()
+          const guildData = guildSnapshot.val()
 
           if (guildData.antibot && guildData.antibot.enable)
             return await interaction.reply(
@@ -71,19 +71,15 @@ module.exports = {
           })
         }
 
-        await setDoc(
-          guildDoc,
-          {
-            antibot: {
-              enable: true,
-              enabledAt: new Date().toISOString(),
-              enabledBy: interaction.user.id,
-              bots: inputAll ? [] : bots,
-              all: inputAll,
-            },
+        await update(guildRef, {
+          antibot: {
+            enable: true,
+            enabledAt: new Date().toISOString(),
+            enabledBy: interaction.user.id,
+            bots: inputAll ? [] : bots,
+            all: inputAll,
           },
-          { marge: true }
-        )
+        })
         await interaction.reply(
           inputAll
             ? interaction.client.i18n.t(
@@ -99,16 +95,14 @@ module.exports = {
             interaction.client.i18n.t('commands.antibot.currently_disable')
           )
 
-        const guildData = guildSnapshot.data()
+        const guildData = guildSnapshot.val()
 
         if (!guildData.antibot || !guildData.antibot.enable)
           return await interaction.reply(
             interaction.client.i18n.t('commands.antibot.currently_enable')
           )
 
-        await updateDoc(guildDoc, {
-          antibot: deleteField(),
-        })
+        await remove(child(guildRef, 'antibot'))
         await interaction.reply(
           interaction.client.i18n.t('commands.antibot.disable_antibot')
         )

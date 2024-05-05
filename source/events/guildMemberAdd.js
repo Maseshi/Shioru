@@ -10,7 +10,7 @@ const {
   TextInputStyle,
 } = require('discord.js')
 const { CaptchaGenerator } = require('captcha-canvas')
-const { getFirestore, doc, getDoc } = require('firebase/firestore')
+const { getDatabase, ref, child, get } = require('firebase/database')
 const { submitNotification, initializeData } = require('../utils/databaseUtils')
 const { catchError } = require('../utils/consoleUtils')
 
@@ -43,18 +43,18 @@ module.exports = {
       guildMemberAddEmbed
     )
 
-    const guildDoc = doc(getFirestore(), 'guilds', member.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
+    const guildRef = child(ref(getDatabase(), 'guilds'), member.guild.id)
+    const guildSnapshot = await get(guildRef)
 
     // Anti-Bot
     if (member.user.bot) {
       if (guildSnapshot.exists()) {
-        const guildData = guildSnapshot.data()
-        const antibot = guildData.antibot
+        const antiBotData = guildSnapshot.val().antibot
 
-        if (!antibot) return
-        if (!antibot.enable) return
-        if (!antibot.all && antibot.bots.includes(member.user.id)) return
+        if (!antiBotData) return
+        if (!antiBotData.enable) return
+        if (!antiBotData.all && antiBotData.bots.includes(member.user.id))
+          return
 
         member.kick({
           reason:
@@ -65,15 +65,14 @@ module.exports = {
 
     // Captcha
     if (guildSnapshot.exists()) {
-      const guildData = guildSnapshot.data()
-      const captcha = guildData.captcha
+      const captchaData = guildSnapshot.val().captcha
 
-      if (!captcha) return
-      if (!captcha.enable) return
+      if (!captchaData) return
+      if (!captchaData.enable) return
 
       const captchaGenerator = new CaptchaGenerator()
         .setDimension(150, 450)
-        .setCaptcha({ text: captcha.text, size: 60, color: 'green' })
+        .setCaptcha({ text: captchaData.text, size: 60, color: 'green' })
         .setDecoy({ opacity: 0.5 })
         .setTrace({ color: 'green' })
       const buffer = captchaGenerator.generateSync()
@@ -137,18 +136,17 @@ module.exports = {
           if (!interaction.isModalSubmit()) return
           if (!interaction.customId === 'captcha-modal') return
 
-          const guildDoc = doc(getFirestore(), 'guilds', member.guild.id)
-          const guildSnapshot = await getDoc(guildDoc)
+          const guildRef = child(ref(getDatabase(), 'guilds'), member.guild.id)
+          const guildSnapshot = await get(guildRef)
 
           if (!guildSnapshot.exists()) return
 
-          const guildData = guildSnapshot.data()
-          const captcha = guildData.captcha
+          const captchaData = guildSnapshot.val().captcha
 
           const captchaAnswer =
             interaction.fields.getTextInputValue('captcha-text-input')
 
-          if (captchaAnswer !== captcha.text) {
+          if (captchaAnswer !== captchaData.text) {
             return await interaction.reply({
               content: member.client.i18n.t(
                 'events.guildMemberAdd.wrong_answer'
@@ -157,7 +155,7 @@ module.exports = {
             })
           } else {
             try {
-              const captchaRole = captcha.role
+              const captchaRole = captchaData.role
               const captchaGuild = await member.client.guilds.fetch(guild.id)
               const captchaUser = await captchaGuild.members.fetch(
                 interaction.user.id
@@ -189,7 +187,7 @@ module.exports = {
           }
         })
       } catch (error) {
-        catchError(member.client, member, Events.GuildMemberAdd, error, true)
+        catchError(member.client, member, 'captcha', error, true)
       }
     }
   },

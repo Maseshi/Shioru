@@ -47,8 +47,8 @@ module.exports = {
           )
 
         users.forEach((user) => {
-          const id = user.id
-          const data = user.data()
+          const id = user.key
+          const data = user.val()
           const member = interaction.guild.members.cache.find(
             (member) => member.id === id
           )

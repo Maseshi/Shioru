@@ -4,7 +4,7 @@ const {
   PermissionFlagsBits,
   Colors,
 } = require('discord.js')
-const { getFirestore, doc, getDoc, updateDoc } = require('firebase/firestore')
+const { getDatabase, ref, child, get, update } = require('firebase/database')
 const { changeLanguage } = require('../../utils/clientUtils')
 const { dataStructures } = require('../../utils/databaseUtils')
 
@@ -100,9 +100,9 @@ module.exports = {
 
     const locale = interaction.client.i18n.language
     const locales = interaction.client.i18n.options.preload
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
-    const guildData = guildSnapshot.data()
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
+    const guildVal = guildSnapshot.val()
 
     switch (subcommand) {
       case 'get': {
@@ -112,7 +112,7 @@ module.exports = {
             interaction.client.i18n.t('commands.language.description', {
               command: `</${interaction.commandId}: ${interaction.commandName}>`,
               type:
-                guildData.language.type ||
+                guildVal.language.type ||
                 dataStructures(interaction.client, 'language').type,
               locale: locale,
             })
@@ -155,9 +155,9 @@ module.exports = {
             })
           )
 
-        await updateDoc(guildDoc, { ['language.locale']: inputLocale })
+        await update(child(child(guildRef, 'language'), 'locale'), inputLocale)
 
-        if (guildData.language.type === 'CUSTOM')
+        if (guildVal.language.type === 'CUSTOM')
           changeLanguage(interaction.client, inputLocale)
 
         await interaction.reply(
@@ -168,16 +168,16 @@ module.exports = {
         break
       }
       case 'by': {
-        await updateDoc(guildDoc, { ['language.type']: inputType })
+        await update(child(child(guildRef, 'language'), 'type'), inputType)
 
         if (inputType === 'CUSTOM')
           changeLanguage(
             interaction.client,
-            guildData.language.locale ||
+            guildVal.language.locale ||
               dataStructures(interaction.client, 'language').locale
           )
         if (inputType === 'GUILD')
-          changeLanguage(interaction.client, guildData.preferredLocale)
+          changeLanguage(interaction.client, guildVal.preferredLocale)
         if (inputType === 'USER')
           changeLanguage(interaction.client, interaction.locale)
 

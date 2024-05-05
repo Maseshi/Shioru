@@ -1,11 +1,5 @@
 const { Events, ChannelType } = require('discord.js')
-const {
-  getFirestore,
-  doc,
-  getDoc,
-  updateDoc,
-  deleteField,
-} = require('firebase/firestore')
+const { getDatabase, ref, child, get, remove } = require('firebase/database')
 const { fetchLevel, initializeData } = require('../utils/databaseUtils')
 const { catchError } = require('../utils/consoleUtils')
 
@@ -116,25 +110,24 @@ module.exports = {
 
     // Auto remove AFK status
     if (message.channel.type !== ChannelType.DM) {
-      const guildDoc = doc(getFirestore(), 'guilds', message.guild.id)
-      const guildSnapshot = await getDoc(guildDoc)
+      const guildRef = child(ref(getDatabase(), 'guilds'), message.guild.id)
+      const guildSnapshot = await get(guildRef)
 
       if (guildSnapshot.exists()) {
-        const guildData = guildSnapshot.data()
-        const afk = guildData.afk
+        const afkData = guildSnapshot.val().afk
 
-        if (afk && afk[message.author.id]) {
+        if (afkData && afkData[message.author.id]) {
           message.channel.sendTyping()
 
           try {
-            await message.member.setNickname(afk[message.author.id].nickname)
+            await message.member.setNickname(
+              afkData[message.author.id].nickname
+            )
           } catch (error) {
             catchError(message.client, message, 'afk', error)
           }
 
-          await updateDoc(guildDoc, {
-            afk: { [message.author.id]: deleteField() },
-          })
+          await remove(child(child(guildRef, 'afk'), message.author.id))
           await message.reply({
             content: message.client.i18n.t(
               'events.messageCreate.afk_user_come_back'
@@ -145,14 +138,14 @@ module.exports = {
           const members = message.mentions.users.first()
 
           if (!members) return
-          if (!afk) return
-          if (!afk[members.id]) return
+          if (!afkData) return
+          if (!afkData[members.id]) return
 
           message.channel.sendTyping()
 
           const member = message.guild.members.cache.get(members.id)
           const reason =
-            afk[members.id].message ||
+            afkData[members.id].message ||
             message.client.i18n.t('events.messageCreate.no_reason_for_afk')
 
           if (message.content.includes(members)) {

@@ -1,21 +1,12 @@
 const { EmbedBuilder } = require('discord.js')
 const {
-  getFirestore,
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-  setDoc,
-  updateDoc,
-  deleteField,
-} = require('firebase/firestore')
-const {
   getDatabase,
   ref,
   child,
   get,
   set,
   update,
+  remove,
   increment,
 } = require('firebase/database')
 const { changeLanguage, embedBuilder } = require('./clientUtils')
@@ -159,14 +150,6 @@ const fetchLevel = async (
       'Please specify a METHOD to continue. (required).'
     )
 
-  const usersCollection = collection(getFirestore(), 'users')
-  const userDoc = doc(
-    usersCollection,
-    member ? member.id : message.member.id ?? message.user.id
-  )
-  const usersSnapshot = await getDocs(usersCollection)
-  const userSnapshot = await getDoc(userDoc)
-
   const callback = {
     status: 'padding',
     exp: 0,
@@ -175,135 +158,131 @@ const fetchLevel = async (
     users: null,
   }
 
-  if (userSnapshot.exists()) {
-    const userData = userSnapshot.data()
-    const leveling = userData.leveling
-    let exp = leveling.exp || 0
-    let level = leveling.level || 0
+  const usersRef = ref(getDatabase(), 'users')
+  const userRef = child(
+    usersRef,
+    member ? member.id : message.member.id ?? message.user.id
+  )
+  const userSnapshot = await get(userRef)
 
-    const base = 200
-    const levelup = level * level * base
+  if (!userSnapshot.exists()) {
+    await set(userRef, dataStructures(client, 'user'))
+    return fetchLevel(client, message, method, { member, amount, type })
+  }
 
-    switch (method) {
-      case 'GET': {
-        if (userSnapshot.exists()) {
-          callback.status = 'success'
-          callback.exp = exp
-          callback.level = level
-          callback.levelup = levelup
-        } else {
-          callback.status = 'null'
-        }
+  const userVal = userSnapshot.val()
+  const leveling = userVal.leveling
+  let exp = leveling.exp || 0
+  let level = leveling.level || 0
 
-        break
-      }
-      case 'GET/ALL': {
-        if (usersSnapshot.exists()) {
-          callback.status = 'success'
-          callback.users = usersSnapshot
-        } else {
-          callback.status = 'null'
-        }
+  const base = 200
+  const levelup = level * level * base
 
-        break
-      }
-      case 'POST': {
-        if (!amount) {
-          callback.status = 'error'
-          return client.logger.warn('Please specify the amount of experience.')
-        }
-
-        try {
-          if (type === 'exp')
-            await updateDoc(userDoc, {
-              ['leveling.exp']: (exp += amount),
-            })
-          if (type === 'level')
-            await updateDoc(userDoc, {
-              ['leveling.level']: (level += amount),
-            })
-
-          callback.status = 'success'
-        } catch {
-          callback.status = 'error'
-        }
-
-        break
-      }
-      case 'PUT': {
-        try {
-          if (type === 'exp')
-            await updateDoc(userDoc, {
-              ['leveling.exp']: amount,
-            })
-          if (type === 'level')
-            await updateDoc(userDoc, {
-              ['leveling.level']: amount,
-            })
-
-          callback.status = 'success'
-          callback.exp = exp
-          callback.level = level
-        } catch {
-          callback.status = 'error'
-        }
-
-        break
-      }
-      case 'DELETE': {
-        if (!member)
-          return client.logger.warn(
-            'Please enter the user ID you wish to delete experience data for.'
-          )
-        if (!leveling) {
-          callback.status = 'missing'
-          return client.logger.warn(
-            "The user's level information has disappeared."
-          )
-        }
-
-        try {
-          await updateDoc(userDoc, { leveling: deleteField() })
-          callback.status = 'success'
-        } catch {
-          callback.status = 'error'
-        }
-
-        break
-      }
+  switch (method) {
+    case 'GET': {
+      callback.status = 'success'
+      callback.exp = exp
+      callback.level = level
+      callback.levelup = levelup
+      break
     }
+    case 'GET/ALL': {
+      const usersSnapshot = await get(usersRef)
 
-    // Check if user has level up
-    if (exp >= levelup) {
-      const authorUsername = message.member
-        ? message.member.username
-        : message.user.username
-      const authorAvatar = message.member
-        ? message.member.displayAvatarURL()
-        : message.user.displayAvatarURL()
-      const levelSystemEmbed = new EmbedBuilder()
-        .setTitle(client.i18n.t('utils.databaseUtils.congratulations'))
-        .setDescription(
-          client.i18n
-            .t('utils.databaseUtils.level_up')
-            .replace('%s1', authorUsername)
-            .replace('%s2', level)
+      if (usersSnapshot.exists()) {
+        callback.status = 'success'
+        callback.users = usersSnapshot
+      } else {
+        callback.status = 'null'
+      }
+      break
+    }
+    case 'POST': {
+      if (!amount) {
+        callback.status = 'error'
+        return client.logger.warn('Please specify the amount of experience.')
+      }
+
+      try {
+        if (type === 'exp')
+          await update(
+            child(child(userRef, 'leveling'), 'exp'),
+            (exp += amount)
+          )
+        if (type === 'level')
+          await update(
+            child(child(userRef, 'leveling'), 'level'),
+            (level += amount)
+          )
+
+        callback.status = 'success'
+      } catch {
+        callback.status = 'error'
+      }
+      break
+    }
+    case 'PUT': {
+      try {
+        if (type === 'exp')
+          await update(child(child(userRef, 'leveling'), 'exp'), amount)
+        if (type === 'level')
+          await update(child(child(userRef, 'leveling'), 'level'), amount)
+
+        callback.status = 'success'
+        callback.exp = exp
+        callback.level = level
+      } catch {
+        callback.status = 'error'
+      }
+      break
+    }
+    case 'DELETE': {
+      if (!member)
+        return client.logger.warn(
+          'Please enter the user ID you wish to delete experience data for.'
         )
-        .setColor('Yellow')
-        .setThumbnail(authorAvatar)
+      if (!leveling) {
+        callback.status = 'missing'
+        return client.logger.warn(
+          "The user's level information has disappeared."
+        )
+      }
 
-      await updateDoc(userDoc, {
-        leveling: {
-          exp: (exp -= levelup),
-          level: ++level,
-        },
-      })
-
-      submitNotification(client, message.guild, 'general', levelSystemEmbed)
+      try {
+        await remove(child(userRef, 'leveling'))
+        callback.status = 'success'
+      } catch {
+        callback.status = 'error'
+      }
+      break
     }
-  } else {
-    await setDoc(userDoc, dataStructures(client, 'user'))
-    fetchLevel(client, message, method, { member, amount, type })
+  }
+
+  // Check if user has level up
+  if (exp >= levelup) {
+    const authorUsername = message.member
+      ? message.member.username
+      : message.user.username
+    const authorAvatar = message.member
+      ? message.member.displayAvatarURL()
+      : message.user.displayAvatarURL()
+    const levelSystemEmbed = new EmbedBuilder()
+      .setTitle(client.i18n.t('utils.databaseUtils.congratulations'))
+      .setDescription(
+        client.i18n
+          .t('utils.databaseUtils.level_up')
+          .replace('%s1', authorUsername)
+          .replace('%s2', level)
+      )
+      .setColor('Yellow')
+      .setThumbnail(authorAvatar)
+
+    await update(child(userRef, 'leveling'), {
+      exp: (exp -= levelup),
+      level: ++level,
+    })
+
+    submitNotification(client, message.guild, 'general', levelSystemEmbed)
   }
 
   return callback
@@ -397,12 +376,12 @@ const fetchStatistics = async (method, path, client) => {
  * @returns The function `submitNotification` returns the result of the `GuildChannel` method call.
  */
 const submitNotification = async (client, guild, eventName, embedData) => {
-  const guildDoc = doc(getFirestore(), 'guilds', guild.id)
-  const guildSnapshot = await getDoc(guildDoc)
+  const guildRef = child(ref(getDatabase(), 'guilds'), guild.id)
+  const guildSnapshot = await get(guildRef)
 
   if (!guildSnapshot.exists()) return null
 
-  const guildData = guildSnapshot.data()
+  const guildData = guildSnapshot.val()
   const notification = guildData.notification
 
   if (!notification) return null
@@ -462,80 +441,12 @@ const submitNotification = async (client, guild, eventName, embedData) => {
  * `language`, `memberCount`, `name`, and `verified`. These properties are used to initialize or
  */
 const initializeData = async (client, guild) => {
-  const guildDoc = doc(getFirestore(), 'guilds', guild.id)
-  const guildSnapshot = await getDoc(guildDoc)
+  const guildRef = child(ref(getDatabase(), 'guilds'), guild.id)
+  const guildSnapshot = await get(guildRef)
 
-  if (guildSnapshot.exists()) {
-    const guildData = guildSnapshot.data()
-
-    if (!guildData.joinedAt || guildData.joinedAt !== guild.joinedAt)
-      updateDoc(guildDoc, {
-        joinedAt: guild.joinedAt ?? dataStructures(client, 'guild').joinedAt,
-      })
-    if (!guildData.createdAt || guildData.createdAt !== guild.createdAt)
-      updateDoc(guildDoc, {
-        createdAt: guild.createdAt ?? dataStructures(client, 'guild').createdAt,
-      })
-    if (!guildData.description || guildData.description !== guild.description)
-      updateDoc(guildDoc, {
-        description:
-          guild.description ?? dataStructures(client, 'guild').description,
-      })
-    if (!guildData.iconURL || guildData.iconURL !== guild.iconURL())
-      updateDoc(guildDoc, {
-        iconURL: guild.iconURL() ?? dataStructures(client, 'guild').iconURL,
-      })
-    if (
-      !guildData.preferredLocale ||
-      guildData.preferredLocale !== guild.preferredLocale
-    )
-      updateDoc(guildDoc, {
-        preferredLocale:
-          guild.preferredLocale ||
-          dataStructures(client, 'guild').preferredLocale,
-      })
-    if (!guildData.memberCount || guildData.memberCount !== guild.memberCount)
-      updateDoc(guildDoc, {
-        memberCount:
-          guild.memberCount ?? dataStructures(client, 'guild').memberCount,
-      })
-    if (!guildData.name || guildData.name !== guild.name)
-      updateDoc(guildDoc, {
-        name: guild.name ?? dataStructures(client, 'guild').name,
-      })
-    if (!guildData.verified || guildData.verified !== guild.verified)
-      updateDoc(guildDoc, {
-        verified: guild.verified ?? dataStructures(client, 'guild').verified,
-      })
-    if (
-      !guildData?.language ||
-      typeof guildData?.language !== typeof dataStructures(client, 'language')
-    )
-      updateDoc(guildDoc, {
-        language: dataStructures(client, 'language'),
-      })
-
-    if (guildData?.language) {
-      if (guildData.language?.type === 'CUSTOM')
-        changeLanguage(client, guildData.language.locale)
-      if (guildData.language?.type === 'GUILD')
-        changeLanguage(client, guildData.preferredLocale)
-    }
-    if (guildData?.djs) {
-      if (
-        guildData.djs.roles &&
-        client.configs.djs.roles.join() !== guildData.djs.roles.join()
-      )
-        client.configs.djs.roles = guildData.djs.roles
-      if (
-        guildData.djs.users &&
-        client.configs.djs.users.join() !== guildData.djs.users.join()
-      )
-        client.configs.djs.users = guildData.djs.users
-    }
-  } else {
-    await setDoc(
-      guildDoc,
+  if (!guildSnapshot.exists()) {
+    await set(
+      guildRef,
       {
         joinedAt: guild.joinedAt ?? dataStructures(client, 'guild').joinedAt,
         createdAt: guild.createdAt ?? dataStructures(client, 'guild').createdAt,
@@ -553,7 +464,75 @@ const initializeData = async (client, guild) => {
       },
       { marge: true }
     )
-    initializeData(client, guild)
+    return initializeData(client, guild)
+  }
+
+  const guildData = guildSnapshot.val()
+
+  if (!guildData.joinedAt || guildData.joinedAt !== guild.joinedAt)
+    update(guildRef, {
+      joinedAt: guild.joinedAt ?? dataStructures(client, 'guild').joinedAt,
+    })
+  if (!guildData.createdAt || guildData.createdAt !== guild.createdAt)
+    update(guildRef, {
+      createdAt: guild.createdAt ?? dataStructures(client, 'guild').createdAt,
+    })
+  if (!guildData.description || guildData.description !== guild.description)
+    update(guildRef, {
+      description:
+        guild.description ?? dataStructures(client, 'guild').description,
+    })
+  if (!guildData.iconURL || guildData.iconURL !== guild.iconURL())
+    update(guildRef, {
+      iconURL: guild.iconURL() ?? dataStructures(client, 'guild').iconURL,
+    })
+  if (
+    !guildData.preferredLocale ||
+    guildData.preferredLocale !== guild.preferredLocale
+  )
+    update(guildRef, {
+      preferredLocale:
+        guild.preferredLocale ||
+        dataStructures(client, 'guild').preferredLocale,
+    })
+  if (!guildData.memberCount || guildData.memberCount !== guild.memberCount)
+    update(guildRef, {
+      memberCount:
+        guild.memberCount ?? dataStructures(client, 'guild').memberCount,
+    })
+  if (!guildData.name || guildData.name !== guild.name)
+    update(guildRef, {
+      name: guild.name ?? dataStructures(client, 'guild').name,
+    })
+  if (!guildData.verified || guildData.verified !== guild.verified)
+    update(guildRef, {
+      verified: guild.verified ?? dataStructures(client, 'guild').verified,
+    })
+  if (
+    !guildData?.language ||
+    typeof guildData?.language !== typeof dataStructures(client, 'language')
+  )
+    update(guildRef, {
+      language: dataStructures(client, 'language'),
+    })
+
+  if (guildData?.language) {
+    if (guildData.language?.type === 'CUSTOM')
+      changeLanguage(client, guildData.language.locale)
+    if (guildData.language?.type === 'GUILD')
+      changeLanguage(client, guildData.preferredLocale)
+  }
+  if (guildData?.djs) {
+    if (
+      guildData.djs.roles &&
+      client.configs.djs.roles.join() !== guildData.djs.roles.join()
+    )
+      client.configs.djs.roles = guildData.djs.roles
+    if (
+      guildData.djs.users &&
+      client.configs.djs.users.join() !== guildData.djs.users.join()
+    )
+      client.configs.djs.users = guildData.djs.users
   }
 }
 

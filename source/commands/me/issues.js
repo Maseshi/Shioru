@@ -4,7 +4,7 @@ const {
   Colors,
   PermissionFlagsBits,
 } = require('discord.js')
-const { getFirestore, collection, addDoc } = require('firebase/firestore')
+const { getDatabase, ref, child, push } = require('firebase/database')
 const { webhookSend } = require('../../utils/clientUtils')
 
 module.exports = {
@@ -78,8 +78,7 @@ module.exports = {
     const inputTitle = interaction.options.getString('title')
     const inputDescription = interaction.options.getString('description') ?? ''
 
-    const bugDoc = collection(getFirestore(), 'bugs')
-    const featureDoc = collection(getFirestore(), 'features')
+    const issuesRef = ref(getDatabase(), 'issues')
 
     const authorUid = interaction.user.id
     const authorTag = interaction.user.tag
@@ -116,7 +115,7 @@ module.exports = {
         webhookSend(interaction.client.configs.logger.issues, {
           embeds: [webhookLogEmbed],
         })
-        await addDoc(bugDoc, {
+        await push(child(issuesRef, 'bugs'), {
           title: inputTitle,
           description: inputDescription,
           user: authorTag,
@@ -165,7 +164,7 @@ module.exports = {
         webhookSend(interaction.client.configs.logger.issues, {
           embeds: [webhookLogEmbed],
         })
-        await addDoc(featureDoc, {
+        await push(child(issuesRef, 'features'), {
           title: inputTitle,
           description: inputDescription,
           user: authorTag,

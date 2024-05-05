@@ -1,5 +1,5 @@
 const { Collection, Events, PermissionsBitField } = require('discord.js')
-const { getFirestore, doc, getDoc } = require('firebase/firestore')
+const { getDatabase, ref, child, get } = require('firebase/database')
 const { changeLanguage } = require('../utils/clientUtils')
 const { catchError } = require('../utils/consoleUtils')
 const {
@@ -17,9 +17,9 @@ module.exports = {
     // Automatic settings data on database
     initializeData(interaction.client, interaction.guild)
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
-    const guildData = guildSnapshot.data()
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
+    const guildVal = guildSnapshot.val()
 
     const executeCommand = async (func, path) => {
       // Check if the command has a cooldown or not.
@@ -92,7 +92,7 @@ module.exports = {
     }
 
     // Set language by type
-    if (!guildData?.language.type || guildData?.language.type === 'USER')
+    if (!guildVal?.language.type || guildVal?.language.type === 'USER')
       changeLanguage(interaction.client, interaction.locale)
 
     // Increase user level

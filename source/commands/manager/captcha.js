@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
-const { getFirestore, doc, getDoc, setDoc } = require('firebase/firestore')
+const { getDatabase, ref, child, get, update } = require('firebase/database')
 
 module.exports = {
   permissions: [
@@ -61,23 +61,17 @@ module.exports = {
     const inputRole = interaction.options.getRole('role') ?? ''
     const inputCaptcha = interaction.options.getString('captcha') ?? ''
 
-    const guildDoc = doc(getFirestore(), 'guilds', interaction.guild.id)
-    const guildSnapshot = await getDoc(guildDoc)
-    const guildData = guildSnapshot.data()
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
+    const guildData = guildSnapshot.val()
 
     switch (subcommand) {
       case 'setup':
-        await setDoc(
-          guildDoc,
-          {
-            captcha: {
-              enable: true,
-              role: inputRole.id,
-              text: inputCaptcha,
-            },
-          },
-          { marge: true }
-        )
+        await update(child(guildRef, 'captcha'), {
+          enable: true,
+          role: inputRole.id,
+          text: inputCaptcha,
+        })
 
         await interaction.reply(
           interaction.client.i18n.t('commands.captcha.captcha_setup_success')
@@ -93,15 +87,9 @@ module.exports = {
             interaction.client.i18n.t('commands.captcha.currently_enable')
           )
 
-        await setDoc(
-          guildDoc,
-          {
-            captcha: {
-              enable: true,
-            },
-          },
-          { marge: true }
-        )
+        await update(child(guildRef, 'captcha'), {
+          enable: true,
+        })
         await interaction.reply(
           interaction.client.i18n.t('commands.captcha.enabled_captcha')
         )
@@ -116,15 +104,9 @@ module.exports = {
             interaction.client.i18n.t('commands.captcha.currently_disable')
           )
 
-        await setDoc(
-          guildDoc,
-          {
-            captcha: {
-              enable: false,
-            },
-          },
-          { marge: true }
-        )
+        await update(child(guildRef, 'captcha'), {
+          enable: false,
+        })
         await interaction.reply(
           interaction.client.i18n.t('commands.captcha.disabled_captcha')
         )

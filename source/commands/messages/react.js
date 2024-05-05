@@ -48,7 +48,7 @@ module.exports = {
           ),
           ephemeral: true,
         })
-      if (!emojis.length)
+      if (!emojis || !emojis.length)
         return await interaction.reply({
           content: interaction.client.i18n.t(
             'commands.react.look_like_is_not_emoji'
@@ -56,7 +56,7 @@ module.exports = {
           ephemeral: true,
         })
 
-      for (let emoji in emojis) {
+      for (const emoji of emojis) {
         await message.react(emoji)
       }
     } catch (error) {
