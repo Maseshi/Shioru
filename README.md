@@ -1,17 +1,15 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
   <strong>
-    <h1>Shioru</h2>
+    <h1>Shioru</h1>
     <p>Personal assistants in Discord that will help make your guild a better place.</p>
   </strong>
-  <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
-  <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
-    <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
-  </a>
+  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white
+  " />
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github
+  " />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F
+  " />
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru">
     <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
@@ -28,12 +26,13 @@
 Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
 <div align="center">
-  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
-    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
+  <a href="https://shiorus.web.app/invite">
+    <img src="https://img.shields.io/badge/Invite_Bot-_?style=for-the-badge&logo=discord&logoColor=white&color=blue
+    " />
   </a>
 </div>
 
-## Outstanding features
+## ✨ Outstanding features
 
 - Works on [Discord.js](https://discord.js.org/) v14
 - A wide variety of customizations can be made.
@@ -48,17 +47,17 @@ Your best personal assistants will help your guild look more lively. She can do 
 
 And many other interesting features...
 
-## Prerequisites
+## 🧩 Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
 - [Python](https://www.python.org/downloads/) v3.8.0 or higher
 - [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher
-- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) or [manual install](#1-install-build-tools)
 - [Firebase Tools](https://firebase.google.com/docs/cli)
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022)
 - [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## Installation
+## ⌛ Installation
 
 ### 1. Install **Build Tools**
 
@@ -66,18 +65,20 @@ Install **Build tools** by running the following command according to your opera
 
 - For Linux and MacOS operating systems
 
-```sh
-sudo apt update
-sudo apt install build-essential
-```
+  ```sh
+  sudo apt update
+  sudo apt install build-essential
+  ```
 
 - For Windows operating system
+  ```sh
+  npm install --global --production --add-python-to-path windows-build-tools
+  ```
 
-```sh
-npm install --global --production --add-python-to-path windows-build-tools
-```
-
-> **💡 TIP**: You can skip this step through the Node.js installer as shown in the following image. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+> [!TIP]
+> You can skip this step by checking the **Automatically install the necessary tools** option through the Node.js installer as shown in the following image.
+>
+> ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. Clone the bot and install the components.
 
@@ -88,7 +89,8 @@ npm install --global --production --add-python-to-path windows-build-tools
   npm install
   ```
 - Change the file name `.env.example` to `.env` and enter all required values.
-  > **💡 NOTE**: You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
+  > [!NOTE]
+  > You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
 
 ### 3. Setup bot and invite to join.
 
@@ -112,7 +114,8 @@ npm install --global --production --add-python-to-path windows-build-tools
 
 - Open a terminal and run `npm run emulators` to simulate the database system in **dev mode**.
 - Open a new terminal and run the command `npm run dev`.
-  > **💡 NOTE**: When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
+  > [!NOTE]
+  > When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
 
 ## ☕ Serve
 
@@ -120,7 +123,8 @@ Test the actual use by performing tasks similar to real use. The system will aut
 
 - Open a terminal and run `npm run emulators` to simulate the database system in **emulation mode**.
 - Open a new terminal and run the command `npm run serve`.
-  > **💡 NOTE:** You will automatically enter development mode as this is a production simulation. Cause some features may not work.
+  > [!NOTE]
+  > You will automatically enter development mode as this is a production simulation. Cause some features may not work.
 
 ## 🍵 Production
 
@@ -156,36 +160,27 @@ This operation requires [Docker](https://www.docker.com/products/docker-desktop/
 
 - Use the command `npm run docker:build` and wait for all the work to complete.
 - Then open the Docker program and run it with the required environment information (env) or use the command `npm run docker:run` and wait until the bot is running.
-  > **💡 NOTE**: You can check the functionality using the command `docker ps -a`.
+  > [!TIP]
+  > You can check the functionality using the command `docker ps -a`.
 
-## Quick Troubleshooting
+## ⚡ Quick Troubleshooting
 
-### `gyp ERR! stack Error: not found: make`
+- `gyp ERR! stack Error: not found: make`
 
-This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
+  This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
 
-### `@firebase/firestore: Firestore (10.6.0): GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
+- `GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
 
-It is possible that you have not yet simulated the database system on the machine in test mode. You can solve this problem by closing the bot and running the following command on another page.
+  It is possible that you have not yet simulated the database system on the machine in test mode. You can solve this problem by closing the bot and running the following command on another page.
 
-```bat
-npm run emulators
-```
+  ```bat
+  npm run emulators
+  ```
 
-## Improve Translate
+## 🌐 Improve Translate
 
 You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru).
 
-## Credits
-
-Thank you to all the original creators for allowing us to use these wonderful works of yours.
-
-Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
-
-## Found a problem
+## ⚠️ Found a problem
 
 If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
-
-## Google Translate
-
-The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.
