@@ -1,17 +1,15 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
   <strong>
-    <h1>Shioru</h2>
+    <h1>Shioru</h1>
     <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
-  <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
-  <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
-    <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
-  </a>
+  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white
+  " />
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github
+  " />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F
+  " />
   <a title="クラウディン" target="_blank" href="https://crowdin.com/project/shioru">
     <img src="https://badges.crowdin.net/shioru/localized.svg" />
   </a>
@@ -28,12 +26,13 @@
 เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
 
 <div align="center">
-  <a href="https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you">
-    <img src="https://img.shields.io/badge/Invite_Bot-1967D2?logo=discord&logoColor=white&style=for-the-badge" />
+  <a href="https://shiorus.web.app/invite">
+    <img src="https://img.shields.io/badge/Invite_Bot-_?style=for-the-badge&logo=discord&logoColor=white&color=blue
+    " />
   </a>
 </div>
 
-## 特徴
+## ✨ คุณสมบัติเด่น
 
 - [Discord.js](https://discord.js.org/) v14 で動作します。
 - ご希望の様々なアイテムをカスタマイズ可能
@@ -48,17 +47,17 @@
 
 他にもたくさんの興味深い機能があります...
 
-## 前提条件
+## 🧩 ข้อกำหนดเบื้องต้น
 
 - [Node.js](https://nodejs.org/) v20.6.0 หรือมากกว่า
 - [Python](https://www.python.org/downloads/) v3.8.0 หรือมากกว่า
 - [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 หรือมากกว่า
-- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) หรือ[ติดตั้งด้วยตัวเอง](#1-ติดตั้ง-build-tools)
 - [Firebase Tools](https://firebase.google.com/docs/cli)
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## การติดตั้ง
+## ⌛ การติดตั้ง
 
 ### 1. ติดตั้ง **Build Tools**
 
@@ -66,18 +65,19 @@
 
 - สำหรับระบบปฏิบัติการ Linux และ MacOS
 
-```sh
-sudo apt update
-sudo apt install build-essential
-```
+  ```sh
+  sudo apt update
+  sudo apt install build-essential
+  ```
 
 - สำหรับระบบปฏิบัติการ Windows
+  ```sh
+  npm install --global --production --add-python-to-path windows-build-tools
+  ```
 
-```sh
-npm install --global --production --add-python-to-path windows-build-tools
-```
-
-> **💡 ทริป**: คุณสามารถข้ามขั้นตอนนี้ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+> [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
+> 
+> ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
 
@@ -89,7 +89,7 @@ npm install --global --production --add-python-to-path windows-build-tools
   ```
 - ファイルの名前を変更します `.env.example` を `.env` として、必要なすべての値を挿入します。
 
-  > **💡 หมายเหตุ:** คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
+> [!NOTE] คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
 ### 3. ตั้งค่าบอทและเชิญเข้าร่วม
 
@@ -109,14 +109,18 @@ npm install --global --production --add-python-to-path windows-build-tools
 ## 🪛 การพัฒนา
 
 - เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดพัฒนา**
-- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run dev` > **💡 หมายเหตุ:** เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
+- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run dev`
+
+> [!NOTE] เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
 
 ## ☕ จำลอง
 
 ทดสอบการใช้งานจริงด้วยการทำงานที่คล้ายกับการใช้งานจริง โดยระบบจะคำนวณการแยกเศษของการทำงานตามจำนวนของกิลด์โดยอัตโนมัติ
 
 - เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดจำลอง**
-- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run serve` > **💡 หมายเหตุ:** คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ทำให้คุณสมบัติบางอย่างอาจไม่ทำงาน
+- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run serve`
+
+> [!NOTE] คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ทำให้คุณสมบัติบางอย่างอาจไม่ทำงาน
 
 ## 🍵 ใช้งานจริง
 
@@ -151,26 +155,28 @@ npm install --global --production --add-python-to-path windows-build-tools
 การดำเนินการนี้จำเป็นต้องมี [Docker](https://www.docker.com/products/docker-desktop/)
 
 - ใช้คำสั่ง `npm run docker:build` แล้วรอให้ทำงานเสร็จทั้งหมด
-- จากนั้นเปิดโปรแกรม Docker แล้วสั่งรันพร้อมกับใส่ข้อมูลสภาพแวดล้อมที่จำเป็น (env) หรือใช้คำสั่ง `npm run docker:run` แล้วรอจนบอททำงาน > **💡 หมายเหตุ:** คุณสามารถตรวจสอบการทำงานได้โดยใช้คำสั่ง `docker ps -a`
+- จากนั้นเปิดโปรแกรม Docker แล้วสั่งรันพร้อมกับใส่ข้อมูลสภาพแวดล้อมที่จำเป็น (env) หรือใช้คำสั่ง `npm run docker:run` แล้วรอจนบอททำงาน
 
-## แก้ไขปัญหาอย่างรวดเร็ว
+> [!TIP] คุณสามารถตรวจสอบการทำงานได้โดยใช้คำสั่ง `docker ps -a`
 
-### `gyp ERR! stack Error: not found: make`
+## ⚡ แก้ไขปัญหาอย่างรวดเร็ว
 
-ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
+- `gyp ERR! stack Error: not found: make`
 
-### `@firebase/firestore: Firestore (10.6.0): GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
+  ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
 
-เป็นไปได้ว่าคุณยังไม่ได้จำลองระบบฐานข้อมูลบนเครื่องในโหมดทดสอบ โดยคุณสามารถแก้ปัญหานี้ได้โดยปิดบอทแล้วรันคำสั่งดังนี้ในอีกหน้าหนึ่ง
+- `GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
 
-```bat
-npm run emulators
-```
+  เป็นไปได้ว่าคุณยังไม่ได้จำลองระบบฐานข้อมูลบนเครื่องในโหมดทดสอบ โดยคุณสามารถแก้ปัญหานี้ได้โดยปิดบอทแล้วรันคำสั่งดังนี้ในอีกหน้าหนึ่ง
 
-## ปรับปรุงการแปลภาษา
+  ```bat
+  npm run emulators
+  ```
+
+## 🌐 ปรับปรุงการแปลภาษา
 
 既存の言語または現在 [Crowdin](https://crowdin.com/project/shioru-bot). で利用できない言語の翻訳にご協力ください。
 
-## 問題が見つかりました
+## ⚠️ พบปัญหา
 
 หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issues](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
