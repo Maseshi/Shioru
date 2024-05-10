@@ -89,8 +89,9 @@ Install **Build tools** by running the following command according to your opera
   npm install
   ```
 - Change the file name `.env.example` to `.env` and enter all required values.
-  > [!NOTE]
-  > You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
+
+> [!NOTE]
+> You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
 
 ### 3. Setup bot and invite to join.
 
@@ -114,8 +115,9 @@ Install **Build tools** by running the following command according to your opera
 
 - Open a terminal and run `npm run emulators` to simulate the database system in **dev mode**.
 - Open a new terminal and run the command `npm run dev`.
-  > [!NOTE]
-  > When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
+
+> [!NOTE]
+> When you enter development mode. Some features may be disabled, such as sending statistics, updating data, etc.
 
 ## ☕ Serve
 
@@ -123,8 +125,9 @@ Test the actual use by performing tasks similar to real use. The system will aut
 
 - Open a terminal and run `npm run emulators` to simulate the database system in **emulation mode**.
 - Open a new terminal and run the command `npm run serve`.
-  > [!NOTE]
-  > You will automatically enter development mode as this is a production simulation. Cause some features may not work.
+
+> [!NOTE]
+> You will automatically enter development mode as this is a production simulation. Cause some features may not work.
 
 ## 🍵 Production
 
@@ -160,8 +163,9 @@ This operation requires [Docker](https://www.docker.com/products/docker-desktop/
 
 - Use the command `npm run docker:build` and wait for all the work to complete.
 - Then open the Docker program and run it with the required environment information (env) or use the command `npm run docker:run` and wait until the bot is running.
-  > [!TIP]
-  > You can check the functionality using the command `docker ps -a`.
+
+> [!TIP]
+> You can check the functionality using the command `docker ps -a`.
 
 ## ⚡ Quick Troubleshooting
 
