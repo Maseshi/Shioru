@@ -12,9 +12,7 @@ const {
 } = require('discord.js')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'guild list, get [about(String)]',
   data: new SlashCommandBuilder()
     .setName('guild')
     .setDescription('Get information about the guild.')

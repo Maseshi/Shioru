@@ -6,9 +6,7 @@ const {
 const { fetchLevel } = require('../../utils/databaseUtils')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'leveling [member]',
   data: new SlashCommandBuilder()
     .setName('leveling')
     .setDescription('See information about your level.')

@@ -6,9 +6,7 @@ const {
 } = require('discord.js')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'status <type>',
   data: new SlashCommandBuilder()
     .setName('status')
     .setDescription('Check the status of all members within the server')

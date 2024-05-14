@@ -6,9 +6,7 @@ const {
 } = require('discord.js')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'user: list, get [about(String)] [member(GuildMember)]',
   data: new SlashCommandBuilder()
     .setName('user')
     .setDescription('Get your user information')
