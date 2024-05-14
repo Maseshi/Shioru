@@ -38,7 +38,6 @@ const {
 } = require('./utils/servicesUtils')
 const configs = require('./configs/data')
 
-process.env.TERM = 'xterm'
 startScreen()
 
 const child = logger.child({}, { msgPrefix: '[Shard] ' })
