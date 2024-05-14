@@ -3,13 +3,10 @@ const {
   AttachmentBuilder,
   PermissionFlagsBits,
 } = require('discord.js')
-const axios = require('axios').default
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'osu <username(String)> [mode(String)] [layout(String)]',
   data: new SlashCommandBuilder()
     .setName('osu')
     .setDescription('Generate profile statistics from osu! game.')
@@ -195,28 +192,32 @@ module.exports = {
 
     await interaction.deferReply()
 
+    const url = new URL(
+      inputLayout === 'skills'
+        ? 'https://osu-sig.vercel.app/skills'
+        : 'https://osu-sig.vercel.app/card'
+    )
+    const params = {
+      user: inputUsername,
+      mode: inputMode,
+      lang: 'en',
+      animation: inputAnimation,
+      skills: inputLayout === 'full_skills',
+      mini: inputLayout === 'mini',
+      ranking_display: inputRanking === 'global' ? null : inputRanking,
+      w: inputWidth,
+      h: inputHeight,
+      blur: inputBlur,
+      round_avatar: inputRounded,
+    }
+
+    for (const key in params) {
+      url.searchParams.append(key, params[key])
+    }
+
     try {
-      const response = await axios.get(
-        inputLayout === 'skills'
-          ? 'https://osu-sig.vercel.app/skills'
-          : 'https://osu-sig.vercel.app/card',
-        {
-          params: {
-            user: inputUsername,
-            mode: inputMode,
-            language: 'en',
-            animation: inputAnimation,
-            skills: inputLayout === 'full_skills',
-            mini: inputLayout === 'mini',
-            ranking_display: inputRanking === 'global' ? null : inputRanking,
-            w: inputWidth,
-            h: inputHeight,
-            blur: inputBlur,
-            round_avatar: inputRounded,
-          },
-        }
-      )
-      const responseURL = response.request.res.responseUrl
+      const response = await fetch(url)
+      const responseURL = response.url
       const attachment = new AttachmentBuilder(responseURL, {
         name: `${inputUsername}.svg`,
       })

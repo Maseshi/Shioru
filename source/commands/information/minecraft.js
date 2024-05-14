@@ -5,12 +5,9 @@ const {
   PermissionFlagsBits,
   Colors,
 } = require('discord.js')
-const { get } = require('axios').default
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'minecraft',
   data: new SlashCommandBuilder()
     .setName('minecraft')
     .setDescription('Check server or skin status in Minecraft.')
@@ -58,6 +55,8 @@ module.exports = {
     const inputIP = interaction.options.getString('ip') ?? ''
     const inputName = interaction.options.getString('name') ?? ''
 
+    await interaction.deferReply()
+
     const clientUsername = interaction.client.user.username
     const clientAvatar = interaction.client.user.displayAvatarURL()
 
@@ -94,83 +93,86 @@ module.exports = {
               'https://em-content.zobj.net/thumbs/120/microsoft/319/three-oclock_1f552.png',
           })
 
-        try {
-          const response = await get('https://api.mcsrvstat.us/2/' + inputIP)
+        const response = await fetch(
+          `https://api.mcsrvstat.us/2/${inputIP.toLowerCase()}`
+        )
 
-          if (!response.data.online)
-            return await interaction.reply({
-              embeds: [statusErrorEmbed],
-            })
+        if (response.status !== 200)
+          return await interaction.editReply({ embeds: [statusErrorEmbed] })
 
-          const host = response.data.hostname
-          const ip = response.data.ip
-          const icon = response.data.icon
-            ? new AttachmentBuilder(
-                new Buffer.from(response.data.icon.split(',')[1], 'base64'),
-                { name: 'icon.png' }
-              )
-            : ''
-          const port = response.data.port.toString()
-          const version =
-            response.data.version ??
-            interaction.client.i18n.t('commands.minecraft.do_not_have')
-          const maxPlayers = response.data.players.max.toString()
-          const onlinePlayers = response.data.players.online
-            ? response.data.players.online.toString()
-            : interaction.client.i18n.t('commands.minecraft.do_not_have')
-          const motd = response.data.motd.clean.join('\n')
+        const data = await response.json()
 
-          statusEmbed
-            .setThumbnail(response.data.icon ? 'attachment://icon.png' : null)
-            .addFields(
-              {
-                name: interaction.client.i18n.t('commands.minecraft.address'),
-                value: host,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t('commands.minecraft.ip'),
-                value: ip,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t('commands.minecraft.port'),
-                value: port,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t('commands.minecraft.version'),
-                value: version,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t(
-                  'commands.minecraft.maximum_player_count'
-                ),
-                value: maxPlayers,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t(
-                  'commands.minecraft.player_in_server'
-                ),
-                value: onlinePlayers,
-                inline: true,
-              },
-              {
-                name: interaction.client.i18n.t('commands.minecraft.motd'),
-                value: '```' + motd + '```',
-                inline: false,
-              }
-            )
-
-          await interaction.reply({
-            embeds: [statusEmbed],
-            files: [response.data.icon ? icon : null],
+        if (!data.online)
+          return await interaction.editReply({
+            embeds: [statusErrorEmbed],
           })
-        } catch (error) {
-          await interaction.reply({ embeds: [statusErrorEmbed] })
-        }
+
+        const host = data.hostname
+        const ip = data.ip
+        const icon = data.icon
+          ? new AttachmentBuilder(
+              new Buffer.from(data.icon.split(',')[1], 'base64'),
+              { name: 'icon.png' }
+            )
+          : ''
+        const port = data.port.toString()
+        const version =
+          data.version ??
+          interaction.client.i18n.t('commands.minecraft.do_not_have')
+        const maxPlayers = data.players.max.toString()
+        const onlinePlayers = data.players.online
+          ? data.players.online.toString()
+          : interaction.client.i18n.t('commands.minecraft.do_not_have')
+        const motd = data.motd.clean.join('\n')
+
+        statusEmbed
+          .setThumbnail(data.icon ? 'attachment://icon.png' : null)
+          .addFields(
+            {
+              name: interaction.client.i18n.t('commands.minecraft.address'),
+              value: host,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t('commands.minecraft.ip'),
+              value: ip,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t('commands.minecraft.port'),
+              value: port,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t('commands.minecraft.version'),
+              value: version,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t(
+                'commands.minecraft.maximum_player_count'
+              ),
+              value: maxPlayers,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t(
+                'commands.minecraft.player_in_server'
+              ),
+              value: onlinePlayers,
+              inline: true,
+            },
+            {
+              name: interaction.client.i18n.t('commands.minecraft.motd'),
+              value: `\`\`\`${motd}\`\`\``,
+              inline: false,
+            }
+          )
+
+        await interaction.editReply({
+          embeds: [statusEmbed],
+          files: data.icon ? [icon] : [],
+        })
         break
       }
       case 'skin': {
@@ -181,11 +183,11 @@ module.exports = {
           .setImage('attachment://skin.png')
           .setTimestamp()
 
-        await interaction.reply({
+        await interaction.editReply({
           embeds: [skinEmbed],
           files: [
             new AttachmentBuilder(
-              'https://minotar.net/armor/body/' + inputName + '/700.png',
+              `https://minotar.net/armor/body/${inputName}/700.png`,
               { name: 'skin.png' }
             ),
           ],
