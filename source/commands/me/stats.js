@@ -24,7 +24,7 @@ module.exports = {
       .setAuthor({ iconURL: clientAvatar, name: clientUsername })
       .setThumbnail()
 
-    if (interaction.client.shard && interaction.client.shard.count) {
+    if (interaction.client.shard && interaction.client.shard.count > 1) {
       const promises = [
         interaction.client.shard.fetchClientValues('guilds.cache.size'),
         interaction.client.shard.broadcastEval((c) =>
