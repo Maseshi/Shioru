@@ -1,5 +1,3 @@
-const { AutoPoster } = require('topgg-autoposter')
-const { get, post } = require('axios').default
 const { logger } = require('./consoleUtils')
 const { version } = require('../../package.json')
 const configs = require('../configs/data')
@@ -21,17 +19,18 @@ const updateChecker = async () => {
   child.info('Checking for updates from Github...')
 
   try {
-    const response = await get(releasesURL)
+    const response = await fetch(releasesURL)
 
     if (response.status !== 200)
       child.warn('Unable to detect latest version at this time.')
-    if (response.data) {
-      if (version >= response.data.tag_name) {
+
+    const data = await response.json()
+
+    if (data) {
+      if (version >= data.tag_name) {
         child.info('Currently using the latest version.')
       } else {
-        child.info(
-          `Update is available ${version} -> ${response.data.tag_name}).`
-        )
+        child.info(`Update is available ${version} -> ${data.tag_name}).`)
         child.info('Run npm pull to update')
       }
     }
@@ -70,19 +69,19 @@ const systemMetricsSubmitter = () => {
     const randomValue = Math.floor(Math.random() * 1000)
 
     try {
-      await post(
+      await fetch(
         `https://api.statuspage.io/v1/pages/${pageId}/metrics/${metricId}/data.json`,
-        {
-          data: {
-            timestamp: currentTimestamp,
-            value: randomValue,
-          },
-        },
         {
           headers: {
             Authorization: `OAuth ${apiKey}`,
             'Content-Type': 'application/json',
           },
+          body: JSON.stringify({
+            data: {
+              timestamp: currentTimestamp,
+              value: randomValue,
+            },
+          }),
         }
       )
 
@@ -126,20 +125,55 @@ const statisticsSubmitter = (client) => {
 
   if (!topGGToken) return
 
-  const child = logger.child({}, { msgPrefix: '[SSSu] ' })
+  let intervalID = null
+  const child = logger.child({}, { msgPrefix: '[STSu] ' })
 
   child.info('Sending statistics data to Top.gg...')
 
-  const poster = AutoPoster(topGGToken, client)
+  try {
+    intervalID = setInterval(async () => {
+      if (client.shards.size > 0 && client.shards.every((shard) => shard.ready))
+        return
+      const results = await client.fetchClientValues('guilds.cache.size')
+      const guildCount = results.reduce(
+        (acc, guildCount) => acc + guildCount,
+        0
+      )
+      const shardCount = results.length
+      const response = await fetch('https://top.gg/api/bots/stats', {
+        method: 'POST',
+        headers: {
+          Authorization: topGGToken,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          server_count: guildCount,
+          shard_count: shardCount,
+        }),
+      })
 
-  poster.on('posted', (stats) => {
-    child.info(
-      `Posted statistics data to Top.gg with ${stats.serverCount} servers`
+      if (response.status !== 200) {
+        child.warn(
+          {
+            url: response.url,
+            status: {
+              id: response.status,
+              text: response.statusText,
+            },
+          },
+          'Unable to post statistical data to Top.gg.'
+        )
+        return clearInterval(intervalID)
+      }
+    }, 1800000)
+
+    child.info(`Posted statistics data to Top.gg.`)
+  } catch (error) {
+    child.error(
+      error,
+      'An error occurred while sending statistics data to Top.gg.'
     )
-  })
-  poster.on('error', (error) => {
-    child.error(error, `Unable to post statistical data to Top.gg.`)
-  })
+  }
 }
 
 module.exports = {
