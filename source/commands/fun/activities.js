@@ -3,7 +3,6 @@ const {
   PermissionFlagsBits,
   ChannelType,
 } = require('discord.js')
-const { post } = require('axios').default
 
 module.exports = {
   permissions: [
@@ -131,6 +130,8 @@ module.exports = {
     const inputName = interaction.options.getString('name')
     const inputChannel = interaction.options.getChannel('channel')
 
+    await interaction.deferReply()
+
     const token = interaction.client.configs.token
     const voiceChannel = interaction.member.voice.channel
     const apps = {
@@ -159,53 +160,47 @@ module.exports = {
     }
 
     if (!inputChannel && !voiceChannel)
-      return await interaction.reply(
+      return await interaction.editReply(
         interaction.client.i18n.t('commands.activities.user_not_in_channel')
       )
 
-    try {
-      const response = await post(
-        `https://discord.com/api/v10/channels/${voiceChannel.id}/invites`,
-        {
+    const response = await fetch(
+      `https://discord.com/api/v10/channels/${inputChannel.id || voiceChannel.id}/invites`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bot ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           max_age: 86400,
           max_uses: 0,
           target_application_id: apps[inputName],
           target_type: 2,
           temporary: false,
           validate: null,
-        },
-        {
-          headers: {
-            Authorization: `Bot ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+        }),
+      }
+    )
 
-      if (response.data.error || !response.data.code)
-        return await interaction.reply(
-          interaction.client.i18n.t('commands.activities.can_not_open', {
-            activity_name: inputName,
-          })
-        )
-      if (Number(response.data.code) === 50013)
-        return await interaction.reply(
-          interaction.client.i18n.t(
-            'commands.activities.do_not_have_permission'
-          )
-        )
-
-      await interaction.reply(
-        interaction.client.i18n.t('commands.activities.join_via_this_link', {
-          code: response.data.code,
-        })
-      )
-    } catch (error) {
-      await interaction.reply(
+    if (response.status !== 200)
+      return await interaction.editReply(
         interaction.client.i18n.t('commands.activities.can_not_open', {
           activity_name: inputName,
         })
       )
-    }
+
+    const data = await response.json()
+
+    if (data.code && Number(data.code) === 50013)
+      return await interaction.editReply(
+        interaction.client.i18n.t('commands.activities.do_not_have_permission')
+      )
+
+    await interaction.editReply(
+      interaction.client.i18n.t('commands.activities.join_via_this_link', {
+        code: data.code,
+      })
+    )
   },
 }

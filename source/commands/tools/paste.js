@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
-const { post } = require('axios').default
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -41,35 +40,40 @@ module.exports = {
     const inputDescription = interaction.options.getString('description') ?? ''
     const inputContent = interaction.options.getString('content')
 
-    const response = await post('https://sourceb.in/api/bins', {
-      title: inputTitle,
-      description: inputDescription,
-      files: [
-        {
-          name: inputTitle,
-          content: inputContent,
-        },
-      ],
+    await interaction.deferReply()
+
+    const response = await fetch('https://sourceb.in/api/bins', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: inputTitle,
+        description: inputDescription,
+        files: [
+          {
+            name: inputTitle,
+            content: inputContent,
+          },
+        ],
+      }),
     })
 
     if (response.status !== 200)
-      return await interaction.reply(
+      return await interaction.editReply(
         interaction.client.i18n.t('commands.paste.backend_not_response')
       )
 
-    const key = response.data.key
-    const url = `https://sourceb.in/${key}`
-    const raw = `https://cdn.sourceb.in/bins/${key}/0`
+    const data = await response.json()
+    const url = `https://sourceb.in/${data.key}`
+    const raw = `https://cdn.sourceb.in/bins/${data.key}/0`
 
-    await interaction.reply(
+    await interaction.editReply(
       [
         '**Sourcebin**',
-        `🔸 ${interaction.client.i18n.t('commands.paste.file')}: <%s1>`,
-        `🔹 ${interaction.client.i18n.t('commands.paste.raw')}: <%s2>`,
-      ]
-        .join('\n')
-        .replace('%s1', url)
-        .replace('%s2', raw)
+        `🔸 ${interaction.client.i18n.t('commands.paste.file')}: <${url}>`,
+        `🔹 ${interaction.client.i18n.t('commands.paste.raw')}: <${raw}>`,
+      ].join('\n')
     )
   },
 }

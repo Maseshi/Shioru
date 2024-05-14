@@ -6,7 +6,6 @@ const {
   ButtonBuilder,
   ButtonStyle,
 } = require('discord.js')
-const { get } = require('axios').default
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -19,26 +18,34 @@ module.exports = {
     .setDefaultMemberPermissions()
     .setDMPermission(true),
   async execute(interaction) {
+    await interaction.deferReply()
+
     const clientAvatar = interaction.client.user.avatarURL()
     const clientUsername = interaction.client.user.username
-    const clientTopGgID = interaction.client.configs.top_gg.id
+    const clientUserID = interaction.client.user.id
 
     const topName = 'top.gg'
     const topColor = '#FF3366'
     const topURL = 'https://top.gg'
     const topFavicon = `${topURL}/favicon.png`
-    const topBotLink = `${topURL}/bot/${clientTopGgID}`
-    const topResponse = await get(`${topURL}/api/bots/${clientTopGgID}`, {
+    const topBotLink = `${topURL}/bot/${clientUserID}`
+    const response = await fetch(`${topURL}/api/bots/${clientUserID}`, {
       headers: {
-        Authorization: interaction.client.configs.top_gg.token,
+        Authorization: interaction.client.configs.top_gg_token,
       },
     })
 
-    const date = new Date(topResponse.data.date)
-    const invite = topResponse.data.invite
-    const point = topResponse.data.points
-    const shortDescription = topResponse.data.shortdesc
-    const tags = topResponse.data.tags.join(', ')
+    if (response.status !== 200)
+      return await interaction.editReply(
+        interaction.client.i18n.t('commands.vote.not_found')
+      )
+
+    const data = await response.json()
+    const date = new Date(data.date)
+    const invite = data.invite
+    const point = data.points
+    const shortDescription = data.shortdesc
+    const tags = data.tags.join(', ')
 
     const voteRow = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -46,7 +53,7 @@ module.exports = {
         .setLabel(interaction.client.i18n.t('commands.vote.invite'))
         .setStyle(ButtonStyle.Link),
       new ButtonBuilder()
-        .setURL(topBotLink + '/vote')
+        .setURL(`${topBotLink}/vote`)
         .setLabel(interaction.client.i18n.t('commands.vote.vote'))
         .setStyle(ButtonStyle.Link)
     )
@@ -72,7 +79,7 @@ module.exports = {
       .setFooter({ text: interaction.client.i18n.t('commands.vote.added') })
       .setAuthor({ name: topName, iconURL: topFavicon, url: topURL })
 
-    await interaction.reply({
+    await interaction.editReply({
       embeds: [voteEmbed],
       components: [voteRow],
     })

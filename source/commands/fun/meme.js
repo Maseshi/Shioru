@@ -8,8 +8,6 @@ const {
   Colors,
   resolveColor,
 } = require('discord.js')
-const { randomInt } = require('../../utils/miscUtils')
-const { get } = require('axios').default
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -28,23 +26,27 @@ module.exports = {
         .setDescriptionLocalizations({
           th: 'หมวดหมู่ของมีมที่ต้องการ',
         })
-        .setRequired(true)
     ),
   async execute(interaction) {
     const inputCategory = interaction.options.getString('category') ?? ''
 
+    await interaction.deferReply()
+
     const randomEmbed = async (choice) => {
       const category = ['meme', 'Memes_Of_The_Dank', 'memes', 'dankmemes']
-      const random = choice ? choice : category[randomInt(category.length)]
+      const random = choice
+        ? choice
+        : category[Math.floor(Math.random() * category.length)]
 
       try {
-        const response = await get(
-          'https://www.reddit.com/r/' + random + '/random/.json'
+        const response = await fetch(
+          `https://www.reddit.com/r/${random}/random/.json`
         )
+        const post = await response.json()
 
-        if (!Array.isArray(response.data) || response.data.length === 0) {
+        if (!Array.isArray(post) || !post.length) {
           return new EmbedBuilder()
-            .setColor('Red')
+            .setColor(Colors.Red)
             .setDescription(
               interaction.client.i18n
                 .t('commands.meme.meme_not_found')
@@ -52,14 +54,13 @@ module.exports = {
             )
         }
 
-        const permalink = response.data[0].data.children[0].data.permalink
+        const permalink = post[0].data.children[0].data.permalink
         const memeUrl = `https://reddit.com${permalink}`
-        const memeImage = response.data[0].data.children[0].data.url
-        const memeTitle = response.data[0].data.children[0].data.title
-        const memeUpvotes = response.data[0].data.children[0].data.ups
-        const memeNumComments =
-          response.data[0].data.children[0].data.num_comments
-        const memeCreate = response.data[0].data.children[0].data.created
+        const memeImage = post[0].data.children[0].data.url
+        const memeTitle = post[0].data.children[0].data.title
+        const memeUpvotes = post[0].data.children[0].data.ups
+        const memeNumComments = post[0].data.children[0].data.num_comments
+        const memeCreate = post[0].data.children[0].data.created
 
         return new EmbedBuilder()
           .setTitle(memeTitle)
@@ -89,7 +90,7 @@ module.exports = {
         .setEmoji('🔁')
     )
 
-    await interaction.reply({
+    await interaction.editReply({
       embeds: [memeEmbed],
       components: [buttonRow],
     })

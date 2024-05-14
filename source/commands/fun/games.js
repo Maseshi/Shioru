@@ -18,7 +18,6 @@ const {
   Wordle,
   WouldYouRather,
 } = require('discord-gamecord')
-const { get } = require('axios')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -533,13 +532,14 @@ module.exports = {
         break
       }
       case 'fast-type': {
-        const response = await get('http://metaphorpsum.com/paragraphs/1/1')
+        const response = await fetch('http://metaphorpsum.com/paragraphs/1/1')
 
         if (response.status !== 200)
           return interaction.reply(
             interaction.client.i18n.t('commands.games.words_api_not_response')
           )
 
+        const data = await response.json()
         const game = new FastType({
           message: interaction,
           isSlashGame: true,
@@ -554,7 +554,7 @@ module.exports = {
             ),
           },
           timeoutTime: 60000,
-          sentence: response.data,
+          sentence: data,
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_fast_type',
             {
