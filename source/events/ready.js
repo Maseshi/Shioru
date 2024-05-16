@@ -1,4 +1,10 @@
-const { EmbedBuilder, Colors, Events, ActivityType } = require('discord.js')
+const {
+  EmbedBuilder,
+  Colors,
+  Events,
+  ActivityType,
+  PresenceUpdateStatus,
+} = require('discord.js')
 const { getApps } = require('firebase/app')
 const {
   getDatabase,
@@ -149,6 +155,7 @@ module.exports = {
         },
         {
           name: '/help',
+          state: '🪺',
           type: ActivityType.Watching,
         },
         {
@@ -179,7 +186,7 @@ module.exports = {
       client.mode === 'start' ? activities.production : activities.development
 
     client.user.setPresence({
-      status: 'available',
+      status: PresenceUpdateStatus.Online,
       afk: false,
       activities: activityType,
     })
