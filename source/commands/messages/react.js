@@ -60,6 +60,11 @@ module.exports = {
         await message.react(emoji)
       }
     } catch (error) {
+      if (error.code === 10014)
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.react.do_not_have_emoji')
+        )
+
       catchError(
         interaction.client,
         interaction,
