@@ -88,8 +88,8 @@ if (
 }
 if (!configs.test_guild)
   logger.warn('CONF: The test_guild was not found in the configuration file.')
-if (!configs.weatherbit_token)
-  logger.warn('CONF: The weatherbit_token was not found in the environment.')
+if (!configs.open_weather_token)
+  logger.warn('CONF: The open_weather_token was not found in the environment.')
 
 try {
   if (!configs.server.apiKey)
