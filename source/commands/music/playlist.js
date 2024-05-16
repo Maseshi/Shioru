@@ -4,7 +4,7 @@ const {
   PermissionFlagsBits,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
-const { validateURL } = require('../../utils/miscUtils')
+const { containsURL } = require('../../utils/miscUtils')
 
 module.exports = {
   permissions: [
@@ -84,7 +84,7 @@ module.exports = {
     const voiceChannel = interaction.member.voice.channel
     const meChannel = interaction.guild.members.me.voice.channel
     const songs = inputSongs.split(/[ ,]+/)
-    const filteredSongs = songs.filter((song) => validateURL(song))
+    const filteredSongs = songs.filter((song) => containsURL(song))
 
     if (queue && djs.enable) {
       if (

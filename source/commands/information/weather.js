@@ -4,7 +4,7 @@ const {
   Colors,
   PermissionFlagsBits,
 } = require('discord.js')
-const { newLines, createID } = require('../../utils/miscUtils')
+const { newLines, newID } = require('../../utils/miscUtils')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -95,7 +95,7 @@ module.exports = {
         interaction.client.i18n.t('commands.weather.no_token_provider')
       )
 
-    const query = createID(inputCity)
+    const query = newID(inputCity)
     const geoResponse = await geoService(query, token)
 
     if (typeof geoResponse === 'number')
