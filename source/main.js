@@ -27,6 +27,7 @@ const {
   Client,
   GatewayIntentBits,
   Partials,
+  PresenceUpdateStatus,
   ActivityType,
 } = require('discord.js')
 const { join } = require('node:path')
@@ -143,12 +144,12 @@ const client = new Client({
     Partials.ThreadMember,
   ],
   presence: {
-    status: 'dnd',
+    status: PresenceUpdateStatus.Idle,
     afk: true,
     activities: [
       {
-        name: 'information of each server',
-        type: ActivityType.Watching,
+        name: 'America Ya :D',
+        type: ActivityType.Custom,
       },
     ],
   },
