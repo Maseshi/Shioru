@@ -84,7 +84,7 @@ module.exports = {
   token: process.env.TOKEN ?? '',
 
   // Setup Top.gg
-  top_gg_token: process.env.TOP_GG_API_KEY ?? '',
+  top_gg_token: process.env.TOP_GG_TOKEN ?? '',
 
   // Translation support locales
   translation: translation,
@@ -92,6 +92,6 @@ module.exports = {
   // Last time that personal information was updated
   update: '2021-02-26T20:08:27.467Z',
 
-  // Setup Weatherbit
-  weatherbit_token: process.env.WEATHERBIT_KEY ?? '',
+  // Setup Open Weather
+  open_weather_token: process.env.OPEN_WEATHER_TOKEN ?? '',
 }
