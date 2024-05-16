@@ -228,12 +228,12 @@ module.exports = {
       const cooldown = clientContext.cooldown
       const clientPermissions = clientContext.permissions
         ? new PermissionsBitField(clientContext.permissions).toArray()
-        : interaction.client.i18n.t('commands.help.command_none')
+        : interaction.client.i18n.t('commands.help.none')
       const userPermissions = guildCommand.default_member_permissions
         ? new PermissionsBitField(
             guildCommand.default_member_permissions
           ).toArray()
-        : interaction.client.i18n.t('commands.help.command_none')
+        : interaction.client.i18n.t('commands.help.none')
 
       embed.setDescription(
         helpContexts
@@ -271,12 +271,12 @@ module.exports = {
       const usage = clientCommand.usage
       const clientPermissions = clientCommand.permissions
         ? new PermissionsBitField(clientCommand.permissions).toArray()
-        : interaction.client.i18n.t('commands.help.command_none')
+        : interaction.client.i18n.t('commands.help.none')
       const userPermissions = guildCommand.default_member_permissions
         ? new PermissionsBitField(
             guildCommand.default_member_permissions
           ).toArray()
-        : interaction.client.i18n.t('commands.help.command_none')
+        : interaction.client.i18n.t('commands.help.none')
       const options = guildCommand.options
         ? newLines(
             ...guildCommand.options
@@ -292,7 +292,7 @@ module.exports = {
                   (option.description_localizations
                     ? option.description_localizations[interaction.locale]
                     : option.description) ??
-                  interaction.client.i18n.t('commands.help.command_none')
+                  interaction.client.i18n.t('commands.help.none')
                 const optionOptions = option.options
                   ? option.options
                       .filter((option) =>
@@ -309,9 +309,7 @@ module.exports = {
                                 interaction.locale
                               ]
                             : option.description) ??
-                          interaction.client.i18n.t(
-                            'commands.help.command_none'
-                          )
+                          interaction.client.i18n.t('commands.help.none')
 
                         return ` - </${name} ${optionName} ${subOptionName}:${id}>: ${subOptionDescription}`
                       })
@@ -324,8 +322,8 @@ module.exports = {
                     )
                   : `- </${name} ${optionName}:${id}>: ${optionDescription}`
               })
-          ) || interaction.client.i18n.t('commands.help.command_none')
-        : interaction.client.i18n.t('commands.help.command_none')
+          ) || interaction.client.i18n.t('commands.help.none')
+        : interaction.client.i18n.t('commands.help.none')
 
       embed.setDescription(
         helpCommand

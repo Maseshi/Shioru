@@ -443,9 +443,12 @@ module.exports = {
         reject: interaction.client.i18n.t('commands.games.reject'),
       },
       reqTimeoutTime: 60000,
-      requestMessage: interaction.client.i18n.t('commands.games.accept', {
-        player: '{player}',
-      }),
+      requestMessage: interaction.client.i18n.t(
+        'commands.games.invite_to_play_game',
+        {
+          player: '{player}',
+        }
+      ),
       rejectMessage: interaction.client.i18n.t('commands.games.player_reject'),
       reqTimeoutMessage: interaction.client.i18n.t(
         'commands.games.player_not_response'

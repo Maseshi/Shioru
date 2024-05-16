@@ -136,13 +136,13 @@ module.exports = {
       case 'remove': {
         await member.timeout(null, inputReason)
         await member.send(
-          interaction.client.i18n.t('commands.untimeout.untimeout_dm_to_user', {
+          interaction.client.i18n.t('commands.timeout.untimeout_dm_to_user', {
             guild: interaction.guild.name,
             reason: inputReason,
           })
         )
         await interaction.reply(
-          interaction.client.i18n.t('commands.untimeout.success_untimeout', {
+          interaction.client.i18n.t('commands.timeout.success_untimeout', {
             user: member.tag,
             reason: inputReason,
           })
