@@ -63,9 +63,20 @@ const newLines = (...string) => {
   return string.join('\n')
 }
 
+/**
+ * Generates an ID by replacing non-word characters in the input string with hyphens.
+ *
+ * @param {string} string - The input string to generate the ID from.
+ * @returns {string} - The generated ID with non-word characters replaced by hyphens.
+ */
+const createID = (string) => {
+  return string.replaceAll(/([[\]{}_.:-])\s?/g, '-')
+}
+
 module.exports = {
   currencyFormatter,
   validateURL,
   matchEmotes,
   newLines,
+  createID,
 }
