@@ -54,7 +54,7 @@ module.exports = (client) => {
       )
     }
 
-    client.contexts.set(context.name, context)
+    client.contexts.set(context.data.name, context)
     client.temp.contexts.set(context.data.name, {
       type: context.data.type ?? 0,
       cooldown: context.cooldown ?? 3,
