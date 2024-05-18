@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
-const { chatPage } = require('../../utils/browserUtils')
+const { getDatabase, ref, get } = require('firebase/database')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -26,15 +26,40 @@ module.exports = {
 
     await interaction.deferReply()
 
-    const response = await chatPage(inputPrompt, 'ask')
+    const token = interaction.client.configs.openai.apiKey
 
-    if (response.status !== 200)
-      return interaction.editReply(
-        '❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้รอฉันว่างแล้วถามฉันใหม่อีกรอบในครั้งหน้าละกันนะ'
+    if (!token)
+      return await interaction.editReply(
+        interaction.client.i18n.t('commands.ask.key_not_exsist')
       )
 
-    const result = response.result
+    const chatRef = ref(getDatabase(), 'chat')
+    const chatSnapshot = await get(chatRef)
+    const clientUsername = interaction.client.user.username
+    const userData = JSON.stringify(interaction.user.toJSON())
+    const systemMessage = [
+      chatSnapshot.val().system || `Your are ${clientUsername}`,
+      `Here is the user's information on Discord: ${userData}.`,
+    ].join(' ')
 
-    await interaction.editReply(`\`\`\`${result}\`\`\``)
+    try {
+      const chatCompletion =
+        await interaction.client.ai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: systemMessage,
+            },
+            { role: 'user', content: inputPrompt },
+          ],
+        })
+
+      await interaction.editReply(chatCompletion.choices[0].message.content)
+    } catch (error) {
+      await interaction.editReply(
+        interaction.client.i18n.t('commands.ask.can_not_answer_at_this_time')
+      )
+    }
   },
 }
