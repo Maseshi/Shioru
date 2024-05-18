@@ -42,6 +42,7 @@ const { getDatabase, connectDatabaseEmulator } = require('firebase/database')
 const { getStorage, connectStorageEmulator } = require('firebase/storage')
 const { startScreen, logger } = require('./utils/consoleUtils')
 const { updateChecker } = require('./utils/servicesUtils')
+const OpenAI = require('openai')
 const i18next = require('i18next')
 const Backend = require('i18next-fs-backend')
 const configs = require('./configs/data')
@@ -87,10 +88,14 @@ if (
   if (!configs.monitoring.pageId)
     logger.warn('CONF: The monitoring.pageId was not found in the environment.')
 }
-if (!configs.test_guild)
-  logger.warn('CONF: The test_guild was not found in the configuration file.')
+if (!configs.openai.apiKey)
+  logger.warn('CONF: The openai.apiKey was not found in the environment.')
 if (!configs.open_weather_token)
   logger.warn('CONF: The open_weather_token was not found in the environment.')
+if (!configs.test_guild)
+  logger.warn('CONF: The test_guild was not found in the configuration file.')
+if (!configs.translation.baseURL)
+  logger.warn('CONF: The translation.baseURL was not found in the environment.')
 
 try {
   if (!configs.server.apiKey)
@@ -122,7 +127,7 @@ try {
       'CONF: MEASUREMENT_ID It needs to be set up in the environment.'
     )
   if (!configs.token)
-    throw logger.error('CONF: TOKEN It needs to be set up in the environment.')
+    throw new Error('CONF: TOKEN It needs to be set up in the environment.')
 } catch (error) {
   logger.error(
     error,
@@ -201,16 +206,17 @@ try {
 // Configure in client
 logger.info('Adding data and handlers to the main system...')
 
+client.mode = process.env.npm_lifecycle_event || 'start'
+client.configs = configs
+client.logger = logger
+client.i18n = i18next
+client.ai = new OpenAI(client.configs.openai)
 client.temp = {
   startup: {
     start: startTime,
     end: 0,
   },
 }
-client.mode = process.env.npm_lifecycle_event || 'start'
-client.configs = configs
-client.logger = logger
-client.i18n = i18next
 client.player = new DisTube(client, {
   plugins: [
     new DeezerPlugin(),
