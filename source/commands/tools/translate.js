@@ -2,8 +2,8 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  Colors,
 } = require('discord.js')
-const { translate } = require('@vitalets/google-translate-api')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -17,70 +17,112 @@ module.exports = {
     .setDMPermission(true)
     .addStringOption((option) =>
       option
-        .setName('to')
-        .setDescription('Country code for translation')
-        .setDescriptionLocalizations({
-          th: 'รหัสประเทศสำหรับการแปลภาษา',
-        })
-        .setRequired(true)
-    )
-    .addStringOption((option) =>
-      option
         .setName('message')
         .setDescription('the text to be translated')
         .setDescriptionLocalizations({
           th: 'ข้อความที่ต้องการจะแปล',
         })
         .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('from')
+        .setDescription(
+          'Language code of the text to be translated, such as en, th, ja.'
+        )
+        .setDescriptionLocalizations({
+          th: 'รหัสภาษาของข้อความที่ต้องการจะแปล เช่น en, th, ja',
+        })
+    )
+    .addStringOption((option) =>
+      option
+        .setName('to')
+        .setDescription('Language codes to translate text such as en, th, ja')
+        .setDescriptionLocalizations({
+          th: 'รหัสภาษาที่จะแปลข้อความเช่น en, th, ja',
+        })
     ),
   async execute(interaction) {
-    const inputTo = interaction.options.getString('to')
+    const inputFrom = interaction.options.getString('from') ?? 'auto'
+    const inputTo = interaction.options.getString('to') ?? interaction.locale
     const inputMessage = interaction.options.getString('message')
 
-    if (!interaction.client.configs.translation[inputTo])
-      return await interaction.reply({
-        content: interaction.client.i18n
-          .t('commands.translate.translate_support')
-          .replace(
-            '%s',
-            Object.keys(interaction.client.configs.translation).join(', ')
-          ),
+    await interaction.deferReply()
+
+    const baseURL = interaction.client.configs.translation.baseURL
+    const locales = interaction.client.configs.translation.locales
+
+    if (!baseURL)
+      return await interaction.editReply({
+        content: interaction.client.i18n.t(
+          'commands.translate.base_url_is_missing'
+        ),
+        ephemeral: true,
+      })
+    if (!locales[inputTo])
+      return await interaction.editReply({
+        content: interaction.client.i18n.t(
+          'commands.translate.translate_support',
+          {
+            locales: Object.keys(locales).join(', '),
+          }
+        ),
         ephemeral: true,
       })
 
-    const response = await translate(inputMessage, { to: inputTo })
+    const response = await fetch(baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+      },
+      body: new URLSearchParams({
+        sl: inputFrom,
+        tl: inputTo,
+        q: inputMessage,
+      }).toString(),
+    })
 
-    if (!response)
-      return await interaction.reply({
+    if (response.status !== 200)
+      return await interaction.editReply({
         content: interaction.client.i18n.t(
           'commands.translate.can_not_translate'
         ),
         ephemeral: true,
       })
 
-    const resOutput = response.text
-    const resInputCode = response.raw.src
-    const resOutputCode = inputTo.toLowerCase()
+    const data = await response.json()
+    const source = data.src
+    const sentences = data.sentences
+    const translate = sentences.find((sentence) => 'trans' in sentence)?.trans
+    const transliteration = sentences.find(
+      (sentence) => 'src_translit' in sentence
+    )?.src_translit
 
-    const authorFetch = await interaction.user.fetch()
-    const authorColor = authorFetch.accentColor
-    const authorUsername = interaction.user.username
-    const authorAvatar = interaction.user.displayAvatarURL()
+    if (!translate)
+      return await interaction.editReply({
+        content: interaction.client.i18n.t(
+          'commands.translate.can_not_translate'
+        ),
+        ephemeral: true,
+      })
+
+    const userUsername = interaction.user.username
+    const userAvatar = interaction.user.avatarURL()
     const translateEmbed = new EmbedBuilder()
-      .setColor(authorColor)
+      .setColor(Colors.Blue)
       .setTimestamp()
-      .setDescription('```' + resOutput + '```')
+      .setDescription(
+        `\`\`\`${translate}\`\`\`` +
+          (transliteration ? `\n> ${transliteration}` : '')
+      )
       .setAuthor({
-        iconURL: authorAvatar,
-        name:
-          authorUsername +
-          ' ' +
-          interaction.client.i18n.t('commands.translate.says'),
+        iconURL: userAvatar,
+        name: `${userUsername} ${interaction.client.i18n.t('commands.translate.says')}`,
       })
       .setFooter({
-        text: '[' + resInputCode + '] -> [' + resOutputCode + ']',
+        text: `[${source}] -> [${inputTo}]`,
       })
 
-    await interaction.reply({ embeds: [translateEmbed], ephemeral: true })
+    await interaction.editReply({ embeds: [translateEmbed], ephemeral: true })
   },
 }
