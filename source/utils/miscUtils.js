@@ -61,6 +61,19 @@ const newLines = (...string) => {
 }
 
 /**
+ * Generates a new title by capitalizing the first letter of each word in the input string.
+ *
+ * @param {string} string - The input string to generate the new title from.
+ * @returns {string} - The new title generated from the input string.
+ */
+const newTitle = (string) => {
+  return string.replaceAll(
+    /\w\S*/g,
+    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase()
+  )
+}
+
+/**
  * Generates a new ID by converting the input string to lowercase and replacing certain characters with hyphens.
  *
  * @param {string} string - The input string to generate the new ID from.
@@ -75,5 +88,6 @@ module.exports = {
   containsURL,
   matchEmotes,
   newLines,
+  newTitle,
   newID,
 }
