@@ -39,7 +39,6 @@ const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 const { initializeApp } = require('firebase/app')
 const { getDatabase, connectDatabaseEmulator } = require('firebase/database')
-const { getStorage, connectStorageEmulator } = require('firebase/storage')
 const { startScreen, logger } = require('./utils/consoleUtils')
 const { updateChecker } = require('./utils/servicesUtils')
 const OpenAI = require('openai')
@@ -252,11 +251,6 @@ if (client.mode !== 'start') {
     getDatabase(),
     client.configs.emulators.database.host,
     client.configs.emulators.database.port
-  )
-  connectStorageEmulator(
-    getStorage(),
-    client.configs.emulators.storage.host,
-    client.configs.emulators.storage.port
   )
 }
 
