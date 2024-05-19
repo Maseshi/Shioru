@@ -37,8 +37,8 @@
     {
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm start",
-      "name": "Launch Start",
+      "command": "npm run docker:run:serve",
+      "name": "Launch Serve (Docker)",
       "skipFiles": [
         "<node_internals>/**",
         "**/node_modules/**",
@@ -48,6 +48,6 @@
       "timeout": 10000,
       "suppressMultipleSessionWarning": true,
       "internalConsoleOptions": "openOnFirstSessionStart"
-    }
+    },
   ]
 }
