@@ -57,7 +57,7 @@ module.exports = {
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
     baseURL: process.env.OPENAI_BASE_URL,
-    organization: process.env.OPENAI_PROJECT,
+    organization: process.env.OPENAI_ORGANIZATION,
     project: process.env.OPENAI_PROJECT,
   },
 
