@@ -21,7 +21,7 @@ const {
 } = require('../utils/clientUtils')
 const { colorize } = require('../utils/consoleUtils')
 const { dataStructures, fetchStatistics } = require('../utils/databaseUtils')
-const { currencyFormatter } = require('../utils/miscUtils')
+const { currencyFormatter, newTitle } = require('../utils/miscUtils')
 
 module.exports = {
   name: Events.ClientReady,
@@ -155,7 +155,7 @@ module.exports = {
         },
         {
           name: '/help',
-          state: '🪺',
+          state: '🪺 IS THE EGG',
           type: ActivityType.Watching,
         },
         {
@@ -166,6 +166,12 @@ module.exports = {
           name: `${currencyFormatter(statistics.commands, 1)} Command${statistics.commands === 1 ? '' : 's'}`,
           type: ActivityType.Listening,
         },
+        client.mode !== 'start'
+          ? {
+              name: `📀 ${newTitle(client.mode)} Mode`,
+              type: ActivityType.Custom,
+            }
+          : null,
       ],
       development: [
         {
