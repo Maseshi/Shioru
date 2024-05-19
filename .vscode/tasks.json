@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "format",
+      "label": "Lint and format",
+      "detail": "Format and make sure your code is readable and in a standard format."
+    },
+    {
+      "type": "npm",
+      "script": "docker:up",
+      "label": "Docker: Build and start",
+      "detail": "Build and start containers in the background",
+      "group": "build"
+    },
+    {
+      "type": "npm",
+      "script": "docker:logs",
+      "label": "Docker: View logs in containers",
+      "detail": "View output from containers",
+      "group": "build"
+    },
+    {
+      "type": "npm",
+      "script": "docker:ps",
+      "label": "Docker: View running containers",
+      "detail": "List containers",
+      "group": "build"
+    },
+    {
+      "type": "npm",
+      "script": "docker:down",
+      "label": "Docker: Stop containers",
+      "detail": "Stop and remove containers, networks",
+      "group": "build"
+    }
+  ]
+}
