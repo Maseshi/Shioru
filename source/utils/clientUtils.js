@@ -6,7 +6,7 @@ const { EmbedBuilder, WebhookClient, resolveColor } = require('discord.js')
  * @param {Client} client
  * @param {Boolean} reload If set to `true`, no messages will be displayed on the console.
  */
-const updateApplicationCommands = async (client, reload = false) => {
+const registeringCommands = async (client, reload = false) => {
   const guildID = client.configs.test_guild
 
   try {
@@ -304,7 +304,7 @@ const usageBuilder = (command) => {
 }
 
 module.exports = {
-  updateApplicationCommands,
+  registeringCommands,
   webhookSend,
   changeLanguage,
   embedBuilder,

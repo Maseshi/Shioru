@@ -15,10 +15,7 @@ const {
   get,
   set,
 } = require('firebase/database')
-const {
-  updateApplicationCommands,
-  webhookSend,
-} = require('../utils/clientUtils')
+const { registeringCommands, webhookSend } = require('../utils/clientUtils')
 const { colorize } = require('../utils/consoleUtils')
 const { dataStructures, fetchStatistics } = require('../utils/databaseUtils')
 const { currencyFormatter, newTitle } = require('../utils/miscUtils')
@@ -40,7 +37,7 @@ module.exports = {
     )
 
     // Refreshing application (/) commands.
-    updateApplicationCommands(client)
+    registeringCommands(client)
 
     // Check back-ends server is set up.
     if (!getApps.length) {
@@ -117,18 +114,13 @@ module.exports = {
         commands: client.commands.size ?? 0,
       }
 
-      if (client.shard && client.shard.count > 1) {
-        const promises = [
+      if (client.shard && client.shard.count) {
+        const results = await Promise.all([
           client.shard.fetchClientValues('guilds.cache.size'),
-          client.shard.broadcastEval((script) =>
-            script.guilds.cache.reduce(
-              (acc, guild) => acc + guild.memberCount,
-              0
-            )
+          client.shard.broadcastEval((cli) =>
+            cli.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
           ),
-        ]
-        const results = await Promise.all(promises)
-
+        ])
         callback.guilds = results[0].reduce(
           (acc, guildCount) => acc + guildCount,
           0
