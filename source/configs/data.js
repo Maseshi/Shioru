@@ -102,7 +102,4 @@ module.exports = {
     baseURL: process.env.TRANSLATION_BASE_URL,
     locales: translation,
   },
-
-  // Last time that personal information was updated
-  update: '2021-02-26T20:08:27.467Z',
 }
