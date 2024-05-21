@@ -105,7 +105,7 @@ module.exports = {
           interaction.client.i18n.t('commands.play.not_a_dj')
         )
     }
-    if (!voiceChannel && !inputChannel)
+    if (!inputChannel && !voiceChannel && !meChannel)
       return await interaction.reply(
         interaction.client.i18n.t('commands.play.not_in_channel')
       )
@@ -113,14 +113,14 @@ module.exports = {
     try {
       await interaction.deferReply()
       await interaction.client.player.play(
-        voiceChannel ?? inputChannel,
+        voiceChannel || inputChannel || meChannel,
         inputSong,
         {
           member: interaction.member,
-          textChannel: interaction.channel,
+          message: false,
           skip: inputSkip,
           position: inputPosition,
-          interaction,
+          textChannel: interaction.channel,
         }
       )
       await interaction.deleteReply()
