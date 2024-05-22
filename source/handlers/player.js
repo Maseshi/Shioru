@@ -1,6 +1,7 @@
 const { EmbedBuilder, Colors } = require('discord.js')
 const { webhookSend, changeLanguage } = require('../utils/clientUtils')
 const { catchError } = require('../utils/consoleUtils')
+const { newLines } = require('../utils/miscUtils')
 
 module.exports = (client) => {
   const webhookLogEmbed = new EmbedBuilder()
@@ -8,9 +9,7 @@ module.exports = (client) => {
     .setTimestamp()
 
   client.player.on('addList', (queue, playlist) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.White)
       .setDescription(
@@ -27,16 +26,14 @@ module.exports = (client) => {
       embeds: [webhookLogEmbed],
     })
     queue.textChannel.send(
-      client.i18n
-        .t('handlers.player.addList.added_list')
-        .replace('%s1', playlist.name)
-        .replace('%s2', playlist.songs.length)
+      client.i18n.t('handlers.player.addList.added_list', {
+        playlist_name: playlist.name,
+        amount: playlist.songs.length,
+      })
     )
   })
   client.player.on('addSong', (queue, song) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.White)
       .setDescription(`Queue:\`\`\`${queue}\`\`\`\nSong:\`\`\`${song}\`\`\``)
@@ -51,16 +48,14 @@ module.exports = (client) => {
       embeds: [webhookLogEmbed],
     })
     queue.textChannel.send(
-      client.i18n
-        .t('handlers.player.addSong.added_song')
-        .replace('%s1', song.name)
-        .replace('%s2', song.formattedDuration)
+      client.i18n.t('handlers.player.addSong.added_song', {
+        song_name: song.name,
+        duration: song.formattedDuration,
+      })
     )
   })
   client.player.on('disconnect', (queue) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Default)
       .setDescription(`Queue:\`\`\`${queue}\`\`\``)
@@ -79,9 +74,7 @@ module.exports = (client) => {
     )
   })
   client.player.on('empty', (queue) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Default)
       .setDescription(`Queue:\`\`\`${queue}\`\`\``)
@@ -103,9 +96,9 @@ module.exports = (client) => {
     const meChannel = channel.guild.members.me.voice.channel
     const connection = client.player.voices.get(meChannel.guild)
 
-    if (channel.client.i18n.language !== channel.client.player.language)
-      changeLanguage(channel.client, channel.client.player.language)
-    if (error.toString().includes('Unknown Playlist'))
+    changeLanguage(client, client.i18n.language)
+
+    if (error.message.includes('Unknown Playlist'))
       return channel.send(
         client.i18n.t('handlers.player.error.playlist_not_found')
       )
@@ -129,9 +122,7 @@ module.exports = (client) => {
     catchError(client, channel, 'music', error)
   })
   client.player.on('finish', (queue) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Green)
       .setDescription(`Queue:\`\`\`${queue}\`\`\``)
@@ -170,9 +161,7 @@ module.exports = (client) => {
     })
   })
   client.player.on('playSong', (queue, song) => {
-    if (queue.client.i18n.language !== queue.client.player.language)
-      changeLanguage(queue.client, queue.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.White)
       .setDescription(`Queue:\`\`\`${queue}\`\`\`\nSong:\`\`\`${song}\`\`\``)
@@ -187,16 +176,14 @@ module.exports = (client) => {
       embeds: [webhookLogEmbed],
     })
     queue.textChannel.send(
-      client.i18n
-        .t('handlers.player.playSong.playing_song')
-        .replace('%s1', song.name)
-        .replace('%s2', song.formattedDuration)
+      client.i18n.t('handlers.player.playSong.playing_song', {
+        song_name: song.name,
+        duration: song.formattedDuration,
+      })
     )
   })
   client.player.on('searchCancel', (message) => {
-    if (message.client.i18n.language !== message.client.player.language)
-      changeLanguage(message.client, message.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Default)
       .setDescription(`Message:\`\`\`${message}\`\`\``)
@@ -215,9 +202,7 @@ module.exports = (client) => {
     )
   })
   client.player.on('searchDone', (message) => {
-    if (message.client.i18n.language !== message.client.player.language)
-      changeLanguage(message.client, message.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Blue)
       .setDescription(`Message:\`\`\`${message}\`\`\``)
@@ -234,9 +219,7 @@ module.exports = (client) => {
     message.reply(client.i18n.t('handlers.player.searchDone.get_list_of_songs'))
   })
   client.player.on('searchInvalidAnswer', (message, answer) => {
-    if (message.client.i18n.language !== message.client.player.language)
-      changeLanguage(message.client, message.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Orange)
       .setDescription(
@@ -257,9 +240,7 @@ module.exports = (client) => {
     )
   })
   client.player.on('searchNoResult', (message) => {
-    if (message.client.i18n.language !== message.client.player.language)
-      changeLanguage(message.client, message.client.player.language)
-
+    changeLanguage(client, client.i18n.language)
     webhookLogEmbed
       .setColor(Colors.Default)
       .setDescription(`Message:\`\`\`${message}\`\`\``)
@@ -276,16 +257,14 @@ module.exports = (client) => {
     message.reply(client.i18n.t('handlers.player.searchNoResult.no_results'))
   })
   client.player.on('searchResult', (message, result) => {
-    let index = 0
-    const data = result
-      .map(
-        (song) =>
-          `**${++index}**. ${song.name} \`${song.formattedDuration}\` : **${song.uploader.name}**`
+    const data = newLines(
+      result.map(
+        (song, index) =>
+          `**${index}**. ${song.name} \`${song.formattedDuration}\` : **${song.uploader.name}**`
       )
-      .join('\n')
+    )
 
-    if (message.client.i18n.language !== message.client.player.language)
-      changeLanguage(message.client, message.client.player.language)
+    changeLanguage(client, client.i18n.language)
 
     const authorAvatar = message.author.displayAvatarURL()
     const authorUsername = message.author.username
@@ -299,7 +278,7 @@ module.exports = (client) => {
       .setAuthor({
         name: client.i18n.t('handlers.player.searchResult.tool_name'),
         iconURL:
-          'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/310/magnifying-glass-tilted-left_1f50d.png',
+          'https://support.content.office.net/th-th/media/e106d275-7ca7-4f1b-aea6-e592baf0db61.png',
       })
       .setFooter({ iconURL: authorAvatar, text: authorUsername })
       .setFields([
