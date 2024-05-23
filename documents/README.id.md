@@ -74,7 +74,7 @@ dan banyak fitur menarik lainnya...
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
->
+> 
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
@@ -93,14 +93,14 @@ dan banyak fitur menarik lainnya...
 
 - Buka [Portal Pengembang Discord](https://discord.com/developers/applications)
 - Klik **"Aplikasi Baru"** dan beri nama bot Anda dan setujui aturan kebijakan Discord
-- Buka halaman **"Bot"** dan aktifkan semua opsi di bagian "Bot". **Maksud Gerbang Khusus** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### 4. ตั้งค่าฐานข้อมูล
 
 - Buka [Portal Pengembang Discord](https://discord.com/developers/applications)
 - Klik **"Aplikasi Baru"** dan beri nama bot Anda dan setujui aturan kebijakan Discord
-- Tambahkan juga aplikasi pertama Anda. **Situs Web** Beri nama aplikasi Anda tanpa perlu memilih opsi **"Siapkan Firebase Hosting untuk aplikasi ini"** dan daftarkan aplikasi. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Buka **Create > [Real-time database](https://console.firebase.google.com/u/0/project/_/database/data)** Untuk membuat database untuk menyimpan data.
 
