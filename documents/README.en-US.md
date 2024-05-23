@@ -1,182 +1,180 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" />
+<center>
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
-    <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
+    <p>Personal assistants in Discord that will help make your guild a better place.</p>
   </strong>
-  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white
-  " />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github
-  " />
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F
-  " />
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru">
-    <img src="https://badges.crowdin.net/shioru/localized.svg" />
+  <a href="https://shiorus.web.app/invite">Add App</a>
+  |
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+  |
+  <a href="https://shioru.statuspage.io/">Status</a>
+  |
+  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Improve Translation</a>
+  |
+  <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+  <br />
+  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white" alt="Discord.js version 14" />
+  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github" alt="Last commit" />
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F" alt="Status" />
+  <a title="Crowdin" href="https://crowdin.com/project/shioru">
+    <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
   </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+  <a title="CodeFactor" href="https://www.codefactor.io/repository/github/maseshi/shioru">
     <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
   </a>
-  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
+  <a title="Top.gg" href="https://top.gg/bot/704706906505347183">
+    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
   </a>
-</div>
+</center>
 
-[Switch Languages](https://github.com/Maseshi/Shioru/tree/main/documents)
+Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
-เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
+## ✨ Outstanding features
 
-<div align="center">
-  <a href="https://shiorus.web.app/invite">
-    <img src="https://img.shields.io/badge/Invite_Bot-_?style=for-the-badge&logo=discord&logoColor=white&color=blue
-    " />
-  </a>
-</div>
-
-## ✨ คุณสมบัติเด่น
-
-- Works on [Discord.js](https://discord.js.org/) v14
-- A wide variety of customizations can be made.
-- It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages, You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
-- Tier system (level and experience)
-- Support customization of server notifications
-- You can chat by typing `@Shioru` followed by the message you wish to communicate.
-- Able to use application commands (/)
-- จำลองระบบฐานข้อมูลสำหรับทดสอบ
-- รองรับการทำงานบน Shard
+[ / ] Worked on [Discord.js](https://discord.js.org/) v14 \
+[ / ] Easy to read, easy to use and highly effective \
+[ / ] You can customize many things you want \
+[ / ] Contains all commands including 100+ available subcommands \
+[ / ] Can play music both from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) and [900+ more Website](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) along with an automatic music playback system \
+[ / ] Supports multiple languages. You can check the supported languages ​​from the [Language File](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.\
+[ / ] Tier system (Level and experience) \
+[ / ] Support for customizing server notifications \
+[ / ] You can talk by typing `@Shioru` followed by the message you want to communicate \
+[ / ] Supports working on Shards or supports working in various guilds \
+[ / ] You can use application commands (/) \
+[ / ] Simulate the database system for testing.
 
 And many other interesting features...
 
-## 🧩 ข้อกำหนดเบื้องต้น
+## 🧩 Prerequisites
 
-- [Node.js](https://nodejs.org/) v20.6.0 หรือมากกว่า
-- [Python](https://www.python.org/downloads/) v3.8.0 หรือมากกว่า
-- [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 หรือมากกว่า
-- [Firebase Tools](https://firebase.google.com/docs/cli)
-- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022)
-- [FFmpeg](https://www.ffmpeg.org/download.html)
+- [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Firebase Tools](https://firebase.google.com/docs/cli) (requires [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher)
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (requires [Python](https://www.python.org/downloads/) v3.12.0 or higher)
+- [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## ⌛ การติดตั้ง
+## ⌛ Installation
 
-### 1. ติดตั้ง **Build Tools**
+### 1. Install **Build Tools**
 
-ทำการติดตั้ง **Build tools** โดยรันคำสั่งดังต่อไปนี้ตามระบบปฏิบัติการของคุณ
+Install **Build tools** by running the following command according to your operating system.
 
-- สำหรับระบบปฏิบัติการ Linux และ MacOS
+- For Linux and MacOS operating systems
 
   ```sh
   sudo apt update
   sudo apt install build-essential
   ```
 
-- สำหรับระบบปฏิบัติการ Windows
+- For Windows operating system
   ```sh
   npm install --global --production --add-python-to-path windows-build-tools
   ```
 
-> [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
+> [!TIP]
+> You can skip this step by checking the **Automatically install the necessary tools** option through the Node.js installer as shown in the following image.
 >
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
-### 2. โคลนบอทและติดตั้งส่วนประกอบ
+### 2. Clone the bot and install the components.
 
-- Launch a terminal and run the following commands.
+- Launch a terminal and run the following command.
   ```bat
   git clone https://github.com/Maseshi/Shioru.git
   cd Shioru
   npm install
   ```
-- Rename the `.env.example` file to `.env` and add all values.
+- Change the file name `.env.example` to `.env` and enter all required values.
 
-> [!NOTE] คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
+> [!NOTE]
+> You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
 
-### 3. ตั้งค่าบอทและเชิญเข้าร่วม
+### 3. Setup bot and invite to join.
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-- Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- Go to [Discord Developer Portal](https://discord.com/developers/applications)
+- Click **"New Application"** and name your bot and accept the Discord policy rules.
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intent** section.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands`, selecting `Administrator`, then copy the link and paste it in the browser address bar. Your sir
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### 4. ตั้งค่าฐานข้อมูล
+### 4. Setup database
 
 - Go to https://firebase.google.com/ and start setting up the project.
-- Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
+- Add a new project and follow the steps.
+- Add your first application with **Website** Name your app without needing to select the **"Also set up Firebase Hosting for this app."** option and register the app.
+  ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase will provide you with information about its configuration. Apply these values to the file. `.env`
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
-## 🪛 การพัฒนา
+## 🔥 Get started
 
-- เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดพัฒนา**
-- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run dev`
+There are several options available. If you are using [Visual Studio Code](https://code.visualstudio.com/), you can choose your method directly via the Run and Debug tab (<kbd>Ctrl</ kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>) For other operations, see Tasks (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> type `>Tasks: Run Task`)
 
-> [!NOTE] เมื่อคุณเข้าสู่โหมดการพัฒนา คุณลักษณะบางอย่างอาจถูกปิดใช้งาน เช่น การส่งสถิติ การอัปเดตข้อมูล เป็นต้น
+### 🪛 Development
 
-## ☕ จำลอง
+- Open a terminal and run the command `npm run dev`.
 
-ทดสอบการใช้งานจริงด้วยการทำงานที่คล้ายกับการใช้งานจริง โดยระบบจะคำนวณการแยกเศษของการทำงานตามจำนวนของกิลด์โดยอัตโนมัติ
+### ☕ Serve
 
-- เปิดเทอร์มินัลแล้วรัน `npm run emulators` เพื่อจำลองระบบฐานข้อมูลใน**โหมดจำลอง**
-- เปิดเทอร์มินัลหน้าใหม่แล้วรันคำสั่ง `npm run serve`
+Test the actual use by performing tasks similar to real use. The system will automatically calculate the split of the work fraction according to the number of guilds.
 
-> [!NOTE] คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ทำให้คุณสมบัติบางอย่างอาจไม่ทำงาน
+- Open the terminal and add all the necessary environmental variables.
+  - For Windows, use commands `set variable=example`
+  - For Linux or MacOS, use the command `export variable=example`
+- Run the command `npm run serve`.
 
-## 🍵 ใช้งานจริง
+> [!NOTE]
+> You will enter automatic development mode because it is a real use. All data will not be recorded.
 
-สำหรับการใช้งานจริงสามารถใช้คำสั่งหรือชุดคำสั่งที่เตรียมไว้ได้ตามปกติ ดังนี้:
+### 🍵 Production
 
-- บน Linux หรือ MacOS
+For actual use, the prepared command or set of commands can be used normally as follows:
+
+- On Linux or MacOS
 
   ```sh
-  # with command file (recommend)
-
   sh start.sh || sudo sh start.sh
 
-  # or with call command
+  # or
 
   npm start
   ```
 
-- บน Windows
+- On Windows
 
   ```bat
-  @REM with command file (recommend)
-
   ./start.bat
 
-  @REM or with call command
+  @REM or
 
   npm start
   ```
 
-### 🐳 ทำงานบน Docker
+### 🐳 Running on Docker
 
-การดำเนินการนี้จำเป็นต้องมี [Docker](https://www.docker.com/products/docker-desktop/)
+This operation requires [Docker](https://www.docker.com/products/docker-desktop/)
 
-- ใช้คำสั่ง `npm run docker:build` แล้วรอให้ทำงานเสร็จทั้งหมด
-- จากนั้นเปิดโปรแกรม Docker แล้วสั่งรันพร้อมกับใส่ข้อมูลสภาพแวดล้อมที่จำเป็น (env) หรือใช้คำสั่ง `npm run docker:run` แล้วรอจนบอททำงาน
+- Open the terminal and add all the necessary environmental variables.
+  - For Windows, use commands `set variable=example`
+  - For Linux or MacOS, use the command `export variable=example`
+- Create an image using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode and wait until the process is finished.
+- After creating the images successfully, run by using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode.
 
-> [!TIP] คุณสามารถตรวจสอบการทำงานได้โดยใช้คำสั่ง `docker ps -a`
+[Learn more about commands Docker](https://docs.docker.com/reference/)
 
-## ⚡ แก้ไขปัญหาอย่างรวดเร็ว
+## ⚡ Quick Troubleshooting
 
 - `gyp ERR! stack Error: not found: make`
 
-  ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
+  This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
 
-- `GrpcConnection RPC 'Write' stream 0x58a118ce error. Code: 14 Message: 14 UNAVAILABLE: No connection established. Last error: connect ECONNREFUSED 127.0.0.1:8080`
-
-  เป็นไปได้ว่าคุณยังไม่ได้จำลองระบบฐานข้อมูลบนเครื่องในโหมดทดสอบ โดยคุณสามารถแก้ปัญหานี้ได้โดยปิดบอทแล้วรันคำสั่งดังนี้ในอีกหน้าหนึ่ง
-
-  ```bat
-  npm run emulators
-  ```
-
-## 🌐 ปรับปรุงการแปลภาษา
+## 🌐 Improve Translate
 
 You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru).
 
-## ⚠️ พบปัญหา
+## ⚠️ Found a problem
 
-หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issues](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้
+If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
