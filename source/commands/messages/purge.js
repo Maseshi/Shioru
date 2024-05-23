@@ -39,7 +39,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -67,7 +67,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -95,7 +95,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -123,7 +123,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -151,7 +151,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -188,7 +188,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
@@ -225,7 +225,7 @@ module.exports = {
               th: 'จำนวนข้อความที่จะลบ',
             })
             .setRequired(true)
-            .setMinValue(0)
+            .setMinValue(1)
             .setMaxValue(100)
         )
         .addChannelOption((option) =>
