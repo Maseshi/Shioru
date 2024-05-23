@@ -74,7 +74,7 @@ ve diğer birçok ilginç özellik...
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
->
+> 
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
@@ -93,14 +93,14 @@ ve diğer birçok ilginç özellik...
 
 - Discord Geliştirici Portalına Git
 - **"New Application"** tıklayın ve botunuza bir isim verin ve Discord politika kurallarını kabul edin.
-- Sayfa **"Bot"** gidin ve bölüm **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### 4. ตั้งค่าฐานข้อมูล
 
 - https://firebase.google.com/ adresine gidin ve projeyi kurmaya başlayın.
 - Yeni bir proje ekleyin ve adımları izleyin.
-- **Web Sitesi ile ilk uygulamanızı ekleyin** İsteğe bağlı olarak uygulamanızı adlandırın **"Bu uygulama için Firebase Barındırma'yı da kurun"** ve uygulamayı kaydedin. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Bir depolama veritabanı oluşturmak için ** > [gerçek zamanlı veritabanı oluştur](https://console.firebase.google.com/u/0/project/_/database/data)** seçeneğine gidin.
 
