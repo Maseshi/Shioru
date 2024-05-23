@@ -160,12 +160,6 @@ module.exports = {
           name: `${currencyFormatter(statistics.commands, 1)} Command${statistics.commands === 1 ? '' : 's'}`,
           type: ActivityType.Listening,
         },
-        client.mode !== 'start'
-          ? {
-              name: `📀 ${newTitle(client.mode)} Mode`,
-              type: ActivityType.Custom,
-            }
-          : null,
       ],
       development: [
         {
@@ -179,6 +173,10 @@ module.exports = {
         {
           name: '📦',
           type: ActivityType.Playing,
+        },
+        {
+          name: `📀 ${newTitle(client.mode)} Mode`,
+          type: ActivityType.Custom,
         },
       ],
     }
