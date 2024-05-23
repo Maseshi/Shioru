@@ -1,33 +1,32 @@
-# Github
-.github/
+# Assets
+assets/
 
-# Temp
-.note.txt
+# Dependency directories
+node_modules/
 
-# Back-ends
-.firebase
-.firebaserc
-firebase.json
+# Logs
+logs/
+*.log
 
-# Rules
-database.rules.json
-firestore.indexes.json
-firestore.rules
-storage.rules
-
-# Env
+# Environment
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Cache
-.cache/
+# Package lock
+package-lock.json
 
-# Logs
-logs
-*.log
+# LICENSE
+LICENSE
+LICENSE_ASSETS
 
-# Dependency directories
-node_modules/
+# README
+NOTE.md
+
+# Back-ends
+.firebase
+.firebaserc
+firebase.json
+database.rules.json

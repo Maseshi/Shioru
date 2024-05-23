@@ -3,23 +3,19 @@ const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommen
 module.exports = [
   {
     ignores: [
-      '.note.txt',
-      '.firebase',
-      '.firebaserc',
-      'firebase.json',
-      'database.rules.json',
-      'firestore.indexes.json',
-      'firestore.rules',
-      'storage.rules',
+      'assets/',
+      'logs/',
+      'node_modules/',
+      '*.log',
       '.env',
       '.env.local',
       '.env.development.local',
       '.env.test.local',
       '.env.production.local',
-      '.cache/',
-      'logs',
-      '*.log',
-      'node_modules/',
+      'package-lock.json',
+      'LICENSE',
+      'LICENSE_ASSETS',
+      'NOTE.md',
     ],
     languageOptions: {
       globals: {

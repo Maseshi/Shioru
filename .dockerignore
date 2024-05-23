@@ -1,30 +1,42 @@
-# Temp
-.note.txt
+# Github
+.github/
 
-# Back-ends
-.firebase
-.firebaserc
-firebase.json
+# VSCode
+.vscode/
 
-# Rules
-database.rules.json
-firestore.indexes.json
-firestore.rules
-storage.rules
+# Dependency directories
+node_modules/
 
-# Env
+# Logs
+logs/
+*.log
+
+# Ignore
+.*ignore
+
+# Docker
+Dockerfile*
+docker-compose*
+
+# Configs
+*.config.*
+
+# Crowdin
+crowdin.yml
+
+# Environment
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Cache
-.cache/
+# README
+README.md
+NOTE.md
 
-# Logs
-logs
-*.log
-
-# Dependency directories
-node_modules/
+# Back-ends
+.firebase
+.firebaserc
+firebase.json
+database.rules.json
