@@ -52,6 +52,7 @@ module.exports = {
           const replies = snapshot.val().replies ?? []
           const alternatives = snapshot.val().alternatives ?? []
           const scripts = snapshot.val().scripts ?? []
+          const system = snapshot.val().system ?? ''
 
           client.configs.constants.prompts = [
             ...client.configs.constants.prompts,
@@ -69,6 +70,7 @@ module.exports = {
             ...client.configs.constants.scripts,
             ...scripts,
           ]
+          client.configs.constants.system = system
         } else {
           set(chatRef, dataStructures(client, 'chat'))
         }
