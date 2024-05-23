@@ -74,7 +74,7 @@
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
->
+> 
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
@@ -93,14 +93,14 @@
 
 - Ir a [Portal de desarrolladores de Discord](https://discord.com/developers/applications)
 - Haga clic en **"Nueva aplicación"** y asigne un nombre a su bot y acepte las reglas de la política de Discord.
-- Vaya a la página **"Bot"** y habilite todas las opciones en la sección **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
 ### 4. ตั้งค่าฐานข้อมูล
 
 - Vaya a https://firebase.google.com/ y comience a configurar el proyecto.
 - Agrega un nuevo proyecto y sigue los pasos.
-- Agregue su primera aplicación con **Sitio web** Asigne un nombre opcional a su aplicación **"Configure también Firebase Hosting para esta aplicación"** y registre la aplicación. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - Vaya a **crear > [base de datos en tiempo real](https://console.firebase.google.com/u/0/project/_/database/data)** para crear una base de datos de almacenamiento.
 
