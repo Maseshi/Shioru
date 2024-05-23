@@ -155,8 +155,8 @@ const catchError = async (client, message, name, error, silent = false) => {
 
   client.logger.error(
     {
-      commandName: name,
-      silent: silent,
+      name,
+      silent,
       version: {
         package: packages.version,
         discord: discord.version,
