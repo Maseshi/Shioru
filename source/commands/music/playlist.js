@@ -4,7 +4,7 @@ const {
   PermissionFlagsBits,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
-const { validateURL } = require('../../utils/miscUtils')
+const { containsURL } = require('../../utils/miscUtils')
 
 module.exports = {
   permissions: [
@@ -84,7 +84,7 @@ module.exports = {
     const voiceChannel = interaction.member.voice.channel
     const meChannel = interaction.guild.members.me.voice.channel
     const songs = inputSongs.split(/[ ,]+/)
-    const filteredSongs = songs.filter((song) => validateURL(song))
+    const filteredSongs = songs.filter((song) => containsURL(song))
 
     if (queue && djs.enable) {
       if (
@@ -109,7 +109,7 @@ module.exports = {
       return await interaction.reply(
         interaction.client.i18n.t('commands.playlist.no_queue')
       )
-    if (!voiceChannel && !inputChannel)
+    if (!inputChannel && !voiceChannel && !meChannel)
       return await interaction.reply(
         interaction.client.i18n.t('commands.playlist.not_in_channel')
       )
@@ -131,14 +131,14 @@ module.exports = {
       )
 
       await interaction.client.player.play(
-        voiceChannel ?? inputChannel,
+        voiceChannel || inputChannel || meChannel,
         playlist,
         {
           member: interaction.member,
-          textChannel: interaction.channel,
+          message: false,
           skip: inputSkip,
           position: inputPosition,
-          interaction,
+          textChannel: interaction.channel,
         }
       )
       await interaction.deleteReply()

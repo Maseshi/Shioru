@@ -13,34 +13,33 @@ module.exports = {
   ],
   data: new SlashCommandBuilder()
     .setName('donate')
-    .setDescription('Donate to support bots and bot developers.')
+    .setDescription(
+      'Support me and my host to help with utilities bills by making a donation.'
+    )
     .setDescriptionLocalizations({
-      th: 'บริจาคเพื่อสนับสนุนบอทและนักพัฒนาบอท',
+      th: 'สนับสนุนฉันและเจ้าบ้านเพื่อช่วยเหลือค่าน้ำค่าไฟด้วยการบริจาค',
     })
     .setDefaultMemberPermissions()
     .setDMPermission(true),
   async execute(interaction) {
-    const github = 'https://github.com/sponsors/Maseshi'
-    const patreon = 'https://www.patreon.com/maseshi'
-    const bmc = 'https://www.buymeacoffee.com/maseshi'
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
-        .setURL(github)
+        .setURL('https://github.com/sponsors/Maseshi')
         .setLabel('Github')
         .setStyle(ButtonStyle.Link),
       new ButtonBuilder()
-        .setURL(patreon)
+        .setURL('https://www.patreon.com/maseshi')
         .setLabel('Patreon')
         .setStyle(ButtonStyle.Link),
       new ButtonBuilder()
-        .setURL(bmc)
-        .setLabel('Buy me a coffee')
+        .setURL('https://www.buymeacoffee.com/maseshi')
+        .setLabel('Buy me a green tea')
         .setStyle(ButtonStyle.Link)
     )
 
     await interaction.reply({
       content: interaction.client.i18n.t(
-        'commands.donate.thank_you_in_advance_message'
+        'commands.donate.thank_you_in_advance'
       ),
       components: [row],
     })

@@ -30,15 +30,13 @@ const dataStructures = (client, select) => {
         replies: [client.configs.constants.replies],
         alternatives: [client.configs.constants.alternatives],
         scripts: [client.configs.constants.scripts],
+        system: '',
       }
     case 'user':
       return {
         leveling: {
           exp: 0,
           level: 0,
-        },
-        history: {
-          chat: [],
         },
         guilds: [],
       }

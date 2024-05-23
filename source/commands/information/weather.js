@@ -4,13 +4,10 @@ const {
   Colors,
   PermissionFlagsBits,
 } = require('discord.js')
-const { get } = require('axios').default
-const { catchError } = require('../../utils/consoleUtils')
+const { newLines, newID } = require('../../utils/miscUtils')
 
 module.exports = {
-  category: 'information',
   permissions: [PermissionFlagsBits.SendMessages],
-  usage: 'weather <area(String)> [degree_type]',
   data: new SlashCommandBuilder()
     .setName('weather')
     .setDescription("See today's weather in each area.")
@@ -21,457 +18,250 @@ module.exports = {
     .setDMPermission(true)
     .addStringOption((option) =>
       option
-        .setName('location')
-        .setDescription('The location you want to know the weather')
+        .setName('city')
+        .setDescription('Name the city for which you want to know the weather.')
         .setDescriptionLocalizations({
-          th: 'พื้นที่ที่คุณต้องการทราบสภาพอากาศ',
+          th: 'ชื่อเมืองที่คุณต้องการทราบสภาพอากาศ',
         })
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
-        .setName('degree_type')
+        .setName('unit')
         .setDescription('Unit of measure for weather conditions.')
         .setDescriptionLocalizations({
           th: 'หน่วยวัดของสภาพอากาศ',
         })
-        .setRequired(false)
         .addChoices(
-          { name: 'Metric', value: 'M' },
-          { name: 'Scientific', value: 'S' },
-          { name: 'Fahrenheit', value: 'I' }
+          { name: 'Kelvin', value: 'standard' },
+          { name: 'Celsius', value: 'metric' },
+          { name: 'Fahrenheit', value: 'imperial' }
         )
     ),
   async execute(interaction) {
+    const inputCity = interaction.options.getString('city')
+    const inputUnit = interaction.options.getString('unit') ?? 'standard'
+
     await interaction.deferReply()
 
-    const inputLocation = interaction.options.getString('location')
-    const inputDegreeType = interaction.options.getString('degree_type') ?? 'C'
+    const geoService = async (query, token) => {
+      const geoURL = new URL('https://api.openweathermap.org/geo/1.0/direct')
 
-    let response
-    const token = interaction.client.configs.weatherbit_token
-    const service = 'https://api.weatherbit.io/v2.0/current'
+      geoURL.searchParams.append('q', query)
+      geoURL.searchParams.append('appid', token)
+
+      const response = await fetch(geoURL)
+
+      if (response.status !== 200) return response.status
+      return await response.json()
+    }
+    const weatherService = async (
+      latitude,
+      longitude,
+      units,
+      language,
+      token
+    ) => {
+      const weatherService = new URL(
+        'https://api.openweathermap.org/data/2.5/weather'
+      )
+
+      weatherService.searchParams.append('lat', latitude)
+      weatherService.searchParams.append('lon', longitude)
+      weatherService.searchParams.append('units', units)
+      weatherService.searchParams.append('lang', language)
+      weatherService.searchParams.append('appid', token)
+
+      const response = await fetch(weatherService)
+
+      if (response.status !== 200) return response.status
+      return await response.json()
+    }
+
+    const token = interaction.client.configs.open_weather_token
+    const tempUnits = {
+      standard: interaction.client.i18n.t('commands.weather.kelvin'),
+      metric: interaction.client.i18n.t('commands.weather.celsius'),
+      imperial: interaction.client.i18n.t('commands.weather.fahrenheit'),
+    }
+    const speedUnits = {
+      standard: interaction.client.i18n.t('commands.weather.meter_per_seconds'),
+      metric: interaction.client.i18n.t('commands.weather.meter_per_seconds'),
+      imperial: interaction.client.i18n.t('commands.weather.miles_per_hour'),
+    }
 
     if (!token)
       return await interaction.editReply(
         interaction.client.i18n.t('commands.weather.no_token_provider')
       )
 
-    try {
-      response = await get(
-        `${service}?key=${token}&lang=en&units=${inputDegreeType}&city=${encodeURIComponent(inputLocation)}`
-      )
-    } catch (error) {
-      if (error.response) {
-        await interaction.editReply(
-          interaction.client.i18n
-            .t('commands.weather.error_with_code')
-            .replace('%s', error.response.statusCode)
-        )
-        return catchError(
-          interaction.client,
-          interaction,
-          module.exports.data.name,
-          error.response.data,
-          true
-        )
-      } else {
-        await interaction.editReply(
-          interaction.client.i18n.t('commands.weather.unknown_error')
-        )
-        return catchError(
-          interaction.client,
-          interaction,
-          module.exports.data.name,
-          error,
-          true
-        )
-      }
-    }
+    const query = newID(inputCity)
+    const geoResponse = await geoService(query, token)
 
-    const json = await response.data
-
-    if (!json || !json.data || !json.data.length)
+    if (typeof geoResponse === 'number')
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.weather.cannot_parse_data')
+        interaction.client.i18n.t('commands.weather.no_result_found', {
+          status_code: geoResponse,
+        })
       )
-    if (!json.data[0])
+
+    const latitude = geoResponse[0].lat
+    const longitude = geoResponse[0].lon
+    const weatherResponse = await weatherService(
+      latitude,
+      longitude,
+      inputUnit,
+      interaction.locale,
+      token
+    )
+
+    if (typeof weatherResponse === 'number')
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.weather.no_result_found')
+        interaction.client.i18n.t('commands.weather.error_with_code', {
+          status_code: weatherResponse,
+        })
       )
 
-    const city = json.data[0]
-    const latitude = city.lat.toString()
-    const longitude = city.lon.toString()
-    const sunrise = city.sunrise
-    const sunset = city.sunset
-    const timezone = city.timezone
-    const observationTime = city.ob_time
-    const cityName = city.city_name
-    const countryCode = city.country_code
-    const stateCode = city.state_code
-    const pres = city.pres.toString()
-    const seaLevel = city.slp.toString()
-    const windSpeed = city.wind_spd.toString()
-    const windGustSpeed = city.gust.toString()
-    const windDirection = city.wind_dir.toString()
-    const temperature = city.temp.toString()
-    const feelsLike = city.app_temp.toString()
-    const humidity = city.rh.toString()
-    const dewPoint = city.dewpt.toString()
-    const clouds = city.clouds.toString()
-    const partOfDay = city.pod
-    const icon = city.weather.icon
-    const code = city.weather.code
+    const tempUnit = tempUnits[inputUnit]
+    const speedUnit = speedUnits[inputUnit]
+    const weather = weatherResponse.weather[0].main
+    const description = weatherResponse.weather[0].description
+    const icon = weatherResponse.weather[0].icon
+    const base = weatherResponse.base
+    const temp = weatherResponse.main.temp
+    const feelsLike = weatherResponse.main.feels_like
+    const tempMin = weatherResponse.main.temp_min
+    const tempMax = weatherResponse.main.temp_max
+    const pressure = weatherResponse.main.pressure
+    const humidity = weatherResponse.main.humidity
+    const seaLevel = weatherResponse.main.sea_level
+    const groundLevel = weatherResponse.main.grnd_level
+    const visibility = weatherResponse.visibility
+    const windSpeed = weatherResponse.wind.speed
+    const windDeg = weatherResponse.wind.deg
+    const windGust = weatherResponse.wind.gust
+    const cloudsAll = weatherResponse.clouds.all
+    const rainOneHour = weatherResponse.rain?.['1h']
+    const rainThreeHour = weatherResponse.rain?.['3h']
+    const snowOneHour = weatherResponse.snow?.['1h']
+    const snowThreeHour = weatherResponse.snow?.['3h']
+    const dt = weatherResponse.dt
+    const sysCountry = weatherResponse.sys.country
+    const name = weatherResponse.name
 
-    switch (code) {
-      case 200:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_light_rain'
-        )
-        break
-      case 201:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_rain'
-        )
-        break
-      case 202:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_heavy_rain'
-        )
-        break
-      case 230:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_light_drizzle'
-        )
-        break
-      case 231:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_drizzle'
-        )
-        break
-      case 232:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_heavy_drizzle'
-        )
-        break
-      case 233:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.thunderstorm_with_hail'
-        )
-        break
-      case 300:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.light_drizzle'
-        )
-        break
-      case 301:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.drizzle'
-        )
-        break
-      case 302:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_drizzle'
-        )
-        break
-      case 500:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.light_rain'
-        )
-        break
-      case 501:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.moderate_rain'
-        )
-        break
-      case 502:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_rain'
-        )
-        break
-      case 511:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.freezing_rain'
-        )
-        break
-      case 520:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.light_shower_rain'
-        )
-        break
-      case 521:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.shower_rain'
-        )
-        break
-      case 522:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_shower_rain'
-        )
-        break
-      case 600:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.light_snow'
-        )
-        break
-      case 601:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.snow'
-        )
-        break
-      case 602:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_snow'
-        )
-        break
-      case 610:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.mix_snow_rain'
-        )
-        break
-      case 611:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.sleet'
-        )
-        break
-      case 612:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_sleet'
-        )
-        break
-      case 621:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.snow_shower'
-        )
-        break
-      case 622:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.heavy_snow_shower'
-        )
-        break
-      case 623:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.flurries'
-        )
-        break
-      case 700:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.mist'
-        )
-        break
-      case 711:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.smoke'
-        )
-        break
-      case 721:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.haze'
-        )
-        break
-      case 731:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.sand_dust'
-        )
-        break
-      case 741:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.fog'
-        )
-        break
-      case 751:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.freezing_fog'
-        )
-        break
-      case 800:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.clear_sky'
-        )
-        break
-      case 801:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.few_clouds'
-        )
-        break
-      case 802:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.scattered_clouds'
-        )
-        break
-      case 803:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.broken_clouds'
-        )
-        break
-      case 804:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.overcast_clouds'
-        )
-        break
-      case 900:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.unknown_precipitation'
-        )
-        break
-      default:
-        city.weather.description = interaction.client.i18n.t(
-          'commands.weather.unknown'
-        )
-    }
-
-    const description = city.weather.description
-    const visibility = city.vis.toString()
-    const precipitationRate = city.precip.toString()
-    const snowFall = city.snow.toString()
-    const uv = city.uv.toString()
-    const airQuality = city.aqi.toString()
-
+    const clientAvatar = interaction.client.user.avatarURL()
     const weatherEmbed = new EmbedBuilder()
+      .setColor(Colors.Blue)
       .setTitle(interaction.client.i18n.t('commands.weather.weather'))
       .setDescription(
-        interaction.client.i18n
-          .t('commands.weather.weather_at_the_moment')
-          .replace('%s1', cityName)
-          .replace('%s2', description)
+        interaction.client.i18n.t('commands.weather.weather_moment', {
+          city: name,
+          country: sysCountry.toLowerCase(),
+          weather: weather,
+          description: description,
+        })
       )
-      .setColor(Colors.Blue)
-      .setThumbnail(
-        'https://cdn.weatherbit.io/static/img/icons/' + icon + '.png'
-      )
-      .addFields([
+      .setTimestamp(dt * 1000)
+      .setThumbnail(`https://openweathermap.org/img/wn/${icon}@2x.png`)
+      .setFooter({
+        text: interaction.client.i18n.t('commands.weather.time_to_calculate'),
+        iconURL: clientAvatar,
+      })
+      .setFields([
         {
-          name: interaction.client.i18n.t('commands.weather.latitude'),
-          value: latitude + ' °',
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.longitude'),
-          value: longitude + ' °',
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.sunrise'),
-          value: sunrise,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.sunset'),
-          value: sunset,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.timezone'),
-          value: timezone,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.observation_time'),
-          value: observationTime,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.country_code'),
-          value: countryCode,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.state_code'),
-          value: stateCode,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.pressure'),
-          value:
-            pres +
-            ' ' +
-            interaction.client.i18n.t('commands.weather.millibars'),
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t(
-            'commands.weather.sea_level_pressure'
-          ),
-          value:
-            seaLevel +
-            ' ' +
-            interaction.client.i18n.t('commands.weather.millibars'),
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.wind_speed'),
-          value: windSpeed + ' m/s',
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.wind_gust_speed'),
-          value: windGustSpeed + ' m/s',
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.wind_direction'),
-          value: windDirection + ' °',
+          name: interaction.client.i18n.t('commands.weather.data_from'),
+          value: base,
           inline: true,
         },
         {
           name: interaction.client.i18n.t('commands.weather.temperature'),
-          value: temperature + ' °' + inputDegreeType,
+          value: `${String(temp)} ${tempUnit}`,
           inline: true,
         },
         {
           name: interaction.client.i18n.t('commands.weather.feels_like'),
-          value: feelsLike + ' °' + inputDegreeType,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.humidity'),
-          value: humidity + '%',
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.dew_point'),
-          value: dewPoint + ' °' + inputDegreeType,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.clouds'),
-          value: clouds,
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.part_of_the_day'),
-          value:
-            partOfDay === 'd'
-              ? interaction.client.i18n.t('commands.weather.day')
-              : interaction.client.i18n.t('commands.weather.night'),
-          inline: true,
-        },
-        {
-          name: interaction.client.i18n.t('commands.weather.visibility'),
-          value: visibility + ' KM',
+          value: `${String(feelsLike)} ${tempUnit}`,
           inline: true,
         },
         {
           name: interaction.client.i18n.t(
-            'commands.weather.liquid_equivalent_precipitation_rate'
+            'commands.weather.lowest_temperature'
           ),
-          value: precipitationRate + ' mm/hr',
+          value: `${String(tempMin)} ${tempUnit}`,
           inline: true,
         },
         {
-          name: interaction.client.i18n.t('commands.weather.snow_fall'),
-          value: snowFall + ' mm/hr',
+          name: interaction.client.i18n.t(
+            'commands.weather.highest_temperature'
+          ),
+          value: `${String(tempMax)} ${tempUnit}`,
           inline: true,
         },
         {
-          name: interaction.client.i18n.t('commands.weather.uv_index'),
-          value: uv,
+          name: interaction.client.i18n.t('commands.weather.pressure'),
+          value: `${String(pressure)} hPa`,
           inline: true,
         },
         {
-          name: interaction.client.i18n.t('commands.weather.air_quality_index'),
-          value: airQuality,
+          name: interaction.client.i18n.t('commands.weather.humidity'),
+          value: `${String(humidity)}%`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.sea_level'),
+          value: `${String(seaLevel)} hPa`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.ground_level'),
+          value: `${String(groundLevel)} hPa`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.visibility'),
+          value: `${String(visibility / 1000)} km`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.wind_speed'),
+          value: `${String(windSpeed)} ${speedUnit}`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.wind_direction'),
+          value: `${String(windDeg)}°`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.wind_gust'),
+          value: `${String(windGust)} ${speedUnit}`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.clouds'),
+          value: `${String(cloudsAll)}%`,
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.rainfall'),
+          value:
+            rainThreeHour || rainOneHour
+              ? newLines(
+                  rainThreeHour ? `${String(rainThreeHour)} mm>3h` : null,
+                  rainOneHour ? `${String(rainOneHour)} mm>1h` : null
+                )
+              : interaction.client.i18n.t('commands.weather.none'),
+          inline: true,
+        },
+        {
+          name: interaction.client.i18n.t('commands.weather.snowfall'),
+          value:
+            snowThreeHour || snowOneHour
+              ? newLines(
+                  snowThreeHour ? `${String(snowThreeHour)} mm>3h` : null,
+                  snowOneHour ? `${String(snowOneHour)} mm>1h` : null
+                )
+              : interaction.client.i18n.t('commands.weather.none'),
           inline: true,
         },
       ])

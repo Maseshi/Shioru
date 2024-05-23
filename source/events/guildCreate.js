@@ -6,7 +6,7 @@ const {
   ChannelType,
 } = require('discord.js')
 const { getDatabase, ref, child, update } = require('firebase/database')
-const { updateApplicationCommands } = require('../utils/clientUtils')
+const { registeringCommands } = require('../utils/clientUtils')
 const { initializeData, fetchStatistics } = require('../utils/databaseUtils')
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
   once: false,
   async execute(guild) {
     await initializeData(guild.client, guild)
-    updateApplicationCommands(guild.client, true)
+    registeringCommands(guild.client, true)
     fetchStatistics('POST', 'size', guild.client)
   },
 }

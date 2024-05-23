@@ -2,6 +2,7 @@ const { Events, ChannelType } = require('discord.js')
 const { getDatabase, ref, child, get, remove } = require('firebase/database')
 const { fetchLevel, initializeData } = require('../utils/databaseUtils')
 const { catchError } = require('../utils/consoleUtils')
+const { newLines } = require('../utils/miscUtils')
 
 module.exports = {
   name: Events.MessageCreate,
@@ -20,90 +21,145 @@ module.exports = {
     }
 
     // Detect if user mention bot
-    if (message.mentions.has(message.client.user.id)) {
+    if (
+      !message.mentions.everyone &&
+      message.mentions.has(message.client.user.id)
+    ) {
+      const apiKey = message.client.configs.openai.apiKey
+      const baseURL = message.client.configs.openai.baseURL
       const prompts = message.client.configs.constants.prompts
       const replies = message.client.configs.constants.replies
       const alternatives = message.client.configs.constants.alternatives
       const scripts = message.client.configs.constants.scripts
       const argument = message.content.replace(/^<@!?\d{1,20}> ?/i, '')
 
+      // When a bot is called but doesn't type anything
+      if (message.content && !argument) {
+        message.channel.sendTyping()
+        message.reply(
+          alternatives[Math.floor(Math.random() * alternatives.length)]
+        )
+      }
+
       // When the bot calls and asks some questions.
       if (argument) {
         message.channel.sendTyping()
 
         try {
-          // Remove all characters except word characters, space, and digits
-          // 'tell me a story' -> 'tell me story'
-          // 'i feel happy' -> 'happy'
-          const text = argument
-            .toLowerCase()
-            .replace(/ a /g, ' ')
-            .replace(/pls/g, 'please')
-            .replace(/i feel /g, '')
-            .replace(/whats/g, 'what is')
-            .replace(/please /g, '')
-            .replace(/ please/g, '')
-            .replace(/r u/g, 'are you')
+          if (!apiKey)
+            throw 'Switched to legacy chat system because OpenAI API key could not be found.'
 
-          const compare = (
-            promptsArray,
-            repliesArray,
-            scriptsArray,
-            textString
-          ) => {
-            let reply, command, script
+          const systemConstants = message.client.configs.constants.system
+          const clientID = message.client.user.id
+          const clientUsername = message.client.user.username
+          const messages = await message.channel.messages.fetch({ limit: 100 })
+          const historyMessages = newLines(
+            ...messages.reverse().map((message) => {
+              const time = new Date(message.createdTimestamp).toLocaleString()
+              const username =
+                message.author.id === clientID
+                  ? 'You'
+                  : message.author.globalName ?? message.author.username
+              const content = message.content
 
-            for (let x = 0; x < promptsArray.length; x++) {
-              for (let y = 0; y < promptsArray[x].length; y++) {
-                if (promptsArray[x][y] === textString) {
-                  let replies = repliesArray[x]
-                  let scripts = scriptsArray[x] ?? null
-                  reply = replies[Math.floor(Math.random() * replies.length)]
-                  script = scripts
-                    ? scripts[Math.floor(Math.random() * scripts.length)]
-                    : null
-                  break
+              if (!message.interaction)
+                return `[${time}] ${username}: ${content}`
+            })
+          )
+          const systemMessage = [
+            systemConstants ?? `Your are ${clientUsername}.`,
+            messages
+              ? `Here is a history of 100 conversations on Discord:\n${historyMessages}`
+              : '',
+          ].join(' ')
+
+          const url = new URL('/v1/chat/completions', baseURL)
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              model: 'gpt-3.5-turbo',
+              messages: [
+                {
+                  role: 'system',
+                  content: systemMessage,
+                },
+                { role: 'user', content: argument },
+              ],
+            }),
+          })
+          const data = await response.json()
+
+          message.reply(data.choices[0].message.content)
+        } catch (error) {
+          if (error instanceof Error)
+            catchError(message.client, message, 'chat', error, true)
+
+          try {
+            const compare = (
+              promptsArray,
+              repliesArray,
+              scriptsArray,
+              textString
+            ) => {
+              let reply, command, script
+
+              for (let x = 0; x < promptsArray.length; x++) {
+                for (let y = 0; y < promptsArray[x].length; y++) {
+                  if (promptsArray[x][y] === textString) {
+                    let replies = repliesArray[x]
+                    let scripts = scriptsArray[x] ?? null
+                    reply = replies[Math.floor(Math.random() * replies.length)]
+                    script = scripts
+                      ? scripts[Math.floor(Math.random() * scripts.length)]
+                      : null
+                    break
+                  }
                 }
               }
+
+              return { reply, command, script }
             }
 
-            return { reply, command, script }
-          }
+            // Remove all characters except word characters, space, and digits
+            // 'tell me a story' -> 'tell me story'
+            // 'i feel happy' -> 'happy'
+            const text = argument
+              .replaceAll(/ a /g, ' ')
+              .replaceAll(/pls/g, 'please')
+              .replaceAll(/i feel /g, '')
+              .replaceAll(/whats/g, 'what is')
+              .replaceAll(/please /g, '')
+              .replaceAll(/ please/g, '')
+              .replaceAll(/r u/g, 'are you')
+            const compared = compare(prompts, replies, scripts, text)
 
-          if (compare(prompts, replies, scripts, text).reply) {
-            message.channel.send(compare(prompts, replies, scripts, text).reply)
-          } else {
-            message.channel.send(
-              alternatives[Math.floor(Math.random() * alternatives.length)]
+            if (compared.reply) {
+              message.reply(compared.reply)
+            } else if (compared.reply && compared.script) {
+              // Script format on database: ((client, message, answer) => {})
+              // Script format when converted: ((client, message, answer) => {})(client, message, answer[randomWords])
+              const answerScript = await eval(compared.script)(
+                message.client,
+                message,
+                compared.reply
+              )
+
+              message.reply(answerScript)
+            } else {
+              message.reply(
+                alternatives[Math.floor(Math.random() * alternatives.length)]
+              )
+            }
+          } catch (error) {
+            message.reply(
+              message.client.i18n.t('commands.ask.can_not_answer_at_this_time')
             )
+            catchError(message.client, message, 'chat', error, true)
           }
-          if (
-            compare(prompts, replies, scripts, text).reply &&
-            compare(prompts, replies, scripts, text).script
-          ) {
-            // Script format on database: ((client, message, answer) => {})
-            // Script format when converted: ((client, message, answer) => {})(client, message, answer[randomWords])
-            const answerScript = await eval(
-              compare(prompts, replies, scripts, text).script
-            )(client, message, compare(prompts, replies, scripts, text).reply)
-
-            message.channel.send(answerScript)
-          }
-        } catch (error) {
-          catchError(client, message, 'chatSystem', error)
-        }
-      }
-
-      // When a bot is called but doesn't type anything
-      if (!argument && message.mentions.has(message.client.user.id)) {
-        message.channel.sendTyping()
-
-        try {
-          const randomWords = Math.floor(Math.random() * alternatives.length)
-
-          message.channel.send(alternatives[randomWords])
-        } catch (error) {
-          catchError(client, message, 'chatSystem', error)
         }
       }
     }

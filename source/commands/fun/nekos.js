@@ -4,7 +4,6 @@ const {
   PermissionFlagsBits,
   resolveColor,
 } = require('discord.js')
-const { get } = require('axios').default
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -53,6 +52,8 @@ module.exports = {
   async execute(interaction) {
     const inputType = interaction.options.getString('type')
 
+    await interaction.deferReply()
+
     const api = 'https://nekos.life/api/v2'
     const endpoints = {
       tickle: '/img/tickle',
@@ -80,31 +81,32 @@ module.exports = {
       waifu: '/img/waifu',
     }
 
-    try {
-      const response = await get(api + endpoints[inputType])
+    const response = await fetch(api + endpoints[inputType])
 
-      const title = Object.keys(endpoints).find(
-        (key) => endpoints[key] === endpoints[inputType]
-      )
-      const authorUsername = interaction.user.username
-      const authorAvatar = interaction.user.displayAvatarURL()
-      const nekosEmbed = new EmbedBuilder()
-        .setColor(resolveColor('Random'))
-        .setTitle(title.charAt(0).toUpperCase() + title.slice(1))
-        .setImage(response.data.url)
-        .setFooter({
-          iconURL: authorAvatar,
-          text: interaction.client.i18n
-            .t('commands.nekos.request_by')
-            .replace('%s', authorUsername),
-        })
-        .setTimestamp()
-
-      await interaction.reply({ embeds: [nekosEmbed] })
-    } catch (error) {
-      await interaction.reply(
+    if (response.status !== 200)
+      return await interaction.editReply(
         interaction.client.i18n.t('commands.nekos.can_not_fetch_data')
       )
-    }
+
+    const data = await response.json()
+
+    const title = Object.keys(endpoints).find(
+      (key) => endpoints[key] === endpoints[inputType]
+    )
+    const authorUsername = interaction.user.username
+    const authorAvatar = interaction.user.displayAvatarURL()
+    const nekosEmbed = new EmbedBuilder()
+      .setColor(resolveColor('Random'))
+      .setTitle(title.charAt(0).toUpperCase() + title.slice(1))
+      .setImage(data.url)
+      .setFooter({
+        iconURL: authorAvatar,
+        text: interaction.client.i18n
+          .t('commands.nekos.request_by')
+          .replace('%s', authorUsername),
+      })
+      .setTimestamp()
+
+    await interaction.editReply({ embeds: [nekosEmbed] })
   },
 }

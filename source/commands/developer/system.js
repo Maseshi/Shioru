@@ -159,12 +159,10 @@ module.exports = {
               inline: true,
             },
             {
-              name: interaction.client.i18n.t(
-                'commands.system.info_uptime.title'
-              ),
+              name: interaction.client.i18n.t('commands.system.info_uptime'),
               value:
                 '```' +
-                interaction.client.i18n.t('commands.system.info_uptime.info', {
+                interaction.client.i18n.t('commands.system.info_uptime_info', {
                   day: serverDays,
                   hours: serverHours,
                 }) +

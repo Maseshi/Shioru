@@ -29,28 +29,25 @@ const currencyFormatter = (number, digits) => {
 }
 
 /**
- * The `validateURL` function checks if a given string is a valid URL.
- * @param {String} string - The `string` parameter represents the URL that needs to be validated.
- * @returns The function `validateURL` returns a boolean value. It returns `true` if the input string
- * is a valid URL, and `false` otherwise.
+ * Checks if a given string contains a valid URL.
+ *
+ * @param {string} string - The input string to be checked.
+ * @returns {boolean} - Returns true if the input string contains a valid URL, otherwise returns false.
  */
-const validateURL = (string) => {
-  try {
-    const newURL = new URL(string)
-    return newURL.protocol === 'http:' || newURL.protocol === 'https:'
-  } catch (error) {
-    return false
-  }
+const containsURL = (string) => {
+  return string.test(
+    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
+  )
 }
 
 /**
  * Returns an array of emotes found in the given string.
  *
- * @param {string} str - The input string to search for emotes.
+ * @param {string} string - The input string to search for emotes.
  * @returns {Array} - An array of emotes found in the string.
  */
-const matchEmotes = (str) => {
-  return str.match(/<a?:.+?:\d{18}>|\p{Extended_Pictographic}/gu)
+const matchEmotes = (string) => {
+  return string.match(/<a?:.+?:\d+>|\p{Extended_Pictographic}/gu)
 }
 
 /**
@@ -63,9 +60,34 @@ const newLines = (...string) => {
   return string.join('\n')
 }
 
+/**
+ * Generates a new title by capitalizing the first letter of each word in the input string.
+ *
+ * @param {string} string - The input string to generate the new title from.
+ * @returns {string} - The new title generated from the input string.
+ */
+const newTitle = (string) => {
+  return string.replaceAll(
+    /\w\S*/g,
+    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase()
+  )
+}
+
+/**
+ * Generates a new ID by converting the input string to lowercase and replacing certain characters with hyphens.
+ *
+ * @param {string} string - The input string to generate the new ID from.
+ * @returns {string} - The new ID generated from the input string.
+ */
+const newID = (string) => {
+  return string.toLowerCase().replaceAll(/([[\]{}_.:-])\s?/g, '-')
+}
+
 module.exports = {
   currencyFormatter,
-  validateURL,
+  containsURL,
   matchEmotes,
   newLines,
+  newTitle,
+  newID,
 }

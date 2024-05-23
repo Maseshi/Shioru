@@ -1,6 +1,5 @@
 const {
-  ContextMenuCommandBuilder,
-  ApplicationCommandType,
+  SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
@@ -8,17 +7,45 @@ const {
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
-  data: new ContextMenuCommandBuilder()
-    .setType(ApplicationCommandType.Message)
+  data: new SlashCommandBuilder()
     .setName('translate')
-    .setNameLocalizations({
-      th: 'แปลภาษา',
+    .setDescription('Translate text')
+    .setDescriptionLocalizations({
+      th: 'แปลภาษาข้อความ',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setDMPermission(true)
+    .addStringOption((option) =>
+      option
+        .setName('message')
+        .setDescription('the text to be translated')
+        .setDescriptionLocalizations({
+          th: 'ข้อความที่ต้องการจะแปล',
+        })
+        .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('from')
+        .setDescription(
+          'Language code of the text to be translated, such as en, th, ja.'
+        )
+        .setDescriptionLocalizations({
+          th: 'รหัสภาษาของข้อความที่ต้องการจะแปล เช่น en, th, ja',
+        })
+    )
+    .addStringOption((option) =>
+      option
+        .setName('to')
+        .setDescription('Language codes to translate text such as en, th, ja')
+        .setDescriptionLocalizations({
+          th: 'รหัสภาษาที่จะแปลข้อความเช่น en, th, ja',
+        })
+    ),
   async execute(interaction) {
-    const inputTo = interaction.locale
-    const inputMessage = interaction.targetMessage
+    const inputFrom = interaction.options.getString('from') ?? 'auto'
+    const inputTo = interaction.options.getString('to') ?? interaction.locale
+    const inputMessage = interaction.options.getString('message')
 
     await interaction.deferReply()
 
@@ -49,7 +76,7 @@ module.exports = {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
       },
       body: new URLSearchParams({
-        sl: 'auto',
+        sl: inputFrom,
         tl: inputTo,
         q: inputMessage,
       }).toString(),

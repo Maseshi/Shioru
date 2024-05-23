@@ -53,6 +53,17 @@ module.exports = {
   // Support notification alert
   notification: notification,
 
+  // Setup OpenAI
+  openai: {
+    apiKey: process.env.OPENAI_API_KEY ?? '',
+    baseURL: process.env.OPENAI_BASE_URL ?? 'https://api.openai.com',
+    organization: process.env.OPENAI_ORGANIZATION ?? '',
+    project: process.env.OPENAI_PROJECT ?? '',
+  },
+
+  // Setup Open Weather
+  open_weather_token: process.env.OPEN_WEATHER_TOKEN ?? '',
+
   // We use Firebase to deploy databases to the system.
   server: {
     apiKey: process.env.API_KEY ?? '',
@@ -84,14 +95,11 @@ module.exports = {
   token: process.env.TOKEN ?? '',
 
   // Setup Top.gg
-  top_gg_token: process.env.TOP_GG_API_KEY ?? '',
+  top_gg_token: process.env.TOP_GG_TOKEN ?? '',
 
   // Translation support locales
-  translation: translation,
-
-  // Last time that personal information was updated
-  update: '2021-02-26T20:08:27.467Z',
-
-  // Setup Weatherbit
-  weatherbit_token: process.env.WEATHERBIT_KEY ?? '',
+  translation: {
+    baseURL: process.env.TRANSLATION_BASE_URL ?? '',
+    locales: translation,
+  },
 }

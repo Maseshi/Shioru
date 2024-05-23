@@ -198,12 +198,12 @@ module.exports = {
       })
       try {
         await interaction.client.player.play(
-          voiceChannel,
+          voiceChannel || meChannel,
           results[contentIndex],
           {
             member: interaction.member,
+            message: false,
             textChannel: interaction.channel,
-            interaction,
           }
         )
         await interaction.deleteReply()
@@ -252,7 +252,7 @@ module.exports = {
           interaction.client.i18n.t('commands.search.not_a_dj')
         )
     }
-    if (!voiceChannel)
+    if (!voiceChannel && !meChannel)
       return await interaction.editReply(
         interaction.client.i18n.t('commands.search.user_not_in_channel')
       )

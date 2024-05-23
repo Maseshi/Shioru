@@ -27,6 +27,7 @@ const {
   Client,
   GatewayIntentBits,
   Partials,
+  PresenceUpdateStatus,
   ActivityType,
 } = require('discord.js')
 const { join } = require('node:path')
@@ -38,7 +39,6 @@ const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 const { initializeApp } = require('firebase/app')
 const { getDatabase, connectDatabaseEmulator } = require('firebase/database')
-const { getStorage, connectStorageEmulator } = require('firebase/storage')
 const { startScreen, logger } = require('./utils/consoleUtils')
 const { updateChecker } = require('./utils/servicesUtils')
 const i18next = require('i18next')
@@ -86,10 +86,14 @@ if (
   if (!configs.monitoring.pageId)
     logger.warn('CONF: The monitoring.pageId was not found in the environment.')
 }
+if (!configs.openai.apiKey)
+  logger.warn('CONF: The openai.apiKey was not found in the environment.')
+if (!configs.open_weather_token)
+  logger.warn('CONF: The open_weather_token was not found in the environment.')
 if (!configs.test_guild)
   logger.warn('CONF: The test_guild was not found in the configuration file.')
-if (!configs.weatherbit_token)
-  logger.warn('CONF: The weatherbit_token was not found in the environment.')
+if (!configs.translation.baseURL)
+  logger.warn('CONF: The translation.baseURL was not found in the environment.')
 
 try {
   if (!configs.server.apiKey)
@@ -121,7 +125,7 @@ try {
       'CONF: MEASUREMENT_ID It needs to be set up in the environment.'
     )
   if (!configs.token)
-    throw logger.error('CONF: TOKEN It needs to be set up in the environment.')
+    throw new Error('CONF: TOKEN It needs to be set up in the environment.')
 } catch (error) {
   logger.error(
     error,
@@ -143,12 +147,12 @@ const client = new Client({
     Partials.ThreadMember,
   ],
   presence: {
-    status: 'dnd',
+    status: PresenceUpdateStatus.Idle,
     afk: true,
     activities: [
       {
-        name: 'information of each server',
-        type: ActivityType.Watching,
+        name: 'America Ya :D',
+        type: ActivityType.Custom,
       },
     ],
   },
@@ -200,16 +204,16 @@ try {
 // Configure in client
 logger.info('Adding data and handlers to the main system...')
 
+client.mode = process.env.npm_lifecycle_event || 'start'
+client.configs = configs
+client.logger = logger
+client.i18n = i18next
 client.temp = {
   startup: {
     start: startTime,
     end: 0,
   },
 }
-client.mode = process.env.npm_lifecycle_event || 'start'
-client.configs = configs
-client.logger = logger
-client.i18n = i18next
 client.player = new DisTube(client, {
   plugins: [
     new DeezerPlugin(),
@@ -217,7 +221,6 @@ client.player = new DisTube(client, {
     new SoundCloudPlugin(),
     new YtDlpPlugin({ update: false }),
   ],
-  leaveOnEmpty: false,
   leaveOnStop: false,
   customFilters: client.configs.filters,
 })
@@ -245,11 +248,6 @@ if (client.mode !== 'start') {
     getDatabase(),
     client.configs.emulators.database.host,
     client.configs.emulators.database.port
-  )
-  connectStorageEmulator(
-    getStorage(),
-    client.configs.emulators.storage.host,
-    client.configs.emulators.storage.port
   )
 }
 

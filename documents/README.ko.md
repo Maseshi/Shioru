@@ -74,7 +74,7 @@
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
-> 
+>
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
@@ -100,7 +100,7 @@
 
 - https://firebase.google.com/으로 이동하여 프로젝트 설정을 시작합니다.
 - 새 프로젝트를 추가하고 단계를 따릅니다.
-- 웹사이트 **** 있는 첫 번째 애플리케이션을 추가합니다 **선택적으로 앱 이름** 지정합니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- 웹사이트 \***\* 있는 첫 번째 애플리케이션을 추가합니다 **선택적으로 앱 이름\*\* 지정합니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - **create > [realtime database](https://console.firebase.google.com/u/0/project/_/database/data)** 로 이동하여 스토리지 데이터베이스를 생성합니다.
 

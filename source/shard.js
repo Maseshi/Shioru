@@ -38,14 +38,12 @@ const {
 } = require('./utils/servicesUtils')
 const configs = require('./configs/data')
 
-process.env.TERM = 'xterm'
 startScreen()
 
 const child = logger.child({}, { msgPrefix: '[Shard] ' })
 const mode = process.env.npm_lifecycle_event || 'start'
 const logEmbed = new EmbedBuilder().setTimestamp()
 const manager = new ShardingManager('./source/main.js', {
-  execArgv: mode !== 'start' ? ['--env-file=.env'] : [],
   respawn: true,
   shardList: 'auto',
   token: configs.token,

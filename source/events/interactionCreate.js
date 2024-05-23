@@ -87,7 +87,7 @@ module.exports = {
         fetchStatistics('POST', 'size/worked', interaction.client)
         fetchStatistics('POST', `${path}/${func.data.name}`, interaction.client)
       } catch (error) {
-        catchError(interaction.client, interaction, 'interactionCreate', error)
+        catchError(interaction.client, interaction, func.data.name, error)
       }
     }
 

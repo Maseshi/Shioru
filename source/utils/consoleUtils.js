@@ -67,14 +67,14 @@ const startScreen = () => {
 }
 
 /**
- * Detects errors and informs the user about them.
+ * Handles and logs errors that occur during the execution of a command or function.
  *
- * @param {Client} client
- * @param {String} message
- * @param {String} name The name of the command or event.
- * @param {Error} error
- * @param {Boolean} silent Set to `true` when you don't want to notify user.
- * @returns error
+ * @param {Object} client - The Discord client object.
+ * @param {Object} message - The message object where the error occurred.
+ * @param {string} name - The name of the command or function where the error occurred.
+ * @param {Error} error - The error object that occurred.
+ * @param {boolean} [silent=false] - Flag to determine if the error should be handled silently.
+ * @returns {Error} The error object that occurred.
  */
 const catchError = async (client, message, name, error, silent = false) => {
   if (!name)
@@ -84,29 +84,28 @@ const catchError = async (client, message, name, error, silent = false) => {
   if (!error)
     return client.logger.warn('Please forward any errors that have occurred.')
   if (message) {
-    const ping = Date.now() - message.createdTimestamp
-    const api = Math.round(client.ws.ping)
-
+    const roundtrip = Date.now() - message.createdTimestamp
+    const websocket = client.ws.ping
     const catchErrorEmbed = new discord.EmbedBuilder()
-      .setTitle(client.i18n.t('utils.consoleUtils.an_error_occurred'))
-      .setDescription(
-        client.i18n
-          .t('utils.consoleUtils.error_detail')
-          .replace('%s1', name)
-          .replace('%s2', packages.version)
-          .replace('%s3', new Date())
-          .replace(
-            '%s4',
-            getApps().length === 0
-              ? client.i18n.t('utils.consoleUtils.server_abnormal')
-              : client.i18n.t('utils.consoleUtils.server_normal')
-          )
-          .replace('%s5', ping)
-          .replace('%s6', api)
-          .replace('%s7', error)
-      )
       .setColor(discord.Colors.Red)
+      .setTitle(client.i18n.t('utils.consoleUtils.error_occurred'))
+      .setDescription(
+        client.i18n.t('utils.consoleUtils.error_detail', {
+          command_name: name,
+          version: packages.version,
+          time: new Date(),
+          server_status: !getApps().length
+            ? client.i18n.t('utils.consoleUtils.server_abnormal')
+            : client.i18n.t('utils.consoleUtils.server_normal'),
+          roundtrip_latency: roundtrip,
+          websocket_latency: websocket,
+          error,
+          issues_link:
+            'https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&projects=&template=bug_report.md&title=',
+        })
+      )
       .setTimestamp()
+      .setFooter({ text: client.i18n.t('utils.consoleUtils.report_issues') })
 
     const contents = {
       content: '',
@@ -124,44 +123,40 @@ const catchError = async (client, message, name, error, silent = false) => {
         client.configs.logger.error.webhookName,
         client.configs.logger.error.webhookAvatarURL,
         '⚠️・error',
-        client.i18n
-          .t('utils.consoleUtils.error_detail')
-          .replace('%s1', name)
-          .replace('%s2', packages.version)
-          .replace('%s3', new Date())
-          .replace(
-            '%s4',
-            getApps().length === 0
-              ? client.i18n.t('utils.consoleUtils.server_abnormal')
-              : client.i18n.t('utils.consoleUtils.server_normal')
-          )
-          .replace('%s5', ping)
-          .replace('%s6', api)
-          .replace('%s7', error),
+        client.i18n.t('utils.consoleUtils.error_detail', {
+          command_name: name,
+          version: packages.version,
+          time: new Date(),
+          server_status: !getApps().length
+            ? client.i18n.t('utils.consoleUtils.server_abnormal')
+            : client.i18n.t('utils.consoleUtils.server_normal'),
+          roundtrip_latency: roundtrip,
+          websocket_latency: websocket,
+          error,
+          issues_link:
+            'https://github.com/Maseshi/Shioru/issues/new?assignees=&labels=bag&projects=&template=bug_report.md&title=',
+        }),
         [],
         'Red'
       )
     }
 
-    try {
-      if (!silent) await message.followUp(contents)
-    } catch {
-      try {
-        if (!silent) {
-          if (message.channel) await message.channel.reply(contents)
-          else await message.reply(contents)
-        }
-      } catch {
-        if (!silent) {
-          if (message.channel) await message.channel.send(contents)
-          else await message.send(contents)
-        }
+    // Check type of message is interaction or not and check is should be handled silently
+    if (!message.content && !silent) {
+      if (message.deferred) {
+        await message.editReply(contents)
+      } else if (message.replied) {
+        await message.followUp(contents)
+      } else {
+        await message.reply(contents)
       }
     }
   }
 
   client.logger.error(
     {
+      name,
+      silent,
       version: {
         package: packages.version,
         discord: discord.version,

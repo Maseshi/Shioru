@@ -1,15 +1,27 @@
-FROM node:lts-alpine
+# syntax=docker/dockerfile:1
 
-RUN mkdir -p /usr/src/app
+ARG NODE_VERSION=lts
+
+FROM node:${NODE_VERSION}-alpine AS base
+RUN apk --update --no-cache add \
+    git openjdk11-jre python3 ffmpeg build-base \
+    jpeg-dev cairo-dev giflib-dev pango-dev
 WORKDIR /usr/src/app
+EXPOSE 3000 4000 9000
 
-COPY package*.json /usr/src/app/
+FROM base AS serve
+RUN npm install --global firebase-tools
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=cache,target=/root/.npm \
+    npm ci --include=dev
+COPY . .
+CMD npm run serve
 
-RUN apt-get update -y && apt-get upgrade -y
-RUN apk add --no-cache git default-jre python3 ffmpeg build-essential
-RUN npm install -g npm@latest && npm install
-
-COPY . /usr/src/app
-
-EXPOSE 8080
-CMD [ "npm", "start" ]
+FROM base AS production
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=package-lock.json,target=package-lock.json \
+    --mount=type=cache,target=/root/.npm \
+    npm ci --omit=dev
+COPY . .
+CMD npm start

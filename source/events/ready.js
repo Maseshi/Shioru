@@ -1,4 +1,10 @@
-const { EmbedBuilder, Colors, Events, ActivityType } = require('discord.js')
+const {
+  EmbedBuilder,
+  Colors,
+  Events,
+  ActivityType,
+  PresenceUpdateStatus,
+} = require('discord.js')
 const { getApps } = require('firebase/app')
 const {
   getDatabase,
@@ -9,13 +15,10 @@ const {
   get,
   set,
 } = require('firebase/database')
-const {
-  updateApplicationCommands,
-  webhookSend,
-} = require('../utils/clientUtils')
+const { registeringCommands, webhookSend } = require('../utils/clientUtils')
 const { colorize } = require('../utils/consoleUtils')
 const { dataStructures, fetchStatistics } = require('../utils/databaseUtils')
-const { currencyFormatter } = require('../utils/miscUtils')
+const { currencyFormatter, newTitle } = require('../utils/miscUtils')
 
 module.exports = {
   name: Events.ClientReady,
@@ -34,7 +37,7 @@ module.exports = {
     )
 
     // Refreshing application (/) commands.
-    updateApplicationCommands(client)
+    registeringCommands(client)
 
     // Check back-ends server is set up.
     if (!getApps.length) {
@@ -49,6 +52,7 @@ module.exports = {
           const replies = snapshot.val().replies ?? []
           const alternatives = snapshot.val().alternatives ?? []
           const scripts = snapshot.val().scripts ?? []
+          const system = snapshot.val().system ?? ''
 
           client.configs.constants.prompts = [
             ...client.configs.constants.prompts,
@@ -66,6 +70,7 @@ module.exports = {
             ...client.configs.constants.scripts,
             ...scripts,
           ]
+          client.configs.constants.system = system
         } else {
           set(chatRef, dataStructures(client, 'chat'))
         }
@@ -111,18 +116,13 @@ module.exports = {
         commands: client.commands.size ?? 0,
       }
 
-      if (client.shard && client.shard.count > 1) {
-        const promises = [
+      if (client.shard && client.shard.count) {
+        const results = await Promise.all([
           client.shard.fetchClientValues('guilds.cache.size'),
-          client.shard.broadcastEval((script) =>
-            script.guilds.cache.reduce(
-              (acc, guild) => acc + guild.memberCount,
-              0
-            )
+          client.shard.broadcastEval((cli) =>
+            cli.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
           ),
-        ]
-        const results = await Promise.all(promises)
-
+        ])
         callback.guilds = results[0].reduce(
           (acc, guildCount) => acc + guildCount,
           0
@@ -149,6 +149,7 @@ module.exports = {
         },
         {
           name: '/help',
+          state: '🪺 IS THE EGG',
           type: ActivityType.Watching,
         },
         {
@@ -159,6 +160,12 @@ module.exports = {
           name: `${currencyFormatter(statistics.commands, 1)} Command${statistics.commands === 1 ? '' : 's'}`,
           type: ActivityType.Listening,
         },
+        client.mode !== 'start'
+          ? {
+              name: `📀 ${newTitle(client.mode)} Mode`,
+              type: ActivityType.Custom,
+            }
+          : null,
       ],
       development: [
         {
@@ -179,7 +186,7 @@ module.exports = {
       client.mode === 'start' ? activities.production : activities.development
 
     client.user.setPresence({
-      status: 'available',
+      status: PresenceUpdateStatus.Online,
       afk: false,
       activities: activityType,
     })

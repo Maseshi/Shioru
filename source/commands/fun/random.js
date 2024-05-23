@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
-const axios = require('axios').default
 
 module.exports = {
   permissions: [
@@ -170,11 +169,13 @@ module.exports = {
                 inputGrayscale ? 'grayscale' : '',
                 inputBlur ? `blur=${inputBlur}` : '',
               ].join('&')
-            const response = await axios.get(
+            const response = await fetch(
               endpoint + sizePath + fileType + options
             )
 
-            images.push(response.request.res.responseUrl)
+            if (response.status !== 200) return
+
+            images.push(response.url)
           }
 
           await interaction.editReply({ files: images })
