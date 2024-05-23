@@ -74,7 +74,7 @@ a mnoho dalších zajímavých funkcí...
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
->
+> 
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
