@@ -55,10 +55,10 @@ module.exports = {
 
   // Setup OpenAI
   openai: {
-    apiKey: process.env.OPENAI_API_KEY,
-    baseURL: process.env.OPENAI_BASE_URL,
-    organization: process.env.OPENAI_ORGANIZATION,
-    project: process.env.OPENAI_PROJECT,
+    apiKey: process.env.OPENAI_API_KEY ?? '',
+    baseURL: process.env.OPENAI_BASE_URL ?? 'https://api.openai.com',
+    organization: process.env.OPENAI_ORGANIZATION ?? '',
+    project: process.env.OPENAI_PROJECT ?? '',
   },
 
   // Setup Open Weather
@@ -99,7 +99,7 @@ module.exports = {
 
   // Translation support locales
   translation: {
-    baseURL: process.env.TRANSLATION_BASE_URL,
+    baseURL: process.env.TRANSLATION_BASE_URL ?? '',
     locales: translation,
   },
 }
