@@ -41,7 +41,6 @@ const { initializeApp } = require('firebase/app')
 const { getDatabase, connectDatabaseEmulator } = require('firebase/database')
 const { startScreen, logger } = require('./utils/consoleUtils')
 const { updateChecker } = require('./utils/servicesUtils')
-const OpenAI = require('openai')
 const i18next = require('i18next')
 const Backend = require('i18next-fs-backend')
 const configs = require('./configs/data')
@@ -209,7 +208,6 @@ client.mode = process.env.npm_lifecycle_event || 'start'
 client.configs = configs
 client.logger = logger
 client.i18n = i18next
-client.ai = new OpenAI(client.configs.openai)
 client.temp = {
   startup: {
     start: startTime,
@@ -223,7 +221,6 @@ client.player = new DisTube(client, {
     new SoundCloudPlugin(),
     new YtDlpPlugin({ update: false }),
   ],
-  leaveOnEmpty: false,
   leaveOnStop: false,
   customFilters: client.configs.filters,
 })
