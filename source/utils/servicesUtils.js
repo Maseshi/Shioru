@@ -72,6 +72,7 @@ const systemMetricsSubmitter = () => {
       await fetch(
         `https://api.statuspage.io/v1/pages/${pageId}/metrics/${metricId}/data.json`,
         {
+          method: 'POST',
           headers: {
             Authorization: `OAuth ${apiKey}`,
             'Content-Type': 'application/json',
