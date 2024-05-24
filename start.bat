@@ -1,52 +1,50 @@
 @echo off
 title Shioru
+chcp 65001
 cls
 
-echo ##################################################
-echo #             RUNNING VIA START.BAT              #
-echo ##################################################
-echo #                                                #
-echo # Running this script will automatically update  #
-echo # and install all necessary components. If you   #
-echo # don't want to continue, you can Ctrl + C       #
-echo # or ^C.                                         #
-echo #                                                #
-echo # Will install: chocolatey, git, nodejs-lts,     #
-echo # openjdk, python3, ffmpeg                       #
-echo # and visualstudio2022buildtools                 #
-echo #                                                #
-echo ##################################################
+echo ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+echo ┃             RUNNING VIA START.BAT              ┃
+echo ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+echo ┃                                                ┃
+echo ┃ Running this script will automatically update  ┃
+echo ┃ and install all necessary components. If you   ┃
+echo ┃ don't want to continue, you can Ctrl + C       ┃
+echo ┃ or ^^C.                                         ┃
+echo ┃                                                ┃
+echo ┃ Will install: winget, Schniz.fnm, Git,         ┃
+echo ┃ Java(TM).SE.Development.Kit, Python.3.12,      ┃
+echo ┃ FFmpeg and Visual.Studio.BuildTools.2022       ┃
+echo ┃                                                ┃
+echo ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 echo.
 
-@REM Check is in admin mode or not
-net session >nul 2>&1
-if ERRORLEVEL NEQ 0 powershell start -verb runas "%0" am_admin & exit /b
-
-echo Verifying installation of package manager...
-call choco --version >nul 2>&1
-
-if ERRORLEVEL NEQ 0 (
-    echo Updating and installing package manager...
-    powershell Set-ExecutionPolicy Bypass -Scope Process -Force
-    powershell [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    powershell iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    call choco upgrade -y chocolatey
+if '%1' neq 'am_admin' (
+    powershell start -verb runas '%0' am_admin & exit /b
 )
 
+echo Verifying installation of package manager...
+call winget --version >nul 2>&1
+if %errorlevel% neq 0 (
+    powershell Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe || (
+        powershell Write-Information "Downloading WinGet and its dependencies..."
+        powershell Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+        powershell Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
+        powershell Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
+        powershell Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
+        powershell Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
+        powershell Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+    )
+)
 echo.
 
 echo Updating and installing required components...
-call choco list --local-only | findstr /C:"git" || call choco upgrade -y git
-call choco list --local-only | findstr /C:"nodejs-lts" || (
-    call choco upgrade -y nodejs-lts
-    echo.
-    echo Updating NPM to the latest version...
-    call npm install -g npm@latest
-)
-call choco list --local-only | findstr /C:"openjdk" || call choco upgrade -y openjdk
-call choco list --local-only | findstr /C:"python3" || call choco upgrade -y python3
-call choco list --local-only | findstr /C:"ffmpeg" || call choco upgrade -y ffmpeg
-call choco list --local-only | findstr /C:"visualstudio2022buildtools" || call choco upgrade -y visualstudio2022buildtools
+call winget install Schniz.fnm Git Java(TM).SE.Development.Kit Python.3.12 FFmpeg Visual.Studio.BuildTools.2022
+call fnm use --install-if-missing 20
+echo.
+
+echo Updating NPM to the latest version...
+call npm install -g npm@latest
 echo.
 
 echo Updating and installing depandancies...
