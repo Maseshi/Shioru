@@ -1,49 +1,59 @@
-<center>
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" alt="Shioru" />
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
     <p>Personal assistants in Discord that will help make your guild a better place.</p>
   </strong>
-  <a href="https://shiorus.web.app/invite">Add App</a>
-  |
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
-  |
-  <a href="https://shioru.statuspage.io/">Status</a>
-  |
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Improve Translation</a>
-  |
-  <a href="https://top.gg/bot/704706906505347183">Rate It</a>
-  <br />
-  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white" alt="Discord.js version 14" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github" alt="Last commit" />
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F" alt="Status" />
-  <a title="Crowdin" href="https://crowdin.com/project/shioru">
-    <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
-  </a>
-  <a title="CodeFactor" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
-  </a>
-  <a title="Top.gg" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
-  </a>
-</center>
+  <p>
+    <a title="Discord.js v14" href="https://discord.js.org/">
+      <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
+    </a>
+    <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
+      <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github&style=for-the-badge" alt="Last commit" />
+    </a>
+    <a title="Status" href="https://shioru.statuspage.io/">
+      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&style=for-the-badge" alt="Status" />
+    </a>
+    <br />
+    <a title="Crowdin" href="https://crowdin.com/project/shioru">
+      <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
+    </a>
+    <a title="CodeFactor" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+    </a>
+    <a title="Top.gg" href="https://top.gg/bot/704706906505347183">
+      <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
+    </a>
+  </p>
+  <p>
+    <a href="https://shiorus.web.app/invite">Add App</a>
+    ·
+    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+    ·
+    <a href="https://shioru.statuspage.io/">Status</a>
+    ·
+    <a href="https://crowdin.com/project/shioru">Improve Translation</a>
+    ·
+    <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+  </p>
+</div>
 
 Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
 ## ✨ Outstanding features
 
-[ / ] Worked on [Discord.js](https://discord.js.org/) v14 \
-[ / ] Easy to read, easy to use and highly effective \
-[ / ] You can customize many things you want \
-[ / ] Contains all commands including 100+ available subcommands \
-[ / ] Can play music both from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) and [900+ more Website](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) along with an automatic music playback system \
-[ / ] Supports multiple languages. You can check the supported languages ​​from the [Language File](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.\
-[ / ] Tier system (Level and experience) \
-[ / ] Support for customizing server notifications \
-[ / ] You can talk by typing `@Shioru` followed by the message you want to communicate \
-[ / ] Supports working on Shards or supports working in various guilds \
-[ / ] You can use application commands (/) \
-[ / ] Simulate the database system for testing.
+- [x] Worked on [Discord.js](https://discord.js.org/) v14
+- [x] Easy to read, easy to use and highly effective
+- [x] You can customize many things you want
+- [x] Contains all commands including 100+ available subcommands
+- [x] Can play music both from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) and [900+ more Website](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) along with an automatic music playback system
+- [x] Supports multiple languages. You can check the supported languages ​​from the [Language File](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
+- [x] Tier system (Level and experience)
+- [x] Support for customizing server notifications
+- [x] You can talk by typing `@Shioru` followed by the message you want to communicate
+- [x] Supports working on Shards or supports working in various guilds
+- [x] You can use application commands (`/`)
+- [x] Simulate the database system for testing.
 
 And many other interesting features...
 
@@ -111,7 +121,7 @@ Install **Build tools** by running the following command according to your opera
 
 ## 🔥 Get started
 
-There are several options available. If you are using [Visual Studio Code](https://code.visualstudio.com/), you can choose your method directly via the Run and Debug tab (<kbd>Ctrl</ kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>) For other operations, see Tasks (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> type `>Tasks: Run Task`)
+There are several options available. If you are using [Visual Studio Code](https://code.visualstudio.com/), you can choose your method directly via the Run and Debug tab (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>). For other operations, see Tasks (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> type `>Tasks: Run Task`)
 
 ### 🪛 Development
 
