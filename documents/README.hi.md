@@ -1,49 +1,59 @@
-<center>
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" style="border-radius: 100%;" alt="Shioru" />
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
     <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
-  <a href="https://shiorus.web.app/invite">เชิญชวน</a>
-  |
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">เปลี่ยนภาษา</a>
-  |
-  <a href="https://shioru.statuspage.io/">สถานะ</a>
-  |
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">ปรับปรุงการแปลภาษา</a>
-  |
-  <a href="https://top.gg/bot/704706906505347183">ให้คะแนน</a>
-  <br />
-  <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white" alt="Discord.js version 14" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github" alt="Last commit" />
-  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&link=https%3A%2F%2Fshioru.statuspage.io%2F" alt="Status" />
-  <a title="भीड़" href="https://crowdin.com/project/shioru">
-    <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
-  </a>
-  <a title="कोडफैक्टर" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="कोडफैक्टर" />
-  </a>
-  <a title="टॉप.जी" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
-  </a>
-</center>
+  <p>
+    <a title="Discord.js v14" href="https://discord.js.org/">
+      <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
+    </a>
+    <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
+      <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github&style=for-the-badge" alt="Last commit" />
+    </a>
+    <a title="Status" href="https://shioru.statuspage.io/">
+      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&style=for-the-badge" alt="Status" />
+    </a>
+    <br />
+    <a title="भीड़" href="https://crowdin.com/project/shioru">
+      <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
+    </a>
+    <a title="कोडफैक्टर" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="कोडफैक्टर" />
+    </a>
+    <a title="टॉप.जी" href="https://top.gg/bot/704706906505347183">
+      <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
+    </a>
+  </p>
+  <p>
+    <a href="https://shiorus.web.app/invite">Add App</a>
+    ·
+    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+    ·
+    <a href="https://shioru.statuspage.io/">Status</a>
+    ·
+    <a href="https://crowdin.com/project/shioru">Improve Translation</a>
+    ·
+    <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+  </p>
+</div>
 
 เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
 
 ## ✨ คุณสมบัติเด่น
 
-[ / ] ทำงานบน [Discord.js](https://discord.js.org/) v14 \
-[ / ] อ่านง่าย ใช้งานง่ายและประสิทธิภาพสูง \
-[ / ] สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ \
-[ / ] มีคำสั่งทั้งหมดรวมถึงคำสั่งย่อยที่พร้อมใช้งานมากกว่า 100+ คำสั่ง \
-[ / ] สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) และอีก [900+ เว็บไซต์](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ \
-[ / ] รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้ \
-[ / ] ระบบระดับชั้น (เลเวลและค่าประสบการณ์) \
-[ / ] รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์ \
-[ / ] สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร \
-[ / ] รองรับการทำงานบน Shard หรือรองรับการทำงานในหลากหลายกิลด์ \
-[ / ] สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้ \
-[ / ] จำลองระบบฐานข้อมูลสำหรับทดสอบ
+- [x] ทำงานบน [Discord.js](https://discord.js.org/) v14
+- [x] อ่านง่าย ใช้งานง่ายและประสิทธิภาพสูง
+- [x] สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
+- [x] มีคำสั่งทั้งหมดรวมถึงคำสั่งย่อยที่พร้อมใช้งานมากกว่า 100+ คำสั่ง
+- [x] สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) และอีก [900+ เว็บไซต์](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
+- [x] รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- [x] ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
+- [x] รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
+- [x] สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
+- [x] รองรับการทำงานบน Shard หรือรองรับการทำงานในหลากหลายกิลด์
+- [x] สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- [x] จำลองระบบฐานข้อมูลสำหรับทดสอบ
 
 आपका अच्छा सर्वर सहायक आपके सर्वर को अधिक जीवंत दिखने में मदद करेगा। वह बहुत कुछ कर सकती है जिसके लिए आप `/help` टाइप करके विभिन्न कमांड की विस्तृत जानकारी प्राप्त कर सकते हैं।आप शिओरू को[यहाँ](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
 
@@ -74,7 +84,7 @@
   ```
 
 > [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
->
+> 
 > ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
 
 ### 2. โคลนบอทและติดตั้งส่วนประกอบ
