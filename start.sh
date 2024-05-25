@@ -12,19 +12,19 @@ cat << "EOF"
 ┃ don't want to continue, you can Ctrl + C       ┃
 ┃ or ^C.                                         ┃
 ┃                                                ┃
-┃ Will install: curl, fnm, git, default-jre,     ┃
-┃ python3, ffmpeg, build-essential,              ┃
-┃ libcairo2-dev, libpango1.0-dev, libjpeg-dev    ┃
-┃ libgif-dev and librsvg2-dev                    ┃
+┃ Will install: curl, git, default-jre, python3, ┃
+┃ ffmpeg, build-essential, libcairo2-dev,        ┃
+┃ libpango1.0-dev, libjpeg-dev, libgif-dev,      ┃
+┃ librsvg2-dev and nodejs                        ┃
 ┃                                                ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
 echo
 
 echo Updating system packages and installing required packages...
-sudo apt-get update && sudo apt-get install curl git default-jre python3 ffmpeg build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev -y
-curl -fsSL https://fnm.vercel.app/install | bash
-fnm use --install-if-missing 20
+sudo apt-get update && sudo apt-get install -y curl git default-jre python3 ffmpeg build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
 echo
 
 echo Updating NPM to the latest version...

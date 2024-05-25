@@ -12,9 +12,10 @@ echo ┃ and install all necessary components. If you   ┃
 echo ┃ don't want to continue, you can Ctrl + C       ┃
 echo ┃ or ^^C.                                         ┃
 echo ┃                                                ┃
-echo ┃ Will install: winget, Schniz.fnm, Git,         ┃
+echo ┃ Will install: winget, Git,                     ┃
 echo ┃ Java(TM).SE.Development.Kit, Python.3.12,      ┃
-echo ┃ FFmpeg and Visual.Studio.BuildTools.2022       ┃
+echo ┃ FFmpeg, Visual.Studio.BuildTools.2022 and      ┃
+echo ┃ Node.js.LTS                                    ┃
 echo ┃                                                ┃
 echo ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 echo.
@@ -39,8 +40,7 @@ if %errorlevel% neq 0 (
 echo.
 
 echo Updating and installing required components...
-call winget install Schniz.fnm Git Java(TM).SE.Development.Kit Python.3.12 FFmpeg Visual.Studio.BuildTools.2022
-call fnm use --install-if-missing 20
+call winget install Git Java(TM).SE.Development.Kit Python.3.12 FFmpeg Visual.Studio.BuildTools.2022 Node.js.LTS
 echo.
 
 echo Updating NPM to the latest version...
