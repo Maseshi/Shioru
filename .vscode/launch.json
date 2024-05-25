@@ -48,6 +48,6 @@
       "timeout": 10000,
       "suppressMultipleSessionWarning": true,
       "internalConsoleOptions": "openOnFirstSessionStart"
-    },
+    }
   ]
 }
