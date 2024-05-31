@@ -1,117 +1,184 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
   <strong>
-    <h1>Shioru</h2>
-    <p>ผู้ช่วยภายในเซิร์ฟเวอร์ Discord จะช่วยทำให้เซิร์ฟเวอร์ของคุณน่าอยู่ขึ้น</p>
+    <h1>Shioru</h1>
+    <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
-  <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru" />
-  <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru" />
-  <a title="상태" target="_blank" href="https://shioru.statuspage.io/">
-    <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
-  </a>
-  <a title="크라우딘" target="_blank" href="https://crowdin.com/project/shioru">
-    <img src="https://badges.crowdin.net/shioru/localized.svg" />
-  </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
-  </a>
-  <a title="탑.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" />
-  </a>
+  <p>
+    <a title="Discord.js v14" href="https://discord.js.org/">
+      <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
+    </a>
+    <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
+      <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github&style=for-the-badge" alt="Last commit" />
+    </a>
+    <a title="Status" href="https://shioru.statuspage.io/">
+      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&style=for-the-badge" alt="Status" />
+    </a>
+    <br />
+    <a title="크라우딘" href="https://crowdin.com/project/shioru">
+      <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
+    </a>
+    <a title="CodeFactor" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+    </a>
+    <a title="탑.gg" href="https://top.gg/bot/704706906505347183">
+      <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
+    </a>
+  </p>
+  <p>
+    <a href="https://shiorus.web.app/invite">Add App</a>
+    ·
+    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+    ·
+    <a href="https://shioru.statuspage.io/">Status</a>
+    ·
+    <a href="https://crowdin.com/project/shioru">Improve Translation</a>
+    ·
+    <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+  </p>
 </div>
 
-당신의 좋은 서버 도우미는 당신의 서버가 더 활기차게 보이도록 도와줄 것입니다. 그녀는 `/help` 여기[에서 서버에 가입하도록 Shioru를 초대할 수 있습니다](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you)
+เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
 
-<div align="center">
-  <a href="https://github.com/Maseshi/Shioru/tree/main/documents">
-    </img>
-  </a>
-</div>
+## ✨ คุณสมบัติเด่น
 
-## 특징
-
-- [Discord.js](https://discord.js.org/) v14에서 작동합니다.
-- 원하는 다양한 아이템 커스터마이징 가능
-- 자동 재생 기능이 있는 [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) 및 [SoundCloud](https://soundcloud.com/) 에서 음악을 재생할 수 있습니다.
-- รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
-- 계층 시스템 (레벨과 경험치)
-- 서버 알림 사용자 정의 지원
-- `@Shioru` 다음에 전달하고 싶은 메시지를 입력하여 대화할 수 있습니다.
-- 응용 명령어(/)를 사용할 수 있습니다.
+- [x] ทำงานบน [Discord.js](https://discord.js.org/) v14
+- [x] อ่านง่าย ใช้งานง่ายและประสิทธิภาพสูง
+- [x] สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
+- [x] มีคำสั่งทั้งหมดรวมถึงคำสั่งย่อยที่พร้อมใช้งานมากกว่า 100+ คำสั่ง
+- [x] สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) และอีก [900+ เว็บไซต์](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
+- [x] รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
+- [x] ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
+- [x] รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
+- [x] สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
+- [x] รองรับการทำงานบน Shard หรือรองรับการทำงานในหลากหลายกิลด์
+- [x] สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
+- [x] จำลองระบบฐานข้อมูลสำหรับทดสอบ
 
 และคุณสมบัติที่น่าสนใจอื่นๆ อีกมากมาย...
 
-## ปรับปรุงการแปล
+## 🧩 ข้อกำหนดเบื้องต้น
 
-คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
-
-## 전제 조건
-
-- [Node.js](https://nodejs.org/) v18.0.0 이상
-- [Firebase](https://firebase.google.com/) v9.0.0 이상
+- [Node.js](https://nodejs.org/) v20.6.0 หรือสูงกว่า
+- [Firebase Tools](https://firebase.google.com/docs/cli) (ต้องการ [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 หรือสูงกว่า)
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (ต้องการ [Python](https://www.python.org/downloads/) v3.8.0 หรือสูงกว่า)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## 빠른 설정 가이드
+## ⌛ การติดตั้ง
 
-### 시작하다
+### 1. ติดตั้ง **Build Tools**
+
+ทำการติดตั้ง **Build tools** โดยรันคำสั่งดังต่อไปนี้ตามระบบปฏิบัติการของคุณ
+
+- สำหรับระบบปฏิบัติการ Linux และ MacOS
+
+  ```sh
+  sudo apt update
+  sudo apt install build-essential
+  ```
+
+- สำหรับระบบปฏิบัติการ Windows
+  ```sh
+  npm install --global --production --add-python-to-path windows-build-tools
+  ```
+
+> [!TIP] คุณสามารถข้ามขั้นตอนนี้โดยการติ๊กตัวเลือก **Automatically install the necessary tools.** ผ่านตัวติดตั้ง Node.js ดังภาพต่อไปนี้
+>
+> ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+
+### 2. โคลนบอทและติดตั้งส่วนประกอบ
+
+- 터미널을 실행하고 다음 명령을 실행합니다.
+  ```bat
+  git clone https://github.com/Maseshi/Shioru.git
+  cd Shioru
+  npm install
+  ```
+- 파일 `.env.example` 의 이름을 `.env` 으로 바꾸고 필요한 모든 값을 삽입합니다.
+
+> [!NOTE] คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
+
+### 3. ตั้งค่าบอทและเชิญเข้าร่วม
 
 - Discord 개발자 포털로 이동
 - **"새 애플리케이션"** 클릭하고 봇에 이름을 지정하고 Discord 정책 규칙을 수락합니다.
-- 페이지 **"Bot"** 로 이동하여 섹션 **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- 페이지 **OAuth2 > URL 생성기** 선택 `봇` 및 `applications.commands` 선택 `관리자` 로 이동하여 봇을 서버에 초대한 다음 링크를 복사하여 브라우저 주소에 붙여넣습니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
+- ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
+- เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### 봇 설정
-
-- 터미널을 실행하고 다음 명령을 실행합니다.
-
-```sh
-# On Linux or Darwin operating systems, you may need to run this command.
-sudo apt-get install autoconf automake g++ libtool build-essential
-```
-
-```bat
-git clone https://github.com/Maseshi/Shioru.git
-cd Shioru
-npm 설치 --save
-```
-
-- คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ `./source/configs/data.js`
-
-### Firebase 설정
+### 4. ตั้งค่าฐานข้อมูล
 
 - https://firebase.google.com/으로 이동하여 프로젝트 설정을 시작합니다.
 - 새 프로젝트를 추가하고 단계를 따릅니다.
-- 웹사이트 **** 있는 첫 번째 애플리케이션을 추가합니다 **선택적으로 앱 이름** 지정합니다. ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase에서 구성에 대한 정보를 제공합니다. 이 값을 파일 `.env.example`에 적용합니다.
+- เพิ่มแอปพลิเคชันแรกของคุณด้วย **เว็บไซต์** ตั้งชื่อแอปของคุณโดยไม่จำเป็นต้องเลือกตัวเลือก **"ตั้งค่า Firebase Hosting สำหรับแอปนี้ด้วย"** และลงทะเบียนแอป ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
+- Firebase จะให้ข้อมูลเกี่ยวกับการกำหนดค่าแก่คุณ นำค่าเหล่านี้ไปใช้กับไฟล์ `.env`
 - **create > [realtime database](https://console.firebase.google.com/u/0/project/_/database/data)** 로 이동하여 스토리지 데이터베이스를 생성합니다.
 
-### 개발하다
+## 🔥 เริ่มต้นใช้งาน
 
-- 파일 `.env.example` 의 이름을 `.env` 으로 바꾸고 필요한 모든 값을 삽입합니다.
-- ไปที่เทอร์มินัลแล้วรันคำสั่ง `npm run dev` สำหรับการพัฒนาและ `npm start` สำหรับการใช้งานจริง > **หมายเหตุ**: เมื่ออยู่ในโหมดพัฒนา คุณสมบัตบางอย่างอาจไม่ทำงาน
+มีหลากหลายทางเลือกให้เปิดใช้งานได้ หากคุณใช้ [Visual Studio Code](https://code.visualstudio.com/) คุณสามารถเลือกวิธีการทำงานได้ทันทีผ่านแท็บ Run and Debug (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>) ส่วนการทำงานอื่น ๆ ให้ดูที่ Tasks (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> และ <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> พิมพ์ `>Tasks: Run Task`)
 
-## 빠른 문제 해결
+### 🪛 พัฒนา
 
-- 패키지 **나트륨** 설치할 수 없는 경우 대신 **libsodium-wrappers** 을 설치하십시오.
-```bat
-npm 제거 나트륨
-npm 설치 libsodium-wrappers@latest --save
-```
-- หากคุณไม่สามารถเล่นเพลงหรือคำสั่งเล่นเพลงไม่ทำงาน ให้ติดตั้ง [FFmpeg](https://ffmpeg.org/download.html) **(แนะนำ)** หรือติดตั้งแพ็คเกจ **ffmpeg-static** แล้วลองใหม่อีกครั้ง
-```bat
-npm 설치 ffmpeg-static@latest --저장
-```
+- เปิดเทอร์มินัลแล้วรันคำสั่ง `npm run dev`
 
-## 신용 거래
+### ☕ จำลอง
 
-당신의 멋진 작품을 사용할 수 있도록 허락해주신 모든 오리지널 크리에이터들에게 감사드립니다.
+ทดสอบการใช้งานจริงด้วยการทำงานที่คล้ายกับการใช้งานจริง โดยระบบจะคำนวณการแยกเศษของการทำงานตามจำนวนของกิลด์โดยอัตโนมัติ
 
-아바타 작화: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+- เปิดเทอร์มินัลแล้วเพิ่มตัวแปรสภาพแวดล้อมทั้งหมดที่จำเป็น
+  - สำหรับ Windows ใช้คำสั่ง `set variable=example`
+  - สำหรับ Linux หรือ MacOS ใช้คำสั่ง `export variable=example`
+- รันคำสั่ง `npm run serve`
 
-## 문제를 발견
+> [!NOTE] คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ข้อมูลทั้งหมดจะไม่ได้รับการบันทึก
 
-문제가 발생하면 현재 작업에서 이 저장소의 [issue](https://github.com/Maseshi/Shioru/issues) 탭을 통해 알려주실 수 있습니다.
+### 🍵 ใช้งานจริง
+
+สำหรับการใช้งานจริงสามารถใช้คำสั่งหรือชุดคำสั่งที่เตรียมไว้ได้ตามปกติ ดังนี้:
+
+- บน Linux หรือ MacOS
+
+  ```sh
+  sh start.sh || sudo sh start.sh
+
+  # or
+
+  npm start
+  ```
+
+- บน Windows
+
+  ```bat
+  ./start.bat
+
+  @REM or
+
+  npm start
+  ```
+
+### 🐳 ทำงานบน Docker
+
+การดำเนินการนี้จำเป็นต้องมี [Docker](https://www.docker.com/products/docker-desktop/)
+
+- เปิดเทอร์มินัลแล้วเพิ่มตัวแปรสภาพแวดล้อมทั้งหมดที่จำเป็น
+  - สำหรับ Windows ใช้คำสั่ง `set variable=example`
+  - สำหรับ Linux หรือ MacOS ใช้คำสั่ง `export variable=example`
+- ทำการสร้างอิมเมจโดยใช้คำสั่ง `npm run docker:build` หรือ `npm run docker:build:serve` สำหรับโหมดจำลองแล้วรอจนกว่าจะเสร็จสิ้นกระบวนการ
+- หลังจากสร้างอิมเมจสำเร็จแล้วให้รันโดยใช้คำสั่ง `npm run docker:run` หรือ `npm run docker:build:serve` สำหรับโหมดจำลอง
+
+[เรียนรู้เพิ่มเติมเกี่ยวกับคำสั่ง Docker](https://docs.docker.com/reference/)
+
+## ⚡ แก้ไขปัญหาอย่างรวดเร็ว
+
+- `gyp ERR! stack Error: not found: make`
+
+  ปัญหานี้อาจเกิดจาก **Build Tools** ติดตั้งไม่ถูกต้องหรืออาจยังไม่ได้ติดตั้ง วิธีแก้ไขปัญหานี้ให้ดูที่ส่วน[การติดตั้ง Build Tools](#1-ติดตั้ง-build-tools)
+
+## 🌐 ปรับปรุงการแปลภาษา
+
+기존 언어 또는 현재 [Crowdin](https://crowdin.com/project/shioru-bot)에서 사용할 수 없는 언어를 번역하는 데 도움을 줄 수 있습니다.
+
+## ⚠️ พบปัญหา
+
+หากคุณพบปัญหาใดๆ จากการทำงานปัจจุบันของคุณ คุณสามารถแจ้งให้เราทราบได้ผ่านแท็บ [issues](https://github.com/Maseshi/Shioru/issues) ของพื้นที่เก็บนี้ได้

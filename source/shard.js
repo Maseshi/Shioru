@@ -1,19 +1,19 @@
 /**
  * @license
  * MIT License
- * 
+ *
  * Copyright (c) 2020 Chaiwat Suwannarat
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,77 +23,280 @@
  * SOFTWARE.
  */
 
-const { ShardingManager, ShardEvents } = require("discord.js");
-const { timeConsole } = require("./utils/consoleUtils");
-const { resolve } = require("node:dns");
-const config = require("./configs/data");
+const {
+  ShardingManager,
+  ShardEvents,
+  EmbedBuilder,
+  Colors,
+} = require('discord.js')
+const { webhookSend } = require('./utils/clientUtils')
+const { startScreen, logger } = require('./utils/consoleUtils')
+const {
+  updateChecker,
+  systemMetricsSubmitter,
+  statisticsSubmitter,
+} = require('./utils/servicesUtils')
+const configs = require('./configs/data')
 
-const consolePrefix = "[%s] - ";
+startScreen()
 
-console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Initialize multi-process sharding...");
-console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Checking connection to server...");
+const child = logger.child({}, { msgPrefix: '[Shard] ' })
+const mode = process.env.npm_lifecycle_event || 'start'
+const logEmbed = new EmbedBuilder().setTimestamp()
+const manager = new ShardingManager('./source/main.js', {
+  respawn: true,
+  shardList: 'auto',
+  token: configs.token,
+  totalShards: 'auto',
+})
 
-resolve("discord.com", (error) => {
-    if (error) return console.error(consolePrefix.replace("%s", timeConsole(new Date())) + "Unable to connect to Discord server");
+manager.on('shardCreate', (shard) => {
+  const shardID = shard.id
+  const shardAt = shardID + 1
+  const shardTotal = manager.totalShards
 
-    process.env.CHECK_CONNECTION = true;
+  if (mode !== 'dev') updateChecker()
+  if (mode === 'start') systemMetricsSubmitter()
+  if (mode === 'start') statisticsSubmitter(manager)
 
-    console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Creating shading manager...");
+  logEmbed
+    .setColor(Colors.Blue)
+    .setTitle('🆙・Launching Shard')
+    .setDescription('A shard has just been launched')
+    .setFields([
+      {
+        name: '🆔 ID',
+        value: shardID.toString(),
+        inline: true,
+      },
+      {
+        name: '🏷️ Total Shards',
+        value: `${shardAt}/${shardTotal}`,
+        inline: true,
+      },
+      {
+        name: '📃 State',
+        value: 'Starting Up...',
+        inline: true,
+      },
+    ])
+  webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+  child.info(`Launched shard id ${shardID} [${shardAt}/${shardTotal}]`)
 
-    const manager = new ShardingManager("./source/main.js", {
-        "totalShards": "auto",
-        "mode": "process",
-        "respawn": true,
-        "shardArgs": [],
-        "execArgv": [],
-        "token": config.token
-    });
+  shard.on(ShardEvents.Death, (process) => {
+    logEmbed
+      .setColor(Colors.Red)
+      .setTitle('⚠️・Shard Death')
+      .setDescription('A shard has been closing unexpectedly')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Death',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.error(new Date(), `Closing shard id ${shardID} unexpectedly`)
 
-    console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Create shardCreate event...");
+    if (process.exitCode === null) {
+      logEmbed
+        .setColor(Colors.Red)
+        .setTitle('⚠️・Shard Death')
+        .setDescription('A shard exited with NULL error code!')
+        .setFields([
+          {
+            name: '🆔 ID',
+            value: shardID.toString(),
+            inline: true,
+          },
+          {
+            name: '🏷️ Total Shards',
+            value: `${shardAt}/${shardTotal}`,
+            inline: true,
+          },
+          {
+            name: '📃 State',
+            value: 'Death',
+            inline: true,
+          },
+          {
+            name: 'PID',
+            value: process.pid,
+            inline: true,
+          },
+          {
+            name: 'Exit Code',
+            value: process.exitCode,
+            inline: true,
+          },
+        ])
+      webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+      child.error(process, `Shard id ${shardID} exited with NULL error code!`)
+    }
+  })
+  shard.on(ShardEvents.Disconnect, () => {
+    logEmbed
+      .setColor(Colors.Default)
+      .setTitle('🔌・Shard Disconnect')
+      .setDescription('A shard has disconnected from the event.')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Disconnect',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.warn(`Shard id ${shardID} has disconnected from the event.`)
+  })
+  shard.on(ShardEvents.Error, (error) => {
+    logEmbed
+      .setColor(Colors.Red)
+      .setTitle('⚠️・Shard Error')
+      .setDescription('A shard is having problems.')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Error',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.fatal(error, `Shard id ${shardID} is having problems.`)
+  })
+  shard.on(ShardEvents.Ready, () => {
+    logEmbed
+      .setColor(Colors.Green)
+      .setTitle('✅・Shard Ready')
+      .setDescription('A shard is ready')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Ready',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.info(`Shard ${shardID} is ready [${shardAt}/${shardTotal}]`)
+  })
+  shard.on(ShardEvents.Reconnecting, () => {
+    logEmbed
+      .setColor(Colors.Blue)
+      .setTitle('⌛・Shard Reconnecting')
+      .setDescription('Reconnecting shard')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Reconnecting',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.info(new Date(), `Reconnecting shard id ${shardID}`)
+  })
+  shard.on(ShardEvents.Resume, () => {
+    logEmbed
+      .setColor(Colors.Blue)
+      .setTitle('▶️・Shard Resume')
+      .setDescription('Shard is resuming.')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Resume',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.info(`Shard id ${shardID} is resuming`)
+  })
+  shard.on(ShardEvents.Spawn, (process) => {
+    logEmbed
+      .setColor(Colors.Red)
+      .setTitle('🥚・Shard Spawn')
+      .setDescription('The shard is starting to work.')
+      .setFields([
+        {
+          name: '🆔 ID',
+          value: shardID.toString(),
+          inline: true,
+        },
+        {
+          name: '🏷️ Total Shards',
+          value: `${shardAt}/${shardTotal}`,
+          inline: true,
+        },
+        {
+          name: '📃 State',
+          value: 'Spawn',
+          inline: true,
+        },
+      ])
+    webhookSend(configs.logger.shard, { embeds: [logEmbed] })
+    child.info(
+      process,
+      `Spawning shard id ${shardID} [${shardAt}/${shardTotal}]`
+    )
+  })
+})
 
-    manager.on("shardCreate", (shard) => {
-        const shardCount = (shard.id + 1);
-        const shardTotal = manager.totalShards;
-
-        console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Launched shard " + shardCount + "/" + shardTotal);
-
-        shard.on(ShardEvents.Death, (process) => {
-            console.error(consolePrefix.replace("%s", timeConsole(new Date())) + "Closing shard " + shardCount + "/" + shardTotal + " unexpectedly");
-
-            if (process.exitCode === null) {
-                console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + shardCount + "/" + shardTotal + " exited with NULL error code!");
-                console.error(consolePrefix.replace("%s", timeConsole(new Date())) + "PID: " + process.pid);
-                console.error(consolePrefix.replace("%s", timeConsole(new Date())) + "Exit code: " + process.exitCode);
-                console.groupEnd();
-            }
-        });
-
-        shard.on(ShardEvents.Disconnect, (event, id) => {
-            console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + (id + 1) + "/" + shardTotal + " has disconnected from the event.");
-            console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Code: " + event.code);
-            console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Reason: " + event.reason);
-            console.warn(consolePrefix.replace("%s", timeConsole(new Date())) + "Clean: " + event.wasClean);
-            console.groupEnd();
-        });
-
-        shard.on(ShardEvents.Ready, (id, unavailableGuilds) => {
-            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Shard " + (id + 1) + "/" + shardTotal + " is ready");
-
-            if (unavailableGuilds) {
-                console.group(consolePrefix.replace("%s", timeConsole(new Date())) + "Found " + unavailableGuilds.size + " currently unavailable guilds.");
-                console.info(consolePrefix.replace("%s", timeConsole(new Date())) + unavailableGuilds);
-                console.groupEnd();
-            }
-        });
-
-        shard.on(ShardEvents.Reconnecting, (id) => {
-            console.info(consolePrefix.replace("%s", timeConsole(new Date())) + "Reconnecting shard " + (id + 1) + "/" + shardTotal);
-        });
-    });
-
-    console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Spawn shards...");
-
-    manager.spawn();
-
-    console.log(consolePrefix.replace("%s", timeConsole(new Date())) + "Successful to create multi-process sharding.");
-});
+manager.spawn()

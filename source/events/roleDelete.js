@@ -1,32 +1,26 @@
-const { Events, EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { settingsData } = require("../utils/databaseUtils");
+const { Events, EmbedBuilder } = require('discord.js')
+const { submitNotification, initializeData } = require('../utils/databaseUtils')
 
 module.exports = {
-    "name": Events.GuildRoleDelete,
-    "once": false,
-    execute(role) {
-        if (role.client.mode === "start") {
-            settingsData(role.client, role.guild);
-        }
+  name: Events.GuildRoleDelete,
+  once: false,
+  async execute(role) {
+    const roleDeleteEmbed = new EmbedBuilder()
+      .setTitle(role.client.i18n.t('events.roleDelete.role_notification'))
+      .setDescription(
+        role.client.i18n
+          .t('events.roleDelete.role_delete')
+          .replace('%s', role.name)
+      )
+      .setTimestamp()
+      .setColor('Yellow')
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), role.guild.id);
-        const channelRef = child(guildRef, "notification/roleDelete");
-        const channelSnapshot = role.client.api.guilds[role.guild.id].notification.roleDelete;
-
-        if (typeof channelSnapshot === "boolean") {
-            const notification = role.guild.channels.cache.find(channels => channels.id === channelSnapshot);
-            const roleDelete = new EmbedBuilder()
-                .setTitle(role.client.translate.events.roleDelete.role_notification)
-                .setDescription(role.client.translate.events.roleDelete.role_delete.replace("%s", role.name))
-                .setTimestamp()
-                .setColor("Yellow");
-
-            if (!notification) return;
-
-            notification.send({ "embeds": [roleDelete] });
-        } else {
-            set(channelRef, channelSnapshot ? true : false).then(() => module.exports.execute(role));
-        }
-    }
-};
+    await initializeData(role.client, role.guild)
+    await submitNotification(
+      role.client,
+      role.guild,
+      Events.GuildRoleDelete,
+      roleDeleteEmbed
+    )
+  },
+}

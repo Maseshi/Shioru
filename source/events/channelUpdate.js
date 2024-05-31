@@ -1,32 +1,29 @@
-const { Events, EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { settingsData } = require("../utils/databaseUtils");
+const { Events, EmbedBuilder } = require('discord.js')
+const { submitNotification, initializeData } = require('../utils/databaseUtils')
 
 module.exports = {
-    "name": Events.ChannelUpdate,
-    "once": false,
-    execute(oldChannel, newChannel) {
-        if (newChannel.client.mode === "start") {
-            settingsData(newChannel.client, newChannel.guild);
-        }
+  name: Events.ChannelUpdate,
+  once: false,
+  async execute(oldChannel, newChannel) {
+    const channelUpdateEmbed = new EmbedBuilder()
+      .setTitle(
+        newChannel.client.i18n.t('events.channelUpdate.channel_notification')
+      )
+      .setDescription(
+        newChannel.client.i18n
+          .t('events.channelUpdate.member_update_channel')
+          .replace('%s1', oldChannel.name)
+          .replace('%s2', newChannel.id)
+      )
+      .setTimestamp()
+      .setColor('Yellow')
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), newChannel.guild.id);
-        const channelRef = child(guildRef, "notification/channelUpdate");
-        const channelSnapshot = newChannel.client.api.guilds[newChannel.guild.id].notification.channelUpdate;
-
-        if (typeof channelSnapshot === "boolean") {
-            const notification = newChannel.guild.channels.cache.find(channels => channels.id === channelSnapshot);
-            const channelUpdate = new EmbedBuilder()
-                .setTitle(newChannel.client.translate.events.channelUpdate.channel_notification)
-                .setDescription(newChannel.client.translate.events.channelUpdate.member_update_channel.replace("%s1", oldChannel.name).replace("%s2", newChannel.id))
-                .setTimestamp()
-                .setColor("Yellow");
-
-            if (!notification) return;
-
-            notification.send({ "embeds": [channelUpdate] });
-        } else {
-            set(channelRef, channelSnapshot ? true : false).then(() => module.exports.execute(oldChannel, newChannel));
-        }
-    }
-};
+    await initializeData(newChannel.client, newChannel.guild)
+    await submitNotification(
+      newChannel.client,
+      newChannel.guild,
+      Events.ChannelUpdate,
+      channelUpdateEmbed
+    )
+  },
+}

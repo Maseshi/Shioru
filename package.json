@@ -1,51 +1,88 @@
 {
   "name": "shioru",
-  "version": "3.3.0",
+  "version": "3.6.4",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
-  "private": true,
-  "main": "./source/main.js",
-  "scripts": {
-    "start": "node ./source/shard.js",
-    "dev": "nodemon --trace-warnings ./source/main.js"
+  "homepage": "https://github.com/Maseshi/Shioru#readme",
+  "bugs": {
+    "url": "https://github.com/Maseshi/Shioru/issues",
+    "email": "dermhioasw123@gmail.com"
   },
+  "license": "(MIT OR CC0-1.0)",
   "author": {
     "name": "Maseshi",
     "email": "dermhioasw123@gmail.com",
     "url": "https://maseshi.web.app/"
   },
-  "license": "MIT",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Maseshi"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/maseshi"
+    }
+  ],
+  "main": "./source/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maseshi/Shioru.git"
+  },
+  "scripts": {
+    "start": "node ./source/shard.js",
+    "serve": "firebase emulators:exec --only database \"node --watch-path ./source --watch-preserve-output ./source/shard.js\"",
+    "dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js\"",
+    "lint": "eslint --fix .",
+    "prettier": "prettier --check --write .",
+    "format": "npm run prettier && npm run lint",
+    "docker:build": "docker build --target start --platform linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x --tag maseshi/%npm_package_name%:%npm_package_version% .",
+    "docker:build:serve": "docker build --target serve --platform --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
+    "docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
+    "docker:run:serve": "docker run --detach maseshi/%npm_package_name%-serve:%npm_package_version%",
+    "docker:push": "docker push maseshi/%npm_package_name%:%npm_package_version%",
+    "i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales"
+  },
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
-    "@discordjs/voice": "^0.16.0",
-    "@distube/deezer": "^1.0.0",
-    "@distube/soundcloud": "^1.3.2",
-    "@distube/spotify": "^1.5.1",
+    "@discordjs/voice": "^0.17.0",
+    "@distube/deezer": "^1.1.0",
+    "@distube/soundcloud": "^1.3.5",
+    "@distube/spotify": "^1.6.1",
     "@distube/yt-dlp": "^1.1.3",
-    "@distube/ytdl-core": "^4.11.9",
-    "@vitalets/google-translate-api": "^9.2.0",
-    "axios": "^1.4.0",
-    "captcha-canvas": "^3.2.1",
-    "discord.js": "^14.11.0",
-    "distube": "^4.0.4",
-    "dotenv": "^16.0.3",
-    "firebase": "^9.22.0",
-    "lyrics-finder": "^21.7.0",
-    "sodium": "^3.0.2",
-    "sourcebin": "^5.0.0",
-    "spinnies": "^0.5.1",
-    "systeminformation": "^5.17.12",
-    "weather-js": "^2.0.0"
+    "captcha-canvas": "^2.3.1",
+    "discord-gamecord": "^4.4.2",
+    "discord.js": "^14.15.2",
+    "distube": "^4.2.2",
+    "firebase": "^10.12.1",
+    "genius-lyrics": "^4.4.7",
+    "i18next": "^23.11.5",
+    "i18next-fs-backend": "^2.3.1",
+    "pino": "^9.1.0",
+    "pino-pretty": "^11.1.0",
+    "sodium-native": "^4.1.1",
+    "systeminformation": "^5.22.9"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "eslint": "^9.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "i18n-unused": "^0.16.0",
+    "prettier": "^3.2.5"
   },
   "optionalDependencies": {
-    "bufferutil": "^4.0.7",
-    "erlpack": "^0.1.4",
-    "utf-8-validate": "^6.0.3",
-    "zlib-sync": "^0.1.8"
+    "@distube/ytdl-core": "^4.13.3",
+    "@distube/ytsr": "^2.0.0",
+    "bufferutil": "^4.0.8",
+    "osx-temperature-sensor": "^1.0.8",
+    "utf-8-validate": "^6.0.4",
+    "zlib-sync": "^0.1.9"
   },
   "engines": {
-    "node": ">=18.0.0"
-  }
+    "node": ">=20.6.0",
+    "python": ">=3.12.0"
+  },
+  "private": true
 }

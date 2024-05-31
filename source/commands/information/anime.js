@@ -1,151 +1,297 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const { get } = require("axios").default;
+const {
+  SlashCommandBuilder,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
+  ActionRowBuilder,
+  ComponentType,
+  EmbedBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  PermissionFlagsBits,
+  Colors,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "anime",
-    "description": "Search for anime or manga available on Kitsu.",
-    "category": "information",
-    "permissions": {
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.EmbedLinks
-        ]
-    },
-    "usage": "anime <title(String)>",
-    "function": {
-        "command": {}
-    }
-};
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.EmbedLinks,
+  ],
+  data: new SlashCommandBuilder()
+    .setName('anime')
+    .setDescription('Search for anime or manga available on Kitsu.')
+    .setDescriptionLocalizations({
+      th: 'ค้นหาอะนิเมะหรือมังงะที่มีอยู่ใน Kitsu',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true)
+    .addStringOption((option) =>
+      option
+        .setName('search')
+        .setDescription('Search about what you want.')
+        .setDescriptionLocalizations({
+          th: 'ค้นหาเกี่ยวกับสิ่งที่ต้องการ',
+        })
+        .setChoices(
+          {
+            name: 'Anime',
+            name_localizations: {
+              th: 'อนิเมะ',
+            },
+            value: 'anime',
+          },
+          {
+            name: 'Manga',
+            name_localizations: {
+              th: 'มังงะ',
+            },
+            value: 'manga',
+          },
+          {
+            name: 'Characters',
+            name_localizations: {
+              th: 'ตัวละคร',
+            },
+            value: 'characters',
+          }
+        )
+        .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('query')
+        .setDescription(
+          'Find information on selected anime, manga or characters.'
+        )
+        .setDescriptionLocalizations({
+          th: 'ค้นหาข้อมูลที่เลือกอนิเมะ, มังงะหรือตัวละคร',
+        })
+        .setRequired(true)
+    ),
+  async execute(interaction) {
+    const inputSearch = interaction.options.getString('search')
+    const inputQuery = interaction.options.getString('query')
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "อนิเมะ"
+    await interaction.deferReply()
+
+    const clientAvatar = interaction.client.user.avatarURL()
+    const animeEmbed = new EmbedBuilder()
+      .setColor(Colors.Orange)
+      .setTitle(
+        interaction.client.i18n.t('commands.anime.anime_manga_or_characters')
+      )
+      .setDescription(
+        interaction.client.i18n.t('commands.anime.similar_stories', {
+          title: inputQuery,
+        })
+      )
+      .setFooter({
+        text: interaction.client.i18n.t('commands.anime.auto_cancel'),
+        iconURL: clientAvatar,
+      })
+    const animeSelect = new StringSelectMenuBuilder()
+      .setCustomId('anime-choose')
+      .setPlaceholder(interaction.client.i18n.t('commands.anime.choose_title'))
+    const animeRow = new ActionRowBuilder().addComponents(animeSelect)
+
+    const response = await fetch(
+      `https://kitsu.io/api/edge/${inputSearch}?page[limit]=5&filter[text]=${inputQuery}`,
+      {
+        headers: {
+          Accept: 'application/vnd.api+json',
+          'Content-Type': 'application/vnd.api+json',
         },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "ค้นหาอะนิเมะหรือมังงะที่มีอยู่ใน Kitsu"
-        },
-        "options": [
-            {
-                "type": 3,
-                "name": "title",
-                "name_localizations": {
-                    "th": "เรื่อง"
-                },
-                "description": "The title of the anime or manga.",
-                "description_localizations": {
-                    "th": "ชื่อเรื่องของอนิเมะหรือมังงะ"
-                },
-                "required": true
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputTitle = interaction.options.getString("title");
+      }
+    )
 
-        const titles = (data) => {
-            const numTitle = [];
+    if (response.status !== 200)
+      return await interaction.editReply(
+        interaction.client.i18n.t('commands.anime.data_not_found')
+      )
 
-            for (let i = 0; i < data.length; i++) {
-                const japanTitle = data[i].attributes.titles.en_jp ? data[i].attributes.titles.en_jp : "";
-                const englishTitle = data[i].attributes.titles.en ? " / " + data[i].attributes.titles.en : "";
-                const title = japanTitle + englishTitle;
+    const data = await response.json()
+    const emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
 
-                numTitle.push("\n" + (i + 1) + ". " + title);
-            }
+    for (let i = 0; i < data.data.length; i++) {
+      const attributes = data.data[i].attributes
+      const slug = attributes.slug
+      const name = attributes.name
+      const titlesEnJp = attributes.titles.en_jp
+      const titleEn = attributes.titles.en
 
-            return numTitle.join(" ");
-        }
-        const filter = (content) => {
-            if (!content.content) return;
-            if (content.author.id !== interaction.user.id) return;
-            return ["1", "2", "3", "4", "5"].includes(content.content);
-        }
-
-        try {
-            const baseURL = "https://kitsu.io/api/edge";
-            const anime = "/anime?page[limit]=5&filter[text]=" + inputTitle;
-            const manga = "/manga?page[limit]=5&filter[text]=" + inputTitle;
-            const response = await get(baseURL + (anime || manga), {
-                "headers": {
-                    "Accept": "application/vnd.api+json",
-                    "Content-Type": "application/vnd.api+json"
-                }
-            });
-
-            const clientAvatarURL = interaction.client.user.avatarURL();
-            const infoEmbed = new EmbedBuilder()
-                .setTitle("```" + inputTitle + "```")
-                .setDescription(interaction.client.translate.commands.anime.similar_stories)
-                .setColor(16083235)
-                .setFooter({ "text": interaction.client.translate.commands.anime.auto_cancel, "iconURL": clientAvatarURL })
-                .setAuthor({ "name": "Kitsu", "url": "https://kitsu.io/", "iconURL": "https://kitsu.io/android-chrome-192x192-6b1404d91a423ea12340f41fc320c149.png" })
-                .addFields(
-                    [
-                        {
-                            "name": interaction.client.translate.commands.anime.choose_now,
-                            "value": titles(response.data.data)
-                        }
-                    ]
-                );
-
-            await interaction.reply({ "embeds": [infoEmbed] });
-
-            const collection = await interaction.channel.awaitMessages({
-                filter,
-                "max": 1,
-                "time": 60000,
-                "errors": ["time"]
-            });
-            const returnMessage = collection.first();
-            const index = parseInt(returnMessage.content) - 1;
-
-            const attributes = response.data.data[index].attributes;
-            const trimmedSynopsis = attributes.synopsis.length >= 1015 ? attributes.synopsis.substring(0, 1015) + "..." : attributes.synopsis;
-
-            infoEmbed.setColor(12601856)
-                .setFooter({ "text": interaction.client.translate.commands.anime.short_information, "iconURL": clientAvatarURL })
-                .setFields(
-                    [
-                        {
-                            "name": interaction.client.translate.commands.anime.japan_name,
-                            "value": attributes.titles.en_jp || interaction.client.translate.commands.anime.undefined
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.english_name,
-                            "value": attributes.titles.en || interaction.client.translate.commands.anime.undefined
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.start_date,
-                            "value": attributes.startDate,
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.end_date,
-                            "value": attributes.endDate || interaction.client.translate.commands.anime.in_progress,
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.popularity_rank,
-                            "value": attributes.popularityRank.toString(),
-                            "inline": true
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.link,
-                            "value": "<https://kitsu.io/" + attributes.type + "/" + response.data.data[index].id + ">"
-                        },
-                        {
-                            "name": interaction.client.translate.commands.anime.synopsis,
-                            "value": "```" + trimmedSynopsis + "```"
-                        }
-                    ]
-                );
-            await interaction.editReply({ "embeds": [infoEmbed] });
-        } catch (error) {
-            await interaction.reply(interaction.client.translate.commands.anime.data_not_found);
-        }
+      animeEmbed.addFields(
+        inputSearch === 'characters'
+          ? [
+              {
+                name: `${i + 1}. ${slug}`,
+                value: name,
+              },
+            ]
+          : [
+              {
+                name: `${i + 1}. ${titlesEnJp || interaction.client.i18n.t('commands.anime.undefined')}`,
+                value:
+                  titleEn ||
+                  interaction.client.i18n.t('commands.anime.undefined'),
+              },
+            ]
+      )
+      animeSelect.addOptions(
+        new StringSelectMenuOptionBuilder()
+          .setEmoji(emojis[i])
+          .setLabel(
+            inputSearch === 'characters'
+              ? name
+              : titleEn ||
+                  titlesEnJp ||
+                  interaction.client.i18n.t('commands.anime.undefined')
+          )
+          .setValue(String(i))
+      )
     }
+
+    const message = await interaction.editReply({
+      embeds: [animeEmbed],
+      components: [animeRow],
+    })
+    const collector = message.createMessageComponentCollector({
+      componentType: ComponentType.StringSelect,
+      filter: (inter) => inter.user.id === interaction.user.id,
+      time: 60_000,
+    })
+
+    collector.on('collect', async (inter) => {
+      const animeSelection = inter.values[0]
+
+      const index = Number(animeSelection)
+      const link = data.data[index].links.self
+      const attributes = data.data[index].attributes
+      const name = attributes.name
+      const description = attributes.description
+      const synopsis = attributes.synopsis
+      const titlesEnJp = attributes.titles.en_jp
+      const titlesEn = attributes.titles.en
+      const canonicalTitle = attributes.canonicalTitle
+      const startDate = attributes.startDate
+      const endDate = attributes.endDate
+      const popularityRank = attributes.popularityRank
+      const ratingRank = attributes.ratingRank
+      const ageRatingGuide = attributes.ageRatingGuide
+      const subtype = attributes.subtype
+      const status = attributes.status
+      const image = attributes.image?.original
+      const posterImage = attributes.posterImage?.original
+      const coverImage = attributes.coverImage?.original
+      const chapterCount = attributes.chapterCount
+      const episodeCount = attributes.episodeCount
+      const youtubeVideoId = attributes.youtubeVideoId
+
+      const animeTrailerButton = new ButtonBuilder()
+        .setLabel(inter.client.i18n.t('commands.anime.trailer'))
+        .setURL(`https://youtu.be/${youtubeVideoId}`)
+        .setStyle(ButtonStyle.Link)
+      const animeTrailerButtonRow = new ActionRowBuilder().addComponents(
+        animeTrailerButton
+      )
+
+      animeEmbed
+        .setDescription(
+          inter.client.i18n.t('commands.anime.selection_detail', {
+            title: canonicalTitle || name || null,
+          })
+        )
+        .setThumbnail(posterImage || null)
+        .setImage(coverImage || image || null)
+        .setFooter(null)
+        .setFields(
+          inputSearch === 'characters'
+            ? [
+                {
+                  name: inter.client.i18n.t('commands.anime.name'),
+                  value: `[${name}](${link} '${inter.client.i18n.t('commands.anime.learn_more')}')`,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.synopsis'),
+                  value: description,
+                },
+              ]
+            : [
+                {
+                  name: inter.client.i18n.t('commands.anime.japan_name'),
+                  value:
+                    titlesEnJp ||
+                    inter.client.i18n.t('commands.anime.undefined'),
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.english_name'),
+                  value: titlesEn
+                    ? `[${titlesEn}](${link} '${inter.client.i18n.t('commands.anime.learn_more')}')`
+                    : inter.client.i18n.t('commands.anime.undefined'),
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.status'),
+                  value: status,
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.age_rating_guide'),
+                  value:
+                    ageRatingGuide ||
+                    inter.client.i18n.t('commands.anime.undefined'),
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.subtype'),
+                  value: subtype,
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.episode_count'),
+                  value: chapterCount
+                    ? String(chapterCount)
+                    : String(episodeCount),
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.release_date'),
+                  value:
+                    startDate || endDate
+                      ? `${startDate} | ${endDate}`
+                      : inter.client.i18n.t('commands.anime.in_progress'),
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.popularity_rank'),
+                  value: popularityRank
+                    ? `#${String(popularityRank)}`
+                    : inter.client.i18n.t('commands.anime.undefined'),
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.rating_rank'),
+                  value: ratingRank
+                    ? `#${String(ratingRank)}`
+                    : inter.client.i18n.t('commands.anime.undefined'),
+                  inline: true,
+                },
+                {
+                  name: inter.client.i18n.t('commands.anime.synopsis'),
+                  value:
+                    synopsis.length >= 1015
+                      ? `\`\`\`${attributes.synopsis.substring(0, 1015)}...\`\`\``
+                      : `\`\`\`${attributes.synopsis}\`\`\``,
+                },
+              ]
+        )
+
+      await inter.update({
+        embeds: [animeEmbed],
+        components: youtubeVideoId ? [animeTrailerButtonRow] : [],
+      })
+    })
+    collector.on('end', async (collected) => {
+      await interaction.editReply({
+        embeds: [animeEmbed],
+      })
+    })
+  },
 }

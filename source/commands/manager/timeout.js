@@ -1,210 +1,154 @@
-const { PermissionsBitField } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "timeout",
-    "description": "Set a timeout for the user.",
-    "category": "manager",
-    "permissions": {
-        "user": [PermissionsBitField.Flags.ModerateMembers],
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.ModerateMembers
-        ]
-    },
-    "usage": "timeout",
-    "function": {
-        "command": {}
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.ModerateMembers,
+  ],
+  data: new SlashCommandBuilder()
+    .setName('timeout')
+    .setDescription('Set a time limit for members before they leave the guild.')
+    .setDescriptionLocalizations({
+      th: 'กำหนดเวลาให้สมาชิกก่อนออกจากกิลด์',
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
+    .setDMPermission(false)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('add')
+        .setDescription('Set a timeout for the user.')
+        .setDescriptionLocalizations({ th: 'ตั้งให้ผู้ใช้หมดเวลา' })
+        .addUserOption((option) =>
+          option
+            .setName('user')
+            .setDescription('Users who want to set a timeout.')
+            .setDescriptionLocalizations({
+              th: 'ผู้ใช้ที่ต้องการตั้งให้หมดเวลา',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('duration')
+            .setDescription('The length of time the user will be kicked out.')
+            .setDescriptionLocalizations({
+              th: 'ระยะเวลาที่ผู้ใช้จะถูกเตะออก',
+            })
+            .setRequired(true)
+            .addChoices(
+              { name: '60 Seconds', value: '60' },
+              { name: '2 Minutes', value: '120' },
+              { name: '5 Minutes', value: '300' },
+              { name: '10 Minutes', value: '600' },
+              { name: '15 Minutes', value: '900' },
+              { name: '20 Minutes', value: '1200' },
+              { name: '30 Minutes', value: '1800' },
+              { name: '45 Minutes', value: '2700' },
+              { name: '1 Hour', value: '3600' },
+              { name: '2 Hours', value: '7200' },
+              { name: '3 Hours', value: '10800' },
+              { name: '5 Hours', value: '18000' },
+              { name: '10 Hours', value: '36000' },
+              { name: '1 Day', value: '86400' },
+              { name: '2 Days', value: '172800' },
+              { name: '3 Days', value: '259200' },
+              { name: '5 Days', value: '43200' },
+              { name: '1 Week', value: '604800' }
+            )
+        )
+        .addStringOption((option) =>
+          option
+            .setName('reason')
+            .setDescription('The reason the user was set to time out.')
+            .setDescriptionLocalizations({
+              th: 'เหตุผลที่ตั้งให้ผู้ใช้หมดเวลา',
+            })
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('remove')
+        .setDescription('Set a untimeout for the user.')
+        .setDescriptionLocalizations({ th: 'ตั้งให้ผู้ใช้ไม่หมดเวลา' })
+        .addUserOption((option) =>
+          option
+            .setName('user')
+            .setDescription('Users who want to set a untimeout.')
+            .setDescriptionLocalizations({
+              th: 'ผู้ใช้ที่ต้องการตั้งให้ไม่หมดเวลา',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('reason')
+            .setDescription('The reason the user was set to untimeout.')
+            .setDescriptionLocalizations({
+              th: 'เหตุผลที่ตั้งให้ผู้ใช้ไม่หมดเวลา',
+            })
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputUser = interaction.options.getUser('user')
+    const inputDuration = interaction.options.getString('duration')
+    const inputReason =
+      interaction.options.getString('reason') ??
+      interaction.client.i18n.t('commands.timeout.no_reason')
+
+    const member = await interaction.guild.members.fetch(inputUser.id)
+
+    if (!member)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.timeout.member_not_found')
+      )
+    if (!member.kickable)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.timeout.can_not_set')
+      )
+    if (interaction.member.id === member.id)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.timeout.can_not_set_for_yourself')
+      )
+    if (member.permissions.has(PermissionFlagsBits.Administrator))
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.timeout.can_not_set_to_admin')
+      )
+
+    switch (subcommand) {
+      case 'add': {
+        await member.timeout(inputDuration * 1000, inputReason)
+        await member.send(
+          interaction.client.i18n.t('commands.timeout.timeout_dm_to_user', {
+            guild: interaction.guild.name,
+            reason: inputReason,
+          })
+        )
+        await interaction.reply(
+          interaction.client.i18n.t('commands.timeout.success_timeout', {
+            user: member.tag,
+            time: inputDuration / 60,
+            reason: inputReason,
+          })
+        )
+        break
+      }
+      case 'remove': {
+        await member.timeout(null, inputReason)
+        await member.send(
+          interaction.client.i18n.t('commands.timeout.untimeout_dm_to_user', {
+            guild: interaction.guild.name,
+            reason: inputReason,
+          })
+        )
+        await interaction.reply(
+          interaction.client.i18n.t('commands.timeout.success_untimeout', {
+            user: member.tag,
+            reason: inputReason,
+          })
+        )
+        break
+      }
     }
-};
-
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "ตั้งให้ผู้ใช้หมดเวลา"
-        },
-        "options": [
-            {
-                "type": 6,
-                "name": "user",
-                "name_localizations": {
-                    "th": "ผู้ใช้"
-                },
-                "description": "Users who want to set a timeout.",
-                "description_localizations": {
-                    "th": "ผู้ใช้ที่ต้องการตั้งให้หมดเวลา"
-                },
-                "required": true,
-            },
-            {
-                "type": 3,
-                "name": "duration",
-                "name_localizations": {
-                    "th": "ระยะเวลา"
-                },
-                "description": "The length of time the user will be kicked out.",
-                "description_localizations": {
-                    "th": "ระยะเวลาที่ผู้ใช้จะถูกเตะออก"
-                },
-                "required": true,
-                "choices": [
-                    {
-                        "name": "60 Seconds",
-                        "name_localizations": {
-                            "th": "60 วินาที"
-                        },
-                        "value": "60"
-                    },
-                    {
-                        "name": "2 Minutes",
-                        "name_localizations": {
-                            "th": "2 นาที"
-                        },
-                        "value": "120"
-                    },
-                    {
-                        "name": "5 Minutes",
-                        "name_localizations": {
-                            "th": "5 นาที"
-                        },
-                        "value": "300"
-                    },
-                    {
-                        "name": "10 Minutes",
-                        "name_localizations": {
-                            "th": "10 นาที"
-                        },
-                        "value": "600"
-                    },
-                    {
-                        "name": "15 Minutes",
-                        "name_localizations": {
-                            "th": "15 นาที"
-                        },
-                        "value": "900"
-                    },
-                    {
-                        "name": "20 Minutes",
-                        "name_localizations": {
-                            "th": "20 นาที"
-                        },
-                        "value": "1200"
-                    },
-                    {
-                        "name": "30 Minutes",
-                        "name_localizations": {
-                            "th": "30 นาที"
-                        },
-                        "value": "1800"
-                    },
-                    {
-                        "name": "45 Minutes",
-                        "name_localizations": {
-                            "th": "45 นาที"
-                        },
-                        "value": "2700"
-                    },
-                    {
-                        "name": "1 Hour",
-                        "name_localizations": {
-                            "th": "1 ชั่วโมง"
-                        },
-                        "value": "3600"
-                    },
-                    {
-                        "name": "2 Hours",
-                        "name_localizations": {
-                            "th": "2 ชั่วโมง"
-                        },
-                        "value": "7200"
-                    },
-                    {
-                        "name": "3 Hours",
-                        "name_localizations": {
-                            "th": "3 ชั่วโมง"
-                        },
-                        "value": "10800"
-                    },
-                    {
-                        "name": "5 Hours",
-                        "name_localizations": {
-                            "th": "5 ชั่วโมง"
-                        },
-                        "value": "18000"
-                    },
-                    {
-                        "name": "10 Hours",
-                        "name_localizations": {
-                            "th": "10 ชั่วโมง"
-                        },
-                        "value": "36000"
-                    },
-                    {
-                        "name": "1 Day",
-                        "name_localizations": {
-                            "th": "1 วัน"
-                        },
-                        "value": "86400"
-                    },
-                    {
-                        "name": "2 Days",
-                        "name_localizations": {
-                            "th": "2 วัน"
-                        },
-                        "value": "172800"
-                    },
-                    {
-                        "name": "3 Days",
-                        "name_localizations": {
-                            "th": "3 วัน"
-                        },
-                        "value": "259200"
-                    },
-                    {
-                        "name": "5 Days",
-                        "name_localizations": {
-                            "th": "5 วัน"
-                        },
-                        "value": "43200"
-                    },
-                    {
-                        "name": "1 Week",
-                        "name_localizations": {
-                            "th": "1 สัปดาห์"
-                        },
-                        "value": "604800"
-                    }
-                ]
-            },
-            {
-                "type": 3,
-                "name": "reason",
-                "name_localizations": {
-                    "th": "เหตุผล"
-                },
-                "description": "The reason the user was set to time out.",
-                "description_localizations": {
-                    "th": "เหตุผลที่ตั้งให้ผู้ใช้หมดเวลา"
-                },
-            }
-        ]
-    },
-    async execute(interaction) {
-        const inputUser = interaction.options.getUser("user");
-        const inputDuration = interaction.options.getString("duration");
-        const inputReason = interaction.options.getString("reason") ?? interaction.client.translate.commands.timeout.no_reason;
-
-        const member = await interaction.guild.members.fetch(inputUser.id);
-
-        if (!member) return await interaction.reply(interaction.client.translate.commands.timeout.member_not_found);
-        if (!member.kickable) return await interaction.reply(interaction.client.translate.commands.timeout.can_not_set_timeout);
-        if (interaction.member.id === member.id) return await interaction.reply(interaction.client.translate.commands.timeout.can_not_set_for_yourself);
-        if (member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply(interaction.client.translate.commands.timeout.can_not_set_to_admin);
-
-        await member.timeout(inputDuration * 1000, inputReason);
-        await member.send(interaction.client.translate.commands.timeout.dm_to_user.replace("%s1", interaction.guild.name).replace("%s2", inputReason));
-        await interaction.reply(interaction.client.translate.commands.timeout.success.replace("%s1", member.tag).replace("%s2", (inputDuration / 60)).replace("%s3", inputReason));
-    }
+  },
 }

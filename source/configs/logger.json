@@ -1,0 +1,44 @@
+{
+  "debug": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "error": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "issues": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "ready": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "shard": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "warn": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  },
+  "player": {
+    "enable": false,
+    "webhookAvatarURL": "",
+    "webhookName": "",
+    "webhookURL": ""
+  }
+}

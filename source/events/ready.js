@@ -1,271 +1,269 @@
-const { Events, ActivityType } = require("discord.js");
-const { readdirSync } = require("node:fs");
-const { join } = require("node:path");
-const { getApps } = require("firebase/app");
-const { getFirestore, doc, setDoc } = require("firebase/firestore");
-const { getDatabase, get, onValue, ref, update } = require("firebase/database");
-const { checkForUpdates, updateApplicationCommands } = require("../utils/clientUtils");
-const { currencyFormatter } = require("../utils/miscUtils");
+const {
+  EmbedBuilder,
+  Colors,
+  Events,
+  ActivityType,
+  PresenceUpdateStatus,
+} = require('discord.js')
+const { getApps } = require('firebase/app')
+const {
+  getDatabase,
+  onValue,
+  ref,
+  child,
+  update,
+  get,
+  set,
+} = require('firebase/database')
+const { registeringCommands, webhookSend } = require('../utils/clientUtils')
+const { colorize } = require('../utils/consoleUtils')
+const { dataStructures, fetchStatistics } = require('../utils/databaseUtils')
+const { currencyFormatter, newTitle } = require('../utils/miscUtils')
 
 module.exports = {
-  "name": Events.ClientReady,
-  "once": true,
+  name: Events.ClientReady,
+  once: true,
   async execute(client) {
+    const { underscore } = colorize()
+
     // Notify when the bot is online.
-    client.console.add("online-loading", {
-      "text": "Bot is now online at " + client.readyAt.toLocaleString() + ".",
-      "status": "non-spinnable"
-    });
+    client.logger.info(
+      `Bot is now online at ${client.readyAt.toLocaleString()}.`
+    )
 
     // Client username
-    client.console.add("username-check-loading", {
-      "text": "Sign in with the username " + client.user.username + ".",
-      "status": "non-spinnable"
-    });
+    client.logger.info(
+      `Sign in with the username ${underscore(client.user.username)}.`
+    )
 
     // Refreshing application (/) commands.
-    updateApplicationCommands(client);
+    registeringCommands(client)
 
-    // Check for update
-    checkForUpdates(client);
-
-    // Check server is set up.
+    // Check back-ends server is set up.
     if (!getApps.length) {
-      client.console.add("server-check-loading", {
-        "text": "Connected to the server successfully.",
-        "status": "non-spinnable"
-      });
+      // Fetch chat data on change and apply
+      client.logger.info('Fetching and updating chat data...')
 
-      client.api = {};
-      client.api.statistics = {}
+      const chatRef = ref(getDatabase(), 'chat')
 
-      // Organize data from a database.
-      const startLoadDataTime = new Date().getTime();
+      const updateChatData = (snapshot) => {
+        if (snapshot.exists()) {
+          const prompts = snapshot.val().prompts ?? []
+          const replies = snapshot.val().replies ?? []
+          const alternatives = snapshot.val().alternatives ?? []
+          const scripts = snapshot.val().scripts ?? []
+          const system = snapshot.val().system ?? ''
 
-      client.console.add("server-database-data-loading", {
-        "text": "Receiving data from database.",
-        "indent": 2
-      });
-      get(ref(getDatabase(), "projects/shioru")).then((data) => {
-        if (data.exists()) client.api = data.val();
+          client.configs.constants.prompts = [
+            ...client.configs.constants.prompts,
+            ...prompts,
+          ]
+          client.configs.constants.replies = [
+            ...client.configs.constants.replies,
+            ...replies,
+          ]
+          client.configs.constants.alternatives = [
+            ...client.configs.constants.alternatives,
+            ...alternatives,
+          ]
+          client.configs.constants.scripts = [
+            ...client.configs.constants.scripts,
+            ...scripts,
+          ]
+          client.configs.constants.system = system
+        } else {
+          set(chatRef, dataStructures(client, 'chat'))
+        }
+      }
 
-        onValue(ref(getDatabase(), "projects/shioru"), (snapshot) => {
-          if (snapshot.exists()) client.api = snapshot.val();
-        });
+      get(chatRef).then((snapshot) => updateChatData(snapshot))
+      onValue(chatRef, (snapshot) => updateChatData(snapshot))
 
-        client.console.succeed("server-database-data-loading", {
-          "text": "Completed receiving data from the database.: " + (((new Date().getTime() - startLoadDataTime) / 1000) + "s")
-        });
-      }).catch((error) => {
-        client.console.fail("server-database-data-loading", {
-          "text": "There was an error getting data from the database.\n" + error
-        });
-      });
+      client.logger.info('Chat data retrieved complete.')
 
-      // Organize statistics from a database.
-      const startLoadStatisticsTime = new Date().getTime();
-
-      client.console.add("server-database-statistics-loading", {
-        "text": "Receiving statistics from database.",
-        "indent": 2
-      });
-      get(ref(getDatabase(), "statistics/shioru")).then((data) => {
-        if (data.exists()) client.api.statistics = data.val();
-
-        onValue(ref(getDatabase(), "statistics/shioru"), (snapshot) => {
-          if (snapshot.exists()) client.api.statistics = snapshot.val();
-        });
-
-        client.console.succeed("server-database-statistics-loading", {
-          "text": "Completed receiving statistics from the database.: " + (((new Date().getTime() - startLoadStatisticsTime) / 1000) + "s")
-        });
-      }).catch((error) => {
-        client.console.fail("server-database-statistics-loading", {
-          "text": "There was an error getting statistics from the database.\n" + error
-        });
-      });
-
-      // Send commands information
-      client.console.add("server-database-send-info-loading", {
-        "text": "Send information about the command.",
-        "indent": 2
-      });
+      // Send all commands information
+      client.logger.info('Sending details of all commands...')
 
       try {
-        const startSendDataTime = new Date().getTime();
-        const foldersPath = join(__dirname, "../commands");
-        const commandFolders = readdirSync(foldersPath);
+        const commandsRef = child(ref(getDatabase(), 'information'), 'commands')
+        const contextsRef = child(ref(getDatabase(), 'information'), 'contexts')
 
-        for (const [folderIndex, folder] of commandFolders.entries()) {
-          const commandsPath = join(foldersPath, folder);
-          const commandFiles = readdirSync(commandsPath).filter(file => file.endsWith(".js"));
+        update(commandsRef, Object.fromEntries(client.temp.commands))
+        update(contextsRef, Object.fromEntries(client.temp.contexts))
 
-          for (const [fileIndex, file] of commandFiles.entries()) {
-            const filePath = join(commandsPath, file);
-            const command = require(filePath);
-
-            client.console.update("server-database-send-info-loading", {
-              "text": "Sending information about the " + command.name + " command."
-            });
-
-            setDoc(doc(getFirestore(), "Information", "shioru"), {
-              "commands": {
-                [command.category]: {
-                  [command.name]: {
-                    "name": command.name ?? "",
-                    "description": {
-                      "en-US": command.function.command.data.description,
-                      "th": command.function.command.data.description_localizations ? command.function.command.data.description_localizations["th"] : ""
-                    },
-                    "category": command.category ?? "",
-                    "permissions": {
-                      "client": command.permissions.client ? command.permissions.client.map(String) : [],
-                      "user": command.permissions.user ? command.permissions.user.map(String) : []
-                    },
-                    "usage": command.usage ?? "",
-                    "function": {
-                      "command": command.function.command ? true : false,
-                      "context": command.function.context ? true : false
-                    }
-                  }
-                }
-              }
-            }, {
-              "merge": true
-            });
-
-            if ((folderIndex === (commandFolders.length - 1)) && (fileIndex === (commandFiles.length - 1))) {
-              client.console.succeed("server-database-send-info-loading", {
-                "text": "Finished sending information about the command.: " + (((new Date().getTime() - startSendDataTime) / 1000) + "s")
-              });
-            }
-          }
-        }
+        client.logger.info('Completed to sending details of all commands.')
       } catch (error) {
-        client.console.fail("server-database-send-info-loading", {
-          "text": "Failed to send information about the command.\n" + error
-        });
+        client.logger.error(error, 'Failed to sending details of all commands.')
       }
 
       // Send bot statistics.
-      setInterval(() => {
-        const commandSize = client.commands.size;
-        const guildSize = client.guilds.cache.size;
-        const userSize = client.users.cache.size;
+      client.logger.info('Sending statistical information...')
 
-        const prevGuildSize = client.api.statistics ? client.api.statistics.size.guilds : guildSize;
-        const prevUserSize = client.api.statistics ? client.api.statistics.size.users : userSize;
+      setInterval(() => fetchStatistics('POST', 'size', client), 10000)
 
-        if (client.mode === "start") {
-          if (guildSize !== prevGuildSize || userSize !== prevUserSize) {
-            update(ref(getDatabase(), "statistics/shioru/size"), {
-              "commands": commandSize,
-              "guilds": guildSize,
-              "users": userSize
-            });
-          }
-        }
-      }, 5000);
+      client.logger.info(
+        'Statistics are sent successfully and updated every 10 seconds.'
+      )
     } else {
-      client.console.add("server-check-loading", {
-        "text": "Unable to connect to the provider server.",
-        "status": "non-spinnable"
-      });
+      client.logger.warn('Unable to connect to the back-ends server.')
     }
 
     // Setup bot activity.
-    let totalGuilds = 0, totalMembers = 0;
-    const commandSize = client.commands.size;
-
-    if (client.shard && client.shard.count) {
-      const promises = [
-        client.shard.fetchClientValues("guilds.cache.size"),
-        client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
-      ];
-      const results = await Promise.all(promises);
-
-      totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-      totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
-    } else {
-      totalGuilds = client.guilds.cache.size;
-      totalMembers = client.users.cache.size;
-    }
-
-    const activities = {
-      "production": [
-        {
-          "name": currencyFormatter(totalGuilds, 1) + " Server" + (totalGuilds === 1 ? "" : "s"),
-          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-          "type": ActivityType.Streaming
-        },
-        {
-          "name": "/help",
-          "type": ActivityType.Watching
-        },
-        {
-          "name": currencyFormatter(totalMembers, 1) + " Member" + (totalMembers === 1 ? "" : "s"),
-          "type": ActivityType.Watching
-        },
-        {
-          "name": currencyFormatter(commandSize, 1) + " Command" + (commandSize === 1 ? "" : "s"),
-          "type": ActivityType.Listening
-        }
-      ],
-      "development": [
-        {
-          "name": "🧶",
-          "type": ActivityType.Playing
-        },
-        {
-          "name": "/",
-          "type": ActivityType.Listening
-        },
-        {
-          "name": "📦",
-          "type": ActivityType.Playing
-        }
-      ]
-    };
-    const activityType = client.mode === "start" ? activities.production : activities.development;
-
-    client.user.setPresence({
-      "status": "available",
-      "afk": false,
-      "activities": activityType
-    });
-
-    setInterval(async () => {
-      let totalGuilds = 0, totalMembers = 0;
-
-      if (client.shard && client.shard.count) {
-        const promises = [
-          client.shard.fetchClientValues("guilds.cache.size"),
-          client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
-        ];
-        const results = await Promise.all(promises);
-
-        totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-        totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
-      } else {
-        totalGuilds = client.guilds.cache.size;
-        totalMembers = client.users.cache.size;
+    const getStatistics = async () => {
+      const callback = {
+        guilds: 0,
+        members: 0,
+        commands: client.commands.size ?? 0,
       }
 
-      const randomIndex = Math.floor(Math.random() * activityType.length);
-      const newActivity = activityType[randomIndex];
+      if (client.shard && client.shard.count) {
+        const results = await Promise.all([
+          client.shard.fetchClientValues('guilds.cache.size'),
+          client.shard.broadcastEval((cli) =>
+            cli.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
+          ),
+        ])
+        callback.guilds = results[0].reduce(
+          (acc, guildCount) => acc + guildCount,
+          0
+        )
+        callback.members = results[1].reduce(
+          (acc, memberCount) => acc + memberCount,
+          0
+        )
+      } else {
+        callback.guilds = client.guilds.cache.size
+        callback.members = client.users.cache.size
+      }
 
-      activities.production[0].name = currencyFormatter(totalGuilds, 1) + " Server" + (totalGuilds === 1 ? "" : "s");
-      activities.production[2].name = currencyFormatter(totalMembers, 1) + " Member" + (totalMembers === 1 ? "" : "s");
-      client.user.setActivity(newActivity);
-    }, 10000);
+      return callback
+    }
+
+    const statistics = await getStatistics()
+    const activities = {
+      production: [
+        {
+          name: `${currencyFormatter(statistics.guilds, 1)} Server${statistics.guilds === 1 ? '' : 's'}`,
+          url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          type: ActivityType.Streaming,
+        },
+        {
+          name: '/help',
+          state: '🪺 IS THE EGG',
+          type: ActivityType.Watching,
+        },
+        {
+          name: `${currencyFormatter(statistics.members, 1)} Member${statistics.members === 1 ? '' : 's'}`,
+          type: ActivityType.Watching,
+        },
+        {
+          name: `${currencyFormatter(statistics.commands, 1)} Command${statistics.commands === 1 ? '' : 's'}`,
+          type: ActivityType.Listening,
+        },
+      ],
+      development: [
+        {
+          name: '🧶',
+          type: ActivityType.Playing,
+        },
+        {
+          name: '/',
+          type: ActivityType.Listening,
+        },
+        {
+          name: '📦',
+          type: ActivityType.Playing,
+        },
+        {
+          name: `📀 ${newTitle(client.mode)} Mode`,
+          type: ActivityType.Custom,
+        },
+      ],
+    }
+    const activityType =
+      client.mode === 'start' ? activities.production : activities.development
+
+    client.user.setPresence({
+      status: PresenceUpdateStatus.Online,
+      afk: false,
+      activities: activityType,
+    })
+
+    setInterval(async () => {
+      const statistics = await getStatistics()
+      const randomIndex = Math.floor(Math.random() * activityType.length)
+      const newActivity = activityType[randomIndex]
+
+      activities.production[0].name = `${currencyFormatter(statistics.guilds, 1)} Server${statistics.guilds === 1 ? '' : 's'}`
+      activities.production[2].name = `${currencyFormatter(statistics.members, 1)} Member${statistics.members === 1 ? '' : 's'}`
+      client.user.setActivity(newActivity)
+    }, 10000)
+
+    // Anti-bot system
+    setInterval(async () => {
+      const guilds = await client.guilds.fetch()
+
+      guilds.forEach(async (guild) => {
+        const guildRef = child(ref(getDatabase(), 'guilds'), guild.id)
+        const guildSnapshot = await get(guildRef)
+
+        if (guildSnapshot.exists()) {
+          const antiBotData = guildSnapshot.val().antibot
+
+          if (!antiBotData) return
+
+          const antiBotEnabledStartTime = new Date(
+            antiBotData.enabledAt
+          ).getTime()
+          const antiBotEnabledEndTime = new Date().getTime()
+          const antiBotEnabledPassed =
+            antiBotEnabledStartTime - antiBotEnabledEndTime
+
+          if (antiBotEnabledPassed >= 10) {
+            const members = await guilds.members.fetch()
+
+            if (!antiBotData.enable) return
+
+            members.forEach((member) => {
+              if (member.user.bot) {
+                if (
+                  !antiBotData.all &&
+                  antiBotData.bots.includes(member.user.id)
+                )
+                  return
+                if (member.id !== client.user.id)
+                  return member.kick({
+                    reason: client.i18n.t('events.ready.prevented_anti_bot'),
+                  })
+              }
+            })
+          }
+        }
+      })
+    }, 10000)
 
     // If everything is ready to go
-    client.startup.end = new Date().getTime();
+    const webhookLogEmbed = new EmbedBuilder()
+      .setColor(Colors.Green)
+      .setTitle('✅・Ready')
+      .setDescription('Bot is ready to work on the servers!')
+      .setTimestamp()
+      .setFields([
+        {
+          name: '⌛ Time',
+          value: `${(client.temp.startup.end - client.temp.startup.start) / 1000}s`,
+          inline: true,
+        },
+      ])
 
-    client.console.add("startup-loading", {
-      "color": "blueBright",
-      "text": "Bot is ready to work on the servers!: " + (((client.startup.end - client.startup.start) / 1000) + "s"),
-      "status": "non-spinnable"
-    });
-  }
-};
+    webhookSend(client.configs.logger.ready, {
+      embeds: [webhookLogEmbed],
+    })
+    client.temp.startup.end = new Date().getTime()
+    client.logger.info(
+      `Bot is ready to work on the servers!: ${
+        (client.temp.startup.end - client.temp.startup.start) / 1000
+      }s`
+    )
+  },
+}

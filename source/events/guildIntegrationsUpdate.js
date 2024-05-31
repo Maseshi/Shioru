@@ -1,33 +1,29 @@
-const { Events, EmbedBuilder } = require("discord.js");
-const { getDatabase, ref, child, set } = require("firebase/database");
-const { settingsData } = require("../utils/databaseUtils");
+const { Events, EmbedBuilder } = require('discord.js')
+const { submitNotification, initializeData } = require('../utils/databaseUtils')
 
 module.exports = {
-    "name": Events.GuildIntegrationsUpdate,
-    "once": false,
-    execute(guild) {
-        if (guild.client.mode === "start") {
-            settingsData(guild.client, guild);
-        }
+  name: Events.GuildIntegrationsUpdate,
+  once: false,
+  async execute(guild) {
+    const guildIntegrationsUpdateEmbed = new EmbedBuilder()
+      .setTitle(
+        guild.client.i18n.t('events.guildIntegrationsUpdate.guild_notification')
+      )
+      .setDescription(
+        guild.client.i18n
+          .t('events.guildIntegrationsUpdate.guild_integrations_update')
+          .replace('%s', guild.name)
+      )
+      .setImage(guild.bannerURL())
+      .setTimestamp()
+      .setColor('Yellow')
 
-        const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), guild.id);
-        const channelRef = child(guildRef, "notification/guildIntegrationsUpdate");
-        const channelSnapshot = guild.client.api.guilds[guild.id].notification.guildIntegrationsUpdate;
-
-        if (typeof channelSnapshot === "boolean") {
-            const notification = guild.channels.cache.find(channels => channels.id === channelSnapshot);
-            const guildIntegrationsUpdate = new EmbedBuilder()
-                .setTitle(guild.client.translate.events.guildIntegrationsUpdate.guild_notification)
-                .setDescription(guild.client.translate.events.guildIntegrationsUpdate.guild_integrations_update.replace("%s", guild.name))
-                .setImage(guild.bannerURL())
-                .setTimestamp()
-                .setColor("Yellow");
-
-            if (!notification) return;
-
-            notification.send({ "embeds": [guildIntegrationsUpdate] });
-        } else {
-            set(channelRef, channelSnapshot ? true : false).then(() => module.exports.execute(guild));
-        }
-    }
-};
+    await initializeData(guild.client, guild)
+    await submitNotification(
+      guild.client,
+      guild,
+      Events.GuildIntegrationsUpdate,
+      guildIntegrationsUpdateEmbed
+    )
+  },
+}

@@ -1,108 +1,142 @@
-const { Events, ChannelType, PermissionsBitField } = require("discord.js");
-const { getDatabase, ref, child, set, increment } = require("firebase/database");
-const { BitwisePermissionFlags } = require("../utils/clientUtils");
-const { catchError } = require("../utils/consoleUtils");
-const { levelSystem, settingsData } = require("../utils/databaseUtils");
+const { Collection, Events, PermissionsBitField } = require('discord.js')
+const { getDatabase, ref, child, get } = require('firebase/database')
+const { changeLanguage } = require('../utils/clientUtils')
+const { catchError } = require('../utils/consoleUtils')
+const {
+  fetchLevel,
+  fetchStatistics,
+  initializeData,
+} = require('../utils/databaseUtils')
 
 module.exports = {
-	"name": Events.InteractionCreate,
-	"once": false,
-	async execute(interaction) {
-		if (interaction.user.bot) return;
-		if (interaction.channel.type === ChannelType.DM) return;
+  name: Events.InteractionCreate,
+  once: false,
+  async execute(interaction) {
+    if (interaction.user.bot) return
 
-		// Check permissions for application commands before working them.
-		if (!interaction.member.permissions.has(PermissionsBitField.Flags.UseApplicationCommands)) {
-			return await interaction.reply({ "content": interaction.client.translate.events.interactionCreate.no_permission, "ephemeral": true });
-		}
+    // Automatic settings data on database
+    initializeData(interaction.client, interaction.guild)
 
-		// Automatic settings data on database
-		if (interaction.client.mode === "start") {
-			settingsData(interaction.client, interaction.guild);
-			levelSystem(interaction.client, interaction, "POST", { "amount": 123, "type": "exp" });
-		}
+    const guildRef = child(ref(getDatabase(), 'guilds'), interaction.guild.id)
+    const guildSnapshot = await get(guildRef)
+    const guildVal = guildSnapshot.val()
 
-		// Get command when has interaction
-		const commandName = interaction.commandName;
-		const command = interaction.client.commands.get(commandName);
+    const executeCommand = async (func, path) => {
+      // Check if the command has a cooldown or not.
+      if (!interaction.client.cooldowns.has(func.data.name))
+        interaction.client.cooldowns.set(func.data.name, new Collection())
 
-		if (command.permissions) {
-			// Check the permissions of the command for the user.
-			if (command.permissions.user) {
-				if (!interaction.member.permissions.has(command.permissions.user)) {
-					try {
-						return await interaction.reply({ "content": interaction.client.translate.events.interactionCreate.user_is_not_allowed.replace("%s", command.permissions.user.map(permission => BitwisePermissionFlags[permission]).join(", ")), "ephemeral": true });
-					} catch (error) {
-						return catchError(interaction.client, interaction, interaction.commandName, "interactionCreate", error, true);
-					}
-				}
-			}
+      const now = Date.now()
+      const timestamps = interaction.client.cooldowns.get(func.data.name)
+      const cooldownAmount = (func.cooldown ?? 3) * 1_000
 
-			// Check the permissions of the command for the bot.
-			if (command.permissions.client) {
-				if (!interaction.guild.members.me.permissions.has(command.permissions.client)) {
-					try {
-						return await interaction.member.send({ "content": interaction.client.translate.events.interactionCreate.client_is_not_allowed.replace("%s", command.permissions.client.map(permission => BitwisePermissionFlags[permission]).join(", ")), "ephemeral": true });
-					} catch (error) {
-						return catchError(interaction.client, interaction, interaction.commandName, "interactionCreate", error, true);
-					}
-				}
-			}
-		}
+      if (timestamps.has(interaction.user.id)) {
+        const expirationTime =
+          timestamps.get(interaction.user.id) + cooldownAmount
 
-		// When user interact in chat input
-		if (interaction.isChatInputCommand()) {
-			const guildSnapshot = interaction.client.api.guilds[interaction.guild.id];
-			const guildRef = child(ref(getDatabase(), "projects/shioru/guilds"), interaction.guild.id);
+        if (now < expirationTime) {
+          const expiredTimestamp = Math.round(expirationTime / 1_000)
+          return interaction.reply({
+            content: interaction.client.i18n.t(
+              'events.interactionCreate.command_has_cooldown',
+              {
+                command_name: func.data.name,
+                expired_timestamp: expiredTimestamp,
+              }
+            ),
+            ephemeral: true,
+          })
+        }
+      }
 
-			if (!guildSnapshot.commands || !Object.keys(guildSnapshot.commands).includes(command.name)) {
-				set(child(child(guildRef, "commands"), command.name), true);
-			}
-			if ((typeof guildSnapshot.commands[command.name] === "boolean") && (command.enable !== guildSnapshot.commands[command.name])) {
-				command.enable = guildSnapshot.commands[command.name];
-			}
-			if (!command.enable) {
-				return await interaction.reply(interaction.client.translate.events.interactionCreate.command_is_disabled);
-			}
+      timestamps.set(interaction.user.id, now)
+      setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount)
 
-			try {
-				command.function.command.execute(interaction);
+      // Check the permissions of the command for the bot.
+      if (func.permissions) {
+        if (!interaction.guild.members.me.permissions.has(func.permissions)) {
+          try {
+            return await interaction.member.send({
+              content: interaction.client.i18n.t(
+                'events.interactionCreate.client_is_not_allowed',
+                {
+                  permissions: new PermissionsBitField(
+                    func.permissions
+                  ).toArray(),
+                }
+              ),
+              ephemeral: true,
+            })
+          } catch (error) {
+            return catchError(
+              interaction.client,
+              interaction,
+              interaction.commandName,
+              'interactionCreate',
+              error,
+              true
+            )
+          }
+        }
+      }
 
-				// Stores information when the bot is working properly.
-				if (interaction.client.mode === "start") {
-					set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1) || 1);
-					set(child(ref(getDatabase(), "statistics/shioru/commands"), command.name), increment(1) || 1);
-				}
-			} catch (error) {
-				if (interaction.replied || interaction.deferred) {
-					await interaction.followUp({ "content": interaction.client.translate.events.interactionCreate.command_error, "ephemeral": true });
-				} else {
-					await interaction.reply({ "content": interaction.client.translate.events.interactionCreate.command_error, "ephemeral": true });
-				}
+      try {
+        func.execute(interaction)
 
-				catchError(interaction.client, interaction, "interactionCreate", error);
-			}
-		}
+        // Stores information when the bot is working properly.
+        fetchStatistics('POST', 'size/worked', interaction.client)
+        fetchStatistics('POST', `${path}/${func.data.name}`, interaction.client)
+      } catch (error) {
+        catchError(interaction.client, interaction, func.data.name, error)
+      }
+    }
 
-		// When user interact in message context menu
-		if (interaction.isMessageContextMenuCommand()) {
-			try {
-				command.function.context.execute(interaction);
+    // Set language by type
+    if (!guildVal?.language.type || guildVal?.language.type === 'USER')
+      changeLanguage(interaction.client, interaction.locale)
 
-				// Stores information when the bot is working properly.
-				if (interaction.client.mode === "start") {
-					set(ref(getDatabase(), "statistics/shioru/size/worked"), increment(1) || 1);
-					set(child(ref(getDatabase(), "statistics/shioru/context"), command.name), increment(1) || 1);
-				}
-			} catch (error) {
-				if (interaction.replied || interaction.deferred) {
-					await interaction.followUp({ "content": interaction.client.translate.events.interactionCreate.command_error, "ephemeral": true });
-				} else {
-					await interaction.reply({ "content": interaction.client.translate.events.interactionCreate.command_error, "ephemeral": true });
-				}
+    // Increase user level
+    fetchLevel(interaction.client, interaction, 'POST', {
+      amount: 123,
+      type: 'exp',
+    })
 
-				catchError(interaction.client, interaction, "interactionCreate", error);
-			}
-		}
-	}
+    if (interaction.isChatInputCommand()) {
+      const commandName = interaction.commandName
+      const command = interaction.client.commands.get(commandName)
+
+      if (!command)
+        return interaction.client.logger.warn(
+          `No command matching ${commandName} was found.`
+        )
+
+      executeCommand(command, 'commands')
+    }
+    if (interaction.isAutocomplete()) {
+      const commandName = interaction.commandName
+      const command = interaction.client.commands.get(commandName)
+
+      if (!command)
+        return interaction.client.logger.warn(
+          `No autocomplete matching ${commandName} was found.`
+        )
+
+      try {
+        await command.autocomplete(interaction)
+      } catch (error) {
+        interaction.client.logger.error(error)
+      }
+    }
+    if (interaction.isMessageContextMenuCommand()) {
+      const contextName = interaction.commandName
+      const context = interaction.client.contexts.get(contextName)
+
+      if (!context)
+        return interaction.client.logger.warn(
+          `No context matching ${contextName} was found.`
+        )
+
+      executeCommand(context, 'contexts')
+    }
+  },
 }

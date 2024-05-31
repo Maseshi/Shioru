@@ -1,38 +1,46 @@
-const { PermissionsBitField } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "autoplay",
-    "description": "Turn on / off automatic music playing",
-    "category": "music",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "autoplay",
-    "function": {
-        "command": {}
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('autoplay')
+    .setDescription('Turn on / off automatic music playing')
+    .setDescriptionLocalizations({
+      th: 'เปิด/ปิดการเล่นเพลงอัตโนมัติ',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(false),
+  async execute(interaction) {
+    const djs = interaction.client.configs.djs
+    const queue = interaction.client.player.getQueue(interaction)
+
+    if (djs.enable) {
+      if (interaction.user.id !== queue.songs[0].user.id && !queue.autoplay)
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.autoplay.not_queue_owner')
+        )
+      if (
+        djs.users.includes(interaction.user.id) &&
+        djs.roles.includes(
+          interaction.member.roles.cache.map((role) => role.id)
+        ) &&
+        djs.only
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.autoplay.not_a_dj')
+        )
     }
-};
+    if (!queue)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.autoplay.no_queue')
+      )
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "เล่นอัตโนมัติ"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "เปิด/ปิดการเล่นเพลงอัตโนมัติ"
-        }
-    },
-    async execute(interaction) {
-        const queue = interaction.client.music.getQueue(interaction);
+    const mode = interaction.client.player.toggleAutoplay(interaction)
 
-        if (!queue) return await interaction.reply(interaction.client.translate.commands.autoplay.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.autoplay.not_queue_owner);
-
-        const mode = interaction.client.music.toggleAutoplay(interaction);
-
-        await interaction.reply(mode ? interaction.client.translate.commands.autoplay.on : interaction.client.translate.commands.autoplay.off);
-    }
-};
+    await interaction.reply(
+      mode
+        ? interaction.client.i18n.t('commands.autoplay.on')
+        : interaction.client.i18n.t('commands.autoplay.off')
+    )
+  },
+}

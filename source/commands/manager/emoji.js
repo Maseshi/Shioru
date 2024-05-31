@@ -1,231 +1,176 @@
-const { PermissionsBitField } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "emoji",
-    "description": "Manage this server's emojis.",
-    "category": "manager",
-    "permissions": {
-        "user": [
-            PermissionsBitField.Flags.ManageEmojisAndStickers,
-            PermissionsBitField.Flags.AttachFiles
-        ],
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.ManageEmojisAndStickers,
-            PermissionsBitField.Flags.AttachFiles
-        ]
-    },
-    "usage": "emoji: add <emoji(Blob)> <name(String)> [reason(String)], delete <emoji(String)> [reason(String)], edit <emoji(String)> [name(String)] [reason(String)]",
-    "function": {
-        "command": {}
-    }
-}
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.ManageGuildExpressions,
+  ],
+  data: new SlashCommandBuilder()
+    .setName('emoji')
+    .setDescription("Manage this server's emojis.")
+    .setDescriptionLocalizations({
+      th: 'จัดการอีโมจิของเซิร์ฟเวอร์นี้',
+    })
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuildExpressions)
+    .setDMPermission(false)
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('add')
+        .setDescription('Add emojis on this server.')
+        .setDescriptionLocalizations({
+          th: 'เพิ่มอีโมจิบนเซิร์ฟเวอร์นี้',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('emoji')
+            .setDescription('Emoji images.')
+            .setDescriptionLocalizations({
+              th: 'ภาพของอีโมจิ',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('name')
+            .setDescription('The name of the emoji.')
+            .setDescriptionLocalizations({
+              th: 'ชื่อของอีโมจิ',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('reason')
+            .setDescription('Reason for creation.')
+            .setDescriptionLocalizations({
+              th: 'เหตุผลของการเพิ่ม',
+            })
+            .setRequired(false)
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('delete')
+        .setDescription('Remove emojis on this server.')
+        .setDescriptionLocalizations({
+          th: 'ลบอีโมจิบนเซิร์ฟเวอร์นี้',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('emoji')
+            .setDescription('Emoji ID.')
+            .setDescriptionLocalizations({
+              th: 'รหัสของอีโมจิ',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('reason')
+            .setDescription('Reason for deletion.')
+            .setDescriptionLocalizations({
+              th: 'เหตุผลของการลบ',
+            })
+            .setRequired(false)
+        )
+    )
+    .addSubcommand((subcommand) =>
+      subcommand
+        .setName('edit')
+        .setDescription('Edit emojis on this server.')
+        .setDescriptionLocalizations({
+          th: 'แก้ไขอีโมจิบนเซิร์ฟเวอร์นี้',
+        })
+        .addStringOption((option) =>
+          option
+            .setName('emoji')
+            .setDescription('Emoji ID.')
+            .setDescriptionLocalizations({
+              th: 'รหัสของอีโมจิ',
+            })
+            .setRequired(true)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('name')
+            .setDescription('The name of the emoji.')
+            .setDescriptionLocalizations({
+              th: 'ชื่อของอีโมจิ',
+            })
+            .setRequired(false)
+        )
+        .addStringOption((option) =>
+          option
+            .setName('reason')
+            .setDescription('Reason for deletion.')
+            .setDescriptionLocalizations({
+              th: 'เหตุผลของการลบ',
+            })
+            .setRequired(false)
+        )
+    ),
+  async execute(interaction) {
+    const subcommand = interaction.options.getSubcommand()
+    const inputEmoji = interaction.options.getAttachment('emoji') ?? ''
+    const inputName = interaction.options.getString('name') ?? ''
+    const inputReason = interaction.options.getString('reason') ?? ''
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "อีโมจิ"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "จัดการอีโมจิของเซิร์ฟเวอร์นี้"
-        },
-        "options": [
-            {
-                "type": 1,
-                "name": "add",
-                "name_localizations": {
-                    "th": "เพิ่ม"
-                },
-                "description": "Add emojis on this server.",
-                "description_localizations": {
-                    "th": "เพิ่มอีโมจิบนเซิร์ฟเวอร์นี้"
-                },
-                "options": [
-                    {
-                        "type": 11,
-                        "name": "emoji",
-                        "name_localizations": {
-                            "th": "อีโมจิ"
-                        },
-                        "description": "Emoji images.",
-                        "description_localizations": {
-                            "th": "ภาพของอีโมจิ"
-                        },
-                        "required": true
-                    },
-                    {
-                        "type": 3,
-                        "name": "name",
-                        "name_localizations": {
-                            "th": "ชื่อ"
-                        },
-                        "description": "The name of the emoji.",
-                        "description_localizations": {
-                            "th": "ชื่อของอีโมจิ"
-                        },
-                        "required": true
-                    },
-                    {
-                        "type": 3,
-                        "name": "reason",
-                        "name_localizations": {
-                            "th": "เหตุผล"
-                        },
-                        "description": "Reason for creation.",
-                        "description_localizations": {
-                            "th": "เหตุผลของการเพิ่ม"
-                        },
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "type": 1,
-                "name": "delete",
-                "name_localizations": {
-                    "th": "ลบ"
-                },
-                "description": "Remove emojis on this server.",
-                "description_localizations": {
-                    "th": "ลบอีโมจิบนเซิร์ฟเวอร์นี้"
-                },
-                "options": [
-                    {
-                        "type": 3,
-                        "name": "emoji",
-                        "name_localizations": {
-                            "th": "อีโมจิ"
-                        },
-                        "description": "Emoji ID.",
-                        "description_localizations": {
-                            "th": "รหัสของอีโมจิ"
-                        },
-                        "required": true
-                    },
-                    {
-                        "type": 3,
-                        "name": "reason",
-                        "name_localizations": {
-                            "th": "เหตุผล"
-                        },
-                        "description": "Reason for deletion.",
-                        "description_localizations": {
-                            "th": "เหตุผลของการลบ"
-                        },
-                        "required": false
-                    }
-                ]
-            },
-            {
-                "type": 1,
-                "name": "edit",
-                "name_localizations": {
-                    "th": "แก้ไข"
-                },
-                "description": "Edit emojis on this server.",
-                "description_localizations": {
-                    "th": "แก้ไขอีโมจิบนเซิร์ฟเวอร์นี้"
-                },
-                "options": [
-                    {
-                        "type": 3,
-                        "name": "emoji",
-                        "name_localizations": {
-                            "th": "อีโมจิ"
-                        },
-                        "description": "Emoji ID.",
-                        "description_localizations": {
-                            "th": "รหัสของอีโมจิ"
-                        },
-                        "required": true
-                    },
-                    {
-                        "type": 3,
-                        "name": "name",
-                        "name_localizations": {
-                            "th": "ชื่อ"
-                        },
-                        "description": "The name of the emoji.",
-                        "description_localizations": {
-                            "th": "ชื่อของอีโมจิ"
-                        },
-                        "required": false
-                    },
-                    {
-                        "type": 3,
-                        "name": "reason",
-                        "name_localizations": {
-                            "th": "เหตุผล"
-                        },
-                        "description": "Reason for deletion.",
-                        "description_localizations": {
-                            "th": "เหตุผลของการลบ"
-                        },
-                        "required": false
-                    }
-                ]
-            }
-        ]
-    },
-    async execute(interaction) {
-        const subCommand = interaction.options.getSubcommand();
+    switch (subcommand) {
+      case 'add':
+        try {
+          await interaction.reply(
+            interaction.client.i18n.t('commands.emoji.uploading_you_emoji')
+          )
 
-        switch (subCommand) {
-            case "add":
-                const inputAddEmoji = interaction.options.getAttachment("emoji");
-                const inputAddName = interaction.options.getString("name");
-                const inputAddReason = interaction.options.getString("reason") ?? "";
+          const addEmoji = await interaction.guild.emojis.create({
+            attachment: inputEmoji.attachment,
+            name: inputName,
+            reason: inputReason,
+          })
 
-                try {
-                    await interaction.reply(interaction.client.translate.commands.emoji.uploading_you_emoji);
+          if (!addEmoji) return
 
-                    const addEmoji = await interaction.guild.emojis.create({
-                        "attachment": inputAddEmoji.attachment,
-                        "name": inputAddName,
-                        "reason": inputAddReason
-                    });
-
-                    if (!addEmoji) return;
-
-                    await interaction.editReply(interaction.client.translate.commands.emoji.you_emoji_is_ready.replace("%s", addEmoji));
-                } catch (error) {
-                    await interaction.reply(error.rawError.message);
-                }
-                break;
-            case "delete":
-                const inputDeleteEmoji = interaction.options.getString("emoji");
-                const inputDeleteReason = interaction.options.getString("reason") ?? "";
-
-                try {
-                    await interaction.guild.emojis.delete({
-                        "emoji": inputDeleteEmoji,
-                        "reason": inputDeleteReason
-                    });
-                    await interaction.reply(interaction.client.translate.commands.emoji.deleted_emoji.replace("%s", inputDeleteEmoji));
-                } catch (error) {
-                    await interaction.reply(error.rawError.message);
-                }
-                break;
-            case "edit":
-                const inputEditEmoji = interaction.options.getString("emoji");
-                const inputEditName = interaction.options.getString("name") ?? "";
-                const inputEditReason = interaction.options.getString("reason") ?? "";
-
-                try {
-                    const editEmoji = await interaction.guild.emojis.edit({
-                        "emoji": inputEditEmoji,
-                        "name": inputEditName,
-                        "reason": inputEditReason
-                    });
-
-                    await interaction.reply(interaction.client.translate.commands.emoji.edited_emoji.replace("%s", editEmoji));
-                } catch (error) {
-                    await interaction.reply(error.rawError.message);
-                }
-                break;
+          await interaction.editReply(
+            interaction.client.i18n
+              .t('commands.emoji.you_emoji_is_ready')
+              .replace('%s', addEmoji)
+          )
+        } catch (error) {
+          await interaction.reply(error.rawError.message)
         }
+        break
+      case 'delete':
+        try {
+          await interaction.guild.emojis.delete({
+            emoji: inputEmoji,
+            reason: inputReason,
+          })
+          await interaction.reply(
+            interaction.client.i18n
+              .t('commands.emoji.deleted_emoji')
+              .replace('%s', inputEmoji)
+          )
+        } catch (error) {
+          await interaction.reply(error.rawError.message)
+        }
+        break
+      case 'edit':
+        try {
+          const editEmoji = await interaction.guild.emojis.edit({
+            emoji: inputEmoji,
+            name: inputName,
+            reason: inputReason,
+          })
+
+          await interaction.reply(
+            interaction.client.i18n
+              .t('commands.emoji.edited_emoji')
+              .replace('%s', editEmoji)
+          )
+        } catch (error) {
+          await interaction.reply(error.rawError.message)
+        }
+        break
     }
+  },
 }

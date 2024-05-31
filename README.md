@@ -1,118 +1,190 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/favicon-circle.png" width="100" />
-  <h1>
-    <strong>Shioru</strong>
-  </h1>
-  <img src="https://img.shields.io/badge/discord.js-v14-7354F6?logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/github/stars/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/v/release/Maseshi/Shioru">
-  <img src="https://img.shields.io/github/license/Maseshi/Shioru.svg?logo=github" />
-  <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru">
-  <a title="Status" target="_blank" href="https://shioru.statuspage.io/">
-    <img src="https://img.shields.io/badge/dynamic/json?logo=google-cloud&logoColor=white&label=status&query=status.indicator&url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json" />
-  </a>
-  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shioru-bot">
-    <img src="https://badges.crowdin.net/shioru-bot/localized.svg">
-  </a>
-  <a title="CodeFactor" target="_blank" href="https://www.codefactor.io/repository/github/maseshi/shioru">
-    <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
-  </a>
-  <a title="Top.gg" target="_blank" href="https://top.gg/bot/704706906505347183">
-    <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg">
-  </a>
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
+  <strong>
+    <h1>Shioru</h1>
+    <p>Personal assistants in Discord that will help make your guild a better place.</p>
+  </strong>
+  <p>
+    <a title="Discord.js v14" href="https://discord.js.org/">
+      <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
+    </a>
+    <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
+      <img src="https://img.shields.io/github/last-commit/Maseshi/Shioru?logo=github&style=for-the-badge" alt="Last commit" />
+    </a>
+    <a title="Status" href="https://shioru.statuspage.io/">
+      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fq60yrzp0cbgg.statuspage.io%2Fapi%2Fv2%2Fstatus.json&query=status.indicator&logo=google-cloud&logoColor=white&label=status&style=for-the-badge" alt="Status" />
+    </a>
+    <br />
+    <a title="Crowdin" href="https://crowdin.com/project/shioru">
+      <img src="https://badges.crowdin.net/shioru/localized.svg" alt="Crowdin" />
+    </a>
+    <a title="CodeFactor" href="https://www.codefactor.io/repository/github/maseshi/shioru">
+      <img src="https://www.codefactor.io/repository/github/maseshi/shioru/badge" alt="CodeFactor" />
+    </a>
+    <a title="Top.gg" href="https://top.gg/bot/704706906505347183">
+      <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
+    </a>
+  </p>
+  <p>
+    <a href="https://shiorus.web.app/invite">Add App</a>
+    ·
+    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+    ·
+    <a href="https://shioru.statuspage.io/">Status</a>
+    ·
+    <a href="https://crowdin.com/project/shioru">Improve Translation</a>
+    ·
+    <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+  </p>
 </div>
 
-[EN](https://github.com/Maseshi/Shioru/blob/main/documents/README.en.md) | [TH](https://github.com/Maseshi/Shioru/blob/main/documents/README.th.md) | [JA](https://github.com/Maseshi/Shioru/blob/main/documents/README.ja.md)
+Your best personal assistants will help your guild look more lively. She can do so many things that you can easily see detailed information on all commands by typing `/help`.
 
-Your good server assistant will help make your server look more lively. She can do a number of things, where you can view detailed information for the commands by typing `/help`, You can [invite Shioru to your server from here](https://discord.com/api/oauth2/authorize?client_id=704706906505347183&permissions=8&scope=applications.commands%20bot&redirect_uri=https%3A%2F%2Fshiorus.web.app%2Fthanks-you).
+## ✨ Outstanding features
 
-## Outstanding features
-
-- Works on [Discord.js](https://discord.js.org/) v14
-- A wide variety of customizations can be made.
-- It can play music from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/) and [SoundCloud](https://soundcloud.com/), with an automatic playback feature.
-- Support for multiple languages You can check the supported languages from the [language file](https://github.com/Maseshi/Shioru/blob/main/source/languages) of this repository.
-- Tier system (level and experience)
-- Support customization of server notifications
-- You can chat by typing `@Shioru` followed by the message you wish to communicate.
-- Able to use application commands (/)
+- [x] Worked on [Discord.js](https://discord.js.org/) v14
+- [x] Easy to read, easy to use and highly effective
+- [x] You can customize many things you want
+- [x] Contains all commands including 100+ available subcommands
+- [x] Can play music both from [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) and [900+ more Website](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) along with an automatic music playback system
+- [x] Supports multiple languages. You can check the supported languages ​​from the [Language File](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) of this repository.
+- [x] Tier system (Level and experience)
+- [x] Support for customizing server notifications
+- [x] You can talk by typing `@Shioru` followed by the message you want to communicate
+- [x] Supports working on Shards or supports working in various guilds
+- [x] You can use application commands (`/`)
+- [x] Simulate the database system for testing.
 
 And many other interesting features...
 
-## Improve Translate
-
-You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru-bot).
-
-## Prerequisites
+## 🧩 Prerequisites
 
 - [Node.js](https://nodejs.org/) v18.0.0 or higher
-- [Firebase](https://firebase.google.com/) v9.0.0 or higher
+- [Firebase Tools](https://firebase.google.com/docs/cli) (requires [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher)
+- [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (requires [Python](https://www.python.org/downloads/) v3.12.0 or higher)
 - [FFmpeg](https://ffmpeg.org/download.html)
 - [Git](https://git-scm.com/downloads)
 
-## Quick setup guide
+## ⌛ Installation
 
-### Get started
+### 1. Install **Build Tools**
 
-- Go to the [Discord Developer Portal](https://discord.com/developers/applications)
-- Click **"New Application"** and give your bot a name and accept the Discord policy rules.
-- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intents** section.
+Install **Build tools** by running the following command according to your operating system.
+
+- For Linux and MacOS operating systems
+
+  ```sh
+  sudo apt update
+  sudo apt install build-essential
+  ```
+
+- For Windows operating system
+  ```sh
+  npm install --global --production --add-python-to-path windows-build-tools
+  ```
+
+> [!TIP]
+> You can skip this step by checking the **Automatically install the necessary tools** option through the Node.js installer as shown in the following image.
+>
+> ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
+
+### 2. Clone the bot and install the components.
+
+- Launch a terminal and run the following command.
+  ```bat
+  git clone https://github.com/Maseshi/Shioru.git
+  cd Shioru
+  npm install
+  ```
+- Change the file name `.env.example` to `.env` and enter all required values.
+
+> [!NOTE]
+> You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
+
+### 3. Setup bot and invite to join.
+
+- Go to [Discord Developer Portal](https://discord.com/developers/applications)
+- Click **"New Application"** and name your bot and accept the Discord policy rules.
+- Go to the **"Bot"** page and enable all options in the **Privileged Gateway Intent** section.
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
-- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands` selecting `Administrator`. Then copy the link and paste it on your browser's address.
+- Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands`, selecting `Administrator`, then copy the link and paste it in the browser address bar. Your sir
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### Setup a bot
-
-- Launch a terminal and run the following commands.
-
-```bat
-git clone https://github.com/Maseshi/Shioru.git
-cd Shioru
-npm install --save
-```
-
-- You can edit some data in **config** at `./source/config.js`.
-
-### Setup Firebase
+### 4. Setup database
 
 - Go to https://firebase.google.com/ and start setting up the project.
-- Add a new project and go through the steps.
-- Add your first application with **Website**, name your app without the need to select **"Also set up Firebase Hosting for this app."** and register the app.
+- Add a new project and follow the steps.
+- Add your first application with **Website** Name your app without needing to select the **"Also set up Firebase Hosting for this app."** option and register the app.
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
-- Firebase will provide you with information about the configuration. Apply these values to the `.env.example` file.
+- Firebase will provide you with information about its configuration. Apply these values to the file. `.env`
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
 
-### Development
+## 🔥 Get started
 
-- Rename the `.env.example` file to `.env` and add all values.
-- Go to terminal and run `npm run dev` for development and `npm start` for production.
-  > **NOTE**: When in development mode Some features may not work.
+There are several options available. If you are using [Visual Studio Code](https://code.visualstudio.com/), you can choose your method directly via the Run and Debug tab (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>). For other operations, see Tasks (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> type `>Tasks: Run Task`)
 
-## Quick Troubleshooting
+### 🪛 Development
 
-- If you can't install the **sodium** dependency, install **libsodium-wrappers** instead.
+- Open a terminal and run the command `npm run dev`.
 
-```bat
-npm uninstall sodium
-npm install libsodium-wrappers@latest --save
-```
+### ☕ Serve
 
-- If you can't play music or music playback commands are not working, install [ffmpeg](https://ffmpeg.org/download.html) **(recommended)** or install the **ffmpeg-static** package. and try again
+Test the actual use by performing tasks similar to real use. The system will automatically calculate the split of the work fraction according to the number of guilds.
 
-```bat
-npm install ffmpeg-static@latest --save
-```
+- Open the terminal and add all the necessary environmental variables.
+  - For Windows, use commands `set variable=example`
+  - For Linux or MacOS, use the command `export variable=example`
+- Run the command `npm run serve`.
 
-## Credits
+> [!NOTE]
+> You will enter automatic development mode because it is a real use. All data will not be recorded.
 
-Thank you to all the original creators for allowing us to use these wonderful works of yours.
+### 🍵 Production
 
-Personal drawing by: [夏月 まりな (NATSUKI MARINA)](https://www.pixiv.net/en/users/482462)/[お着替え中](https://www.pixiv.net/en/artworks/76075098)
+For actual use, the prepared command or set of commands can be used normally as follows:
 
-## Found a problem
+- On Linux or MacOS
+
+  ```sh
+  sh start.sh || sudo sh start.sh
+
+  # or
+
+  npm start
+  ```
+
+- On Windows
+
+  ```bat
+  ./start.bat
+
+  @REM or
+
+  npm start
+  ```
+
+### 🐳 Running on Docker
+
+This operation requires [Docker](https://www.docker.com/products/docker-desktop/)
+
+- Open the terminal and add all the necessary environmental variables.
+  - For Windows, use commands `set variable=example`
+  - For Linux or MacOS, use the command `export variable=example`
+- Create an image using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode and wait until the process is finished.
+- After creating the images successfully, run by using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode.
+
+[Learn more about commands Docker](https://docs.docker.com/reference/)
+
+## ⚡ Quick Troubleshooting
+
+- `gyp ERR! stack Error: not found: make`
+
+  This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
+
+## 🌐 Improve Translate
+
+You can help us translate existing languages or languages that are not currently available on [Crowdin](https://crowdin.com/project/shioru).
+
+## ⚠️ Found a problem
 
 If you encounter any problems from your current job You can let us know through the tab. [issue](https://github.com/Maseshi/Shioru/issues) of this repository.
-
-## Google Translate
-
-The content of this document has been translated by the [Google Translate](https://translate.google.com/) service. We apologize for any errors.

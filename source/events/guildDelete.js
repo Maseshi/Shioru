@@ -1,18 +1,9 @@
-const { Events } = require("discord.js");
-const { getDatabase, ref, update } = require("firebase/database");
+const { Events } = require('discord.js')
 
 module.exports = {
-    "name": Events.GuildDelete,
-    "once": false,
-    execute(guild) {
-        if (guild.client.mode === "start") {
-            const guildSize = guild.client.guilds.cache.size;
-            const userSize = guild.client.users.cache.size;
-
-            update(ref(getDatabase(), "statistics/shioru/size"), {
-                "guilds": guildSize,
-                "users": userSize
-            });
-        }
-    }
-};
+  name: Events.GuildDelete,
+  once: false,
+  execute(guild) {
+    fetchStatistics('POST', 'size', guild.client)
+  },
+}

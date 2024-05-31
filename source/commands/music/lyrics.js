@@ -1,56 +1,68 @@
-const { EmbedBuilder, PermissionsBitField } = require("discord.js");
-const lyricsFinder = require("lyrics-finder");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionFlagsBits,
+  Colors,
+} = require('discord.js')
+const { Client } = require('genius-lyrics')
 
 module.exports = {
-    "enable": true,
-    "name": "lyrics",
-    "description": "Get lyrics for the currently playing song",
-    "category": "music",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "lyrics",
-    "function": {
-        "command": {}
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('lyrics')
+    .setDescription('Get lyrics for the currently playing song')
+    .setDescriptionLocalizations({
+      th: 'รับเนื้อเพลงสำหรับเพลงที่กำลังเล่นอยู่',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(false)
+    .addStringOption((option) =>
+      option
+        .setName('name')
+        .setDescription('Search for lyrics by desired song name.')
+        .setDescriptionLocalizations({
+          th: 'ค้นหาเนื้อเพลงด้วยชื่อเพลงที่ต้องการ',
+        })
+    ),
+  async execute(interaction) {
+    const inputName = interaction.options.getString('name') ?? ''
+
+    const queue = interaction.client.player.getQueue(interaction)
+
+    if (!queue && !inputName)
+      return await interaction.editReply(
+        interaction.client.i18n.t('commands.lyrics.no_queue')
+      )
+
+    const songName = inputName ? inputName : queue.songs[0].name
+    const authorUsername = interaction.user.username
+    const authorAvatar = interaction.user.displayAvatarURL()
+    const lyricsEmbed = new EmbedBuilder()
+      .setTitle(interaction.client.i18n.t('commands.lyrics.playing_lyrics'))
+      .setColor(Colors.Blue)
+      .setTimestamp()
+      .setFooter({ text: authorUsername, iconURL: authorAvatar })
+
+    try {
+      await interaction.deferReply()
+
+      const genius = new Client()
+      const searches = await genius.songs.search(songName)
+      const lyrics = await searches[0].lyrics()
+
+      if (searches) {
+        lyricsEmbed.setDescription(`\`\`\`${lyrics}\`\`\``)
+      } else {
+        lyricsEmbed.setDescription(
+          `\`\`\`${interaction.client.i18n.t('commands.lyrics.can_not_find_lyrics').replace('%s', songName)}\`\`\``
+        )
+      }
+    } catch (error) {
+      lyricsEmbed.setDescription(
+        `\`\`\`${interaction.client.i18n.t('commands.lyrics.can_not_find_lyrics').replace('%s', songName)}\`\`\``
+      )
     }
-};
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "เนื้อเพลง"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "รับเนื้อเพลงสำหรับเพลงที่กำลังเล่นอยู่"
-        }
-    },
-    async execute(interaction) {
-        const queue = interaction.client.music.getQueue(interaction);
-
-        if (!queue) return await interaction.reply(interaction.client.translate.commands.lyrics.no_queue);
-
-        let lyrics;
-        const queueName = queue.songs.map((song, id) => song.name);
-
-        try {
-            lyrics = await lyricsFinder(queueName, "");
-
-            if (!lyrics) lyrics = interaction.client.translate.commands.lyrics.can_not_find_lyrics.replace("%s", queueName);
-        } catch (error) {
-            lyrics = interaction.client.translate.commands.lyrics.can_not_find_lyrics.replace("%s", queueName);
-        }
-
-        const authorUsername = interaction.author.username;
-        const authorAvatar = interaction.author.displayAvatarURL();
-        const lyricsEmbed = new EmbedBuilder()
-            .setTitle(interaction.client.translate.commands.lyrics.playing_lyrics)
-            .setDescription("```" + lyrics + "```")
-            .setColor("Blue")
-            .setTimestamp()
-            .setFooter({ "text": authorUsername, "iconURL": authorAvatar });
-
-        await interaction.reply({ "embeds": [lyricsEmbed] });
-    }
-};
+    await interaction.editReply({ embeds: [lyricsEmbed] })
+  },
+}

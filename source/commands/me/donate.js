@@ -1,56 +1,47 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require('discord.js');
+const {
+  SlashCommandBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  PermissionFlagsBits,
+} = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "donate",
-    "description": "Donate to support bots and bot developers.",
-    "category": "me",
-    "permissions": {
-        "client": [
-            PermissionsBitField.Flags.SendMessages,
-            PermissionsBitField.Flags.EmbedLinks
-        ]
-    },
-    "usage": "donate",
-    "function": {
-        "command": {}
-    }
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.EmbedLinks,
+  ],
+  data: new SlashCommandBuilder()
+    .setName('donate')
+    .setDescription(
+      'Support me and my host to help with utilities bills by making a donation.'
+    )
+    .setDescriptionLocalizations({
+      th: 'สนับสนุนฉันและเจ้าบ้านเพื่อช่วยเหลือค่าน้ำค่าไฟด้วยการบริจาค',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(true),
+  async execute(interaction) {
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setURL('https://github.com/sponsors/Maseshi')
+        .setLabel('Github')
+        .setStyle(ButtonStyle.Link),
+      new ButtonBuilder()
+        .setURL('https://www.patreon.com/maseshi')
+        .setLabel('Patreon')
+        .setStyle(ButtonStyle.Link),
+      new ButtonBuilder()
+        .setURL('https://www.buymeacoffee.com/maseshi')
+        .setLabel('Buy me a green tea')
+        .setStyle(ButtonStyle.Link)
+    )
+
+    await interaction.reply({
+      content: interaction.client.i18n.t(
+        'commands.donate.thank_you_in_advance'
+      ),
+      components: [row],
+    })
+  },
 }
-
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "บริจาค"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "บริจาคเพื่อสนับสนุนบอทและนักพัฒนาบอท"
-        }
-    },
-    async execute(interaction) {
-        const github = "https://github.com/sponsors/Maseshi";
-        const patreon = "https://www.patreon.com/maseshi";
-        const bmc = "https://www.buymeacoffee.com/maseshi";
-        const row = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setURL(github)
-                    .setLabel('Github')
-                    .setStyle(ButtonStyle.Link),
-                new ButtonBuilder()
-                    .setURL(patreon)
-                    .setLabel('Patreon')
-                    .setStyle(ButtonStyle.Link),
-                new ButtonBuilder()
-                    .setURL(bmc)
-                    .setLabel('Buy me a coffee')
-                    .setStyle(ButtonStyle.Link)
-            );
-
-        await interaction.reply({
-            "content": interaction.client.translate.commands.donate.thank_you_in_advance_message,
-            "components": [row]
-        });
-    }
-};

@@ -1,41 +1,50 @@
-const { PermissionsBitField } = require("discord.js")
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 
 module.exports = {
-	"enable": true,
-	"name": "leave",
-	"description": "Exits the current audio channel.",
-	"category": "music",
-	"permissions": {
-		"client": [PermissionsBitField.Flags.SendMessages]
-	},
-	"usage": "leave",
-    "function": {
-        "command": {}
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('leave')
+    .setDescription('Exits the current audio channel.')
+    .setDescriptionLocalizations({
+      th: 'ออกจากช่องสัญญาณเสียงปัจจุบัน',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(false),
+  async execute(interaction) {
+    const djs = interaction.client.configs.djs
+    const queue = interaction.client.player.getQueue(interaction)
+
+    const meChannel = interaction.guild.members.me.voice.channel
+
+    if (queue && djs.enable) {
+      if (
+        interaction.user.id !== queue.songs[0].user.id &&
+        queue.autoplay === false
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.leave.another_player_is_playing')
+        )
+      if (
+        djs.users.includes(interaction.user.id) &&
+        djs.roles.includes(
+          interaction.member.roles.cache.map((role) => role.id)
+        ) &&
+        djs.only
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.leave.not_a_dj')
+        )
     }
-};
+    if (!meChannel)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.leave.not_in_any_channel')
+      )
 
-module.exports.function.command = {
-	"data": {
-		"name": module.exports.name,
-		"name_localizations": {
-			"th": "ออก"
-		},
-		"description": module.exports.description,
-		"description_localizations": {
-			"th": "ออกจากช่องสัญญาณเสียงปัจจุบัน"
-		}
-	},
-	async execute(interaction) {
-		const queue = interaction.client.music.getQueue(interaction);
+    const connection = interaction.client.player.voices.get(meChannel.guild)
 
-		const meChannel = interaction.guild.members.me.voice.channel;
-
-		if (queue && interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.leave.another_player_is_playing);
-		if (!meChannel) return await interaction.reply(interaction.client.translate.commands.leave.not_in_any_channel);
-
-		const connection = interaction.client.music.voices.get(meChannel.guild);
-
-		connection.leave();
-		await interaction.reply(interaction.client.translate.commands.leave.now_leave);
-	}
+    connection.leave()
+    await interaction.reply(
+      interaction.client.i18n.t('commands.leave.now_leave')
+    )
+  },
 }

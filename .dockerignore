@@ -1,0 +1,42 @@
+# Github
+.github/
+
+# VSCode
+.vscode/
+
+# Dependency directories
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Ignore
+.*ignore
+
+# Docker
+Dockerfile*
+docker-compose*
+
+# Configs
+*.config.*
+
+# Crowdin
+crowdin.yml
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# README
+README.md
+NOTE.md
+
+# Back-ends
+.firebase
+.firebaserc
+firebase.json
+database.rules.json

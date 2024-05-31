@@ -1,37 +1,46 @@
-const { PermissionsBitField } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
 
 module.exports = {
-    "enable": true,
-    "name": "shuffle",
-    "description": "Shuffle queue",
-    "category": "music",
-    "permissions": {
-        "client": [PermissionsBitField.Flags.SendMessages]
-    },
-    "usage": "shuffle",
-    "function": {
-        "command": {}
+  permissions: [PermissionFlagsBits.SendMessages],
+  data: new SlashCommandBuilder()
+    .setName('shuffle')
+    .setDescription('Shuffle queue')
+    .setDescriptionLocalizations({
+      th: 'สับเปลี่ยนในคิว',
+    })
+    .setDefaultMemberPermissions()
+    .setDMPermission(false),
+  async execute(interaction) {
+    const djs = interaction.client.configs.djs
+    const queue = interaction.client.player.getQueue(interaction)
+
+    if (!queue)
+      return await interaction.reply(
+        interaction.client.i18n.t('commands.shuffle.no_queue')
+      )
+    if (djs.enable) {
+      if (
+        interaction.user.id !== queue.songs[0].user.id &&
+        queue.autoplay === false
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.shuffle.not_owner')
+        )
+      if (
+        djs.users.includes(interaction.user.id) &&
+        djs.roles.includes(
+          interaction.member.roles.cache.map((role) => role.id)
+        ) &&
+        djs.only
+      )
+        return await interaction.reply(
+          interaction.client.i18n.t('commands.shuffle.not_a_dj')
+        )
     }
-};
 
-module.exports.function.command = {
-    "data": {
-        "name": module.exports.name,
-        "name_localizations": {
-            "th": "สับเปลี่ยน"
-        },
-        "description": module.exports.description,
-        "description_localizations": {
-            "th": "สับเปลี่ยนในคิว"
-        }
-    },
-    async execute(interaction) {
-        const queue = interaction.client.music.getQueue(interaction);
-
-        if (!queue) return await interaction.reply(interaction.client.translate.commands.shuffle.no_queue);
-        if (interaction.user.id !== queue.songs[0].user.id && queue.autoplay === false) return await interaction.reply(interaction.client.translate.commands.shuffle.not_owner);
-
-        interaction.client.music.shuffle(interaction);
-        await interaction.reply(interaction.client.translate.commands.shuffle.now_shuffle);
-    }
-};
+    interaction.client.player.shuffle(interaction)
+    await interaction.reply(
+      interaction.client.i18n.t('commands.shuffle.now_shuffle')
+    )
+  },
+}
