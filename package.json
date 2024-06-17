@@ -48,7 +48,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.17.0",
-    "@distube/deezer": "^2.0.0",
+    "@distube/deezer": "^2.0.1",
     "@distube/soundcloud": "^2.0.1",
     "@distube/spotify": "^2.0.1",
     "@distube/yt-dlp": "^2.0.1",
