@@ -50,7 +50,7 @@
     "@discordjs/voice": "^0.17.0",
     "@distube/deezer": "^2.0.1",
     "@distube/soundcloud": "^2.0.1",
-    "@distube/spotify": "^2.0.1",
+    "@distube/spotify": "^2.0.2",
     "@distube/yt-dlp": "^2.0.1",
     "captcha-canvas": "^2.3.1",
     "discord-gamecord": "^4.4.2",
