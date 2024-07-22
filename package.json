@@ -1,6 +1,6 @@
 {
   "name": "shioru",
-  "version": "3.6.4",
+  "version": "3.6.5",
   "description": "Assistants within your Discord server will help make your server a better place to live.",
   "homepage": "https://github.com/Maseshi/Shioru#readme",
   "bugs": {
@@ -56,11 +56,11 @@
     "discord-gamecord": "^4.4.2",
     "discord.js": "^14.15.3",
     "distube": "^5.0.2",
-    "firebase": "^10.12.3",
+    "firebase": "^10.12.4",
     "genius-lyrics": "^4.4.7",
-    "i18next": "^23.12.1",
+    "i18next": "^23.12.2",
     "i18next-fs-backend": "^2.3.1",
-    "pino": "^9.2.0",
+    "pino": "^9.3.1",
     "pino-pretty": "^11.2.1",
     "sodium-native": "^4.1.1",
     "systeminformation": "^5.22.11"
@@ -68,7 +68,7 @@
   "devDependencies": {
     "eslint": "^9.7.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-prettier": "^5.2.1",
     "i18n-unused": "^0.16.0",
     "prettier": "^3.3.3"
   },
