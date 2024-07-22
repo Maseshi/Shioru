@@ -67,28 +67,7 @@ And many other interesting features...
 
 ## ⌛ Installation
 
-### 1. Install **Build Tools**
-
-Install **Build tools** by running the following command according to your operating system.
-
-- For Linux and MacOS operating systems
-
-  ```sh
-  sudo apt update
-  sudo apt install build-essential
-  ```
-
-- For Windows operating system
-  ```sh
-  npm install --global --production --add-python-to-path windows-build-tools
-  ```
-
-> [!TIP]
-> You can skip this step by checking the **Automatically install the necessary tools** option through the Node.js installer as shown in the following image.
->
-> ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/node-js-tools-for-native-modules.png)
-
-### 2. Clone the bot and install the components.
+### 1. Clone the bot and install the components.
 
 - Launch a terminal and run the following command.
   ```bat
@@ -101,7 +80,7 @@ Install **Build tools** by running the following command according to your opera
 > [!NOTE]
 > You can edit some data in **config** at [./source/configs/data.js](./source/configs/data.js).
 
-### 3. Setup bot and invite to join.
+### 2. Setup bot and invite to join.
 
 - Go to [Discord Developer Portal](https://discord.com/developers/applications)
 - Click **"New Application"** and name your bot and accept the Discord policy rules.
@@ -110,7 +89,7 @@ Install **Build tools** by running the following command according to your opera
 - Invite your bot to the server by going to the **OAuth2 > URL Generator** page, selecting `bot` and `applications.commands`, selecting `Administrator`, then copy the link and paste it in the browser address bar. Your sir
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### 4. Setup database
+### 3. Setup database
 
 - Go to https://firebase.google.com/ and start setting up the project.
 - Add a new project and follow the steps.
@@ -174,12 +153,6 @@ This operation requires [Docker](https://www.docker.com/products/docker-desktop/
 - After creating the images successfully, run by using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode.
 
 [Learn more about commands Docker](https://docs.docker.com/reference/)
-
-## ⚡ Quick Troubleshooting
-
-- `gyp ERR! stack Error: not found: make`
-
-  This problem may be caused by **Build tools** being installed incorrectly or may not have been installed yet. This problem can be solved by looking at the [installation](#1-install-build-tools) section.
 
 ## 🌐 Improve Translate
 
