@@ -59,7 +59,7 @@ module.exports = {
               const username =
                 message.author.id === clientID
                   ? 'You'
-                  : message.author.globalName ?? message.author.username
+                  : (message.author.globalName ?? message.author.username)
               const content = message.content
 
               if (!message.interaction)

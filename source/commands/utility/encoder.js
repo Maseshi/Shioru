@@ -137,11 +137,11 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand()
     const inputText = interaction.options.getString('text')
     const inputFrom =
-      interaction.options.getString('from') ?? subcommand === 'encode'
+      (interaction.options.getString('from') ?? subcommand === 'encode')
         ? 'utf-8'
         : 'base64'
     const inputTo =
-      interaction.options.getString('to') ?? subcommand === 'encode'
+      (interaction.options.getString('to') ?? subcommand === 'encode')
         ? 'base64'
         : 'utf-8'
 

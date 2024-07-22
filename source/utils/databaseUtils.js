@@ -159,7 +159,7 @@ const fetchLevel = async (
   const usersRef = ref(getDatabase(), 'users')
   const userRef = child(
     usersRef,
-    member ? member.id : message.member.id ?? message.user.id
+    member ? member.id : (message.member.id ?? message.user.id)
   )
   const userSnapshot = await get(userRef)
 

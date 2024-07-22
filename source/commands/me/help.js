@@ -393,9 +393,9 @@ module.exports = {
             .setEmoji(commandCategory[key].emoji)
             .setDefault(
               inputCommand
-                ? (value[inputCommand] &&
+                ? ((value[inputCommand] &&
                     value[inputCommand].name === inputCommand) ??
-                    false
+                    false)
                 : false
             )
             .setLabel(key.charAt(0).toUpperCase() + key.slice(1))
@@ -417,7 +417,7 @@ module.exports = {
         ...clientContexts.map((value, key) =>
           new StringSelectMenuOptionBuilder()
             .setDefault(
-              inputContext ? value.name === inputContext ?? false : false
+              inputContext ? (value.name === inputContext ?? false) : false
             )
             .setLabel(key.charAt(0).toUpperCase() + key.slice(1))
             .setValue(key)
