@@ -221,7 +221,6 @@ client.player = new DisTube(client, {
     new SoundCloudPlugin(),
     new YtDlpPlugin({ update: false }),
   ],
-  leaveOnStop: false,
   customFilters: client.configs.filters,
 })
 
