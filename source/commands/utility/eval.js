@@ -4,6 +4,7 @@ const {
   Colors,
   PermissionFlagsBits,
 } = require('discord.js')
+const { Script } = require('node:vm')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -24,12 +25,16 @@ module.exports = {
   async execute(interaction) {
     const inputScript = interaction.options.getString('script')
 
-    const resultEmbed = new EmbedBuilder().setTitle('🔭 ผลการทำงาน')
-    const secureEval = (obj) => eval?.(`"use strict";(${obj})`)
+    const resultEmbed = new EmbedBuilder().setTitle(
+      interaction.client.i18n.t('commands.eval.result')
+    )
 
     try {
+      const script = new Script(inputScript)
+      const result = script.runInNewContext()
+
       resultEmbed
-        .setDescription(`\`\`\`JavaScript\n${secureEval(inputScript)}\n\`\`\``)
+        .setDescription(`\`\`\`JavaScript\n${result}\n\`\`\``)
         .setColor(Colors.Green)
     } catch (error) {
       resultEmbed
