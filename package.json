@@ -60,7 +60,7 @@
     "genius-lyrics": "^4.4.7",
     "i18next": "^23.12.2",
     "i18next-fs-backend": "^2.3.1",
-    "pino": "^9.3.1",
+    "pino": "^9.3.2",
     "pino-pretty": "^11.2.1",
     "sodium-native": "^4.1.1",
     "systeminformation": "^5.22.11"
