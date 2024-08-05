@@ -73,7 +73,7 @@
     "prettier": "^3.3.3"
   },
   "optionalDependencies": {
-    "@distube/ytdl-core": "^4.13.5",
+    "@distube/ytdl-core": "^4.14.1",
     "@distube/ytsr": "^2.0.4",
     "bufferutil": "^4.0.8",
     "osx-temperature-sensor": "^1.0.8",
