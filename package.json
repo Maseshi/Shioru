@@ -63,7 +63,7 @@
     "pino": "^9.3.2",
     "pino-pretty": "^11.2.2",
     "sodium-native": "^4.1.1",
-    "systeminformation": "^5.23.4"
+    "systeminformation": "^5.23.5"
   },
   "devDependencies": {
     "eslint": "^9.9.1",
