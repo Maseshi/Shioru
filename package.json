@@ -62,7 +62,7 @@
     "i18next-fs-backend": "^2.3.2",
     "pino": "^9.4.0",
     "pino-pretty": "^11.2.2",
-    "sodium-native": "^4.2.0",
+    "sodium-native": "^4.2.1",
     "systeminformation": "^5.23.5"
   },
   "devDependencies": {
