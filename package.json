@@ -58,7 +58,7 @@
     "distube": "^5.0.2",
     "firebase": "^10.14.1",
     "genius-lyrics": "^4.4.7",
-    "i18next": "^23.16.0",
+    "i18next": "^23.16.2",
     "i18next-fs-backend": "^2.3.2",
     "pino": "^9.4.0",
     "pino-pretty": "^11.3.0",
