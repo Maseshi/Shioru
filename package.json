@@ -49,7 +49,7 @@
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.17.0",
     "@distube/deezer": "^2.0.1",
-    "@distube/soundcloud": "^2.0.3",
+    "@distube/soundcloud": "^2.0.4",
     "@distube/spotify": "^2.0.2",
     "@distube/yt-dlp": "^2.0.1",
     "captcha-canvas": "^2.3.1",
