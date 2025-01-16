@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
-    <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
+    <p>персональный ассистент Discord который поможет сделать ваш сервер лучше.</p>
   </strong>
   <p>
     <a title="Discord.js v14" href="https://discord.js.org/">
@@ -26,30 +26,30 @@
     </a>
   </p>
   <p>
-    <a href="https://shiorus.web.app/invite">Add App</a>
+    <a href="https://shiorus.web.app/invite">Добавить бота</a>
     ·
-    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
+    <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Сменить язык</a>
     ·
-    <a href="https://shioru.statuspage.io/">Status</a>
+    <a href="https://shioru.statuspage.io/">Статус</a>
     ·
-    <a href="https://crowdin.com/project/shioru">Improve Translation</a>
+    <a href="https://crowdin.com/project/shioru">Улучшить перевод</a>
     ·
-    <a href="https://top.gg/bot/704706906505347183">Rate It</a>
+    <a href="https://top.gg/bot/704706906505347183">Оценить бота</a>
   </p>
 </div>
 
-เลขาส่วนตัวที่ดีที่สุดของคุณจะช่วยให้กิลด์ของคุณดูมีชีวิตชีวามากขึ้น เธอสามารถทำสิ่งต่าง ๆ ได้หลายอย่างซึ่งคุณสามารถดูรายละเอียดข้อมูลของคำสั่งทั้งหมด ได้ง่าย ๆ โดยพิมพ์ `/help`
+Ваш лучший персональный ассистент поможет вашему серверу выглядеть более живым. Он умеет делать так много всего, что вы легко можете просмотреть подробную информацию обо всех командах, прописав `/help`
 
-## ✨ คุณสมบัติเด่น
+## ✨ Функции
 
-- [x] ทำงานบน [Discord.js](https://discord.js.org/) v14
-- [x] อ่านง่าย ใช้งานง่ายและประสิทธิภาพสูง
-- [x] สามารถปรับแต่งสิ่งที่ต้องการได้หลากหลายรายการ
-- [x] มีคำสั่งทั้งหมดรวมถึงคำสั่งย่อยที่พร้อมใช้งานมากกว่า 100+ คำสั่ง
-- [x] สามารถเล่นเพลงได้ทั้งจาก [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) และอีก [900+ เว็บไซต์](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)พร้อมทั้งมีระบบเล่นเพลงต่อโดยอัตโนมัติ
-- [x] รองรับหลายภาษา ซึ่งคุณสามารถตรวจสอบภาษาที่รองรับได้จาก[ไฟล์ภาษา](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json)ของที่เก็บนี้
-- [x] ระบบระดับชั้น (เลเวลและค่าประสบการณ์)
-- [x] รองรับการปรับแต่งการแจ้งเตือนของเซิร์ฟเวอร์
+- [x] Работает на [Discord.js](https://discord.js.org/) v14
+- [x] Лёгок в чтении, прост в использовании и очень эффективен.
+- [x] Возможность настроить различные желаемые элементы.
+- [x] Доступ ко всем командам и более 100+ подкоманд.
+- [x] Воспроизведение музыки с [YouTube](https://www.youtube.com/), [Spotify](https://www.spotify.com/), [SoundCloud](https://soundcloud.com/) и ещё более [900+ сайтов](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) с автоматическим воспроизведением.
+- [x] Поддержка множества языков. Вы можете проверить поддерживаемые языки в [языковом файле](https://github.com/Maseshi/Shioru/blob/main/source/configs/languages.json) этого репозитория.
+- [x] Уровневая система (уровень и опыт)
+- [x] Поддержка настройки уведомлений сервера.
 - [x] สามารถพูดคุยได้โดยการพิมพ์ `@Shioru` ตามด้วยข้อความที่ต้องการสื่อสาร
 - [x] รองรับการทำงานบน Shard หรือรองรับการทำงานในหลากหลายกิลด์
 - [x] สามารถใช้งานคำสั่งแอปพลิเคชั่น (/) ได้
