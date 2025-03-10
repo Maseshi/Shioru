@@ -59,7 +59,7 @@ And many other interesting features...
 
 ## 🧩 Prerequisites
 
-- [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Node.js](https://nodejs.org/) v22.12.0 or higher
 - [Firebase Tools](https://firebase.google.com/docs/cli) (requires [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher)
 - [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (requires [Python](https://www.python.org/downloads/) v3.12.0 or higher)
 - [FFmpeg](https://ffmpeg.org/download.html)
