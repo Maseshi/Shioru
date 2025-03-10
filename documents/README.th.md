@@ -59,7 +59,7 @@
 
 ## 🧩 ข้อกำหนดเบื้องต้น
 
-- [Node.js](https://nodejs.org/) v20.6.0 หรือสูงกว่า
+- [Node.js](https://nodejs.org/) v22.12.0 หรือสูงกว่า
 - [Firebase Tools](https://firebase.google.com/docs/cli) (ต้องการ [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 หรือสูงกว่า)
 - [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (ต้องการ [Python](https://www.python.org/downloads/) v3.8.0 หรือสูงกว่า)
 - [FFmpeg](https://www.ffmpeg.org/download.html)
