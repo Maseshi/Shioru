@@ -2,7 +2,8 @@ const {
   SlashCommandBuilder,
   AttachmentBuilder,
   PermissionFlagsBits,
-} = require('discord.js')
+  InteractionContextType,
+} = require("discord.js");
 
 module.exports = {
   permissions: [
@@ -10,21 +11,23 @@ module.exports = {
     PermissionFlagsBits.AttachFiles,
   ],
   data: new SlashCommandBuilder()
-    .setName('rip')
-    .setDescription('Send RIP images')
-    .setDescriptionLocalizations({
-      th: 'ส่งภาพ RIP',
-    })
+    .setName("rip")
+    .setDescription("Send RIP images")
+    .setDescriptionLocalizations({ th: "ส่งภาพ RIP" })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
-    const rip = new AttachmentBuilder('https://i.imgur.com/w3duR07.png')
+    const rip = new AttachmentBuilder("https://i.imgur.com/w3duR07.png");
 
     if (!rip)
       return await interaction.reply(
-        interaction.client.i18n.t('commands.rip.no_image')
-      )
+        interaction.client.i18n.t("commands.rip.no_image"),
+      );
 
-    await interaction.reply({ files: [rip] })
+    await interaction.reply({ files: [rip] });
   },
-}
+};

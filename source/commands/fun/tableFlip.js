@@ -1,27 +1,35 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require("discord.js");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('tableflip')
-    .setDescription('(\\\\°□°)\\\\  ┬─┬')
+    .setName("tableflip")
+    .setDescription("(\\\\°□°)\\\\  ┬─┬")
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const frames = [
-      '(-°□°)-  ┬─┬',
-      '(╯°□°)╯    ]',
-      '(╯°□°)╯  ︵  ┻━┻',
-      '(╯°□°)╯       [',
-      '(╯°□°)╯           ┬─┬',
-    ]
+      "(-°□°)-  ┬─┬",
+      "(╯°□°)╯    ]",
+      "(╯°□°)╯  ︵  ┻━┻",
+      "(╯°□°)╯       [",
+      "(╯°□°)╯           ┬─┬",
+    ];
 
-    await interaction.reply('(\\\\°□°)\\\\  ┬─┬')
+    await interaction.reply("(\\\\°□°)\\\\  ┬─┬");
 
     for (const frame of frames) {
       setTimeout(async () => {
-        await interaction.editReply(frame)
-      }, 1000)
+        await interaction.editReply(frame);
+      }, 1000);
     }
   },
-}
+};

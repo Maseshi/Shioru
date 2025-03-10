@@ -3,7 +3,8 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
-} = require('discord.js')
+  InteractionContextType,
+} = require("discord.js");
 
 module.exports = {
   permissions: [
@@ -11,268 +12,271 @@ module.exports = {
     PermissionFlagsBits.BanMembers,
   ],
   data: new SlashCommandBuilder()
-    .setName('ban')
-    .setDescription('Deal with offending guild members by banning them.')
+    .setName("ban")
+    .setDescription("Deal with offending guild members by banning them.")
     .setDescriptionLocalizations({
-      th: 'จัดการสมาชิกในกิลด์ที่ทำผิดด้วยการแบน',
+      th: "จัดการสมาชิกในกิลด์ที่ทำผิดด้วยการแบน",
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommandGroup((subcommandGroup) =>
       subcommandGroup
-        .setName('add')
-        .setDescription('Ban members within the guild.')
-        .setDescriptionLocalizations({ th: 'แบนสมาชิกภายในกิลด์' })
+        .setName("add")
+        .setDescription("Ban members within the guild.")
+        .setDescriptionLocalizations({ th: "แบนสมาชิกภายในกิลด์" })
         .addSubcommand((subcommand) =>
           subcommand
-            .setName('user')
-            .setDescription('Ban guild members')
-            .setDescriptionLocalizations({ th: 'แบนสมาชิกในกิลด์' })
+            .setName("user")
+            .setDescription("Ban guild members")
+            .setDescriptionLocalizations({ th: "แบนสมาชิกในกิลด์" })
             .addUserOption((option) =>
               option
-                .setName('member')
-                .setDescription('Members you want to ban.')
+                .setName("member")
+                .setDescription("Members you want to ban.")
                 .setDescriptionLocalizations({
-                  th: 'สมาชิกที่คุณต้องการแบน',
+                  th: "สมาชิกที่คุณต้องการแบน",
                 })
-                .setRequired(true)
+                .setRequired(true),
             )
             .addIntegerOption((option) =>
               option
-                .setName('days')
+                .setName("days")
                 .setDescription(
-                  'The amount of days you wish to ban the member for.'
+                  "The amount of days you wish to ban the member for.",
                 )
                 .setDescriptionLocalizations({
-                  th: 'จำนวนวันที่คุณต้องการแบนสมาชิก',
+                  th: "จำนวนวันที่คุณต้องการแบนสมาชิก",
                 })
                 .setRequired(false)
                 .setMinValue(0)
-                .setMaxValue(7)
+                .setMaxValue(7),
             )
             .addStringOption((option) =>
               option
-                .setName('reason')
-                .setDescription('The reason for the ban.')
+                .setName("reason")
+                .setDescription("The reason for the ban.")
                 .setDescriptionLocalizations({
-                  th: 'เหตุผลในการแบน',
+                  th: "เหตุผลในการแบน",
                 })
-                .setRequired(false)
-            )
-        )
+                .setRequired(false),
+            ),
+        ),
     )
     .addSubcommandGroup((subcommandGroup) =>
       subcommandGroup
-        .setName('remove')
-        .setDescription('Unban banned members on the guild.')
+        .setName("remove")
+        .setDescription("Unban banned members on the guild.")
         .setDescriptionLocalizations({
-          th: 'ปลดแบนสมาชิกที่ถูกแบนในกิลด์',
+          th: "ปลดแบนสมาชิกที่ถูกแบนในกิลด์",
         })
         .addSubcommand((subcommand) =>
           subcommand
-            .setName('all')
-            .setDescription('Unban all members')
+            .setName("all")
+            .setDescription("Unban all members")
             .setDescriptionLocalizations({
-              th: 'ปลดแบนสมาชิกทั้งหมด',
-            })
+              th: "ปลดแบนสมาชิกทั้งหมด",
+            }),
         )
         .addSubcommand((subcommand) =>
           subcommand
-            .setName('user')
-            .setDescription('Unban guild members')
+            .setName("user")
+            .setDescription("Unban guild members")
             .setDescriptionLocalizations({
-              th: 'ปลดแบนสมาชิกในกิลด์',
+              th: "ปลดแบนสมาชิกในกิลด์",
             })
             .addStringOption((option) =>
               option
-                .setName('member')
-                .setDescription('Members who want to unban.')
+                .setName("member")
+                .setDescription("Members who want to unban.")
                 .setDescriptionLocalizations({
-                  th: 'สมาชิกที่ต้องการปลดแบน',
+                  th: "สมาชิกที่ต้องการปลดแบน",
                 })
-                .setRequired(true)
+                .setRequired(true),
             )
             .addStringOption((option) =>
               option
-                .setName('reason')
-                .setDescription('The reason for the unban.')
+                .setName("reason")
+                .setDescription("The reason for the unban.")
                 .setDescriptionLocalizations({
-                  th: 'เหตุผลสำหรับการปลดแบน',
+                  th: "เหตุผลสำหรับการปลดแบน",
                 })
-                .setRequired(false)
-            )
-        )
+                .setRequired(false),
+            ),
+        ),
     ),
   async execute(interaction) {
-    const subcommandGroup = interaction.options.getSubcommandGroup()
-    const subcommand = interaction.options.getSubcommand()
-    const inputMember = interaction.options.getMember('member')
-    const inputDays = interaction.options.getNumber('days') ?? 0
+    const subcommandGroup = interaction.options.getSubcommandGroup();
+    const subcommand = interaction.options.getSubcommand();
+    const inputMember = interaction.options.getMember("member");
+    const inputDays = interaction.options.getNumber("days") ?? 0;
     const inputReason =
-      interaction.options.getString('reason') ??
-      interaction.client.i18n.t('commands.ban.no_reason')
+      interaction.options.getString("reason") ??
+      interaction.client.i18n.t("commands.ban.no_reason");
 
     switch (subcommandGroup) {
-      case 'add': {
+      case "add": {
         switch (subcommand) {
-          case 'user': {
+          case "user": {
             const member = await interaction.guild.members.fetch(
-              inputMember.member.id
-            )
+              inputMember.member.id,
+            );
             const banned = await interaction.guild.bans.fetch(
-              inputMember.member.id
-            )
+              inputMember.member.id,
+            );
 
             if (!member)
               return await interaction.editReply(
-                interaction.client.i18n.t('commands.ban.user_not_found')
-              )
+                interaction.client.i18n.t("commands.ban.user_not_found"),
+              );
             if (!banned)
               return await interaction.reply(
-                interaction.client.i18n.t('commands.ban.member_has_banned')
-              )
+                interaction.client.i18n.t("commands.ban.member_has_banned"),
+              );
 
-            const memberPosition = inputMember.roles.highest.position
-            const authorPosition = interaction.member.roles.highest.position
+            const memberPosition = inputMember.roles.highest.position;
+            const authorPosition = interaction.member.roles.highest.position;
 
             if (authorPosition < memberPosition)
               return await interaction.reply(
                 interaction.client.i18n.t(
-                  'commands.ban.members_have_a_higher_role'
-                )
-              )
+                  "commands.ban.members_have_a_higher_role",
+                ),
+              );
             if (!inputMember.member.bannable)
               return await interaction.reply(
                 interaction.client.i18n.t(
-                  'commands.ban.members_have_a_higher_role_than_me'
-                )
-              )
+                  "commands.ban.members_have_a_higher_role_than_me",
+                ),
+              );
 
             const ban = await interaction.guild.bans.create(member, {
               deleteMessageDays: inputDays,
               reason: inputReason,
-            })
-            const authorUsername = interaction.user.username
-            const memberAvatar = ban.user.avatarURL()
-            const memberUsername = ban.user.username
+            });
+            const authorUsername = interaction.user.username;
+            const memberAvatar = ban.user.avatarURL();
+            const memberUsername = ban.user.username;
 
             let embedTitle = interaction.client.i18n.t(
-              'commands.ban.banned_for_time',
+              "commands.ban.banned_for_time",
               {
                 user: memberUsername,
                 days: inputDays,
-              }
-            )
+              },
+            );
 
             if (!inputDays)
               embedTitle = interaction.client.i18n.t(
-                'commands.ban.permanently_banned',
+                "commands.ban.permanently_banned",
                 {
                   user: memberUsername,
-                }
-              )
+                },
+              );
 
             const banEmbed = new EmbedBuilder()
               .setTitle(embedTitle)
               .setDescription(
-                interaction.client.i18n.t('commands.ban.reason_for_ban', {
+                interaction.client.i18n.t("commands.ban.reason_for_ban", {
                   user: authorUsername,
                   reason: inputReason,
-                })
+                }),
               )
               .setColor(Colors.Orange)
               .setTimestamp()
-              .setThumbnail(memberAvatar)
+              .setThumbnail(memberAvatar);
 
-            await interaction.reply({ embeds: [banEmbed] })
-            break
+            await interaction.reply({ embeds: [banEmbed] });
+            break;
           }
         }
-        break
+        break;
       }
-      case 'remove': {
+      case "remove": {
         switch (subcommand) {
-          case 'all': {
-            const banned = await interaction.guild.bans.fetch()
+          case "all": {
+            const banned = await interaction.guild.bans.fetch();
 
             if (banned.length <= 0)
               return await interaction.reply(
-                interaction.client.i18n.t('commands.ban.no_one_gets_banned')
-              )
+                interaction.client.i18n.t("commands.ban.no_one_gets_banned"),
+              );
             if (interaction.user.id !== interaction.ownerId)
               return await interaction.reply(
-                interaction.client.i18n.t('commands.ban.is_only_owner')
-              )
+                interaction.client.i18n.t("commands.ban.is_only_owner"),
+              );
 
             await interaction.reply(
-              interaction.client.i18n.t('commands.ban.unbanning_everyone')
-            )
+              interaction.client.i18n.t("commands.ban.unbanning_everyone"),
+            );
 
-            const ids = banned.map((user) => user.user.id)
+            const ids = banned.map((user) => user.user.id);
 
             for (const id in ids) {
               try {
-                await interaction.guild.members.unban(id)
+                await interaction.guild.members.unban(id);
               } catch (error) {
                 catchError(
                   interaction.client,
                   interaction,
                   module.exports.data.name,
-                  error
-                )
+                  error,
+                );
               }
             }
 
             await interaction.editReply(
-              interaction.client.i18n.t('commands.ban.unbanned_all', {
+              interaction.client.i18n.t("commands.ban.unbanned_all", {
                 count: ids.length,
-              })
-            )
-            break
+              }),
+            );
+            break;
           }
-          case 'user': {
+          case "user": {
             const banned = await interaction.guild.bans.fetch(
-              inputMember.member.id
-            )
+              inputMember.member.id,
+            );
 
             if (!banned)
               return await interaction.reply(
-                interaction.client.i18n.t('commands.ban.this_user_not_banned')
-              )
+                interaction.client.i18n.t("commands.ban.this_user_not_banned"),
+              );
 
             await interaction.guild.bans.remove(banned.member, {
               reason: inputReason,
-            })
+            });
 
-            const authorUsername = interaction.user.username
-            const memberUsername = banned.member.username
-            const memberAvatar = banned.member.avatarURL()
+            const authorUsername = interaction.user.username;
+            const memberUsername = banned.member.username;
+            const memberAvatar = banned.member.avatarURL();
 
             const unbanEmbed = new EmbedBuilder()
               .setTitle(
                 interaction.client.i18n.t(
-                  'commands.ban.user_has_been_unbanned',
+                  "commands.ban.user_has_been_unbanned",
                   {
                     user: memberUsername,
-                  }
-                )
+                  },
+                ),
               )
               .setDescription(
-                interaction.client.i18n.t('commands.ban.reason_for_unban', {
+                interaction.client.i18n.t("commands.ban.reason_for_unban", {
                   user: authorUsername,
                   reason: inputReason,
-                })
+                }),
               )
               .setColor(Colors.Green)
               .setTimestamp()
-              .setThumbnail(memberAvatar)
+              .setThumbnail(memberAvatar);
 
-            await interaction.reply({ embeds: [unbanEmbed] })
-            break
+            await interaction.reply({ embeds: [unbanEmbed] });
+            break;
           }
         }
-        break
+        break;
       }
     }
   },
-}
+};

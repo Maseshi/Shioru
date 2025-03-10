@@ -1,9 +1,9 @@
-const { Events } = require('discord.js')
+const { Events } = require("discord.js");
 
 module.exports = {
   name: Events.GuildDelete,
   once: false,
   execute(guild) {
-    fetchStatistics('POST', 'size', guild.client)
+    fetchStatistics("POST", "size", guild.client);
   },
-}
+};

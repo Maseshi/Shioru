@@ -1,5 +1,8 @@
-const { Events, EmbedBuilder } = require('discord.js')
-const { submitNotification, initializeData } = require('../utils/databaseUtils')
+const { Events, EmbedBuilder } = require("discord.js");
+const {
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildStickerDelete,
@@ -7,22 +10,22 @@ module.exports = {
   async execute(sticker) {
     const stickerDeleteEmbed = new EmbedBuilder()
       .setTitle(
-        sticker.client.i18n.t('events.stickerDelete.sticker_notification')
+        sticker.client.i18n.t("events.stickerDelete.sticker_notification"),
       )
       .setDescription(
         sticker.client.i18n
-          .t('events.stickerDelete.sticker_delete')
-          .replace('%s', sticker.name)
+          .t("events.stickerDelete.sticker_delete")
+          .replace("%s", sticker.name),
       )
       .setTimestamp()
-      .setColor('Yellow')
+      .setColor("Yellow");
 
-    await initializeData(sticker.client, sticker.guild)
+    await initializeData(sticker.client, sticker.guild);
     await submitNotification(
       sticker.client,
       sticker.guild,
       Events.GuildStickerDelete,
-      stickerDeleteEmbed
-    )
+      stickerDeleteEmbed,
+    );
   },
-}
+};

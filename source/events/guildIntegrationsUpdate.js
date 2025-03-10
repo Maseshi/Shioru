@@ -1,5 +1,8 @@
-const { Events, EmbedBuilder } = require('discord.js')
-const { submitNotification, initializeData } = require('../utils/databaseUtils')
+const { Events, EmbedBuilder } = require("discord.js");
+const {
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildIntegrationsUpdate,
@@ -7,23 +10,25 @@ module.exports = {
   async execute(guild) {
     const guildIntegrationsUpdateEmbed = new EmbedBuilder()
       .setTitle(
-        guild.client.i18n.t('events.guildIntegrationsUpdate.guild_notification')
+        guild.client.i18n.t(
+          "events.guildIntegrationsUpdate.guild_notification",
+        ),
       )
       .setDescription(
         guild.client.i18n
-          .t('events.guildIntegrationsUpdate.guild_integrations_update')
-          .replace('%s', guild.name)
+          .t("events.guildIntegrationsUpdate.guild_integrations_update")
+          .replace("%s", guild.name),
       )
       .setImage(guild.bannerURL())
       .setTimestamp()
-      .setColor('Yellow')
+      .setColor("Yellow");
 
-    await initializeData(guild.client, guild)
+    await initializeData(guild.client, guild);
     await submitNotification(
       guild.client,
       guild,
       Events.GuildIntegrationsUpdate,
-      guildIntegrationsUpdateEmbed
-    )
+      guildIntegrationsUpdateEmbed,
+    );
   },
-}
+};

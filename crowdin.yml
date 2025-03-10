@@ -1,4 +1,4 @@
-project_id: '590379'
+project_id: "590379"
 files:
   - source: /source/locales/th/translation.json
     ignore:

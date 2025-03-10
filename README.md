@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-touch-icon.png" width="100" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
     <p>Personal assistants in Discord that will help make your guild a better place.</p>
@@ -59,7 +59,7 @@ And many other interesting features...
 
 ## 🧩 Prerequisites
 
-- [Node.js](https://nodejs.org/) v18.0.0 or higher
+- [Node.js](https://nodejs.org/) v22.12.0 or higher
 - [Firebase Tools](https://firebase.google.com/docs/cli) (requires [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher)
 - [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (requires [Python](https://www.python.org/downloads/) v3.12.0 or higher)
 - [FFmpeg](https://ffmpeg.org/download.html)
