@@ -149,12 +149,7 @@ const client = new Client({
   presence: {
     status: PresenceUpdateStatus.Idle,
     afk: true,
-    activities: [
-      {
-        name: 'America Ya :D',
-        type: ActivityType.Custom,
-      },
-    ],
+    activities: [{ name: 'America Ya :D', type: ActivityType.Custom }],
   },
   intents: [
     GatewayIntentBits.AutoModerationConfiguration,
@@ -162,7 +157,7 @@ const client = new Client({
     GatewayIntentBits.DirectMessageReactions,
     GatewayIntentBits.DirectMessageTyping,
     GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.GuildEmojisAndStickers,
+    GatewayIntentBits.GuildExpressions,
     GatewayIntentBits.GuildIntegrations,
     GatewayIntentBits.GuildInvites,
     GatewayIntentBits.GuildMembers,
