@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-touch-icon.png" width="100" alt="Shioru" />
   <strong>
     <h1>Shioru</h1>
     <p>Personal assistants in Discord that will help make your guild a better place.</p>

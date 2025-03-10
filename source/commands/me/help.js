@@ -19,7 +19,9 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("Get help using it.")
-    .setDescriptionLocalizations({ th: "รับความช่วยเหลือเกี่ยวกับการใช้งาน" })
+    .setDescriptionLocalizations({
+      th: "รับความช่วยเหลือเกี่ยวกับการใช้งาน",
+    })
     .setDefaultMemberPermissions()
     .setContexts([
       InteractionContextType.BotDM,
@@ -149,9 +151,11 @@ module.exports = {
           "commands.help.settings_category",
         ),
       },
-      tools: {
+      utility: {
         emoji: "🧰",
-        description: interaction.client.i18n.t("commands.help.tools_category"),
+        description: interaction.client.i18n.t(
+          "commands.help.utility_category",
+        ),
       },
     };
     const clientContexts = interaction.client.temp.contexts;
@@ -469,7 +473,10 @@ module.exports = {
           case "home": {
             helpEmbed.setDescription(helpHome);
             updateComponents(helpSelect, selection);
-            await inter.update({ embeds: [helpEmbed], components: [helpRow] });
+            await inter.update({
+              embeds: [helpEmbed],
+              components: [helpRow],
+            });
             break;
           }
           case "contexts": {
@@ -555,7 +562,10 @@ module.exports = {
           interaction.client.i18n.t("commands.help.remaining_time"),
         ),
       );
-      await interaction.editReply({ embeds: [helpEmbed], components: [] });
+      await interaction.editReply({
+        embeds: [helpEmbed],
+        components: [],
+      });
     });
   },
 };
