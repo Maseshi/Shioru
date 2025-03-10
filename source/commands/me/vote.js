@@ -6,92 +6,88 @@ const {
   ButtonBuilder,
   ButtonStyle,
   resolveColor,
-} = require('discord.js')
+  InteractionContextType,
+} = require("discord.js");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('vote')
-    .setDescription('Vote for me on top.gg')
-    .setDescriptionLocalizations({
-      th: 'โหวตคะแนนให้ฉันบน top.gg',
-    })
+    .setName("vote")
+    .setDescription("Vote for me on top.gg")
+    .setDescriptionLocalizations({ th: "โหวตคะแนนให้ฉันบน top.gg" })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
-    await interaction.deferReply()
+    await interaction.deferReply();
 
     const response = await fetch(`https://top.gg/api/bots/${clientUserID}`, {
-      headers: {
-        Authorization: interaction.client.configs.top_gg_token,
-      },
-    })
+      headers: { Authorization: interaction.client.configs.top_gg_token },
+    });
 
     if (response.status === 404)
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.vote.not_found')
-      )
+        interaction.client.i18n.t("commands.vote.not_found"),
+      );
     if (response.status === 401)
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.vote.unauthorized')
-      )
+        interaction.client.i18n.t("commands.vote.unauthorized"),
+      );
     if (response.status !== 200)
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.vote.error')
-      )
+        interaction.client.i18n.t("commands.vote.error"),
+      );
 
-    const data = await response.json()
-    const date = data.date
-    const invite = data.invite
-    const point = data.points
-    const shortDescription = data.shortdesc
-    const tags = data.tags
+    const data = await response.json();
+    const date = data.date;
+    const invite = data.invite;
+    const point = data.points;
+    const shortDescription = data.shortdesc;
+    const tags = data.tags;
 
     const voteRow = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setURL(invite)
-        .setLabel(interaction.client.i18n.t('commands.vote.invite'))
+        .setLabel(interaction.client.i18n.t("commands.vote.invite"))
         .setStyle(ButtonStyle.Link),
       new ButtonBuilder()
         .setURL(`https://top.gg/bot/${clientUserID}/vote`)
-        .setLabel(interaction.client.i18n.t('commands.vote.vote'))
-        .setStyle(ButtonStyle.Link)
-    )
+        .setLabel(interaction.client.i18n.t("commands.vote.vote"))
+        .setStyle(ButtonStyle.Link),
+    );
 
-    const clientAvatar = interaction.client.user.avatarURL()
-    const clientUsername = interaction.client.user.username
-    const clientUserID = interaction.client.user.id
+    const clientAvatar = interaction.client.user.avatarURL();
+    const clientUsername = interaction.client.user.username;
+    const clientUserID = interaction.client.user.id;
     const voteEmbed = new EmbedBuilder()
       .setTitle(clientUsername)
       .setURL(`https://top.gg/bot/${clientUserID}`)
       .setDescription(`\`\`\`${shortDescription}\`\`\``)
       .setFields(
         {
-          name: interaction.client.i18n.t('commands.vote.rate'),
+          name: interaction.client.i18n.t("commands.vote.rate"),
           value: String(point),
           inline: false,
         },
         {
-          name: interaction.client.i18n.t('commands.vote.tags'),
-          value: tags.join(', '),
+          name: interaction.client.i18n.t("commands.vote.tags"),
+          value: tags.join(", "),
           inline: false,
-        }
+        },
       )
       .setThumbnail(clientAvatar)
-      .setColor(resolveColor('#FF3366'))
+      .setColor(resolveColor("#FF3366"))
       .setTimestamp(new Date(date))
-      .setFooter({
-        text: interaction.client.i18n.t('commands.vote.added'),
-      })
+      .setFooter({ text: interaction.client.i18n.t("commands.vote.added") })
       .setAuthor({
-        name: 'top.gg',
+        name: "top.gg",
         iconURL: `https://top.gg/favicon.png`,
-        url: 'https://top.gg',
-      })
+        url: "https://top.gg",
+      });
 
-    await interaction.editReply({
-      embeds: [voteEmbed],
-      components: [voteRow],
-    })
+    await interaction.editReply({ embeds: [voteEmbed], components: [voteRow] });
   },
-}
+};

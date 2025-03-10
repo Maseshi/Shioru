@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   Colors,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { newLines, newID } = require('../../utils/miscUtils')
 
@@ -15,7 +16,11 @@ module.exports = {
       th: 'ดูสภาพอากาศของวันนี้ในแต่ละพื้นที่ที่ต้องการ',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('city')

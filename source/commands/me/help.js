@@ -10,6 +10,7 @@ const {
   ActionRowBuilder,
   ComponentType,
   Colors,
+  InteractionContextType,
 } = require("discord.js");
 const { newLines } = require("../../utils/miscUtils");
 
@@ -22,7 +23,11 @@ module.exports = {
       th: "รับความช่วยเหลือเกี่ยวกับการใช้งาน",
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName("command")

@@ -3,63 +3,65 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
-} = require('discord.js')
-const { fetchLevel } = require('../../utils/databaseUtils')
+  InteractionContextType,
+} = require("discord.js");
+const { fetchLevel } = require("../../utils/databaseUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('leader')
-    .setDescription('View the ranking on this server.')
-    .setDescriptionLocalizations({
-      th: 'ดูการจัดอันดับบนเซิร์ฟเวอร์นี้',
-    })
+    .setName("leader")
+    .setDescription("View the ranking on this server.")
+    .setDescriptionLocalizations({ th: "ดูการจัดอันดับบนเซิร์ฟเวอร์นี้" })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('level')
+        .setName("level")
         .setDescription(
-          'See the ranking of people with the most EXP and Level on the server.'
+          "See the ranking of people with the most EXP and Level on the server.",
         )
         .setDescriptionLocalizations({
-          th: 'ดูการจัดอันดับของผู้ที่มี EXP และเลเวลมากที่สุดบนเซิร์ฟเวอร์',
-        })
+          th: "ดูการจัดอันดับของผู้ที่มี EXP และเลเวลมากที่สุดบนเซิร์ฟเวอร์",
+        }),
     ),
   async execute(interaction) {
-    const subcommand = interaction.options.getSubcommand()
+    const subcommand = interaction.options.getSubcommand();
 
     switch (subcommand) {
-      case 'level': {
-        const max = 10
-        const leader = []
+      case "level": {
+        const max = 10;
+        const leader = [];
         const data = await fetchLevel(
           interaction.client,
           interaction,
-          'GET/ALL'
-        )
-        const status = data.status
-        const users = data.users
+          "GET/ALL",
+        );
+        const status = data.status;
+        const users = data.users;
 
-        if (status !== 'success')
+        if (status !== "success")
           return await interaction.reply(
-            interaction.client.i18n.t('commands.leader.no_info')
-          )
+            interaction.client.i18n.t("commands.leader.no_info"),
+          );
 
         users.forEach((user) => {
-          const id = user.key
-          const data = user.val()
+          const id = user.key;
+          const data = user.val();
           const member = interaction.guild.members.cache.find(
-            (member) => member.id === id
-          )
+            (member) => member.id === id,
+          );
 
           if (member) {
             if (!member.user.bot) {
-              const leveling = data.leveling
+              const leveling = data.leveling;
 
               if (leveling) {
-                const exp = leveling.exp
-                const level = leveling.level
+                const exp = leveling.exp;
+                const level = leveling.level;
 
                 leader.push({
                   data: {
@@ -69,49 +71,52 @@ module.exports = {
                   },
                   name: member.user.username,
                   value: interaction.client.i18n
-                    .t('commands.leader.leveling_detail')
-                    .replace('%s1', exp)
-                    .replace('%s2', level),
-                })
+                    .t("commands.leader.leveling_detail")
+                    .replace("%s1", exp)
+                    .replace("%s2", level),
+                });
               }
             }
           }
-        })
+        });
 
         leader.sort(
           (first, next) =>
-            next.data.level - first.data.level || next.data.exp - first.data.exp
-        )
+            next.data.level - first.data.level ||
+            next.data.exp - first.data.exp,
+        );
 
         // Create embed fields data
         for (let i = 0; i < leader.length; i++) {
-          if (!leader[i]) return
-          if (i === max) return
+          if (!leader[i]) return;
+          if (i === max) return;
 
-          delete leader[i].data
-          leader[i].name = `${i + 1}. ${leader[i].name}`
+          delete leader[i].data;
+          leader[i].name = `${i + 1}. ${leader[i].name}`;
         }
 
-        const clientAvatar = interaction.client.user.displayAvatarURL()
-        const clientUsername = interaction.client.user.username
-        const userAvatar = leader[0].data.avatar
+        const clientAvatar = interaction.client.user.displayAvatarURL();
+        const clientUsername = interaction.client.user.username;
+        const userAvatar = leader[0].data.avatar;
         const embed = new EmbedBuilder()
           .setColor(Colors.Blue)
           .setAuthor({ name: clientUsername, iconURL: clientAvatar })
-          .setTitle(interaction.client.i18n.t('commands.leader.server_rank'))
+          .setTitle(interaction.client.i18n.t("commands.leader.server_rank"))
           .setDescription(
-            interaction.client.i18n.t('commands.leader.server_rank_description')
+            interaction.client.i18n.t(
+              "commands.leader.server_rank_description",
+            ),
           )
           .setThumbnail(userAvatar)
           .addFields(leader)
           .setFooter({
-            text: interaction.client.i18n.t('commands.leader.server_rank_tips'),
+            text: interaction.client.i18n.t("commands.leader.server_rank_tips"),
           })
-          .setTimestamp()
+          .setTimestamp();
 
-        await interaction.reply({ embeds: [embed] })
-        break
+        await interaction.reply({ embeds: [embed] });
+        break;
       }
     }
   },
-}
+};

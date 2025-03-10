@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   resolveColor,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -14,7 +15,11 @@ module.exports = {
       th: 'สุ่มรูปอนิเมะตามที่คุณต้องการ',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('type')

@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -15,7 +16,11 @@ module.exports = {
       th: 'ตรวจสอบความหน่วงและ API Latency ของเซิร์ฟเวอร์',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const message = await interaction.reply({
       content: interaction.client.i18n.t('commands.ping.waiting'),

@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { Client } = require('genius-lyrics')
 
@@ -15,7 +16,10 @@ module.exports = {
       th: 'รับเนื้อเพลงสำหรับเพลงที่กำลังเล่นอยู่',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('name')
