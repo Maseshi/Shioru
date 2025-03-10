@@ -146,9 +146,11 @@ module.exports = {
           'commands.help.settings_category'
         ),
       },
-      tools: {
+      utility: {
         emoji: '🧰',
-        description: interaction.client.i18n.t('commands.help.tools_category'),
+        description: interaction.client.i18n.t(
+          'commands.help.utility_category'
+        ),
       },
     }
     const clientContexts = interaction.client.temp.contexts
