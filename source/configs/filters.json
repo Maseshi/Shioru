@@ -1,11 +1,11 @@
 {
-  "8d": "apulsator=hz=0.08",
-  "clear": "dynaudnorm=f=200",
-  "lowbass": "bass=g=6,dynaudnorm=f=200",
-  "normalizer": "dynaudnorm=f=200",
-  "pulsator": "apulsator=hz=1",
-  "purebass": "bass=g=20,dynaudnorm=f=200,asubboost,apulsator=hz=0.08",
-  "subboost": "asubboost",
-  "treble": "treble=g=5",
-  "vibrato": "vibrato=f=6.5"
+	"8d": "apulsator=hz=0.08",
+	"clear": "dynaudnorm=f=200",
+	"lowbass": "bass=g=6,dynaudnorm=f=200",
+	"normalizer": "dynaudnorm=f=200",
+	"pulsator": "apulsator=hz=1",
+	"purebass": "bass=g=20,dynaudnorm=f=200,asubboost,apulsator=hz=0.08",
+	"subboost": "asubboost",
+	"treble": "treble=g=5",
+	"vibrato": "vibrato=f=6.5"
 }

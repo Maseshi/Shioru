@@ -1,5 +1,14 @@
+# Configurations
+crowdin.yml
+.github/
+.vscode/
+
 # Assets
 assets/
+
+# Documents
+README.md
+documents/
 
 # Dependency directories
 node_modules/
