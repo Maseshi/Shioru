@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { getDatabase, ref, child, get, update } = require('firebase/database')
 
 module.exports = {
@@ -9,18 +13,17 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('captcha')
     .setDescription('Setup the captcha verification system.')
-    .setDescriptionLocalizations({
-      th: 'ตั้งค่าระบบตรวจสอบ captcha',
-    })
+    .setDescriptionLocalizations({ th: 'ตั้งค่าระบบตรวจสอบ captcha' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('setup')
         .setDescription('Set up the Captcha system')
-        .setDescriptionLocalizations({
-          th: 'ตั้งค่าระบบ Captcha',
-        })
+        .setDescriptionLocalizations({ th: 'ตั้งค่าระบบ Captcha' })
         .addRoleOption((option) =>
           option
             .setName('role')
@@ -44,17 +47,13 @@ module.exports = {
       subcommand
         .setName('enable')
         .setDescription('Enable the captcha system.')
-        .setDescriptionLocalizations({
-          th: 'เปิดใช้งานระบบ captcha',
-        })
+        .setDescriptionLocalizations({ th: 'เปิดใช้งานระบบ captcha' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('disable')
         .setDescription('Disable the captcha system.')
-        .setDescriptionLocalizations({
-          th: 'ปิดใช้งานระบบ captcha',
-        })
+        .setDescriptionLocalizations({ th: 'ปิดใช้งานระบบ captcha' })
     ),
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand()
@@ -87,9 +86,7 @@ module.exports = {
             interaction.client.i18n.t('commands.captcha.currently_enable')
           )
 
-        await update(child(guildRef, 'captcha'), {
-          enable: true,
-        })
+        await update(child(guildRef, 'captcha'), { enable: true })
         await interaction.reply(
           interaction.client.i18n.t('commands.captcha.enabled_captcha')
         )
@@ -104,9 +101,7 @@ module.exports = {
             interaction.client.i18n.t('commands.captcha.currently_disable')
           )
 
-        await update(child(guildRef, 'captcha'), {
-          enable: false,
-        })
+        await update(child(guildRef, 'captcha'), { enable: false })
         await interaction.reply(
           interaction.client.i18n.t('commands.captcha.disabled_captcha')
         )

@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -9,25 +13,23 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('message')
     .setDescription('Let the bot print instead')
-    .setDescriptionLocalizations({
-      th: 'ปล่อยให้บอทพิมพ์แทน',
-    })
+    .setDescriptionLocalizations({ th: 'ปล่อยให้บอทพิมพ์แทน' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('send')
         .setDescription('Send message.')
-        .setDescriptionLocalizations({
-          th: 'ส่งข้อความ',
-        })
+        .setDescriptionLocalizations({ th: 'ส่งข้อความ' })
         .addStringOption((option) =>
           option
             .setName('content')
             .setDescription('The message you want to send.')
-            .setDescriptionLocalizations({
-              th: 'ข้อความที่คุณต้องการส่ง',
-            })
+            .setDescriptionLocalizations({ th: 'ข้อความที่คุณต้องการส่ง' })
             .setRequired(true)
         )
         .addAttachmentOption((option) =>
@@ -43,9 +45,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('The channel to send the message to')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่จะส่งข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่จะส่งข้อความ' })
             .setRequired(false)
         )
     )
@@ -53,9 +53,7 @@ module.exports = {
       subcommand
         .setName('reply')
         .setDescription('Reply message.')
-        .setDescriptionLocalizations({
-          th: 'ส่งข้อความ',
-        })
+        .setDescriptionLocalizations({ th: 'ส่งข้อความ' })
         .addStringOption((option) =>
           option
             .setName('id')
@@ -69,9 +67,7 @@ module.exports = {
           option
             .setName('content')
             .setDescription('The message you want to send.')
-            .setDescriptionLocalizations({
-              th: 'ข้อความที่คุณต้องการส่ง',
-            })
+            .setDescriptionLocalizations({ th: 'ข้อความที่คุณต้องการส่ง' })
             .setRequired(true)
         )
         .addAttachmentOption((option) =>
@@ -88,9 +84,7 @@ module.exports = {
       subcommand
         .setName('edit')
         .setDescription('Edit the desired text.')
-        .setDescriptionLocalizations({
-          th: 'แก้ข้อความที่ต้องการ',
-        })
+        .setDescriptionLocalizations({ th: 'แก้ข้อความที่ต้องการ' })
         .addStringOption((option) =>
           option
             .setName('id')

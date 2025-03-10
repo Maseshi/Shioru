@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -10,11 +11,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('qrcode')
     .setDescription('Generate your QR code.')
-    .setDescriptionLocalizations({
-      th: 'สร้างคิวอาร์โค้ดของคุณ',
-    })
+    .setDescriptionLocalizations({ th: 'สร้างคิวอาร์โค้ดของคุณ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('content')
@@ -44,34 +47,10 @@ module.exports = {
           th: 'คุณภาพของคิวอาร์โค้ดเพื่อลดข้อผิดพลาด (ค่าเริ่มต้นคือต่ำ)',
         })
         .addChoices(
-          {
-            name: 'Low',
-            name_localizations: {
-              th: 'ต่ำ',
-            },
-            value: 'L',
-          },
-          {
-            name: 'Middle',
-            name_localizations: {
-              th: 'กลาง',
-            },
-            value: 'M',
-          },
-          {
-            name: 'Quality',
-            name_localizations: {
-              th: 'คุณภาพ',
-            },
-            value: 'Q',
-          },
-          {
-            name: 'High',
-            name_localizations: {
-              th: 'สูง',
-            },
-            value: 'H',
-          }
+          { name: 'Low', name_localizations: { th: 'ต่ำ' }, value: 'L' },
+          { name: 'Middle', name_localizations: { th: 'กลาง' }, value: 'M' },
+          { name: 'Quality', name_localizations: { th: 'คุณภาพ' }, value: 'Q' },
+          { name: 'High', name_localizations: { th: 'สูง' }, value: 'H' }
         )
     )
     .addStringOption((option) =>
@@ -82,30 +61,12 @@ module.exports = {
           th: 'รูปแบบไฟล์ของภาพคิวอาร์โค้ด (ค่าเริ่มต้นคือ PNG)',
         })
         .addChoices(
-          {
-            name: 'PNG',
-            value: 'png',
-          },
-          {
-            name: 'GIF',
-            value: 'gif',
-          },
-          {
-            name: 'JPEG',
-            value: 'jpeg',
-          },
-          {
-            name: 'JPG',
-            value: 'jpg',
-          },
-          {
-            name: 'SVG',
-            value: 'svg',
-          },
-          {
-            name: 'EPS',
-            value: 'eps',
-          }
+          { name: 'PNG', value: 'png' },
+          { name: 'GIF', value: 'gif' },
+          { name: 'JPEG', value: 'jpeg' },
+          { name: 'JPG', value: 'jpg' },
+          { name: 'SVG', value: 'svg' },
+          { name: 'EPS', value: 'eps' }
         )
     ),
   async execute(interaction) {

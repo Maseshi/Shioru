@@ -1,22 +1,25 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('jump')
     .setDescription('Skip to the selected queue number')
-    .setDescriptionLocalizations({
-      th: 'ข้ามไปยังหมายเลขคิวที่เลือก',
-    })
+    .setDescriptionLocalizations({ th: 'ข้ามไปยังหมายเลขคิวที่เลือก' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addIntegerOption((option) =>
       option
         .setName('number')
         .setDescription('Number of songs to skip.')
-        .setDescriptionLocalizations({
-          th: 'หมายเลขของเพลงที่จะข้ามไป',
-        })
+        .setDescriptionLocalizations({ th: 'หมายเลขของเพลงที่จะข้ามไป' })
         .setRequired(true)
         .setMinValue(1)
     ),

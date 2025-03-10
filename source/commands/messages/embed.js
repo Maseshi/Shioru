@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { embedBuilder } = require('../../utils/clientUtils')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -7,25 +11,23 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('embed')
     .setDescription('Create an embedded message')
-    .setDescriptionLocalizations({
-      th: 'สร้างข้อความแบบฝัง',
-    })
+    .setDescriptionLocalizations({ th: 'สร้างข้อความแบบฝัง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('send')
         .setDescription('Send embedded message')
-        .setDescriptionLocalizations({
-          th: 'ส่งข้อความแบบฝัง',
-        })
+        .setDescriptionLocalizations({ th: 'ส่งข้อความแบบฝัง' })
         .addStringOption((option) =>
           option
             .setName('content')
             .setDescription('Content of message.')
-            .setDescriptionLocalizations({
-              th: 'เนื้อหาของข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'เนื้อหาของข้อความ' })
         )
         .addAttachmentOption((option) =>
           option
@@ -65,17 +67,13 @@ module.exports = {
           option
             .setName('color')
             .setDescription('Embedded text border color')
-            .setDescriptionLocalizations({
-              th: 'สีของขอบข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'สีของขอบข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('title')
             .setDescription('Topic of embedded message')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -91,9 +89,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Description in embedded text')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -109,17 +105,13 @@ module.exports = {
           option
             .setName(`first_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`first_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -135,17 +127,13 @@ module.exports = {
           option
             .setName(`second_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`second_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -195,9 +183,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('channel to send the embedded message')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่จะส่งข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่จะส่งข้อความแบบฝัง' })
             .setRequired(false)
         )
     )
@@ -205,9 +191,7 @@ module.exports = {
       subcommand
         .setName('reply')
         .setDescription('Reply embedded message')
-        .setDescriptionLocalizations({
-          th: 'ตอบกลับข้อความแบบฝัง',
-        })
+        .setDescriptionLocalizations({ th: 'ตอบกลับข้อความแบบฝัง' })
         .addStringOption((option) =>
           option
             .setName('id')
@@ -221,9 +205,7 @@ module.exports = {
           option
             .setName('content')
             .setDescription('Content of message.')
-            .setDescriptionLocalizations({
-              th: 'เนื้อหาของข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'เนื้อหาของข้อความ' })
         )
         .addAttachmentOption((option) =>
           option
@@ -263,17 +245,13 @@ module.exports = {
           option
             .setName('color')
             .setDescription('Embedded text border color')
-            .setDescriptionLocalizations({
-              th: 'สีของขอบข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'สีของขอบข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('title')
             .setDescription('Topic of embedded message')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -289,9 +267,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Description in embedded text')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -307,17 +283,13 @@ module.exports = {
           option
             .setName(`first_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`first_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -333,17 +305,13 @@ module.exports = {
           option
             .setName(`second_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`second_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -394,9 +362,7 @@ module.exports = {
       subcommand
         .setName('edit')
         .setDescription('Edit embedded message')
-        .setDescriptionLocalizations({
-          th: 'แก้ไขข้อความแบบฝัง',
-        })
+        .setDescriptionLocalizations({ th: 'แก้ไขข้อความแบบฝัง' })
         .addStringOption((option) =>
           option
             .setName('id')
@@ -410,9 +376,7 @@ module.exports = {
           option
             .setName('content')
             .setDescription('Content of message.')
-            .setDescriptionLocalizations({
-              th: 'เนื้อหาของข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'เนื้อหาของข้อความ' })
         )
         .addAttachmentOption((option) =>
           option
@@ -452,17 +416,13 @@ module.exports = {
           option
             .setName('color')
             .setDescription('Embedded text border color')
-            .setDescriptionLocalizations({
-              th: 'สีของขอบข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'สีของขอบข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('title')
             .setDescription('Topic of embedded message')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -478,9 +438,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Description in embedded text')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -496,17 +454,13 @@ module.exports = {
           option
             .setName(`first_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`first_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -522,17 +476,13 @@ module.exports = {
           option
             .setName(`second_field_name`)
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName(`second_field_value`)
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -583,9 +533,7 @@ module.exports = {
       subcommand
         .setName('suppress')
         .setDescription('Suppresses or unsuppresses embeds on a message.')
-        .setDescriptionLocalizations({
-          th: 'ระงับหรือยกเลิกการฝังข้อความ',
-        })
+        .setDescriptionLocalizations({ th: 'ระงับหรือยกเลิกการฝังข้อความ' })
         .addStringOption((option) =>
           option
             .setName('id')
@@ -674,10 +622,7 @@ module.exports = {
     )
 
     if (embed.error)
-      return await interaction.reply({
-        content: embed.data,
-        ephemeral: true,
-      })
+      return await interaction.reply({ content: embed.data, ephemeral: true })
 
     switch (subcommand) {
       case 'send': {
@@ -699,9 +644,7 @@ module.exports = {
           content: inputChannel
             ? interaction.client.i18n.t(
                 'commands.embed.embedded_has_been_sent_to_channel',
-                {
-                  id: inputChannel.id,
-                }
+                { id: inputChannel.id }
               )
             : interaction.client.i18n.t(
                 'commands.embed.embedded_has_been_sent'

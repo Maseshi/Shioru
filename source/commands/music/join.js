@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   ChannelType,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -9,11 +10,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('join')
     .setDescription('Join the audio channel.')
-    .setDescriptionLocalizations({
-      th: 'เข้าร่วมช่องสัญญาณเสียง',
-    })
+    .setDescriptionLocalizations({ th: 'เข้าร่วมช่องสัญญาณเสียง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addChannelOption((option) =>
       option
         .setName('channel')

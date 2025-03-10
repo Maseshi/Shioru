@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,11 +12,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('timeout')
     .setDescription('Set a time limit for members before they leave the guild.')
-    .setDescriptionLocalizations({
-      th: 'กำหนดเวลาให้สมาชิกก่อนออกจากกิลด์',
-    })
+    .setDescriptionLocalizations({ th: 'กำหนดเวลาให้สมาชิกก่อนออกจากกิลด์' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ModerateMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('add')
@@ -31,9 +36,7 @@ module.exports = {
           option
             .setName('duration')
             .setDescription('The length of time the user will be kicked out.')
-            .setDescriptionLocalizations({
-              th: 'ระยะเวลาที่ผู้ใช้จะถูกเตะออก',
-            })
+            .setDescriptionLocalizations({ th: 'ระยะเวลาที่ผู้ใช้จะถูกเตะออก' })
             .setRequired(true)
             .addChoices(
               { name: '60 Seconds', value: '60' },

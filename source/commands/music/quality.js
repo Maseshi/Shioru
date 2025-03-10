@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { StreamType } = require('distube')
 
@@ -16,7 +17,11 @@ module.exports = {
       th: 'ลองใช้คำสั่งนี้หากคุณมีปัญหาด้านเสียงหรือผู้ที่มีการเชื่อมต่ออินเทอร์เน็ตไม่ดี',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('option')
@@ -27,16 +32,12 @@ module.exports = {
         .setChoices(
           {
             name: 'High Quality',
-            name_localizations: {
-              th: 'คุณภาพสูง',
-            },
+            name_localizations: { th: 'คุณภาพสูง' },
             value: 'high',
           },
           {
             name: 'Low Quality',
-            name_localizations: {
-              th: 'คุณภาพต่ำ',
-            },
+            name_localizations: { th: 'คุณภาพต่ำ' },
             value: 'low',
           }
         )

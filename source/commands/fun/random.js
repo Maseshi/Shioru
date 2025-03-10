@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -9,50 +13,42 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('random')
     .setDescription('Randomize what you want')
-    .setDescriptionLocalizations({
-      th: 'สุ่มสิ่งที่ต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'สุ่มสิ่งที่ต้องการ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('items')
         .setDescription('Randomly select one of the items.')
-        .setDescriptionLocalizations({
-          th: 'สุ่มเลือกหนึ่งในรายการ',
-        })
+        .setDescriptionLocalizations({ th: 'สุ่มเลือกหนึ่งในรายการ' })
         .addStringOption((option) =>
           option
             .setName('item')
             .setDescription('item separated by ","')
-            .setDescriptionLocalizations({
-              th: 'รายการคั่นด้วย ","',
-            })
+            .setDescriptionLocalizations({ th: 'รายการคั่นด้วย ","' })
         )
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('number')
         .setDescription('Random number')
-        .setDescriptionLocalizations({
-          th: 'สุ่มตัวเลข',
-        })
+        .setDescriptionLocalizations({ th: 'สุ่มตัวเลข' })
         .addNumberOption((option) =>
           option
             .setName('min')
             .setDescription('The minimum number')
-            .setDescriptionLocalizations({
-              th: 'จำนวนขั้นต่ำ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนขั้นต่ำ' })
             .setRequired(true)
         )
         .addNumberOption((option) =>
           option
             .setName('max')
             .setDescription('The maximum number')
-            .setDescriptionLocalizations({
-              th: 'จำนวนสูงสุด',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนสูงสุด' })
             .setRequired(true)
         )
     )
@@ -60,9 +56,7 @@ module.exports = {
       subcommand
         .setName('image')
         .setDescription('Randomly select the desired image.')
-        .setDescriptionLocalizations({
-          th: 'สุ่มภาพที่ต้องการ',
-        })
+        .setDescriptionLocalizations({ th: 'สุ่มภาพที่ต้องการ' })
         .addNumberOption((option) =>
           option
             .setName('width')

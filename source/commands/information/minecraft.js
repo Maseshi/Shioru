@@ -4,6 +4,7 @@ const {
   AttachmentBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -15,14 +16,16 @@ module.exports = {
       th: 'ตรวจสอบสถานะเซิร์ฟเวอร์หรือสกินใน Minecraft.',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('status')
         .setDescription('Explore Minecraft Server Info')
-        .setDescriptionLocalizations({
-          th: 'สำรวจข้อมูลเซิร์ฟเวอร์ Minecraft',
-        })
+        .setDescriptionLocalizations({ th: 'สำรวจข้อมูลเซิร์ฟเวอร์ Minecraft' })
         .addStringOption((option) =>
           option
             .setName('ip')
@@ -37,16 +40,12 @@ module.exports = {
       subcommand
         .setName('skin')
         .setDescription("Get the player's skin.")
-        .setDescriptionLocalizations({
-          th: 'รับสกินของผู้เล่นดังกล่าว',
-        })
+        .setDescriptionLocalizations({ th: 'รับสกินของผู้เล่นดังกล่าว' })
         .addStringOption((option) =>
           option
             .setName('name')
             .setDescription("Player's name")
-            .setDescriptionLocalizations({
-              th: 'ชื่อของผู้เล่น',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของผู้เล่น' })
             .setRequired(true)
         )
     ),
@@ -103,9 +102,7 @@ module.exports = {
         const data = await response.json()
 
         if (!data.online)
-          return await interaction.editReply({
-            embeds: [statusErrorEmbed],
-          })
+          return await interaction.editReply({ embeds: [statusErrorEmbed] })
 
         const host = data.hostname
         const ip = data.ip

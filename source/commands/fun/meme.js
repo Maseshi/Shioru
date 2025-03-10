@@ -7,6 +7,7 @@ const {
   PermissionFlagsBits,
   Colors,
   resolveColor,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -14,18 +15,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('meme')
     .setDescription('Randomly select the meme you want.')
-    .setDescriptionLocalizations({
-      th: 'สุ่มเลือกมีมที่คุณต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'สุ่มเลือกมีมที่คุณต้องการ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('category')
         .setDescription('Preferred category of meme')
-        .setDescriptionLocalizations({
-          th: 'หมวดหมู่ของมีมที่ต้องการ',
-        })
+        .setDescriptionLocalizations({ th: 'หมวดหมู่ของมีมที่ต้องการ' })
     ),
   async execute(interaction) {
     const inputCategory = interaction.options.getString('category') ?? ''

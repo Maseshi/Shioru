@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   ChannelType,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -19,14 +20,16 @@ module.exports = {
       th: 'เผยแพร่ข้อความในช่องประกาศไปยังทุกช่องที่ติดตาม',
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('id')
         .setDescription('ID of message to be published')
-        .setDescriptionLocalizations({
-          th: 'ไอดีของข้อความที่ต้องการเผยแพร่',
-        })
+        .setDescriptionLocalizations({ th: 'ไอดีของข้อความที่ต้องการเผยแพร่' })
         .setRequired(true)
     ),
   async execute(interaction) {

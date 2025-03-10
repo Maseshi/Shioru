@@ -1,15 +1,20 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('volume')
     .setDescription('Adjust the music volume')
-    .setDescriptionLocalizations({
-      th: 'ปรับระดับเสียงเพลง',
-    })
+    .setDescriptionLocalizations({ th: 'ปรับระดับเสียงเพลง' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addIntegerOption((option) =>
       option
         .setName('percent')

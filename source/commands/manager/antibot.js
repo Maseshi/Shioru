@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const {
   getDatabase,
   ref,
@@ -13,11 +17,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('antibot')
     .setDescription('Prevent other bots from joining the server.')
-    .setDescriptionLocalizations({
-      th: 'ป้องกันบอทตัวอื่นเข้าร่วมเซิร์ฟเวอร์',
-    })
+    .setDescriptionLocalizations({ th: 'ป้องกันบอทตัวอื่นเข้าร่วมเซิร์ฟเวอร์' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('enable')

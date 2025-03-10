@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,43 +12,37 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('emoji')
     .setDescription("Manage this server's emojis.")
-    .setDescriptionLocalizations({
-      th: 'จัดการอีโมจิของเซิร์ฟเวอร์นี้',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการอีโมจิของเซิร์ฟเวอร์นี้' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuildExpressions)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('add')
         .setDescription('Add emojis on this server.')
-        .setDescriptionLocalizations({
-          th: 'เพิ่มอีโมจิบนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'เพิ่มอีโมจิบนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('emoji')
             .setDescription('Emoji images.')
-            .setDescriptionLocalizations({
-              th: 'ภาพของอีโมจิ',
-            })
+            .setDescriptionLocalizations({ th: 'ภาพของอีโมจิ' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('name')
             .setDescription('The name of the emoji.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของอีโมจิ',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของอีโมจิ' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('reason')
             .setDescription('Reason for creation.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการเพิ่ม',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการเพิ่ม' })
             .setRequired(false)
         )
     )
@@ -52,25 +50,19 @@ module.exports = {
       subcommand
         .setName('delete')
         .setDescription('Remove emojis on this server.')
-        .setDescriptionLocalizations({
-          th: 'ลบอีโมจิบนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'ลบอีโมจิบนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('emoji')
             .setDescription('Emoji ID.')
-            .setDescriptionLocalizations({
-              th: 'รหัสของอีโมจิ',
-            })
+            .setDescriptionLocalizations({ th: 'รหัสของอีโมจิ' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('reason')
             .setDescription('Reason for deletion.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการลบ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการลบ' })
             .setRequired(false)
         )
     )
@@ -78,34 +70,26 @@ module.exports = {
       subcommand
         .setName('edit')
         .setDescription('Edit emojis on this server.')
-        .setDescriptionLocalizations({
-          th: 'แก้ไขอีโมจิบนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'แก้ไขอีโมจิบนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('emoji')
             .setDescription('Emoji ID.')
-            .setDescriptionLocalizations({
-              th: 'รหัสของอีโมจิ',
-            })
+            .setDescriptionLocalizations({ th: 'รหัสของอีโมจิ' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('name')
             .setDescription('The name of the emoji.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของอีโมจิ',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของอีโมจิ' })
             .setRequired(false)
         )
         .addStringOption((option) =>
           option
             .setName('reason')
             .setDescription('Reason for deletion.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการลบ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการลบ' })
             .setRequired(false)
         )
     ),

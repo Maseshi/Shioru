@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { fetchLevel } = require('../../utils/databaseUtils')
 
@@ -10,11 +11,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('leveling')
     .setDescription('See information about your level.')
-    .setDescriptionLocalizations({
-      th: 'ดูข้อมูลเกี่ยวกับเลเวลของคุณ',
-    })
+    .setDescriptionLocalizations({ th: 'ดูข้อมูลเกี่ยวกับเลเวลของคุณ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addUserOption((option) =>
       option
         .setName('member')

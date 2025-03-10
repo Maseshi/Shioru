@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -13,11 +14,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('covid')
     .setDescription('Get covid statistics for a country')
-    .setDescriptionLocalizations({
-      th: 'สำหรวจสถิติโควิดในประเทศที่ต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'สำหรวจสถิติโควิดในประเทศที่ต้องการ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('country')

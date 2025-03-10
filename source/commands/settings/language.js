@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { getDatabase, ref, child, get, update } = require('firebase/database')
 const { changeLanguage } = require('../../utils/clientUtils')
@@ -13,26 +14,23 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('language')
     .setDescription('Set the language to use in the guild.')
-    .setDescriptionLocalizations({
-      th: 'ตั้งค่าภาษาสำหรับบอท',
-    })
+    .setDescriptionLocalizations({ th: 'ตั้งค่าภาษาสำหรับบอท' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('get')
         .setDescription('See the language that is currently being used.')
-        .setDescriptionLocalizations({
-          th: 'ดูภาษาที่ใช้อยู่ในปัจจุบัน',
-        })
+        .setDescriptionLocalizations({ th: 'ดูภาษาที่ใช้อยู่ในปัจจุบัน' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('list')
         .setDescription('Explore supported languages')
-        .setDescriptionLocalizations({
-          th: 'สำรวจภาษาที่ระบบรองรับ',
-        })
+        .setDescriptionLocalizations({ th: 'สำรวจภาษาที่ระบบรองรับ' })
     )
     .addSubcommand((subcommand) =>
       subcommand
@@ -57,36 +55,26 @@ module.exports = {
       subcommand
         .setName('by')
         .setDescription('Refer to language settings by type.')
-        .setDescriptionLocalizations({
-          th: 'อ้างอิงการตั้งค่าภาษาตามประเภท',
-        })
+        .setDescriptionLocalizations({ th: 'อ้างอิงการตั้งค่าภาษาตามประเภท' })
         .addStringOption((option) =>
           option
             .setName('type')
             .setDescription('Type of language setting')
-            .setDescriptionLocalizations({
-              th: 'ประเภทของการตั้งค่าภาษา',
-            })
+            .setDescriptionLocalizations({ th: 'ประเภทของการตั้งค่าภาษา' })
             .setChoices(
               {
                 name: 'CUSTOM',
-                name_localizations: {
-                  th: 'กำหนดเอง',
-                },
+                name_localizations: { th: 'กำหนดเอง' },
                 value: 'CUSTOM',
               },
               {
                 name: 'USER',
-                name_localizations: {
-                  th: 'ผู้ใช้',
-                },
+                name_localizations: { th: 'ผู้ใช้' },
                 value: 'USER',
               },
               {
                 name: 'GUILD',
-                name_localizations: {
-                  th: 'กิลด์',
-                },
+                name_localizations: { th: 'กิลด์' },
                 value: 'GUILD',
               }
             )

@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -9,7 +13,10 @@ module.exports = {
       th: 'เปลี่ยนระยะเวลาของเพลงที่กำลังเล่นอยู่',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addIntegerOption((option) =>
       option
         .setName('second')

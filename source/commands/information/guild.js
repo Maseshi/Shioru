@@ -9,6 +9,7 @@ const {
   GuildPremiumTier,
   GuildVerificationLevel,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -20,7 +21,10 @@ module.exports = {
       th: 'รับข้อมูลเกี่ยวกับกิลด์นี้',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('list')

@@ -1,22 +1,26 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('paste')
     .setDescription('Paste the text in sourceb.in.')
-    .setDescriptionLocalizations({
-      th: 'วางข้อความใน sourceb.in',
-    })
+    .setDescriptionLocalizations({ th: 'วางข้อความใน sourceb.in' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('content')
         .setDescription('Content to be placed')
-        .setDescriptionLocalizations({
-          th: 'เนื้อหาที่ต้องการจะวาง',
-        })
+        .setDescriptionLocalizations({ th: 'เนื้อหาที่ต้องการจะวาง' })
         .setRequired(true)
     )
     .addStringOption((option) =>
@@ -31,9 +35,7 @@ module.exports = {
       option
         .setName('description')
         .setDescription('Description of what you are writing.')
-        .setDescriptionLocalizations({
-          th: 'คำอธิบายของสิ่งคุณกำลังเขียน',
-        })
+        .setDescriptionLocalizations({ th: 'คำอธิบายของสิ่งคุณกำลังเขียน' })
     ),
   async execute(interaction) {
     const inputTitle = interaction.options.getString('title') ?? ''
@@ -44,18 +46,11 @@ module.exports = {
 
     const response = await fetch('https://sourceb.in/api/bins', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         title: inputTitle,
         description: inputDescription,
-        files: [
-          {
-            name: inputTitle,
-            content: inputContent,
-          },
-        ],
+        files: [{ name: inputTitle, content: inputContent }],
       }),
     })
 

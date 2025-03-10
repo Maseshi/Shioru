@@ -4,6 +4,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -20,7 +21,11 @@ module.exports = {
       th: 'สนับสนุนฉันและเจ้าบ้านเพื่อช่วยเหลือค่าน้ำค่าไฟด้วยการบริจาค',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()

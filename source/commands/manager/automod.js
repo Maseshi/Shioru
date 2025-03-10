@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -17,7 +18,10 @@ module.exports = {
       th: 'จัดการเซิร์ฟเวอร์ของคุณด้วยระบบอัตโนมัติ',
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('flagged_words')
@@ -30,9 +34,7 @@ module.exports = {
       subcommand
         .setName('spam_messages')
         .setDescription('Prevent message spam')
-        .setDescriptionLocalizations({
-          th: 'ป้องกันการสแปมข้อความ',
-        })
+        .setDescriptionLocalizations({ th: 'ป้องกันการสแปมข้อความ' })
     )
     .addSubcommand((subcommand) =>
       subcommand
@@ -90,9 +92,7 @@ module.exports = {
           option
             .setName('allow_list')
             .setDescription('Substrings which should not trigger the rule')
-            .setDescriptionLocalizations({
-              th: 'คำย่อยที่ไม่ควรเรียกใช้กฎ',
-            })
+            .setDescriptionLocalizations({ th: 'คำย่อยที่ไม่ควรเรียกใช้กฎ' })
             .setRequired(false)
             .setMinLength(0)
             .setMaxLength(100)
@@ -120,9 +120,7 @@ module.exports = {
               enabled: true,
               eventType: 1,
               triggerType: 4,
-              triggerMetadata: {
-                presets: [1, 2, 3],
-              },
+              triggerMetadata: { presets: [1, 2, 3] },
               actions: [
                 {
                   type: 1,
@@ -147,10 +145,7 @@ module.exports = {
               )
             )
 
-          await interaction.reply({
-            content: '',
-            embeds: [flaggedWordsEmbed],
-          })
+          await interaction.reply({ content: '', embeds: [flaggedWordsEmbed] })
         } catch (error) {
           catchError(
             interaction.client,
@@ -196,10 +191,7 @@ module.exports = {
               )
             )
 
-          await interaction.reply({
-            content: '',
-            embeds: [spamMessagesEmbed],
-          })
+          await interaction.reply({ content: '', embeds: [spamMessagesEmbed] })
         } catch (error) {
           catchError(
             interaction.client,
@@ -220,9 +212,7 @@ module.exports = {
               enabled: true,
               eventType: 1,
               triggerType: 5,
-              triggerMetadata: {
-                mentionTotalLimit: inputCount,
-              },
+              triggerMetadata: { mentionTotalLimit: inputCount },
               actions: [
                 {
                   type: 1,
@@ -245,10 +235,7 @@ module.exports = {
               interaction.client.i18n.t('commands.automod.mention_spam_success')
             )
 
-          await interaction.reply({
-            content: '',
-            embeds: [mentionSpamEmbed],
-          })
+          await interaction.reply({ content: '', embeds: [mentionSpamEmbed] })
         } catch (error) {
           catchError(
             interaction.client,
@@ -298,10 +285,7 @@ module.exports = {
                 .replace('%s', inputWord)
             )
 
-          await interaction.reply({
-            content: '',
-            embeds: [keywordEmbed],
-          })
+          await interaction.reply({ content: '', embeds: [keywordEmbed] })
         } catch (error) {
           catchError(
             interaction.client,

@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   Colors,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { getDatabase, ref, child, push } = require('firebase/database')
 const { webhookSend } = require('../../utils/clientUtils')
@@ -12,25 +13,23 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('issues')
     .setDescription('Report issue information about bots.')
-    .setDescriptionLocalizations({
-      th: 'รายงานข้อผิดพลาดเกี่ยวกับบอท',
-    })
+    .setDescriptionLocalizations({ th: 'รายงานข้อผิดพลาดเกี่ยวกับบอท' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('bug')
         .setDescription('Create a report to help us improve')
-        .setDescriptionLocalizations({
-          th: 'สร้างรายงานเพื่อช่วยเราปรับปรุง',
-        })
+        .setDescriptionLocalizations({ th: 'สร้างรายงานเพื่อช่วยเราปรับปรุง' })
         .addStringOption((option) =>
           option
             .setName('title')
             .setDescription('Topic of the problem encountered')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของปัญหาที่พบ',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของปัญหาที่พบ' })
             .setRequired(true)
             .setMinLength(5)
         )
@@ -38,9 +37,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Description of encountered problems')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายเกี่ยวกับปัญหาที่พบ',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายเกี่ยวกับปัญหาที่พบ' })
             .setRequired(false)
             .setMinLength(5)
         )
@@ -49,16 +46,12 @@ module.exports = {
       subcommand
         .setName('feature')
         .setDescription('Suggest an idea for this project')
-        .setDescriptionLocalizations({
-          th: 'เสนอแนวคิดสำหรับโครงการนี้',
-        })
+        .setDescriptionLocalizations({ th: 'เสนอแนวคิดสำหรับโครงการนี้' })
         .addStringOption((option) =>
           option
             .setName('title')
             .setDescription('Topic I would like to propose')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อที่อยากจะเสนอ',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อที่อยากจะเสนอ' })
             .setRequired(true)
             .setMinLength(5)
         )
@@ -66,9 +59,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Description of feedback')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายของข้อเสนอแนะ',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายของข้อเสนอแนะ' })
             .setRequired(false)
             .setMinLength(5)
         )
@@ -101,11 +92,7 @@ module.exports = {
             )
           )
           .setFields([
-            {
-              name: '🏷️ Title',
-              value: inputTitle,
-              inline: true,
-            },
+            { name: '🏷️ Title', value: inputTitle, inline: true },
             {
               name: '📄 Description',
               value: inputDescription || 'None',
@@ -121,11 +108,7 @@ module.exports = {
           user: authorTag,
           uid: authorUid,
           reportedAt: date,
-          status: {
-            read: false,
-            close: false,
-            comment: false,
-          },
+          status: { read: false, close: false, comment: false },
         })
         await interaction.editReply(
           interaction.client.i18n.t('commands.issues.bug_success')
@@ -150,11 +133,7 @@ module.exports = {
               value: date.toLocaleString(),
               inline: true,
             },
-            {
-              name: '🏷️ Title',
-              value: inputTitle,
-              inline: true,
-            },
+            { name: '🏷️ Title', value: inputTitle, inline: true },
             {
               name: '📄 Description',
               value: inputDescription || 'None',
@@ -170,11 +149,7 @@ module.exports = {
           user: authorTag,
           uid: authorUid,
           reportedAt: date,
-          status: {
-            read: false,
-            close: false,
-            comment: false,
-          },
+          status: { read: false, close: false, comment: false },
         })
 
         await interaction.editReply(

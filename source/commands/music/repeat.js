@@ -1,22 +1,25 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('repeat')
     .setDescription('Toggle repeating playback mode.')
-    .setDescriptionLocalizations({
-      th: 'สลับโหมดของการเล่นเพลงซ้ำ',
-    })
+    .setDescriptionLocalizations({ th: 'สลับโหมดของการเล่นเพลงซ้ำ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addIntegerOption((option) =>
       option
         .setName('mode')
         .setDescription('The mode to set the repeat to')
-        .setDescriptionLocalizations({
-          th: 'โหมดการตั้งค่าการทำซ้ำเป็น',
-        })
+        .setDescriptionLocalizations({ th: 'โหมดการตั้งค่าการทำซ้ำเป็น' })
         .setRequired(true)
         .addChoices(
           { name: 'Disable', value: 0 },

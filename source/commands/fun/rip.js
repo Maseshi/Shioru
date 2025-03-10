@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   AttachmentBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -12,11 +13,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('rip')
     .setDescription('Send RIP images')
-    .setDescriptionLocalizations({
-      th: 'ส่งภาพ RIP',
-    })
+    .setDescriptionLocalizations({ th: 'ส่งภาพ RIP' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const rip = new AttachmentBuilder('https://i.imgur.com/w3duR07.png')
 

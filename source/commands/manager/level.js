@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { fetchLevel, submitNotification } = require('../../utils/databaseUtils')
 
@@ -10,18 +11,17 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('level')
     .setDescription('Manage levels within the server.')
-    .setDescriptionLocalizations({
-      th: 'จัดการเลเวลภายในเซิร์ฟเวอร์',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการเลเวลภายในเซิร์ฟเวอร์' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('set')
         .setDescription('Set Level of Members')
-        .setDescriptionLocalizations({
-          th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก',
-        })
+        .setDescriptionLocalizations({ th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก' })
         .addUserOption((option) =>
           option
             .setName('member')
@@ -48,16 +48,12 @@ module.exports = {
       subcommand
         .setName('delete')
         .setDescription('Removing EXP and Level of members')
-        .setDescriptionLocalizations({
-          th: 'ลบ exp และเลเวลของสมาชิก',
-        })
+        .setDescriptionLocalizations({ th: 'ลบ exp และเลเวลของสมาชิก' })
         .addUserOption((option) =>
           option
             .setName('member')
             .setDescription('Members you want to delete levels.')
-            .setDescriptionLocalizations({
-              th: 'สมาชิกที่คุณต้องการลบระดับ',
-            })
+            .setDescriptionLocalizations({ th: 'สมาชิกที่คุณต้องการลบระดับ' })
             .setRequired(true)
         )
     ),

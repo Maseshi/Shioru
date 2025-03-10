@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -10,18 +11,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('eat')
     .setDescription('Fake text saying who you are eating.')
-    .setDescriptionLocalizations({
-      th: 'ข้อความปลอมที่บอกว่าคุณกำลังจะกินใคร',
-    })
+    .setDescriptionLocalizations({ th: 'ข้อความปลอมที่บอกว่าคุณกำลังจะกินใคร' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('name')
         .setDescription('The name of what you want to eat.')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของสิ่งที่คุณอยากกิน!',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของสิ่งที่คุณอยากกิน!' })
         .setRequired(true)
     ),
   async execute(interaction) {

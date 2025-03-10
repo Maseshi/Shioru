@@ -4,6 +4,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { get } = require('systeminformation')
 const packages = require('../../../package.json')
@@ -13,11 +14,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('system')
     .setDescription('Manage the operation of home systems')
-    .setDescriptionLocalizations({
-      th: 'จัดการการทำงานของระบบภายในบ้าน',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการการทำงานของระบบภายในบ้าน' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('information')
@@ -256,10 +259,7 @@ module.exports = {
             },
           ])
 
-        await interaction.editReply({
-          content: null,
-          embeds: [systemEmbed],
-        })
+        await interaction.editReply({ content: null, embeds: [systemEmbed] })
         break
       }
       case 'reboot': {

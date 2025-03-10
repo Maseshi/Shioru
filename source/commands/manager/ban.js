@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -17,7 +18,10 @@ module.exports = {
       th: 'จัดการสมาชิกในกิลด์ที่ทำผิดด้วยการแบน',
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommandGroup((subcommandGroup) =>
       subcommandGroup
         .setName('add')

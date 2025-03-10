@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   AttachmentBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -10,80 +11,52 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('osu')
     .setDescription('Generate profile statistics from osu! game.')
-    .setDescriptionLocalizations({
-      th: 'สร้างสถิติโปรไฟล์จากเกม osu!',
-    })
+    .setDescriptionLocalizations({ th: 'สร้างสถิติโปรไฟล์จากเกม osu!' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('username')
         .setDescription('Username or UID')
-        .setDescriptionLocalizations({
-          th: 'ชื่อผู้ใช้หรือ UID',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อผู้ใช้หรือ UID' })
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName('mode')
         .setDescription('Game modes in osu!')
-        .setDescriptionLocalizations({
-          th: 'โหมดเกมใน osu!',
-        })
+        .setDescriptionLocalizations({ th: 'โหมดเกมใน osu!' })
         .setChoices(
-          {
-            name: 'Standard',
-            value: 'std',
-          },
-          {
-            name: 'Taiko',
-            value: 'taiko',
-          },
-          {
-            name: 'Catch',
-            value: 'catch',
-          },
-          {
-            name: 'Mania',
-            value: 'mania',
-          }
+          { name: 'Standard', value: 'std' },
+          { name: 'Taiko', value: 'taiko' },
+          { name: 'Catch', value: 'catch' },
+          { name: 'Mania', value: 'mania' }
         )
     )
     .addStringOption((option) =>
       option
         .setName('layout')
         .setDescription('Game modes in osu!')
-        .setDescriptionLocalizations({
-          th: 'เค้าโครงสถิติที่ต้องการ',
-        })
+        .setDescriptionLocalizations({ th: 'เค้าโครงสถิติที่ต้องการ' })
         .setChoices(
           {
             name: 'Full with Stats',
-            name_localizations: {
-              th: 'แบบเต็มพร้อมสถิติ',
-            },
+            name_localizations: { th: 'แบบเต็มพร้อมสถิติ' },
             value: 'full_stats',
           },
           {
             name: 'Full with Skills',
-            name_localizations: {
-              th: 'แบบเต็มพร้อมทักษะ',
-            },
+            name_localizations: { th: 'แบบเต็มพร้อมทักษะ' },
             value: 'full_skills',
           },
-          {
-            name: 'Mini',
-            name_localizations: {
-              th: 'มินิ',
-            },
-            value: 'mini',
-          },
+          { name: 'Mini', name_localizations: { th: 'มินิ' }, value: 'mini' },
           {
             name: 'Skills',
-            name_localizations: {
-              th: 'ทักษะ',
-            },
+            name_localizations: { th: 'ทักษะ' },
             value: 'skills',
           }
         )
@@ -98,23 +71,17 @@ module.exports = {
         .setChoices(
           {
             name: 'Global',
-            name_localizations: {
-              th: 'ทั่วโลก',
-            },
+            name_localizations: { th: 'ทั่วโลก' },
             value: 'global',
           },
           {
             name: 'Country',
-            name_localizations: {
-              th: 'ประเทศ',
-            },
+            name_localizations: { th: 'ประเทศ' },
             value: 'country',
           },
           {
             name: 'Both',
-            name_localizations: {
-              th: 'ทั้งคู่',
-            },
+            name_localizations: { th: 'ทั้งคู่' },
             value: 'cycle',
           }
         )
@@ -123,9 +90,7 @@ module.exports = {
       option
         .setName('width')
         .setDescription('Image width')
-        .setDescriptionLocalizations({
-          th: 'ขนาดความกว้างของรูป',
-        })
+        .setDescriptionLocalizations({ th: 'ขนาดความกว้างของรูป' })
         .setMinValue(20)
         .setMaxValue(9999)
     )
@@ -133,9 +98,7 @@ module.exports = {
       option
         .setName('height')
         .setDescription('Image height')
-        .setDescriptionLocalizations({
-          th: 'ขนาดความสูงของรูป',
-        })
+        .setDescriptionLocalizations({ th: 'ขนาดความสูงของรูป' })
         .setMinValue(12)
         .setMaxValue(5818)
     )
@@ -143,9 +106,7 @@ module.exports = {
       option
         .setName('blur')
         .setDescription('Blurring of the background image.')
-        .setDescriptionLocalizations({
-          th: 'ความเบลอของภาพพื้นหลัง',
-        })
+        .setDescriptionLocalizations({ th: 'ความเบลอของภาพพื้นหลัง' })
         .setMinValue(0)
         .setMaxValue(100)
     )
@@ -155,9 +116,7 @@ module.exports = {
         .setDescription(
           'Want your profile picture to be rounded? (Default is false)'
         )
-        .setDescriptionLocalizations({
-          th: 'ต้องการให้โปรไฟล์โค้งมนหรือไม่',
-        })
+        .setDescriptionLocalizations({ th: 'ต้องการให้โปรไฟล์โค้งมนหรือไม่' })
     )
     .addBooleanOption((option) =>
       option

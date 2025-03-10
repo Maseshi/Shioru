@@ -1,15 +1,20 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('pause')
     .setDescription('Temporarily stop playing songs in the queue.')
-    .setDescriptionLocalizations({
-      th: 'หยุดเล่นเพลงในคิวชั่วคราว',
-    })
+    .setDescriptionLocalizations({ th: 'หยุดเล่นเพลงในคิวชั่วคราว' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false),
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)

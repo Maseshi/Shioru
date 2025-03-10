@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { fetchLevel, submitNotification } = require('../../utils/databaseUtils')
 
@@ -10,18 +11,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('exp')
     .setDescription('Manage experience within the server.')
-    .setDescriptionLocalizations({
-      th: 'จัดการค่าประสบการณ์ภายในเซิร์ฟเวอร์',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการค่าประสบการณ์ภายในเซิร์ฟเวอร์' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('set')
         .setDescription("Set the members' experience.")
-        .setDescriptionLocalizations({
-          th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก',
-        })
+        .setDescriptionLocalizations({ th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก' })
         .addUserOption((option) =>
           option
             .setName('member')

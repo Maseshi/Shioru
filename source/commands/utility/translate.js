@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -10,18 +11,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('translate')
     .setDescription('Translate text')
-    .setDescriptionLocalizations({
-      th: 'แปลภาษาข้อความ',
-    })
+    .setDescriptionLocalizations({ th: 'แปลภาษาข้อความ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('message')
         .setDescription('the text to be translated')
-        .setDescriptionLocalizations({
-          th: 'ข้อความที่ต้องการจะแปล',
-        })
+        .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะแปล' })
         .setRequired(true)
     )
     .addStringOption((option) =>
@@ -63,9 +64,7 @@ module.exports = {
       return await interaction.editReply({
         content: interaction.client.i18n.t(
           'commands.translate.translate_support',
-          {
-            locales: Object.keys(locales).join(', '),
-          }
+          { locales: Object.keys(locales).join(', ') }
         ),
         ephemeral: true,
       })
@@ -119,9 +118,7 @@ module.exports = {
         iconURL: userAvatar,
         name: `${userUsername} ${interaction.client.i18n.t('commands.translate.says')}`,
       })
-      .setFooter({
-        text: `[${source}] -> [${inputTo}]`,
-      })
+      .setFooter({ text: `[${source}] -> [${inputTo}]` })
 
     await interaction.editReply({ embeds: [translateEmbed], ephemeral: true })
   },

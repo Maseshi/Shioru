@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   parseEmoji,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -12,11 +13,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('enlarge')
     .setDescription('Enlarge the emoji.')
-    .setDescriptionLocalizations({
-      th: 'ขยายอิโมจิให้ใหญ่ขึ้น',
-    })
+    .setDescriptionLocalizations({ th: 'ขยายอิโมจิให้ใหญ่ขึ้น' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('emoji')

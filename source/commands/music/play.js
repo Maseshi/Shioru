@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   ChannelType,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -14,11 +15,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('play')
     .setDescription('You can play-pause the music or sing along to it.')
-    .setDescriptionLocalizations({
-      th: 'เล่น-หยุดเพลงก็ได้หรือร้องเพลงให้ฟัง',
-    })
+    .setDescriptionLocalizations({ th: 'เล่น-หยุดเพลงก็ได้หรือร้องเพลงให้ฟัง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('song')
@@ -51,9 +53,7 @@ module.exports = {
       option
         .setName('channel')
         .setDescription('The channel that wants her to play music.')
-        .setDescriptionLocalizations({
-          th: 'ช่องที่ต้องการให้เธอเล่นเพลง',
-        })
+        .setDescriptionLocalizations({ th: 'ช่องที่ต้องการให้เธอเล่นเพลง' })
         .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
     ),
   async execute(interaction) {

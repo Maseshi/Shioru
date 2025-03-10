@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,34 +12,30 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('sticker')
     .setDescription("Manage this server's stickers.")
-    .setDescriptionLocalizations({
-      th: 'จัดการสติ๊กเกอร์ของเซิร์ฟเวอร์นี้',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการสติ๊กเกอร์ของเซิร์ฟเวอร์นี้' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuildExpressions)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('add')
         .setDescription('Add stickers on this server.')
-        .setDescriptionLocalizations({
-          th: 'เพิ่มสติ๊กเกอร์บนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'เพิ่มสติ๊กเกอร์บนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('file')
             .setDescription('Sticker image file.')
-            .setDescriptionLocalizations({
-              th: 'ไฟล์ภาพของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'ไฟล์ภาพของสติ๊กเกอร์' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('name')
             .setDescription('The name for the sticker')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของสติ๊กเกอร์' })
             .setRequired(true)
             .setMinLength(2)
         )
@@ -54,9 +54,7 @@ module.exports = {
           option
             .setName('description')
             .setDescription('Reason for creation.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการเพิ่ม',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการเพิ่ม' })
             .setRequired(false)
         )
     )
@@ -64,25 +62,19 @@ module.exports = {
       subcommand
         .setName('delete')
         .setDescription('Remove stickers on this server.')
-        .setDescriptionLocalizations({
-          th: 'ลบสติ๊กเกอร์บนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'ลบสติ๊กเกอร์บนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('sticker')
             .setDescription('Sticker ID.')
-            .setDescriptionLocalizations({
-              th: 'รหัสของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'รหัสของสติ๊กเกอร์' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('reason')
             .setDescription('Reason for deletion.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการลบ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการลบ' })
             .setRequired(false)
         )
     )
@@ -90,25 +82,19 @@ module.exports = {
       subcommand
         .setName('edit')
         .setDescription('Edit stickers on this server.')
-        .setDescriptionLocalizations({
-          th: 'แก้ไขสติ๊กเกอร์บนเซิร์ฟเวอร์นี้',
-        })
+        .setDescriptionLocalizations({ th: 'แก้ไขสติ๊กเกอร์บนเซิร์ฟเวอร์นี้' })
         .addStringOption((option) =>
           option
             .setName('sticker')
             .setDescription('Sticker ID.')
-            .setDescriptionLocalizations({
-              th: 'รหัสของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'รหัสของสติ๊กเกอร์' })
             .setRequired(true)
         )
         .addStringOption((option) =>
           option
             .setName('name')
             .setDescription('The name of the sticker.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของสติ๊กเกอร์' })
             .setRequired(false)
         )
         .addStringOption((option) =>
@@ -126,18 +112,14 @@ module.exports = {
           option
             .setName('description')
             .setDescription('The description for the sticker')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายของสติ๊กเกอร์',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายของสติ๊กเกอร์' })
             .setRequired(false)
         )
         .addStringOption((option) =>
           option
             .setName('reason')
             .setDescription('Reason for deletion.')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลของการลบ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลของการลบ' })
             .setRequired(false)
         )
     ),

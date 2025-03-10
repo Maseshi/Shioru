@@ -1,15 +1,21 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('timezone')
     .setDescription('Convert time zones as desired.')
-    .setDescriptionLocalizations({
-      th: 'แปลงเขตเวลาตามที่ต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'แปลงเขตเวลาตามที่ต้องการ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('now')
@@ -40,9 +46,7 @@ module.exports = {
           option
             .setName('time')
             .setDescription('Time to convert')
-            .setDescriptionLocalizations({
-              th: 'เวลาที่ต้องการแปลง',
-            })
+            .setDescriptionLocalizations({ th: 'เวลาที่ต้องการแปลง' })
             .setRequired(true)
         )
         .addStringOption((option) =>

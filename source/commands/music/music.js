@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -10,11 +11,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('music')
     .setDescription('Details of the current song and queue.')
-    .setDescriptionLocalizations({
-      th: 'รายละเอียดของเพลงและคิวในปัจจุบัน',
-    })
+    .setDescriptionLocalizations({ th: 'รายละเอียดของเพลงและคิวในปัจจุบัน' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('detail')
@@ -27,17 +29,13 @@ module.exports = {
       subcommand
         .setName('playing')
         .setDescription('Check the music that is currently playing.')
-        .setDescriptionLocalizations({
-          th: 'ตรวจสอบเพลงที่กำลังเล่นอยู่',
-        })
+        .setDescriptionLocalizations({ th: 'ตรวจสอบเพลงที่กำลังเล่นอยู่' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('status')
         .setDescription('Check the status of the current song queue.')
-        .setDescriptionLocalizations({
-          th: 'ตรวจสอบสถานะคิวเพลงปัจจุบัน',
-        })
+        .setDescriptionLocalizations({ th: 'ตรวจสอบสถานะคิวเพลงปัจจุบัน' })
     ),
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand()

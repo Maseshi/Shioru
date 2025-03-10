@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,27 +12,24 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('impersonate')
     .setDescription('Summons a fake user to reply.')
-    .setDescriptionLocalizations({
-      th: 'เสกผู้ใช้ปลอมขึ้นมาตอบกลับ',
-    })
+    .setDescriptionLocalizations({ th: 'เสกผู้ใช้ปลอมขึ้นมาตอบกลับ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageWebhooks)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addUserOption((option) =>
       option
         .setName('user')
         .setDescription('Users who want to imitate.')
-        .setDescriptionLocalizations({
-          th: 'ผู้ใช้ที่ต้องการจะเลียนแบบ',
-        })
+        .setDescriptionLocalizations({ th: 'ผู้ใช้ที่ต้องการจะเลียนแบบ' })
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName('message')
         .setDescription('The message you want to emulate.')
-        .setDescriptionLocalizations({
-          th: 'ข้อความที่ต้องการจะเลียนแบบ!',
-        })
+        .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะเลียนแบบ!' })
         .setRequired(true)
     ),
   async execute(interaction) {

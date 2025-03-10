@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { matchEmotes } = require('../../utils/miscUtils')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -10,27 +14,25 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('react')
     .setDescription('Interact with the desired message')
-    .setDescriptionLocalizations({
-      th: 'โต้ตอบกับข้อความที่ต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'โต้ตอบกับข้อความที่ต้องการ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('id')
         .setDescription('ID of the message you want to interact')
-        .setDescriptionLocalizations({
-          th: 'ไอดีของข้อความที่ต้องการโต้ตอบ',
-        })
+        .setDescriptionLocalizations({ th: 'ไอดีของข้อความที่ต้องการโต้ตอบ' })
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName('emoji')
         .setDescription('Emoji to interact with')
-        .setDescriptionLocalizations({
-          th: 'อีโมจิที่ต้องการโต้ตอบ',
-        })
+        .setDescriptionLocalizations({ th: 'อีโมจิที่ต้องการโต้ตอบ' })
         .setRequired(true)
     ),
   async execute(interaction) {

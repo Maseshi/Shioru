@@ -1,15 +1,21 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('emojify')
     .setDescription('Convert text to emoji text')
-    .setDescriptionLocalizations({
-      th: 'แปลงข้อความเป็นข้อความอีโมจิ',
-    })
+    .setDescriptionLocalizations({ th: 'แปลงข้อความเป็นข้อความอีโมจิ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('text')

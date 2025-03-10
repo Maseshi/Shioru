@@ -1,22 +1,25 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('related')
     .setDescription('Songs related to the currently playing song')
-    .setDescriptionLocalizations({
-      th: 'เพลงที่เกี่ยวข้องกับเพลงที่เล่นอยู่',
-    })
+    .setDescriptionLocalizations({ th: 'เพลงที่เกี่ยวข้องกับเพลงที่เล่นอยู่' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((option) =>
       option
         .setName('add')
         .setDescription('Add related songs to the queue.')
-        .setDescriptionLocalizations({
-          th: 'เพิ่มเพลงที่เกี่ยวข้องลงในคิว.',
-        })
+        .setDescriptionLocalizations({ th: 'เพิ่มเพลงที่เกี่ยวข้องลงในคิว.' })
     ),
   async execute(interaction) {
     const djs = interaction.client.configs.djs

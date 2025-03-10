@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { catchError } = require('../../utils/consoleUtils')
@@ -15,11 +16,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('search')
     .setDescription('Search for the song or playlist you want.')
-    .setDescriptionLocalizations({
-      th: 'ค้นหาเพลงหรือเพลย์ลิสต์ที่คุณต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'ค้นหาเพลงหรือเพลย์ลิสต์ที่คุณต้องการ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('song')
@@ -154,9 +156,7 @@ module.exports = {
           },
         ])
 
-      await interaction.editReply({
-        embeds: [searchEmbed],
-      })
+      await interaction.editReply({ embeds: [searchEmbed] })
 
       let collection
 
@@ -280,10 +280,7 @@ module.exports = {
             try {
               const results = await interaction.client.player.search(
                 inputSong,
-                {
-                  limit: limit,
-                  safeSearch: true,
-                }
+                { limit: limit, safeSearch: true }
               )
 
               searcher(inputPlatform, results)

@@ -3,6 +3,7 @@ const {
   PermissionFlagsBits,
   Collection,
   ChannelType,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 const { containsURL } = require('../../utils/miscUtils')
@@ -16,28 +17,26 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('purge')
     .setDescription('Delete a lot of messages')
-    .setDescriptionLocalizations({
-      th: 'ลบข้อความจำนวนมาก',
-    })
+    .setDescriptionLocalizations({ th: 'ลบข้อความจำนวนมาก' })
     .setDefaultMemberPermissions(
       PermissionFlagsBits.ReadMessageHistory |
         PermissionFlagsBits.ManageMessages
     )
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('all')
         .setDescription('Delete all messages according to the number.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความทั้งหมดตามจำนวน',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความทั้งหมดตามจำนวน' })
         .addIntegerOption((option) =>
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -46,9 +45,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -56,16 +53,12 @@ module.exports = {
       subcommand
         .setName('attachment')
         .setDescription('Delete all messages with attachments.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความทั้งหมดที่มีไฟล์แนบ',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความทั้งหมดที่มีไฟล์แนบ' })
         .addIntegerOption((option) =>
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -74,9 +67,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -84,16 +75,12 @@ module.exports = {
       subcommand
         .setName('me')
         .setDescription('Delete all messages from me.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความทั้งหมดที่มาจากฉัน',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความทั้งหมดที่มาจากฉัน' })
         .addIntegerOption((option) =>
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -102,9 +89,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -112,16 +97,12 @@ module.exports = {
       subcommand
         .setName('bots')
         .setDescription('Delete all messages from bots.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความที่มาจากบอททั้งหมด',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความที่มาจากบอททั้งหมด' })
         .addIntegerOption((option) =>
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -130,9 +111,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -140,16 +119,12 @@ module.exports = {
       subcommand
         .setName('link')
         .setDescription('Delete all messages that contain links.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความทั้งหมดที่มีลิงค์',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความทั้งหมดที่มีลิงค์' })
         .addIntegerOption((option) =>
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -158,9 +133,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -184,9 +157,7 @@ module.exports = {
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -195,9 +166,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     )
@@ -205,9 +174,7 @@ module.exports = {
       subcommand
         .setName('user')
         .setDescription('Delete all messages from the user.')
-        .setDescriptionLocalizations({
-          th: 'ลบข้อความทั้งหมดที่มาจากผู้ใช้',
-        })
+        .setDescriptionLocalizations({ th: 'ลบข้อความทั้งหมดที่มาจากผู้ใช้' })
         .addUserOption((option) =>
           option
             .setName('user')
@@ -221,9 +188,7 @@ module.exports = {
           option
             .setName('amount')
             .setDescription('The amount of messages to delete')
-            .setDescriptionLocalizations({
-              th: 'จำนวนข้อความที่จะลบ',
-            })
+            .setDescriptionLocalizations({ th: 'จำนวนข้อความที่จะลบ' })
             .setRequired(true)
             .setMinValue(1)
             .setMaxValue(100)
@@ -232,9 +197,7 @@ module.exports = {
           option
             .setName('channel')
             .setDescription('Channel in which you want to delete the messages.')
-            .setDescriptionLocalizations({
-              th: 'ช่องที่ต้องการลบข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'ช่องที่ต้องการลบข้อความ' })
             .addChannelTypes(ChannelType.GuildText)
         )
     ),

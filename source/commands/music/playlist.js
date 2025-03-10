@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   ChannelType,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 const { containsURL } = require('../../utils/miscUtils')
@@ -15,11 +16,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('playlist')
     .setDescription('Create or add a playlist of songs.')
-    .setDescriptionLocalizations({
-      th: 'สร้างหรือเพิ่มเพลย์ลิสต์ของเพลง',
-    })
+    .setDescriptionLocalizations({ th: 'สร้างหรือเพิ่มเพลย์ลิสต์ของเพลง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('songs')
@@ -35,9 +37,7 @@ module.exports = {
       option
         .setName('name')
         .setDescription('Name of the playlist')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของเพลย์ลิสต์',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของเพลย์ลิสต์' })
     )
     .addBooleanOption((option) =>
       option
@@ -63,9 +63,7 @@ module.exports = {
       option
         .setName('channel')
         .setDescription('The channel that wants her to play music.')
-        .setDescriptionLocalizations({
-          th: 'ช่องที่ต้องการให้เธอเล่นเพลง',
-        })
+        .setDescriptionLocalizations({ th: 'ช่องที่ต้องการให้เธอเล่นเพลง' })
         .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice)
     ),
   async execute(interaction) {

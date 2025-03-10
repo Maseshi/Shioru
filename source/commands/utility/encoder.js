@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { Buffer } = require('node:buffer')
 
@@ -62,11 +63,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('encoder')
     .setDescription('Encrypt or decrypt your message.')
-    .setDescriptionLocalizations({
-      th: 'เข้ารหัสหรือถอดรหัสข้อความของคุณ',
-    })
+    .setDescriptionLocalizations({ th: 'เข้ารหัสหรือถอดรหัสข้อความของคุณ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('encode')
@@ -76,9 +79,7 @@ module.exports = {
           option
             .setName('text')
             .setDescription('Message to be encrypted.')
-            .setDescriptionLocalizations({
-              th: 'ข้อความที่ต้องการจะเข้ารหัส',
-            })
+            .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะเข้ารหัส' })
             .setRequired(true)
         )
         .addStringOption((option) =>
@@ -109,9 +110,7 @@ module.exports = {
           option
             .setName('text')
             .setDescription('Message to be decrypted.')
-            .setDescriptionLocalizations({
-              th: 'ข้อความที่ต้องการจะถอดรหัส',
-            })
+            .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะถอดรหัส' })
             .setRequired(true)
         )
         .addStringOption((option) =>

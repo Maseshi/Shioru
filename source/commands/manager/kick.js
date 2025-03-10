@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -12,11 +13,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('kick')
     .setDescription('Kick members from the server.')
-    .setDescriptionLocalizations({
-      th: 'เตะสมาชิกจากออกเซิร์ฟเวอร์',
-    })
+    .setDescriptionLocalizations({ th: 'เตะสมาชิกจากออกเซิร์ฟเวอร์' })
     .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addUserOption((option) =>
       option
         .setName('member')

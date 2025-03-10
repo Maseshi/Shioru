@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { fetchLevel } = require('../../utils/databaseUtils')
 
@@ -11,11 +12,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('leader')
     .setDescription('View the ranking on this server.')
-    .setDescriptionLocalizations({
-      th: 'ดูการจัดอันดับบนเซิร์ฟเวอร์นี้',
-    })
+    .setDescriptionLocalizations({ th: 'ดูการจัดอันดับบนเซิร์ฟเวอร์นี้' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('level')

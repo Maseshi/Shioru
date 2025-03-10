@@ -9,6 +9,7 @@ const {
   ButtonStyle,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -23,34 +24,30 @@ module.exports = {
       th: 'ค้นหาอะนิเมะหรือมังงะที่มีอยู่ใน Kitsu',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('search')
         .setDescription('Search about what you want.')
-        .setDescriptionLocalizations({
-          th: 'ค้นหาเกี่ยวกับสิ่งที่ต้องการ',
-        })
+        .setDescriptionLocalizations({ th: 'ค้นหาเกี่ยวกับสิ่งที่ต้องการ' })
         .setChoices(
           {
             name: 'Anime',
-            name_localizations: {
-              th: 'อนิเมะ',
-            },
+            name_localizations: { th: 'อนิเมะ' },
             value: 'anime',
           },
           {
             name: 'Manga',
-            name_localizations: {
-              th: 'มังงะ',
-            },
+            name_localizations: { th: 'มังงะ' },
             value: 'manga',
           },
           {
             name: 'Characters',
-            name_localizations: {
-              th: 'ตัวละคร',
-            },
+            name_localizations: { th: 'ตัวละคร' },
             value: 'characters',
           }
         )
@@ -120,12 +117,7 @@ module.exports = {
 
       animeEmbed.addFields(
         inputSearch === 'characters'
-          ? [
-              {
-                name: `${i + 1}. ${slug}`,
-                value: name,
-              },
-            ]
+          ? [{ name: `${i + 1}. ${slug}`, value: name }]
           : [
               {
                 name: `${i + 1}. ${titlesEnJp || interaction.client.i18n.t('commands.anime.undefined')}`,
@@ -289,9 +281,7 @@ module.exports = {
       })
     })
     collector.on('end', async (collected) => {
-      await interaction.editReply({
-        embeds: [animeEmbed],
-      })
+      await interaction.editReply({ embeds: [animeEmbed] })
     })
   },
 }

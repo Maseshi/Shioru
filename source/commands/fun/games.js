@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const {
   TwoZeroFourEight,
   Connect4,
@@ -24,11 +28,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('games')
     .setDescription('Mini-games that can be played instantly')
-    .setDescriptionLocalizations({
-      th: 'มินิเกมที่สามารถเล่นได้ในทันที',
-    })
+    .setDescriptionLocalizations({ th: 'มินิเกมที่สามารถเล่นได้ในทันที' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('2048')
@@ -50,9 +56,7 @@ module.exports = {
           option
             .setName('opponent')
             .setDescription('Invite or select an opponent')
-            .setDescriptionLocalizations({
-              th: 'เชิญหรือเลือกฝ่ายตรงข้าม',
-            })
+            .setDescriptionLocalizations({ th: 'เชิญหรือเลือกฝ่ายตรงข้าม' })
             .setRequired(true)
         )
     )
@@ -68,17 +72,13 @@ module.exports = {
       subcommand
         .setName('find-emoji')
         .setDescription('Find hidden emojis')
-        .setDescriptionLocalizations({
-          th: 'ค้นหาอีโมจิที่ถูกซ่อนไว้',
-        })
+        .setDescriptionLocalizations({ th: 'ค้นหาอีโมจิที่ถูกซ่อนไว้' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('fishy')
         .setDescription('Fishing business management')
-        .setDescriptionLocalizations({
-          th: 'บริหารธุรกิจการตกปลา',
-        })
+        .setDescriptionLocalizations({ th: 'บริหารธุรกิจการตกปลา' })
         .addStringOption((option) =>
           option
             .setName('action')
@@ -88,23 +88,17 @@ module.exports = {
             .setChoices(
               {
                 name: 'Catch Fish',
-                name_localizations: {
-                  th: 'จับปลา',
-                },
+                name_localizations: { th: 'จับปลา' },
                 value: 'catch-fish',
               },
               {
                 name: 'Sell Fish',
-                name_localizations: {
-                  th: 'ขายปลา',
-                },
+                name_localizations: { th: 'ขายปลา' },
                 value: 'sell-fish',
               },
               {
                 name: 'Open Inventory',
-                name_localizations: {
-                  th: 'เปิดคลัง',
-                },
+                name_localizations: { th: 'เปิดคลัง' },
                 value: 'open-inventory',
               }
             )
@@ -117,30 +111,22 @@ module.exports = {
             .setChoices(
               {
                 name: 'Junk',
-                name_localizations: {
-                  th: 'ขยะ',
-                },
+                name_localizations: { th: 'ขยะ' },
                 value: 'junk',
               },
               {
                 name: 'Common',
-                name_localizations: {
-                  th: 'ทั่วไป',
-                },
+                name_localizations: { th: 'ทั่วไป' },
                 value: 'common',
               },
               {
                 name: 'Uncommon',
-                name_localizations: {
-                  th: 'พิเศษ',
-                },
+                name_localizations: { th: 'พิเศษ' },
                 value: 'uncommon',
               },
               {
                 name: 'Rare',
-                name_localizations: {
-                  th: 'หายาก',
-                },
+                name_localizations: { th: 'หายาก' },
                 value: 'rare',
               }
             )
@@ -164,31 +150,15 @@ module.exports = {
           option
             .setName('difficulty')
             .setDescription('Choose the difficulty level of the game.')
-            .setDescriptionLocalizations({
-              th: 'เลือกระดับความยากของเกม',
-            })
+            .setDescriptionLocalizations({ th: 'เลือกระดับความยากของเกม' })
             .setChoices(
-              {
-                name: 'easy',
-                name_localizations: {
-                  th: 'ง่าย',
-                },
-                value: '8',
-              },
+              { name: 'easy', name_localizations: { th: 'ง่าย' }, value: '8' },
               {
                 name: 'normal',
-                name_localizations: {
-                  th: 'ปกติ',
-                },
+                name_localizations: { th: 'ปกติ' },
                 value: '13',
               },
-              {
-                name: 'hard',
-                name_localizations: {
-                  th: 'ยาก',
-                },
-                value: '18',
-              }
+              { name: 'hard', name_localizations: { th: 'ยาก' }, value: '18' }
             )
         )
     )
@@ -219,58 +189,42 @@ module.exports = {
             .setChoices(
               {
                 name: 'nature',
-                name_localizations: {
-                  th: 'ธรรมชาติ',
-                },
+                name_localizations: { th: 'ธรรมชาติ' },
                 value: 'nature',
               },
               {
                 name: 'sport',
-                name_localizations: {
-                  th: 'กีฬา',
-                },
+                name_localizations: { th: 'กีฬา' },
                 value: 'sport',
               },
               {
                 name: 'color',
-                name_localizations: {
-                  th: 'สี',
-                },
+                name_localizations: { th: 'สี' },
                 value: 'color',
               },
               {
                 name: 'camp',
-                name_localizations: {
-                  th: 'ค่าย',
-                },
+                name_localizations: { th: 'ค่าย' },
                 value: 'camp',
               },
               {
                 name: 'fruit',
-                name_localizations: {
-                  th: 'ผลไม้',
-                },
+                name_localizations: { th: 'ผลไม้' },
                 value: 'fruit',
               },
               {
                 name: 'discord',
-                name_localizations: {
-                  th: 'ดิสคอร์ด',
-                },
+                name_localizations: { th: 'ดิสคอร์ด' },
                 value: 'discord',
               },
               {
                 name: 'winter',
-                name_localizations: {
-                  th: 'ฤดูหนาว',
-                },
+                name_localizations: { th: 'ฤดูหนาว' },
                 value: 'winter',
               },
               {
                 name: 'pokemon',
-                name_localizations: {
-                  th: 'โปเกมอน',
-                },
+                name_localizations: { th: 'โปเกมอน' },
                 value: 'pokemon',
               }
             )
@@ -303,9 +257,7 @@ module.exports = {
           option
             .setName('opponent')
             .setDescription('Invite or select an opponent')
-            .setDescriptionLocalizations({
-              th: 'เชิญหรือเลือกฝ่ายตรงข้าม',
-            })
+            .setDescriptionLocalizations({ th: 'เชิญหรือเลือกฝ่ายตรงข้าม' })
             .setRequired(true)
         )
     )
@@ -338,9 +290,7 @@ module.exports = {
           option
             .setName('opponent')
             .setDescription('Invite or select an opponent')
-            .setDescriptionLocalizations({
-              th: 'เชิญหรือเลือกฝ่ายตรงข้าม',
-            })
+            .setDescriptionLocalizations({ th: 'เชิญหรือเลือกฝ่ายตรงข้าม' })
             .setRequired(true)
         )
     )
@@ -348,29 +298,21 @@ module.exports = {
       subcommand
         .setName('trivia')
         .setDescription('Test your knowledge on various topics.')
-        .setDescriptionLocalizations({
-          th: 'ทดสอบความรู้ในหลากหลายหัวข้อ',
-        })
+        .setDescriptionLocalizations({ th: 'ทดสอบความรู้ในหลากหลายหัวข้อ' })
         .addStringOption((option) =>
           option
             .setName('mode')
             .setDescription('Select game mode')
-            .setDescriptionLocalizations({
-              th: 'เลือกโหมดเกม',
-            })
+            .setDescriptionLocalizations({ th: 'เลือกโหมดเกม' })
             .setChoices(
               {
                 name: 'single',
-                name_localizations: {
-                  th: 'เดี่ยว',
-                },
+                name_localizations: { th: 'เดี่ยว' },
                 value: 'single',
               },
               {
                 name: 'multiple',
-                name_localizations: {
-                  th: 'หลายรายการ',
-                },
+                name_localizations: { th: 'หลายรายการ' },
                 value: 'multiple',
               }
             )
@@ -379,31 +321,19 @@ module.exports = {
           option
             .setName('difficulty')
             .setDescription('Choose the difficulty level of the game.')
-            .setDescriptionLocalizations({
-              th: 'เลือกระดับความยากของเกม',
-            })
+            .setDescriptionLocalizations({ th: 'เลือกระดับความยากของเกม' })
             .setChoices(
               {
                 name: 'easy',
-                name_localizations: {
-                  th: 'ง่าย',
-                },
+                name_localizations: { th: 'ง่าย' },
                 value: 'easy',
               },
               {
                 name: 'medium',
-                name_localizations: {
-                  th: 'ปานกลาง',
-                },
+                name_localizations: { th: 'ปานกลาง' },
                 value: 'medium',
               },
-              {
-                name: 'hard',
-                name_localizations: {
-                  th: 'ยาก',
-                },
-                value: 'hard',
-              }
+              { name: 'hard', name_localizations: { th: 'ยาก' }, value: 'hard' }
             )
         )
     )
@@ -445,9 +375,7 @@ module.exports = {
       reqTimeoutTime: 60000,
       requestMessage: interaction.client.i18n.t(
         'commands.games.invite_to_play_game',
-        {
-          player: '{player}',
-        }
+        { player: '{player}' }
       ),
       rejectMessage: interaction.client.i18n.t('commands.games.player_reject'),
       reqTimeoutMessage: interaction.client.i18n.t(
@@ -460,23 +388,13 @@ module.exports = {
         const game = new TwoZeroFourEight({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: '2048',
-            color: '#5865F2',
-          },
-          emojis: {
-            up: '⬆️',
-            down: '⬇️',
-            left: '⬅️',
-            right: '➡️',
-          },
+          embed: { title: '2048', color: '#5865F2' },
+          emojis: { up: '⬆️', down: '⬇️', left: '⬅️', right: '➡️' },
           timeoutTime: 60000,
           buttonStyle: 'PRIMARY',
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -494,27 +412,17 @@ module.exports = {
               statusTitle: interaction.client.i18n.t('commands.games.status'),
               color: '#5865F2',
             },
-            emojis: {
-              board: '⚪',
-              player1: '🔴',
-              player2: '🟡',
-            },
+            emojis: { board: '⚪', player1: '🔴', player2: '🟡' },
             mentionUser: true,
             timeoutTime: 60000,
             buttonStyle: 'PRIMARY',
             turnMessage: interaction.client.i18n.t(
               'commands.games.turn_to_player',
-              {
-                emoji: '{emoji}',
-                player: '{player}',
-              }
+              { emoji: '{emoji}', player: '{player}' }
             ),
             winMessage: interaction.client.i18n.t(
               'commands.games.player_win_connect_four',
-              {
-                emoji: '{emoji}',
-                player: '{player}',
-              }
+              { emoji: '{emoji}', player: '{player}' }
             ),
             tieMessage: interaction.client.i18n.t('commands.games.tie_game'),
             timeoutMessage: interaction.client.i18n.t(
@@ -522,10 +430,7 @@ module.exports = {
             ),
             playerOnlyMessage: interaction.client.i18n.t(
               'commands.games.player_and_opponent_only',
-              {
-                player: '{player}',
-                opponent: '{opponent}',
-              }
+              { player: '{player}', opponent: '{opponent}' }
             ),
           },
           ...approveOption,
@@ -551,19 +456,14 @@ module.exports = {
             color: '#5865F2',
             description: interaction.client.i18n.t(
               'commands.games.time_to_type',
-              {
-                time: '{time}',
-              }
+              { time: '{time}' }
             ),
           },
           timeoutTime: 60000,
           sentence: data,
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_fast_type',
-            {
-              time: '{time}',
-              wpm: '{wpm}',
-            }
+            { time: '{time}', wpm: '{wpm}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_lose_fast_type'
@@ -585,9 +485,7 @@ module.exports = {
             ),
             findDescription: interaction.client.i18n.t(
               'commands.games.find_emoji',
-              {
-                emoji: '{emoji}',
-              }
+              { emoji: '{emoji}' }
             ),
           },
           timeoutTime: 60000,
@@ -596,27 +494,19 @@ module.exports = {
           emojis: ['🍉', '🍇', '🍊', '🍋', '🥭', '🍎', '🍏', '🥝'],
           winMessage: interaction.client.i18n.t(
             'commands.games.correct_emoji',
-            {
-              emoji: '{emoji}',
-            }
+            { emoji: '{emoji}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.incorrect_emoji',
-            {
-              emoji: '{emoji}',
-            }
+            { emoji: '{emoji}' }
           ),
           timeoutMessage: interaction.client.i18n.t(
             'commands.games.forgot_emoji',
-            {
-              emoji: '{emoji}',
-            }
+            { emoji: '{emoji}' }
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -634,10 +524,7 @@ module.exports = {
           message: interaction,
           isSlashGame: true,
           player: player,
-          embed: {
-            title: 'Fishy',
-            color: '#5865F2',
-          },
+          embed: { title: 'Fishy', color: '#5865F2' },
           fishes: {
             junk: { emoji: '🔧', price: 5 },
             common: { emoji: '🐟', price: 10 },
@@ -647,10 +534,7 @@ module.exports = {
           fishyRodPrice: 10,
           catchMessage: interaction.client.i18n.t(
             'commands.games.caught_fish',
-            {
-              fish: '{fish}',
-              amount: '{amount}',
-            }
+            { fish: '{fish}', amount: '{amount}' }
           ),
           sellMessage: interaction.client.i18n.t('commands.games.fish_sold', {
             amount: '{amount}',
@@ -706,31 +590,22 @@ module.exports = {
         const game = new Flood({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: 'Flood',
-            color: '#5865F2',
-          },
+          embed: { title: 'Flood', color: '#5865F2' },
           difficulty: inputDifficulty ? parseInt(inputDifficulty) : 13,
           timeoutTime: 60000,
           buttonStyle: 'PRIMARY',
           emojis: ['🟥', '🟦', '🟧', '🟪', '🟩'],
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_flood',
-            {
-              turns: '{turns}',
-            }
+            { turns: '{turns}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_loose_flood',
-            {
-              turns: '{turns}',
-            }
+            { turns: '{turns}' }
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -741,31 +616,22 @@ module.exports = {
         const game = new GuessThePokemon({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: "Who's The Pokemon",
-            color: '#5865F2',
-          },
+          embed: { title: "Who's The Pokemon", color: '#5865F2' },
           timeoutTime: 60000,
           winMessage: interaction.client.i18n.t(
             'commands.games.correct_pokemon',
-            {
-              pokemon: '{pokemon}',
-            }
+            { pokemon: '{pokemon}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.incorrect_pokemon',
-            {
-              pokemon: '{pokemon}',
-            }
+            { pokemon: '{pokemon}' }
           ),
           errMessage: interaction.client.i18n.t(
             'commands.games.pokemon_api_not_response'
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -776,10 +642,7 @@ module.exports = {
         const game = new Hangman({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: 'Hangman',
-            color: '#5865F2',
-          },
+          embed: { title: 'Hangman', color: '#5865F2' },
           hangman: {
             hat: '🎩',
             head: '😟',
@@ -792,21 +655,15 @@ module.exports = {
           theme: inputTheme,
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_hangman',
-            {
-              word: '{word}',
-            }
+            { word: '{word}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_loose_hangman',
-            {
-              word: '{word}',
-            }
+            { word: '{word}' }
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -842,21 +699,15 @@ module.exports = {
           ],
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_match_pairs',
-            {
-              tiles_turned: '{tilesTurned}',
-            }
+            { tiles_turned: '{tilesTurned}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_loose_match_pairs',
-            {
-              tiles_turned: '{tilesTurned}',
-            }
+            { tiles_turned: '{tilesTurned}' }
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -885,9 +736,7 @@ module.exports = {
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -912,25 +761,17 @@ module.exports = {
               paper: interaction.client.i18n.t('commands.games.paper'),
               scissors: interaction.client.i18n.t('commands.games.scissors'),
             },
-            emojis: {
-              rock: '🪨',
-              paper: '📄',
-              scissors: '✂️',
-            },
+            emojis: { rock: '🪨', paper: '📄', scissors: '✂️' },
             mentionUser: true,
             timeoutTime: 60000,
             buttonStyle: 'PRIMARY',
             pickMessage: interaction.client.i18n.t(
               'commands.games.player_pick',
-              {
-                emoji: '{emoji}',
-              }
+              { emoji: '{emoji}' }
             ),
             winMessage: interaction.client.i18n.t(
               'commands.games.player_win_rps',
-              {
-                player: '{player}',
-              }
+              { player: '{player}' }
             ),
             tieMessage: interaction.client.i18n.t('commands.games.tie_game'),
             timeoutMessage: interaction.client.i18n.t(
@@ -938,9 +779,7 @@ module.exports = {
             ),
             playerOnlyMessage: interaction.client.i18n.t(
               'commands.games.player_only',
-              {
-                player: '{player}',
-              }
+              { player: '{player}' }
             ),
           },
           ...approveOption,
@@ -953,10 +792,7 @@ module.exports = {
         const game = new Slots({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: 'Slot Machine',
-            color: '#5865F2',
-          },
+          embed: { title: 'Slot Machine', color: '#5865F2' },
           slots: ['🍇', '🍊', '🍋', '🍌'],
         })
 
@@ -986,9 +822,7 @@ module.exports = {
           timeoutTime: 60000,
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -1007,28 +841,18 @@ module.exports = {
               statusTitle: interaction.client.i18n.t('commands.games.status'),
               overTitle: interaction.client.i18n.t('commands.games.stop'),
             },
-            emojis: {
-              xButton: '❌',
-              oButton: '🔵',
-              blankButton: '➖',
-            },
+            emojis: { xButton: '❌', oButton: '🔵', blankButton: '➖' },
             mentionUser: true,
             timeoutTime: 60000,
             xButtonStyle: 'DANGER',
             oButtonStyle: 'PRIMARY',
             turnMessage: interaction.client.i18n.t(
               'commands.games.turn_to_player',
-              {
-                emoji: '{emoji}',
-                player: '{player}',
-              }
+              { emoji: '{emoji}', player: '{player}' }
             ),
             winMessage: interaction.client.i18n.t(
               'commands.games.player_win_tic_tac_toe',
-              {
-                emoji: '{emoji}',
-                player: '{player}',
-              }
+              { emoji: '{emoji}', player: '{player}' }
             ),
             tieMessage: interaction.client.i18n.t('commands.games.tie_game'),
             timeoutMessage: interaction.client.i18n.t(
@@ -1036,9 +860,7 @@ module.exports = {
             ),
             playerOnlyMessage: interaction.client.i18n.t(
               'commands.games.player_only',
-              {
-                player: '{player}',
-              }
+              { player: '{player}' }
             ),
           },
           ...approveOption,
@@ -1066,24 +888,18 @@ module.exports = {
           difficulty: inputDifficulty,
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_trivia',
-            {
-              answer: '{answer}',
-            }
+            { answer: '{answer}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_loose_trivia',
-            {
-              answer: '{answer}',
-            }
+            { answer: '{answer}' }
           ),
           errMessage: interaction.client.i18n.t(
             'commands.games.question_api_not_response'
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -1094,29 +910,20 @@ module.exports = {
         const game = new Wordle({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: 'Wordle',
-            color: '#5865F2',
-          },
+          embed: { title: 'Wordle', color: '#5865F2' },
           customWord: null,
           timeoutTime: 60000,
           winMessage: interaction.client.i18n.t(
             'commands.games.player_win_wordle',
-            {
-              word: '{word}',
-            }
+            { word: '{word}' }
           ),
           loseMessage: interaction.client.i18n.t(
             'commands.games.player_loose_wordle',
-            {
-              word: '{word}',
-            }
+            { word: '{word}' }
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 
@@ -1127,10 +934,7 @@ module.exports = {
         const game = new WouldYouRather({
           message: interaction,
           isSlashGame: true,
-          embed: {
-            title: 'Would You Rather',
-            color: '#5865F2',
-          },
+          embed: { title: 'Would You Rather', color: '#5865F2' },
           buttons: {
             option1: interaction.client.i18n.t('commands.games.option_one'),
             option2: interaction.client.i18n.t('commands.games.option_two'),
@@ -1141,9 +945,7 @@ module.exports = {
           ),
           playerOnlyMessage: interaction.client.i18n.t(
             'commands.games.player_only',
-            {
-              player: '{player}',
-            }
+            { player: '{player}' }
           ),
         })
 

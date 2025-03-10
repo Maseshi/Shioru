@@ -1,22 +1,25 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('remove')
     .setDescription('Remove song from the queue')
-    .setDescriptionLocalizations({
-      th: 'ลบเพลงออกจากคิว',
-    })
+    .setDescriptionLocalizations({ th: 'ลบเพลงออกจากคิว' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addIntegerOption((option) =>
       option
         .setName('number')
         .setDescription('The number of songs to be deleted.')
-        .setDescriptionLocalizations({
-          th: 'หมายเลขของเพลงที่ต้องการจะลบ',
-        })
+        .setDescriptionLocalizations({ th: 'หมายเลขของเพลงที่ต้องการจะลบ' })
         .setRequired(true)
         .setMinValue(1)
     ),

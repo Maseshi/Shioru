@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   parseEmoji,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -13,18 +14,14 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('steal')
     .setDescription('Steal emojis from members')
-    .setDescriptionLocalizations({
-      th: 'ขโมยอีโมจิจากสมาชิก',
-    })
+    .setDescriptionLocalizations({ th: 'ขโมยอีโมจิจากสมาชิก' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuildExpressions)
-    .setDMPermission(false)
+    .setContexts([InteractionContextType.Guild])
     .addStringOption((option) =>
       option
         .setName('emoji')
         .setDescription('Emojis that want to be stolen')
-        .setDescriptionLocalizations({
-          th: 'อีโมจิที่ต้องการขโมย',
-        })
+        .setDescriptionLocalizations({ th: 'อีโมจิที่ต้องการขโมย' })
         .setRequired(true)
     ),
   async execute(interaction) {

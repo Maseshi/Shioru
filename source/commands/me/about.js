@@ -4,6 +4,7 @@ const {
   AttachmentBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { join } = require('node:path')
 const { readFileSync } = require('node:fs')
@@ -14,11 +15,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('about')
     .setDescription('View information about me.')
-    .setDescriptionLocalizations({
-      th: 'ดูข้อมูลเกี่ยวกับฉัน',
-    })
+    .setDescriptionLocalizations({ th: 'ดูข้อมูลเกี่ยวกับฉัน' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('personal')
@@ -80,9 +83,7 @@ module.exports = {
         })
         const CCZeroLicense = readFileSync(
           join(licensePath, 'LICENSE-ASSETS'),
-          {
-            encoding: 'utf-8',
-          }
+          { encoding: 'utf-8' }
         )
 
         await interaction.reply({

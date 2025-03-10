@@ -1,15 +1,20 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('resume')
     .setDescription('Continue playing music from the beginning.')
-    .setDescriptionLocalizations({
-      th: 'เล่นเพลงต่อจากจุดเริ่มต้น',
-    })
+    .setDescriptionLocalizations({ th: 'เล่นเพลงต่อจากจุดเริ่มต้น' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false),
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)

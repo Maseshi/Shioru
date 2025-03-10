@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -13,14 +14,15 @@ module.exports = {
       th: 'ใส่ฟิลเตอร์ในเพลงของคุณให้มีพลังมากขึ้น',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('add')
         .setDescription('Add a filter to the queue.')
-        .setDescriptionLocalizations({
-          th: 'เพิ่มฟิลเตอร์เข้าไปในคิว',
-        })
+        .setDescriptionLocalizations({ th: 'เพิ่มฟิลเตอร์เข้าไปในคิว' })
         .addStringOption((option) =>
           option
             .setName('filter')
@@ -35,9 +37,7 @@ module.exports = {
       subcommand
         .setName('remove')
         .setDescription('Remove the filter in the queue.')
-        .setDescriptionLocalizations({
-          th: 'ลบฟิลเตอร์ในคิว',
-        })
+        .setDescriptionLocalizations({ th: 'ลบฟิลเตอร์ในคิว' })
         .addStringOption((option) =>
           option
             .setName('filter')
@@ -52,9 +52,7 @@ module.exports = {
       subcommand
         .setName('set')
         .setDescription('Set all new queue filters.')
-        .setDescriptionLocalizations({
-          th: 'ตั้งค่าฟิลเตอร์ในคิวใหม่ทั้งหมด',
-        })
+        .setDescriptionLocalizations({ th: 'ตั้งค่าฟิลเตอร์ในคิวใหม่ทั้งหมด' })
         .addStringOption((option) =>
           option
             .setName('filter')
@@ -69,25 +67,19 @@ module.exports = {
       subcommand
         .setName('list')
         .setDescription('See all supported filters.')
-        .setDescriptionLocalizations({
-          th: 'ดูฟิลเตอร์ทั้งหมดที่รองรับ',
-        })
+        .setDescriptionLocalizations({ th: 'ดูฟิลเตอร์ทั้งหมดที่รองรับ' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('now')
         .setDescription('View filters that are currently queued.')
-        .setDescriptionLocalizations({
-          th: 'ดูฟิลเตอร์ที่อยู่คิวตอนนี้',
-        })
+        .setDescriptionLocalizations({ th: 'ดูฟิลเตอร์ที่อยู่คิวตอนนี้' })
     )
     .addSubcommand((subcommand) =>
       subcommand
         .setName('clear')
         .setDescription('Remove all filters in the queue.')
-        .setDescriptionLocalizations({
-          th: 'ลบฟิลเตอร์ทั้งหมดในคิว',
-        })
+        .setDescriptionLocalizations({ th: 'ลบฟิลเตอร์ทั้งหมดในคิว' })
     ),
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand()
@@ -131,10 +123,7 @@ module.exports = {
         }
 
         if (count === filters.length) {
-          return {
-            valid: validFilters,
-            invalid: invalidFilters,
-          }
+          return { valid: validFilters, invalid: invalidFilters }
         }
       }
     }

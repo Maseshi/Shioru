@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const {
   getDatabase,
   ref,
@@ -17,18 +21,17 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('afk')
     .setDescription('Go AFK within your server.')
-    .setDescriptionLocalizations({
-      th: 'ไป AFK ภายในเซิร์ฟเวอร์ของคุณ',
-    })
+    .setDescriptionLocalizations({ th: 'ไป AFK ภายในเซิร์ฟเวอร์ของคุณ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('set')
         .setDescription('Set your status to AFK.')
-        .setDescriptionLocalizations({
-          th: 'ตั้งสถานะของคุณเป็น AFK',
-        })
+        .setDescriptionLocalizations({ th: 'ตั้งสถานะของคุณเป็น AFK' })
         .addStringOption((option) =>
           option
             .setName('message')
@@ -43,9 +46,7 @@ module.exports = {
       subcommand
         .setName('remove')
         .setDescription('Unset your status to AFK.')
-        .setDescriptionLocalizations({
-          th: 'ยกเลิกตั้งสถานะของคุณเป็น AFK',
-        })
+        .setDescriptionLocalizations({ th: 'ยกเลิกตั้งสถานะของคุณเป็น AFK' })
     ),
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand()

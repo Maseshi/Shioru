@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,18 +12,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('tts')
     .setDescription('Text-to-Speech')
-    .setDescriptionLocalizations({
-      th: 'แปลงข้อความเป็นคำพูด',
-    })
+    .setDescriptionLocalizations({ th: 'แปลงข้อความเป็นคำพูด' })
     .setDefaultMemberPermissions(PermissionFlagsBits.SendTTSMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('content')
         .setDescription('Text to be converted to speech.')
-        .setDescriptionLocalizations({
-          th: 'ข้อความที่ต้องการจะแปลงเป็นคำพูด',
-        })
+        .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะแปลงเป็นคำพูด' })
         .setRequired(true)
     ),
   async execute(interaction) {

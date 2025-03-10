@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   Colors,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { Script } = require('node:vm')
 
@@ -15,7 +16,11 @@ module.exports = {
       th: 'ประเมินรหัส JavaScript สำหรับทดสอบผลการทำงาน',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('script')

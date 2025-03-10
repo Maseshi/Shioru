@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -14,14 +15,16 @@ module.exports = {
       th: 'ข้อความปลอมที่บอกว่าคุณจะฆ่าอะไรบางอย่าง',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('name')
         .setDescription('The name of what you are about to kill.')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของสิ่งที่คุณกำลังจะฆ่า',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของสิ่งที่คุณกำลังจะฆ่า' })
         .setRequired(true)
     ),
   async execute(interaction) {

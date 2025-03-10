@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   ChannelType,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -12,117 +13,48 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('activities')
     .setDescription('Run activities through the audio channel')
-    .setDescriptionLocalizations({
-      th: 'เรียกใช้กิจกรรมผ่านช่องเสียง',
-    })
+    .setDescriptionLocalizations({ th: 'เรียกใช้กิจกรรมผ่านช่องเสียง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.UseEmbeddedActivities)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('name')
         .setDescription('Name of the activity you want to start.')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของกิจกรรมที่ต้องการเริ่ม',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของกิจกรรมที่ต้องการเริ่ม' })
         .setRequired(true)
         .setChoices(
-          {
-            name: 'Watch Together',
-            value: 'youtube',
-          },
-          {
-            name: 'Watch Together Dev',
-            value: 'youtubedev',
-          },
-          {
-            name: 'Poker Night',
-            value: 'poker',
-          },
-          {
-            name: 'Betrayal',
-            value: 'betrayal',
-          },
-          {
-            name: 'Fishing',
-            value: 'fishing',
-          },
-          {
-            name: 'Chess In The Park',
-            value: 'chess',
-          },
-          {
-            name: 'Chess In The Park Dev',
-            value: 'chessdev',
-          },
-          {
-            name: 'Letter League',
-            value: 'Lettertile',
-          },
-          {
-            name: 'WordSnack',
-            value: 'wordsnack',
-          },
-          {
-            name: 'DoodleCrew',
-            value: 'doodlecrew',
-          },
-          {
-            name: 'AwkWord',
-            value: 'awkword',
-          },
-          {
-            name: 'SpellCast',
-            value: 'spellcast',
-          },
-          {
-            name: 'Checkers In The Park',
-            value: 'checkers',
-          },
-          {
-            name: 'Putt Party',
-            value: 'puttparty',
-          },
-          {
-            name: 'Sketch Heads',
-            value: 'sketchheads',
-          },
-          {
-            name: 'Blazing 8s',
-            value: 'blazing8s',
-          },
-          {
-            name: 'Putt Party QA',
-            value: 'puttpartyqa',
-          },
-          {
-            name: 'SketchyArtist',
-            value: 'sketchyartist',
-          },
-          {
-            name: 'Land-io',
-            value: 'land',
-          },
-          {
-            name: 'Meme',
-            value: 'meme',
-          },
-          {
-            name: 'Askaway',
-            value: 'askaway',
-          },
-          {
-            name: 'Bobble League',
-            value: 'bobble',
-          }
+          { name: 'Watch Together', value: 'youtube' },
+          { name: 'Watch Together Dev', value: 'youtubedev' },
+          { name: 'Poker Night', value: 'poker' },
+          { name: 'Betrayal', value: 'betrayal' },
+          { name: 'Fishing', value: 'fishing' },
+          { name: 'Chess In The Park', value: 'chess' },
+          { name: 'Chess In The Park Dev', value: 'chessdev' },
+          { name: 'Letter League', value: 'Lettertile' },
+          { name: 'WordSnack', value: 'wordsnack' },
+          { name: 'DoodleCrew', value: 'doodlecrew' },
+          { name: 'AwkWord', value: 'awkword' },
+          { name: 'SpellCast', value: 'spellcast' },
+          { name: 'Checkers In The Park', value: 'checkers' },
+          { name: 'Putt Party', value: 'puttparty' },
+          { name: 'Sketch Heads', value: 'sketchheads' },
+          { name: 'Blazing 8s', value: 'blazing8s' },
+          { name: 'Putt Party QA', value: 'puttpartyqa' },
+          { name: 'SketchyArtist', value: 'sketchyartist' },
+          { name: 'Land-io', value: 'land' },
+          { name: 'Meme', value: 'meme' },
+          { name: 'Askaway', value: 'askaway' },
+          { name: 'Bobble League', value: 'bobble' }
         )
     )
     .addChannelOption((option) =>
       option
         .setName('channel')
         .setDescription('Voice channel you want to join.')
-        .setDescriptionLocalizations({
-          th: 'ช่องเสียงที่คุณต้องการเข้าร่วม',
-        })
+        .setDescriptionLocalizations({ th: 'ช่องเสียงที่คุณต้องการเข้าร่วม' })
         .setRequired(false)
         .addChannelTypes(ChannelType.GuildVoice)
     ),

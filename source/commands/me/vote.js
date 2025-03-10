@@ -6,6 +6,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
   resolveColor,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -13,18 +14,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('vote')
     .setDescription('Vote for me on top.gg')
-    .setDescriptionLocalizations({
-      th: 'โหวตคะแนนให้ฉันบน top.gg',
-    })
+    .setDescriptionLocalizations({ th: 'โหวตคะแนนให้ฉันบน top.gg' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     await interaction.deferReply()
 
     const response = await fetch(`https://top.gg/api/bots/${clientUserID}`, {
-      headers: {
-        Authorization: interaction.client.configs.top_gg_token,
-      },
+      headers: { Authorization: interaction.client.configs.top_gg_token },
     })
 
     if (response.status === 404)
@@ -80,18 +81,13 @@ module.exports = {
       .setThumbnail(clientAvatar)
       .setColor(resolveColor('#FF3366'))
       .setTimestamp(new Date(date))
-      .setFooter({
-        text: interaction.client.i18n.t('commands.vote.added'),
-      })
+      .setFooter({ text: interaction.client.i18n.t('commands.vote.added') })
       .setAuthor({
         name: 'top.gg',
         iconURL: `https://top.gg/favicon.png`,
         url: 'https://top.gg',
       })
 
-    await interaction.editReply({
-      embeds: [voteEmbed],
-      components: [voteRow],
-    })
+    await interaction.editReply({ embeds: [voteEmbed], components: [voteRow] })
   },
 }

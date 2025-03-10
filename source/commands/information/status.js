@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -14,14 +15,15 @@ module.exports = {
       th: 'ตรวจสอบสถานะของสมาชิกทั้งหมดภายในเซิร์ฟเวอร์',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('type')
         .setDescription('The status you want to check.')
-        .setDescriptionLocalizations({
-          th: 'สถานะที่คุณต้องการตรวจสอบ',
-        })
+        .setDescriptionLocalizations({ th: 'สถานะที่คุณต้องการตรวจสอบ' })
         .setRequired(true)
         .addChoices(
           { name: 'Online', value: 'online' },

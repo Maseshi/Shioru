@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -9,11 +10,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('queue')
     .setDescription('Check songs in the queue')
-    .setDescriptionLocalizations({
-      th: 'ตรวจสอบเพลงในคิว',
-    })
+    .setDescriptionLocalizations({ th: 'ตรวจสอบเพลงในคิว' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false),
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const queue = interaction.client.player.getQueue(interaction)
 

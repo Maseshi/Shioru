@@ -2,10 +2,10 @@ const {
   SlashCommandBuilder,
   AttachmentBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 const { join } = require('node:path')
 const { existsSync, readFileSync, unlinkSync } = require('node:fs')
-const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -16,7 +16,11 @@ module.exports = {
       th: 'จัดการไฟล์เอกสารบันทึกเพื่อตรวจสอบการทำงานหรือแก้ไขข้อบกพร่อง',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('get')
@@ -28,9 +32,7 @@ module.exports = {
           option
             .setName('type')
             .setDescription('Type of document file')
-            .setDescriptionLocalizations({
-              th: 'ประเภทของไฟล์เอกสารบันทึก',
-            })
+            .setDescriptionLocalizations({ th: 'ประเภทของไฟล์เอกสารบันทึก' })
             .setRequired(true)
             .setChoices(
               { name: 'app', value: 'app.log' },
@@ -54,9 +56,7 @@ module.exports = {
           option
             .setName('type')
             .setDescription('Type of document file')
-            .setDescriptionLocalizations({
-              th: 'ประเภทของไฟล์เอกสารบันทึก',
-            })
+            .setDescriptionLocalizations({ th: 'ประเภทของไฟล์เอกสารบันทึก' })
             .setRequired(true)
             .setChoices(
               { name: 'app', value: 'app.log' },

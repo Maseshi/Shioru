@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { getDatabase, ref, child, get, update } = require('firebase/database')
 
@@ -14,11 +15,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('djs')
     .setDescription('Set who has permission to control music')
-    .setDescriptionLocalizations({
-      th: 'ตั้งค่าผู้ที่มีสิทธิ์ในการควบคุมเพลง',
-    })
+    .setDescriptionLocalizations({ th: 'ตั้งค่าผู้ที่มีสิทธิ์ในการควบคุมเพลง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('get')
@@ -76,32 +78,24 @@ module.exports = {
           subcommand
             .setName('add')
             .setDescription('Added the role of Music Conductor')
-            .setDescriptionLocalizations({
-              th: 'เพิ่มบทบาทของผู้ควบคุมเพลง',
-            })
+            .setDescriptionLocalizations({ th: 'เพิ่มบทบาทของผู้ควบคุมเพลง' })
             .addRoleOption((option) =>
               option
                 .setName('name')
                 .setDescription('Name of the required role')
-                .setDescriptionLocalizations({
-                  th: 'ชื่อของบทบาทที่ต้องการ',
-                })
+                .setDescriptionLocalizations({ th: 'ชื่อของบทบาทที่ต้องการ' })
             )
         )
         .addSubcommand((subcommand) =>
           subcommand
             .setName('remove')
             .setDescription('Name of the required role')
-            .setDescriptionLocalizations({
-              th: 'ลดบทบาทของผู้ควบคุมเพลง',
-            })
+            .setDescriptionLocalizations({ th: 'ลดบทบาทของผู้ควบคุมเพลง' })
             .addRoleOption((option) =>
               option
                 .setName('name')
                 .setDescription('Name of the required role')
-                .setDescriptionLocalizations({
-                  th: 'ชื่อของบทบาทที่ต้องการ',
-                })
+                .setDescriptionLocalizations({ th: 'ชื่อของบทบาทที่ต้องการ' })
             )
         )
         .addSubcommand((subcommand) =>
@@ -135,9 +129,7 @@ module.exports = {
               option
                 .setName('name')
                 .setDescription('Name of desired user')
-                .setDescriptionLocalizations({
-                  th: 'ชื่อของผู้ใช้ที่ต้องการ',
-                })
+                .setDescriptionLocalizations({ th: 'ชื่อของผู้ใช้ที่ต้องการ' })
             )
         )
         .addSubcommand((subcommand) =>
@@ -151,9 +143,7 @@ module.exports = {
               option
                 .setName('name')
                 .setDescription('Name of desired user')
-                .setDescriptionLocalizations({
-                  th: 'ชื่อของผู้ใช้ที่ต้องการ',
-                })
+                .setDescriptionLocalizations({ th: 'ชื่อของผู้ใช้ที่ต้องการ' })
             )
         )
         .addSubcommand((subcommand) =>
@@ -204,10 +194,7 @@ module.exports = {
           )
 
         configs.djs.enable = true
-        await update(djsRef, {
-          enable: true,
-          toggledAt: new Date(),
-        })
+        await update(djsRef, { enable: true, toggledAt: new Date() })
 
         await interaction.reply(
           interaction.client.i18n.t('commands.djs.enable_djs_mode')
@@ -221,10 +208,7 @@ module.exports = {
           )
 
         configs.djs.enable = false
-        await update(djsRef, {
-          enable: false,
-          toggledAt: new Date(),
-        })
+        await update(djsRef, { enable: false, toggledAt: new Date() })
 
         await interaction.reply(
           interaction.client.i18n.t('commands.djs.disable_djs_mode')
@@ -240,10 +224,7 @@ module.exports = {
           )
 
         configs.djs.only = inputSet
-        await update(djsRef, {
-          only: inputSet,
-          editedAt: new Date(),
-        })
+        await update(djsRef, { only: inputSet, editedAt: new Date() })
 
         await interaction.reply(
           inputSet
@@ -323,9 +304,7 @@ module.exports = {
 
               if (!guildData.roles.length && !guildData.users.length) {
                 configs.djs.enable = false
-                await update(djsRef, {
-                  enable: false,
-                })
+                await update(djsRef, { enable: false })
               }
             }
 
@@ -406,9 +385,7 @@ module.exports = {
 
               if (!guildData.users.length && !guildData.users.length) {
                 configs.djs.enable = false
-                await update(djsRef, {
-                  enable: false,
-                })
+                await update(djsRef, { enable: false })
               }
             }
 

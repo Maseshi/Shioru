@@ -4,6 +4,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const {
   getDatabase,
@@ -22,11 +23,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('notify')
     .setDescription('Set up the notifications you want.')
-    .setDescriptionLocalizations({
-      th: 'ตั้งค่าการแจ้งเตือนที่คุณต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'ตั้งค่าการแจ้งเตือนที่คุณต้องการ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('list')
@@ -167,17 +169,13 @@ module.exports = {
           option
             .setName('embed_color')
             .setDescription('Embedded text border color')
-            .setDescriptionLocalizations({
-              th: 'สีของขอบข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'สีของขอบข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_title')
             .setDescription('Topic of embedded message')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -193,9 +191,7 @@ module.exports = {
           option
             .setName('embed_description')
             .setDescription('Description in embedded text')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -211,17 +207,13 @@ module.exports = {
           option
             .setName('embed_first_field_name')
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_first_field_value')
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -237,17 +229,13 @@ module.exports = {
           option
             .setName('embed_second_field_name')
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_second_field_value')
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -368,17 +356,13 @@ module.exports = {
           option
             .setName('embed_color')
             .setDescription('Embedded text border color')
-            .setDescriptionLocalizations({
-              th: 'สีของขอบข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'สีของขอบข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_title')
             .setDescription('Topic of embedded message')
-            .setDescriptionLocalizations({
-              th: 'หัวข้อของข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'หัวข้อของข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -394,9 +378,7 @@ module.exports = {
           option
             .setName('embed_description')
             .setDescription('Description in embedded text')
-            .setDescriptionLocalizations({
-              th: 'คำอธิบายในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'คำอธิบายในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
@@ -412,17 +394,13 @@ module.exports = {
           option
             .setName('embed_first_field_name')
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_first_field_value')
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -438,17 +416,13 @@ module.exports = {
           option
             .setName('embed_second_field_name')
             .setDescription('The name of the field in the embedded text.')
-            .setDescriptionLocalizations({
-              th: 'ชื่อของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ชื่อของฟิลด์ในข้อความแบบฝัง' })
         )
         .addStringOption((option) =>
           option
             .setName('embed_second_field_value')
             .setDescription('Field values in embedded text')
-            .setDescriptionLocalizations({
-              th: 'ค่าของฟิลด์ในข้อความแบบฝัง',
-            })
+            .setDescriptionLocalizations({ th: 'ค่าของฟิลด์ในข้อความแบบฝัง' })
         )
         .addBooleanOption((option) =>
           option
@@ -576,9 +550,7 @@ module.exports = {
             return await interaction.reply(
               interaction.client.i18n.t(
                 'commands.notify.notification_type_not_found',
-                {
-                  list: notification.join(', '),
-                }
+                { list: notification.join(', ') }
               )
             )
           if (!inputChannel) {
@@ -629,9 +601,7 @@ module.exports = {
           return await interaction.reply(
             interaction.client.i18n.t(
               'commands.notify.notification_type_not_found',
-              {
-                list: notification.join(', '),
-              }
+              { list: notification.join(', ') }
             )
           )
         if (notificationSnapshot.exists()) {
@@ -662,9 +632,7 @@ module.exports = {
         await interaction.reply(
           interaction.client.i18n.t(
             'commands.notify.temporarily_disable_notification',
-            {
-              type: inputType,
-            }
+            { type: inputType }
           )
         )
         break
@@ -689,9 +657,7 @@ module.exports = {
               return await interaction.reply(
                 interaction.client.i18n.t(
                   'commands.notify.notification_type_not_found',
-                  {
-                    list: notification.join(', '),
-                  }
+                  { list: notification.join(', ') }
                 )
               )
 
@@ -898,18 +864,14 @@ module.exports = {
             return await interaction.reply(
               interaction.client.i18n.t(
                 'commands.notify.notification_type_not_found',
-                {
-                  list: notification.join(', '),
-                }
+                { list: notification.join(', ') }
               )
             )
           if (subcommand === 'edit' && !notificationData[inputType])
             return await interaction.reply(
               interaction.client.i18n.t(
                 'commands.notify.can_not_edit_empty_data',
-                {
-                  type: inputType,
-                }
+                { type: inputType }
               )
             )
           if (!inputContent && requireEmbedOptions.length <= 0) {
@@ -1004,10 +966,7 @@ module.exports = {
           await interaction.reply(
             interaction.client.i18n.t(
               'commands.notify.edited_notification_data',
-              {
-                type: inputType,
-                channel_id: inputChannel.id,
-              }
+              { type: inputType, channel_id: inputChannel.id }
             )
           )
         }
@@ -1025,9 +984,7 @@ module.exports = {
             return await interaction.reply(
               interaction.client.i18n.t(
                 'commands.notify.notification_type_not_found',
-                {
-                  list: notification.join(', '),
-                }
+                { list: notification.join(', ') }
               )
             )
 
@@ -1035,9 +992,7 @@ module.exports = {
           await interaction.reply(
             interaction.client.i18n.t(
               'commands.notify.unregistered_notification',
-              {
-                type: inputType,
-              }
+              { type: inputType }
             )
           )
         }

@@ -10,6 +10,7 @@ const {
   ActionRowBuilder,
   ComponentType,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 const { newLines } = require('../../utils/miscUtils')
 
@@ -18,11 +19,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('help')
     .setDescription('Get help using it.')
-    .setDescriptionLocalizations({
-      th: 'รับความช่วยเหลือเกี่ยวกับการใช้งาน',
-    })
+    .setDescriptionLocalizations({ th: 'รับความช่วยเหลือเกี่ยวกับการใช้งาน' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('command')
@@ -466,10 +469,7 @@ module.exports = {
           case 'home': {
             helpEmbed.setDescription(helpHome)
             updateComponents(helpSelect, selection)
-            await inter.update({
-              embeds: [helpEmbed],
-              components: [helpRow],
-            })
+            await inter.update({ embeds: [helpEmbed], components: [helpRow] })
             break
           }
           case 'contexts': {
@@ -555,10 +555,7 @@ module.exports = {
           interaction.client.i18n.t('commands.help.remaining_time')
         )
       )
-      await interaction.editReply({
-        embeds: [helpEmbed],
-        components: [],
-      })
+      await interaction.editReply({ embeds: [helpEmbed], components: [] })
     })
   },
 }

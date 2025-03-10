@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -10,11 +11,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('user')
     .setDescription('Get your user information')
-    .setDescriptionLocalizations({
-      th: 'รับข้อมูลผู้ใช้ของคุณ',
-    })
+    .setDescriptionLocalizations({ th: 'รับข้อมูลผู้ใช้ของคุณ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('list')

@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   OAuth2Scopes,
+  InteractionContextType,
 } = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
@@ -18,7 +19,10 @@ module.exports = {
       th: 'สร้างและรับลิงค์คำเชิญเพื่อเข้าร่วมเซิร์ฟเวอร์',
     })
     .setDefaultMemberPermissions(PermissionFlagsBits.CreateInstantInvite)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('guild')
@@ -31,9 +35,7 @@ module.exports = {
       subcommand
         .setName('me')
         .setDescription('Invite me to other servers.')
-        .setDescriptionLocalizations({
-          th: 'เชิญฉันไปยังเซิร์ฟเวอร์อื่นๆ',
-        })
+        .setDescriptionLocalizations({ th: 'เชิญฉันไปยังเซิร์ฟเวอร์อื่นๆ' })
     ),
   async execute(interaction) {
     const subcommand = interaction.options.getSubcommand()

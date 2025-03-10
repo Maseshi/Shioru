@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -13,7 +14,11 @@ module.exports = {
       th: 'ข้อความปลอมที่บอกว่าคุณฆ่าตัวตาย',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const authorUsername = interaction.user.username
     const deadEmbed = new EmbedBuilder()

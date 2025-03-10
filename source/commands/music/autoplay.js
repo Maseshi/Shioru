@@ -1,15 +1,20 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName('autoplay')
     .setDescription('Turn on / off automatic music playing')
-    .setDescriptionLocalizations({
-      th: 'เปิด/ปิดการเล่นเพลงอัตโนมัติ',
-    })
+    .setDescriptionLocalizations({ th: 'เปิด/ปิดการเล่นเพลงอัตโนมัติ' })
     .setDefaultMemberPermissions()
-    .setDMPermission(false),
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ]),
   async execute(interaction) {
     const djs = interaction.client.configs.djs
     const queue = interaction.client.player.getQueue(interaction)

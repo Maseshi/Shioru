@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   EmbedBuilder,
   PermissionFlagsBits,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -12,11 +13,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('warn')
     .setDescription('Warn the user to stop doing something.')
-    .setDescriptionLocalizations({
-      th: 'เตือนผู้ใช้ให้หยุดกระทำบางอย่าง',
-    })
+    .setDescriptionLocalizations({ th: 'เตือนผู้ใช้ให้หยุดกระทำบางอย่าง' })
     .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addUserOption((option) =>
       option
         .setName('member')
@@ -30,9 +32,7 @@ module.exports = {
       option
         .setName('warn')
         .setDescription('Reason for warning such members.')
-        .setDescriptionLocalizations({
-          th: 'เหตุผลในการเตือนสมาชิกดังกล่าว',
-        })
+        .setDescriptionLocalizations({ th: 'เหตุผลในการเตือนสมาชิกดังกล่าว' })
         .setRequired(true)
     ),
   async execute(interaction) {

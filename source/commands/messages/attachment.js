@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 
 module.exports = {
   permissions: [
@@ -8,11 +12,13 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('attachment')
     .setDescription('Upload the file and send it in the chat.')
-    .setDescriptionLocalizations({
-      th: 'อัปโหลดไฟล์แล้วส่งไปในแชท',
-    })
+    .setDescriptionLocalizations({ th: 'อัปโหลดไฟล์แล้วส่งไปในแชท' })
     .setDefaultMemberPermissions(PermissionFlagsBits.AttachFiles)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addAttachmentOption((option) =>
       option
         .setName('attachment')
@@ -26,9 +32,7 @@ module.exports = {
       option
         .setName('channel')
         .setDescription('The channel to send the attachment to')
-        .setDescriptionLocalizations({
-          th: 'ช่องที่จะส่งไฟล์',
-        })
+        .setDescriptionLocalizations({ th: 'ช่องที่จะส่งไฟล์' })
         .setRequired(false)
     ),
   async execute(interaction) {
@@ -36,13 +40,9 @@ module.exports = {
     const inputChannel = interaction.options.getChannel('channel') ?? null
 
     if (!inputChannel) {
-      await interaction.channel.send({
-        files: [inputAttachment],
-      })
+      await interaction.channel.send({ files: [inputAttachment] })
     } else {
-      await inputChannel.send({
-        files: [inputAttachment],
-      })
+      await inputChannel.send({ files: [inputAttachment] })
     }
 
     await interaction.reply({

@@ -6,6 +6,7 @@ const {
   ButtonBuilder,
   ButtonStyle,
   Colors,
+  InteractionContextType,
 } = require('discord.js')
 
 module.exports = {
@@ -13,18 +14,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('8ball')
     .setDescription('8ball game')
-    .setDescriptionLocalizations({
-      th: 'เกม 8ball',
-    })
+    .setDescriptionLocalizations({ th: 'เกม 8ball' })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('question')
         .setDescription('This will be your question for the 8ball.')
-        .setDescriptionLocalizations({
-          th: 'นี่จะเป็นคำถามของคุณสำหรับ 8ball',
-        })
+        .setDescriptionLocalizations({ th: 'นี่จะเป็นคำถามของคุณสำหรับ 8ball' })
         .setRequired(true)
     ),
   async execute(interaction) {

@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -9,11 +13,12 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('pin')
     .setDescription('Manage message pinning')
-    .setDescriptionLocalizations({
-      th: 'จัดการการปักหมุดข้อความ',
-    })
+    .setDescriptionLocalizations({ th: 'จัดการการปักหมุดข้อความ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(false)
+    .setContexts([
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addSubcommand((subcommand) =>
       subcommand
         .setName('add')
@@ -32,9 +37,7 @@ module.exports = {
           option
             .setName('reason')
             .setDescription('Reason for pinning the message')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลที่ปักหมุดข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลที่ปักหมุดข้อความ' })
             .setRequired(false)
         )
     )
@@ -56,9 +59,7 @@ module.exports = {
           option
             .setName('reason')
             .setDescription('Reason for unpinning messages')
-            .setDescriptionLocalizations({
-              th: 'เหตุผลที่เลิกปักหมุดข้อความ',
-            })
+            .setDescriptionLocalizations({ th: 'เหตุผลที่เลิกปักหมุดข้อความ' })
             .setRequired(false)
         )
     ),

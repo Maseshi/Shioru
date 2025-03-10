@@ -1,4 +1,8 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -9,18 +13,18 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('delete')
     .setDescription('Delete unwanted messages')
-    .setDescriptionLocalizations({
-      th: 'ลบข้อความที่ไม่ต้องการ',
-    })
+    .setDescriptionLocalizations({ th: 'ลบข้อความที่ไม่ต้องการ' })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('id')
         .setDescription('ID of the message you want to delete')
-        .setDescriptionLocalizations({
-          th: 'ไอดีของข้อความที่ต้องการลบ',
-        })
+        .setDescriptionLocalizations({ th: 'ไอดีของข้อความที่ต้องการลบ' })
         .setRequired(true)
     ),
   async execute(interaction) {

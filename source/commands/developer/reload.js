@@ -1,5 +1,9 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js')
-const { join, dirname } = require('node:path')
+const {
+  SlashCommandBuilder,
+  PermissionFlagsBits,
+  InteractionContextType,
+} = require('discord.js')
+const { join } = require('node:path')
 const { catchError } = require('../../utils/consoleUtils')
 
 module.exports = {
@@ -11,14 +15,16 @@ module.exports = {
       th: 'โหลดคำสั่งใหม่ที่ได้รับการแก้ไขอีกครั้ง',
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true)
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
     .addStringOption((option) =>
       option
         .setName('command')
         .setDescription('Name of the command to reload.')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของคำสั่งที่ต้องการโหลดใหม่',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของคำสั่งที่ต้องการโหลดใหม่' })
         .setMinLength(3)
         .setAutocomplete(true)
     )
@@ -26,9 +32,7 @@ module.exports = {
       option
         .setName('context')
         .setDescription('Name of the context to reload.')
-        .setDescriptionLocalizations({
-          th: 'ชื่อของบริบทที่ต้องการโหลดใหม่',
-        })
+        .setDescriptionLocalizations({ th: 'ชื่อของบริบทที่ต้องการโหลดใหม่' })
         .setMinLength(3)
         .setAutocomplete(true)
     ),
