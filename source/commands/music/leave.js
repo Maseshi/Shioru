@@ -2,24 +2,24 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   InteractionContextType,
-} = require('discord.js')
+} = require("discord.js");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('leave')
-    .setDescription('Exits the current audio channel.')
-    .setDescriptionLocalizations({ th: 'ออกจากช่องสัญญาณเสียงปัจจุบัน' })
+    .setName("leave")
+    .setDescription("Exits the current audio channel.")
+    .setDescriptionLocalizations({ th: "ออกจากช่องสัญญาณเสียงปัจจุบัน" })
     .setDefaultMemberPermissions()
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ]),
   async execute(interaction) {
-    const djs = interaction.client.configs.djs
-    const queue = interaction.client.player.getQueue(interaction)
+    const djs = interaction.client.configs.djs;
+    const queue = interaction.client.player.getQueue(interaction);
 
-    const meChannel = interaction.guild.members.me.voice.channel
+    const meChannel = interaction.guild.members.me.voice.channel;
 
     if (queue && djs.enable) {
       if (
@@ -27,29 +27,29 @@ module.exports = {
         queue.autoplay === false
       )
         return await interaction.reply(
-          interaction.client.i18n.t('commands.leave.another_player_is_playing')
-        )
+          interaction.client.i18n.t("commands.leave.another_player_is_playing"),
+        );
       if (
         djs.users.includes(interaction.user.id) &&
         djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id)
+          interaction.member.roles.cache.map((role) => role.id),
         ) &&
         djs.only
       )
         return await interaction.reply(
-          interaction.client.i18n.t('commands.leave.not_a_dj')
-        )
+          interaction.client.i18n.t("commands.leave.not_a_dj"),
+        );
     }
     if (!meChannel)
       return await interaction.reply(
-        interaction.client.i18n.t('commands.leave.not_in_any_channel')
-      )
+        interaction.client.i18n.t("commands.leave.not_in_any_channel"),
+      );
 
-    const connection = interaction.client.player.voices.get(meChannel.guild)
+    const connection = interaction.client.player.voices.get(meChannel.guild);
 
-    connection.leave()
+    connection.leave();
     await interaction.reply(
-      interaction.client.i18n.t('commands.leave.now_leave')
-    )
+      interaction.client.i18n.t("commands.leave.now_leave"),
+    );
   },
-}
+};

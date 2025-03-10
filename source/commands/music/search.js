@@ -3,9 +3,9 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   InteractionContextType,
-} = require('discord.js')
-const { SoundCloudPlugin } = require('@distube/soundcloud')
-const { catchError } = require('../../utils/consoleUtils')
+} = require("discord.js");
+const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
   permissions: [
@@ -14,9 +14,9 @@ module.exports = {
     PermissionFlagsBits.Speak,
   ],
   data: new SlashCommandBuilder()
-    .setName('search')
-    .setDescription('Search for the song or playlist you want.')
-    .setDescriptionLocalizations({ th: 'ค้นหาเพลงหรือเพลย์ลิสต์ที่คุณต้องการ' })
+    .setName("search")
+    .setDescription("Search for the song or playlist you want.")
+    .setDescriptionLocalizations({ th: "ค้นหาเพลงหรือเพลย์ลิสต์ที่คุณต้องการ" })
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
     .setContexts([
       InteractionContextType.Guild,
@@ -24,163 +24,165 @@ module.exports = {
     ])
     .addStringOption((option) =>
       option
-        .setName('song')
+        .setName("song")
         .setDescription(
-          'The name of the song or link of the song you want to search.'
+          "The name of the song or link of the song you want to search.",
         )
         .setDescriptionLocalizations({
-          th: 'ชื่อเพลงหรือลิงค์ของเพลงที่คุณต้องการค้นหา',
+          th: "ชื่อเพลงหรือลิงค์ของเพลงที่คุณต้องการค้นหา",
         })
-        .setRequired(true)
+        .setRequired(true),
     )
     .addStringOption((option) =>
       option
-        .setName('platform')
-        .setDescription('What platform would you like to use to find music?')
+        .setName("platform")
+        .setDescription("What platform would you like to use to find music?")
         .setDescriptionLocalizations({
-          th: 'คุณต้องการใช้แพลตฟอร์มใดเพื่อค้นหาเพลง?',
+          th: "คุณต้องการใช้แพลตฟอร์มใดเพื่อค้นหาเพลง?",
         })
         .setRequired(false)
         .addChoices(
-          { name: 'YouTube', value: 'youtube' },
-          { name: 'SoundCloud', value: 'soundcloud' }
-        )
+          { name: "YouTube", value: "youtube" },
+          { name: "SoundCloud", value: "soundcloud" },
+        ),
     )
     .addStringOption((option) =>
       option
-        .setName('type')
-        .setDescription('The type of list you want to search for.')
+        .setName("type")
+        .setDescription("The type of list you want to search for.")
         .setDescriptionLocalizations({
-          th: 'ประเภทของรายการที่คุณต้องการค้นหา?',
+          th: "ประเภทของรายการที่คุณต้องการค้นหา?",
         })
         .setRequired(false)
         .addChoices(
-          { name: 'Track / Video', value: 'track' },
-          { name: 'Playlist', value: 'playlist' }
-        )
+          { name: "Track / Video", value: "track" },
+          { name: "Playlist", value: "playlist" },
+        ),
     ),
   async execute(interaction) {
-    await interaction.deferReply()
+    await interaction.deferReply();
 
-    const inputSong = interaction.options.getString('song')
-    const inputPlatform = interaction.options.getString('platform') ?? ''
-    const inputType = interaction.options.getString('type') ?? ''
+    const inputSong = interaction.options.getString("song");
+    const inputPlatform = interaction.options.getString("platform") ?? "";
+    const inputType = interaction.options.getString("type") ?? "";
 
-    const limit = 10
-    const djs = interaction.client.configs.djs
-    const queue = interaction.client.player.getQueue(interaction)
-    const voiceChannel = interaction.member.voice.channel
-    const meChannel = interaction.guild.members.me.voice.channel
+    const limit = 10;
+    const djs = interaction.client.configs.djs;
+    const queue = interaction.client.player.getQueue(interaction);
+    const voiceChannel = interaction.member.voice.channel;
+    const meChannel = interaction.guild.members.me.voice.channel;
 
     const filter = (content) => {
-      const index = []
-      if (!content.content) return
-      if (content.author.id !== interaction.user.id) return
-      for (let i = 0; i < limit; i++) index.push((i + 1).toString())
-      return index.includes(content.content) || !index.includes(content.content)
-    }
+      const index = [];
+      if (!content.content) return;
+      if (content.author.id !== interaction.user.id) return;
+      for (let i = 0; i < limit; i++) index.push((i + 1).toString());
+      return (
+        index.includes(content.content) || !index.includes(content.content)
+      );
+    };
     const searcher = async (platform, results) => {
-      let index = 0
+      let index = 0;
       const data = results
         .map((song) => {
-          const name = song.name
+          const name = song.name;
           const uploaderName = song.uploader
             ? song.uploader.name
-              ? ' : **' + song.uploader.name + '**'
-              : ''
-            : ''
+              ? " : **" + song.uploader.name + "**"
+              : ""
+            : "";
           const formattedDuration = song.formattedDuration
-            ? '`' + song.formattedDuration + '`'
-            : ''
+            ? "`" + song.formattedDuration + "`"
+            : "";
           return (
-            '**' +
+            "**" +
             ++index +
-            '**' +
-            '. ' +
+            "**" +
+            ". " +
             name +
-            ' ' +
+            " " +
             formattedDuration +
             uploaderName
-          )
+          );
         })
-        .join('\n')
+        .join("\n");
 
-      const authorUsername = interaction.user.username
-      const authorAvatar = interaction.user.displayAvatarURL()
+      const authorUsername = interaction.user.username;
+      const authorAvatar = interaction.user.displayAvatarURL();
       const searchEmbed = new EmbedBuilder()
         .setTitle(
           interaction.client.i18n
-            .t('commands.search.searching')
+            .t("commands.search.searching")
             .replace(
-              '%s',
-              results[0].type === 'video' || results[0].type === 'track'
-                ? interaction.client.i18n.t('commands.search.song_type')
-                : interaction.client.i18n.t('commands.search.playlist_type')
-            )
+              "%s",
+              results[0].type === "video" || results[0].type === "track"
+                ? interaction.client.i18n.t("commands.search.song_type")
+                : interaction.client.i18n.t("commands.search.playlist_type"),
+            ),
         )
         .setDescription(
           interaction.client.i18n
-            .t('commands.search.timer_choose')
+            .t("commands.search.timer_choose")
             .replace(
-              '%s',
-              results[0].type === 'video' || results[0].type === 'track'
-                ? interaction.client.i18n.t('commands.search.song_type')
-                : interaction.client.i18n.t('commands.search.playlist_type')
-            )
+              "%s",
+              results[0].type === "video" || results[0].type === "track"
+                ? interaction.client.i18n.t("commands.search.song_type")
+                : interaction.client.i18n.t("commands.search.playlist_type"),
+            ),
         )
-        .setColor(platform === 'youtube' ? 13632027 : 16296490)
+        .setColor(platform === "youtube" ? 13632027 : 16296490)
         .setTimestamp()
         .setAuthor({
-          name: platform === 'youtube' ? 'YouTube' : 'SoundCloud',
+          name: platform === "youtube" ? "YouTube" : "SoundCloud",
           url:
-            platform === 'youtube'
-              ? 'https://www.youtube.com/'
-              : 'https://soundcloud.com/',
+            platform === "youtube"
+              ? "https://www.youtube.com/"
+              : "https://soundcloud.com/",
           iconURL:
-            platform === 'youtube'
-              ? 'https://www.youtube.com/s/desktop/6007d895/img/favicon_144x144.png'
-              : 'https://a-v2.sndcdn.com/assets/images/sc-icons/ios-a62dfc8fe7.png',
+            platform === "youtube"
+              ? "https://www.youtube.com/s/desktop/6007d895/img/favicon_144x144.png"
+              : "https://a-v2.sndcdn.com/assets/images/sc-icons/ios-a62dfc8fe7.png",
         })
         .setFooter({ text: authorUsername, iconURL: authorAvatar })
         .addFields([
           {
             name: interaction.client.i18n
-              .t('commands.search.title_results')
+              .t("commands.search.title_results")
               .replace(
-                '%s',
-                results[0].type === 'video' || results[0].type === 'track'
-                  ? interaction.client.i18n.t('commands.search.song_type')
-                  : interaction.client.i18n.t('commands.search.playlist_type')
+                "%s",
+                results[0].type === "video" || results[0].type === "track"
+                  ? interaction.client.i18n.t("commands.search.song_type")
+                  : interaction.client.i18n.t("commands.search.playlist_type"),
               ),
             value: data,
           },
-        ])
+        ]);
 
-      await interaction.editReply({ embeds: [searchEmbed] })
+      await interaction.editReply({ embeds: [searchEmbed] });
 
-      let collection
+      let collection;
 
       try {
         collection = await interaction.channel.awaitMessages({
           filter,
           max: 1,
           time: 60000,
-          errors: ['time'],
-        })
+          errors: ["time"],
+        });
       } catch (error) {
         await interaction.editReply({
           content: interaction.client.i18n.t(
-            'commands.search.search_cancelled'
+            "commands.search.search_cancelled",
           ),
           embeds: [],
-        })
+        });
       }
 
-      if (!collection) return
+      if (!collection) return;
 
-      const returnMessage = collection.first()
-      const contentNumber = parseInt(returnMessage.content)
-      const contentIndex = parseInt(returnMessage.content) - 1
+      const returnMessage = collection.first();
+      const contentNumber = parseInt(returnMessage.content);
+      const contentIndex = parseInt(returnMessage.content) - 1;
 
       if (
         !contentNumber ||
@@ -188,14 +190,14 @@ module.exports = {
         contentNumber > index
       )
         return await interaction.editReply({
-          content: interaction.client.i18n.t('commands.search.invalid_number'),
+          content: interaction.client.i18n.t("commands.search.invalid_number"),
           embeds: [],
-        })
+        });
 
       await interaction.editReply({
-        content: interaction.client.i18n.t('commands.search.get_list_of_songs'),
+        content: interaction.client.i18n.t("commands.search.get_list_of_songs"),
         embeds: [],
-      })
+      });
       try {
         await interaction.client.player.play(
           voiceChannel || meChannel,
@@ -204,34 +206,34 @@ module.exports = {
             member: interaction.member,
             message: false,
             textChannel: interaction.channel,
-          }
-        )
-        await interaction.deleteReply()
+          },
+        );
+        await interaction.deleteReply();
       } catch (error) {
-        if (error.message.includes('seconds'))
+        if (error.message.includes("seconds"))
           return await interaction.reply(
-            interaction.client.i18n.t('commands.search.can_not_connect')
-          )
-        if (error.message.includes('non-NSFW'))
+            interaction.client.i18n.t("commands.search.can_not_connect"),
+          );
+        if (error.message.includes("non-NSFW"))
           return await interaction.reply(
             interaction.client.i18n.t(
-              'commands.search.can_not_play_in_non_nsfw'
-            )
-          )
+              "commands.search.can_not_play_in_non_nsfw",
+            ),
+          );
         if (!queue && meChannel) {
-          const connection = interaction.client.player.voices.get(meChannel)
+          const connection = interaction.client.player.voices.get(meChannel);
 
-          connection.leave()
+          connection.leave();
         }
 
         catchError(
           interaction.client,
           interaction,
           module.exports.data.name,
-          error
-        )
+          error,
+        );
       }
-    }
+    };
 
     if (queue && djs.enable) {
       if (
@@ -239,114 +241,114 @@ module.exports = {
         queue.autoplay === false
       )
         return await interaction.reply(
-          interaction.client.i18n.t('commands.search.currently_playing')
-        )
+          interaction.client.i18n.t("commands.search.currently_playing"),
+        );
       if (
         djs.users.includes(interaction.user.id) &&
         djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id)
+          interaction.member.roles.cache.map((role) => role.id),
         ) &&
         djs.only
       )
         return await interaction.reply(
-          interaction.client.i18n.t('commands.search.not_a_dj')
-        )
+          interaction.client.i18n.t("commands.search.not_a_dj"),
+        );
     }
     if (!voiceChannel && !meChannel)
       return await interaction.editReply(
-        interaction.client.i18n.t('commands.search.user_not_in_channel')
-      )
+        interaction.client.i18n.t("commands.search.user_not_in_channel"),
+      );
     if (inputPlatform) {
       switch (inputPlatform) {
-        case 'youtube':
+        case "youtube":
           if (inputType) {
             try {
               const results = await interaction.client.player.search(
                 inputSong,
                 {
                   limit: limit,
-                  type: inputType === 'track' ? 'video' : inputType,
+                  type: inputType === "track" ? "video" : inputType,
                   safeSearch: true,
-                }
-              )
+                },
+              );
 
-              searcher(inputPlatform, results)
+              searcher(inputPlatform, results);
             } catch {
               await interaction.editReply(
-                interaction.client.i18n.t('commands.search.no_results')
-              )
+                interaction.client.i18n.t("commands.search.no_results"),
+              );
             }
           } else {
             try {
               const results = await interaction.client.player.search(
                 inputSong,
-                { limit: limit, safeSearch: true }
-              )
+                { limit: limit, safeSearch: true },
+              );
 
-              searcher(inputPlatform, results)
+              searcher(inputPlatform, results);
             } catch {
               await interaction.editReply(
-                interaction.client.i18n.t('commands.search.no_results')
-              )
+                interaction.client.i18n.t("commands.search.no_results"),
+              );
             }
           }
-          break
-        case 'soundcloud':
+          break;
+        case "soundcloud":
           if (inputType) {
             try {
               const results = await SoundCloudPlugin.search(
                 inputSong,
-                inputType
-              )
+                inputType,
+              );
 
-              searcher(inputPlatform, results)
+              searcher(inputPlatform, results);
             } catch {
               await interaction.editReply(
-                interaction.client.i18n.t('commands.search.no_results')
-              )
+                interaction.client.i18n.t("commands.search.no_results"),
+              );
             }
           } else {
             try {
-              const results = await SoundCloudPlugin.search(inputSong)
+              const results = await SoundCloudPlugin.search(inputSong);
 
-              searcher(inputPlatform, results)
+              searcher(inputPlatform, results);
             } catch {
               await interaction.editReply(
-                interaction.client.i18n.t('commands.search.no_results')
-              )
+                interaction.client.i18n.t("commands.search.no_results"),
+              );
             }
           }
-          break
+          break;
       }
     } else {
       if (inputType) {
         try {
           const results = await interaction.client.player.search(inputSong, {
             limit: limit,
-            type: inputType === 'track' ? 'video' : inputType,
+            type: inputType === "track" ? "video" : inputType,
             safeSearch: true,
-          })
+          });
 
-          searcher('youtube', results)
+          searcher("youtube", results);
         } catch {
           await interaction.editReply(
-            interaction.client.i18n.t('commands.search.no_results')
-          )
+            interaction.client.i18n.t("commands.search.no_results"),
+          );
         }
       } else {
         try {
           const results = await interaction.client.player.search(inputSong, {
             limit: limit,
             safeSearch: true,
-          })
+          });
 
-          searcher('youtube', results)
+          searcher("youtube", results);
         } catch {
           await interaction.editReply(
-            interaction.client.i18n.t('commands.search.no_results')
-          )
+            interaction.client.i18n.t("commands.search.no_results"),
+          );
         }
       }
     }
   },
-}
+};

@@ -2,8 +2,8 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   InteractionContextType,
-} = require('discord.js')
-const { catchError } = require('../../utils/consoleUtils')
+} = require("discord.js");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
   permissions: [
@@ -11,9 +11,9 @@ module.exports = {
     PermissionFlagsBits.AttachFiles,
   ],
   data: new SlashCommandBuilder()
-    .setName('random')
-    .setDescription('Randomize what you want')
-    .setDescriptionLocalizations({ th: 'สุ่มสิ่งที่ต้องการ' })
+    .setName("random")
+    .setDescription("Randomize what you want")
+    .setDescriptionLocalizations({ th: "สุ่มสิ่งที่ต้องการ" })
     .setDefaultMemberPermissions()
     .setContexts([
       InteractionContextType.BotDM,
@@ -22,176 +22,176 @@ module.exports = {
     ])
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('items')
-        .setDescription('Randomly select one of the items.')
-        .setDescriptionLocalizations({ th: 'สุ่มเลือกหนึ่งในรายการ' })
+        .setName("items")
+        .setDescription("Randomly select one of the items.")
+        .setDescriptionLocalizations({ th: "สุ่มเลือกหนึ่งในรายการ" })
         .addStringOption((option) =>
           option
-            .setName('item')
+            .setName("item")
             .setDescription('item separated by ","')
-            .setDescriptionLocalizations({ th: 'รายการคั่นด้วย ","' })
-        )
+            .setDescriptionLocalizations({ th: 'รายการคั่นด้วย ","' }),
+        ),
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('number')
-        .setDescription('Random number')
-        .setDescriptionLocalizations({ th: 'สุ่มตัวเลข' })
+        .setName("number")
+        .setDescription("Random number")
+        .setDescriptionLocalizations({ th: "สุ่มตัวเลข" })
         .addNumberOption((option) =>
           option
-            .setName('min')
-            .setDescription('The minimum number')
-            .setDescriptionLocalizations({ th: 'จำนวนขั้นต่ำ' })
-            .setRequired(true)
+            .setName("min")
+            .setDescription("The minimum number")
+            .setDescriptionLocalizations({ th: "จำนวนขั้นต่ำ" })
+            .setRequired(true),
         )
         .addNumberOption((option) =>
           option
-            .setName('max')
-            .setDescription('The maximum number')
-            .setDescriptionLocalizations({ th: 'จำนวนสูงสุด' })
-            .setRequired(true)
-        )
+            .setName("max")
+            .setDescription("The maximum number")
+            .setDescriptionLocalizations({ th: "จำนวนสูงสุด" })
+            .setRequired(true),
+        ),
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('image')
-        .setDescription('Randomly select the desired image.')
-        .setDescriptionLocalizations({ th: 'สุ่มภาพที่ต้องการ' })
+        .setName("image")
+        .setDescription("Randomly select the desired image.")
+        .setDescriptionLocalizations({ th: "สุ่มภาพที่ต้องการ" })
         .addNumberOption((option) =>
           option
-            .setName('width')
-            .setDescription('Image width size.')
-            .setDescriptionLocalizations({ th: 'ขนาดความกว้างของรูปภาพ' })
+            .setName("width")
+            .setDescription("Image width size.")
+            .setDescriptionLocalizations({ th: "ขนาดความกว้างของรูปภาพ" }),
         )
         .addNumberOption((option) =>
           option
-            .setName('height')
-            .setDescription('Image height size.')
-            .setDescriptionLocalizations({ th: 'ขนาดความสูงของรูปภาพ' })
+            .setName("height")
+            .setDescription("Image height size.")
+            .setDescriptionLocalizations({ th: "ขนาดความสูงของรูปภาพ" }),
         )
         .addNumberOption((option) =>
           option
-            .setName('amount')
-            .setDescription('Number of images required.')
-            .setDescriptionLocalizations({ th: 'จำนวนของรูปภาพที่ต้องการ' })
-            .setMinValue(1)
+            .setName("amount")
+            .setDescription("Number of images required.")
+            .setDescriptionLocalizations({ th: "จำนวนของรูปภาพที่ต้องการ" })
+            .setMinValue(1),
         )
         .addBooleanOption((option) =>
           option
-            .setName('grayscale')
-            .setDescription('Want the image to be in grayscale?')
+            .setName("grayscale")
+            .setDescription("Want the image to be in grayscale?")
             .setDescriptionLocalizations({
-              th: 'ต้องการให้รูปภาพเป็นแบบระดับสีเทาหรือไม่',
-            })
+              th: "ต้องการให้รูปภาพเป็นแบบระดับสีเทาหรือไม่",
+            }),
         )
         .addIntegerOption((option) =>
           option
-            .setName('blur')
-            .setDescription('Image height size.')
+            .setName("blur")
+            .setDescription("Image height size.")
             .setDescriptionLocalizations({
-              th: 'สามารถทำการเบลอรูปภาพได้ตามขนาด',
+              th: "สามารถทำการเบลอรูปภาพได้ตามขนาด",
             })
             .setMinValue(1)
-            .setMaxValue(10)
+            .setMaxValue(10),
         )
         .addStringOption((option) =>
           option
-            .setName('format')
-            .setDescription('Change the format of the image')
-            .setDescriptionLocalizations({ th: 'เปลี่ยนรูปแบบของภาพ' })
+            .setName("format")
+            .setDescription("Change the format of the image")
+            .setDescriptionLocalizations({ th: "เปลี่ยนรูปแบบของภาพ" })
             .addChoices(
-              { name: 'WebP', value: '.webp' },
-              { name: 'JPG', value: '.jpg' }
-            )
-        )
+              { name: "WebP", value: ".webp" },
+              { name: "JPG", value: ".jpg" },
+            ),
+        ),
     ),
   async execute(interaction) {
-    const subcommand = interaction.options.getSubcommand()
-    const inputItem = interaction.options.getString('item')
-    let inputMin = interaction.options.getNumber('min')
-    let inputMax = interaction.options.getNumber('max')
-    const inputWidth = interaction.options.getNumber('width') ?? 1920
-    const inputHeight = interaction.options.getNumber('height') ?? 1080
-    const inputAmount = interaction.options.getNumber('amount') ?? 1
-    const inputGrayscale = interaction.options.getBoolean('grayscale') ?? false
-    const inputBlur = interaction.options.getInteger('blur') ?? 0
-    const inputFormat = interaction.options.getString('format') ?? ''
+    const subcommand = interaction.options.getSubcommand();
+    const inputItem = interaction.options.getString("item");
+    let inputMin = interaction.options.getNumber("min");
+    let inputMax = interaction.options.getNumber("max");
+    const inputWidth = interaction.options.getNumber("width") ?? 1920;
+    const inputHeight = interaction.options.getNumber("height") ?? 1080;
+    const inputAmount = interaction.options.getNumber("amount") ?? 1;
+    const inputGrayscale = interaction.options.getBoolean("grayscale") ?? false;
+    const inputBlur = interaction.options.getInteger("blur") ?? 0;
+    const inputFormat = interaction.options.getString("format") ?? "";
 
     switch (subcommand) {
-      case 'items': {
-        const items = inputItem.split(',')
-        const result = items[Math.floor(Math.random() * items.length)]
+      case "items": {
+        const items = inputItem.split(",");
+        const result = items[Math.floor(Math.random() * items.length)];
 
         await interaction.reply(
-          interaction.client.i18n.t('commands.random.result', {
+          interaction.client.i18n.t("commands.random.result", {
             result: result,
-          })
-        )
-        break
+          }),
+        );
+        break;
       }
-      case 'number': {
+      case "number": {
         if (inputMin > inputMax) {
-          let temp = inputMax
-          inputMax = inputMin
-          inputMin = temp
+          let temp = inputMax;
+          inputMax = inputMin;
+          inputMin = temp;
         }
 
         const result =
-          Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin
+          Math.floor(Math.random() * (inputMax - inputMin + 1)) + inputMin;
 
         await interaction.reply(
-          interaction.client.i18n.t('commands.random.result', {
+          interaction.client.i18n.t("commands.random.result", {
             result: result,
-          })
-        )
-        break
+          }),
+        );
+        break;
       }
-      case 'image': {
-        await interaction.deferReply()
+      case "image": {
+        await interaction.deferReply();
 
-        const images = []
-        const endpoint = 'https://picsum.photos'
-        const sizePath = `/${inputWidth}/${inputHeight}`
-        const fileType = `${inputFormat}`
+        const images = [];
+        const endpoint = "https://picsum.photos";
+        const sizePath = `/${inputWidth}/${inputHeight}`;
+        const fileType = `${inputFormat}`;
 
         try {
           for (let i = 0; i < inputAmount; i++) {
             const options =
-              '?' +
+              "?" +
               [
                 `random=${i + 1}`,
-                inputGrayscale ? 'grayscale' : '',
-                inputBlur ? `blur=${inputBlur}` : '',
-              ].join('&')
+                inputGrayscale ? "grayscale" : "",
+                inputBlur ? `blur=${inputBlur}` : "",
+              ].join("&");
             const response = await fetch(
-              endpoint + sizePath + fileType + options
-            )
+              endpoint + sizePath + fileType + options,
+            );
 
-            if (response.status !== 200) return
+            if (response.status !== 200) return;
 
-            images.push(response.url)
+            images.push(response.url);
           }
 
-          await interaction.editReply({ files: images })
+          await interaction.editReply({ files: images });
         } catch (error) {
-          if (error.message.includes('Request aborted'))
+          if (error.message.includes("Request aborted"))
             return await interaction.editReply(
-              interaction.client.i18n.t('commands.random.request_aborted')
-            )
+              interaction.client.i18n.t("commands.random.request_aborted"),
+            );
 
           await interaction.editReply(
-            interaction.client.i18n.t('commands.random.request_error')
-          )
+            interaction.client.i18n.t("commands.random.request_error"),
+          );
           catchError(
             interaction.client,
             interaction,
             module.exports.data.name,
             error,
-            true
-          )
+            true,
+          );
         }
-        break
+        break;
       }
     }
   },
-}
+};

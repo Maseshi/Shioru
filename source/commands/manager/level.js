@@ -3,15 +3,15 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   InteractionContextType,
-} = require('discord.js')
-const { fetchLevel, submitNotification } = require('../../utils/databaseUtils')
+} = require("discord.js");
+const { fetchLevel, submitNotification } = require("../../utils/databaseUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('level')
-    .setDescription('Manage levels within the server.')
-    .setDescriptionLocalizations({ th: 'จัดการเลเวลภายในเซิร์ฟเวอร์' })
+    .setName("level")
+    .setDescription("Manage levels within the server.")
+    .setDescriptionLocalizations({ th: "จัดการเลเวลภายในเซิร์ฟเวอร์" })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild)
     .setContexts([
       InteractionContextType.Guild,
@@ -19,134 +19,134 @@ module.exports = {
     ])
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('set')
-        .setDescription('Set Level of Members')
-        .setDescriptionLocalizations({ th: 'ตั้งค่าค่าประสบการณ์ของสมาชิก' })
+        .setName("set")
+        .setDescription("Set Level of Members")
+        .setDescriptionLocalizations({ th: "ตั้งค่าค่าประสบการณ์ของสมาชิก" })
         .addUserOption((option) =>
           option
-            .setName('member')
+            .setName("member")
             .setDescription(
-              'The name of the member who wants to set the level value.'
+              "The name of the member who wants to set the level value.",
             )
             .setDescriptionLocalizations({
-              th: 'ชื่อของสมาชิกที่ต้องการกำหนดค่าเลเวล',
+              th: "ชื่อของสมาชิกที่ต้องการกำหนดค่าเลเวล",
             })
-            .setRequired(true)
+            .setRequired(true),
         )
         .addIntegerOption((option) =>
           option
-            .setName('amount')
-            .setDescription('The amount of level that you want to set.')
+            .setName("amount")
+            .setDescription("The amount of level that you want to set.")
             .setDescriptionLocalizations({
-              th: 'จำนวนเลเวลที่คุณต้องการตั้งค่า',
+              th: "จำนวนเลเวลที่คุณต้องการตั้งค่า",
             })
             .setRequired(true)
-            .setMinValue(0)
-        )
+            .setMinValue(0),
+        ),
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('delete')
-        .setDescription('Removing EXP and Level of members')
-        .setDescriptionLocalizations({ th: 'ลบ exp และเลเวลของสมาชิก' })
+        .setName("delete")
+        .setDescription("Removing EXP and Level of members")
+        .setDescriptionLocalizations({ th: "ลบ exp และเลเวลของสมาชิก" })
         .addUserOption((option) =>
           option
-            .setName('member')
-            .setDescription('Members you want to delete levels.')
-            .setDescriptionLocalizations({ th: 'สมาชิกที่คุณต้องการลบระดับ' })
-            .setRequired(true)
-        )
+            .setName("member")
+            .setDescription("Members you want to delete levels.")
+            .setDescriptionLocalizations({ th: "สมาชิกที่คุณต้องการลบระดับ" })
+            .setRequired(true),
+        ),
     ),
   async execute(interaction) {
-    const subcommand = interaction.options.getSubcommand()
-    const inputMember = interaction.options.getMember('member') ?? ''
-    const inputAmount = interaction.options.getNumber('amount') ?? 0
+    const subcommand = interaction.options.getSubcommand();
+    const inputMember = interaction.options.getMember("member") ?? "";
+    const inputAmount = interaction.options.getNumber("amount") ?? 0;
 
     switch (subcommand) {
-      case 'set': {
-        const memberAvatar = inputMember.avatarURL()
-        const memberUsername = inputMember.username
+      case "set": {
+        const memberAvatar = inputMember.avatarURL();
+        const memberUsername = inputMember.username;
         const setLevelEmbed = new EmbedBuilder()
           .setDescription(
             interaction.client.i18n
-              .t('commands.level.level_was_changed')
-              .replace('%s', memberUsername)
+              .t("commands.level.level_was_changed")
+              .replace("%s", memberUsername),
           )
-          .setColor('Blue')
+          .setColor("Blue")
           .setThumbnail(memberAvatar)
           .setFooter({
-            text: interaction.client.i18n.t('commands.level.set_by_staff'),
+            text: interaction.client.i18n.t("commands.level.set_by_staff"),
           })
           .addFields([
             {
-              name: interaction.client.i18n.t('commands.level.level'),
-              value: '```' + exp + '```',
+              name: interaction.client.i18n.t("commands.level.level"),
+              value: "```" + exp + "```",
             },
             {
-              name: interaction.client.i18n.t('commands.level.experience'),
-              value: '```' + level + '```',
+              name: interaction.client.i18n.t("commands.level.experience"),
+              value: "```" + level + "```",
             },
-          ])
+          ]);
 
-        const data = await fetchLevel(interaction.client, interaction, 'PUT', {
+        const data = await fetchLevel(interaction.client, interaction, "PUT", {
           member: inputMember,
           amount: inputAmount,
-          type: 'level',
-        })
-        const exp = data.exp
-        const level = data.level
-        const status = data.status
+          type: "level",
+        });
+        const exp = data.exp;
+        const level = data.level;
+        const status = data.status;
 
-        if (status === 'error')
+        if (status === "error")
           return await interaction.reply(
-            interaction.client.i18n.t('commands.level.set_error')
-          )
+            interaction.client.i18n.t("commands.level.set_error"),
+          );
 
         const notified = submitNotification(
           interaction.client,
           interaction.guild,
-          'general',
-          setLevelEmbed
-        )
+          "general",
+          setLevelEmbed,
+        );
 
         if (notified) {
           await interaction.reply(
-            interaction.client.i18n.t('commands.level.notification_complete')
-          )
+            interaction.client.i18n.t("commands.level.notification_complete"),
+          );
         } else {
           await interaction.reply(
-            interaction.client.i18n.t('commands.level.set_success')
-          )
+            interaction.client.i18n.t("commands.level.set_success"),
+          );
         }
-        break
+        break;
       }
-      case 'delete': {
+      case "delete": {
         await interaction.reply(
-          interaction.client.i18n.t('commands.level.deleting')
-        )
+          interaction.client.i18n.t("commands.level.deleting"),
+        );
 
         const data = await fetchLevel(
           interaction.client,
           interaction,
-          'DELETE',
-          { member: inputMember }
-        )
-        const status = data.status
+          "DELETE",
+          { member: inputMember },
+        );
+        const status = data.status;
 
-        if (status === 'missing')
+        if (status === "missing")
           return await interaction.editReply(
-            interaction.client.i18n.t('commands.level.user_current_no_level')
-          )
-        if (status === 'success')
+            interaction.client.i18n.t("commands.level.user_current_no_level"),
+          );
+        if (status === "success")
           return await interaction.editReply(
-            interaction.client.i18n.t('commands.level.delete_success')
-          )
-        if (status === 'error')
+            interaction.client.i18n.t("commands.level.delete_success"),
+          );
+        if (status === "error")
           return await interaction.editReply(
-            interaction.client.i18n.t('commands.level.delete_error')
-          )
-        break
+            interaction.client.i18n.t("commands.level.delete_error"),
+          );
+        break;
       }
     }
   },
-}
+};

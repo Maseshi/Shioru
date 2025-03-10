@@ -2,7 +2,7 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   InteractionContextType,
-} = require('discord.js')
+} = require("discord.js");
 
 module.exports = {
   permissions: [
@@ -10,9 +10,9 @@ module.exports = {
     PermissionFlagsBits.SendTTSMessages,
   ],
   data: new SlashCommandBuilder()
-    .setName('tts')
-    .setDescription('Text-to-Speech')
-    .setDescriptionLocalizations({ th: 'แปลงข้อความเป็นคำพูด' })
+    .setName("tts")
+    .setDescription("Text-to-Speech")
+    .setDescriptionLocalizations({ th: "แปลงข้อความเป็นคำพูด" })
     .setDefaultMemberPermissions(PermissionFlagsBits.SendTTSMessages)
     .setContexts([
       InteractionContextType.BotDM,
@@ -21,14 +21,14 @@ module.exports = {
     ])
     .addStringOption((option) =>
       option
-        .setName('content')
-        .setDescription('Text to be converted to speech.')
-        .setDescriptionLocalizations({ th: 'ข้อความที่ต้องการจะแปลงเป็นคำพูด' })
-        .setRequired(true)
+        .setName("content")
+        .setDescription("Text to be converted to speech.")
+        .setDescriptionLocalizations({ th: "ข้อความที่ต้องการจะแปลงเป็นคำพูด" })
+        .setRequired(true),
     ),
   async execute(interaction) {
-    const inputContent = interaction.options.getString('content')
+    const inputContent = interaction.options.getString("content");
 
-    await interaction.reply({ content: inputContent, tts: true })
+    await interaction.reply({ content: inputContent, tts: true });
   },
-}
+};

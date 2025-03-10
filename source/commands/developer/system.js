@@ -5,16 +5,16 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
-} = require('discord.js')
-const { get } = require('systeminformation')
-const packages = require('../../../package.json')
+} = require("discord.js");
+const { get } = require("systeminformation");
+const packages = require("../../../package.json");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
-    .setName('system')
-    .setDescription('Manage the operation of home systems')
-    .setDescriptionLocalizations({ th: 'จัดการการทำงานของระบบภายในบ้าน' })
+    .setName("system")
+    .setDescription("Manage the operation of home systems")
+    .setDescriptionLocalizations({ th: "จัดการการทำงานของระบบภายในบ้าน" })
     .setDefaultMemberPermissions()
     .setContexts([
       InteractionContextType.BotDM,
@@ -23,281 +23,281 @@ module.exports = {
     ])
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('information')
-        .setDescription('Get system operating status and more')
-        .setDescriptionLocalizations({ th: 'รับสถานะการทำงานของระบบและอื่น' })
+        .setName("information")
+        .setDescription("Get system operating status and more")
+        .setDescriptionLocalizations({ th: "รับสถานะการทำงานของระบบและอื่น" }),
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('reboot')
-        .setDescription('Restart to working again')
-        .setDescriptionLocalizations({ th: 'เริ่มต้นการทำงานใหม่' })
+        .setName("reboot")
+        .setDescription("Restart to working again")
+        .setDescriptionLocalizations({ th: "เริ่มต้นการทำงานใหม่" }),
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName('shutdown')
-        .setDescription('Stop to working')
-        .setDescriptionLocalizations({ th: 'หยุดการทำงาน' })
+        .setName("shutdown")
+        .setDescription("Stop to working")
+        .setDescriptionLocalizations({ th: "หยุดการทำงาน" }),
     ),
   async execute(interaction) {
-    const subcommand = interaction.options.getSubcommand()
+    const subcommand = interaction.options.getSubcommand();
 
-    const teamOwner = interaction.client.configs.team.owner
-    const teamDev = interaction.client.configs.team.developer
+    const teamOwner = interaction.client.configs.team.owner;
+    const teamDev = interaction.client.configs.team.developer;
 
     switch (subcommand) {
-      case 'information': {
+      case "information": {
         await interaction.reply(
-          interaction.client.i18n.t('commands.system.loading')
-        )
+          interaction.client.i18n.t("commands.system.loading"),
+        );
 
         const data = await get({
-          time: 'uptime',
-          system: 'manufacturer, model',
-          bios: 'vendor, version, releaseDate',
-          cpu: 'manufacturer, brand, speed, cores, physicalCores',
-          cpuTemperature: 'main',
-          mem: 'total, used',
-          graphics: 'controllers, displays',
-          osInfo: 'platform, arch',
-          vboxInfo: 'id, name, running, runningSince, guestOS, memory, cpus',
-        })
+          time: "uptime",
+          system: "manufacturer, model",
+          bios: "vendor, version, releaseDate",
+          cpu: "manufacturer, brand, speed, cores, physicalCores",
+          cpuTemperature: "main",
+          mem: "total, used",
+          graphics: "controllers, displays",
+          osInfo: "platform, arch",
+          vboxInfo: "id, name, running, runningSince, guestOS, memory, cpus",
+        });
 
         // Uptime
-        const serverSeconds = data.time.uptime
-        const serverDays = Math.floor(serverSeconds / (3600 * 24))
-        const serverHours = Math.floor((serverSeconds % (3600 * 24)) / 3600)
+        const serverSeconds = data.time.uptime;
+        const serverDays = Math.floor(serverSeconds / (3600 * 24));
+        const serverHours = Math.floor((serverSeconds % (3600 * 24)) / 3600);
 
         // System
-        const systemManufacturer = data.system.manufacturer
-        const systemModel = data.system.model
+        const systemManufacturer = data.system.manufacturer;
+        const systemModel = data.system.model;
 
         // BIOS
-        const biosVendor = data.bios.vendor
-        const biosVersion = data.bios.version
-        const biosReleaseDate = data.bios.releaseDate
+        const biosVendor = data.bios.vendor;
+        const biosVersion = data.bios.version;
+        const biosReleaseDate = data.bios.releaseDate;
 
         // CPU
-        const cpuManufacturer = data.cpu.manufacturer
-        const cpuBrand = data.cpu.brand
-        const cpuSpeed = data.cpu.speed
-        const cpuCores = data.cpu.cores
-        const cpuPhysicalCores = data.cpu.physicalCores
+        const cpuManufacturer = data.cpu.manufacturer;
+        const cpuBrand = data.cpu.brand;
+        const cpuSpeed = data.cpu.speed;
+        const cpuCores = data.cpu.cores;
+        const cpuPhysicalCores = data.cpu.physicalCores;
 
         // CPU Temperature
-        const cpuTempMain = data.cpuTemperature.main
+        const cpuTempMain = data.cpuTemperature.main;
 
         // Memory
-        const memUsed = (data.mem.used / 1024 / 1024).toFixed(2)
-        const memTotal = (data.mem.total / 1024 / 1024).toFixed(2)
+        const memUsed = (data.mem.used / 1024 / 1024).toFixed(2);
+        const memTotal = (data.mem.total / 1024 / 1024).toFixed(2);
 
         // Graphics Controllers
-        let gpuMain = ''
-        const gpuControllers = data.graphics.controllers
+        let gpuMain = "";
+        const gpuControllers = data.graphics.controllers;
         if (gpuControllers.length) {
           for (const gpuController of gpuControllers) {
-            const gpuMainModel = gpuController.model
-            const gpuMainFanSpeed = gpuController.fanSpeed
-            const gpuMainMemoryTotal = gpuController.memoryTotal
-            const gpuMainMemoryUsed = gpuController.memoryUsed
-            const gpuMainTemperatureGpu = gpuController.temperatureGpu
+            const gpuMainModel = gpuController.model;
+            const gpuMainFanSpeed = gpuController.fanSpeed;
+            const gpuMainMemoryTotal = gpuController.memoryTotal;
+            const gpuMainMemoryUsed = gpuController.memoryUsed;
+            const gpuMainTemperatureGpu = gpuController.temperatureGpu;
 
             gpuMain +=
-              '```' +
+              "```" +
               `${gpuMainModel}, ` +
               (gpuMainMemoryUsed
                 ? gpuMainMemoryTotal
                   ? `${gpuMainMemoryUsed}/${gpuMainMemoryTotal}MB`
-                  : ''
-                : '') +
-              (gpuMainFanSpeed ? gpuMainFanSpeed + ' ' : '') +
-              (gpuMainTemperatureGpu ?? '') +
-              '```'
+                  : ""
+                : "") +
+              (gpuMainFanSpeed ? gpuMainFanSpeed + " " : "") +
+              (gpuMainTemperatureGpu ?? "") +
+              "```";
           }
         }
 
         // Graphics Displays
-        let gpuSecond = ''
-        const gpuDisplays = data.graphics.displays
+        let gpuSecond = "";
+        const gpuDisplays = data.graphics.displays;
         for (const gpuDisplay of gpuDisplays) {
-          const gpuSecondModel = gpuDisplay.model
-          const gpuSecondMain = gpuDisplay.main
+          const gpuSecondModel = gpuDisplay.model;
+          const gpuSecondMain = gpuDisplay.main;
 
           gpuSecond +=
-            '```' +
+            "```" +
             `${gpuSecondModel}, ` +
             (gpuSecondMain
-              ? interaction.client.i18n.t('commands.system.main')
-              : '') +
-            '```'
+              ? interaction.client.i18n.t("commands.system.main")
+              : "") +
+            "```";
         }
 
         // Operating System
-        const osPlatform = data.osInfo.platform
-        const osArch = data.osInfo.arch
+        const osPlatform = data.osInfo.platform;
+        const osArch = data.osInfo.arch;
 
-        const clientAvatar = interaction.client.user.displayAvatarURL()
-        const clientUsername = interaction.client.user.username
+        const clientAvatar = interaction.client.user.displayAvatarURL();
+        const clientUsername = interaction.client.user.username;
         const systemEmbed = new EmbedBuilder()
           .setColor(Colors.Blue)
           .setAuthor({ iconURL: clientAvatar, name: clientUsername })
-          .setTitle(interaction.client.i18n.t('commands.system.info_title'))
+          .setTitle(interaction.client.i18n.t("commands.system.info_title"))
           .setDescription(
-            interaction.client.i18n.t('commands.system.info_description')
+            interaction.client.i18n.t("commands.system.info_description"),
           )
           .addFields([
             {
-              name: '• Package',
-              value: '```' + `v${packages.version}` + '```',
+              name: "• Package",
+              value: "```" + `v${packages.version}` + "```",
               inline: true,
             },
             {
-              name: '• Discord.js',
-              value: '```' + `v${version}` + '```',
+              name: "• Discord.js",
+              value: "```" + `v${version}` + "```",
               inline: true,
             },
             {
-              name: '• Node.js',
-              value: '```' + process.version + '```',
+              name: "• Node.js",
+              value: "```" + process.version + "```",
               inline: true,
             },
             {
-              name: interaction.client.i18n.t('commands.system.info_uptime'),
+              name: interaction.client.i18n.t("commands.system.info_uptime"),
               value:
-                '```' +
-                interaction.client.i18n.t('commands.system.info_uptime_info', {
+                "```" +
+                interaction.client.i18n.t("commands.system.info_uptime_info", {
                   day: serverDays,
                   hours: serverHours,
                 }) +
-                '```',
+                "```",
               inline: true,
             },
             {
-              name: interaction.client.i18n.t('commands.system.info_system'),
+              name: interaction.client.i18n.t("commands.system.info_system"),
               value:
-                '```' +
+                "```" +
                 (systemManufacturer
                   ? `${systemManufacturer} ${systemModel}`
-                  : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  : interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
             {
-              name: '• BIOS',
+              name: "• BIOS",
               value:
-                '```' +
+                "```" +
                 (biosVendor
                   ? `${biosVendor} ${biosVersion}, ${biosReleaseDate}`
-                  : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  : interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
             {
-              name: '• CPU',
+              name: "• CPU",
               value:
-                '```' +
+                "```" +
                 (cpuManufacturer
                   ? `${cpuManufacturer} ${cpuBrand}, ${cpuSpeed}GHz ${cpuCores} Cores ${cpuPhysicalCores} Trades`
-                  : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  : interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
             {
               name: interaction.client.i18n.t(
-                'commands.system.info_temperature'
+                "commands.system.info_temperature",
               ),
               value:
-                '```' +
+                "```" +
                 (cpuTempMain ??
-                  interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
             {
               name: interaction.client.i18n.t(
-                'commands.system.info_memory_used'
+                "commands.system.info_memory_used",
               ),
               value:
-                '```' +
+                "```" +
                 (memUsed && memTotal
                   ? `${memUsed} / ${memTotal}MB`
-                  : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  : interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
             {
               name: interaction.client.i18n.t(
-                'commands.system.info_gpu_control'
+                "commands.system.info_gpu_control",
               ),
               value:
                 gpuMain ||
-                '```' +
-                  interaction.client.i18n.t('commands.system.unknown') +
-                  '```',
+                "```" +
+                  interaction.client.i18n.t("commands.system.unknown") +
+                  "```",
               inline: true,
             },
             {
               name: interaction.client.i18n.t(
-                'commands.system.info_gpu_display'
+                "commands.system.info_gpu_display",
               ),
               value:
                 gpuSecond ||
-                '```' +
-                  interaction.client.i18n.t('commands.system.unknown') +
-                  '```',
+                "```" +
+                  interaction.client.i18n.t("commands.system.unknown") +
+                  "```",
               inline: true,
             },
             {
-              name: interaction.client.i18n.t('commands.system.info_platform'),
+              name: interaction.client.i18n.t("commands.system.info_platform"),
               value:
-                '```' +
+                "```" +
                 (osPlatform
                   ? `${osPlatform} ${osArch}`
-                  : interaction.client.i18n.t('commands.system.unknown')) +
-                '```',
+                  : interaction.client.i18n.t("commands.system.unknown")) +
+                "```",
               inline: true,
             },
-          ])
+          ]);
 
-        await interaction.editReply({ content: null, embeds: [systemEmbed] })
-        break
+        await interaction.editReply({ content: null, embeds: [systemEmbed] });
+        break;
       }
-      case 'reboot': {
+      case "reboot": {
         if (
           interaction.user.id !== teamOwner &&
           !teamDev.includes(interaction.user.id)
         )
           return await interaction.reply(
-            interaction.client.i18n.t('commands.system.not_owner')
-          )
+            interaction.client.i18n.t("commands.system.not_owner"),
+          );
 
         await interaction.reply(
-          interaction.client.i18n.t('commands.system.rebooting')
-        )
-        await interaction.client.destroy()
-        await interaction.client.login(interaction.client.configs.token)
+          interaction.client.i18n.t("commands.system.rebooting"),
+        );
+        await interaction.client.destroy();
+        await interaction.client.login(interaction.client.configs.token);
         await interaction.editReply(
-          interaction.client.i18n.t('commands.system.now_reboot')
-        )
-        break
+          interaction.client.i18n.t("commands.system.now_reboot"),
+        );
+        break;
       }
-      case 'shutdown': {
+      case "shutdown": {
         if (interaction.user.id !== teamOwner)
           return await interaction.reply(
-            interaction.client.i18n.t('commands.system.not_owner')
-          )
+            interaction.client.i18n.t("commands.system.not_owner"),
+          );
 
         await interaction.reply(
-          interaction.client.i18n.t('commands.system.shutting_down')
-        )
-        await interaction.client.destroy()
+          interaction.client.i18n.t("commands.system.shutting_down"),
+        );
+        await interaction.client.destroy();
         await interaction.editReply(
-          interaction.client.i18n.t('commands.system.now_shutdown')
-        )
+          interaction.client.i18n.t("commands.system.now_shutdown"),
+        );
 
-        process.exit()
-        break
+        process.exit();
+        break;
       }
     }
   },
-}
+};
