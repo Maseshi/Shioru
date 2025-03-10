@@ -4,18 +4,18 @@ const { logger } = require("../utils/consoleUtils");
 const configs = require("../configs/data");
 
 module.exports = {
-  name: Events.Warn,
-  once: false,
-  execute(info) {
-    const webhookLogEmbed = new EmbedBuilder()
-      .setTimestamp()
-      .setColor(Colors.Orange)
-      .setTitle("📜・Warn")
-      .setDescription(`\`\`\`${info}\`\`\``);
+	name: Events.Warn,
+	once: false,
+	execute(info) {
+		const webhookLogEmbed = new EmbedBuilder()
+			.setTimestamp()
+			.setColor(Colors.Orange)
+			.setTitle("📜・Warn")
+			.setDescription(`\`\`\`${info}\`\`\``);
 
-    webhookSend(configs.logger.warn, {
-      embeds: [webhookLogEmbed],
-    });
-    logger.warn(info);
-  },
+		webhookSend(configs.logger.warn, {
+			embeds: [webhookLogEmbed],
+		});
+		logger.warn(info);
+	},
 };
