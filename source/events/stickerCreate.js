@@ -1,5 +1,8 @@
-const { Events, EmbedBuilder, StickerFormatType } = require('discord.js')
-const { submitNotification, initializeData } = require('../utils/databaseUtils')
+const { Events, EmbedBuilder, StickerFormatType } = require("discord.js");
+const {
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildStickerCreate,
@@ -7,25 +10,25 @@ module.exports = {
   async execute(sticker) {
     const stickerCreateEmbed = new EmbedBuilder()
       .setTitle(
-        sticker.client.i18n.t('events.stickerCreate.sticker_notification')
+        sticker.client.i18n.t("events.stickerCreate.sticker_notification"),
       )
       .setDescription(
         sticker.client.i18n
-          .t('events.stickerCreate.sticker_create')
-          .replace('%s', sticker.name)
+          .t("events.stickerCreate.sticker_create")
+          .replace("%s", sticker.name),
       )
       .setThumbnail(
-        sticker.format !== StickerFormatType.Lottie ? sticker.url : ''
+        sticker.format !== StickerFormatType.Lottie ? sticker.url : "",
       )
       .setTimestamp()
-      .setColor('Yellow')
+      .setColor("Yellow");
 
-    await initializeData(sticker.client, sticker.guild)
+    await initializeData(sticker.client, sticker.guild);
     await submitNotification(
       sticker.client,
       sticker.guild,
       Events.GuildStickerCreate,
-      stickerCreateEmbed
-    )
+      stickerCreateEmbed,
+    );
   },
-}
+};
