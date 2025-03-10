@@ -5,18 +5,18 @@
  * It is recommended to look at the .env or .env.example files
  * to understand these values.
  */
-const constants = require('./constants.json')
-const emulators = require('./emulators.json')
-const filters = require('./filters.json')
-const logger = require('./logger.json')
-const notification = require('./notification')
-const translation = require('./translation')
+const constants = require("./constants.json");
+const emulators = require("./emulators.json");
+const filters = require("./filters.json");
+const logger = require("./logger.json");
+const notification = require("./notification");
+const translation = require("./translation");
 
 module.exports = {
   // Check bot updates from Github.
   check_update: {
     enable: true,
-    releases_url: 'https://api.github.com/repos/Maseshi/Shioru/releases/latest',
+    releases_url: "https://api.github.com/repos/Maseshi/Shioru/releases/latest",
   },
 
   // The default for processing responses in chat.
@@ -45,9 +45,9 @@ module.exports = {
 
   // For checking performance.
   monitoring: {
-    apiKey: process.env.MONITOR_API_KEY ?? '',
-    metricId: process.env.MONITOR_METRIC_ID ?? '',
-    pageId: process.env.MONITOR_PAGE_ID ?? '',
+    apiKey: process.env.MONITOR_API_KEY ?? "",
+    metricId: process.env.MONITOR_METRIC_ID ?? "",
+    pageId: process.env.MONITOR_PAGE_ID ?? "",
   },
 
   // Support notification alert
@@ -55,25 +55,25 @@ module.exports = {
 
   // Setup OpenAI
   openai: {
-    apiKey: process.env.OPENAI_API_KEY ?? '',
-    baseURL: process.env.OPENAI_BASE_URL ?? 'https://api.openai.com',
-    organization: process.env.OPENAI_ORGANIZATION ?? '',
-    project: process.env.OPENAI_PROJECT ?? '',
+    apiKey: process.env.OPENAI_API_KEY ?? "",
+    baseURL: process.env.OPENAI_BASE_URL ?? "https://api.openai.com",
+    organization: process.env.OPENAI_ORGANIZATION ?? "",
+    project: process.env.OPENAI_PROJECT ?? "",
   },
 
   // Setup Open Weather
-  open_weather_token: process.env.OPEN_WEATHER_TOKEN ?? '',
+  open_weather_token: process.env.OPEN_WEATHER_TOKEN ?? "",
 
   // We use Firebase to deploy databases to the system.
   server: {
-    apiKey: process.env.API_KEY ?? '',
-    authDomain: process.env.AUTH_DOMAIN ?? '',
-    databaseURL: process.env.DATABASE_URL ?? '',
-    projectId: process.env.PROJECT_ID ?? '',
-    storageBucket: process.env.STORAGE_BUCKET ?? '',
-    messagingSenderId: process.env.MESSAGING_SENDER_ID ?? '',
-    appId: process.env.APP_ID ?? '',
-    measurementId: process.env.MEASUREMENT_ID ?? '',
+    apiKey: process.env.API_KEY ?? "",
+    authDomain: process.env.AUTH_DOMAIN ?? "",
+    databaseURL: process.env.DATABASE_URL ?? "",
+    projectId: process.env.PROJECT_ID ?? "",
+    storageBucket: process.env.STORAGE_BUCKET ?? "",
+    messagingSenderId: process.env.MESSAGING_SENDER_ID ?? "",
+    appId: process.env.APP_ID ?? "",
+    measurementId: process.env.MEASUREMENT_ID ?? "",
   },
 
   // Discord ID of the team.
@@ -85,21 +85,21 @@ module.exports = {
     ],
 
     // For use in processing suspicious requests.
-    owner: '618836889239158785',
+    owner: "618836889239158785",
   },
 
   // For setting application commands in test mode.
-  test_guild: '1041689622897508372',
+  test_guild: "1041689622897508372",
 
   // The bot token, which can be found on the Discord Developer page.
-  token: process.env.TOKEN ?? '',
+  token: process.env.TOKEN ?? "",
 
   // Setup Top.gg
-  top_gg_token: process.env.TOP_GG_TOKEN ?? '',
+  top_gg_token: process.env.TOP_GG_TOKEN ?? "",
 
   // Translation support locales
   translation: {
-    baseURL: process.env.TRANSLATION_BASE_URL ?? '',
+    baseURL: process.env.TRANSLATION_BASE_URL ?? "",
     locales: translation,
   },
-}
+};

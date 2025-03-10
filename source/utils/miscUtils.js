@@ -9,24 +9,24 @@
  */
 const currencyFormatter = (number, digits) => {
   const lookup = [
-    { value: 1, symbol: '' },
-    { value: 1e3, symbol: 'k' },
-    { value: 1e6, symbol: 'M' },
-    { value: 1e9, symbol: 'G' },
-    { value: 1e12, symbol: 'T' },
-    { value: 1e15, symbol: 'P' },
-    { value: 1e18, symbol: 'E' },
-  ]
-  const regex = /\.0+$|(\.[0-9]*[1-9])0+$/
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" },
+  ];
+  const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
   const item = lookup
     .slice()
     .reverse()
-    .find((item) => number >= item.value)
+    .find((item) => number >= item.value);
 
   return item
-    ? (number / item.value).toFixed(digits).replace(regex, '$1') + item.symbol
-    : '0'
-}
+    ? (number / item.value).toFixed(digits).replace(regex, "$1") + item.symbol
+    : "0";
+};
 
 /**
  * Checks if a given string contains a valid URL.
@@ -36,9 +36,9 @@ const currencyFormatter = (number, digits) => {
  */
 const containsURL = (string) => {
   return string.test(
-    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
-  )
-}
+    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi,
+  );
+};
 
 /**
  * Returns an array of emotes found in the given string.
@@ -47,8 +47,8 @@ const containsURL = (string) => {
  * @returns {Array} - An array of emotes found in the string.
  */
 const matchEmotes = (string) => {
-  return string.match(/<a?:.+?:\d+>|\p{Extended_Pictographic}/gu)
-}
+  return string.match(/<a?:.+?:\d+>|\p{Extended_Pictographic}/gu);
+};
 
 /**
  * Returns a string by joining the input strings with newline characters.
@@ -57,8 +57,8 @@ const matchEmotes = (string) => {
  * @returns {string} - A string formed by joining the input strings with newline characters.
  */
 const newLines = (...string) => {
-  return string.join('\n')
-}
+  return string.join("\n");
+};
 
 /**
  * Generates a new title by capitalizing the first letter of each word in the input string.
@@ -69,9 +69,9 @@ const newLines = (...string) => {
 const newTitle = (string) => {
   return string.replaceAll(
     /\w\S*/g,
-    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase()
-  )
-}
+    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase(),
+  );
+};
 
 /**
  * Generates a new ID by converting the input string to lowercase and replacing certain characters with hyphens.
@@ -80,8 +80,8 @@ const newTitle = (string) => {
  * @returns {string} - The new ID generated from the input string.
  */
 const newID = (string) => {
-  return string.toLowerCase().replaceAll(/([[\]{}_.:-])\s?/g, '-')
-}
+  return string.toLowerCase().replaceAll(/([[\]{}_.:-])\s?/g, "-");
+};
 
 module.exports = {
   currencyFormatter,
@@ -90,4 +90,4 @@ module.exports = {
   newLines,
   newTitle,
   newID,
-}
+};

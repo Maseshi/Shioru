@@ -1,7 +1,7 @@
-const { Events, EmbedBuilder, Colors } = require('discord.js')
-const { webhookSend } = require('../utils/clientUtils')
-const { logger } = require('../utils/consoleUtils')
-const configs = require('../configs/data')
+const { Events, EmbedBuilder, Colors } = require("discord.js");
+const { webhookSend } = require("../utils/clientUtils");
+const { logger } = require("../utils/consoleUtils");
+const configs = require("../configs/data");
 
 module.exports = {
   name: Events.Warn,
@@ -10,12 +10,12 @@ module.exports = {
     const webhookLogEmbed = new EmbedBuilder()
       .setTimestamp()
       .setColor(Colors.Orange)
-      .setTitle('📜・Warn')
-      .setDescription(`\`\`\`${info}\`\`\``)
+      .setTitle("📜・Warn")
+      .setDescription(`\`\`\`${info}\`\`\``);
 
     webhookSend(configs.logger.warn, {
       embeds: [webhookLogEmbed],
-    })
-    logger.warn(info)
+    });
+    logger.warn(info);
   },
-}
+};

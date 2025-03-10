@@ -1,5 +1,8 @@
-const { Events, EmbedBuilder } = require('discord.js')
-const { submitNotification, initializeData } = require('../utils/databaseUtils')
+const { Events, EmbedBuilder } = require("discord.js");
+const {
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.ChannelCreate,
@@ -7,22 +10,22 @@ module.exports = {
   async execute(channel) {
     const channelCreateEmbed = new EmbedBuilder()
       .setTitle(
-        channel.client.i18n.t('events.channelCreate.channel_notification')
+        channel.client.i18n.t("events.channelCreate.channel_notification"),
       )
       .setDescription(
         channel.client.i18n
-          .t('events.channelCreate.member_create_channel')
-          .replace('%s', channel.id)
+          .t("events.channelCreate.member_create_channel")
+          .replace("%s", channel.id),
       )
       .setTimestamp()
-      .setColor('Yellow')
+      .setColor("Yellow");
 
-    await initializeData(channel.client, channel.guild)
+    await initializeData(channel.client, channel.guild);
     await submitNotification(
       channel.client,
       channel.guild,
       Events.ChannelCreate,
-      channelCreateEmbed
-    )
+      channelCreateEmbed,
+    );
   },
-}
+};
