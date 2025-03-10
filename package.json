@@ -1,88 +1,85 @@
 {
-  "name": "shioru",
-  "version": "3.6.5",
-  "description": "Assistants within your Discord server will help make your server a better place to live.",
-  "homepage": "https://github.com/Maseshi/Shioru#readme",
-  "bugs": {
-    "url": "https://github.com/Maseshi/Shioru/issues",
-    "email": "dermhioasw123@gmail.com"
-  },
-  "license": "(MIT OR CC0-1.0)",
-  "author": {
-    "name": "Maseshi",
-    "email": "dermhioasw123@gmail.com",
-    "url": "https://maseshi.web.app/"
-  },
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/Maseshi"
-    },
-    {
-      "type": "patreon",
-      "url": "https://www.patreon.com/maseshi"
-    }
-  ],
-  "main": "./source/main.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Maseshi/Shioru.git"
-  },
-  "scripts": {
-    "start": "node ./source/shard.js",
-    "serve": "firebase emulators:exec --only database \"node --watch-path ./source --watch-preserve-output ./source/shard.js\"",
-    "dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js\"",
-    "lint": "eslint --fix .",
-    "prettier": "prettier --check --write .",
-    "format": "npm run prettier && npm run lint",
-    "docker:build": "docker build --target start --platform linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x --tag maseshi/%npm_package_name%:%npm_package_version% .",
-    "docker:build:serve": "docker build --target serve --platform --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
-    "docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
-    "docker:run:serve": "docker run --detach maseshi/%npm_package_name%-serve:%npm_package_version%",
-    "docker:push": "docker push maseshi/%npm_package_name%:%npm_package_version%",
-    "i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
-    "i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
-    "i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
-    "i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales"
-  },
-  "dependencies": {
-    "@discordjs/opus": "^0.10.0",
-    "@discordjs/voice": "^0.18.0",
-    "@distube/deezer": "^2.0.1",
-    "@distube/soundcloud": "^2.0.4",
-    "@distube/spotify": "^2.0.2",
-    "@distube/yt-dlp": "^2.0.1",
-    "captcha-canvas": "^2.3.1",
-    "discord-gamecord": "^4.4.2",
-    "discord.js": "^14.18.0",
-    "distube": "^5.0.6",
-    "firebase": "^11.3.1",
-    "genius-lyrics": "^4.4.7",
-    "i18next": "^24.2.2",
-    "i18next-fs-backend": "^2.6.0",
-    "pino": "^9.6.0",
-    "pino-pretty": "^13.0.0",
-    "sodium-native": "^4.3.3",
-    "systeminformation": "^5.25.11"
-  },
-  "devDependencies": {
-    "eslint": "^9.22.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "i18n-unused": "^0.17.2",
-    "prettier": "^3.5.3"
-  },
-  "optionalDependencies": {
-    "@distube/ytdl-core": "^4.16.4",
-    "@distube/ytsr": "^2.0.4",
-    "bufferutil": "^4.0.9",
-    "osx-temperature-sensor": "^1.0.8",
-    "utf-8-validate": "^6.0.5",
-    "zlib-sync": "^0.1.9"
-  },
-  "engines": {
-    "node": ">=20.6.0",
-    "python": ">=3.12.0"
-  },
-  "private": true
+	"name": "shioru",
+	"version": "3.6.10",
+	"description": "Assistants within your Discord server will help make your server a better place to live.",
+	"homepage": "https://github.com/Maseshi/Shioru#readme",
+	"bugs": {
+		"url": "https://github.com/Maseshi/Shioru/issues",
+		"email": "dermhioasw123@gmail.com"
+	},
+	"license": "(MIT OR CC0-1.0)",
+	"author": {
+		"name": "Maseshi",
+		"email": "dermhioasw123@gmail.com",
+		"url": "https://maseshi.web.app/"
+	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/Maseshi"
+		},
+		{
+			"type": "patreon",
+			"url": "https://www.patreon.com/maseshi"
+		}
+	],
+	"main": "./source/main.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Maseshi/Shioru.git"
+	},
+	"scripts": {
+		"start": "node ./source/shard.js",
+		"serve": "firebase emulators:exec --only database \"node --watch-path ./source --watch-preserve-output ./source/shard.js\"",
+		"dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js\"",
+		"lint": "eslint --fix . && prettier --check --write .",
+		"docker:build": "docker build --target start --tag maseshi/%npm_package_name%:%npm_package_version% .",
+		"docker:build:serve": "docker build --target serve --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
+		"docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
+		"docker:run:serve": "docker run --detach maseshi/%npm_package_name%-serve:%npm_package_version%",
+		"docker:push": "docker push maseshi/%npm_package_name%:%npm_package_version%",
+		"i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
+		"i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
+		"i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
+		"i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales"
+	},
+	"dependencies": {
+		"@discordjs/opus": "^0.10.0",
+		"@discordjs/voice": "^0.18.0",
+		"@distube/deezer": "^2.0.1",
+		"@distube/soundcloud": "^2.0.4",
+		"@distube/spotify": "^2.0.2",
+		"@distube/yt-dlp": "^2.0.1",
+		"captcha-canvas": "^3.2.3",
+		"discord-gamecord": "^4.4.2",
+		"discord.js": "^14.18.0",
+		"distube": "^5.0.6",
+		"firebase": "^11.4.0",
+		"genius-lyrics": "^4.4.7",
+		"i18next": "^24.2.2",
+		"i18next-fs-backend": "^2.6.0",
+		"pino": "^9.6.0",
+		"pino-pretty": "^13.0.0",
+		"sodium-native": "^4.3.3",
+		"systeminformation": "^5.25.11"
+	},
+	"devDependencies": {
+		"eslint": "^9.22.0",
+		"eslint-config-prettier": "^10.1.1",
+		"eslint-plugin-prettier": "^5.2.3",
+		"i18n-unused": "^0.17.2",
+		"prettier": "^3.5.3"
+	},
+	"optionalDependencies": {
+		"@distube/ytdl-core": "^4.16.4",
+		"@distube/ytsr": "^2.0.4",
+		"bufferutil": "^4.0.9",
+		"osx-temperature-sensor": "^1.0.8",
+		"zlib-sync": "^0.1.9"
+	},
+	"engines": {
+		"node": ">=22.12.0",
+		"python": ">=3.12.0"
+	},
+	"private": true
 }
