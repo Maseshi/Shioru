@@ -24,7 +24,7 @@ const currencyFormatter = (number, digits) => {
 		.find((item) => number >= item.value);
 
 	return items
-		? (number / items.value).toFixed(digits).replace(regex, '$1') + item.symbol
+		? (number / items.value).toFixed(digits).replace(regex, '$1') + items.symbol
 		: '0';
 };
 
