@@ -1,6 +1,6 @@
 {
 	"name": "shioru",
-	"version": "3.6.11",
+	"version": "3.6.12",
 	"description": "Assistants within your Discord server will help make your server a better place to live.",
 	"homepage": "https://github.com/Maseshi/Shioru#readme",
 	"bugs": {
@@ -32,7 +32,7 @@
 		"start": "node ./source/shard.js",
 		"serve": "firebase emulators:exec --only database \"node --watch-path ./source --watch-preserve-output ./source/shard.js\"",
 		"dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file .env --watch-path ./source --watch-preserve-output ./source/main.js\"",
-		"lint": "eslint --fix . && prettier --check --write .",
+		"lint": "eslint --fix --ext .js . && prettier --check --write .",
 		"docker:build": "docker build --target start --tag maseshi/%npm_package_name%:%npm_package_version% .",
 		"docker:build:serve": "docker build --target serve --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
 		"docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
@@ -64,6 +64,7 @@
 		"systeminformation": "^5.25.11"
 	},
 	"devDependencies": {
+		"@eslint/js": "^9.22.0",
 		"eslint": "^9.22.0",
 		"eslint-config-prettier": "^10.1.1",
 		"eslint-plugin-prettier": "^5.2.3",

@@ -12,9 +12,6 @@ logs/
 .env.test.local
 .env.production.local
 
-# README
-NOTE.md
-
 # Back-ends
 .firebase
 .firebaserc
