@@ -1,4 +1,4 @@
-const { EmbedBuilder, WebhookClient, resolveColor } = require('discord.js');
+const { EmbedBuilder, WebhookClient, resolveColor } = require("discord.js");
 
 /**
  * Update information of all application commands both **global** and **guild**.
@@ -7,70 +7,70 @@ const { EmbedBuilder, WebhookClient, resolveColor } = require('discord.js');
  * @param {Boolean} reload If set to `true`, no messages will be displayed on the console.
  */
 const registeringCommands = async (client, reload = false) => {
-	const guildID = client.configs.test_guild;
+  const guildID = client.configs.test_guild;
 
-	try {
-		const commands = client.commands.map((command) => command.data);
-		const contexts = client.contexts.map((context) => context.data);
-		const data = [...commands, ...contexts];
+  try {
+    const commands = client.commands.map((command) => command.data);
+    const contexts = client.contexts.map((context) => context.data);
+    const data = [...commands, ...contexts];
 
-		if (!reload)
-			client.logger.info(
-				`Started refreshing ${data.length} application commands...`,
-			);
-		if (client.mode === 'start') {
-			client.application.commands.set(data);
+    if (!reload)
+      client.logger.info(
+        `Started refreshing ${data.length} application commands...`,
+      );
+    if (client.mode === "start") {
+      client.application.commands.set(data);
 
-			if (!reload)
-				client.logger.info(
-					`Successfully reloaded ${data.length} application commands.`,
-				);
-		}
-		if (client.mode !== 'start') {
-			if (!guildID) return;
+      if (!reload)
+        client.logger.info(
+          `Successfully reloaded ${data.length} application commands.`,
+        );
+    }
+    if (client.mode !== "start") {
+      if (!guildID) return;
 
-			const guild = await client.guilds.fetch(guildID);
+      const guild = await client.guilds.fetch(guildID);
 
-			if (!guild)
-				return client.logger.warn(
-					'Unable to update command application in test guild.',
-				);
+      if (!guild)
+        return client.logger.warn(
+          "Unable to update command application in test guild.",
+        );
 
-			guild.commands.set(data);
+      guild.commands.set(data);
 
-			if (!reload)
-				client.logger.info(
-					`Successfully reloaded ${data.length} application commands in ${guild.name}.`,
-				);
-		}
-	} catch (error) {
-		if (!reload)
-			client.logger.error(
-				error,
-				'Application commands could not be completely reloaded.',
-			);
-	}
+      if (!reload)
+        client.logger.info(
+          `Successfully reloaded ${data.length} application commands in ${guild.name}.`,
+        );
+    }
+  } catch (error) {
+    if (!reload)
+      client.logger.error(
+        error,
+        "Application commands could not be completely reloaded.",
+      );
+  }
 };
 
 const webhookSend = (configs, message) => {
-	if (!configs.enable) return;
-	if (!configs.webhookURL) return;
+  if (!configs.enable) return;
+  if (!configs.webhookURL) return;
 
-	const webhook = new WebhookClient({
-		url: configs.webhookURL,
-	});
+  const webhook = new WebhookClient({
+    url: configs.webhookURL,
+  });
 
-	return webhook.send({
-		username: configs.username ?? '',
-		avatarURL: configs.avatarURL ?? '',
-		...message,
-	});
+  return webhook.send({
+    username: configs.username ?? "",
+    avatarURL: configs.avatarURL ?? "",
+    ...message,
+  });
 };
 
 const changeLanguage = (client, language) => {
-	if (client.i18n.language !== language) {
-		client.i18n.changeLanguage(language);
-	}
+  if (client.i18n.language !== language) {
+    client.i18n.changeLanguage(language);
+  }
 };
 
 /**
@@ -117,196 +117,196 @@ const changeLanguage = (client, language) => {
  * any errors occurred during the construction of the embed.
  */
 const embedBuilder = (
-	client,
-	authorName,
-	authorURL,
-	authorIconURL,
-	color,
-	title,
-	url,
-	description,
-	thumbnail,
-	firstFieldName,
-	firstFieldValue,
-	firstFieldInline,
-	secondFieldName,
-	secondFieldValue,
-	secondFieldInline,
-	image,
-	timestamp,
-	footerText,
-	footerIconURL,
+  client,
+  authorName,
+  authorURL,
+  authorIconURL,
+  color,
+  title,
+  url,
+  description,
+  thumbnail,
+  firstFieldName,
+  firstFieldValue,
+  firstFieldInline,
+  secondFieldName,
+  secondFieldValue,
+  secondFieldInline,
+  image,
+  timestamp,
+  footerText,
+  footerIconURL,
 ) => {
-	const embed = new EmbedBuilder();
+  const embed = new EmbedBuilder();
 
-	try {
-		if (authorName) {
-			if (authorIconURL && !authorIconURL.startWith('http'))
-				return {
-					data: client.i18n.t('utils.clientUtils.is_not_a_link', {
-						input: 'author_icon_url',
-					}),
-					error: true,
-				};
-			if (authorURL && !authorURL.startWith('http'))
-				return {
-					data: client.i18n.t('utils.clientUtils.is_not_a_link', {
-						input: 'author_url',
-					}),
-					error: true,
-				};
+  try {
+    if (authorName) {
+      if (authorIconURL && !authorIconURL.startWith("http"))
+        return {
+          data: client.i18n.t("utils.clientUtils.is_not_a_link", {
+            input: "author_icon_url",
+          }),
+          error: true,
+        };
+      if (authorURL && !authorURL.startWith("http"))
+        return {
+          data: client.i18n.t("utils.clientUtils.is_not_a_link", {
+            input: "author_url",
+          }),
+          error: true,
+        };
 
-			embed.setAuthor({
-				name: authorName,
-				iconURL: authorIconURL,
-				url: authorURL,
-			});
-		}
-		if (color) {
-			try {
-				embed.setColor(resolveColor(color));
-			} catch {
-				return {
-					data: client.i18n.t('utils.clientUtils.color_is_not_valid'),
-					error: true,
-				};
-			}
-		}
-		if (title) embed.setTitle(title);
-		if (url) {
-			if (!url.startWith('http'))
-				return {
-					data: client.i18n.t('utils.clientUtils.is_not_a_link', {
-						input: 'url',
-					}),
-					error: true,
-				};
+      embed.setAuthor({
+        name: authorName,
+        iconURL: authorIconURL,
+        url: authorURL,
+      });
+    }
+    if (color) {
+      try {
+        embed.setColor(resolveColor(color));
+      } catch {
+        return {
+          data: client.i18n.t("utils.clientUtils.color_is_not_valid"),
+          error: true,
+        };
+      }
+    }
+    if (title) embed.setTitle(title);
+    if (url) {
+      if (!url.startWith("http"))
+        return {
+          data: client.i18n.t("utils.clientUtils.is_not_a_link", {
+            input: "url",
+          }),
+          error: true,
+        };
 
-			embed.setURL(url);
-		}
-		if (description) embed.setDescription(description);
-		if (thumbnail) {
-			if (!thumbnail.startWith('http'))
-				return {
-					data: client.i18n.t('utils.clientUtils.is_not_a_link', {
-						input: 'thumbnail',
-					}),
-					error: true,
-				};
+      embed.setURL(url);
+    }
+    if (description) embed.setDescription(description);
+    if (thumbnail) {
+      if (!thumbnail.startWith("http"))
+        return {
+          data: client.i18n.t("utils.clientUtils.is_not_a_link", {
+            input: "thumbnail",
+          }),
+          error: true,
+        };
 
-			embed.setThumbnail(thumbnail);
-		}
-		if (firstFieldName) {
-			if (!firstFieldValue)
-				return {
-					data: client.i18n.t('utils.clientUtils.need_other_input', {
-						input: 'thumbnail',
-					}),
-					error: true,
-				};
+      embed.setThumbnail(thumbnail);
+    }
+    if (firstFieldName) {
+      if (!firstFieldValue)
+        return {
+          data: client.i18n.t("utils.clientUtils.need_other_input", {
+            input: "thumbnail",
+          }),
+          error: true,
+        };
 
-			embed.addFields({
-				name: firstFieldName,
-				value: firstFieldValue,
-				inline: firstFieldInline,
-			});
-		}
-		if (secondFieldName) {
-			if (!secondFieldValue)
-				return {
-					data: client.i18n.t('utils.clientUtils.need_other_input', {
-						input: 'thumbnail',
-					}),
-					error: true,
-				};
+      embed.addFields({
+        name: firstFieldName,
+        value: firstFieldValue,
+        inline: firstFieldInline,
+      });
+    }
+    if (secondFieldName) {
+      if (!secondFieldValue)
+        return {
+          data: client.i18n.t("utils.clientUtils.need_other_input", {
+            input: "thumbnail",
+          }),
+          error: true,
+        };
 
-			embed.addFields({
-				name: secondFieldName,
-				value: secondFieldValue,
-				inline: secondFieldInline,
-			});
-		}
-		if (image) {
-			if (!image.startWith('http'))
-				return {
-					data: client.i18n.t('utils.clientUtils.is_not_a_link', {
-						input: 'image',
-					}),
-					error: true,
-				};
+      embed.addFields({
+        name: secondFieldName,
+        value: secondFieldValue,
+        inline: secondFieldInline,
+      });
+    }
+    if (image) {
+      if (!image.startWith("http"))
+        return {
+          data: client.i18n.t("utils.clientUtils.is_not_a_link", {
+            input: "image",
+          }),
+          error: true,
+        };
 
-			embed.setImage(image);
-		}
-		if (timestamp) {
-			try {
-				embed.setTimestamp(timestamp);
-			} catch {
-				return {
-					data: client.i18n.t('utils.clientUtils.timestamp_is_not_valid'),
-					error: true,
-				};
-			}
-		}
-		if (footerText) {
-			embed.setFooter({
-				text: footerText,
-				iconURL: footerIconURL,
-			});
-		}
+      embed.setImage(image);
+    }
+    if (timestamp) {
+      try {
+        embed.setTimestamp(timestamp);
+      } catch {
+        return {
+          data: client.i18n.t("utils.clientUtils.timestamp_is_not_valid"),
+          error: true,
+        };
+      }
+    }
+    if (footerText) {
+      embed.setFooter({
+        text: footerText,
+        iconURL: footerIconURL,
+      });
+    }
 
-		return {
-			data: embed,
-			error: false,
-		};
-	} catch (error) {
-		return {
-			data: error,
-			error: true,
-		};
-	}
+    return {
+      data: embed,
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: error,
+      error: true,
+    };
+  }
 };
 
 const usageBuilder = (command) => {
-	const optionTypes = {
-		3: '(String)',
-		4: '(Integer)',
-		5: '(Boolean)',
-		6: '(User)',
-		7: '(Channel)',
-		8: '(Role)',
-		9: '(Mentionable)',
-		10: '(Number)',
-		11: '(Attachment)',
-	};
-	let usage = command.data.name;
+  const optionTypes = {
+    3: "(String)",
+    4: "(Integer)",
+    5: "(Boolean)",
+    6: "(User)",
+    7: "(Channel)",
+    8: "(Role)",
+    9: "(Mentionable)",
+    10: "(Number)",
+    11: "(Attachment)",
+  };
+  let usage = command.data.name;
 
-	const buildOption = (option) => {
-		let usageOption = '';
+  const buildOption = (option) => {
+    let usageOption = "";
 
-		usageOption += !option.type ? '' : option.required ? '<' : '[';
-		usageOption += option.name;
-		usageOption += !option.type ? '' : optionTypes[option.type];
-		usageOption +=
-			option.options && option.options.length
-				? ': ' + option.options.map(buildOption).join(', ')
-				: '';
-		usageOption += !option.type ? '' : option.required ? '>' : ']';
+    usageOption += !option.type ? "" : option.required ? "<" : "[";
+    usageOption += option.name;
+    usageOption += !option.type ? "" : optionTypes[option.type];
+    usageOption +=
+      option.options && option.options.length
+        ? ": " + option.options.map(buildOption).join(", ")
+        : "";
+    usageOption += !option.type ? "" : option.required ? ">" : "]";
 
-		return usageOption;
-	};
+    return usageOption;
+  };
 
-	usage +=
-		command.data.options && command.data.options.length
-			? ': ' + command.data.options.map(buildOption).join(', ')
-			: '';
+  usage +=
+    command.data.options && command.data.options.length
+      ? ": " + command.data.options.map(buildOption).join(", ")
+      : "";
 
-	return usage;
+  return usage;
 };
 
 module.exports = {
-	registeringCommands,
-	webhookSend,
-	changeLanguage,
-	embedBuilder,
-	usageBuilder,
+  registeringCommands,
+  webhookSend,
+  changeLanguage,
+  embedBuilder,
+  usageBuilder,
 };
