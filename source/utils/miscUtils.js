@@ -8,24 +8,24 @@
  * @example currencyFormatter(12345, 2); // => 12.34k
  */
 const currencyFormatter = (number, digits) => {
-	const lookup = [
-		{ value: 1, symbol: '' },
-		{ value: 1e3, symbol: 'k' },
-		{ value: 1e6, symbol: 'M' },
-		{ value: 1e9, symbol: 'G' },
-		{ value: 1e12, symbol: 'T' },
-		{ value: 1e15, symbol: 'P' },
-		{ value: 1e18, symbol: 'E' },
-	];
-	const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
-	const items = lookup
-		.slice()
-		.reverse()
-		.find((item) => number >= item.value);
+  const lookup = [
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "G" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" },
+  ];
+  const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  const items = lookup
+    .slice()
+    .reverse()
+    .find((item) => number >= item.value);
 
-	return items
-		? (number / items.value).toFixed(digits).replace(regex, '$1') + items.symbol
-		: '0';
+  return items
+    ? (number / items.value).toFixed(digits).replace(regex, "$1") + items.symbol
+    : "0";
 };
 
 /**
@@ -35,9 +35,9 @@ const currencyFormatter = (number, digits) => {
  * @returns {boolean} - Returns true if the input string contains a valid URL, otherwise returns false.
  */
 const containsURL = (string) => {
-	return string.test(
-		/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi,
-	);
+  return string.test(
+    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi,
+  );
 };
 
 /**
@@ -47,7 +47,7 @@ const containsURL = (string) => {
  * @returns {Array} - An array of emotes found in the string.
  */
 const matchEmotes = (string) => {
-	return string.match(/<a?:.+?:\d+>|\p{Extended_Pictographic}/gu);
+  return string.match(/<a?:.+?:\d+>|\p{Extended_Pictographic}/gu);
 };
 
 /**
@@ -57,7 +57,7 @@ const matchEmotes = (string) => {
  * @returns {string} - A string formed by joining the input strings with newline characters.
  */
 const newLines = (...string) => {
-	return string.join('\n');
+  return string.join("\n");
 };
 
 /**
@@ -67,10 +67,10 @@ const newLines = (...string) => {
  * @returns {string} - The new title generated from the input string.
  */
 const newTitle = (string) => {
-	return string.replaceAll(
-		/\w\S*/g,
-		string.charAt(0).toUpperCase() + string.substring(1).toLowerCase(),
-	);
+  return string.replaceAll(
+    /\w\S*/g,
+    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase(),
+  );
 };
 
 /**
@@ -80,14 +80,14 @@ const newTitle = (string) => {
  * @returns {string} - The new ID generated from the input string.
  */
 const newID = (string) => {
-	return string.toLowerCase().replaceAll(/([[\]{}_.:-])\s?/g, '-');
+  return string.toLowerCase().replaceAll(/([[\]{}_.:-])\s?/g, "-");
 };
 
 module.exports = {
-	currencyFormatter,
-	containsURL,
-	matchEmotes,
-	newLines,
-	newTitle,
-	newID,
+  currencyFormatter,
+  containsURL,
+  matchEmotes,
+  newLines,
+  newTitle,
+  newID,
 };
