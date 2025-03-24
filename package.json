@@ -54,7 +54,7 @@
 		"discord-gamecord": "^4.4.2",
 		"discord.js": "^14.18.0",
 		"distube": "^5.0.6",
-		"firebase": "^11.4.0",
+		"firebase": "^11.5.0",
 		"genius-lyrics": "^4.4.7",
 		"i18next": "^24.2.2",
 		"i18next-fs-backend": "^2.6.0",
