@@ -34,22 +34,37 @@ module.exports = {
       const voice = newState.client.player.voices.get(oldState);
       const queue = newState.client.player.queues.get(oldState);
 
-      // Leave the voice channel if there is no user in it
+      // Start a 60-second countdown to leave the voice channel if it is empty
+      const leaveTimeoutKey = `leave_timeout_${oldState.channel.id}`;
+
       if (voice && isVoiceChannelEmpty(oldState)) {
-        voice.leave();
-        if (queue) {
-          queue.textChannel.send(
-            newState.client.i18n.t(
-              "events.voiceStateUpdate.no_user_in_channel",
-            ),
-          );
-        } else {
-          voice.channel.send(
-            newState.client.i18n.t(
-              "events.voiceStateUpdate.no_user_in_channel",
-            ),
-          );
+        // Prevent multiple timeouts for the same channel
+        if (!oldState.client.temp[leaveTimeoutKey]) {
+          oldState.client.temp[leaveTimeoutKey] = setTimeout(() => {
+            // Double-check if the channel is still empty after 60 seconds
+            if (isVoiceChannelEmpty(oldState)) {
+              voice.leave();
+              if (queue) {
+                queue.textChannel.send(
+                  newState.client.i18n.t(
+                    "events.voiceStateUpdate.no_user_in_channel",
+                  ),
+                );
+              } else {
+                voice.channel.send(
+                  newState.client.i18n.t(
+                    "events.voiceStateUpdate.no_user_in_channel",
+                  ),
+                );
+              }
+            }
+            delete oldState.client.temp[leaveTimeoutKey];
+          }, 60000);
         }
+      } else if (voice && oldState.client.temp[leaveTimeoutKey]) {
+        // If someone joins back, clear the timeout
+        clearTimeout(oldState.client.temp[leaveTimeoutKey]);
+        delete oldState.client.temp[leaveTimeoutKey];
       }
 
       // Pause the queue if there is no user in the voice channel and resume it if there is
