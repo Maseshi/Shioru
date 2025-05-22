@@ -1,6 +1,6 @@
 {
 	"name": "shioru",
-	"version": "3.6.12",
+	"version": "3.6.13",
 	"description": "Assistants within your Discord server will help make your server a better place to live.",
 	"homepage": "https://github.com/Maseshi/Shioru#readme",
 	"bugs": {
@@ -49,38 +49,39 @@
 		"@distube/deezer": "^2.0.1",
 		"@distube/soundcloud": "^2.0.4",
 		"@distube/spotify": "^2.0.2",
+		"@distube/youtube": "^1.0.4",
 		"@distube/yt-dlp": "^2.0.1",
-		"captcha-canvas": "^3.2.3",
+		"captcha-canvas": "^4.1.0",
 		"discord-gamecord": "^4.4.2",
-		"discord.js": "^14.18.0",
-		"distube": "^5.0.6",
-		"firebase": "^11.4.0",
+		"discord.js": "^14.19.3",
+		"distube": "^5.0.7",
+		"firebase": "^11.8.0",
 		"genius-lyrics": "^4.4.7",
-		"i18next": "^24.2.2",
+		"i18next": "^25.2.0",
 		"i18next-fs-backend": "^2.6.0",
-		"pino": "^9.6.0",
+		"pino": "^9.7.0",
 		"pino-pretty": "^13.0.0",
-		"sodium-native": "^4.3.3",
 		"systeminformation": "^5.25.11"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.22.0",
-		"eslint": "^9.22.0",
-		"eslint-config-prettier": "^10.1.1",
-		"eslint-plugin-prettier": "^5.2.3",
-		"i18n-unused": "^0.17.2",
+		"@eslint/js": "^9.27.0",
+		"eslint": "^9.27.0",
+		"eslint-config-prettier": "^10.1.5",
+		"eslint-plugin-prettier": "^5.4.0",
+		"i18n-unused": "^0.19.0",
 		"prettier": "^3.5.3"
 	},
 	"optionalDependencies": {
-		"@distube/ytdl-core": "^4.16.4",
-		"@distube/ytsr": "^2.0.4",
 		"bufferutil": "^4.0.9",
 		"osx-temperature-sensor": "^1.0.8",
-		"zlib-sync": "^0.1.9"
+		"sodium-native": "^5.0.3",
+		"zlib-sync": "^0.1.10"
 	},
 	"engines": {
 		"node": ">=22.12.0",
-		"python": ">=3.12.0"
+		"python": ">=3.12.0",
+		"firebase": "*",
+		"ffmpeg": "*"
 	},
 	"private": true
 }
