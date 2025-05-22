@@ -34,6 +34,7 @@ const { join } = require("node:path");
 const { readdirSync, lstatSync } = require("node:fs");
 const { DisTube } = require("distube");
 const { DeezerPlugin } = require("@distube/deezer");
+const { YouTubePlugin } = require("@distube/youtube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
@@ -254,6 +255,7 @@ client.temp = {
 client.player = new DisTube(client, {
   plugins: [
     new DeezerPlugin(),
+    new YouTubePlugin(),
     new SpotifyPlugin(),
     new SoundCloudPlugin(),
     new YtDlpPlugin({ update: false }),
