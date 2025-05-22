@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skin of %s",
 			"version": "Version"
 		},
-		"music": {
-			"autoplay": "📻 Autoplay",
-			"detail": "📄 Details of the currently playing song",
-			"download_link": "📥 Download Link",
-			"duration": "🕒 Duration",
-			"filter": "🎼 Sound filter style",
-			"id": "🆔 ID",
-			"link": "🔗 Link",
-			"music_name": "🎵 Song name",
-			"no_queue": "❎ There's no song I'm playing right now.",
-			"now": "⌚ Now",
-			"off": "Off",
-			"on": "On",
-			"owner_this_queue": "%s is the owner of this queue.",
-			"paused": "Pause",
-			"playing": "Playing",
-			"queue_status": "📑 Current song queue status",
-			"repeat": "🔁 Repeat",
-			"repeat_off": "Not on",
-			"repeat_this_queue": "This queue",
-			"repeat_this_song": "This song",
-			"uploader": "🎬 Uploader",
-			"volume": "🔉 Volume"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Temporarily unable to get the image you requested. Please try again later.",
 			"request_by": "Requested by %s"
@@ -615,22 +591,13 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Current Quality: %s```\nSometimes the problem can be caused by a server with so much traffic that it causes performance issues. However, I recommend you to check your internet connection before setting this.\n`0` - Use **OPUS** to compress audio files. This will result in better sound quality but also consume more resources. **(recommended)**\n`1` - Uses audio directly from the source. This will result in better efficiency but less resource usage.",
-			"advice_embed_footer_text": "You can set additional audio quality from Discord settings: Settings > Audio & Video > Advanced.",
-			"advice_embed_title": "Adjust audio quality",
-			"focus_on_high_quality": "focus on high quality",
-			"low_efficiency": "Emphasis on low efficiency",
-			"opus_mode_selected": "🎛️ I have now used **OPUS** to help compress audio files. The sound quality will improve",
-			"raw_mode_selected": "🎛️ Switched to the original audio. may cause the sound quality to deteriorate."
-		},
 		"queue": {
 			"autoplay": "📻 Autoplay",
-			"filter": "🎼 Audio filter style: `%s`",
+			"filter": "🎼 **Filters**:",
 			"no_queue": "❎ There's no song I'm playing right now.",
-			"owner_this_queue": "%s is the owner of this queue.",
-			"previous_queue": "**Previous Queue**",
-			"waiting_in_queue": "**Waiting for next queue**"
+			"owner_this_queue": "{{username}} is the owner of this queue.",
+			"previous_queue": "📋 **Previous Songs**",
+			"waiting_in_queue": "🎶 **Next Songs**"
 		},
 		"random": {
 			"request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 You have received the list of songs you want. and will start playing music in a moment...",
-			"invalid_number": "🔴 The last search has been canceled. You can search again by typing the same command.",
-			"no_results": "❎ I tried searching for the song but I didn't find any results...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "Playlist",
-			"search_cancelled": "🕘 Search has been canceled..because no song selections were found.",
-			"searching": "🔍 Search for relevant %s",
-			"song_type": "song",
-			"timer_choose": "You have time to select %s 60 seconds. If you want to cancel, you can type in an irrelevant number or wait until the timer expires.",
-			"title_results": "Search results for such %s:",
-			"user_not_in_channel": "❓ Enter any channel first. If not, listen to me..."
 		},
 		"seek": {
 			"no_queue": "❎ There are no songs currently playing.",
@@ -984,6 +935,9 @@
 			"thread_notification": "#️⃣ Thread",
 			"thread_update": "`%s1` has been updated to **%s2**"
 		},
+		"voiceStateUpdate": {
+			"no_user_in_channel": "💨 Oh, where have they all gone? Well, let's go first~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
@@ -1000,9 +954,6 @@
 			"disconnect": {
 				"disconnected": "🔌 You have successfully disconnected and deleted all queues."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh, where have they all gone? Well, let's go first~"
-			},
 			"error": {
 				"playlist_not_found": "❎ I can't find that playlist. Try another playlist?"
 			},
@@ -1010,25 +961,16 @@
 				"queue_is_empty": "🍃 My queue is empty now. Ready to play the next song."
 			},
 			"playSong": {
-				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
+				"playing_song": "🎶 Playing song **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Search has been canceled..because no song selections were found."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ All songs in the queue have been deleted."
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 You have received the list of songs you want. And will start playing music in a moment..."
+			"finishSong": {
+				"finished_song": "🎵 Finished playing song **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 The last search has been canceled. You can search again by typing the same command."
-			},
-			"searchNoResult": {
-				"no_results": "❎ I tried searching for the song but I didn't find any results..."
-			},
-			"searchResult": {
-				"searching": "🔎 Search for related songs",
-				"timer_choose": "You have 60 seconds to choose a song. If you want to cancel, you can type an unrelated number or wait until the timer expires.",
-				"title_results": "Search results for that song:",
-				"tool_name": "Music Searcher"
+			"noRelated": {
+				"no_related": "❎ I can't find related song information. Try searching for other songs?"
 			}
 		}
 	},
