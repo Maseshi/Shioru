@@ -33,7 +33,7 @@ module.exports = {
     const avatarURL = `https://cdn.discordapp.com/avatars/${queueAuthorUid}/${queueAuthorAvatar}.webp`;
 
     const queueList = queue.songs
-      .slice(0, 9)
+      .slice(1, 10)
       .map(
         (song, id) => `${id + 1}. ${song.name} - \`${song.formattedDuration}\``,
       )
