@@ -4,6 +4,7 @@ const {
 	PermissionFlagsBits,
 	InteractionContextType,
 } = require('discord.js');
+const { newLines } = require('../../utils/miscUtils');
 
 module.exports = {
 	permissions: [PermissionFlagsBits.SendMessages],
@@ -19,151 +20,128 @@ module.exports = {
 	async execute(interaction) {
 		const queue = interaction.client.player.getQueue(interaction);
 
-		if (!queue)
+		if (!queue) {
 			return await interaction.reply(
 				interaction.client.i18n.t('commands.queue.no_queue'),
 			);
+		}
+
+		const currentSong = queue.songs[0];
+		const queueAuthorUid = currentSong.user.id;
+		const queueAuthorUsername = currentSong.user.username;
+		const queueAuthorAvatar = currentSong.user.avatar;
+		const avatarURL = `https://cdn.discordapp.com/avatars/${queueAuthorUid}/${queueAuthorAvatar}.webp`;
 
 		const queueList = queue.songs
+			.slice(0, 9)
 			.map(
-				(song, id) =>
-					id + '. ' + song.name + ' - `' + song.formattedDuration + '`',
+				(song, id) => `${id + 1}. ${song.name} - \`${song.formattedDuration}\``,
 			)
-			.slice(1, 10)
 			.join('\n');
 		const queuePreviousList = queue.previousSongs
-			.map(
-				(song, id) =>
-					id + 1 + '. ' + song.name + ' - `' + song.formattedDuration + '`',
-			)
 			.slice(0, 10)
+			.map(
+				(song, id) => `${id + 1}. ${song.name} - \`${song.formattedDuration}\``,
+			)
 			.join('\n');
-		const queueCreatedTimestamp = queue.createdTimestamp;
-		const queueAuthorUid = queue.songs[0].user.id;
-		const queueAuthorUsername = queue.songs[0].user.username;
-		const queueAuthorAvatar = queue.songs[0].user.avatar;
-		const avatarURL =
-			'https://cdn.discordapp.com/avatars/' +
-			queueAuthorUid +
-			'/' +
-			queueAuthorAvatar +
-			'.webp';
 
-		const musicCurrent = queue.songs[0].name;
-		const musicURL = queue.songs[0].url;
-
-		let durationLine;
-		const duration = queue.songs[0].duration;
+		const duration = currentSong.stream?.playFromSource
+			? currentSong.duration
+			: currentSong.stream?.song?.duration || currentSong.duration;
 		const durationCurrent = queue.currentTime;
 		const durationPercentage = Math.round((durationCurrent / duration) * 100);
-		if (durationPercentage >= 0 && durationPercentage <= 5)
-			durationLine = '🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 5 && durationPercentage <= 10)
-			durationLine = '▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 10 && durationPercentage <= 15)
-			durationLine = '▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 15 && durationPercentage <= 20)
-			durationLine = '▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 20 && durationPercentage <= 25)
-			durationLine = '▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 25 && durationPercentage <= 30)
-			durationLine = '▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 30 && durationPercentage <= 35)
-			durationLine = '▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 35 && durationPercentage <= 40)
-			durationLine = '▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 40 && durationPercentage <= 45)
-			durationLine = '▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 45 && durationPercentage <= 50)
-			durationLine = '▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 50 && durationPercentage <= 55)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 55 && durationPercentage <= 60)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬';
-		if (durationPercentage >= 60 && durationPercentage <= 65)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬';
-		if (durationPercentage >= 65 && durationPercentage <= 70)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬';
-		if (durationPercentage >= 70 && durationPercentage <= 75)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬';
-		if (durationPercentage >= 75 && durationPercentage <= 80)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬';
-		if (durationPercentage >= 80 && durationPercentage <= 85)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬';
-		if (durationPercentage >= 85 && durationPercentage <= 90)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬';
-		if (durationPercentage >= 90 && durationPercentage <= 95)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬';
-		if (durationPercentage >= 95 && durationPercentage <= 100)
-			durationLine = '▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘';
 
-		const durationFormat = queue.songs[0].formattedDuration;
+		const durationBars = [
+			'🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘▬',
+			'▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬🔘',
+		];
+		const barIndex = Math.min(
+			Math.floor(durationPercentage / 5),
+			durationBars.length - 1,
+		);
+		const durationLine = durationBars[barIndex];
+
+		const durationFormat = currentSong.formattedDuration;
 		const durationCurrentFormat = queue.formattedCurrentTime;
-		const durationCount =
-			durationCurrentFormat + ' / ' + durationFormat + ' - ' + duration;
+		const durationCount = `${durationCurrentFormat} / ${durationFormat} \`${duration}\``;
 
 		const musicPaused = interaction.client.player.paused ? '▶' : '▐▐';
-		const musicAction = ' ◄◄⠀' + musicPaused + '⠀►► ';
+		const musicAction = `◄◄⠀${musicPaused}⠀►►`;
 
-		let musicControl;
 		const musicVolume = queue.volume;
-		if (musicVolume === 0) musicControl = '🔇 ○───';
-		if (musicVolume >= 0 && musicVolume <= 30) musicControl = '🔈 ─○──';
-		if (musicVolume >= 30 && musicVolume <= 70) musicControl = '🔉 ──○─';
-		if (musicVolume >= 70 && musicVolume <= 100) musicControl = '🔊 ───○';
+		const musicControl =
+			musicVolume === 0
+				? '🔇 ○───'
+				: musicVolume <= 30
+					? '🔈 ─○──'
+					: musicVolume <= 70
+						? '🔉 ──○─'
+						: '🔊 ───○';
 
 		const musicRepeat =
-			queue.repeatMode === 0 ? '' : queue.repeatMode === 1 ? '🔁' : '🔂';
+			queue.repeatMode === 1 ? '🔁' : queue.repeatMode === 2 ? '🔂' : '';
 
 		const musicAutoplay = queue.autoplay
-			? '\n' + interaction.client.i18n.t('commands.queue.autoplay')
+			? interaction.client.i18n.t('commands.queue.autoplay')
 			: '';
 
-		const musicFilter =
-			queue.filters.names.length > 0
-				? '\n' +
-					interaction.client.i18n
-						.t('commands.queue.filter')
-						.replace('%s', queue.filters.names.join(', '))
-				: '';
+		const musicFilter = queue.filters.names.length
+			? newLines(
+					interaction.client.i18n.t('commands.queue.filter'),
+					`\`\`\`${queue.filters.names.join(', ')}\`\`\``,
+				)
+			: '';
 
-		const musicDisplay =
-			durationLine +
-			'\n' +
-			durationCount +
-			' ' +
-			musicAction +
-			' ' +
-			musicControl +
-			' ' +
-			musicRepeat +
-			musicAutoplay +
-			musicFilter;
+		const musicDisplay = newLines(
+			durationLine,
+			`${durationCount} ${musicAction} ${musicControl} \`${musicVolume}%\` ${musicRepeat}${musicAutoplay}`,
+			musicFilter,
+		);
+
+		const descriptionParts = [musicDisplay];
+
+		if (queue.songs.length > 1) {
+			descriptionParts.push(
+				'\n' + interaction.client.i18n.t('commands.queue.waiting_in_queue'),
+				queueList,
+			);
+		}
+		if (queue.previousSongs.length > 0) {
+			descriptionParts.push(
+				'\n' + interaction.client.i18n.t('commands.queue.previous_queue'),
+				queuePreviousList,
+			);
+		}
 
 		const queueEmbed = new EmbedBuilder()
-			.setTitle(musicCurrent)
-			.setURL(musicURL)
-			.setDescription(
-				queue.songs.length === 1
-					? musicDisplay
-					: musicDisplay +
-							'\n\n' +
-							interaction.client.i18n.t('commands.queue.waiting_in_queue') +
-							'\n' +
-							queueList +
-							(queue.previousSongs.length === 1
-								? '\n\n' +
-									interaction.client.i18n.t('commands.queue.previous_queue') +
-									'\n' +
-									queuePreviousList
-								: ''),
-			)
+			.setTitle(currentSong.name)
+			.setURL(currentSong.url)
+			.setDescription(descriptionParts.join('\n'))
 			.setColor('Blue')
-			.setTimestamp(queueCreatedTimestamp)
+			.setThumbnail(currentSong.thumbnail)
+			.setTimestamp(queue.createdTimestamp)
 			.setFooter({
-				text: interaction.client.i18n
-					.t('commands.queue.owner_this_queue')
-					.replace('%s', queueAuthorUsername),
+				text: interaction.client.i18n.t('commands.queue.owner_this_queue', {
+					username: queueAuthorUsername,
+				}),
 				iconURL: avatarURL,
 			});
 
