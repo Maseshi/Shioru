@@ -1,10 +1,35 @@
-const { Events } = require("discord.js");
+const { Events, EmbedBuilder } = require("discord.js");
 const { isVoiceChannelEmpty } = require("distube");
+const {
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.VoiceStateUpdate,
   once: false,
   async execute(oldState, newState) {
+    const voiceStateUpdateEmbed = new EmbedBuilder()
+      .setTitle(
+        newState.client.i18n.t("events.voiceStateUpdate.voice_notification"),
+      )
+      .setDescription(
+        newState.client.i18n.t("events.voiceStateUpdate.voice_update", {
+          oldState: oldState.name,
+          newState: newState.id,
+        }),
+      )
+      .setTimestamp()
+      .setColor("Yellow");
+
+    await initializeData(newState.client, newState.guild);
+    await submitNotification(
+      newState.client,
+      newState.guild,
+      Events.VoiceStateUpdate,
+      voiceStateUpdateEmbed,
+    );
+
     if (oldState?.channel) {
       const voice = newState.client.player.voices.get(oldState);
       const queue = newState.client.player.queues.get(oldState);

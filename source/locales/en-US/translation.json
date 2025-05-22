@@ -936,11 +936,49 @@
 			"thread_update": "`%s1` has been updated to **%s2**"
 		},
 		"voiceStateUpdate": {
+			"voice_notification": "➿ Voice State",
+			"voice_update": "`{{oldState}}` has been updated to **{{newState}}**",
 			"no_user_in_channel": "💨 Oh, where have they all gone? Well, let's go first~"
 		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
-			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+			"webhook_update": "The webhook has been updated on the <#{{channel_id}}> channel."
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ Soundboard",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** a new soundboard has been created, go try it out now!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ Soundboard",
+			"soundboard_disappear": "**{{soundboard_name}}** this soundboard is gone!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ Soundboard",
+			"deleted": "Deleted",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** This soundboard has been updated to **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ Soundboard",
+			"soundboards_changed": "**{{count}}** multiple soundboards have been changed."
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ Server",
+			"unknown": "Unknown",
+			"guild_member_updated": "**{{old_member}}** member has been updated to <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ Thread",
+			"added_thread_members": "The number of members in thread <#{{thread_id}}> increased by **{{count}}** people.",
+			"removed_thread_members": "The number of members in thread <#{{thread_id}}> decreased by **{{count}}** people."
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ Server",
+			"unknown": "Unknown",
+			"thread_member_updated": "**{{old_member}}** member in the thread has been updated to <@{{new_member}}>."
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ Thread",
+			"thread_list_synced": "**{{count}}** threads on the server have been synced."
 		}
 	},
 	"handlers": {

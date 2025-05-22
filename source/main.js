@@ -145,11 +145,14 @@ logger.info("Setting up the main system...");
 
 const client = new Client({
   partials: [
-    Partials.User,
     Partials.Channel,
     Partials.GuildMember,
+    Partials.GuildScheduledEvent,
     Partials.Message,
     Partials.Reaction,
+    Partials.SoundboardSound,
+    Partials.ThreadMember,
+    Partials.User,
   ],
   presence: {
     status: PresenceUpdateStatus.Idle,
@@ -157,21 +160,60 @@ const client = new Client({
     activities: [{ name: "America Ya :D", type: ActivityType.Custom }],
   },
   intents: [
-    GatewayIntentBits.AutoModerationConfiguration,
-    GatewayIntentBits.AutoModerationExecution,
-    GatewayIntentBits.DirectMessageReactions,
     GatewayIntentBits.DirectMessages,
+    // - MESSAGE_CREATE
+    // - MESSAGE_UPDATE
+    // - MESSAGE_DELETE
+    // - CHANNEL_PINS_UPDATE
     GatewayIntentBits.GuildExpressions,
+    // - GUILD_EMOJIS_UPDATE
+    // - GUILD_STICKERS_UPDATE
+    // - GUILD_SOUNDBOARD_SOUND_CREATE
+    // - GUILD_SOUNDBOARD_SOUND_UPDATE
+    // - GUILD_SOUNDBOARD_SOUND_DELETE
+    // - GUILD_SOUNDBOARD_SOUNDS_UPDATE
     GatewayIntentBits.GuildInvites,
+    // - INVITE_CREATE
+    // - INVITE_DELETE
     GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessageReactions,
+    // - GUILD_MEMBER_ADD
+    // - GUILD_MEMBER_UPDATE
+    // - GUILD_MEMBER_REMOVE
+    // - THREAD_MEMBERS_UPDATE *
     GatewayIntentBits.GuildMessages,
+    // - MESSAGE_CREATE
+    // - MESSAGE_UPDATE
+    // - MESSAGE_DELETE
+    // - MESSAGE_DELETE_BULK
     GatewayIntentBits.GuildModeration,
-    GatewayIntentBits.GuildPresences,
+    // - GUILD_AUDIT_LOG_ENTRY_CREATE
+    // - GUILD_BAN_ADD
+    // - GUILD_BAN_REMOVE
     GatewayIntentBits.GuildVoiceStates,
+    // - VOICE_CHANNEL_EFFECT_SEND
+    // - VOICE_STATE_UPDATE
     GatewayIntentBits.GuildWebhooks,
+    // - WEBHOOKS_UPDATE
     GatewayIntentBits.Guilds,
-    GatewayIntentBits.MessageContent,
+    // - GUILD_CREATE
+    // - GUILD_UPDATE
+    // - GUILD_DELETE
+    // - GUILD_ROLE_CREATE
+    // - GUILD_ROLE_UPDATE
+    // - GUILD_ROLE_DELETE
+    // - CHANNEL_CREATE
+    // - CHANNEL_UPDATE
+    // - CHANNEL_DELETE
+    // - CHANNEL_PINS_UPDATE
+    // - THREAD_CREATE
+    // - THREAD_UPDATE
+    // - THREAD_DELETE
+    // - THREAD_LIST_SYNC
+    // - THREAD_MEMBER_UPDATE
+    // - THREAD_MEMBERS_UPDATE *
+    // - STAGE_INSTANCE_CREATE
+    // - STAGE_INSTANCE_UPDATE
+    // - STAGE_INSTANCE_DELETE
   ],
 });
 
