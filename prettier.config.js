@@ -2,6 +2,7 @@
 const config = {
 	useTabs: true,
 	singleQuote: true,
+	endOfLine: 'auto',
 };
 
 module.exports = config;
