@@ -990,7 +990,7 @@
 				"added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
 			},
 			"disconnect": {
-				"disconnected": "🔌 You have successfully disconnected and deleted all queues."
+				"disconnected": "🔌 The connection has been successfully disconnected."
 			},
 			"error": {
 				"playlist_not_found": "❎ I can't find that playlist. Try another playlist?"
