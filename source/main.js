@@ -24,267 +24,267 @@
  */
 
 const {
-	Client,
-	GatewayIntentBits,
-	Partials,
-	PresenceUpdateStatus,
-	ActivityType,
-} = require('discord.js');
-const { join } = require('node:path');
-const { readdirSync, lstatSync } = require('node:fs');
-const { DisTube } = require('distube');
-const { DeezerPlugin } = require('@distube/deezer');
-const { SpotifyPlugin } = require('@distube/spotify');
-const { SoundCloudPlugin } = require('@distube/soundcloud');
-const { YtDlpPlugin } = require('@distube/yt-dlp');
-const { initializeApp } = require('firebase/app');
-const { getDatabase, connectDatabaseEmulator } = require('firebase/database');
-const { startScreen, logger } = require('./utils/consoleUtils');
-const { updateChecker } = require('./utils/servicesUtils');
-const i18next = require('i18next');
-const Backend = require('i18next-fs-backend');
-const configs = require('./configs/data');
+  Client,
+  GatewayIntentBits,
+  Partials,
+  PresenceUpdateStatus,
+  ActivityType,
+} = require("discord.js");
+const { join } = require("node:path");
+const { readdirSync, lstatSync } = require("node:fs");
+const { DisTube } = require("distube");
+const { DeezerPlugin } = require("@distube/deezer");
+const { SpotifyPlugin } = require("@distube/spotify");
+const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { YtDlpPlugin } = require("@distube/yt-dlp");
+const { initializeApp } = require("firebase/app");
+const { getDatabase, connectDatabaseEmulator } = require("firebase/database");
+const { startScreen, logger } = require("./utils/consoleUtils");
+const { updateChecker } = require("./utils/servicesUtils");
+const i18next = require("i18next");
+const Backend = require("i18next-fs-backend");
+const configs = require("./configs/data");
 
 // Start detecting working time
 const startTime = new Date().getTime();
 
 // Show start screen if in dev mode
 if (
-	process.env.npm_lifecycle_event &&
-	process.env.npm_lifecycle_event === 'dev'
+  process.env.npm_lifecycle_event &&
+  process.env.npm_lifecycle_event === "dev"
 )
-	startScreen();
+  startScreen();
 
 // Check configuration variables
-logger.info('Checking configuration variables...');
+logger.info("Checking configuration variables...");
 
 if (configs.check_update.enable && !configs.check_update.releases_url)
-	logger.warn(
-		'CONF: The check_update.releases_url was not found in the configuration file.',
-	);
+  logger.warn(
+    "CONF: The check_update.releases_url was not found in the configuration file.",
+  );
 
 for (const eventName in configs.logger) {
-	const event = configs.logger[eventName];
+  const event = configs.logger[eventName];
 
-	if (event.enable && !event.webhookURL)
-		logger.warn(
-			`CONF: The logger.${eventName}.webhookURL was not found in the configuration file.`,
-		);
+  if (event.enable && !event.webhookURL)
+    logger.warn(
+      `CONF: The logger.${eventName}.webhookURL was not found in the configuration file.`,
+    );
 }
 
 if (
-	configs.monitoring.apiKey ||
-	configs.monitoring.metricId ||
-	configs.monitoring.pageId
+  configs.monitoring.apiKey ||
+  configs.monitoring.metricId ||
+  configs.monitoring.pageId
 ) {
-	if (!configs.monitoring.apiKey)
-		logger.warn(
-			'CONF: The monitoring.apiKey was not found in the environment.',
-		);
-	if (!configs.monitoring.metricId)
-		logger.warn(
-			'CONF: The monitoring.metricId was not found in the environment.',
-		);
-	if (!configs.monitoring.pageId)
-		logger.warn(
-			'CONF: The monitoring.pageId was not found in the environment.',
-		);
+  if (!configs.monitoring.apiKey)
+    logger.warn(
+      "CONF: The monitoring.apiKey was not found in the environment.",
+    );
+  if (!configs.monitoring.metricId)
+    logger.warn(
+      "CONF: The monitoring.metricId was not found in the environment.",
+    );
+  if (!configs.monitoring.pageId)
+    logger.warn(
+      "CONF: The monitoring.pageId was not found in the environment.",
+    );
 }
 if (!configs.openai.apiKey)
-	logger.warn('CONF: The openai.apiKey was not found in the environment.');
+  logger.warn("CONF: The openai.apiKey was not found in the environment.");
 if (!configs.open_weather_token)
-	logger.warn('CONF: The open_weather_token was not found in the environment.');
+  logger.warn("CONF: The open_weather_token was not found in the environment.");
 if (!configs.test_guild)
-	logger.warn('CONF: The test_guild was not found in the configuration file.');
+  logger.warn("CONF: The test_guild was not found in the configuration file.");
 if (!configs.translation.baseURL)
-	logger.warn(
-		'CONF: The translation.baseURL was not found in the environment.',
-	);
+  logger.warn(
+    "CONF: The translation.baseURL was not found in the environment.",
+  );
 
 try {
-	if (!configs.server.apiKey)
-		throw new Error('CONF: API_KEY It needs to be set up in the environment.');
-	if (!configs.server.authDomain)
-		throw new Error(
-			'CONF: AUTH_DOMAIN It needs to be set up in the environment.',
-		);
-	if (!configs.server.databaseURL)
-		throw new Error(
-			'CONF: DATABASE_URL It needs to be set up in the environment.',
-		);
-	if (!configs.server.projectId)
-		throw new Error(
-			'CONF: PROJECT_ID It needs to be set up in the environment.',
-		);
-	if (!configs.server.storageBucket)
-		throw new Error(
-			'CONF: STORAGE_BUCKET It needs to be set up in the environment.',
-		);
-	if (!configs.server.messagingSenderId)
-		throw new Error(
-			'CONF: MESSAGING_SENDER_ID It needs to be set up in the environment.',
-		);
-	if (!configs.server.appId)
-		throw new Error('CONF: APP_ID It needs to be set up in the environment.');
-	if (!configs.server.measurementId)
-		throw new Error(
-			'CONF: MEASUREMENT_ID It needs to be set up in the environment.',
-		);
-	if (!configs.token)
-		throw new Error('CONF: TOKEN It needs to be set up in the environment.');
+  if (!configs.server.apiKey)
+    throw new Error("CONF: API_KEY It needs to be set up in the environment.");
+  if (!configs.server.authDomain)
+    throw new Error(
+      "CONF: AUTH_DOMAIN It needs to be set up in the environment.",
+    );
+  if (!configs.server.databaseURL)
+    throw new Error(
+      "CONF: DATABASE_URL It needs to be set up in the environment.",
+    );
+  if (!configs.server.projectId)
+    throw new Error(
+      "CONF: PROJECT_ID It needs to be set up in the environment.",
+    );
+  if (!configs.server.storageBucket)
+    throw new Error(
+      "CONF: STORAGE_BUCKET It needs to be set up in the environment.",
+    );
+  if (!configs.server.messagingSenderId)
+    throw new Error(
+      "CONF: MESSAGING_SENDER_ID It needs to be set up in the environment.",
+    );
+  if (!configs.server.appId)
+    throw new Error("CONF: APP_ID It needs to be set up in the environment.");
+  if (!configs.server.measurementId)
+    throw new Error(
+      "CONF: MEASUREMENT_ID It needs to be set up in the environment.",
+    );
+  if (!configs.token)
+    throw new Error("CONF: TOKEN It needs to be set up in the environment.");
 } catch (error) {
-	logger.error(
-		error,
-		'An error was encountered while verifying the configuration.',
-	);
+  logger.error(
+    error,
+    "An error was encountered while verifying the configuration.",
+  );
 }
 
 // Client setup
-logger.info('Setting up the main system...');
+logger.info("Setting up the main system...");
 
 const client = new Client({
-	partials: [
-		Partials.Channel,
-		Partials.GuildMember,
-		Partials.GuildScheduledEvent,
-		Partials.Message,
-		Partials.Reaction,
-		Partials.SoundboardSound,
-		Partials.ThreadMember,
-		Partials.User,
-	],
-	presence: {
-		status: PresenceUpdateStatus.Idle,
-		afk: true,
-		activities: [{ name: 'America Ya :D', type: ActivityType.Custom }],
-	},
-	intents: [
-		GatewayIntentBits.DirectMessages,
-		// - MESSAGE_CREATE
-		// - MESSAGE_UPDATE
-		// - MESSAGE_DELETE
-		// - CHANNEL_PINS_UPDATE
-		GatewayIntentBits.GuildExpressions,
-		// - GUILD_EMOJIS_UPDATE
-		// - GUILD_STICKERS_UPDATE
-		// - GUILD_SOUNDBOARD_SOUND_CREATE
-		// - GUILD_SOUNDBOARD_SOUND_UPDATE
-		// - GUILD_SOUNDBOARD_SOUND_DELETE
-		// - GUILD_SOUNDBOARD_SOUNDS_UPDATE
-		GatewayIntentBits.GuildInvites,
-		// - INVITE_CREATE
-		// - INVITE_DELETE
-		GatewayIntentBits.GuildMembers,
-		// - GUILD_MEMBER_ADD
-		// - GUILD_MEMBER_UPDATE
-		// - GUILD_MEMBER_REMOVE
-		// - THREAD_MEMBERS_UPDATE *
-		GatewayIntentBits.GuildMessages,
-		// - MESSAGE_CREATE
-		// - MESSAGE_UPDATE
-		// - MESSAGE_DELETE
-		// - MESSAGE_DELETE_BULK
-		GatewayIntentBits.GuildModeration,
-		// - GUILD_AUDIT_LOG_ENTRY_CREATE
-		// - GUILD_BAN_ADD
-		// - GUILD_BAN_REMOVE
-		GatewayIntentBits.GuildVoiceStates,
-		// - VOICE_CHANNEL_EFFECT_SEND
-		// - VOICE_STATE_UPDATE
-		GatewayIntentBits.GuildWebhooks,
-		// - WEBHOOKS_UPDATE
-		GatewayIntentBits.Guilds,
-		// - GUILD_CREATE
-		// - GUILD_UPDATE
-		// - GUILD_DELETE
-		// - GUILD_ROLE_CREATE
-		// - GUILD_ROLE_UPDATE
-		// - GUILD_ROLE_DELETE
-		// - CHANNEL_CREATE
-		// - CHANNEL_UPDATE
-		// - CHANNEL_DELETE
-		// - CHANNEL_PINS_UPDATE
-		// - THREAD_CREATE
-		// - THREAD_UPDATE
-		// - THREAD_DELETE
-		// - THREAD_LIST_SYNC
-		// - THREAD_MEMBER_UPDATE
-		// - THREAD_MEMBERS_UPDATE *
-		// - STAGE_INSTANCE_CREATE
-		// - STAGE_INSTANCE_UPDATE
-		// - STAGE_INSTANCE_DELETE
-	],
+  partials: [
+    Partials.Channel,
+    Partials.GuildMember,
+    Partials.GuildScheduledEvent,
+    Partials.Message,
+    Partials.Reaction,
+    Partials.SoundboardSound,
+    Partials.ThreadMember,
+    Partials.User,
+  ],
+  presence: {
+    status: PresenceUpdateStatus.Idle,
+    afk: true,
+    activities: [{ name: "America Ya :D", type: ActivityType.Custom }],
+  },
+  intents: [
+    GatewayIntentBits.DirectMessages,
+    // - MESSAGE_CREATE
+    // - MESSAGE_UPDATE
+    // - MESSAGE_DELETE
+    // - CHANNEL_PINS_UPDATE
+    GatewayIntentBits.GuildExpressions,
+    // - GUILD_EMOJIS_UPDATE
+    // - GUILD_STICKERS_UPDATE
+    // - GUILD_SOUNDBOARD_SOUND_CREATE
+    // - GUILD_SOUNDBOARD_SOUND_UPDATE
+    // - GUILD_SOUNDBOARD_SOUND_DELETE
+    // - GUILD_SOUNDBOARD_SOUNDS_UPDATE
+    GatewayIntentBits.GuildInvites,
+    // - INVITE_CREATE
+    // - INVITE_DELETE
+    GatewayIntentBits.GuildMembers,
+    // - GUILD_MEMBER_ADD
+    // - GUILD_MEMBER_UPDATE
+    // - GUILD_MEMBER_REMOVE
+    // - THREAD_MEMBERS_UPDATE *
+    GatewayIntentBits.GuildMessages,
+    // - MESSAGE_CREATE
+    // - MESSAGE_UPDATE
+    // - MESSAGE_DELETE
+    // - MESSAGE_DELETE_BULK
+    GatewayIntentBits.GuildModeration,
+    // - GUILD_AUDIT_LOG_ENTRY_CREATE
+    // - GUILD_BAN_ADD
+    // - GUILD_BAN_REMOVE
+    GatewayIntentBits.GuildVoiceStates,
+    // - VOICE_CHANNEL_EFFECT_SEND
+    // - VOICE_STATE_UPDATE
+    GatewayIntentBits.GuildWebhooks,
+    // - WEBHOOKS_UPDATE
+    GatewayIntentBits.Guilds,
+    // - GUILD_CREATE
+    // - GUILD_UPDATE
+    // - GUILD_DELETE
+    // - GUILD_ROLE_CREATE
+    // - GUILD_ROLE_UPDATE
+    // - GUILD_ROLE_DELETE
+    // - CHANNEL_CREATE
+    // - CHANNEL_UPDATE
+    // - CHANNEL_DELETE
+    // - CHANNEL_PINS_UPDATE
+    // - THREAD_CREATE
+    // - THREAD_UPDATE
+    // - THREAD_DELETE
+    // - THREAD_LIST_SYNC
+    // - THREAD_MEMBER_UPDATE
+    // - THREAD_MEMBERS_UPDATE *
+    // - STAGE_INSTANCE_CREATE
+    // - STAGE_INSTANCE_UPDATE
+    // - STAGE_INSTANCE_DELETE
+  ],
 });
 
 // Initialize i18next
-logger.info('Loading language modules...');
+logger.info("Loading language modules...");
 
 try {
-	i18next.use(Backend).init({
-		debug: false,
-		initImmediate: false,
-		fallbackLng: 'th',
-		lng: 'en-US',
-		preload: readdirSync(join(__dirname, 'locales')).filter((fileName) => {
-			const joinedPath = join(join(__dirname, 'locales'), fileName);
-			const isDirectory = lstatSync(joinedPath).isDirectory();
-			return isDirectory;
-		}),
-		backend: {
-			loadPath: join(__dirname, 'locales', '{{lng}}', '{{ns}}.json'),
-		},
-	});
+  i18next.use(Backend).init({
+    debug: false,
+    initImmediate: false,
+    fallbackLng: "th",
+    lng: "en-US",
+    preload: readdirSync(join(__dirname, "locales")).filter((fileName) => {
+      const joinedPath = join(join(__dirname, "locales"), fileName);
+      const isDirectory = lstatSync(joinedPath).isDirectory();
+      return isDirectory;
+    }),
+    backend: {
+      loadPath: join(__dirname, "locales", "{{lng}}", "{{ns}}.json"),
+    },
+  });
 } catch (error) {
-	logger.error(error, 'Error initializing i18next');
+  logger.error(error, "Error initializing i18next");
 }
 
 // Configure in client
-logger.info('Adding data and handlers to the main system...');
+logger.info("Adding data and handlers to the main system...");
 
-client.mode = process.env.npm_lifecycle_event || 'start';
+client.mode = process.env.npm_lifecycle_event || "start";
 client.configs = configs;
 client.logger = logger;
 client.i18n = i18next;
 client.temp = {
-	startup: {
-		start: startTime,
-		end: 0,
-	},
+  startup: {
+    start: startTime,
+    end: 0,
+  },
 };
 client.player = new DisTube(client, {
-	plugins: [
-		new DeezerPlugin(),
-		new SpotifyPlugin(),
-		new SoundCloudPlugin(),
-		new YtDlpPlugin({ update: false }),
-	],
-	customFilters: client.configs.filters,
+  plugins: [
+    new DeezerPlugin(),
+    new SpotifyPlugin(),
+    new SoundCloudPlugin(),
+    new YtDlpPlugin({ update: false }),
+  ],
+  customFilters: client.configs.filters,
 });
 
 // Read the content file in the handlers.
-client.logger.info('Loading all commands and events...');
+client.logger.info("Loading all commands and events...");
 
-const handlersPath = join(__dirname, 'handlers');
+const handlersPath = join(__dirname, "handlers");
 const handlerFiles = readdirSync(handlersPath);
 
 for (const handler of handlerFiles) {
-	require(`${handlersPath}/${handler}`)(client);
+  require(`${handlersPath}/${handler}`)(client);
 }
 
 // Checking for update from Github if in dev mode
-if (client.mode === 'dev') updateChecker();
+if (client.mode === "dev") updateChecker();
 
 // Start connecting to the server.
-client.logger.info('Connecting to the backend and logging in...');
+client.logger.info("Connecting to the backend and logging in...");
 
 initializeApp(client.configs.server);
 
-if (client.mode !== 'start') {
-	connectDatabaseEmulator(
-		getDatabase(),
-		client.configs.emulators.database.host,
-		client.configs.emulators.database.port,
-	);
+if (client.mode !== "start") {
+  connectDatabaseEmulator(
+    getDatabase(),
+    client.configs.emulators.database.host,
+    client.configs.emulators.database.port,
+  );
 }
 
 // Start logging in and working
