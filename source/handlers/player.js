@@ -1,4 +1,5 @@
 const { EmbedBuilder, Colors } = require('discord.js');
+const { Events } = require('distube');
 const { webhookSend, changeLanguage } = require('../utils/clientUtils');
 const { catchError } = require('../utils/consoleUtils');
 const { newLines } = require('../utils/miscUtils');
@@ -8,17 +9,20 @@ module.exports = (client) => {
 		.setTitle('🎹・Player')
 		.setTimestamp();
 
-	client.player.on('addList', (queue, playlist) => {
+	client.player.on(Events.ADD_LIST, (queue, playlist) => {
 		changeLanguage(client, client.i18n.language);
 		webhookLogEmbed
 			.setColor(Colors.White)
 			.setDescription(
-				`Queue:\`\`\`${queue}\`\`\`\nPlaylist:\`\`\`${playlist}\`\`\``,
+				newLines(
+					`Queue:\`\`\`${queue}\`\`\``,
+					`Playlist:\`\`\`${playlist}\`\`\``,
+				),
 			)
 			.setFields([
 				{
 					name: 'Event',
-					value: 'addList',
+					value: Events.ADD_LIST,
 					inline: true,
 				},
 			]);
@@ -32,15 +36,17 @@ module.exports = (client) => {
 			}),
 		);
 	});
-	client.player.on('addSong', (queue, song) => {
+	client.player.on(Events.ADD_SONG, (queue, song) => {
 		changeLanguage(client, client.i18n.language);
 		webhookLogEmbed
 			.setColor(Colors.White)
-			.setDescription(`Queue:\`\`\`${queue}\`\`\`\nSong:\`\`\`${song}\`\`\``)
+			.setDescription(
+				newLines(`Queue:\`\`\`${queue}\`\`\``, `Song:\`\`\`${song}\`\`\``),
+			)
 			.setFields([
 				{
 					name: 'Event',
-					value: 'addSong',
+					value: Events.ADD_SONG,
 					inline: true,
 				},
 			]);
@@ -54,7 +60,41 @@ module.exports = (client) => {
 			}),
 		);
 	});
-	client.player.on('disconnect', (queue) => {
+	client.player.on(Events.DEBUG, (debug) => {
+		webhookLogEmbed
+			.setColor(Colors.Blue)
+			.setDescription(`Debug:\`\`\`${debug}\`\`\``)
+			.setFields([
+				{
+					name: 'Event',
+					value: Events.DEBUG,
+					inline: true,
+				},
+			]);
+		webhookSend(client.configs.logger.player, {
+			embeds: [webhookLogEmbed],
+		});
+	});
+	client.player.on(Events.DELETE_QUEUE, (queue) => {
+		changeLanguage(client, client.i18n.language);
+		webhookLogEmbed
+			.setColor(Colors.Red)
+			.setDescription(`Queue:\`\`\`${queue}\`\`\``)
+			.setFields([
+				{
+					name: 'Event',
+					value: Events.DELETE_QUEUE,
+					inline: true,
+				},
+			]);
+		webhookSend(client.configs.logger.player, {
+			embeds: [webhookLogEmbed],
+		});
+		queue.textChannel.send(
+			client.i18n.t('handlers.player.deleteQueue.deleted_queue'),
+		);
+	});
+	client.player.on(Events.DISCONNECT, (queue) => {
 		changeLanguage(client, client.i18n.language);
 		webhookLogEmbed
 			.setColor(Colors.Default)
@@ -62,7 +102,7 @@ module.exports = (client) => {
 			.setFields([
 				{
 					name: 'Event',
-					value: 'disconnect',
+					value: Events.DISCONNECT,
 					inline: true,
 				},
 			]);
@@ -73,26 +113,19 @@ module.exports = (client) => {
 			client.i18n.t('handlers.player.disconnect.disconnected'),
 		);
 	});
-	client.player.on('empty', (queue) => {
-		changeLanguage(client, client.i18n.language);
-		webhookLogEmbed
-			.setColor(Colors.Default)
-			.setDescription(`Queue:\`\`\`${queue}\`\`\``)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'empty',
-					inline: true,
-				},
-			]);
+	client.player.on(Events.EMPTY, () => {
+		webhookLogEmbed.setColor(Colors.Default).setFields([
+			{
+				name: 'Event',
+				value: Events.EMPTY,
+				inline: true,
+			},
+		]);
 		webhookSend(client.configs.logger.player, {
 			embeds: [webhookLogEmbed],
 		});
-		queue.textChannel.send(
-			client.i18n.t('handlers.player.empty.no_user_in_channel'),
-		);
 	});
-	client.player.on('error', (channel, error) => {
+	client.player.on(Events.ERROR, (error, queue, song) => {
 		const meChannel = channel.guild.members.me.voice.channel;
 		const connection = client.player.voices.get(meChannel.guild);
 
@@ -107,21 +140,40 @@ module.exports = (client) => {
 		webhookLogEmbed
 			.setColor(Colors.Red)
 			.setDescription(
-				`Channel:\`\`\`${channel}\`\`\`\nError:\`\`\`${error}\`\`\``,
+				newLines(
+					`Error:\`\`\`${error}\`\`\``,
+					`Queue:\`\`\`${queue}\`\`\``,
+					`Song:\`\`\`${song}\`\`\``,
+				),
 			)
 			.setFields([
 				{
 					name: 'Event',
-					value: 'error',
+					value: Events.ERROR,
 					inline: true,
 				},
 			]);
 		webhookSend(client.configs.logger.player, {
 			embeds: [webhookLogEmbed],
 		});
-		catchError(client, channel, 'music', error);
+		catchError(client, queue.textChannel, 'music', error);
 	});
-	client.player.on('finish', (queue) => {
+	client.player.on(Events.FFMPEG_DEBUG, (debug) => {
+		webhookLogEmbed
+			.setColor(Colors.Blue)
+			.setDescription(`Debug:\`\`\`${debug}\`\`\``)
+			.setFields([
+				{
+					name: 'Event',
+					value: Events.FFMPEG_DEBUG,
+					inline: true,
+				},
+			]);
+		webhookSend(client.configs.logger.player, {
+			embeds: [webhookLogEmbed],
+		});
+	});
+	client.player.on(Events.FINISH, (queue) => {
 		changeLanguage(client, client.i18n.language);
 		webhookLogEmbed
 			.setColor(Colors.Green)
@@ -129,7 +181,7 @@ module.exports = (client) => {
 			.setFields([
 				{
 					name: 'Event',
-					value: 'finish',
+					value: Events.FINISH,
 					inline: true,
 				},
 			]);
@@ -140,7 +192,31 @@ module.exports = (client) => {
 			client.i18n.t('handlers.player.finish.queue_is_empty'),
 		);
 	});
-	client.player.on('initQueue', (queue) => {
+	client.player.on(Events.FINISH_SONG, (queue, song) => {
+		changeLanguage(client, client.i18n.language);
+		webhookLogEmbed
+			.setColor(Colors.Green)
+			.setDescription(
+				newLines(`Queue:\`\`\`${queue}\`\`\``, `Song:\`\`\`${song}\`\`\``),
+			)
+			.setFields([
+				{
+					name: 'Event',
+					value: Events.FINISH_SONG,
+					inline: true,
+				},
+			]);
+		webhookSend(client.configs.logger.player, {
+			embeds: [webhookLogEmbed],
+		});
+		queue.textChannel.send(
+			client.i18n.t('handlers.player.finishSong.finished_song', {
+				song_name: song.name,
+				duration: song.formattedDuration,
+			}),
+		);
+	});
+	client.player.on(Events.INIT_QUEUE, (queue) => {
 		queue.autoplay = false;
 		queue.volume = 100;
 		queue.filter = 'clear';
@@ -152,7 +228,7 @@ module.exports = (client) => {
 			.setFields([
 				{
 					name: 'Event',
-					value: 'initQueue',
+					value: Events.INIT_QUEUE,
 					inline: true,
 				},
 			]);
@@ -160,15 +236,38 @@ module.exports = (client) => {
 			embeds: [webhookLogEmbed],
 		});
 	});
-	client.player.on('playSong', (queue, song) => {
+	client.player.on(Events.NO_RELATED, (queue, error) => {
 		changeLanguage(client, client.i18n.language);
 		webhookLogEmbed
-			.setColor(Colors.White)
-			.setDescription(`Queue:\`\`\`${queue}\`\`\`\nSong:\`\`\`${song}\`\`\``)
+			.setColor(Colors.Green)
+			.setDescription(
+				newLines(`Queue:\`\`\`${queue}\`\`\``, `Error:\`\`\`${error}\`\`\``),
+			)
 			.setFields([
 				{
 					name: 'Event',
-					value: 'playSong',
+					value: Events.NO_RELATED,
+					inline: true,
+				},
+			]);
+		webhookSend(client.configs.logger.player, {
+			embeds: [webhookLogEmbed],
+		});
+		queue.textChannel.send(
+			client.i18n.t('handlers.player.finishSong.no_related'),
+		);
+	});
+	client.player.on(Events.PLAY_SONG, (queue, song) => {
+		changeLanguage(client, client.i18n.language);
+		webhookLogEmbed
+			.setColor(Colors.White)
+			.setDescription(
+				newLines(`Queue:\`\`\`${queue}\`\`\``, `Song:\`\`\`${song}\`\`\``),
+			)
+			.setFields([
+				{
+					name: 'Event',
+					value: Events.PLAY_SONG,
 					inline: true,
 				},
 			]);
@@ -181,130 +280,5 @@ module.exports = (client) => {
 				duration: song.formattedDuration,
 			}),
 		);
-	});
-	client.player.on('searchCancel', (message) => {
-		changeLanguage(client, client.i18n.language);
-		webhookLogEmbed
-			.setColor(Colors.Default)
-			.setDescription(`Message:\`\`\`${message}\`\`\``)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'searchCancel',
-					inline: true,
-				},
-			]);
-		webhookSend(client.configs.logger.player, {
-			embeds: [webhookLogEmbed],
-		});
-		message.reply(
-			client.i18n.t('handlers.player.searchCancel.search_cancelled'),
-		);
-	});
-	client.player.on('searchDone', (message) => {
-		changeLanguage(client, client.i18n.language);
-		webhookLogEmbed
-			.setColor(Colors.Blue)
-			.setDescription(`Message:\`\`\`${message}\`\`\``)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'searchDone',
-					inline: true,
-				},
-			]);
-		webhookSend(client.configs.logger.player, {
-			embeds: [webhookLogEmbed],
-		});
-		message.reply(
-			client.i18n.t('handlers.player.searchDone.get_list_of_songs'),
-		);
-	});
-	client.player.on('searchInvalidAnswer', (message, answer) => {
-		changeLanguage(client, client.i18n.language);
-		webhookLogEmbed
-			.setColor(Colors.Orange)
-			.setDescription(
-				`Message:\`\`\`${message}\`\`\`\nAnswer:\`\`\`${answer}\`\`\``,
-			)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'searchInvalidAnswer',
-					inline: true,
-				},
-			]);
-		webhookSend(client.configs.logger.player, {
-			embeds: [webhookLogEmbed],
-		});
-		answer.reply(
-			client.i18n.t('handlers.player.searchInvalidAnswer.search_cancelled'),
-		);
-	});
-	client.player.on('searchNoResult', (message) => {
-		changeLanguage(client, client.i18n.language);
-		webhookLogEmbed
-			.setColor(Colors.Default)
-			.setDescription(`Message:\`\`\`${message}\`\`\``)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'searchNoResult',
-					inline: true,
-				},
-			]);
-		webhookSend(client.configs.logger.player, {
-			embeds: [webhookLogEmbed],
-		});
-		message.reply(client.i18n.t('handlers.player.searchNoResult.no_results'));
-	});
-	client.player.on('searchResult', (message, result) => {
-		const data = newLines(
-			result.map(
-				(song, index) =>
-					`**${index}**. ${song.name} \`${song.formattedDuration}\` : **${song.uploader.name}**`,
-			),
-		);
-
-		changeLanguage(client, client.i18n.language);
-
-		const authorAvatar = message.author.displayAvatarURL();
-		const authorUsername = message.author.username;
-		const searchResultEmbed = new EmbedBuilder()
-			.setTitle(client.i18n.t('handlers.player.searchResult.searching'))
-			.setDescription(
-				client.i18n.t('handlers.player.searchResult.timer_choose'),
-			)
-			.setColor(Colors.Blue)
-			.setTimestamp()
-			.setAuthor({
-				name: client.i18n.t('handlers.player.searchResult.tool_name'),
-				iconURL:
-					'https://support.content.office.net/th-th/media/e106d275-7ca7-4f1b-aea6-e592baf0db61.png',
-			})
-			.setFooter({ iconURL: authorAvatar, text: authorUsername })
-			.setFields([
-				{
-					name: client.i18n.t('handlers.player.searchResult.title_results'),
-					value: data,
-				},
-			]);
-
-		webhookLogEmbed
-			.setColor(Colors.White)
-			.setDescription(
-				`Message:\`\`\`${message}\`\`\`\nResult:\`\`\`${result}\`\`\``,
-			)
-			.setFields([
-				{
-					name: 'Event',
-					value: 'searchResult',
-					inline: true,
-				},
-			]);
-		webhookSend(client.configs.logger.player, {
-			embeds: [webhookLogEmbed],
-		});
-		message.channel.send({ embeds: [searchResultEmbed] });
 	});
 };
