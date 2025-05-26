@@ -1,6 +1,7 @@
 const { logger } = require('./consoleUtils');
 const { version } = require('../../package.json');
 const configs = require('../configs/data');
+const http = require('http');
 
 /**
  * Function to check for updates from Github.
@@ -174,8 +175,205 @@ const statisticsSubmitter = (client) => {
 	}
 };
 
+const healthCheckSubmitter = async () => {
+	const child = logger.child({}, { msgPrefix: '[HCSu] ' });
+
+	child.info('Running health checks for external services...');
+
+	const services = await Promise.all([
+		(async () => {
+			const apiKey = configs.openai.apiKey;
+			const baseURL = configs.openai.baseURL;
+
+			if (!apiKey)
+				return {
+					name: 'Artificial Intelligence',
+					status: 'skipped',
+					message: 'No API key configured',
+				};
+
+			try {
+				const res = await fetch(new URL('/v1/models', baseURL), {
+					headers: { Authorization: `Bearer ${apiKey}` },
+				});
+
+				if (res.ok) return { name: 'Artificial Intelligence', status: 'ok' };
+
+				return {
+					name: 'Artificial Intelligence',
+					status: 'fail',
+					message: `HTTP ${res.status}`,
+				};
+			} catch (error) {
+				return {
+					name: 'Artificial Intelligence',
+					status: 'fail',
+					message: error.message,
+				};
+			}
+		})(),
+		(async () => {
+			const url = configs.server.databaseURL;
+
+			if (!url)
+				return {
+					name: 'Realtime Database',
+					status: 'skipped',
+					message: 'No URL configured',
+				};
+
+			try {
+				const res = await fetch(new URL('/information.json', url));
+				if (res.ok) return { name: 'Realtime Database', status: 'ok' };
+				return {
+					name: 'Realtime Database',
+					status: 'fail',
+					message: `HTTP ${res.status}`,
+				};
+			} catch (error) {
+				return {
+					name: 'Realtime Database',
+					status: 'fail',
+					message: error.message,
+				};
+			}
+		})(),
+		(async () => {
+			const url = configs.translation.baseURL;
+
+			if (!url)
+				return {
+					name: 'Translation',
+					status: 'skipped',
+					message: 'No URL configured',
+				};
+
+			try {
+				const res = await fetch(new URL(url), {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+					},
+					body: new URLSearchParams({
+						sl: 'auto',
+						tl: 'th',
+						q: 'Test',
+					}).toString(),
+				});
+
+				if (res.ok) return { name: 'Translation', status: 'ok' };
+
+				return {
+					name: 'Translation',
+					status: 'fail',
+					message: `HTTP ${res.status}`,
+				};
+			} catch (error) {
+				return {
+					name: 'Translation',
+					status: 'fail',
+					message: error.message,
+				};
+			}
+		})(),
+		(async () => {
+			const token = configs.open_weather_token;
+			const geoURL = new URL('https://api.openweathermap.org/geo/1.0/direct');
+			const dataURL = new URL(
+				'https://api.openweathermap.org/data/2.5/weather',
+			);
+
+			if (!token)
+				return {
+					name: 'Weather',
+					status: 'skipped',
+					message: 'No token configured',
+				};
+
+			try {
+				geoURL.searchParams.append('q', 'Bangkok');
+				geoURL.searchParams.append('appid', token);
+
+				const geoRes = await fetch(geoURL);
+
+				if (!geoRes.ok)
+					return {
+						name: 'Weather',
+						status: 'fail',
+						message: 'Unable to retrieve coordinates',
+					};
+
+				const geoData = await geoRes.json();
+
+				dataURL.searchParams.append('lat', geoData[0].lat);
+				dataURL.searchParams.append('lon', geoData[0].lon);
+				dataURL.searchParams.append('appid', token);
+
+				const dataRes = await fetch(dataURL);
+
+				if (dataRes.ok) return { name: 'Weather', status: 'ok' };
+
+				return {
+					name: 'Weather',
+					status: 'fail',
+					message: `HTTP ${dataRes.status}`,
+				};
+			} catch (error) {
+				return {
+					name: 'Weather',
+					status: 'fail',
+					message: error.message,
+				};
+			}
+		})(),
+	]);
+
+	// Simple rate limiter
+	// 60 seconds window, 10 requests max
+	const rateLimit = 60 * 1000;
+	const maxRequests = 10;
+	const requestCounts = new Map();
+
+	const port = process.env.PORT || 3000;
+	const server = http.createServer((req, res) => {
+		const ip =
+			req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+			req.socket.remoteAddress;
+		let device = requestCounts.get(ip);
+
+		if (!device || Date.now() - device.viewed > rateLimit) {
+			device = { count: 1, viewed: Date.now() };
+		} else {
+			device.count += 1;
+		}
+		requestCounts.set(ip, device);
+
+		if (device.count > maxRequests) {
+			res.writeHead(429, { 'Content-Type': 'text/plain' });
+			res.end('Too Many Requests');
+			return;
+		}
+
+		if (req.url === '/') {
+			res.writeHead(200, { 'Content-Type': 'text/plain' });
+			res.end('Services is running.');
+		} else if (req.url === '/health') {
+			res.writeHead(200, { 'Content-Type': 'application/json' });
+			res.end(JSON.stringify(services));
+		} else {
+			res.writeHead(404, { 'Content-Type': 'text/plain' });
+			res.end('Not found');
+		}
+	});
+
+	server.listen(port, () => {
+		child.info(`Health check HTTP server running on port ${port}.`);
+	});
+};
+
 module.exports = {
 	updateChecker,
 	systemMetricsSubmitter,
 	statisticsSubmitter,
+	healthCheckSubmitter,
 };
