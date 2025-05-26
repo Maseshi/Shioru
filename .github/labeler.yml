@@ -1,0 +1,22 @@
+Documentation:
+- changed-files:
+  - any-glob-to-any-file: '**/*.md'
+
+command:
+- changed-files:
+  - any-glob-to-any-file: 'source/commands/*'
+
+context:
+- changed-files:
+  - any-glob-to-any-file: 'source/contexts/*'
+
+event:
+- changed-files:
+  - any-glob-to-any-file: 'source/events/*'
+
+trans:
+- changed-files:
+  - any-glob-to-any-file: 'source/locales/*'
+
+feature:
+ - head-branch: ['^feature', 'feature']
