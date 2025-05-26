@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --target production --file Dockerfile --tag maseshi/%npm_package_name%:%npm_package_version%
+      run: npm run docker:build
