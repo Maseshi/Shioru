@@ -13,10 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get package info
-      id: package
-      uses: codex-team/action-nodejs-package-info@v1.1
+    - name: package-info
+      uses: nyaa8/package-info@v1.0.0
 
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --target production --file Dockerfile --tag maseshi/${{ steps.package.outputs.name }}:${{ steps.package.outputs.version }}
+      run: docker build . --target production --file Dockerfile --tag maseshi/${{ env.PACKAGE_NAME }}:${{ env.PACKAGE_VERSION }}
