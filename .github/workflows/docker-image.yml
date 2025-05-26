@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install jq
+      run: sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Debug package.json
+      run: cat package.json
+
+    - name: Debug package variables
+      run: echo "PACKAGE_NAME=${{ env.PACKAGE_NAME }}, PACKAGE_VERSION=${{ env.PACKAGE_VERSION }}"
+    
     - name: Extract package info
       run: |
         echo "PACKAGE_NAME=$(jq -r .name package.json)" >> $GITHUB_ENV
