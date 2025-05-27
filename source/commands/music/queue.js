@@ -18,10 +18,10 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
-		.setIntegrationTypes([
-			ApplicationIntegrationType.GuildInstall,
-			ApplicationIntegrationType.UserInstall,
-		]),
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
+    ]),
   async execute(interaction) {
     const queue = interaction.client.player.getQueue(interaction);
 

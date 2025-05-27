@@ -1,53 +1,53 @@
 const {
-	SlashCommandBuilder,
-	parseEmoji,
-	PermissionFlagsBits,
-	InteractionContextType,
-	ApplicationIntegrationType,
-} = require('discord.js');
+  SlashCommandBuilder,
+  parseEmoji,
+  PermissionFlagsBits,
+  InteractionContextType,
+  ApplicationIntegrationType,
+} = require("discord.js");
 
 module.exports = {
-	permissions: [
-		PermissionFlagsBits.SendMessages,
-		PermissionFlagsBits.AttachFiles,
-	],
-	data: new SlashCommandBuilder()
-		.setName('enlarge')
-		.setDescription('Enlarge the emoji.')
-		.setDescriptionLocalizations({ th: 'ขยายอิโมจิให้ใหญ่ขึ้น' })
-		.setDefaultMemberPermissions()
-		.setContexts([
-			InteractionContextType.BotDM,
-			InteractionContextType.Guild,
-			InteractionContextType.PrivateChannel,
-		])
-		.setIntegrationTypes([
-			ApplicationIntegrationType.GuildInstall,
-			ApplicationIntegrationType.UserInstall,
-		])
-		.addStringOption((option) =>
-			option
-				.setName('emoji')
-				.setDescription('The emoji you want to be enlarged')
-				.setDescriptionLocalizations({
-					th: 'อีโมจิที่ต้องการให้ขยายให้ใหญ่ขึ้น',
-				})
-				.setRequired(true),
-		),
-	async execute(interaction) {
-		const inputEmoji = interaction.options.getString('emoji');
+  permissions: [
+    PermissionFlagsBits.SendMessages,
+    PermissionFlagsBits.AttachFiles,
+  ],
+  data: new SlashCommandBuilder()
+    .setName("enlarge")
+    .setDescription("Enlarge the emoji.")
+    .setDescriptionLocalizations({ th: "ขยายอิโมจิให้ใหญ่ขึ้น" })
+    .setDefaultMemberPermissions()
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
+    ])
+    .addStringOption((option) =>
+      option
+        .setName("emoji")
+        .setDescription("The emoji you want to be enlarged")
+        .setDescriptionLocalizations({
+          th: "อีโมจิที่ต้องการให้ขยายให้ใหญ่ขึ้น",
+        })
+        .setRequired(true),
+    ),
+  async execute(interaction) {
+    const inputEmoji = interaction.options.getString("emoji");
 
-		const parsedEmoji = parseEmoji(inputEmoji);
+    const parsedEmoji = parseEmoji(inputEmoji);
 
-		if (parsedEmoji.id) {
-			const fileType = inputEmoji.animated ? 'gif' : 'png';
-			const emojiURL = `https://cdn.discordapp.com/emojis/${parsedEmoji.id}.${fileType}`;
+    if (parsedEmoji.id) {
+      const fileType = inputEmoji.animated ? "gif" : "png";
+      const emojiURL = `https://cdn.discordapp.com/emojis/${parsedEmoji.id}.${fileType}`;
 
-			await interaction.reply({ files: [emojiURL] });
-		} else {
-			await interaction.reply(
-				interaction.client.i18n.t('commands.enlarge.emoji_not_found'),
-			);
-		}
-	},
+      await interaction.reply({ files: [emojiURL] });
+    } else {
+      await interaction.reply(
+        interaction.client.i18n.t("commands.enlarge.emoji_not_found"),
+      );
+    }
+  },
 };
