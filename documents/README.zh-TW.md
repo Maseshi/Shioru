@@ -1,11 +1,9 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
-  <strong>
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" /><strong>
     <h1>Shioru</h1>
     <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
-  <p>
-    <a title="Discord.js v14" href="https://discord.js.org/">
+  <p><a title="Discord.js v14" href="https://discord.js.org/">
       <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
     </a>
     <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
@@ -25,8 +23,7 @@
       <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
     </a>
   </p>
-  <p>
-    <a href="https://shiorus.web.app/invite">Add App</a>
+  <p><a href="https://shiorus.web.app/invite">Add App</a>
     ·
     <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
     ·
@@ -67,7 +64,7 @@
 
 ## ⌛ การติดตั้ง
 
-### 1. 1. 2. 2. โคลนบอทและติดตั้งส่วนประกอบ
+### 1. โคลนบอทและติดตั้งส่วนประกอบ
 
 - 啟動終端並運行以下命令。
   ```bat
@@ -78,17 +75,17 @@
 - 將文件 `.env.example` 重命名為 `.env` 並插入所有必要的值。
 
 > [!NOTE]
-> 
+>
 > คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
-### 2. 2. 3. 3. ตั้งค่าบอทและเชิญเข้าร่วม
+### 2. ตั้งค่าบอทและเชิญเข้าร่วม
 
 - 轉到 [Discord 開發人員門戶](https://discord.com/developers/applications)
 - 單擊 **“新應用程序”** 並命名您的機器人並接受 Discord 策略規則。
 - ไปที่หน้า **"Bot"** และเปิดใช้งานตัวเลือกทั้งหมดในส่วน **Privileged Gateway Intent** ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-privileged-gateway-intents.png)
 - เชิญบอทของคุณไปที่เซิร์ฟเวอร์โดยไปที่หน้า **OAuth2 > URL Generator** เลือก `bot` และ `applications.commands` เลือก `Administrator` จากนั้นคัดลอกลิงก์และวางในแถบที่อยู่ของเบราว์เซอร์ของคุณ ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/discord-developer-portal-scopes.png)
 
-### 3. 3. 4. 4. ตั้งค่าฐานข้อมูล
+### 3. ตั้งค่าฐานข้อมูล
 
 - 轉到 https://firebase.google.com/ 並開始設置項目。
 - เพิ่มโครงการใหม่และทำตามขั้นตอนต่างๆ
@@ -114,7 +111,7 @@
 - รันคำสั่ง `npm run serve`
 
 > [!NOTE]
-> 
+>
 > คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ข้อมูลทั้งหมดจะไม่ได้รับการบันทึก
 
 ### 🍵 ใช้งานจริง
@@ -155,7 +152,7 @@
 
 ## 🌐 ปรับปรุงการแปลภาษา
 
-您可以幫助我們翻譯一種現有語言或一種當前在 [Crowdin](https://crowdin.com/project/shioru-bot)不可用的語言。
+คุณสามารถช่วยเราแปลภาษาที่มีอยู่หรือภาษาที่ยังไม่พร้อมใช้งานในขณะนี้ได้ที่ [Crowdin](https://crowdin.com/project/shioru).
 
 ## ⚠️ พบปัญหา
 
