@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skinovi od %s",
 			"version": "verzija"
 		},
-		"music": {
-			"autoplay": "📻 Automatska reprodukcija",
-			"detail": "📄 Detalji pjesme koja se trenutno reproducira",
-			"download_link": "📥 Link za preuzimanje",
-			"duration": "🕒 Trajanje",
-			"filter": "🎼 uzorak audio filtra",
-			"id": "🆔 ID",
-			"link": "🔗 Link",
-			"music_name": "🎵 Naziv pjesme",
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"now": "⌚ sada",
-			"off": "isključiti",
-			"on": "otvoren",
-			"owner_this_queue": "%s je vlasnik ovog reda čekanja",
-			"paused": "pauza",
-			"playing": "sviranje",
-			"queue_status": "📑 Status trenutnog reda čekanja pjesama",
-			"repeat": "🔁 Ponovite",
-			"repeat_off": "nije otvoreno",
-			"repeat_this_queue": "ovaj red čekanja",
-			"repeat_this_song": "ova pjesma",
-			"uploader": "🎬 učitavač",
-			"volume": "🔉 glasnoća zvuka"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Privremeno ne možete dobiti sliku koju želite. Molimo pokušajte ponovo kasnije.",
 			"request_by": "traži %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Trenutna kvaliteta: %s```\nPonekad problem može biti uzrokovan poslužiteljem koji ima previše pristupa što uzrokuje probleme s performansama. Međutim, preporučujem da provjerite svoju internetsku vezu prije postavljanja.\n`0` - Koristite **OPUS** za komprimiranje audio datoteka. Ovo će vam dati bolju kvalitetu zvuka, ali će također koristiti više resursa **(preporučeno)**\n`1` - Koristite zvuk izravno iz izvora. To će omogućiti bolje performanse, ali će koristiti manje resursa.",
-			"advice_embed_footer_text": "Dodatnu kvalitetu zvuka možete postaviti u postavkama Discorda: Postavke > Audio i video > Napredno.",
-			"advice_embed_title": "Prilagodite kvalitetu zvuka",
-			"focus_on_high_quality": "fokus na visoku kvalitetu",
-			"low_efficiency": "usredotočite se na niske performanse",
-			"opus_mode_selected": "🎛️ Sada sam koristio **OPUS** kao pomoć pri komprimiranju audio datoteka. Kvaliteta zvuka bit će poboljšana.",
-			"raw_mode_selected": "🎛️ Prešao na zvuk iz originala To može smanjiti kvalitetu zvuka."
-		},
 		"queue": {
 			"autoplay": "📻 Automatska reprodukcija",
 			"filter": "🎼 Uzorak glasovnog filtra: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Dobio sam popis pjesama koje želim. i počet će puštati glazbu za trenutak...",
-			"invalid_number": "🔴 Nedavna pretraživanja su otkazana. Možete ponovno pretraživati upisivanjem iste naredbe.",
-			"no_results": "❎ Pokušao sam pretražiti pjesmu, ali nisam uspio pronaći rezultate...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "popis za reprodukciju",
-			"search_cancelled": "🕘 Otkazana pretraga..jer nije pronađen nijedan odabir pjesme.",
-			"searching": "🔍 Pronađite%spovezanih",
-			"song_type": "pjesma",
-			"timer_choose": "Postoji vrijeme za odabir%s 60 sekundi.Ako želite odustati, možete upisati broj koji nije relevantan ili pričekati do kraja vremena.",
-			"title_results": "Rezultati od%stakvih:",
-			"user_not_in_channel": "❓ Prvo unesite bilo koji kanal. Inače me ne slušaj..."
 		},
 		"seek": {
 			"no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Teme",
 			"thread_update": "`%s1` je ažuriran na **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Web udica",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Već sam isključio i izbrisao sve redove čekanja."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh.. Gdje su svi nestali? Onda..prvo šuti~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Ne mogu pronaći taj popis za reprodukciju. Tražite još jedan popis za reprodukciju?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Otkazana pretraga..jer nije pronađen nijedan odabir pjesme."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Dobio sam popis pjesama koje želim. i počet će puštati glazbu za trenutak..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Nedavna pretraživanja su otkazana. Možete ponovno pretraživati upisivanjem iste naredbe."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Pokušao sam pretražiti pjesmu, ali nisam uspio pronaći rezultate..."
-			},
-			"searchResult": {
-				"searching": "🔎 Pronađite povezane pjesme",
-				"timer_choose": "Za odabir pjesme imate 60 sekundi vremena.Ako želite odustati, možete upisati nevažan broj ili pričekati do kraja vremena.",
-				"title_results": "Rezultati pretraživanja takvih pjesama:",
-				"tool_name": "tražilica glazbe"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},
