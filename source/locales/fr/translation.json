@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Peaux de %s",
 			"version": "version"
 		},
-		"music": {
-			"autoplay": "📻 Lecture automatique",
-			"detail": "📄 Détails de la chanson en cours de lecture",
-			"download_link": "📥 Lien de téléchargement",
-			"duration": "🕒 Durée",
-			"filter": "🎼 modèle de filtre audio",
-			"id": "🆔 pièce d'identité",
-			"link": "🔗 Lien",
-			"music_name": "🎵 Nom de la chanson",
-			"no_queue": "❎ Pour le moment, il n'y a aucune chanson que je joue actuellement.",
-			"now": "⌚ maintenant",
-			"off": "éteindre",
-			"on": "ouvrir",
-			"owner_this_queue": "%s est le propriétaire de cette file d'attente",
-			"paused": "pause",
-			"playing": "jouant",
-			"queue_status": "📑 Statut de la file d'attente des chansons en cours",
-			"repeat": "🔁 Répéter",
-			"repeat_off": "pas ouverte",
-			"repeat_this_queue": "cette file d'attente",
-			"repeat_this_song": "cette chanson",
-			"uploader": "🎬 téléchargeur",
-			"volume": "🔉 volume sonore"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Impossible d'obtenir temporairement la photo souhaitée. Veuillez réessayer plus tard.",
 			"request_by": "demandé par %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Qualité actuelle : %s```\nParfois, le problème peut être causé par un serveur qui y a trop accès, ce qui entraîne des problèmes de performances. Cependant, je vous recommande de vérifier votre connexion Internet avant de le configurer.\n`0` - Utilisez **OPUS** pour compresser les fichiers audio. Cela vous donnera une meilleure qualité sonore mais utilisera également plus de ressources **(recommandé)**\n`1` - Utilisez le son directement à partir de la source. Cela fournira de meilleures performances mais utilisera moins de ressources.",
-			"advice_embed_footer_text": "Vous pouvez définir une qualité audio supplémentaire à partir des paramètres Discord : Paramètres > Audio et vidéo > Avancé.",
-			"advice_embed_title": "Personnalisez la qualité du son",
-			"focus_on_high_quality": "se concentrer sur la haute qualité",
-			"low_efficiency": "se concentrer sur les faibles performances",
-			"opus_mode_selected": "🎛️ J'ai maintenant utilisé **OPUS** pour compresser des fichiers audio. La qualité du son sera améliorée.",
-			"raw_mode_selected": "🎛️ Commuté sur le son de l'original Cela peut réduire la qualité du son."
-		},
 		"queue": {
 			"autoplay": "📻 Lecture automatique",
 			"filter": "🎼 Modèle de filtre vocal : `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 J'ai reçu la liste des chansons que je veux. et commencera à jouer de la musique dans un instant...",
-			"invalid_number": "🔴 Les recherches récentes ont été annulées. Vous pouvez effectuer une nouvelle recherche en tapant la même commande.",
-			"no_results": "❎ J'ai essayé de rechercher la chanson mais je n'ai trouvé aucun résultat...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "playlist",
-			"search_cancelled": "🕘 Annulé la recherche..parce qu'aucune sélection de chanson n'a été trouvée.",
-			"searching": "🔍 Trouver%sliés",
-			"song_type": "chanson",
-			"timer_choose": "Il y a un temps pour choisir%s secondes 60. Si vous voulez annuler, vous pouvez taper un nombre qui n'est pas pertinent ou attendre la fin du temps.",
-			"title_results": "Résultats de%stels :",
-			"user_not_in_channel": "❓ Entrez d'abord n'importe quelle chaîne. Sinon, ne m'écoute pas..."
 		},
 		"seek": {
 			"no_queue": "❎ Il n'y a plus de chanson en cours de lecture.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Discussions",
 			"thread_update": "`%s1` a été mis à jour en **%s2 **"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Déconnecté et supprimé toutes les files d'attente déjà."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh.. Où sont-ils tous passés ? Alors... tais-toi d'abord ~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Je ne trouve pas cette liste de lecture. Vous cherchez une autre liste de lecture ?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Annulé la recherche..parce qu'aucune sélection de chanson n'a été trouvée."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 J'ai reçu la liste des chansons que je veux. et commencera à jouer de la musique dans un instant..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Les recherches récentes ont été annulées. Vous pouvez effectuer une nouvelle recherche en tapant la même commande."
-			},
-			"searchNoResult": {
-				"no_results": "❎ J'ai essayé de rechercher la chanson mais je n'ai trouvé aucun résultat..."
-			},
-			"searchResult": {
-				"searching": "🔎 Trouver des chansons liées",
-				"timer_choose": "Il y a 60 secondes de temps pour choisir une chanson. Si vous voulez annuler, vous pouvez taper un numéro non pertinent ou attendre la fin des temps.",
-				"title_results": "Résultats de la recherche de ces chansons :",
-				"tool_name": "moteur de recherche de musique"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

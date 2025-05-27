@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Da của %s",
 			"version": "phiên bản"
 		},
-		"music": {
-			"autoplay": "📻 Tự động phát",
-			"detail": "📄 Chi tiết bài hát đang phát",
-			"download_link": "📥 Liên kết tải xuống",
-			"duration": "🕒 Thời lượng",
-			"filter": "🎼 mẫu bộ lọc âm thanh",
-			"id": "🆔 ID",
-			"link": "🔗 Liên kết",
-			"music_name": "🎵 Tên bài hát",
-			"no_queue": "❎ Hiện tại không có bài hát nào tôi đang phát.",
-			"now": "⌚ bây giờ",
-			"off": "tắt",
-			"on": "mở",
-			"owner_this_queue": "%s là chủ sở hữu của hàng đợi này",
-			"paused": "tạm ngừng",
-			"playing": "đang chơi",
-			"queue_status": "📑 Trạng thái hàng đợi bài hát hiện tại",
-			"repeat": "🔁 Lặp lại",
-			"repeat_off": "đừng mở",
-			"repeat_this_queue": "hàng đợi này",
-			"repeat_this_song": "bài hát này",
-			"uploader": "🎬 trình tải lên",
-			"volume": "🔉 âm lượng"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Tạm thời không thể có được bức ảnh như ý muốn. Vui lòng thử lại sau.",
 			"request_by": "yêu cầu bởi %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Chất lượng hiện tại: %s```\nĐôi khi sự cố có thể do máy chủ có quá nhiều quyền truy cập gây ra các vấn đề về hiệu suất. Tuy nhiên, tôi khuyên bạn nên kiểm tra kết nối internet của mình trước khi thiết lập tính năng này.\n`0` - Sử dụng **OPUS** để nén tệp âm thanh. Điều này sẽ mang lại cho bạn chất lượng âm thanh tốt hơn nhưng cũng sẽ sử dụng nhiều tài nguyên hơn **(được khuyến nghị)**\n`1` - Sử dụng âm thanh trực tiếp từ nguồn. Điều này sẽ cung cấp hiệu suất tốt hơn nhưng sử dụng ít tài nguyên hơn.",
-			"advice_embed_footer_text": "Bạn có thể đặt chất lượng âm thanh bổ sung từ cài đặt Discord: Cài đặt > Âm thanh & Video > Nâng cao.",
-			"advice_embed_title": "Tùy chỉnh chất lượng âm thanh",
-			"focus_on_high_quality": "tập trung vào chất lượng cao",
-			"low_efficiency": "tập trung vào hiệu suất thấp",
-			"opus_mode_selected": "🎛️ Hiện tôi đã sử dụng **OPUS** để hỗ trợ nén các tệp âm thanh. Chất lượng âm thanh sẽ được cải thiện.",
-			"raw_mode_selected": "🎛️ Chuyển sang âm thanh từ bản gốc Nó có thể làm giảm chất lượng âm thanh."
-		},
 		"queue": {
 			"autoplay": "📻 Tự động phát",
 			"filter": "🎼 Mẫu bộ lọc giọng nói: `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Tôi đã nhận được danh sách các bài hát tôi muốn. và sẽ bắt đầu phát nhạc trong giây lát...",
-			"invalid_number": "🔴 Các tìm kiếm gần đây đã bị hủy. Bạn có thể tìm kiếm lại bằng cách gõ lệnh tương tự.",
-			"no_results": "❎ Tôi đã thử tìm kiếm về bài hát nhưng không tìm thấy kết quả nào...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "danh sách phát",
-			"search_cancelled": "🕘 Đã hủy tìm kiếm..vì không tìm thấy bài hát lựa chọn.",
-			"searching": "🔍 Tìm%sliên quan",
-			"song_type": "bài hát",
-			"timer_choose": "Có thời gian chọn%s 60 giây, muốn hủy bạn có thể gõ 1 số không liên quan hoặc đợi hết thời gian.",
-			"title_results": "Kết quả của%snhư vậy:",
-			"user_not_in_channel": "❓ Vào kênh nào trước. Còn không thì đừng nghe tôi..."
 		},
 		"seek": {
 			"no_queue": "❎ Hiện tại không có bài hát nào đang phát.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Chủ đề",
 			"thread_update": "`%s1` đã được cập nhật thành **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Móc mạng",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Đã ngắt kết nối và xóa tất cả hàng chờ rồi."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Ôi.. Họ đi đâu hết rồi? Vì vậy, tôi bối rối đầu tiên ~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Tôi không thể tìm thấy danh sách phát đó. Tìm kiếm một danh sách phát khác?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Đã hủy tìm kiếm..vì không tìm thấy bài hát lựa chọn."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Tôi đã nhận được danh sách các bài hát tôi muốn. và sẽ bắt đầu phát nhạc trong giây lát..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Các tìm kiếm gần đây đã bị hủy. Bạn có thể tìm kiếm lại bằng cách gõ lệnh tương tự."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Tôi đã thử tìm kiếm về bài hát nhưng không tìm thấy kết quả nào..."
-			},
-			"searchResult": {
-				"searching": "🔎 Tìm các bài hát liên quan",
-				"timer_choose": "Có 60 giây thời gian để chọn bài hát, nếu muốn hủy bạn có thể gõ số không liên quan hoặc đợi hết thời gian.",
-				"title_results": "Kết quả tìm kiếm của những bài hát như vậy:",
-				"tool_name": "công cụ tìm kiếm âm nhạc"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

@@ -489,30 +489,6 @@
 			"skin_of": "🎴 %s의 스킨",
 			"version": "버전"
 		},
-		"music": {
-			"autoplay": "📻 자동 재생",
-			"detail": "📄 현재 재생 중인 노래의 세부 정보",
-			"download_link": "📥 다운로드 링크",
-			"duration": "🕒 기간",
-			"filter": "🎼 오디오 필터 패턴",
-			"id": "🆔 아이디",
-			"link": "🔗 링크",
-			"music_name": "🎵 노래 이름",
-			"no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
-			"now": "⌚ 지금",
-			"off": "끄다",
-			"on": "열려 있는",
-			"owner_this_queue": "%s 은 이 대기열의 소유자입니다.",
-			"paused": "정지시키다",
-			"playing": "놀이",
-			"queue_status": "📑 현재 노래 대기열 상태",
-			"repeat": "🔁 반복",
-			"repeat_off": "열려 있지 않음",
-			"repeat_this_queue": "이 대기열",
-			"repeat_this_song": "이 노래",
-			"uploader": "🎬 업로더",
-			"volume": "🔉 음량"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ 일시적으로 원하는 사진을 얻을 수 없습니다. 나중에 다시 시도 해주십시오.",
 			"request_by": "%s이 요청한"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```현재 품질: %s```\n서버에 너무 많은 액세스 권한이 있어 성능 문제가 발생하는 경우가 있습니다. 단, 설정하기 전에 인터넷 연결을 확인하는 것을 권장합니다\n`0` - **OPUS**를 사용하여 오디오 파일을 압축합니다. 이렇게 하면 더 나은 음질을 얻을 수 있지만 더 많은 리소스를 사용하게 됩니다. **(권장)**\n`1` - 소스에서 직접 사운드를 사용합니다. 이것은 더 나은 성능을 제공하지만 더 적은 리소스를 사용합니다.",
-			"advice_embed_footer_text": "Discord 설정(설정 > 오디오 및 비디오 > 고급)에서 추가 오디오 품질을 설정할 수 있습니다.",
-			"advice_embed_title": "음질 사용자 정의",
-			"focus_on_high_quality": "고품질에 초점",
-			"low_efficiency": "낮은 성능에 집중",
-			"opus_mode_selected": "🎛️ 이제 오디오 파일 압축을 돕기 위해 **OPUS**를 사용했습니다. 음질이 향상됩니다.",
-			"raw_mode_selected": "🎛️ 원본에서 소리로 전환됨 음질이 저하될 수 있습니다."
-		},
 		"queue": {
 			"autoplay": "📻 자동 재생",
 			"filter": "🎼 음성 필터 패턴: `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 원하는 노래 목록을 받았습니다. 잠시 후 음악 재생을 시작합니다...",
-			"invalid_number": "🔴 최근 검색이 취소되었습니다. 동일한 명령을 입력하여 다시 검색할 수 있습니다.",
-			"no_results": "❎ 노래에 대해 검색해 보았지만 결과를 찾을 수 없었습니다...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "플레이리스트",
-			"search_cancelled": "🕘 검색을 취소했습니다..선택한 곡이 없기 때문입니다.",
-			"searching": "🔍 관련 항목%s찾기",
-			"song_type": "노래",
-			"timer_choose": "%s 60초를 선택할 수 있는 시간이 있으며, 취소를 원할 경우 관련 없는 숫자를 입력하거나 시간이 끝날 때까지 기다리면 됩니다.",
-			"title_results": "%s의 결과:",
-			"user_not_in_channel": "❓ 아무 채널이나 먼저 들어가세요. 그렇지 않으면 내 말을 듣지 마십시오 ..."
 		},
 		"seek": {
 			"no_queue": "❎ 현재 재생 중인 노래가 없습니다.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ 스레드",
 			"thread_update": "`%s1`이 **%s2**로 업데이트되었습니다."
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 웹후크",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 이미 모든 대기열을 연결 해제하고 삭제했습니다."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 아.. 다 어디갔지? 그럼..먼저 닥쳐~"
-			},
 			"error": {
 				"playlist_not_found": "❎ 해당 재생 목록을 찾을 수 없습니다. 다른 재생 목록을 찾고 계십니까?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 검색을 취소했습니다..선택한 곡이 없기 때문입니다."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 원하는 노래 목록을 받았습니다. 잠시 후 음악 재생을 시작합니다..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 최근 검색이 취소되었습니다. 동일한 명령을 입력하여 다시 검색할 수 있습니다."
-			},
-			"searchNoResult": {
-				"no_results": "❎ 노래에 대해 검색해 보았지만 결과를 찾을 수 없었습니다..."
-			},
-			"searchResult": {
-				"searching": "🔎 관련 노래 찾기",
-				"timer_choose": "곡을 선택하는 시간은 60초이며, 취소를 원하실 경우 엉뚱한 숫자를 입력하시거나 시간이 끝날 때까지 기다리시면 됩니다.",
-				"title_results": "해당 노래의 검색 결과:",
-				"tool_name": "음악 검색 엔진"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

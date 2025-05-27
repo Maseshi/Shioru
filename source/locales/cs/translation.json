@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skiny %s",
 			"version": "verze"
 		},
-		"music": {
-			"autoplay": "📻 Automatické přehrávání",
-			"detail": "📄 Podrobnosti o aktuálně přehrávané skladbě",
-			"download_link": "📥 Odkaz ke stažení",
-			"duration": "🕒 Trvání",
-			"filter": "🎼 vzor zvukového filtru",
-			"id": "🆔 ID",
-			"link": "🔗 Odkaz",
-			"music_name": "🎵 Název písně",
-			"no_queue": "❎ Momentálně zde není žádná skladba, kterou právě hraji.",
-			"now": "⌚ nyní",
-			"off": "vypnout",
-			"on": "OTEVŘENO",
-			"owner_this_queue": "%s je vlastníkem této fronty",
-			"paused": "pauza",
-			"playing": "hraní",
-			"queue_status": "📑 Stav aktuální fronty skladeb",
-			"repeat": "🔁 Opakujte",
-			"repeat_off": "Není otevřeno",
-			"repeat_this_queue": "tato fronta",
-			"repeat_this_song": "tato písnička",
-			"uploader": "🎬 uploader",
-			"volume": "🔉 hlasitost zvuku"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Dočasně nelze získat požadovaný obrázek. Prosím zkuste to znovu později.",
 			"request_by": "požádal %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Aktuální kvalita: %s```\nNěkdy může být problém způsoben serverem, který k němu má příliš velký přístup, což způsobuje problémy s výkonem. Doporučuji však, abyste si před nastavením zkontrolovali své internetové připojení\n`0` - Ke kompresi zvukových souborů použijte **OPUS**. Získáte tak lepší kvalitu zvuku, ale také spotřebujete více zdrojů **(doporučeno)**\n`1` - Použijte zvuk přímo ze zdroje. To poskytne lepší výkon, ale spotřebuje méně zdrojů.",
-			"advice_embed_footer_text": "Další kvalitu zvuku můžete nastavit v nastavení Discord: Nastavení > Zvuk a video > Upřesnit.",
-			"advice_embed_title": "Přizpůsobte kvalitu zvuku",
-			"focus_on_high_quality": "zaměřit se na vysokou kvalitu",
-			"low_efficiency": "zaměřit se na nízký výkon",
-			"opus_mode_selected": "🎛️ Nyní jsem použil **OPUS** ke komprimaci zvukových souborů. Kvalita zvuku se zlepší.",
-			"raw_mode_selected": "🎛️ Přepnuto na zvuk z originálu Může to snížit kvalitu zvuku."
-		},
 		"queue": {
 			"autoplay": "📻 Automatické přehrávání",
 			"filter": "🎼 Vzor hlasového filtru: „%s“.",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Obdržel jsem seznam skladeb, které chci. a za chvíli začne hrát hudba...",
-			"invalid_number": "🔴 Nedávná vyhledávání byla zrušena. Můžete znovu hledat zadáním stejného příkazu.",
-			"no_results": "❎ Zkoušel jsem hledat o písni, ale nenašel jsem žádné výsledky...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "seznam skladeb",
-			"search_cancelled": "🕘 Zrušeno hledání..protože nebyl nalezen žádný výběr písničky.",
-			"searching": "🔍 Najděte%ssouvisejících",
-			"song_type": "píseň",
-			"timer_choose": "Existuje čas na výběr%s 60 sekund. Pokud chcete zrušit, můžete zadat číslo, které není relevantní, nebo počkat do konce času.",
-			"title_results": "Výsledky%stakových:",
-			"user_not_in_channel": "❓ Nejprve zadejte libovolný kanál. Jinak mě neposlouchej..."
 		},
 		"seek": {
 			"no_queue": "❎ Nyní se aktuálně nepřehrává žádná skladba.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Vlákna",
 			"thread_update": "`%s1` byl aktualizován na **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webový háček",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Již odpojeno a smazáno všechny fronty."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh.. Kam všichni zmizeli? Tak jsem nejprve zmaten~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Nemohu najít ten seznam skladeb. Hledáte další seznam skladeb?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Zrušeno hledání..protože nebyl nalezen žádný výběr písničky."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Obdržel jsem seznam skladeb, které chci. a za chvíli začne hrát hudba..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Nedávná vyhledávání byla zrušena. Můžete znovu hledat zadáním stejného příkazu."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Zkoušel jsem hledat o písni, ale nenašel jsem žádné výsledky..."
-			},
-			"searchResult": {
-				"searching": "🔎 Najděte související skladby",
-				"timer_choose": "Na výběr skladby je 60 sekund. Pokud chcete akci zrušit, můžete zadat irelevantní číslo nebo počkat do konce času.",
-				"title_results": "Výsledky vyhledávání těchto skladeb:",
-				"tool_name": "hudební vyhledávač"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

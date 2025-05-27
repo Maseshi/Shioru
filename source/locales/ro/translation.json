@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Piei de %s",
 			"version": "versiune"
 		},
-		"music": {
-			"autoplay": "📻 Redare automată",
-			"detail": "📄 Detalii despre melodia care se redă în prezent",
-			"download_link": "📥 Link de descărcare",
-			"duration": "🕒 Durata",
-			"filter": "🎼 model de filtru audio",
-			"id": "🆔 ID",
-			"link": "🔗 Link",
-			"music_name": "🎵 Numele melodiei",
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"now": "⌚ acum",
-			"off": "opriți",
-			"on": "deschis",
-			"owner_this_queue": "%s este proprietarul acestei cozi",
-			"paused": "pauză",
-			"playing": "joc",
-			"queue_status": "📑 Starea cozii de cântece curente",
-			"repeat": "🔁 Repetați",
-			"repeat_off": "nu este deschis",
-			"repeat_this_queue": "această coadă",
-			"repeat_this_song": "acest cantec",
-			"uploader": "🎬 încărcător",
-			"volume": "🔉 volumul sunetului"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Nu se poate obține temporar fotografia dorită. Vă rugăm să încercați din nou mai târziu.",
 			"request_by": "solicitat de %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Calitate actuală: %s```\nUneori, problema poate fi cauzată de un server care are prea mult acces la el, provocând probleme de performanță. Cu toate acestea, vă recomand să vă verificați conexiunea la internet înainte de a configura acest lucru.\n`0` - Folosiți **OPUS** pentru a comprima fișierele audio. Acest lucru vă va oferi o calitate mai bună a sunetului, dar va folosi și mai multe resurse **(recomandat)**\n`1` - Folosiți sunetul direct de la sursă. Acest lucru va oferi performanțe mai bune, dar va folosi mai puține resurse.",
-			"advice_embed_footer_text": "Puteți seta o calitate audio suplimentară din setările Discord: Setări > Audio și video > Avansat.",
-			"advice_embed_title": "Personalizați calitatea sunetului",
-			"focus_on_high_quality": "concentrați-vă pe calitate înaltă",
-			"low_efficiency": "concentrați-vă pe performanță scăzută",
-			"opus_mode_selected": "🎛️ Acum am folosit **OPUS** pentru a ajuta la comprimarea fișierelor audio. Calitatea sunetului se va îmbunătăți.",
-			"raw_mode_selected": "🎛️ S-a trecut la sunetul din original Poate reduce calitatea sunetului."
-		},
 		"queue": {
 			"autoplay": "📻 Redare automată",
 			"filter": "🎼 Model de filtru de voce: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Am primit lista de melodii pe care le doresc. și va începe să cânte muzică într-o clipă...",
-			"invalid_number": "🔴 Căutările recente au fost anulate. Puteți căuta din nou tastând aceeași comandă.",
-			"no_results": "❎ Am încercat să caut despre melodie, dar nu am găsit niciun rezultat...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "lista de redare",
-			"search_cancelled": "🕘 Am anulat căutarea..pentru că nu a fost găsită nicio selecție de cântec.",
-			"searching": "🔍 Găsiți%sînrudite",
-			"song_type": "cântec",
-			"timer_choose": "Există un timp pentru a alege%s 60 de secunde. Dacă doriți să anulați, puteți introduce un număr care nu este relevant sau puteți aștepta până la sfârșitul timpului.",
-			"title_results": "Rezultate de%sastfel:",
-			"user_not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta..."
 		},
 		"seek": {
 			"no_queue": "❎ Acum nu se redă nicio melodie.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Fire",
 			"thread_update": "`%s1` a fost actualizat la **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Deconectat și șters deja toate cozile."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh.. Unde s-au dus toți? Apoi..taci mai întâi~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Nu găsesc acea listă de redare. Cauți un alt playlist?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Am anulat căutarea..pentru că nu a fost găsită nicio selecție de cântec."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Am primit lista de melodii pe care le doresc. și va începe să cânte muzică într-o clipă..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Căutările recente au fost anulate. Puteți căuta din nou tastând aceeași comandă."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Am încercat să caut despre melodie, dar nu am găsit niciun rezultat..."
-			},
-			"searchResult": {
-				"searching": "🔎 Găsiți melodii similare",
-				"timer_choose": "Există 60 de secunde pentru a alege o melodie. Dacă doriți să anulați, puteți introduce un număr irelevant sau puteți aștepta până la sfârșitul timpului.",
-				"title_results": "Rezultatele căutării unor astfel de cântece:",
-				"tool_name": "motor de căutare muzicală"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

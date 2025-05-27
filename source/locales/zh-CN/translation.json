@@ -489,30 +489,6 @@
 			"skin_of": "🎴 %s皮肤",
 			"version": "版本"
 		},
-		"music": {
-			"autoplay": "📻 自动播放",
-			"detail": "📄 当前播放歌曲的详细信息",
-			"download_link": "📥 下载链接",
-			"duration": "🕒持续时间",
-			"filter": "🎼 音频过滤模式",
-			"id": "🆔身份证",
-			"link": "🔗 链接",
-			"music_name": "🎵 歌名",
-			"no_queue": "❎ 目前没有正在播放的歌曲。",
-			"now": "⌚现在",
-			"off": "关",
-			"on": "打开",
-			"owner_this_queue": "%s 是这个队列的所有者",
-			"paused": "暂停",
-			"playing": "玩",
-			"queue_status": "📑 当前歌曲队列状态",
-			"repeat": "🔁 重复",
-			"repeat_off": "没开",
-			"repeat_this_queue": "这个队列",
-			"repeat_this_song": "这首歌",
-			"uploader": "🎬 上传者",
-			"volume": "🔉 音量"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ 暂时无法得到您想要的图片。请稍后再试。",
 			"request_by": "%s请求"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```当前质量： %s```\n有时问题可能是由于服务器访问过多而导致性能问题。但是，我建议您在设置之前检查您的互联网连接\n`0` - 使用**OPUS** 压缩音频文件。这将为您提供更好的音质，但也会使用更多资源**（推荐）**\n`1` - 直接使用来自源的声音。这将提供更好的性能但使用更少的资源。",
-			"advice_embed_footer_text": "您可以从 Discord 设置中设置额外的音频质量：设置 > 音频和视频 > 高级。",
-			"advice_embed_title": "自定义音质",
-			"focus_on_high_quality": "专注于高质量",
-			"low_efficiency": "专注于低性能",
-			"opus_mode_selected": "🎛️ 我现在已经使用 **OPUS** 来帮助压缩音频文件。音质会提高。",
-			"raw_mode_selected": "🎛️ 切换到原来的声音它可能会降低音质。"
-		},
 		"queue": {
 			"autoplay": "📻 自动播放",
 			"filter": "🎼 语音过滤模式：`%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 我已经收到了我想要的歌曲列表。马上就会开始播放音乐...",
-			"invalid_number": "🔴 最近的搜索已被取消。您可以通过键入相同的命令再次搜索。",
-			"no_results": "❎ 我试图搜索这首歌，但找不到任何结果......",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "播放列表",
-			"search_cancelled": "🕘 取消搜索..因为没有找到歌曲选择。",
-			"searching": "🔍 找到%s相关",
-			"song_type": "歌曲",
-			"timer_choose": "有一个时间可以选择%s 60秒，如果要取消可以打一个不相关的数字或者等到时间结束。",
-			"title_results": "%s这样的结果：",
-			"user_not_in_channel": "❓ 先进入任何频道。否则，别听我的..."
 		},
 		"seek": {
 			"no_queue": "❎ 现在没有正在播放的歌曲。",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ 话题",
 			"thread_update": "`%s1` 已更新为 **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 网络钩子",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 已经断开并删除了所有队列。"
 			},
-			"empty": {
-				"no_user_in_channel": "💨 哦.. 他们都去哪儿了？那..先闭嘴~"
-			},
 			"error": {
 				"playlist_not_found": "❎ 我找不到那个播放列表。寻找另一个播放列表？"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 取消搜索..因为没有找到歌曲选择。"
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 我已经收到了我想要的歌曲列表。马上就会开始播放音乐..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 最近的搜索已被取消。您可以通过键入相同的命令再次搜索。"
-			},
-			"searchNoResult": {
-				"no_results": "❎ 我试图搜索这首歌，但找不到任何结果......"
-			},
-			"searchResult": {
-				"searching": "🔎 查找相关歌曲",
-				"timer_choose": "有60秒的时间可以选择歌曲，如果要取消可以输入一个无关的数字或者等到时间结束。",
-				"title_results": "此类歌曲的搜索结果：",
-				"tool_name": "音乐搜索引擎"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},
