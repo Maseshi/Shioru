@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skins %s",
 			"version": "változat"
 		},
-		"music": {
-			"autoplay": "📻 Automatikus lejátszás",
-			"detail": "📄 Az éppen lejátszott dal részletei",
-			"download_link": "📥 Letöltési link",
-			"duration": "🕒 Időtartam",
-			"filter": "🎼 hangszűrő minta",
-			"id": "🆔 azonosító",
-			"link": "🔗 Link",
-			"music_name": "🎵 A dal neve",
-			"no_queue": "❎ Jelenleg nincs olyan dal, amelyet éppen játszok.",
-			"now": "⌚ most",
-			"off": "kikapcsolni",
-			"on": "nyisd ki",
-			"owner_this_queue": "%s ennek a sornak a tulajdonosa",
-			"paused": "szünet",
-			"playing": "játszik",
-			"queue_status": "📑 Az aktuális dalsor állapota",
-			"repeat": "🔁 Ismételje meg",
-			"repeat_off": "nincs nyitva",
-			"repeat_this_queue": "ezt a sort",
-			"repeat_this_song": "ez a dal",
-			"uploader": "🎬 feltöltő",
-			"volume": "🔉 hangerő"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Átmenetileg nem tudja elérni a kívánt képet. Kérlek, próbáld újra később.",
 			"request_by": "%skérte"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "``` Jelenlegi minőség: %s```\nNéha a problémát egy olyan kiszolgáló okozhatja, amely túl sok hozzáféréssel rendelkezik, ami teljesítménybeli problémákat okoz.\nazt javaslom, hogy a beállítás előtt ellenőrizze az internetkapcsolatot. Ez jobb hangminőséget biztosít, de több erőforrást is használ **(ajánlott)**\n`1` – Közvetlenül a forrásból származó hangot használja. Ez jobb teljesítményt biztosít, de kevesebb erőforrást használ.",
-			"advice_embed_footer_text": "További hangminőséget állíthat be a Discord beállításainál: Beállítások > Hang és videó > Speciális.",
-			"advice_embed_title": "Szabja testre a hangminőséget",
-			"focus_on_high_quality": "a magas minőségre összpontosít",
-			"low_efficiency": "összpontosítson az alacsony teljesítményre",
-			"opus_mode_selected": "🎛️ Mostantól az **OPUS**-t használtam az audiofájlok tömörítésére. A hangminőség javulni fog.",
-			"raw_mode_selected": "🎛️ Az eredeti hangra váltott Ez csökkentheti a hangminőséget."
-		},
 		"queue": {
 			"autoplay": "📻 Automatikus lejátszás",
 			"filter": "🎼 Hangszűrő minta: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Megkaptam a kívánt dalok listáját. és egy pillanat múlva elkezd zenélni...",
-			"invalid_number": "🔴 A legutóbbi kereséseket törölték. Ugyanazon parancs beírásával újra kereshet.",
-			"no_results": "❎ Próbáltam rákeresni a dalra, de nem találtam eredményt...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "lejátszási lista",
-			"search_cancelled": "🕘 Megszakítottam a keresést..mert nem található dalválasztás.",
-			"searching": "🔍 Találj%skapcsolódót",
-			"song_type": "dal",
-			"timer_choose": "Választható idő%s 60 másodperc Ha törölni akarja, beírhat egy nem releváns számot, vagy várhat az idő lejártáig.",
-			"title_results": "%stalálat, például:",
-			"user_not_in_channel": "❓ Először írjon be egy csatornát. Különben ne hallgass rám..."
 		},
 		"seek": {
 			"no_queue": "❎ Jelenleg nincs lejátszott dal.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Szálak",
 			"thread_update": "`%s1` frissítve a következőre: **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Web Hook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Leválasztotta és már törölte az összes sort."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Ó.. Hová tűntek? Akkor..először fogd be~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Nem találom a lejátszási listát. Más lejátszási listát keresel?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Megszakítottam a keresést..mert nem található dalválasztás."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Megkaptam a kívánt dalok listáját. és egy pillanat múlva elkezd zenélni..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 A legutóbbi kereséseket törölték. Ugyanazon parancs beírásával újra kereshet."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Próbáltam rákeresni a dalra, de nem találtam eredményt..."
-			},
-			"searchResult": {
-				"searching": "🔎 Keressen kapcsolódó dalokat",
-				"timer_choose": "A dal kiválasztásához 60 másodperc áll rendelkezésre. Ha le szeretné mondani, írjon be egy nem releváns számot, vagy várjon az idők végezetéig.",
-				"title_results": "Az ilyen dalok keresési eredményei:",
-				"tool_name": "zenei kereső"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},
