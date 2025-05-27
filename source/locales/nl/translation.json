@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Huiden van %s",
 			"version": "versie"
 		},
-		"music": {
-			"autoplay": "📻 Automatisch afspelen",
-			"detail": "📄 Details van het momenteel afgespeelde nummer",
-			"download_link": "📥 Downloadlink",
-			"duration": "🕒 Duur",
-			"filter": "🎼 audiofilterpatroon",
-			"id": "🆔 ID",
-			"link": "🔗 Koppelen",
-			"music_name": "🎵 Naam van het nummer",
-			"no_queue": "❎ Op dit moment is er geen nummer dat ik momenteel speel.",
-			"now": "⌚ nu",
-			"off": "uitschakelen",
-			"on": "open",
-			"owner_this_queue": "%s is de eigenaar van deze wachtrij",
-			"paused": "pauze",
-			"playing": "spelen",
-			"queue_status": "📑 Status van de huidige nummerwachtrij",
-			"repeat": "🔁 Herhaal",
-			"repeat_off": "niet open",
-			"repeat_this_queue": "deze wachtrij",
-			"repeat_this_song": "dit liedje",
-			"uploader": "🎬 uploader",
-			"volume": "🔉 geluidsvolume"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Tijdelijk niet in staat om de gewenste foto te krijgen. Probeer het later opnieuw.",
 			"request_by": "gevraagd door %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Huidige kwaliteit: %s```\nSoms kan het probleem worden veroorzaakt doordat een server er te veel toegang toe heeft, wat prestatieproblemen veroorzaakt. Ik raad u echter aan\ninternetverbinding te controleren voordat u dit instelt.2 `0` - Gebruik **OPUS** om audiobestanden te comprimeren. Dit levert een betere geluidskwaliteit op, maar verbruikt ook meer bronnen **(aanbevolen)**\n`1` - Gebruik het geluid rechtstreeks van de bron. Dit zorgt voor betere prestaties, maar gebruikt minder bronnen.",
-			"advice_embed_footer_text": "U kunt extra audiokwaliteit instellen via de Discord-instellingen: Instellingen > Audio en video > Geavanceerd.",
-			"advice_embed_title": "Pas de geluidskwaliteit aan",
-			"focus_on_high_quality": "focus op hoge kwaliteit",
-			"low_efficiency": "focus op lage prestaties",
-			"opus_mode_selected": "🎛️ Ik heb nu **OPUS** gebruikt om audiobestanden te comprimeren. De geluidskwaliteit zal worden verbeterd.",
-			"raw_mode_selected": "🎛️ Overgeschakeld naar het geluid van het origineel Het kan de geluidskwaliteit verminderen."
-		},
 		"queue": {
 			"autoplay": "📻 Automatisch afspelen",
 			"filter": "🎼 Spraakfilterpatroon: `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Ik heb de lijst met nummers ontvangen die ik wil. en zal zometeen muziek gaan spelen...",
-			"invalid_number": "🔴 Recente zoekopdrachten zijn geannuleerd. U kunt opnieuw zoeken door dezelfde opdracht te typen.",
-			"no_results": "❎ Ik heb geprobeerd over het nummer te zoeken, maar kon geen resultaten vinden...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "afspeellijst",
-			"search_cancelled": "🕘 De zoekopdracht geannuleerd..omdat er geen nummerselectie is gevonden.",
-			"searching": "🔍 Vind%sgerelateerd",
-			"song_type": "liedje",
-			"timer_choose": "Er is een tijd om%s seconden te kiezen 60. Als u wilt annuleren, kunt u een nummer typen dat niet relevant is of wachten tot het einde van de tijd.",
-			"title_results": "Resultaten van%szoals:",
-			"user_not_in_channel": "❓ Voer eerst een willekeurig kanaal in. Luister anders niet naar me..."
 		},
 		"seek": {
 			"no_queue": "❎ Er wordt momenteel geen nummer afgespeeld.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Draden",
 			"thread_update": "`%s1` is bijgewerkt naar **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 De verbinding verbroken en alle wachtrijen al verwijderd."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oh.. Waar zijn ze allemaal gebleven? Dan .. hou eerst je mond ~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Ik kan die afspeellijst niet vinden. Op zoek naar een andere afspeellijst?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 De zoekopdracht geannuleerd..omdat er geen nummerselectie is gevonden."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Ik heb de lijst met nummers ontvangen die ik wil. en zal zometeen muziek gaan spelen..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Recente zoekopdrachten zijn geannuleerd. U kunt opnieuw zoeken door dezelfde opdracht te typen."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Ik heb geprobeerd over het nummer te zoeken, maar kon geen resultaten vinden..."
-			},
-			"searchResult": {
-				"searching": "🔎 Vind gerelateerde nummers",
-				"timer_choose": "Er is 60 seconden de tijd om een nummer te kiezen. Als je wilt annuleren, kun je een irrelevant nummer typen of wachten tot het einde der tijden.",
-				"title_results": "Zoekresultaten van dergelijke nummers:",
-				"tool_name": "muziek zoekmachine"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},
