@@ -3,6 +3,7 @@ const {
   PermissionFlagsBits,
   parseEmoji,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
@@ -17,6 +18,7 @@ module.exports = {
     .setDescriptionLocalizations({ th: "ขโมยอีโมจิจากสมาชิก" })
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuildExpressions)
     .setContexts([InteractionContextType.Guild])
+    .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
     .addStringOption((option) =>
       option
         .setName("emoji")

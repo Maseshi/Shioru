@@ -1,11 +1,9 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" />
-  <strong>
+  <img src="https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/icons/apple-icon.png" width="100" alt="Shioru" /><strong>
     <h1>Shioru</h1>
     <p>เลขาส่วนตัวใน Discord ที่จะช่วยทำให้กิลด์ของคุณน่าอยู่ยิ่งขึ้น</p>
   </strong>
-  <p>
-    <a title="Discord.js v14" href="https://discord.js.org/">
+  <p><a title="Discord.js v14" href="https://discord.js.org/">
       <img src="https://img.shields.io/badge/discord.js-14-blue?logo=discord&logoColor=white&style=for-the-badge" alt="Discord.js v14" />
     </a>
     <a title="Last commit" href="https://github.com/Maseshi/Shioru/commits/">
@@ -25,8 +23,7 @@
       <img src="https://top.gg/api/widget/upvotes/704706906505347183.svg" alt="Top.gg" />
     </a>
   </p>
-  <p>
-    <a href="https://shiorus.web.app/invite">Add App</a>
+  <p><a href="https://shiorus.web.app/invite">Add App</a>
     ·
     <a href="https://github.com/Maseshi/Shioru/tree/main/documents">Switch Languages</a>
     ·
@@ -78,7 +75,7 @@
 - Перейдіть на [портал розробників Discord](https://discord.com/developers/applications)
 
 > [!NOTE]
-> 
+>
 > คุณสามารถแก้ไขข้อมูลบางอย่างใน **config** ที่ [./source/configs/data.js](../source/configs/data.js)
 
 ### 2. ตั้งค่าบอทและเชิญเข้าร่วม
@@ -114,7 +111,7 @@
 - รันคำสั่ง `npm run serve`
 
 > [!NOTE]
-> 
+>
 > คุณจะเข้าสู่โหมดการพัฒนาโดยอัตโนมัติเนื่องจากเป็นการจำลองการใช้งานจริง ข้อมูลทั้งหมดจะไม่ได้รับการบันทึก
 
 ### 🍵 ใช้งานจริง

@@ -4,6 +4,8 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   Colors,
+  InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 
 module.exports = {
@@ -15,7 +17,15 @@ module.exports = {
       th: "แปลภาษา",
     })
     .setDefaultMemberPermissions()
-    .setDMPermission(true),
+    .setContexts([
+      InteractionContextType.BotDM,
+      InteractionContextType.Guild,
+      InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
+    ]),
   async execute(interaction) {
     const inputTo = interaction.locale;
     const inputMessage = interaction.targetMessage;

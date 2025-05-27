@@ -489,30 +489,6 @@
 			"skin_of": "🎴 %s スキン",
 			"version": "バージョン"
 		},
-		"music": {
-			"autoplay": "📻 autoplay",
-			"detail": "📄 現在再生中の曲の詳細",
-			"download_link": "📥ダウンロードリンク",
-			"duration": "🕒期間",
-			"filter": "🎼 オーディオ フィルタ パターン",
-			"id": "🆔 ID",
-			"link": "🔗 リンク",
-			"music_name": "🎵曲名",
-			"no_queue": "❎ 現在、私が演奏している曲はありません。",
-			"now": "⌚今",
-			"off": "オフ",
-			"on": "オン",
-			"owner_this_queue": "%s はこのキューの所有者です。",
-			"paused": "一時停止",
-			"playing": "遊んでいる",
-			"queue_status": "📑 現在の曲キューのステータス",
-			"repeat": "🔁繰り返し",
-			"repeat_off": "オンにしない",
-			"repeat_this_queue": "このキュー",
-			"repeat_this_song": "この曲",
-			"uploader": "🎬 アップローダー",
-			"volume": "🔉 ボリューム"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ リクエストした画像を一時的に取得できません. 後でもう一度試してください。",
 			"request_by": "%s からリクエストされました"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```現在の品質: %s```\nサーバーへのアクセスが多すぎてパフォーマンスの問題が発生することが問題の原因である場合があります。ただし、これを設定する前にインターネット接続を確認することをお勧めします。\n`0` - **OPUS** を使用して音声ファイルを圧縮します。これにより音質が向上しますが、より多くのリソースを使用します。 **(推奨)**\n`1` - ソース オーディオを直接使用します。これによりパフォーマンスが向上しますが、使用するリソースは少なくなります.",
-			"advice_embed_footer_text": "Discord の設定から追加のオーディオ品質を設定できます: [設定] > [オーディオ & ビデオ] > [詳細設定]。",
-			"advice_embed_title": "音質を調整する",
-			"focus_on_high_quality": "高品質に焦点を当てる",
-			"low_efficiency": "低効率",
-			"opus_mode_selected": "🎛️私は今**OPUS**を使ってオーディオファイルを圧縮しています.音質が向上します",
-			"raw_mode_selected": "🎛️元の音声に切り替えました。音質が低下する場合があります。"
-		},
 		"queue": {
 			"autoplay": "📻 autoplay",
 			"filter": "🎼 オーディオ フィルター形式: `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 欲しい曲のリストを取得しました.すぐに音楽が再生されます...",
-			"invalid_number": "🔴 最後の検索はキャンセルされました。同じコマンドを入力して、もう一度検索できます。",
-			"no_results": "❎ 曲を検索してみましたが、結果が見つかりませんでした...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "プレイリスト",
-			"search_cancelled": "🕘 検索がキャンセルされました.. 選曲が見つからなかったため.",
-			"searching": "🔍 検索関連 %s",
-			"song_type": "曲",
-			"timer_choose": "%s を選択するのに 60 秒かかります。キャンセルするには、関係のない数字を入力するか、タイマーが切れるまで待つことができます。",
-			"title_results": "そのような %s の結果:",
-			"user_not_in_channel": "❓ 最初に任意のチャンネルに移動します。そうでなければ、私の言うことを聞かないでください..."
 		},
 		"seek": {
 			"no_queue": "❎ 現在再生中の曲はありません。",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣スレッド",
 			"thread_update": "`%s1` は **%s2** に更新されました"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 ウェブフック",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 正常に切断され、すべてのキューが削除されました。"
 			},
-			"empty": {
-				"no_user_in_channel": "💨 ああ..みんなどこにいるの?だから、私が先に戸惑う～"
-			},
 			"error": {
 				"playlist_not_found": "❎ そのプレイリストが見つかりません.別のプレイリストをお探しですか？"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 検索がキャンセルされました.. 選曲が見つからなかったため."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 欲しい曲のリストを取得しました。すぐに音楽が再生されます..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴最近の検索がキャンセルされました。同じコマンドを入力して、もう一度検索できます。"
-			},
-			"searchNoResult": {
-				"no_results": "❎ 曲を検索してみましたが、結果が見つかりませんでした..."
-			},
-			"searchResult": {
-				"searching": "🔎関連曲を検索",
-				"timer_choose": "曲を選択するのに 60 秒かかります。キャンセルしたい場合は、関係のない数字を入力するか、タイマーが切れるまで待つことができます。",
-				"title_results": "曲の検索結果:",
-				"tool_name": "音楽ファインダー"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

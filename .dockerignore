@@ -1,15 +1,17 @@
-# Github
+# Configurations
 .github/
-
-# VSCode
 .vscode/
 
-# Dependency directories
-node_modules/
+# Documents
+README.md
+documents/
 
 # Logs
 logs/
 *.log
+
+# Dependency directories
+node_modules/
 
 # Ignore
 .*ignore
@@ -30,10 +32,6 @@ crowdin.yml
 .env.development.local
 .env.test.local
 .env.production.local
-
-# README
-README.md
-NOTE.md
 
 # Back-ends
 .firebase

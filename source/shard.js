@@ -35,6 +35,7 @@ const {
   updateChecker,
   systemMetricsSubmitter,
   statisticsSubmitter,
+  healthCheckSubmitter,
 } = require("./utils/servicesUtils");
 const configs = require("./configs/data");
 
@@ -58,6 +59,7 @@ manager.on("shardCreate", (shard) => {
   if (mode !== "dev") updateChecker();
   if (mode === "start") systemMetricsSubmitter();
   if (mode === "start") statisticsSubmitter(manager);
+  if (mode === "start") healthCheckSubmitter();
 
   logEmbed
     .setColor(Colors.Blue)

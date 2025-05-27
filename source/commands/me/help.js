@@ -11,6 +11,7 @@ const {
   ComponentType,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { newLines } = require("../../utils/miscUtils");
 
@@ -27,6 +28,10 @@ module.exports = {
       InteractionContextType.BotDM,
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addStringOption((option) =>
       option
@@ -226,9 +231,9 @@ module.exports = {
         (value) => value.name === selection,
       );
       const guildCommand = guildCommands.find(
-        (guildCommand) =>
-          guildCommand.type !== ApplicationCommandType.ChatInput &&
-          guildCommand.name === selection,
+        (command) =>
+          command.type !== ApplicationCommandType.ChatInput &&
+          command.name === selection,
       );
       const name = clientContext.name;
       const type = clientContext.type;
@@ -264,9 +269,9 @@ module.exports = {
         (value) => value[selection] && value[selection].name === selection,
       )[selection];
       const guildCommand = guildCommands.find(
-        (guildCommand) =>
-          guildCommand.type === ApplicationCommandType.ChatInput &&
-          guildCommand.name === selection,
+        (command) =>
+          command.type === ApplicationCommandType.ChatInput &&
+          command.name === selection,
       );
       const id = guildCommand ? guildCommand.id : 0;
       const name = clientCommand.name;
@@ -302,20 +307,20 @@ module.exports = {
                   interaction.client.i18n.t("commands.help.none");
                 const optionOptions = option.options
                   ? option.options
-                      .filter((option) =>
+                      .filter((nestedOption) =>
                         [
                           ApplicationCommandOptionType.Subcommand,
                           ApplicationCommandOptionType.SubcommandGroup,
-                        ].includes(option.type),
+                        ].includes(nestedOption.type),
                       )
-                      .map((option) => {
-                        const subOptionName = option.name;
+                      .map((nestedOption) => {
+                        const subOptionName = nestedOption.name;
                         const subOptionDescription =
-                          (option.description_localizations
-                            ? option.description_localizations[
+                          (nestedOption.description_localizations
+                            ? nestedOption.description_localizations[
                                 interaction.locale
                               ]
-                            : option.description) ??
+                            : nestedOption.description) ??
                           interaction.client.i18n.t("commands.help.none");
 
                         return ` - </${name} ${optionName} ${subOptionName}:${id}>: ${subOptionDescription}`;
@@ -423,9 +428,7 @@ module.exports = {
       .addOptions(
         ...clientContexts.map((value, key) =>
           new StringSelectMenuOptionBuilder()
-            .setDefault(
-              inputContext ? (value.name === inputContext ?? false) : false,
-            )
+            .setDefault(inputContext ? value.name === inputContext : false)
             .setLabel(key.charAt(0).toUpperCase() + key.slice(1))
             .setValue(key),
         ),
@@ -496,9 +499,9 @@ module.exports = {
 
             for (const index in category) {
               const guildCommand = guildCommands.find(
-                (guildCommand) =>
-                  guildCommand.type === ApplicationCommandType.ChatInput &&
-                  guildCommand.name === category[index].name,
+                (command) =>
+                  command.type === ApplicationCommandType.ChatInput &&
+                  command.name === category[index].name,
               );
               const commandID = guildCommand ? guildCommand.id : 0;
               const commandName = category[index].name;

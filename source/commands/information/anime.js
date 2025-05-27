@@ -10,6 +10,7 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 
 module.exports = {
@@ -28,6 +29,10 @@ module.exports = {
       InteractionContextType.BotDM,
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addStringOption((option) =>
       option
@@ -280,7 +285,7 @@ module.exports = {
         components: youtubeVideoId ? [animeTrailerButtonRow] : [],
       });
     });
-    collector.on("end", async (collected) => {
+    collector.on("end", async (_collected) => {
       await interaction.editReply({ embeds: [animeEmbed] });
     });
   },

@@ -2,6 +2,7 @@ const {
   SlashCommandBuilder,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { embedBuilder } = require("../../utils/clientUtils");
 const { catchError } = require("../../utils/consoleUtils");
@@ -17,6 +18,10 @@ module.exports = {
       InteractionContextType.BotDM,
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addSubcommand((subcommand) =>
       subcommand
@@ -103,19 +108,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_name`)
+            .setName("first_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_value`)
+            .setName("first_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`first_field_inline`)
+            .setName("first_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )
@@ -125,19 +130,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_name`)
+            .setName("second_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_value`)
+            .setName("second_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`second_field_inline`)
+            .setName("second_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )
@@ -281,19 +286,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_name`)
+            .setName("first_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_value`)
+            .setName("first_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`first_field_inline`)
+            .setName("first_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )
@@ -303,19 +308,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_name`)
+            .setName("second_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_value`)
+            .setName("second_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`second_field_inline`)
+            .setName("second_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )
@@ -452,19 +457,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_name`)
+            .setName("first_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`first_field_value`)
+            .setName("first_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`first_field_inline`)
+            .setName("first_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )
@@ -474,19 +479,19 @@ module.exports = {
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_name`)
+            .setName("second_field_name")
             .setDescription("The name of the field in the embedded text.")
             .setDescriptionLocalizations({ th: "ชื่อของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addStringOption((option) =>
           option
-            .setName(`second_field_value`)
+            .setName("second_field_value")
             .setDescription("Field values in embedded text")
             .setDescriptionLocalizations({ th: "ค่าของฟิลด์ในข้อความแบบฝัง" }),
         )
         .addBooleanOption((option) =>
           option
-            .setName(`second_field_inline`)
+            .setName("second_field_inline")
             .setDescription(
               "Organized as a single line in a field of embedded text.",
             )

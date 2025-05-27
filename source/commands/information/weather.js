@@ -4,6 +4,7 @@ const {
   Colors,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { newLines, newID } = require("../../utils/miscUtils");
 
@@ -20,6 +21,10 @@ module.exports = {
       InteractionContextType.BotDM,
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addStringOption((option) =>
       option
@@ -67,17 +72,17 @@ module.exports = {
       language,
       token,
     ) => {
-      const weatherService = new URL(
+      const service = new URL(
         "https://api.openweathermap.org/data/2.5/weather",
       );
 
-      weatherService.searchParams.append("lat", latitude);
-      weatherService.searchParams.append("lon", longitude);
-      weatherService.searchParams.append("units", units);
-      weatherService.searchParams.append("lang", language);
-      weatherService.searchParams.append("appid", token);
+      service.searchParams.append("lat", latitude);
+      service.searchParams.append("lon", longitude);
+      service.searchParams.append("units", units);
+      service.searchParams.append("lang", language);
+      service.searchParams.append("appid", token);
 
-      const response = await fetch(weatherService);
+      const response = await fetch(service);
 
       if (response.status !== 200) return response.status;
       return await response.json();

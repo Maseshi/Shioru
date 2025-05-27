@@ -18,13 +18,13 @@ const currencyFormatter = (number, digits) => {
     { value: 1e18, symbol: "E" },
   ];
   const regex = /\.0+$|(\.[0-9]*[1-9])0+$/;
-  const item = lookup
+  const items = lookup
     .slice()
     .reverse()
     .find((item) => number >= item.value);
 
-  return item
-    ? (number / item.value).toFixed(digits).replace(regex, "$1") + item.symbol
+  return items
+    ? (number / items.value).toFixed(digits).replace(regex, "$1") + items.symbol
     : "0";
 };
 
@@ -36,7 +36,7 @@ const currencyFormatter = (number, digits) => {
  */
 const containsURL = (string) => {
   return string.test(
-    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi,
+    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi,
   );
 };
 

@@ -489,30 +489,6 @@
 			"skin_of": "🎴 %sdış görünüm",
 			"version": "sürüm"
 		},
-		"music": {
-			"autoplay": "📻 Otomatik Oynatma",
-			"detail": "📄 Çalmakta olan şarkının ayrıntıları",
-			"download_link": "📥 İndirme Bağlantısı",
-			"duration": "🕒 Süre",
-			"filter": "🎼 ses filtresi deseni",
-			"id": "🆔 kimlik",
-			"link": "🔗 Bağlantı",
-			"music_name": "🎵 Şarkı adı",
-			"no_queue": "❎ Şu anda çalmakta olduğum bir şarkı yok.",
-			"now": "⌚ şimdi",
-			"off": "kapamak",
-			"on": "açık",
-			"owner_this_queue": "%s bu kuyruğun sahibi",
-			"paused": "Duraklat",
-			"playing": "oynamak",
-			"queue_status": "📑 Geçerli şarkı sırasının durumu",
-			"repeat": "🔁 Tekrarla",
-			"repeat_off": "açık değil",
-			"repeat_this_queue": "bu sıra",
-			"repeat_this_song": "bu şarkı",
-			"uploader": "🎬 yükleyici",
-			"volume": "🔉 ses seviyesi"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ İstediğiniz resim geçici olarak alınamıyor. Lütfen daha sonra tekrar deneyiniz.",
 			"request_by": "%starafından talep edildi"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Geçerli kalite: %s```\nBazen sorun, sunucuya çok fazla erişimi olan ve performans sorunlarına neden olan bir sunucudan kaynaklanabilir. Ancak, bunu kurmadan önce internet bağlantınızı kontrol etmenizi tavsiye ederim.2 0` - Ses dosyalarını\niçin **OPUS** kullanın. Bu size daha iyi ses kalitesi sağlarken aynı zamanda daha fazla kaynak kullanır **(önerilen)**\n`1` - Sesi doğrudan kaynaktan kullanın. Bu, daha iyi performans sağlar ancak daha az kaynak kullanır.",
-			"advice_embed_footer_text": "Ek ses kalitesini Discord ayarlarından ayarlayabilirsiniz: Ayarlar > Ses ve Video > Gelişmiş.",
-			"advice_embed_title": "Ses kalitesini özelleştirin",
-			"focus_on_high_quality": "yüksek kaliteye odaklanmak",
-			"low_efficiency": "Düşük performansa odaklanmak",
-			"opus_mode_selected": "🎛️ Artık ses dosyalarını sıkıştırmaya yardımcı olması için **OPUS** kullandım. Ses kalitesi artacaktır.",
-			"raw_mode_selected": "🎛️ Orijinal sese geçildi Ses kalitesini düşürebilir."
-		},
 		"queue": {
 			"autoplay": "📻 Otomatik Oynatma",
 			"filter": "🎼 Ses filtresi modeli: `%s`",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 İstediğim şarkıların listesini aldım. ve birazdan müzik çalmaya başlayacak...",
-			"invalid_number": "🔴 Son aramalar iptal edildi. Aynı komutu yazarak tekrar arama yapabilirsiniz.",
-			"no_results": "❎ Şarkı hakkında arama yapmaya çalıştım ama sonuç bulamadım...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "çalma listesi",
-			"search_cancelled": "🕘 Şarkı seçimi bulunamadığından arama iptal edildi.",
-			"searching": "🔍 İlgili%stane bul",
-			"song_type": "şarkı",
-			"timer_choose": "%s 60 saniye seçme süresi var iptal etmek isterseniz alakasız bir sayı yazabilir veya sürenin bitmesini bekleyebilirsiniz.",
-			"title_results": "%sgibi sonuçlar:",
-			"user_not_in_channel": "❓ Önce herhangi bir kanalı girin. Yoksa beni dinleme..."
 		},
 		"seek": {
 			"no_queue": "❎ Şimdi çalmakta olan şarkı yok.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Konular",
 			"thread_update": "`%s1` **%s2** olarak güncellendi"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Ağ Kancası",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Bağlantı kesildi ve şimdiden tüm kuyruklar silindi."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Ah.. Nereye gittiler? O zaman..önce kapa çeneni~"
-			},
 			"error": {
 				"playlist_not_found": "❎ O çalma listesini bulamıyorum. Başka bir çalma listesi mi arıyorsunuz?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Şarkı seçimi bulunamadığından arama iptal edildi."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 İstediğim şarkıların listesini aldım. ve birazdan müzik çalmaya başlayacak..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Son aramalar iptal edildi. Aynı komutu yazarak tekrar arama yapabilirsiniz."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Şarkı hakkında arama yapmaya çalıştım ama sonuç bulamadım..."
-			},
-			"searchResult": {
-				"searching": "🔎 İlgili şarkıları bulun",
-				"timer_choose": "Şarkı seçmek için 60 saniye süreniz var, iptal etmek isterseniz alakasız bir sayı yazabilir veya sürenin bitmesini bekleyebilirsiniz.",
-				"title_results": "Bu tür şarkıların arama sonuçları:",
-				"tool_name": "müzik arama motoru"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

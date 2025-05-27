@@ -5,6 +5,7 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const {
   getDatabase,
@@ -28,6 +29,10 @@ module.exports = {
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addSubcommand((subcommand) =>
       subcommand
@@ -705,7 +710,9 @@ module.exports = {
               if (description) previewEmbed.setDescription(description);
               if (thumbnail) previewEmbed.setThumbnail(thumbnail);
               if (timestamp)
-                previewEmbed.setTimestamp(new Date(timestamp) || null);
+                previewEmbed.setTimestamp(
+                  timestamp ? new Date(timestamp) : null,
+                );
               if (image) previewEmbed.setImage(image);
               if (embed.felids) {
                 if (embed.felids[0] && firstFelidName)

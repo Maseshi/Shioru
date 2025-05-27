@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skins på %s",
 			"version": "version"
 		},
-		"music": {
-			"autoplay": "📻 Automatisk uppspelning",
-			"detail": "📄 Detaljer om den låt som spelas för närvarande",
-			"download_link": "📥 Ladda ner länk",
-			"duration": "🕒 Varaktighet",
-			"filter": "🎼 ljudfiltermönster",
-			"id": "🆔 ID",
-			"link": "🔗 Länk",
-			"music_name": "🎵 Låtens namn",
-			"no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
-			"now": "⌚ nu",
-			"off": "Stäng av",
-			"on": "öppen",
-			"owner_this_queue": "%s är ägaren till denna kö",
-			"paused": "paus",
-			"playing": "spelar",
-			"queue_status": "📑 Status för aktuell sångkö",
-			"repeat": "🔁 Upprepa",
-			"repeat_off": "inte öppen",
-			"repeat_this_queue": "denna kö",
-			"repeat_this_song": "den här låten",
-			"uploader": "🎬 uppladdare",
-			"volume": "🔉 ljudvolym"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Kan tillfälligt inte få den bild du vill ha. Vänligen försök igen senare.",
 			"request_by": "begärt av %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Aktuell kvalitet: %s```\nIbland kan problemet orsakas av att en server som har för mycket åtkomst till den orsakar prestandaproblem. Jag rekommenderar dock att du kontrollerar din internetanslutning innan du ställer in detta\n`0` - Använd **OPUS** för att komprimera ljudfiler. Detta kommer att ge dig bättre ljudkvalitet men kommer också att använda mer resurser **(rekommenderas)**\n`1` - Använd ljudet direkt från källan. Detta kommer att ge bättre prestanda men använda mindre resurser.",
-			"advice_embed_footer_text": "Du kan ställa in ytterligare ljudkvalitet från Discord-inställningarna: Inställningar > Ljud och video > Avancerat.",
-			"advice_embed_title": "Anpassa ljudkvaliteten",
-			"focus_on_high_quality": "fokusera på hög kvalitet",
-			"low_efficiency": "fokusera på låg prestanda",
-			"opus_mode_selected": "🎛️ Jag har nu använt **OPUS** för att hjälpa till att komprimera ljudfiler. Ljudkvaliteten kommer att förbättras.",
-			"raw_mode_selected": "🎛️ Bytte till ljudet från originalet Det kan försämra ljudkvaliteten."
-		},
 		"queue": {
 			"autoplay": "📻 Automatisk uppspelning",
 			"filter": "🎼 Röstfiltermönster: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Jag har fått listan över låtar jag vill ha. och kommer börja spela musik om ett ögonblick...",
-			"invalid_number": "🔴 De senaste sökningarna har avbrutits. Du kan söka igen genom att skriva samma kommando.",
-			"no_results": "❎ Jag försökte söka om låten men kunde inte hitta några resultat...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "Spellista",
-			"search_cancelled": "🕘 Avbröt sökningen..eftersom inget låtval hittades.",
-			"searching": "🔍 Hitta%srelaterade",
-			"song_type": "låt",
-			"timer_choose": "Det finns en tid att välja%s 60 sekunder. Om du vill avbryta kan du skriva ett nummer som inte är relevant eller vänta till tidens slut.",
-			"title_results": "Resultat av%ssådana:",
-			"user_not_in_channel": "❓ Ange valfri kanal först. Annars, lyssna inte på mig..."
 		},
 		"seek": {
 			"no_queue": "❎ Nu spelas ingen låt.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Trådar",
 			"thread_update": "`%s1` har uppdaterats till **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Kopplad från och raderade redan alla köer."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Åh.. Vart har alla tagit vägen? Sedan...håll käften först~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Jag kan inte hitta den spellistan. Letar du efter en annan spellista?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Avbröt sökningen..eftersom inget låtval hittades."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Jag har fått listan över låtar jag vill ha. och kommer börja spela musik om ett ögonblick..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 De senaste sökningarna har avbrutits. Du kan söka igen genom att skriva samma kommando."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Jag försökte söka om låten men kunde inte hitta några resultat..."
-			},
-			"searchResult": {
-				"searching": "🔎 Hitta relaterade låtar",
-				"timer_choose": "Det finns 60 sekunders tid att välja en låt. Om du vill avbryta kan du skriva in ett irrelevant nummer eller vänta tills tiden är slut.",
-				"title_results": "Sökresultat för sådana låtar:",
-				"tool_name": "sökmotor för musik"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

@@ -14,9 +14,9 @@ event:
 - changed-files:
   - any-glob-to-any-file: 'source/events/*'
 
-trans:
+translation:
 - changed-files:
   - any-glob-to-any-file: 'source/locales/*'
 
-feature:
- - head-branch: ['^feature', 'feature']
+feature request:
+  - head-branch: ['^feature', 'feature']

@@ -4,6 +4,7 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { fetchLevel } = require("../../utils/databaseUtils");
 
@@ -18,6 +19,7 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
+    .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
     .addSubcommand((subcommand) =>
       subcommand
         .setName("level")
@@ -50,14 +52,14 @@ module.exports = {
 
         users.forEach((user) => {
           const id = user.key;
-          const data = user.val();
-          const member = interaction.guild.members.cache.find(
+          const expData = user.val();
+          const guildMember = interaction.guild.members.cache.find(
             (member) => member.id === id,
           );
 
-          if (member) {
-            if (!member.user.bot) {
-              const leveling = data.leveling;
+          if (guildMember) {
+            if (!guildMember.user.bot) {
+              const leveling = expData.leveling;
 
               if (leveling) {
                 const exp = leveling.exp;
@@ -67,9 +69,9 @@ module.exports = {
                   data: {
                     exp: exp,
                     level: level,
-                    avatar: member.user.displayAvatarURL(),
+                    avatar: guildMember.user.displayAvatarURL(),
                   },
-                  name: member.user.username,
+                  name: guildMember.user.username,
                   value: interaction.client.i18n
                     .t("commands.leader.leveling_detail")
                     .replace("%s1", exp)

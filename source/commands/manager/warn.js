@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 
 module.exports = {
@@ -18,6 +19,10 @@ module.exports = {
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addUserOption((option) =>
       option

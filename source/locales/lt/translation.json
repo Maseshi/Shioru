@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skinai iš %s",
 			"version": "versija"
 		},
-		"music": {
-			"autoplay": "📻 Automatinis paleidimas",
-			"detail": "📄 Išsami informacija apie šiuo metu grojamą dainą",
-			"download_link": "📥 Atsisiuntimo nuoroda",
-			"duration": "🕒 Trukmė",
-			"filter": "🎼 garso filtro modelis",
-			"id": "🆔 ID",
-			"link": "🔗 Nuoroda",
-			"music_name": "🎵 Dainos pavadinimas",
-			"no_queue": "❎ Šiuo metu nėra dainos, kurią šiuo metu groju.",
-			"now": "⌚ dabar",
-			"off": "Išjunk",
-			"on": "atviras",
-			"owner_this_queue": "%s yra šios eilės savininkas",
-			"paused": "Pauzė",
-			"playing": "žaidžiant",
-			"queue_status": "📑 Dabartinės dainų eilės būsena",
-			"repeat": "🔁 Pakartokite",
-			"repeat_off": "ne atviras",
-			"repeat_this_queue": "šią eilę",
-			"repeat_this_song": "Ši daina",
-			"uploader": "🎬 įkėlėjas",
-			"volume": "🔉 garso stiprumas"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Laikinai nepavyksta gauti norimos nuotraukos. Pabandykite dar kartą vėliau.",
 			"request_by": "paprašė %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "``` Dabartinė kokybė: %s```\nKartais problemą gali sukelti serveris, turintis per didelę prieigą prie jo ir sukeliantis našumo problemų. Tačiau aš rekomenduoju prieš nustatydami patikrinti savo interneto ryšį\n`0` – naudokite **OPUS** garso failams suspausti. Tai suteiks jums geresnę garso kokybę, bet taip pat sunaudosite daugiau išteklių **(rekomenduojama)**\n`1` – naudokite garsą tiesiai iš šaltinio. Tai užtikrins geresnį našumą, bet naudos mažiau išteklių.",
-			"advice_embed_footer_text": "Papildomą garso kokybę galite nustatyti „Discord“ nustatymuose: Nustatymai > Garsas ir vaizdo įrašas > Išplėstinė.",
-			"advice_embed_title": "Tinkinkite garso kokybę",
-			"focus_on_high_quality": "sutelkti dėmesį į aukštą kokybę",
-			"low_efficiency": "sutelkti dėmesį į žemą našumą",
-			"opus_mode_selected": "🎛️ Dabar naudoju **OPUS**, kad padėčiau suspausti garso failus. Garso kokybė pagerės.",
-			"raw_mode_selected": "🎛️ Perjungtas į garsą iš originalo Tai gali pabloginti garso kokybę."
-		},
 		"queue": {
 			"autoplay": "📻 Automatinis paleidimas",
 			"filter": "🎼 Balso filtro šablonas: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Gavau norimų dainų sąrašą. ir po akimirkos pradės groti muziką...",
-			"invalid_number": "🔴 Naujausios paieškos buvo atšauktos. Galite ieškoti dar kartą įvesdami tą pačią komandą.",
-			"no_results": "❎ Bandžiau ieškoti dainos, bet neradau jokių rezultatų...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "grojaraštis",
-			"search_cancelled": "🕘 Paieška atšaukta, nes nerasta dainų pasirinkimo.",
-			"searching": "🔍 Raskite%ssusijusių",
-			"song_type": "daina",
-			"timer_choose": "Yra laikas pasirinkti%s 60 sekundžių Jei norite atšaukti, galite įvesti skaičių, kuris nėra aktualus, arba palaukti iki laiko pabaigos.",
-			"title_results": "Rezultatai iš%stokių:",
-			"user_not_in_channel": "❓ Pirmiausia įveskite bet kurį kanalą. Kitaip neklausyk manęs..."
 		},
 		"seek": {
 			"no_queue": "❎ Šiuo metu nėra grojamos dainos.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Temos",
 			"thread_update": "`%s1` buvo atnaujintas į **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Web Hook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Jau atjungtos ir ištrintos visos eilės."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Oi.. Kur jie visi dingo? Tada..Pirmiausia užsičiaupk~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Nerandu to grojaraščio. Ieškote kito grojaraščio?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Paieška atšaukta, nes nerasta dainų pasirinkimo."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Gavau norimų dainų sąrašą. ir po akimirkos pradės groti muziką..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Naujausios paieškos buvo atšauktos. Galite ieškoti dar kartą įvesdami tą pačią komandą."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Bandžiau ieškoti dainos, bet neradau jokių rezultatų..."
-			},
-			"searchResult": {
-				"searching": "🔎 Raskite susijusių dainų",
-				"timer_choose": "Dainai pasirinkti yra 60 sekundžių. Jei norite atšaukti, galite įvesti nesusijusį skaičių arba palaukti iki laiko pabaigos.",
-				"title_results": "Tokių dainų paieškos rezultatai:",
-				"tool_name": "muzikos paieškos sistema"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

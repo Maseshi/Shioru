@@ -3,6 +3,7 @@ const {
   ChannelType,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { catchError } = require("../../utils/consoleUtils");
 
@@ -25,6 +26,7 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
+    .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
     .addStringOption((option) =>
       option
         .setName("id")

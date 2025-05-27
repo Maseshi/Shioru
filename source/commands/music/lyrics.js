@@ -4,6 +4,7 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { Client } = require("genius-lyrics");
 
@@ -19,6 +20,10 @@ module.exports = {
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addStringOption((option) =>
       option

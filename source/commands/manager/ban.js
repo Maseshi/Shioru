@@ -4,6 +4,7 @@ const {
   PermissionFlagsBits,
   Colors,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
+    .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
     .addSubcommandGroup((subcommandGroup) =>
       subcommandGroup
         .setName("add")

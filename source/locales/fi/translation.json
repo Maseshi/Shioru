@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skinit %s",
 			"version": "versio"
 		},
-		"music": {
-			"autoplay": "📻 Automaattinen toisto",
-			"detail": "📄 Tällä hetkellä soivan kappaleen tiedot",
-			"download_link": "📥 Latauslinkki",
-			"duration": "🕒 Kesto",
-			"filter": "🎼 äänisuodatinkuvio",
-			"id": "🆔 ID",
-			"link": "🔗 Linkki",
-			"music_name": "🎵 Kappaleen nimi",
-			"no_queue": "❎ Soitan tällä hetkellä yhtään kappaletta.",
-			"now": "⌚ nyt",
-			"off": "sammuttaa",
-			"on": "avata",
-			"owner_this_queue": "%s on tämän jonon omistaja",
-			"paused": "tauko",
-			"playing": "pelaaminen",
-			"queue_status": "📑 Nykyisen kappalejonon tila",
-			"repeat": "🔁 Toista",
-			"repeat_off": "ei auki",
-			"repeat_this_queue": "tämä jono",
-			"repeat_this_song": "Tämä laulu",
-			"uploader": "🎬 lataaja",
-			"volume": "🔉 äänenvoimakkuus"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Et voi tilapäisesti saada haluamaasi kuvaa. Yritä uudelleen myöhemmin.",
 			"request_by": "pyysi %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "``` Nykyinen laatu: %s```\nJoskus ongelman voi aiheuttaa palvelin, jolla on liian paljon pääsyä siihen, mikä aiheuttaa suorituskykyongelmia. Suosittelen kuitenkin, että tarkistat Internet-yhteytesi ennen tämän määrittämistä\n`0` - Käytä **OPUS**-toimintoa äänitiedostojen pakkaamiseen. Tämä parantaa äänenlaatua, mutta käyttää myös enemmän resursseja **(suositus)**\n`1` - Käytä ääntä suoraan lähteestä. Tämä parantaa suorituskykyä, mutta käyttää vähemmän resursseja.",
-			"advice_embed_footer_text": "Voit asettaa lisää äänenlaatua Discord-asetuksista: Asetukset > Ääni ja video > Lisäasetukset.",
-			"advice_embed_title": "Mukauta äänenlaatua",
-			"focus_on_high_quality": "keskittyä korkeaan laatuun",
-			"low_efficiency": "keskittyä alhaiseen suorituskykyyn",
-			"opus_mode_selected": "🎛️ Olen nyt käyttänyt **OPUS:a** äänitiedostojen pakkaamiseen. Äänenlaatu paranee.",
-			"raw_mode_selected": "🎛️ Vaihdettu soundiin alkuperäisestä Se voi heikentää äänenlaatua."
-		},
 		"queue": {
 			"autoplay": "📻 Automaattinen toisto",
 			"filter": "🎼 Äänisuodatinkuvio: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Olen saanut listan haluamistani kappaleista. ja alkaa soittaa musiikkia hetken kuluttua...",
-			"invalid_number": "🔴 Viimeaikaiset haut on peruttu. Voit etsiä uudelleen kirjoittamalla saman komennon.",
-			"no_results": "❎ Yritin etsiä kappaleesta, mutta en löytänyt tuloksia...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "soittolista",
-			"search_cancelled": "🕘 Haku peruttu..koska kappalevalikoimaa ei löytynyt.",
-			"searching": "🔍 Etsi%saiheeseen liittyvää",
-			"song_type": "laulu",
-			"timer_choose": "Valittavana on aika%s 60 sekuntia. Jos haluat peruuttaa, voit kirjoittaa numeron, jolla ei ole merkitystä, tai odottaa ajan loppuun.",
-			"title_results": "Tulokset%ssta, kuten:",
-			"user_not_in_channel": "❓ Syötä mikä tahansa kanava ensin. Muuten älä kuuntele minua..."
 		},
 		"seek": {
 			"no_queue": "❎ Nyt ei toisteta yhtään kappaletta.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Langat",
 			"thread_update": "`%s1` on päivitetty muotoon **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Web Hook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Yhteys katkaistiin ja kaikki jonot on poistettu."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Voi.. Mihin ne kaikki ovat kadonneet? Joten olen ensin hämmentynyt~"
-			},
 			"error": {
 				"playlist_not_found": "❎ En löydä sitä soittolistaa. Etsitkö toista soittolistaa?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Haku peruttu..koska kappalevalikoimaa ei löytynyt."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Olen saanut listan haluamistani kappaleista. ja alkaa soittaa musiikkia hetken kuluttua..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Viimeaikaiset haut on peruttu. Voit etsiä uudelleen kirjoittamalla saman komennon."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Yritin etsiä kappaleesta, mutta en löytänyt tuloksia..."
-			},
-			"searchResult": {
-				"searching": "🔎 Etsi aiheeseen liittyviä kappaleita",
-				"timer_choose": "Kappaleen valitsemiseen on aikaa 60 sekuntia. Jos haluat peruuttaa, voit kirjoittaa epäolennaisen numeron tai odottaa ajan loppuun.",
-				"title_results": "Tällaisten kappaleiden hakutulokset:",
-				"tool_name": "musiikin hakukone"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},

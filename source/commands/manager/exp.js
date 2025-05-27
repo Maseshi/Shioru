@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { fetchLevel, submitNotification } = require("../../utils/databaseUtils");
 
@@ -18,6 +19,7 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
+    .setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
     .addSubcommand((subcommand) =>
       subcommand
         .setName("set")

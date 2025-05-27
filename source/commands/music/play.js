@@ -3,7 +3,10 @@ const {
   ChannelType,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
+const { YouTubePlugin, SearchResultType } = require("@distube/youtube");
+const { SoundCloudPlugin, SearchType } = require("@distube/soundcloud");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
@@ -21,13 +24,18 @@ module.exports = {
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
     ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
+    ])
     .addStringOption((option) =>
       option
         .setName("song")
         .setDescription("You can search for songs by name, ID or link.")
         .setDescriptionLocalizations({
           th: "คุณสามารถค้นหาเพลงตามชื่อ, ID, หรือลิงค์",
-        }),
+        })
+        .setAutocomplete(true),
     )
     .addBooleanOption((option) =>
       option
@@ -56,6 +64,47 @@ module.exports = {
         .setDescriptionLocalizations({ th: "ช่องที่ต้องการให้เธอเล่นเพลง" })
         .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice),
     ),
+  async autocomplete(interaction) {
+    const focusedValue = interaction.options.getFocused();
+
+    if (!focusedValue) return interaction.respond([]);
+
+    const youtubePlugin = new YouTubePlugin();
+    const soundCloudPlugin = new SoundCloudPlugin();
+
+    const [youtubeResults, soundCloudResults] = await Promise.all([
+      youtubePlugin.search(focusedValue, {
+        type: SearchResultType.Video,
+        limit: 10,
+        safeSearch: true,
+      }),
+      soundCloudPlugin.search(focusedValue, SearchType.Track, 10),
+    ]);
+
+    // Combine results by matching names, prefer SoundCloud source
+    const soundCloudNames = new Set(
+      soundCloudResults.map((result) => result.name.toLowerCase()),
+    );
+    const combined = [
+      ...soundCloudResults,
+      ...youtubeResults.filter(
+        (result) => !soundCloudNames.has(result.name.toLowerCase()),
+      ),
+    ];
+
+    if (!combined.length) return interaction.respond([]);
+
+    await interaction.respond(
+      combined.map((choice) => {
+        const name =
+          choice.name.length > 100
+            ? choice.name.slice(0, 97) + "..."
+            : choice.name;
+        const value = choice.url.length > 100 ? name : choice.url;
+        return { name, value };
+      }),
+    );
+  },
   async execute(interaction) {
     const inputSong = interaction.options.getString("song") ?? "";
     const inputSkip = interaction.options.getBoolean("skip") ?? false;

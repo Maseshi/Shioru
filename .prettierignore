@@ -1,7 +1,7 @@
 # Configurations
-crowdin.yml
 .github/
 .vscode/
+crowdin.yml
 
 # Assets
 assets/
@@ -10,12 +10,12 @@ assets/
 README.md
 documents/
 
-# Dependency directories
-node_modules/
-
 # Logs
 logs/
 *.log
+
+# Dependency directories
+node_modules/
 
 # Environment
 .env
@@ -30,9 +30,6 @@ package-lock.json
 # LICENSE
 LICENSE
 LICENSE_ASSETS
-
-# README
-NOTE.md
 
 # Back-ends
 .firebase

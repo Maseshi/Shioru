@@ -7,6 +7,7 @@ const {
   ButtonStyle,
   resolveColor,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 
 module.exports = {
@@ -20,6 +21,10 @@ module.exports = {
       InteractionContextType.BotDM,
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ]),
   async execute(interaction) {
     await interaction.deferReply();
@@ -84,7 +89,7 @@ module.exports = {
       .setFooter({ text: interaction.client.i18n.t("commands.vote.added") })
       .setAuthor({
         name: "top.gg",
-        iconURL: `https://top.gg/favicon.png`,
+        iconURL: "https://top.gg/favicon.png",
         url: "https://top.gg",
       });
 
