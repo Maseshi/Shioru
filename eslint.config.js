@@ -52,7 +52,7 @@ module.exports = [
       ],
       "object-curly-spacing": ["error", "always"],
       "prefer-const": "error",
-      quotes: ["error", "single", { avoidEscape: true }],
+      quotes: ["error", "double", { avoidEscape: true }],
       semi: ["error", "always"],
       "space-before-blocks": "error",
       "space-before-function-paren": [
