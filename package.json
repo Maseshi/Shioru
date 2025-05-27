@@ -37,7 +37,6 @@
 		"docker:build:serve": "docker build --target serve --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
 		"docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
 		"docker:run:serve": "docker run --detach maseshi/%npm_package_name%-serve:%npm_package_version%",
-		"docker:push": "docker push maseshi/%npm_package_name%:%npm_package_version%",
 		"i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
 		"i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
 		"i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
