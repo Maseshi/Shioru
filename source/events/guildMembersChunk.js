@@ -1,32 +1,32 @@
-const { Events, EmbedBuilder } = require('discord.js');
+const { Events, EmbedBuilder } = require("discord.js");
 const {
-	submitNotification,
-	initializeData,
-} = require('../utils/databaseUtils');
+  submitNotification,
+  initializeData,
+} = require("../utils/databaseUtils");
 
 module.exports = {
-	name: Events.GuildMembersChunk,
-	once: false,
-	async execute(_members, guild, _chunk) {
-		const guildMembersChunkEmbed = new EmbedBuilder()
-			.setTitle(
-				guild.client.i18n.t('events.guildMembersChunk.guild_notification'),
-			)
-			.setDescription(
-				guild.client.i18n
-					.t('events.guildMembersChunk.guild_members_chunk')
-					.replace('%s', guild.name),
-			)
-			.setImage(guild.bannerURL())
-			.setTimestamp()
-			.setColor('Yellow');
+  name: Events.GuildMembersChunk,
+  once: false,
+  async execute(_members, guild, _chunk) {
+    const guildMembersChunkEmbed = new EmbedBuilder()
+      .setTitle(
+        guild.client.i18n.t("events.guildMembersChunk.guild_notification"),
+      )
+      .setDescription(
+        guild.client.i18n
+          .t("events.guildMembersChunk.guild_members_chunk")
+          .replace("%s", guild.name),
+      )
+      .setImage(guild.bannerURL())
+      .setTimestamp()
+      .setColor("Yellow");
 
-		await initializeData(guild.client, guild);
-		await submitNotification(
-			guild.client,
-			guild,
-			Events.GuildMembersChunk,
-			guildMembersChunkEmbed,
-		);
-	},
+    await initializeData(guild.client, guild);
+    await submitNotification(
+      guild.client,
+      guild,
+      Events.GuildMembersChunk,
+      guildMembersChunkEmbed,
+    );
+  },
 };
