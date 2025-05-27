@@ -3,6 +3,7 @@ const {
 	EmbedBuilder,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { catchError } = require('../../utils/consoleUtils');
 
@@ -22,6 +23,7 @@ module.exports = {
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
 		])
+		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('flagged_words')

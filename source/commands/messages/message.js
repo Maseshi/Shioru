@@ -2,6 +2,7 @@ const {
 	SlashCommandBuilder,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { catchError } = require('../../utils/consoleUtils');
 
@@ -19,6 +20,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addSubcommand((subcommand) =>
 			subcommand

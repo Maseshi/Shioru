@@ -3,6 +3,7 @@ const {
 	EmbedBuilder,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 
 module.exports = {
@@ -18,6 +19,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		]),
 	async execute(interaction) {
 		const authorUsername = interaction.user.username;

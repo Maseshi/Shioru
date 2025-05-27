@@ -4,6 +4,7 @@ const {
 	PermissionFlagsBits,
 	Colors,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 
 module.exports = {
@@ -20,6 +21,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addStringOption((option) =>
 			option

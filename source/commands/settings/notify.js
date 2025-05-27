@@ -5,6 +5,7 @@ const {
 	PermissionFlagsBits,
 	Colors,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const {
 	getDatabase,
@@ -28,6 +29,10 @@ module.exports = {
 		.setContexts([
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addSubcommand((subcommand) =>
 			subcommand

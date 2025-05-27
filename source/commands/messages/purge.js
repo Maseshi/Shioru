@@ -4,6 +4,7 @@ const {
 	Collection,
 	ChannelType,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { catchError } = require('../../utils/consoleUtils');
 const { containsURL } = require('../../utils/miscUtils');
@@ -27,6 +28,7 @@ module.exports = {
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
 		])
+		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('all')

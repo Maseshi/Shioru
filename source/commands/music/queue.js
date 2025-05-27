@@ -3,6 +3,7 @@ const {
   EmbedBuilder,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { newLines } = require("../../utils/miscUtils");
 
@@ -16,7 +17,11 @@ module.exports = {
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
-    ]),
+    ])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
+		]),
   async execute(interaction) {
     const queue = interaction.client.player.getQueue(interaction);
 

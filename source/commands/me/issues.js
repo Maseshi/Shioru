@@ -4,6 +4,7 @@ const {
 	Colors,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { getDatabase, ref, child, push } = require('firebase/database');
 const { webhookSend } = require('../../utils/clientUtils');
@@ -19,6 +20,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addSubcommand((subcommand) =>
 			subcommand

@@ -2,6 +2,7 @@ const {
 	SlashCommandBuilder,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const {
 	getDatabase,
@@ -23,6 +24,7 @@ module.exports = {
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
 		])
+		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('enable')

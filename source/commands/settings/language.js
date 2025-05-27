@@ -4,6 +4,7 @@ const {
 	PermissionFlagsBits,
 	Colors,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { getDatabase, ref, child, get, update } = require('firebase/database');
 const { changeLanguage } = require('../../utils/clientUtils');
@@ -20,6 +21,7 @@ module.exports = {
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
 		])
+		.setIntegrationTypes([ApplicationIntegrationType.GuildInstall])
 		.addSubcommand((subcommand) =>
 			subcommand
 				.setName('get')

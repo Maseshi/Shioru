@@ -3,6 +3,7 @@ const {
 	AttachmentBuilder,
 	PermissionFlagsBits,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 
 module.exports = {
@@ -19,6 +20,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		]),
 	async execute(interaction) {
 		const rip = new AttachmentBuilder('https://i.imgur.com/w3duR07.png');

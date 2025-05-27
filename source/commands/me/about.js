@@ -5,6 +5,7 @@ const {
 	PermissionFlagsBits,
 	Colors,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { join } = require('node:path');
 const { readFileSync } = require('node:fs');
@@ -21,6 +22,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addSubcommand((subcommand) =>
 			subcommand

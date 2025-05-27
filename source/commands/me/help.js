@@ -11,6 +11,7 @@ const {
 	ComponentType,
 	Colors,
 	InteractionContextType,
+	ApplicationIntegrationType,
 } = require('discord.js');
 const { newLines } = require('../../utils/miscUtils');
 
@@ -27,6 +28,10 @@ module.exports = {
 			InteractionContextType.BotDM,
 			InteractionContextType.Guild,
 			InteractionContextType.PrivateChannel,
+		])
+		.setIntegrationTypes([
+			ApplicationIntegrationType.GuildInstall,
+			ApplicationIntegrationType.UserInstall,
 		])
 		.addStringOption((option) =>
 			option
