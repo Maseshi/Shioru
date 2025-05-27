@@ -489,30 +489,6 @@
 			"skin_of": "🎴 Skinn på %s",
 			"version": "versjon"
 		},
-		"music": {
-			"autoplay": "📻 Autospill",
-			"detail": "📄 Detaljer om sangen som spilles for øyeblikket",
-			"download_link": "📥 Last ned lenke",
-			"duration": "🕒 Varighet",
-			"filter": "🎼 lydfiltermønster",
-			"id": "🆔 ID",
-			"link": "🔗 Link",
-			"music_name": "🎵 Sangnavn",
-			"no_queue": "❎ Akkurat nå er det ingen sang jeg spiller for øyeblikket.",
-			"now": "⌚ nå",
-			"off": "skru av",
-			"on": "åpen",
-			"owner_this_queue": "%s er eieren av denne køen",
-			"paused": "pause",
-			"playing": "spiller",
-			"queue_status": "📑 Status for gjeldende sangkø",
-			"repeat": "🔁 Gjenta",
-			"repeat_off": "ikke åpen",
-			"repeat_this_queue": "denne køen",
-			"repeat_this_song": "denne sangen",
-			"uploader": "🎬 opplaster",
-			"volume": "🔉 lydvolum"
-		},
 		"nekos": {
 			"can_not_fetch_data": "❎ Kan midlertidig ikke få bildet du ønsker. Prøv igjen senere.",
 			"request_by": "forespurt av %s"
@@ -615,15 +591,6 @@
 			"qr_code": "🧩 คิวอาร์โค้ด",
 			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
 		},
-		"quality": {
-			"advice_embed_description": "```Gjeldende kvalitet: %s```\nNoen ganger kan problemet være forårsaket av en server som har for mye tilgang til den som forårsaker ytelsesproblemer. Jeg anbefaler imidlertid at du sjekker internettforbindelsen din før du setter dette opp\n`0` - Bruk **OPUS** for å komprimere lydfiler. Dette vil gi deg bedre lydkvalitet, men vil også bruke flere ressurser **(anbefalt)**\n`1` - Bruk lyden direkte fra kilden. Dette vil gi bedre ytelse, men bruke mindre ressurser.",
-			"advice_embed_footer_text": "Du kan angi ekstra lydkvalitet fra Discord-innstillinger: Innstillinger > Lyd og video > Avansert.",
-			"advice_embed_title": "Tilpass lydkvaliteten",
-			"focus_on_high_quality": "fokus på høy kvalitet",
-			"low_efficiency": "fokus på lav ytelse",
-			"opus_mode_selected": "🎛️ Jeg har nå brukt **OPUS** for å hjelpe til med å komprimere lydfiler. Lydkvaliteten vil forbedres.",
-			"raw_mode_selected": "🎛️ Byttet til lyden fra originalen Det kan redusere lydkvaliteten."
-		},
 		"queue": {
 			"autoplay": "📻 Autospill",
 			"filter": "🎼 Stemmefiltermønster: `%s",
@@ -680,22 +647,6 @@
 		},
 		"rip": {
 			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"search": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในการค้นหาที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"get_list_of_songs": "📋 Jeg har mottatt listen over sanger jeg vil ha. og begynner å spille musikk om et øyeblikk...",
-			"invalid_number": "🔴 Nylige søk er kansellert. Du kan søke på nytt ved å skrive den samme kommandoen.",
-			"no_results": "❎ Jeg prøvde å søke om sangen, men fant ingen resultater...",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"playlist_type": "spilleliste",
-			"search_cancelled": "🕘 Avbrutt søket..fordi ingen sangvalg ble funnet.",
-			"searching": "🔍 Finn%srelatert",
-			"song_type": "sang",
-			"timer_choose": "Det er en tid for å velge%s 60 sekunder Hvis du ønsker å avbryte, kan du skrive inn et nummer som ikke er relevant eller vente til tidens slutt.",
-			"title_results": "Resultater av%sslike:",
-			"user_not_in_channel": "❓ Skriv inn en kanal først. Ellers, ikke hør på meg..."
 		},
 		"seek": {
 			"no_queue": "❎ Nå er det ingen sang som spilles.",
@@ -984,9 +935,50 @@
 			"thread_notification": "#️⃣ Tråder",
 			"thread_update": "`%s1` har blitt oppdatert til **%s2**"
 		},
+		"voiceStateUpdate": {
+			"voice_notification": "➿ สถานะเสียง",
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 Webhook",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+		},
+		"guildSoundboardSoundCreate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
+		},
+		"guildSoundboardSoundUpdate": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
+		"guildMemberUpdate": {
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadMembersUpdate": {
+			"thread_notification": "#️⃣ เธรด",
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
+		},
+		"threadMemberUpdate": {
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ",
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
+		},
+		"threadListSync": {
+			"thread_notification": "#️⃣ เธรด",
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -1000,9 +992,6 @@
 			"disconnect": {
 				"disconnected": "🔌 Koblet fra og slettet alle køer allerede."
 			},
-			"empty": {
-				"no_user_in_channel": "💨 Åh.. Hvor har de alle blitt av? Så jeg er forvirret først~"
-			},
 			"error": {
 				"playlist_not_found": "❎ Jeg finner ikke den spillelisten. Ser du etter en annen spilleliste?"
 			},
@@ -1012,23 +1001,14 @@
 			"playSong": {
 				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchCancel": {
-				"search_cancelled": "🕘 Avbrutt søket..fordi ingen sangvalg ble funnet."
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
 			},
-			"searchDone": {
-				"get_list_of_songs": "📋 Jeg har mottatt listen over sanger jeg vil ha. og begynner å spille musikk om et øyeblikk..."
+			"finishSong": {
+				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
-			"searchInvalidAnswer": {
-				"search_cancelled": "🔴 Nylige søk er kansellert. Du kan søke på nytt ved å skrive den samme kommandoen."
-			},
-			"searchNoResult": {
-				"no_results": "❎ Jeg prøvde å søke om sangen, men fant ingen resultater..."
-			},
-			"searchResult": {
-				"searching": "🔎 Finn relaterte sanger",
-				"timer_choose": "Det er 60 sekunders tid til å velge en sang. Hvis du ønsker å avbryte, kan du skrive inn et irrelevant nummer eller vente til tidens slutt.",
-				"title_results": "Søkeresultater for slike sanger:",
-				"tool_name": "søkemotor for musikk"
+			"noRelated": {
+				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
 			}
 		}
 	},
