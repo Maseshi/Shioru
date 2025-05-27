@@ -3,6 +3,7 @@ const {
   ChannelType,
   PermissionFlagsBits,
   InteractionContextType,
+  ApplicationIntegrationType,
 } = require("discord.js");
 const { YouTubePlugin, SearchResultType } = require("@distube/youtube");
 const { SoundCloudPlugin, SearchType } = require("@distube/soundcloud");
@@ -22,6 +23,10 @@ module.exports = {
     .setContexts([
       InteractionContextType.Guild,
       InteractionContextType.PrivateChannel,
+    ])
+    .setIntegrationTypes([
+      ApplicationIntegrationType.GuildInstall,
+      ApplicationIntegrationType.UserInstall,
     ])
     .addStringOption((option) =>
       option
