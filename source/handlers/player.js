@@ -254,7 +254,7 @@ module.exports = (client) => {
       embeds: [webhookLogEmbed],
     });
     queue.textChannel.send(
-      client.i18n.t("handlers.player.finishSong.no_related"),
+      client.i18n.t("handlers.player.noRelated.no_related"),
     );
   });
   client.player.on(Events.PLAY_SONG, (queue, song) => {
