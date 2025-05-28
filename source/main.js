@@ -263,6 +263,9 @@ client.player = new DisTube(client, {
   customFilters: client.configs.filters,
 });
 
+// Set the maximum number of listeners for the player to avoid memory leaks
+client.player.setMaxListeners(2);
+
 // Read the content file in the handlers.
 client.logger.info("Loading all commands and events...");
 

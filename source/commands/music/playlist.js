@@ -5,8 +5,9 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { YouTubePlugin, SearchResultType } = require("@distube/youtube");
+const { SoundCloudPlugin, SearchType } = require("@distube/soundcloud");
 const { catchError } = require("../../utils/consoleUtils");
-const { containsURL } = require("../../utils/miscUtils");
 
 module.exports = {
   permissions: [
@@ -29,20 +30,21 @@ module.exports = {
     ])
     .addStringOption((option) =>
       option
-        .setName("songs")
+        .setName("links")
         .setDescription(
-          'The links to the songs you want in the playlist are separated by "," for each item.',
+          'The playlist links you want, separated by "," for each one.',
         )
         .setDescriptionLocalizations({
-          th: 'ลิงค์ของเพลงที่คุณต้องการในเพลย์ลิสต์คั่นด้วย "," สำหรับแต่ละรายการ',
+          th: 'ลิงค์ของเพลย์ลิสต์ที่คุณต้องการคั่นด้วย "," สำหรับแต่ละรายการ',
         })
+        .setAutocomplete(true)
         .setRequired(true),
     )
     .addStringOption((option) =>
       option
         .setName("name")
-        .setDescription("Name of the playlist")
-        .setDescriptionLocalizations({ th: "ชื่อของเพลย์ลิสต์" }),
+        .setDescription("Set the name of the playlist.")
+        .setDescriptionLocalizations({ th: "ตั้งชื่อของเพลย์ลิสต์" }),
     )
     .addBooleanOption((option) =>
       option
@@ -71,8 +73,49 @@ module.exports = {
         .setDescriptionLocalizations({ th: "ช่องที่ต้องการให้เธอเล่นเพลง" })
         .addChannelTypes(ChannelType.GuildVoice, ChannelType.GuildStageVoice),
     ),
+  async autocomplete(interaction) {
+    const focusedValue = interaction.options.getFocused();
+
+    if (!focusedValue) return interaction.respond([]);
+
+    const youtubePlugin = new YouTubePlugin();
+    const soundCloudPlugin = new SoundCloudPlugin();
+
+    const [youtubeResults, soundCloudResults] = await Promise.all([
+      youtubePlugin.search(focusedValue, {
+        type: SearchResultType.PLAYLIST,
+        limit: 10,
+        safeSearch: true,
+      }),
+      soundCloudPlugin.search(focusedValue, SearchType.Playlist, 10),
+    ]);
+
+    // Combine results by matching names, prefer SoundCloud source
+    const soundCloudNames = new Set(
+      soundCloudResults.map((result) => result.name.toLowerCase()),
+    );
+    const combined = [
+      ...soundCloudResults,
+      ...youtubeResults.filter(
+        (result) => !soundCloudNames.has(result.name.toLowerCase()),
+      ),
+    ];
+
+    if (!combined.length) return interaction.respond([]);
+
+    await interaction.respond(
+      combined.map((choice) => {
+        const name =
+          choice.name.length > 100
+            ? choice.name.slice(0, 97) + "..."
+            : choice.name;
+        const value = choice.url.length > 100 ? name : choice.url;
+        return { name, value };
+      }),
+    );
+  },
   async execute(interaction) {
-    const inputSongs = interaction.options.getString("songs");
+    const inputLinks = interaction.options.getString("links");
     const inputName =
       interaction.options.getString("name") ??
       interaction.client.i18n.t("commands.playlist.playlist_of_user", {
@@ -86,8 +129,10 @@ module.exports = {
     const queue = interaction.client.player.getQueue(interaction);
     const voiceChannel = interaction.member.voice.channel;
     const meChannel = interaction.guild.members.me.voice.channel;
-    const songs = inputSongs.split(/[ ,]+/);
-    const filteredSongs = songs.filter((song) => containsURL(song));
+    const filteredLinks = inputLinks
+      .split(",")
+      .map((song) => song.trim())
+      .filter(Boolean);
 
     if (queue && djs.enable) {
       if (
@@ -116,19 +161,19 @@ module.exports = {
       return await interaction.reply(
         interaction.client.i18n.t("commands.playlist.not_in_channel"),
       );
-    if (!filteredSongs.length)
+    if (!filteredLinks.length)
       return await interaction.reply(
         interaction.client.i18n.t("commands.playlist.need_for_link"),
       );
 
-    try {
-      await interaction.deferReply();
+    await interaction.deferReply();
 
+    try {
       const playlist = await interaction.client.player.createCustomPlaylist(
-        filteredSongs,
+        filteredLinks,
         {
           member: interaction.member,
-          properties: { name: inputName, source: "custom" },
+          name: inputName,
           parallel: true,
         },
       );
@@ -146,15 +191,23 @@ module.exports = {
       );
       await interaction.deleteReply();
     } catch (error) {
-      if (error.message.includes("seconds"))
-        return await interaction.reply(
+      if (error.code === "VOICE_CONNECT_FAILED")
+        return await interaction.editReply(
           interaction.client.i18n.t("commands.playlist.can_not_connect"),
         );
-      if (error.message.includes("non-NSFW"))
-        return await interaction.reply(
+      if (error.code === "NON_NSFW")
+        return await interaction.editReply(
           interaction.client.i18n.t(
             "commands.playlist.can_not_play_in_non_nsfw",
           ),
+        );
+      if (error.code === "NO_VALID_SONG")
+        return await interaction.editReply(
+          interaction.client.i18n.t("commands.playlist.no_valid_song"),
+        );
+      if (error.code === "EMPTY_PLAYLIST")
+        return await interaction.editReply(
+          interaction.client.i18n.t("commands.playlist.empty_playlist"),
         );
       if (!queue && meChannel) {
         const connection = interaction.client.player.voices.get(meChannel);
