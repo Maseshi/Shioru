@@ -4,19 +4,19 @@ documentation:
 
 command:
 - changed-files:
-  - any-glob-to-any-file: 'source/commands/*'
+  - any-glob-to-any-file: 'source/commands/**'
 
 context:
 - changed-files:
-  - any-glob-to-any-file: 'source/contexts/*'
+  - any-glob-to-any-file: 'source/contexts/**'
 
 event:
 - changed-files:
-  - any-glob-to-any-file: 'source/events/*'
+  - any-glob-to-any-file: 'source/events/**'
 
 translation:
 - changed-files:
-  - any-glob-to-any-file: 'source/locales/*'
+  - any-glob-to-any-file: 'source/locales/**'
 
 feature request:
   - head-branch: ['^feature', 'feature']
