@@ -159,8 +159,9 @@ module.exports = {
         interaction.client.i18n.t("commands.play.not_in_channel"),
       );
 
+    await interaction.deferReply();
+
     try {
-      await interaction.deferReply();
       await interaction.client.player.play(
         voiceChannel || inputChannel || meChannel,
         inputSong,
@@ -174,12 +175,12 @@ module.exports = {
       );
       await interaction.deleteReply();
     } catch (error) {
-      if (error.message.includes("seconds"))
-        return await interaction.reply(
+      if (error.code === "VOICE_CONNECT_FAILED")
+        return await interaction.editReply(
           interaction.client.i18n.t("commands.play.can_not_connect"),
         );
-      if (error.message.includes("non-NSFW"))
-        return await interaction.reply(
+      if (error.code === "NON_NSFW")
+        return await interaction.editReply(
           interaction.client.i18n.t("commands.play.can_not_play_in_non_nsfw"),
         );
       if (!queue && meChannel) {
