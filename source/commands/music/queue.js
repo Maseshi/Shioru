@@ -11,6 +11,7 @@ const {
   ButtonStyle,
 } = require("discord.js");
 const { newLines } = require("../../utils/miscUtils");
+const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -315,7 +316,10 @@ module.exports = {
         const currentQueue = interaction.client.player.getQueue(inter);
 
         if (!currentQueue) {
-          await inter.reply({ content: "No queue found.", ephemeral: true });
+          await inter.reply({
+            content: interaction.client.i18n.t("commands.queue.no_queue"),
+            ephemeral: true,
+          });
           return;
         }
 
@@ -326,7 +330,9 @@ module.exports = {
               await updateEmbed();
             } else {
               await inter.reply({
-                content: "No previous song in history.",
+                content: interaction.client.i18n.t(
+                  "commands.queue.no_previous_song",
+                ),
                 flags: MessageFlags.Ephemeral,
               });
             }
@@ -354,7 +360,9 @@ module.exports = {
               await inter.deferUpdate();
             } else {
               await inter.reply({
-                content: "No next song to skip to.",
+                content: interaction.client.i18n.t(
+                  "commands.queue.no_next_song",
+                ),
                 flags: MessageFlags.Ephemeral,
               });
             }
@@ -375,10 +383,13 @@ module.exports = {
           }
         }
       } catch (error) {
-        await inter.reply({
-          content: `⚠️ An error occurred:\n${error.message}`,
-          flags: MessageFlags.Ephemeral,
-        });
+        catchError(
+          interaction.client,
+          interaction,
+          module.exports.data.name,
+          error,
+          true,
+        );
       }
     });
     collector.on("end", async () => {
