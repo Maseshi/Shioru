@@ -222,8 +222,8 @@
 		},
 		"exp": {
 			"error": "❎ 해당 회원의 경험치를 설정할 수 없습니다. 나중에 다시 시도 해주십시오.",
-			"exp_was_changed": "%s 누적된 모든 경험 수준은 다음과 같습니다.",
 			"experience": "경험치(Exp)",
+			"exp_was_changed": "%s 누적된 모든 경험 수준은 다음과 같습니다.",
 			"level": "수준",
 			"notification_complete": "✅ 설정 완료...",
 			"set_by_staff": "귀하의 경험은 이 서버의 팀에서 설정합니다.",
@@ -301,8 +301,8 @@
 			"status": "สถานะ",
 			"stop": "หยุด",
 			"tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
 			"timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+			"time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
 			"turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
 			"want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
 			"want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
@@ -566,11 +566,12 @@
 		"playlist": {
 			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
 			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"need_for_link": "❎ รูปแบบของเพลย์ลิสต์จะต้องเป็นลิงค์เท่านั้นนะคะ",
+			"empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
 			"no_queue": "❎ 지금은 아직 어떤 노래도 연주하지 않았습니다.",
 			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
 			"not_in_channel": "❓ 아무 채널이나 먼저 들어가세요. 그렇지 않으면 내 말을 듣지 마십시오 ...",
 			"not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
+			"no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
 			"playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
 		},
 		"previous": {
@@ -618,8 +619,8 @@
 		},
 		"reload": {
 			"invalid_command": "❎ 음...이 주문이 없는 것 같은데...잘 확인해보세요 다시 말하지만, 맞습니까?",
-			"reload_error": "❌ 젠장..커맨드 %s 을 다시 불러오려고 했는데 안되네요.",
 			"reloaded": "✅ %s 성공적으로 다시 로드되었습니다!!",
+			"reload_error": "❌ 젠장..커맨드 %s 을 다시 불러오려고 했는데 안되네요.",
 			"searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
 		},
 		"remove": {
@@ -634,9 +635,9 @@
 			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
 			"not_owner": "🚫 대기열 소유자만 변경할 수 있습니다.",
 			"off": "반복하다",
+			"repeated": "🔁 지금 %s",
 			"repeat_queue": "대기열 반복",
-			"repeat_song": "노래를 반복해",
-			"repeated": "🔁 지금 %s"
+			"repeat_song": "노래를 반복해"
 		},
 		"resume": {
 			"no_queue": "❎ 지금은 아직 어떤 노래도 연주하지 않았습니다.",
@@ -785,9 +786,9 @@
 			"lowest_temperature": "➖ อุณหภูมิต่ำสุด",
 			"meter_per_seconds": "เมตร/วินาที",
 			"miles_per_hour": "ไมล์/ชั่วโมง",
+			"none": "ไม่มี",
 			"no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
 			"no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
-			"none": "ไม่มี",
 			"pressure": "🎱 ความดัน",
 			"rainfall": "🌧️ ปริมาณน้ำฝน",
 			"sea_level": "🌊 ระดับน้ำทะเล",
@@ -862,6 +863,24 @@
 			"guild_members_chunk": "서버 %s 의 회원을 환영합니다. 여기에서 여러분을 기다리고 있습니다.",
 			"guild_notification": "🗄️ 서버"
 		},
+		"guildMemberUpdate": {
+			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
+			"guild_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ"
+		},
+		"guildSoundboardSoundCreate": {
+			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
+		},
+		"guildSoundboardSoundDelete": {
+			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
+		},
+		"guildSoundboardSoundUpdate": {
+			"deleted": "ถูกลบแล้ว",
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+		},
 		"guildUnavailable": {
 			"guild_notification": "🗄️ 서버",
 			"guild_unavailable": "현재..이 서버는 일시적으로 사용할 수 없습니다. 이 서버의 관리자에게 문의하십시오."
@@ -899,6 +918,10 @@
 			"role_notification": "🔖 역할",
 			"role_update": "`%s1`이 <@&%s2>로 업데이트되었습니다."
 		},
+		"soundboardSounds": {
+			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
+			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+		},
 		"stageInstanceCreate": {
 			"stage_instance_create": "<#%s>이(가) 생성되었습니다.",
 			"stage_notification": "🎤무대"
@@ -931,54 +954,32 @@
 			"thread_delete": "**%s** 삭제됨",
 			"thread_notification": "#️⃣ 스레드"
 		},
+		"threadListSync": {
+			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
+			"thread_notification": "#️⃣ เธรด"
+		},
+		"threadMembersUpdate": {
+			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
+			"thread_notification": "#️⃣ เธรด"
+		},
+		"threadMemberUpdate": {
+			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
+			"thread_notification": "🗄️ เซิร์ฟเวอร์",
+			"unknown": "ไม่ทราบ"
+		},
 		"threadUpdate": {
 			"thread_notification": "#️⃣ 스레드",
 			"thread_update": "`%s1`이 **%s2**로 업데이트되었습니다."
 		},
 		"voiceStateUpdate": {
+			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
 			"voice_notification": "➿ สถานะเสียง",
-			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**",
-			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~"
+			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
 		},
 		"webhookUpdate": {
 			"webhook_notification": "🎣 웹후크",
 			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
-		},
-		"guildSoundboardSoundCreate": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!"
-		},
-		"guildSoundboardSoundDelete": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!"
-		},
-		"guildSoundboardSoundUpdate": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"deleted": "ถูกลบแล้ว",
-			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
-		},
-		"soundboardSounds": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
-		},
-		"guildMemberUpdate": {
-			"guild_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ",
-			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>"
-		},
-		"threadMembersUpdate": {
-			"thread_notification": "#️⃣ เธรด",
-			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
-			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน"
-		},
-		"threadMemberUpdate": {
-			"thread_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ",
-			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>"
-		},
-		"threadListSync": {
-			"thread_notification": "#️⃣ เธรด",
-			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว"
 		}
 	},
 	"handlers": {
@@ -989,6 +990,9 @@
 			"addSong": {
 				"added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
 			},
+			"deleteQueue": {
+				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
+			},
 			"disconnect": {
 				"disconnected": "🔌 이미 모든 대기열을 연결 해제하고 삭제했습니다."
 			},
@@ -998,17 +1002,14 @@
 			"finish": {
 				"queue_is_empty": "🍃 이제 대기열이 비어 있습니다. 다음 곡을 연주할 준비가 되셨나요?"
 			},
-			"playSong": {
-				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
-			},
-			"deleteQueue": {
-				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
-			},
 			"finishSong": {
 				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
 			},
 			"noRelated": {
 				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
+			},
+			"playSong": {
+				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
 			}
 		}
 	},

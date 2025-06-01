@@ -57,6 +57,9 @@ manager.on("shardCreate", (shard) => {
   const shardTotal = manager.totalShards;
 
   if (mode !== "dev") updateChecker();
+  if (mode === "start") systemMetricsSubmitter();
+  if (mode === "start") statisticsSubmitter(manager);
+  if (mode === "start") healthCheckSubmitter();
 
   logEmbed
     .setColor(Colors.Blue)
@@ -194,10 +197,6 @@ manager.on("shardCreate", (shard) => {
     child.fatal(error, `Shard id ${shardID} is having problems.`);
   });
   shard.on(ShardEvents.Ready, () => {
-    if (mode === "start") systemMetricsSubmitter();
-    if (mode === "start") statisticsSubmitter(manager);
-    if (mode === "start") healthCheckSubmitter();
-
     logEmbed
       .setColor(Colors.Green)
       .setTitle("✅・Shard Ready")

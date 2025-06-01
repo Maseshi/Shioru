@@ -38,10 +38,10 @@ module.exports = {
       .setColor(Colors.Blue)
       .setTitle(interaction.client.i18n.t("commands.ping.connection"))
       .setDescription(
-        interaction.client.i18n
-          .t("commands.ping.info")
-          .replace("%s1", roundtrip)
-          .replace("%s2", websocket),
+        interaction.client.i18n.t("commands.ping.info", {
+          roundtrip_latency: roundtrip,
+          websocket_latency: websocket,
+        }),
       );
 
     await interaction.editReply({

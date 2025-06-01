@@ -1,22 +1,27 @@
 documentation:
-- changed-files:
-  - any-glob-to-any-file: '**/*.md'
+  - changed-files:
+    - any-glob-to-any-file: "**/*.md"
 
 command:
-- changed-files:
-  - any-glob-to-any-file: 'source/commands/*'
+  - changed-files:
+    - any-glob-to-any-file: "source/commands/**"
 
 context:
-- changed-files:
-  - any-glob-to-any-file: 'source/contexts/*'
+  - changed-files:
+    - any-glob-to-any-file: "source/contexts/**"
 
 event:
-- changed-files:
-  - any-glob-to-any-file: 'source/events/*'
+  - changed-files:
+    - any-glob-to-any-file: "source/events/**"
 
 translation:
-- changed-files:
-  - any-glob-to-any-file: 'source/locales/*'
+  - changed-files:
+    - any-glob-to-any-file: "source/locales/**"
 
+# Add 'feature request' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature request:
-  - head-branch: ['^feature', 'feature']
+  - head-branch: ["^feature", "feature"]
+
+# Add 'release' label to any PR that is opened against the `main` branch
+release:
+  - base-branch: "main"

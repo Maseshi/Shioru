@@ -1,6 +1,6 @@
 {
 	"name": "shioru",
-	"version": "3.6.19",
+	"version": "3.6.20",
 	"description": "Assistants within your Discord server will help make your server a better place to live.",
 	"homepage": "https://github.com/Maseshi/Shioru#readme",
 	"bugs": {
@@ -54,26 +54,26 @@
 		"discord-gamecord": "^4.4.2",
 		"discord.js": "^14.19.3",
 		"distube": "^5.0.7",
-		"firebase": "^11.8.0",
+		"firebase": "^11.8.1",
 		"genius-lyrics": "^4.4.7",
-		"i18next": "^25.2.0",
+		"i18next": "^25.2.1",
 		"i18next-fs-backend": "^2.6.0",
 		"pino": "^9.7.0",
 		"pino-pretty": "^13.0.0",
 		"systeminformation": "^5.25.11"
 	},
 	"devDependencies": {
-		"@eslint/js": "^9.27.0",
-		"eslint": "^9.27.0",
+		"@eslint/js": "^9.28.0",
+		"eslint": "^9.28.0",
 		"eslint-config-prettier": "^10.1.5",
-		"eslint-plugin-prettier": "^5.4.0",
+		"eslint-plugin-prettier": "^5.4.1",
 		"i18n-unused": "^0.19.0",
 		"prettier": "^3.5.3"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.9",
 		"osx-temperature-sensor": "^1.0.8",
-		"sodium-native": "^5.0.3",
+		"sodium-native": "^5.0.4",
 		"zlib-sync": "^0.1.10"
 	},
 	"engines": {
