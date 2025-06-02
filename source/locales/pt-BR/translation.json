@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Reprodução Automática",
 			"filter": "🎼 Padrão de filtro de voz: `%s`",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ No momento, não há nenhuma música que eu esteja tocando.",
 			"owner_this_queue": "%s é o dono desta fila",
 			"previous_queue": "**fila anterior**",
