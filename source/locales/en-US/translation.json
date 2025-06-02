@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Autoplay",
 			"filter": "🎼 **Filters**:",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ There's no song I'm playing right now.",
 			"owner_this_queue": "{{username}} is the owner of this queue.",
 			"previous_queue": "📋 **Previous Songs**",

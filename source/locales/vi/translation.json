@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Tự động phát",
 			"filter": "🎼 Mẫu bộ lọc giọng nói: `%s`",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ Hiện tại không có bài hát nào tôi đang phát.",
 			"owner_this_queue": "%s là chủ sở hữu của hàng đợi này",
 			"previous_queue": "**hàng đợi trước đó**",
