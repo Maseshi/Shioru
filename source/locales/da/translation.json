@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Automatisk afspilning",
 			"filter": "🎼 Stemmefiltermønster: `%s`",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
 			"owner_this_queue": "%s er ejeren af denne kø",
 			"previous_queue": "**forrige kø**",
