@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Putar Otomatis",
 			"filter": "🎼 Pola filter suara: `%s",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ Saat ini tidak ada lagu yang sedang saya putar.",
 			"owner_this_queue": "%s adalah pemilik antrian ini",
 			"previous_queue": "**antrian sebelumnya**",
