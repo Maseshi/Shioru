@@ -60,7 +60,7 @@
 		"i18next-fs-backend": "^2.6.0",
 		"pino": "^9.7.0",
 		"pino-pretty": "^13.0.0",
-		"systeminformation": "^5.25.11"
+		"systeminformation": "^5.27.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.28.0",
