@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Automatisk uppspelning",
 			"filter": "🎼 Röstfiltermönster: `%s",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ Just nu finns det ingen låt som jag spelar just nu.",
 			"owner_this_queue": "%s är ägaren till denna kö",
 			"previous_queue": "**föregående kö**",
