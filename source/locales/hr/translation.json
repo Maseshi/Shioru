@@ -595,6 +595,8 @@
 		"queue": {
 			"autoplay": "📻 Automatska reprodukcija",
 			"filter": "🎼 Uzorak glasovnog filtra: `%s",
+			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
 			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
 			"owner_this_queue": "%s je vlasnik ovog reda čekanja",
 			"previous_queue": "**prethodni red**",
