@@ -68,7 +68,7 @@
 		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-prettier": "^5.4.1",
 		"i18n-unused": "^0.19.0",
-		"prettier": "^3.5.3"
+		"prettier": "^3.6.0"
 	},
 	"optionalDependencies": {
 		"bufferutil": "^4.0.9",
