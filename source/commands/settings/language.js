@@ -154,7 +154,7 @@ module.exports = {
 
         await interaction.reply(
           interaction.client.i18n.t("commands.language.changed_locale", {
-            locale: locale,
+            locale: inputLocale,
           }),
         );
         break;

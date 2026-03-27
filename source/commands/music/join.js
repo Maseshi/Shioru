@@ -48,8 +48,8 @@ module.exports = {
           interaction.client.i18n.t("commands.join.another_player_is_playing"),
         );
       if (
-        djs.users.includes(interaction.user.id) &&
-        interaction.member.roles.cache.some((role) =>
+        !djs.users.includes(interaction.user.id) &&
+        !interaction.member.roles.cache.some((role) =>
           djs.roles.includes(role.id),
         ) &&
         djs.only
