@@ -55,7 +55,6 @@ module.exports = {
       .setFooter({ text: authorUsername, iconURL: authorAvatar });
 
     try {
-
       const genius = new Client();
       const searches = await genius.songs.search(songName);
 
