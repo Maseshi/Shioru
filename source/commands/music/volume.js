@@ -32,7 +32,7 @@ module.exports = {
         .setRequired(false),
     ),
   async execute(interaction) {
-    const inputPercent = interaction.options.getInteger("percent") ?? 0;
+    const inputPercent = interaction.options.getInteger("percent");
 
     const djs = interaction.client.configs.djs;
     const queue = interaction.client.player.getQueue(interaction);
@@ -54,16 +54,14 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id),
-        ) &&
+        interaction.member.roles.cache.some((role) => djs.roles.includes(role.id)) &&
         djs.only
       )
         return await interaction.reply(
           interaction.client.i18n.t("commands.volume.not_a_dj"),
         );
     }
-    if (!inputPercent)
+    if (inputPercent == null)
       return await interaction.reply(
         interaction.client.i18n
           .t("commands.volume.this_volume")
