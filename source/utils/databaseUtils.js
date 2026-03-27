@@ -26,10 +26,8 @@ const dataStructures = (client, select) => {
   switch (select) {
     case "chat":
       return {
-        prompts: [client.configs.constants.prompts],
-        replies: [client.configs.constants.replies],
-        alternatives: [client.configs.constants.alternatives],
-        scripts: [client.configs.constants.scripts],
+        conversations: client.configs.constants.conversations,
+        alternatives: client.configs.constants.alternatives,
         system: "",
       };
     case "user":
@@ -38,6 +36,7 @@ const dataStructures = (client, select) => {
           exp: 0,
           level: 0,
         },
+        guildLeveling: {},
         guilds: [],
       };
     case "guild":
@@ -83,7 +82,7 @@ const dataStructures = (client, select) => {
           thumbnail: "",
           timestamp: "",
           image: "",
-          felids: [
+          fields: [
             {
               name: "",
               value: "",
@@ -157,11 +156,10 @@ const fetchLevel = async (
   };
 
   const usersRef = ref(getDatabase(), "users");
-  const userRef = child(
-    usersRef,
-    member ? member.id : (message.member.id ?? message.user.id),
-  );
+  const userId = member ? member.id : (message.member?.id ?? message.user.id);
+  const userRef = child(usersRef, userId);
   const userSnapshot = await get(userRef);
+  const guildId = message.guild?.id;
 
   if (!userSnapshot.exists()) {
     await set(userRef, dataStructures(client, "user"));
@@ -172,6 +170,28 @@ const fetchLevel = async (
   const leveling = userVal.leveling;
   let exp = leveling.exp || 0;
   let level = leveling.level || 0;
+
+  // Update cached user profile (username + avatar)
+  const author = member
+    ? member
+    : (message.member ?? message.user);
+  if (author) {
+    const username = author.user?.username ?? author.username;
+    const avatar = author.user?.displayAvatarURL?.() ?? author.displayAvatarURL?.();
+    if (username && username !== userVal.username) {
+      update(userRef, { username });
+    }
+    if (avatar && avatar !== userVal.avatar) {
+      update(userRef, { avatar });
+    }
+  }
+
+  // Guild-specific leveling
+  const guildLeveling = guildId
+    ? (userVal.guildLeveling?.[guildId] ?? { exp: 0, level: 0 })
+    : null;
+  let guildExp = guildLeveling?.exp || 0;
+  let guildLevel = guildLeveling?.level || 0;
 
   const base = 200;
   const levelup = level * level * base;
@@ -202,16 +222,28 @@ const fetchLevel = async (
       }
 
       try {
-        if (type === "exp")
-          await update(
-            child(child(userRef, "leveling"), "exp"),
-            (exp += amount),
-          );
-        if (type === "level")
-          await update(
-            child(child(userRef, "leveling"), "level"),
-            (level += amount),
-          );
+        // Update global leveling
+        if (type === "exp") {
+          exp += amount;
+          await set(child(child(userRef, "leveling"), "exp"), exp);
+        }
+        if (type === "level") {
+          level += amount;
+          await set(child(child(userRef, "leveling"), "level"), level);
+        }
+
+        // Update guild-specific leveling
+        if (guildId) {
+          const guildLevelRef = child(child(userRef, "guildLeveling"), guildId);
+          if (type === "exp") {
+            guildExp += amount;
+            await set(child(guildLevelRef, "exp"), guildExp);
+          }
+          if (type === "level") {
+            guildLevel += amount;
+            await set(child(guildLevelRef, "level"), guildLevel);
+          }
+        }
 
         callback.status = "success";
       } catch {
@@ -222,9 +254,17 @@ const fetchLevel = async (
     case "PUT": {
       try {
         if (type === "exp")
-          await update(child(child(userRef, "leveling"), "exp"), amount);
+          await set(child(child(userRef, "leveling"), "exp"), amount);
         if (type === "level")
-          await update(child(child(userRef, "leveling"), "level"), amount);
+          await set(child(child(userRef, "leveling"), "level"), amount);
+
+        // Also update guild-specific
+        if (guildId) {
+          const guildLevelRef = child(child(userRef, "guildLeveling"), guildId);
+          if (type === "exp") await set(child(guildLevelRef, "exp"), amount);
+          if (type === "level")
+            await set(child(guildLevelRef, "level"), amount);
+        }
 
         callback.status = "success";
         callback.exp = exp;
@@ -389,7 +429,7 @@ const submitNotification = async (client, guild, eventName, embedData) => {
 
   if (!notify) return null;
 
-  const channelId = notify.id;
+  const channelId = notify.channelId ?? notify.id;
   const content = notify.content;
   const enable = notify.enable;
   const embed = notify.embed;
