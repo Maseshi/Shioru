@@ -104,7 +104,8 @@ const findMatch = (conversations, text, threshold = 0.75) => {
       // 1. Exact match
       if (prompt === text) {
         return {
-          reply: entry.replies[Math.floor(Math.random() * entry.replies.length)],
+          reply:
+            entry.replies[Math.floor(Math.random() * entry.replies.length)],
           script: entry.script ?? null,
         };
       }

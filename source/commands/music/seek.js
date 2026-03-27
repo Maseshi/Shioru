@@ -56,7 +56,9 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        interaction.member.roles.cache.some((role) => djs.roles.includes(role.id)) &&
+        interaction.member.roles.cache.some((role) =>
+          djs.roles.includes(role.id),
+        ) &&
         djs.only
       )
         return await interaction.reply(
@@ -78,7 +80,9 @@ module.exports = {
 
     try {
       interaction.client.player.seek(interaction, inputSecond);
-      await interaction.reply(interaction.client.i18n.t("commands.seek.sought"));
+      await interaction.reply(
+        interaction.client.i18n.t("commands.seek.sought"),
+      );
     } catch {
       await interaction.reply(
         interaction.client.i18n.t("commands.seek.no_queue"),

@@ -48,7 +48,9 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        interaction.member.roles.cache.some((role) => djs.roles.includes(role.id)) &&
+        interaction.member.roles.cache.some((role) =>
+          djs.roles.includes(role.id),
+        ) &&
         djs.only
       )
         return await interaction.reply(

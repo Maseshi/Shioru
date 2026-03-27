@@ -93,7 +93,8 @@ module.exports = {
     const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
     const guildSnapshot = await get(guildRef);
     const guildVal = guildSnapshot.val() ?? {};
-    const languageData = guildVal.language ?? dataStructures(interaction.client, "language");
+    const languageData =
+      guildVal.language ?? dataStructures(interaction.client, "language");
 
     switch (subcommand) {
       case "get": {
