@@ -40,7 +40,7 @@ module.exports = {
     registeringCommands(client);
 
     // Check back-ends server is set up.
-    if (!getApps.length) {
+    if (getApps().length) {
       // Fetch chat data on change and apply
       client.logger.info("Fetching and updating chat data...");
 
@@ -101,9 +101,9 @@ module.exports = {
           // Sync language settings
           if (data.language) {
             if (data.language.type === "CUSTOM" && data.language.locale) {
-              changeLanguage(client, data.language.locale);
+              client.i18n.changeLanguage(data.language.locale);
             } else if (data.language.type === "GUILD" && data.preferredLocale) {
-              changeLanguage(client, data.preferredLocale);
+              client.i18n.changeLanguage(data.preferredLocale);
             }
           }
         }
@@ -259,7 +259,8 @@ module.exports = {
             antiBotEnabledStartTime - antiBotEnabledEndTime;
 
           if (antiBotEnabledPassed >= 10) {
-            const members = await guilds.members.fetch();
+            const fullGuild = await guild.fetch();
+            const members = await fullGuild.members.fetch();
 
             if (!antiBotData.enable) return;
 
