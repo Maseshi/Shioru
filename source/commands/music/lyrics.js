@@ -39,9 +39,11 @@ module.exports = {
     const queue = interaction.client.player.getQueue(interaction);
 
     if (!queue && !inputName)
-      return await interaction.editReply(
+      return await interaction.reply(
         interaction.client.i18n.t("commands.lyrics.no_queue"),
       );
+
+    await interaction.deferReply();
 
     const songName = inputName ? inputName : (queue?.songs?.[0]?.name ?? "");
     const authorUsername = interaction.user.username;
@@ -53,7 +55,6 @@ module.exports = {
       .setFooter({ text: authorUsername, iconURL: authorAvatar });
 
     try {
-      await interaction.deferReply();
 
       const genius = new Client();
       const searches = await genius.songs.search(songName);
