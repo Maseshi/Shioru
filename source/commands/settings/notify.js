@@ -669,19 +669,28 @@ module.exports = {
               );
 
             const notifyData = notificationData[inputType];
+
+            if (!notifyData)
+              return await interaction.reply(
+                interaction.client.i18n.t(
+                  "commands.notify.notification_type_not_found",
+                  { list: notification.join(", ") },
+                ),
+              );
+
             const enable = notifyData.enable;
             const channelId = notifyData.channelId;
             const enabledAt = notifyData.enabledAt;
             const content = notifyData.content;
             const embed = notifyData.embed;
-            const toggledAt = embed.toggledAt;
-            const createBy = embed.createBy;
-            const editor = embed.editor;
+            const toggledAt = notifyData.toggledAt;
+            const createBy = embed?.createBy;
+            const editor = embed?.editor;
 
             if (embed) {
-              const authorName = embed.author.name;
-              const authorURL = embed.author.url;
-              const authorIconURL = embed.author.iconURL;
+              const authorName = embed.author?.name;
+              const authorURL = embed.author?.url;
+              const authorIconURL = embed.author?.iconURL;
               const color = embed.color;
               const title = embed.title;
               const url = embed.url;
@@ -689,14 +698,9 @@ module.exports = {
               const thumbnail = embed.thumbnail;
               const timestamp = embed.timestamp;
               const image = embed.image;
-              const firstFelidName = embed.felids[0].name;
-              const firstFelidValue = embed.felids[0].value;
-              const firstFelidInline = embed.felids[0].inline;
-              const secondFelidName = embed.felids[1].name;
-              const secondFelidValue = embed.felids[1].value;
-              const secondFelidInline = embed.felids[1].inline;
-              const footerText = embed.footer.text;
-              const footerIconURL = embed.footer.iconURL;
+              const fields = embed.fields ?? [];
+              const footerText = embed.footer?.text;
+              const footerIconURL = embed.footer?.iconURL;
 
               if (authorName)
                 previewEmbed.setAuthor({
@@ -714,19 +718,15 @@ module.exports = {
                   timestamp ? new Date(timestamp) : null,
                 );
               if (image) previewEmbed.setImage(image);
-              if (embed.felids) {
-                if (embed.felids[0] && firstFelidName)
-                  previewEmbed.addFields({
-                    name: firstFelidName ?? "",
-                    value: firstFelidValue ?? "",
-                    inline: firstFelidInline ?? false,
-                  });
-                if (embed.felids[1] && secondFelidName)
-                  previewEmbed.addFields({
-                    name: secondFelidName ?? "",
-                    value: secondFelidValue ?? "",
-                    inline: secondFelidInline ?? false,
-                  });
+              if (fields.length) {
+                for (const field of fields) {
+                  if (field?.name)
+                    previewEmbed.addFields({
+                      name: field.name ?? "",
+                      value: field.value ?? "",
+                      inline: field.inline ?? false,
+                    });
+                }
               }
               if (footerText)
                 previewEmbed.setFooter({
@@ -738,7 +738,7 @@ module.exports = {
             getEmbed.setDescription(
               newLines(
                 interaction.client.i18n.t("commands.notify.description", {
-                  command: `</${interaction.commandId}: ${interaction.commandName}>`,
+                  command: `</${interaction.commandName}:${interaction.commandId}>`,
                 }),
                 "",
                 newLines(
@@ -828,7 +828,7 @@ module.exports = {
             getEmbed.setDescription(
               newLines(
                 interaction.client.i18n.t("commands.notify.description", {
-                  command: `</${interaction.commandId}: ${interaction.commandName}>`,
+                  command: `</${interaction.commandName}:${interaction.commandId}>`,
                 }),
                 "",
                 newLines(...notifyInfo),
@@ -940,20 +940,20 @@ module.exports = {
               notify.embed.thumbnail = inputThumbnail;
               notify.embed.timestamp = new Date(inputTimestamp);
               notify.embed.image = inputImage;
-              notify.embed.felids[0].name = inputFirstFieldName;
-              notify.embed.felids[0].value = inputFirstFieldValue;
-              notify.embed.felids[0].inline = inputFirstFieldInline
+              notify.embed.fields[0].name = inputFirstFieldName;
+              notify.embed.fields[0].value = inputFirstFieldValue;
+              notify.embed.fields[0].inline = inputFirstFieldInline
                 ? inputFirstFieldInline
                 : notificationData
-                  ? notificationData[inputType].embed.felids[0].inline
-                  : notify.embed.felids[0].inline;
-              notify.embed.felids[1].name = inputSecondFieldName;
-              notify.embed.felids[1].value = inputSecondFieldValue;
-              notify.embed.felids[1].inline = inputSecondFieldInline
+                  ? notificationData[inputType].embed.fields[0].inline
+                  : notify.embed.fields[0].inline;
+              notify.embed.fields[1].name = inputSecondFieldName;
+              notify.embed.fields[1].value = inputSecondFieldValue;
+              notify.embed.fields[1].inline = inputSecondFieldInline
                 ? inputSecondFieldInline
                 : notificationData
-                  ? notificationData[inputType].embed.felids[1].inline
-                  : notify.embed.felids[1].inline;
+                  ? notificationData[inputType].embed.fields[1].inline
+                  : notify.embed.fields[1].inline;
               notify.embed.footer.text = inputFooterText;
               notify.embed.footer.iconURL = inputFooterIconURL;
             } else {
