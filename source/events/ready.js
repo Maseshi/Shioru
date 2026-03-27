@@ -45,30 +45,26 @@ module.exports = {
       client.logger.info("Fetching and updating chat data...");
 
       const chatRef = ref(getDatabase(), "chat");
+      const baseConstants = require("../configs/constants.json");
 
       const updateChatData = (snapshot) => {
         if (snapshot.exists()) {
-          const prompts = snapshot.val().prompts ?? [];
-          const replies = snapshot.val().replies ?? [];
-          const alternatives = snapshot.val().alternatives ?? [];
-          const scripts = snapshot.val().scripts ?? [];
-          const system = snapshot.val().system ?? "";
+          const data = snapshot.val();
+          const conversations = Array.isArray(data.conversations)
+            ? data.conversations
+            : Object.values(data.conversations ?? {});
+          const alternatives = Array.isArray(data.alternatives)
+            ? data.alternatives
+            : Object.values(data.alternatives ?? {});
+          const system = data.system ?? "";
 
-          client.configs.constants.prompts = [
-            ...client.configs.constants.prompts,
-            ...prompts,
-          ];
-          client.configs.constants.replies = [
-            ...client.configs.constants.replies,
-            ...replies,
+          client.configs.constants.conversations = [
+            ...baseConstants.conversations,
+            ...conversations,
           ];
           client.configs.constants.alternatives = [
-            ...client.configs.constants.alternatives,
+            ...baseConstants.alternatives,
             ...alternatives,
-          ];
-          client.configs.constants.scripts = [
-            ...client.configs.constants.scripts,
-            ...scripts,
           ];
           client.configs.constants.system = system;
         } else {
@@ -76,10 +72,44 @@ module.exports = {
         }
       };
 
-      get(chatRef).then((snapshot) => updateChatData(snapshot));
       onValue(chatRef, (snapshot) => updateChatData(snapshot));
 
       client.logger.info("Chat data retrieved complete.");
+
+      // Listen for guild settings changes from dashboard
+      client.logger.info("Listening for guild settings changes...");
+
+      const guildsRef = ref(getDatabase(), "guilds");
+      onValue(guildsRef, (snapshot) => {
+        if (!snapshot.exists()) return;
+
+        const guildsData = snapshot.val();
+
+        for (const [guildId, guildData] of Object.entries(guildsData)) {
+          const data = guildData;
+
+          // Sync DJs settings
+          if (data.djs) {
+            client.configs.djs = {
+              enable: data.djs.enable ?? false,
+              only: data.djs.only ?? false,
+              roles: data.djs.roles ?? [],
+              users: data.djs.users ?? [],
+            };
+          }
+
+          // Sync language settings
+          if (data.language) {
+            if (data.language.type === "CUSTOM" && data.language.locale) {
+              changeLanguage(client, data.language.locale);
+            } else if (data.language.type === "GUILD" && data.preferredLocale) {
+              changeLanguage(client, data.preferredLocale);
+            }
+          }
+        }
+      });
+
+      client.logger.info("Guild settings listener active.");
 
       // Send all commands information
       client.logger.info("Sending details of all commands...");

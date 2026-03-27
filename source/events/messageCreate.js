@@ -2,6 +2,14 @@ const { Events, ChannelType } = require("discord.js");
 const { getDatabase, ref, child, get, remove } = require("firebase/database");
 const { fetchLevel, initializeData } = require("../utils/databaseUtils");
 const { catchError } = require("../utils/consoleUtils");
+const {
+  findMatch,
+  executeScript,
+  normalizeText,
+  fetchConversationHistory,
+  fetchConversationResponse,
+  sendReply,
+} = require("../utils/chatUtils");
 
 module.exports = {
   name: Events.MessageCreate,
@@ -19,122 +27,107 @@ module.exports = {
       });
     }
 
-    // When the bot is called
-    if (
+    // Check if the bot is @mentioned or the user is replying to the bot
+    const isMentioned =
       !message.mentions.everyone &&
-      message.mentions.has(message.client.user.id)
-    ) {
-      const prompts = message.client.configs.constants.prompts;
-      const replies = message.client.configs.constants.replies;
-      const alternatives = message.client.configs.constants.alternatives;
-      const scripts = message.client.configs.constants.scripts;
-      const argument = message.content.replace(/^<@!?\d{1,20}> ?/i, "");
+      message.mentions.has(message.client.user.id);
+    const isReplyToBot =
+      message.reference &&
+      (
+        await message.channel.messages
+          .fetch(message.reference.messageId)
+          .catch(() => null)
+      )?.author?.id === message.client.user.id;
 
-      // When a bot is called but doesn't type anything
-      if (message.content && !argument) {
+    if (isMentioned || isReplyToBot) {
+      const argument = message.content.replace(/^<@!?\d{1,20}> ?/i, "").trim();
+
+      // When the bot is called but no argument is provided
+      if (!argument) {
+        const alternatives = message.client.configs.constants.alternatives;
         message.channel.sendTyping();
         message.reply(
           alternatives[Math.floor(Math.random() * alternatives.length)],
         );
+        return;
       }
 
-      // When the bot calls and asks some questions.
-      if (argument) {
-        message.channel.sendTyping();
+      // Keep typing indicator alive until response is ready
+      message.channel.sendTyping();
+      const typingInterval = setInterval(
+        () => message.channel.sendTyping(),
+        8000,
+      );
 
-        try {
-          const compare = (
-            promptsArray,
-            repliesArray,
-            scriptsArray,
-            textString,
-          ) => {
-            let reply, command, script;
+      try {
+        // Check pattern matching — guild conversations first, then global
+        const text = normalizeText(argument);
+        let matched = null;
 
-            for (let x = 0; x < promptsArray.length; x++) {
-              for (let y = 0; y < promptsArray[x].length; y++) {
-                if (promptsArray[x][y] === textString) {
-                  const repliesX = repliesArray[x];
-                  const scriptsX = scriptsArray[x] ?? null;
-                  reply = repliesX[Math.floor(Math.random() * repliesX.length)];
-                  script = scriptsX
-                    ? scriptsX[Math.floor(Math.random() * scriptsX.length)]
-                    : null;
-                  break;
-                }
-              }
-            }
-
-            return { reply, command, script };
-          };
-
-          // Remove all characters except word characters, space, and digits
-          // 'tell me a story' -> 'tell me story'
-          // 'i feel happy' -> 'happy'
-          const text = argument
-            .replaceAll(/ a /g, " ")
-            .replaceAll(/pls/g, "please")
-            .replaceAll(/i feel /g, "")
-            .replaceAll(/whats/g, "what is")
-            .replaceAll(/please /g, "")
-            .replaceAll(/ please/g, "")
-            .replaceAll(/r u/g, "are you")
-            .toLowerCase();
-          const compared = compare(prompts, replies, scripts, text);
-
-          if (compared.reply && !compared.script) {
-            // Answer the questions normally.
-            message.reply(compared.reply);
-          } else if (compared.reply && compared.script) {
-            // Answer the questions with a script.
-            // Script format on database: ((client, message, answer) => { ... })
-            // Script format after converted: ((client, message, answer) => { ... })(client, message, answer[randomWords])
-            const answerScript = await eval(compared.script)(
-              message.client,
-              message,
-              compared.reply,
-            );
-
-            message.reply(answerScript);
-          } else {
-            // If the bot doesn't have any answer, it will use the AI.
-            const apiKey = message.client.configs.openai.apiKey;
-            const baseURL = message.client.configs.openai.baseURL;
-            const clientUsername = message.client.user.username;
-            const systemConstants = message.client.configs.constants.system;
-
-            const response = await fetch(
-              new URL("/v1/chat/completions", baseURL),
-              {
-                method: "POST",
-                headers: {
-                  Authorization: `Bearer ${apiKey}`,
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  model: "gpt-4o-mini",
-                  messages: [
-                    {
-                      role: "system",
-                      content:
-                        systemConstants ??
-                        `From now on, you are ${clientUsername}.`,
-                    },
-                    { role: "user", content: argument },
-                  ],
-                }),
-              },
-            );
-            const data = await response.json();
-
-            message.reply(data.choices[0].message.content);
-          }
-        } catch (error) {
-          message.reply(
-            message.client.i18n.t("commands.ask.can_not_answer_at_this_time"),
+        if (message.guild) {
+          const guildChatRef = child(
+            child(ref(getDatabase(), "guilds"), message.guild.id),
+            "chat",
           );
-          catchError(message.client, message, "chat", error, true);
+          const guildChatSnapshot = await get(guildChatRef);
+
+          if (guildChatSnapshot.exists()) {
+            const guildChat = guildChatSnapshot.val();
+            const guildConversations = Array.isArray(guildChat.conversations)
+              ? guildChat.conversations
+              : Object.values(guildChat.conversations ?? {});
+
+            matched = findMatch(guildConversations, text);
+          }
         }
+
+        if (!matched) {
+          const { conversations } = message.client.configs.constants;
+          matched = findMatch(conversations, text);
+        }
+
+        if (matched) {
+          if (matched.script) {
+            const scriptReply = executeScript(
+              matched.script,
+              message,
+              matched.reply,
+            );
+            if (scriptReply) {
+              message.reply(scriptReply);
+              return;
+            }
+          }
+          message.reply(matched.reply);
+          return;
+        }
+
+        // If no pattern match, use AI to respond
+        const { apiKey, baseURL } = message.client.configs.openai;
+        const clientUsername = message.client.user.username;
+        const systemConstants = message.client.configs.constants.system;
+
+        const conversationHistory = await fetchConversationHistory(
+          message.channel,
+          message.client.user.id,
+        );
+
+        const reply = await fetchConversationResponse({
+          apiKey,
+          baseURL,
+          systemPrompt:
+            systemConstants ?? `From now on, you are ${clientUsername}.`,
+          conversationHistory,
+        });
+
+        await sendReply(message, reply);
+      } catch (error) {
+        message.reply(
+          message.client.i18n.t("commands.ask.can_not_answer_at_this_time"),
+        );
+        catchError(message.client, message, "chat", error, true);
+      } finally {
+        clearInterval(typingInterval);
       }
     }
 
