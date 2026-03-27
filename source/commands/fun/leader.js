@@ -59,11 +59,14 @@ module.exports = {
 
           if (guildMember) {
             if (!guildMember.user.bot) {
-              const leveling = expData.leveling;
+              // Use guild-specific leveling if available, fallback to global
+              const guildLeveling =
+                expData.guildLeveling?.[interaction.guild.id];
+              const leveling = guildLeveling ?? expData.leveling;
 
               if (leveling) {
-                const exp = leveling.exp;
-                const level = leveling.level;
+                const exp = leveling.exp || 0;
+                const level = leveling.level || 0;
 
                 leader.push({
                   data: {
@@ -88,6 +91,9 @@ module.exports = {
             next.data.exp - first.data.exp,
         );
 
+        // Save top user avatar before cleaning data
+        const userAvatar = leader[0]?.data?.avatar ?? "";
+
         // Create embed fields data
         for (let i = 0; i < leader.length; i++) {
           if (!leader[i]) return;
@@ -99,7 +105,6 @@ module.exports = {
 
         const clientAvatar = interaction.client.user.displayAvatarURL();
         const clientUsername = interaction.client.user.username;
-        const userAvatar = leader[0].data.avatar;
         const embed = new EmbedBuilder()
           .setColor(Colors.Blue)
           .setAuthor({ name: clientUsername, iconURL: clientAvatar })

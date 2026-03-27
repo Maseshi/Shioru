@@ -72,7 +72,7 @@ module.exports = {
           }
         }
 
-        await update(child(guildRef, interaction.user.id), {
+        await update(child(child(guildRef, "afk"), interaction.user.id), {
           message: inputMessage,
           nickname: nickname,
         });
@@ -103,7 +103,7 @@ module.exports = {
 
         const guildData = guildSnapshot.val();
 
-        if (guildData.afk || guildData.afk[interaction.user.id])
+        if (!guildData.afk || !guildData.afk[interaction.user.id])
           return await interaction.reply({
             content: interaction.client.i18n.t(
               "commands.afk.currently_not_afk",
