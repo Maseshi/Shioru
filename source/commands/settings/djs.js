@@ -161,8 +161,8 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand();
     const subcommandGroup = interaction.options.getSubcommandGroup();
     const inputSet = interaction.options.getBoolean("set") ?? false;
-    const inputRolesName = interaction.options.getRole("name") ?? "";
-    const inputUsersName = interaction.options.getUser("name") ?? "";
+    const inputRolesName = interaction.options.getRole("name");
+    const inputUsersName = interaction.options.getUser("name");
 
     const djsRef = child(
       child(ref(getDatabase(), "guilds"), interaction.guild.id),

@@ -39,12 +39,6 @@ const {
 } = require("./utils/servicesUtils");
 const configs = require("./configs/data");
 
-startScreen();
-if (mode !== "dev") updateChecker();
-if (mode === "start") systemMetricsSubmitter();
-if (mode === "start") statisticsSubmitter(manager);
-if (mode === "start") healthCheckSubmitter();
-
 const child = logger.child({}, { msgPrefix: "[Shard] " });
 const mode = process.env.npm_lifecycle_event || "start";
 const manager = new ShardingManager("./source/main.js", {
@@ -54,11 +48,16 @@ const manager = new ShardingManager("./source/main.js", {
   totalShards: "auto",
 });
 
+startScreen();
+if (mode !== "dev") updateChecker();
+if (mode === "start") systemMetricsSubmitter();
+if (mode === "start") statisticsSubmitter(manager);
+if (mode === "start") healthCheckSubmitter();
+
 manager.on("shardCreate", (shard) => {
   const shardID = shard.id;
   const shardAt = shardID + 1;
   const shardTotal = manager.totalShards;
-  const logEmbed = new EmbedBuilder().setTimestamp();
 
   logEmbed
     .setColor(Colors.Blue)
@@ -134,12 +133,12 @@ manager.on("shardCreate", (shard) => {
           },
           {
             name: "PID",
-            value: process.pid,
+            value: String(process.pid),
             inline: true,
           },
           {
             name: "Exit Code",
-            value: process.exitCode,
+            value: String(process.exitCode),
             inline: true,
           },
         ]);

@@ -500,7 +500,7 @@ const initializeData = async (client, guild) => {
         name: guild.name ?? dataStructures(client, "guild").name,
         verified: guild.verified ?? dataStructures(client, "guild").verified,
       },
-      { marge: true },
+      { merge: true },
     );
     return initializeData(client, guild);
   }

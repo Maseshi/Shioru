@@ -47,8 +47,8 @@ module.exports = {
           interaction.client.i18n.t("commands.jump.not_queue_owner"),
         );
       if (
-        djs.users.includes(interaction.user.id) &&
-        interaction.member.roles.cache.some((role) =>
+        !djs.users.includes(interaction.user.id) &&
+        !interaction.member.roles.cache.some((role) =>
           djs.roles.includes(role.id),
         ) &&
         djs.only

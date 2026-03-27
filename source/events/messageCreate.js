@@ -45,8 +45,8 @@ module.exports = {
       // When the bot is called but no argument is provided
       if (!argument) {
         const alternatives = message.client.configs.constants.alternatives;
-        message.channel.sendTyping();
-        message.reply(
+        await message.channel.sendTyping();
+        await message.reply(
           alternatives[Math.floor(Math.random() * alternatives.length)],
         );
         return;
@@ -94,11 +94,11 @@ module.exports = {
               matched.reply,
             );
             if (scriptReply) {
-              message.reply(scriptReply);
+              await message.reply(scriptReply);
               return;
             }
           }
-          message.reply(matched.reply);
+          await message.reply(matched.reply);
           return;
         }
 
@@ -122,7 +122,7 @@ module.exports = {
 
         await sendReply(message, reply);
       } catch (error) {
-        message.reply(
+        await message.reply(
           message.client.i18n.t("commands.ask.can_not_answer_at_this_time"),
         );
         catchError(message.client, message, "chat", error, true);
@@ -172,7 +172,7 @@ module.exports = {
             message.client.i18n.t("events.messageCreate.no_reason_for_afk");
 
           if (message.content.includes(members)) {
-            message.reply(
+            await message.reply(
               message.client.i18n
                 .t("events.messageCreate.that_user_is_afk")
                 .replace("%s1", member.user.tag)
