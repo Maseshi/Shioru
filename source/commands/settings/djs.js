@@ -6,7 +6,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child, get, update } = require("firebase/database");
+const { getDatabase, ref, child, update } = require("firebase/database");
 
 module.exports = {
   permissions: [
@@ -168,9 +168,7 @@ module.exports = {
       child(ref(getDatabase(), "guilds"), interaction.guild.id),
       "djs",
     );
-    const djsSnapshot = await get(djsRef);
-
-    const configs = interaction.client.config;
+    const configs = interaction.client.configs;
 
     switch (subcommand) {
       case "get": {
@@ -179,7 +177,7 @@ module.exports = {
           .setDescription(
             [
               interaction.client.i18n.t("commands.djs.manage_music_like_dj", {
-                command: `</${interaction.commandId}: ${interaction.commandName}>`,
+                command: `</${interaction.commandName}:${interaction.commandId}>`,
               }),
             ].join("\n\n"),
           )
@@ -267,13 +265,6 @@ module.exports = {
                   "commands.djs.role_currently_can_not_manage_music",
                 ),
               );
-            if (configs.djs.roles.indexOf(inputRolesName.id) < 0) {
-              return await interaction.reply(
-                interaction.client.i18n.t(
-                  "commands.djs.role_not_found_in_list",
-                ),
-              );
-            }
 
             configs.djs.roles.splice(
               configs.djs.roles.indexOf(inputRolesName.id),
@@ -303,13 +294,9 @@ module.exports = {
               roles: configs.djs.roles,
             });
 
-            if (djsSnapshot.exists()) {
-              const guildData = djsSnapshot.val();
-
-              if (!guildData.roles.length && !guildData.users.length) {
-                configs.djs.enable = false;
-                await update(djsRef, { enable: false });
-              }
+            if (!configs.djs.roles.length && !configs.djs.users.length) {
+              configs.djs.enable = false;
+              await update(djsRef, { enable: false });
             }
 
             await interaction.reply(
@@ -350,13 +337,6 @@ module.exports = {
                   "commands.djs.user_have_been_added_before",
                 ),
               );
-            if (configs.djs.users.indexOf(inputUsersName.id) < 0) {
-              return await interaction.reply(
-                interaction.client.i18n.t(
-                  "commands.djs.user_not_found_in_list",
-                ),
-              );
-            }
 
             configs.djs.users.splice(
               configs.djs.users.indexOf(inputUsersName.id),
@@ -386,13 +366,9 @@ module.exports = {
               users: configs.djs.users,
             });
 
-            if (djsSnapshot.exists()) {
-              const guildData = djsSnapshot.val();
-
-              if (!guildData.users.length && !guildData.users.length) {
-                configs.djs.enable = false;
-                await update(djsRef, { enable: false });
-              }
+            if (!configs.djs.roles.length && !configs.djs.users.length) {
+              configs.djs.enable = false;
+              await update(djsRef, { enable: false });
             }
 
             await interaction.reply(

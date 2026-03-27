@@ -43,7 +43,7 @@ module.exports = {
         interaction.client.i18n.t("commands.lyrics.no_queue"),
       );
 
-    const songName = inputName ? inputName : queue.songs[0].name;
+    const songName = inputName ? inputName : (queue?.songs?.[0]?.name ?? "");
     const authorUsername = interaction.user.username;
     const authorAvatar = interaction.user.displayAvatarURL();
     const lyricsEmbed = new EmbedBuilder()
@@ -57,9 +57,9 @@ module.exports = {
 
       const genius = new Client();
       const searches = await genius.songs.search(songName);
-      const lyrics = await searches[0].lyrics();
 
-      if (searches) {
+      if (searches && searches.length) {
+        const lyrics = await searches[0].lyrics();
         lyricsEmbed.setDescription(`\`\`\`${lyrics}\`\`\``);
       } else {
         lyricsEmbed.setDescription(

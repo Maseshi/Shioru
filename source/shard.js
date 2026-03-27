@@ -40,10 +40,13 @@ const {
 const configs = require("./configs/data");
 
 startScreen();
+if (mode !== "dev") updateChecker();
+if (mode === "start") systemMetricsSubmitter();
+if (mode === "start") statisticsSubmitter(manager);
+if (mode === "start") healthCheckSubmitter();
 
 const child = logger.child({}, { msgPrefix: "[Shard] " });
 const mode = process.env.npm_lifecycle_event || "start";
-const logEmbed = new EmbedBuilder().setTimestamp();
 const manager = new ShardingManager("./source/main.js", {
   respawn: true,
   shardList: "auto",
@@ -55,11 +58,7 @@ manager.on("shardCreate", (shard) => {
   const shardID = shard.id;
   const shardAt = shardID + 1;
   const shardTotal = manager.totalShards;
-
-  if (mode !== "dev") updateChecker();
-  if (mode === "start") systemMetricsSubmitter();
-  if (mode === "start") statisticsSubmitter(manager);
-  if (mode === "start") healthCheckSubmitter();
+  const logEmbed = new EmbedBuilder().setTimestamp();
 
   logEmbed
     .setColor(Colors.Blue)
@@ -86,6 +85,7 @@ manager.on("shardCreate", (shard) => {
   child.info(`Launched shard id ${shardID} [${shardAt}/${shardTotal}]`);
 
   shard.on(ShardEvents.Death, (process) => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Red)
       .setTitle("⚠️・Shard Death")
@@ -111,7 +111,8 @@ manager.on("shardCreate", (shard) => {
     child.error(new Date(), `Closing shard id ${shardID} unexpectedly`);
 
     if (process.exitCode === null) {
-      logEmbed
+      const nullEmbed = new EmbedBuilder().setTimestamp();
+      nullEmbed
         .setColor(Colors.Red)
         .setTitle("⚠️・Shard Death")
         .setDescription("A shard exited with NULL error code!")
@@ -142,11 +143,12 @@ manager.on("shardCreate", (shard) => {
             inline: true,
           },
         ]);
-      webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+      webhookSend(configs.logger.shard, { embeds: [nullEmbed] });
       child.error(process, `Shard id ${shardID} exited with NULL error code!`);
     }
   });
   shard.on(ShardEvents.Disconnect, () => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Default)
       .setTitle("🔌・Shard Disconnect")
@@ -172,6 +174,7 @@ manager.on("shardCreate", (shard) => {
     child.warn(`Shard id ${shardID} has disconnected from the event.`);
   });
   shard.on(ShardEvents.Error, (error) => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Red)
       .setTitle("⚠️・Shard Error")
@@ -197,6 +200,7 @@ manager.on("shardCreate", (shard) => {
     child.fatal(error, `Shard id ${shardID} is having problems.`);
   });
   shard.on(ShardEvents.Ready, () => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Green)
       .setTitle("✅・Shard Ready")
@@ -222,6 +226,7 @@ manager.on("shardCreate", (shard) => {
     child.info(`Shard ${shardID} is ready [${shardAt}/${shardTotal}]`);
   });
   shard.on(ShardEvents.Reconnecting, () => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Blue)
       .setTitle("⌛・Shard Reconnecting")
@@ -247,6 +252,7 @@ manager.on("shardCreate", (shard) => {
     child.info(new Date(), `Reconnecting shard id ${shardID}`);
   });
   shard.on(ShardEvents.Resume, () => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Blue)
       .setTitle("▶️・Shard Resume")
@@ -272,6 +278,7 @@ manager.on("shardCreate", (shard) => {
     child.info(`Shard id ${shardID} is resuming`);
   });
   shard.on(ShardEvents.Spawn, (process) => {
+    const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Red)
       .setTitle("🥚・Shard Spawn")

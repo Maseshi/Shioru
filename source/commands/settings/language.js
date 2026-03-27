@@ -92,7 +92,9 @@ module.exports = {
     const locales = interaction.client.i18n.options.preload;
     const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
     const guildSnapshot = await get(guildRef);
-    const guildVal = guildSnapshot.val();
+    const guildVal = guildSnapshot.val() ?? {};
+    const languageData =
+      guildVal.language ?? dataStructures(interaction.client, "language");
 
     switch (subcommand) {
       case "get": {
@@ -100,9 +102,9 @@ module.exports = {
           .setTitle(interaction.client.i18n.t("commands.language.title"))
           .setDescription(
             interaction.client.i18n.t("commands.language.description", {
-              command: `</${interaction.commandId}: ${interaction.commandName}>`,
+              command: `</${interaction.commandName}:${interaction.commandId}>`,
               type:
-                guildVal.language.type ||
+                languageData.type ||
                 dataStructures(interaction.client, "language").type,
               locale: locale,
             }),
@@ -118,7 +120,7 @@ module.exports = {
           .setTitle(interaction.client.i18n.t("commands.language.title"))
           .setDescription(
             interaction.client.i18n.t("commands.language.support", {
-              command: `</${interaction.commandId}: ${interaction.commandName}>`,
+              command: `</${interaction.commandName}:${interaction.commandId}>`,
               locales: locales.join(", "),
             }),
           )
@@ -145,9 +147,9 @@ module.exports = {
             }),
           );
 
-        await update(child(child(guildRef, "language"), "locale"), inputLocale);
+        await update(child(guildRef, "language"), { locale: inputLocale });
 
-        if (guildVal.language.type === "CUSTOM")
+        if (languageData.type === "CUSTOM")
           changeLanguage(interaction.client, inputLocale);
 
         await interaction.reply(
@@ -158,12 +160,12 @@ module.exports = {
         break;
       }
       case "by": {
-        await update(child(child(guildRef, "language"), "type"), inputType);
+        await update(child(guildRef, "language"), { type: inputType });
 
         if (inputType === "CUSTOM")
           changeLanguage(
             interaction.client,
-            guildVal.language.locale ||
+            languageData.locale ||
               dataStructures(interaction.client, "language").locale,
           );
         if (inputType === "GUILD")

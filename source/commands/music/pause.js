@@ -38,8 +38,8 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id),
+        interaction.member.roles.cache.some((role) =>
+          djs.roles.includes(role.id),
         ) &&
         djs.only
       )

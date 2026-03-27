@@ -36,8 +36,8 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id),
+        interaction.member.roles.cache.some((role) =>
+          djs.roles.includes(role.id),
         ) &&
         djs.only
       )
@@ -51,6 +51,11 @@ module.exports = {
       );
 
     const connection = interaction.client.player.voices.get(meChannel.guild);
+
+    if (!connection)
+      return await interaction.reply(
+        interaction.client.i18n.t("commands.leave.not_in_any_channel"),
+      );
 
     connection.leave();
     await interaction.reply(

@@ -43,8 +43,8 @@ module.exports = {
         interaction.client.i18n.t("commands.seek.no_queue"),
       );
 
-    const queueDuration = queue.songs.map((song) => song.duration);
-    const queueFormatDuration = queue.songs.map((song) => song.formatDuration);
+    const queueDuration = queue.songs[0].duration;
+    const queueFormatDuration = queue.songs[0].formattedDuration;
 
     if (djs.enable) {
       if (
@@ -56,8 +56,8 @@ module.exports = {
         );
       if (
         djs.users.includes(interaction.user.id) &&
-        djs.roles.includes(
-          interaction.member.roles.cache.map((role) => role.id),
+        interaction.member.roles.cache.some((role) =>
+          djs.roles.includes(role.id),
         ) &&
         djs.only
       )
@@ -65,20 +65,28 @@ module.exports = {
           interaction.client.i18n.t("commands.seek.not_a_dj"),
         );
     }
-    if (!inputSecond)
+    if (inputSecond == null)
       return await interaction.reply(
         interaction.client.i18n
           .t("commands.seek.seek_guide")
           .replace("%s", queueDuration),
       );
-    if (inputSecond >= parseInt(queueDuration.join()))
+    if (inputSecond >= queueDuration)
       return await interaction.reply(
         interaction.client.i18n
           .t("commands.seek.too_much")
           .replace("%s", queueFormatDuration),
       );
 
-    interaction.client.player.seek(interaction, inputSecond);
-    await interaction.reply(interaction.client.i18n.t("commands.seek.sought"));
+    try {
+      interaction.client.player.seek(interaction, inputSecond);
+      await interaction.reply(
+        interaction.client.i18n.t("commands.seek.sought"),
+      );
+    } catch {
+      await interaction.reply(
+        interaction.client.i18n.t("commands.seek.no_queue"),
+      );
+    }
   },
 };
