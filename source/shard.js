@@ -58,8 +58,9 @@ manager.on("shardCreate", (shard) => {
   const shardID = shard.id;
   const shardAt = shardID + 1;
   const shardTotal = manager.totalShards;
+  const launchEmbed = new EmbedBuilder().setTimestamp();
 
-  logEmbed
+  launchEmbed
     .setColor(Colors.Blue)
     .setTitle("🆙・Launching Shard")
     .setDescription("A shard has just been launched")
@@ -80,7 +81,7 @@ manager.on("shardCreate", (shard) => {
         inline: true,
       },
     ]);
-  webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+  webhookSend(configs.logger.shard, { embeds: [launchEmbed] });
   child.info(`Launched shard id ${shardID} [${shardAt}/${shardTotal}]`);
 
   shard.on(ShardEvents.Death, (process) => {
