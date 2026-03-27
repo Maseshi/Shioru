@@ -172,12 +172,11 @@ const fetchLevel = async (
   let level = leveling.level || 0;
 
   // Update cached user profile (username + avatar)
-  const author = member
-    ? member
-    : (message.member ?? message.user);
+  const author = member ? member : (message.member ?? message.user);
   if (author) {
     const username = author.user?.username ?? author.username;
-    const avatar = author.user?.displayAvatarURL?.() ?? author.displayAvatarURL?.();
+    const avatar =
+      author.user?.displayAvatarURL?.() ?? author.displayAvatarURL?.();
     if (username && username !== userVal.username) {
       update(userRef, { username });
     }
