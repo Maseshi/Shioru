@@ -67,6 +67,10 @@ jobs:
               export PATH="$BUN_INSTALL/bin:$PATH"
             fi
 
+            # Install pm2 modules
+            bunx pm2 install pm2-server-monit
+            bunx pm2 install pm2-logrotate
+
             # Clone repo if first deploy
             if [ ! -d ~/app/.git ]; then
               rm -rf ~/app
