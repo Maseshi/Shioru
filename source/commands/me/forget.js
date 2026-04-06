@@ -60,9 +60,7 @@ module.exports = {
 
         if (!userSnapshot.exists()) {
           return await interaction.reply({
-            content: interaction.client.i18n.t(
-              "commands.forget.no_data",
-            ),
+            content: interaction.client.i18n.t("commands.forget.no_data"),
             ephemeral: true,
           });
         }
@@ -70,23 +68,17 @@ module.exports = {
         const confirmRow = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setCustomId("confirm-delete-me")
-            .setLabel(
-              interaction.client.i18n.t("commands.forget.confirm"),
-            )
+            .setLabel(interaction.client.i18n.t("commands.forget.confirm"))
             .setStyle(ButtonStyle.Danger),
           new ButtonBuilder()
             .setCustomId("cancel-delete")
-            .setLabel(
-              interaction.client.i18n.t("commands.forget.cancel"),
-            )
+            .setLabel(interaction.client.i18n.t("commands.forget.cancel"))
             .setStyle(ButtonStyle.Secondary),
         );
 
         const confirmEmbed = new EmbedBuilder()
           .setColor(Colors.Red)
-          .setTitle(
-            interaction.client.i18n.t("commands.forget.title"),
-          )
+          .setTitle(interaction.client.i18n.t("commands.forget.title"))
           .setDescription(
             interaction.client.i18n.t("commands.forget.description"),
           )
@@ -138,22 +130,16 @@ module.exports = {
       case "guild": {
         if (!interaction.guild) {
           return await interaction.reply({
-            content: interaction.client.i18n.t(
-              "commands.forget.guild_only",
-            ),
+            content: interaction.client.i18n.t("commands.forget.guild_only"),
             ephemeral: true,
           });
         }
 
         if (
-          !interaction.member.permissions.has(
-            PermissionFlagsBits.ManageGuild,
-          )
+          !interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)
         ) {
           return await interaction.reply({
-            content: interaction.client.i18n.t(
-              "commands.forget.no_permission",
-            ),
+            content: interaction.client.i18n.t("commands.forget.no_permission"),
             ephemeral: true,
           });
         }
@@ -172,17 +158,13 @@ module.exports = {
             .setStyle(ButtonStyle.Danger),
           new ButtonBuilder()
             .setCustomId("cancel-delete")
-            .setLabel(
-              interaction.client.i18n.t("commands.forget.cancel"),
-            )
+            .setLabel(interaction.client.i18n.t("commands.forget.cancel"))
             .setStyle(ButtonStyle.Secondary),
         );
 
         const confirmEmbed = new EmbedBuilder()
           .setColor(Colors.Red)
-          .setTitle(
-            interaction.client.i18n.t("commands.forget.guild_title"),
-          )
+          .setTitle(interaction.client.i18n.t("commands.forget.guild_title"))
           .setDescription(
             interaction.client.i18n.t("commands.forget.guild_description"),
           )
