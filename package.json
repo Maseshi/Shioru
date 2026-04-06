@@ -29,10 +29,9 @@
 		"url": "git+https://github.com/Maseshi/Shioru.git"
 	},
 	"scripts": {
-		"start": "bun source/shard.js",
-		"serve": "firebase emulators:exec --only database \"bun --hot source/shard.js\"",
-		"dev": "firebase emulators:exec --only database --ui \"bun --inspect --env-file .env --hot source/main.js\"",
-		"postinstall": "bun scripts/patch-cookie-agent.js",
+		"start": "node source/shard.js",
+		"serve": "firebase emulators:exec --only database \"node --watch-path=source source/shard.js\"",
+		"dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file=.env --watch-path=source --watch-preserve-output source/main.js\"",
 		"lint": "eslint --fix --ext .js . && prettier --check --write .",
 		"docker:build": "docker build --target production --tag maseshi/%npm_package_name%:%npm_package_version% .",
 		"docker:build:serve": "docker build --target serve --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",

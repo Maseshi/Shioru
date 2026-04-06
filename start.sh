@@ -13,15 +13,14 @@ cat << "EOF"
 ┃ or ^C.                                         ┃
 ┃                                                ┃
 ┃ Will install: curl, git, unzip, python3,       ┃
-┃ ffmpeg, build-essential, Node.js (nvm)         ┃
-┃ and Bun                                        ┃
+┃ ffmpeg, build-essential, and Node.js (nvm)     ┃
 ┃                                                ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
 echo
 
 echo Updating system packages and installing required packages...
-sudo apt-get update && sudo apt-get install -y curl git unzip python3 ffmpeg build-essential
+sudo apt-get update && sudo apt-get install -y curl git python3 ffmpeg build-essential
 echo
 
 echo Installing Node.js via nvm...
@@ -33,15 +32,9 @@ fi
 nvm install --lts
 echo
 
-echo Installing Bun...
-curl -fsSL https://bun.sh/install | bash
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-echo
-
 echo Updating and installing dependencies...
-bun install
+npm ci
 echo
 
 echo Starting up the system...
-bun run start
+npm start

@@ -24,7 +24,6 @@ module.exports = {
     {
       name: "shioru",
       script: "./source/shard.js",
-      interpreter: "bun",
       watch: false,
       instances: 1,
       autorestart: true,
@@ -46,7 +45,7 @@ module.exports = {
       path: "~/app",
       "pre-deploy-local": "",
       "post-deploy":
-        "bun install && bunx pm2 reload ecosystem.config.js --env production",
+        "npm ci && npx pm2 reload ecosystem.config.js --env production --log-type raw",
       "pre-setup": "",
     },
   },
