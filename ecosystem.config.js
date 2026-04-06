@@ -45,7 +45,7 @@ module.exports = {
       path: "~/app",
       "pre-deploy-local": "",
       "post-deploy":
-        "bun install --frozen-lockfile && pm2 reload ecosystem.config.js --env production",
+        "bun install && bunx pm2 reload ecosystem.config.js --env production",
       "pre-setup": "",
     },
   },
