@@ -4,8 +4,7 @@
 FROM oven/bun:alpine AS build
 
 RUN apk --update --no-cache add \
-    python3 build-base \
-    jpeg-dev cairo-dev giflib-dev pango-dev
+    python3 build-base
 
 WORKDIR /usr/src/app
 
@@ -19,8 +18,7 @@ LABEL org.opencontainers.image.authors="dermhioasw123@gmail.com"
 LABEL description="Assistants within your Discord server will help make your server a better place to live."
 
 RUN apk --update --no-cache add \
-    git openjdk11-jre python3 ffmpeg build-base \
-    jpeg-dev cairo-dev giflib-dev pango-dev
+    git openjdk11-jre python3 ffmpeg build-base
 
 WORKDIR /usr/src/app
 
@@ -39,10 +37,8 @@ FROM oven/bun:alpine AS production
 LABEL org.opencontainers.image.authors="dermhioasw123@gmail.com"
 LABEL description="Assistants within your Discord server will help make your server a better place to live."
 
-# Only runtime dependencies (no build-base, no git, no jdk)
 RUN apk --update --no-cache add \
-    python3 ffmpeg \
-    libjpeg-turbo cairo giflib pango
+    python3 ffmpeg
 
 WORKDIR /usr/src/app
 
