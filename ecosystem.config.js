@@ -31,6 +31,7 @@ module.exports = {
       max_memory_restart: "512M",
       env: {
         NODE_ENV: "production",
+        npm_lifecycle_event: "start",
         ...loadEnv(),
       },
     },
