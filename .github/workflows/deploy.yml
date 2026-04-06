@@ -34,7 +34,7 @@ jobs:
           OPENAI_PROJECT: ${{ secrets.OPENAI_PROJECT }}
           OPEN_WEATHER_TOKEN: ${{ secrets.OPEN_WEATHER_TOKEN }}
 
-      - name: Setup server and pull code
+      - name: Setup server
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -42,18 +42,33 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             export BUN_INSTALL="$HOME/.bun"
+            export NVM_DIR="$HOME/.nvm"
             export PATH="$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
 
-            # Install bun if not available
+            # Install system dependencies
+            PACKAGES=""
+            command -v make &> /dev/null || PACKAGES="$PACKAGES build-essential python3"
+            command -v unzip &> /dev/null || PACKAGES="$PACKAGES unzip"
+            command -v ffmpeg &> /dev/null || PACKAGES="$PACKAGES ffmpeg"
+            if [ -n "$PACKAGES" ]; then
+              sudo apt-get update && sudo apt-get install -y $PACKAGES
+            fi
+
+            # Install Node.js via nvm (needed for node-gyp compilation)
+            if [ ! -d "$NVM_DIR" ]; then
+              curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+            fi
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            command -v node &> /dev/null || nvm install --lts
+
+            # Install bun
             if ! command -v bun &> /dev/null; then
               curl -fsSL https://bun.sh/install | bash
               export PATH="$BUN_INSTALL/bin:$PATH"
             fi
 
-            # Install pm2 if not available
-            if ! command -v pm2 &> /dev/null; then
-              bun install -g pm2
-            fi
+            # Install pm2
+            command -v pm2 &> /dev/null || bun install -g pm2
 
             # Clone repo if first deploy
             if [ ! -d ~/app/.git ]; then
@@ -81,9 +96,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             export BUN_INSTALL="$HOME/.bun"
+            export NVM_DIR="$HOME/.nvm"
             export PATH="$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
             cd ~/app
             mv .env.production .env
-            bun install --frozen-lockfile
+            bun install
             pm2 reload ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
