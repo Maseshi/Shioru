@@ -41,35 +41,27 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            export BUN_INSTALL="$HOME/.bun"
             export NVM_DIR="$HOME/.nvm"
-            export PATH="$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
 
             # Install system dependencies
             PACKAGES=""
             command -v make &> /dev/null || PACKAGES="$PACKAGES build-essential python3"
-            command -v unzip &> /dev/null || PACKAGES="$PACKAGES unzip"
             command -v ffmpeg &> /dev/null || PACKAGES="$PACKAGES ffmpeg"
             if [ -n "$PACKAGES" ]; then
               sudo apt-get update && sudo apt-get install -y $PACKAGES
             fi
 
-            # Install Node.js via nvm (needed for node-gyp compilation)
+            # Install Node.js via nvm
             if [ ! -d "$NVM_DIR" ]; then
               curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
             fi
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             command -v node &> /dev/null || nvm install --lts
 
-            # Install bun
-            if ! command -v bun &> /dev/null; then
-              curl -fsSL https://bun.sh/install | bash
-              export PATH="$BUN_INSTALL/bin:$PATH"
-            fi
-
-            # Install pm2 modules
-            bunx pm2 install pm2-server-monit
-            bunx pm2 install pm2-logrotate
+            # Install pm2 and modules
+            npm install -g pm2
+            npx pm2 install pm2-server-monit
+            npx pm2 install pm2-logrotate
 
             # Clone repo if first deploy
             if [ ! -d ~/app/.git ]; then
@@ -96,12 +88,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            export BUN_INSTALL="$HOME/.bun"
             export NVM_DIR="$HOME/.nvm"
-            export PATH="$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
             cd ~/app
             mv .env.production .env
-            bun install
-            bunx pm2 reload ecosystem.config.js --env production || bunx pm2 start ecosystem.config.js --env production
+            npm ci
+            npx pm2 reload ecosystem.config.js --env production --log-type raw || npx pm2 start ecosystem.config.js --env production --log-type raw

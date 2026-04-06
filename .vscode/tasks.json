@@ -3,27 +3,27 @@
   "tasks": [
     {
       "type": "shell",
-      "command": "bun run lint",
+      "command": "npm run lint",
       "label": "Lint and Format",
       "detail": "Format and make sure your code is readable and in a standard format."
     },
     {
       "type": "shell",
-      "command": "bun run docker:build",
+      "command": "npm run docker:build",
       "label": "Docker: Build",
       "detail": "Builds Docker images from a Dockerfile.",
       "group": "build"
     },
     {
       "type": "shell",
-      "command": "bun run docker:build:serve",
+      "command": "npm run docker:build:serve",
       "label": "Docker: Build (Serve Mode)",
       "detail": "Builds Docker images from a Dockerfile with serve mode.",
       "group": "build"
     },
     {
       "type": "shell",
-      "command": "bun run docker:push",
+      "command": "npm run docker:push",
       "label": "Docker: Push Image",
       "detail": "Share your images to the Docker Hub registry."
     }
