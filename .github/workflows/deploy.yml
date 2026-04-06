@@ -67,9 +67,6 @@ jobs:
               export PATH="$BUN_INSTALL/bin:$PATH"
             fi
 
-            # Install pm2
-            command -v pm2 &> /dev/null || bun install -g pm2
-
             # Clone repo if first deploy
             if [ ! -d ~/app/.git ]; then
               rm -rf ~/app
@@ -103,4 +100,4 @@ jobs:
             cd ~/app
             mv .env.production .env
             bun install
-            pm2 reload ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
+            bunx pm2 reload ecosystem.config.js --env production || bunx pm2 start ecosystem.config.js --env production
