@@ -56,7 +56,7 @@ jobs:
 
             # Install Node.js via nvm (needed for node-gyp compilation)
             if [ ! -d "$NVM_DIR" ]; then
-              curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+              curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
             fi
             [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             command -v node &> /dev/null || nvm install --lts
