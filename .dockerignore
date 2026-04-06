@@ -4,6 +4,8 @@
 
 # Documents
 README.md
+LICENSE
+LICENSE-ASSETS
 documents/
 
 # Logs
@@ -13,28 +15,42 @@ logs/
 # Dependency directories
 node_modules/
 
-# Ignore
+# Ignore files
 .*ignore
+.gitignore
+.dockerignore
+.prettierignore
 
 # Docker
 Dockerfile*
 docker-compose*
 
-# Configs
-*.config.*
+# Linter/Formatter configs
+eslint.config.js
+prettier.config.js
+
+# PM2
+ecosystem.config.js
+
+# Scripts
+start.bat
+start.sh
 
 # Crowdin
 crowdin.yml
 
+# Assets (non-source)
+assets/
+
 # Environment
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
 
 # Back-ends
 .firebase
 .firebaserc
 firebase.json
 database.rules.json
+
+# Git
+.git/
