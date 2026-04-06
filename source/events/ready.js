@@ -12,7 +12,6 @@ const {
   ref,
   child,
   update,
-  get,
   set,
 } = require("firebase/database");
 const { registeringCommands, webhookSend } = require("../utils/clientUtils");
