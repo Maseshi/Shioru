@@ -7,7 +7,7 @@
     {
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run dev",
+      "command": "bun run dev",
       "name": "Launch Development",
       "skipFiles": [
         "<node_internals>/**",
@@ -22,7 +22,7 @@
     {
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run serve",
+      "command": "bun run serve",
       "name": "Launch Serve",
       "skipFiles": [
         "<node_internals>/**",
@@ -37,7 +37,7 @@
     {
       "type": "node-terminal",
       "request": "launch",
-      "command": "npm run docker:run:serve",
+      "command": "bun run docker:run:serve",
       "name": "Launch Serve (Docker)",
       "skipFiles": [
         "<node_internals>/**",

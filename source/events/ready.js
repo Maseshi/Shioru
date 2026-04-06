@@ -12,7 +12,6 @@ const {
   ref,
   child,
   update,
-  get,
   set,
 } = require("firebase/database");
 const { registeringCommands, webhookSend } = require("../utils/clientUtils");
@@ -236,50 +235,6 @@ module.exports = {
       activities.production[0].name = `${currencyFormatter(statisticsData.guilds, 1)} Server${statisticsData.guilds === 1 ? "" : "s"}`;
       activities.production[2].name = `${currencyFormatter(statisticsData.members, 1)} Member${statisticsData.members === 1 ? "" : "s"}`;
       client.user.setActivity(newActivity);
-    }, 10000);
-
-    // Anti-bot system
-    setInterval(async () => {
-      const guilds = await client.guilds.fetch();
-
-      guilds.forEach(async (guild) => {
-        const guildRef = child(ref(getDatabase(), "guilds"), guild.id);
-        const guildSnapshot = await get(guildRef);
-
-        if (guildSnapshot.exists()) {
-          const antiBotData = guildSnapshot.val().antibot;
-
-          if (!antiBotData) return;
-
-          const antiBotEnabledStartTime = new Date(
-            antiBotData.enabledAt,
-          ).getTime();
-          const antiBotEnabledEndTime = new Date().getTime();
-          const antiBotEnabledPassed =
-            antiBotEnabledStartTime - antiBotEnabledEndTime;
-
-          if (antiBotEnabledPassed >= 10) {
-            const fullGuild = await guild.fetch();
-            const members = await fullGuild.members.fetch();
-
-            if (!antiBotData.enable) return;
-
-            members.forEach((member) => {
-              if (member.user.bot) {
-                if (
-                  !antiBotData.all &&
-                  antiBotData.bots.includes(member.user.id)
-                )
-                  return;
-                if (member.id !== client.user.id)
-                  return member.kick({
-                    reason: client.i18n.t("events.ready.prevented_anti_bot"),
-                  });
-              }
-            });
-          }
-        }
-      });
     }, 10000);
 
     // If everything is ready to go

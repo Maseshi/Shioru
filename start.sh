@@ -12,28 +12,25 @@ cat << "EOF"
 ┃ don't want to continue, you can Ctrl + C       ┃
 ┃ or ^C.                                         ┃
 ┃                                                ┃
-┃ Will install: curl, git, default-jre, python3, ┃
-┃ ffmpeg, build-essential, libcairo2-dev,        ┃
-┃ libpango1.0-dev, libjpeg-dev, libgif-dev,      ┃
-┃ librsvg2-dev and nodejs                        ┃
+┃ Will install: curl, git, python3, ffmpeg,      ┃
+┃ build-essential and bun                        ┃
 ┃                                                ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 EOF
 echo
 
 echo Updating system packages and installing required packages...
-sudo apt-get update && sudo apt-get install -y curl git default-jre python3 ffmpeg build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get update && sudo apt-get install -y curl git python3 ffmpeg build-essential
 echo
 
-echo Updating NPM to the latest version...
-sudo npm install -g npm@latest
+echo Installing Bun...
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
 echo
 
 echo Updating and installing dependencies...
-sudo npm install
+bun install
 echo
 
 echo Starting up the system...
-sudo -E npm start
+bun run start

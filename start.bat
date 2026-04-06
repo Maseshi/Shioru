@@ -12,10 +12,9 @@ echo ┃ and install all necessary components. If you   ┃
 echo ┃ don't want to continue, you can Ctrl + C       ┃
 echo ┃ or ^^C.                                         ┃
 echo ┃                                                ┃
-echo ┃ Will install: winget, Git,                     ┃
-echo ┃ Java(TM).SE.Development.Kit, Python.3.12,      ┃
-echo ┃ FFmpeg, Visual.Studio.BuildTools.2022 and      ┃
-echo ┃ Node.js.LTS                                    ┃
+echo ┃ Will install: winget, Git, Python.3.12,         ┃
+echo ┃ FFmpeg, Visual.Studio.BuildTools.2026,          ┃
+echo ┃ Node.js.LTS and Bun                            ┃
 echo ┃                                                ┃
 echo ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 echo.
@@ -40,16 +39,12 @@ if %errorlevel% neq 0 (
 echo.
 
 echo Updating and installing required components...
-call winget install Git Java(TM).SE.Development.Kit Python.3.12 FFmpeg Visual.Studio.BuildTools.2022 Node.js.LTS
-echo.
-
-echo Updating NPM to the latest version...
-call npm install -g npm@latest
+call winget install Git Python.3.12 FFmpeg Visual.Studio.BuildTools.2026 Node.js.LTS Oven-sh.Bun
 echo.
 
 echo Updating and installing dependencies...
-call npm install
+call bun install
 echo.
 
 echo Starting up the system...
-call npm start
+call bun run start

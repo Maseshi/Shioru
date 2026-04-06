@@ -1,0 +1,73 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .env from secrets
+        run: envsubst < .env.example > .env.production
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          API_KEY: ${{ secrets.API_KEY }}
+          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          MESSAGING_SENDER_ID: ${{ secrets.MESSAGING_SENDER_ID }}
+          APP_ID: ${{ secrets.APP_ID }}
+          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
+          MONITOR_API_KEY: ${{ secrets.MONITOR_API_KEY }}
+          MONITOR_METRIC_ID: ${{ secrets.MONITOR_METRIC_ID }}
+          MONITOR_PAGE_ID: ${{ secrets.MONITOR_PAGE_ID }}
+          TOP_GG_TOKEN: ${{ secrets.TOP_GG_TOKEN }}
+          TRANSLATION_BASE_URL: ${{ secrets.TRANSLATION_BASE_URL }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_ORGANIZATION: ${{ secrets.OPENAI_ORGANIZATION }}
+          OPENAI_PROJECT: ${{ secrets.OPENAI_PROJECT }}
+          OPEN_WEATHER_TOKEN: ${{ secrets.OPEN_WEATHER_TOKEN }}
+
+      - name: Copy .env to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: ".env.production"
+          target: "~/app"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Install bun if not available
+            if ! command -v bun &> /dev/null; then
+              curl -fsSL https://bun.sh/install | bash
+              source ~/.bashrc
+            fi
+
+            # Install pm2 if not available
+            if ! command -v pm2 &> /dev/null; then
+              bun install -g pm2
+            fi
+
+            # Clone repo if first deploy
+            if [ ! -d ~/app ]; then
+              git clone https://github.com/Maseshi/Shioru.git ~/app
+            fi
+
+            cd ~/app
+            git pull origin main
+            mv .env.production .env
+            bun install --frozen-lockfile
+            pm2 reload ecosystem.config.js --env production || pm2 start ecosystem.config.js --env production
