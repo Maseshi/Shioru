@@ -43,7 +43,7 @@ call winget install Git Python.3.12 FFmpeg Visual.Studio.BuildTools.2026 Node.js
 echo.
 
 echo Updating and installing dependencies...
-call npm ci
+call npm ci --omit=dev
 echo.
 
 echo Starting up the system...

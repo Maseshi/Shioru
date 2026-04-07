@@ -9,7 +9,7 @@ RUN apk --update --no-cache add \
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # --- Development/Serve Stage ---
 FROM node:alpine AS serve
