@@ -33,7 +33,7 @@ nvm install --lts
 echo
 
 echo Updating and installing dependencies...
-npm ci
+npm ci --omit=dev
 echo
 
 echo Starting up the system...

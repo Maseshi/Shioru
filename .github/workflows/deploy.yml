@@ -93,5 +93,5 @@ jobs:
 
             cd ~/app
             mv .env.production .env
-            npm ci
+            npm ci --omit=dev
             npx pm2 reload ecosystem.config.js --env production --log-type raw || npx pm2 start ecosystem.config.js --env production --log-type raw

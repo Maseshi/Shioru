@@ -45,7 +45,7 @@ module.exports = {
       path: "~/app",
       "pre-deploy-local": "",
       "post-deploy":
-        "npm ci && npx pm2 reload ecosystem.config.js --env production --log-type raw",
+        "npm ci --omit=dev && npx pm2 reload ecosystem.config.js --env production --log-type raw",
       "pre-setup": "",
     },
   },
