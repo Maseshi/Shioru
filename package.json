@@ -52,7 +52,7 @@
 		"@distube/yt-dlp": "^2.0.1",
 		"captcha-canvas": "^4.1.0",
 		"discord-gamecord": "^4.4.4",
-		"discord.js": "^14.25.1",
+		"discord.js": "^14.26.3",
 		"distube": "^5.2.3",
 		"firebase": "^12.12.0",
 		"genius-lyrics": "^4.4.7",
