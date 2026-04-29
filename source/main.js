@@ -276,21 +276,28 @@ for (const handler of handlerFiles) {
   require(`${handlersPath}/${handler}`)(client);
 }
 
-// Checking for update from Github if in dev mode
-if (client.mode === "dev") updateChecker();
+const bootstrap = async () => {
+  // Checking for update from Github if in dev mode
+  if (client.mode === "dev") await updateChecker();
 
-// Start connecting to the server.
-client.logger.info("Connecting to the backend and logging in...");
+  // Start connecting to the server.
+  client.logger.info("Connecting to the backend and logging in...");
 
-initializeApp(client.configs.server);
+  initializeApp(client.configs.server);
 
-if (client.mode !== "start") {
-  connectDatabaseEmulator(
-    getDatabase(),
-    client.configs.emulators.database.host,
-    client.configs.emulators.database.port,
-  );
-}
+  if (client.mode !== "start") {
+    connectDatabaseEmulator(
+      getDatabase(),
+      client.configs.emulators.database.host,
+      client.configs.emulators.database.port,
+    );
+  }
 
-// Start logging in and working
-client.login(client.configs.token);
+  // Start logging in and working
+  await client.login(client.configs.token);
+};
+
+bootstrap().catch((error) => {
+  client.logger.fatal(error, "Failed to bootstrap the main client.");
+  process.exitCode = 1;
+});

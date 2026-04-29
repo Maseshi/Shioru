@@ -48,11 +48,14 @@ const manager = new ShardingManager("./source/main.js", {
   totalShards: "auto",
 });
 
-startScreen();
-if (mode !== "dev") updateChecker();
-if (mode === "start") systemMetricsSubmitter();
-if (mode === "start") statisticsSubmitter(manager);
-if (mode === "start") healthCheckSubmitter();
+const bootstrap = async () => {
+  startScreen();
+
+  if (mode !== "dev") await updateChecker();
+  if (mode === "start") systemMetricsSubmitter();
+  if (mode === "start") statisticsSubmitter(manager);
+  if (mode === "start") healthCheckSubmitter();
+};
 
 manager.on("shardCreate", (shard) => {
   const shardID = shard.id;
@@ -308,4 +311,9 @@ manager.on("shardCreate", (shard) => {
   });
 });
 
-manager.spawn();
+bootstrap()
+  .then(() => manager.spawn())
+  .catch((error) => {
+    child.fatal(error, "Failed to bootstrap the shard manager.");
+    process.exitCode = 1;
+  });
