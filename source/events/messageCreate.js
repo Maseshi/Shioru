@@ -1,6 +1,8 @@
 const { Events, ChannelType } = require("discord.js");
-const { getDatabase, ref, child, get, remove } = require("firebase/database");
-const { fetchLevel, initializeData } = require("../utils/databaseUtils");
+const { getDatabase, ref } = require("firebase/database");
+const { fetchLevel } = require("../utils/databaseUtils");
+const { getGuildData } = require("../utils/cacheUtils");
+const { trackedRemove: remove } = require("../utils/metricsUtils");
 const { catchError } = require("../utils/consoleUtils");
 const {
   findMatch,
@@ -18,13 +20,19 @@ module.exports = {
     if (message.webhookId) return;
     if (message.author.bot) return;
 
-    // Settings data on database
+    const guildData = getGuildData(message.client, message.guild?.id);
+
+    // Increase level without reading the complete user and guild records.
     if (message.channel.type !== ChannelType.DM) {
-      initializeData(message.client, message.guild);
-      fetchLevel(message.client, message, "POST", {
+      void fetchLevel(message.client, message, "POST", {
         amount: 89,
         type: "exp",
-      });
+      }).catch((error) =>
+        message.client.logger.error(
+          { err: error, userId: message.author.id },
+          "Failed to update message level.",
+        ),
+      );
     }
 
     // Check if the bot is @mentioned or the user is replying to the bot
@@ -65,14 +73,9 @@ module.exports = {
         let matched = null;
 
         if (message.guild) {
-          const guildChatRef = child(
-            child(ref(getDatabase(), "guilds"), message.guild.id),
-            "chat",
-          );
-          const guildChatSnapshot = await get(guildChatRef);
+          const guildChat = guildData?.chat;
 
-          if (guildChatSnapshot.exists()) {
-            const guildChat = guildChatSnapshot.val();
+          if (guildChat) {
             const guildConversations = Array.isArray(guildChat.conversations)
               ? guildChat.conversations
               : Object.values(guildChat.conversations ?? {});
@@ -133,52 +136,51 @@ module.exports = {
 
     // Remove AFK status
     if (message.channel.type !== ChannelType.DM) {
-      const guildRef = child(ref(getDatabase(), "guilds"), message.guild.id);
-      const guildSnapshot = await get(guildRef);
+      const afkData = guildData?.afk;
 
-      if (guildSnapshot.exists()) {
-        const afkData = guildSnapshot.val().afk;
+      if (afkData && afkData[message.author.id]) {
+        message.channel.sendTyping();
 
-        if (afkData && afkData[message.author.id]) {
-          message.channel.sendTyping();
+        try {
+          await message.member.setNickname(afkData[message.author.id].nickname);
+        } catch (error) {
+          catchError(message.client, message, "afk", error);
+        }
 
-          try {
-            await message.member.setNickname(
-              afkData[message.author.id].nickname,
-            );
-          } catch (error) {
-            catchError(message.client, message, "afk", error);
-          }
+        await remove(
+          ref(
+            getDatabase(),
+            `guilds/${message.guild.id}/afk/${message.author.id}`,
+          ),
+        );
+        delete afkData[message.author.id];
+        await message.reply({
+          content: message.client.i18n.t(
+            "events.messageCreate.afk_user_come_back",
+          ),
+          ephemeral: true,
+        });
+      } else {
+        const members = message.mentions.users.first();
 
-          await remove(child(child(guildRef, "afk"), message.author.id));
-          await message.reply({
-            content: message.client.i18n.t(
-              "events.messageCreate.afk_user_come_back",
-            ),
-            ephemeral: true,
-          });
-        } else {
-          const members = message.mentions.users.first();
+        if (!members) return;
+        if (!afkData) return;
+        if (!afkData[members.id]) return;
 
-          if (!members) return;
-          if (!afkData) return;
-          if (!afkData[members.id]) return;
+        message.channel.sendTyping();
 
-          message.channel.sendTyping();
+        const member = message.guild.members.cache.get(members.id);
+        const reason =
+          afkData[members.id].message ||
+          message.client.i18n.t("events.messageCreate.no_reason_for_afk");
 
-          const member = message.guild.members.cache.get(members.id);
-          const reason =
-            afkData[members.id].message ||
-            message.client.i18n.t("events.messageCreate.no_reason_for_afk");
-
-          if (message.content.includes(members)) {
-            await message.reply(
-              message.client.i18n
-                .t("events.messageCreate.that_user_is_afk")
-                .replace("%s1", member.user.tag)
-                .replace("%s2", reason),
-            );
-          }
+        if (message.content.includes(members)) {
+          await message.reply(
+            message.client.i18n
+              .t("events.messageCreate.that_user_is_afk")
+              .replace("%s1", member.user.tag)
+              .replace("%s2", reason),
+          );
         }
       }
     }

@@ -6,8 +6,9 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child, push } = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
 const { webhookSend } = require("../../utils/clientUtils");
+const { trackedPush: push } = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],

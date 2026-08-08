@@ -125,7 +125,10 @@ module.exports = {
     const inputPosition = interaction.options.getInteger("position") ?? 0;
     const inputChannel = interaction.options.getChannel("channel") ?? "";
 
-    const djs = interaction.client.configs.djs;
+    const djs = require("../../utils/cacheUtils").getGuildDjs(
+      interaction.client,
+      interaction.guildId,
+    );
     const queue = interaction.client.player.getQueue(interaction);
     const voiceChannel = interaction.member.voice.channel;
     const meChannel = interaction.guild.members.me.voice.channel;

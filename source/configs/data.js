@@ -76,6 +76,22 @@ module.exports = {
     measurementId: process.env.MEASUREMENT_ID ?? "",
   },
 
+  // Firebase Authentication account used by the bot in production.
+  auth: {
+    email: process.env.AUTH_EMAIL ?? "",
+    password: process.env.AUTH_PASSWORD ?? "",
+  },
+
+  // Local Firebase traffic instrumentation. No metrics are written to Firebase.
+  metrics: {
+    enabled: process.env.METRICS_ENABLED !== "false",
+    label: process.env.METRICS_LABEL ?? "default",
+    intervalMs: Math.max(
+      Number(process.env.METRICS_INTERVAL_MS) || 300000,
+      10000,
+    ),
+  },
+
   // Discord ID of the team.
   team: {
     // For executing risky commands but does not have the same rights as the owner

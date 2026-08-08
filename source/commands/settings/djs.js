@@ -6,7 +6,9 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child, update } = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
+const { getGuildDjs } = require("../../utils/cacheUtils");
+const { trackedUpdate: update } = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [
@@ -168,7 +170,9 @@ module.exports = {
       child(ref(getDatabase(), "guilds"), interaction.guild.id),
       "djs",
     );
-    const configs = interaction.client.configs;
+    const configs = {
+      djs: getGuildDjs(interaction.client, interaction.guild.id),
+    };
 
     switch (subcommand) {
       case "get": {

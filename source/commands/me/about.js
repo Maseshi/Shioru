@@ -9,7 +9,8 @@ const {
 } = require("discord.js");
 const { join } = require("node:path");
 const { readFileSync } = require("node:fs");
-const { getDatabase, ref, get } = require("firebase/database");
+const { getDatabase, ref } = require("firebase/database");
+const { trackedGet: get } = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],

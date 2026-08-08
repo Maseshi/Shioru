@@ -97,6 +97,9 @@ And many other interesting features...
   ![](https://raw.githubusercontent.com/Maseshi/Shioru/main/assets/images/firebase-setup-web-application.png)
 - Firebase will provide you with information about its configuration. Apply these values to the file. `.env`
 - Go to **Build > [Realtime Database](https://console.firebase.google.com/u/0/project/_/database/data)** to create a database for storing data.
+- Enable the **Email/Password** provider in Firebase Authentication and create a dedicated account for the bot.
+- Add that account's UID at `/access/<uid>` with the boolean value `true` in Realtime Database, then set `AUTH_EMAIL` and `AUTH_PASSWORD` in `.env`. Add dashboard user UIDs to `/access` as well.
+- Firebase traffic metrics are logged locally every five minutes by default. Set `METRICS_LABEL` (for example, `before-cache` or `after-cache`) and compare equal-duration windows with similar workloads. Payload byte counts are estimates and do not include protocol overhead.
 
 ## 🔥 Get started
 

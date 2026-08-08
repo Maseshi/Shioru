@@ -1,15 +1,10 @@
 const { Events, EmbedBuilder, Colors } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.ThreadMembersUpdate,
   once: false,
   async execute(addedMembers, removedMembers, thread) {
-    await initializeData(thread.client, thread.guild);
-
     if (addedMembers.size) {
       const threadMembersUpdateAddedEmbed = new EmbedBuilder()
         .setTitle(

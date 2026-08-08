@@ -10,12 +10,13 @@ const {
   TextInputStyle,
 } = require("discord.js");
 const { CaptchaGenerator } = require("captcha-canvas");
-const { getDatabase, ref, child, get } = require("firebase/database");
 const {
   submitNotification,
   initializeData,
+  updateGuildMemberCount,
 } = require("../utils/databaseUtils");
 const { catchError } = require("../utils/consoleUtils");
+const { getGuildData } = require("../utils/cacheUtils");
 
 module.exports = {
   name: Events.GuildMemberAdd,
@@ -38,7 +39,15 @@ module.exports = {
         name: member.client.i18n.t("events.guildMemberAdd.welcome"),
       });
 
-    await initializeData(member.client, member.guild);
+    const guildData =
+      getGuildData(member.client, member.guild.id) ??
+      (await initializeData(member.client, member.guild));
+    void updateGuildMemberCount(member.guild).catch((error) =>
+      member.client.logger.error(
+        { err: error, guildId: member.guild.id },
+        "Failed to update guild member count.",
+      ),
+    );
     await submitNotification(
       member.client,
       member.guild,
@@ -46,13 +55,10 @@ module.exports = {
       guildMemberAddEmbed,
     );
 
-    const guildRef = child(ref(getDatabase(), "guilds"), member.guild.id);
-    const guildSnapshot = await get(guildRef);
-
     // Anti-Bot
     if (member.user.bot) {
-      if (guildSnapshot.exists()) {
-        const antiBotData = guildSnapshot.val().antibot;
+      if (guildData) {
+        const antiBotData = guildData.antibot;
 
         if (!antiBotData) return;
         if (!antiBotData.enable) return;
@@ -67,8 +73,8 @@ module.exports = {
     }
 
     // Captcha
-    if (guildSnapshot.exists()) {
-      const captchaData = guildSnapshot.val().captcha;
+    if (guildData) {
+      const captchaData = guildData.captcha;
 
       if (!captchaData) return;
       if (!captchaData.enable) return;
@@ -128,68 +134,73 @@ module.exports = {
           files: [captchaAttachment],
           components: [captchaButton],
         });
-        const collector = message.createMessageComponentCollector();
-
-        collector.on("collect", async (component) => {
-          if (component.customId === "captcha-button")
-            component.showModal(captchaModal);
+        const collector = message.createMessageComponentCollector({
+          filter: (component) =>
+            component.customId === "captcha-button" &&
+            component.user.id === member.id,
+          max: 1,
+          time: 300000,
         });
 
-        member.client.on(Events.InteractionCreate, async (interaction) => {
-          if (!interaction.isModalSubmit()) return;
-          if (!interaction.customId === "captcha-modal") return;
+        collector.on("collect", async (component) => {
+          await component.showModal(captchaModal);
+          const interaction = await component
+            .awaitModalSubmit({
+              filter: (modal) =>
+                modal.customId === "captcha-modal" &&
+                modal.user.id === member.id,
+              time: 300000,
+            })
+            .catch(() => null);
+          if (!interaction) return;
 
-          const guildCaptchaRef = child(
-            ref(getDatabase(), "guilds"),
+          const guildCaptchaData = getGuildData(
+            member.client,
             member.guild.id,
-          );
-          const guildCaptchaSnapshot = await get(guildCaptchaRef);
+          )?.captcha;
 
-          if (!guildCaptchaSnapshot.exists()) return;
-
-          const guildCaptchaData = guildCaptchaSnapshot.val().captcha;
+          if (!guildCaptchaData) return;
 
           const captchaAnswer =
             interaction.fields.getTextInputValue("captcha-text-input");
 
-          if (captchaAnswer !== guildCaptchaData.text) {
-            return await interaction.reply({
+          if (captchaAnswer !== guildCaptchaData.text)
+            return interaction.reply({
               content: member.client.i18n.t(
                 "events.guildMemberAdd.wrong_answer",
               ),
               ephemeral: true,
             });
-          } else {
-            try {
-              const captchaRole = guildCaptchaData.role;
-              const captchaGuild = await member.client.guilds.fetch(guild.id);
-              const captchaUser = await captchaGuild.members.fetch(
-                interaction.user.id,
-              );
-              const role = await captchaGuild.roles.cache.get(captchaRole);
 
-              await captchaUser.roles.add(role);
-              await interaction.reply({
-                content: member.client.i18n
-                  .t("events.guildMemberAdd.captcha_success")
-                  .replace("%s", captchaGuild.name),
-                ephemeral: true,
-              });
-            } catch (error) {
-              catchError(
-                interaction.client,
-                interaction,
-                "guildMemberAdd",
-                error,
-                true,
-              );
-              await interaction.reply({
-                content: member.client.i18n.t(
-                  "events.guildMemberAdd.captcha_error",
-                ),
-                ephemeral: true,
-              });
-            }
+          try {
+            const captchaRole = guildCaptchaData.role;
+            const captchaGuild = await member.client.guilds.fetch(guild.id);
+            const captchaUser = await captchaGuild.members.fetch(
+              interaction.user.id,
+            );
+            const role = captchaGuild.roles.cache.get(captchaRole);
+
+            await captchaUser.roles.add(role);
+            await interaction.reply({
+              content: member.client.i18n
+                .t("events.guildMemberAdd.captcha_success")
+                .replace("%s", captchaGuild.name),
+              ephemeral: true,
+            });
+          } catch (error) {
+            catchError(
+              interaction.client,
+              interaction,
+              "guildMemberAdd",
+              error,
+              true,
+            );
+            await interaction.reply({
+              content: member.client.i18n.t(
+                "events.guildMemberAdd.captcha_error",
+              ),
+              ephemeral: true,
+            });
           }
         });
       } catch (error) {

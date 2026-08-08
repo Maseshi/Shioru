@@ -35,7 +35,10 @@ module.exports = {
   async execute(interaction) {
     const inputSecond = interaction.options.getInteger("second");
 
-    const djs = interaction.client.configs.djs;
+    const djs = require("../../utils/cacheUtils").getGuildDjs(
+      interaction.client,
+      interaction.guildId,
+    );
     const queue = interaction.client.player.getQueue(interaction);
 
     if (!queue)

@@ -34,7 +34,10 @@ module.exports = {
   async execute(interaction) {
     const inputPercent = interaction.options.getInteger("percent");
 
-    const djs = interaction.client.configs.djs;
+    const djs = require("../../utils/cacheUtils").getGuildDjs(
+      interaction.client,
+      interaction.guildId,
+    );
     const queue = interaction.client.player.getQueue(interaction);
 
     if (!queue)

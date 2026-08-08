@@ -6,17 +6,21 @@ const {
   PresenceUpdateStatus,
 } = require("discord.js");
 const { getApps } = require("firebase/app");
-const {
-  getDatabase,
-  onValue,
-  ref,
-  child,
-  update,
-  set,
-} = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
 const { registeringCommands, webhookSend } = require("../utils/clientUtils");
 const { colorize } = require("../utils/consoleUtils");
-const { dataStructures, fetchStatistics } = require("../utils/databaseUtils");
+const {
+  dataStructures,
+  fetchStatistics,
+  synchronizeGuildData,
+} = require("../utils/databaseUtils");
+const { watchGuildData } = require("../utils/cacheUtils");
+const {
+  logMetrics,
+  trackedOnValue: onValue,
+  trackedSet: set,
+  trackedUpdate: update,
+} = require("../utils/metricsUtils");
 const { currencyFormatter, newTitle } = require("../utils/miscUtils");
 
 module.exports = {
@@ -34,6 +38,17 @@ module.exports = {
     client.logger.info(
       `Bot is now online at ${client.readyAt.toLocaleString()}.`,
     );
+
+    if (client.configs.metrics.enabled) {
+      registerInterval(
+        () => logMetrics("interval"),
+        client.configs.metrics.intervalMs,
+      );
+      client.logger.info(
+        { intervalMs: client.configs.metrics.intervalMs },
+        "Firebase traffic metrics enabled.",
+      );
+    }
 
     // Client username
     client.logger.info(
@@ -76,44 +91,26 @@ module.exports = {
         }
       };
 
-      onValue(chatRef, (snapshot) => updateChatData(snapshot));
+      const unsubscribeChat = onValue(chatRef, (snapshot) =>
+        updateChatData(snapshot),
+      );
+      client.temp.listeners.set("chat", unsubscribeChat);
 
       client.logger.info("Chat data retrieved complete.");
 
       // Listen for guild settings changes from dashboard
       client.logger.info("Listening for guild settings changes...");
 
-      const guildsRef = ref(getDatabase(), "guilds");
-      onValue(guildsRef, (snapshot) => {
-        if (!snapshot.exists()) return;
+      for (const guild of client.guilds.cache.values()) {
+        watchGuildData(client, guild, (guildData) =>
+          synchronizeGuildData(client, guild, guildData),
+        );
+      }
 
-        const guildsData = snapshot.val();
-
-        for (const guildData of Object.values(guildsData)) {
-          const data = guildData;
-
-          // Sync DJs settings
-          if (data.djs) {
-            client.configs.djs = {
-              enable: data.djs.enable ?? false,
-              only: data.djs.only ?? false,
-              roles: data.djs.roles ?? [],
-              users: data.djs.users ?? [],
-            };
-          }
-
-          // Sync language settings
-          if (data.language) {
-            if (data.language.type === "CUSTOM" && data.language.locale) {
-              client.i18n.changeLanguage(data.language.locale);
-            } else if (data.language.type === "GUILD" && data.preferredLocale) {
-              client.i18n.changeLanguage(data.preferredLocale);
-            }
-          }
-        }
-      });
-
-      client.logger.info("Guild settings listener active.");
+      client.logger.info(
+        { guilds: client.guilds.cache.size },
+        "Per-guild settings listeners active.",
+      );
 
       // Send all commands information
       client.logger.info("Sending details of all commands...");
@@ -142,16 +139,19 @@ module.exports = {
       // Send bot statistics.
       client.logger.info("Sending statistical information...");
 
-      registerInterval(() => {
-        if (!client.isReady()) return;
-        fetchStatistics("POST", "size", client).catch((error) =>
-          client.logger.error(error, "Failed to update statistics."),
-        );
-      }, 10000);
+      const isPrimaryShard = !client.shard || client.shard.ids.includes(0);
+      if (isPrimaryShard) {
+        const submitStatistics = () => {
+          if (!client.isReady()) return;
+          fetchStatistics("POST", "size", client).catch((error) =>
+            client.logger.error(error, "Failed to update statistics."),
+          );
+        };
 
-      client.logger.info(
-        "Statistics are sent successfully and updated every 10 seconds.",
-      );
+        submitStatistics();
+        registerInterval(submitStatistics, 300000);
+        client.logger.info("Statistics will be updated every 5 minutes.");
+      }
     } else {
       client.logger.warn("Unable to connect to the back-ends server.");
     }

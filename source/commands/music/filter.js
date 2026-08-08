@@ -90,7 +90,10 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand();
     const inputFilters = interaction.options.getString("filter") ?? "";
 
-    const djs = interaction.client.configs.djs;
+    const djs = require("../../utils/cacheUtils").getGuildDjs(
+      interaction.client,
+      interaction.guildId,
+    );
     const queue = interaction.client.player.getQueue(interaction);
     const filterString = inputFilters
       .split(",")

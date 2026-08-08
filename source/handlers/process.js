@@ -1,6 +1,7 @@
 const discord = require("discord.js");
 const { webhookSend } = require("../utils/clientUtils");
 const packages = require("../../package.json");
+const { logMetrics } = require("../utils/metricsUtils");
 
 module.exports = (client) => {
   const systemReports = () => {
@@ -62,8 +63,13 @@ module.exports = (client) => {
     shuttingDown = true;
 
     client.logger.info({ reason }, "Bot is shutting down.");
+    logMetrics("shutdown");
     for (const interval of client.temp.intervals) clearInterval(interval);
     client.temp.intervals.clear();
+    for (const unsubscribe of client.temp.listeners.values())
+      unsubscribe();
+    client.temp.listeners.clear();
+    client.guildSettings.clear();
 
     try {
       await client.destroy();

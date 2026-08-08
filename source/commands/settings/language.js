@@ -6,9 +6,11 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child, get, update } = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
 const { changeLanguage } = require("../../utils/clientUtils");
+const { getGuildData } = require("../../utils/cacheUtils");
 const { dataStructures } = require("../../utils/databaseUtils");
+const { trackedUpdate: update } = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -91,8 +93,8 @@ module.exports = {
     const locale = interaction.client.i18n.language;
     const locales = interaction.client.i18n.options.preload;
     const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
-    const guildSnapshot = await get(guildRef);
-    const guildVal = guildSnapshot.val() ?? {};
+    const guildVal =
+      getGuildData(interaction.client, interaction.guild.id) ?? {};
     const languageData =
       guildVal.language ?? dataStructures(interaction.client, "language");
 

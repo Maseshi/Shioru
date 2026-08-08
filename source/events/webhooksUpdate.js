@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder, Colors } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.WebhooksUpdate,
@@ -20,7 +17,6 @@ module.exports = {
       .setTimestamp()
       .setColor(Colors.Yellow);
 
-    await initializeData(channel.client, channel.guild);
     await submitNotification(
       channel.client,
       channel.guild,

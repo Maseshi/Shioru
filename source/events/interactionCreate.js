@@ -1,12 +1,8 @@
 const { Collection, Events, PermissionsBitField } = require("discord.js");
-const { getDatabase, ref, child, get } = require("firebase/database");
 const { changeLanguage } = require("../utils/clientUtils");
 const { catchError } = require("../utils/consoleUtils");
-const {
-  fetchLevel,
-  fetchStatistics,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { fetchLevel, incrementStatistics } = require("../utils/databaseUtils");
+const { getGuildData } = require("../utils/cacheUtils");
 
 module.exports = {
   name: Events.InteractionCreate,
@@ -38,21 +34,7 @@ module.exports = {
     if (command?.deferReply && !interaction.deferred && !interaction.replied)
       await interaction.deferReply();
 
-    // Automatic settings data on database
-    if (interaction.guild)
-      void initializeData(interaction.client, interaction.guild).catch(
-        (error) =>
-          interaction.client.logger.error(
-            { err: error },
-            "Failed to initialize guild data.",
-          ),
-      );
-
-    const guildRef = interaction.guild
-      ? child(ref(getDatabase(), "guilds"), interaction.guild.id)
-      : null;
-    const guildSnapshot = guildRef ? await get(guildRef) : null;
-    const guildVal = guildSnapshot?.val();
+    const guildVal = getGuildData(interaction.client, interaction.guildId);
 
     const executeCommand = async (func, path) => {
       // Check if the command has a cooldown or not.
@@ -116,13 +98,9 @@ module.exports = {
         await func.execute(interaction);
 
         // Stores information when the bot is working properly.
-        void Promise.all([
-          fetchStatistics("POST", "size/worked", interaction.client),
-          fetchStatistics(
-            "POST",
-            `${path}/${func.data.name}`,
-            interaction.client,
-          ),
+        void incrementStatistics([
+          "size/worked",
+          `${path}/${func.data.name}`,
         ]).catch((error) =>
           interaction.client.logger.error(
             { err: error, command: func.data.name },
@@ -139,9 +117,13 @@ module.exports = {
       }
     };
 
-    // Set language by type
-    if (!guildVal?.language.type || guildVal?.language.type === "USER")
-      changeLanguage(interaction.client, interaction.locale);
+    // Set language from this guild's cached settings.
+    const languageType = guildVal?.language?.type;
+    if (languageType === "CUSTOM" && guildVal.language.locale)
+      changeLanguage(interaction.client, guildVal.language.locale);
+    else if (languageType === "GUILD" && guildVal?.preferredLocale)
+      changeLanguage(interaction.client, guildVal.preferredLocale);
+    else changeLanguage(interaction.client, interaction.locale);
 
     // Increase user level
     void fetchLevel(interaction.client, interaction, "POST", {
