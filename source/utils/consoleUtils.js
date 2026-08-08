@@ -26,14 +26,15 @@ const startScreen = () => {
     "./source/assets/ascii/sharding.txt",
     "utf-8",
   );
+  const [major, minor, patch] = packages.version.split(".");
 
   process.stdout.write(
     blue(
       bright(
         shioruText
-          .replace("%char1", packages.version.charAt(0))
-          .replace("%char2", packages.version.charAt(2))
-          .replace("%char3", packages.version.charAt(4)),
+          .replace("%major", major)
+          .replace("%minor", minor)
+          .replace("%patch", patch),
       ),
     ),
   );
