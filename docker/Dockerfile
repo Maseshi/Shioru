@@ -26,7 +26,9 @@ ENV NODE_ENV=production \
 WORKDIR /usr/src/app
 
 # ffmpeg is required by the music commands. Python is used by yt-dlp.
-RUN apk add --no-cache ffmpeg python3
+RUN apk add --no-cache ffmpeg python3 && \
+    mkdir -p /usr/src/app/logs && \
+    chown node:node /usr/src/app/logs
 
 COPY --from=dependencies --chown=node:node /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node package.json package-lock.json ./

@@ -17,6 +17,8 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:${SHIORU_PORT:-3000}:3000"
+    volumes:
+      - shioru_logs:/usr/src/app/logs
     security_opt:
       - no-new-privileges:true
     cap_drop:
@@ -29,3 +31,6 @@ services:
         max-size: "10m"
         max-file: "3"
         compress: "true"
+
+volumes:
+  shioru_logs:
