@@ -60,7 +60,6 @@ And many other interesting features...
 ## 🧩 Prerequisites
 
 - [Node.js](https://nodejs.org/) v22.12.0 or higher
-- [Bun](https://bun.com/) v1.0.0 or higher
 - [Firebase Tools](https://firebase.google.com/docs/cli) (requires [Java](https://www.oracle.com/java/technologies/downloads/) v11.0.0 or higher)
 - [Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022) (requires [Python](https://www.python.org/downloads/) v3.12.0 or higher)
 - [FFmpeg](https://ffmpeg.org/download.html)
@@ -74,7 +73,7 @@ And many other interesting features...
   ```bat
   git clone https://github.com/Maseshi/Shioru.git
   cd Shioru
-  bun install
+  npm install
   ```
 - Change the file name `.env.example` to `.env` and enter all required values.
 
@@ -105,7 +104,7 @@ There are several options available. If you are using [Visual Studio Code](https
 
 ### 🪛 Development
 
-- Open a terminal and run the command `bun run dev`.
+- Open a terminal and run the command `npm run dev`.
 
 ### ☕ Serve
 
@@ -114,7 +113,7 @@ Test the actual use by performing tasks similar to real use. The system will aut
 - Open the terminal and add all the necessary environmental variables.
   - For Windows, use commands `set variable=example`
   - For Linux or MacOS, use the command `export variable=example`
-- Run the command `bun run serve`.
+- Run the command `npm run serve`.
 
 > [!NOTE]
 > You will enter automatic development mode because it is a real use. All data will not be recorded.
@@ -130,7 +129,7 @@ For actual use, the prepared command or set of commands can be used normally as 
 
   # or
 
-  bun run start
+  npm run start
   ```
 
 - On Windows
@@ -140,18 +139,19 @@ For actual use, the prepared command or set of commands can be used normally as 
 
   @REM or
 
-  bun run start
+  npm run start
   ```
 
 ### 🐳 Running on Docker
 
 This operation requires [Docker](https://www.docker.com/products/docker-desktop/)
 
-- Open the terminal and add all the necessary environmental variables.
-  - For Windows, use commands `set variable=example`
-  - For Linux or MacOS, use the command `export variable=example`
-- Create an image using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode and wait until the process is finished.
-- After creating the images successfully, run by using the command `npm run docker:build` or `npm run docker:build:serve` for the serve mode.
+- Copy `.env.example` to `.env` and replace the placeholders with your configuration.
+- Build and start the bot with `npm run docker:up`.
+- Follow its output with `npm run docker:logs`.
+- Stop and remove the container with `npm run docker:down`.
+
+The health endpoint is available locally at `http://127.0.0.1:3000/health` by default. Set `SHIORU_PORT` in `.env` to use another host port.
 
 [Learn more about commands Docker](https://docs.docker.com/reference/)
 
