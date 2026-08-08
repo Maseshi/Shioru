@@ -1,7 +1,6 @@
 const discord = require("discord.js");
 const pino = require("pino");
 const { getApps } = require("firebase/app");
-const { join } = require("node:path");
 const { readFileSync } = require("node:fs");
 const { webhookSend } = require("./clientUtils");
 const packages = require("../../package.json");
@@ -243,75 +242,19 @@ const colorize = () => {
  *
  * @returns {Object} The logger object.
  */
-const logger = pino({
+const loggerOptions = {
   name: packages.name,
-  level: "trace",
-  transport: {
-    targets: [
-      {
-        target: "pino-pretty",
-      },
-      {
-        level: "trace",
-        target: "pino-pretty",
-        options: {
-          colorize: false,
-          destination: join(__dirname, "..", "..", "logs", "app.log"),
-          mkdir: true,
+  level: process.env.LOG_LEVEL ?? "info",
+};
+const logger =
+  process.env.NODE_ENV === "production"
+    ? pino(loggerOptions)
+    : pino({
+        ...loggerOptions,
+        transport: {
+          target: "pino-pretty",
         },
-      },
-      {
-        level: "fatal",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "fatal.json.log"),
-          mkdir: true,
-        },
-      },
-      {
-        level: "error",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "error.json.log"),
-          mkdir: true,
-        },
-      },
-      {
-        level: "warn",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "warn.json.log"),
-          mkdir: true,
-        },
-      },
-      {
-        level: "info",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "info.json.log"),
-          mkdir: true,
-        },
-      },
-      {
-        level: "debug",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "debug.json.log"),
-          mkdir: true,
-        },
-      },
-      {
-        level: "trace",
-        target: "pino/file",
-        options: {
-          destination: join(__dirname, "..", "..", "logs", "trace.json.log"),
-          mkdir: true,
-        },
-      },
-    ],
-    dedupe: false,
-  },
-});
+      });
 
 module.exports = {
   startScreen,
