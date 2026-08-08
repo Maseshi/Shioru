@@ -30,7 +30,8 @@ const {
   Colors,
 } = require("discord.js");
 const { webhookSend } = require("./utils/clientUtils");
-const { startScreen, logger } = require("./utils/consoleUtils");
+const { startScreen } = require("./utils/consoleUtils");
+const { logger } = require("./utils/logUtils");
 const {
   updateChecker,
   systemMetricsSubmitter,

@@ -1,4 +1,4 @@
-const { logger } = require("./consoleUtils");
+const { logger } = require("./logUtils");
 const { version } = require("../../package.json");
 const configs = require("../configs/data");
 const http = require("http");

@@ -1,5 +1,4 @@
 const discord = require("discord.js");
-const pino = require("pino");
 const { getApps } = require("firebase/app");
 const { readFileSync } = require("node:fs");
 const { webhookSend } = require("./clientUtils");
@@ -238,28 +237,8 @@ const colorize = () => {
   };
 };
 
-/**
- * Initializes a logger using the pino library with multiple targets for logging.
- *
- * @returns {Object} The logger object.
- */
-const loggerOptions = {
-  name: packages.name,
-  level: process.env.LOG_LEVEL ?? "info",
-};
-const logger =
-  process.env.NODE_ENV === "production"
-    ? pino(loggerOptions)
-    : pino({
-        ...loggerOptions,
-        transport: {
-          target: "pino-pretty",
-        },
-      });
-
 module.exports = {
   startScreen,
   catchError,
   colorize,
-  logger,
 };
