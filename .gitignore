@@ -4,6 +4,7 @@ node_modules/
 # Logs
 logs/
 *.log
+*-player-script.js
 
 # Environment
 .env

@@ -45,6 +45,10 @@ const { startScreen } = require("./utils/consoleUtils");
 const { logger } = require("./utils/logUtils");
 const { initializeMetrics } = require("./utils/metricsUtils");
 const { updateChecker } = require("./utils/servicesUtils");
+const {
+  getYtDlpStreamURL,
+  useYtDlpForStreams,
+} = require("./utils/youtubeUtils");
 const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const configs = require("./configs/data");
@@ -262,13 +266,16 @@ client.temp = {
   },
 };
 client.guildSettings = new Map();
+const ytDlpPlugin = new YtDlpPlugin({ update: false });
 client.player = new DisTube(client, {
   plugins: [
     new DeezerPlugin(),
-    new YouTubePlugin(),
+    useYtDlpForStreams(new YouTubePlugin(), {
+      getStreamURL: getYtDlpStreamURL,
+    }),
     new SpotifyPlugin(),
     new SoundCloudPlugin(),
-    new YtDlpPlugin({ update: false }),
+    ytDlpPlugin,
   ],
   customFilters: client.configs.filters,
 });
