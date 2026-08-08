@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.ChannelPinsUpdate,
@@ -21,7 +18,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(channel.client, channel.guild);
     await submitNotification(
       channel.client,
       channel.guild,

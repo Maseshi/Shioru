@@ -141,13 +141,11 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand();
     const inputText = interaction.options.getString("text");
     const inputFrom =
-      (interaction.options.getString("from") ?? subcommand === "encode")
-        ? "utf-8"
-        : "base64";
+      interaction.options.getString("from") ??
+      (subcommand === "encode" ? "utf-8" : "base64");
     const inputTo =
-      (interaction.options.getString("to") ?? subcommand === "encode")
-        ? "base64"
-        : "utf-8";
+      interaction.options.getString("to") ??
+      (subcommand === "encode" ? "base64" : "utf-8");
 
     const clientAvatar = interaction.client.user.displayAvatarURL();
     const clientUsername = interaction.client.user.username;

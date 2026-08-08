@@ -1,0 +1,61 @@
+{
+  "rules": {
+    "maintenance": {
+      ".read": true,
+      ".write": false
+    },
+    "access": {
+      ".read": false,
+      ".write": false
+    },
+    "information": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+    },
+    "statistics": {
+      ".read": true,
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+    },
+    "chat": {
+      ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+    },
+    "issues": {
+      "bugs": {
+        ".read": false,
+        ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      },
+      "features": {
+        ".read": false,
+        ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      }
+    },
+    "users": {
+      ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+    },
+    "guilds": {
+      ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+    },
+    "leaderboards": {
+      "$guildId": {
+        ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+        ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+        ".indexOn": ["exp"],
+        "$userId": {
+          ".validate": "newData.hasChildren(['exp', 'level'])",
+          "exp": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "level": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

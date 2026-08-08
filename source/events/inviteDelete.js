@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.InviteDelete,
@@ -22,7 +19,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(invite.client, invite.guild);
     await submitNotification(
       invite.client,
       invite.guild,

@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildBanRemove,
@@ -19,7 +16,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(ban.client, ban.guild);
     await submitNotification(
       ban.client,
       ban.guild,

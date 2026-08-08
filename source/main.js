@@ -39,9 +39,16 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
 const { initializeApp } = require("firebase/app");
+const { getAuth, signInWithEmailAndPassword } = require("firebase/auth");
 const { getDatabase, connectDatabaseEmulator } = require("firebase/database");
-const { startScreen, logger } = require("./utils/consoleUtils");
+const { startScreen } = require("./utils/consoleUtils");
+const { logger } = require("./utils/logUtils");
+const { initializeMetrics } = require("./utils/metricsUtils");
 const { updateChecker } = require("./utils/servicesUtils");
+const {
+  getYtDlpStreamURL,
+  useYtDlpForStreams,
+} = require("./utils/youtubeUtils");
 const i18next = require("i18next");
 const Backend = require("i18next-fs-backend");
 const configs = require("./configs/data");
@@ -247,21 +254,33 @@ client.configs = configs;
 client.logger = logger;
 client.i18n = i18next;
 client.temp = {
+  intervals: new Set(),
+  listeners: new Map(),
+  cache: {
+    leaderboardUsers: new Set(),
+    userProfiles: new Map(),
+  },
   startup: {
     start: startTime,
     end: 0,
   },
 };
+client.guildSettings = new Map();
+const ytDlpPlugin = new YtDlpPlugin({ update: false });
 client.player = new DisTube(client, {
   plugins: [
     new DeezerPlugin(),
-    new YouTubePlugin(),
+    useYtDlpForStreams(new YouTubePlugin(), {
+      getStreamURL: getYtDlpStreamURL,
+    }),
     new SpotifyPlugin(),
     new SoundCloudPlugin(),
-    new YtDlpPlugin({ update: false }),
+    ytDlpPlugin,
   ],
   customFilters: client.configs.filters,
 });
+
+initializeMetrics(client);
 
 // Set the maximum number of listeners for the player to avoid memory leaks
 client.player.setMaxListeners(2);
@@ -283,14 +302,34 @@ const bootstrap = async () => {
   // Start connecting to the server.
   client.logger.info("Connecting to the backend and logging in...");
 
-  initializeApp(client.configs.server);
+  const firebaseApp = initializeApp(client.configs.server);
 
   if (client.mode !== "start") {
     connectDatabaseEmulator(
       getDatabase(),
       client.configs.emulators.database.host,
       client.configs.emulators.database.port,
+      {
+        mockUserToken: {
+          sub: "shioru-development",
+          bot: true,
+        },
+      },
     );
+    if (client.mode === "dev") {
+      const { host, port } = client.configs.emulators.ui;
+      client.logger.info(
+        { url: `http://${host}:${port}` },
+        "Firebase Emulator UI is available.",
+      );
+    }
+  } else {
+    const { email, password } = client.configs.auth;
+    if (!email || !password)
+      throw new Error(
+        "AUTH_EMAIL and AUTH_PASSWORD are required in production.",
+      );
+    await signInWithEmailAndPassword(getAuth(firebaseApp), email, password);
   }
 
   // Start logging in and working

@@ -1,6 +1,6 @@
 const { Events, EmbedBuilder, Colors } = require("discord.js");
 const { webhookSend } = require("../utils/clientUtils");
-const { logger } = require("../utils/consoleUtils");
+const { logger } = require("../utils/logUtils");
 const configs = require("../configs/data");
 
 module.exports = {

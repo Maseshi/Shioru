@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildRoleUpdate,
@@ -19,7 +16,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(newRole.client, newRole.guild);
     await submitNotification(
       newRole.client,
       newRole.guild,

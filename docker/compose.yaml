@@ -1,0 +1,36 @@
+name: shioru
+
+services:
+  bot:
+    image: maseshi/shioru:${SHIORU_IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: production
+    env_file:
+      - path: ../.env
+        required: true
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${SHIORU_PORT:-3000}:3000"
+    volumes:
+      - shioru_logs:/usr/src/app/logs
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 256
+    stop_grace_period: 30s
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+        compress: "true"
+
+volumes:
+  shioru_logs:

@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder, Colors } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.ThreadListSync,
@@ -20,7 +17,6 @@ module.exports = {
       .setTimestamp()
       .setColor(Colors.Blue);
 
-    await initializeData(guild.client, guild);
     await submitNotification(
       guild.client,
       guild,

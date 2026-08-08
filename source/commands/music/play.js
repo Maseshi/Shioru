@@ -66,8 +66,12 @@ module.exports = {
     ),
   async autocomplete(interaction) {
     const focusedValue = interaction.options.getFocused();
+    const respond = async (choices) => {
+      if (interaction.responded) return;
+      await interaction.respond(choices);
+    };
 
-    if (!focusedValue) return interaction.respond([]);
+    if (!focusedValue) return respond([]);
 
     const youtubePlugin = new YouTubePlugin();
     const soundCloudPlugin = new SoundCloudPlugin();
@@ -92,9 +96,9 @@ module.exports = {
       ),
     ];
 
-    if (!combined.length) return interaction.respond([]);
+    if (!combined.length) return respond([]);
 
-    await interaction.respond(
+    await respond(
       combined.map((choice) => {
         const name =
           choice.name.length > 100
@@ -111,7 +115,10 @@ module.exports = {
     const inputPosition = interaction.options.getInteger("position") ?? 0;
     const inputChannel = interaction.options.getChannel("channel") ?? "";
 
-    const djs = interaction.client.configs.djs;
+    const djs = require("../../utils/cacheUtils").getGuildDjs(
+      interaction.client,
+      interaction.guildId,
+    );
     const queue = interaction.client.player.getQueue(interaction);
     const voiceChannel = interaction.member.voice.channel;
     const meChannel = interaction.guild.members.me.voice.channel;

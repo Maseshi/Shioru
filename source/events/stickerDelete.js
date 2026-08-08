@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildStickerDelete,
@@ -20,7 +17,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(sticker.client, sticker.guild);
     await submitNotification(
       sticker.client,
       sticker.guild,

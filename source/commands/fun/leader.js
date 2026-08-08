@@ -6,7 +6,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { fetchLevel } = require("../../utils/databaseUtils");
+const { fetchLeaderboard } = require("../../utils/databaseUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -37,33 +37,25 @@ module.exports = {
       case "level": {
         const max = 10;
         const leader = [];
-        const data = await fetchLevel(
-          interaction.client,
-          interaction,
-          "GET/ALL",
-        );
-        const status = data.status;
-        const users = data.users;
+        if (!interaction.guild)
+          return await interaction.reply(
+            interaction.client.i18n.t("commands.leader.no_info"),
+          );
 
-        if (status !== "success")
+        const users = await fetchLeaderboard(interaction.guild.id, max);
+
+        if (!users)
           return await interaction.reply(
             interaction.client.i18n.t("commands.leader.no_info"),
           );
 
         users.forEach((user) => {
           const id = user.key;
-          const expData = user.val();
-          const guildMember = interaction.guild.members.cache.find(
-            (member) => member.id === id,
-          );
+          const leveling = user.val();
+          const guildMember = interaction.guild.members.cache.get(id);
 
           if (guildMember) {
             if (!guildMember.user.bot) {
-              // Use guild-specific leveling if available, fallback to global
-              const guildLeveling =
-                expData.guildLeveling?.[interaction.guild.id];
-              const leveling = guildLeveling ?? expData.leveling;
-
               if (leveling) {
                 const exp = leveling.exp || 0;
                 const level = leveling.level || 0;

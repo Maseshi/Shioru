@@ -1,8 +1,37 @@
 const discord = require("discord.js");
 const { webhookSend } = require("../utils/clientUtils");
 const packages = require("../../package.json");
+const { logMetrics } = require("../utils/metricsUtils");
 
-module.exports = (client) => {
+const createShutdownHandler = (
+  client,
+  { clearTimer = clearInterval, exit = process.exit.bind(process) } = {},
+) => {
+  let shuttingDown = false;
+
+  return async (reason) => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+
+    client.logger.info({ reason }, "Bot is shutting down.");
+    logMetrics("shutdown");
+    for (const interval of client.temp.intervals) clearTimer(interval);
+    client.temp.intervals.clear();
+    for (const unsubscribe of client.temp.listeners.values()) unsubscribe();
+    client.temp.listeners.clear();
+    client.guildSettings.clear();
+
+    try {
+      await client.destroy();
+    } catch (error) {
+      client.logger.error(error, "Failed to destroy the Discord client.");
+    } finally {
+      exit(0);
+    }
+  };
+};
+
+const registerProcessHandlers = (client) => {
   const systemReports = () => {
     const cpuUsage = `${(process.cpuUsage().user / 1024 / 1024).toFixed(2)}%`;
     const memoryUsage = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}%/${(process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2)}%`;
@@ -56,15 +85,13 @@ module.exports = (client) => {
 
   // Limit the creation of events in the process.
   process.setMaxListeners(0);
-  process.on("SIGINT", () => {
-    client.logger.trace("Bot is about to shut down.");
-  });
-  process.on("SIGUSR1", () => {
-    client.logger.trace("Bot is about to restart.");
-  });
-  process.on("SIGUSR2", () => {
-    client.logger.trace("Bot is about to restart.");
-  });
+  const shutdown = createShutdownHandler(client);
+
+  process.once("SIGINT", () => void shutdown("SIGINT"));
+  process.once("SIGTERM", () => void shutdown("SIGTERM"));
+  process.once("SIGUSR1", () => void shutdown("SIGUSR1"));
+  process.once("SIGUSR2", () => void shutdown("SIGUSR2"));
+  process.once("disconnect", () => void shutdown("IPC channel disconnected"));
   process.on("rejectionHandled", (promise) => {
     webhookLogEmbed.setDescription(`\`\`\`${promise}\`\`\``).setFields([
       {
@@ -145,3 +172,6 @@ module.exports = (client) => {
     client.logger.trace(code, "Bot is about to shut down with the code");
   });
 };
+
+module.exports = registerProcessHandlers;
+module.exports.createShutdownHandler = createShutdownHandler;

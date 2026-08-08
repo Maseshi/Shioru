@@ -27,10 +27,12 @@ module.exports = {
       ApplicationIntegrationType.UserInstall,
     ]),
   async execute(interaction) {
-    const message = await interaction.reply({
+    const response = await interaction.reply({
       content: interaction.client.i18n.t("commands.ping.waiting"),
-      fetchReply: true,
+      withResponse: true,
     });
+    const message =
+      response.resource?.message ?? (await interaction.fetchReply());
     const roundtrip = message.createdTimestamp - interaction.createdTimestamp;
     const websocket = interaction.client.ws.ping;
 

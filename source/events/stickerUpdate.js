@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder, StickerFormatType } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildStickerUpdate,
@@ -24,7 +21,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(newSticker.client, newSticker.guild);
     await submitNotification(
       newSticker.client,
       newSticker.guild,

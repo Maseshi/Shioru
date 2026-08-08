@@ -50,10 +50,15 @@ module.exports = (client) => {
       );
     }
 
-    if (event.once) {
-      client.once(event.name, (...args) => event.execute(...args));
-    } else {
-      client.on(event.name, (...args) => event.execute(...args));
-    }
+    const executeEvent = (...args) =>
+      Promise.resolve(event.execute(...args)).catch((error) => {
+        client.logger.error(
+          { err: error, event: event.name },
+          "Failed to execute event.",
+        );
+      });
+
+    if (event.once) client.once(event.name, executeEvent);
+    else client.on(event.name, executeEvent);
   }
 };

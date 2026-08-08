@@ -12,6 +12,7 @@ const packages = require("../../../package.json");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
+  deferReply: true,
   data: new SlashCommandBuilder()
     .setName("system")
     .setDescription("Manage the operation of home systems")
@@ -52,7 +53,7 @@ module.exports = {
 
     switch (subcommand) {
       case "information": {
-        await interaction.reply(
+        await interaction.editReply(
           interaction.client.i18n.t("commands.system.loading"),
         );
 
@@ -272,11 +273,11 @@ module.exports = {
           interaction.user.id !== teamOwner &&
           !teamDev.includes(interaction.user.id)
         )
-          return await interaction.reply(
+          return await interaction.editReply(
             interaction.client.i18n.t("commands.system.not_owner"),
           );
 
-        await interaction.reply(
+        await interaction.editReply(
           interaction.client.i18n.t("commands.system.rebooting"),
         );
         await interaction.client.destroy();
@@ -288,11 +289,11 @@ module.exports = {
       }
       case "shutdown": {
         if (interaction.user.id !== teamOwner)
-          return await interaction.reply(
+          return await interaction.editReply(
             interaction.client.i18n.t("commands.system.not_owner"),
           );
 
-        await interaction.reply(
+        await interaction.editReply(
           interaction.client.i18n.t("commands.system.shutting_down"),
         );
         await interaction.client.destroy();

@@ -1,13 +1,20 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const {
   submitNotification,
-  initializeData,
+  updateGuildMemberCount,
 } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildMemberRemove,
   once: false,
   async execute(member) {
+    void updateGuildMemberCount(member.guild).catch((error) =>
+      member.client.logger.error(
+        { err: error, guildId: member.guild.id },
+        "Failed to update guild member count.",
+      ),
+    );
+
     if (member.user.bot) return;
 
     const memberFetch = await member.user.fetch();
@@ -23,7 +30,6 @@ module.exports = {
       .setColor(memberColor)
       .setThumbnail(memberAvatar);
 
-    await initializeData(member.client, member.guild);
     await submitNotification(
       member.client,
       member.guild,

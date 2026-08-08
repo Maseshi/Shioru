@@ -1,9 +1,6 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { isVoiceChannelEmpty } = require("distube");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.VoiceStateUpdate,
@@ -22,7 +19,6 @@ module.exports = {
       .setTimestamp()
       .setColor("Yellow");
 
-    await initializeData(newState.client, newState.guild);
     await submitNotification(
       newState.client,
       newState.guild,

@@ -1,7 +1,46 @@
-const { logger } = require("./consoleUtils");
+const { logger } = require("./logUtils");
 const { version } = require("../../package.json");
 const configs = require("../configs/data");
 const http = require("http");
+
+const createHealthServer = (
+  services,
+  { now = Date.now, rateLimit = 60 * 1000, maxRequests = 10 } = {},
+) => {
+  const requestCounts = new Map();
+
+  return http.createServer((req, res) => {
+    const ip =
+      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+      req.socket.remoteAddress;
+    let device = requestCounts.get(ip);
+    const requestedAt = now();
+
+    if (!device || requestedAt - device.viewed > rateLimit) {
+      device = { count: 1, viewed: requestedAt };
+    } else {
+      device.count += 1;
+    }
+    requestCounts.set(ip, device);
+
+    if (device.count > maxRequests) {
+      res.writeHead(429, { "Content-Type": "text/plain" });
+      res.end("Too Many Requests");
+      return;
+    }
+
+    if (req.url === "/") {
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end("Services is running.");
+    } else if (req.url === "/health") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(services));
+    } else {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("Not found");
+    }
+  });
+};
 
 /**
  * Function to check for updates from Github.
@@ -122,57 +161,81 @@ const systemMetricsSubmitter = () => {
  * Returns:
  * This function does not return any value.
  */
-const statisticsSubmitter = (client) => {
-  const topGGToken = configs.top_gg_token;
-
-  if (!topGGToken) return;
-
-  let intervalID = null;
-  const child = logger.child({}, { msgPrefix: "[STSu] " });
-
-  child.info("Sending statistics data to Top.gg...");
+const submitTopGGStatistics = async (
+  client,
+  {
+    fetchImpl = fetch,
+    statisticsLogger = logger.child({}, { msgPrefix: "[STSu] " }),
+    topGGToken = configs.top_gg_token,
+  } = {},
+) => {
+  if (!topGGToken) return false;
+  if (
+    client.shards.size === 0 ||
+    ![...client.shards.values()].every((shard) => shard.ready)
+  )
+    return false;
 
   try {
-    intervalID = setInterval(async () => {
-      if (client.shards.size > 0 && client.shards.every((shard) => shard.ready))
-        return;
-      const results = await client.fetchClientValues("guilds.cache.size");
-      const guildCount = results.reduce((acc, count) => acc + count, 0);
-      const shardCount = results.length;
-      const response = await fetch("https://top.gg/api/bots/stats", {
-        method: "POST",
-        headers: {
-          Authorization: topGGToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          server_count: guildCount,
-          shard_count: shardCount,
-        }),
-      });
+    const results = await client.fetchClientValues("guilds.cache.size");
+    const guildCount = results.reduce((acc, count) => acc + count, 0);
+    const shardCount = results.length;
+    const response = await fetchImpl("https://top.gg/api/bots/stats", {
+      method: "POST",
+      headers: {
+        Authorization: topGGToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        server_count: guildCount,
+        shard_count: shardCount,
+      }),
+    });
 
-      if (response.status !== 200) {
-        child.warn(
-          {
-            url: response.url,
-            status: {
-              id: response.status,
-              text: response.statusText,
-            },
+    if (!response.ok) {
+      statisticsLogger.warn(
+        {
+          url: response.url,
+          status: {
+            id: response.status,
+            text: response.statusText,
           },
-          "Unable to post statistical data to Top.gg.",
-        );
-        return clearInterval(intervalID);
-      }
-    }, 1800000);
+        },
+        "Unable to post statistical data to Top.gg.",
+      );
+      return false;
+    }
 
-    child.info("Posted statistics data to Top.gg.");
+    statisticsLogger.info(
+      { guildCount, shardCount },
+      "Posted statistics data to Top.gg.",
+    );
+    return true;
   } catch (error) {
-    child.error(
+    statisticsLogger.error(
       error,
       "An error occurred while sending statistics data to Top.gg.",
     );
+    return false;
   }
+};
+
+const statisticsSubmitter = (
+  client,
+  {
+    intervalMs = 1800000,
+    setIntervalImpl = setInterval,
+    topGGToken = configs.top_gg_token,
+    ...submitOptions
+  } = {},
+) => {
+  if (!topGGToken) return null;
+
+  const submit = () =>
+    submitTopGGStatistics(client, { ...submitOptions, topGGToken });
+
+  void submit();
+  return setIntervalImpl(() => void submit(), intervalMs);
 };
 
 const healthCheckSubmitter = async () => {
@@ -328,43 +391,8 @@ const healthCheckSubmitter = async () => {
     })(),
   ]);
 
-  // Simple rate limiter
-  // 60 seconds window, 10 requests max
-  const rateLimit = 60 * 1000;
-  const maxRequests = 10;
-  const requestCounts = new Map();
-
   const port = process.env.PORT || 3000;
-  const server = http.createServer((req, res) => {
-    const ip =
-      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-      req.socket.remoteAddress;
-    let device = requestCounts.get(ip);
-
-    if (!device || Date.now() - device.viewed > rateLimit) {
-      device = { count: 1, viewed: Date.now() };
-    } else {
-      device.count += 1;
-    }
-    requestCounts.set(ip, device);
-
-    if (device.count > maxRequests) {
-      res.writeHead(429, { "Content-Type": "text/plain" });
-      res.end("Too Many Requests");
-      return;
-    }
-
-    if (req.url === "/") {
-      res.writeHead(200, { "Content-Type": "text/plain" });
-      res.end("Services is running.");
-    } else if (req.url === "/health") {
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(services));
-    } else {
-      res.writeHead(404, { "Content-Type": "text/plain" });
-      res.end("Not found");
-    }
-  });
+  const server = createHealthServer(services);
 
   server.listen(port, () => {
     child.info(`Health check HTTP server running on port ${port}.`);
@@ -372,6 +400,8 @@ const healthCheckSubmitter = async () => {
 };
 
 module.exports = {
+  createHealthServer,
+  submitTopGGStatistics,
   updateChecker,
   systemMetricsSubmitter,
   statisticsSubmitter,

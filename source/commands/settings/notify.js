@@ -7,17 +7,15 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const {
-  getDatabase,
-  ref,
-  child,
-  get,
-  update,
-  remove,
-} = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
 const { embedBuilder } = require("../../utils/clientUtils");
 const { dataStructures } = require("../../utils/databaseUtils");
 const { newLines } = require("../../utils/miscUtils");
+const { getGuildData } = require("../../utils/cacheUtils");
+const {
+  trackedRemove: remove,
+  trackedUpdate: update,
+} = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -534,7 +532,14 @@ module.exports = {
       child(ref(getDatabase(), "guilds"), interaction.guild.id),
       "notification",
     );
-    const notificationSnapshot = await get(notificationRef);
+    const cachedNotification = getGuildData(
+      interaction.client,
+      interaction.guild.id,
+    )?.notification;
+    const notificationSnapshot = {
+      exists: () => cachedNotification != null,
+      val: () => cachedNotification,
+    };
 
     const notification = interaction.client.configs.notification;
 

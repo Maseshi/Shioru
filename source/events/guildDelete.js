@@ -1,9 +1,10 @@
 const { Events } = require("discord.js");
+const { unwatchGuildData } = require("../utils/cacheUtils");
 
 module.exports = {
   name: Events.GuildDelete,
   once: false,
   execute(guild) {
-    fetchStatistics("POST", "size", guild.client);
+    unwatchGuildData(guild.client, guild.id);
   },
 };

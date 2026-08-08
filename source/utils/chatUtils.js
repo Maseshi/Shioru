@@ -164,14 +164,14 @@ const findMatch = (conversations, text, threshold = 0.75) => {
  */
 const normalizeText = (text) => {
   return text
+    .toLowerCase()
     .replaceAll(/ a /g, " ")
     .replaceAll(/pls/g, "please")
     .replaceAll(/i feel /g, "")
     .replaceAll(/whats/g, "what is")
     .replaceAll(/please /g, "")
     .replaceAll(/ please/g, "")
-    .replaceAll(/r u/g, "are you")
-    .toLowerCase();
+    .replaceAll(/r u/g, "are you");
 };
 
 /**

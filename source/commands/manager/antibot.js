@@ -4,14 +4,12 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { getDatabase, ref, child } = require("firebase/database");
+const { getGuildData } = require("../../utils/cacheUtils");
 const {
-  getDatabase,
-  ref,
-  child,
-  get,
-  update,
-  remove,
-} = require("firebase/database");
+  trackedRemove: remove,
+  trackedUpdate: update,
+} = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -54,15 +52,13 @@ module.exports = {
     const inputAll = interaction.options.getBoolean("all") ?? false;
 
     const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
-    const guildSnapshot = await get(guildRef);
+    const guildData = getGuildData(interaction.client, interaction.guild.id);
 
     switch (subcommand) {
       case "enable": {
         const bots = [];
 
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.val();
-
+        if (guildData) {
           if (guildData.antibot && guildData.antibot.enable)
             return await interaction.reply(
               interaction.client.i18n.t(
@@ -97,12 +93,10 @@ module.exports = {
         break;
       }
       case "disable": {
-        if (!guildSnapshot.exists())
+        if (!guildData)
           return await interaction.reply(
             interaction.client.i18n.t("commands.antibot.currently_disable"),
           );
-
-        const guildData = guildSnapshot.val();
 
         if (!guildData.antibot || !guildData.antibot.enable)
           return await interaction.reply(

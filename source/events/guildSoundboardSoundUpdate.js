@@ -1,8 +1,5 @@
 const { Events, EmbedBuilder, Colors } = require("discord.js");
-const {
-  submitNotification,
-  initializeData,
-} = require("../utils/databaseUtils");
+const { submitNotification } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildSoundboardSoundUpdate,
@@ -32,7 +29,6 @@ module.exports = {
       .setTimestamp()
       .setColor(Colors.Blue);
 
-    await initializeData(newSoundboardSound.client, newSoundboardSound.guild);
     await submitNotification(
       newSoundboardSound.client,
       newSoundboardSound.guild,

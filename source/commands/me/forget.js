@@ -10,7 +10,11 @@ const {
   ButtonStyle,
   ComponentType,
 } = require("discord.js");
-const { getDatabase, ref, child, get, remove } = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
+const {
+  trackedGet: get,
+  trackedRemove: remove,
+} = require("../../utils/metricsUtils");
 
 module.exports = {
   cooldown: 60,

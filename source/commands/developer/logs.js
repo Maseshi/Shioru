@@ -4,17 +4,69 @@ const {
   PermissionFlagsBits,
   InteractionContextType,
   ApplicationIntegrationType,
+  MessageFlags,
 } = require("discord.js");
-const { join } = require("node:path");
-const { existsSync, readFileSync, unlinkSync } = require("node:fs");
+const { existsSync, statSync, unlinkSync } = require("node:fs");
+const { basename } = require("node:path");
+const {
+  findLogFile,
+  formatLogDate,
+  listLogFiles,
+} = require("../../utils/logUtils");
+
+const addTypeOption = (subcommand) =>
+  subcommand.addStringOption((option) =>
+    option
+      .setName("type")
+      .setDescription("Log type")
+      .setDescriptionLocalizations({ th: "ประเภทของล็อก" })
+      .setRequired(true)
+      .setChoices(
+        { name: "Application", value: "app" },
+        { name: "Errors", value: "error" },
+      ),
+  );
+
+const addDateOption = (subcommand) =>
+  subcommand.addStringOption((option) =>
+    option
+      .setName("date")
+      .setDescription("Date in YYYY-MM-DD format (defaults to today)")
+      .setDescriptionLocalizations({
+        th: "วันที่รูปแบบ YYYY-MM-DD (ค่าเริ่มต้นคือวันนี้)",
+      })
+      .setMinLength(10)
+      .setMaxLength(10),
+  );
+
+const privateReply = (interaction, payload) =>
+  interaction.reply(
+    typeof payload === "string"
+      ? { content: payload, flags: MessageFlags.Ephemeral }
+      : { ...payload, flags: MessageFlags.Ephemeral },
+  );
+
+const canManageLogs = (interaction) => {
+  const owner = interaction.client.configs.team.owner;
+  const developers = interaction.client.configs.team.developer ?? [];
+  return (
+    interaction.user.id === owner || developers.includes(interaction.user.id)
+  );
+};
+
+const resolveRequestedLog = (interaction) => {
+  const type = interaction.options.getString("type");
+  const date = interaction.options.getString("date") ?? formatLogDate();
+  return findLogFile(type, date)?.path ?? null;
+};
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("logs")
-    .setDescription("Manage log files to check functionality or fix bugs.")
+    .setDescription("List, download, or delete daily application logs.")
     .setDescriptionLocalizations({
-      th: "จัดการไฟล์เอกสารบันทึกเพื่อตรวจสอบการทำงานหรือแก้ไขข้อบกพร่อง",
+      th: "ดู ดาวน์โหลด หรือลบล็อกรายวันของแอปพลิเคชัน",
     })
     .setDefaultMemberPermissions()
     .setContexts([
@@ -28,108 +80,85 @@ module.exports = {
     ])
     .addSubcommand((subcommand) =>
       subcommand
-        .setName("get")
-        .setDescription("Download work memorandum files")
-        .setDescriptionLocalizations({
-          th: "ดาวน์โหลดไฟล์เอกสารบันทึกเกี่ยวกับการทำงาน",
-        })
-        .addStringOption((option) =>
-          option
-            .setName("type")
-            .setDescription("Type of document file")
-            .setDescriptionLocalizations({ th: "ประเภทของไฟล์เอกสารบันทึก" })
-            .setRequired(true)
-            .setChoices(
-              { name: "app", value: "app.log" },
-              { name: "debug", value: "debug.json.log" },
-              { name: "error", value: "error.json.log" },
-              { name: "fetal", value: "fetal.json.log" },
-              { name: "info", value: "info.json.log" },
-              { name: "trace", value: "trace.json.log" },
-              { name: "warn", value: "warn.json.log" },
-            ),
-        ),
+        .setName("list")
+        .setDescription("List available daily log files.")
+        .setDescriptionLocalizations({ th: "แสดงรายการไฟล์ล็อกรายวัน" }),
     )
     .addSubcommand((subcommand) =>
-      subcommand
-        .setName("delete")
-        .setDescription("Remove unwanted log files from the folder.")
-        .setDescriptionLocalizations({
-          th: "ลบไฟล์ล็อกที่ไม่ต้องการออกจากโฟลเดอร์",
-        })
-        .addStringOption((option) =>
-          option
-            .setName("type")
-            .setDescription("Type of document file")
-            .setDescriptionLocalizations({ th: "ประเภทของไฟล์เอกสารบันทึก" })
-            .setRequired(true)
-            .setChoices(
-              { name: "app", value: "app.log" },
-              { name: "debug", value: "debug.json.log" },
-              { name: "error", value: "error.json.log" },
-              { name: "fetal", value: "fetal.json.log" },
-              { name: "info", value: "info.json.log" },
-              { name: "trace", value: "trace.json.log" },
-              { name: "warn", value: "warn.json.log" },
-            ),
+      addDateOption(
+        addTypeOption(
+          subcommand
+            .setName("get")
+            .setDescription("Download a daily log file.")
+            .setDescriptionLocalizations({ th: "ดาวน์โหลดไฟล์ล็อกรายวัน" }),
         ),
+      ),
+    )
+    .addSubcommand((subcommand) =>
+      addDateOption(
+        addTypeOption(
+          subcommand
+            .setName("delete")
+            .setDescription("Delete a daily log file.")
+            .setDescriptionLocalizations({ th: "ลบไฟล์ล็อกรายวัน" }),
+        ),
+      ),
     ),
   async execute(interaction) {
-    const subcommand = interaction.options.getSubcommand();
-    const inputType = interaction.options.getString("type");
-
-    const directory = join("logs");
-    const file = join(directory, inputType);
-    const teamOwner = interaction.client.configs.team.owner;
-    const teamDev = interaction.client.configs.team.developer;
-
-    if (!existsSync(directory))
-      return await interaction.reply(
-        interaction.client.i18n.t("commands.logs.empty_directory"),
+    if (!canManageLogs(interaction))
+      return await privateReply(
+        interaction,
+        interaction.client.i18n.t("commands.logs.only_owner_and_developers"),
       );
-    if (!existsSync(file))
-      return await interaction.reply(
+
+    const subcommand = interaction.options.getSubcommand();
+
+    if (subcommand === "list") {
+      const files = listLogFiles();
+      if (!files.length)
+        return await privateReply(
+          interaction,
+          interaction.client.i18n.t("commands.logs.empty_directory"),
+        );
+
+      const entries = files
+        .slice(0, 25)
+        .map((file) => `${file.name} (${Math.ceil(file.size / 1024)} KB)`)
+        .join("\n");
+      return await privateReply(interaction, `\`\`\`text\n${entries}\n\`\`\``);
+    }
+
+    const file = resolveRequestedLog(interaction);
+    if (!file || !existsSync(file))
+      return await privateReply(
+        interaction,
         interaction.client.i18n.t("commands.logs.file_missing"),
       );
 
-    switch (subcommand) {
-      case "get": {
-        const attachment = new AttachmentBuilder(file, {
-          name: inputType,
-          description: interaction.client.i18n.t(
-            "commands.logs.attachment_description",
-          ),
-        });
-        const fileContent = readFileSync(file, { encoding: "utf-8" });
-
-        if (fileContent <= 1)
-          return await interaction.reply(
-            interaction.client.i18n.t("commands.logs.empty_content"),
-          );
-
-        await interaction.reply({
-          content: interaction.client.i18n.t("commands.logs.found_file"),
-          files: [attachment],
-        });
-        break;
-      }
-      case "delete": {
-        if (
-          interaction.user.id !== teamOwner ||
-          !teamDev.includes(interaction.user.id)
-        )
-          return await interaction.reply(
-            interaction.client.i18n.t(
-              "commands.logs.only_owner_and_developers",
-            ),
-          );
-
-        unlinkSync(file);
-        await interaction.reply(
-          interaction.client.i18n.t("commands.logs.file_has_been_deleted"),
+    if (subcommand === "get") {
+      if (statSync(file).size === 0)
+        return await privateReply(
+          interaction,
+          interaction.client.i18n.t("commands.logs.empty_content"),
         );
-        break;
-      }
+
+      const attachment = new AttachmentBuilder(file, {
+        description: interaction.client.i18n.t(
+          "commands.logs.attachment_description",
+        ),
+      });
+      return await privateReply(interaction, {
+        content: interaction.client.i18n.t("commands.logs.found_file"),
+        files: [attachment],
+      });
     }
+
+    unlinkSync(file);
+    return await privateReply(
+      interaction,
+      interaction.client.i18n
+        .t("commands.logs.file_has_been_deleted")
+        .replace("%s", basename(file)),
+    );
   },
 };

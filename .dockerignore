@@ -45,12 +45,16 @@ assets/
 # Environment
 .env
 .env.*
+!.env.example
 
 # Back-ends
 .firebase
-.firebaserc
-firebase.json
-database.rules.json
+firebase/
 
 # Git
 .git/
+
+# Local tooling and test output
+.agents/
+.codex/
+coverage/

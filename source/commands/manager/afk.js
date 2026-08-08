@@ -4,15 +4,13 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const {
-  getDatabase,
-  ref,
-  child,
-  get,
-  update,
-  remove,
-} = require("firebase/database");
+const { getDatabase, ref, child } = require("firebase/database");
+const { getGuildData } = require("../../utils/cacheUtils");
 const { catchError } = require("../../utils/consoleUtils");
+const {
+  trackedRemove: remove,
+  trackedUpdate: update,
+} = require("../../utils/metricsUtils");
 
 module.exports = {
   permissions: [
@@ -55,15 +53,13 @@ module.exports = {
     const inputMessage = interaction.options.getString("message") ?? "";
 
     const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
-    const guildSnapshot = await get(guildRef);
+    const guildData = getGuildData(interaction.client, interaction.guild.id);
 
     const nickname = interaction.member.nickname || interaction.user.username;
 
     switch (subcommand) {
       case "set":
-        if (guildSnapshot.exists()) {
-          const guildData = guildSnapshot.val();
-
+        if (guildData) {
           if (guildData.afk && guildData.afk[interaction.user.id]) {
             return await interaction.reply({
               content: interaction.client.i18n.t("commands.afk.currently_afk"),
@@ -95,13 +91,11 @@ module.exports = {
         });
         break;
       case "remove": {
-        if (!guildSnapshot.exists())
+        if (!guildData)
           return await interaction.reply({
             content: interaction.client.i18n.t("commands.afk.currently_afk"),
             ephemeral: true,
           });
-
-        const guildData = guildSnapshot.val();
 
         if (!guildData.afk || !guildData.afk[interaction.user.id])
           return await interaction.reply({

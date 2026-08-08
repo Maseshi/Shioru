@@ -35,8 +35,8 @@ const currencyFormatter = (number, digits) => {
  * @returns {boolean} - Returns true if the input string contains a valid URL, otherwise returns false.
  */
 const containsURL = (string) => {
-  return string.test(
-    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi,
+  return /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/i.test(
+    string,
   );
 };
 
@@ -67,9 +67,8 @@ const newLines = (...string) => {
  * @returns {string} - The new title generated from the input string.
  */
 const newTitle = (string) => {
-  return string.replaceAll(
-    /\w\S*/g,
-    string.charAt(0).toUpperCase() + string.substring(1).toLowerCase(),
+  return string.replaceAll(/\w\S*/g, (word) =>
+    word.charAt(0).toUpperCase().concat(word.substring(1).toLowerCase()),
   );
 };
 

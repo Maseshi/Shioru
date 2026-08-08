@@ -142,11 +142,12 @@
 
 การดำเนินการนี้จำเป็นต้องมี [Docker](https://www.docker.com/products/docker-desktop/)
 
-- เปิดเทอร์มินัลแล้วเพิ่มตัวแปรสภาพแวดล้อมทั้งหมดที่จำเป็น
-  - สำหรับ Windows ใช้คำสั่ง `set variable=example`
-  - สำหรับ Linux หรือ MacOS ใช้คำสั่ง `export variable=example`
-- ทำการสร้างอิมเมจโดยใช้คำสั่ง `npm run docker:build` หรือ `npm run docker:build:serve` สำหรับโหมดจำลองแล้วรอจนกว่าจะเสร็จสิ้นกระบวนการ
-- หลังจากสร้างอิมเมจสำเร็จแล้วให้รันโดยใช้คำสั่ง `npm run docker:run` หรือ `npm run docker:build:serve` สำหรับโหมดจำลอง
+- คัดลอก `.env.example` เป็น `.env` แล้วแทนที่ค่าตัวอย่างด้วยค่าคอนฟิกของคุณ
+- สร้างอิมเมจและเริ่มบอทด้วย `npm run docker:up`
+- ติดตาม log ด้วย `npm run docker:logs`
+- หยุดและลบ container ด้วย `npm run docker:down`
+
+ค่าเริ่มต้นของ health endpoint คือ `http://127.0.0.1:3000/health` หากต้องการเปลี่ยนพอร์ตฝั่ง host ให้ตั้งค่า `SHIORU_PORT` ใน `.env`
 
 [เรียนรู้เพิ่มเติมเกี่ยวกับคำสั่ง Docker](https://docs.docker.com/reference/)
 
