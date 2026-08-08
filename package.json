@@ -1,87 +1,86 @@
 {
-	"name": "shioru",
-	"version": "3.6.23",
-	"description": "Assistants within your Discord server will help make your server a better place to live.",
-	"homepage": "https://github.com/Maseshi/Shioru#readme",
-	"bugs": {
-		"url": "https://github.com/Maseshi/Shioru/issues",
-		"email": "dermhioasw123@gmail.com"
-	},
-	"license": "(MIT OR CC0-1.0)",
-	"author": {
-		"name": "Maseshi",
-		"email": "dermhioasw123@gmail.com",
-		"url": "https://maseshi.web.app/"
-	},
-	"funding": [
-		{
-			"type": "github",
-			"url": "https://github.com/sponsors/Maseshi"
-		},
-		{
-			"type": "patreon",
-			"url": "https://www.patreon.com/maseshi"
-		}
-	],
-	"main": "source/main.js",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Maseshi/Shioru.git"
-	},
-	"scripts": {
-		"start": "node source/shard.js",
-		"serve": "firebase emulators:exec --only database \"node --watch-path=source source/shard.js\"",
-		"dev": "firebase emulators:exec --only database --ui \"node --inspect --env-file=.env --watch-path=source --watch-preserve-output source/main.js\"",
-		"lint": "eslint --fix --ext .js . && prettier --check --write .",
-		"docker:build": "docker build --target production --tag maseshi/%npm_package_name%:%npm_package_version% .",
-		"docker:build:serve": "docker build --target serve --tag maseshi/%npm_package_name%-serve:%npm_package_version% .",
-		"docker:run": "docker run --detach maseshi/%npm_package_name%:%npm_package_version%",
-		"docker:run:serve": "docker run --detach maseshi/%npm_package_name%-serve:%npm_package_version%",
-		"i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
-		"i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
-		"i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
-		"i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales"
-	},
-	"dependencies": {
-		"@discordjs/opus": "^0.10.0",
-		"@discordjs/voice": "^0.19.2",
-		"@distube/deezer": "^2.0.1",
-		"@distube/soundcloud": "^2.0.4",
-		"@distube/spotify": "^2.0.2",
-		"@distube/youtube": "^1.0.4",
-		"@distube/yt-dlp": "^2.0.1",
-		"captcha-canvas": "^4.1.0",
-		"discord-gamecord": "^4.4.4",
-		"discord.js": "^14.25.1",
-		"distube": "^5.2.3",
-		"firebase": "^12.12.0",
-		"genius-lyrics": "^4.4.7",
-		"i18next": "^26.0.4",
-		"i18next-fs-backend": "^2.6.1",
-		"pino": "^10.3.1",
-		"pino-pretty": "^13.1.3",
-		"systeminformation": "^5.31.5"
-	},
-	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"eslint": "^10.2.1",
-		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-prettier": "^5.5.5",
-		"i18n-unused": "^0.19.0",
-		"prettier": "^3.8.1"
-	},
-	"optionalDependencies": {
-		"bufferutil": "^4.1.0",
-		"osx-temperature-sensor": "^1.0.8",
-		"sodium-native": "^5.1.0",
-		"zlib-sync": "^0.1.10"
-	},
-	"engines": {
-		"node": ">=22.12.0",
-		"bun": ">=1.0.0",
-		"python": ">=3.12.0",
-		"firebase": "*",
-		"ffmpeg": "*"
-	},
-	"private": true
+  "name": "shioru",
+  "version": "3.6.23",
+  "description": "Assistants within your Discord server will help make your server a better place to live.",
+  "homepage": "https://github.com/Maseshi/Shioru#readme",
+  "bugs": {
+    "url": "https://github.com/Maseshi/Shioru/issues",
+    "email": "dermhioasw123@gmail.com"
+  },
+  "license": "(MIT OR CC0-1.0)",
+  "author": {
+    "name": "Maseshi",
+    "email": "dermhioasw123@gmail.com",
+    "url": "https://maseshi.web.app/"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Maseshi"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/maseshi"
+    }
+  ],
+  "main": "source/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maseshi/Shioru.git"
+  },
+  "scripts": {
+    "start": "node source/shard.js",
+    "serve": "firebase --config firebase/firebase.json emulators:exec --only database \"node --watch-path=source source/shard.js\"",
+    "dev": "firebase --config firebase/firebase.json emulators:exec --only database --ui \"node --inspect --env-file=.env --watch-path=source --watch-preserve-output source/main.js\"",
+    "lint": "eslint --fix --ext .js . && prettier --check --write .",
+    "docker:build": "docker compose --file docker/compose.yaml build",
+    "docker:up": "docker compose --file docker/compose.yaml up --detach --build",
+    "docker:down": "docker compose --file docker/compose.yaml down",
+    "docker:logs": "docker compose --file docker/compose.yaml logs --follow bot",
+    "i18n:unused": "i18n-unused display-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:mark": "i18n-unused mark-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:remove": "i18n-unused remove-unused --src-path ./source --locales-path ./source/locales",
+    "i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales"
+  },
+  "dependencies": {
+    "@discordjs/opus": "^0.10.0",
+    "@discordjs/voice": "^0.19.2",
+    "@distube/deezer": "^2.0.1",
+    "@distube/soundcloud": "^2.0.4",
+    "@distube/spotify": "^2.0.2",
+    "@distube/youtube": "^1.0.4",
+    "@distube/yt-dlp": "^2.0.1",
+    "captcha-canvas": "^4.1.0",
+    "discord-gamecord": "^4.4.4",
+    "discord.js": "^14.25.1",
+    "distube": "^5.2.3",
+    "firebase": "^12.12.0",
+    "genius-lyrics": "^4.4.7",
+    "i18next": "^26.0.4",
+    "i18next-fs-backend": "^2.6.1",
+    "pino": "^10.3.1",
+    "pino-pretty": "^13.1.3",
+    "systeminformation": "^5.31.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "i18n-unused": "^0.19.0",
+    "prettier": "^3.8.1"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.1.0",
+    "osx-temperature-sensor": "^1.0.8",
+    "sodium-native": "^5.1.0",
+    "zlib-sync": "^0.1.10"
+  },
+  "engines": {
+    "node": ">=22.12.0",
+    "python": ">=3.12.0",
+    "firebase": "*",
+    "ffmpeg": "*"
+  },
+  "private": true
 }

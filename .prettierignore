@@ -33,6 +33,4 @@ LICENSE_ASSETS
 
 # Back-ends
 .firebase
-.firebaserc
-firebase.json
-database.rules.json
+firebase/

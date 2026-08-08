@@ -13,7 +13,7 @@ logs/
 .env.production.local
 
 # Back-ends
-.firebase
-.firebaserc
-firebase.json
-database.rules.json
+.firebase/
+firebase-debug.log
+database-debug.log
+firebase/.firebaserc

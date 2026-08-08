@@ -1,0 +1,38 @@
+{
+  "rules": {
+    "maintenance": {
+      ".read": true,
+      ".write": false
+    },
+    "information": {
+      ".read": true,
+      ".write": true
+    },
+    "statistics": {
+      ".read": true,
+      ".write": true
+    },
+    "chat": {
+      ".read": true,
+      ".write": true
+    },
+    "issues": {
+      "bugs": {
+        ".read": false,
+        ".write": true
+      },
+      "features": {
+        ".read": false,
+        ".write": true
+      }
+    },
+    "users": {
+      ".read": true,
+      ".write": true
+    },
+    "guilds": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
