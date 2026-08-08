@@ -126,16 +126,27 @@ module.exports = (client) => {
     });
   });
   client.player.on(Events.ERROR, (error, queue, song) => {
-    const meChannel = channel.guild.members.me.voice.channel;
-    const connection = client.player.voices.get(meChannel.guild);
+    const textChannel = queue?.textChannel;
+    const voiceChannel = queue?.voiceChannel;
+    const connection = voiceChannel
+      ? client.player.voices.get(voiceChannel)
+      : null;
 
     changeLanguage(client, client.i18n.language);
 
-    if (error.message.includes("Unknown Playlist"))
-      return channel.send(
-        client.i18n.t("handlers.player.error.playlist_not_found"),
-      );
-    if (connection) connection.leave(meChannel.guild);
+    if (error.message.includes("Unknown Playlist")) {
+      if (textChannel)
+        void textChannel
+          .send(client.i18n.t("handlers.player.error.playlist_not_found"))
+          .catch((sendError) =>
+            client.logger.error(
+              { err: sendError },
+              "Failed to send player error message.",
+            ),
+          );
+      return;
+    }
+    if (connection) connection.leave();
 
     webhookLogEmbed
       .setColor(Colors.Red)
@@ -156,7 +167,7 @@ module.exports = (client) => {
     webhookSend(client.configs.logger.player, {
       embeds: [webhookLogEmbed],
     });
-    catchError(client, queue.textChannel, "music", error);
+    void catchError(client, null, "music", error, true);
   });
   client.player.on(Events.FFMPEG_DEBUG, (debug) => {
     webhookLogEmbed
@@ -193,6 +204,11 @@ module.exports = (client) => {
     );
   });
   client.player.on(Events.FINISH_SONG, (queue, song) => {
+    if (!song) {
+      client.logger.warn("Finish song event received without a song.");
+      return;
+    }
+
     changeLanguage(client, client.i18n.language);
     webhookLogEmbed
       .setColor(Colors.Green)
@@ -209,12 +225,20 @@ module.exports = (client) => {
     webhookSend(client.configs.logger.player, {
       embeds: [webhookLogEmbed],
     });
-    queue.textChannel.send(
-      client.i18n.t("handlers.player.finishSong.finished_song", {
-        song_name: song.name,
-        duration: song.formattedDuration,
-      }),
-    );
+    if (queue?.textChannel)
+      void queue.textChannel
+        .send(
+          client.i18n.t("handlers.player.finishSong.finished_song", {
+            song_name: song.name,
+            duration: song.formattedDuration,
+          }),
+        )
+        .catch((error) =>
+          client.logger.error(
+            { err: error },
+            "Failed to send finished song message.",
+          ),
+        );
   });
   client.player.on(Events.INIT_QUEUE, (queue) => {
     queue.autoplay = false;

@@ -14,12 +14,45 @@ module.exports = {
   async execute(interaction) {
     if (interaction.user.bot) return;
 
-    // Automatic settings data on database
-    initializeData(interaction.client, interaction.guild);
+    if (interaction.isAutocomplete()) {
+      const command = interaction.client.commands.get(interaction.commandName);
 
-    const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
-    const guildSnapshot = await get(guildRef);
-    const guildVal = guildSnapshot.val();
+      if (!command)
+        return interaction.client.logger.warn(
+          `No autocomplete matching ${interaction.commandName} was found.`,
+        );
+
+      try {
+        await command.autocomplete(interaction);
+      } catch (error) {
+        if (error.code !== 10062 && error.code !== 40060)
+          interaction.client.logger.error(error);
+      }
+      return;
+    }
+
+    const command = interaction.isChatInputCommand()
+      ? interaction.client.commands.get(interaction.commandName)
+      : null;
+
+    if (command?.deferReply && !interaction.deferred && !interaction.replied)
+      await interaction.deferReply();
+
+    // Automatic settings data on database
+    if (interaction.guild)
+      void initializeData(interaction.client, interaction.guild).catch(
+        (error) =>
+          interaction.client.logger.error(
+            { err: error },
+            "Failed to initialize guild data.",
+          ),
+      );
+
+    const guildRef = interaction.guild
+      ? child(ref(getDatabase(), "guilds"), interaction.guild.id)
+      : null;
+    const guildSnapshot = guildRef ? await get(guildRef) : null;
+    const guildVal = guildSnapshot?.val();
 
     const executeCommand = async (func, path) => {
       // Check if the command has a cooldown or not.
@@ -72,7 +105,6 @@ module.exports = {
               interaction.client,
               interaction,
               interaction.commandName,
-              "interactionCreate",
               error,
               true,
             );
@@ -81,17 +113,29 @@ module.exports = {
       }
 
       try {
-        func.execute(interaction);
+        await func.execute(interaction);
 
         // Stores information when the bot is working properly.
-        fetchStatistics("POST", "size/worked", interaction.client);
-        fetchStatistics(
-          "POST",
-          `${path}/${func.data.name}`,
-          interaction.client,
+        void Promise.all([
+          fetchStatistics("POST", "size/worked", interaction.client),
+          fetchStatistics(
+            "POST",
+            `${path}/${func.data.name}`,
+            interaction.client,
+          ),
+        ]).catch((error) =>
+          interaction.client.logger.error(
+            { err: error, command: func.data.name },
+            "Failed to update command statistics.",
+          ),
         );
       } catch (error) {
-        catchError(interaction.client, interaction, func.data.name, error);
+        await catchError(
+          interaction.client,
+          interaction,
+          func.data.name,
+          error,
+        );
       }
     };
 
@@ -100,36 +144,25 @@ module.exports = {
       changeLanguage(interaction.client, interaction.locale);
 
     // Increase user level
-    fetchLevel(interaction.client, interaction, "POST", {
+    void fetchLevel(interaction.client, interaction, "POST", {
       amount: 123,
       type: "exp",
-    });
+    }).catch((error) =>
+      interaction.client.logger.error(
+        { err: error },
+        "Failed to update interaction level.",
+      ),
+    );
 
     if (interaction.isChatInputCommand()) {
       const commandName = interaction.commandName;
-      const command = interaction.client.commands.get(commandName);
 
       if (!command)
         return interaction.client.logger.warn(
           `No command matching ${commandName} was found.`,
         );
 
-      executeCommand(command, "commands");
-    }
-    if (interaction.isAutocomplete()) {
-      const commandName = interaction.commandName;
-      const command = interaction.client.commands.get(commandName);
-
-      if (!command)
-        return interaction.client.logger.warn(
-          `No autocomplete matching ${commandName} was found.`,
-        );
-
-      try {
-        await command.autocomplete(interaction);
-      } catch (error) {
-        interaction.client.logger.error(error);
-      }
+      await executeCommand(command, "commands");
     }
     if (interaction.isMessageContextMenuCommand()) {
       const contextName = interaction.commandName;
@@ -140,7 +173,7 @@ module.exports = {
           `No context matching ${contextName} was found.`,
         );
 
-      executeCommand(context, "contexts");
+      await executeCommand(context, "contexts");
     }
   },
 };

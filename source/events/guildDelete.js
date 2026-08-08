@@ -1,9 +1,10 @@
 const { Events } = require("discord.js");
+const { fetchStatistics } = require("../utils/databaseUtils");
 
 module.exports = {
   name: Events.GuildDelete,
   once: false,
-  execute(guild) {
-    fetchStatistics("POST", "size", guild.client);
+  async execute(guild) {
+    await fetchStatistics("POST", "size", guild.client);
   },
 };

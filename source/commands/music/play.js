@@ -66,8 +66,12 @@ module.exports = {
     ),
   async autocomplete(interaction) {
     const focusedValue = interaction.options.getFocused();
+    const respond = async (choices) => {
+      if (interaction.responded) return;
+      await interaction.respond(choices);
+    };
 
-    if (!focusedValue) return interaction.respond([]);
+    if (!focusedValue) return respond([]);
 
     const youtubePlugin = new YouTubePlugin();
     const soundCloudPlugin = new SoundCloudPlugin();
@@ -92,9 +96,9 @@ module.exports = {
       ),
     ];
 
-    if (!combined.length) return interaction.respond([]);
+    if (!combined.length) return respond([]);
 
-    await interaction.respond(
+    await respond(
       combined.map((choice) => {
         const name =
           choice.name.length > 100

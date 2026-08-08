@@ -56,15 +56,29 @@ module.exports = (client) => {
 
   // Limit the creation of events in the process.
   process.setMaxListeners(0);
-  process.on("SIGINT", () => {
-    client.logger.trace("Bot is about to shut down.");
-  });
-  process.on("SIGUSR1", () => {
-    client.logger.trace("Bot is about to restart.");
-  });
-  process.on("SIGUSR2", () => {
-    client.logger.trace("Bot is about to restart.");
-  });
+  let shuttingDown = false;
+  const shutdown = async (reason) => {
+    if (shuttingDown) return;
+    shuttingDown = true;
+
+    client.logger.info({ reason }, "Bot is shutting down.");
+    for (const interval of client.temp.intervals) clearInterval(interval);
+    client.temp.intervals.clear();
+
+    try {
+      await client.destroy();
+    } catch (error) {
+      client.logger.error(error, "Failed to destroy the Discord client.");
+    } finally {
+      process.exit(0);
+    }
+  };
+
+  process.once("SIGINT", () => void shutdown("SIGINT"));
+  process.once("SIGTERM", () => void shutdown("SIGTERM"));
+  process.once("SIGUSR1", () => void shutdown("SIGUSR1"));
+  process.once("SIGUSR2", () => void shutdown("SIGUSR2"));
+  process.once("disconnect", () => void shutdown("IPC channel disconnected"));
   process.on("rejectionHandled", (promise) => {
     webhookLogEmbed.setDescription(`\`\`\`${promise}\`\`\``).setFields([
       {

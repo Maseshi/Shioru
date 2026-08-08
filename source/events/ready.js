@@ -24,6 +24,11 @@ module.exports = {
   once: true,
   async execute(client) {
     const { underscore } = colorize();
+    const registerInterval = (callback, delay) => {
+      const interval = setInterval(callback, delay);
+      client.temp.intervals.add(interval);
+      return interval;
+    };
 
     // Notify when the bot is online.
     client.logger.info(
@@ -84,7 +89,7 @@ module.exports = {
 
         const guildsData = snapshot.val();
 
-        for (const [guildId, guildData] of Object.entries(guildsData)) {
+        for (const guildData of Object.values(guildsData)) {
           const data = guildData;
 
           // Sync DJs settings
@@ -137,7 +142,12 @@ module.exports = {
       // Send bot statistics.
       client.logger.info("Sending statistical information...");
 
-      setInterval(() => fetchStatistics("POST", "size", client), 10000);
+      registerInterval(() => {
+        if (!client.isReady()) return;
+        fetchStatistics("POST", "size", client).catch((error) =>
+          client.logger.error(error, "Failed to update statistics."),
+        );
+      }, 10000);
 
       client.logger.info(
         "Statistics are sent successfully and updated every 10 seconds.",
@@ -154,7 +164,7 @@ module.exports = {
         commands: client.commands.size ?? 0,
       };
 
-      if (client.shard && client.shard.count) {
+      if (client.shard?.count && process.connected !== false) {
         const results = await Promise.all([
           client.shard.fetchClientValues("guilds.cache.size"),
           client.shard.broadcastEval((cli) =>
@@ -227,14 +237,21 @@ module.exports = {
       activities: activityType,
     });
 
-    setInterval(async () => {
-      const statisticsData = await getStatistics();
-      const randomIndex = Math.floor(Math.random() * activityType.length);
-      const newActivity = activityType[randomIndex];
+    registerInterval(async () => {
+      if (!client.isReady()) return;
 
-      activities.production[0].name = `${currencyFormatter(statisticsData.guilds, 1)} Server${statisticsData.guilds === 1 ? "" : "s"}`;
-      activities.production[2].name = `${currencyFormatter(statisticsData.members, 1)} Member${statisticsData.members === 1 ? "" : "s"}`;
-      client.user.setActivity(newActivity);
+      try {
+        const statisticsData = await getStatistics();
+        const randomIndex = Math.floor(Math.random() * activityType.length);
+        const newActivity = activityType[randomIndex];
+
+        activities.production[0].name = `${currencyFormatter(statisticsData.guilds, 1)} Server${statisticsData.guilds === 1 ? "" : "s"}`;
+        activities.production[2].name = `${currencyFormatter(statisticsData.members, 1)} Member${statisticsData.members === 1 ? "" : "s"}`;
+        client.user.setActivity(newActivity);
+      } catch (error) {
+        if (error.code === "ERR_IPC_CHANNEL_CLOSED") return;
+        client.logger.error(error, "Failed to update bot activity.");
+      }
     }, 10000);
 
     // If everything is ready to go

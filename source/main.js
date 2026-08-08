@@ -247,6 +247,7 @@ client.configs = configs;
 client.logger = logger;
 client.i18n = i18next;
 client.temp = {
+  intervals: new Set(),
   startup: {
     start: startTime,
     end: 0,
