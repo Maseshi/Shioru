@@ -1,5 +1,6 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
+const { withMockedFetch } = require("../helpers/withMockedFetch");
 const {
   executeScript,
   fetchConversationHistory,
@@ -79,56 +80,54 @@ test("fetchConversationHistory orders, filters, and labels Discord messages", as
   ]);
 });
 
-test("fetchConversationResponse sends the expected request and validates replies", async (t) => {
-  const calls = [];
-  t.mock.method(global, "fetch", async (url, options) => {
-    calls.push({ url: url.toString(), options });
-    return {
-      ok: true,
-      json: async () => ({ choices: [{ message: { content: "Hello" } }] }),
-    };
-  });
+test("fetchConversationResponse sends the expected request and validates replies", async () => {
+  await withMockedFetch(
+    [
+      {
+        ok: true,
+        json: async () => ({ choices: [{ message: { content: "Hello" } }] }),
+      },
+      { ok: false, status: 503 },
+      { ok: true, json: async () => ({ choices: [] }) },
+    ],
+    async (calls) => {
+      const reply = await fetchConversationResponse({
+        apiKey: "secret",
+        baseURL: "https://example.com/base",
+        systemPrompt: "Be helpful",
+        conversationHistory: [{ role: "user", content: "Hi" }],
+      });
+      assert.equal(reply, "Hello");
+      assert.equal(
+        calls[0][0].toString(),
+        "https://example.com/v1/chat/completions",
+      );
+      assert.equal(calls[0][1].headers.Authorization, "Bearer secret");
+      assert.deepEqual(JSON.parse(calls[0][1].body).messages, [
+        { role: "system", content: "Be helpful" },
+        { role: "user", content: "Hi" },
+      ]);
 
-  const reply = await fetchConversationResponse({
-    apiKey: "secret",
-    baseURL: "https://example.com/base",
-    systemPrompt: "Be helpful",
-    conversationHistory: [{ role: "user", content: "Hi" }],
-  });
-  assert.equal(reply, "Hello");
-  assert.equal(calls[0].url, "https://example.com/v1/chat/completions");
-  assert.equal(calls[0].options.headers.Authorization, "Bearer secret");
-  assert.deepEqual(JSON.parse(calls[0].options.body).messages, [
-    { role: "system", content: "Be helpful" },
-    { role: "user", content: "Hi" },
-  ]);
+      await assert.rejects(
+        fetchConversationResponse({
+          apiKey: "secret",
+          baseURL: "https://example.com",
+          systemPrompt: "",
+          conversationHistory: [],
+        }),
+        /status 503/,
+      );
 
-  global.fetch.mock.mockImplementationOnce(async () => ({
-    ok: false,
-    status: 503,
-  }));
-  await assert.rejects(
-    fetchConversationResponse({
-      apiKey: "secret",
-      baseURL: "https://example.com",
-      systemPrompt: "",
-      conversationHistory: [],
-    }),
-    /status 503/,
-  );
-
-  global.fetch.mock.mockImplementationOnce(async () => ({
-    ok: true,
-    json: async () => ({ choices: [] }),
-  }));
-  await assert.rejects(
-    fetchConversationResponse({
-      apiKey: "secret",
-      baseURL: "https://example.com",
-      systemPrompt: "",
-      conversationHistory: [],
-    }),
-    /empty or invalid/,
+      await assert.rejects(
+        fetchConversationResponse({
+          apiKey: "secret",
+          baseURL: "https://example.com",
+          systemPrompt: "",
+          conversationHistory: [],
+        }),
+        /empty or invalid/,
+      );
+    },
   );
 });
 

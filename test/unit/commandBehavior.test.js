@@ -1,5 +1,6 @@
 const assert = require("node:assert/strict");
 const { describe, it } = require("node:test");
+const { withMockedFetch } = require("../helpers/withMockedFetch");
 
 const translator = { t: (key) => key };
 
@@ -95,13 +96,12 @@ describe("utility and external command behavior", () => {
     assert.deepEqual(state.edits, ["commands.weather.no_token_provider"]);
   });
 
-  it("weather reports geocoding and weather-service failures", async (t) => {
+  it("weather reports geocoding and weather-service failures", async () => {
     const responses = [
       { status: 429 },
       { json: async () => [{ lat: 13.75, lon: 100.5 }], status: 200 },
       { status: 503 },
     ];
-    t.mock.method(global, "fetch", async () => responses.shift());
     const geoFailure = makeExternalInteraction(
       { city: "Bangkok", unit: "metric" },
       { open_weather_token: "token" },
@@ -111,28 +111,31 @@ describe("utility and external command behavior", () => {
       { open_weather_token: "token" },
     );
 
-    await require("../../source/commands/information/weather").execute(
-      geoFailure.interaction,
-    );
-    await require("../../source/commands/information/weather").execute(
-      weatherFailure.interaction,
-    );
+    await withMockedFetch(responses, async (calls) => {
+      await require("../../source/commands/information/weather").execute(
+        geoFailure.interaction,
+      );
+      await require("../../source/commands/information/weather").execute(
+        weatherFailure.interaction,
+      );
 
-    assert.equal(geoFailure.edits[0], "commands.weather.no_result_found");
-    assert.equal(weatherFailure.edits[0], "commands.weather.error_with_code");
-    assert.equal(fetch.mock.callCount(), 3);
+      assert.equal(geoFailure.edits[0], "commands.weather.no_result_found");
+      assert.equal(weatherFailure.edits[0], "commands.weather.error_with_code");
+      assert.equal(calls.length, 3);
+    });
   });
 
-  it("anime reports an upstream API failure", async (t) => {
-    t.mock.method(global, "fetch", async () => ({ status: 500 }));
+  it("anime reports an upstream API failure", async () => {
     const state = makeExternalInteraction({
       query: "Frieren",
       search: "anime",
     });
 
-    await require("../../source/commands/information/anime").execute(
-      state.interaction,
-    );
+    await withMockedFetch({ status: 500 }, async () => {
+      await require("../../source/commands/information/anime").execute(
+        state.interaction,
+      );
+    });
 
     assert.equal(state.deferred, 1);
     assert.deepEqual(state.edits, ["commands.anime.data_not_found"]);
