@@ -49,12 +49,24 @@ const manager = new ShardingManager("./source/main.js", {
   totalShards: "auto",
 });
 
+const sendShardWebhook = (message) => {
+  try {
+    const request = webhookSend(configs.logger.shard, message);
+    if (!request) return;
+
+    Promise.resolve(request).catch((error) =>
+      child.warn(error, "Unable to send shard lifecycle webhook."),
+    );
+  } catch (error) {
+    child.warn(error, "Unable to create shard lifecycle webhook request.");
+  }
+};
+
 const bootstrap = async () => {
   startScreen();
 
   if (mode !== "dev") await updateChecker();
   if (mode === "start") systemMetricsSubmitter();
-  if (mode === "start") statisticsSubmitter(manager);
   if (mode === "start") healthCheckSubmitter();
 };
 
@@ -85,10 +97,10 @@ manager.on("shardCreate", (shard) => {
         inline: true,
       },
     ]);
-  webhookSend(configs.logger.shard, { embeds: [launchEmbed] });
+  sendShardWebhook({ embeds: [launchEmbed] });
   child.info(`Launched shard id ${shardID} [${shardAt}/${shardTotal}]`);
 
-  shard.on(ShardEvents.Death, (process) => {
+  shard.on(ShardEvents.Death, (shardProcess) => {
     const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Red)
@@ -111,10 +123,17 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
-    child.error(new Date(), `Closing shard id ${shardID} unexpectedly`);
+    sendShardWebhook({ embeds: [logEmbed] });
+    child.error(
+      {
+        exitCode: shardProcess.exitCode,
+        pid: shardProcess.pid,
+        signalCode: shardProcess.signalCode,
+      },
+      `Closing shard id ${shardID} unexpectedly`,
+    );
 
-    if (process.exitCode === null) {
+    if (shardProcess.exitCode === null) {
       const nullEmbed = new EmbedBuilder().setTimestamp();
       nullEmbed
         .setColor(Colors.Red)
@@ -138,17 +157,23 @@ manager.on("shardCreate", (shard) => {
           },
           {
             name: "PID",
-            value: String(process.pid),
+            value: String(shardProcess.pid),
             inline: true,
           },
           {
             name: "Exit Code",
-            value: String(process.exitCode),
+            value: String(shardProcess.exitCode),
             inline: true,
           },
         ]);
-      webhookSend(configs.logger.shard, { embeds: [nullEmbed] });
-      child.error(process, `Shard id ${shardID} exited with NULL error code!`);
+      sendShardWebhook({ embeds: [nullEmbed] });
+      child.error(
+        {
+          pid: shardProcess.pid,
+          signalCode: shardProcess.signalCode,
+        },
+        `Shard id ${shardID} exited with NULL error code!`,
+      );
     }
   });
   shard.on(ShardEvents.Disconnect, () => {
@@ -174,7 +199,7 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+    sendShardWebhook({ embeds: [logEmbed] });
     child.warn(`Shard id ${shardID} has disconnected from the event.`);
   });
   shard.on(ShardEvents.Error, (error) => {
@@ -200,7 +225,7 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+    sendShardWebhook({ embeds: [logEmbed] });
     child.fatal(error, `Shard id ${shardID} is having problems.`);
   });
   shard.on(ShardEvents.Ready, () => {
@@ -226,7 +251,7 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+    sendShardWebhook({ embeds: [logEmbed] });
     child.info(`Shard ${shardID} is ready [${shardAt}/${shardTotal}]`);
   });
   shard.on(ShardEvents.Reconnecting, () => {
@@ -252,8 +277,8 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
-    child.info(new Date(), `Reconnecting shard id ${shardID}`);
+    sendShardWebhook({ embeds: [logEmbed] });
+    child.info(`Reconnecting shard id ${shardID}`);
   });
   shard.on(ShardEvents.Resume, () => {
     const logEmbed = new EmbedBuilder().setTimestamp();
@@ -278,10 +303,10 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+    sendShardWebhook({ embeds: [logEmbed] });
     child.info(`Shard id ${shardID} is resuming`);
   });
-  shard.on(ShardEvents.Spawn, (process) => {
+  shard.on(ShardEvents.Spawn, (shardProcess) => {
     const logEmbed = new EmbedBuilder().setTimestamp();
     logEmbed
       .setColor(Colors.Red)
@@ -304,9 +329,9 @@ manager.on("shardCreate", (shard) => {
           inline: true,
         },
       ]);
-    webhookSend(configs.logger.shard, { embeds: [logEmbed] });
+    sendShardWebhook({ embeds: [logEmbed] });
     child.info(
-      process,
+      { pid: shardProcess.pid },
       `Spawning shard id ${shardID} [${shardAt}/${shardTotal}]`,
     );
   });
@@ -314,6 +339,9 @@ manager.on("shardCreate", (shard) => {
 
 bootstrap()
   .then(() => manager.spawn())
+  .then(() => {
+    if (mode === "start") statisticsSubmitter(manager);
+  })
   .catch((error) => {
     child.fatal(error, "Failed to bootstrap the shard manager.");
     process.exitCode = 1;
