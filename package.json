@@ -43,7 +43,10 @@
     "i18n:missed": "i18n-unused display-missed --src-path ./source --locales-path ./source/locales",
     "test": "node --test \"test/unit/**/*.test.js\"",
     "test:watch": "node --test --watch \"test/unit/**/*.test.js\"",
-    "test:integration": "firebase --config firebase/firebase.json emulators:exec --only database \"node --test test/integration/firebase/databaseRules.test.js\""
+    "test:coverage": "node --test --experimental-test-coverage \"test/unit/**/*.test.js\"",
+    "test:integration": "firebase --config firebase/firebase.json emulators:exec --only database \"node --test test/integration/firebase/databaseRules.test.js\"",
+    "test:all": "npm test && npm run test:integration",
+    "test:smoke:docker": "node --test test/smoke/docker.test.js"
   },
   "dependencies": {
     "@discordjs/opus": "^0.10.0",

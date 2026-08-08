@@ -3,6 +3,45 @@ const { version } = require("../../package.json");
 const configs = require("../configs/data");
 const http = require("http");
 
+const createHealthServer = (
+  services,
+  { now = Date.now, rateLimit = 60 * 1000, maxRequests = 10 } = {},
+) => {
+  const requestCounts = new Map();
+
+  return http.createServer((req, res) => {
+    const ip =
+      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+      req.socket.remoteAddress;
+    let device = requestCounts.get(ip);
+    const requestedAt = now();
+
+    if (!device || requestedAt - device.viewed > rateLimit) {
+      device = { count: 1, viewed: requestedAt };
+    } else {
+      device.count += 1;
+    }
+    requestCounts.set(ip, device);
+
+    if (device.count > maxRequests) {
+      res.writeHead(429, { "Content-Type": "text/plain" });
+      res.end("Too Many Requests");
+      return;
+    }
+
+    if (req.url === "/") {
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      res.end("Services is running.");
+    } else if (req.url === "/health") {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(services));
+    } else {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("Not found");
+    }
+  });
+};
+
 /**
  * Function to check for updates from Github.
  *
@@ -328,43 +367,8 @@ const healthCheckSubmitter = async () => {
     })(),
   ]);
 
-  // Simple rate limiter
-  // 60 seconds window, 10 requests max
-  const rateLimit = 60 * 1000;
-  const maxRequests = 10;
-  const requestCounts = new Map();
-
   const port = process.env.PORT || 3000;
-  const server = http.createServer((req, res) => {
-    const ip =
-      req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
-      req.socket.remoteAddress;
-    let device = requestCounts.get(ip);
-
-    if (!device || Date.now() - device.viewed > rateLimit) {
-      device = { count: 1, viewed: Date.now() };
-    } else {
-      device.count += 1;
-    }
-    requestCounts.set(ip, device);
-
-    if (device.count > maxRequests) {
-      res.writeHead(429, { "Content-Type": "text/plain" });
-      res.end("Too Many Requests");
-      return;
-    }
-
-    if (req.url === "/") {
-      res.writeHead(200, { "Content-Type": "text/plain" });
-      res.end("Services is running.");
-    } else if (req.url === "/health") {
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(services));
-    } else {
-      res.writeHead(404, { "Content-Type": "text/plain" });
-      res.end("Not found");
-    }
-  });
+  const server = createHealthServer(services);
 
   server.listen(port, () => {
     child.info(`Health check HTTP server running on port ${port}.`);
@@ -372,6 +376,7 @@ const healthCheckSubmitter = async () => {
 };
 
 module.exports = {
+  createHealthServer,
   updateChecker,
   systemMetricsSubmitter,
   statisticsSubmitter,

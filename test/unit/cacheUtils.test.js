@@ -73,3 +73,19 @@ test("unwatchGuildData unsubscribes and clears guild state", () => {
   assert.equal(client.guildSettings.has("guild"), false);
   assert.equal(client.temp.listeners.has("guild:guild"), false);
 });
+
+test("getGuildDjs falls back to defaults and initializes missing cache maps", () => {
+  const client = {
+    configs: {
+      djs: { enabled: false, roles: ["role"], users: ["user"] },
+      metrics: { enabled: false, label: "cache-test" },
+    },
+    logger: { info: () => undefined },
+    temp: {},
+  };
+  initializeMetrics(client);
+
+  assert.deepEqual(getGuildDjs(client, "missing"), client.configs.djs);
+  assert.ok(client.guildSettings instanceof Map);
+  assert.ok(client.temp.listeners instanceof Map);
+});
