@@ -1,6 +1,6 @@
 const { getDatabase, ref } = require("firebase/database");
 const { trackedUpdate: update } = require("../utils/metricsUtils");
-const { InformationSchema } = require("../schemas/root");
+const { InformationSchema } = require("../schemas/information");
 
 const updateInformation = (section, values) => {
   const parsed = InformationSchema.parse({ [section]: values });

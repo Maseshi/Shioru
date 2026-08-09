@@ -6,9 +6,7 @@ const {
   trackedSet: set,
   trackedUpdate: update,
 } = require("../utils/metricsUtils");
-const { GuildSchema } = require("../schemas/guild");
-
-const GuildUpdateSchema = GuildSchema.partial().strict();
+const { GuildSchema, GuildUpdateSchema } = require("../schemas/guild");
 const getGuildRef = (guildId) => ref(getDatabase(), `guilds/${guildId}`);
 
 const getGuild = async (guildId) => {

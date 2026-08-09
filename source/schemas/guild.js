@@ -67,6 +67,7 @@ const GuildSchema = z
     notification: NotificationMapSchema.optional(),
   })
   .strict();
+const GuildUpdateSchema = GuildSchema.partial().strict();
 
 const createLanguage = (overrides = {}) =>
   LanguageSchema.parse({ type: "USER", locale: "en-US", ...overrides });
@@ -102,6 +103,7 @@ module.exports = {
   CaptchaSchema,
   DjsSchema,
   GuildSchema,
+  GuildUpdateSchema,
   LanguageSchema,
   createDjs,
   createGuild,

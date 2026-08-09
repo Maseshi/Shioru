@@ -4,7 +4,7 @@ const {
   trackedSet: set,
   trackedUpdate: update,
 } = require("../utils/metricsUtils");
-const { StatisticsSchema } = require("../schemas/root");
+const { StatisticsSchema } = require("../schemas/statistics");
 
 const assertPath = (path) => {
   if (typeof path !== "string" || !path || path.startsWith("/"))

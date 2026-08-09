@@ -5,17 +5,12 @@ const {
   trackedRunTransaction: runTransaction,
   trackedUpdate: update,
 } = require("../utils/metricsUtils");
+const { LevelingSchema, createLeveling } = require("../schemas/leveling");
 const {
-  LevelingSchema,
+  UserProfileSchema,
   UserSchema,
-  createLeveling,
   createUser,
-} = require("../schemas/leveling");
-
-const UserProfileSchema = UserSchema.pick({
-  username: true,
-  avatar: true,
-}).strict();
+} = require("../schemas/user");
 
 const getUserRef = (userId) => ref(getDatabase(), `users/${userId}`);
 
