@@ -46,7 +46,9 @@
     "test:coverage": "node --test --experimental-test-coverage \"test/unit/**/*.test.js\"",
     "test:integration": "firebase --config firebase/firebase.json emulators:exec --only database \"node --test test/integration/firebase/databaseRules.test.js\"",
     "test:all": "npm test && npm run test:integration",
-    "test:smoke:docker": "node --test test/smoke/docker.test.js"
+    "test:smoke": "node --test test/smoke/docker.test.js",
+    "migrate": "node --env-file=.env scripts/migrate.js",
+    "migrate:apply": "node --env-file=.env scripts/migrate.js --apply"
   },
   "dependencies": {
     "@discordjs/opus": "^0.10.0",
@@ -67,13 +69,15 @@
     "pino": "^10.3.1",
     "pino-pretty": "^13.1.3",
     "pino-roll": "^4.0.0",
-    "systeminformation": "^5.33.1"
+    "systeminformation": "^5.33.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
+    "firebase-admin": "^13.10.0",
     "i18n-unused": "^0.20.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.9.6"

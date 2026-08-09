@@ -1,8 +1,5 @@
-const { getDatabase, ref } = require("firebase/database");
-const {
-  recordMetricsCache,
-  trackedOnValue: onValue,
-} = require("./metricsUtils");
+const { onGuild } = require("../repositories/guild");
+const { recordMetricsCache } = require("./metricsUtils");
 
 const ensureCache = (client) => {
   if (!client.guildSettings) client.guildSettings = new Map();
@@ -37,12 +34,9 @@ const watchGuildData = (client, guild, synchronize) => {
   if (client.temp.listeners.has(listenerKey)) return;
 
   let isInitialSnapshot = true;
-  const guildRef = ref(getDatabase(), `guilds/${guild.id}`);
-  const unsubscribe = onValue(
-    guildRef,
-    (snapshot) => {
-      const guildData = snapshot.exists() ? snapshot.val() : null;
-
+  const unsubscribe = onGuild(
+    guild.id,
+    (guildData) => {
       if (guildData) client.guildSettings.set(guild.id, guildData);
       else client.guildSettings.delete(guild.id);
 

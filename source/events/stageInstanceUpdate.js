@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.StageInstanceUpdate,
@@ -12,10 +12,13 @@ module.exports = {
         ),
       )
       .setDescription(
-        newStageInstance.client.i18n
-          .t("events.stageInstanceUpdate.stage_instance_update")
-          .replace("%s1", oldStageInstance.name)
-          .replace("%s2", newStageInstance.id),
+        newStageInstance.client.i18n.t(
+          "events.stageInstanceUpdate.stage_instance_update",
+          {
+            oldStageName: oldStageInstance.name,
+            newStageId: newStageInstance.id,
+          },
+        ),
       )
       .setTimestamp()
       .setColor("Yellow");

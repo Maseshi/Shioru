@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.ThreadDelete,
@@ -8,9 +8,9 @@ module.exports = {
     const threadDeleteEmbed = new EmbedBuilder()
       .setTitle(thread.client.i18n.t("events.threadDelete.thread_notification"))
       .setDescription(
-        thread.client.i18n
-          .t("events.threadDelete.thread_delete")
-          .replace("%s", thread.name),
+        thread.client.i18n.t("events.threadDelete.thread_delete", {
+          threadName: thread.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

@@ -1,8 +1,6 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const {
-  submitNotification,
-  updateGuildMemberCount,
-} = require("../utils/databaseUtils");
+const { updateGuildMemberCount } = require("../services/guild");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildMemberRemove,

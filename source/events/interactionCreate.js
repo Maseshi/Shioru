@@ -1,8 +1,11 @@
 const { Collection, Events, PermissionsBitField } = require("discord.js");
 const { changeLanguage } = require("../utils/clientUtils");
 const { catchError } = require("../utils/consoleUtils");
-const { fetchLevel, incrementStatistics } = require("../utils/databaseUtils");
+const { fetchLevel } = require("../services/leveling");
+const { incrementStatistics } = require("../services/statistics");
 const { getGuildData } = require("../utils/cacheUtils");
+const { getUserEphemeral } = require("../repositories/user");
+const { enableEphemeralResponses } = require("../utils/interactionUtils");
 
 module.exports = {
   name: Events.InteractionCreate,

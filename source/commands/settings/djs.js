@@ -6,9 +6,8 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
 const { getGuildDjs } = require("../../utils/cacheUtils");
-const { trackedUpdate: update } = require("../../utils/metricsUtils");
+const { updateDjs } = require("../../repositories/guildSettings");
 
 module.exports = {
   permissions: [
@@ -166,10 +165,6 @@ module.exports = {
     const inputRolesName = interaction.options.getRole("name");
     const inputUsersName = interaction.options.getUser("name");
 
-    const djsRef = child(
-      child(ref(getDatabase(), "guilds"), interaction.guild.id),
-      "djs",
-    );
     const configs = {
       djs: getGuildDjs(interaction.client, interaction.guild.id),
     };
@@ -198,7 +193,10 @@ module.exports = {
           );
 
         configs.djs.enable = true;
-        await update(djsRef, { enable: true, toggledAt: new Date() });
+        await updateDjs(interaction.guild.id, {
+          enable: true,
+          toggledAt: new Date(),
+        });
 
         await interaction.reply(
           interaction.client.i18n.t("commands.djs.enable_djs_mode"),
@@ -212,7 +210,10 @@ module.exports = {
           );
 
         configs.djs.enable = false;
-        await update(djsRef, { enable: false, toggledAt: new Date() });
+        await updateDjs(interaction.guild.id, {
+          enable: false,
+          toggledAt: new Date(),
+        });
 
         await interaction.reply(
           interaction.client.i18n.t("commands.djs.disable_djs_mode"),
@@ -228,7 +229,10 @@ module.exports = {
           );
 
         configs.djs.only = inputSet;
-        await update(djsRef, { only: inputSet, editedAt: new Date() });
+        await updateDjs(interaction.guild.id, {
+          only: inputSet,
+          editedAt: new Date(),
+        });
 
         await interaction.reply(
           inputSet
@@ -250,7 +254,7 @@ module.exports = {
               );
 
             configs.djs.roles.push(inputRolesName.id);
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               roles: configs.djs.roles,
             });
@@ -274,7 +278,7 @@ module.exports = {
               configs.djs.roles.indexOf(inputRolesName.id),
               1,
             );
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               roles: configs.djs.roles,
             });
@@ -293,14 +297,14 @@ module.exports = {
               );
 
             configs.djs.roles = [];
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               roles: configs.djs.roles,
             });
 
             if (!configs.djs.roles.length && !configs.djs.users.length) {
               configs.djs.enable = false;
-              await update(djsRef, { enable: false });
+              await updateDjs(interaction.guild.id, { enable: false });
             }
 
             await interaction.reply(
@@ -322,7 +326,7 @@ module.exports = {
               );
 
             configs.djs.users.push(inputUsersName.id);
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               users: configs.djs.users,
             });
@@ -346,7 +350,7 @@ module.exports = {
               configs.djs.users.indexOf(inputUsersName.id),
               1,
             );
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               users: configs.djs.users,
             });
@@ -365,14 +369,14 @@ module.exports = {
               );
 
             configs.djs.users = [];
-            await update(djsRef, {
+            await updateDjs(interaction.guild.id, {
               editedAt: new Date(),
               users: configs.djs.users,
             });
 
             if (!configs.djs.roles.length && !configs.djs.users.length) {
               configs.djs.enable = false;
-              await update(djsRef, { enable: false });
+              await updateDjs(interaction.guild.id, { enable: false });
             }
 
             await interaction.reply(

@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildStickerDelete,
@@ -10,9 +10,9 @@ module.exports = {
         sticker.client.i18n.t("events.stickerDelete.sticker_notification"),
       )
       .setDescription(
-        sticker.client.i18n
-          .t("events.stickerDelete.sticker_delete")
-          .replace("%s", sticker.name),
+        sticker.client.i18n.t("events.stickerDelete.sticker_delete", {
+          stickerName: sticker.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

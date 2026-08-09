@@ -9,8 +9,7 @@ const {
 } = require("discord.js");
 const { join } = require("node:path");
 const { readFileSync } = require("node:fs");
-const { getDatabase, ref } = require("firebase/database");
-const { trackedGet: get } = require("../../utils/metricsUtils");
+const { getStatistics } = require("../../repositories/statistics");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -107,11 +106,10 @@ module.exports = {
       case "stats": {
         await interaction.deferReply();
 
-        const statisticsRef = ref(getDatabase(), "statistics");
-        const statisticsSnapshot = await get(statisticsRef);
+        const statistics = await getStatistics();
 
         const totalCommands = interaction.client.commands.size ?? 0;
-        const totalWorked = statisticsSnapshot.val().commands.size ?? 0;
+        const totalWorked = statistics?.commands?.size ?? 0;
         const totalQueues = interaction.client.player.queues.size ?? 0;
         const totalVoices = interaction.client.player.voices.size ?? 0;
 

@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.ChannelDelete,
@@ -10,9 +10,9 @@ module.exports = {
         channel.client.i18n.t("events.channelDelete.channel_notification"),
       )
       .setDescription(
-        channel.client.i18n
-          .t("events.channelDelete.member_delete_channel")
-          .replace("%s", channel.name),
+        channel.client.i18n.t("events.channelDelete.member_delete_channel", {
+          channelName: channel.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

@@ -1,17 +1,31 @@
 const assert = require("node:assert/strict");
 const { resolve } = require("node:path");
 const test = require("node:test");
-const { Collection, PermissionsBitField } = require("discord.js");
+const {
+  Collection,
+  MessageFlags,
+  MessageFlagsBitField,
+  PermissionsBitField,
+} = require("discord.js");
 const { requireWithMocks } = require("../helpers/requireWithMocks");
 
 const target = resolve(__dirname, "../../source/events/interactionCreate.js");
 const clientUtilsPath = require.resolve("../../source/utils/clientUtils");
 const consoleUtilsPath = require.resolve("../../source/utils/consoleUtils");
-const databaseUtilsPath = require.resolve("../../source/utils/databaseUtils");
+const levelingServicePath = require.resolve("../../source/services/leveling");
+const statisticsServicePath =
+  require.resolve("../../source/services/statistics");
 const cacheUtilsPath = require.resolve("../../source/utils/cacheUtils");
+const userRepositoryPath = require.resolve("../../source/repositories/user");
 
-const setup = ({ guildData = null } = {}) => {
-  const calls = { catchError: [], languages: [], levels: [], statistics: [] };
+const setup = ({ ephemeral = false, guildData = null } = {}) => {
+  const calls = {
+    catchError: [],
+    ephemeralReads: [],
+    languages: [],
+    levels: [],
+    statistics: [],
+  };
   const event = requireWithMocks(target, {
     [clientUtilsPath]: {
       changeLanguage: (_client, locale) => calls.languages.push(locale),
@@ -19,11 +33,19 @@ const setup = ({ guildData = null } = {}) => {
     [consoleUtilsPath]: {
       catchError: async (...arguments_) => calls.catchError.push(arguments_),
     },
-    [databaseUtilsPath]: {
+    [levelingServicePath]: {
       fetchLevel: async (...arguments_) => calls.levels.push(arguments_),
+    },
+    [statisticsServicePath]: {
       incrementStatistics: async (paths) => calls.statistics.push(paths),
     },
     [cacheUtilsPath]: { getGuildData: () => guildData },
+    [userRepositoryPath]: {
+      getUserEphemeral: async (userId) => {
+        calls.ephemeralReads.push(userId);
+        return ephemeral;
+      },
+    },
   });
 
   const warnings = [];

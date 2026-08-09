@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.InviteCreate,
@@ -8,12 +8,12 @@ module.exports = {
     const inviteCreateEmbed = new EmbedBuilder()
       .setTitle(invite.client.i18n.t("events.inviteCreate.invite_notification"))
       .setDescription(
-        invite.client.i18n
-          .t("events.inviteCreate.invite_create")
-          .replace("%s1", invite.url)
-          .replace("%s2", invite.expiresAt)
-          .replace("%s3", invite.maxUses)
-          .replace("%s4", invite.code),
+        invite.client.i18n.t("events.inviteCreate.invite_create", {
+          inviteUrl: invite.url,
+          expiresAt: invite.expiresAt,
+          maxUses: invite.maxUses,
+          inviteCode: invite.code,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

@@ -6,9 +6,8 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
 const { webhookSend } = require("../../utils/clientUtils");
-const { trackedPush: push } = require("../../utils/metricsUtils");
+const { pushIssue } = require("../../repositories/issue");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -75,8 +74,6 @@ module.exports = {
     const inputTitle = interaction.options.getString("title");
     const inputDescription = interaction.options.getString("description") ?? "";
 
-    const issuesRef = ref(getDatabase(), "issues");
-
     const authorUid = interaction.user.id;
     const authorTag = interaction.user.tag;
     const date = new Date();
@@ -108,7 +105,7 @@ module.exports = {
         webhookSend(interaction.client.configs.logger.issues, {
           embeds: [webhookLogEmbed],
         });
-        await push(child(issuesRef, "bugs"), {
+        await pushIssue("bugs", {
           title: inputTitle,
           description: inputDescription,
           user: authorTag,
@@ -149,7 +146,7 @@ module.exports = {
         webhookSend(interaction.client.configs.logger.issues, {
           embeds: [webhookLogEmbed],
         });
-        await push(child(issuesRef, "features"), {
+        await pushIssue("features", {
           title: inputTitle,
           description: inputDescription,
           user: authorTag,

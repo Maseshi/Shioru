@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildBanRemove,
@@ -8,10 +8,10 @@ module.exports = {
     const guildBanRemoveEmbed = new EmbedBuilder()
       .setTitle(ban.client.i18n.t("events.guildBanRemove.guild_notification"))
       .setDescription(
-        ban.client.i18n
-          .t("events.guildBanRemove.member_ban_remove")
-          .replace("%s1", ban.user.id)
-          .replace("%s2", ban.reason),
+        ban.client.i18n.t("events.guildBanRemove.member_ban_remove", {
+          userId: ban.user.id,
+          reason: ban.reason,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

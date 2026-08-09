@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildMembersChunk,
@@ -10,9 +10,9 @@ module.exports = {
         guild.client.i18n.t("events.guildMembersChunk.guild_notification"),
       )
       .setDescription(
-        guild.client.i18n
-          .t("events.guildMembersChunk.guild_members_chunk")
-          .replace("%s", guild.name),
+        guild.client.i18n.t("events.guildMembersChunk.guild_members_chunk", {
+          guildName: guild.name,
+        }),
       )
       .setImage(guild.bannerURL())
       .setTimestamp()

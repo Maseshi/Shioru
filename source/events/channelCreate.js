@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.ChannelCreate,
@@ -10,9 +10,9 @@ module.exports = {
         channel.client.i18n.t("events.channelCreate.channel_notification"),
       )
       .setDescription(
-        channel.client.i18n
-          .t("events.channelCreate.member_create_channel")
-          .replace("%s", channel.id),
+        channel.client.i18n.t("events.channelCreate.member_create_channel", {
+          channelId: channel.id,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

@@ -1,5 +1,18 @@
 {
   "rules": {
+    "meta": {
+      ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      ".write": false,
+      "schemaVersion": {
+        ".validate": "newData.isNumber() && newData.val() >= 1"
+      },
+      "migratedAt": {
+        ".validate": "newData.isString()"
+      },
+      "$other": {
+        ".validate": false
+      }
+    },
     "maintenance": {
       ".read": true,
       ".write": false
@@ -14,29 +27,285 @@
     },
     "statistics": {
       ".read": true,
-      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      "$category": {
+        "$metric": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
     },
     "chat": {
       ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
-      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      ".validate": "newData.hasChildren(['conversations', 'alternatives', 'system'])",
+      "conversations": {
+        "$index": {
+          ".validate": "newData.hasChildren(['prompts', 'replies'])",
+          "prompts": {
+            "$prompt": {
+              ".validate": "newData.isString()"
+            }
+          },
+          "replies": {
+            "$reply": {
+              ".validate": "newData.isString()"
+            }
+          },
+          "script": {
+            ".validate": "newData.isString()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      },
+      "alternatives": {
+        "$index": {
+          ".validate": "newData.isString()"
+        }
+      },
+      "system": {
+        ".validate": "newData.isString()"
+      },
+      "$other": {
+        ".validate": false
+      }
     },
     "issues": {
-      "bugs": {
+      "$type": {
         ".read": false,
-        ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
-      },
-      "features": {
-        ".read": false,
-        ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+        ".write": "($type === 'bugs' || $type === 'features') && auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+        "$issueId": {
+          ".validate": "newData.hasChildren(['title', 'description', 'user', 'uid', 'reportedAt', 'status'])",
+          "title": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "description": {
+            ".validate": "newData.isString()"
+          },
+          "user": {
+            ".validate": "newData.isString()"
+          },
+          "uid": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "reportedAt": {
+            ".validate": "newData.isString()"
+          },
+          "status": {
+            ".validate": "newData.hasChildren(['read', 'close', 'comment'])",
+            "read": {
+              ".validate": "newData.isBoolean()"
+            },
+            "close": {
+              ".validate": "newData.isBoolean()"
+            },
+            "comment": {
+              ".validate": "newData.isBoolean()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
       }
     },
     "users": {
       ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
-      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      "$userId": {
+        ".validate": "newData.hasChildren(['leveling'])",
+        "username": {
+          ".validate": "newData.isString()"
+        },
+        "avatar": {
+          ".validate": "newData.isString()"
+        },
+        "leveling": {
+          ".validate": "newData.hasChildren(['exp', 'level'])",
+          "exp": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "level": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "guildLeveling": {
+          "$guildId": {
+            ".validate": "newData.hasChildren(['exp', 'level'])",
+            "exp": {
+              ".validate": "newData.isNumber() && newData.val() >= 0"
+            },
+            "level": {
+              ".validate": "newData.isNumber() && newData.val() >= 0"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "guilds": {
+          "$guildId": {
+            ".validate": "newData.isString() || newData.val() === true"
+          }
+        },
+        "settings": {
+          ".validate": "newData.hasChildren(['ephemeral'])",
+          "ephemeral": {
+            ".validate": "newData.isBoolean()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
     },
     "guilds": {
       ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
-      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)"
+      ".write": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
+      "$guildId": {
+        ".validate": "newData.hasChildren(['joinedAt', 'createdAt', 'description', 'iconURL', 'preferredLocale', 'memberCount', 'name', 'verified'])",
+        "joinedAt": { ".validate": "newData.isString()" },
+        "createdAt": { ".validate": "newData.isString()" },
+        "description": { ".validate": "newData.isString()" },
+        "iconURL": { ".validate": "newData.isString()" },
+        "preferredLocale": { ".validate": "newData.isString()" },
+        "memberCount": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "name": { ".validate": "newData.isString()" },
+        "verified": { ".validate": "newData.isBoolean()" },
+        "language": {
+          ".validate": "newData.hasChildren(['type', 'locale'])",
+          "type": {
+            ".validate": "newData.isString() && (newData.val() === 'USER' || newData.val() === 'GUILD' || newData.val() === 'CUSTOM')"
+          },
+          "locale": { ".validate": "newData.isString()" },
+          "$other": { ".validate": false }
+        },
+        "antibot": {
+          ".validate": "newData.hasChildren(['enable', 'enabledAt', 'enabledBy', 'all'])",
+          "enable": { ".validate": "newData.isBoolean()" },
+          "enabledAt": { ".validate": "newData.isString()" },
+          "enabledBy": { ".validate": "newData.isString()" },
+          "bots": {
+            "$index": { ".validate": "newData.isString()" }
+          },
+          "all": { ".validate": "newData.isBoolean()" },
+          "$other": { ".validate": false }
+        },
+        "captcha": {
+          ".validate": "newData.hasChildren(['enable', 'role', 'text'])",
+          "enable": { ".validate": "newData.isBoolean()" },
+          "role": { ".validate": "newData.isString()" },
+          "text": { ".validate": "newData.isString()" },
+          "$other": { ".validate": false }
+        },
+        "afk": {
+          "$userId": {
+            ".validate": "newData.hasChildren(['message', 'nickname'])",
+            "message": { ".validate": "newData.isString()" },
+            "nickname": { ".validate": "newData.isString()" },
+            "$other": { ".validate": false }
+          }
+        },
+        "chat": {
+          ".validate": "newData.hasChildren(['conversations', 'alternatives', 'system'])",
+          "conversations": {
+            "$index": {
+              ".validate": "newData.hasChildren(['prompts', 'replies'])",
+              "prompts": {
+                "$prompt": { ".validate": "newData.isString()" }
+              },
+              "replies": {
+                "$reply": { ".validate": "newData.isString()" }
+              },
+              "script": { ".validate": "newData.isString()" },
+              "$other": { ".validate": false }
+            }
+          },
+          "alternatives": {
+            "$index": { ".validate": "newData.isString()" }
+          },
+          "system": { ".validate": "newData.isString()" },
+          "$other": { ".validate": false }
+        },
+        "djs": {
+          ".validate": "newData.hasChildren(['enable', 'only'])",
+          "enable": { ".validate": "newData.isBoolean()" },
+          "toggledAt": { ".validate": "newData.isString()" },
+          "editedAt": { ".validate": "newData.isString()" },
+          "only": { ".validate": "newData.isBoolean()" },
+          "roles": {
+            "$index": { ".validate": "newData.isString()" }
+          },
+          "users": {
+            "$index": { ".validate": "newData.isString()" }
+          },
+          "$other": { ".validate": false }
+        },
+        "notification": {
+          "$eventName": {
+            ".validate": "newData.hasChildren(['enable', 'channelId'])",
+            "enable": { ".validate": "newData.isBoolean()" },
+            "channelId": { ".validate": "newData.isString()" },
+            "toggledAt": { ".validate": "newData.isString()" },
+            "enabledAt": { ".validate": "newData.isString()" },
+            "content": { ".validate": "newData.isString()" },
+            "embed": {
+              ".validate": "newData.hasChildren(['createdAt', 'createdBy', 'author', 'color', 'title', 'url', 'description', 'thumbnail', 'image', 'fields', 'footer'])",
+              "createdAt": { ".validate": "newData.isString()" },
+              "createdBy": { ".validate": "newData.isString()" },
+              "editor": {
+                "$index": {
+                  ".validate": "newData.hasChildren(['userId', 'editedAt'])",
+                  "userId": { ".validate": "newData.isString()" },
+                  "editedAt": { ".validate": "newData.isString()" },
+                  "$other": { ".validate": false }
+                }
+              },
+              "author": {
+                ".validate": "newData.hasChildren(['name', 'url', 'iconURL'])",
+                "name": { ".validate": "newData.isString()" },
+                "url": { ".validate": "newData.isString()" },
+                "iconURL": { ".validate": "newData.isString()" },
+                "$other": { ".validate": false }
+              },
+              "color": { ".validate": "newData.isString()" },
+              "title": { ".validate": "newData.isString()" },
+              "url": { ".validate": "newData.isString()" },
+              "description": { ".validate": "newData.isString()" },
+              "thumbnail": { ".validate": "newData.isString()" },
+              "timestamp": { ".validate": "newData.isString()" },
+              "image": { ".validate": "newData.isString()" },
+              "fields": {
+                "$index": {
+                  ".validate": "newData.hasChildren(['name', 'value', 'inline'])",
+                  "name": { ".validate": "newData.isString()" },
+                  "value": { ".validate": "newData.isString()" },
+                  "inline": { ".validate": "newData.isBoolean()" },
+                  "$other": { ".validate": false }
+                }
+              },
+              "footer": {
+                ".validate": "newData.hasChildren(['text', 'iconURL'])",
+                "text": { ".validate": "newData.isString()" },
+                "iconURL": { ".validate": "newData.isString()" },
+                "$other": { ".validate": false }
+              },
+              "$other": { ".validate": false }
+            },
+            "$other": { ".validate": false }
+          }
+        },
+        "$other": { ".validate": false }
+      }
     },
     "leaderboards": {
       "$guildId": {

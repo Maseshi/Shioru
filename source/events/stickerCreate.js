@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder, StickerFormatType } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildStickerCreate,
@@ -10,9 +10,9 @@ module.exports = {
         sticker.client.i18n.t("events.stickerCreate.sticker_notification"),
       )
       .setDescription(
-        sticker.client.i18n
-          .t("events.stickerCreate.sticker_create")
-          .replace("%s", sticker.name),
+        sticker.client.i18n.t("events.stickerCreate.sticker_create", {
+          stickerName: sticker.name,
+        }),
       )
       .setThumbnail(
         sticker.format !== StickerFormatType.Lottie ? sticker.url : "",

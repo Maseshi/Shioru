@@ -5,7 +5,8 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { fetchLevel, submitNotification } = require("../../utils/databaseUtils");
+const { fetchLevel } = require("../../services/leveling");
+const { submitNotification } = require("../../services/notification");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -56,11 +57,23 @@ module.exports = {
       case "set": {
         const memberAvatar = inputSetMember.avatarURL();
         const memberUsername = inputSetMember.username;
+        const data = await fetchLevel(interaction.client, interaction, "PUT", {
+          member: inputSetMember,
+          amount: inputSetAmount,
+          type: "exp",
+        });
+        const { exp, level, status } = data;
+
+        if (status === "error")
+          return await interaction.reply(
+            interaction.client.i18n.t("commands.exp.error"),
+          );
+
         const setEXPEmbed = new EmbedBuilder()
           .setDescription(
-            interaction.client.i18n
-              .t("commands.exp.exp_was_changed")
-              .replace("%s", memberUsername),
+            interaction.client.i18n.t("commands.exp.exp_was_changed", {
+              memberName: memberUsername,
+            }),
           )
           .setColor("Blue")
           .setThumbnail(memberAvatar)
@@ -77,20 +90,6 @@ module.exports = {
               value: "```" + exp + "```",
             },
           ]);
-
-        const data = await fetchLevel(interaction.client, interaction, "PUT", {
-          member: inputSetMember,
-          amount: inputSetAmount,
-          type: "exp",
-        });
-        const exp = data.exp;
-        const level = data.level;
-        const status = data.status;
-
-        if (status === "error")
-          return await interaction.reply(
-            interaction.client.i18n.t("commands.exp.error"),
-          );
 
         const notified = await submitNotification(
           interaction.client,

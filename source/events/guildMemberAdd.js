@@ -10,11 +10,8 @@ const {
   TextInputStyle,
 } = require("discord.js");
 const { CaptchaGenerator } = require("captcha-canvas");
-const {
-  submitNotification,
-  initializeData,
-  updateGuildMemberCount,
-} = require("../utils/databaseUtils");
+const { initializeData, updateGuildMemberCount } = require("../services/guild");
+const { submitNotification } = require("../services/notification");
 const { catchError } = require("../utils/consoleUtils");
 const { getGuildData } = require("../utils/cacheUtils");
 
@@ -94,9 +91,9 @@ module.exports = {
         .setColor("Blue")
         .setImage("attachment://captcha.png")
         .setTitle(
-          member.client.i18n
-            .t("events.guildMemberAdd.solve_the_captcha")
-            .replace("%s", member.guild.name),
+          member.client.i18n.t("events.guildMemberAdd.solve_the_captcha", {
+            guildName: member.guild.name,
+          }),
         )
         .setDescription(
           member.client.i18n.t("events.guildMemberAdd.use_button_below"),
@@ -182,9 +179,10 @@ module.exports = {
 
             await captchaUser.roles.add(role);
             await interaction.reply({
-              content: member.client.i18n
-                .t("events.guildMemberAdd.captcha_success")
-                .replace("%s", captchaGuild.name),
+              content: member.client.i18n.t(
+                "events.guildMemberAdd.captcha_success",
+                { guildName: captchaGuild.name },
+              ),
               ephemeral: true,
             });
           } catch (error) {

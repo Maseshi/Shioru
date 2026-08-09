@@ -5,7 +5,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { fetchLevel } = require("../../utils/databaseUtils");
+const { fetchLevel } = require("../../services/leveling");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],

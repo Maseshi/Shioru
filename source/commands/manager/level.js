@@ -5,7 +5,8 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { fetchLevel, submitNotification } = require("../../utils/databaseUtils");
+const { fetchLevel } = require("../../services/leveling");
+const { submitNotification } = require("../../services/notification");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -68,11 +69,23 @@ module.exports = {
       case "set": {
         const memberAvatar = inputMember.avatarURL();
         const memberUsername = inputMember.username;
+        const data = await fetchLevel(interaction.client, interaction, "PUT", {
+          member: inputMember,
+          amount: inputAmount,
+          type: "level",
+        });
+        const { exp, level, status } = data;
+
+        if (status === "error")
+          return await interaction.reply(
+            interaction.client.i18n.t("commands.level.set_error"),
+          );
+
         const setLevelEmbed = new EmbedBuilder()
           .setDescription(
-            interaction.client.i18n
-              .t("commands.level.level_was_changed")
-              .replace("%s", memberUsername),
+            interaction.client.i18n.t("commands.level.level_was_changed", {
+              memberName: memberUsername,
+            }),
           )
           .setColor("Blue")
           .setThumbnail(memberAvatar)
@@ -82,27 +95,13 @@ module.exports = {
           .addFields([
             {
               name: interaction.client.i18n.t("commands.level.level"),
-              value: "```" + exp + "```",
+              value: "```" + level + "```",
             },
             {
               name: interaction.client.i18n.t("commands.level.experience"),
-              value: "```" + level + "```",
+              value: "```" + exp + "```",
             },
           ]);
-
-        const data = await fetchLevel(interaction.client, interaction, "PUT", {
-          member: inputMember,
-          amount: inputAmount,
-          type: "level",
-        });
-        const exp = data.exp;
-        const level = data.level;
-        const status = data.status;
-
-        if (status === "error")
-          return await interaction.reply(
-            interaction.client.i18n.t("commands.level.set_error"),
-          );
 
         const notified = submitNotification(
           interaction.client,

@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.ChannelUpdate,
@@ -10,10 +10,10 @@ module.exports = {
         newChannel.client.i18n.t("events.channelUpdate.channel_notification"),
       )
       .setDescription(
-        newChannel.client.i18n
-          .t("events.channelUpdate.member_update_channel")
-          .replace("%s1", oldChannel.name)
-          .replace("%s2", newChannel.id),
+        newChannel.client.i18n.t("events.channelUpdate.member_update_channel", {
+          oldChannelName: oldChannel.name,
+          newChannelId: newChannel.id,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");
