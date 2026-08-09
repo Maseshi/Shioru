@@ -40,6 +40,33 @@ const ensureUser = async (userId, profile = {}) => {
 const updateUserProfile = (userId, profile) =>
   update(getUserRef(userId), UserProfileSchema.parse(profile));
 
+const syncUserProfile = async (cache, userId, profile = {}) => {
+  if (!cache.userProfiles) cache.userProfiles = new Map();
+  if (!cache.schemaUsers) cache.schemaUsers = new Set();
+
+  const profileSignature = `${profile.username ?? ""}:${profile.avatar ?? ""}`;
+  const profileUpdates = UserProfileSchema.parse(
+    Object.fromEntries(
+      Object.entries(profile).filter(([, value]) => Boolean(value)),
+    ),
+  );
+
+  if (!cache.schemaUsers.has(userId)) {
+    await ensureUser(userId, profileUpdates);
+    cache.schemaUsers.add(userId);
+    cache.userProfiles.set(userId, profileSignature);
+    return;
+  }
+
+  if (
+    cache.userProfiles.get(userId) !== profileSignature &&
+    Object.keys(profileUpdates).length
+  ) {
+    await updateUserProfile(userId, profileUpdates);
+    cache.userProfiles.set(userId, profileSignature);
+  }
+};
+
 const setUserEphemeral = async (userId, ephemeral) => {
   const result = await runTransaction(getUserRef(userId), (currentUser) =>
     createUser({
@@ -132,5 +159,6 @@ module.exports = {
   setUserLeveling,
   setUserLevelingValue,
   setUserEphemeral,
+  syncUserProfile,
   updateUserProfile,
 };
