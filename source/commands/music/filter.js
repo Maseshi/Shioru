@@ -107,10 +107,13 @@ module.exports = {
             interaction.client.i18n.t("commands.filter.available_filter"),
           )
           .setDescription(
-            interaction.client.i18n
-              .t("commands.filter.available_filter_description")
-              .replace("%s1", filterList.length)
-              .replace("%s2", filterList.join(", ")),
+            interaction.client.i18n.t(
+              "commands.filter.available_filter_description",
+              {
+                filterCount: filterList.length,
+                filterNames: filterList.join(", "),
+              },
+            ),
           )
           .setColor("Blue"),
       ],
@@ -165,16 +168,16 @@ module.exports = {
         if (!filterString.length) return await interaction.reply(filterEmbed);
         if (checkFilters(filterString).invalid.length > 0)
           return await interaction.reply(
-            interaction.client.i18n
-              .t("commands.filter.unknown_filter")
-              .replace("%s", checkFilters(filterString).invalid.join(", ")),
+            interaction.client.i18n.t("commands.filter.unknown_filter", {
+              unknownFilters: checkFilters(filterString).invalid.join(", "),
+            }),
           );
 
         await queue.filters.add(filterString);
         await interaction.reply(
-          interaction.client.i18n
-            .t("commands.filter.add_filter")
-            .replace("%s", filterString.join(", ")),
+          interaction.client.i18n.t("commands.filter.add_filter", {
+            filterNames: filterString.join(", "),
+          }),
         );
         break;
       }
@@ -182,16 +185,16 @@ module.exports = {
         if (!filterString.length) return await interaction.reply(filterEmbed);
         if (checkFilters(filterString).invalid.length > 0)
           return await interaction.reply(
-            interaction.client.i18n
-              .t("commands.filter.unknown_filter")
-              .replace("%s", checkFilters(filterString).invalid.join(", ")),
+            interaction.client.i18n.t("commands.filter.unknown_filter", {
+              unknownFilters: checkFilters(filterString).invalid.join(", "),
+            }),
           );
 
         await queue.filters.remove(filterString);
         await interaction.reply(
-          interaction.client.i18n
-            .t("commands.filter.remove_filter")
-            .replace("%s", filterString.join(", ")),
+          interaction.client.i18n.t("commands.filter.remove_filter", {
+            filterNames: filterString.join(", "),
+          }),
         );
         break;
       }
@@ -199,16 +202,16 @@ module.exports = {
         if (!filterString.length) return await interaction.reply(filterEmbed);
         if (checkFilters(filterString).invalid.length > 0)
           return await interaction.reply(
-            interaction.client.i18n
-              .t("commands.filter.unknown_filter")
-              .replace("%s", checkFilters(filterString).invalid.join(", ")),
+            interaction.client.i18n.t("commands.filter.unknown_filter", {
+              unknownFilters: checkFilters(filterString).invalid.join(", "),
+            }),
           );
 
         await queue.filters.set(filterString);
         await interaction.reply(
-          interaction.client.i18n
-            .t("commands.filter.set_filter")
-            .replace("%s", filterString.join(", ")),
+          interaction.client.i18n.t("commands.filter.set_filter", {
+            filterNames: filterString.join(", "),
+          }),
         );
         break;
       }
@@ -218,10 +221,13 @@ module.exports = {
             interaction.client.i18n.t("commands.filter.available_filter"),
           )
           .setDescription(
-            interaction.client.i18n
-              .t("commands.filter.available_filter_description")
-              .replace("%s1", filterList.length)
-              .replace("%s2", filterList.join(", ")),
+            interaction.client.i18n.t(
+              "commands.filter.available_filter_description",
+              {
+                filterCount: filterList.length,
+                filterNames: filterList.join(", "),
+              },
+            ),
           )
           .setColor("Green");
 
@@ -240,10 +246,10 @@ module.exports = {
           )
           .setDescription(
             filtersSize
-              ? interaction.client.i18n
-                  .t("commands.filter.list_filter_description")
-                  .replace("%s1", filtersSize)
-                  .replace("%s2", filtersName)
+              ? interaction.client.i18n.t(
+                  "commands.filter.list_filter_description",
+                  { filterCount: filtersSize, filterNames: filtersName },
+                )
               : interaction.client.i18n.t(
                   "commands.filter.list_filter_description_empty",
                 ),

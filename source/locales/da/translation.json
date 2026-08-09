@@ -1,1037 +1,1037 @@
 {
-	"commands": {
-		"about": {
-			"commands": "คำสั่ง",
-			"connection": "เชื่อมต่อ",
-			"copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-			"guilds": "กิลด์",
-			"members": "สมาชิก",
-			"my_personal": "ข้อมูลส่วนตัวของฉัน",
-			"my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
-			"public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
-			"shards": "ชาร์ด",
-			"stats": "📊 สถิติ",
-			"worked": "ทำงาน"
-		},
-		"activities": {
-			"can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
-			"do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
-			"join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
-			"user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
-		},
-		"afk": {
-			"currently_afk": "❎ Nu er du AFK",
-			"currently_not_afk": "❎ Du er ikke AFK lige nu.",
-			"now_afk": "💤 Nu er du AFK, skriv en besked eller /afk fjern for at afslutte AFK-tilstand.",
-			"now_not_afk": "🔙 Din AFK-status er blevet deaktiveret."
-		},
-		"anime": {
-			"age_rating_guide": "เรท",
-			"anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
-			"auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
-			"choose_title": "เลือกเรื่องที่ต้องการ",
-			"data_not_found": "❎ Jeg har ikke fundet denne historie. Lad os tjekke det ud. Se, måske er der virkelig ikke sådan noget?",
-			"english_name": "ชื่ออังกฤษ",
-			"episode_count": "จำนวนตอน",
-			"in_progress": "i gang",
-			"japan_name": "ชื่อญี่ปุ่น",
-			"learn_more": "ดูข้อมูลเพิ่มเติม",
-			"name": "ชื่อ",
-			"popularity_rank": "อันดับความนิยม",
-			"rating_rank": "อันดับการให้คะแนน",
-			"release_date": "วันที่ฉาย",
-			"selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
-			"similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
-			"status": "สถานะ",
-			"subtype": "หมวดหมู่",
-			"synopsis": "เรื่องย่อ",
-			"trailer": "ตัวอย่าง",
-			"undefined": "udefineret"
-		},
-		"antibot": {
-			"antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
-			"antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
-			"currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
-			"enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
-		},
-		"ask": {
-			"can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
-			"key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
-		},
-		"attachment": {
-			"sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"automod": {
-			"flagged_words_name": "blokere bandeord seksuelt indhold og fornærmelser",
-			"flagged_words_success": "✅ Dine AutoMod-regler er blevet oprettet, alle disse ord vil blive undertrykt.",
-			"keyword_name": "Undgå at ord %sbruges.",
-			"keyword_success": "✅ Din AutoMod-regel er blevet oprettet, alle meddelelser, der indeholder ordet %s , vil blive slettet.",
-			"mention_spam_name": "Undgå spam når det kommer til",
-			"mention_spam_success": "✅ Din AutoMod-regel er oprettet, spam ved flere omtaler vil blive undertrykt.",
-			"prevent_message": "Denne besked er beskyttet.",
-			"spam_messages_name": "blokere beskedspam",
-			"spam_messages_success": "✅ Dine AutoMod-regler er blevet oprettet, beskedspam vil blive undertrykt."
-		},
-		"autoplay": {
-			"no_queue": "❎ Hmm...men sangen er ikke begyndt at spille endnu?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"off": "📻 Autoplay-tilstand er slået fra",
-			"on": "📻 Automatisk afspilningstilstand slået til"
-		},
-		"ban": {
-			"banned_for_time": "%s1 forbudt i **%s2** dage",
-			"is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
-			"member_has_banned": "❎ Sådanne medlemmer er allerede forbudt. Føl dig godt tilpas.",
-			"members_have_a_higher_role": "❎ Du kan ikke forbyde nogen med en højere rolle end dig.",
-			"members_have_a_higher_role_than_me": "❎ Jeg kan ikke udelukke det medlem. fordi han har en højere rolle end mig",
-			"no_one_gets_banned": "❎ Ingen på serveren er i øjeblikket udelukket.",
-			"no_reason": "Medlemmer, der forbudte, gav ingen grund.",
-			"permanently_banned": "%s forbudt permanent",
-			"reason_for_ban": "Udelukket af: %s1\nÅrsag: %s2",
-			"reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-			"this_user_not_banned": "❎ Øh.. det medlem blev ikke forbudt. Lad os se nogle fantastiske nye søgeord en gang til...",
-			"unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
-			"unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
-			"user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
-			"user_not_found": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen."
-		},
-		"captcha": {
-			"captcha_setup_success": "✅ Captcha-systemet er blevet konfigureret og aktiveret med succes.",
-			"currently_disable": "ℹ️ Captcha er nu lukket.",
-			"currently_enable": "ℹ️ Captcha er nu aktiveret.",
-			"disabled_captcha": "✅ captcha er blevet deaktiveret",
-			"enabled_captcha": "✅ captcha aktiveret med succes",
-			"need_to_setup_before": "❎ Indstil captcha før brug ved at bruge kommandoen /captcha setup."
-		},
-		"covid": {
-			"active": "aktiv",
-			"active_per_one_million": "aktiv pr. 1 mio",
-			"backend_issue": "❎ Der ser ud til at være et problem på informantens side. Prøv venligst igen næste gang.",
-			"cases_per_one_million": "Patienter pr. 1 mio",
-			"cases_today": "denne patient",
-			"cases_total": "alle patienter",
-			"country_not_found": "❎ Umm.. Jeg kan ikke finde oplysningerne om det land, du har angivet.",
-			"critical_per_one_million": "kritisk periode pr. 1 mio",
-			"critical_stage": "kritisk periode",
-			"deaths_today": "døde i dag",
-			"deaths_total": "alle døde",
-			"one_case_per_people": "per patient",
-			"one_death_per_people": "død per person",
-			"one_test_per_people": "Test pr person",
-			"population": "befolkning",
-			"recovered": "væk",
-			"recovered_per_one_million": "Tabt per 1 mio",
-			"tests": "prøve",
-			"tests_per_one_million": "Tester pr. 1 mio",
-			"updated_on": "Seneste opdatering %s",
-			"when": "hvornår"
-		},
-		"crosspost": {
-			"can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
-		},
-		"dead": {
-			"suicide": "%s at begå selvmord 💔 hvil i fred"
-		},
-		"delete": {
-			"can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
-		},
-		"djs": {
-			"added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
-			"currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
-			"currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
-			"deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
-			"manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
-			"music_djs": "🎼 การควบคุมเพลง",
-			"only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
-			"role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
-			"role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
-			"user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
-		},
-		"donate": {
-			"thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
-		},
-		"eat": {
-			"already_eaten": "%s1 har spist %s2 i maven",
-			"do_not_eat_me": "Jeg.. Jeg er lidt lille. m.. ikke godt at spise..."
-		},
-		"eight_ball": {
-			"answer": "svar",
-			"game": "🎱 8-bold spil",
-			"question": "spørgsmål",
-			"risk": "Brug dit held på spørgsmål for at få svar.",
-			"roll_ball": "Rul bolden!!"
-		},
-		"embed": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
-			"embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
-			"is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
-			"message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
-			"suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
-			"unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
-		},
-		"emoji": {
-			"deleted_emoji": "✅ **%s** Emoji er blevet slettet.",
-			"edited_emoji": "%s emoji rettet",
-			"uploading_you_emoji": "📤 Uploader din emoji...",
-			"you_emoji_is_ready": "%s Din emoji er klar. Lad os prøve det!!"
-		},
-		"emojify": {
-			"can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
-		},
-		"encoder": {
-			"decode_after": "หลังถอดรหัส",
-			"decode_before": "ก่อนถอดรหัส",
-			"decode_message": "🔓 ถอดรหัสข้อความ",
-			"decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
-			"encode_after": "หลังเข้ารหัส",
-			"encode_before": "ก่อนเข้ารหัส",
-			"encode_message": "🔒 เข้ารหัสข้อความ",
-			"encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
-		},
-		"enlarge": {
-			"emoji_not_found": "❎ Det ser ud til, at emojien mangler, eller det er måske ikke en emoji."
-		},
-		"eval": {
-			"result": "🔭 ผลการทำงาน"
-		},
-		"exp": {
-			"error": "❎ Kan ikke indstille oplevelsen for sådanne medlemmer. Prøv igen senere.",
-			"experience": "Erfaringspoint (Exp)",
-			"exp_was_changed": "%s akkumuleret alle erfaringsniveauer har:",
-			"level": "Niveau",
-			"notification_complete": "✅ Opsætning er færdig...",
-			"set_by_staff": "Din oplevelse er fastsat af teamet på denne server.",
-			"success": "✅ Opsætning er færdig..."
-		},
-		"filter": {
-			"add_filter": "🎼 Tilføj det påkrævede lydformat for at være **%s** allerede.",
-			"available_filter": "Tilgængelige filterformater",
-			"available_filter_description": "Tilpas din musik ved at bruge disse %s1 formater ```%s2```",
-			"clear_filter": "💨 Alle lydformater er blevet ryddet. Nu bliver det et normalt lydformat.",
-			"list_filter_description": "Der er i øjeblikket aktive mønstre i denne kø: %s1 mønstre\n```%s2```",
-			"list_filter_description_empty": "```Der er ikke noget lydformat, der bruges i øjeblikket.```",
-			"list_filter_title": "Det lydformat, der bruges i øjeblikket",
-			"no_queue": "❎ Der afspilles ingen sang i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"remove_filter": "🗑️ Lydformat **%s** er blevet fjernet.",
-			"set_filter": "🎼 Indstil foretrukket lydformat til **%s**",
-			"sound_filtering": "❓ Vil du ændre lyden af din musik?",
-			"unknown_filter": "❎ Umm.. Jeg kender ikke formatet på lyden `%s`, du kan tjekke det ved at bruge **tilgængelig** eller **ava**?",
-			"unknown_input_option": "❓ Du kan angive følgende parametre: tilføje, fjerne, indstille, tilgængelig, liste, slette."
-		},
-		"games": {
-			"accept": "ยอมรับ",
-			"caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
-			"click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
-			"click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
-			"click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
-			"correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
-			"correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
-			"experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
-			"find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
-			"fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
-			"forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
-			"game_over": "คุณแพ้แล้ว",
-			"game_reject": "ปฏิเสธคำขอ",
-			"game_request": "คำขอเกม",
-			"incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
-			"incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
-			"invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
-			"no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
-			"no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
-			"option_one": "ตัวเลือกที่ 1",
-			"option_two": "ตัวเลือกที่ 2",
-			"paper": "กระดาษ",
-			"player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
-			"player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
-			"player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
-			"player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
-			"player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
-			"player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
-			"player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
-			"player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_pick": "คุณได้เลือก {{emoji}}",
-			"player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
-			"player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
-			"player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
-			"player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
-			"player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
-			"player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
-			"player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
-			"player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"reject": "ปฏิเสธ",
-			"remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
-			"rock": "หิน",
-			"scissors": "กรรไกร",
-			"status": "สถานะ",
-			"stop": "หยุด",
-			"tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
-			"turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
-			"want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
-			"want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
-			"words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
-		},
-		"guild": {
-			"available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "information om hvornår",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "ingen",
-			"none": "ingen",
-			"not_ready": "ikke klar",
-			"not_set": "ไม่ได้ตั้ง",
-			"ready": "parat",
-			"server_info": "🗄 Detaljeret serverinformation",
-			"server_info_description": "Detaljerede serveroplysninger Hvilket er baseret på data fra Discord.",
-			"unknown": "Ved ikke",
-			"yes": "Ja"
-		},
-		"help": {
-			"ask_for_help": "ขอความช่วยเหลือ",
-			"can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
-			"choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
-			"choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
-			"choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
-			"command_category": "**หมวดหมู่**: {{category}}",
-			"command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"command_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"command_description": "**คำอธิบาย**: {{description}}",
-			"command_subcommand": "**คำสั่งย่อย**:",
-			"command_usage": "**วิธีใช้งาน**:",
-			"command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"context_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
-			"context_page": "บริบท",
-			"context_type": "**ประเภท**: {{type}}",
-			"context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"cooldown_time": "{{cooldown}} วินาที",
-			"developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
-			"fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
-			"general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
-			"general_page": "คู่มือเริ่มต้น",
-			"greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
-			"info": "> **ℹ️ หมายเหตุ**",
-			"information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
-			"manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
-			"me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
-			"messages_category": "หมวดหมู่ของคำสั่งข้อความ",
-			"music_category": "หมวดหมู่ของคำสั่งเพลง",
-			"none": "ingen",
-			"other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
-			"refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
-			"remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
-			"select_page": "เลือกหน้าของเมนู",
-			"settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
-			"start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
-			"symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
-			"timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
-			"tips": "> **💡 เคล็ดลับ**",
-			"utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
-		},
-		"impersonate": {
-			"member_not_found": "❎ Kan ikke finde sådanne medlemmer på denne server.",
-			"success": "✅ <@%s> Meddelelsen er oprettet!"
-		},
-		"invite": {
-			"can_not_create_invite_link": "❎ Kan ikke generere invitationslink Prøv igen.",
-			"membership_invitation_card": "medlems invitationskort",
-			"this_product_is_free": "Dette produkt er gratis, må ikke videresælges."
-		},
-		"issues": {
-			"bug_sending": "📨 Okay.. lige et øjeblik Giv mig et øjeblik til at sende et brev til udvikleren...",
-			"bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
-			"feature_sending": "📨 Okay.. lige et øjeblik Giv mig et øjeblik til at sende et brev til udvikleren...",
-			"feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
-		},
-		"join": {
-			"already_joined": "❎ Øh..men jeg er her nu?",
-			"another_player_is_playing": "🚫 Du kan ikke bruge denne ordre i øjeblikket. fordi der er andre medlemmer, der spiller musik",
-			"channel_joined": "✅ Jeg er allerede i kanalen <#%s>...",
-			"joined": "▶️ Nu er jeg allerede i kanalen <#%s>.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Du skal først tilslutte dig kanalen. Ellers ved jeg ikke hvilket felt =3="
-		},
-		"jump": {
-			"can_not_jump": "❎ Det ser ud til, at der slet ikke findes et sådant kønummer. Tjek venligst igen.",
-			"jumped": "➿ Hop allerede til ny sang i kø nummer %s.",
-			"no_queue": "❎ Der er ingen sang, jeg spiller i øjeblikket. kan ikke krydse",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Kun ejeren af køen kan ændre den."
-		},
-		"kick": {
-			"can_not_find_user": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen.",
-			"kicked_out": "%s smidt ud",
-			"members_have_a_higher_role": "❎ Du kan ikke sparke folk, der er højere end dig.",
-			"members_have_a_higher_role_than_me": "❎ Jeg kan ikke sparke det medlem. fordi han har en højere rolle end mig",
-			"no_reason": "Medlemmer, der sparkede, gav ingen grund.",
-			"reason_for_kick": "Sparket af: %s1\nÅrsag: %s2"
-		},
-		"kill": {
-			"do_not_kill_me": "❎ Du vil gøre sådan noget.. Ikke med mig, haha...",
-			"killed": "%s1 har allerede dræbt dig %s2 🔪"
-		},
-		"language": {
-			"already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
-			"changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
-			"changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
-			"description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
-			"language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
-			"support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
-			"title": "🌐 Sprog"
-		},
-		"leader": {
-			"leveling_detail": "Erfaring: %s1, Karakter: %s2",
-			"no_info": "❎ Der er ingen medlemmer på denne server endnu. der har oplevelsesværdi",
-			"server_rank": "Denne servers niveaurangering",
-			"server_rank_description": "1 af de 10 bedste medlemmer på denne server. som kan samle flest af deres egne niveauer, i rækkefølge som følger",
-			"server_rank_tips": "Tip: Chatter med andre medlemmer vil få flere niveauer"
-		},
-		"leave": {
-			"another_player_is_playing": "🚫 Du kan ikke bruge denne ordre i øjeblikket. fordi der er andre medlemmer, der spiller musik",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_any_channel": "❎ Nu er jeg ikke på nogen kanal endnu...",
-			"now_leave": "◀️ Jeg er ude af den nuværende kanal."
-		},
-		"level": {
-			"delete_error": "❎ Kan slet ikke finde denne bruger.",
-			"delete_success": "✅ Erfaringsniveauet for dette medlems er blevet slettet!",
-			"deleting": "📁 Sletning af erfaringsniveaudata for dette medlem.",
-			"experience": "Erfaringspoint (Exp)",
-			"level": "Niveau",
-			"level_was_changed": "%s akkumuleret alle erfaringsniveauer har:",
-			"notification_complete": "✅ Opsætning er færdig...",
-			"set_by_staff": "Din klasse er sat af teamet på denne server.",
-			"set_error": "❎ Kan ikke indstille niveauet for sådanne medlemmer. Prøv igen senere.",
-			"set_success": "✅ Opsætning er færdig...",
-			"user_current_no_level": "❎ Sådanne medlemmer har ikke et klassetrin."
-		},
-		"leveling": {
-			"bot_do_not_have_level": "❎ Bots vil ikke have niveauer, inklusive mig.",
-			"experience": "Erfaringspoint (Exp)",
-			"level": "Niveau",
-			"user_no_data": "💨 Hmm... Dette medlem har ikke et niveau og erfaring.",
-			"your_experience": "Din erfaring"
-		},
-		"logs": {
-			"attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
-			"empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
-			"empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
-			"file_has_been_deleted": "✅ **%s** allerede slettet",
-			"file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
-			"found_file": "Fundet %s1 poster af filer:\n```%s2```",
-			"only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
-		},
-		"lyrics": {
-			"can_not_find_lyrics": "Ingen sangtekster fundet for %s.",
-			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
-			"playing_lyrics": "📋 Teksten til den sang, der afspilles i øjeblikket"
-		},
-		"meme": {
-			"can_not_fetch": "Det lykkedes ikke at hente meme. Prøv igen.",
-			"meme_not_found": "Der blev ikke fundet nogen meme af typen, der matcher %s."
-		},
-		"message": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"minecraft": {
-			"address": "adresse",
-			"do_not_have": "har ikke",
-			"ip": "IP-adresse",
-			"last_check": "sidst tjekket",
-			"maximum_player_count": "Maksimalt antal spillere",
-			"motd": "Beskrivelse",
-			"player_in_server": "server spillere",
-			"port": "Havn",
-			"server_available": "🟢 Denne server er i øjeblikket åben.",
-			"server_unavailable": "🔴 Denne server er midlertidigt lukket.",
-			"skin_of": "🎴 Skind på %s",
-			"version": "version"
-		},
-		"nekos": {
-			"can_not_fetch_data": "❎ Midlertidigt ude af stand til at få det billede, du ønsker. Prøv igen senere.",
-			"request_by": "anmodet af %s"
-		},
-		"notify": {
-			"can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
-			"can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
-			"channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
-			"channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
-			"channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
-			"content_info": "- เนื้อหา: {{content}}",
-			"created_by_info": " - สร้างโดย: {{created_by}}",
-			"description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
-			"edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
-			"editor_info": " - ผู้แก้ไข: {{editor}}",
-			"embed_info": "- ข้อความแบบฝัง: {{embed}}",
-			"enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
-			"enable_info": "- เปิดใช้งาน: {{enable}}",
-			"list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
-			"no": "ingen",
-			"none": "ingen",
-			"notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
-			"notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
-			"own": "มี",
-			"preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
-			"require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
-			"require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
-			"settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
-			"temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
-			"title": "🔔 Notifikationer",
-			"toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
-			"unknown": "Ved ikke",
-			"unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
-			"yes": "Ja"
-		},
-		"osu": {
-			"generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
-			"layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
-			"request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
-		},
-		"paste": {
-			"backend_not_response": "❎ Intet svar fra serveren overhovedet. Du kan prøve igen senere.",
-			"file": "fil",
-			"raw": "rå"
-		},
-		"pause": {
-			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
-			"paused": "⏸ Sæt musikken på pause nu."
-		},
-		"pin": {
-			"can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
-		},
-		"ping": {
-			"connection": "📡 Forbindelse",
-			"info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
-			"result": "🏓 Pong",
-			"waiting": "🏓 Ping..."
-		},
-		"play": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Indtast en kanal først. Ellers skal du ikke lytte til mig..."
-		},
-		"playlist": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
-			"no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Indtast en kanal først. Ellers skal du ikke lytte til mig...",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
-			"playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
-		},
-		"previous": {
-			"no_previous_song_queue": "📼 Der er ingen sang, der er blevet spillet for nylig.",
-			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"previous": "⏮ Gå tilbage til den forrige sang"
-		},
-		"purge": {
-			"messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
-			"messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
-			"messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
-		},
-		"qrcode": {
-			"can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
-			"image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
-			"qr_code": "🧩 คิวอาร์โค้ด",
-			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
-		},
-		"queue": {
-			"autoplay": "📻 Automatisk afspilning",
-			"filter": "🎼 Stemmefiltermønster: `%s`",
-			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
-			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
-			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
-			"owner_this_queue": "%s er ejeren af denne kø",
-			"previous_queue": "**forrige kø**",
-			"waiting_in_queue": "**Venter på næste kø**"
-		},
-		"random": {
-			"request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
-			"result": "🎲 ผลลัพธ์คือ __{{result}}__"
-		},
-		"react": {
-			"do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
-			"look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
-		},
-		"related": {
-			"added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
-			"no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Kun ejeren af køen kan ændre den."
-		},
-		"reload": {
-			"invalid_command": "❎ Hmmm...det ser ikke ud til at have denne rækkefølge...prøv at tjekke omhyggeligt Igen, er det korrekt eller ej?",
-			"reloaded": "✅ %s Genindlæst med succes!!",
-			"reload_error": "❌ Damn.. Jeg prøvede at genindlæse kommandoen %s , men jeg kan ikke.",
-			"searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
-		},
-		"remove": {
-			"no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"removed": "❌ Fjernet **%s** fra køen.",
-			"too_much": "❎ Der er ingen sådan kø. Tjek venligst igen."
-		},
-		"repeat": {
-			"no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"off": "gentag",
-			"repeated": "🔁 %snu",
-			"repeat_queue": "gentag køen",
-			"repeat_song": "gentage sangen"
-		},
-		"resume": {
-			"no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"now_playing": "📼 Hej.. Nu spiller jeg.",
-			"resumed": "▶️ Sangen afspilles fra samme sted."
-		},
-		"rip": {
-			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"seek": {
-			"no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"seek_guide": "❓ Hvor mange sekunder vil du ændre tidspunktet for den sang, der afspilles i øjeblikket? Spiller nu på %ssekunder",
-			"sought": "🕘 Ændrede tidspunktet for den sang, der afspilles i øjeblikket.",
-			"too_much": "❎ Tidspunktet for denne sang er %s Der er ikke mere end dette."
-		},
-		"shuffle": {
-			"no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"now_shuffle": "🔀 Begynder at skifte kø..."
-		},
-		"skip": {
-			"no_queue": "❎ Der er ingen sang, jeg spiller i øjeblikket. kan ikke krydse",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"skipped": "⏭ Jeg sprang den over og er ved at begynde at spille en ny sang i køen."
-		},
-		"status": {
-			"data_by_server": "Referencedata fra serveren.",
-			"dnd_status": "Antallet af medlemmer i Forstyr ikke i øjeblikket er \n```%s```.",
-			"idle_status": "Antallet af medlemmer, der i øjeblikket er fraværende, er \n```%s```.",
-			"offline_status": "Antallet af medlemmer offline i øjeblikket er \n```%s```",
-			"online_status": "Antallet af medlemmer online i øjeblikket er \n```%s```"
-		},
-		"steal": {
-			"emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
-			"not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
-		},
-		"sticker": {
-			"deleted_sticker": "✅ **%s** Sticker fjernet med succes",
-			"does_not_support_gif": "❎ Beklager...Discord understøtter i øjeblikket ikke GIF-baserede brugerdefinerede klistermærker.",
-			"edited_sticker": "%s klistermærker er blevet redigeret.",
-			"uploading_you_sticker": "📤 Uploader dine klistermærker...",
-			"you_sticker_is_ready": "%s Dit klistermærke er klar. Lad os prøve det!!"
-		},
-		"stop": {
-			"no_queue": "❎ Øh...den sang, jeg spiller, er ikke tilgængelig.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"stopped": "⏹️ Stop med at spille musik og slet alle køer."
-		},
-		"system": {
-			"info_description": "Oplysningerne om det system, som jeg i øjeblikket arbejder på, som leveret af systemet, er som følger.",
-			"info_gpu_control": "• GPU (controller)",
-			"info_gpu_display": "• GPU (skærm)",
-			"info_memory_used": "• brugt hukommelse",
-			"info_platform": "• Platform",
-			"info_system": "• system",
-			"info_temperature": "• CPU temperatur",
-			"info_title": "🖥 Grundlæggende information om systemet",
-			"info_uptime": "• เวลาทำงาน",
-			"info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
-			"loading": "⚙️ Sender anmodning om at hente systemdata fra server...",
-			"main": "vigtigste",
-			"no": "ingen",
-			"not_owner": "🛑 Lad være med.. tag det ikke. Denne funktion kræver kun topprivilegier.",
-			"now_reboot": "✅ Startet nyt system!!",
-			"now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
-			"rebooting": "🔄 Genstarter...",
-			"shutting_down": "🔄 Lukker mit system ned...",
-			"unknown": "Ved ikke"
-		},
-		"timeout": {
-			"can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"can_not_set_for_yourself": "❎ Du kan ikke indstille en timeout for dig selv.",
-			"can_not_set_to_admin": "❎ Du kan ikke indstille en timeout for moderatorer.",
-			"member_not_found": "❎ Medlemmer siger ikke, at de ikke længere er på denne server.",
-			"no_reason": "giver ikke en grund",
-			"success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
-			"success_untimeout": "{{user}} Timeout er blevet indstillet **Årsag**: {{reason}}",
-			"timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
-			"untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
-		},
-		"timezone": {
-			"can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
-			"this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
-			"time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
-		},
-		"translate": {
-			"base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
-			"can_not_translate": "❎ Kan ikke oversætte sproget i en sådan tekst. Prøv igen senere.",
-			"says": "sige",
-			"translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
-		},
-		"user": {
-			"available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "information om hvornår",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "ingen",
-			"none": "ingen",
-			"unknown": "Ved ikke",
-			"user_info": "👥 Brugeroplysninger detaljer",
-			"user_info_description": "Detaljerede oplysninger om brugere Hvilket er baseret på data fra Discord.",
-			"yes": "Ja"
-		},
-		"volume": {
-			"adjusted": "🔊 Juster lydstyrken til: **%s**",
-			"no_queue": "❎ Øh...den sang, jeg spiller, er ikke tilgængelig. Hvad vil du justere?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Kun ejeren af køen kan ændre den.",
-			"this_volume": "🔈 Aktuel lydstyrke er: **%s**"
-		},
-		"vote": {
-			"added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
-			"error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
-			"invite": "เชิญ",
-			"not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
-			"rate": "คะแนนโหวต",
-			"tags": "tags",
-			"unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
-			"vote": "โหวต"
-		},
-		"warn": {
-			"can_not_find_user": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen.",
-			"members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
-			"members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"user_has_warned": "{{user}} ถูกตักเตือน",
-			"user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
-			"you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
-		},
-		"weather": {
-			"celsius": "เซลเซียส",
-			"clouds": "☁️ เมฆ",
-			"data_from": "📡 สถานที่เก็บข้อมูล",
-			"error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
-			"fahrenheit": "ฟาเรนไฮต์",
-			"feels_like": "🍃 รู้สึกเหมือน",
-			"ground_level": "⛰️ ระดับพื้นดิน",
-			"highest_temperature": "➕ อุณหภูมิสูงสุด",
-			"humidity": "💧 ความชื้น",
-			"kelvin": "เคลวิน",
-			"lowest_temperature": "➖ อุณหภูมิต่ำสุด",
-			"meter_per_seconds": "เมตร/วินาที",
-			"miles_per_hour": "ไมล์/ชั่วโมง",
-			"none": "ไม่มี",
-			"no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-			"no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
-			"pressure": "🎱 ความดัน",
-			"rainfall": "🌧️ ปริมาณน้ำฝน",
-			"sea_level": "🌊 ระดับน้ำทะเล",
-			"snowfall": "❄️ ปริมาณหิมะ",
-			"temperature": "🌡️ Temperatur",
-			"time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
-			"visibility": "👁️ ทัศนวิสัย",
-			"weather": "⛅ Vejret",
-			"weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
-			"wind_direction": "🧭 ทิศทางลม",
-			"wind_gust": "🎏 ลมกระโชก",
-			"wind_speed": "💨 ความเร็วลม"
-		}
-	},
-	"events": {
-		"channelCreate": {
-			"channel_notification": "🪧 Kanal",
-			"member_create_channel": "> Servermedlem oprettet kanal: <#%s>"
-		},
-		"channelDelete": {
-			"channel_notification": "🪧 Kanal",
-			"member_delete_channel": "> Servermedlem eksploderet kanal: `%s`"
-		},
-		"channelPinsUpdate": {
-			"channel_notification": "🪧 Kanal",
-			"member_pins_in_channel": "> Servermedlem har fastgjort pladsen: <#%s1> når %s2"
-		},
-		"channelUpdate": {
-			"channel_notification": "🪧 Kanal",
-			"member_update_channel": "> Et servermedlem har ændret nogle felter: `%s1` til <#%s2>."
-		},
-		"emojiCreate": {
-			"emoji_notification": "😊 Emoji",
-			"member_create_emoji": "> Servermedlem har oprettet en ny emoji: :%s:"
-		},
-		"emojiDelete": {
-			"emoji_notification": "😊 Emoji",
-			"member_delete_emoji": "> Servermedlem slettet emoji: :%s:"
-		},
-		"emojiUpdate": {
-			"emoji_notification": "😊 Emoji",
-			"member_update_emoji": "> Servermedlemmet har ændret den nye emoji fra: %s1 til %s2."
-		},
-		"guildBanAdd": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_add": "> <@%s1> Allerede forbudt på denne server\n**Årsag:**\n```%s2```"
-		},
-		"guildBanRemove": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_remove": "> <@%s1> Er blevet fjernet forbuddet på denne server\n**årsag:**\n```%s2```"
-		},
-		"guildIntegrationsUpdate": {
-			"guild_integrations_update": "Denne server har allerede slået %s sammen. Du vil modtage nye artikler med det samme med fremtidige opdateringer.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberAdd": {
-			"captcha_error": "Der opstod en valideringsfejl. Kontakt serverpersonalet for at handle.",
-			"captcha_success": "Du er verificeret i %s",
-			"greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
-			"solve_the_captcha": "Rettet captcha for at verificere i %s",
-			"submit_answer_captcha": "Send et captcha-svar",
-			"submit_you_answer_guide": "Indsend, hvad du tror, captcha er",
-			"use_button_below": "Brug knappen nedenfor for at sende dit svar!",
-			"welcome": "Velkommen til serveren",
-			"wrong_answer": "Det virker forkert. Prøv igen...",
-			"your_answer": "svar på din captcha"
-		},
-		"guildMemberRemove": {
-			"user_has_exited": "Er allerede flygtet fra denne server...(Lad os gå til hans sted..)"
-		},
-		"guildMembersChunk": {
-			"guild_members_chunk": "Velkommen medlemmer fra server %s Vi venter på dig her.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberUpdate": {
-			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"guild_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"guildSoundboardSoundCreate": {
-			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundDelete": {
-			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundUpdate": {
-			"deleted": "ถูกลบแล้ว",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
-		},
-		"guildUnavailable": {
-			"guild_notification": "🗄️ Server",
-			"guild_unavailable": "I øjeblikket...denne server er midlertidigt utilgængelig. Kontakt venligst administratoren af denne server."
-		},
-		"interactionCreate": {
-			"client_is_not_allowed": "🚫 Ummm..Jeg mangler nogle tilladelser. Så jeg kan ikke blive ved, nemlig **%s**",
-			"command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
-		},
-		"inviteCreate": {
-			"invite_create": "Invitationslinket er oprettet\n**Link:** %s1\n**Udløber:** %s2\n**Maksimum:** %s3\n```%s4```",
-			"invite_notification": "🏷️ Invitation"
-		},
-		"inviteDelete": {
-			"invite_code_deleted": "`%s` Denne invitationskode er blevet fjernet.",
-			"invite_code_expires": "`%s` Denne invitationskode er udløbet.",
-			"invite_notification": "🏷️ Invitation"
-		},
-		"messageCreate": {
-			"afk_user_come_back": "🔙 Du er vendt tilbage Deaktiver automatisk AFK-status",
-			"no_reason_for_afk": "har ikke",
-			"that_user_is_afk": "%s1 Nu ikke på skærmen (AFK), nævn ham ikke nu\n**Send besked**: %s2"
-		},
-		"ready": {
-			"prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
-		},
-		"roleCreate": {
-			"role_create": "<@&%s> er blevet oprettet.",
-			"role_notification": "🔖 Rolle"
-		},
-		"roleDelete": {
-			"role_delete": "`%s` er blevet slettet.",
-			"role_notification": "🔖 Rolle"
-		},
-		"roleUpdate": {
-			"role_notification": "🔖 Rolle",
-			"role_update": "`%s1` er blevet opdateret til <@&%s2>"
-		},
-		"soundboardSounds": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
-		},
-		"stageInstanceCreate": {
-			"stage_instance_create": "<#%s> er blevet oprettet.",
-			"stage_notification": "🎤 scene"
-		},
-		"stageInstanceDelete": {
-			"stage_instance_delete": "`%s` er blevet slettet.",
-			"stage_notification": "🎤 scene"
-		},
-		"stageInstanceUpdate": {
-			"stage_instance_update": "`%s1` er blevet opdateret til <#%s2>.",
-			"stage_notification": "🎤 scene"
-		},
-		"stickerCreate": {
-			"sticker_create": "**%s** Nu tilgængelig",
-			"sticker_notification": "👻 klistermærke"
-		},
-		"stickerDelete": {
-			"sticker_delete": "**%s** er blevet slettet",
-			"sticker_notification": "👻 klistermærke"
-		},
-		"stickerUpdate": {
-			"sticker_notification": "👻 klistermærke",
-			"sticker_update": "`%s1` er blevet opdateret til **%s2**"
-		},
-		"threadCreate": {
-			"thread_create": "<#%s> er blevet oprettet.",
-			"thread_notification": "#️⃣ Tråde"
-		},
-		"threadDelete": {
-			"thread_delete": "**%s** er blevet slettet",
-			"thread_notification": "#️⃣ Tråde"
-		},
-		"threadListSync": {
-			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMembersUpdate": {
-			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
-			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMemberUpdate": {
-			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"thread_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"threadUpdate": {
-			"thread_notification": "#️⃣ Tråde",
-			"thread_update": "`%s1` er blevet opdateret til **%s2**"
-		},
-		"voiceStateUpdate": {
-			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
-			"voice_notification": "➿ สถานะเสียง",
-			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
-		},
-		"webhookUpdate": {
-			"webhook_notification": "🎣 Web Hook",
-			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
-		}
-	},
-	"handlers": {
-		"player": {
-			"addList": {
-				"added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
-			},
-			"addSong": {
-				"added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
-			},
-			"deleteQueue": {
-				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
-			},
-			"disconnect": {
-				"disconnected": "🔌 Afbrudt og slettet alle køer allerede."
-			},
-			"error": {
-				"playlist_not_found": "❎ Jeg kan ikke finde den afspilningsliste. Leder du efter en anden playliste?"
-			},
-			"finish": {
-				"queue_is_empty": "🍃 Nu er min kø tom. Klar til at spille den næste sang?"
-			},
-			"finishSong": {
-				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
-			},
-			"noRelated": {
-				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
-			},
-			"playSong": {
-				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
-			}
-		}
-	},
-	"utils": {
-		"clientUtils": {
-			"color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
-			"is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
-			"need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
-			"timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
-		},
-		"consoleUtils": {
-			"error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
-			"error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-			"report_issues": "[รายงานปัญหา]({{-issues_link}})",
-			"server_abnormal": "abnorm",
-			"server_normal": "normal"
-		},
-		"databaseUtils": {
-			"congratulations": "Tillykke!!",
-			"level_up": "Klassen *%s1* er nu blevet opgraderet til ```%s2```."
-		}
-	}
+  "commands": {
+    "about": {
+      "commands": "คำสั่ง",
+      "connection": "เชื่อมต่อ",
+      "copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
+      "guilds": "กิลด์",
+      "members": "สมาชิก",
+      "my_personal": "ข้อมูลส่วนตัวของฉัน",
+      "my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
+      "public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
+      "shards": "ชาร์ด",
+      "stats": "📊 สถิติ",
+      "worked": "ทำงาน"
+    },
+    "activities": {
+      "can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
+      "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
+      "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
+      "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
+    },
+    "afk": {
+      "currently_afk": "❎ Nu er du AFK",
+      "currently_not_afk": "❎ Du er ikke AFK lige nu.",
+      "now_afk": "💤 Nu er du AFK, skriv en besked eller /afk fjern for at afslutte AFK-tilstand.",
+      "now_not_afk": "🔙 Din AFK-status er blevet deaktiveret."
+    },
+    "anime": {
+      "age_rating_guide": "เรท",
+      "anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
+      "auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
+      "choose_title": "เลือกเรื่องที่ต้องการ",
+      "data_not_found": "❎ Jeg har ikke fundet denne historie. Lad os tjekke det ud. Se, måske er der virkelig ikke sådan noget?",
+      "english_name": "ชื่ออังกฤษ",
+      "episode_count": "จำนวนตอน",
+      "in_progress": "i gang",
+      "japan_name": "ชื่อญี่ปุ่น",
+      "learn_more": "ดูข้อมูลเพิ่มเติม",
+      "name": "ชื่อ",
+      "popularity_rank": "อันดับความนิยม",
+      "rating_rank": "อันดับการให้คะแนน",
+      "release_date": "วันที่ฉาย",
+      "selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
+      "similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
+      "status": "สถานะ",
+      "subtype": "หมวดหมู่",
+      "synopsis": "เรื่องย่อ",
+      "trailer": "ตัวอย่าง",
+      "undefined": "udefineret"
+    },
+    "antibot": {
+      "antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
+      "antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
+      "currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
+      "enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
+    },
+    "ask": {
+      "can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
+      "key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
+    },
+    "attachment": {
+      "sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "automod": {
+      "flagged_words_name": "blokere bandeord seksuelt indhold og fornærmelser",
+      "flagged_words_success": "✅ Dine AutoMod-regler er blevet oprettet, alle disse ord vil blive undertrykt.",
+      "keyword_name": "Undgå at ord {{word}}bruges.",
+      "keyword_success": "✅ Din AutoMod-regel er blevet oprettet, alle meddelelser, der indeholder ordet {{word}} , vil blive slettet.",
+      "mention_spam_name": "Undgå spam når det kommer til",
+      "mention_spam_success": "✅ Din AutoMod-regel er oprettet, spam ved flere omtaler vil blive undertrykt.",
+      "prevent_message": "Denne besked er beskyttet.",
+      "spam_messages_name": "blokere beskedspam",
+      "spam_messages_success": "✅ Dine AutoMod-regler er blevet oprettet, beskedspam vil blive undertrykt."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm...men sangen er ikke begyndt at spille endnu?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "off": "📻 Autoplay-tilstand er slået fra",
+      "on": "📻 Automatisk afspilningstilstand slået til"
+    },
+    "ban": {
+      "banned_for_time": "{{userName}} forbudt i **{{days}}** dage",
+      "is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
+      "member_has_banned": "❎ Sådanne medlemmer er allerede forbudt. Føl dig godt tilpas.",
+      "members_have_a_higher_role": "❎ Du kan ikke forbyde nogen med en højere rolle end dig.",
+      "members_have_a_higher_role_than_me": "❎ Jeg kan ikke udelukke det medlem. fordi han har en højere rolle end mig",
+      "no_one_gets_banned": "❎ Ingen på serveren er i øjeblikket udelukket.",
+      "no_reason": "Medlemmer, der forbudte, gav ingen grund.",
+      "permanently_banned": "{{userName}} forbudt permanent",
+      "reason_for_ban": "Udelukket af: {{moderatorName}}\nÅrsag: {{reason}}",
+      "reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
+      "this_user_not_banned": "❎ Øh.. det medlem blev ikke forbudt. Lad os se nogle fantastiske nye søgeord en gang til...",
+      "unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
+      "unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
+      "user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
+      "user_not_found": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen."
+    },
+    "captcha": {
+      "captcha_setup_success": "✅ Captcha-systemet er blevet konfigureret og aktiveret med succes.",
+      "currently_disable": "ℹ️ Captcha er nu lukket.",
+      "currently_enable": "ℹ️ Captcha er nu aktiveret.",
+      "disabled_captcha": "✅ captcha er blevet deaktiveret",
+      "enabled_captcha": "✅ captcha aktiveret med succes",
+      "need_to_setup_before": "❎ Indstil captcha før brug ved at bruge kommandoen /captcha setup."
+    },
+    "covid": {
+      "active": "aktiv",
+      "active_per_one_million": "aktiv pr. 1 mio",
+      "backend_issue": "❎ Der ser ud til at være et problem på informantens side. Prøv venligst igen næste gang.",
+      "cases_per_one_million": "Patienter pr. 1 mio",
+      "cases_today": "denne patient",
+      "cases_total": "alle patienter",
+      "country_not_found": "❎ Umm.. Jeg kan ikke finde oplysningerne om det land, du har angivet.",
+      "critical_per_one_million": "kritisk periode pr. 1 mio",
+      "critical_stage": "kritisk periode",
+      "deaths_today": "døde i dag",
+      "deaths_total": "alle døde",
+      "one_case_per_people": "per patient",
+      "one_death_per_people": "død per person",
+      "one_test_per_people": "Test pr person",
+      "population": "befolkning",
+      "recovered": "væk",
+      "recovered_per_one_million": "Tabt per 1 mio",
+      "tests": "prøve",
+      "tests_per_one_million": "Tester pr. 1 mio",
+      "updated_on": "Seneste opdatering {{updatedAt}}",
+      "when": "hvornår"
+    },
+    "crosspost": {
+      "can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
+    },
+    "dead": {
+      "suicide": "{{username}} at begå selvmord 💔 hvil i fred"
+    },
+    "delete": {
+      "can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
+    },
+    "djs": {
+      "added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
+      "currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
+      "currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
+      "deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
+      "manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
+      "music_djs": "🎼 การควบคุมเพลง",
+      "only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
+      "role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
+      "role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
+      "user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
+    },
+    "donate": {
+      "thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
+    },
+    "eat": {
+      "already_eaten": "{{eaterName}} har spist {{foodName}} i maven",
+      "do_not_eat_me": "Jeg.. Jeg er lidt lille. m.. ikke godt at spise..."
+    },
+    "eight_ball": {
+      "answer": "svar",
+      "game": "🎱 8-bold spil",
+      "question": "spørgsmål",
+      "risk": "Brug dit held på spørgsmål for at få svar.",
+      "roll_ball": "Rul bolden!!"
+    },
+    "embed": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
+      "embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
+      "is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
+      "message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
+      "suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
+      "unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **{{emojiName}}** Emoji er blevet slettet.",
+      "edited_emoji": "{{emojiName}} emoji rettet",
+      "uploading_you_emoji": "📤 Uploader din emoji...",
+      "you_emoji_is_ready": "{{emojiName}} Din emoji er klar. Lad os prøve det!!"
+    },
+    "emojify": {
+      "can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
+    },
+    "encoder": {
+      "decode_after": "หลังถอดรหัส",
+      "decode_before": "ก่อนถอดรหัส",
+      "decode_message": "🔓 ถอดรหัสข้อความ",
+      "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
+      "encode_after": "หลังเข้ารหัส",
+      "encode_before": "ก่อนเข้ารหัส",
+      "encode_message": "🔒 เข้ารหัสข้อความ",
+      "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Det ser ud til, at emojien mangler, eller det er måske ikke en emoji."
+    },
+    "eval": {
+      "result": "🔭 ผลการทำงาน"
+    },
+    "exp": {
+      "error": "❎ Kan ikke indstille oplevelsen for sådanne medlemmer. Prøv igen senere.",
+      "experience": "Erfaringspoint (Exp)",
+      "exp_was_changed": "{{memberName}} akkumuleret alle erfaringsniveauer har:",
+      "level": "Niveau",
+      "notification_complete": "✅ Opsætning er færdig...",
+      "set_by_staff": "Din oplevelse er fastsat af teamet på denne server.",
+      "success": "✅ Opsætning er færdig..."
+    },
+    "filter": {
+      "add_filter": "🎼 Tilføj det påkrævede lydformat for at være **{{filterNames}}** allerede.",
+      "available_filter": "Tilgængelige filterformater",
+      "available_filter_description": "Tilpas din musik ved at bruge disse {{filterCount}} formater ```{{filterNames}}```",
+      "clear_filter": "💨 Alle lydformater er blevet ryddet. Nu bliver det et normalt lydformat.",
+      "list_filter_description": "Der er i øjeblikket aktive mønstre i denne kø: {{filterCount}} mønstre\n```{{filterNames}}```",
+      "list_filter_description_empty": "```Der er ikke noget lydformat, der bruges i øjeblikket.```",
+      "list_filter_title": "Det lydformat, der bruges i øjeblikket",
+      "no_queue": "❎ Der afspilles ingen sang i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "remove_filter": "🗑️ Lydformat **{{filterNames}}** er blevet fjernet.",
+      "set_filter": "🎼 Indstil foretrukket lydformat til **{{filterNames}}**",
+      "sound_filtering": "❓ Vil du ændre lyden af din musik?",
+      "unknown_filter": "❎ Umm.. Jeg kender ikke formatet på lyden `{{unknownFilters}}`, du kan tjekke det ved at bruge **tilgængelig** eller **ava**?",
+      "unknown_input_option": "❓ Du kan angive følgende parametre: tilføje, fjerne, indstille, tilgængelig, liste, slette."
+    },
+    "games": {
+      "accept": "ยอมรับ",
+      "caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
+      "click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
+      "click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
+      "click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
+      "correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
+      "correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
+      "experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
+      "find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
+      "fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
+      "forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
+      "game_over": "คุณแพ้แล้ว",
+      "game_reject": "ปฏิเสธคำขอ",
+      "game_request": "คำขอเกม",
+      "incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
+      "incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
+      "invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
+      "no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
+      "no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
+      "option_one": "ตัวเลือกที่ 1",
+      "option_two": "ตัวเลือกที่ 2",
+      "paper": "กระดาษ",
+      "player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
+      "player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
+      "player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
+      "player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
+      "player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
+      "player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
+      "player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
+      "player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_pick": "คุณได้เลือก {{emoji}}",
+      "player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
+      "player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
+      "player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
+      "player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
+      "player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
+      "player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
+      "player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
+      "player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "reject": "ปฏิเสธ",
+      "remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
+      "rock": "หิน",
+      "scissors": "กรรไกร",
+      "status": "สถานะ",
+      "stop": "หยุด",
+      "tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
+      "turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
+      "want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
+      "want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
+      "words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
+    },
+    "guild": {
+      "available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "information om hvornår",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "ingen",
+      "none": "ingen",
+      "not_ready": "ikke klar",
+      "not_set": "ไม่ได้ตั้ง",
+      "ready": "parat",
+      "server_info": "🗄 Detaljeret serverinformation",
+      "server_info_description": "Detaljerede serveroplysninger Hvilket er baseret på data fra Discord.",
+      "unknown": "Ved ikke",
+      "yes": "Ja"
+    },
+    "help": {
+      "ask_for_help": "ขอความช่วยเหลือ",
+      "can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
+      "choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
+      "choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
+      "choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
+      "command_category": "**หมวดหมู่**: {{category}}",
+      "command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "command_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "command_description": "**คำอธิบาย**: {{description}}",
+      "command_subcommand": "**คำสั่งย่อย**:",
+      "command_usage": "**วิธีใช้งาน**:",
+      "command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "context_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
+      "context_page": "บริบท",
+      "context_type": "**ประเภท**: {{type}}",
+      "context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "cooldown_time": "{{cooldown}} วินาที",
+      "developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
+      "fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
+      "general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
+      "general_page": "คู่มือเริ่มต้น",
+      "greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
+      "info": "> **ℹ️ หมายเหตุ**",
+      "information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
+      "manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
+      "me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
+      "messages_category": "หมวดหมู่ของคำสั่งข้อความ",
+      "music_category": "หมวดหมู่ของคำสั่งเพลง",
+      "none": "ingen",
+      "other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
+      "refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
+      "remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
+      "select_page": "เลือกหน้าของเมนู",
+      "settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
+      "start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
+      "symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
+      "timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
+      "tips": "> **💡 เคล็ดลับ**",
+      "utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Kan ikke finde sådanne medlemmer på denne server.",
+      "success": "✅ <@{{userId}}> Meddelelsen er oprettet!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Kan ikke generere invitationslink Prøv igen.",
+      "membership_invitation_card": "medlems invitationskort",
+      "this_product_is_free": "Dette produkt er gratis, må ikke videresælges."
+    },
+    "issues": {
+      "bug_sending": "📨 Okay.. lige et øjeblik Giv mig et øjeblik til at sende et brev til udvikleren...",
+      "bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
+      "feature_sending": "📨 Okay.. lige et øjeblik Giv mig et øjeblik til at sende et brev til udvikleren...",
+      "feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
+    },
+    "join": {
+      "already_joined": "❎ Øh..men jeg er her nu?",
+      "another_player_is_playing": "🚫 Du kan ikke bruge denne ordre i øjeblikket. fordi der er andre medlemmer, der spiller musik",
+      "channel_joined": "✅ Jeg er allerede i kanalen <#{{channelId}}>...",
+      "joined": "▶️ Nu er jeg allerede i kanalen <#{{channelId}}>.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Du skal først tilslutte dig kanalen. Ellers ved jeg ikke hvilket felt =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Det ser ud til, at der slet ikke findes et sådant kønummer. Tjek venligst igen.",
+      "jumped": "➿ Hop allerede til ny sang i kø nummer {{queuePosition}}.",
+      "no_queue": "❎ Der er ingen sang, jeg spiller i øjeblikket. kan ikke krydse",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Kun ejeren af køen kan ændre den."
+    },
+    "kick": {
+      "can_not_find_user": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen.",
+      "kicked_out": "{{memberName}} smidt ud",
+      "members_have_a_higher_role": "❎ Du kan ikke sparke folk, der er højere end dig.",
+      "members_have_a_higher_role_than_me": "❎ Jeg kan ikke sparke det medlem. fordi han har en højere rolle end mig",
+      "no_reason": "Medlemmer, der sparkede, gav ingen grund.",
+      "reason_for_kick": "Sparket af: {{moderatorName}}\nÅrsag: {{reason}}"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Du vil gøre sådan noget.. Ikke med mig, haha...",
+      "killed": "{{killerName}} har allerede dræbt dig {{targetName}} 🔪"
+    },
+    "language": {
+      "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
+      "changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
+      "changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
+      "description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
+      "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
+      "support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
+      "title": "🌐 Sprog"
+    },
+    "leader": {
+      "leveling_detail": "Erfaring: {{experience}}, Karakter: {{level}}",
+      "no_info": "❎ Der er ingen medlemmer på denne server endnu. der har oplevelsesværdi",
+      "server_rank": "Denne servers niveaurangering",
+      "server_rank_description": "1 af de 10 bedste medlemmer på denne server. som kan samle flest af deres egne niveauer, i rækkefølge som følger",
+      "server_rank_tips": "Tip: Chatter med andre medlemmer vil få flere niveauer"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Du kan ikke bruge denne ordre i øjeblikket. fordi der er andre medlemmer, der spiller musik",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_any_channel": "❎ Nu er jeg ikke på nogen kanal endnu...",
+      "now_leave": "◀️ Jeg er ude af den nuværende kanal."
+    },
+    "level": {
+      "delete_error": "❎ Kan slet ikke finde denne bruger.",
+      "delete_success": "✅ Erfaringsniveauet for dette medlems er blevet slettet!",
+      "deleting": "📁 Sletning af erfaringsniveaudata for dette medlem.",
+      "experience": "Erfaringspoint (Exp)",
+      "level": "Niveau",
+      "level_was_changed": "{{memberName}} akkumuleret alle erfaringsniveauer har:",
+      "notification_complete": "✅ Opsætning er færdig...",
+      "set_by_staff": "Din klasse er sat af teamet på denne server.",
+      "set_error": "❎ Kan ikke indstille niveauet for sådanne medlemmer. Prøv igen senere.",
+      "set_success": "✅ Opsætning er færdig...",
+      "user_current_no_level": "❎ Sådanne medlemmer har ikke et klassetrin."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Bots vil ikke have niveauer, inklusive mig.",
+      "experience": "Erfaringspoint (Exp)",
+      "level": "Niveau",
+      "user_no_data": "💨 Hmm... Dette medlem har ikke et niveau og erfaring.",
+      "your_experience": "Din erfaring"
+    },
+    "logs": {
+      "attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
+      "empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
+      "empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
+      "file_has_been_deleted": "✅ **{{fileName}}** allerede slettet",
+      "file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
+      "found_file": "Fundet {{fileCount}} poster af filer:\n```{{fileNames}}```",
+      "only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Ingen sangtekster fundet for {{songName}}.",
+      "no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
+      "playing_lyrics": "📋 Teksten til den sang, der afspilles i øjeblikket"
+    },
+    "meme": {
+      "can_not_fetch": "Det lykkedes ikke at hente meme. Prøv igen.",
+      "meme_not_found": "Der blev ikke fundet nogen meme af typen, der matcher {{memeType}}."
+    },
+    "message": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "minecraft": {
+      "address": "adresse",
+      "do_not_have": "har ikke",
+      "ip": "IP-adresse",
+      "last_check": "sidst tjekket",
+      "maximum_player_count": "Maksimalt antal spillere",
+      "motd": "Beskrivelse",
+      "player_in_server": "server spillere",
+      "port": "Havn",
+      "server_available": "🟢 Denne server er i øjeblikket åben.",
+      "server_unavailable": "🔴 Denne server er midlertidigt lukket.",
+      "skin_of": "🎴 Skind på {{username}}",
+      "version": "version"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Midlertidigt ude af stand til at få det billede, du ønsker. Prøv igen senere.",
+      "request_by": "anmodet af {{requesterName}}"
+    },
+    "notify": {
+      "can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
+      "can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
+      "channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
+      "channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
+      "channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
+      "content_info": "- เนื้อหา: {{content}}",
+      "created_by_info": " - สร้างโดย: {{created_by}}",
+      "description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
+      "edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
+      "editor_info": " - ผู้แก้ไข: {{editor}}",
+      "embed_info": "- ข้อความแบบฝัง: {{embed}}",
+      "enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
+      "enable_info": "- เปิดใช้งาน: {{enable}}",
+      "list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
+      "no": "ingen",
+      "none": "ingen",
+      "notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
+      "notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
+      "own": "มี",
+      "preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
+      "require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
+      "require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
+      "settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
+      "temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
+      "title": "🔔 Notifikationer",
+      "toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
+      "unknown": "Ved ikke",
+      "unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
+      "yes": "Ja"
+    },
+    "osu": {
+      "generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
+      "layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
+      "request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
+    },
+    "paste": {
+      "backend_not_response": "❎ Intet svar fra serveren overhovedet. Du kan prøve igen senere.",
+      "file": "fil",
+      "raw": "rå"
+    },
+    "pause": {
+      "no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
+      "paused": "⏸ Sæt musikken på pause nu."
+    },
+    "pin": {
+      "can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
+    },
+    "ping": {
+      "connection": "📡 Forbindelse",
+      "info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
+      "result": "🏓 Pong",
+      "waiting": "🏓 Ping..."
+    },
+    "play": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
+      "no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Indtast en kanal først. Ellers skal du ikke lytte til mig..."
+    },
+    "playlist": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
+      "no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Indtast en kanal først. Ellers skal du ikke lytte til mig...",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
+      "playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Der er ingen sang, der er blevet spillet for nylig.",
+      "no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "previous": "⏮ Gå tilbage til den forrige sang"
+    },
+    "purge": {
+      "messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
+      "messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
+      "messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
+    },
+    "qrcode": {
+      "can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
+      "image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
+      "qr_code": "🧩 คิวอาร์โค้ด",
+      "qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
+    },
+    "queue": {
+      "autoplay": "📻 Automatisk afspilning",
+      "filter": "🎼 Stemmefiltermønster: `{{filterNames}}`",
+      "no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+      "no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
+      "no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
+      "owner_this_queue": "{{username}} er ejeren af denne kø",
+      "previous_queue": "**forrige kø**",
+      "waiting_in_queue": "**Venter på næste kø**"
+    },
+    "random": {
+      "request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
+      "result": "🎲 ผลลัพธ์คือ __{{result}}__"
+    },
+    "react": {
+      "do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
+      "look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
+    },
+    "related": {
+      "added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
+      "no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Kun ejeren af køen kan ændre den."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...det ser ikke ud til at have denne rækkefølge...prøv at tjekke omhyggeligt Igen, er det korrekt eller ej?",
+      "reloaded": "✅ {{commandName}} Genindlæst med succes!!",
+      "reload_error": "❌ Damn.. Jeg prøvede at genindlæse kommandoen {{commandName}} , men jeg kan ikke.",
+      "searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
+    },
+    "remove": {
+      "no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "removed": "❌ Fjernet **{{songName}}** fra køen.",
+      "too_much": "❎ Der er ingen sådan kø. Tjek venligst igen."
+    },
+    "repeat": {
+      "no_queue": "❎ Lige nu er der ingen sang, jeg spiller i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "off": "gentag",
+      "repeated": "🔁 {{repeatMode}}nu",
+      "repeat_queue": "gentag køen",
+      "repeat_song": "gentage sangen"
+    },
+    "resume": {
+      "no_queue": "❎ Nu har jeg ikke spillet nogen sange endnu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "now_playing": "📼 Hej.. Nu spiller jeg.",
+      "resumed": "▶️ Sangen afspilles fra samme sted."
+    },
+    "rip": {
+      "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
+    },
+    "seek": {
+      "no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "seek_guide": "❓ Hvor mange sekunder vil du ændre tidspunktet for den sang, der afspilles i øjeblikket? Spiller nu på {{currentPosition}}sekunder",
+      "sought": "🕘 Ændrede tidspunktet for den sang, der afspilles i øjeblikket.",
+      "too_much": "❎ Tidspunktet for denne sang er {{trackDuration}} Der er ikke mere end dette."
+    },
+    "shuffle": {
+      "no_queue": "❎ Nu er der ingen sang, der afspilles i øjeblikket.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "now_shuffle": "🔀 Begynder at skifte kø..."
+    },
+    "skip": {
+      "no_queue": "❎ Der er ingen sang, jeg spiller i øjeblikket. kan ikke krydse",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "skipped": "⏭ Jeg sprang den over og er ved at begynde at spille en ny sang i køen."
+    },
+    "status": {
+      "data_by_server": "Referencedata fra serveren.",
+      "dnd_status": "Antallet af medlemmer i Forstyr ikke i øjeblikket er \n```{{memberCount}}```.",
+      "idle_status": "Antallet af medlemmer, der i øjeblikket er fraværende, er \n```{{memberCount}}```.",
+      "offline_status": "Antallet af medlemmer offline i øjeblikket er \n```{{memberCount}}```",
+      "online_status": "Antallet af medlemmer online i øjeblikket er \n```{{memberCount}}```"
+    },
+    "steal": {
+      "emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
+      "not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **{{stickerName}}** Sticker fjernet med succes",
+      "does_not_support_gif": "❎ Beklager...Discord understøtter i øjeblikket ikke GIF-baserede brugerdefinerede klistermærker.",
+      "edited_sticker": "{{stickerName}} klistermærker er blevet redigeret.",
+      "uploading_you_sticker": "📤 Uploader dine klistermærker...",
+      "you_sticker_is_ready": "{{stickerName}} Dit klistermærke er klar. Lad os prøve det!!"
+    },
+    "stop": {
+      "no_queue": "❎ Øh...den sang, jeg spiller, er ikke tilgængelig.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "stopped": "⏹️ Stop med at spille musik og slet alle køer."
+    },
+    "system": {
+      "info_description": "Oplysningerne om det system, som jeg i øjeblikket arbejder på, som leveret af systemet, er som følger.",
+      "info_gpu_control": "• GPU (controller)",
+      "info_gpu_display": "• GPU (skærm)",
+      "info_memory_used": "• brugt hukommelse",
+      "info_platform": "• Platform",
+      "info_system": "• system",
+      "info_temperature": "• CPU temperatur",
+      "info_title": "🖥 Grundlæggende information om systemet",
+      "info_uptime": "• เวลาทำงาน",
+      "info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
+      "loading": "⚙️ Sender anmodning om at hente systemdata fra server...",
+      "main": "vigtigste",
+      "no": "ingen",
+      "not_owner": "🛑 Lad være med.. tag det ikke. Denne funktion kræver kun topprivilegier.",
+      "now_reboot": "✅ Startet nyt system!!",
+      "now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
+      "rebooting": "🔄 Genstarter...",
+      "shutting_down": "🔄 Lukker mit system ned...",
+      "unknown": "Ved ikke"
+    },
+    "timeout": {
+      "can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "can_not_set_for_yourself": "❎ Du kan ikke indstille en timeout for dig selv.",
+      "can_not_set_to_admin": "❎ Du kan ikke indstille en timeout for moderatorer.",
+      "member_not_found": "❎ Medlemmer siger ikke, at de ikke længere er på denne server.",
+      "no_reason": "giver ikke en grund",
+      "success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
+      "success_untimeout": "{{user}} Timeout er blevet indstillet **Årsag**: {{reason}}",
+      "timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
+      "untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
+    },
+    "timezone": {
+      "can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
+      "this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
+      "time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
+    },
+    "translate": {
+      "base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
+      "can_not_translate": "❎ Kan ikke oversætte sproget i en sådan tekst. Prøv igen senere.",
+      "says": "sige",
+      "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
+    },
+    "user": {
+      "available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "information om hvornår",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "ingen",
+      "none": "ingen",
+      "unknown": "Ved ikke",
+      "user_info": "👥 Brugeroplysninger detaljer",
+      "user_info_description": "Detaljerede oplysninger om brugere Hvilket er baseret på data fra Discord.",
+      "yes": "Ja"
+    },
+    "volume": {
+      "adjusted": "🔊 Juster lydstyrken til: **{{volume}}**",
+      "no_queue": "❎ Øh...den sang, jeg spiller, er ikke tilgængelig. Hvad vil du justere?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Kun ejeren af køen kan ændre den.",
+      "this_volume": "🔈 Aktuel lydstyrke er: **{{volume}}**"
+    },
+    "vote": {
+      "added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
+      "error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
+      "invite": "เชิญ",
+      "not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
+      "rate": "คะแนนโหวต",
+      "tags": "tags",
+      "unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
+      "vote": "โหวต"
+    },
+    "warn": {
+      "can_not_find_user": "❎ Jeg kan ikke finde dette medlem. Tjek venligst igen.",
+      "members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
+      "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "user_has_warned": "{{user}} ถูกตักเตือน",
+      "user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
+      "you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
+    },
+    "weather": {
+      "celsius": "เซลเซียส",
+      "clouds": "☁️ เมฆ",
+      "data_from": "📡 สถานที่เก็บข้อมูล",
+      "error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "fahrenheit": "ฟาเรนไฮต์",
+      "feels_like": "🍃 รู้สึกเหมือน",
+      "ground_level": "⛰️ ระดับพื้นดิน",
+      "highest_temperature": "➕ อุณหภูมิสูงสุด",
+      "humidity": "💧 ความชื้น",
+      "kelvin": "เคลวิน",
+      "lowest_temperature": "➖ อุณหภูมิต่ำสุด",
+      "meter_per_seconds": "เมตร/วินาที",
+      "miles_per_hour": "ไมล์/ชั่วโมง",
+      "none": "ไม่มี",
+      "no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "pressure": "🎱 ความดัน",
+      "rainfall": "🌧️ ปริมาณน้ำฝน",
+      "sea_level": "🌊 ระดับน้ำทะเล",
+      "snowfall": "❄️ ปริมาณหิมะ",
+      "temperature": "🌡️ Temperatur",
+      "time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
+      "visibility": "👁️ ทัศนวิสัย",
+      "weather": "⛅ Vejret",
+      "weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust": "🎏 ลมกระโชก",
+      "wind_speed": "💨 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Kanal",
+      "member_create_channel": "> Servermedlem oprettet kanal: <#{{channelId}}>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Kanal",
+      "member_delete_channel": "> Servermedlem eksploderet kanal: `{{channelName}}`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_pins_in_channel": "> Servermedlem har fastgjort pladsen: <#{{channelId}}> når {{pinnedAt}}"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_update_channel": "> Et servermedlem har ændret nogle felter: `{{oldChannelName}}` til <#{{newChannelId}}>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> Servermedlem har oprettet en ny emoji: :{{emojiName}}:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Servermedlem slettet emoji: :{{emojiName}}:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> Servermedlemmet har ændret den nye emoji fra: {{oldEmojiName}} til {{newEmojiName}}."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_add": "> <@{{userId}}> Allerede forbudt på denne server\n**Årsag:**\n```{{reason}}```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_remove": "> <@{{userId}}> Er blevet fjernet forbuddet på denne server\n**årsag:**\n```{{reason}}```"
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Denne server har allerede slået {{guildName}} sammen. Du vil modtage nye artikler med det samme med fremtidige opdateringer.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "Der opstod en valideringsfejl. Kontakt serverpersonalet for at handle.",
+      "captcha_success": "Du er verificeret i {{guildName}}",
+      "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
+      "solve_the_captcha": "Rettet captcha for at verificere i {{guildName}}",
+      "submit_answer_captcha": "Send et captcha-svar",
+      "submit_you_answer_guide": "Indsend, hvad du tror, captcha er",
+      "use_button_below": "Brug knappen nedenfor for at sende dit svar!",
+      "welcome": "Velkommen til serveren",
+      "wrong_answer": "Det virker forkert. Prøv igen...",
+      "your_answer": "svar på din captcha"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "Er allerede flygtet fra denne server...(Lad os gå til hans sted..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Velkommen medlemmer fra server {{guildName}} Vi venter på dig her.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberUpdate": {
+      "guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "guild_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "guildSoundboardSoundCreate": {
+      "new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundDelete": {
+      "soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundUpdate": {
+      "deleted": "ถูกลบแล้ว",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Server",
+      "guild_unavailable": "I øjeblikket...denne server er midlertidigt utilgængelig. Kontakt venligst administratoren af denne server."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm..Jeg mangler nogle tilladelser. Så jeg kan ikke blive ved, nemlig **{{permissions}}**",
+      "command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
+    },
+    "inviteCreate": {
+      "invite_create": "Invitationslinket er oprettet\n**Link:** {{inviteUrl}}\n**Udløber:** {{expiresAt}}\n**Maksimum:** {{maxUses}}\n```{{inviteCode}}```",
+      "invite_notification": "🏷️ Invitation"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`{{inviteCode}}` Denne invitationskode er blevet fjernet.",
+      "invite_code_expires": "`{{inviteCode}}` Denne invitationskode er udløbet.",
+      "invite_notification": "🏷️ Invitation"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Du er vendt tilbage Deaktiver automatisk AFK-status",
+      "no_reason_for_afk": "har ikke",
+      "that_user_is_afk": "{{username}} Nu ikke på skærmen (AFK), nævn ham ikke nu\n**Send besked**: {{reason}}"
+    },
+    "ready": {
+      "prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
+    },
+    "roleCreate": {
+      "role_create": "<@&{{roleId}}> er blevet oprettet.",
+      "role_notification": "🔖 Rolle"
+    },
+    "roleDelete": {
+      "role_delete": "`{{roleName}}` er blevet slettet.",
+      "role_notification": "🔖 Rolle"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Rolle",
+      "role_update": "`{{oldRoleName}}` er blevet opdateret til <@&{{newRoleId}}>"
+    },
+    "soundboardSounds": {
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#{{stageId}}> er blevet oprettet.",
+      "stage_notification": "🎤 scene"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`{{stageName}}` er blevet slettet.",
+      "stage_notification": "🎤 scene"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`{{oldStageName}}` er blevet opdateret til <#{{newStageId}}>.",
+      "stage_notification": "🎤 scene"
+    },
+    "stickerCreate": {
+      "sticker_create": "**{{stickerName}}** Nu tilgængelig",
+      "sticker_notification": "👻 klistermærke"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**{{stickerName}}** er blevet slettet",
+      "sticker_notification": "👻 klistermærke"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 klistermærke",
+      "sticker_update": "`{{oldStickerName}}` er blevet opdateret til **{{newStickerId}}**"
+    },
+    "threadCreate": {
+      "thread_create": "<#{{threadId}}> er blevet oprettet.",
+      "thread_notification": "#️⃣ Tråde"
+    },
+    "threadDelete": {
+      "thread_delete": "**{{threadName}}** er blevet slettet",
+      "thread_notification": "#️⃣ Tråde"
+    },
+    "threadListSync": {
+      "thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMembersUpdate": {
+      "added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+      "removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMemberUpdate": {
+      "thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "thread_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Tråde",
+      "thread_update": "`{{oldThreadName}}` er blevet opdateret til **{{newThreadId}}**"
+    },
+    "voiceStateUpdate": {
+      "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
+      "voice_notification": "➿ สถานะเสียง",
+      "voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Web Hook",
+      "webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+    }
+  },
+  "handlers": {
+    "player": {
+      "addList": {
+        "added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
+      },
+      "addSong": {
+        "added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
+      },
+      "deleteQueue": {
+        "deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
+      },
+      "disconnect": {
+        "disconnected": "🔌 Afbrudt og slettet alle køer allerede."
+      },
+      "error": {
+        "playlist_not_found": "❎ Jeg kan ikke finde den afspilningsliste. Leder du efter en anden playliste?"
+      },
+      "finish": {
+        "queue_is_empty": "🍃 Nu er min kø tom. Klar til at spille den næste sang?"
+      },
+      "finishSong": {
+        "finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
+      },
+      "noRelated": {
+        "no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
+      },
+      "playSong": {
+        "playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
+      }
+    }
+  },
+  "utils": {
+    "clientUtils": {
+      "color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
+      "is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
+      "need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
+      "timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
+    },
+    "consoleUtils": {
+      "error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
+      "error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
+      "report_issues": "[รายงานปัญหา]({{-issues_link}})",
+      "server_abnormal": "abnorm",
+      "server_normal": "normal"
+    },
+    "databaseUtils": {
+      "congratulations": "Tillykke!!",
+      "level_up": "Klassen *{{username}}* er nu blevet opgraderet til ```{{level}}```."
+    }
+  }
 }

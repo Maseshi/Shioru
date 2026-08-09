@@ -157,9 +157,9 @@ module.exports = {
           if (!addSticker) return;
 
           await interaction.editReply(
-            interaction.client.i18n
-              .t("commands.sticker.you_sticker_is_ready")
-              .replace("%s", inputName),
+            interaction.client.i18n.t("commands.sticker.you_sticker_is_ready", {
+              stickerName: inputName,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);
@@ -172,9 +172,9 @@ module.exports = {
             reason: inputReason,
           });
           await interaction.reply(
-            interaction.client.i18n
-              .t("commands.sticker.deleted_sticker")
-              .replace("%s", inputSticker),
+            interaction.client.i18n.t("commands.sticker.deleted_sticker", {
+              stickerName: inputSticker,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);
@@ -191,9 +191,9 @@ module.exports = {
           });
 
           await interaction.reply(
-            interaction.client.i18n
-              .t("commands.sticker.edited_sticker")
-              .replace("%s", editSticker),
+            interaction.client.i18n.t("commands.sticker.edited_sticker", {
+              stickerName: editSticker,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);

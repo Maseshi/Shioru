@@ -55,13 +55,22 @@ test("translation placeholder drift does not exceed the known catalog debt", () 
     }
   }
 
-  // Existing Crowdin catalogs mix legacy %s placeholders with i18next
-  // placeholders. Keep this guard from allowing additional drift while the
-  // existing translations are migrated independently.
+  // Some Crowdin catalogs still omit placeholders that exist in en-US. Keep
+  // the existing drift bounded while requiring one interpolation syntax.
   assert.ok(
     mismatches.length <= 100,
     `Placeholder mismatches increased to ${mismatches.length}: ${mismatches.join(", ")}`,
   );
+});
+
+test("translation catalogs use i18next interpolation placeholders", () => {
+  for (const entry of readdirSync(localesPath, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const file = join(localesPath, entry.name, "translation.json");
+    const source = readFileSync(file, "utf8");
+    assert.doesNotMatch(source, /%s\d*/, entry.name);
+    assert.doesNotMatch(source, /{{\s*value\d*\s*}}/, entry.name);
+  }
 });
 
 test("locale directories do not contain empty translation keys", () => {

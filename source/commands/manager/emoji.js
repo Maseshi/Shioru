@@ -117,9 +117,9 @@ module.exports = {
           if (!addEmoji) return;
 
           await interaction.editReply(
-            interaction.client.i18n
-              .t("commands.emoji.you_emoji_is_ready")
-              .replace("%s", addEmoji),
+            interaction.client.i18n.t("commands.emoji.you_emoji_is_ready", {
+              emojiName: addEmoji,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);
@@ -132,9 +132,9 @@ module.exports = {
             reason: inputReason,
           });
           await interaction.reply(
-            interaction.client.i18n
-              .t("commands.emoji.deleted_emoji")
-              .replace("%s", inputEmoji),
+            interaction.client.i18n.t("commands.emoji.deleted_emoji", {
+              emojiName: inputEmoji,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);
@@ -149,9 +149,9 @@ module.exports = {
           });
 
           await interaction.reply(
-            interaction.client.i18n
-              .t("commands.emoji.edited_emoji")
-              .replace("%s", editEmoji),
+            interaction.client.i18n.t("commands.emoji.edited_emoji", {
+              emojiName: editEmoji,
+            }),
           );
         } catch (error) {
           await interaction.reply(error.rawError.message);
