@@ -44,7 +44,7 @@ const { getDatabase, connectDatabaseEmulator } = require("firebase/database");
 const { startScreen } = require("./utils/consoleUtils");
 const { logger } = require("./utils/logUtils");
 const { initializeMetrics } = require("./utils/metricsUtils");
-const { updateChecker } = require("./utils/servicesUtils");
+const { updateChecker } = require("./utils/updateUtils");
 const {
   getYtDlpStreamURL,
   useYtDlpForStreams,
@@ -241,6 +241,7 @@ try {
     backend: {
       loadPath: join(__dirname, "locales", "{{lng}}", "{{ns}}.json"),
     },
+    interpolation: { escapeValue: false },
   });
 } catch (error) {
   logger.error(error, "Error initializing i18next");
