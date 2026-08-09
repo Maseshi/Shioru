@@ -8,6 +8,7 @@ const { join } = require("node:path");
 const { catchError } = require("../../utils/consoleUtils");
 
 module.exports = {
+  ephemeral: true,
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("reload")

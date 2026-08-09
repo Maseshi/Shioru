@@ -61,6 +61,7 @@ const resolveRequestedLog = (interaction) => {
 };
 
 module.exports = {
+  ephemeral: "always",
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("logs")
