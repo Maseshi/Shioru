@@ -9,6 +9,7 @@ const {
 
 module.exports = {
   cooldown: 5,
+  ephemeral: true,
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("ping")

@@ -144,6 +144,55 @@ test("active cooldown replies without executing the command", async () => {
   assert.equal(reply.ephemeral, true);
 });
 
+test("supported commands use the user's ephemeral response setting", async () => {
+  const { calls, client, event, interaction } = setup({ ephemeral: true });
+  let reply = null;
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    ephemeral: true,
+    execute: async (commandInteraction) => {
+      await commandInteraction.reply("private response");
+    },
+  });
+  interaction.reply = async (payload) => {
+    reply = payload;
+  };
+
+  await event.execute(interaction);
+
+  assert.deepEqual(calls.ephemeralReads, ["user-1"]);
+  assert.equal(reply.content, "private response");
+  assert.equal(
+    new MessageFlagsBitField(reply.flags).has(MessageFlags.Ephemeral),
+    true,
+  );
+});
+
+test("always-ephemeral commands do not read the user setting", async () => {
+  const { calls, client, event, interaction } = setup();
+  let deferredPayload = null;
+  interaction.deferReply = async (payload) => {
+    deferredPayload = payload;
+    interaction.deferred = true;
+  };
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    deferReply: true,
+    ephemeral: "always",
+    execute: async () => undefined,
+  });
+
+  await event.execute(interaction);
+
+  assert.deepEqual(calls.ephemeralReads, []);
+  assert.equal(
+    new MessageFlagsBitField(deferredPayload.flags).has(MessageFlags.Ephemeral),
+    true,
+  );
+});
+
 test("missing bot permissions sends a direct message and skips execution", async () => {
   const { client, event, interaction } = setup();
   let directMessage = null;

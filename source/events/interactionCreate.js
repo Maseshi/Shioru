@@ -34,6 +34,21 @@ module.exports = {
       ? interaction.client.commands.get(interaction.commandName)
       : null;
 
+    if (command?.ephemeral) {
+      let enabled = command.ephemeral === "always";
+      if (!enabled) {
+        try {
+          enabled = await getUserEphemeral(interaction.user.id);
+        } catch (error) {
+          interaction.client.logger.error(
+            { err: error, userId: interaction.user.id },
+            "Failed to load the user's ephemeral setting.",
+          );
+        }
+      }
+      if (enabled) enableEphemeralResponses(interaction);
+    }
+
     if (command?.deferReply && !interaction.deferred && !interaction.replied)
       await interaction.deferReply();
 

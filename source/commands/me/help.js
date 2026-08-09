@@ -16,6 +16,7 @@ const {
 const { newLines } = require("../../utils/miscUtils");
 
 module.exports = {
+  ephemeral: true,
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("help")
@@ -176,6 +177,8 @@ module.exports = {
       interaction.client.i18n.t("commands.help.tips"),
       interaction.client.i18n.t("commands.help.can_clickable_some_command"),
       interaction.client.i18n.t("commands.help.symbol_mean"),
+      interaction.client.i18n.t("commands.help.ephemeral_tip"),
+      interaction.client.i18n.t("commands.help.ephemeral_symbols"),
       interaction.client.i18n.t("commands.help.other_links", {
         invite_link: "https://shiorus.web.app/invite",
         status_link: "https://shioru.statuspage.io/",
@@ -194,6 +197,7 @@ module.exports = {
       "# </{{name}}:{{id}}>",
       interaction.client.i18n.t("commands.help.command_category"),
       interaction.client.i18n.t("commands.help.command_description"),
+      interaction.client.i18n.t("commands.help.command_ephemeral"),
       interaction.client.i18n.t("commands.help.command_cooldown"),
       interaction.client.i18n.t("commands.help.command_client_permissions"),
       interaction.client.i18n.t("commands.help.command_user_permissions"),
@@ -281,6 +285,7 @@ module.exports = {
       const cooldown = clientCommand.cooldown;
       const category = clientCommand.category;
       const usage = clientCommand.usage;
+      const ephemeral = clientCommand.ephemeral;
       const clientPermissions = clientCommand.permissions
         ? new PermissionsBitField(clientCommand.permissions).toArray()
         : interaction.client.i18n.t("commands.help.none");
@@ -342,6 +347,16 @@ module.exports = {
           .replace("{{name}}", name)
           .replace("{{id}}", id)
           .replace("{{description}}", description)
+          .replace(
+            "{{ephemeral}}",
+            interaction.client.i18n.t(
+              ephemeral === "always"
+                ? "commands.help.ephemeral_always"
+                : ephemeral
+                  ? "commands.help.ephemeral_supported"
+                  : "commands.help.ephemeral_unsupported",
+            ),
+          )
           .replace(
             "{{cooldown}}",
             interaction.client.i18n.t("commands.help.cooldown_time", {
@@ -508,9 +523,12 @@ module.exports = {
               const commandDescription =
                 category[index].description[interaction.locale] ??
                 category[index].description["en-US"];
+              const ephemeral = category[index].ephemeral;
+              const ephemeralSymbol =
+                ephemeral === "always" ? "🔐 " : ephemeral ? "🔒 " : "";
 
               commands.push(
-                `- </${commandName}:${commandID}>: ${commandDescription}`,
+                `- ${ephemeralSymbol}</${commandName}:${commandID}>: ${commandDescription}`,
               );
             }
 
