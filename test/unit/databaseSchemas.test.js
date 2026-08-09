@@ -4,20 +4,29 @@ const { ChatSchema, createChat } = require("../../source/schemas/chat");
 const {
   DjsSchema,
   GuildSchema,
+  GuildUpdateSchema,
   createDjs,
   createGuild,
 } = require("../../source/schemas/guild");
+const { LevelingSchema } = require("../../source/schemas/leveling");
 const {
   LeaderboardEntrySchema,
-  UserSchema,
   createLeaderboardEntry,
-  createUser,
-} = require("../../source/schemas/leveling");
+} = require("../../source/schemas/leaderboard");
 const {
   NotificationSchema,
   createNotification,
 } = require("../../source/schemas/notification");
 const { DatabaseRootSchema } = require("../../source/schemas/root");
+const {
+  AccessSchema,
+  MaintenanceSchema,
+} = require("../../source/schemas/system");
+const {
+  UserProfileSchema,
+  UserSchema,
+  createUser,
+} = require("../../source/schemas/user");
 
 test("database schema factories return independent compatible defaults", () => {
   const firstUser = createUser();
@@ -36,9 +45,21 @@ test("database schema factories return independent compatible defaults", () => {
 });
 
 test("database schemas reject invalid leveling values", () => {
+  assert.throws(() => LevelingSchema.parse({ exp: -1, level: 0 }));
   assert.throws(() => LeaderboardEntrySchema.parse({ exp: -1, level: 0 }));
   assert.throws(() => LeaderboardEntrySchema.parse({ exp: 1, level: 0.5 }));
   assert.throws(() => UserSchema.parse({ leveling: { exp: "1", level: 0 } }));
+});
+
+test("domain schemas expose their write contracts", () => {
+  assert.deepEqual(UserProfileSchema.parse({ username: "User" }), {
+    username: "User",
+  });
+  assert.deepEqual(GuildUpdateSchema.parse({ memberCount: 1 }), {
+    memberCount: 1,
+  });
+  assert.deepEqual(AccessSchema.parse({ "user-1": true }), { "user-1": true });
+  assert.equal(MaintenanceSchema.parse(false), false);
 });
 
 test("user schema preserves legacy and custom user data", () => {

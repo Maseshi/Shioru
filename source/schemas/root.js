@@ -1,26 +1,13 @@
 const { z } = require("zod");
-const { IdentifierSchema, JsonValueSchema } = require("./common");
+const { IdentifierSchema } = require("./common");
 const { ChatSchema } = require("./chat");
 const { GuildSchema } = require("./guild");
+const { InformationSchema } = require("./information");
 const { IssuesSchema } = require("./issue");
-const { LeaderboardEntrySchema, UserSchema } = require("./leveling");
-
-const InformationSchema = z.record(z.string(), JsonValueSchema);
-
-const StatisticsValueSchema = z.lazy(() =>
-  z.union([
-    z.number().finite().nonnegative(),
-    z.record(z.string(), StatisticsValueSchema),
-  ]),
-);
-const StatisticsSchema = z.record(z.string(), StatisticsValueSchema);
-const AccessSchema = z.record(IdentifierSchema, z.boolean());
-const MaintenanceSchema = z.union([
-  z.boolean(),
-  z
-    .object({ enabled: z.boolean(), message: z.string().optional() })
-    .passthrough(),
-]);
+const { LeaderboardEntrySchema } = require("./leaderboard");
+const { StatisticsSchema } = require("./statistics");
+const { AccessSchema, MaintenanceSchema } = require("./system");
+const { UserSchema } = require("./user");
 const DatabaseRootSchema = z
   .object({
     maintenance: MaintenanceSchema.optional(),
@@ -41,9 +28,5 @@ const DatabaseRootSchema = z
   .strict();
 
 module.exports = {
-  AccessSchema,
   DatabaseRootSchema,
-  InformationSchema,
-  MaintenanceSchema,
-  StatisticsSchema,
 };

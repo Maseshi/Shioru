@@ -13,7 +13,7 @@ const {
   trackedRunTransaction: runTransaction,
   trackedSet: set,
 } = require("../utils/metricsUtils");
-const { createLeaderboardEntry } = require("../schemas/leveling");
+const { createLeaderboardEntry } = require("../schemas/leaderboard");
 
 const getUserRef = (userId) => ref(getDatabase(), `users/${userId}`);
 
