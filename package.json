@@ -46,9 +46,7 @@
     "test:coverage": "node --test --experimental-test-coverage \"test/unit/**/*.test.js\"",
     "test:integration": "firebase --config firebase/firebase.json emulators:exec --only database \"node --test test/integration/firebase/databaseRules.test.js\"",
     "test:all": "npm test && npm run test:integration",
-    "test:smoke": "node --test test/smoke/docker.test.js",
-    "migrate": "node --env-file=.env scripts/migrate.js",
-    "migrate:apply": "node --env-file=.env scripts/migrate.js --apply"
+    "test:smoke": "node --test test/smoke/docker.test.js"
   },
   "dependencies": {
     "@discordjs/opus": "^0.10.0",
