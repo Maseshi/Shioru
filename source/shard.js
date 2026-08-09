@@ -32,12 +32,10 @@ const {
 const { webhookSend } = require("./utils/clientUtils");
 const { startScreen } = require("./utils/consoleUtils");
 const { logger } = require("./utils/logUtils");
-const {
-  updateChecker,
-  systemMetricsSubmitter,
-  statisticsSubmitter,
-  healthCheckSubmitter,
-} = require("./utils/servicesUtils");
+const { healthCheckSubmitter } = require("./utils/healthUtils");
+const { systemMetricsSubmitter } = require("./utils/statuspageUtils");
+const { statisticsSubmitter } = require("./utils/topggUtils");
+const { updateChecker } = require("./utils/updateUtils");
 const configs = require("./configs/data");
 
 const child = logger.child({}, { msgPrefix: "[Shard] " });
