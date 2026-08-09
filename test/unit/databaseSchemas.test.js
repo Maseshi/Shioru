@@ -70,12 +70,8 @@ test("complete schemas validate chat, guild settings, and database roots", () =>
   assert.equal(DjsSchema.parse(guild.djs).enable, true);
   assert.equal(NotificationSchema.parse(createNotification()).enable, false);
   assert.equal(
-    DatabaseRootSchema.parse({
-      meta: { schemaVersion: 1 },
-      chat,
-      guilds: { "guild-1": guild },
-    }).meta.schemaVersion,
-    1,
+    DatabaseRootSchema.safeParse({ meta: { schemaVersion: 1 } }).success,
+    false,
   );
   assert.throws(() => createGuild({ unknownSetting: true }));
 });

@@ -1,18 +1,5 @@
 {
   "rules": {
-    "meta": {
-      ".read": "auth != null && (auth.token.bot === true || root.child('access').child(auth.uid).val() === true)",
-      ".write": false,
-      "schemaVersion": {
-        ".validate": "newData.isNumber() && newData.val() >= 1"
-      },
-      "migratedAt": {
-        ".validate": "newData.isString()"
-      },
-      "$other": {
-        ".validate": false
-      }
-    },
     "maintenance": {
       ".read": true,
       ".write": false
