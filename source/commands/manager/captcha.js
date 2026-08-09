@@ -4,9 +4,8 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
 const { getGuildData } = require("../../utils/cacheUtils");
-const { trackedUpdate: update } = require("../../utils/metricsUtils");
+const { updateCaptcha } = require("../../repositories/guildSettings");
 
 module.exports = {
   permissions: [
@@ -64,7 +63,6 @@ module.exports = {
     const inputRole = interaction.options.getRole("role") ?? "";
     const inputCaptcha = interaction.options.getString("captcha") ?? "";
 
-    const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
     const captchaData = getGuildData(
       interaction.client,
       interaction.guild.id,
@@ -72,7 +70,7 @@ module.exports = {
 
     switch (subcommand) {
       case "setup":
-        await update(child(guildRef, "captcha"), {
+        await updateCaptcha(interaction.guild.id, {
           enable: true,
           role: inputRole.id,
           text: inputCaptcha,
@@ -92,7 +90,7 @@ module.exports = {
             interaction.client.i18n.t("commands.captcha.currently_enable"),
           );
 
-        await update(child(guildRef, "captcha"), { enable: true });
+        await updateCaptcha(interaction.guild.id, { enable: true });
         await interaction.reply(
           interaction.client.i18n.t("commands.captcha.enabled_captcha"),
         );
@@ -107,7 +105,7 @@ module.exports = {
             interaction.client.i18n.t("commands.captcha.currently_disable"),
           );
 
-        await update(child(guildRef, "captcha"), { enable: false });
+        await updateCaptcha(interaction.guild.id, { enable: false });
         await interaction.reply(
           interaction.client.i18n.t("commands.captcha.disabled_captcha"),
         );

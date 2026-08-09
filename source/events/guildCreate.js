@@ -1,6 +1,6 @@
 const { Events } = require("discord.js");
 const { registeringCommands } = require("../utils/clientUtils");
-const { synchronizeGuildData } = require("../utils/databaseUtils");
+const { synchronizeGuildData } = require("../services/guild");
 const { watchGuildData } = require("../utils/cacheUtils");
 
 module.exports = {

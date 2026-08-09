@@ -1,9 +1,8 @@
 const { Events, ChannelType } = require("discord.js");
-const { getDatabase, ref } = require("firebase/database");
-const { fetchLevel } = require("../utils/databaseUtils");
+const { fetchLevel } = require("../services/leveling");
 const { getGuildData } = require("../utils/cacheUtils");
-const { trackedRemove: remove } = require("../utils/metricsUtils");
 const { catchError } = require("../utils/consoleUtils");
+const { removeAfkEntry } = require("../repositories/guildSettings");
 const {
   findMatch,
   executeScript,
@@ -147,12 +146,7 @@ module.exports = {
           catchError(message.client, message, "afk", error);
         }
 
-        await remove(
-          ref(
-            getDatabase(),
-            `guilds/${message.guild.id}/afk/${message.author.id}`,
-          ),
-        );
+        await removeAfkEntry(message.guild.id, message.author.id);
         delete afkData[message.author.id];
         await message.reply({
           content: message.client.i18n.t(
@@ -176,10 +170,10 @@ module.exports = {
 
         if (message.content.includes(members)) {
           await message.reply(
-            message.client.i18n
-              .t("events.messageCreate.that_user_is_afk")
-              .replace("%s1", member.user.tag)
-              .replace("%s2", reason),
+            message.client.i18n.t("events.messageCreate.that_user_is_afk", {
+              username: member.user.tag,
+              reason: reason,
+            }),
           );
         }
       }

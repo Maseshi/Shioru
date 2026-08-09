@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildEmojiDelete,
@@ -8,9 +8,9 @@ module.exports = {
     const emojiDeleteEmbed = new EmbedBuilder()
       .setTitle(emoji.client.i18n.t("events.emojiDelete.emoji_notification"))
       .setDescription(
-        emoji.client.i18n
-          .t("events.emojiDelete.member_delete_emoji")
-          .replace("%s", emoji.name),
+        emoji.client.i18n.t("events.emojiDelete.member_delete_emoji", {
+          emojiName: emoji.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

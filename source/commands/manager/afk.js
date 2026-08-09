@@ -4,13 +4,12 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
 const { getGuildData } = require("../../utils/cacheUtils");
 const { catchError } = require("../../utils/consoleUtils");
 const {
-  trackedRemove: remove,
-  trackedUpdate: update,
-} = require("../../utils/metricsUtils");
+  removeAfkEntry,
+  setAfkEntry,
+} = require("../../repositories/guildSettings");
 
 module.exports = {
   permissions: [
@@ -52,7 +51,6 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand();
     const inputMessage = interaction.options.getString("message") ?? "";
 
-    const guildRef = child(ref(getDatabase(), "guilds"), interaction.guild.id);
     const guildData = getGuildData(interaction.client, interaction.guild.id);
 
     const nickname = interaction.member.nickname || interaction.user.username;
@@ -68,7 +66,7 @@ module.exports = {
           }
         }
 
-        await update(child(child(guildRef, "afk"), interaction.user.id), {
+        await setAfkEntry(interaction.guild.id, interaction.user.id, {
           message: inputMessage,
           nickname: nickname,
         });
@@ -121,7 +119,7 @@ module.exports = {
           );
         }
 
-        await remove(child(child(guildRef, "afk"), interaction.user.id));
+        await removeAfkEntry(interaction.guild.id, interaction.user.id);
         await interaction.reply({
           content: interaction.client.i18n.t("commands.afk.now_not_afk"),
           ephemeral: true,

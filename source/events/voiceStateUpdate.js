@@ -1,6 +1,6 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { isVoiceChannelEmpty } = require("distube");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.VoiceStateUpdate,

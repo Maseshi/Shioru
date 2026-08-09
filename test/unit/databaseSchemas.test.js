@@ -1,0 +1,81 @@
+const assert = require("node:assert/strict");
+const test = require("node:test");
+const { ChatSchema, createChat } = require("../../source/schemas/chat");
+const {
+  DjsSchema,
+  GuildSchema,
+  createDjs,
+  createGuild,
+} = require("../../source/schemas/guild");
+const {
+  LeaderboardEntrySchema,
+  UserSchema,
+  createLeaderboardEntry,
+  createUser,
+} = require("../../source/schemas/leveling");
+const {
+  NotificationSchema,
+  createNotification,
+} = require("../../source/schemas/notification");
+const { DatabaseRootSchema } = require("../../source/schemas/root");
+
+test("database schema factories return independent compatible defaults", () => {
+  const firstUser = createUser();
+  const secondUser = createUser();
+  firstUser.guilds.push("guild-1");
+
+  assert.deepEqual(secondUser, {
+    leveling: { exp: 0, level: 0 },
+    guildLeveling: {},
+    guilds: [],
+  });
+  assert.deepEqual(createLeaderboardEntry(), { exp: 0, level: 0 });
+  assert.equal(GuildSchema.parse(createGuild()).memberCount, 0);
+  assert.deepEqual(createDjs().roles, []);
+  assert.equal(createNotification().embed.fields.length, 2);
+});
+
+test("database schemas reject invalid leveling values", () => {
+  assert.throws(() => LeaderboardEntrySchema.parse({ exp: -1, level: 0 }));
+  assert.throws(() => LeaderboardEntrySchema.parse({ exp: 1, level: 0.5 }));
+  assert.throws(() => UserSchema.parse({ leveling: { exp: "1", level: 0 } }));
+});
+
+test("user schema preserves legacy and custom user data", () => {
+  const user = createUser({
+    username: "Legacy user",
+    guildLeveling: { "guild-1": { exp: 10, level: 2 } },
+    custom: { retained: true },
+  });
+
+  assert.equal(user.guildLeveling["guild-1"].level, 2);
+  assert.deepEqual(user.custom, { retained: true });
+});
+
+test("complete schemas validate chat, guild settings, and database roots", () => {
+  const chat = createChat({
+    conversations: [{ prompts: ["hello"], replies: ["Hi!"] }],
+    alternatives: ["Continue"],
+    system: "Be helpful",
+  });
+  const guild = createGuild({
+    language: { type: "CUSTOM", locale: "th" },
+    djs: createDjs({ enable: true, roles: ["role-1"] }),
+    captcha: { enable: false, role: "role-1", text: "captcha" },
+    afk: { "user-1": { message: "Away", nickname: "User" } },
+    chat,
+  });
+
+  assert.equal(ChatSchema.parse(chat).conversations.length, 1);
+  assert.equal(DjsSchema.parse(guild.djs).enable, true);
+  assert.equal(NotificationSchema.parse(createNotification()).enable, false);
+  assert.equal(
+    DatabaseRootSchema.parse({
+      meta: { schemaVersion: 1 },
+      chat,
+      guilds: { "guild-1": guild },
+    }).meta.schemaVersion,
+    1,
+  );
+  assert.throws(() => createGuild({ unknownSetting: true }));
+});

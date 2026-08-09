@@ -18,3 +18,4 @@ logs/
 firebase-debug.log
 database-debug.log
 firebase/.firebaserc
+backups/

@@ -6,21 +6,15 @@ const {
   PresenceUpdateStatus,
 } = require("discord.js");
 const { getApps } = require("firebase/app");
-const { getDatabase, ref, child } = require("firebase/database");
 const { registeringCommands, webhookSend } = require("../utils/clientUtils");
 const { colorize } = require("../utils/consoleUtils");
-const {
-  dataStructures,
-  fetchStatistics,
-  synchronizeGuildData,
-} = require("../utils/databaseUtils");
+const { synchronizeGuildData } = require("../services/guild");
+const { fetchStatistics } = require("../services/statistics");
+const { createChat } = require("../schemas/chat");
 const { watchGuildData } = require("../utils/cacheUtils");
-const {
-  logMetrics,
-  trackedOnValue: onValue,
-  trackedSet: set,
-  trackedUpdate: update,
-} = require("../utils/metricsUtils");
+const { logMetrics } = require("../utils/metricsUtils");
+const { onChat, setChat } = require("../repositories/chat");
+const { updateInformation } = require("../repositories/information");
 const { currencyFormatter, newTitle } = require("../utils/miscUtils");
 
 module.exports = {
@@ -63,36 +57,37 @@ module.exports = {
       // Fetch chat data on change and apply
       client.logger.info("Fetching and updating chat data...");
 
-      const chatRef = ref(getDatabase(), "chat");
       const baseConstants = require("../configs/constants.json");
 
-      const updateChatData = (snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          const conversations = Array.isArray(data.conversations)
-            ? data.conversations
-            : Object.values(data.conversations ?? {});
-          const alternatives = Array.isArray(data.alternatives)
-            ? data.alternatives
-            : Object.values(data.alternatives ?? {});
-          const system = data.system ?? "";
-
+      const updateChatData = async (chat) => {
+        if (chat) {
           client.configs.constants.conversations = [
             ...baseConstants.conversations,
-            ...conversations,
+            ...chat.conversations,
           ];
           client.configs.constants.alternatives = [
             ...baseConstants.alternatives,
-            ...alternatives,
+            ...chat.alternatives,
           ];
-          client.configs.constants.system = system;
+          client.configs.constants.system = chat.system;
         } else {
-          set(chatRef, dataStructures(client, "chat"));
+          await setChat(
+            createChat({
+              conversations: client.configs.constants.conversations,
+              alternatives: client.configs.constants.alternatives,
+            }),
+          );
         }
       };
 
-      const unsubscribeChat = onValue(chatRef, (snapshot) =>
-        updateChatData(snapshot),
+      const unsubscribeChat = onChat(
+        (chat) => {
+          updateChatData(chat).catch((error) =>
+            client.logger.error(error, "Failed to synchronize chat data."),
+          );
+        },
+        (error) =>
+          client.logger.error(error, "Failed to listen for chat data."),
       );
       client.temp.listeners.set("chat", unsubscribeChat);
 
@@ -116,17 +111,16 @@ module.exports = {
       client.logger.info("Sending details of all commands...");
 
       try {
-        const commandsRef = child(
-          ref(getDatabase(), "information"),
-          "commands",
-        );
-        const contextsRef = child(
-          ref(getDatabase(), "information"),
-          "contexts",
-        );
-
-        update(commandsRef, Object.fromEntries(client.temp.commands));
-        update(contextsRef, Object.fromEntries(client.temp.contexts));
+        await Promise.all([
+          updateInformation(
+            "commands",
+            Object.fromEntries(client.temp.commands),
+          ),
+          updateInformation(
+            "contexts",
+            Object.fromEntries(client.temp.contexts),
+          ),
+        ]);
 
         client.logger.info("Completed to sending details of all commands.");
       } catch (error) {

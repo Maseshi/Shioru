@@ -109,13 +109,66 @@ test("Realtime Database rules and metrics work through the emulator", async (t) 
 
   await firebaseSet(ref(botDatabase, "information/version"), "test");
   await firebaseSet(ref(botDatabase, "statistics/size/worked"), 1);
-  await firebaseSet(ref(botDatabase, "chat/system"), "test");
+  await firebaseSet(ref(botDatabase, "chat"), {
+    conversations: [{ prompts: ["hello"], replies: ["Hi!"] }],
+    alternatives: ["Please continue"],
+    system: "test",
+  });
   await firebaseSet(ref(botDatabase, "issues/bugs/rules-test"), {
     title: "Rules test",
+    description: "Integration test",
+    user: "rules-user",
+    uid: "rules-user",
+    reportedAt: "2026-01-01T00:00:00.000Z",
+    status: { read: false, close: false, comment: false },
   });
   await firebaseSet(ref(botDatabase, "users/rules-user"), {
     leveling: { exp: 0, level: 0 },
   });
+  await firebaseSet(ref(botDatabase, "users/schema-user"), {
+    username: "Schema user",
+    avatar: "https://cdn.test/user.png",
+    leveling: { exp: 1, level: 0 },
+    guilds: { "rules-guild": true },
+    settings: { ephemeral: true },
+  });
+  await firebaseSet(
+    ref(botDatabase, "users/schema-user/username"),
+    "Updated schema user",
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "users/missing-leveling"), {
+      username: "Invalid user",
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "users/invalid-leveling"), {
+      leveling: { exp: -1, level: 0 },
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "users/unknown-leveling-field"), {
+      leveling: { exp: 1, level: 0, admin: true },
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "users/invalid-ephemeral-setting"), {
+      leveling: { exp: 1, level: 0 },
+      settings: { ephemeral: "yes" },
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "chat"), {
+      conversations: [{ prompts: ["hello"] }],
+      alternatives: ["Continue"],
+      system: "invalid",
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(botDatabase, "issues/features/invalid-issue"), {
+      title: "Missing schema fields",
+    }),
+  );
 
   const leaderboardRef = ref(
     botDatabase,
@@ -152,12 +205,36 @@ test("Realtime Database rules and metrics work through the emulator", async (t) 
   );
 
   const allowedGuildRef = ref(allowedDatabase, "guilds/rules-guild");
-  await firebaseSet(allowedGuildRef, { name: "Allowed guild" });
+  await firebaseSet(allowedGuildRef, {
+    joinedAt: "2026-01-01T00:00:00.000Z",
+    createdAt: "2020-01-01T00:00:00.000Z",
+    description: "",
+    iconURL: "",
+    preferredLocale: "en-US",
+    memberCount: 1,
+    name: "Allowed guild",
+    verified: false,
+    language: { type: "USER", locale: "en-US" },
+    djs: { enable: true, only: false, roles: ["rules-role"] },
+    captcha: { enable: false, role: "rules-role", text: "captcha" },
+    afk: {
+      "rules-user": { message: "Away", nickname: "Rules user" },
+    },
+  });
   assert.equal((await firebaseGet(allowedGuildRef)).val().name, "Allowed guild");
-  await firebaseSet(ref(allowedDatabase, "chat/rules-test"), "allowed");
+  await firebaseSet(child(child(allowedGuildRef, "djs"), "enable"), false);
+  await assert.rejects(
+    firebaseSet(ref(allowedDatabase, "guilds/invalid-guild"), {
+      name: "Missing metadata",
+    }),
+  );
+  await assert.rejects(
+    firebaseSet(ref(allowedDatabase, "guilds/rules-guild/djs/only"), "yes"),
+  );
+  await firebaseSet(ref(allowedDatabase, "chat/system"), "Allowed system");
   assert.equal(
-    (await firebaseGet(ref(allowedDatabase, "chat/rules-test"))).val(),
-    "allowed",
+    (await firebaseGet(ref(allowedDatabase, "chat/system"))).val(),
+    "Allowed system",
   );
 
   await assert.rejects(firebaseGet(ref(deniedDatabase, "users")));

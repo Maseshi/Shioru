@@ -7,15 +7,14 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
 const { embedBuilder } = require("../../utils/clientUtils");
-const { dataStructures } = require("../../utils/databaseUtils");
+const { createNotification } = require("../../schemas/notification");
 const { newLines } = require("../../utils/miscUtils");
 const { getGuildData } = require("../../utils/cacheUtils");
 const {
-  trackedRemove: remove,
-  trackedUpdate: update,
-} = require("../../utils/metricsUtils");
+  removeNotification,
+  updateNotification,
+} = require("../../repositories/guildSettings");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -528,10 +527,6 @@ module.exports = {
     const inputFooterIconURL =
       interaction.options.getString("embed_footer_icon_url") ?? "";
 
-    const notificationRef = child(
-      child(ref(getDatabase(), "guilds"), interaction.guild.id),
-      "notification",
-    );
     const cachedNotification = getGuildData(
       interaction.client,
       interaction.guild.id,
@@ -583,12 +578,12 @@ module.exports = {
                 ),
               );
           } else {
-            await update(child(notificationRef, inputType), {
+            await updateNotification(interaction.guild.id, inputType, {
               channelId: inputChannel.id,
             });
           }
 
-          await update(child(notificationRef, inputType), {
+          await updateNotification(interaction.guild.id, inputType, {
             enable: true,
             toggledAt: new Date(),
           });
@@ -637,7 +632,7 @@ module.exports = {
             );
         }
 
-        await update(child(notificationRef, inputType), {
+        await updateNotification(interaction.guild.id, inputType, {
           enable: false,
           toggledAt: new Date(),
         });
@@ -689,7 +684,7 @@ module.exports = {
             const content = notifyData.content;
             const embed = notifyData.embed;
             const toggledAt = notifyData.toggledAt;
-            const createBy = embed?.createBy;
+            const createBy = embed?.createdBy ?? embed?.createBy;
             const editor = embed?.editor;
 
             if (embed) {
@@ -867,7 +862,7 @@ module.exports = {
         const requireEmbedOptions = requireInputEmbedOptions.filter(
           (variable) => variable,
         );
-        const notify = dataStructures(interaction.client, "notification");
+        const notify = createNotification();
 
         if (notificationSnapshot.exists()) {
           const notificationData = notificationSnapshot.val();
@@ -967,8 +962,9 @@ module.exports = {
             }
           }
           if (subcommand === "edit") {
-            await update(
-              child(notificationRef, inputType),
+            await updateNotification(
+              interaction.guild.id,
+              inputType,
               Object.entries(notify).reduce(
                 (array, [key, value]) =>
                   value == null ? array : ((array[key] = value), array),
@@ -976,7 +972,7 @@ module.exports = {
               ),
             );
           } else {
-            await update(child(notificationRef, inputType), notify);
+            await updateNotification(interaction.guild.id, inputType, notify);
           }
 
           await interaction.reply(
@@ -1004,7 +1000,7 @@ module.exports = {
               ),
             );
 
-          await remove(child(notificationRef, inputType));
+          await removeNotification(interaction.guild.id, inputType);
           await interaction.reply(
             interaction.client.i18n.t(
               "commands.notify.unregistered_notification",

@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildEmojiUpdate,
@@ -8,10 +8,10 @@ module.exports = {
     const emojiUpdateEmbed = new EmbedBuilder()
       .setTitle(newEmoji.client.i18n.t("events.emojiUpdate.emoji_notification"))
       .setDescription(
-        newEmoji.client.i18n
-          .t("events.emojiUpdate.member_update_emoji")
-          .replace("%s1", oldEmoji.name)
-          .replace("%s2", newEmoji.name),
+        newEmoji.client.i18n.t("events.emojiUpdate.member_update_emoji", {
+          oldEmojiName: oldEmoji.name,
+          newEmojiName: newEmoji.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");
