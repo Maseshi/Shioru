@@ -22,6 +22,69 @@ test("ensureUser initializes defaults without deleting existing fields", async (
   assert.deepEqual(user.guilds, []);
 });
 
+test("syncUserProfile initializes a user and its profile cache", async () => {
+  const { calls, repository, values } = loadRepository(target);
+  const cache = {};
+  const profile = {
+    username: "Schema user",
+    avatar: "https://cdn.test/user.png",
+  };
+
+  await repository.syncUserProfile(cache, "user-1", profile);
+
+  assert.equal(calls[0][0], "transaction");
+  assert.equal(calls[0][1], "users/user-1");
+  assert.equal(values.get("users/user-1").username, "Schema user");
+  assert.equal(cache.schemaUsers.has("user-1"), true);
+  assert.equal(
+    cache.userProfiles.get("user-1"),
+    "Schema user:https://cdn.test/user.png",
+  );
+});
+
+test("syncUserProfile skips an unchanged cached profile", async () => {
+  const { calls, repository } = loadRepository(target);
+  const cache = {
+    schemaUsers: new Set(["user-1"]),
+    userProfiles: new Map([
+      ["user-1", "Schema user:https://cdn.test/user.png"],
+    ]),
+  };
+
+  await repository.syncUserProfile(cache, "user-1", {
+    username: "Schema user",
+    avatar: "https://cdn.test/user.png",
+  });
+
+  assert.deepEqual(calls, []);
+});
+
+test("syncUserProfile persists a changed cached profile", async () => {
+  const { calls, repository } = loadRepository(target);
+  const cache = {
+    schemaUsers: new Set(["user-1"]),
+    userProfiles: new Map([["user-1", "Schema user:old-avatar"]]),
+  };
+
+  await repository.syncUserProfile(cache, "user-1", {
+    username: "Schema user",
+    avatar: "https://cdn.test/user.png",
+  });
+
+  assert.deepEqual(calls[0], [
+    "update",
+    "users/user-1",
+    {
+      username: "Schema user",
+      avatar: "https://cdn.test/user.png",
+    },
+  ]);
+  assert.equal(
+    cache.userProfiles.get("user-1"),
+    "Schema user:https://cdn.test/user.png",
+  );
+});
+
 test("incrementUserExperience validates and applies a level up", async () => {
   const { repository } = loadRepository(target, {
     "users/user-1/leveling": { exp: 199, level: 1 },

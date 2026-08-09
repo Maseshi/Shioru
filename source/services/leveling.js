@@ -13,6 +13,7 @@ const {
   resetUserLeveling,
   setUserLeveling,
   setUserLevelingValue,
+  syncUserProfile,
   updateUserProfile,
 } = require("../repositories/user");
 const { submitNotification } = require("./notification");
@@ -46,26 +47,9 @@ const updateExperience = async (
   const username = author?.user?.username ?? author?.username;
   const avatar =
     author?.user?.displayAvatarURL?.() ?? author?.displayAvatarURL?.();
-  const profileSignature = `${username ?? ""}:${avatar ?? ""}`;
-  const profileUpdates = {};
 
   if (!client.temp.cache) client.temp.cache = {};
-  if (!client.temp.cache.userProfiles)
-    client.temp.cache.userProfiles = new Map();
-  if (!client.temp.cache.schemaUsers) client.temp.cache.schemaUsers = new Set();
-  if (client.temp.cache.userProfiles.get(userId) !== profileSignature) {
-    if (username) profileUpdates.username = username;
-    if (avatar) profileUpdates.avatar = avatar;
-  }
-
-  if (!client.temp.cache.schemaUsers.has(userId)) {
-    await ensureUser(userId, profileUpdates);
-    client.temp.cache.schemaUsers.add(userId);
-    client.temp.cache.userProfiles.set(userId, profileSignature);
-  } else if (Object.keys(profileUpdates).length) {
-    await updateUserProfile(userId, profileUpdates);
-    client.temp.cache.userProfiles.set(userId, profileSignature);
-  }
+  await syncUserProfile(client.temp.cache, userId, { username, avatar });
 
   const [experienceResult] = await Promise.all([
     incrementUserExperience(userId, amount),

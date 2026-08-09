@@ -80,6 +80,8 @@ const loadServices = () => {
         level: type === "level" ? amount : 0,
       };
     },
+    syncUserProfile: async (cache, userId, profile) =>
+      calls.push(["syncUserProfile", cache, userId, profile]),
     updateLeaderboardExperience: async (cache, userId, guildId, amount) =>
       calls.push([
         "updateLeaderboardExperience",
@@ -217,7 +219,8 @@ test("experience updates ensure the user schema before incrementing", async () =
 
   assert.equal(result.status, "success");
   assert.deepEqual(calls[0], [
-    "ensureUser",
+    "syncUserProfile",
+    experienceClient.temp.cache,
     "user-1",
     {
       username: "Schema user",
