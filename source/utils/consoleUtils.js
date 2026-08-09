@@ -109,7 +109,7 @@ const catchError = async (client, message, name, error, silent = false) => {
     const contents = {
       content: "",
       embeds: [catchErrorEmbed],
-      ephemeral: true,
+      flags: discord.MessageFlags.Ephemeral,
     };
 
     if (client.configs.logger.error.enable) {
@@ -143,7 +143,19 @@ const catchError = async (client, message, name, error, silent = false) => {
     // Check type of message is interaction or not and check is should be handled silently
     if (!message.content && !silent) {
       if (message.deferred) {
-        await message.editReply(contents);
+        if (message.ephemeral) {
+          await message.editReply(contents);
+        } else {
+          try {
+            await message.deleteReply();
+          } catch (deleteError) {
+            client.logger.warn(
+              { err: deleteError, name },
+              "Failed to delete a public deferred response before reporting an error.",
+            );
+          }
+          await message.followUp(contents);
+        }
       } else if (message.replied) {
         await message.followUp(contents);
       } else {
