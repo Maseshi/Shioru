@@ -75,15 +75,15 @@ module.exports = {
 
     const kickEmbed = new EmbedBuilder()
       .setTitle(
-        interaction.client.i18n
-          .t("commands.kick.kicked_out")
-          .replace("%s", memberUsername),
+        interaction.client.i18n.t("commands.kick.kicked_out", {
+          memberName: memberUsername,
+        }),
       )
       .setDescription(
-        interaction.client.i18n
-          .t("commands.kick.reason_for_kick")
-          .replace("%s1", authorUsername)
-          .replace("%s2", inputReason),
+        interaction.client.i18n.t("commands.kick.reason_for_kick", {
+          moderatorName: authorUsername,
+          reason: inputReason,
+        }),
       )
       .setColor("Orange")
       .setTimestamp()

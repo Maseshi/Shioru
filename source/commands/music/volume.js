@@ -68,16 +68,16 @@ module.exports = {
     }
     if (inputPercent == null)
       return await interaction.reply(
-        interaction.client.i18n
-          .t("commands.volume.this_volume")
-          .replace("%s", queueVolume),
+        interaction.client.i18n.t("commands.volume.this_volume", {
+          volume: queueVolume,
+        }),
       );
 
     interaction.client.player.setVolume(interaction, inputPercent);
     await interaction.reply(
-      interaction.client.i18n
-        .t("commands.volume.adjusted")
-        .replace("%s", inputPercent),
+      interaction.client.i18n.t("commands.volume.adjusted", {
+        volume: inputPercent,
+      }),
     );
   },
 };

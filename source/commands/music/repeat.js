@@ -72,16 +72,13 @@ module.exports = {
       inputMode,
     );
     await interaction.reply(
-      interaction.client.i18n
-        .t("commands.repeat.repeated")
-        .replace(
-          "%s",
-          mode
-            ? mode == 2
-              ? interaction.client.i18n.t("commands.repeat.repeat_queue")
-              : interaction.client.i18n.t("commands.repeat.repeat_song")
-            : interaction.client.i18n.t("commands.repeat.off"),
-        ),
+      interaction.client.i18n.t("commands.repeat.repeated", {
+        repeatMode: mode
+          ? mode == 2
+            ? interaction.client.i18n.t("commands.repeat.repeat_queue")
+            : interaction.client.i18n.t("commands.repeat.repeat_song")
+          : interaction.client.i18n.t("commands.repeat.off"),
+      }),
     );
   },
 };

@@ -69,9 +69,9 @@ module.exports = {
     try {
       interaction.client.player.jump(interaction, inputAmount);
       await interaction.reply(
-        interaction.client.i18n
-          .t("commands.jump.jumped")
-          .replace("%s", inputAmount),
+        interaction.client.i18n.t("commands.jump.jumped", {
+          queuePosition: inputAmount,
+        }),
       );
     } catch (error) {
       await interaction.reply(

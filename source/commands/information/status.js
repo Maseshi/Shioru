@@ -54,9 +54,9 @@ module.exports = {
 
         statusEmbed
           .setDescription(
-            interaction.client.i18n
-              .t("commands.status.online_status")
-              .replace("%s", onlineCount),
+            interaction.client.i18n.t("commands.status.online_status", {
+              memberCount: onlineCount,
+            }),
           )
           .setColor(Colors.Green);
         await interaction.reply({ embeds: [statusEmbed] });
@@ -72,9 +72,9 @@ module.exports = {
 
         statusEmbed
           .setDescription(
-            interaction.client.i18n
-              .t("commands.status.offline_status")
-              .replace("%s", offlineCount),
+            interaction.client.i18n.t("commands.status.offline_status", {
+              memberCount: offlineCount,
+            }),
           )
           .setColor(Colors.Grey);
         await interaction.reply({ embeds: [statusEmbed] });
@@ -87,9 +87,9 @@ module.exports = {
 
         statusEmbed
           .setDescription(
-            interaction.client.i18n
-              .t("commands.status.idle_status")
-              .replace("%s", idleCount),
+            interaction.client.i18n.t("commands.status.idle_status", {
+              memberCount: idleCount,
+            }),
           )
           .setColor(Colors.Yellow);
         await interaction.reply({ embeds: [statusEmbed] });
@@ -102,9 +102,9 @@ module.exports = {
 
         statusEmbed
           .setDescription(
-            interaction.client.i18n
-              .t("commands.status.dnd_status")
-              .replace("%s", dndCount),
+            interaction.client.i18n.t("commands.status.dnd_status", {
+              memberCount: dndCount,
+            }),
           )
           .setColor(Colors.Red);
         await interaction.reply({ embeds: [statusEmbed] });

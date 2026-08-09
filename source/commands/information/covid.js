@@ -76,7 +76,7 @@ module.exports = {
       minutes.slice(-2);
 
     const covidEmbed = new EmbedBuilder()
-      .setTitle("🧫 Covid - %s".replace("%s", data.country))
+      .setTitle(`🧫 Covid - ${data.country}`)
       .setThumbnail(data.countryInfo.flag)
       .setColor(Colors.Blue)
       .addFields([
@@ -179,9 +179,9 @@ module.exports = {
         },
       ])
       .setFooter({
-        text: interaction.client.i18n
-          .t("commands.covid.updated_on")
-          .replace("%s", formattedTime),
+        text: interaction.client.i18n.t("commands.covid.updated_on", {
+          updatedAt: formattedTime,
+        }),
       });
 
     await interaction.editReply({ embeds: [covidEmbed] });

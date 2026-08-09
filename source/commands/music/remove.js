@@ -67,9 +67,9 @@ module.exports = {
 
     const song = queue.songs.splice(inputAmount, 1);
     await interaction.reply(
-      interaction.client.i18n
-        .t("commands.remove.removed")
-        .replace("%s", song[0].name),
+      interaction.client.i18n.t("commands.remove.removed", {
+        songName: song[0].name,
+      }),
     );
   },
 };

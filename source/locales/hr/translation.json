@@ -1,1037 +1,1037 @@
 {
-	"commands": {
-		"about": {
-			"commands": "คำสั่ง",
-			"connection": "เชื่อมต่อ",
-			"copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-			"guilds": "กิลด์",
-			"members": "สมาชิก",
-			"my_personal": "ข้อมูลส่วนตัวของฉัน",
-			"my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
-			"public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
-			"shards": "ชาร์ด",
-			"stats": "📊 สถิติ",
-			"worked": "ทำงาน"
-		},
-		"activities": {
-			"can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
-			"do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
-			"join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
-			"user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
-		},
-		"afk": {
-			"currently_afk": "❎ Sada ste AFK",
-			"currently_not_afk": "❎ Trenutno niste AFK.",
-			"now_afk": "💤 Sada ste AFK, napišite poruku ili /afk uklonite za izlaz iz AFK moda.",
-			"now_not_afk": "🔙 Vaš AFK status je poništen."
-		},
-		"anime": {
-			"age_rating_guide": "เรท",
-			"anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
-			"auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
-			"choose_title": "เลือกเรื่องที่ต้องการ",
-			"data_not_found": "❎ Nisam pronašao ovu priču. Idemo to provjeriti. Gle, možda toga stvarno nema?",
-			"english_name": "ชื่ออังกฤษ",
-			"episode_count": "จำนวนตอน",
-			"in_progress": "u nastajanju",
-			"japan_name": "ชื่อญี่ปุ่น",
-			"learn_more": "ดูข้อมูลเพิ่มเติม",
-			"name": "ชื่อ",
-			"popularity_rank": "อันดับความนิยม",
-			"rating_rank": "อันดับการให้คะแนน",
-			"release_date": "วันที่ฉาย",
-			"selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
-			"similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
-			"status": "สถานะ",
-			"subtype": "หมวดหมู่",
-			"synopsis": "เรื่องย่อ",
-			"trailer": "ตัวอย่าง",
-			"undefined": "nedefiniran"
-		},
-		"antibot": {
-			"antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
-			"antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
-			"currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
-			"enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
-		},
-		"ask": {
-			"can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
-			"key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
-		},
-		"attachment": {
-			"sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"automod": {
-			"flagged_words_name": "blokirati psovke seksualni sadržaj i uvrede",
-			"flagged_words_success": "✅ Vaša AutoMod pravila su stvorena, sve te riječi će biti potisnute.",
-			"keyword_name": "Spriječite korištenje riječi %s.",
-			"keyword_success": "✅ Vaše AutoMod pravilo je kreirano, sve poruke koje sadrže riječ %s bit će obrisane.",
-			"mention_spam_name": "Spriječite neželjenu poštu kada je u pitanju",
-			"mention_spam_success": "✅ Vaše AutoMod pravilo je stvoreno, neželjeno slanje višestrukih spominjanja bit će potisnuto.",
-			"prevent_message": "Ova poruka je zaštićena.",
-			"spam_messages_name": "blokirati spam poruke",
-			"spam_messages_success": "✅ Vaša AutoMod pravila su stvorena, neželjene poruke će biti potisnute."
-		},
-		"autoplay": {
-			"no_queue": "❎ Hmm...ali pjesma još nije ni počela?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"off": "📻 Način rada automatske reprodukcije isključen",
-			"on": "📻 Automatska reprodukcija je uključena"
-		},
-		"ban": {
-			"banned_for_time": "%s1 zabranjen na **%s2** dana",
-			"is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
-			"member_has_banned": "❎ Takvi su članovi već zabranjeni. Osjećajte se ugodno.",
-			"members_have_a_higher_role": "❎ Ne možete zabraniti nekoga s višom ulogom od vas.",
-			"members_have_a_higher_role_than_me": "❎ Ne mogu banirati tog člana. jer on ima višu ulogu od mene",
-			"no_one_gets_banned": "❎ Nitko na poslužitelju trenutno nije zabranjen.",
-			"no_reason": "Članovi koji su banovali nisu naveli razlog.",
-			"permanently_banned": "%s trajno zabranjen",
-			"reason_for_ban": "Zabranio: %s1\nRazlog: %s2",
-			"reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-			"this_user_not_banned": "❎ Eh.. taj član nije banovan. Pogledajmo još jednom neke sjajne nove ključne riječi...",
-			"unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
-			"unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
-			"user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
-			"user_not_found": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet."
-		},
-		"captcha": {
-			"captcha_setup_success": "✅ Captcha sustav je postavljen i uspješno aktiviran.",
-			"currently_disable": "ℹ️ Captcha je sada zatvorena.",
-			"currently_enable": "ℹ️ Captcha je sada omogućena.",
-			"disabled_captcha": "✅ captcha je onemogućena",
-			"enabled_captcha": "✅ captcha uspješno omogućena",
-			"need_to_setup_before": "❎ Prije upotrebe postavite captcha pomoću naredbe /captcha za postavljanje."
-		},
-		"covid": {
-			"active": "aktivan",
-			"active_per_one_million": "aktivno na 1 milijun",
-			"backend_issue": "❎ Čini se da postoji problem na strani doušnika. Pokušajte ponovo sljedeći put.",
-			"cases_per_one_million": "Pacijenti na 1 milijun",
-			"cases_today": "ovaj pacijent",
-			"cases_total": "svi pacijenti",
-			"country_not_found": "❎ Umm.. Ne mogu pronaći podatke o zemlji koju ste naveli.",
-			"critical_per_one_million": "kritično razdoblje na 1 milijun",
-			"critical_stage": "kritično razdoblje",
-			"deaths_today": "danas umro",
-			"deaths_total": "svi umrli",
-			"one_case_per_people": "po pacijentu",
-			"one_death_per_people": "smrti po osobi",
-			"one_test_per_people": "Testiranje po osobi",
-			"population": "populacija",
-			"recovered": "otišao",
-			"recovered_per_one_million": "Izgubljeno za 1 milijun",
-			"tests": "test",
-			"tests_per_one_million": "Testovi na 1 milijun",
-			"updated_on": "Najnovije ažuriranje %s",
-			"when": "kada"
-		},
-		"crosspost": {
-			"can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
-		},
-		"dead": {
-			"suicide": "%s izvršiti samoubojstvo 💔 počivao u miru"
-		},
-		"delete": {
-			"can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
-		},
-		"djs": {
-			"added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
-			"currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
-			"currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
-			"deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
-			"manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
-			"music_djs": "🎼 การควบคุมเพลง",
-			"only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
-			"role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
-			"role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
-			"user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
-		},
-		"donate": {
-			"thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
-		},
-		"eat": {
-			"already_eaten": "%s1 je pojeo %s2 u želudac",
-			"do_not_eat_me": "Ja.. Malo sam mala. m..nije dobro za jelo..."
-		},
-		"eight_ball": {
-			"answer": "odgovor",
-			"game": "🎱 Igra s 8 loptica",
-			"question": "pitanje",
-			"risk": "Iskoristite svoju sreću na pitanjima da biste dobili odgovore.",
-			"roll_ball": "Zakotrljajte loptu!!"
-		},
-		"embed": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
-			"embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
-			"is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
-			"message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
-			"suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
-			"unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
-		},
-		"emoji": {
-			"deleted_emoji": "✅ **%s** Emoji je izbrisan.",
-			"edited_emoji": "%s emotikona popravljeno",
-			"uploading_you_emoji": "📤 Prijenos vašeg emotikona...",
-			"you_emoji_is_ready": "%s Vaš emoji je spreman. Pokušajmo!!"
-		},
-		"emojify": {
-			"can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
-		},
-		"encoder": {
-			"decode_after": "หลังถอดรหัส",
-			"decode_before": "ก่อนถอดรหัส",
-			"decode_message": "🔓 ถอดรหัสข้อความ",
-			"decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
-			"encode_after": "หลังเข้ารหัส",
-			"encode_before": "ก่อนเข้ารหัส",
-			"encode_message": "🔒 เข้ารหัสข้อความ",
-			"encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
-		},
-		"enlarge": {
-			"emoji_not_found": "❎ Čini se da emoji nedostaje ili to možda nije emoji."
-		},
-		"eval": {
-			"result": "🔭 ผลการทำงาน"
-		},
-		"exp": {
-			"error": "❎ Ne mogu postaviti iskustvo takvih članova. Molimo pokušajte ponovo kasnije.",
-			"experience": "Bodovi iskustva (Iskustvo)",
-			"exp_was_changed": "%s akumuliranih razina iskustva imaju:",
-			"level": "Razina",
-			"notification_complete": "✅ Postavljanje je gotovo...",
-			"set_by_staff": "Vaše iskustvo postavlja tim na ovom poslužitelju.",
-			"success": "✅ Postavljanje je gotovo..."
-		},
-		"filter": {
-			"add_filter": "🎼 Dodajte traženi format zvuka da već bude **%s**.",
-			"available_filter": "Dostupni formati filtera",
-			"available_filter_description": "Personalizirajte svoju glazbu pomoću ovih %s1 formata ```%s2```",
-			"clear_filter": "💨 Svi audio formati su izbrisani. Sada će to biti normalan format zvuka.",
-			"list_filter_description": "Trenutačno postoje aktivni uzorci u ovom redu: %s1 uzorci\n```%s2```",
-			"list_filter_description_empty": "```Trenutno se ne koristi audio format.```",
-			"list_filter_title": "Audioformat koji se trenutno koristi",
-			"no_queue": "❎ Trenutačno nema pjesme.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"remove_filter": "🗑️ Audio format **%s** je uklonjen.",
-			"set_filter": "🎼 Postavite željeni audio format na **%s**",
-			"sound_filtering": "❓ Želite li promijeniti zvuk svoje glazbe?",
-			"unknown_filter": "❎ Umm..Ne znam format zvuka `%s, možete ga provjeriti pomoću **dostupan** ili **ava**?",
-			"unknown_input_option": "❓ Možete odrediti sljedeće parametre: dodati, ukloniti, postaviti, dostupno, popis, izbrisati."
-		},
-		"games": {
-			"accept": "ยอมรับ",
-			"caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
-			"click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
-			"click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
-			"click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
-			"correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
-			"correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
-			"experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
-			"find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
-			"fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
-			"forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
-			"game_over": "คุณแพ้แล้ว",
-			"game_reject": "ปฏิเสธคำขอ",
-			"game_request": "คำขอเกม",
-			"incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
-			"incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
-			"invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
-			"no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
-			"no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
-			"option_one": "ตัวเลือกที่ 1",
-			"option_two": "ตัวเลือกที่ 2",
-			"paper": "กระดาษ",
-			"player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
-			"player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
-			"player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
-			"player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
-			"player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
-			"player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
-			"player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
-			"player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_pick": "คุณได้เลือก {{emoji}}",
-			"player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
-			"player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
-			"player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
-			"player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
-			"player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
-			"player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
-			"player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
-			"player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"reject": "ปฏิเสธ",
-			"remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
-			"rock": "หิน",
-			"scissors": "กรรไกร",
-			"status": "สถานะ",
-			"stop": "หยุด",
-			"tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
-			"turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
-			"want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
-			"want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
-			"words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
-		},
-		"guild": {
-			"available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "informacija kada",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "Ne",
-			"none": "Ne",
-			"not_ready": "nije spreman",
-			"not_set": "ไม่ได้ตั้ง",
-			"ready": "spreman",
-			"server_info": "🗄 Detaljne informacije o poslužitelju",
-			"server_info_description": "Detaljne informacije o poslužitelju Što se temelji na podacima s Discorda.",
-			"unknown": "ne znam",
-			"yes": "Da"
-		},
-		"help": {
-			"ask_for_help": "ขอความช่วยเหลือ",
-			"can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
-			"choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
-			"choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
-			"choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
-			"command_category": "**หมวดหมู่**: {{category}}",
-			"command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"command_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"command_description": "**คำอธิบาย**: {{description}}",
-			"command_subcommand": "**คำสั่งย่อย**:",
-			"command_usage": "**วิธีใช้งาน**:",
-			"command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"context_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
-			"context_page": "บริบท",
-			"context_type": "**ประเภท**: {{type}}",
-			"context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"cooldown_time": "{{cooldown}} วินาที",
-			"developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
-			"fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
-			"general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
-			"general_page": "คู่มือเริ่มต้น",
-			"greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
-			"info": "> **ℹ️ หมายเหตุ**",
-			"information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
-			"manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
-			"me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
-			"messages_category": "หมวดหมู่ของคำสั่งข้อความ",
-			"music_category": "หมวดหมู่ของคำสั่งเพลง",
-			"none": "Ne",
-			"other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
-			"refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
-			"remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
-			"select_page": "เลือกหน้าของเมนู",
-			"settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
-			"start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
-			"symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
-			"timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
-			"tips": "> **💡 เคล็ดลับ**",
-			"utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
-		},
-		"impersonate": {
-			"member_not_found": "❎ Ne mogu pronaći takve članove na ovom poslužitelju.",
-			"success": "✅ <@%s> Poruka je kreirana!"
-		},
-		"invite": {
-			"can_not_create_invite_link": "❎ Nije moguće generirati vezu pozivnice Molim te pokušaj ponovno.",
-			"membership_invitation_card": "pozivnica za članove",
-			"this_product_is_free": "Ovaj proizvod je besplatan, nemojte ga preprodavati."
-		},
-		"issues": {
-			"bug_sending": "📨 U redu.. samo trenutak Daj mi trenutak da pošaljem pismo programeru...",
-			"bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
-			"feature_sending": "📨 U redu.. samo trenutak Daj mi trenutak da pošaljem pismo programeru...",
-			"feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
-		},
-		"join": {
-			"already_joined": "❎ Eh..ali sad sam tu?",
-			"another_player_is_playing": "🚫 Trenutno ne možete koristiti ovu narudžbu. jer postoje i drugi članovi koji sviraju glazbu",
-			"channel_joined": "✅ Već sam na kanalu <#%s>...",
-			"joined": "▶️ Sada sam već na kanalu <#%s>.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Prvo se morate pridružiti kanalu. Inače ne znam koje polje =3="
-		},
-		"jump": {
-			"can_not_jump": "❎ Čini se da uopće ne postoji takav broj reda čekanja. Molim provjerite opet.",
-			"jumped": "➿ Već prijeđite na novu pjesmu u redu čekanja broj %s.",
-			"no_queue": "❎ Ne postoji nijedna pjesma koju trenutno sviram. ne može prijeći",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti."
-		},
-		"kick": {
-			"can_not_find_user": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet.",
-			"kicked_out": "%s izbačen",
-			"members_have_a_higher_role": "❎ Ne možete šutirati ljude koji su viši od vas.",
-			"members_have_a_higher_role_than_me": "❎ Ne mogu šutnuti tog člana. jer on ima višu ulogu od mene",
-			"no_reason": "Članovi koji su šutirali nisu naveli razlog.",
-			"reason_for_kick": "Udarac: %s1\nRazlog: %s2"
-		},
-		"kill": {
-			"do_not_kill_me": "❎ Napravit ćete ovako nešto.. Ne sa mnom, haha...",
-			"killed": "%s1 te je već ubio %s2 🔪"
-		},
-		"language": {
-			"already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
-			"changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
-			"changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
-			"description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
-			"language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
-			"support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
-			"title": "🌐 Jezik"
-		},
-		"leader": {
-			"leveling_detail": "Iskustvo: %s1, Ocjena: %s2",
-			"no_info": "❎ Na ovom poslužitelju još nema članova. koji ima iskustvenu vrijednost",
-			"server_rank": "Rang razine ovog poslužitelja",
-			"server_rank_description": "1 od 10 najboljih članova na ovom poslužitelju. koji mogu prikupiti najviše svojih razina, kako slijedi",
-			"server_rank_tips": "Savjet: Razgovarajte s drugim članovima će dobiti više razina"
-		},
-		"leave": {
-			"another_player_is_playing": "🚫 Trenutno ne možete koristiti ovu narudžbu. jer postoje i drugi članovi koji sviraju glazbu",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_any_channel": "❎ Sada još nisam ni na jednom kanalu...",
-			"now_leave": "◀️ Ja sam van trenutnog kanala."
-		},
-		"level": {
-			"delete_error": "❎ Uopće ne mogu pronaći ovog korisnika.",
-			"delete_success": "✅ Razina iskustva ovog člana je izbrisana!",
-			"deleting": "📁 Brisanje podataka o razini iskustva za ovog člana.",
-			"experience": "Bodovi iskustva (Iskustvo)",
-			"level": "Razina",
-			"level_was_changed": "%s akumuliranih razina iskustva imaju:",
-			"notification_complete": "✅ Postavljanje je gotovo...",
-			"set_by_staff": "Vašu klasu postavlja tim na ovom poslužitelju.",
-			"set_error": "❎ Ne može postaviti razinu takvih članova. Molimo pokušajte ponovo kasnije.",
-			"set_success": "✅ Postavljanje je gotovo...",
-			"user_current_no_level": "❎ Takvi članovi nemaju razinu razreda."
-		},
-		"leveling": {
-			"bot_do_not_have_level": "❎ Botovi neće imati razine, uključujući mene.",
-			"experience": "Bodovi iskustva (Iskustvo)",
-			"level": "Razina",
-			"user_no_data": "💨 Hmm... Ovaj član nema razinu i iskustvo.",
-			"your_experience": "Vaše iskustvo"
-		},
-		"logs": {
-			"attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
-			"empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
-			"empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
-			"file_has_been_deleted": "✅ **%s** već izbrisano",
-			"file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
-			"found_file": "Pronađeno je %s1 unosa datoteka:\n```%s2```",
-			"only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
-		},
-		"lyrics": {
-			"can_not_find_lyrics": "Nije pronađen nijedan tekst za %s.",
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"playing_lyrics": "📋 Stihovi pjesme koja se trenutno svira"
-		},
-		"meme": {
-			"can_not_fetch": "Dohvaćanje mema nije uspjelo. Molim te pokušaj ponovno.",
-			"meme_not_found": "Nije pronađen nijedan meme tipa koji odgovara %s."
-		},
-		"message": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"minecraft": {
-			"address": "adresa",
-			"do_not_have": "nemam",
-			"ip": "IP adresa",
-			"last_check": "zadnji put provjereno",
-			"maximum_player_count": "Maksimalan broj igrača",
-			"motd": "Opis",
-			"player_in_server": "poslužiteljski igrači",
-			"port": "luka",
-			"server_available": "🟢 Ovaj server je trenutno otvoren.",
-			"server_unavailable": "🔴 Ovaj poslužitelj je privremeno zatvoren.",
-			"skin_of": "🎴 Skinovi od %s",
-			"version": "verzija"
-		},
-		"nekos": {
-			"can_not_fetch_data": "❎ Privremeno ne možete dobiti sliku koju želite. Molimo pokušajte ponovo kasnije.",
-			"request_by": "traži %s"
-		},
-		"notify": {
-			"can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
-			"can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
-			"channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
-			"channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
-			"channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
-			"content_info": "- เนื้อหา: {{content}}",
-			"created_by_info": " - สร้างโดย: {{created_by}}",
-			"description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
-			"edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
-			"editor_info": " - ผู้แก้ไข: {{editor}}",
-			"embed_info": "- ข้อความแบบฝัง: {{embed}}",
-			"enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
-			"enable_info": "- เปิดใช้งาน: {{enable}}",
-			"list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
-			"no": "Ne",
-			"none": "Ne",
-			"notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
-			"notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
-			"own": "มี",
-			"preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
-			"require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
-			"require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
-			"settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
-			"temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
-			"title": "🔔 Obavijesti",
-			"toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
-			"unknown": "ne znam",
-			"unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
-			"yes": "Da"
-		},
-		"osu": {
-			"generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
-			"layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
-			"request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
-		},
-		"paste": {
-			"backend_not_response": "❎ Uopće nema odgovora s poslužitelja. Možete pokušati ponovo kasnije.",
-			"file": "datoteka",
-			"raw": "sirovo"
-		},
-		"pause": {
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
-			"paused": "⏸ Sada pauzirajte glazbu."
-		},
-		"pin": {
-			"can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
-		},
-		"ping": {
-			"connection": "📡 Veza",
-			"info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
-			"result": "🏓 Pong",
-			"waiting": "🏓 Ping..."
-		},
-		"play": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Prvo unesite bilo koji kanal. Inače me ne slušaj..."
-		},
-		"playlist": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
-			"no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Prvo unesite bilo koji kanal. Inače me ne slušaj...",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
-			"playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
-		},
-		"previous": {
-			"no_previous_song_queue": "📼 Nema pjesme koja je nedavno puštena.",
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"previous": "⏮ Povratak na prethodnu pjesmu"
-		},
-		"purge": {
-			"messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
-			"messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
-			"messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
-		},
-		"qrcode": {
-			"can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
-			"image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
-			"qr_code": "🧩 คิวอาร์โค้ด",
-			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
-		},
-		"queue": {
-			"autoplay": "📻 Automatska reprodukcija",
-			"filter": "🎼 Uzorak glasovnog filtra: `%s",
-			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
-			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"owner_this_queue": "%s je vlasnik ovog reda čekanja",
-			"previous_queue": "**prethodni red**",
-			"waiting_in_queue": "**Čekam sljedeći red**"
-		},
-		"random": {
-			"request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
-			"result": "🎲 ผลลัพธ์คือ __{{result}}__"
-		},
-		"react": {
-			"do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
-			"look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
-		},
-		"related": {
-			"added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
-			"no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti."
-		},
-		"reload": {
-			"invalid_command": "❎ Hmmm...čini se da nema ovu narudžbu...probajte pažljivo provjeriti Opet, je li točno ili nije?",
-			"reloaded": "✅ %s Uspješno ponovno učitavanje!!",
-			"reload_error": "❌ Kvragu..Pokušao sam ponovno učitati naredbu %s , ali ne mogu.",
-			"searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
-		},
-		"remove": {
-			"no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"removed": "❌ Uklonjeno **%s** iz reda čekanja.",
-			"too_much": "❎ Ne postoji takav red. Molim provjerite opet."
-		},
-		"repeat": {
-			"no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"off": "ponoviti",
-			"repeated": "🔁 %ssada",
-			"repeat_queue": "ponoviti red čekanja",
-			"repeat_song": "ponovi pjesmu"
-		},
-		"resume": {
-			"no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"now_playing": "📼 Hej.. Sada igram.",
-			"resumed": "▶️ Pjesma svira s iste točke."
-		},
-		"rip": {
-			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"seek": {
-			"no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"seek_guide": "❓ Za koliko sekundi želite promijeniti vrijeme pjesme koja se trenutno reproducira? Sada svira na %ssekundi",
-			"sought": "🕘 Promijenjeno je vrijeme pjesme koja se trenutno reproducira.",
-			"too_much": "❎ Vrijeme ove pjesme je na %s Nema ništa više od ovoga."
-		},
-		"shuffle": {
-			"no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"now_shuffle": "🔀 Počinje mijenjati red čekanja..."
-		},
-		"skip": {
-			"no_queue": "❎ Ne postoji nijedna pjesma koju trenutno sviram. ne može prijeći",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"skipped": "⏭ Preskočio sam je i upravo ću početi svirati novu pjesmu u redu čekanja."
-		},
-		"status": {
-			"data_by_server": "Referentni podaci s poslužitelja.",
-			"dnd_status": "Broj članova trenutno u načinu Ne uznemiravaj je \n```%s```.",
-			"idle_status": "Broj članova koji su trenutno odsutni je \n```%s```.",
-			"offline_status": "Broj članova koji su trenutno izvan mreže je \n```%s```",
-			"online_status": "Broj članova trenutno online je \n```%s```"
-		},
-		"steal": {
-			"emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
-			"not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
-		},
-		"sticker": {
-			"deleted_sticker": "✅ **%s** Naljepnica je uspješno uklonjena",
-			"does_not_support_gif": "❎ Žao nam je... Discord trenutno ne podržava prilagođene naljepnice temeljene na GIF-u.",
-			"edited_sticker": "%s naljepnica je uređeno.",
-			"uploading_you_sticker": "📤 Prijenos vaših naljepnica...",
-			"you_sticker_is_ready": "%s Vaša naljepnica je spremna. Pokušajmo!!"
-		},
-		"stop": {
-			"no_queue": "❎ Eh...pjesma koju puštam nije dostupna.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"stopped": "⏹️ Zaustavite reprodukciju glazbe i izbrišite sve redove."
-		},
-		"system": {
-			"info_description": "Podaci o sustavu na kojem trenutno radim, kako ih sustav pruža, su sljedeći.",
-			"info_gpu_control": "• GPU (kontroler)",
-			"info_gpu_display": "• GPU (zaslon)",
-			"info_memory_used": "• iskorištena memorija",
-			"info_platform": "• Platforma",
-			"info_system": "• sustav",
-			"info_temperature": "• CPU temperatura",
-			"info_title": "🖥 Osnovne informacije o sustavu",
-			"info_uptime": "• เวลาทำงาน",
-			"info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
-			"loading": "⚙️ Slanje zahtjeva za dohvaćanje podataka sustava s poslužitelja...",
-			"main": "glavni",
-			"no": "Ne",
-			"not_owner": "🛑 Nemojte.. nemojte to uzeti. Ova funkcija zahtijeva samo najviše privilegije.",
-			"now_reboot": "✅ Pokrenuli novi sustav!!",
-			"now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
-			"rebooting": "🔄 Ponovno pokretanje...",
-			"shutting_down": "🔄 Isključujem svoj sustav...",
-			"unknown": "ne znam"
-		},
-		"timeout": {
-			"can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"can_not_set_for_yourself": "❎ Ne možete postaviti vremensko ograničenje za sebe.",
-			"can_not_set_to_admin": "❎ Ne možete postaviti vremensko ograničenje za moderatore.",
-			"member_not_found": "❎ Članovi ne kažu da više nisu na ovom poslužitelju.",
-			"no_reason": "ne daje razlog",
-			"success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
-			"success_untimeout": "{{user}} Vremensko ograničenje je postavljeno **Razlog**: {{reason}}",
-			"timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
-			"untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
-		},
-		"timezone": {
-			"can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
-			"this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
-			"time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
-		},
-		"translate": {
-			"base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
-			"can_not_translate": "❎ Nije moguće prevesti jezik takvog teksta. Molimo pokušajte ponovo kasnije.",
-			"says": "reći",
-			"translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
-		},
-		"user": {
-			"available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "informacija kada",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "Ne",
-			"none": "Ne",
-			"unknown": "ne znam",
-			"user_info": "👥 Podaci o korisniku",
-			"user_info_description": "Detaljne informacije o korisnicima Što se temelji na podacima s Discorda.",
-			"yes": "Da"
-		},
-		"volume": {
-			"adjusted": "🔊 Podesite glasnoću na: **%s**",
-			"no_queue": "❎ Eh...pjesma koju puštam nije dostupna. Što ćeš prilagoditi?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
-			"this_volume": "🔈 Trenutna glasnoća zvuka je: **%s**"
-		},
-		"vote": {
-			"added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
-			"error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
-			"invite": "เชิญ",
-			"not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
-			"rate": "คะแนนโหวต",
-			"tags": "oznake",
-			"unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
-			"vote": "โหวต"
-		},
-		"warn": {
-			"can_not_find_user": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet.",
-			"members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
-			"members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"user_has_warned": "{{user}} ถูกตักเตือน",
-			"user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
-			"you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
-		},
-		"weather": {
-			"celsius": "เซลเซียส",
-			"clouds": "☁️ เมฆ",
-			"data_from": "📡 สถานที่เก็บข้อมูล",
-			"error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
-			"fahrenheit": "ฟาเรนไฮต์",
-			"feels_like": "🍃 รู้สึกเหมือน",
-			"ground_level": "⛰️ ระดับพื้นดิน",
-			"highest_temperature": "➕ อุณหภูมิสูงสุด",
-			"humidity": "💧 ความชื้น",
-			"kelvin": "เคลวิน",
-			"lowest_temperature": "➖ อุณหภูมิต่ำสุด",
-			"meter_per_seconds": "เมตร/วินาที",
-			"miles_per_hour": "ไมล์/ชั่วโมง",
-			"none": "ไม่มี",
-			"no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-			"no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
-			"pressure": "🎱 ความดัน",
-			"rainfall": "🌧️ ปริมาณน้ำฝน",
-			"sea_level": "🌊 ระดับน้ำทะเล",
-			"snowfall": "❄️ ปริมาณหิมะ",
-			"temperature": "🌡️ Temperatura",
-			"time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
-			"visibility": "👁️ ทัศนวิสัย",
-			"weather": "⛅ Vrijeme",
-			"weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
-			"wind_direction": "🧭 ทิศทางลม",
-			"wind_gust": "🎏 ลมกระโชก",
-			"wind_speed": "💨 ความเร็วลม"
-		}
-	},
-	"events": {
-		"channelCreate": {
-			"channel_notification": "🪧 Kanal",
-			"member_create_channel": "> Član poslužitelja kreirao je kanal: <#%s>"
-		},
-		"channelDelete": {
-			"channel_notification": "🪧 Kanal",
-			"member_delete_channel": "> Eksplodirani kanal člana poslužitelja: `%s`"
-		},
-		"channelPinsUpdate": {
-			"channel_notification": "🪧 Kanal",
-			"member_pins_in_channel": "> Član poslužitelja prikvačio je utor: <#%s1> kada je %s2"
-		},
-		"channelUpdate": {
-			"channel_notification": "🪧 Kanal",
-			"member_update_channel": "> Član poslužitelja promijenio je neka polja: `%s1` u <#%s2>."
-		},
-		"emojiCreate": {
-			"emoji_notification": "😊 Emoji",
-			"member_create_emoji": "> Član poslužitelja stvorio je novi emoji: :%s:"
-		},
-		"emojiDelete": {
-			"emoji_notification": "😊 Emoji",
-			"member_delete_emoji": "> Član poslužitelja je izbrisao emoji: :%s:"
-		},
-		"emojiUpdate": {
-			"emoji_notification": "😊 Emoji",
-			"member_update_emoji": "> Član poslužitelja je promijenio novi emoji iz: %s1 u %s2."
-		},
-		"guildBanAdd": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_add": "> <@%s1> Već zabranjen unutar ovog poslužitelja\n**Razlog:**\n```%s2```"
-		},
-		"guildBanRemove": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_remove": "> <@%s1> Zabrana je uklonjena unutar ovog poslužitelja\n**razlog:**\n```%s2```"
-		},
-		"guildIntegrationsUpdate": {
-			"guild_integrations_update": "Ovaj poslužitelj je već spojio %s . Primit ćete nove članke čim budu ažurirana.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberAdd": {
-			"captcha_error": "Došlo je do pogreške pri potvrdi valjanosti. Obratite se osoblju poslužitelja da nešto poduzme.",
-			"captcha_success": "Verificirani ste u %s",
-			"greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
-			"solve_the_captcha": "Ispravljen captcha za provjeru u %s",
-			"submit_answer_captcha": "Pošalji captcha odgovor",
-			"submit_you_answer_guide": "Pošaljite ono što mislite da je captcha",
-			"use_button_below": "Upotrijebite gumb ispod da pošaljete svoj odgovor!",
-			"welcome": "Dobrodošli na server",
-			"wrong_answer": "Čini se pogrešnim. Pokušajte ponovno...",
-			"your_answer": "odgovoriti na vaš captcha"
-		},
-		"guildMemberRemove": {
-			"user_has_exited": "Već je pobjegao s ovog servera...(Idemo kod njega..)"
-		},
-		"guildMembersChunk": {
-			"guild_members_chunk": "Dobrodošli članovi s poslužitelja %s Čekamo vas ovdje.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberUpdate": {
-			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"guild_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"guildSoundboardSoundCreate": {
-			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundDelete": {
-			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundUpdate": {
-			"deleted": "ถูกลบแล้ว",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
-		},
-		"guildUnavailable": {
-			"guild_notification": "🗄️ Server",
-			"guild_unavailable": "Trenutno...ovaj poslužitelj je privremeno nedostupan. Molimo kontaktirajte administratora ovog poslužitelja."
-		},
-		"interactionCreate": {
-			"client_is_not_allowed": "🚫 Ummm..Nedostaju mi neka dopuštenja. Tako da ne mogu nastaviti, naime **%s**",
-			"command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
-		},
-		"inviteCreate": {
-			"invite_create": "Pozivnica je uspješno kreirana\n**Veza:** %s1\n**Ističe:** %s2\n**Maksimalno:** %s3\n```%s4```",
-			"invite_notification": "🏷️ Pozivnica"
-		},
-		"inviteDelete": {
-			"invite_code_deleted": "`%s` Ovaj pozivni kod je izbrisan.",
-			"invite_code_expires": "`%s` Ovaj pozivni kod je istekao.",
-			"invite_notification": "🏷️ Pozivnica"
-		},
-		"messageCreate": {
-			"afk_user_come_back": "🔙 Vratili ste se Automatski poništi status AFK",
-			"no_reason_for_afk": "nemam",
-			"that_user_is_afk": "%s1 Sada nije na ekranu (AFK), ne spominji ga sada\n**Ostavi poruku**: %s2"
-		},
-		"ready": {
-			"prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
-		},
-		"roleCreate": {
-			"role_create": "<@&%s> je stvoren.",
-			"role_notification": "🔖 Uloga"
-		},
-		"roleDelete": {
-			"role_delete": "`%s` je izbrisan.",
-			"role_notification": "🔖 Uloga"
-		},
-		"roleUpdate": {
-			"role_notification": "🔖 Uloga",
-			"role_update": "`%s1` je ažuriran na <@&%s2>"
-		},
-		"soundboardSounds": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
-		},
-		"stageInstanceCreate": {
-			"stage_instance_create": "<#%s> je stvoren.",
-			"stage_notification": "🎤 pozornica"
-		},
-		"stageInstanceDelete": {
-			"stage_instance_delete": "`%s` je izbrisan.",
-			"stage_notification": "🎤 pozornica"
-		},
-		"stageInstanceUpdate": {
-			"stage_instance_update": "`%s1` je ažuriran na <#%s2>.",
-			"stage_notification": "🎤 pozornica"
-		},
-		"stickerCreate": {
-			"sticker_create": "**%s** Sada dostupno",
-			"sticker_notification": "👻 naljepnica"
-		},
-		"stickerDelete": {
-			"sticker_delete": "**%s** je izbrisano",
-			"sticker_notification": "👻 naljepnica"
-		},
-		"stickerUpdate": {
-			"sticker_notification": "👻 naljepnica",
-			"sticker_update": "`%s1` je ažuriran na **%s2**"
-		},
-		"threadCreate": {
-			"thread_create": "<#%s> je stvoren.",
-			"thread_notification": "#️⃣ Teme"
-		},
-		"threadDelete": {
-			"thread_delete": "**%s** je izbrisano",
-			"thread_notification": "#️⃣ Teme"
-		},
-		"threadListSync": {
-			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMembersUpdate": {
-			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
-			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMemberUpdate": {
-			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"thread_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"threadUpdate": {
-			"thread_notification": "#️⃣ Teme",
-			"thread_update": "`%s1` je ažuriran na **%s2**"
-		},
-		"voiceStateUpdate": {
-			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
-			"voice_notification": "➿ สถานะเสียง",
-			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
-		},
-		"webhookUpdate": {
-			"webhook_notification": "🎣 Web udica",
-			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
-		}
-	},
-	"handlers": {
-		"player": {
-			"addList": {
-				"added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
-			},
-			"addSong": {
-				"added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
-			},
-			"deleteQueue": {
-				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
-			},
-			"disconnect": {
-				"disconnected": "🔌 Već sam isključio i izbrisao sve redove čekanja."
-			},
-			"error": {
-				"playlist_not_found": "❎ Ne mogu pronaći taj popis za reprodukciju. Tražite još jedan popis za reprodukciju?"
-			},
-			"finish": {
-				"queue_is_empty": "🍃 Sada je moj red čekanja prazan. Jeste li spremni za reprodukciju sljedeće pjesme?"
-			},
-			"finishSong": {
-				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
-			},
-			"noRelated": {
-				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
-			},
-			"playSong": {
-				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
-			}
-		}
-	},
-	"utils": {
-		"clientUtils": {
-			"color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
-			"is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
-			"need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
-			"timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
-		},
-		"consoleUtils": {
-			"error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
-			"error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-			"report_issues": "[รายงานปัญหา]({{-issues_link}})",
-			"server_abnormal": "nenormalan",
-			"server_normal": "normalan"
-		},
-		"databaseUtils": {
-			"congratulations": "Čestitamo!!",
-			"level_up": "Klasa *%s1* sada je nadograđena na ```%s2```."
-		}
-	}
+  "commands": {
+    "about": {
+      "commands": "คำสั่ง",
+      "connection": "เชื่อมต่อ",
+      "copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
+      "guilds": "กิลด์",
+      "members": "สมาชิก",
+      "my_personal": "ข้อมูลส่วนตัวของฉัน",
+      "my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
+      "public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
+      "shards": "ชาร์ด",
+      "stats": "📊 สถิติ",
+      "worked": "ทำงาน"
+    },
+    "activities": {
+      "can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
+      "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
+      "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
+      "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
+    },
+    "afk": {
+      "currently_afk": "❎ Sada ste AFK",
+      "currently_not_afk": "❎ Trenutno niste AFK.",
+      "now_afk": "💤 Sada ste AFK, napišite poruku ili /afk uklonite za izlaz iz AFK moda.",
+      "now_not_afk": "🔙 Vaš AFK status je poništen."
+    },
+    "anime": {
+      "age_rating_guide": "เรท",
+      "anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
+      "auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
+      "choose_title": "เลือกเรื่องที่ต้องการ",
+      "data_not_found": "❎ Nisam pronašao ovu priču. Idemo to provjeriti. Gle, možda toga stvarno nema?",
+      "english_name": "ชื่ออังกฤษ",
+      "episode_count": "จำนวนตอน",
+      "in_progress": "u nastajanju",
+      "japan_name": "ชื่อญี่ปุ่น",
+      "learn_more": "ดูข้อมูลเพิ่มเติม",
+      "name": "ชื่อ",
+      "popularity_rank": "อันดับความนิยม",
+      "rating_rank": "อันดับการให้คะแนน",
+      "release_date": "วันที่ฉาย",
+      "selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
+      "similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
+      "status": "สถานะ",
+      "subtype": "หมวดหมู่",
+      "synopsis": "เรื่องย่อ",
+      "trailer": "ตัวอย่าง",
+      "undefined": "nedefiniran"
+    },
+    "antibot": {
+      "antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
+      "antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
+      "currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
+      "enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
+    },
+    "ask": {
+      "can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
+      "key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
+    },
+    "attachment": {
+      "sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "automod": {
+      "flagged_words_name": "blokirati psovke seksualni sadržaj i uvrede",
+      "flagged_words_success": "✅ Vaša AutoMod pravila su stvorena, sve te riječi će biti potisnute.",
+      "keyword_name": "Spriječite korištenje riječi {{word}}.",
+      "keyword_success": "✅ Vaše AutoMod pravilo je kreirano, sve poruke koje sadrže riječ {{word}} bit će obrisane.",
+      "mention_spam_name": "Spriječite neželjenu poštu kada je u pitanju",
+      "mention_spam_success": "✅ Vaše AutoMod pravilo je stvoreno, neželjeno slanje višestrukih spominjanja bit će potisnuto.",
+      "prevent_message": "Ova poruka je zaštićena.",
+      "spam_messages_name": "blokirati spam poruke",
+      "spam_messages_success": "✅ Vaša AutoMod pravila su stvorena, neželjene poruke će biti potisnute."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm...ali pjesma još nije ni počela?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "off": "📻 Način rada automatske reprodukcije isključen",
+      "on": "📻 Automatska reprodukcija je uključena"
+    },
+    "ban": {
+      "banned_for_time": "{{userName}} zabranjen na **{{days}}** dana",
+      "is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
+      "member_has_banned": "❎ Takvi su članovi već zabranjeni. Osjećajte se ugodno.",
+      "members_have_a_higher_role": "❎ Ne možete zabraniti nekoga s višom ulogom od vas.",
+      "members_have_a_higher_role_than_me": "❎ Ne mogu banirati tog člana. jer on ima višu ulogu od mene",
+      "no_one_gets_banned": "❎ Nitko na poslužitelju trenutno nije zabranjen.",
+      "no_reason": "Članovi koji su banovali nisu naveli razlog.",
+      "permanently_banned": "{{userName}} trajno zabranjen",
+      "reason_for_ban": "Zabranio: {{moderatorName}}\nRazlog: {{reason}}",
+      "reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
+      "this_user_not_banned": "❎ Eh.. taj član nije banovan. Pogledajmo još jednom neke sjajne nove ključne riječi...",
+      "unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
+      "unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
+      "user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
+      "user_not_found": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet."
+    },
+    "captcha": {
+      "captcha_setup_success": "✅ Captcha sustav je postavljen i uspješno aktiviran.",
+      "currently_disable": "ℹ️ Captcha je sada zatvorena.",
+      "currently_enable": "ℹ️ Captcha je sada omogućena.",
+      "disabled_captcha": "✅ captcha je onemogućena",
+      "enabled_captcha": "✅ captcha uspješno omogućena",
+      "need_to_setup_before": "❎ Prije upotrebe postavite captcha pomoću naredbe /captcha za postavljanje."
+    },
+    "covid": {
+      "active": "aktivan",
+      "active_per_one_million": "aktivno na 1 milijun",
+      "backend_issue": "❎ Čini se da postoji problem na strani doušnika. Pokušajte ponovo sljedeći put.",
+      "cases_per_one_million": "Pacijenti na 1 milijun",
+      "cases_today": "ovaj pacijent",
+      "cases_total": "svi pacijenti",
+      "country_not_found": "❎ Umm.. Ne mogu pronaći podatke o zemlji koju ste naveli.",
+      "critical_per_one_million": "kritično razdoblje na 1 milijun",
+      "critical_stage": "kritično razdoblje",
+      "deaths_today": "danas umro",
+      "deaths_total": "svi umrli",
+      "one_case_per_people": "po pacijentu",
+      "one_death_per_people": "smrti po osobi",
+      "one_test_per_people": "Testiranje po osobi",
+      "population": "populacija",
+      "recovered": "otišao",
+      "recovered_per_one_million": "Izgubljeno za 1 milijun",
+      "tests": "test",
+      "tests_per_one_million": "Testovi na 1 milijun",
+      "updated_on": "Najnovije ažuriranje {{updatedAt}}",
+      "when": "kada"
+    },
+    "crosspost": {
+      "can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
+    },
+    "dead": {
+      "suicide": "{{username}} izvršiti samoubojstvo 💔 počivao u miru"
+    },
+    "delete": {
+      "can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
+    },
+    "djs": {
+      "added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
+      "currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
+      "currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
+      "deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
+      "manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
+      "music_djs": "🎼 การควบคุมเพลง",
+      "only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
+      "role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
+      "role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
+      "user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
+    },
+    "donate": {
+      "thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
+    },
+    "eat": {
+      "already_eaten": "{{eaterName}} je pojeo {{foodName}} u želudac",
+      "do_not_eat_me": "Ja.. Malo sam mala. m..nije dobro za jelo..."
+    },
+    "eight_ball": {
+      "answer": "odgovor",
+      "game": "🎱 Igra s 8 loptica",
+      "question": "pitanje",
+      "risk": "Iskoristite svoju sreću na pitanjima da biste dobili odgovore.",
+      "roll_ball": "Zakotrljajte loptu!!"
+    },
+    "embed": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
+      "embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
+      "is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
+      "message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
+      "suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
+      "unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **{{emojiName}}** Emoji je izbrisan.",
+      "edited_emoji": "{{emojiName}} emotikona popravljeno",
+      "uploading_you_emoji": "📤 Prijenos vašeg emotikona...",
+      "you_emoji_is_ready": "{{emojiName}} Vaš emoji je spreman. Pokušajmo!!"
+    },
+    "emojify": {
+      "can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
+    },
+    "encoder": {
+      "decode_after": "หลังถอดรหัส",
+      "decode_before": "ก่อนถอดรหัส",
+      "decode_message": "🔓 ถอดรหัสข้อความ",
+      "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
+      "encode_after": "หลังเข้ารหัส",
+      "encode_before": "ก่อนเข้ารหัส",
+      "encode_message": "🔒 เข้ารหัสข้อความ",
+      "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Čini se da emoji nedostaje ili to možda nije emoji."
+    },
+    "eval": {
+      "result": "🔭 ผลการทำงาน"
+    },
+    "exp": {
+      "error": "❎ Ne mogu postaviti iskustvo takvih članova. Molimo pokušajte ponovo kasnije.",
+      "experience": "Bodovi iskustva (Iskustvo)",
+      "exp_was_changed": "{{memberName}} akumuliranih razina iskustva imaju:",
+      "level": "Razina",
+      "notification_complete": "✅ Postavljanje je gotovo...",
+      "set_by_staff": "Vaše iskustvo postavlja tim na ovom poslužitelju.",
+      "success": "✅ Postavljanje je gotovo..."
+    },
+    "filter": {
+      "add_filter": "🎼 Dodajte traženi format zvuka da već bude **{{filterNames}}**.",
+      "available_filter": "Dostupni formati filtera",
+      "available_filter_description": "Personalizirajte svoju glazbu pomoću ovih {{filterCount}} formata ```{{filterNames}}```",
+      "clear_filter": "💨 Svi audio formati su izbrisani. Sada će to biti normalan format zvuka.",
+      "list_filter_description": "Trenutačno postoje aktivni uzorci u ovom redu: {{filterCount}} uzorci\n```{{filterNames}}```",
+      "list_filter_description_empty": "```Trenutno se ne koristi audio format.```",
+      "list_filter_title": "Audioformat koji se trenutno koristi",
+      "no_queue": "❎ Trenutačno nema pjesme.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "remove_filter": "🗑️ Audio format **{{filterNames}}** je uklonjen.",
+      "set_filter": "🎼 Postavite željeni audio format na **{{filterNames}}**",
+      "sound_filtering": "❓ Želite li promijeniti zvuk svoje glazbe?",
+      "unknown_filter": "❎ Umm..Ne znam format zvuka `{{unknownFilters}}, možete ga provjeriti pomoću **dostupan** ili **ava**?",
+      "unknown_input_option": "❓ Možete odrediti sljedeće parametre: dodati, ukloniti, postaviti, dostupno, popis, izbrisati."
+    },
+    "games": {
+      "accept": "ยอมรับ",
+      "caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
+      "click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
+      "click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
+      "click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
+      "correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
+      "correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
+      "experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
+      "find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
+      "fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
+      "forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
+      "game_over": "คุณแพ้แล้ว",
+      "game_reject": "ปฏิเสธคำขอ",
+      "game_request": "คำขอเกม",
+      "incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
+      "incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
+      "invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
+      "no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
+      "no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
+      "option_one": "ตัวเลือกที่ 1",
+      "option_two": "ตัวเลือกที่ 2",
+      "paper": "กระดาษ",
+      "player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
+      "player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
+      "player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
+      "player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
+      "player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
+      "player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
+      "player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
+      "player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_pick": "คุณได้เลือก {{emoji}}",
+      "player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
+      "player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
+      "player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
+      "player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
+      "player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
+      "player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
+      "player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
+      "player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "reject": "ปฏิเสธ",
+      "remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
+      "rock": "หิน",
+      "scissors": "กรรไกร",
+      "status": "สถานะ",
+      "stop": "หยุด",
+      "tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
+      "turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
+      "want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
+      "want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
+      "words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
+    },
+    "guild": {
+      "available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "informacija kada",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "Ne",
+      "none": "Ne",
+      "not_ready": "nije spreman",
+      "not_set": "ไม่ได้ตั้ง",
+      "ready": "spreman",
+      "server_info": "🗄 Detaljne informacije o poslužitelju",
+      "server_info_description": "Detaljne informacije o poslužitelju Što se temelji na podacima s Discorda.",
+      "unknown": "ne znam",
+      "yes": "Da"
+    },
+    "help": {
+      "ask_for_help": "ขอความช่วยเหลือ",
+      "can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
+      "choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
+      "choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
+      "choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
+      "command_category": "**หมวดหมู่**: {{category}}",
+      "command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "command_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "command_description": "**คำอธิบาย**: {{description}}",
+      "command_subcommand": "**คำสั่งย่อย**:",
+      "command_usage": "**วิธีใช้งาน**:",
+      "command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "context_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
+      "context_page": "บริบท",
+      "context_type": "**ประเภท**: {{type}}",
+      "context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "cooldown_time": "{{cooldown}} วินาที",
+      "developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
+      "fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
+      "general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
+      "general_page": "คู่มือเริ่มต้น",
+      "greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
+      "info": "> **ℹ️ หมายเหตุ**",
+      "information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
+      "manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
+      "me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
+      "messages_category": "หมวดหมู่ของคำสั่งข้อความ",
+      "music_category": "หมวดหมู่ของคำสั่งเพลง",
+      "none": "Ne",
+      "other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
+      "refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
+      "remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
+      "select_page": "เลือกหน้าของเมนู",
+      "settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
+      "start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
+      "symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
+      "timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
+      "tips": "> **💡 เคล็ดลับ**",
+      "utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Ne mogu pronaći takve članove na ovom poslužitelju.",
+      "success": "✅ <@{{userId}}> Poruka je kreirana!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Nije moguće generirati vezu pozivnice Molim te pokušaj ponovno.",
+      "membership_invitation_card": "pozivnica za članove",
+      "this_product_is_free": "Ovaj proizvod je besplatan, nemojte ga preprodavati."
+    },
+    "issues": {
+      "bug_sending": "📨 U redu.. samo trenutak Daj mi trenutak da pošaljem pismo programeru...",
+      "bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
+      "feature_sending": "📨 U redu.. samo trenutak Daj mi trenutak da pošaljem pismo programeru...",
+      "feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
+    },
+    "join": {
+      "already_joined": "❎ Eh..ali sad sam tu?",
+      "another_player_is_playing": "🚫 Trenutno ne možete koristiti ovu narudžbu. jer postoje i drugi članovi koji sviraju glazbu",
+      "channel_joined": "✅ Već sam na kanalu <#{{channelId}}>...",
+      "joined": "▶️ Sada sam već na kanalu <#{{channelId}}>.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Prvo se morate pridružiti kanalu. Inače ne znam koje polje =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Čini se da uopće ne postoji takav broj reda čekanja. Molim provjerite opet.",
+      "jumped": "➿ Već prijeđite na novu pjesmu u redu čekanja broj {{queuePosition}}.",
+      "no_queue": "❎ Ne postoji nijedna pjesma koju trenutno sviram. ne može prijeći",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti."
+    },
+    "kick": {
+      "can_not_find_user": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet.",
+      "kicked_out": "{{memberName}} izbačen",
+      "members_have_a_higher_role": "❎ Ne možete šutirati ljude koji su viši od vas.",
+      "members_have_a_higher_role_than_me": "❎ Ne mogu šutnuti tog člana. jer on ima višu ulogu od mene",
+      "no_reason": "Članovi koji su šutirali nisu naveli razlog.",
+      "reason_for_kick": "Udarac: {{moderatorName}}\nRazlog: {{reason}}"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Napravit ćete ovako nešto.. Ne sa mnom, haha...",
+      "killed": "{{killerName}} te je već ubio {{targetName}} 🔪"
+    },
+    "language": {
+      "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
+      "changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
+      "changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
+      "description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
+      "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
+      "support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
+      "title": "🌐 Jezik"
+    },
+    "leader": {
+      "leveling_detail": "Iskustvo: {{experience}}, Ocjena: {{level}}",
+      "no_info": "❎ Na ovom poslužitelju još nema članova. koji ima iskustvenu vrijednost",
+      "server_rank": "Rang razine ovog poslužitelja",
+      "server_rank_description": "1 od 10 najboljih članova na ovom poslužitelju. koji mogu prikupiti najviše svojih razina, kako slijedi",
+      "server_rank_tips": "Savjet: Razgovarajte s drugim članovima će dobiti više razina"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Trenutno ne možete koristiti ovu narudžbu. jer postoje i drugi članovi koji sviraju glazbu",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_any_channel": "❎ Sada još nisam ni na jednom kanalu...",
+      "now_leave": "◀️ Ja sam van trenutnog kanala."
+    },
+    "level": {
+      "delete_error": "❎ Uopće ne mogu pronaći ovog korisnika.",
+      "delete_success": "✅ Razina iskustva ovog člana je izbrisana!",
+      "deleting": "📁 Brisanje podataka o razini iskustva za ovog člana.",
+      "experience": "Bodovi iskustva (Iskustvo)",
+      "level": "Razina",
+      "level_was_changed": "{{memberName}} akumuliranih razina iskustva imaju:",
+      "notification_complete": "✅ Postavljanje je gotovo...",
+      "set_by_staff": "Vašu klasu postavlja tim na ovom poslužitelju.",
+      "set_error": "❎ Ne može postaviti razinu takvih članova. Molimo pokušajte ponovo kasnije.",
+      "set_success": "✅ Postavljanje je gotovo...",
+      "user_current_no_level": "❎ Takvi članovi nemaju razinu razreda."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Botovi neće imati razine, uključujući mene.",
+      "experience": "Bodovi iskustva (Iskustvo)",
+      "level": "Razina",
+      "user_no_data": "💨 Hmm... Ovaj član nema razinu i iskustvo.",
+      "your_experience": "Vaše iskustvo"
+    },
+    "logs": {
+      "attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
+      "empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
+      "empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
+      "file_has_been_deleted": "✅ **{{fileName}}** već izbrisano",
+      "file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
+      "found_file": "Pronađeno je {{fileCount}} unosa datoteka:\n```{{fileNames}}```",
+      "only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Nije pronađen nijedan tekst za {{songName}}.",
+      "no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
+      "playing_lyrics": "📋 Stihovi pjesme koja se trenutno svira"
+    },
+    "meme": {
+      "can_not_fetch": "Dohvaćanje mema nije uspjelo. Molim te pokušaj ponovno.",
+      "meme_not_found": "Nije pronađen nijedan meme tipa koji odgovara {{memeType}}."
+    },
+    "message": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "minecraft": {
+      "address": "adresa",
+      "do_not_have": "nemam",
+      "ip": "IP adresa",
+      "last_check": "zadnji put provjereno",
+      "maximum_player_count": "Maksimalan broj igrača",
+      "motd": "Opis",
+      "player_in_server": "poslužiteljski igrači",
+      "port": "luka",
+      "server_available": "🟢 Ovaj server je trenutno otvoren.",
+      "server_unavailable": "🔴 Ovaj poslužitelj je privremeno zatvoren.",
+      "skin_of": "🎴 Skinovi od {{username}}",
+      "version": "verzija"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Privremeno ne možete dobiti sliku koju želite. Molimo pokušajte ponovo kasnije.",
+      "request_by": "traži {{requesterName}}"
+    },
+    "notify": {
+      "can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
+      "can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
+      "channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
+      "channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
+      "channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
+      "content_info": "- เนื้อหา: {{content}}",
+      "created_by_info": " - สร้างโดย: {{created_by}}",
+      "description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
+      "edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
+      "editor_info": " - ผู้แก้ไข: {{editor}}",
+      "embed_info": "- ข้อความแบบฝัง: {{embed}}",
+      "enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
+      "enable_info": "- เปิดใช้งาน: {{enable}}",
+      "list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
+      "no": "Ne",
+      "none": "Ne",
+      "notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
+      "notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
+      "own": "มี",
+      "preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
+      "require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
+      "require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
+      "settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
+      "temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
+      "title": "🔔 Obavijesti",
+      "toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
+      "unknown": "ne znam",
+      "unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
+      "yes": "Da"
+    },
+    "osu": {
+      "generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
+      "layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
+      "request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
+    },
+    "paste": {
+      "backend_not_response": "❎ Uopće nema odgovora s poslužitelja. Možete pokušati ponovo kasnije.",
+      "file": "datoteka",
+      "raw": "sirovo"
+    },
+    "pause": {
+      "no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
+      "paused": "⏸ Sada pauzirajte glazbu."
+    },
+    "pin": {
+      "can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
+    },
+    "ping": {
+      "connection": "📡 Veza",
+      "info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
+      "result": "🏓 Pong",
+      "waiting": "🏓 Ping..."
+    },
+    "play": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
+      "no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Prvo unesite bilo koji kanal. Inače me ne slušaj..."
+    },
+    "playlist": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
+      "no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Prvo unesite bilo koji kanal. Inače me ne slušaj...",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
+      "playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Nema pjesme koja je nedavno puštena.",
+      "no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "previous": "⏮ Povratak na prethodnu pjesmu"
+    },
+    "purge": {
+      "messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
+      "messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
+      "messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
+    },
+    "qrcode": {
+      "can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
+      "image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
+      "qr_code": "🧩 คิวอาร์โค้ด",
+      "qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
+    },
+    "queue": {
+      "autoplay": "📻 Automatska reprodukcija",
+      "filter": "🎼 Uzorak glasovnog filtra: `{{filterNames}}",
+      "no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+      "no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
+      "no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
+      "owner_this_queue": "{{username}} je vlasnik ovog reda čekanja",
+      "previous_queue": "**prethodni red**",
+      "waiting_in_queue": "**Čekam sljedeći red**"
+    },
+    "random": {
+      "request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
+      "result": "🎲 ผลลัพธ์คือ __{{result}}__"
+    },
+    "react": {
+      "do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
+      "look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
+    },
+    "related": {
+      "added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
+      "no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...čini se da nema ovu narudžbu...probajte pažljivo provjeriti Opet, je li točno ili nije?",
+      "reloaded": "✅ {{commandName}} Uspješno ponovno učitavanje!!",
+      "reload_error": "❌ Kvragu..Pokušao sam ponovno učitati naredbu {{commandName}} , ali ne mogu.",
+      "searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
+    },
+    "remove": {
+      "no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "removed": "❌ Uklonjeno **{{songName}}** iz reda čekanja.",
+      "too_much": "❎ Ne postoji takav red. Molim provjerite opet."
+    },
+    "repeat": {
+      "no_queue": "❎ Trenutno nema pjesme koju trenutno puštam.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "off": "ponoviti",
+      "repeated": "🔁 {{repeatMode}}sada",
+      "repeat_queue": "ponoviti red čekanja",
+      "repeat_song": "ponovi pjesmu"
+    },
+    "resume": {
+      "no_queue": "❎ Sada još nisam pustio nijednu pjesmu.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "now_playing": "📼 Hej.. Sada igram.",
+      "resumed": "▶️ Pjesma svira s iste točke."
+    },
+    "rip": {
+      "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
+    },
+    "seek": {
+      "no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "seek_guide": "❓ Za koliko sekundi želite promijeniti vrijeme pjesme koja se trenutno reproducira? Sada svira na {{currentPosition}}sekundi",
+      "sought": "🕘 Promijenjeno je vrijeme pjesme koja se trenutno reproducira.",
+      "too_much": "❎ Vrijeme ove pjesme je na {{trackDuration}} Nema ništa više od ovoga."
+    },
+    "shuffle": {
+      "no_queue": "❎ Sada se trenutno ne svira nijedna pjesma.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "now_shuffle": "🔀 Počinje mijenjati red čekanja..."
+    },
+    "skip": {
+      "no_queue": "❎ Ne postoji nijedna pjesma koju trenutno sviram. ne može prijeći",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "skipped": "⏭ Preskočio sam je i upravo ću početi svirati novu pjesmu u redu čekanja."
+    },
+    "status": {
+      "data_by_server": "Referentni podaci s poslužitelja.",
+      "dnd_status": "Broj članova trenutno u načinu Ne uznemiravaj je \n```{{memberCount}}```.",
+      "idle_status": "Broj članova koji su trenutno odsutni je \n```{{memberCount}}```.",
+      "offline_status": "Broj članova koji su trenutno izvan mreže je \n```{{memberCount}}```",
+      "online_status": "Broj članova trenutno online je \n```{{memberCount}}```"
+    },
+    "steal": {
+      "emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
+      "not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **{{stickerName}}** Naljepnica je uspješno uklonjena",
+      "does_not_support_gif": "❎ Žao nam je... Discord trenutno ne podržava prilagođene naljepnice temeljene na GIF-u.",
+      "edited_sticker": "{{stickerName}} naljepnica je uređeno.",
+      "uploading_you_sticker": "📤 Prijenos vaših naljepnica...",
+      "you_sticker_is_ready": "{{stickerName}} Vaša naljepnica je spremna. Pokušajmo!!"
+    },
+    "stop": {
+      "no_queue": "❎ Eh...pjesma koju puštam nije dostupna.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "stopped": "⏹️ Zaustavite reprodukciju glazbe i izbrišite sve redove."
+    },
+    "system": {
+      "info_description": "Podaci o sustavu na kojem trenutno radim, kako ih sustav pruža, su sljedeći.",
+      "info_gpu_control": "• GPU (kontroler)",
+      "info_gpu_display": "• GPU (zaslon)",
+      "info_memory_used": "• iskorištena memorija",
+      "info_platform": "• Platforma",
+      "info_system": "• sustav",
+      "info_temperature": "• CPU temperatura",
+      "info_title": "🖥 Osnovne informacije o sustavu",
+      "info_uptime": "• เวลาทำงาน",
+      "info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
+      "loading": "⚙️ Slanje zahtjeva za dohvaćanje podataka sustava s poslužitelja...",
+      "main": "glavni",
+      "no": "Ne",
+      "not_owner": "🛑 Nemojte.. nemojte to uzeti. Ova funkcija zahtijeva samo najviše privilegije.",
+      "now_reboot": "✅ Pokrenuli novi sustav!!",
+      "now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
+      "rebooting": "🔄 Ponovno pokretanje...",
+      "shutting_down": "🔄 Isključujem svoj sustav...",
+      "unknown": "ne znam"
+    },
+    "timeout": {
+      "can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "can_not_set_for_yourself": "❎ Ne možete postaviti vremensko ograničenje za sebe.",
+      "can_not_set_to_admin": "❎ Ne možete postaviti vremensko ograničenje za moderatore.",
+      "member_not_found": "❎ Članovi ne kažu da više nisu na ovom poslužitelju.",
+      "no_reason": "ne daje razlog",
+      "success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
+      "success_untimeout": "{{user}} Vremensko ograničenje je postavljeno **Razlog**: {{reason}}",
+      "timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
+      "untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
+    },
+    "timezone": {
+      "can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
+      "this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
+      "time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
+    },
+    "translate": {
+      "base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
+      "can_not_translate": "❎ Nije moguće prevesti jezik takvog teksta. Molimo pokušajte ponovo kasnije.",
+      "says": "reći",
+      "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
+    },
+    "user": {
+      "available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "informacija kada",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "Ne",
+      "none": "Ne",
+      "unknown": "ne znam",
+      "user_info": "👥 Podaci o korisniku",
+      "user_info_description": "Detaljne informacije o korisnicima Što se temelji na podacima s Discorda.",
+      "yes": "Da"
+    },
+    "volume": {
+      "adjusted": "🔊 Podesite glasnoću na: **{{volume}}**",
+      "no_queue": "❎ Eh...pjesma koju puštam nije dostupna. Što ćeš prilagoditi?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Samo vlasnik reda čekanja može ga promijeniti.",
+      "this_volume": "🔈 Trenutna glasnoća zvuka je: **{{volume}}**"
+    },
+    "vote": {
+      "added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
+      "error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
+      "invite": "เชิญ",
+      "not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
+      "rate": "คะแนนโหวต",
+      "tags": "oznake",
+      "unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
+      "vote": "โหวต"
+    },
+    "warn": {
+      "can_not_find_user": "❎ Ne mogu pronaći ovog člana. Molim provjerite opet.",
+      "members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
+      "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "user_has_warned": "{{user}} ถูกตักเตือน",
+      "user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
+      "you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
+    },
+    "weather": {
+      "celsius": "เซลเซียส",
+      "clouds": "☁️ เมฆ",
+      "data_from": "📡 สถานที่เก็บข้อมูล",
+      "error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "fahrenheit": "ฟาเรนไฮต์",
+      "feels_like": "🍃 รู้สึกเหมือน",
+      "ground_level": "⛰️ ระดับพื้นดิน",
+      "highest_temperature": "➕ อุณหภูมิสูงสุด",
+      "humidity": "💧 ความชื้น",
+      "kelvin": "เคลวิน",
+      "lowest_temperature": "➖ อุณหภูมิต่ำสุด",
+      "meter_per_seconds": "เมตร/วินาที",
+      "miles_per_hour": "ไมล์/ชั่วโมง",
+      "none": "ไม่มี",
+      "no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "pressure": "🎱 ความดัน",
+      "rainfall": "🌧️ ปริมาณน้ำฝน",
+      "sea_level": "🌊 ระดับน้ำทะเล",
+      "snowfall": "❄️ ปริมาณหิมะ",
+      "temperature": "🌡️ Temperatura",
+      "time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
+      "visibility": "👁️ ทัศนวิสัย",
+      "weather": "⛅ Vrijeme",
+      "weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust": "🎏 ลมกระโชก",
+      "wind_speed": "💨 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Kanal",
+      "member_create_channel": "> Član poslužitelja kreirao je kanal: <#{{channelId}}>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Kanal",
+      "member_delete_channel": "> Eksplodirani kanal člana poslužitelja: `{{channelName}}`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_pins_in_channel": "> Član poslužitelja prikvačio je utor: <#{{channelId}}> kada je {{pinnedAt}}"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Kanal",
+      "member_update_channel": "> Član poslužitelja promijenio je neka polja: `{{oldChannelName}}` u <#{{newChannelId}}>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> Član poslužitelja stvorio je novi emoji: :{{emojiName}}:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Član poslužitelja je izbrisao emoji: :{{emojiName}}:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> Član poslužitelja je promijenio novi emoji iz: {{oldEmojiName}} u {{newEmojiName}}."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_add": "> <@{{userId}}> Već zabranjen unutar ovog poslužitelja\n**Razlog:**\n```{{reason}}```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_remove": "> <@{{userId}}> Zabrana je uklonjena unutar ovog poslužitelja\n**razlog:**\n```{{reason}}```"
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Ovaj poslužitelj je već spojio {{guildName}} . Primit ćete nove članke čim budu ažurirana.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "Došlo je do pogreške pri potvrdi valjanosti. Obratite se osoblju poslužitelja da nešto poduzme.",
+      "captcha_success": "Verificirani ste u {{guildName}}",
+      "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
+      "solve_the_captcha": "Ispravljen captcha za provjeru u {{guildName}}",
+      "submit_answer_captcha": "Pošalji captcha odgovor",
+      "submit_you_answer_guide": "Pošaljite ono što mislite da je captcha",
+      "use_button_below": "Upotrijebite gumb ispod da pošaljete svoj odgovor!",
+      "welcome": "Dobrodošli na server",
+      "wrong_answer": "Čini se pogrešnim. Pokušajte ponovno...",
+      "your_answer": "odgovoriti na vaš captcha"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "Već je pobjegao s ovog servera...(Idemo kod njega..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Dobrodošli članovi s poslužitelja {{guildName}} Čekamo vas ovdje.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberUpdate": {
+      "guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "guild_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "guildSoundboardSoundCreate": {
+      "new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundDelete": {
+      "soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundUpdate": {
+      "deleted": "ถูกลบแล้ว",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Server",
+      "guild_unavailable": "Trenutno...ovaj poslužitelj je privremeno nedostupan. Molimo kontaktirajte administratora ovog poslužitelja."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm..Nedostaju mi neka dopuštenja. Tako da ne mogu nastaviti, naime **{{permissions}}**",
+      "command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
+    },
+    "inviteCreate": {
+      "invite_create": "Pozivnica je uspješno kreirana\n**Veza:** {{inviteUrl}}\n**Ističe:** {{expiresAt}}\n**Maksimalno:** {{maxUses}}\n```{{inviteCode}}```",
+      "invite_notification": "🏷️ Pozivnica"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`{{inviteCode}}` Ovaj pozivni kod je izbrisan.",
+      "invite_code_expires": "`{{inviteCode}}` Ovaj pozivni kod je istekao.",
+      "invite_notification": "🏷️ Pozivnica"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Vratili ste se Automatski poništi status AFK",
+      "no_reason_for_afk": "nemam",
+      "that_user_is_afk": "{{username}} Sada nije na ekranu (AFK), ne spominji ga sada\n**Ostavi poruku**: {{reason}}"
+    },
+    "ready": {
+      "prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
+    },
+    "roleCreate": {
+      "role_create": "<@&{{roleId}}> je stvoren.",
+      "role_notification": "🔖 Uloga"
+    },
+    "roleDelete": {
+      "role_delete": "`{{roleName}}` je izbrisan.",
+      "role_notification": "🔖 Uloga"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Uloga",
+      "role_update": "`{{oldRoleName}}` je ažuriran na <@&{{newRoleId}}>"
+    },
+    "soundboardSounds": {
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#{{stageId}}> je stvoren.",
+      "stage_notification": "🎤 pozornica"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`{{stageName}}` je izbrisan.",
+      "stage_notification": "🎤 pozornica"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`{{oldStageName}}` je ažuriran na <#{{newStageId}}>.",
+      "stage_notification": "🎤 pozornica"
+    },
+    "stickerCreate": {
+      "sticker_create": "**{{stickerName}}** Sada dostupno",
+      "sticker_notification": "👻 naljepnica"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**{{stickerName}}** je izbrisano",
+      "sticker_notification": "👻 naljepnica"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 naljepnica",
+      "sticker_update": "`{{oldStickerName}}` je ažuriran na **{{newStickerId}}**"
+    },
+    "threadCreate": {
+      "thread_create": "<#{{threadId}}> je stvoren.",
+      "thread_notification": "#️⃣ Teme"
+    },
+    "threadDelete": {
+      "thread_delete": "**{{threadName}}** je izbrisano",
+      "thread_notification": "#️⃣ Teme"
+    },
+    "threadListSync": {
+      "thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMembersUpdate": {
+      "added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+      "removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMemberUpdate": {
+      "thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "thread_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Teme",
+      "thread_update": "`{{oldThreadName}}` je ažuriran na **{{newThreadId}}**"
+    },
+    "voiceStateUpdate": {
+      "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
+      "voice_notification": "➿ สถานะเสียง",
+      "voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Web udica",
+      "webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+    }
+  },
+  "handlers": {
+    "player": {
+      "addList": {
+        "added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
+      },
+      "addSong": {
+        "added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
+      },
+      "deleteQueue": {
+        "deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
+      },
+      "disconnect": {
+        "disconnected": "🔌 Već sam isključio i izbrisao sve redove čekanja."
+      },
+      "error": {
+        "playlist_not_found": "❎ Ne mogu pronaći taj popis za reprodukciju. Tražite još jedan popis za reprodukciju?"
+      },
+      "finish": {
+        "queue_is_empty": "🍃 Sada je moj red čekanja prazan. Jeste li spremni za reprodukciju sljedeće pjesme?"
+      },
+      "finishSong": {
+        "finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
+      },
+      "noRelated": {
+        "no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
+      },
+      "playSong": {
+        "playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
+      }
+    }
+  },
+  "utils": {
+    "clientUtils": {
+      "color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
+      "is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
+      "need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
+      "timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
+    },
+    "consoleUtils": {
+      "error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
+      "error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
+      "report_issues": "[รายงานปัญหา]({{-issues_link}})",
+      "server_abnormal": "nenormalan",
+      "server_normal": "normalan"
+    },
+    "databaseUtils": {
+      "congratulations": "Čestitamo!!",
+      "level_up": "Klasa *{{username}}* sada je nadograđena na ```{{level}}```."
+    }
+  }
 }

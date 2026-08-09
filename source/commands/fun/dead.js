@@ -28,9 +28,9 @@ module.exports = {
     const authorUsername = interaction.user.username;
     const deadEmbed = new EmbedBuilder()
       .setDescription(
-        interaction.client.i18n
-          .t("commands.dead.suicide")
-          .replace("%s", authorUsername),
+        interaction.client.i18n.t("commands.dead.suicide", {
+          username: authorUsername,
+        }),
       )
       .setColor("Default");
 

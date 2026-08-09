@@ -76,16 +76,16 @@ module.exports = {
 
       interaction.client.player.voices.join(voiceChannel);
       await interaction.reply(
-        interaction.client.i18n
-          .t("commands.join.joined")
-          .replace("%s", voiceChannel.id),
+        interaction.client.i18n.t("commands.join.joined", {
+          channelId: voiceChannel.id,
+        }),
       );
     } else {
       interaction.client.player.voices.join(inputChannel);
       await interaction.reply(
-        interaction.client.i18n
-          .t("commands.join.channel_joined")
-          .replace("%s", inputChannel.id),
+        interaction.client.i18n.t("commands.join.channel_joined", {
+          channelId: inputChannel.id,
+        }),
       );
     }
   },

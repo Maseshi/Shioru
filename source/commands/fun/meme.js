@@ -51,13 +51,11 @@ module.exports = {
         const post = await response.json();
 
         if (!Array.isArray(post) || !post.length) {
-          return new EmbedBuilder()
-            .setColor(Colors.Red)
-            .setDescription(
-              interaction.client.i18n
-                .t("commands.meme.meme_not_found")
-                .replace("%s", choice),
-            );
+          return new EmbedBuilder().setColor(Colors.Red).setDescription(
+            interaction.client.i18n.t("commands.meme.meme_not_found", {
+              memeType: choice,
+            }),
+          );
         }
 
         const permalink = post[0].data.children[0].data.permalink;
@@ -74,9 +72,7 @@ module.exports = {
           .setImage(memeImage)
           .setColor(resolveColor("Random"))
           .setFooter({
-            text: "👍 %s1 | 💬 %s2"
-              .replace("%s1", memeUpvotes)
-              .replace("%s2", memeNumComments),
+            text: `👍 ${memeUpvotes} | 💬 ${memeNumComments}`,
           })
           .setTimestamp(new Date(memeCreate) * 1000);
       } catch (error) {

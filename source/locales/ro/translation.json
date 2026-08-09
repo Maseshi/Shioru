@@ -1,1037 +1,1037 @@
 {
-	"commands": {
-		"about": {
-			"commands": "คำสั่ง",
-			"connection": "เชื่อมต่อ",
-			"copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
-			"guilds": "กิลด์",
-			"members": "สมาชิก",
-			"my_personal": "ข้อมูลส่วนตัวของฉัน",
-			"my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
-			"public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
-			"shards": "ชาร์ด",
-			"stats": "📊 สถิติ",
-			"worked": "ทำงาน"
-		},
-		"activities": {
-			"can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
-			"do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
-			"join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
-			"user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
-		},
-		"afk": {
-			"currently_afk": "❎ Acum ești AFK",
-			"currently_not_afk": "❎ Nu ești AFK acum.",
-			"now_afk": "💤 Acum sunteți AFK, scrieți un mesaj sau /afk eliminați pentru a ieși din modul AFK.",
-			"now_not_afk": "🔙 Starea dvs. AFK a fost anulată."
-		},
-		"anime": {
-			"age_rating_guide": "เรท",
-			"anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
-			"auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
-			"choose_title": "เลือกเรื่องที่ต้องการ",
-			"data_not_found": "❎ Nu am găsit această poveste. Hai să verificăm. Uite, poate chiar nu există așa ceva?",
-			"english_name": "ชื่ออังกฤษ",
-			"episode_count": "จำนวนตอน",
-			"in_progress": "în curs",
-			"japan_name": "ชื่อญี่ปุ่น",
-			"learn_more": "ดูข้อมูลเพิ่มเติม",
-			"name": "ชื่อ",
-			"popularity_rank": "อันดับความนิยม",
-			"rating_rank": "อันดับการให้คะแนน",
-			"release_date": "วันที่ฉาย",
-			"selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
-			"similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
-			"status": "สถานะ",
-			"subtype": "หมวดหมู่",
-			"synopsis": "เรื่องย่อ",
-			"trailer": "ตัวอย่าง",
-			"undefined": "nedefinit"
-		},
-		"antibot": {
-			"antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
-			"antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
-			"currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
-			"disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
-			"enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
-		},
-		"ask": {
-			"can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
-			"key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
-		},
-		"attachment": {
-			"sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"automod": {
-			"flagged_words_name": "blochează blasfemia conținut sexual și insulte",
-			"flagged_words_success": "✅ Au fost create regulile tale AutoMod, toate acele cuvinte vor fi suprimate.",
-			"keyword_name": "Împiedicați utilizarea cuvântului %s.",
-			"keyword_success": "✅ Regula ta AutoMod a fost creată, toate mesajele care conțin cuvântul %s vor fi șterse.",
-			"mention_spam_name": "Preveniți spamul atunci când vine vorba de",
-			"mention_spam_success": "✅ Regula dvs. AutoMod creată, spam-ul pe mai multe mențiuni va fi suprimat.",
-			"prevent_message": "Acest mesaj este protejat.",
-			"spam_messages_name": "blocați mesajele spam",
-			"spam_messages_success": "✅ Regulile tale AutoMod au fost create, mesajele spam vor fi suprimate."
-		},
-		"autoplay": {
-			"no_queue": "❎ Hmm...dar melodia nici nu a început încă?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"off": "📻 Modul de redare automată este dezactivat",
-			"on": "📻 Modul de redare automată este activat"
-		},
-		"ban": {
-			"banned_for_time": "%s1 interzis pentru **%s2** zile",
-			"is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
-			"member_has_banned": "❎ Astfel de membri sunt deja interziși. Simțiți-vă confortabil.",
-			"members_have_a_higher_role": "❎ Nu poți interzice pe cineva cu un rol mai înalt decât tine.",
-			"members_have_a_higher_role_than_me": "❎ Nu pot interzice acel membru. pentru că el are un rol mai înalt decât mine",
-			"no_one_gets_banned": "❎ Nimeni de pe server nu este interzis în prezent.",
-			"no_reason": "Membrii care au interzis nu au dat un motiv.",
-			"permanently_banned": "%s interzis permanent",
-			"reason_for_ban": "Banat de: %s1\nMotiv: %s2",
-			"reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
-			"this_user_not_banned": "❎ Eh.. acel membru nu a fost interzis. Să verificăm încă o dată câteva cuvinte cheie noi grozave...",
-			"unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
-			"unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
-			"user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
-			"user_not_found": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou."
-		},
-		"captcha": {
-			"captcha_setup_success": "✅ Sistemul captcha a fost configurat și activat cu succes.",
-			"currently_disable": "ℹ️ Captcha este acum închis.",
-			"currently_enable": "ℹ️ Captcha este acum activată.",
-			"disabled_captcha": "✅ Captcha a fost dezactivat",
-			"enabled_captcha": "✅ Captcha a fost activat cu succes",
-			"need_to_setup_before": "❎ Vă rugăm să setați captcha înainte de utilizare utilizând comanda /captcha setup."
-		},
-		"covid": {
-			"active": "activ",
-			"active_per_one_million": "activ la 1 milion",
-			"backend_issue": "❎ Se pare că există o problemă din partea informatorului. Vă rugăm să încercați din nou data viitoare.",
-			"cases_per_one_million": "Pacienți la 1 milion",
-			"cases_today": "acest pacient",
-			"cases_total": "toti pacientii",
-			"country_not_found": "❎ Umm.. Nu găsesc informațiile despre țara pe care ați specificat-o.",
-			"critical_per_one_million": "perioadă critică la 1 milion",
-			"critical_stage": "perioada critica",
-			"deaths_today": "a murit azi",
-			"deaths_total": "toti au murit",
-			"one_case_per_people": "per pacient",
-			"one_death_per_people": "deces de persoană",
-			"one_test_per_people": "Testare pe persoană",
-			"population": "populatie",
-			"recovered": "plecat",
-			"recovered_per_one_million": "Pierdut la 1 milion",
-			"tests": "Test",
-			"tests_per_one_million": "Teste la 1 milion",
-			"updated_on": "Ultima actualizare %s",
-			"when": "când"
-		},
-		"crosspost": {
-			"can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
-		},
-		"dead": {
-			"suicide": "%s să se sinucidă 💔 odihnește-te în pace"
-		},
-		"delete": {
-			"can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
-		},
-		"djs": {
-			"added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
-			"currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
-			"currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
-			"currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
-			"deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
-			"disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
-			"enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
-			"everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
-			"manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
-			"music_djs": "🎼 การควบคุมเพลง",
-			"only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
-			"role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
-			"role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
-			"user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
-			"user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
-		},
-		"donate": {
-			"thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
-		},
-		"eat": {
-			"already_eaten": "%s1 a mâncat %s2 în stomac",
-			"do_not_eat_me": "Eu... sunt un pic mic. m..nu e bine de mâncat..."
-		},
-		"eight_ball": {
-			"answer": "Răspuns",
-			"game": "🎱 Joc cu 8 mingi",
-			"question": "întrebare",
-			"risk": "Folosește-ți norocul la întrebări pentru a obține răspunsuri.",
-			"roll_ball": "Dati mingea!!"
-		},
-		"embed": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
-			"embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
-			"embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
-			"is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
-			"message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
-			"suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
-			"unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
-		},
-		"emoji": {
-			"deleted_emoji": "✅ **%s** Emoji a fost șters.",
-			"edited_emoji": "%s emoji remediat",
-			"uploading_you_emoji": "📤 Se încarcă emoji-ul...",
-			"you_emoji_is_ready": "%s Emoji-ul tău este gata. Hai sa incercam!!"
-		},
-		"emojify": {
-			"can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
-		},
-		"encoder": {
-			"decode_after": "หลังถอดรหัส",
-			"decode_before": "ก่อนถอดรหัส",
-			"decode_message": "🔓 ถอดรหัสข้อความ",
-			"decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
-			"encode_after": "หลังเข้ารหัส",
-			"encode_before": "ก่อนเข้ารหัส",
-			"encode_message": "🔒 เข้ารหัสข้อความ",
-			"encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
-		},
-		"enlarge": {
-			"emoji_not_found": "❎ Se pare că emoji-ul lipsește sau s-ar putea să nu fie un emoji."
-		},
-		"eval": {
-			"result": "🔭 ผลการทำงาน"
-		},
-		"exp": {
-			"error": "❎ Nu pot seta experiența unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
-			"experience": "Puncte de experiență (Exp)",
-			"exp_was_changed": "%s acumulat toate nivelurile de experiență au:",
-			"level": "Nivel",
-			"notification_complete": "✅ Configurarea este finalizată...",
-			"set_by_staff": "Experiența ta este stabilită de echipa de pe acest server.",
-			"success": "✅ Configurarea este finalizată..."
-		},
-		"filter": {
-			"add_filter": "🎼 Adăugați formatul de sunet necesar să fie deja **%s**.",
-			"available_filter": "Formate de filtrare disponibile",
-			"available_filter_description": "Personalizați-vă muzica utilizând aceste formate %s1 ```%s2```",
-			"clear_filter": "💨 Toate formatele audio au fost șterse. Acum va fi un format de sunet normal.",
-			"list_filter_description": "În prezent există modele active în această coadă: %s1 modele\n```%s2```",
-			"list_filter_description_empty": "```Nu există niciun format audio utilizat în prezent.```",
-			"list_filter_title": "Formatul audio utilizat în prezent",
-			"no_queue": "❎ Nu se redă nicio melodie în prezent.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"remove_filter": "🗑️ Formatul audio **%s** a fost eliminat.",
-			"set_filter": "🎼 Setați formatul audio preferat la **%s**",
-			"sound_filtering": "❓ Vrei să schimbi sunetul muzicii tale?",
-			"unknown_filter": "❎ Umm..Nu știu formatul sunetului `%s, îl puteți verifica folosind **disponibil** sau **disponibil**?",
-			"unknown_input_option": "❓ Puteți specifica următorii parametri: adăugare, eliminare, setare, disponibil, listă, ștergere."
-		},
-		"games": {
-			"accept": "ยอมรับ",
-			"caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
-			"click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
-			"click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
-			"click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
-			"correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
-			"correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
-			"experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
-			"find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
-			"fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
-			"forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
-			"game_over": "คุณแพ้แล้ว",
-			"game_reject": "ปฏิเสธคำขอ",
-			"game_request": "คำขอเกม",
-			"incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
-			"incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
-			"invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
-			"no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
-			"no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
-			"option_one": "ตัวเลือกที่ 1",
-			"option_two": "ตัวเลือกที่ 2",
-			"paper": "กระดาษ",
-			"player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
-			"player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
-			"player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
-			"player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
-			"player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
-			"player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
-			"player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
-			"player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
-			"player_pick": "คุณได้เลือก {{emoji}}",
-			"player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
-			"player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
-			"player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
-			"player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
-			"player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
-			"player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
-			"player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
-			"player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
-			"player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
-			"player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
-			"pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
-			"reject": "ปฏิเสธ",
-			"remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
-			"rock": "หิน",
-			"scissors": "กรรไกร",
-			"status": "สถานะ",
-			"stop": "หยุด",
-			"tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
-			"time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
-			"turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
-			"want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
-			"want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
-			"words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
-		},
-		"guild": {
-			"available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "informații despre când",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "Nu",
-			"none": "Nu",
-			"not_ready": "nu e gata",
-			"not_set": "ไม่ได้ตั้ง",
-			"ready": "gata",
-			"server_info": "🗄 Informații detaliate despre server",
-			"server_info_description": "Informații detaliate despre server Care se bazează pe date de la Discord.",
-			"unknown": "Nu stiu",
-			"yes": "da"
-		},
-		"help": {
-			"ask_for_help": "ขอความช่วยเหลือ",
-			"can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
-			"choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
-			"choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
-			"choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
-			"command_category": "**หมวดหมู่**: {{category}}",
-			"command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"command_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"command_description": "**คำอธิบาย**: {{description}}",
-			"command_subcommand": "**คำสั่งย่อย**:",
-			"command_usage": "**วิธีใช้งาน**:",
-			"command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
-			"context_cooldown": "**คูลดาวน์**: {{cooldown}}",
-			"context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
-			"context_page": "บริบท",
-			"context_type": "**ประเภท**: {{type}}",
-			"context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
-			"cooldown_time": "{{cooldown}} วินาที",
-			"developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
-			"fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
-			"general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
-			"general_page": "คู่มือเริ่มต้น",
-			"greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
-			"info": "> **ℹ️ หมายเหตุ**",
-			"information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
-			"manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
-			"me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
-			"messages_category": "หมวดหมู่ของคำสั่งข้อความ",
-			"music_category": "หมวดหมู่ของคำสั่งเพลง",
-			"none": "Nu",
-			"other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
-			"refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
-			"remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
-			"select_page": "เลือกหน้าของเมนู",
-			"settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
-			"start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
-			"symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
-			"timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
-			"tips": "> **💡 เคล็ดลับ**",
-			"utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
-		},
-		"impersonate": {
-			"member_not_found": "❎ Nu pot găsi astfel de membri pe acest server.",
-			"success": "✅ <@%s> Mesajul a fost creat!"
-		},
-		"invite": {
-			"can_not_create_invite_link": "❎ Nu se poate genera linkul de invitație Vă rugăm să încercați din nou.",
-			"membership_invitation_card": "card de invitație pentru membru",
-			"this_product_is_free": "Acest produs este gratuit, nu revinde."
-		},
-		"issues": {
-			"bug_sending": "📨 Bine.. doar un moment Dă-mi un moment să trimit o scrisoare dezvoltatorului...",
-			"bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
-			"feature_sending": "📨 Bine.. doar un moment Dă-mi un moment să trimit o scrisoare dezvoltatorului...",
-			"feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
-		},
-		"join": {
-			"already_joined": "❎ Eh..dar sunt aici acum?",
-			"another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
-			"channel_joined": "✅ Sunt deja pe canal <#%s>...",
-			"joined": "▶️ Acum sunt deja pe canal <#%s>.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Mai întâi trebuie să vă alăturați canalului. Altfel nu știu ce câmp =3="
-		},
-		"jump": {
-			"can_not_jump": "❎ Se pare că nu există deloc un astfel de număr de coadă. Vă rugăm să verificați din nou.",
-			"jumped": "➿ Treceți deja la melodia nouă din coada numărul %s.",
-			"no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba."
-		},
-		"kick": {
-			"can_not_find_user": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou.",
-			"kicked_out": "%s dat afară",
-			"members_have_a_higher_role": "❎ Nu poți da cu piciorul pe oameni care sunt mai sus decât tine.",
-			"members_have_a_higher_role_than_me": "❎ Nu pot da cu piciorul pe acel membru. pentru că el are un rol mai înalt decât mine",
-			"no_reason": "Membrii care au lovit nu au dat un motiv.",
-			"reason_for_kick": "Lovitură de: %s1\nMotiv: %s2"
-		},
-		"kill": {
-			"do_not_kill_me": "❎ Vei face asa ceva... Nu cu mine, haha...",
-			"killed": "%s1 te-a ucis deja %s2 🔪"
-		},
-		"language": {
-			"already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
-			"changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
-			"changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
-			"description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
-			"language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
-			"support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
-			"title": "🌐 Limba"
-		},
-		"leader": {
-			"leveling_detail": "Experiență: %s1, Nota: %s2",
-			"no_info": "❎ Nu există încă membri pe acest server. care are valoare de experiență",
-			"server_rank": "Clasamentul nivelului acestui server",
-			"server_rank_description": "1 dintre primii 10 membri ai acestui server. care pot colecta cele mai multe dintre propriile niveluri, în ordinea următoare",
-			"server_rank_tips": "Sfat: discutați cu alți membri va câștiga mai multe niveluri"
-		},
-		"leave": {
-			"another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_any_channel": "❎ Acum nu sunt încă pe niciun canal...",
-			"now_leave": "◀️ Am ieșit din canalul curent."
-		},
-		"level": {
-			"delete_error": "❎ Nu găsesc deloc acest utilizator.",
-			"delete_success": "✅ Nivelul de experiență al acestui membru a fost șters!",
-			"deleting": "📁 Se șterg datele la nivel de experiență pentru acest membru.",
-			"experience": "Puncte de experiență (Exp)",
-			"level": "Nivel",
-			"level_was_changed": "%s acumulat toate nivelurile de experiență au:",
-			"notification_complete": "✅ Configurarea este finalizată...",
-			"set_by_staff": "Clasa ta este stabilită de echipa de pe acest server.",
-			"set_error": "❎ Nu se poate seta nivelul unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
-			"set_success": "✅ Configurarea este finalizată...",
-			"user_current_no_level": "❎ Astfel de membri nu au un nivel de clasă."
-		},
-		"leveling": {
-			"bot_do_not_have_level": "❎ Boții nu vor avea niveluri, inclusiv eu.",
-			"experience": "Puncte de experiență (Exp)",
-			"level": "Nivel",
-			"user_no_data": "💨 Hmm... Acest membru nu are nivel și experiență.",
-			"your_experience": "Experienta ta"
-		},
-		"logs": {
-			"attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
-			"empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
-			"empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
-			"file_has_been_deleted": "✅ **%s** deja șters",
-			"file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
-			"found_file": "S-au găsit %s1 intrări de fișiere:\n```%s2```",
-			"only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
-		},
-		"lyrics": {
-			"can_not_find_lyrics": "Nu s-au găsit versuri pentru %s.",
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"playing_lyrics": "📋 Versurile melodiei care se redă în prezent"
-		},
-		"meme": {
-			"can_not_fetch": "Nu s-a putut prelua meme. Vă rugăm să încercați din nou.",
-			"meme_not_found": "Nu a fost găsit niciun meme de tip care să corespundă cu %s."
-		},
-		"message": {
-			"can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
-			"edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
-			"sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
-		},
-		"minecraft": {
-			"address": "abordare",
-			"do_not_have": "nu am",
-			"ip": "adresa IP",
-			"last_check": "ultima verificare",
-			"maximum_player_count": "Numărul maxim de jucători",
-			"motd": "Descriere",
-			"player_in_server": "jucători pe server",
-			"port": "port",
-			"server_available": "🟢 Acest server este deschis în prezent.",
-			"server_unavailable": "🔴 Acest server este închis temporar.",
-			"skin_of": "🎴 Piei de %s",
-			"version": "versiune"
-		},
-		"nekos": {
-			"can_not_fetch_data": "❎ Nu se poate obține temporar fotografia dorită. Vă rugăm să încercați din nou mai târziu.",
-			"request_by": "solicitat de %s"
-		},
-		"notify": {
-			"can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
-			"can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
-			"channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
-			"channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
-			"channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
-			"content_info": "- เนื้อหา: {{content}}",
-			"created_by_info": " - สร้างโดย: {{created_by}}",
-			"description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
-			"edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
-			"editor_info": " - ผู้แก้ไข: {{editor}}",
-			"embed_info": "- ข้อความแบบฝัง: {{embed}}",
-			"enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
-			"enable_info": "- เปิดใช้งาน: {{enable}}",
-			"list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
-			"no": "Nu",
-			"none": "Nu",
-			"notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
-			"notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
-			"own": "มี",
-			"preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
-			"require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
-			"require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
-			"settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
-			"temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
-			"title": "🔔 Notificări",
-			"toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
-			"unknown": "Nu stiu",
-			"unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
-			"yes": "da"
-		},
-		"osu": {
-			"generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
-			"layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
-			"request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
-		},
-		"paste": {
-			"backend_not_response": "❎ Niciun răspuns de la server. Puteți încerca din nou mai târziu.",
-			"file": "fişier",
-			"raw": "brut"
-		},
-		"pause": {
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
-			"paused": "⏸ Întrerupeți muzica acum."
-		},
-		"pin": {
-			"can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
-			"is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
-			"unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
-		},
-		"ping": {
-			"connection": "📡 Conexiune",
-			"info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
-			"result": "🏓 Pong",
-			"waiting": "🏓 Ping..."
-		},
-		"play": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
-			"no_queue": "❎ Acum nu am cântat încă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta..."
-		},
-		"playlist": {
-			"can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
-			"can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
-			"empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
-			"no_queue": "❎ Acum nu am cântat încă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta...",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
-			"playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
-		},
-		"previous": {
-			"no_previous_song_queue": "📼 Nu există niciun cântec care să fi fost cântat recent.",
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"previous": "⏮ Reveniți la melodia anterioară"
-		},
-		"purge": {
-			"messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
-			"messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
-			"messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
-		},
-		"qrcode": {
-			"can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
-			"image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
-			"qr_code": "🧩 คิวอาร์โค้ด",
-			"qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
-		},
-		"queue": {
-			"autoplay": "📻 Redare automată",
-			"filter": "🎼 Model de filtru de voce: `%s",
-			"no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
-			"no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"owner_this_queue": "%s este proprietarul acestei cozi",
-			"previous_queue": "** coada anterioară **",
-			"waiting_in_queue": "**Așteptăm următoarea coadă**"
-		},
-		"random": {
-			"request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
-			"request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
-			"result": "🎲 ผลลัพธ์คือ __{{result}}__"
-		},
-		"react": {
-			"do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
-			"look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
-			"message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
-			"reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
-		},
-		"related": {
-			"added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
-			"no_queue": "❎ Acum nu se redă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba."
-		},
-		"reload": {
-			"invalid_command": "❎ Hmmm...nu pare să aibă această ordine...încercați să verificați cu atenție Din nou, este corect sau nu?",
-			"reloaded": "✅ %s Reîncărcat cu succes!!",
-			"reload_error": "❌ La naiba..Am încercat să reîncarc comanda %s dar nu pot.",
-			"searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
-		},
-		"remove": {
-			"no_queue": "❎ Acum nu am cântat încă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"removed": "❌ Eliminat **%s** din coadă.",
-			"too_much": "❎ Nu există o astfel de coadă. Vă rugăm să verificați din nou."
-		},
-		"repeat": {
-			"no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"off": "repetați",
-			"repeated": "🔁 %sacum",
-			"repeat_queue": "repeta coada",
-			"repeat_song": "repeta melodia"
-		},
-		"resume": {
-			"no_queue": "❎ Acum nu am cântat încă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"now_playing": "📼 Hei.. Acum joc.",
-			"resumed": "▶️ Cântecul se redă din același punct."
-		},
-		"rip": {
-			"no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
-		},
-		"seek": {
-			"no_queue": "❎ Acum nu se redă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"seek_guide": "❓ Câte secunde doriți să schimbați timpul melodiei care se redă curent? Acum se joacă la %ssecundă",
-			"sought": "🕘 S-a schimbat ora melodiei care se redă în prezent.",
-			"too_much": "❎ Ora acestui cântec este la %s Nu există nimic mai mult decât asta."
-		},
-		"shuffle": {
-			"no_queue": "❎ Acum nu se redă nicio melodie.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"now_shuffle": "🔀 Începe să schimbi cozile..."
-		},
-		"skip": {
-			"no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"skipped": "⏭ Am sărit peste el și pe punctul de a începe să cânt o melodie nouă în coadă."
-		},
-		"status": {
-			"data_by_server": "Date de referință de la server.",
-			"dnd_status": "Numărul de membri în prezent în Nu deranja este \n```%s```.",
-			"idle_status": "Numărul de membri care sunt absenți în prezent este \n```%s```.",
-			"offline_status": "Numărul de membri în prezent offline este \n```%s```",
-			"online_status": "Numărul de membri online în prezent este \n```%s```"
-		},
-		"steal": {
-			"emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
-			"not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
-		},
-		"sticker": {
-			"deleted_sticker": "✅ **%s** Stickerul a fost eliminat cu succes",
-			"does_not_support_gif": "❎ Ne pare rău... Discord nu acceptă momentan autocolante personalizate bazate pe GIF.",
-			"edited_sticker": "%s autocolante au fost editate.",
-			"uploading_you_sticker": "📤 Se încarcă autocolante...",
-			"you_sticker_is_ready": "%s Autocolantul dvs. este gata. Hai sa incercam!!"
-		},
-		"stop": {
-			"no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă.",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"stopped": "⏹️ Opriți redarea muzicii și ștergeți toate cozile."
-		},
-		"system": {
-			"info_description": "Informațiile sistemului la care lucrez în prezent, așa cum sunt furnizate de sistem, sunt următoarele.",
-			"info_gpu_control": "• GPU (controller)",
-			"info_gpu_display": "• GPU (afișaj)",
-			"info_memory_used": "• memorie folosită",
-			"info_platform": "• Platformă",
-			"info_system": "• sistem",
-			"info_temperature": "• Temperatura CPU",
-			"info_title": "🖥 Informații de bază ale sistemului",
-			"info_uptime": "• เวลาทำงาน",
-			"info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
-			"loading": "⚙️ Se trimite cererea de preluare a datelor sistemului de pe server...",
-			"main": "principal",
-			"no": "Nu",
-			"not_owner": "🛑 Nu... nu-l lua. Această funcție necesită numai privilegii de top.",
-			"now_reboot": "✅ Am pornit un nou sistem!!",
-			"now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
-			"rebooting": "🔄 Se repornește...",
-			"shutting_down": "🔄 Îmi închid sistemul...",
-			"unknown": "Nu stiu"
-		},
-		"timeout": {
-			"can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"can_not_set_for_yourself": "❎ Nu puteți seta un timeout pentru dvs.",
-			"can_not_set_to_admin": "❎ Nu puteți seta un timeout pentru moderatori.",
-			"member_not_found": "❎ Membrii nu spun că nu mai sunt pe acest server.",
-			"no_reason": "nu da un motiv",
-			"success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
-			"success_untimeout": "{{user}} Timeout a fost setat **Motiv**: {{reason}}",
-			"timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
-			"untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
-		},
-		"timezone": {
-			"can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
-			"this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
-			"time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
-		},
-		"translate": {
-			"base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
-			"can_not_translate": "❎ Nu se poate traduce limba unui astfel de text. Vă rugăm să încercați din nou mai târziu.",
-			"says": "Spune",
-			"translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
-		},
-		"user": {
-			"available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
-			"info_date": "informații despre când",
-			"invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
-			"no": "Nu",
-			"none": "Nu",
-			"unknown": "Nu stiu",
-			"user_info": "👥 Detalii informații despre utilizator",
-			"user_info_description": "Informații detaliate despre utilizatori Care se bazează pe date de la Discord.",
-			"yes": "da"
-		},
-		"volume": {
-			"adjusted": "🔊 Reglați volumul la: **%s**",
-			"no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă. Ce ai de gând să ajustezi?",
-			"not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
-			"not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
-			"this_volume": "🔈 Volumul curent al sunetului este: **%s**"
-		},
-		"vote": {
-			"added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
-			"error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
-			"invite": "เชิญ",
-			"not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
-			"rate": "คะแนนโหวต",
-			"tags": "Etichete",
-			"unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
-			"vote": "โหวต"
-		},
-		"warn": {
-			"can_not_find_user": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou.",
-			"members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
-			"members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
-			"user_has_warned": "{{user}} ถูกตักเตือน",
-			"user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
-			"you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
-		},
-		"weather": {
-			"celsius": "เซลเซียส",
-			"clouds": "☁️ เมฆ",
-			"data_from": "📡 สถานที่เก็บข้อมูล",
-			"error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
-			"fahrenheit": "ฟาเรนไฮต์",
-			"feels_like": "🍃 รู้สึกเหมือน",
-			"ground_level": "⛰️ ระดับพื้นดิน",
-			"highest_temperature": "➕ อุณหภูมิสูงสุด",
-			"humidity": "💧 ความชื้น",
-			"kelvin": "เคลวิน",
-			"lowest_temperature": "➖ อุณหภูมิต่ำสุด",
-			"meter_per_seconds": "เมตร/วินาที",
-			"miles_per_hour": "ไมล์/ชั่วโมง",
-			"none": "ไม่มี",
-			"no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
-			"no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
-			"pressure": "🎱 ความดัน",
-			"rainfall": "🌧️ ปริมาณน้ำฝน",
-			"sea_level": "🌊 ระดับน้ำทะเล",
-			"snowfall": "❄️ ปริมาณหิมะ",
-			"temperature": "🌡️ Temperatura",
-			"time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
-			"visibility": "👁️ ทัศนวิสัย",
-			"weather": "⛅ Vremea",
-			"weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
-			"wind_direction": "🧭 ทิศทางลม",
-			"wind_gust": "🎏 ลมกระโชก",
-			"wind_speed": "💨 ความเร็วลม"
-		}
-	},
-	"events": {
-		"channelCreate": {
-			"channel_notification": "🪧 Canalul",
-			"member_create_channel": "> Canalul creat de membrul serverului: <#%s>"
-		},
-		"channelDelete": {
-			"channel_notification": "🪧 Canalul",
-			"member_delete_channel": "> Canalul explodat membru al serverului: `%s`"
-		},
-		"channelPinsUpdate": {
-			"channel_notification": "🪧 Canalul",
-			"member_pins_in_channel": "> Membrul serverului a fixat slotul: <#%s1> când %s2"
-		},
-		"channelUpdate": {
-			"channel_notification": "🪧 Canalul",
-			"member_update_channel": "> Un membru al serverului a schimbat unele câmpuri: `%s1` în <#%s2>."
-		},
-		"emojiCreate": {
-			"emoji_notification": "😊 Emoji",
-			"member_create_emoji": "> Membrul serverului a creat un nou emoji: :%s:"
-		},
-		"emojiDelete": {
-			"emoji_notification": "😊 Emoji",
-			"member_delete_emoji": "> Emoji șters de membru al serverului: :%s:"
-		},
-		"emojiUpdate": {
-			"emoji_notification": "😊 Emoji",
-			"member_update_emoji": "> Membrul serverului a schimbat noul emoji de la: %s1 la %s2."
-		},
-		"guildBanAdd": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_add": "> <@%s1> Deja interzis pe acest server\n**Motiv:**\n```%s2```"
-		},
-		"guildBanRemove": {
-			"guild_notification": "🗄️ Server",
-			"member_ban_remove": "> <@%s1> A fost dezbannizat pe acest server\n**Motiv:**\n```%s2```"
-		},
-		"guildIntegrationsUpdate": {
-			"guild_integrations_update": "Acest server a fuzionat deja %s . Veți primi imediat articole noi cu actualizări viitoare.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberAdd": {
-			"captcha_error": "A apărut o eroare de validare. Contactați personalul serverului pentru a lua măsuri.",
-			"captcha_success": "Ești verificat în %s",
-			"greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
-			"solve_the_captcha": "S-a corectat captcha pentru a verifica în %s",
-			"submit_answer_captcha": "Trimiteți un răspuns captcha",
-			"submit_you_answer_guide": "Trimiteți ceea ce credeți că este captcha",
-			"use_button_below": "Folosește butonul de mai jos pentru a trimite răspunsul tău!",
-			"welcome": "Bun venit pe server",
-			"wrong_answer": "Pare greșit. Încearcă din nou...",
-			"your_answer": "răspunde la captcha"
-		},
-		"guildMemberRemove": {
-			"user_has_exited": "A scăpat deja de pe acest server... (Să mergem la el..)"
-		},
-		"guildMembersChunk": {
-			"guild_members_chunk": "Bine ați venit membrii de pe serverul %s Vă așteptăm aici.",
-			"guild_notification": "🗄️ Server"
-		},
-		"guildMemberUpdate": {
-			"guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"guild_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"guildSoundboardSoundCreate": {
-			"new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundDelete": {
-			"soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด"
-		},
-		"guildSoundboardSoundUpdate": {
-			"deleted": "ถูกลบแล้ว",
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
-		},
-		"guildUnavailable": {
-			"guild_notification": "🗄️ Server",
-			"guild_unavailable": "Momentan... acest server este temporar indisponibil. Vă rugăm să contactați administratorul acestui server."
-		},
-		"interactionCreate": {
-			"client_is_not_allowed": "🚫 Ummm..Îmi lipsesc niște permisiuni. Deci nu pot continua, și anume **%s**",
-			"command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
-		},
-		"inviteCreate": {
-			"invite_create": "Link de invitație creat cu succes\n**Link:** %s1\n**Expiră:** %s2\n**Maximum:** %s3\n```%s4```",
-			"invite_notification": "🏷️ Invitație"
-		},
-		"inviteDelete": {
-			"invite_code_deleted": "`%s` Acest cod de invitație a fost șters.",
-			"invite_code_expires": "`%s` Acest cod de invitație a expirat.",
-			"invite_notification": "🏷️ Invitație"
-		},
-		"messageCreate": {
-			"afk_user_come_back": "🔙 Te-ai întors Dezactivați automat starea AFK",
-			"no_reason_for_afk": "nu am",
-			"that_user_is_afk": "%s1 Acum nu pe ecran (AFK), nu-l menționați acum\n**Lasă mesaj**: %s2"
-		},
-		"ready": {
-			"prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
-		},
-		"roleCreate": {
-			"role_create": "<@&%s> a fost creat.",
-			"role_notification": "🔖 Rol"
-		},
-		"roleDelete": {
-			"role_delete": "`%s` a fost șters.",
-			"role_notification": "🔖 Rol"
-		},
-		"roleUpdate": {
-			"role_notification": "🔖 Rol",
-			"role_update": "`%s1` a fost actualizat la <@&%s2>"
-		},
-		"soundboardSounds": {
-			"soundboard_notification": "🎛️ ซาวด์บอร์ด",
-			"soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
-		},
-		"stageInstanceCreate": {
-			"stage_instance_create": "<#%s> a fost creat.",
-			"stage_notification": "🎤 scena"
-		},
-		"stageInstanceDelete": {
-			"stage_instance_delete": "`%s` a fost șters.",
-			"stage_notification": "🎤 scena"
-		},
-		"stageInstanceUpdate": {
-			"stage_instance_update": "`%s1` a fost actualizat la <#%s2>.",
-			"stage_notification": "🎤 scena"
-		},
-		"stickerCreate": {
-			"sticker_create": "**%s** Acum disponibil",
-			"sticker_notification": "👻 autocolant"
-		},
-		"stickerDelete": {
-			"sticker_delete": "**%s** a fost șters",
-			"sticker_notification": "👻 autocolant"
-		},
-		"stickerUpdate": {
-			"sticker_notification": "👻 autocolant",
-			"sticker_update": "`%s1` a fost actualizat la **%s2**"
-		},
-		"threadCreate": {
-			"thread_create": "<#%s> a fost creat.",
-			"thread_notification": "#️⃣ Fire"
-		},
-		"threadDelete": {
-			"thread_delete": "**%s** a fost șters",
-			"thread_notification": "#️⃣ Fire"
-		},
-		"threadListSync": {
-			"thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMembersUpdate": {
-			"added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
-			"removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
-			"thread_notification": "#️⃣ เธรด"
-		},
-		"threadMemberUpdate": {
-			"thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
-			"thread_notification": "🗄️ เซิร์ฟเวอร์",
-			"unknown": "ไม่ทราบ"
-		},
-		"threadUpdate": {
-			"thread_notification": "#️⃣ Fire",
-			"thread_update": "`%s1` a fost actualizat la **%s2**"
-		},
-		"voiceStateUpdate": {
-			"no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
-			"voice_notification": "➿ สถานะเสียง",
-			"voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
-		},
-		"webhookUpdate": {
-			"webhook_notification": "🎣 Webhook",
-			"webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
-		}
-	},
-	"handlers": {
-		"player": {
-			"addList": {
-				"added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
-			},
-			"addSong": {
-				"added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
-			},
-			"deleteQueue": {
-				"deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
-			},
-			"disconnect": {
-				"disconnected": "🔌 Deconectat și șters deja toate cozile."
-			},
-			"error": {
-				"playlist_not_found": "❎ Nu găsesc acea listă de redare. Cauți un alt playlist?"
-			},
-			"finish": {
-				"queue_is_empty": "🍃 Acum coada mea este goală. Ești gata să cânți următoarea melodie?"
-			},
-			"finishSong": {
-				"finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
-			},
-			"noRelated": {
-				"no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
-			},
-			"playSong": {
-				"playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
-			}
-		}
-	},
-	"utils": {
-		"clientUtils": {
-			"color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
-			"is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
-			"need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
-			"timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
-		},
-		"consoleUtils": {
-			"error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
-			"error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
-			"report_issues": "[รายงานปัญหา]({{-issues_link}})",
-			"server_abnormal": "neobișnuit",
-			"server_normal": "normal"
-		},
-		"databaseUtils": {
-			"congratulations": "Felicitări!!",
-			"level_up": "Clasa *%s1* a fost acum actualizată la ```%s2```."
-		}
-	}
+  "commands": {
+    "about": {
+      "commands": "คำสั่ง",
+      "connection": "เชื่อมต่อ",
+      "copyright": "© 2563-2566 Chaiwat Suwannarat. สงวนลิขสิทธิ์.",
+      "guilds": "กิลด์",
+      "members": "สมาชิก",
+      "my_personal": "ข้อมูลส่วนตัวของฉัน",
+      "my_personal_detail": "ฉันชื่อ {{name}} เกิดเมื่อวันอาทิตย์ที่ 21 มิถุนายน ฉันอาศัยภายในบ้านหลังหนึ่ง __Masashi__ คือผู้ให้กำเนิดให้ความรู้ความสามารถต่างๆ ให้กับฉัน ฉันมีหน้าที่ในการช่วยให้คุณสบายมากขึ้นด้วย**คำสั่ง**ต่างๆ ที่ฉันได้ศึกษามาทั้งหมด แก่ทุกคนในสถานที่ฉันอาศัยอยู่ ฉันหวังว่าทุกคนคงจะมีความสุขที่ได้อยู่กับฉันนะคะ!! และขอขอบคุณทุกการให้ความช่วยเหลือและสนับสนุนผู้มีพระคุณที่น่ารักของฉันนะคะ ขอบคุณมากค่ะ\n\n[เว็บไซต์]({{- website_link}}) | [นโยบาย]({{- pp_link}}) | [เงื่อนไข]({{- tos_link}})",
+      "public_stats": "ข้อมูลสถิติทั้งหมดที่สามารถเผยแพร่ได้",
+      "shards": "ชาร์ด",
+      "stats": "📊 สถิติ",
+      "worked": "ทำงาน"
+    },
+    "activities": {
+      "can_not_open": "❌ เอิ่มม..คือว่าเปิด {{activity_name}} ไม่ได้อะ",
+      "do_not_have_permission": "❌ ฉันไม่สามารถเปิดใช้งานได้เนื่องจากไม่มีสิทธิ์ดำเนินการ กรุณาติดต่อผู้ดูแลกิลด์",
+      "join_via_this_link": "เข้าร่วมผ่านลิงค์นี้ได้เลย https://discord.com/invite/{{code}}",
+      "user_not_in_channel": "❎ เข้าไปในช่องเสียงสักอันก่อนสิหรือไม่ก็บอกชื่อหรือไอดีของช่องนั้นมาเลยก็ได้นะ เค้าจะได้สร้างลิงค์ให้ถูก"
+    },
+    "afk": {
+      "currently_afk": "❎ Acum ești AFK",
+      "currently_not_afk": "❎ Nu ești AFK acum.",
+      "now_afk": "💤 Acum sunteți AFK, scrieți un mesaj sau /afk eliminați pentru a ieși din modul AFK.",
+      "now_not_afk": "🔙 Starea dvs. AFK a fost anulată."
+    },
+    "anime": {
+      "age_rating_guide": "เรท",
+      "anime_manga_or_characters": "🦊 อนิเมะ/มังงะ/ตัวละคร",
+      "auto_cancel": "ยกเลิกอัตโนมัติภายในหนึ่งนาทีหากไม่มีการตอบสนอง",
+      "choose_title": "เลือกเรื่องที่ต้องการ",
+      "data_not_found": "❎ Nu am găsit această poveste. Hai să verificăm. Uite, poate chiar nu există așa ceva?",
+      "english_name": "ชื่ออังกฤษ",
+      "episode_count": "จำนวนตอน",
+      "in_progress": "în curs",
+      "japan_name": "ชื่อญี่ปุ่น",
+      "learn_more": "ดูข้อมูลเพิ่มเติม",
+      "name": "ชื่อ",
+      "popularity_rank": "อันดับความนิยม",
+      "rating_rank": "อันดับการให้คะแนน",
+      "release_date": "วันที่ฉาย",
+      "selection_detail": "ข้อมูลรายละเอียดเกี่ยวกับเรื่อง **{{title}}**",
+      "similar_stories": "ฉันเจอเรื่องที่ใกล้เคียงกับ `{{title}}` อยากอ่านเรื่องไหนกันละ~",
+      "status": "สถานะ",
+      "subtype": "หมวดหมู่",
+      "synopsis": "เรื่องย่อ",
+      "trailer": "ตัวอย่าง",
+      "undefined": "nedefinit"
+    },
+    "antibot": {
+      "antibot_and_kick_all_bot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว บอททุกตัวที่อยู่ในกิลด์นี้ยกเว้นฉันจะถูกเตะออกจากกิลด์ภายใน 10 วินาที **(คุณสามารถยกเลิกได้โดยพิมพ์คำสั่ง /antibot disable)**",
+      "antibot_is_currently_enabled": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "currently_disable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกปิดอยู่แล้วคะ",
+      "currently_enable": "❎ ระบบป้องกันบอทเข้าร่วมกิลด์ถูกเปิดใช้งานอยู่แล้วคะ",
+      "disable_antibot": "✅ ปิดระบบป้องกันบอทเข้าร่วมเซิร์ฟเวอร์แล้วคะ",
+      "enable_antibot": "✅ เปิดใช้งานการป้องกันบอทเข้าร่วมกิลด์แล้ว"
+    },
+    "ask": {
+      "can_not_answer_at_this_time": "❎ เอิ่มม...ตอนนี้ฉันยังไม่ว่าง ไว้เดี่ยวฉันว่างเมื่อไหร่แล้วถามฉันใหม่อีกรอบในครั้งหน้าน้า",
+      "key_not_exsist": "🔑 ฉันไม่สามารถตอบคำถามของคุณได้เพราะไม่มีกุญแจในการเข้าถึง"
+    },
+    "attachment": {
+      "sended": "📁 ส่งไฟล์ดังกล่าวไปยังแชทเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "📁 ส่งไฟล์ดังกล่าวไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "automod": {
+      "flagged_words_name": "blochează blasfemia conținut sexual și insulte",
+      "flagged_words_success": "✅ Au fost create regulile tale AutoMod, toate acele cuvinte vor fi suprimate.",
+      "keyword_name": "Împiedicați utilizarea cuvântului {{word}}.",
+      "keyword_success": "✅ Regula ta AutoMod a fost creată, toate mesajele care conțin cuvântul {{word}} vor fi șterse.",
+      "mention_spam_name": "Preveniți spamul atunci când vine vorba de",
+      "mention_spam_success": "✅ Regula dvs. AutoMod creată, spam-ul pe mai multe mențiuni va fi suprimat.",
+      "prevent_message": "Acest mesaj este protejat.",
+      "spam_messages_name": "blocați mesajele spam",
+      "spam_messages_success": "✅ Regulile tale AutoMod au fost create, mesajele spam vor fi suprimate."
+    },
+    "autoplay": {
+      "no_queue": "❎ Hmm...dar melodia nici nu a început încă?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "off": "📻 Modul de redare automată este dezactivat",
+      "on": "📻 Modul de redare automată este activat"
+    },
+    "ban": {
+      "banned_for_time": "{{userName}} interzis pentru **{{days}}** zile",
+      "is_only_owner": "❎ คำสั่งนี้ใช้งานได้เฉพาะเจ้าของเซิร์ฟเวอร์นี้คะ",
+      "member_has_banned": "❎ Astfel de membri sunt deja interziși. Simțiți-vă confortabil.",
+      "members_have_a_higher_role": "❎ Nu poți interzice pe cineva cu un rol mai înalt decât tine.",
+      "members_have_a_higher_role_than_me": "❎ Nu pot interzice acel membru. pentru că el are un rol mai înalt decât mine",
+      "no_one_gets_banned": "❎ Nimeni de pe server nu este interzis în prezent.",
+      "no_reason": "Membrii care au interzis nu au dat un motiv.",
+      "permanently_banned": "{{userName}} interzis permanent",
+      "reason_for_ban": "Banat de: {{moderatorName}}\nMotiv: {{reason}}",
+      "reason_for_unban": "ปลดแบนโดย: {{user}}\nเหตุผล: {{reason}}\nหลังจากที่สมาชิกดังกล่าวได้รับการปลดแบนแล้ว สมาชิกดังกล่าวจะสามารถเข้าร่วมเซิร์ฟเวอร์นี้ได้ตามปกติ",
+      "this_user_not_banned": "❎ Eh.. acel membru nu a fost interzis. Să verificăm încă o dată câteva cuvinte cheie noi grozave...",
+      "unbanned_all": "✅ สมาชิกที่ถูกแบนจำนวน {{count}} ได้รับการ**ปลดแบน**เรียบร้อยแล้วคะ",
+      "unbanning_everyone": "🕒 กำลังปลดแบนสมาชิกทุกคนที่ถูกแบนในกิลด์นี้...",
+      "user_has_been_unbanned": "{{user}} ได้รับการปลดแบน",
+      "user_not_found": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou."
+    },
+    "captcha": {
+      "captcha_setup_success": "✅ Sistemul captcha a fost configurat și activat cu succes.",
+      "currently_disable": "ℹ️ Captcha este acum închis.",
+      "currently_enable": "ℹ️ Captcha este acum activată.",
+      "disabled_captcha": "✅ Captcha a fost dezactivat",
+      "enabled_captcha": "✅ Captcha a fost activat cu succes",
+      "need_to_setup_before": "❎ Vă rugăm să setați captcha înainte de utilizare utilizând comanda /captcha setup."
+    },
+    "covid": {
+      "active": "activ",
+      "active_per_one_million": "activ la 1 milion",
+      "backend_issue": "❎ Se pare că există o problemă din partea informatorului. Vă rugăm să încercați din nou data viitoare.",
+      "cases_per_one_million": "Pacienți la 1 milion",
+      "cases_today": "acest pacient",
+      "cases_total": "toti pacientii",
+      "country_not_found": "❎ Umm.. Nu găsesc informațiile despre țara pe care ați specificat-o.",
+      "critical_per_one_million": "perioadă critică la 1 milion",
+      "critical_stage": "perioada critica",
+      "deaths_today": "a murit azi",
+      "deaths_total": "toti au murit",
+      "one_case_per_people": "per pacient",
+      "one_death_per_people": "deces de persoană",
+      "one_test_per_people": "Testare pe persoană",
+      "population": "populatie",
+      "recovered": "plecat",
+      "recovered_per_one_million": "Pierdut la 1 milion",
+      "tests": "Test",
+      "tests_per_one_million": "Teste la 1 milion",
+      "updated_on": "Ultima actualizare {{updatedAt}}",
+      "when": "când"
+    },
+    "crosspost": {
+      "can_not_published": "❎ ฉันไม่สามารถเผยแพร่ข้อความดังกล่าวได้ อาจจะได้รับการเผยแพร่ไปก่อนหน้านี้แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_valid_type": "❎ จะสามารถเผยแพร่ข้อความได้ก็ต่อเมื่อข้อความอยู่ใน**ช่องประกาศ**เท่านั้นค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการเผยแพร่ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "published": "📢 ข้อความดังกล่าวได้รับการเผยแพร่ไปยังทุกกิลด์ที่ติดตามแล้วค่ะ"
+    },
+    "dead": {
+      "suicide": "{{username}} să se sinucidă 💔 odihnește-te în pace"
+    },
+    "delete": {
+      "can_not_delete": "❎ ฉันไม่สามารถลบข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "deleted": "🧹 ข้อความดังกล่าวถูกลบออกแล้วเรียบร้อยค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการลบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ"
+    },
+    "djs": {
+      "added_role": "✅ เพิ่มบทบาท <@{{role_id}}> เป็นบทบาทที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "added_user": "✅ เพิ่ม <@{{user_id}}> เป็นผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "cleared_roles_in_list": "❎ ล้างบทบาททั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "cleared_users_in_list": "❎ ล้างผู้ใช้งานทั้งหมดที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ หากไม่พบสิทธิ์ใน **Roles** และ **Users** ฉันจะทำการปิดระบบนี้เองโดยอัตโนมัติค่ะ",
+      "currently_disabled": "❎ การควบคุมเพลงโดย DJs ถูกปิดใช้งานอยู่แล้วคะ",
+      "currently_enabled": "❎ เปิดการควบคุมเพลงโดย DJs อยู่แล้วคะ ไม่จำเป็นต้องเปิดใช้งานอีกครั้ง",
+      "currently_switched": "❎ เอ๋..ดูเหมือนว่าจะถูกตั้งค่าเป็น {{boolean}} อยู่แล้วนะคะ",
+      "deleted_role": "✅ ลบบทบาท <@{{role_id}}> ออกจากการมีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "deleted_user": "✅ ลบ <@{{user_id}}> ออกจากผู้ที่มีสิทธิ์ในการควบคุมเพลงแล้วค่ะ",
+      "disable_djs_mode": "✅ ปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "empty_roles_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีบทบาทไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "empty_users_in_list": "❎ เอิ่มม..ในสิทธิ์ผู้ควบคุมเพลงไม่มีผู้ใช้งานคนไหนอยู่ในนั้นเลยนะคะ สะอาดเอี่ยมเลยค่ะ!",
+      "enable_djs_mode": "✅ เปิดใช้งานสิทธิ์ในการควบคุมเพลงโดย DJs เรียบร้อยแล้วคะ",
+      "everyone_can_manage": "✅ ตอนนี้ทุกคนที่ไม่มีสิทธิ์ DJs จะสามารถควบคุมเพลงได้บางส่วน",
+      "manage_music_like_dj": "{{command}} - จัดการสิทธิ์เกี่ยวกับการควบคุมเพลงเหมือนได้เป็น DJ",
+      "music_djs": "🎼 การควบคุมเพลง",
+      "only_djs_can_manage": "✅ ตอนนี้จะมีเพียง DJs เท่านั้นที่จะสามารถจัดการกับเพลงได้",
+      "role_currently_can_not_manage_music": "❎ บทบาทดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "role_have_been_added_before": "❎ ดูเหมือนบทบาทนี้ถูกเพิ่มไปแล้วนะคะ",
+      "role_not_found_in_list": "❎ ไม่พบบทบาทดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้วอะ",
+      "user_currently_can_manage_music": "❎ ผู้ใช้งานดังกล่าวมีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_have_been_added_before": "❎ ผู้ใช้ดังกล่าวไม่ได้มีสิทธิ์ในการควบคุมเพลงอยู่แล้วค่ะ",
+      "user_not_found_in_list": "❎ ไม่พบผู้ใช้งานดังกล่าวในสิทธิ์ผู้ควบคุมเพลงเลยค่ะ เป็นไปได้ว่าอาจจะถูกลบไปแล้ว"
+    },
+    "donate": {
+      "thank_you_in_advance": "❤️ ขอขอบคุณสำหรับการสนับสนุนฉันล่วงหน้านะคะ"
+    },
+    "eat": {
+      "already_eaten": "{{eaterName}} a mâncat {{foodName}} în stomac",
+      "do_not_eat_me": "Eu... sunt un pic mic. m..nu e bine de mâncat..."
+    },
+    "eight_ball": {
+      "answer": "Răspuns",
+      "game": "🎱 Joc cu 8 mingi",
+      "question": "întrebare",
+      "risk": "Folosește-ți norocul la întrebări pentru a obține răspunsuri.",
+      "roll_ball": "Dati mingea!!"
+    },
+    "embed": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "embedded_has_been_edited": "✏️ แก้ไขเนื้อหาของข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_replied": "🗨️ ตอบกลับข้อความดังกล่าวด้วยข้อความแบบฝังแล้วค่ะ",
+      "embedded_has_been_sent": "✅ ส่งข้อความแบบฝังเรียบร้อยแล้วค่ะ",
+      "embedded_has_been_sent_to_channel": "✅ ส่งข้อความแบบฝังไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ",
+      "is_not_embed": "❎ ข้อความดังกล่าวไม่ใช่ข้อความแบบฝังอยู่แล้ว",
+      "message_not_found": "❎ ไม่พบข้อความดังกล่าว เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "no_option_provided": "❎ กรุณาเพิ่มแบบฟอร์มที่ต้องการจะเพิ่มในข้อความแบบฝังเพื่อเริ่มใช้งานคะ",
+      "suppresses": "🚫 ระงับการฝังข้อความดังกล่าวแล้วค่ะ",
+      "unsuppresses": "🚫 เลิกระงับการฝังข้อความดังกล่าวแล้วค่ะ"
+    },
+    "emoji": {
+      "deleted_emoji": "✅ **{{emojiName}}** Emoji a fost șters.",
+      "edited_emoji": "{{emojiName}} emoji remediat",
+      "uploading_you_emoji": "📤 Se încarcă emoji-ul...",
+      "you_emoji_is_ready": "{{emojiName}} Emoji-ul tău este gata. Hai sa incercam!!"
+    },
+    "emojify": {
+      "can_not_convert": "❎ ไม่สามารถแปลงข้อความเป็นอีโมจิได้"
+    },
+    "encoder": {
+      "decode_after": "หลังถอดรหัส",
+      "decode_before": "ก่อนถอดรหัส",
+      "decode_message": "🔓 ถอดรหัสข้อความ",
+      "decode_success": "ถอดรหัสข้อความเรียบร้อยแล้วคะ",
+      "encode_after": "หลังเข้ารหัส",
+      "encode_before": "ก่อนเข้ารหัส",
+      "encode_message": "🔒 เข้ารหัสข้อความ",
+      "encode_success": "เข้ารหัสข้อความเรียบร้อยแล้วคะ"
+    },
+    "enlarge": {
+      "emoji_not_found": "❎ Se pare că emoji-ul lipsește sau s-ar putea să nu fie un emoji."
+    },
+    "eval": {
+      "result": "🔭 ผลการทำงาน"
+    },
+    "exp": {
+      "error": "❎ Nu pot seta experiența unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
+      "experience": "Puncte de experiență (Exp)",
+      "exp_was_changed": "{{memberName}} acumulat toate nivelurile de experiență au:",
+      "level": "Nivel",
+      "notification_complete": "✅ Configurarea este finalizată...",
+      "set_by_staff": "Experiența ta este stabilită de echipa de pe acest server.",
+      "success": "✅ Configurarea este finalizată..."
+    },
+    "filter": {
+      "add_filter": "🎼 Adăugați formatul de sunet necesar să fie deja **{{filterNames}}**.",
+      "available_filter": "Formate de filtrare disponibile",
+      "available_filter_description": "Personalizați-vă muzica utilizând aceste formate {{filterCount}} ```{{filterNames}}```",
+      "clear_filter": "💨 Toate formatele audio au fost șterse. Acum va fi un format de sunet normal.",
+      "list_filter_description": "În prezent există modele active în această coadă: {{filterCount}} modele\n```{{filterNames}}```",
+      "list_filter_description_empty": "```Nu există niciun format audio utilizat în prezent.```",
+      "list_filter_title": "Formatul audio utilizat în prezent",
+      "no_queue": "❎ Nu se redă nicio melodie în prezent.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "remove_filter": "🗑️ Formatul audio **{{filterNames}}** a fost eliminat.",
+      "set_filter": "🎼 Setați formatul audio preferat la **{{filterNames}}**",
+      "sound_filtering": "❓ Vrei să schimbi sunetul muzicii tale?",
+      "unknown_filter": "❎ Umm..Nu știu formatul sunetului `{{unknownFilters}}, îl puteți verifica folosind **disponibil** sau **disponibil**?",
+      "unknown_input_option": "❓ Puteți specifica următorii parametri: adăugare, eliminare, setare, disponibil, listă, ștergere."
+    },
+    "games": {
+      "accept": "ยอมรับ",
+      "caught_fish": "คุณจับได้ {{fish}} และจ่ายเงิน {{amount}} คอยน์สำหรับค่าเช่าเบ็ดตกปลาแล้ว",
+      "click_buttons_below": "กดปุ่มด้านล่างเพื่อทำการเลือกสัญลักษณ์",
+      "click_match_emoji": "**คลิกที่ปุ่มเพื่อจับคู่กับอีโมจิที่เหมือนกัน**",
+      "click_show_block": "คลิกที่ปุ่มเพื่อเปิดบล็อกที่ไม่ใช่ทุ่นระเบิด",
+      "correct_emoji": "ยินดีด้วยค่ะ คุณเลือกอิโมจิถูกต้อง {{emoji}} 🎉",
+      "correct_pokemon": "คุณเดาถูกต้อง! นี่คือ {{pokemon}}",
+      "experimental_economy_feature": "🪙 ระบบการเงินยังอยู่ในช่วงพัฒนา ทั้งหมดนี้จะเป็นเพียงการจำลองและจะยังไม่มีการเก็บข้อมูลในส่วนนี้ค่ะ\nขอให้สนุกนะคะ 🤗",
+      "find_emoji": "ค้นหาอีโมจิ {{emoji}} ให้เจอก่อนเวลาจะหมด",
+      "fish_sold": "คุณขาย {{amount}}x {{emoji}} {{type}} รายการ รวมมูลค่า {{price}} คอยน์",
+      "forgot_emoji": "เหมือนคุณจะจำไม่ได้นะ อีโมจิที่ถูกต้องคือ {{emoji}}",
+      "game_over": "คุณแพ้แล้ว",
+      "game_reject": "ปฏิเสธคำขอ",
+      "game_request": "คำขอเกม",
+      "incorrect_emoji": "เสียใจด้วยนะแต่คุณเลือกอิโมจิผิดคะ ที่ถูกต้องคือ {{emoji}}",
+      "incorrect_pokemon": "ครั้งหน้าขอให้โชคดีนะ! แต่ที่จริงแล้วนี่คือ {{pokemon}}",
+      "invite_to_play_game": "{{player}} ได้เชิญคุณมาร่วมเล่นเกมด้วยกันสักรอบ",
+      "no_balance": "🍃 คุณมียอดเงินไม่เพียงพอในการเช่าคันเบ็ดนะ",
+      "no_item_in_inventory": "❎ เอ๋..ดูเหมือนจะไม่มีรายการนี้ในคลังของคุณนะ",
+      "option_one": "ตัวเลือกที่ 1",
+      "option_two": "ตัวเลือกที่ 2",
+      "paper": "กระดาษ",
+      "player_and_opponent_only": "❎ เฉพาะ {{player}} และ {{opponent}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_have_time_to_answer": "คุณมีเวลา 60 วินาทีในการเดาคำตอบ",
+      "player_loose_flood": "คุณแพ้! คุณทำได้ภายใน **{{turns}}** เทิร์น",
+      "player_loose_hangman": "คุณแพ้! คำนั้นคือ **{{word}}**",
+      "player_loose_match_pairs": "**คุณแพ้เกม! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_loose_minesweeper": "คุณแพ้เกม! ระวังทุ่นระเบิดในรอบต่อไปด้วยนะ",
+      "player_loose_trivia": "คุณแพ้! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_loose_wordle": "คุณแพ้แล้ว! คำนั้นคือ **{{word}}**",
+      "player_lose_fast_type": "คุณแพ้! คุณพิมพ์ประโยคไม่ถูกต้องทันเวลา",
+      "player_not_response": "ยกเลิกคำขอเนื่องจากผู้เล่นไม่ตอบสนอง",
+      "player_only": "❎ เฉพาะ {{player}} เท่านั้นที่สามารถใช้ปุ่มเหล่านี้ได้",
+      "player_pick": "คุณได้เลือก {{emoji}}",
+      "player_reject": "ผู้เล่นปฏิเสธคำขอเข้าร่วมสำหรับเกมในรอบนี้",
+      "player_win_connect_four": "{{emoji}} **{{player}}** ได้ชนะในเกม Connect4",
+      "player_win_fast_type": "คุณชนะ! คุณจบการแข่งขันพิมพ์ไวใน {{time}} วินาทีด้วย {{wpm}} WPM",
+      "player_win_flood": "คุณชนะ! คุณทำได้ **{{turns}}** เทิร์น",
+      "player_win_hangman": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "player_win_match_pairs": "**คุณชนะเกมแล้ว! คุณได้เปิด `{{tiles_turned}}` ทั้งหมดแล้ว**",
+      "player_win_minesweeper": "คุณชนะเกม! คุณประสบความสำเร็จในการหลีกเลี่ยงทุ่นระเบิดทั้งหมด",
+      "player_win_rps": "'**{{player}}** ชนะในเกมนี้! ยินดีด้วยนะ!'",
+      "player_win_tic_tac_toe": "{{emoji}} **{{player}}** ได่ชนะเกมนี้!",
+      "player_win_trivia": "คุณชนะ! คำตอบที่ถูกต้องคือ {{answer}}",
+      "player_win_wordle": "คุณชนะ! คำนั้นคือ **{{word}}**",
+      "pokemon_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลโปเกมอนในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "question_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลคำถามในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ",
+      "reject": "ปฏิเสธ",
+      "remember_all_emoji": "จำอิโมจิจากกระดานด้านล่างไว้ให้ดีนะคะ แล้วในอีก 5 วินาทีฉันจะเริ่มเกมค่ะ",
+      "rock": "หิน",
+      "scissors": "กรรไกร",
+      "status": "สถานะ",
+      "stop": "หยุด",
+      "tie_game": "เกมเสมอกัน! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "timeout_game": "เกมดำเนินไปไม่สิ้นสุด! ไม่มีใครชนะหรือแพ้ในเกมนี้",
+      "time_to_type": "คุณมีเวลา {{time}} วินาทีในการพิมพ์ประโยคด้านล่าง",
+      "turn_to_player": "{{emoji}} ถึงตาของผู้เล่น **{{player}}**",
+      "want_sell_fish_amount": "❓ จำนวนปลาที่ต้องการขายคือเท่าไหร่เอ๋ย? ต้องอยู่ระหว่าง 0 ถึงจำนวนปลาสูงสุดที่มีในคลังนะ",
+      "want_sell_fish_type": "❓ ต้องการขายปลาประเภทอะไรคะ? junk, common, uncommon หรือ rare",
+      "words_api_not_response": "❎ ฉันไม่สามารถดึงข้อมูลประโยคในขณะนี้ได้ค่ะ ลองใหม่อีกครั้งในครั้งหน้านะคะ"
+    },
+    "guild": {
+      "available_type_list": "🪐 รายการประเภทของข้อมูลกิลด์ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "informații despre când",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "Nu",
+      "none": "Nu",
+      "not_ready": "nu e gata",
+      "not_set": "ไม่ได้ตั้ง",
+      "ready": "gata",
+      "server_info": "🗄 Informații detaliate despre server",
+      "server_info_description": "Informații detaliate despre server Care se bazează pe date de la Discord.",
+      "unknown": "Nu stiu",
+      "yes": "da"
+    },
+    "help": {
+      "ask_for_help": "ขอความช่วยเหลือ",
+      "can_clickable_some_command": "> คุณสามารถคลิกที่บางคำสั่งเพื่อทดลองใช้งานได้",
+      "choose_command_to_survey": "เลือกคำสั่งที่ต้องการสำรวจ",
+      "choose_context_to_survey": "เลือกบริบทที่ต้องการสำรวจ",
+      "choose_one": "❎ จะคอมโบใส่ฉันงั้นหรอ เจอนี่ไปหน่อย!! [▲ ▲ ▼ ▼ ◀ ▶ ◀ ▶ Β Α]({{link}})",
+      "command_category": "**หมวดหมู่**: {{category}}",
+      "command_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "command_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "command_description": "**คำอธิบาย**: {{description}}",
+      "command_subcommand": "**คำสั่งย่อย**:",
+      "command_usage": "**วิธีใช้งาน**:",
+      "command_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "context_client_permissions": "**สิทธิ์ที่ฉันต้องมี**: {{client_permissions}}",
+      "context_cooldown": "**คูลดาวน์**: {{cooldown}}",
+      "context_information": "คำสั่งประเภทที่คลิกแล้วสามารถใช้งานได้เลย",
+      "context_page": "บริบท",
+      "context_type": "**ประเภท**: {{type}}",
+      "context_user_permissions": "**สิทธิ์ที่คุณต้องมี**: {{user_permissions}}",
+      "cooldown_time": "{{cooldown}} วินาที",
+      "developer_category": "หมวดหมู่ของคำสั่งสำหรับนักพัฒนา",
+      "fun_category": "หมวดหมู่ของคำสั่งที่ให้ความบันเทิง",
+      "general_information": "คู่มือที่มีข้อมูลทั่วไปซึ่งมีประโยชน์",
+      "general_page": "คู่มือเริ่มต้น",
+      "greeting_message": "โอ้วเย่..กำลังมองหาฉันอยู่ใช่ม้า o((>ω< ))o",
+      "info": "> **ℹ️ หมายเหตุ**",
+      "information_category": "หมวดหมู่ของคำสั่งเกี่ยวกับข้อมูล",
+      "manager_category": "หมวดหมู่ของคำสั่งเกี่ยวกับการจัดการ",
+      "me_category": "หมวดหมู่ของคำสั่งเกี่ยวกับฉัน",
+      "messages_category": "หมวดหมู่ของคำสั่งข้อความ",
+      "music_category": "หมวดหมู่ของคำสั่งเพลง",
+      "none": "Nu",
+      "other_links": "[เชิญฉัน]({{- invite_link}}) | เข้าร่วมกลุ่ม | [สถานะ]({{- status_link}}) | [ปรับปรุงภาษา]({{- translation_link}}) | [เว็บไซต์]({{- website_link}})",
+      "refer_from_user_language": "ค่าเริ่มต้นของภาษาจะอ้างอิงจากผู้ใช้โดยอัตโนมัติ",
+      "remaining_time": "> คุณมีเวลา __2 นาที__ต่อการคลิกหนึ่งครั้งจะรีเซ็ทเวลาใหม่เพื่อลดความสับสน",
+      "select_page": "เลือกหน้าของเมนู",
+      "settings_category": "หมวดหมู่ของคำสั่งการตั้งค่า",
+      "start_guide": "คาถาวิเศษ `/` เหล่านี้ที่ฉันได้เรียนรู้มาค่อนข้างมีประโยชน์เลยล่ะ ถ้าต้องการอะไรเพิ่มเติมก็สามารถเรียกหาฉันได้ทุกเมื่อเลย ออแล้วก็..ฉันมีเวลาให้ __2 นาที__ต่อการกดครั้งหนึ่งเท่านั้นน้า",
+      "symbol_mean": "> `<>` หมายถึงจำเป็น `[]` หมายถึงไม่จำเป็น `()` หมายถึงประเภทของค่านำเข้านั่นเอง",
+      "timeout_for_help": "⏱️ หมดเวลาแล้วล่ะแต่ถ้าอยากดูต่อก็ </{{command_name}}:{{command_id}}> ต่อได้เลยนะ (≧∇≦)ﾉ",
+      "tips": "> **💡 เคล็ดลับ**",
+      "utility_category": "หมวดหมู่ของคำสั่งเครื่องมือ"
+    },
+    "impersonate": {
+      "member_not_found": "❎ Nu pot găsi astfel de membri pe acest server.",
+      "success": "✅ <@{{userId}}> Mesajul a fost creat!"
+    },
+    "invite": {
+      "can_not_create_invite_link": "❎ Nu se poate genera linkul de invitație Vă rugăm să încercați din nou.",
+      "membership_invitation_card": "card de invitație pentru membru",
+      "this_product_is_free": "Acest produs este gratuit, nu revinde."
+    },
+    "issues": {
+      "bug_sending": "📨 Bine.. doar un moment Dă-mi un moment să trimit o scrisoare dezvoltatorului...",
+      "bug_success": "✅ โอเคขอบคุณค่าา...ถ้าเจออะไรอีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)",
+      "feature_sending": "📨 Bine.. doar un moment Dă-mi un moment să trimit o scrisoare dezvoltatorului...",
+      "feature_success": "✅ โอเคขอบคุณค่าา...ถ้ามีอะไรดีๆ อีกละก็..บอกๆ กันหน่อยน้า (●'◡'●)"
+    },
+    "join": {
+      "already_joined": "❎ Eh..dar sunt aici acum?",
+      "another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
+      "channel_joined": "✅ Sunt deja pe canal <#{{channelId}}>...",
+      "joined": "▶️ Acum sunt deja pe canal <#{{channelId}}>.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Mai întâi trebuie să vă alăturați canalului. Altfel nu știu ce câmp =3="
+    },
+    "jump": {
+      "can_not_jump": "❎ Se pare că nu există deloc un astfel de număr de coadă. Vă rugăm să verificați din nou.",
+      "jumped": "➿ Treceți deja la melodia nouă din coada numărul {{queuePosition}}.",
+      "no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba."
+    },
+    "kick": {
+      "can_not_find_user": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou.",
+      "kicked_out": "{{memberName}} dat afară",
+      "members_have_a_higher_role": "❎ Nu poți da cu piciorul pe oameni care sunt mai sus decât tine.",
+      "members_have_a_higher_role_than_me": "❎ Nu pot da cu piciorul pe acel membru. pentru că el are un rol mai înalt decât mine",
+      "no_reason": "Membrii care au lovit nu au dat un motiv.",
+      "reason_for_kick": "Lovitură de: {{moderatorName}}\nMotiv: {{reason}}"
+    },
+    "kill": {
+      "do_not_kill_me": "❎ Vei face asa ceva... Nu cu mine, haha...",
+      "killed": "{{killerName}} te-a ucis deja {{targetName}} 🔪"
+    },
+    "language": {
+      "already_set": "❎ เอ๋..แต่ว่าเซิร์ฟเวอร์นี้ก็ใช้ภาษา {{locale}} อยู่แล้วนะ",
+      "changed_locale": "✅ เปลี่ยนภาษาเป็น **{{locale}}** เรียบร้อยแล้วคะ การเปลี่ยนแปลงนี้จะมีผลเมื่อประเภทของภาษาเป็น __CUSTOM__",
+      "changed_type": "✅ เปลี่ยนประเภทของภาษาเป็น **{{type}}** เรียบร้อยแล้วคะ",
+      "description": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nประเภทของการตั้งค่าภาษาคือ: `{{type}}`\nภาษาที่ตั้งไว้คือ: `{{locale}}`",
+      "language_not_found": "❎ ไม่พบภาษาที่คุณระบุในระบบเลยคะ โปรดลองตรวจสอบว่าได้พิมพ์ผิดหรือเปล่าแล้วลองใหม่อีกรอบนะคะ\n```{{locales}}```",
+      "support": "{{command}} - ตั้งค่าภาษาของคุณจะช่วยให้คุณเข้าใจได้ง่ายขึ้นอย่างมาก\n\nภาษาที่รองรับ: `{{locales}}`",
+      "title": "🌐 Limba"
+    },
+    "leader": {
+      "leveling_detail": "Experiență: {{experience}}, Nota: {{level}}",
+      "no_info": "❎ Nu există încă membri pe acest server. care are valoare de experiență",
+      "server_rank": "Clasamentul nivelului acestui server",
+      "server_rank_description": "1 dintre primii 10 membri ai acestui server. care pot colecta cele mai multe dintre propriile niveluri, în ordinea următoare",
+      "server_rank_tips": "Sfat: discutați cu alți membri va câștiga mai multe niveluri"
+    },
+    "leave": {
+      "another_player_is_playing": "🚫 Nu puteți folosi această comandă momentan. pentru că sunt alți membri care cântă muzică",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_any_channel": "❎ Acum nu sunt încă pe niciun canal...",
+      "now_leave": "◀️ Am ieșit din canalul curent."
+    },
+    "level": {
+      "delete_error": "❎ Nu găsesc deloc acest utilizator.",
+      "delete_success": "✅ Nivelul de experiență al acestui membru a fost șters!",
+      "deleting": "📁 Se șterg datele la nivel de experiență pentru acest membru.",
+      "experience": "Puncte de experiență (Exp)",
+      "level": "Nivel",
+      "level_was_changed": "{{memberName}} acumulat toate nivelurile de experiență au:",
+      "notification_complete": "✅ Configurarea este finalizată...",
+      "set_by_staff": "Clasa ta este stabilită de echipa de pe acest server.",
+      "set_error": "❎ Nu se poate seta nivelul unor astfel de membri. Vă rugăm să încercați din nou mai târziu.",
+      "set_success": "✅ Configurarea este finalizată...",
+      "user_current_no_level": "❎ Astfel de membri nu au un nivel de clasă."
+    },
+    "leveling": {
+      "bot_do_not_have_level": "❎ Boții nu vor avea niveluri, inclusiv eu.",
+      "experience": "Puncte de experiență (Exp)",
+      "level": "Nivel",
+      "user_no_data": "💨 Hmm... Acest membru nu are nivel și experiență.",
+      "your_experience": "Experienta ta"
+    },
+    "logs": {
+      "attachment_description": "ในเอกสารฉบับนี้มีรายละเอียดเกี่ยวกับการทำงานของระบบอยู่ ซึ่งเป็นข้อมูลที่มีประโยชน์สามารถนำไปวิเคราะห์บางอย่างได้",
+      "empty_content": "📄 อืมม..บนเอกสารไม่มีอะไรถูกเขียนไว้เลย น่าจะเป็นเพราะไม่มีปัญหาอะไรมันเลยยังไม่ถูกเขียน",
+      "empty_directory": "🍃 เอ๋..ฉันไปเปิดดูโฟลเดอร์มาแล้วล่ะ แต่ในนั้นไม่มีอะไรอยู่เลย",
+      "file_has_been_deleted": "✅ **{{fileName}}** deja șters",
+      "file_missing": "💨 เอ๋..ไฟล์อันนี้หายไปไหนกันนะ ฉันหามันไม่เจอเลย",
+      "found_file": "S-au găsit {{fileCount}} intrări de fișiere:\n```{{fileNames}}```",
+      "only_owner_and_developers": "🚫 ขอโทษน้า แต่เอกสารพวกนี้ต้องได้รับอนุญาตจากเจ้าของหรือผู้ดูแลระบบก่อนย่อยทิ้งนะคะ"
+    },
+    "lyrics": {
+      "can_not_find_lyrics": "Nu s-au găsit versuri pentru {{songName}}.",
+      "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+      "playing_lyrics": "📋 Versurile melodiei care se redă în prezent"
+    },
+    "meme": {
+      "can_not_fetch": "Nu s-a putut prelua meme. Vă rugăm să încercați din nou.",
+      "meme_not_found": "Nu a fost găsit niciun meme de tip care să corespundă cu {{memeType}}."
+    },
+    "message": {
+      "can_not_edit": "❎ ฉันไม่สามารถแก้ไขข้อความดังกล่าวได้ อาจจะเพราะมีสิทธิ์ไม่พอ",
+      "edited": "✏️ แก้ไขข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการแก้ไข เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "replied": "🗨️ ตอบกลับข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "sended": "✅ ส่งข้อความเรียบร้อยแล้วค่ะ",
+      "sended_to_channel": "✅ ส่งข้อความไปยัง <#{{id}}> เรียบร้อยแล้วค่ะ"
+    },
+    "minecraft": {
+      "address": "abordare",
+      "do_not_have": "nu am",
+      "ip": "adresa IP",
+      "last_check": "ultima verificare",
+      "maximum_player_count": "Numărul maxim de jucători",
+      "motd": "Descriere",
+      "player_in_server": "jucători pe server",
+      "port": "port",
+      "server_available": "🟢 Acest server este deschis în prezent.",
+      "server_unavailable": "🔴 Acest server este închis temporar.",
+      "skin_of": "🎴 Piei de {{username}}",
+      "version": "versiune"
+    },
+    "nekos": {
+      "can_not_fetch_data": "❎ Nu se poate obține temporar fotografia dorită. Vă rugăm să încercați din nou mai târziu.",
+      "request_by": "solicitat de {{requesterName}}"
+    },
+    "notify": {
+      "can_not_edit_empty_data": "❎ คุณยังไม่ได้ตั้งค่าการแจ้งเตือนประเภท `{{type}}` จึงทำให้ไม่สามารถแก้ไขข้อมูลว่างเปล่าได้คะ",
+      "can_not_settings_by_no_channel": "❎ คุณไม่สามารถตั้งค่าเปิดใช้งานโดยไม่ระบุช่องได้ เนื่องจากคุณยังไม่ได้ตั้งค่าช่องสำหรับการแจ้งเตือน",
+      "channel_info": "- ช่องที่ตั้งแจ้งเตือน: <#{{channel_id}}>",
+      "channel_type_currently_disabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกปิดใช้งานอยู่แล้วคะ",
+      "channel_type_currently_enabled": "❎ การแจ้งเตือนของประเภทดังกล่าวถูกเปิดใช้งานอยู่แล้วคะ ไม่จำเป็นต้องเปิดซ้ำอีกครั้ง",
+      "content_info": "- เนื้อหา: {{content}}",
+      "created_by_info": " - สร้างโดย: {{created_by}}",
+      "description": "{{command}} - ตั้งค่าการแจ้งเตือนในแต่ละประเภทเพื่อรับข้อมูลล่าสุดจากเซิร์ฟเวอร์",
+      "edited_notification_data": "✅ ตั้งค่าและแก้ไขการแจ้งเตือน `{{type}}` ไปยังช่อง <#{{channel_id}}> เรียบร้อยแล้วคะ",
+      "editor_info": " - ผู้แก้ไข: {{editor}}",
+      "embed_info": "- ข้อความแบบฝัง: {{embed}}",
+      "enable_at_info": "- เปิดใช้งานเมื่อ: {{date}}",
+      "enable_info": "- เปิดใช้งาน: {{enable}}",
+      "list_notification_type": "🔔 การแจ้งเตือนที่ฉันสามารถทำได้ในตอนนี้มีดังนี้คะ:\n```{{list}}```",
+      "no": "Nu",
+      "none": "Nu",
+      "notification_type_not_found": "❎ ไม่มีประเภทดังกล่าวหรือยังไม่รองรับคะ ด้านล่างนี้คือการแจ้งเตือนที่สามารถใช้งานได้คะ:\n```{{list}}```",
+      "notification_will_send_to_channel": "✅ การแจ้งเตือนของประเภท `{{type}}` จะถูกอัพเดทที่ช่อง <#{{channel_id}}>",
+      "own": "มี",
+      "preview_embed": "🪄 ตัวอย่างของข้อความแบบฝังที่สร้างไว้ล่าสุด",
+      "require_channel_input": "❎ กรุณาระบุช่องที่ต้องการแจ้งเตือนเพื่อเริ่มต้นใช้งานสำหรับประเภทดังกล่าว",
+      "require_some_data": "❎ กรุณากรอกแบบฟอร์มอย่างน้อยหนึ่งอย่างได้แก่ **Content** หรือข้อมูล **Embed** เพื่อตั้งค่าให้เสร็จสมบูรณ์",
+      "settings_is_none": "💨 ดูเหมือนว่าคุณยังไม่ได้ตั้งค่าการแจ้งเตือนใดๆ ในกิลด์นี้เลยนะคะ กรุณาตั้งค่าก่อนใช้คำสั่งนี้น้า >-<",
+      "temporarily_disable_notification": "✅ ปิดการแจ้งเตือนประเภท `{{type}}` โดยชั่วคราวเรียบร้อยแล้วคะ",
+      "title": "🔔 Notificări",
+      "toggled_at_info": " - สร้างเมื่อ: {{toggled_at}}",
+      "unknown": "Nu stiu",
+      "unregistered_notification": "✅ การแจ้งเตือนประเภท `{{type}}` ถูกถอนออกเรียบร้อยแล้วคะ การแจ้งเตือนประเภทดังกล่าวจะถูกยกเลิกทันที",
+      "yes": "da"
+    },
+    "osu": {
+      "generated": "✨ นี่คือโปรไฟล์ในแบบที่คุณต้องการค่ะ\n{{url}}",
+      "layout_not_support": "❎ เค้าโครงนี้ไม่รองรับในโหมด {{mode}} ค่ะ",
+      "request_aborted": "❎ ตอนนี้ฉันอัพโหลดภาพไม่ทันจนโดนยกเลิกไปแล้ว ถ้าอยากลองใหม่ **Ctrl + Z** ในแชทได้เลย",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ"
+    },
+    "paste": {
+      "backend_not_response": "❎ Niciun răspuns de la server. Puteți încerca din nou mai târziu.",
+      "file": "fişier",
+      "raw": "brut"
+    },
+    "pause": {
+      "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "not_paused": "📼 ตอนนี้ฉันก็หยุดอยู่นะ วันนี้ดูแปลกๆ แฮะ..",
+      "paused": "⏸ Întrerupeți muzica acum."
+    },
+    "pin": {
+      "can_not_pin": "❎ ฉันไม่สามารถปักหมุดข้อความนั้นได้ อาจจะถูกปักหมุดอยู่แล้วหรือมีสิทธิ์ไม่พอ",
+      "is_not_pinned": "❎ ข้อความดังกล่าวยังไม่ได้ปักหมุดเลยนะคะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการปักหมุด เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "pinned": "📌 ปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ",
+      "unpinned": "🧹 เลิกปักหมุดข้อความดังกล่าวเรียบร้อยแล้วค่ะ"
+    },
+    "ping": {
+      "connection": "📡 Conexiune",
+      "info": "ความล่าช้าของเครือข่าย คือ {{roundtrip_latency}} มิลลิวินาที\nความหน่วงจากเซิร์ฟเวอร์ คือ {{websocket_latency}} มิลลิวินาที",
+      "result": "🏓 Pong",
+      "waiting": "🏓 Ping..."
+    },
+    "play": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหานี้ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "currently_playing": "🚫 รอสักครู่นะ ในตอนนี้ฉันไม่สามารถเล่นให้ได้เพราะสมาชิกรายอื่นกำลังเล่นเพลงอยู่ ลองขอให้เขาเพิ่มเพลงก่อนก็ได้น้า...",
+      "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta..."
+    },
+    "playlist": {
+      "can_not_connect": "❎ เอ๋..อินเทอร์เน็ตไม่ค่อยดีเลยแฮะ ขอออกมาก่อนละกัน",
+      "can_not_play_in_non_nsfw": "🚫 ฉันไม่สามารถเล่นเนื้อหาบางอย่างในเพลย์ลิสต์ที่จำกัดอายุในช่องที่ไม่ใช่ NSFW ได้คะ",
+      "empty_playlist": "❎ ดูเหมือนว่าไม่มีเพลย์ลิสต์ดังกล่าวเลยนะคะ",
+      "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_in_channel": "❓ Introduceți mai întâi orice canal. Altfel, nu mă asculta...",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "no_valid_song": "❎ ลิงค์ของเพลย์ลิสต์บางส่วนไม่ถูกต้องคะ ลองตรวจสอบอีกครั้งนะคะ",
+      "playlist_of_user": "เพลย์ลิสต์ของ <@{{id}}>"
+    },
+    "previous": {
+      "no_previous_song_queue": "📼 Nu există niciun cântec care să fi fost cântat recent.",
+      "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "previous": "⏮ Reveniți la melodia anterioară"
+    },
+    "purge": {
+      "messages_cleared": "ลบข้อความจำนวน `{{size}}` ข้อความให้เรียบร้อยแล้วคะ 💨",
+      "messages_no_contains": "🍃 หลังจากที่ฉันลบข้อความของคุณออกแล้ว ฉันก็เจอแต่ความว่างเปล่าอีกครั้ง!!",
+      "messages_not_found": "🔦 ฉันเอาไฟฉายส่องดูก็เห็นแต่ความว่างเปล่าน่าจะไม่มีอะไรให้ลบแล้วล่ะ"
+    },
+    "qrcode": {
+      "can_not_generate": "❎ ฉันไม่สามารถสร้างคิวอาร์โค้ดให้ได้ชั่วคราวค่ะ",
+      "image_size_too_large": "📏 โอ้..ขนาดภาพใหญ่ไปนะสำหรับไฟล์รูปแบบนี้ ฉันจะลดให้เท่ากับค่าสูงสุดนะ",
+      "qr_code": "🧩 คิวอาร์โค้ด",
+      "qr_code_generated": "คิวอาร์โค้ดของคุณพร้อมใช้งานแล้วคะ"
+    },
+    "queue": {
+      "autoplay": "📻 Redare automată",
+      "filter": "🎼 Model de filtru de voce: `{{filterNames}}",
+      "no_next_song": "🍃 ไม่มีเพลงที่จะเล่นต่อไปในคิวเลยแฮ่ะ",
+      "no_previous_song": "🍃 ไม่เจอเพลงที่เล่นไปก่อนหน้านี้เลยอะ",
+      "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+      "owner_this_queue": "{{username}} este proprietarul acestei cozi",
+      "previous_queue": "** coada anterioară **",
+      "waiting_in_queue": "**Așteptăm următoarea coadă**"
+    },
+    "random": {
+      "request_aborted": "❎ เอิ่มม...Wumpus ฉันอัพโหลดภาพไม่ทันจนเขาหลับไปแล้ว ลองลดจำนวนภาพหน่อยเดี่ยวฉันไปปลุกเขาก่อน...",
+      "request_error": "❎ เกิดข้อผิดพลาดบางอย่างที่ฉันไม่ทราบ ระบบหลังบ้านน่าจะพังไปละ",
+      "result": "🎲 ผลลัพธ์คือ __{{result}}__"
+    },
+    "react": {
+      "do_not_have_emoji": "❎ เอ๋..มีอีโมจิอันนี้ด้วยหรอ แต่ของฉันไม่มีอะหรือมันอาจจะไม่มีอยู่ที่นี่ก็ได้",
+      "look_like_is_not_emoji": "❎ ดูเหมือนว่ามันจะไม่ใช่อีโมจินะ",
+      "message_not_found": "❎ ไม่พบข้อความที่ต้องการโต้ตอบ เป็นไปได้ว่าอาจจะถูกลบไปแล้วหรือไม่มีข้อความนั้นอยู่จริง ๆ",
+      "reacted": "✨ โต้ตอบกับข้อความดังกล่าวด้วยอีโมจิเรียบร้อยแล้วค่ะ"
+    },
+    "related": {
+      "added_related_song": "🎷 เพิ่มเพลง {{name}} - {{duration}} ซึ่งมีความเกี่ยวข้องลงในคิวเรียบร้อยแล้วคะ!!",
+      "no_queue": "❎ Acum nu se redă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_queue_owner": "🚫 Numai proprietarul cozii o poate schimba."
+    },
+    "reload": {
+      "invalid_command": "❎ Hmmm...nu pare să aibă această ordine...încercați să verificați cu atenție Din nou, este corect sau nu?",
+      "reloaded": "✅ {{commandName}} Reîncărcat cu succes!!",
+      "reload_error": "❌ La naiba..Am încercat să reîncarc comanda {{commandName}} dar nu pot.",
+      "searching": "🔍 ขอหาคำสั่งในห้องสมุดสักครู่นะ..."
+    },
+    "remove": {
+      "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "removed": "❌ Eliminat **{{songName}}** din coadă.",
+      "too_much": "❎ Nu există o astfel de coadă. Vă rugăm să verificați din nou."
+    },
+    "repeat": {
+      "no_queue": "❎ În acest moment, nu există nicio melodie pe care o cânt în prezent.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "off": "repetați",
+      "repeated": "🔁 {{repeatMode}}acum",
+      "repeat_queue": "repeta coada",
+      "repeat_song": "repeta melodia"
+    },
+    "resume": {
+      "no_queue": "❎ Acum nu am cântat încă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "now_playing": "📼 Hei.. Acum joc.",
+      "resumed": "▶️ Cântecul se redă din același punct."
+    },
+    "rip": {
+      "no_image": "❎ เหห...ดูเหมือนว่าภาพนี้ อาจจะถูกลบหรือย้ายไปที่อื่นแล้ว"
+    },
+    "seek": {
+      "no_queue": "❎ Acum nu se redă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "seek_guide": "❓ Câte secunde doriți să schimbați timpul melodiei care se redă curent? Acum se joacă la {{currentPosition}}secundă",
+      "sought": "🕘 S-a schimbat ora melodiei care se redă în prezent.",
+      "too_much": "❎ Ora acestui cântec este la {{trackDuration}} Nu există nimic mai mult decât asta."
+    },
+    "shuffle": {
+      "no_queue": "❎ Acum nu se redă nicio melodie.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "now_shuffle": "🔀 Începe să schimbi cozile..."
+    },
+    "skip": {
+      "no_queue": "❎ Nu există nicio melodie pe care o cânt în prezent. nu pot traversa",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "skipped": "⏭ Am sărit peste el și pe punctul de a începe să cânt o melodie nouă în coadă."
+    },
+    "status": {
+      "data_by_server": "Date de referință de la server.",
+      "dnd_status": "Numărul de membri în prezent în Nu deranja este \n```{{memberCount}}```.",
+      "idle_status": "Numărul de membri care sunt absenți în prezent este \n```{{memberCount}}```.",
+      "offline_status": "Numărul de membri în prezent offline este \n```{{memberCount}}```",
+      "online_status": "Numărul de membri online în prezent este \n```{{memberCount}}```"
+    },
+    "steal": {
+      "emoji_has_stolen": "✅ ขโมยอีโมจิ {{emoji}} ด้วยชื่อ \"{{name}}\" เรียบร้อยแล้วคะ",
+      "not_emoji_or_is_build_in": "❎ ดูเหมือนว่าสิ่งที่คุณให้มาอาจจะไม่ใช่อีโมจิหรืออาจจะเป็นอีโมจิในตัว"
+    },
+    "sticker": {
+      "deleted_sticker": "✅ **{{stickerName}}** Stickerul a fost eliminat cu succes",
+      "does_not_support_gif": "❎ Ne pare rău... Discord nu acceptă momentan autocolante personalizate bazate pe GIF.",
+      "edited_sticker": "{{stickerName}} autocolante au fost editate.",
+      "uploading_you_sticker": "📤 Se încarcă autocolante...",
+      "you_sticker_is_ready": "{{stickerName}} Autocolantul dvs. este gata. Hai sa incercam!!"
+    },
+    "stop": {
+      "no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă.",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "stopped": "⏹️ Opriți redarea muzicii și ștergeți toate cozile."
+    },
+    "system": {
+      "info_description": "Informațiile sistemului la care lucrez în prezent, așa cum sunt furnizate de sistem, sunt următoarele.",
+      "info_gpu_control": "• GPU (controller)",
+      "info_gpu_display": "• GPU (afișaj)",
+      "info_memory_used": "• memorie folosită",
+      "info_platform": "• Platformă",
+      "info_system": "• sistem",
+      "info_temperature": "• Temperatura CPU",
+      "info_title": "🖥 Informații de bază ale sistemului",
+      "info_uptime": "• เวลาทำงาน",
+      "info_uptime_info": "{{day}} วัน {{hours}} ชั่วโมง ",
+      "loading": "⚙️ Se trimite cererea de preluare a datelor sistemului de pe server...",
+      "main": "principal",
+      "no": "Nu",
+      "not_owner": "🛑 Nu... nu-l lua. Această funcție necesită numai privilegii de top.",
+      "now_reboot": "✅ Am pornit un nou sistem!!",
+      "now_shutdown": "💤 ปิดระบบบน Discord แล้วค่ะ..แล้วพบกันใหม่นะคะ~",
+      "rebooting": "🔄 Se repornește...",
+      "shutting_down": "🔄 Îmi închid sistemul...",
+      "unknown": "Nu stiu"
+    },
+    "timeout": {
+      "can_not_set": "❎ ฉันไม่สามารถตั้งให้เขาได้เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "can_not_set_for_yourself": "❎ Nu puteți seta un timeout pentru dvs.",
+      "can_not_set_to_admin": "❎ Nu puteți seta un timeout pentru moderatori.",
+      "member_not_found": "❎ Membrii nu spun că nu mai sunt pe acest server.",
+      "no_reason": "nu da un motiv",
+      "success_timeout": "{{user}} ถูกตั้งให้หมดเวลาใน {{time}} นาที **เหตุผล**: {{reason}}",
+      "success_untimeout": "{{user}} Timeout a fost setat **Motiv**: {{reason}}",
+      "timeout_dm_to_user": "⌛ คุณถูกตั้งให้หมดเวลาใน {{guild}} ซึ่งคุณสามารถดูเวลาที่เหลือได้ในกิลด์นั้น **เหตุผล**: {{reason}}",
+      "untimeout_dm_to_user": "⏲️ คุณถูกยกเลิกให้ตั้งหมดเวลาใน {{guild}} แล้ว **เหตุผล**: {{reason}}"
+    },
+    "timezone": {
+      "can_not_convert_timezone": "❎ ไม่สามารถแปลงเวลาตามเขตเวลาที่คุณต้องการได้ ลองตรวจสอบรหัสสถานที่ให้ถูกต้อง\nhttps://wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags",
+      "this_timezone": "🫧 เวลาปัจจุบันของเขตเวลา `{{locale}}` คือ __{{time}}__",
+      "time_at_timezone": "🫧 เวลาของเขตเวลา `{{locale}}` คือ __{{time}}__"
+    },
+    "translate": {
+      "base_url_is_missing": "🌎 แปลภาษาให้ไม่ได้อะ เส้นทางที่ฉันจะถามมันไม่มีอยู่ในสมุดจดเลย",
+      "can_not_translate": "❎ Nu se poate traduce limba unui astfel de text. Vă rugăm să încercați din nou mai târziu.",
+      "says": "Spune",
+      "translate_support": "❎ รหัสแปลภาษาไม่ถูกต้อง กรุณาตรวจสอบใหม่อีกครั้งนะคะ\n**ภาษาที่รองรับ:** {{locales}}"
+    },
+    "user": {
+      "available_type_list": "👤 รายการประเภทของข้อมูลผู้ใช้ที่สามารถใช้งานได้ในขณะนี้:\n```{{list}}```",
+      "info_date": "informații despre când",
+      "invalid_type": "❎ เอ๋..ฉันว่าประเภทที่คุณให้มาเหมือนจะไม่ถูกต้องนะ",
+      "no": "Nu",
+      "none": "Nu",
+      "unknown": "Nu stiu",
+      "user_info": "👥 Detalii informații despre utilizator",
+      "user_info_description": "Informații detaliate despre utilizatori Care se bazează pe date de la Discord.",
+      "yes": "da"
+    },
+    "volume": {
+      "adjusted": "🔊 Reglați volumul la: **{{volume}}**",
+      "no_queue": "❎ Eh... melodia pe care o cânt nu este disponibilă. Ce ai de gând să ajustezi?",
+      "not_a_dj": "❎ คุณไม่มีบทบาทของผู้ควบคุมเพลง ฉันจึงไม่สามารถทำให้ได้ตามคำขอคะ",
+      "not_owner": "🚫 Numai proprietarul cozii o poate schimba.",
+      "this_volume": "🔈 Volumul curent al sunetului este: **{{volume}}**"
+    },
+    "vote": {
+      "added": "ได้รับการเพิ่มบนเว็บไซต์ top.gg เมื่อ",
+      "error": "❎ เอิ่ม..เหมือนเว็บไซต์ top.gg จะมีปัญหานะ ฉันไม่ได้รับการตอบกลับที่ถูกต้องจากเว็บไซต์เลย",
+      "invite": "เชิญ",
+      "not_found": "❎ เอ๋..เหมือนฉันจะไม่อยู่บนเว็บไซต์แฮะ",
+      "rate": "คะแนนโหวต",
+      "tags": "Etichete",
+      "unauthorized": "❎ เอ๋..เขาบอกว่าฉันไม่ได้รับอนุญาติให้เอาข้อมูลได้อะ",
+      "vote": "โหวต"
+    },
+    "warn": {
+      "can_not_find_user": "❎ Nu găsesc acest membru. Vă rugăm să verificați din nou.",
+      "members_have_a_higher_role": "❎ คุณไม่สามารถตักเตือนผู้ที่มีบทบาทสูงกว่าคุณได้",
+      "members_have_a_higher_role_than_me": "❎ ฉันไม่สามารถตักเตือนสมาชิกดังกล่าวได้ เนื่องจากเขามีบทบาทสูงกว่าฉัน",
+      "user_has_warned": "{{user}} ถูกตักเตือน",
+      "user_has_warned_by": "ถูกตักเตือนโดย: {{manager}}\nเหตุผล: {{reason}}",
+      "you_have_warned": "คุณถูกตักเตือนจาก {{manager}}"
+    },
+    "weather": {
+      "celsius": "เซลเซียส",
+      "clouds": "☁️ เมฆ",
+      "data_from": "📡 สถานที่เก็บข้อมูล",
+      "error_with_code": "❎ [`{{status_code}}`] ไม่สามารถแสดงผลข้อมูลสภาพอากาศได้ชั่วคราว",
+      "fahrenheit": "ฟาเรนไฮต์",
+      "feels_like": "🍃 รู้สึกเหมือน",
+      "ground_level": "⛰️ ระดับพื้นดิน",
+      "highest_temperature": "➕ อุณหภูมิสูงสุด",
+      "humidity": "💧 ความชื้น",
+      "kelvin": "เคลวิน",
+      "lowest_temperature": "➖ อุณหภูมิต่ำสุด",
+      "meter_per_seconds": "เมตร/วินาที",
+      "miles_per_hour": "ไมล์/ชั่วโมง",
+      "none": "ไม่มี",
+      "no_result_found": "❎ [`{{status_code}}`] เอ๋...ฉันหาข้อมูลของพื้นที่นี้แล้ว แต่ไม่เจออ่ะ",
+      "no_token_provider": "❎ ตอนนี้ฉันไม่สามารถเข้าไปดูข้อมูลสภาพอากาศได้คะ เนื่องจากไม่มีโทเค็นในการขออนุญาตเข้าถึงข้อมูลสภาพอากาศ",
+      "pressure": "🎱 ความดัน",
+      "rainfall": "🌧️ ปริมาณน้ำฝน",
+      "sea_level": "🌊 ระดับน้ำทะเล",
+      "snowfall": "❄️ ปริมาณหิมะ",
+      "temperature": "🌡️ Temperatura",
+      "time_to_calculate": "เวลาที่ทำการคำนวณข้อมูล",
+      "visibility": "👁️ ทัศนวิสัย",
+      "weather": "⛅ Vremea",
+      "weather_moment": "สภาพอากาศของ :flag_{{country}}: **{{city}}** ในขณะนี้คือ\n```{{weather}} - {{description}}```",
+      "wind_direction": "🧭 ทิศทางลม",
+      "wind_gust": "🎏 ลมกระโชก",
+      "wind_speed": "💨 ความเร็วลม"
+    }
+  },
+  "events": {
+    "channelCreate": {
+      "channel_notification": "🪧 Canalul",
+      "member_create_channel": "> Canalul creat de membrul serverului: <#{{channelId}}>"
+    },
+    "channelDelete": {
+      "channel_notification": "🪧 Canalul",
+      "member_delete_channel": "> Canalul explodat membru al serverului: `{{channelName}}`"
+    },
+    "channelPinsUpdate": {
+      "channel_notification": "🪧 Canalul",
+      "member_pins_in_channel": "> Membrul serverului a fixat slotul: <#{{channelId}}> când {{pinnedAt}}"
+    },
+    "channelUpdate": {
+      "channel_notification": "🪧 Canalul",
+      "member_update_channel": "> Un membru al serverului a schimbat unele câmpuri: `{{oldChannelName}}` în <#{{newChannelId}}>."
+    },
+    "emojiCreate": {
+      "emoji_notification": "😊 Emoji",
+      "member_create_emoji": "> Membrul serverului a creat un nou emoji: :{{emojiName}}:"
+    },
+    "emojiDelete": {
+      "emoji_notification": "😊 Emoji",
+      "member_delete_emoji": "> Emoji șters de membru al serverului: :{{emojiName}}:"
+    },
+    "emojiUpdate": {
+      "emoji_notification": "😊 Emoji",
+      "member_update_emoji": "> Membrul serverului a schimbat noul emoji de la: {{oldEmojiName}} la {{newEmojiName}}."
+    },
+    "guildBanAdd": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_add": "> <@{{userId}}> Deja interzis pe acest server\n**Motiv:**\n```{{reason}}```"
+    },
+    "guildBanRemove": {
+      "guild_notification": "🗄️ Server",
+      "member_ban_remove": "> <@{{userId}}> A fost dezbannizat pe acest server\n**Motiv:**\n```{{reason}}```"
+    },
+    "guildIntegrationsUpdate": {
+      "guild_integrations_update": "Acest server a fuzionat deja {{guildName}} . Veți primi imediat articole noi cu actualizări viitoare.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberAdd": {
+      "captcha_error": "A apărut o eroare de validare. Contactați personalul serverului pentru a lua măsuri.",
+      "captcha_success": "Ești verificat în {{guildName}}",
+      "greet": "สวัสดีสมาชิกใหม่ **นี่เป็นข้อความอัตโนมัติ** \nขอบคุณสำหรับการเข้าร่วมเซิร์ฟเวอร์ของเรา กรุณาอ่านข้อมูลเกี่ยวกับเซิร์ฟเวอร์นี้อย่างละเอียดก่อนเริ่มพูดคุยกับทุกคน",
+      "solve_the_captcha": "S-a corectat captcha pentru a verifica în {{guildName}}",
+      "submit_answer_captcha": "Trimiteți un răspuns captcha",
+      "submit_you_answer_guide": "Trimiteți ceea ce credeți că este captcha",
+      "use_button_below": "Folosește butonul de mai jos pentru a trimite răspunsul tău!",
+      "welcome": "Bun venit pe server",
+      "wrong_answer": "Pare greșit. Încearcă din nou...",
+      "your_answer": "răspunde la captcha"
+    },
+    "guildMemberRemove": {
+      "user_has_exited": "A scăpat deja de pe acest server... (Să mergem la el..)"
+    },
+    "guildMembersChunk": {
+      "guild_members_chunk": "Bine ați venit membrii de pe serverul {{guildName}} Vă așteptăm aici.",
+      "guild_notification": "🗄️ Server"
+    },
+    "guildMemberUpdate": {
+      "guild_member_updated": "**{{old_member}}** สมาชิกได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "guild_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "guildSoundboardSoundCreate": {
+      "new_soundboard": "**:{{emoji_identifier}}: {{soundboard_name}}** ซาวด์บอร์ดใหม่ได้ถูกสร้างขึ้นแล้ว รีบไปลองใช้กันเร็ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundDelete": {
+      "soundboard_disappear": "**{{soundboard_name}}** ซาวด์บอร์ดนี้หายไปแล้ว!",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด"
+    },
+    "guildSoundboardSoundUpdate": {
+      "deleted": "ถูกลบแล้ว",
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboard_updated": "**:{{old_emoji_identifier}}: {{old_soundboard_name}}** ซาวด์บอร์ดนี้ได้รับการอัพเดทเป็น **:{{new_emoji_identifier}}: {{new_soundboard_name}}**"
+    },
+    "guildUnavailable": {
+      "guild_notification": "🗄️ Server",
+      "guild_unavailable": "Momentan... acest server este temporar indisponibil. Vă rugăm să contactați administratorul acestui server."
+    },
+    "interactionCreate": {
+      "client_is_not_allowed": "🚫 Ummm..Îmi lipsesc niște permisiuni. Deci nu pot continua, și anume **{{permissions}}**",
+      "command_has_cooldown": "ใจเย็นใจเย็น..พิมพ์ `{{command_name}}` เร็วไปฉันคิดไม่ทันขอเวลาสักพักนะจิบชารอก่อน <t:{{expired_timestamp}}:R>"
+    },
+    "inviteCreate": {
+      "invite_create": "Link de invitație creat cu succes\n**Link:** {{inviteUrl}}\n**Expiră:** {{expiresAt}}\n**Maximum:** {{maxUses}}\n```{{inviteCode}}```",
+      "invite_notification": "🏷️ Invitație"
+    },
+    "inviteDelete": {
+      "invite_code_deleted": "`{{inviteCode}}` Acest cod de invitație a fost șters.",
+      "invite_code_expires": "`{{inviteCode}}` Acest cod de invitație a expirat.",
+      "invite_notification": "🏷️ Invitație"
+    },
+    "messageCreate": {
+      "afk_user_come_back": "🔙 Te-ai întors Dezactivați automat starea AFK",
+      "no_reason_for_afk": "nu am",
+      "that_user_is_afk": "{{username}} Acum nu pe ecran (AFK), nu-l menționați acum\n**Lasă mesaj**: {{reason}}"
+    },
+    "ready": {
+      "prevented_anti_bot": "ถูกขัดขวางไม่ให้เข้าร่วมกิลด์โดยระบบต่อต้านบอท"
+    },
+    "roleCreate": {
+      "role_create": "<@&{{roleId}}> a fost creat.",
+      "role_notification": "🔖 Rol"
+    },
+    "roleDelete": {
+      "role_delete": "`{{roleName}}` a fost șters.",
+      "role_notification": "🔖 Rol"
+    },
+    "roleUpdate": {
+      "role_notification": "🔖 Rol",
+      "role_update": "`{{oldRoleName}}` a fost actualizat la <@&{{newRoleId}}>"
+    },
+    "soundboardSounds": {
+      "soundboard_notification": "🎛️ ซาวด์บอร์ด",
+      "soundboards_changed": "**{{count}}** ซาวด์บอร์ดหลายรายการได้รับการเปลี่ยนแปลงแล้ว"
+    },
+    "stageInstanceCreate": {
+      "stage_instance_create": "<#{{stageId}}> a fost creat.",
+      "stage_notification": "🎤 scena"
+    },
+    "stageInstanceDelete": {
+      "stage_instance_delete": "`{{stageName}}` a fost șters.",
+      "stage_notification": "🎤 scena"
+    },
+    "stageInstanceUpdate": {
+      "stage_instance_update": "`{{oldStageName}}` a fost actualizat la <#{{newStageId}}>.",
+      "stage_notification": "🎤 scena"
+    },
+    "stickerCreate": {
+      "sticker_create": "**{{stickerName}}** Acum disponibil",
+      "sticker_notification": "👻 autocolant"
+    },
+    "stickerDelete": {
+      "sticker_delete": "**{{stickerName}}** a fost șters",
+      "sticker_notification": "👻 autocolant"
+    },
+    "stickerUpdate": {
+      "sticker_notification": "👻 autocolant",
+      "sticker_update": "`{{oldStickerName}}` a fost actualizat la **{{newStickerId}}**"
+    },
+    "threadCreate": {
+      "thread_create": "<#{{threadId}}> a fost creat.",
+      "thread_notification": "#️⃣ Fire"
+    },
+    "threadDelete": {
+      "thread_delete": "**{{threadName}}** a fost șters",
+      "thread_notification": "#️⃣ Fire"
+    },
+    "threadListSync": {
+      "thread_list_synced": "**{{count}}** เธรดในเซิร์ฟเวอร์ได้รับการซิงค์แล้ว",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMembersUpdate": {
+      "added_thread_members": "สมาชิกในเธรด <#{{thread_id}}> เพิ่มขึ้น **{{count}}** คน",
+      "removed_thread_members": "สมาชิกในเธรด <#{{thread_id}}> ลดลง **{{count}}** คน",
+      "thread_notification": "#️⃣ เธรด"
+    },
+    "threadMemberUpdate": {
+      "thread_member_updated": "**{{old_member}}** สมาชิกในเธรดได้อัพเดทใหม่เป็น <@{{new_member}}>",
+      "thread_notification": "🗄️ เซิร์ฟเวอร์",
+      "unknown": "ไม่ทราบ"
+    },
+    "threadUpdate": {
+      "thread_notification": "#️⃣ Fire",
+      "thread_update": "`{{oldThreadName}}` a fost actualizat la **{{newThreadId}}**"
+    },
+    "voiceStateUpdate": {
+      "no_user_in_channel": "💨 อ้าว..หายไปไหนกันหมดอะ? งั้นน..ชิ่งงงก่อนละ~",
+      "voice_notification": "➿ สถานะเสียง",
+      "voice_update": "`{{oldState}}` ได้รับการอัพเดทใหม่เป็น **{{newState}}**"
+    },
+    "webhookUpdate": {
+      "webhook_notification": "🎣 Webhook",
+      "webhook_update": "เว็บฮุกได้รับการอัพเดทแล้วในช่อง <#{{channel_id}}>"
+    }
+  },
+  "handlers": {
+    "player": {
+      "addList": {
+        "added_list": "✅ เพิ่มเพลย์ลิสต์ **{{playlist_name}}** ประกอบไปด้วยเพลงจำนวน `{{amount}}` เพลง เรียบร้อยแล้วคะ"
+      },
+      "addSong": {
+        "added_song": "✅ เพิ่มเพลง **{{song_name}}** `{{duration}}` เรียบร้อยแล้วคะ"
+      },
+      "deleteQueue": {
+        "deleted_queue": "🗑️ ลบเพลงในคิวทั้งหมดเรียบร้อยแล้วคะ"
+      },
+      "disconnect": {
+        "disconnected": "🔌 Deconectat și șters deja toate cozile."
+      },
+      "error": {
+        "playlist_not_found": "❎ Nu găsesc acea listă de redare. Cauți un alt playlist?"
+      },
+      "finish": {
+        "queue_is_empty": "🍃 Acum coada mea este goală. Ești gata să cânți următoarea melodie?"
+      },
+      "finishSong": {
+        "finished_song": "🎵 เสร็จสิ้นการเล่นเพลง **{{song_name}}** `{{duration}}`"
+      },
+      "noRelated": {
+        "no_related": "❎ ฉันไม่สามารถหาข้อมูลเพลงที่เกี่ยวข้องได้ ลองหาข้อมูลเพลงอื่นดูไหม?"
+      },
+      "playSong": {
+        "playing_song": "🎶 กำลังเล่นเพลง **{{song_name}}** `{{duration}}`"
+      }
+    }
+  },
+  "utils": {
+    "clientUtils": {
+      "color_is_not_valid": "❎ รหัสหรือประเภทของสีไม่ถูกต้อง ลองตรวจสอบข้อมูลจากลิงค์นี้ดูคะ\nhttps://discord.js.org/docs/packages/discord.js/main/ColorResolvable:TypeAlias",
+      "is_not_a_link": "❎ ดูเหมือนว่า **\"{{input}}\"** ที่คุณให้มาจะไม่ใช่ลิงค์นะ",
+      "need_other_input": "❎ จำเป็นต้องมี **\"{{input}}\"** จึงจะสามารถส่งข้อความแบบฝังได้",
+      "timestamp_is_not_valid": "❎ ไม่สามารถตั้งค่าเวลาประทับในข้อความแบบฝังได้ ลองตรวจสอบข้อมูลนำเข้าว่าเป็นข้อมูลแบบระบบเวลาหรือไม่\nhttps://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date"
+    },
+    "consoleUtils": {
+      "error_detail": "**คำสั่ง**: {{command_name}}\n**เวอร์ชั่น**: {{version}}\n**เวลาที่เกิดขึ้น**: {{time}}\n**สถานะเซิร์ฟเวอร์**: {{server_status}}\n**ความล่าช้าของเครือข่าย**: {{roundtrip_latency}}ms\n**ความหน่วงจากเซิร์ฟเวอร์**: {{websocket_latency}}ms\nผลลัพธ์ของข้อผิดพลาด:\n```JavaScript\n{{error}}\n```",
+      "error_occurred": "🔴 เกิดข้อผิดพลาดขณะดำเนินการ",
+      "report_issues": "[รายงานปัญหา]({{-issues_link}})",
+      "server_abnormal": "neobișnuit",
+      "server_normal": "normal"
+    },
+    "databaseUtils": {
+      "congratulations": "Felicitări!!",
+      "level_up": "Clasa *{{username}}* a fost acum actualizată la ```{{level}}```."
+    }
+  }
 }

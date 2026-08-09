@@ -181,7 +181,11 @@ module.exports = {
         const skinEmbed = new EmbedBuilder()
           .setColor(Colors.Green)
           .setAuthor({ name: clientUsername, iconURL: clientAvatar })
-          .setTitle(interaction.client.i18n.t("commands.minecraft.skin_of"))
+          .setTitle(
+            interaction.client.i18n.t("commands.minecraft.skin_of", {
+              username: inputName,
+            }),
+          )
           .setImage("attachment://skin.png")
           .setTimestamp();
 

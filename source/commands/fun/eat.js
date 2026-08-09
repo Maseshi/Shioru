@@ -37,10 +37,10 @@ module.exports = {
     const clientUsername = interaction.client.user.username;
     const eatEmbed = new EmbedBuilder()
       .setDescription(
-        interaction.client.i18n
-          .t("commands.eat.already_eaten")
-          .replace("%s1", authorUsername)
-          .replace("%s2", inputName),
+        interaction.client.i18n.t("commands.eat.already_eaten", {
+          eaterName: authorUsername,
+          foodName: inputName,
+        }),
       )
       .setColor(Colors.Blue);
 
