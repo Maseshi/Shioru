@@ -14,8 +14,7 @@ const {
   trackedSet: set,
 } = require("../utils/metricsUtils");
 const { createLeaderboardEntry } = require("../schemas/leaderboard");
-
-const getUserRef = (userId) => ref(getDatabase(), `users/${userId}`);
+const { getUserRef } = require("./user");
 
 const getLeaderboardRef = (guildId, userId) =>
   ref(getDatabase(), `leaderboards/${guildId}/${userId}`);

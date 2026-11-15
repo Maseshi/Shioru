@@ -30,4 +30,11 @@ const updateGuild = (guildId, patch) =>
 
 const removeGuild = (guildId) => remove(getGuildRef(guildId));
 
-module.exports = { getGuild, onGuild, removeGuild, setGuild, updateGuild };
+module.exports = {
+  getGuild,
+  getGuildRef,
+  onGuild,
+  removeGuild,
+  setGuild,
+  updateGuild,
+};

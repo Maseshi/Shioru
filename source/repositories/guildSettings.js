@@ -1,4 +1,4 @@
-const { child, getDatabase, ref } = require("firebase/database");
+const { child } = require("firebase/database");
 const {
   trackedRemove: remove,
   trackedRunTransaction: runTransaction,
@@ -17,8 +17,7 @@ const {
   NotificationSchema,
   createNotification,
 } = require("../schemas/notification");
-
-const guildRef = (guildId) => ref(getDatabase(), `guilds/${guildId}`);
+const { getGuildRef: guildRef } = require("./guild");
 
 const updateLanguage = (guildId, patch) =>
   runTransaction(child(guildRef(guildId), "language"), (current) =>
@@ -39,10 +38,7 @@ const updateCaptcha = (guildId, patch) =>
   );
 
 const setAfkEntry = (guildId, userId, value) =>
-  set(
-    ref(getDatabase(), `guilds/${guildId}/afk/${userId}`),
-    AfkEntrySchema.parse(value),
-  );
+  set(child(guildRef(guildId), `afk/${userId}`), AfkEntrySchema.parse(value));
 
 const removeGuildSetting = (guildId, setting) => {
   const removableSettings = [
@@ -59,11 +55,11 @@ const removeGuildSetting = (guildId, setting) => {
 };
 
 const removeAfkEntry = (guildId, userId) =>
-  remove(ref(getDatabase(), `guilds/${guildId}/afk/${userId}`));
+  remove(child(guildRef(guildId), `afk/${userId}`));
 
 const updateNotification = (guildId, eventName, patch) =>
   runTransaction(
-    ref(getDatabase(), `guilds/${guildId}/notification/${eventName}`),
+    child(guildRef(guildId), `notification/${eventName}`),
     (current) =>
       NotificationSchema.parse({
         ...(current ?? createNotification()),
@@ -72,7 +68,7 @@ const updateNotification = (guildId, eventName, patch) =>
   );
 
 const removeNotification = (guildId, eventName) =>
-  remove(ref(getDatabase(), `guilds/${guildId}/notification/${eventName}`));
+  remove(child(guildRef(guildId), `notification/${eventName}`));
 
 module.exports = {
   removeAfkEntry,
