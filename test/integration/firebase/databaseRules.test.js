@@ -151,6 +151,17 @@ test("Realtime Database rules and metrics work through the emulator", async (t) 
       leveling: { exp: 1, level: 0, admin: true },
     }),
   );
+  // setUserEphemeral writes only this child once leveling exists.
+  await firebaseSet(
+    ref(botDatabase, "users/rules-user/settings/ephemeral"),
+    false,
+  );
+  await assert.rejects(
+    firebaseSet(
+      ref(botDatabase, "users/missing-leveling/settings/ephemeral"),
+      true,
+    ),
+  );
   await assert.rejects(
     firebaseSet(ref(botDatabase, "users/invalid-ephemeral-setting"), {
       leveling: { exp: 1, level: 0 },

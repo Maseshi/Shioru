@@ -6,14 +6,15 @@ const { requireWithMocks } = require("../helpers/requireWithMocks");
 const root = resolve(__dirname, "../..");
 const commandPath = resolve(root, "source/commands/settings/ephemeral.js");
 const repositoryPath = resolve(root, "source/repositories/user.js");
+const servicePath = resolve(root, "source/services/ephemeral.js");
 
 const setup = ({ current = false, subcommand = "get" } = {}) => {
   const replies = [];
   const updates = [];
   const command = requireWithMocks(commandPath, {
-    [repositoryPath]: {
-      getUserEphemeral: async () => current,
-      setUserEphemeral: async (userId, enabled) => {
+    [repositoryPath]: { getUserEphemeral: async () => current },
+    [servicePath]: {
+      updateEphemeral: async (_client, userId, enabled) => {
         updates.push({ enabled, userId });
         return enabled;
       },
@@ -61,4 +62,11 @@ test("disable clears the user's ephemeral setting", async () => {
 
   assert.deepEqual(state.updates, [{ enabled: false, userId: "user-1" }]);
   assert.deepEqual(state.replies, ["commands.ephemeral.disabled"]);
+});
+
+test("the command works without guild permissions so it can run in DMs", () => {
+  const { command } = setup();
+
+  assert.equal(command.permissions, undefined);
+  assert.equal(command.ephemeral, "always");
 });

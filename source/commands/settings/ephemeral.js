@@ -1,17 +1,13 @@
 const {
   SlashCommandBuilder,
-  PermissionFlagsBits,
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const {
-  getUserEphemeral,
-  setUserEphemeral,
-} = require("../../repositories/user");
+const { getUserEphemeral } = require("../../repositories/user");
+const { updateEphemeral } = require("../../services/ephemeral");
 
 module.exports = {
   ephemeral: "always",
-  permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("ephemeral")
     .setDescription("Manage ephemeral responses for supported commands.")
@@ -72,7 +68,7 @@ module.exports = {
     }
 
     const enabled = subcommand === "enable";
-    await setUserEphemeral(userId, enabled);
+    await updateEphemeral(interaction.client, userId, enabled);
     return await interaction.reply(
       interaction.client.i18n.t(
         enabled ? "commands.ephemeral.enabled" : "commands.ephemeral.disabled",

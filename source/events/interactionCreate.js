@@ -1,10 +1,15 @@
-const { Collection, Events, PermissionsBitField } = require("discord.js");
+const {
+  Collection,
+  Events,
+  MessageFlags,
+  PermissionsBitField,
+} = require("discord.js");
 const { changeLanguage } = require("../utils/clientUtils");
 const { catchError } = require("../utils/consoleUtils");
 const { fetchLevel } = require("../services/leveling");
 const { incrementStatistics } = require("../services/statistics");
 const { getGuildData } = require("../services/guildCache");
-const { getUserEphemeral } = require("../repositories/user");
+const { resolveEphemeral } = require("../services/ephemeral");
 const { enableEphemeralResponses } = require("../utils/interactionUtils");
 
 module.exports = {
@@ -35,17 +40,9 @@ module.exports = {
       : null;
 
     if (command?.ephemeral) {
-      let enabled = command.ephemeral === "always";
-      if (!enabled) {
-        try {
-          enabled = await getUserEphemeral(interaction.user.id);
-        } catch (error) {
-          interaction.client.logger.error(
-            { err: error, userId: interaction.user.id },
-            "Failed to load the user's ephemeral setting.",
-          );
-        }
-      }
+      const enabled =
+        command.ephemeral === "always" ||
+        (await resolveEphemeral(interaction.client, interaction.user.id));
       if (enabled) enableEphemeralResponses(interaction);
     }
 
@@ -77,7 +74,7 @@ module.exports = {
                 expired_timestamp: expiredTimestamp,
               },
             ),
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
           });
         }
       }
@@ -85,11 +82,12 @@ module.exports = {
       timestamps.set(interaction.user.id, now);
       setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
 
-      // Check the permissions of the command for the bot.
-      if (func.permissions) {
-        if (!interaction.guild.members.me.permissions.has(func.permissions)) {
+      // Check the bot's permissions for the command. They only apply where the
+      // bot is a guild member; DMs and user-installed contexts have none to check.
+      if (func.permissions && interaction.guild?.members.me) {
+        if (!interaction.appPermissions.has(func.permissions)) {
           try {
-            return await interaction.member.send({
+            return await interaction.user.send({
               content: interaction.client.i18n.t(
                 "events.interactionCreate.client_is_not_allowed",
                 {
@@ -98,7 +96,6 @@ module.exports = {
                   ).toArray(),
                 },
               ),
-              ephemeral: true,
             });
           } catch (error) {
             return catchError(

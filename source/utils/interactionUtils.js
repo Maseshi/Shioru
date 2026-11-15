@@ -1,10 +1,24 @@
-const { MessageFlags, MessageFlagsBitField } = require("discord.js");
+const {
+  MessageFlags,
+  MessageFlagsBitField,
+  MessagePayload,
+} = require("discord.js");
+
+const withEphemeralFlag = (options = {}) => ({
+  ...options,
+  flags: new MessageFlagsBitField(options.flags).add(MessageFlags.Ephemeral)
+    .bitfield,
+});
 
 const addEphemeralFlag = (payload = {}) => {
-  const options = typeof payload === "string" ? { content: payload } : payload;
-  const flags = new MessageFlagsBitField(options.flags);
-  flags.add(MessageFlags.Ephemeral);
-  return { ...options, flags: flags.bitfield };
+  if (typeof payload === "string")
+    return withEphemeralFlag({ content: payload });
+  // Keep MessagePayload instances intact so discord.js still recognizes them.
+  if (payload instanceof MessagePayload) {
+    payload.options = withEphemeralFlag(payload.options);
+    return payload;
+  }
+  return withEphemeralFlag(payload);
 };
 
 const enableEphemeralResponses = (interaction) => {

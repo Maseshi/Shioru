@@ -107,14 +107,33 @@ test("setUserLevelingValue upserts a complete leveling record", async () => {
 });
 
 test("ephemeral setting defaults to true and can be disabled", async () => {
-  const { repository, values } = loadRepository(target, {
-    "users/user-1": { leveling: { exp: 10, level: 2 } },
+  const { calls, repository, values } = loadRepository(target, {
+    "users/user-1/leveling": { exp: 10, level: 2 },
   });
 
   assert.equal(await repository.getUserEphemeral("user-1"), true);
   assert.equal(await repository.setUserEphemeral("user-1", false), false);
-  assert.deepEqual(values.get("users/user-1").settings, { ephemeral: false });
-  assert.deepEqual(values.get("users/user-1").leveling, { exp: 10, level: 2 });
+  assert.equal(values.get("users/user-1/settings/ephemeral"), false);
+  assert.deepEqual(values.get("users/user-1/leveling"), { exp: 10, level: 2 });
+  assert.equal(
+    calls.some(([, path]) => path === "users/user-1"),
+    false,
+    "must not read or rewrite the whole user record",
+  );
+});
+
+test("ephemeral setting creates leveling for a new user", async () => {
+  const { repository, values } = loadRepository(target);
+
+  assert.equal(await repository.setUserEphemeral("user-2", true), true);
+  assert.deepEqual(values.get("users/user-2/leveling"), { exp: 0, level: 0 });
+  assert.equal(values.get("users/user-2/settings/ephemeral"), true);
+});
+
+test("ephemeral setting rejects non-boolean values", async () => {
+  const { repository } = loadRepository(target);
+
+  await assert.rejects(repository.setUserEphemeral("user-1", "yes"));
 });
 
 test("ephemeral setting respects an explicitly disabled value", async () => {
