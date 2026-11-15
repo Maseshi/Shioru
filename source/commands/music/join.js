@@ -5,6 +5,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { getDjDenial } = require("../../services/music");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages, PermissionFlagsBits.Connect],
@@ -36,31 +37,15 @@ module.exports = {
   async execute(interaction) {
     const inputChannel = interaction.options.getChannel("channel") ?? "";
 
-    const djs = require("../../services/guildCache").getGuildDjs(
-      interaction.client,
-      interaction.guildId,
-    );
     const queue = interaction.client.player.getQueue(interaction);
 
-    if (queue && djs.enable) {
-      if (
-        interaction.user.id !== queue.songs[0].user.id &&
-        queue.autoplay === false
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.join.another_player_is_playing"),
-        );
-      if (
-        !djs.users.includes(interaction.user.id) &&
-        !interaction.member.roles.cache.some((role) =>
-          djs.roles.includes(role.id),
-        ) &&
-        djs.only
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.join.not_a_dj"),
-        );
-    }
+    const djDenial = getDjDenial(interaction, queue, {
+      notOwner: "commands.join.another_player_is_playing",
+      notDj: "commands.join.not_a_dj",
+    });
+
+    if (djDenial)
+      return await interaction.reply(interaction.client.i18n.t(djDenial));
     if (!inputChannel) {
       const voiceChannel = interaction.member.voice.channel;
       const meChannel = interaction.guild.members.me.voice.channel;

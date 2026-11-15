@@ -5,6 +5,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { getDjDenial } = require("../../services/music");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -90,10 +91,6 @@ module.exports = {
     const subcommand = interaction.options.getSubcommand();
     const inputFilters = interaction.options.getString("filter") ?? "";
 
-    const djs = require("../../services/guildCache").getGuildDjs(
-      interaction.client,
-      interaction.guildId,
-    );
     const queue = interaction.client.player.getQueue(interaction);
     const filterString = inputFilters
       .split(",")
@@ -143,25 +140,13 @@ module.exports = {
       return await interaction.reply(
         interaction.client.i18n.t("commands.filter.no_queue"),
       );
-    if (djs.enable) {
-      if (
-        interaction.user.id !== queue.songs[0].user.id &&
-        queue.autoplay === false
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.filter.not_queue_owner"),
-        );
-      if (
-        !djs.users.includes(interaction.user.id) &&
-        !interaction.member.roles.cache.some((role) =>
-          djs.roles.includes(role.id),
-        ) &&
-        djs.only
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.filter.not_a_dj"),
-        );
-    }
+    const djDenial = getDjDenial(interaction, queue, {
+      notOwner: "commands.filter.not_queue_owner",
+      notDj: "commands.filter.not_a_dj",
+    });
+
+    if (djDenial)
+      return await interaction.reply(interaction.client.i18n.t(djDenial));
 
     switch (subcommand) {
       case "add": {

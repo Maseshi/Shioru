@@ -4,6 +4,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { getDjDenial } = require("../../services/music");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -31,35 +32,19 @@ module.exports = {
   async execute(interaction) {
     const inputAmount = interaction.options.getInteger("number");
 
-    const djs = require("../../services/guildCache").getGuildDjs(
-      interaction.client,
-      interaction.guildId,
-    );
     const queue = interaction.client.player.getQueue(interaction);
 
     if (!queue)
       return await interaction.reply(
         interaction.client.i18n.t("commands.remove.no_queue"),
       );
-    if (djs.enable) {
-      if (
-        interaction.user.id !== queue.songs[0].user.id &&
-        queue.autoplay === false
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.remove.not_owner"),
-        );
-      if (
-        !djs.users.includes(interaction.user.id) &&
-        !interaction.member.roles.cache.some((role) =>
-          djs.roles.includes(role.id),
-        ) &&
-        djs.only
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.remove.not_a_dj"),
-        );
-    }
+    const djDenial = getDjDenial(interaction, queue, {
+      notOwner: "commands.remove.not_owner",
+      notDj: "commands.remove.not_a_dj",
+    });
+
+    if (djDenial)
+      return await interaction.reply(interaction.client.i18n.t(djDenial));
     if (inputAmount >= queue.songs.length)
       return await interaction.reply(
         interaction.client.i18n.t("commands.remove.too_much"),
