@@ -8,7 +8,7 @@ const {
   getGuildData,
   getGuildDjs,
   unwatchGuildData,
-} = require("../../source/utils/cacheUtils");
+} = require("../../source/services/guildCache");
 
 const createClient = () => ({
   configs: {

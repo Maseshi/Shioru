@@ -27,7 +27,7 @@ module.exports = {
         .setDescriptionLocalizations({ th: "เพิ่มเพลงที่เกี่ยวข้องลงในคิว." }),
     ),
   async execute(interaction) {
-    const djs = require("../../utils/cacheUtils").getGuildDjs(
+    const djs = require("../../services/guildCache").getGuildDjs(
       interaction.client,
       interaction.guildId,
     );

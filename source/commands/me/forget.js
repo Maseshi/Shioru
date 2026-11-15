@@ -10,11 +10,8 @@ const {
   ButtonStyle,
   ComponentType,
 } = require("discord.js");
-const { getDatabase, ref, child } = require("firebase/database");
-const {
-  trackedGet: get,
-  trackedRemove: remove,
-} = require("../../utils/metricsUtils");
+const { removeGuild } = require("../../repositories/guild");
+const { getUser, removeUser } = require("../../repositories/user");
 
 module.exports = {
   cooldown: 60,
@@ -59,10 +56,9 @@ module.exports = {
 
     switch (subcommand) {
       case "me": {
-        const userRef = child(ref(getDatabase(), "users"), userId);
-        const userSnapshot = await get(userRef);
+        const user = await getUser(userId);
 
-        if (!userSnapshot.exists()) {
+        if (!user) {
           return await interaction.reply({
             content: interaction.client.i18n.t("commands.forget.no_data"),
             ephemeral: true,
@@ -102,7 +98,7 @@ module.exports = {
           });
 
           if (btn.customId === "confirm-delete-me") {
-            await remove(userRef);
+            await removeUser(userId);
 
             const successEmbed = new EmbedBuilder()
               .setColor(Colors.Green)
@@ -148,11 +144,6 @@ module.exports = {
           });
         }
 
-        const guildRef = child(
-          ref(getDatabase(), "guilds"),
-          interaction.guild.id,
-        );
-
         const confirmRow = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setCustomId("confirm-delete-guild")
@@ -188,7 +179,7 @@ module.exports = {
           });
 
           if (btn.customId === "confirm-delete-guild") {
-            await remove(guildRef);
+            await removeGuild(interaction.guild.id);
 
             await btn.update({
               content: interaction.client.i18n.t(

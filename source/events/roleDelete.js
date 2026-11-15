@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildRoleDelete,
@@ -8,9 +8,9 @@ module.exports = {
     const roleDeleteEmbed = new EmbedBuilder()
       .setTitle(role.client.i18n.t("events.roleDelete.role_notification"))
       .setDescription(
-        role.client.i18n
-          .t("events.roleDelete.role_delete")
-          .replace("%s", role.name),
+        role.client.i18n.t("events.roleDelete.role_delete", {
+          roleName: role.name,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

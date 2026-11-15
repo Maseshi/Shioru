@@ -7,6 +7,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
+  ephemeral: true,
   permissions: [PermissionFlagsBits.SendMessages],
   data: new SlashCommandBuilder()
     .setName("dead")

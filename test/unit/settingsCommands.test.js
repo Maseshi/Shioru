@@ -5,6 +5,7 @@ const { requireWithMocks } = require("../helpers/requireWithMocks");
 
 const root = resolve(__dirname, "../..");
 const dependency = (path) => resolve(root, path);
+const repositoryPath = dependency("source/repositories/guildSettings.js");
 const firebaseMock = {
   child: (parent, name) => ({ path: `${parent.path}/${name}` }),
   getDatabase: () => ({}),
@@ -47,17 +48,21 @@ describe("language settings command behavior", () => {
   const loadLanguage = ({ changes, guildData, updates }) =>
     requireWithMocks(dependency("source/commands/settings/language.js"), {
       "firebase/database": firebaseMock,
-      [dependency("source/configs/data.js")]: {
-        dataStructures: () => ({ locale: "en", type: "CUSTOM" }),
+      [dependency("source/schemas/guild.js")]: {
+        createLanguage: () => ({ locale: "en", type: "CUSTOM" }),
       },
-      [dependency("source/utils/cacheUtils.js")]: {
+      [dependency("source/services/guildCache.js")]: {
         getGuildData: () => guildData,
       },
       [dependency("source/utils/clientUtils.js")]: {
         changeLanguage: (_client, locale) => changes.push(locale),
       },
-      [dependency("source/utils/metricsUtils.js")]: {
-        trackedUpdate: async (ref, value) => updates.push({ ref, value }),
+      [repositoryPath]: {
+        updateLanguage: async (_guildId, value) =>
+          updates.push({
+            ref: { path: "guilds/guild-id/language" },
+            value,
+          }),
       },
     });
 
@@ -123,15 +128,16 @@ describe("DJ settings command behavior", () => {
   const loadDjs = ({ djs, updates }) =>
     requireWithMocks(dependency("source/commands/settings/djs.js"), {
       "firebase/database": firebaseMock,
-      [dependency("source/utils/cacheUtils.js")]: {
+      [dependency("source/services/guildCache.js")]: {
         getGuildDjs: () => ({
           ...djs,
           roles: [...djs.roles],
           users: [...djs.users],
         }),
       },
-      [dependency("source/utils/metricsUtils.js")]: {
-        trackedUpdate: async (ref, value) => updates.push({ ref, value }),
+      [repositoryPath]: {
+        updateDjs: async (_guildId, value) =>
+          updates.push({ ref: { path: "guilds/guild-id/djs" }, value }),
       },
     });
 

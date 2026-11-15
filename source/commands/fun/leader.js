@@ -6,7 +6,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { fetchLeaderboard } = require("../../utils/databaseUtils");
+const { getLeaderboard } = require("../../repositories/leaderboard");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -42,7 +42,7 @@ module.exports = {
             interaction.client.i18n.t("commands.leader.no_info"),
           );
 
-        const users = await fetchLeaderboard(interaction.guild.id, max);
+        const users = await getLeaderboard(interaction.guild.id, max);
 
         if (!users)
           return await interaction.reply(
@@ -67,10 +67,10 @@ module.exports = {
                     avatar: guildMember.user.displayAvatarURL(),
                   },
                   name: guildMember.user.username,
-                  value: interaction.client.i18n
-                    .t("commands.leader.leveling_detail")
-                    .replace("%s1", exp)
-                    .replace("%s2", level),
+                  value: interaction.client.i18n.t(
+                    "commands.leader.leveling_detail",
+                    { experience: exp, level: level },
+                  ),
                 });
               }
             }

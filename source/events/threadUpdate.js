@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.ThreadUpdate,
@@ -10,10 +10,10 @@ module.exports = {
         newThread.client.i18n.t("events.threadUpdate.thread_notification"),
       )
       .setDescription(
-        newThread.client.i18n
-          .t("events.threadUpdate.thread_update")
-          .replace("%s1", oldThread.name)
-          .replace("%s2", newThread.id),
+        newThread.client.i18n.t("events.threadUpdate.thread_update", {
+          oldThreadName: oldThread.name,
+          newThreadId: newThread.id,
+        }),
       )
       .setTimestamp()
       .setColor("Yellow");

@@ -1,5 +1,5 @@
 const { Events, EmbedBuilder, StickerFormatType } = require("discord.js");
-const { submitNotification } = require("../utils/databaseUtils");
+const { submitNotification } = require("../services/notification");
 
 module.exports = {
   name: Events.GuildStickerUpdate,
@@ -10,10 +10,10 @@ module.exports = {
         newSticker.client.i18n.t("events.stickerUpdate.sticker_notification"),
       )
       .setDescription(
-        newSticker.client.i18n
-          .t("events.stickerUpdate.sticker_update")
-          .replace("%s1", oldSticker.name)
-          .replace("%s2", newSticker.id),
+        newSticker.client.i18n.t("events.stickerUpdate.sticker_update", {
+          oldStickerName: oldSticker.name,
+          newStickerId: newSticker.id,
+        }),
       )
       .setThumbnail(
         newSticker.format !== StickerFormatType.Lottie ? newSticker.url : "",
