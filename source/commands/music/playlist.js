@@ -8,6 +8,7 @@ const {
 const { YouTubePlugin, SearchResultType } = require("@distube/youtube");
 const { SoundCloudPlugin, SearchType } = require("@distube/soundcloud");
 const { catchError } = require("../../utils/consoleUtils");
+const { getDjDenial } = require("../../services/music");
 
 module.exports = {
   permissions: [
@@ -125,10 +126,6 @@ module.exports = {
     const inputPosition = interaction.options.getInteger("position") ?? 0;
     const inputChannel = interaction.options.getChannel("channel") ?? "";
 
-    const djs = require("../../services/guildCache").getGuildDjs(
-      interaction.client,
-      interaction.guildId,
-    );
     const queue = interaction.client.player.getQueue(interaction);
     const voiceChannel = interaction.member.voice.channel;
     const meChannel = interaction.guild.members.me.voice.channel;
@@ -137,25 +134,13 @@ module.exports = {
       .map((song) => song.trim())
       .filter(Boolean);
 
-    if (queue && djs.enable) {
-      if (
-        interaction.user.id !== queue.songs[0].user.id &&
-        queue.autoplay === false
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.playlist.not_owner"),
-        );
-      if (
-        !djs.users.includes(interaction.user.id) &&
-        !interaction.member.roles.cache.some((role) =>
-          djs.roles.includes(role.id),
-        ) &&
-        djs.only
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.playlist.not_a_dj"),
-        );
-    }
+    const djDenial = getDjDenial(interaction, queue, {
+      notOwner: "commands.playlist.not_owner",
+      notDj: "commands.playlist.not_a_dj",
+    });
+
+    if (djDenial)
+      return await interaction.reply(interaction.client.i18n.t(djDenial));
     if (!queue && (inputSkip || inputPosition))
       return await interaction.reply(
         interaction.client.i18n.t("commands.playlist.no_queue"),

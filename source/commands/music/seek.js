@@ -4,6 +4,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
+const { getDjDenial } = require("../../services/music");
 
 module.exports = {
   permissions: [PermissionFlagsBits.SendMessages],
@@ -35,10 +36,6 @@ module.exports = {
   async execute(interaction) {
     const inputSecond = interaction.options.getInteger("second");
 
-    const djs = require("../../services/guildCache").getGuildDjs(
-      interaction.client,
-      interaction.guildId,
-    );
     const queue = interaction.client.player.getQueue(interaction);
 
     if (!queue)
@@ -49,25 +46,13 @@ module.exports = {
     const queueDuration = queue.songs[0].duration;
     const queueFormatDuration = queue.songs[0].formattedDuration;
 
-    if (djs.enable) {
-      if (
-        interaction.user.id !== queue.songs[0].user.id &&
-        queue.autoplay === false
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.seek.not_owner"),
-        );
-      if (
-        !djs.users.includes(interaction.user.id) &&
-        !interaction.member.roles.cache.some((role) =>
-          djs.roles.includes(role.id),
-        ) &&
-        djs.only
-      )
-        return await interaction.reply(
-          interaction.client.i18n.t("commands.seek.not_a_dj"),
-        );
-    }
+    const djDenial = getDjDenial(interaction, queue, {
+      notOwner: "commands.seek.not_owner",
+      notDj: "commands.seek.not_a_dj",
+    });
+
+    if (djDenial)
+      return await interaction.reply(interaction.client.i18n.t(djDenial));
     if (inputSecond == null)
       return await interaction.reply(
         interaction.client.i18n.t("commands.seek.seek_guide", {
