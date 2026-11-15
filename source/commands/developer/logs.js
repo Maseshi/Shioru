@@ -4,7 +4,6 @@ const {
   PermissionFlagsBits,
   InteractionContextType,
   ApplicationIntegrationType,
-  MessageFlags,
 } = require("discord.js");
 const { existsSync, statSync, unlinkSync } = require("node:fs");
 const { basename } = require("node:path");
@@ -37,13 +36,6 @@ const addDateOption = (subcommand) =>
       })
       .setMinLength(10)
       .setMaxLength(10),
-  );
-
-const privateReply = (interaction, payload) =>
-  interaction.reply(
-    typeof payload === "string"
-      ? { content: payload, flags: MessageFlags.Ephemeral }
-      : { ...payload, flags: MessageFlags.Ephemeral },
   );
 
 const canManageLogs = (interaction) => {
@@ -107,8 +99,7 @@ module.exports = {
     ),
   async execute(interaction) {
     if (!canManageLogs(interaction))
-      return await privateReply(
-        interaction,
+      return await interaction.reply(
         interaction.client.i18n.t("commands.logs.only_owner_and_developers"),
       );
 
@@ -117,8 +108,7 @@ module.exports = {
     if (subcommand === "list") {
       const files = listLogFiles();
       if (!files.length)
-        return await privateReply(
-          interaction,
+        return await interaction.reply(
           interaction.client.i18n.t("commands.logs.empty_directory"),
         );
 
@@ -126,20 +116,18 @@ module.exports = {
         .slice(0, 25)
         .map((file) => `${file.name} (${Math.ceil(file.size / 1024)} KB)`)
         .join("\n");
-      return await privateReply(interaction, `\`\`\`text\n${entries}\n\`\`\``);
+      return await interaction.reply(`\`\`\`text\n${entries}\n\`\`\``);
     }
 
     const file = resolveRequestedLog(interaction);
     if (!file || !existsSync(file))
-      return await privateReply(
-        interaction,
+      return await interaction.reply(
         interaction.client.i18n.t("commands.logs.file_missing"),
       );
 
     if (subcommand === "get") {
       if (statSync(file).size === 0)
-        return await privateReply(
-          interaction,
+        return await interaction.reply(
           interaction.client.i18n.t("commands.logs.empty_content"),
         );
 
@@ -148,7 +136,7 @@ module.exports = {
           "commands.logs.attachment_description",
         ),
       });
-      return await privateReply(interaction, {
+      return await interaction.reply({
         content: interaction.client.i18n.t("commands.logs.found_file", {
           fileCount: 1,
           fileNames: basename(file),
@@ -158,8 +146,7 @@ module.exports = {
     }
 
     unlinkSync(file);
-    return await privateReply(
-      interaction,
+    return await interaction.reply(
       interaction.client.i18n.t("commands.logs.file_has_been_deleted", {
         fileName: basename(file),
       }),

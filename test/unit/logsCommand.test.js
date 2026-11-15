@@ -36,7 +36,10 @@ const makeInteraction = ({
         getString: (name) => ({ date, type })[name],
         getSubcommand: () => subcommand,
       },
-      reply: async (payload) => replies.push(payload),
+      reply: async (payload) =>
+        replies.push(
+          typeof payload === "string" ? { content: payload } : payload,
+        ),
       user: { id: userId },
     },
     replies,
@@ -94,4 +97,8 @@ test("logs command deletes only a validated requested file", async () => {
 
   assert.equal(state.replies[0].content, "commands.logs.file_has_been_deleted");
   assert.throws(() => require("node:fs").statSync(file), { code: "ENOENT" });
+});
+
+test("logs command is always ephemeral", () => {
+  assert.equal(loadCommand().ephemeral, "always");
 });
