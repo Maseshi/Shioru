@@ -16,7 +16,7 @@ const levelingServicePath = require.resolve("../../source/services/leveling");
 const statisticsServicePath =
   require.resolve("../../source/services/statistics");
 const guildCachePath = require.resolve("../../source/services/guildCache");
-const userRepositoryPath = require.resolve("../../source/repositories/user");
+const ephemeralServicePath = require.resolve("../../source/services/ephemeral");
 
 const setup = ({ ephemeral = false, guildData = null } = {}) => {
   const calls = {
@@ -40,8 +40,8 @@ const setup = ({ ephemeral = false, guildData = null } = {}) => {
       incrementStatistics: async (paths) => calls.statistics.push(paths),
     },
     [guildCachePath]: { getGuildData: () => guildData },
-    [userRepositoryPath]: {
-      getUserEphemeral: async (userId) => {
+    [ephemeralServicePath]: {
+      resolveEphemeral: async (_client, userId) => {
         calls.ephemeralReads.push(userId);
         return ephemeral;
       },
@@ -67,11 +67,9 @@ const setup = ({ ephemeral = false, guildData = null } = {}) => {
     guildId: "guild-1",
     locale: "en-US",
     replied: false,
-    user: { bot: false, id: "user-1" },
-    guild: {
-      members: { me: { permissions: new PermissionsBitField() } },
-    },
-    member: { send: async () => undefined },
+    user: { bot: false, id: "user-1", send: async () => undefined },
+    appPermissions: new PermissionsBitField(),
+    guild: { members: { me: {} } },
     deferReply: async () => {
       interaction.deferred = true;
     },
@@ -141,7 +139,60 @@ test("active cooldown replies without executing the command", async () => {
 
   await event.execute(interaction);
   assert.equal(executions, 0);
-  assert.equal(reply.ephemeral, true);
+  assert.equal(
+    new MessageFlagsBitField(reply.flags).has(MessageFlags.Ephemeral),
+    true,
+  );
+  assert.equal("ephemeral" in reply, false);
+});
+
+test("supported commands use the user's ephemeral response setting", async () => {
+  const { calls, client, event, interaction } = setup({ ephemeral: true });
+  let reply = null;
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    ephemeral: true,
+    execute: async (commandInteraction) => {
+      await commandInteraction.reply("private response");
+    },
+  });
+  interaction.reply = async (payload) => {
+    reply = payload;
+  };
+
+  await event.execute(interaction);
+
+  assert.deepEqual(calls.ephemeralReads, ["user-1"]);
+  assert.equal(reply.content, "private response");
+  assert.equal(
+    new MessageFlagsBitField(reply.flags).has(MessageFlags.Ephemeral),
+    true,
+  );
+});
+
+test("always-ephemeral commands do not read the user setting", async () => {
+  const { calls, client, event, interaction } = setup();
+  let deferredPayload = null;
+  interaction.deferReply = async (payload) => {
+    deferredPayload = payload;
+    interaction.deferred = true;
+  };
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    deferReply: true,
+    ephemeral: "always",
+    execute: async () => undefined,
+  });
+
+  await event.execute(interaction);
+
+  assert.deepEqual(calls.ephemeralReads, []);
+  assert.equal(
+    new MessageFlagsBitField(deferredPayload.flags).has(MessageFlags.Ephemeral),
+    true,
+  );
 });
 
 test("missing bot permissions sends a direct message and skips execution", async () => {
@@ -156,13 +207,51 @@ test("missing bot permissions sends a direct message and skips execution", async
       executions += 1;
     },
   });
-  interaction.member.send = async (payload) => {
+  interaction.user.send = async (payload) => {
     directMessage = payload;
   };
 
   await event.execute(interaction);
   assert.equal(executions, 0);
-  assert.equal(directMessage.ephemeral, true);
+  assert.equal(
+    directMessage.content,
+    "events.interactionCreate.client_is_not_allowed",
+  );
+});
+
+test("granted channel permissions let the command run", async () => {
+  const { client, event, interaction } = setup();
+  let executions = 0;
+  interaction.appPermissions = new PermissionsBitField(["ManageGuild"]);
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    permissions: ["ManageGuild"],
+    execute: async () => {
+      executions += 1;
+    },
+  });
+
+  await event.execute(interaction);
+  assert.equal(executions, 1);
+});
+
+test("commands with permissions run in DMs where the bot is not a guild member", async () => {
+  const { client, event, interaction } = setup();
+  let executions = 0;
+  interaction.guild = null;
+  interaction.member = null;
+  client.commands.set("ping", {
+    data: { name: "ping" },
+    cooldown: 0,
+    permissions: ["SendMessages"],
+    execute: async () => {
+      executions += 1;
+    },
+  });
+
+  await event.execute(interaction);
+  assert.equal(executions, 1);
 });
 
 test("command failures are routed to catchError", async () => {

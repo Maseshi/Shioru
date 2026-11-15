@@ -71,6 +71,7 @@ module.exports = (client) => {
           },
           cooldown: command.cooldown ?? 3,
           category: folder ?? "",
+          ephemeral: command.ephemeral ?? false,
           permissions: command.permissions
             ? new PermissionsBitField(command.permissions).toArray()
             : [],

@@ -3,12 +3,14 @@ const {
   trackedGet: get,
   trackedRemove: remove,
   trackedRunTransaction: runTransaction,
+  trackedSet: set,
   trackedUpdate: update,
 } = require("../utils/metricsUtils");
 const { LevelingSchema, createLeveling } = require("../schemas/leveling");
 const {
   UserProfileSchema,
   UserSchema,
+  UserSettingsSchema,
   createUser,
 } = require("../schemas/user");
 
@@ -68,16 +70,15 @@ const syncUserProfile = async (cache, userId, profile = {}) => {
 };
 
 const setUserEphemeral = async (userId, ephemeral) => {
-  const result = await runTransaction(getUserRef(userId), (currentUser) =>
-    createUser({
-      ...(currentUser ?? {}),
-      settings: {
-        ...(currentUser?.settings ?? {}),
-        ephemeral,
-      },
-    }),
+  const { ephemeral: value } = UserSettingsSchema.parse({ ephemeral });
+  const userRef = getUserRef(userId);
+  // Database rules require every user to have leveling; create it only when missing.
+  await runTransaction(
+    child(userRef, "leveling"),
+    (currentLeveling) => currentLeveling ?? createLeveling(),
   );
-  return result.snapshot.val().settings.ephemeral;
+  await set(child(userRef, "settings/ephemeral"), value);
+  return value;
 };
 
 const removeUser = (userId) => remove(getUserRef(userId));
