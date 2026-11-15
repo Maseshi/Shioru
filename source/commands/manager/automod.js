@@ -253,9 +253,9 @@ module.exports = {
         try {
           const keywordRule =
             await interaction.guild.autoModerationRules.create({
-              name: interaction.client.i18n
-                .t("commands.automod.keyword_name")
-                .replace("%s", inputWord),
+              name: interaction.client.i18n.t("commands.automod.keyword_name", {
+                word: inputWord,
+              }),
               creatorId: teamOwner,
               enabled: true,
               eventType: 1,
@@ -284,9 +284,9 @@ module.exports = {
           const keywordEmbed = new EmbedBuilder()
             .setColor("Blue")
             .setDescription(
-              interaction.client.i18n
-                .t("commands.automod.keyword_success")
-                .replace("%s", inputWord),
+              interaction.client.i18n.t("commands.automod.keyword_success", {
+                word: inputWord,
+              }),
             );
 
           await interaction.reply({ content: "", embeds: [keywordEmbed] });

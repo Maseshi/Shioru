@@ -148,7 +148,10 @@ module.exports = {
         ),
       });
       return await privateReply(interaction, {
-        content: interaction.client.i18n.t("commands.logs.found_file"),
+        content: interaction.client.i18n.t("commands.logs.found_file", {
+          fileCount: 1,
+          fileNames: basename(file),
+        }),
         files: [attachment],
       });
     }
@@ -156,9 +159,9 @@ module.exports = {
     unlinkSync(file);
     return await privateReply(
       interaction,
-      interaction.client.i18n
-        .t("commands.logs.file_has_been_deleted")
-        .replace("%s", basename(file)),
+      interaction.client.i18n.t("commands.logs.file_has_been_deleted", {
+        fileName: basename(file),
+      }),
     );
   },
 };

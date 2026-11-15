@@ -110,13 +110,13 @@ module.exports = {
         interaction.client.commands.set(newCommand.data.name, newCommand);
         await interaction.followUp(
           interaction.client.i18n.t("commands.reload.reloaded", {
-            command_name: name,
+            commandName: name,
           }),
         );
       } catch (error) {
         await interaction.followUp(
           interaction.client.i18n.t("commands.reload.reload_error", {
-            command_name: name,
+            commandName: name,
           }),
         );
         catchError(

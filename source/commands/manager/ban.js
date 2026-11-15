@@ -165,7 +165,7 @@ module.exports = {
             let embedTitle = interaction.client.i18n.t(
               "commands.ban.banned_for_time",
               {
-                user: memberUsername,
+                userName: memberUsername,
                 days: inputDays,
               },
             );
@@ -174,7 +174,7 @@ module.exports = {
               embedTitle = interaction.client.i18n.t(
                 "commands.ban.permanently_banned",
                 {
-                  user: memberUsername,
+                  userName: memberUsername,
                 },
               );
 
@@ -182,7 +182,7 @@ module.exports = {
               .setTitle(embedTitle)
               .setDescription(
                 interaction.client.i18n.t("commands.ban.reason_for_ban", {
-                  user: authorUsername,
+                  moderatorName: authorUsername,
                   reason: inputReason,
                 }),
               )

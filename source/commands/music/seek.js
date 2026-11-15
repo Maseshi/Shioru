@@ -70,15 +70,15 @@ module.exports = {
     }
     if (inputSecond == null)
       return await interaction.reply(
-        interaction.client.i18n
-          .t("commands.seek.seek_guide")
-          .replace("%s", queueDuration),
+        interaction.client.i18n.t("commands.seek.seek_guide", {
+          currentPosition: queueDuration,
+        }),
       );
     if (inputSecond >= queueDuration)
       return await interaction.reply(
-        interaction.client.i18n
-          .t("commands.seek.too_much")
-          .replace("%s", queueFormatDuration),
+        interaction.client.i18n.t("commands.seek.too_much", {
+          trackDuration: queueFormatDuration,
+        }),
       );
 
     try {

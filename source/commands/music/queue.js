@@ -101,7 +101,9 @@ module.exports = {
 
       const musicFilter = currentQueue.filters.names.length
         ? newLines(
-            interaction.client.i18n.t("commands.queue.filter"),
+            interaction.client.i18n.t("commands.queue.filter", {
+              filterNames: currentQueue.filters.names.join(", "),
+            }),
             `\`\`\`${currentQueue.filters.names.join(", ")}\`\`\``,
           )
         : "";

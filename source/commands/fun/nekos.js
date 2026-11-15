@@ -111,9 +111,9 @@ module.exports = {
       .setImage(data.url)
       .setFooter({
         iconURL: authorAvatar,
-        text: interaction.client.i18n
-          .t("commands.nekos.request_by")
-          .replace("%s", authorUsername),
+        text: interaction.client.i18n.t("commands.nekos.request_by", {
+          requesterName: authorUsername,
+        }),
       })
       .setTimestamp();
 

@@ -63,12 +63,12 @@ module.exports = {
         lyricsEmbed.setDescription(`\`\`\`${lyrics}\`\`\``);
       } else {
         lyricsEmbed.setDescription(
-          `\`\`\`${interaction.client.i18n.t("commands.lyrics.can_not_find_lyrics").replace("%s", songName)}\`\`\``,
+          `\`\`\`${interaction.client.i18n.t("commands.lyrics.can_not_find_lyrics", { songName: songName })}\`\`\``,
         );
       }
     } catch (error) {
       lyricsEmbed.setDescription(
-        `\`\`\`${interaction.client.i18n.t("commands.lyrics.can_not_find_lyrics").replace("%s", songName)}\`\`\``,
+        `\`\`\`${interaction.client.i18n.t("commands.lyrics.can_not_find_lyrics", { songName: songName })}\`\`\``,
       );
     }
 

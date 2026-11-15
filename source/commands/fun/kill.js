@@ -39,10 +39,10 @@ module.exports = {
     const clientUsername = interaction.client.user.username;
     const killEmbed = new EmbedBuilder()
       .setDescription(
-        interaction.client.i18n
-          .t("commands.kill.killed")
-          .replace("%s1", authorUsername)
-          .replace("%s2", inputName),
+        interaction.client.i18n.t("commands.kill.killed", {
+          killerName: authorUsername,
+          targetName: inputName,
+        }),
       )
       .setColor(Colors.DarkRed);
 

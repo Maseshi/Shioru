@@ -58,9 +58,9 @@ module.exports = {
     await impersonateWebhook.send(inputMessage);
     await impersonateWebhook.delete();
     await interaction.editReply(
-      interaction.client.i18n
-        .t("commands.impersonate.success")
-        .replace("%s", inputUser.id),
+      interaction.client.i18n.t("commands.impersonate.success", {
+        userId: inputUser.id,
+      }),
     );
   },
 };
