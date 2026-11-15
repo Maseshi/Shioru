@@ -28,13 +28,10 @@ module.exports = {
       ApplicationIntegrationType.UserInstall,
     ]),
   async execute(interaction) {
-    const response = await interaction.reply({
-      content: interaction.client.i18n.t("commands.ping.waiting"),
-      withResponse: true,
-    });
-    const message =
-      response.resource?.message ?? (await interaction.fetchReply());
-    const roundtrip = message.createdTimestamp - interaction.createdTimestamp;
+    // Time only the API call so bot-side work before the reply is not counted.
+    const sentAt = Date.now();
+    await interaction.reply(interaction.client.i18n.t("commands.ping.waiting"));
+    const roundtrip = Date.now() - sentAt;
     const websocket = interaction.client.ws.ping;
 
     const pingEmbed = new EmbedBuilder()
