@@ -4,7 +4,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getGuildData } = require("../../utils/cacheUtils");
+const { getGuildData } = require("../../services/guildCache");
 const { catchError } = require("../../utils/consoleUtils");
 const {
   removeAfkEntry,

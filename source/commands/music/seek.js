@@ -35,7 +35,7 @@ module.exports = {
   async execute(interaction) {
     const inputSecond = interaction.options.getInteger("second");
 
-    const djs = require("../../utils/cacheUtils").getGuildDjs(
+    const djs = require("../../services/guildCache").getGuildDjs(
       interaction.client,
       interaction.guildId,
     );

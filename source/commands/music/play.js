@@ -115,7 +115,7 @@ module.exports = {
     const inputPosition = interaction.options.getInteger("position") ?? 0;
     const inputChannel = interaction.options.getChannel("channel") ?? "";
 
-    const djs = require("../../utils/cacheUtils").getGuildDjs(
+    const djs = require("../../services/guildCache").getGuildDjs(
       interaction.client,
       interaction.guildId,
     );

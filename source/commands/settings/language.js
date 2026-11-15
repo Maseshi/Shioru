@@ -7,7 +7,7 @@ const {
   ApplicationIntegrationType,
 } = require("discord.js");
 const { changeLanguage } = require("../../utils/clientUtils");
-const { getGuildData } = require("../../utils/cacheUtils");
+const { getGuildData } = require("../../services/guildCache");
 const { createLanguage } = require("../../schemas/guild");
 const { updateLanguage } = require("../../repositories/guildSettings");
 

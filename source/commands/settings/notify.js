@@ -10,7 +10,7 @@ const {
 const { embedBuilder } = require("../../utils/clientUtils");
 const { createNotification } = require("../../schemas/notification");
 const { newLines } = require("../../utils/miscUtils");
-const { getGuildData } = require("../../utils/cacheUtils");
+const { getGuildData } = require("../../services/guildCache");
 const {
   removeNotification,
   updateNotification,

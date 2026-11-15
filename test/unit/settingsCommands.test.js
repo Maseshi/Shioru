@@ -51,7 +51,7 @@ describe("language settings command behavior", () => {
       [dependency("source/schemas/guild.js")]: {
         createLanguage: () => ({ locale: "en", type: "CUSTOM" }),
       },
-      [dependency("source/utils/cacheUtils.js")]: {
+      [dependency("source/services/guildCache.js")]: {
         getGuildData: () => guildData,
       },
       [dependency("source/utils/clientUtils.js")]: {
@@ -128,7 +128,7 @@ describe("DJ settings command behavior", () => {
   const loadDjs = ({ djs, updates }) =>
     requireWithMocks(dependency("source/commands/settings/djs.js"), {
       "firebase/database": firebaseMock,
-      [dependency("source/utils/cacheUtils.js")]: {
+      [dependency("source/services/guildCache.js")]: {
         getGuildDjs: () => ({
           ...djs,
           roles: [...djs.roles],

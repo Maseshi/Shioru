@@ -1,7 +1,7 @@
 const { Events } = require("discord.js");
 const { registeringCommands } = require("../utils/clientUtils");
 const { synchronizeGuildData } = require("../services/guild");
-const { watchGuildData } = require("../utils/cacheUtils");
+const { watchGuildData } = require("../services/guildCache");
 
 module.exports = {
   name: Events.GuildCreate,

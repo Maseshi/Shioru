@@ -6,7 +6,7 @@ const {
   InteractionContextType,
   ApplicationIntegrationType,
 } = require("discord.js");
-const { getGuildDjs } = require("../../utils/cacheUtils");
+const { getGuildDjs } = require("../../services/guildCache");
 const { updateDjs } = require("../../repositories/guildSettings");
 
 module.exports = {

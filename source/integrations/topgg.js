@@ -1,5 +1,5 @@
 const configs = require("../configs/data");
-const { logger } = require("./logUtils");
+const { logger } = require("../utils/logUtils");
 
 const submitTopGGStatistics = async (
   client,

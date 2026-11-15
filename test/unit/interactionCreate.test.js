@@ -15,7 +15,7 @@ const consoleUtilsPath = require.resolve("../../source/utils/consoleUtils");
 const levelingServicePath = require.resolve("../../source/services/leveling");
 const statisticsServicePath =
   require.resolve("../../source/services/statistics");
-const cacheUtilsPath = require.resolve("../../source/utils/cacheUtils");
+const guildCachePath = require.resolve("../../source/services/guildCache");
 const userRepositoryPath = require.resolve("../../source/repositories/user");
 
 const setup = ({ ephemeral = false, guildData = null } = {}) => {
@@ -39,7 +39,7 @@ const setup = ({ ephemeral = false, guildData = null } = {}) => {
     [statisticsServicePath]: {
       incrementStatistics: async (paths) => calls.statistics.push(paths),
     },
-    [cacheUtilsPath]: { getGuildData: () => guildData },
+    [guildCachePath]: { getGuildData: () => guildData },
     [userRepositoryPath]: {
       getUserEphemeral: async (userId) => {
         calls.ephemeralReads.push(userId);

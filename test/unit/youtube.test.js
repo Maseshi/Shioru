@@ -3,7 +3,7 @@ const test = require("node:test");
 const {
   getYtDlpStreamURL,
   useYtDlpForStreams,
-} = require("../../source/utils/youtubeUtils");
+} = require("../../source/integrations/youtube");
 
 test("YouTube metadata and search delegate stream extraction to yt-dlp", async () => {
   const calls = [];

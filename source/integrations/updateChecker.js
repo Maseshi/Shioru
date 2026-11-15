@@ -1,6 +1,6 @@
 const { version } = require("../../package.json");
 const configs = require("../configs/data");
-const { logger } = require("./logUtils");
+const { logger } = require("../utils/logUtils");
 
 const updateChecker = async () => {
   const enable = configs.check_update.enable;

@@ -21,7 +21,7 @@ module.exports = {
       ApplicationIntegrationType.UserInstall,
     ]),
   async execute(interaction) {
-    const djs = require("../../utils/cacheUtils").getGuildDjs(
+    const djs = require("../../services/guildCache").getGuildDjs(
       interaction.client,
       interaction.guildId,
     );

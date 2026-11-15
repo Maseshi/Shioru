@@ -1,6 +1,6 @@
 const http = require("node:http");
 const configs = require("../configs/data");
-const { logger } = require("./logUtils");
+const { logger } = require("../utils/logUtils");
 
 const createHealthServer = (
   services,

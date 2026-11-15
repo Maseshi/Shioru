@@ -13,7 +13,7 @@ const { CaptchaGenerator } = require("captcha-canvas");
 const { initializeData, updateGuildMemberCount } = require("../services/guild");
 const { submitNotification } = require("../services/notification");
 const { catchError } = require("../utils/consoleUtils");
-const { getGuildData } = require("../utils/cacheUtils");
+const { getGuildData } = require("../services/guildCache");
 
 module.exports = {
   name: Events.GuildMemberAdd,

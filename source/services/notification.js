@@ -1,5 +1,5 @@
 const { embedBuilder } = require("../utils/clientUtils");
-const { getGuildData } = require("../utils/cacheUtils");
+const { getGuildData } = require("./guildCache");
 const { getGuild } = require("../repositories/guild");
 
 const submitNotification = async (client, guild, eventName, embedData) => {

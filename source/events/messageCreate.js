@@ -1,6 +1,6 @@
 const { Events, ChannelType } = require("discord.js");
 const { fetchLevel } = require("../services/leveling");
-const { getGuildData } = require("../utils/cacheUtils");
+const { getGuildData } = require("../services/guildCache");
 const { catchError } = require("../utils/consoleUtils");
 const { removeAfkEntry } = require("../repositories/guildSettings");
 const {

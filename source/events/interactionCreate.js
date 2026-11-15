@@ -3,7 +3,7 @@ const { changeLanguage } = require("../utils/clientUtils");
 const { catchError } = require("../utils/consoleUtils");
 const { fetchLevel } = require("../services/leveling");
 const { incrementStatistics } = require("../services/statistics");
-const { getGuildData } = require("../utils/cacheUtils");
+const { getGuildData } = require("../services/guildCache");
 const { getUserEphemeral } = require("../repositories/user");
 const { enableEphemeralResponses } = require("../utils/interactionUtils");
 

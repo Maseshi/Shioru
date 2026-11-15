@@ -1,5 +1,5 @@
 const { onGuild } = require("../repositories/guild");
-const { recordMetricsCache } = require("./metricsUtils");
+const { recordMetricsCache } = require("../utils/metricsUtils");
 
 const ensureCache = (client) => {
   if (!client.guildSettings) client.guildSettings = new Map();

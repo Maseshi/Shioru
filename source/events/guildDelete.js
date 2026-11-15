@@ -1,5 +1,5 @@
 const { Events } = require("discord.js");
-const { unwatchGuildData } = require("../utils/cacheUtils");
+const { unwatchGuildData } = require("../services/guildCache");
 
 module.exports = {
   name: Events.GuildDelete,

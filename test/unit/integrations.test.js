@@ -1,7 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { createHealthServer } = require("../../source/utils/healthUtils");
-const { submitTopGGStatistics } = require("../../source/utils/topggUtils");
+const { createHealthServer } = require("../../source/integrations/health");
+const { submitTopGGStatistics } = require("../../source/integrations/topgg");
 
 const startServer = async (t, options) => {
   const server = createHealthServer(
