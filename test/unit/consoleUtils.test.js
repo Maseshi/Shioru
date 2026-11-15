@@ -42,6 +42,12 @@ test("catchError replies ephemerally to a fresh interaction", async () => {
   assert.equal(isEphemeral(reply), true);
 });
 
+const fetchedReply =
+  (flags = 0) =>
+  async () => ({
+    flags: new MessageFlagsBitField(flags),
+  });
+
 test("catchError replaces a public defer with an ephemeral follow-up", async () => {
   const catchError = loadCatchError();
   const calls = [];
@@ -52,6 +58,7 @@ test("catchError replaces a public defer with an ephemeral follow-up", async () 
     deferred: true,
     ephemeral: false,
     replied: false,
+    fetchReply: fetchedReply(MessageFlags.Loading),
     deleteReply: async () => calls.push("delete"),
     editReply: async () => calls.push("edit"),
     followUp: async (payload) => {
@@ -87,4 +94,27 @@ test("catchError edits an already-ephemeral deferred response", async () => {
 
   assert.deepEqual(calls, ["edit"]);
   assert.equal(isEphemeral(edit), true);
+});
+
+test("catchError keeps public output a deferred command already sent", async () => {
+  const catchError = loadCatchError();
+  const calls = [];
+  const interaction = {
+    content: undefined,
+    createdTimestamp: Date.now(),
+    deferred: true,
+    ephemeral: false,
+    replied: false,
+    fetchReply: fetchedReply(),
+    deleteReply: async () => calls.push("delete"),
+    editReply: async () => calls.push("edit"),
+    followUp: async (payload) => {
+      calls.push("followUp");
+      assert.equal(isEphemeral(payload), true);
+    },
+  };
+
+  await catchError(createClient(), interaction, "test", new Error("failed"));
+
+  assert.deepEqual(calls, ["followUp"]);
 });

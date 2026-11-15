@@ -146,12 +146,15 @@ const catchError = async (client, message, name, error, silent = false) => {
         if (message.ephemeral) {
           await message.editReply(contents);
         } else {
+          // Remove only the public "thinking" placeholder; keep output the command already sent.
           try {
-            await message.deleteReply();
+            const response = await message.fetchReply();
+            if (response.flags.has(discord.MessageFlags.Loading))
+              await message.deleteReply();
           } catch (deleteError) {
             client.logger.warn(
               { err: deleteError, name },
-              "Failed to delete a public deferred response before reporting an error.",
+              "Failed to remove a public deferred response before reporting an error.",
             );
           }
           await message.followUp(contents);
